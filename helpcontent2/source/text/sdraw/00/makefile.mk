@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-11-26 20:13:10 $
+#*    last change       $Author: rt $ $Date: 2004-12-16 12:51:42 $
 #*
-#*    $Revision: 1.4 $
+#*    $Revision: 1.5 $
 #*
 #*    $Logfile:$
 #*
@@ -27,8 +27,8 @@ MODULE  = sdraw
 
 # --- Settings -----------------------------------------------------
 
-.INCLUDE : $(PRJ)$/settings.pmk
 .INCLUDE : settings.mk
+.INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
 HZIPFILES = \
