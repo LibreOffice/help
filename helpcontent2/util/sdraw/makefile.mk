@@ -3,16 +3,15 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:48 $
+#*    last change       $Author: vg $ $Date: 2005-03-23 13:03:28 $
 #*
-#*    $Revision: 1.14 $
+#*    $Revision: 1.15 $
 #*
 #*    $Logfile:$
 #*
 #*    Copyright 2000 Sun Microsystems, Inc. All Rights Reserved.
 #*
 #*************************************************************************
-
 # edit to match directory level 
 PRJ		= ..$/..
 # same for all makefiles in "helpcontent2"
