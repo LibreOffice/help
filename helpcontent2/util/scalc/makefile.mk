@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-11-27 00:24:54 $
+#*    last change       $Author: mh $ $Date: 2004-11-28 15:02:54 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -30,7 +30,7 @@ common_build_zip:=
 zip1generatedlangs=TRUE
 
 .IF "$(SOLAR_JAVA)"!=""
-ZIP1TARGET=scalc_xhp
+ZIP1TARGET=xhp_scalc
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/scalc$/* -x "*.dphh*" -x "*.hzip"
