@@ -2,9 +2,9 @@
 #
 #   $RCSfile: makefile.pmk,v $
 #
-#   $Revision: 1.2 $
+#   $Revision: 1.3 $
 #
-#   last change: $Author: hr $ $Date: 2004-10-11 13:43:46 $
+#   last change: $Author: pjunck $ $Date: 2004-11-03 12:41:33 $
 #
 #   The Contents of this file are made available subject to the terms of
 #   either of the following licenses
@@ -61,10 +61,10 @@
 #*************************************************************************
 
 SHELL_PACKAGE:=$(subst,/,$/ $(PACKAGE))
-HLANGZIPFILES=$(foreach,i,$(HZIPFILES) $(foreach,j,$(alllangiso) $(MISC)$/$j$/$(SHELL_PACKAGE)$/$(i:b).hzip))
-HDEPFILES=$(foreach,i,$(HLANGZIPFILES) $(i:s/hzip/dphh/))
+HLANGZIPFILES:=$(foreach,i,$(HZIPFILES) $(foreach,j,$(alllangiso) $(MISC)$/$j$/$(SHELL_PACKAGE)$/$(i:b).hzip))
+HDEPFILES:=$(foreach,i,$(HLANGZIPFILES) $(i:s/hzip/dphh/))
 
-ALLTAR : $(HLANGZIPFILES) $(MISC)$/$(TARGET)_dep_langs.mk
+ALLTAR : $(MISC)$/$(TARGET)_dir.done $(MISC)$/$(TARGET)_dep_langs.mk
 
 $(MISC)$/%_dep_langs.mk :
     @+-$(RM) $@ > $(NULLDEV)
@@ -77,31 +77,34 @@ $(MISC)$/$(TARGET)_dep_langs.mk .PHONY :
 missing_helpdep_langs=$(alllangiso)
 some_dummy_var:=$(foreach,i,$(helpdep_langs) $(assign missing_helpdep_langs:=$(strip $(subst,$i, $(missing_helpdep_langs)))))
 .IF "$(missing_helpdep_langs)"!=""
-HELPTRANSPHONY:=.PHONY
+HELPTRANSPHONY:=TRUE
 .ENDIF			# "$(missing_helpdep_langs)"!=""
 
-$(MISC)$/%.hzip : $(MISC)$/%.xhp
+%.hzip:;
+
+$(MISC)$/$(TARGET)_dir.done : $(HLANGZIPFILES:s/.hzip/.xhp/) $(HLANGZIPFILES)
     @+-$(MKDIR) -p $(@:d)
-    $(WRAPCMD) java -cp $(my_cp) com.sun.star.help.HelpCompiler -c $< -o $@ -src "$(PRJ)$/source" -sty "$(PRJ)$/source$/auxiliary$/embed.xsl" -idx "$(PRJ)$/source$/auxiliary$/index.xsl" -mod $(MODULE) -lang {$(subst,$/, $(subst,text$/, $(subst,$(MODULE)$/, $(subst,$(MISC), $(@:d:d:d)))))} > $(@:d:d)$/$(@:b).dphh_
+    $(WRAPCMD) java -cp $(my_cp) com.sun.star.help.HelpCompiler -pprefix $(MISC) -ppostfix $(SHELL_PACKAGE) -src "$(PRJ)$/source" -sty "$(PRJ)$/source$/auxiliary$/embed.xsl" -idx "$(PRJ)$/source$/auxiliary$/index.xsl" -mod $(MODULE) -lang $(alllangiso:t",") -c $(mktmp $(uniq $(^:f:s/.hzip/.xhp/))) && $(TOUCH) $@
 
 $(MISC)$/%.dphh : $(MISC)$/%.dphh_
     @+$(RENAME) {$@}_ $@
-    $(TOUCH) $@
 
-$(MISC)$/%.xhp  $(HELPTRANSPHONY): $(MISC)$/$(TARGET)__$$(@:b).done
-    $(TOUCH) $@
-    @+echo -----------------------------------------------
+$(MISC)$/{$(alllangiso)}$/$(SHELL_PACKAGE)$/%.xhp : %.xhp;
 
-$(MISC)$/$(TARGET)__%.done : %.xhp
-    +$(WRAPCMD) helpex -p help2 -r $(PRJ) -i $< -x $(MISC) -y $(SHELL_PACKAGE)$/{$(subst,$(TARGET)__, $(@:b))}.xhp -l all -lf $(alllangiso:t",") -m localize.sdf && $(TOUCH) $@
-    +$(TYPE) $(mktmp $(subst,\,/ $(foreach,i,$(alllangiso) $(MISC)$/$i$/$(SHELL_PACKAGE)$/{$(subst,$(TARGET)__, $(@:b))}.xhp))) | xargs $(TOUCH)
+$(foreach,i,$(HZIPFILES:b) $(MISC)$/$(TARGET).$i.done) : $(MISC)$/{$(alllangiso)}$/$(SHELL_PACKAGE)$/$$(@:b:e:s/.//).xhp
+    @+$(WRAPCMD) helpex -p help2 -r $(PRJ) -i $(uniq $(<:f)) -x $(MISC) -y $(SHELL_PACKAGE)$/$(@:b:e:s/.//).xhp -l all -lf $(alllangiso:t",") -m localize.sdf && $(TOUCH) $@
 
 # urks - dmake mixes up operators and strings :-(
 .IF "$(HLANGZIPFILES:s/defined/xxx/)"!=""
-$(HLANGZIPFILES) : $(MISC)$/$(TARGET)__$$(@:b).done
 
-$(foreach,i,$(HZIPFILES) $(MISC)$/$(TARGET)__$(i:b).done) $(HELPTRANSPHONY) : localize.sdf makefile.mk
+.IF "$(HELPTRANSPHONY)"!=""
+$(foreach,i,$(HZIPFILES) $(MISC)$/$(TARGET).$(i:b).done) .PHONY :
+.ELSE           # "$(HELPTRANSPHONY)"!=""
+$(foreach,i,$(HZIPFILES) $(MISC)$/$(TARGET).$(i:b).done) : localize.sdf makefile.mk
+.ENDIF          # "$(HELPTRANSPHONY)"!=""
 .ENDIF          # "$(HLANGZIPFILES)"!=""
+
+$(MISC)$/$(TARGET)_dir.done : $(foreach,i,$(HZIPFILES) $(MISC)$/$(TARGET).$(i:b).done)
 
 # urks - dmake mixes up operators and strings :-(
 .IF "$(HDEPFILES:s/defined/xxx/)"!=""
