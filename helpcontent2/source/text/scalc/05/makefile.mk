@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:49:55 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:53:26 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,8 +31,8 @@ MODULE  = scalc
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   02140000.hzip 
+XHPFILES = \
+   02140000.xhp 
     
 # --- Targets ------------------------------------------------------
 

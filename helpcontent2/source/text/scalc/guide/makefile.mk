@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:50:08 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:53:41 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,88 +31,88 @@ MODULE  = scalc
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   address_auto.hzip \
-   address_byname.hzip \
-   auto_off.hzip \
-   autofilter.hzip \
-   autoformat.hzip \
-   calc_date.hzip \
-   calc_series.hzip \
-   calc_timevalues.hzip \
-   calculate.hzip \
-   cell_protect.hzip \
-   cell_unprotect.hzip \
-   cellcopy.hzip \
-   cellreference_dragdrop.hzip \
-   cellreferences.hzip \
-   cellreferences_url.hzip \
-   cellstyle_by_formula.hzip \
-   cellstyle_conditional.hzip \
-   cellstyle_minusvalue.hzip \
-   consolidate.hzip \
-   csv_files.hzip \
-   csv_formula.hzip \
-   currency_format.hzip \
-   database_define.hzip \
-   database_filter.hzip \
-   database_group.hzip \
-   database_sort.hzip \
-   datapilot.hzip \
-   datapilot_createtable.hzip \
-   datapilot_deletetable.hzip \
-   datapilot_edittable.hzip \
-   datapilot_filtertable.hzip \
-   datapilot_grouping.hzip \
-   datapilot_tipps.hzip \
-   datapilot_updatetable.hzip \
-   dbase_files.hzip \
-   design.hzip \
-   edit_multitables.hzip \
-   filters.hzip \
-   format_table.hzip \
-   format_value.hzip \
-   format_value_userdef.hzip \
-   formula_copy.hzip \
-   formula_enter.hzip \
-   formula_value.hzip \
-   formulas.hzip \
-   fraction_enter.hzip \
-   goalseek.hzip \
-   html_doc.hzip \
-   integer_leading_zero.hzip \
-   keyboard.hzip \
-   line_fix.hzip \
-   main.hzip \
-   mark_cells.hzip \
-   matrixformula.hzip \
-   multi_tables.hzip \
-   multioperation.hzip \
-   multitables.hzip \
-   note_insert.hzip \
-   print_details.hzip \
-   print_exact.hzip \
-   print_landscape.hzip \
-   print_title_row.hzip \
-   printranges.hzip \
-   relativ_absolut_ref.hzip \
-   rename_table.hzip \
-   rounding_numbers.hzip \
-   row_height.hzip \
-   scenario.hzip \
-   sorted_list.hzip \
-   specialfilter.hzip \
-   super_subscript.hzip \
-   table_rotate.hzip \
-   table_view.hzip \
-   text_numbers.hzip \
-   text_rotate.hzip \
-   text_wrap.hzip \
-   userdefined_function.hzip \
-   validity.hzip \
-   value_with_name.hzip \
-   webquery.hzip \
-   year2000.hzip 
+XHPFILES = \
+   address_auto.xhp \
+   address_byname.xhp \
+   auto_off.xhp \
+   autofilter.xhp \
+   autoformat.xhp \
+   calc_date.xhp \
+   calc_series.xhp \
+   calc_timevalues.xhp \
+   calculate.xhp \
+   cell_protect.xhp \
+   cell_unprotect.xhp \
+   cellcopy.xhp \
+   cellreference_dragdrop.xhp \
+   cellreferences.xhp \
+   cellreferences_url.xhp \
+   cellstyle_by_formula.xhp \
+   cellstyle_conditional.xhp \
+   cellstyle_minusvalue.xhp \
+   consolidate.xhp \
+   csv_files.xhp \
+   csv_formula.xhp \
+   currency_format.xhp \
+   database_define.xhp \
+   database_filter.xhp \
+   database_group.xhp \
+   database_sort.xhp \
+   datapilot.xhp \
+   datapilot_createtable.xhp \
+   datapilot_deletetable.xhp \
+   datapilot_edittable.xhp \
+   datapilot_filtertable.xhp \
+   datapilot_grouping.xhp \
+   datapilot_tipps.xhp \
+   datapilot_updatetable.xhp \
+   dbase_files.xhp \
+   design.xhp \
+   edit_multitables.xhp \
+   filters.xhp \
+   format_table.xhp \
+   format_value.xhp \
+   format_value_userdef.xhp \
+   formula_copy.xhp \
+   formula_enter.xhp \
+   formula_value.xhp \
+   formulas.xhp \
+   fraction_enter.xhp \
+   goalseek.xhp \
+   html_doc.xhp \
+   integer_leading_zero.xhp \
+   keyboard.xhp \
+   line_fix.xhp \
+   main.xhp \
+   mark_cells.xhp \
+   matrixformula.xhp \
+   multi_tables.xhp \
+   multioperation.xhp \
+   multitables.xhp \
+   note_insert.xhp \
+   print_details.xhp \
+   print_exact.xhp \
+   print_landscape.xhp \
+   print_title_row.xhp \
+   printranges.xhp \
+   relativ_absolut_ref.xhp \
+   rename_table.xhp \
+   rounding_numbers.xhp \
+   row_height.xhp \
+   scenario.xhp \
+   sorted_list.xhp \
+   specialfilter.xhp \
+   super_subscript.xhp \
+   table_rotate.xhp \
+   table_view.xhp \
+   text_numbers.xhp \
+   text_rotate.xhp \
+   text_wrap.xhp \
+   userdefined_function.xhp \
+   validity.xhp \
+   value_with_name.xhp \
+   webquery.xhp \
+   year2000.xhp 
     
 # --- Targets ------------------------------------------------------
 
