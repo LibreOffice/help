@@ -36,6 +36,18 @@ All others
         <xsl:apply-templates/>
     </title>
 </xsl:template>
+
+<xsl:template match="paragraph[@role=*]">
+    <paragraph>
+        <xsl:apply-templates/>
+    </paragraph>
+</xsl:template>
+
+<xsl:template match="sort">
+    <xsl:apply-templates/>
+</xsl:template>
+
+
 <!-- 
 ###################################################### 
 EMBED
