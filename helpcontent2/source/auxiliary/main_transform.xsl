@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- 
-              =========================
+		 =========================
                   DEBUG VERSION ONLY
-							=========================
+		=========================
  
 //-->
 
@@ -23,6 +23,7 @@
                 Added <p> tags around falsely embedded pars and vars
     Dec 08 2004 #i38483#, fixed wrong handling of web links
                 #i37377#, fixed missing usage of Database parameter for switching
+    Jan 04 2005 #i38905#, fixed buggy branding replacement template
 ***********************************************************************//-->
 
 <!--***********************************************************************
@@ -530,39 +531,58 @@
 <!-- Branding -->
 <xsl:template name="brand" >
 	<xsl:param name="string"/>
-	<xsl:choose>
-		<xsl:when test="contains($string,$brand1)">
-			<xsl:value-of select="substring-before($string,$brand1)"/>
-			<xsl:value-of select="$productname"/>
+	
+    <xsl:choose>
+		
+        <xsl:when test="contains($string,$brand1)">
+           <xsl:variable name="newstr">
+                <xsl:value-of select="substring-before($string,$brand1)"/>
+                <xsl:value-of select="$productname"/>
+                <xsl:value-of select="substring-after($string,$brand1)"/>
+           </xsl:variable>
 			<xsl:call-template name="brand">
-				<xsl:with-param name="string" select="substring-after($string,$brand1)"/>
+				<xsl:with-param name="string" select="$newstr"/>
 			</xsl:call-template>
 		</xsl:when>
+        
 		<xsl:when test="contains($string,$brand2)">
-			<xsl:value-of select="substring-before($string,$brand2)"/>
-			<xsl:value-of select="$productversion"/>
+		    <xsl:variable name="newstr">
+                <xsl:value-of select="substring-before($string,$brand2)"/>
+                <xsl:value-of select="$productversion"/>
+                <xsl:value-of select="substring-after($string,$brand2)"/>
+           </xsl:variable>
 			<xsl:call-template name="brand">
-				<xsl:with-param name="string" select="substring-after($string,$brand2)"/>
+				<xsl:with-param name="string" select="$newstr"/>
 			</xsl:call-template>
 		</xsl:when>
+        
 		<xsl:when test="contains($string,$brand3)">
-			<xsl:value-of select="substring-before($string,$brand3)"/>
-			<xsl:value-of select="$productname"/>
+			<xsl:variable name="newstr">
+                <xsl:value-of select="substring-before($string,$brand3)"/>
+                <xsl:value-of select="$productname"/>
+                <xsl:value-of select="substring-after($string,$brand3)"/>
+           </xsl:variable>
 			<xsl:call-template name="brand">
-				<xsl:with-param name="string" select="substring-after($string,$brand3)"/>
+				<xsl:with-param name="string" select="$newstr"/>
 			</xsl:call-template>
 		</xsl:when>
-		<xsl:when test="contains($string,$brand4)">
-			<xsl:value-of select="substring-before($string,$brand4)"/>
-			<xsl:value-of select="$productversion"/>
+		
+        <xsl:when test="contains($string,$brand4)">
+			    <xsl:variable name="newstr">
+                <xsl:value-of select="substring-before($string,$brand4)"/>
+                <xsl:value-of select="$productversion"/>
+                <xsl:value-of select="substring-after($string,$brand4)"/>
+           </xsl:variable>
 			<xsl:call-template name="brand">
-				<xsl:with-param name="string" select="substring-after($string,$brand4)"/>
+				<xsl:with-param name="string" select="$newstr"/>
 			</xsl:call-template>
 		</xsl:when>
-		<xsl:otherwise>
+		
+        <xsl:otherwise>
 			<xsl:value-of select="$string"/>
 		</xsl:otherwise>
-	</xsl:choose>
+	</xsl:choose> 
+    
 </xsl:template>
 
 
