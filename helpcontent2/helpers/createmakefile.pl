@@ -4,7 +4,7 @@ use File::Find;
 use File::Basename;
 
 # creates the help2 makefile for a given 
-# directory including all help xhp files
+# directory including all help xml files
 # in that and the subordinate directories
 # Only help files with the following 
 #
@@ -17,7 +17,7 @@ use File::Basename;
 
 $makefiletemplate = 'helpers/makefile.template';
 $linkmakefiletemplate = 'helpers/linkmakefile.template';
-$helpdirprefix = "helpcontent2/source/";
+$helpdirprefix = "help2/source/";
 
 undef @sbasic;
 undef @scalc;
@@ -66,18 +66,19 @@ if ($recursive) {
 
 for $d(@dirs) {
     opendir DIR, $d;
-    @files = grep {/xhp$/} readdir DIR;
+    @files = grep {/xml$/} readdir DIR;
     undef @files2;
     closedir DIR;
     
     ($helpdir = $d) =~ s/.*\/$helpdirprefix/source\//gis;
     
-    ($package = $helpdir) =~ s/^source\///gi; $package = $package;
+    ($package = $helpdir) =~ s/^source\///gi; 
+     
     ($target = $package) =~ s/\//_/g; $target =~ s/_$//;
-    ($module = $package) =~ s/^\/*text\/([^\/]+)\/.*$/$1/;
+    ($module = $package) =~ s/^\/*text\/([^\/]+)\/*.*$/$1/;
 
     for $f(@files) {
-        ($n,$p,$e) = fileparse($f,".xhp");
+        ($n,$p,$e) = fileparse($f,".xml");
         if (not $all) {
             if (open XML, $d.'/'.$f) {
                 undef $/;
@@ -142,13 +143,13 @@ for $d(@dirs) {
     $linkaddedfiles = <<"LAF";
    -add help\$/LANGUAGE\$/$module.cfg \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
    -add help\$/LANGUAGE\$/$module.tree \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAD
     
     $linklinkfiles = '';
@@ -170,13 +171,13 @@ LAD
     $linkaddedfiles = <<"LAF";
    -add help\$/LANGUAGE\$/$module.cfg \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
    -add help\$/LANGUAGE\$/$module.tree \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAD
     
     $linklinkfiles = '';
@@ -197,12 +198,12 @@ LAD
     
     $linkaddedfiles = <<"LAF";
    -add help\$/LANGUAGE\$/$module.tree \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAD
     
     $linklinkfiles = '';
@@ -220,12 +221,12 @@ LAD
     
     $linkaddedfiles = <<"LAF";
    -add help\$/LANGUAGE\$/$module.cfg \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
-   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
-   \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAD
     
     $linklinkfiles = '';
@@ -247,7 +248,7 @@ LAD
     
     $linkaddedfiles = <<"LAF";
    -add help\$/LANGUAGE\$/$module.tree \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xhp_LANGUAGE.zip \\
+   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xml_LANGUAGE.zip \\
    -add help\$/LANGUAGE\$/default.css  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/default.css \\
    -add help\$/LANGUAGE\$/highcontrast1.css  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrast1.css \\
    -add help\$/LANGUAGE\$/highcontrast2.css  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrast2.css \\
@@ -259,7 +260,7 @@ LAF
     
     $linkaddeddeps = <<"LAD";
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   \$(BIN)\$/${module}_xhp_LANGUAGE.zip \\
+   \$(BIN)\$/${module}_xml_LANGUAGE.zip \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/default.css \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrast1.css \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrast2.css \\
@@ -285,13 +286,13 @@ LAD
     $linkaddedfiles = <<"LAF";
    -add help\$/LANGUAGE\$/$module.cfg \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
    -add help\$/LANGUAGE\$/$module.tree \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAD
     
     $linklinkfiles = '';
@@ -315,13 +316,13 @@ LAD
     $linkaddedfiles = <<"LAF";
    -add help\$/LANGUAGE\$/$module.cfg \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
    -add help\$/LANGUAGE\$/$module.tree \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAD
     
     $linklinkfiles = '';
@@ -342,13 +343,13 @@ LAD
     $linkaddedfiles = <<"LAF";
    -add help\$/LANGUAGE\$/$module.cfg \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
    -add help\$/LANGUAGE\$/$module.tree \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   -add help\$/LANGUAGE\$/$module.jar  \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.tree \\
-   \$(BIN)\$/${module}_xhp_LANGUAGE.zip
+   \$(BIN)\$/${module}_xml_LANGUAGE.zip
 LAD
     
     $linklinkfiles = '';
