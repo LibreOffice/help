@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-27 10:05:11 $
+#*    last change       $Author: rt $ $Date: 2005-01-28 10:55:39 $
 #*
-#*    $Revision: 1.10 $
+#*    $Revision: 1.11 $
 #*
 #*    $Logfile:$
 #*
@@ -65,9 +65,7 @@ LINKLINKFILES= \
    text$/sdraw$/guide$/keyboard.xhp \
    text$/sdraw$/guide$/main.xhp \
    text$/sdraw$/guide$/rotate_object.xhp \
-   text$/sdraw$/guide$/text_3d.xhp \
    text$/sdraw$/guide$/text_enter.xhp \
-   text$/sdraw$/guide$/text_to_bitmap.xhp \
    text$/sdraw$/main0000.xhp \
    text$/sdraw$/main0100.xhp \
    text$/sdraw$/main0101.xhp \
@@ -109,20 +107,14 @@ LINKLINKFILES= \
    text$/simpress$/01$/03110000.xhp \
    text$/simpress$/01$/03120000.xhp \
    text$/simpress$/01$/03130000.xhp \
-   text$/simpress$/01$/03140000.xhp \
    text$/simpress$/01$/03150000.xhp \
    text$/simpress$/01$/03150100.xhp \
-   text$/simpress$/01$/03150200.xhp \
    text$/simpress$/01$/03150300.xhp \
-   text$/simpress$/01$/03150400.xhp \
    text$/simpress$/01$/03151000.xhp \
    text$/simpress$/01$/03151100.xhp \
    text$/simpress$/01$/03151200.xhp \
-   text$/simpress$/01$/03151300.xhp \
    text$/simpress$/01$/03152000.xhp \
-   text$/simpress$/01$/03170000.xhp \
    text$/simpress$/01$/03180000.xhp \
-   text$/simpress$/01$/03190000.xhp \
    text$/simpress$/01$/04010000.xhp \
    text$/simpress$/01$/04020000.xhp \
    text$/simpress$/01$/04030000.xhp \
@@ -257,7 +249,6 @@ LINKLINKFILES= \
    text$/simpress$/guide$/line_arrow_styles.xhp \
    text$/simpress$/guide$/line_draw.xhp \
    text$/simpress$/guide$/line_edit.xhp \
-   text$/simpress$/guide$/livemode.xhp \
    text$/simpress$/guide$/main.xhp \
    text$/simpress$/guide$/masterpage.xhp \
    text$/simpress$/guide$/move_object.xhp \
@@ -412,7 +403,6 @@ LINKLINKFILES= \
    text$/shared$/01$/02250000.xhp \
    text$/shared$/01$/03010000.xhp \
    text$/shared$/01$/03020000.xhp \
-   text$/shared$/01$/03030000.xhp \
    text$/shared$/01$/03040000.xhp \
    text$/shared$/01$/03050000.xhp \
    text$/shared$/01$/03060000.xhp \
@@ -548,7 +538,6 @@ LINKLINKFILES= \
    text$/shared$/01$/05340500.xhp \
    text$/shared$/01$/05340600.xhp \
    text$/shared$/01$/05350000.xhp \
-   text$/shared$/01$/05350100.xhp \
    text$/shared$/01$/05350200.xhp \
    text$/shared$/01$/05350300.xhp \
    text$/shared$/01$/05350400.xhp \
@@ -740,7 +729,6 @@ LINKLINKFILES= \
    text$/shared$/02$/14060000.xhp \
    text$/shared$/02$/14070000.xhp \
    text$/shared$/02$/18010000.xhp \
-   text$/shared$/02$/18020000.xhp \
    text$/shared$/02$/18030000.xhp \
    text$/shared$/02$/19090000.xhp \
    text$/shared$/02$/20020000.xhp \
@@ -952,6 +940,7 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/menuinsert.xhp \
    text$/shared$/explorer$/database$/menutools.xhp \
    text$/shared$/explorer$/database$/menuview.xhp \
+   text$/shared$/explorer$/database$/password.xhp \
    text$/shared$/explorer$/database$/querywizard00.xhp \
    text$/shared$/explorer$/database$/querywizard01.xhp \
    text$/shared$/explorer$/database$/querywizard02.xhp \
