@@ -255,7 +255,6 @@ LAD
    -add highcontrastwhite.css  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrastwhite.css \\
    -add highcontrastblack.css  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrastblack.css \\
    -add err.html  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/err.html \\
-   -add help\$/main_transform.xsl  \$(PRJ)\$/source\$/auxiliary\$/main_transform.xsl
 LAF
     
     $linkaddeddeps = <<"LAD";
@@ -267,7 +266,6 @@ LAF
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrastwhite.css \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrastblack.css \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/err.html \\
-   \$(PRJ)\$/source\$/auxiliary\$/main_transform.xsl
 LAD
     
     $linklinkfiles = '';
