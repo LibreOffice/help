@@ -89,13 +89,13 @@ for $d(@dirs) {
             }
             if ($status =~ /(DEPRECATED|PUBLISH)/i) {
                 ($p2=$package) =~ s,/,\$/,gis;
-                push @{$module}, $p2.'$/'.$n.'.hzip';
-                push @files2, '    '.$n.'.hzip ';
+                push @{$module}, $p2.'$/'.$n.'.xhp';
+                push @files2, '    '.$n.'.xhp ';
             }
         } else {
             ($p2=$package) =~ s,/,\$/,gis;
-            push @{$module}, $p2.'$/'.$n.'.hzip';
-            push @files2, '   '.$n.'.hzip ';
+            push @{$module}, $p2.'$/'.$n.'.xhp';
+            push @files2, '   '.$n.'.xhp ';
         }
     }
     
@@ -109,7 +109,7 @@ for $d(@dirs) {
         $prj = '..$/' x ((split "/", $helpdir) -1); $prj = $prj . "..";
 
         
-        $hzipfiles = join "\\\n", sort @files2;
+        $xhpfiles = join "\\\n", sort @files2;
 
         ($makefile = $tmpl) =~ s/%([^%]*)%/$$1/gise;
     
