@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:52:21 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:56:23 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,25 +31,25 @@ MODULE  = sdraw
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   align_arrange.hzip \
-   color_define.hzip \
-   combine_etc.hzip \
-   cross_fading.hzip \
-   draw_sector.hzip \
-   duplicate_object.hzip \
-   eyedropper.hzip \
-   gradient.hzip \
-   graphic_insert.hzip \
-   groups.hzip \
-   join_objects.hzip \
-   join_objects3d.hzip \
-   keyboard.hzip \
-   main.hzip \
-   rotate_object.hzip \
-   text_3d.hzip \
-   text_enter.hzip \
-   text_to_bitmap.hzip 
+XHPFILES = \
+   align_arrange.xhp \
+   color_define.xhp \
+   combine_etc.xhp \
+   cross_fading.xhp \
+   draw_sector.xhp \
+   duplicate_object.xhp \
+   eyedropper.xhp \
+   gradient.xhp \
+   graphic_insert.xhp \
+   groups.xhp \
+   join_objects.xhp \
+   join_objects3d.xhp \
+   keyboard.xhp \
+   main.xhp \
+   rotate_object.xhp \
+   text_3d.xhp \
+   text_enter.xhp \
+   text_to_bitmap.xhp 
     
 # --- Targets ------------------------------------------------------
 

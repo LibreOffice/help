@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:52:36 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:56:37 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,26 +31,26 @@ MODULE  = shared
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   3dsettings_toolbar.hzip \
-   fontwork_toolbar.hzip \
-   main0108.hzip \
-   main0201.hzip \
-   main0208.hzip \
-   main0209.hzip \
-   main0212.hzip \
-   main0213.hzip \
-   main0214.hzip \
-   main0226.hzip \
-   main0227.hzip \
-   main0300.hzip \
-   main0302.hzip \
-   main0400.hzip \
-   main0500.hzip \
-   main0600.hzip \
-   main0650.hzip \
-   main0800.hzip \
-   tree_strings.hzip 
+XHPFILES = \
+   3dsettings_toolbar.xhp \
+   fontwork_toolbar.xhp \
+   main0108.xhp \
+   main0201.xhp \
+   main0208.xhp \
+   main0209.xhp \
+   main0212.xhp \
+   main0213.xhp \
+   main0214.xhp \
+   main0226.xhp \
+   main0227.xhp \
+   main0300.xhp \
+   main0302.xhp \
+   main0400.xhp \
+   main0500.xhp \
+   main0600.xhp \
+   main0650.xhp \
+   main0800.xhp \
+   tree_strings.xhp 
     
 # --- Targets ------------------------------------------------------
 
