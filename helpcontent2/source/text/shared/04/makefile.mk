@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-19 19:54:14 $
+#*    last change       $Author: rt $ $Date: 2004-11-26 21:27:07 $
 #*
-#*    $Revision: 1.3 $
+#*    $Revision: 1.4 $
 #*
 #*    $Logfile:$
 #*
@@ -15,12 +15,12 @@
 
 # edit to match directory level 
 PRJ		= ..$/..$/..$/..
-# same for all makefiles in "help2"
-PRJNAME = help2
+# same for all makefiles in "helpcontent2"
+PRJNAME = helpcontent2
 # edit to match the current package
 PACKAGE = text/shared/04
 # uniqe name (module wide);
-# using a modified forme of package should do here
+# using a modified form of package should do here
 TARGET  = text_shared_04
 # edit to match the current module
 MODULE  = shared
@@ -32,8 +32,8 @@ MODULE  = shared
 
 # this list matches the *.xhp files to process
 HZIPFILES = \
-    01010000.hzip \
-    01020000.hzip 
+   01010000.hzip \
+   01020000.hzip 
     
 # --- Targets ------------------------------------------------------
 
