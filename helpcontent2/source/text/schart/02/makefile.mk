@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:51:01 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:54:45 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,12 +31,12 @@ MODULE  = schart
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   01190000.hzip \
-   01200000.hzip \
-   01210000.hzip \
-   01220000.hzip \
-   02020000.hzip 
+XHPFILES = \
+   01190000.xhp \
+   01200000.xhp \
+   01210000.xhp \
+   01220000.xhp \
+   02020000.xhp 
     
 # --- Targets ------------------------------------------------------
 
