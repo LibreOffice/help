@@ -142,11 +142,12 @@
 
 <!-- parts of help and image urls -->
 
-<xsl:variable name="help_url_prefix" select="concat('vnd.sun.star.help:///',$module,'/')"/>
+<xsl:variable name="help_url_prefix" select="concat('vnd.sun.star.help://',$module,'/')"/>
 <xsl:variable name="img_url_prefix" select="concat('vnd.sun.star.pkg://',$imgrepos,'/')"/>
-<xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System)"/>
+<xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no')"/>
 <xsl:variable name="urlpre" select="$help_url_prefix" /> 
-<xsl:variable name="linkprefix" select="''"/>
+<xsl:variable name="linkprefix" select="$urlpre"/>
+<xsl:variable name="linkpostfix" select="$urlpost"/>
 
 <!-- DEBUG: 
 <xsl:variable name="help_url_prefix" select="'file:///handbuch/WORKBENCH/help2/source/'"/>
@@ -407,7 +408,7 @@
 		</xsl:when>
 		
 		<xsl:otherwise>
-			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,@href)"/></xsl:variable>
+			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,@href,$linkpostfix)"/></xsl:variable>
 			<a href="{$href}"><xsl:apply-templates /></a>
 		</xsl:otherwise>
 	
@@ -416,7 +417,7 @@
 
 <xsl:template match="link" mode="embedded">
 	<xsl:variable name="href">
-		<xsl:value-of select="concat($linkprefix,@href,$urlpost)"/>
+		<xsl:value-of select="concat($linkprefix,@href,$linkpostfix)"/>
 	</xsl:variable>
 	<a href="{$href}"><xsl:apply-templates /></a>
 </xsl:template>
