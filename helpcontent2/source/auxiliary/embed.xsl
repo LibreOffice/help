@@ -53,8 +53,8 @@ EMBEDVAR
 ###################################################### 
 -->
 <xsl:template match="embedvar">
-	<xsl:if test="not(@href='text/shared/00/00000004.xml#wie')"> <!-- special treatment if howtoget links -->
-        <xsl:variable name="href"><xsl:value-of select="substring-before(concat($fsroot,@href),'#')"/></xsl:variable>
+	<xsl:if test="not(@href='text/shared/00/00000004.xhp#wie')"> <!-- special treatment if howtoget links -->
+		<xsl:variable name="href"><xsl:value-of select="substring-before(concat($fsroot,@href),'#')"/></xsl:variable>
 		<xsl:variable name="anchor"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
 		<xsl:variable name="doc" select="document($href)"/>
 		<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
