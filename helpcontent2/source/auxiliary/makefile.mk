@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-08 18:03:05 $
+#*    last change       $Author: vg $ $Date: 2005-03-23 10:27:44 $
 #*
-#*    $Revision: 1.4 $
+#*    $Revision: 1.5 $
 #*
 #*    $Logfile:$
 #*
@@ -43,6 +43,7 @@ aux_langdirs:=$(shell +find ./ -type d ! -name CVS ! -name "." | sed "s/\.\/\///
 .ELSE           # "$(GUI)"=="UNX"
 aux_langdirs:=$(subst,CVS, $(shell +-dir /ba:d ))
 .ENDIF          # "$(GUI)"=="UNX"
+
 
 aux_alllangiso:=$(foreach,i,$(alllangiso) $(foreach,j,$(aux_langdirs) $(eq,$i,$j  $i $(NULL))))
 
