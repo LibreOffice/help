@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:47:49 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:51:07 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,12 +31,12 @@ MODULE  = sbasic
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   control_properties.hzip \
-   create_dialog.hzip \
-   insert_control.hzip \
-   sample_code.hzip \
-   show_dialog.hzip 
+XHPFILES = \
+   control_properties.xhp \
+   create_dialog.xhp \
+   insert_control.xhp \
+   sample_code.xhp \
+   show_dialog.xhp 
     
 # --- Targets ------------------------------------------------------
 
