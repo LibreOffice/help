@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-20 10:24:41 $
+#*    last change       $Author: fpe $ $Date: 2004-08-24 10:46:07 $
 #*
-#*    $Revision: 1.4 $
+#*    $Revision: 1.5 $
 #*
 #*    $Logfile:$
 #*
@@ -44,7 +44,6 @@ LINKADDEDFILES= \
    -add highcontrastwhite.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastwhite.css \
    -add highcontrastblack.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastblack.css \
    -add err.html  $(PRJ)$/source$/auxiliary$/LANGUAGE$/err.html \
-   -add help$/main_transform.xsl  $(PRJ)$/source$/auxiliary$/main_transform.xsl
 
 
 LINKADDEDDEPS= \
