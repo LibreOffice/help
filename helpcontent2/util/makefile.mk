@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hjs $ $Date: 2004-11-04 12:25:55 $
+#*    last change       $Author: rt $ $Date: 2004-11-27 00:24:30 $
 #*
-#*    $Revision: 1.3 $
+#*    $Revision: 1.4 $
 #*
 #*    $Logfile:$
 #*
@@ -15,10 +15,10 @@
 
 # edit to match directory level 
 PRJ		= ..
-# same for all makefiles in "help2"
-PRJNAME = help2
+# same for all makefiles in "helpcontent2"
+PRJNAME = helpcontent2
 # uniqe name (module wide);
-# using a modified forme of package should do here
+# using a modified form of package should do here
 TARGET  = plain_util
 
 # --- Settings -----------------------------------------------------
@@ -38,4 +38,3 @@ ALLTAR : $(COMMONBIN)$/helpimg.ilst
 
 $(COMMONBIN)$/helpimg.ilst: helpimg.ilst
     +$(COPY) $< $@
-
