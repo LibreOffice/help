@@ -26,21 +26,10 @@ All others
   </xsl:copy>
 </xsl:template>
 
-<xsl:template match="bookmark" mode="embedded">
-	<bookmark>
-		<xsl:copy-of select="@*"/>
-		<xsl:attribute name="embedded">true</xsl:attribute>
-		<xsl:apply-templates />
-	</bookmark>
+<xsl:template match="bookmark" mode="embedded" />
+<xsl:template match="ahelp" mode="embedded">
+	<xsl:apply-templates mode="embedded"/>
 </xsl:template>
-
-
-<xsl:template match="bookmark_value" mode="embedded">
-	<bookmark_value embedded="true">
-		<xsl:apply-templates/>
-	</bookmark_value>
-</xsl:template>
-
 
 <!-- 
 ###################################################### 
