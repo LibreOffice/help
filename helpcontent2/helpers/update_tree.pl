@@ -4,19 +4,35 @@ use File::Find;
 use File::Basename;
 use Benchmark;
 
-
 $t0 = new Benchmark;
-# update the tree files in helpcontent2/source/auxiliary/*
+# update the tree files in <platform>/misc/*
 
 $| = 1;
-($scriptname = `pwd`) =~ s/\n/\/$0/;
-($treeroot = $scriptname) =~ s/\/update_tree.pl/\/..\/source\/auxiliary/;
-($sourceroot = $treeroot) =~ s/source\/auxiliary$/source/;
-$treestrings = "$sourceroot/text/shared/tree_strings.xhp";
 
-$params = join "|", "",@ARGV,"";
-($params =~ /-langdir/) ? ($langdir = $params) =~ (s/.*-langdir=([^\|]*).*$/$1/gs) : (($langdir = '***ALL***'));
+my $prj = $ENV{ENVPRJ};
 
+my $inpath = $ENV{INPATH};
+my $with_lang = $ENV{WITH_LANG};  
+terminate() if ( ! defined $inpath );
+
+if ( ! defined $prj ) {
+# do someting that works for manual call
+    ($scriptname = `pwd`) =~ s/\n/\/$0/;
+    ($tree_src = $scriptname) =~ s/\/update_tree.pl/\/..\/source\/auxiliary/;
+    ($tree_dest = $scriptname) =~ s/\/update_tree.pl/\/..\/$inpath\/misc/;
+    ($source_dir = $scriptname) =~ s/\/update_tree.pl/\/..\/source/;
+    $treestrings = "$source_dir/text/shared/tree_strings.xhp";
+} else {
+    $tree_src = "$prj\/source\/auxiliary";
+    $tree_dest = "$prj\/$inpath\/misc";
+    $source_dir = "$prj\/source";
+    $treestrings = "$source_dir/text/shared/tree_strings.xhp";
+
+    print "$tree_src\n";
+    print "$tree_dest\n";
+    print "$source_dir\n";
+    print "$treestrings\n";
+}
 
 # Get the English tree files as master
 #-------------------------------
@@ -27,36 +43,22 @@ $params = join "|", "",@ARGV,"";
 #-------------------------------
 # Update localizations from sdf
 #-------------------------------
-# read all strings with id "tit" from all localize.sdf files
 
-if ($langdir eq '***ALL***') {
-    if (opendir AUX, "$treeroot") {
-        @langs = grep { /^(?!(\.|CVS|en-US))/ && -d "$treeroot/$_"} readdir AUX;
-      closedir AUX;
-    } else {
-        &terminate("Cannot open directory $treeroot");
-    }
-} else {
-    @langs = $langdir;
-}
+@langs = split /\s+/, $with_lang;
+&read_loc;
 
-if (@langs[0] ne "en-US") {
-    &read_loctit;
-    &read_loctree;
-}
-
+print "################\nUpdating the treefiles for @langs \n";
 for $l(@langs) {
     if ($l ne "en-US") {
         &do_lang($l);
     }
 }
 
-
-
+#-------------------------------
+#
 $t1 = new Benchmark;
 $td = timediff($t1, $t0);
 print timestr($td),"\n";
-
 
 ####################
 # SUBS
@@ -66,35 +68,35 @@ sub terminate {
     print "$err\n\n";
     $msg = <<"MSG";
 
-update_tree.pl [-langdir=language]
-    -langdir    Proceed files in this language subdirectory
-              If no langdir is given all subdirs are processed.
+update_tree.pl
+   all languages in WITH_LANG are processed. WITH_LANG=ALL is
+   not supported in manual calls.
 
    Updates the *.tree files.
    At first, the English file is updated based on the English
    help topic titles as read from the help files. Then, the
    localized tree files are written based on the English tree
    file and the localized help topic titles.
+
+   Requires a valid SO/OOo environment.
 MSG
     die "$msg\n";
 }
 
 #---------------------------------------------------
+
 sub do_english {
     print "Processing en-US\n";
-    undef %helpsection; undef %node; undef %topic;
+    undef %helpsection; undef %node;
     &readtreestrings;
     &gettreefiles;
-    &processtreefiles('en-US');	
+    &processtreefiles('en-US');    
 }
 
 #---------------------------------------------------
 sub do_lang {
     $lng = shift;
-    print "\n\n---------------------------------------------------\nProcessing $lng\n";
-    undef %helpsection; undef %node; undef %topic; undef %title;
-    &readl10ntreestrings($lng);
-    &readl10ntitles($lng);
+    print "\n---------------------------------------------------\nProcessing $lng\n";
     &processtreefiles($lng);
     print "\n";
 }
@@ -105,7 +107,7 @@ sub readtreestrings {
     if (open TREE, $treestrings) {
         while (<TREE>) {
             chomp;
-            s/<\/*help:productname>//gis;	
+            s/<\/*help:productname>//gis;    
             if (/help_section/) {
                 s/^\s*<.*help_section//;
                 s/<\/.*$//;
@@ -113,7 +115,7 @@ sub readtreestrings {
                 ($title = $_) =~ s/^.*title=&quot;(.*)&quot;.*$/$1/;
                 $helpsection{$id} = $title; 
             }
-        
+
             if (/node id=/) {
                 s/^\s*<.*node //;
                 s/<\/.*$//;
@@ -122,66 +124,23 @@ sub readtreestrings {
                 $node{$id} = $title;
             }
         }
-      close TREE;
+        close TREE;
     } else {
-    &terminate("Error opening $treeview");
+        &terminate("Error opening $treestrings");
     }
     print "done\n";
 }
-
-#---------------------------------------------------
-sub readl10ntreestrings {
-    my $lng = shift;
-    print "Reading tree strings for $lng...";
-    for (@{$l10ntreestrings{$lng}}) {
-        @tokens = split /\t/, $_;
-        ($file = $tokens[1]) =~ s/\\/\//g;
-        $file =~ s/.*text\///g;
-      $id = $tokens[4];	$lang = $tokens[9];	$cnt = $tokens[10];
-        if ($cnt =~ /help_section/) {
-                s/^\s*<.*help_section//;
-                ($id = $cnt) =~ s/^.*id="(\d+)".*$/$1/;
-                ($title = $cnt) =~ s/^.*title="(.*)".*$/$1/;
-                $helpsection{$id} = $title; 
-        }
-        if ($cnt =~/node id=/) {
-            s/^\s*<.*node //;
-            ($id = $cnt) =~ s/^.*id="(\d+)".*$/$1/;
-            ($title = $cnt) =~ s/^.*title="(.*)".*$/$1/;
-            $node{$id} = $title;
-        }
-    }
-    print "done\n";
-}
-
-#---------------------------------------------------
-sub readl10ntitles {
-    my $lng = shift;
-    print "Reading titles for $lng...";
-    
-    for $t(@{$l10ntitles{$lng}}) {
-        @tokens = split /\t/, $t;
-        ($file = $tokens[1]) =~ s/\\/\//g;
-        $file =~ s/.*text\///g;
-        $id = $tokens[4];
-        $lang = $tokens[9];
-        $cnt = $tokens[10];
-        $title{"text/$file"} = $cnt;
-        #print "$file\n";
-    }
-    print "done\n";
-}	
 
 #------------------------------------
 sub gettreefiles {
     # Read the tree files from the directory
     # this list is also used for all foreign languages
     print "Reading tree files...";
-    if (opendir ENUS, "$treeroot/en-US") {
+    if (opendir ENUS, "$tree_src") {
         @treeviews = grep /\.tree/, readdir ENUS;
-      closedir ENUS;
+        closedir ENUS;
     } else {
-        &terminate("Cannot open directory $treeroot/en-US");
+        &terminate("Cannot open directory $tree_src");
     }
     print "done\n";
 }
@@ -191,16 +150,15 @@ sub processtreefiles {
     $lng = shift;
     
     for $tv(@treeviews) {
-      print "\nProcessing $tv\n";
-        @lines = &readtv("$treeroot/en-US/$tv");
+        print "\nProcessing $tv\n";
+        @lines = &readtv("$tree_src/$tv");
         print "Read ".scalar @lines." lines\n";
         for $l(@lines) {
-                
             if ($l =~ /topic/) {
                 ($id = $l) =~ s/^.*id="([^"]*)".*$/$1/gis;
                 ($module = $id) =~ s/^([^\/]*).*$/$1/;
                 $id =~ s/^.*?\///;
-                $file = "$sourceroot/$id";
+                $file = "$source_dir/$id";
 
                 if ($lng eq 'en-US') { # english comes from the file
                     if (open F,$file) {
@@ -215,9 +173,10 @@ sub processtreefiles {
                         $l = "<!-- removed $module/$id -->\n";
                     }
                 } else { # localized comes from the localize sdf
-                    if (defined($title{$id})) {
+                    #print "\nid: $id";
+                    if (defined($loc_title{$lng}->{$id})) {
                         print ".";
-                        $l = "<topic id=\"$module/$id\">$title{$id}</topic>\n";
+                        $l = "<topic id=\"$module/$id\">$loc_title{$lng}->{$id}</topic>\n";
                     } else {
                         print "!";
                     }
@@ -233,8 +192,8 @@ sub processtreefiles {
                         $l =~ s/title="(.*)"/title="NOTFOUND:$id"/;
                     }
                 } else {
-                    if (defined($node{$id})) {
-                        $l =~ s/title="(.*)"/title="$node{$id}"/;
+                    if (defined($node{$lng}->{$id})) {
+                        $l =~ s/title="(.*)"/title="$node{$lng}->{$id}"/;
                     }
                 }
             }
@@ -249,19 +208,21 @@ sub processtreefiles {
                         $l =~ s/title="(.*)"/title="NOTFOUND:$id"/;
                     }
                 } else {
-                    if (defined($helpsection{$id})) {
-                        $l =~ s/title="(.*)"/title="$helpsection{$id}"/;
+                    if (defined($helpsection{$lng}->{$id})) {
+                        $l =~ s/title="(.*)"/title="$helpsection{$lng}->{$id}"/;
                     }
                 }
             }
-      }
-  
-    $tvout = "$treeroot/$lng/$tv";
-      if (open TV, ">$tvout") {
-        for $line(@lines) { 
+        }
+         if ( ! -d "$tree_dest/$lng" ) { 
+            mkdir "$tree_dest/$lng" or die "\nCouldn't create directory \"$tree_dest/$lng\"";
+        }
+        $tvout = "$tree_dest/$lng/$tv";
+        if (open TV, ">$tvout") {
+            for $line(@lines) { 
                 $line =~ s/\$\[officename\]/%PRODUCTNAME/g;
                 $line =~ s/\$\[officeversion\]/%PRODUCTVERSION/g;
-                print TV $line;	
+                print TV $line;    
             }  
             close TV;
       } else {
@@ -274,45 +235,64 @@ sub processtreefiles {
 sub readtv {
     my $f = shift;
     if (open TV, $f) {
-         $/ = "\n";
-       my @l = <TV>;
-       close TV;
+        $/ = "\n";
+        my @l = <TV>;
+        close TV;
         return @l;
-     } else { 
+    } else { 
         &terminate("Error opening $f"); 
     }
 }
 
 #------------------------------------
-sub read_loctit {
+# read entries form localize.sdf files
+#------------------------------------
+sub read_loc {
     print "\n\nReading localized titles...";
     $/ = "\n";
-    @titles = qx{grep [^a-zA-Z0-9]tit[^a-zA-Z0-9] `find $sourceroot/text -name localize.sdf`};
-    print "done reading ".scalar @titles." localized titles\n";
-
-    print "Sorting localized titles...";
-    for (@titles) {
-        @tokens = split /\t/, $_;
-        ($file = $tokens[1]) =~ s/\\/\//g;
-        $file =~ s/.*text\///g;
-        $id = $tokens[4];
-        $lang = $tokens[9];
-        $cnt = $tokens[10];
-        push @{$l10ntitles{$lang}}, $_;
+    @files = `find $source_dir/text -name localize.sdf`;
+    for my $fname (@files) {
+        $FS = '\t';
+        print ".";
+        open(LOCALIZE_SDF, $fname) || die 'Cannot open "localize.sdf".'."$fname";
+        while (<LOCALIZE_SDF>) {
+            my ($Fld1,$file,$Fld3,$Fld4,$id,$Fld6,$Fld7,$Fld8,$Fld9,$lang,$text) = split($FS, $_, 12);
+            if ($id eq 'tit') {
+                #strip filename
+                $file =~ s/.*text\\/text\\/g;
+                #convert \ to / in filename
+                $file =~ s/\\/\//g;
+                # add entry to the hash
+                $loc_title{$lang}->{$file} = $text;
+            }
+            if ($file =~ /tree_strings.xhp/) {
+                #strip filename
+                $file =~ s/.*text/text/g;
+                #convert \ to / in filename
+                $file =~ s/\\/\//g;
+                if ($text =~ /^<help_section/) {
+                    #example: <help_section application="scalc" id="08" title="表計算ドキュメント"> 
+                    my ($fld1,$app,$fld3,$id,$fld5,$sec_title) = split('"', $text, 7);
+                    $helpsection{$lang}->{$id} = $sec_title; 
+                } elsif ($text =~/<node id=/) {
+                    # example: <node id="0205" title="Tabelas em documentos de texto"> 
+                    # BEWARE: title may contain escaped '"' so only match " not preceded by \
+                    # using a zero‐width negative look‐behind assertion.
+                    my ($fld1,$id,$fld3,$node_title,$Fld5) = split(/(?<!\\)"/, $text, 5);
+                    $node{$lang}->{$id} = $node_title;
+                }
+            }
+        }
+        close LOCALIZE_SDF;
     }
-    print "done\n";
+    # statistics
+    $total_elements=0;
+    foreach $lang (keys %loc_title) {
+        $no_elements = scalar(keys(%{$loc_title{$lang}}));
+        push(@langstat, "$lang:\t ".$no_elements." matches\n");
+        $total_elements += $no_elements;
+    }
+    print "\ndone reading a total of ".$total_elements." localized titles for ".scalar(keys(%loc_title))." languages from ".scalar @files ." files\n";
+    print sort(@langstat);
 }
 
-#------------------------------------
-sub read_loctree {
-    print "Reading localized tree strings...";
-    @l10ntreestrings = qx{grep tree_strings.xhp $sourceroot/text/shared/localize.sdf};
-    print "done reading ".scalar @l10ntreestrings." localized strings\n";
-    print "Sorting localized tree strings...";
-    for (@l10ntreestrings) {
-        @tokens = split /\t/, $_;
-        $lang = $tokens[9];
-        push @{$l10ntreestrings{$lang}}, $_;
-    }
-    print "done\n";
-}
