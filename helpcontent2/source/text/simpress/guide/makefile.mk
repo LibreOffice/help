@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-27 10:00:58 $
+#*    last change       $Author: rt $ $Date: 2005-01-28 10:18:31 $
 #*
-#*    $Revision: 1.6 $
+#*    $Revision: 1.7 $
 #*
 #*    $Logfile:$
 #*
@@ -52,7 +52,6 @@ XHPFILES = \
    line_arrow_styles.xhp \
    line_draw.xhp \
    line_edit.xhp \
-   livemode.xhp \
    main.xhp \
    masterpage.xhp \
    move_object.xhp \
