@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-28 10:12:55 $
+#*    last change       $Author: vg $ $Date: 2005-03-08 16:32:42 $
 #*
-#*    $Revision: 1.7 $
+#*    $Revision: 1.8 $
 #*
 #*    $Logfile:$
 #*
@@ -93,6 +93,7 @@ XHPFILES = \
    dabawiz02access.xhp \
    dabawiz02adabas.xhp \
    dabawiz02ado.xhp \
+   dabawiz02dbase.xhp \
    dabawiz02jdbc.xhp \
    dabawiz02ldap.xhp \
    dabawiz02mysql.xhp \
@@ -105,6 +106,7 @@ XHPFILES = \
    menubar.xhp \
    menuedit.xhp \
    menufile.xhp \
+   menufilesave.xhp \
    menuinsert.xhp \
    menutools.xhp \
    menuview.xhp \
@@ -122,7 +124,8 @@ XHPFILES = \
    tablewizard01.xhp \
    tablewizard02.xhp \
    tablewizard03.xhp \
-   tablewizard04.xhp 
+   tablewizard04.xhp \
+   toolbars.xhp 
     
 # --- Targets ------------------------------------------------------
 
