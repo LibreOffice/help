@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-11-27 00:24:30 $
+#*    last change       $Author: rt $ $Date: 2004-12-16 13:00:10 $
 #*
-#*    $Revision: 1.4 $
+#*    $Revision: 1.5 $
 #*
 #*    $Logfile:$
 #*
@@ -23,8 +23,8 @@ TARGET  = plain_util
 
 # --- Settings -----------------------------------------------------
 
-.INCLUDE : $(PRJ)$/settings.pmk
 .INCLUDE : settings.mk
+.INCLUDE : $(PRJ)$/settings.pmk
 
 ZIP1TARGET=helpxsl
 ZIP1FLAGS= -u -r
