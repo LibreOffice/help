@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:58:50 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 10:02:48 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,33 +31,33 @@ MODULE  = swriter
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   main0000.hzip \
-   main0100.hzip \
-   main0101.hzip \
-   main0102.hzip \
-   main0103.hzip \
-   main0104.hzip \
-   main0105.hzip \
-   main0106.hzip \
-   main0107.hzip \
-   main0110.hzip \
-   main0200.hzip \
-   main0202.hzip \
-   main0203.hzip \
-   main0204.hzip \
-   main0205.hzip \
-   main0206.hzip \
-   main0208.hzip \
-   main0210.hzip \
-   main0213.hzip \
-   main0214.hzip \
-   main0215.hzip \
-   main0216.hzip \
-   main0218.hzip \
-   main0219.hzip \
-   main0220.hzip \
-   main0503.hzip 
+XHPFILES = \
+   main0000.xhp \
+   main0100.xhp \
+   main0101.xhp \
+   main0102.xhp \
+   main0103.xhp \
+   main0104.xhp \
+   main0105.xhp \
+   main0106.xhp \
+   main0107.xhp \
+   main0110.xhp \
+   main0200.xhp \
+   main0202.xhp \
+   main0203.xhp \
+   main0204.xhp \
+   main0205.xhp \
+   main0206.xhp \
+   main0208.xhp \
+   main0210.xhp \
+   main0213.xhp \
+   main0214.xhp \
+   main0215.xhp \
+   main0216.xhp \
+   main0218.xhp \
+   main0219.xhp \
+   main0220.xhp \
+   main0503.xhp 
     
 # --- Targets ------------------------------------------------------
 
