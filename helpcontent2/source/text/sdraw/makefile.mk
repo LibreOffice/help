@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:51:30 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:55:21 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,20 +31,20 @@ MODULE  = sdraw
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   main0000.hzip \
-   main0100.hzip \
-   main0101.hzip \
-   main0102.hzip \
-   main0103.hzip \
-   main0104.hzip \
-   main0105.hzip \
-   main0106.hzip \
-   main0200.hzip \
-   main0202.hzip \
-   main0210.hzip \
-   main0213.hzip \
-   main0503.hzip 
+XHPFILES = \
+   main0000.xhp \
+   main0100.xhp \
+   main0101.xhp \
+   main0102.xhp \
+   main0103.xhp \
+   main0104.xhp \
+   main0105.xhp \
+   main0106.xhp \
+   main0200.xhp \
+   main0202.xhp \
+   main0210.xhp \
+   main0213.xhp \
+   main0503.xhp 
     
 # --- Targets ------------------------------------------------------
 
