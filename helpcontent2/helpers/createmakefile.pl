@@ -17,7 +17,8 @@ use File::Basename;
 
 $makefiletemplate = 'helpers/makefile.template';
 $linkmakefiletemplate = 'helpers/linkmakefile.template';
-$helpdirprefix = "helpcontent2/source/";
+$prj = "helpcontent2";
+$helpdirprefix = "$prj/source/";
 
 undef @sbasic;
 undef @scalc;
@@ -30,7 +31,9 @@ undef @swriter;
 
 $params = join "|", "",@ARGV,"";
 ($params =~ /-dir/) ? ($startdir = $params) =~ (s/.*-dir=([^\|]*).*$/$1/gs) : (($startdir = `pwd`) =~ s/\n//gs);
+($startdir = $startdir."/source/text") if ($startdir =~ /$prj$/);
 ($params =~ /-linkdir/) ? ($linkdir = $params) =~ (s/.*-linkdir=([^\|]*).*$/$1/gs) : (($linkdir = `pwd`) =~ s/\n//gs);
+($linkdir = $linkdir."/util") if ($linkdir =~ /$prj$/);
 $recursive = $params =~ /-recursive/ || 0;
 $all = $params =~ /-all/ || 0;
 
@@ -244,6 +247,7 @@ LAD
         
 #-------------------------------------
 # shared
+ 
     $module = "shared";
     
     $linkaddedfiles = <<"LAF";
@@ -269,7 +273,7 @@ LAF
 LAD
     
     $linklinkfiles = '';
-    
+
     $auth = "script";
     $date = sprintf "%4d/%02d/%02d %02d:%02d:%02d",$year+1900,$mon,$mday,$hour,$min,$sec;
     $prj = '..$/..' ;
@@ -361,6 +365,34 @@ LAD
     ($linkmakefile = $linktmpl) =~ s/%([^%]*)%/$$1/gise;
     &writelinkmakefile($module,$linkmakefile);
 
+#-------------------------------
+# sdatabase
+    $module = "sdatabase";
+    
+    $linkaddedfiles = <<"LAF";
+   -add $module.cfg \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
+   -add $module.jar  \$(BIN)\$/xhp_${module}_LANGUAGE.zip
+LAF
+    
+    $linkaddeddeps = <<"LAD";
+   \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
+   \$(BIN)\$/xhp_${module}_LANGUAGE.zip
+LAD
+    
+    $linklinkfiles = '';
+    for (@shared) {	$linklinkfiles = $linklinkfiles . "   $_ \\\n";	}
+    $auth = "script";
+    $date = sprintf "%4d/%02d/%02d %02d:%02d:%02d",$year+1900,$mon,$mday,$hour,$min,$sec;
+    $prj = '..$/..' ;
+    
+    ($linkmakefile = $linktmpl) =~ s/%([^%]*)%/$$1/gise;
+    
+    # remove zip1 targets
+    $linkmakefile =~ s,\n(ZIP1LIST=.*)\n,\nZIP1LIST=\$(LANGDIR)\$/text\$/shared\$/explorer\$/database\$/main.xhp,gi;
+    &writelinkmakefile($module,$linkmakefile);
+    
+    
+    
 print "sbasic: $#sbasic\n";
 print "scalc : $#scalc\n";
 print "schart: $#schart\n";
@@ -369,6 +401,7 @@ print "shared: $#shared\n";
 print "simpr : $#simpress\n";
 print "smath : $#smath\n";
 print "swrit : $#swriter\n";
+print "sdbase: $#sdatabase\n";
 
 sub terminate {
     $err = shift;
