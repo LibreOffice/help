@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:56:08 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:59:59 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,16 +31,16 @@ MODULE  = simpress
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   00000004.hzip \
-   00000401.hzip \
-   00000402.hzip \
-   00000403.hzip \
-   00000404.hzip \
-   00000405.hzip \
-   00000406.hzip \
-   00000407.hzip \
-   00000413.hzip 
+XHPFILES = \
+   00000004.xhp \
+   00000401.xhp \
+   00000402.xhp \
+   00000403.xhp \
+   00000404.xhp \
+   00000405.xhp \
+   00000406.xhp \
+   00000407.xhp \
+   00000413.xhp 
     
 # --- Targets ------------------------------------------------------
 
