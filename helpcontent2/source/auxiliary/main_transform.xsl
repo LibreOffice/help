@@ -88,7 +88,7 @@
 <xsl:variable name="qt" select="'&quot;'"/>
 
 <!-- generic Icon alt text -->
-<xsl:variable name="alttext" select="'text/shared/00/icon_alt.xml'"/>
+<xsl:variable name="alttext" select="'text/shared/00/icon_alt.xhp'"/>
 
 <!-- For calculating pixel sizes -->
 <xsl:variable name="dpi" select="'96'"/>
@@ -299,7 +299,7 @@
 
 <!-- EMBEDVAR -->
 <xsl:template match="embedvar">
-	<xsl:if test="not(@href='text/shared/00/00000004.xml#wie')"> <!-- special treatment if howtoget links -->
+	<xsl:if test="not(@href='text/shared/00/00000004.xhp#wie')"> <!-- special treatment if howtoget links -->
 		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'),$urlpost)"/></xsl:variable>
 		<xsl:variable name="anchor"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
 		<xsl:variable name="doc" select="document($href)"/>
@@ -380,7 +380,7 @@
 		</xsl:when>
 	//-->
 		
-	<xsl:when test="contains(child::embedvar/@href,'/00/00000004.xml#wie')"> <!-- special treatment of howtoget links -->
+	<xsl:when test="contains(child::embedvar/@href,'/00/00000004.xhp#wie')"> <!-- special treatment of howtoget links -->
 				<xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,substring-before(child::embedvar/@href,'#'),$urlpost)"/></xsl:variable>
 				<xsl:variable name="tmp_doc" select="document($tmp_href)"/>
 				<div class="howtoget">
@@ -522,7 +522,7 @@
 			</xsl:if>			
 		</xsl:when>
 		
-		<xsl:when test="contains(descendant::embedvar/@href,'/00/00000004.xml#wie')"> <!-- special treatment of howtoget links -->
+		<xsl:when test="contains(descendant::embedvar/@href,'/00/00000004.xhp#wie')"> <!-- special treatment of howtoget links -->
 			<xsl:apply-templates />
 		</xsl:when>		
 		
@@ -614,7 +614,7 @@
 			</xsl:if>			
 		</xsl:when>
 		
-		<xsl:when test="contains(descendant::embedvar/@href,'/00/00000004.xml#wie')"> <!-- special treatment of howtoget links -->
+		<xsl:when test="contains(descendant::embedvar/@href,'/00/00000004.xhp#wie')"> <!-- special treatment of howtoget links -->
 			<xsl:apply-templates />
 		</xsl:when>		
 		
@@ -644,7 +644,7 @@
 			
 			<xsl:when test="@id='relatedtopics'">
 				<div class="relatedtopics">
-				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xml',$urlpost)"/></xsl:variable>
+				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>
 				<xsl:variable name="anchor"><xsl:value-of select="'related'"/></xsl:variable>
 				<xsl:variable name="doc" select="document($href)"/>
 				<p class="related">
@@ -655,7 +655,7 @@
 			</xsl:when>
 			
 			<xsl:when test="@id='howtoget'">
-				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xml',$urlpost)"/></xsl:variable>
+				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>
 				<xsl:variable name="doc" select="document($href)"/>
 				<div class="howtoget">
 				<table class="howtoget" width="100%" border="1" cellpadding="3" cellspacing="0" rules="none">
