@@ -28,8 +28,6 @@ $params = join "|", "",@ARGV,"";
 # Update localizations from sdf
 #-------------------------------
 # read all strings with id "tit" from all localize.sdf files
-&read_loctit;
-&read_loctree;
 
 if ($langdir eq '***ALL***') {
     if (opendir AUX, "$treeroot") {
@@ -42,9 +40,18 @@ if ($langdir eq '***ALL***') {
     @langs = $langdir;
 }
 
-for $l(@langs) {
-    &do_lang($l);
+if (@langs[0] ne "en-US") {
+    &read_loctit;
+    &read_loctree;
 }
+
+for $l(@langs) {
+    if ($l ne "en-US") {
+        &do_lang($l);
+    }
+}
+
+
 
 $t1 = new Benchmark;
 $td = timediff($t1, $t0);
@@ -238,6 +245,7 @@ sub processtreefiles {
                     if (defined($helpsection{$id})) {
                         $l =~ s/title="(.*)"/title="$helpsection{$id}"/;
                     } else {
+                        print "#";
                         $l =~ s/title="(.*)"/title="NOTFOUND:$id"/;
                     }
                 } else {
@@ -248,7 +256,7 @@ sub processtreefiles {
             }
       }
   
-        $tvout = "$treeroot/$lng/$tv";
+    $tvout = "$treeroot/$lng/$tv";
       if (open TV, ">$tvout") {
         for $line(@lines) { 
                 $line =~ s/\$\[officename\]/%PRODUCTNAME/g;
