@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2004-11-09 11:47:51 $
+#*    last change       $Author: rt $ $Date: 2004-11-27 00:25:32 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -15,11 +15,11 @@
 
 # edit to match directory level 
 PRJ		= ..$/..
-# same for all makefiles in "help2"
-PRJNAME = help2
+# same for all makefiles in "helpcontent2"
+PRJNAME = helpcontent2
 # uniqe name (module wide);
-# using a modified forme of package should do here
-TARGET  = shared_util
+# using a modified form of package should do here
+TARGET  = util
 
 # --- Settings -----------------------------------------------------
 
@@ -29,7 +29,7 @@ TARGET  = shared_util
 .IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
-ZIP1TARGET=shared_xhp
+ZIP1TARGET=xhp_shared
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/shared$/* -x "*.dphh*" -x "*.hzip"
@@ -39,7 +39,7 @@ ZIP1LIST=$(LANGDIR)$/text$/shared$/* -x "*.dphh*" -x "*.hzip"
 LINKNAME=shared
 LINKADDEDFILES= \
    -add shared.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/shared.tree \
-   -add shared.jar  $(BIN)$/shared_xhp_LANGUAGE.zip \
+   -add shared.jar  $(BIN)$/xhp_shared_LANGUAGE.zip \
    -add default.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/default.css \
    -add highcontrast1.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast1.css \
    -add highcontrast2.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast2.css \
@@ -50,14 +50,13 @@ LINKADDEDFILES= \
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/shared.tree \
-   $(BIN)$/shared_xhp_LANGUAGE.zip \
+   $(BIN)$/xhp_shared_LANGUAGE.zip \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/default.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast1.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast2.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastwhite.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastblack.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/err.html \
-   $(PRJ)$/source$/auxiliary$/main_transform.xsl
 
 
 LINKLINKFILES= \
@@ -67,4 +66,3 @@ LINKLINKFILES= \
 
 .INCLUDE :  target.mk
 .INCLUDE :  $(PRJ)$/util$/target.pmk
-
