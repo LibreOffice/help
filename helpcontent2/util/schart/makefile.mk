@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 13:01:03 $
+#*    last change       $Author: hr $ $Date: 2005-02-11 15:15:56 $
 #*
-#*    $Revision: 1.10 $
+#*    $Revision: 1.11 $
 #*
 #*    $Logfile:$
 #*
@@ -19,30 +19,32 @@ PRJ		= ..$/..
 PRJNAME = helpcontent2
 # uniqe name (module wide);
 # using a modified form of package should do here
-TARGET  = util
+TARGET  = util_schart
 
 # --- Settings -----------------------------------------------------
 
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
+.IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_schart
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
-ZIP1LIST=$(LANGDIR)$/text$/schart$/* -x "*.dphh*" -x "*.hzip"
+ZIP1LIST=$(LANGDIR)$/text$/schart$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
+.ENDIF			# "$(SOLAR_JAVA)"!=""
 
 
 LINKNAME=schart
 LINKADDEDFILES= \
-   -add schart.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/schart.tree \
+   -add schart.tree $(MISC)$/LANGUAGE$/schart.tree \
    -add schart.jar  $(BIN)$/xhp_schart_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
-   $(PRJ)$/source$/auxiliary$/LANGUAGE$/schart.tree \
+   $(MISC)$/LANGUAGE$/schart.tree \
    $(BIN)$/xhp_schart_LANGUAGE.zip
 
 
