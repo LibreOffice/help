@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:49:29 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:52:59 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,25 +31,25 @@ MODULE  = scalc
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   02130000.hzip \
-   02140000.hzip \
-   02150000.hzip \
-   02160000.hzip \
-   02170000.hzip \
-   06010000.hzip \
-   06030000.hzip \
-   06040000.hzip \
-   06050000.hzip \
-   06060000.hzip \
-   06070000.hzip \
-   06080000.hzip \
-   08010000.hzip \
-   08080000.hzip \
-   10050000.hzip \
-   10060000.hzip \
-   18010000.hzip \
-   18020000.hzip 
+XHPFILES = \
+   02130000.xhp \
+   02140000.xhp \
+   02150000.xhp \
+   02160000.xhp \
+   02170000.xhp \
+   06010000.xhp \
+   06030000.xhp \
+   06040000.xhp \
+   06050000.xhp \
+   06060000.xhp \
+   06070000.xhp \
+   06080000.xhp \
+   08010000.xhp \
+   08080000.xhp \
+   10050000.xhp \
+   10060000.xhp \
+   18010000.xhp \
+   18020000.xhp 
     
 # --- Targets ------------------------------------------------------
 
