@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--***********************************************************************
+ *
+ *  The Contents of this file are made available subject to the terms of
+ *  either of the following licenses
+ *
+ *         - GNU Lesser General Public License Version 2.1
+ *         - Sun Industry Standards Source License Version 1.1
+ *
+ *  Sun Microsystems Inc., October, 2000
+ *
+ *  GNU Lesser General Public License Version 2.1
+ *  =============================================
+ *  Copyright 2000 by Sun Microsystems, Inc.
+ *  901 San Antonio Road, Palo Alto, CA 94303, USA
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License version 2.1, as published by the Free Software Foundation.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+ *  MA  02111-1307  USA
+ *
+ *
+ *  Sun Industry Standards Source License Version 1.1
+ *  =================================================
+ *  The contents of this file are subject to the Sun Industry Standards
+ *  Source License Version 1.1 (the "License"); You may not use this file
+ *  except in compliance with the License. You may obtain a copy of the
+ *  License at http://www.openoffice.org/license.html.
+ *
+ *  Software provided under this License is provided on an "AS IS" basis,
+ *  WITHOUT WARRUNTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+ *  WITHOUT LIMITATION, WARRUNTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
+ *  See the License for the specific provisions governing your rights and
+ *  obligations concerning the Software.
+ *
+ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc..
+ *
+ *  Copyright: 2000 by Sun Microsystems, Inc.
+ *
+ *  All Rights Reserved.
+ *
+ *  Contributor(s): _______________________________________
+ *
+ *
+ ************************************************************************--><helpdocument version="1.0">
+<meta>
+<topic id="textsbasicshared03050200xml" indexer="include" status="PUBLISH">
+<title xml-lang="en-US" id="tit">Err Function [Runtime]</title>
+<filename>/text/sbasic/shared/03050200.xhp</filename>
+</topic>
+<history>
+<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
+<lastedited date="2003-10-31T00:00:00">converted from old format - fpe</lastedited>
+</history>
+</meta>
+<body>
+  
+  
+  <section id="err">
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3156343"><bookmark_value>Err;function</bookmark_value></bookmark><paragraph id="hd_id3156343" role="heading" level="1" oldref="1" l10n="U" xml-lang="en-US"><link href="text/sbasic/shared/03050200.xhp" name="Err Function [Runtime]">Err Function [Runtime]</link></paragraph>
+  <paragraph role="paragraph" id="par_id3150541" l10n="U" xml-lang="en-US" oldref="2">Returns an error code that identifies the error that occurred during program execution.</paragraph>
+  </section>
+  <paragraph role="heading" level="2" id="hd_id3149656" l10n="U" xml-lang="en-US" oldref="3">Syntax:</paragraph>
+  <paragraph role="paragraph" id="par_id3154123" l10n="U" xml-lang="en-US" oldref="4">Err</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3147229" l10n="U" xml-lang="en-US" oldref="5">Return value:</paragraph>
+  <paragraph role="paragraph" id="par_id3150869" l10n="U" xml-lang="en-US" oldref="6">Integer</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3153193" l10n="U" xml-lang="en-US" oldref="7">Parameters:</paragraph>
+  <paragraph role="paragraph" id="par_id3149561" l10n="U" xml-lang="en-US" oldref="8">The Err function is used in error-handling routines to determine the error and the corrective action.</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3147317" l10n="U" xml-lang="en-US" oldref="9">Example:</paragraph>
+  <paragraph role="paragraph" id="par_id3153727" l10n="U" xml-lang="en-US" oldref="10">sub ExampleError</paragraph>
+  <paragraph role="paragraph" id="par_id3147426" l10n="U" xml-lang="en-US" oldref="11">on error goto ErrorHandler  REM Set up error handler</paragraph>
+  <paragraph role="paragraph" id="par_id3163710" l10n="U" xml-lang="en-US" oldref="12">Dim iVar as Integer</paragraph>
+  <paragraph role="paragraph" id="par_id3153093" l10n="U" xml-lang="en-US" oldref="13">Dim sVar As String</paragraph>
+  <paragraph role="paragraph" id="par_id3149481" l10n="U" xml-lang="en-US" oldref="14">REM Error occurs due to non-existent file</paragraph>
+  <paragraph role="paragraph" id="par_id3153190" l10n="U" xml-lang="en-US" oldref="15">iVar = Freefile</paragraph>
+  <paragraph role="paragraph" id="par_id3146120" l10n="U" xml-lang="en-US" oldref="16">Open &quot;\file9879.txt&quot; for Input as #iVar</paragraph>
+  <paragraph role="paragraph" id="par_id3155308" l10n="U" xml-lang="en-US" oldref="17">Line Input #iVar, sVar</paragraph>
+  <paragraph role="paragraph" id="par_id3153142" l10n="U" xml-lang="en-US" oldref="18">Close #iVar</paragraph>
+  <paragraph role="paragraph" id="par_id3149665" l10n="U" xml-lang="en-US" oldref="19">exit sub</paragraph>
+  <paragraph role="paragraph" id="par_id3154942" l10n="U" xml-lang="en-US" oldref="20">ErrorHandler:</paragraph>
+  <paragraph role="paragraph" id="par_id3145646" l10n="U" xml-lang="en-US" oldref="21">MsgBox &quot;Error &quot; &amp; Err &amp; &quot;: &quot; &amp; Error$ + chr(13) + &quot;At line : &quot; + Erl + chr(13) + Now , 16 ,&quot;an error occurred&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3155418" l10n="U" xml-lang="en-US" oldref="22">end sub</paragraph>
+  
+  
+ </body>
+</helpdocument>

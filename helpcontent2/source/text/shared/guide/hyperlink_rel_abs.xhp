@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--***********************************************************************
+ *
+ *  The Contents of this file are made available subject to the terms of
+ *  either of the following licenses
+ *
+ *         - GNU Lesser General Public License Version 2.1
+ *         - Sun Industry Standards Source License Version 1.1
+ *
+ *  Sun Microsystems Inc., October, 2000
+ *
+ *  GNU Lesser General Public License Version 2.1
+ *  =============================================
+ *  Copyright 2000 by Sun Microsystems, Inc.
+ *  901 San Antonio Road, Palo Alto, CA 94303, USA
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License version 2.1, as published by the Free Software Foundation.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+ *  MA  02111-1307  USA
+ *
+ *
+ *  Sun Industry Standards Source License Version 1.1
+ *  =================================================
+ *  The contents of this file are subject to the Sun Industry Standards
+ *  Source License Version 1.1 (the "License"); You may not use this file
+ *  except in compliance with the License. You may obtain a copy of the
+ *  License at http://www.openoffice.org/license.html.
+ *
+ *  Software provided under this License is provided on an "AS IS" basis,
+ *  WITHOUT WARRUNTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+ *  WITHOUT LIMITATION, WARRUNTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
+ *  See the License for the specific provisions governing your rights and
+ *  obligations concerning the Software.
+ *
+ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc..
+ *
+ *  Copyright: 2000 by Sun Microsystems, Inc.
+ *
+ *  All Rights Reserved.
+ *
+ *  Contributor(s): _______________________________________
+ *
+ *
+ ************************************************************************-->
+<helpdocument version="1.0">
+<meta>
+<topic id="textsharedguidehyperlink_rel_absxml" indexer="include" status="PUBLISH">
+<title xml-lang="en-US" id="tit">Relative and Absolute Links</title>
+<filename>/text/shared/guide/hyperlink_rel_abs.xhp</filename>
+</topic>
+<history>
+<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
+<lastedited date="2003-10-31T00:00:00">converted from old format - fpe</lastedited>
+</history>
+</meta>
+<body>
+  
+  
+  <bookmark branch="index" xml-lang="en-US" id="bm_id3147399"><bookmark_value>absolute hyperlinks</bookmark_value><bookmark_value>relative hyperlinks</bookmark_value><bookmark_value>hyperlinks; relative and absolute</bookmark_value></bookmark><paragraph id="hd_id3147399" role="heading" level="1" oldref="45" l10n="U" xml-lang="en-US"><variable id="hyperlink_rel_abs"><link href="text/shared/guide/hyperlink_rel_abs.xhp" name="Relative and Absolute Links">Relative and Absolute Links</link></variable></paragraph>
+  <paragraph role="paragraph" id="par_id3153345" l10n="U" xml-lang="en-US" oldref="46">When you include hyperlinks, two factors must be taken into account: whether they are set as relative or absolute on saving, and whether or not the file is present.</paragraph>
+  <list type="unordered">
+   <listitem>
+    <paragraph xml-lang="en-US" oldref="47" l10n="U" role="listitem" id="par_id3147008">Choose <link href="text/shared/optionen/01010200.xhp" name="Tools - Options - Load/Save - General">Tools - Options - Load/Save - General</link> and specify in the <emph>Save URLs relative to</emph> field if $[officename] creates <link href="text/shared/00/00000005.xhp#speichern" name="relative or absolute hyperlinks">relative or absolute hyperlinks</link>. Relative linking is only possible when the document you are working on and the link destination are on the same drive.</paragraph>
+   </listitem>
+   <listitem>
+    <paragraph xml-lang="en-US" oldref="48" l10n="U" role="listitem" id="par_id3145382">You should create the same directory structure on your hard disk as that which exists in the web space hosted by your Internet provider. Call the root directory for the homepage on your hard disk "homepage", for example. The start file is then "index.htm", the full path being "C:\homepage\index.htm". The URL on your Internet provider's server might, then be as follows: "http://www.myprovider.com/mypage/index.htm". With relative addressing, you indicate the link relative to the location of the output document. For example, if you placed all the graphics for your homepage in a subfolder called "C:\homepage\images", you would need to give the following path to access the graphic "picture.gif": "images\picture.gif". This is the relative path, starting from the location of the file "index.htm". On the provider's server, you would place the picture in the folder "mypage/images". When you transfer the document "index.htm" to the provider's server through the <emph> File - Save As</emph> dialog, and if you have marked the option <emph>Copy local graphics to Internet</emph> under <emph>Tools - Options - Load/Save - HTML Compatibility</emph>, $[officename] will automatically copy the graphic to the correct directory on the server.</paragraph>
+   </listitem>
+   <listitem>
+    <paragraph role="listitem" id="par_id3159158" l10n="U" xml-lang="en-US" oldref="49">An absolute path such as "C:\homepage\graphics\picture.gif" would no longer function on the provider server. Neither a server nor the computer of a reader needs to have a C hard drive: operating systems such as Unix or MacOS do not recognize drive letters, and even if the folder homepage\graphics existed, your picture would not be available. It is better to use relative addressing for file links.</paragraph>
+   </listitem>
+   <listitem>
+    <paragraph role="listitem" id="par_id3154046" l10n="U" xml-lang="en-US" oldref="50">A link to a web page, for example, "www.sun.com" or "www.myprovider.com/mypage/index.htm" is an absolute link.</paragraph>
+   </listitem>
+   <listitem>
+    <paragraph role="listitem" id="par_id3155450" l10n="U" xml-lang="en-US" oldref="51">$[officename] also reacts differently, depending on whether the file referred to in the link exists, and where it is located. $[officename] checks every new link and sets a target and protocol automatically. The result can be seen in the generated HTML code after saving the source document.</paragraph>
+   </listitem>
+   <listitem>
+    <paragraph role="listitem" id="par_id3145317" l10n="U" xml-lang="en-US" oldref="52">The following rules apply: A relative reference ("graphic/picture.gif") is only possible when both files exist on the same drive. If the files are on different drives in your local file system, the absolute reference follows the "file:" protocol ("file:///data1/xyz/picture.gif"). If the files are on different servers or if the target of the link is not available, the absolute reference uses the "http:" protocol ("http://data2/abc/picture.gif").</paragraph>
+   </listitem>
+   <listitem>
+    <paragraph role="listitem" id="par_id3153541" l10n="U" xml-lang="en-US" oldref="53">Be sure to organize all files for your homepage on the same drive as the start file of the homepage. In this way, $[officename] can set the protocol and target so that the reference on the server is always correct.</paragraph>
+   </listitem>
+  </list>
+  <paragraph role="warning" id="par_id3153897" l10n="U" xml-lang="en-US" oldref="54">When you rest your mouse on a hyperlink, a help tip displays the absolute reference, since $[officename] uses absolute path names internally. The complete path and address can only be seen when you view the result of the HTML export, by loading the HTML file as "Text" or opening it with a text editor.</paragraph>
+  <embed href="text/shared/00/00000004.xhp#related"/>
+  <embed href="text/shared/guide/hyperlink_edit.xhp#hyperlink_edit"/>
+  
+ </body>
+</helpdocument>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--***********************************************************************
+ *
+ *  The Contents of this file are made available subject to the terms of
+ *  either of the following licenses
+ *
+ *         - GNU Lesser General Public License Version 2.1
+ *         - Sun Industry Standards Source License Version 1.1
+ *
+ *  Sun Microsystems Inc., October, 2000
+ *
+ *  GNU Lesser General Public License Version 2.1
+ *  =============================================
+ *  Copyright 2000 by Sun Microsystems, Inc.
+ *  901 San Antonio Road, Palo Alto, CA 94303, USA
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License version 2.1, as published by the Free Software Foundation.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+ *  MA  02111-1307  USA
+ *
+ *
+ *  Sun Industry Standards Source License Version 1.1
+ *  =================================================
+ *  The contents of this file are subject to the Sun Industry Standards
+ *  Source License Version 1.1 (the "License"); You may not use this file
+ *  except in compliance with the License. You may obtain a copy of the
+ *  License at http://www.openoffice.org/license.html.
+ *
+ *  Software provided under this License is provided on an "AS IS" basis,
+ *  WITHOUT WARRUNTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+ *  WITHOUT LIMITATION, WARRUNTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
+ *  See the License for the specific provisions governing your rights and
+ *  obligations concerning the Software.
+ *
+ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc..
+ *
+ *  Copyright: 2000 by Sun Microsystems, Inc.
+ *
+ *  All Rights Reserved.
+ *
+ *  Contributor(s): _______________________________________
+ *
+ *
+ ************************************************************************--><helpdocument version="1.0">
+<meta>
+<topic id="textsbasicshared03020409xml" indexer="include" status="PUBLISH">
+<title xml-lang="en-US" id="tit">GetAttr Function [Runtime]</title>
+<filename>/text/sbasic/shared/03020409.xhp</filename>
+</topic>
+<history>
+<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
+<lastedited date="2003-10-31T00:00:00">converted from old format - fpe</lastedited>
+</history>
+</meta>
+<body>
+  
+  
+  <section id="getattr">
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3150984"><bookmark_value>GetAttr;function</bookmark_value></bookmark><paragraph id="hd_id3150984" role="heading" level="1" oldref="1" l10n="U" xml-lang="en-US"><link href="text/sbasic/shared/03020409.xhp" name="GetAttr Function [Runtime]">GetAttr Function [Runtime]</link></paragraph>
+  <paragraph role="paragraph" id="par_id3154347" l10n="U" xml-lang="en-US" oldref="2">Returns a bit pattern that identifies the file type or the name of a volume or a directory.</paragraph>
+  </section>
+  <paragraph role="heading" level="2" id="hd_id3149457" l10n="U" xml-lang="en-US" oldref="3">Syntax:</paragraph>
+  <paragraph role="paragraph" id="par_id3150359" l10n="U" xml-lang="en-US" oldref="4">GetAttr (Text As String)</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3151211" l10n="U" xml-lang="en-US" oldref="5">Return value:</paragraph>
+  <paragraph role="paragraph" id="par_id3154909" l10n="U" xml-lang="en-US" oldref="6">Integer</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3145172" l10n="U" xml-lang="en-US" oldref="7">Parameters:</paragraph>
+  <paragraph l10n="U" xml-lang="en-US" role="paragraph" id="par_id3151042" oldref="8"><emph>Text:</emph> Any string expression that contains an unambiguous file specification. You can also use <link href="text/sbasic/shared/00000002.xhp" name="URL notation">URL notation</link>.</paragraph>
+  <paragraph role="paragraph" id="par_id3161831" l10n="U" xml-lang="en-US" oldref="9">This function determines the attributes for a specified file and returns the bit pattern that can help you to identify the following file attributes:</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
+  <embed href="text/sbasic/shared/00000003.xhp#err5"/>
+  <embed href="text/sbasic/shared/00000003.xhp#err53"/>
+  <paragraph role="heading" level="2" id="hd_id3145364" l10n="U" xml-lang="en-US" oldref="10">Value</paragraph>
+  <paragraph role="paragraph" id="par_id3147349" l10n="U" xml-lang="en-US" oldref="11">0 : Normal files.</paragraph>
+  <paragraph role="paragraph" id="par_id3147434" l10n="U" xml-lang="en-US" oldref="12">1 : Read-only files.</paragraph>
+  <paragraph role="paragraph" id="par_id3159154" l10n="U" xml-lang="en-US" oldref="15">8 : Returns the name of the volume</paragraph>
+  <paragraph role="paragraph" id="par_id3145271" l10n="U" xml-lang="en-US" oldref="16">16 : Returns the name of the directory only.</paragraph>
+  <paragraph role="paragraph" id="par_id3153953" l10n="U" xml-lang="en-US" oldref="17">32 : File was changed since last backup (Archive bit).</paragraph>
+  <paragraph role="paragraph" id="par_id3156444" l10n="U" xml-lang="en-US" oldref="18">If you want to know if a bit of the attribute byte is set, use the following query method:</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3153094" l10n="U" xml-lang="en-US" oldref="19">Example:</paragraph>
+  <paragraph role="paragraph" id="par_id3154491" l10n="U" xml-lang="en-US" oldref="20">Sub ExampleSetGetAttr</paragraph>
+  <paragraph role="paragraph" id="par_id3155415" l10n="U" xml-lang="en-US" oldref="21">On Error Goto ErrorHandler REM Define target for error-handler</paragraph>
+  <paragraph role="paragraph" id="par_id3154944" l10n="U" xml-lang="en-US" oldref="22">If Dir(&quot;C:\test&quot;,16)=&quot;&quot; Then MkDir &quot;C:\test&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3151075" l10n="U" xml-lang="en-US" oldref="23">If Dir(&quot;C:\test\autoexec.sav&quot;)=&quot;&quot; THEN Filecopy &quot;c:\autoexec.bat&quot;, &quot;c:\test\autoexec.sav&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3149959" l10n="U" xml-lang="en-US" oldref="24">SetAttr &quot;c:\test\autoexec.sav&quot; ,0</paragraph>
+  <paragraph role="paragraph" id="par_id3153418" l10n="U" xml-lang="en-US" oldref="25">Filecopy &quot;c:\autoexec.bat&quot;, &quot;c:\test\autoexec.sav&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3149122" l10n="U" xml-lang="en-US" oldref="26">SetAttr &quot;c:\test\autoexec.sav&quot; ,1</paragraph>
+  <paragraph role="paragraph" id="par_id3154480" l10n="U" xml-lang="en-US" oldref="27">print GetAttr( &quot;c:\test\autoexec.sav&quot; )</paragraph>
+  <paragraph role="paragraph" id="par_id3150753" l10n="U" xml-lang="en-US" oldref="28">end</paragraph>
+  <paragraph role="paragraph" id="par_id3150323" l10n="U" xml-lang="en-US" oldref="29">ErrorHandler:</paragraph>
+  <paragraph role="paragraph" id="par_id3154754" l10n="U" xml-lang="en-US" oldref="30">Print Error</paragraph>
+  <paragraph role="paragraph" id="par_id3155764" l10n="U" xml-lang="en-US" oldref="31">end</paragraph>
+  <paragraph role="paragraph" id="par_id3156382" l10n="U" xml-lang="en-US" oldref="32">end sub</paragraph>
+ </body>
+</helpdocument>

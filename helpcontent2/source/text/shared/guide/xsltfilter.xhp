@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--***********************************************************************
+ *
+ *  The Contents of this file are made available subject to the terms of
+ *  either of the following licenses
+ *
+ *         - GNU Lesser General Public License Version 2.1
+ *         - Sun Industry Standards Source License Version 1.1
+ *
+ *  Sun Microsystems Inc., October, 2000
+ *
+ *  GNU Lesser General Public License Version 2.1
+ *  =============================================
+ *  Copyright 2000 by Sun Microsystems, Inc.
+ *  901 San Antonio Road, Palo Alto, CA 94303, USA
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License version 2.1, as published by the Free Software Foundation.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+ *  MA  02111-1307  USA
+ *
+ *
+ *  Sun Industry Standards Source License Version 1.1
+ *  =================================================
+ *  The contents of this file are subject to the Sun Industry Standards
+ *  Source License Version 1.1 (the "License"); You may not use this file
+ *  except in compliance with the License. You may obtain a copy of the
+ *  License at http://www.openoffice.org/license.html.
+ *
+ *  Software provided under this License is provided on an "AS IS" basis,
+ *  WITHOUT WARRUNTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+ *  WITHOUT LIMITATION, WARRUNTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
+ *  See the License for the specific provisions governing your rights and
+ *  obligations concerning the Software.
+ *
+ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc..
+ *
+ *  Copyright: 2000 by Sun Microsystems, Inc.
+ *
+ *  All Rights Reserved.
+ *
+ *  Contributor(s): _______________________________________
+ *
+ *
+ ************************************************************************-->
+	
+<helpdocument version="1.0">
+<meta>
+<topic id="textsharedguidexsltfilterxml" indexer="include" status="PUBLISH">
+<title id="tit" xml-lang="en-US">Working With %PRODUCTNAME XML Filters</title>
+<filename>text/shared/guide/xsltfilter.xhp</filename>
+</topic>
+<history>
+<created date="2004-05-18T13:56:11">see also ui.openoffice.org/proposals/XMLFilterSpec.sxw</created>
+<lastedited date="2004-07-27T11:58:49">dedr: reviewed</lastedited>
+</history>
+</meta>
+<body>
+<bookmark xml-lang="en-US" branch="index" id="bm_id7007583"><bookmark_value>File filters;XML</bookmark_value>
+<bookmark_value>saving;to XML</bookmark_value>
+<bookmark_value>loading;from XML</bookmark_value>
+<bookmark_value>importing;from XML</bookmark_value>
+<bookmark_value>exporting;to XML</bookmark_value>
+<bookmark_value>XSLT filters, see also XML filters</bookmark_value>
+<bookmark_value>XML filters;distributing</bookmark_value>
+<bookmark_value>XML filters;editing</bookmark_value>
+<bookmark_value>XML filters;creating</bookmark_value>
+</bookmark>
+<paragraph role="heading" id="par_idN1052D" xml-lang="en-US" level="1" l10n="NEW">Working With %PRODUCTNAME XML Filters</paragraph>
+<paragraph role="heading" id="par_idN10923" xml-lang="en-US" level="2" l10n="NEW">About XML Filters</paragraph>
+<paragraph role="paragraph" id="par_idN10927" xml-lang="en-US" l10n="NEW">%PRODUCTNAME <link href="/text/shared/00/00000021.xhp">stores documents in XML format</link>. You can create customized filters that convert the native %PRODUCTNAME XML format into another format. These filters can be integrated into %PRODUCTNAME seamlessly so that you can save or load these formats transparently.</paragraph>
+<paragraph role="note" id="par_idN1093A" xml-lang="en-US" l10n="NEW">To create an XML filter, you must have a good understanding of XML and XSLT concepts. These concepts are beyond the scope of this help.</paragraph>
+<paragraph role="paragraph" id="par_idN1093D" xml-lang="en-US" l10n="NEW">An XML filter contains <emph>stylesheets</emph> that are written in the XSLT language. The stylesheets define the transformation from the %PRODUCTNAME format to another XML format through export and import filters. There are three types of XML filters:</paragraph>
+<list type="unordered">
+<listitem>
+<paragraph role="paragraph" id="par_idN10947" xml-lang="en-US" l10n="NEW">
+<emph>Import Filters</emph> load external XML files and transform the format of the files into the %PRODUCTNAME XML format. After you install an import filter, the name of the filter is added to the list of file types in the <link href="/text/shared/01/01020000.xhp">File Open dialog</link>.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10960" xml-lang="en-US" l10n="NEW">
+<emph>Export Filters</emph> transform %PRODUCTNAME XML files and <emph>save</emph> the files to a different XML format. After you install an export filter, the name of the filter is added to the list of file types in the <link href="/text/shared/01/01070001.xhp">Export dialog</link>.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10979" xml-lang="en-US" l10n="NEW">
+<emph>Import/Export Filters</emph> load and save %PRODUCTNAME XML files into a different XML <emph>format</emph>. After you install these filters, the names of the filters are added to the list of file types in the <link href="/text/shared/01/01020000.xhp">File Open dialog</link> and the <link href="/text/shared/01/01070000.xhp">File Save As dialog</link>.</paragraph>
+</listitem>
+</list>
+<paragraph role="heading" id="par_idN1053D" xml-lang="en-US" level="2" l10n="NEW">Creating an XML Filter for %PRODUCTNAME</paragraph>
+<paragraph role="paragraph" id="par_idN109A9" xml-lang="en-US" l10n="NEW">When you create an XML filter for %PRODUCTNAME, you need to design an <emph>XSLT stylesheet</emph> that can convert to and from the %PRODUCTNAME XML format.</paragraph>
+<paragraph role="tip" id="par_idN109B0" xml-lang="en-US" l10n="NEW">For more information about the %PRODUCTNAME XML format, go to <link href="http://xml.openoffice.org/">http://<emph>xml.openoffice.org</emph>/</link>.</paragraph>
+<paragraph role="paragraph" id="par_idN109C5" xml-lang="en-US" l10n="NEW">If you want, you can include a <emph>template</emph> with your filter to apply %PRODUCTNAME styles to an XML document that you import.</paragraph>
+<paragraph role="paragraph" id="par_idN109CC" xml-lang="en-US" l10n="NEW">You can also include the <emph>Document Type Definition</emph> (DTD) for the for the external XML format so you can validate the XML format, for example, when you test the filter.</paragraph>
+<paragraph role="heading" id="par_idN10531" xml-lang="en-US" level="2" l10n="NEW">To Create an XML Filter</paragraph>
+<list type="ordered">
+<listitem>
+<paragraph role="paragraph" id="par_idN109E0" xml-lang="en-US" l10n="NEW">Create an XSLT transformation <emph>stylesheet</emph> that maps the elements of the external XML format to the elements of the %PRODUCTNAME XML format and back again.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN109E8" xml-lang="en-US" l10n="NEW">Create a template that assigns %PRODUCTNAME styles to elements in the external XML format when you import a file in this format into %PRODUCTNAME.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN109EC" xml-lang="en-US" l10n="NEW">In %PRODUCTNAME Writer, create a text document, and choose <item type="menuitem">Tools - XML Filter Settings</item>.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN109F4" xml-lang="en-US" l10n="NEW">Click <emph>New</emph>.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN109FC" xml-lang="en-US" l10n="NEW">In the <emph>XML Filter</emph> dialog, click the <emph>General</emph> tab, and define the properties of the filter.</paragraph>
+</listitem>
+</list>
+<list type="unordered">
+<listitem>
+<paragraph role="paragraph" id="par_idN10A03" xml-lang="en-US" l10n="NEW">In the <emph>Filter Name</emph> box, enter a name for the XML filter.</paragraph>
+<paragraph role="paragraph" id="par_idN10CA1" xml-lang="en-US" l10n="NEW">This name is displayed in the <emph>XML Filter Settings</emph> dialog.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10A09" xml-lang="en-US" l10n="NEW">In the <emph>Application</emph> box, select the %PRODUCTNAME application that the filter is for.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10A0F" xml-lang="en-US" l10n="NEW">In the <emph>Name of File Type</emph> box, enter the file type that the filter is for.</paragraph>
+<paragraph role="paragraph" id="par_idN10CC6" xml-lang="en-US" l10n="NEW">This name is displayed in the list of file types in the <emph>Open</emph>, <emph>Export</emph>, and <emph>Save As</emph> dialogs.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10A15" xml-lang="en-US" l10n="NEW">In the <emph>File extension</emph> box, enter the extension for the exported file.</paragraph>
+<paragraph role="note" id="par_idN10A1B" xml-lang="en-US" l10n="NEW">To differentiate the file from other XML files, enter an extension other than *.xhp.</paragraph>
+</listitem>
+</list>
+<list type="ordered" startwith="6">
+<listitem>
+<paragraph role="paragraph" id="par_idN10A1F" xml-lang="en-US" l10n="NEW">On the <emph>Transformation</emph> tab page, define the transformation properties for the filter.</paragraph>
+</listitem>
+</list>
+<list type="unordered">
+<listitem>
+<paragraph role="paragraph" id="par_idN10A26" xml-lang="en-US" l10n="NEW">(Optional) In the <emph>DocType</emph> box, enter the document type identifier for the external file format.</paragraph>
+<paragraph role="paragraph" id="par_idN10D0E" xml-lang="en-US" l10n="NEW">This identifier is used to detect the file type on import.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10A2C" xml-lang="en-US" l10n="NEW">(Optional) In the <emph>DTD</emph> box, enter the path and file name of the DTD for the external file format.</paragraph>
+<paragraph role="paragraph" id="par_idN10D1F" xml-lang="en-US" l10n="NEW">This DTD is used to validate the files on export.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10A32" xml-lang="en-US" l10n="NEW">In the <emph>XSLT for export</emph> box, enter the path and file name of the XSLT stylesheet that defines the transformation from %PRODUCTNAME to the external format.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10A38" xml-lang="en-US" l10n="NEW">In the <emph>XSLT for import</emph> box, enter the path and file name to the XSLT stylesheet that defines the transformation from the external format to %PRODUCTNAME.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10A3E" xml-lang="en-US" l10n="NEW">(Optional) In the <emph>Template for import</emph> box, enter the path and name of the template that defines the %PRODUCTNAME styles that are used in the imported file.</paragraph>
+<paragraph role="note" id="par_idN10A44" xml-lang="en-US" l10n="NEW">The files that are specified on the <emph>Transformation</emph> tab page are copied to the local %PRODUCTNAME users directory.</paragraph>
+</listitem>
+</list>
+<list type="ordered" startwith="7">
+<listitem>
+<paragraph role="paragraph" id="par_idN10A4C" xml-lang="en-US" l10n="NEW">Click <emph>OK</emph>.</paragraph>
+</listitem>
+</list>
+<paragraph role="heading" id="par_idN10A56" xml-lang="en-US" level="2" l10n="NEW">To Test an XML Filter</paragraph>
+<paragraph role="paragraph" id="par_idN10A5A" xml-lang="en-US" l10n="NEW">You can perform basic tests on a custom XML filter in %PRODUCTNAME.</paragraph>
+<paragraph role="note" id="par_idN10A91" xml-lang="en-US" l10n="NEW">The document is not altered by these tests. </paragraph>
+<list type="ordered">
+<listitem>
+<paragraph role="paragraph" id="par_idN10A60" xml-lang="en-US" l10n="NEW">Create or open a text document.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10A67" xml-lang="en-US" l10n="NEW">Choose <item type="menuitem">Tools - XML Filter Settings</item>.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10A6F" xml-lang="en-US" l10n="NEW">In the list of filters, select the filter that you want to test, and click <emph>Text XSLTs</emph>.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10A82" xml-lang="en-US" l10n="NEW">To test an <emph>Export</emph> Filter, do one of the following in the <emph>Export</emph> area of the dialog:</paragraph>
+</listitem>
+</list>
+<list type="unordered">
+<listitem>
+<paragraph role="paragraph" id="par_idN10DEB" xml-lang="en-US" l10n="NEW">Click <emph>Browse</emph>, select the %PRODUCTNAME document that you want to test, and click <emph>Open</emph>.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10DF7" xml-lang="en-US" l10n="NEW">To test the current document, click <emph>Current Document</emph>.</paragraph>
+</listitem>
+</list>
+<list type="ordered" startwith="5">
+<listitem>
+<paragraph role="paragraph" id="par_idN10A99" xml-lang="en-US" l10n="NEW">To test an <emph>Import</emph> Filter, click <emph>Browse</emph> in the <emph>Import</emph> area of the dialog, select a document, and click <emph>Open</emph>.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10E32" xml-lang="en-US" l10n="NEW">To validate the transformed file against the specified DTD, click <emph>Validate</emph>.</paragraph>
+</listitem>
+</list>
+<paragraph role="heading" id="par_idN10ABC" xml-lang="en-US" level="2" l10n="NEW">Distributing An XML Filter As Package</paragraph>
+<paragraph role="paragraph" id="par_idN10AC0" xml-lang="en-US" l10n="NEW">You can distribute an XML filter to multiple users using a special package format.</paragraph>
+<paragraph role="heading" id="par_idN10AC3" xml-lang="en-US" level="3" l10n="NEW">To save an XML filter as a package</paragraph>
+<paragraph role="note" id="par_idN10ACD" xml-lang="en-US" l10n="NEW">The XML Filter Settings dialog is only available when you a text document is opened.</paragraph>
+<list type="ordered">
+<listitem>
+<paragraph role="paragraph" id="par_idN10ACA" xml-lang="en-US" l10n="NEW">In Writer, choose <item type="menuitem">Tools - XML Filter Settings</item>.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10AD9" xml-lang="en-US" l10n="NEW">Select the filter that you want to distribute and click <emph>Save As Package</emph>.</paragraph>
+</listitem>
+</list>
+<paragraph role="heading" id="par_idN10AE0" xml-lang="en-US" level="3" l10n="NEW">To Install an XML Filter from a Package</paragraph>
+<paragraph role="note" id="par_idN10AEA" xml-lang="en-US" l10n="NEW">The XML Filter Settings dialog is only available when a text document is opened.</paragraph>
+<list type="ordered">
+<listitem>
+<paragraph role="paragraph" id="par_idN10AE7" xml-lang="en-US" l10n="NEW">In Writer, choose <item type="menuitem">Tools - XML Filter Settings</item>.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10AF6" xml-lang="en-US" l10n="NEW">Click <emph>Open Package</emph> and select the package file with the filter you want to install.</paragraph>
+</listitem>
+</list>
+<paragraph role="heading" id="par_idN10535" xml-lang="en-US" level="2" l10n="NEW">To Delete an Installed XML Filter</paragraph>
+<paragraph role="note" id="par_idN10B0D" xml-lang="en-US" l10n="NEW">The XML Filter Settings dialog is only available when a text document is opened.</paragraph>
+<list type="ordered">
+<listitem>
+<paragraph role="paragraph" id="par_idN10B0A" xml-lang="en-US" l10n="NEW">In Writer, choose <item type="menuitem">Tools - XML Filter Settings</item>.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_idN10B19" xml-lang="en-US" l10n="NEW">Select the filter you want to delete and click <emph>Delete</emph>.</paragraph>
+</listitem>
+</list>
+<section id="relatedtopics">
+<paragraph role="paragraph" id="par_idN105BA" xml-lang="en-US" l10n="NEW">
+<embedvar href="text/shared/01/06150000.xhp#hd_id3153272"/>
+</paragraph>
+<paragraph role="paragraph" id="par_idN10B39" xml-lang="en-US" l10n="NEW"><link href="http://www.w3.org/Style/XSL/">World Wide Web Consortium Pages on Extensible <emph>Stylesheet</emph> Language (XSL)</link></paragraph>
+<paragraph role="paragraph" id="par_idN10B4E" xml-lang="en-US" l10n="NEW"><link href="http://www.w3.org/XML/">World Wide Web Consortium Pages on Extensible Markup Language (XML)</link></paragraph>
+</section>
+</body>
+</helpdocument>

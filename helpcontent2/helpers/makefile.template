@@ -1,0 +1,40 @@
+#*************************************************************************
+#*
+#*    $Workfile:$
+#*
+#*    Creation date     KR 28.06.99
+#*    last change       $Author: fpe $ $Date: 2004-08-18 10:52:39 $
+#*
+#*    $Revision: 1.1 $
+#*
+#*    $Logfile:$
+#*
+#*    Copyright 2000 Sun Microsystems, Inc. All Rights Reserved.
+#*
+#*************************************************************************
+
+# edit to match directory level 
+PRJ		= %prj%
+# same for all makefiles in "help2"
+PRJNAME = help2
+# edit to match the current package
+PACKAGE = %package%
+# uniqe name (module wide);
+# using a modified forme of package should do here
+TARGET  = %target%
+# edit to match the current module
+MODULE  = %module%
+
+# --- Settings -----------------------------------------------------
+
+.INCLUDE : $(PRJ)$/settings.pmk
+.INCLUDE : settings.mk
+
+# this list matches the *.xhp files to process
+HZIPFILES = \
+%hzipfiles%
+	
+# --- Targets ------------------------------------------------------
+
+.INCLUDE :  target.mk
+.INCLUDE : $(PRJ)$/makefile.pmk

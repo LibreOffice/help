@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--***********************************************************************
+ *
+ *  The Contents of this file are made available subject to the terms of
+ *  either of the following licenses
+ *
+ *         - GNU Lesser General Public License Version 2.1
+ *         - Sun Industry Standards Source License Version 1.1
+ *
+ *  Sun Microsystems Inc., October, 2000
+ *
+ *  GNU Lesser General Public License Version 2.1
+ *  =============================================
+ *  Copyright 2000 by Sun Microsystems, Inc.
+ *  901 San Antonio Road, Palo Alto, CA 94303, USA
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License version 2.1, as published by the Free Software Foundation.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+ *  MA  02111-1307  USA
+ *
+ *
+ *  Sun Industry Standards Source License Version 1.1
+ *  =================================================
+ *  The contents of this file are subject to the Sun Industry Standards
+ *  Source License Version 1.1 (the "License"); You may not use this file
+ *  except in compliance with the License. You may obtain a copy of the
+ *  License at http://www.openoffice.org/license.html.
+ *
+ *  Software provided under this License is provided on an "AS IS" basis,
+ *  WITHOUT WARRUNTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+ *  WITHOUT LIMITATION, WARRUNTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
+ *  See the License for the specific provisions governing your rights and
+ *  obligations concerning the Software.
+ *
+ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc..
+ *
+ *  Copyright: 2000 by Sun Microsystems, Inc.
+ *
+ *  All Rights Reserved.
+ *
+ *  Contributor(s): _______________________________________
+ *
+ *
+ ************************************************************************--><helpdocument version="1.0">
+<meta>
+<topic id="textsbasicshared03020411xml" indexer="include" status="PUBLISH">
+<title xml-lang="en-US" id="tit">MkDir Statement [Runtime]</title>
+<filename>/text/sbasic/shared/03020411.xhp</filename>
+</topic>
+<history>
+<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
+<lastedited date="2003-10-31T00:00:00">converted from old format - fpe</lastedited>
+</history>
+</meta>
+<body>
+  
+  
+  <section id="mkdir">
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3156421"><bookmark_value>MkDir; statement</bookmark_value></bookmark><paragraph id="hd_id3156421" role="heading" level="1" oldref="1" l10n="U" xml-lang="en-US"><link href="text/sbasic/shared/03020411.xhp" name="MkDir Statement [Runtime]">MkDir Statement [Runtime]</link></paragraph>
+  <paragraph role="paragraph" id="par_id3147000" l10n="U" xml-lang="en-US" oldref="2">Creates a new directory on a data medium.</paragraph>
+  </section>
+  <paragraph role="heading" level="2" id="hd_id3148520" l10n="U" xml-lang="en-US" oldref="3">Syntax:</paragraph>
+  <paragraph role="paragraph" id="par_id3155150" l10n="U" xml-lang="en-US" oldref="4">MkDir Text As String</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3156027" l10n="U" xml-lang="en-US" oldref="5">Parameters:</paragraph>
+  <paragraph l10n="U" xml-lang="en-US" role="paragraph" id="par_id3153750" oldref="6"><emph>Text:</emph> Any string expression that specifies the name and path of the directory to be created. You can also use <link href="text/sbasic/shared/00000002.xhp" name="URL notation">URL notation</link>.</paragraph>
+  <paragraph role="paragraph" id="par_id3153311" l10n="U" xml-lang="en-US" oldref="7">If the path is not determined, the directory is created in the current directory.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
+  <embed href="text/sbasic/shared/00000003.xhp#err5"/>
+  <embed href="text/sbasic/shared/00000003.xhp#err76"/>
+  <paragraph role="heading" level="2" id="hd_id3155388" l10n="U" xml-lang="en-US" oldref="8">Example:</paragraph>
+  <paragraph role="paragraph" id="par_id3148473" l10n="U" xml-lang="en-US" oldref="9">Sub ExampleFileIO</paragraph>
+  <paragraph role="paragraph" id="par_id3149762" l10n="U" xml-lang="en-US" oldref="10">' Example for functions of the file organisation</paragraph>
+  <paragraph role="paragraph" id="par_id3145610" l10n="U" xml-lang="en-US" oldref="11">Const sFile1 as String = &quot;file://c|/autoexec.bat&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3147264" l10n="U" xml-lang="en-US" oldref="12">Const sDir1 as String = &quot;file://c|/Temp&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3149669" l10n="U" xml-lang="en-US" oldref="13">Const sSubDir1 as String =&quot;Test&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3148663" l10n="U" xml-lang="en-US" oldref="14">Const sFile2 as String = &quot;Copied.tmp&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3154071" l10n="U" xml-lang="en-US" oldref="15">Const sFile3 as String = &quot;Renamed.tmp&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3150792" l10n="U" xml-lang="en-US" oldref="16">Dim sFile as String</paragraph>
+  <paragraph role="paragraph" id="par_id3154366" l10n="U" xml-lang="en-US" oldref="17">sFile = sDir1 + &quot;/&quot; + sSubDir1</paragraph>
+  <paragraph role="paragraph" id="par_id3149204" l10n="U" xml-lang="en-US" oldref="18">ChDir( sDir1 )</paragraph>
+  <paragraph role="paragraph" id="par_id3154217" l10n="U" xml-lang="en-US" oldref="19">If Dir(sSubDir1,16)=&quot;&quot; then ' Does the directory exist ?</paragraph>
+  <paragraph role="paragraph" id="par_id3156423" l10n="U" xml-lang="en-US" oldref="20">MkDir sSubDir1</paragraph>
+  <paragraph role="paragraph" id="par_id3147228" l10n="U" xml-lang="en-US" oldref="21">MsgBox sFile,0,&quot;Create directory&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3153970" l10n="U" xml-lang="en-US" oldref="22">End If</paragraph>
+  
+  <paragraph role="paragraph" id="par_id3148451" l10n="U" xml-lang="en-US" oldref="24">sFile = sFile + &quot;/&quot; + sFile2</paragraph>
+  <paragraph role="paragraph" id="par_id3155132" l10n="U" xml-lang="en-US" oldref="25">FileCopy sFile1 , sFile</paragraph>
+  <paragraph role="paragraph" id="par_id3153770" l10n="U" xml-lang="en-US" oldref="26">MsgBox fSysURL(CurDir()),0,&quot;Current directory&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3159154" l10n="U" xml-lang="en-US" oldref="27">MsgBox sFile &amp; Chr(13) &amp; FileDateTime( sFile ),0,&quot;Creation time&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3149484" l10n="U" xml-lang="en-US" oldref="28">MsgBox  sFile &amp; Chr(13)&amp; FileLen( sFile ),0,&quot;File length&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3152885" l10n="U" xml-lang="en-US" oldref="29">MsgBox  sFile &amp; Chr(13)&amp; GetAttr( sFile ),0,&quot;File attributes&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3152596" l10n="U" xml-lang="en-US" oldref="30">Name sFile as sDir1 + &quot;/&quot; + sSubDir1 + &quot;/&quot; + sFile3</paragraph>
+  <paragraph role="paragraph" id="par_id3153952" l10n="U" xml-lang="en-US" oldref="31">' Rename in the same directory</paragraph>
+  
+  <paragraph role="paragraph" id="par_id3152576" l10n="U" xml-lang="en-US" oldref="33">sFile =  sDir1 + &quot;/&quot; + sSubDir1 + &quot;/&quot; + sFile3</paragraph>
+  <paragraph role="paragraph" id="par_id3147426" l10n="U" xml-lang="en-US" oldref="34">SetAttr( sFile, 0 ) 'Delete all attributes</paragraph>
+  <paragraph role="paragraph" id="par_id3148647" l10n="U" xml-lang="en-US" oldref="35">MsgBox sFile &amp; Chr(13) &amp; GetAttr( sFile ),0,&quot;New file attributes&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3153363" l10n="U" xml-lang="en-US" oldref="36">Kill sFile</paragraph>
+  <paragraph role="paragraph" id="par_id3151113" l10n="U" xml-lang="en-US" oldref="37">RmDir sDir1 + &quot;/&quot; +  sSubDir1</paragraph>
+  <paragraph role="paragraph" id="par_id3153157" l10n="U" xml-lang="en-US" oldref="38">end sub</paragraph>
+  
+  <paragraph role="paragraph" id="par_id3150092" l10n="U" xml-lang="en-US" oldref="40">' Converts a system path in URL</paragraph>
+  <paragraph role="paragraph" id="par_id3147396" l10n="U" xml-lang="en-US" oldref="41">Function fSysURL( fSysFp as String ) as String</paragraph>
+  <paragraph role="paragraph" id="par_id3153878" l10n="U" xml-lang="en-US" oldref="42">Dim iPos  As String</paragraph>
+  <paragraph role="paragraph" id="par_id3150420" l10n="U" xml-lang="en-US" oldref="43">iPos = 1</paragraph>
+  <paragraph role="paragraph" id="par_id3145253" l10n="U" xml-lang="en-US" oldref="44">iPos = Instr(iPos,fSysFp, getPathSeparator())</paragraph>
+  <paragraph role="paragraph" id="par_id3153415" l10n="U" xml-lang="en-US" oldref="45">do while iPos &gt; 0</paragraph>
+  <paragraph role="paragraph" id="par_id3153512" l10n="U" xml-lang="en-US" oldref="46">mid( fSysFp, iPos , 1,&quot;/&quot;)</paragraph>
+  <paragraph role="paragraph" id="par_id3146899" l10n="U" xml-lang="en-US" oldref="47">iPos = Instr(iPos+1,fSysFp, getPathSeparator())</paragraph>
+  <paragraph role="paragraph" id="par_id3145652" l10n="U" xml-lang="en-US" oldref="48">loop</paragraph>
+  <paragraph role="paragraph" id="par_id3156276" l10n="U" xml-lang="en-US" oldref="49">' the colon with DOS</paragraph>
+  <paragraph role="paragraph" id="par_id3146913" l10n="U" xml-lang="en-US" oldref="50">iPos = Instr(1,fSysFp,&quot;:&quot;)</paragraph>
+  <paragraph role="paragraph" id="par_id3145640" l10n="U" xml-lang="en-US" oldref="51">if iPos &gt; 0 then mid( fSysFp, iPos , 1,&quot;|&quot;)</paragraph>
+  <paragraph role="paragraph" id="par_id3155443" l10n="U" xml-lang="en-US" oldref="52">fSysURL = &quot;file://&quot; &amp; fSysFp</paragraph>
+  <paragraph role="paragraph" id="par_id3148995" l10n="U" xml-lang="en-US" oldref="53">End Function</paragraph>
+  
+  
+ </body>
+</helpdocument>

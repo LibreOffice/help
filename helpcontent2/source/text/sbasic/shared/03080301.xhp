@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--***********************************************************************
+ *
+ *  The Contents of this file are made available subject to the terms of
+ *  either of the following licenses
+ *
+ *         - GNU Lesser General Public License Version 2.1
+ *         - Sun Industry Standards Source License Version 1.1
+ *
+ *  Sun Microsystems Inc., October, 2000
+ *
+ *  GNU Lesser General Public License Version 2.1
+ *  =============================================
+ *  Copyright 2000 by Sun Microsystems, Inc.
+ *  901 San Antonio Road, Palo Alto, CA 94303, USA
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License version 2.1, as published by the Free Software Foundation.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+ *  MA  02111-1307  USA
+ *
+ *
+ *  Sun Industry Standards Source License Version 1.1
+ *  =================================================
+ *  The contents of this file are subject to the Sun Industry Standards
+ *  Source License Version 1.1 (the "License"); You may not use this file
+ *  except in compliance with the License. You may obtain a copy of the
+ *  License at http://www.openoffice.org/license.html.
+ *
+ *  Software provided under this License is provided on an "AS IS" basis,
+ *  WITHOUT WARRUNTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+ *  WITHOUT LIMITATION, WARRUNTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
+ *  See the License for the specific provisions governing your rights and
+ *  obligations concerning the Software.
+ *
+ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc..
+ *
+ *  Copyright: 2000 by Sun Microsystems, Inc.
+ *
+ *  All Rights Reserved.
+ *
+ *  Contributor(s): _______________________________________
+ *
+ *
+ ************************************************************************--><helpdocument version="1.0">
+<meta>
+<topic id="textsbasicshared03080301xml" indexer="include" status="PUBLISH">
+<title xml-lang="en-US" id="tit">Randomize Statement [Runtime]</title>
+<filename>/text/sbasic/shared/03080301.xhp</filename>
+</topic>
+<history>
+<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
+<lastedited date="2003-10-31T00:00:00">converted from old format - fpe</lastedited>
+</history>
+</meta>
+<body>
+  
+  
+  <section id="randomize">
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3150616"><bookmark_value>Randomize;function</bookmark_value></bookmark><paragraph id="hd_id3150616" role="heading" level="1" oldref="1" l10n="U" xml-lang="en-US"><link href="text/sbasic/shared/03080301.xhp" name="Randomize Statement [Runtime]">Randomize Statement [Runtime]</link></paragraph>
+  <paragraph role="paragraph" id="par_id3145090" l10n="U" xml-lang="en-US" oldref="2">Initializes the random-number generator.</paragraph>
+  </section>
+  <paragraph role="heading" level="2" id="hd_id3147573" l10n="U" xml-lang="en-US" oldref="3">Syntax:</paragraph>
+  <paragraph role="paragraph" id="par_id3145315" l10n="U" xml-lang="en-US" oldref="4">Randomize [Number]</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3152456" l10n="U" xml-lang="en-US" oldref="5">Parameters:</paragraph>
+  <paragraph l10n="U" role="paragraph" id="par_id3149670" xml-lang="en-US" oldref="6"><emph>Number:</emph> Any integer value that initializes the random-number generator. If Number is omitted, the generator uses the current value of the system timer.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
+  <embed href="text/sbasic/shared/00000003.xhp#err5"/>
+  <paragraph role="heading" level="2" id="hd_id3149655" l10n="U" xml-lang="en-US" oldref="7">Example:</paragraph>
+  <paragraph role="paragraph" id="par_id3151211" l10n="U" xml-lang="en-US" oldref="8">Sub ExampleRandomize</paragraph>
+  <paragraph role="paragraph" id="par_id3147229" l10n="U" xml-lang="en-US" oldref="9">Dim iVar As Integer, sText As String</paragraph>
+  <paragraph role="paragraph" id="par_id3150870" l10n="U" xml-lang="en-US" oldref="10">Dim iSpectral(10) As Integer</paragraph>
+  <paragraph role="paragraph" id="par_id3148673" l10n="U" xml-lang="en-US" oldref="12">Randomize 2^14-1</paragraph>
+  <paragraph role="paragraph" id="par_id3156423" l10n="U" xml-lang="en-US" oldref="13">For iCount = 1 To 1000</paragraph>
+  <paragraph role="paragraph" id="par_id3147288" l10n="U" xml-lang="en-US" oldref="14">iVar = Int((10 * Rnd) ) REM Range from 0 to 9</paragraph>
+  <paragraph role="paragraph" id="par_id3155132" l10n="U" xml-lang="en-US" oldref="15">iSpectral(iVar) = iSpectral(iVar) +1</paragraph>
+  <paragraph role="paragraph" id="par_id3153143" l10n="U" xml-lang="en-US" oldref="16">Next iCount</paragraph>
+  <paragraph role="paragraph" id="par_id3154011" l10n="U" xml-lang="en-US" oldref="18">sText = &quot; | &quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3151114" l10n="U" xml-lang="en-US" oldref="19">For iCount = 0 To 9</paragraph>
+  <paragraph role="paragraph" id="par_id3145748" l10n="U" xml-lang="en-US" oldref="20">sText = sText &amp; iSpectral(iCount) &amp; &quot; | &quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3146921" l10n="U" xml-lang="en-US" oldref="21">Next iCount</paragraph>
+  <paragraph role="paragraph" id="par_id3148617" l10n="U" xml-lang="en-US" oldref="22">MsgBox sText,0,&quot;Spectral Distribution&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3152941" l10n="U" xml-lang="en-US" oldref="23">end sub</paragraph>
+ </body>
+</helpdocument>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--***********************************************************************
+ *
+ *  The Contents of this file are made available subject to the terms of
+ *  either of the following licenses
+ *
+ *         - GNU Lesser General Public License Version 2.1
+ *         - Sun Industry Standards Source License Version 1.1
+ *
+ *  Sun Microsystems Inc., October, 2000
+ *
+ *  GNU Lesser General Public License Version 2.1
+ *  =============================================
+ *  Copyright 2000 by Sun Microsystems, Inc.
+ *  901 San Antonio Road, Palo Alto, CA 94303, USA
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License version 2.1, as published by the Free Software Foundation.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+ *  MA  02111-1307  USA
+ *
+ *
+ *  Sun Industry Standards Source License Version 1.1
+ *  =================================================
+ *  The contents of this file are subject to the Sun Industry Standards
+ *  Source License Version 1.1 (the "License"); You may not use this file
+ *  except in compliance with the License. You may obtain a copy of the
+ *  License at http://www.openoffice.org/license.html.
+ *
+ *  Software provided under this License is provided on an "AS IS" basis,
+ *  WITHOUT WARRUNTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+ *  WITHOUT LIMITATION, WARRUNTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
+ *  See the License for the specific provisions governing your rights and
+ *  obligations concerning the Software.
+ *
+ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc..
+ *
+ *  Copyright: 2000 by Sun Microsystems, Inc.
+ *
+ *  All Rights Reserved.
+ *
+ *  Contributor(s): _______________________________________
+ *
+ *
+ ************************************************************************-->
+<helpdocument version="1.0">
+<meta>
+<topic id="textsbasicguidesample_codexml" indexer="include" status="PUBLISH">
+<title xml-lang="en-US" id="tit">Programming Examples for Controls in the Dialog Editor</title>
+<filename>/text/sbasic/guide/sample_code.xhp</filename>
+</topic>
+<history>
+<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
+<lastedited date="2003-10-31T00:00:00">converted from old format - fpe</lastedited>
+</history>
+</meta>
+<body>
+  
+  
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3155338"><bookmark_value>programming examples;controls in dialog editor</bookmark_value></bookmark><paragraph id="hd_id3155338" role="heading" level="1" oldref="1" l10n="U" xml-lang="en-US"><variable id="sample_code"><link href="text/sbasic/guide/sample_code.xhp" name="Programming Examples for Controls in the Dialog Editor">Programming Examples for Controls in the Dialog Editor</link></variable></paragraph>
+  <paragraph xml-lang="en-US" oldref="2" role="paragraph" id="par_id3153031" l10n="U">The following examples are for a new <link href="text/sbasic/guide/create_dialog.xhp" name="dialog">dialog</link> called "Dialog1". Use the tools on the <emph>Control </emph>floating toolbar in the dialog editor to create the dialog and add the following controls: a <emph>Check Box</emph> called "CheckBox1", a <emph>Label Field</emph> called "Label1", a <emph>Button</emph> called "CommandButton1", and a <emph>List Box</emph> called "ListBox1".</paragraph>
+  <paragraph role="warning" id="par_id3154141" l10n="U" xml-lang="en-US" oldref="3">Be consistent with uppercase and lowercase letter when you attach a control to an object variable.</paragraph>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3154909"><bookmark_value>examples; loading a dialog</bookmark_value></bookmark><paragraph role="heading" level="3" id="hd_id3154909" l10n="U" xml-lang="en-US" oldref="4">Global Function for Loading Dialogs</paragraph>
+  <paragraph role="paragraph" id="par_id3153193" l10n="U" xml-lang="en-US" oldref="73">Function LoadDialog(Libname as String, DialogName as String, Optional oLibContainer)</paragraph>
+  <paragraph role="paragraph" id="par_id3145787" l10n="U" xml-lang="en-US" oldref="74">Dim oLib as Object</paragraph>
+  <paragraph role="paragraph" id="par_id3148576" l10n="U" xml-lang="en-US" oldref="75">Dim oLibDialog as Object</paragraph>
+  <paragraph role="paragraph" id="par_id3153726" l10n="U" xml-lang="en-US" oldref="76">Dim oRuntimeDialog as Object</paragraph>
+  <paragraph role="paragraph" id="par_id3149261" l10n="U" xml-lang="en-US" oldref="77">If IsMissing(oLibContainer ) then</paragraph>
+  <paragraph role="paragraph" id="par_id3148646" l10n="U" xml-lang="en-US" oldref="78">oLibContainer = DialogLibraries</paragraph>
+  <paragraph role="paragraph" id="par_id3151115" l10n="U" xml-lang="en-US" oldref="79">End If</paragraph>
+  <paragraph role="paragraph" id="par_id3146986" l10n="U" xml-lang="en-US" oldref="80">oLibContainer.LoadLibrary(LibName)</paragraph>
+  <paragraph role="paragraph" id="par_id3145366" l10n="U" xml-lang="en-US" oldref="81">oLib = oLibContainer.GetByName(Libname)</paragraph>
+  <paragraph role="paragraph" id="par_id3145271" l10n="U" xml-lang="en-US" oldref="82">oLibDialog = oLib.GetByName(DialogName)</paragraph>
+  <paragraph role="paragraph" id="par_id3144764" l10n="U" xml-lang="en-US" oldref="83">oRuntimeDialog = CreateUnoDialog(oLibDialog)</paragraph>
+  <paragraph role="paragraph" id="par_id3153876" l10n="U" xml-lang="en-US" oldref="84">LoadDialog() = oRuntimeDialog</paragraph>
+  <paragraph role="paragraph" id="par_id3156286" l10n="U" xml-lang="en-US" oldref="85">End Function</paragraph>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3149412"><bookmark_value>examples; displaying a dialog</bookmark_value></bookmark><paragraph role="heading" level="3" id="hd_id3149412" l10n="U" xml-lang="en-US" oldref="18">Displaying a Dialog</paragraph>
+  <paragraph role="paragraph" id="par_id3145801" l10n="U" xml-lang="en-US" oldref="86">rem global definition of variables</paragraph>
+  <paragraph role="paragraph" id="par_id3150716" l10n="U" xml-lang="en-US" oldref="87">Dim oDialog1 AS Object</paragraph>
+  <paragraph role="paragraph" id="par_id3154510" l10n="U" xml-lang="en-US" oldref="88">Sub StartDialog1</paragraph>
+  <paragraph role="paragraph" id="par_id3146913" l10n="U" xml-lang="en-US" oldref="162">BasicLibraries.LoadLibrary("Tools")</paragraph>
+  <paragraph role="paragraph" id="par_id3150327" l10n="U" xml-lang="en-US" oldref="89">oDialog1 = LoadDialog("Standard", "Dialog1")</paragraph>
+  <paragraph role="paragraph" id="par_id3155767" l10n="U" xml-lang="en-US" oldref="92">oDialog1.Execute()</paragraph>
+  <paragraph role="paragraph" id="par_id3149019" l10n="U" xml-lang="en-US" oldref="93">end sub</paragraph>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3150042"><bookmark_value>examples; read or edit properties of controls</bookmark_value></bookmark><paragraph role="heading" level="3" id="hd_id3150042" l10n="U" xml-lang="en-US" oldref="27">Read or Edit Properties of Controls in the Program</paragraph>
+  <paragraph role="paragraph" id="par_id3159267" l10n="U" xml-lang="en-US" oldref="136">Sub Sample1</paragraph>
+  <paragraph role="paragraph" id="par_id3155335" l10n="U" xml-lang="en-US" oldref="163">BasicLibraries.LoadLibrary("Tools")</paragraph>
+  <paragraph role="paragraph" id="par_id3163808" l10n="U" xml-lang="en-US" oldref="137">oDialog1 = LoadDialog("Standard", "Dialog1")</paragraph>
+  <paragraph role="paragraph" id="par_id3145232" l10n="U" xml-lang="en-US" oldref="138">REM get dialog model</paragraph>
+  <paragraph role="paragraph" id="par_id3146316" l10n="U" xml-lang="en-US" oldref="139">oDialog1Model = oDialog1.Model</paragraph>
+  <paragraph role="paragraph" id="par_id3154021" l10n="U" xml-lang="en-US" oldref="140">REM display text of Label1</paragraph>
+  <paragraph role="paragraph" id="par_id3150301" l10n="U" xml-lang="en-US" oldref="141">oLabel1 = oDialog1.GetControl("Label1")</paragraph>
+  <paragraph role="paragraph" id="par_id3152584" l10n="U" xml-lang="en-US" oldref="142">MsgBox oLabel1.Text</paragraph>
+  <paragraph role="paragraph" id="par_id3151277" l10n="U" xml-lang="en-US" oldref="143">REM set new text for control Label1</paragraph>
+  <paragraph role="paragraph" id="par_id3154119" l10n="U" xml-lang="en-US" oldref="144">oLabel1.Text = "New Files"</paragraph>
+  <paragraph role="paragraph" id="par_id3155115" l10n="U" xml-lang="en-US" oldref="145">REM display model properties for the control CheckBox1</paragraph>
+  <paragraph role="paragraph" id="par_id3166426" l10n="U" xml-lang="en-US" oldref="146">oCheckBox1Model = oDialog1Model.CheckBox1</paragraph>
+  <paragraph role="paragraph" id="par_id3153270" l10n="U" xml-lang="en-US" oldref="147">MsgBox oCheckBox1Model.Dbg_Properties</paragraph>
+  <paragraph role="paragraph" id="par_id3149817" l10n="U" xml-lang="en-US" oldref="148">REM set new state for CheckBox1 for model of control</paragraph>
+  <paragraph role="paragraph" id="par_id3145134" l10n="U" xml-lang="en-US" oldref="149">oCheckBox1Model.State = 1</paragraph>
+  <paragraph role="paragraph" id="par_id3159102" l10n="U" xml-lang="en-US" oldref="150">REM display model properties for control CommandButton1</paragraph>
+  <paragraph role="paragraph" id="par_id3152777" l10n="U" xml-lang="en-US" oldref="151">oCMD1Model = oDialog1Model.CommandButton1</paragraph>
+  <paragraph role="paragraph" id="par_id3149209" l10n="U" xml-lang="en-US" oldref="152">MsgBox oCMD1Model.Dbg_Properties</paragraph>
+  <paragraph role="paragraph" id="par_id3150368" l10n="U" xml-lang="en-US" oldref="153">REM display properties of control CommandButton1</paragraph>
+  <paragraph role="paragraph" id="par_id3150883" l10n="U" xml-lang="en-US" oldref="154">oCMD1 = oDialog1.GetControl("CommandButton1")</paragraph>
+  <paragraph role="paragraph" id="par_id3155380" l10n="U" xml-lang="en-US" oldref="155">MsgBox oCMD1.Dbg_Properties</paragraph>
+  <paragraph role="paragraph" id="par_id3150201" l10n="U" xml-lang="en-US" oldref="156">REM execute dialog</paragraph>
+  <paragraph role="paragraph" id="par_id3154485" l10n="U" xml-lang="en-US" oldref="157">oDialog1.Execute()</paragraph>
+  <paragraph role="paragraph" id="par_id3146115" l10n="U" xml-lang="en-US" oldref="158">End Sub</paragraph>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3145387"><bookmark_value>examples; adding entry to ListBox</bookmark_value></bookmark><paragraph role="heading" level="3" id="hd_id3145387" l10n="U" xml-lang="en-US" oldref="55">Add an Entry to a ListBox</paragraph>
+  <paragraph role="paragraph" id="par_id3155088" l10n="U" xml-lang="en-US" oldref="122">Sub AddEntry</paragraph>
+  <paragraph role="paragraph" id="par_id3154528" l10n="U" xml-lang="en-US" oldref="164">BasicLibraries.LoadLibrary("Tools")</paragraph>
+  <paragraph role="paragraph" id="par_id3159222" l10n="U" xml-lang="en-US" oldref="159">oDialog1 = LoadDialog("Standard", "Dialog1")</paragraph>
+  <paragraph role="paragraph" id="par_id3148700" l10n="U" xml-lang="en-US" oldref="123">REM adds a new entry to the ListBox</paragraph>
+  <paragraph role="paragraph" id="par_id3159173" l10n="U" xml-lang="en-US" oldref="124">oDialog1Model = oDialog1.Model</paragraph>
+  <paragraph role="paragraph" id="par_id3153305" l10n="U" xml-lang="en-US" oldref="125">oListBox = oDialog1.GetControl("ListBox1")</paragraph>
+  <paragraph role="paragraph" id="par_id3153914" l10n="U" xml-lang="en-US" oldref="126">dim iCount as integer</paragraph>
+  <paragraph role="paragraph" id="par_id3151243" l10n="U" xml-lang="en-US" oldref="127">iCount = oListbox.ItemCount</paragraph>
+  <paragraph role="paragraph" id="par_id3144504" l10n="U" xml-lang="en-US" oldref="128">oListbox.additem("New Item" &amp; iCount,0)</paragraph>
+  <paragraph role="paragraph" id="par_id3149328" l10n="U" xml-lang="en-US" oldref="129">end sub</paragraph>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3147071"><bookmark_value>examples; remove entry from ListBox</bookmark_value></bookmark><paragraph role="heading" level="3" id="hd_id3147071" l10n="U" xml-lang="en-US" oldref="64">Remove an Entry from a ListBox</paragraph>
+  <paragraph role="paragraph" id="par_id3159095" l10n="U" xml-lang="en-US" oldref="130">Sub RemoveEntry</paragraph>
+  <paragraph role="paragraph" id="par_id3154958" l10n="U" xml-lang="en-US" oldref="165">BasicLibraries.LoadLibrary("Tools")</paragraph>
+  <paragraph role="paragraph" id="par_id3149443" l10n="U" xml-lang="en-US" oldref="160">oDialog1 = LoadDialog("Standard", "Dialog1")</paragraph>
+  <paragraph role="paragraph" id="par_id3153247" l10n="U" xml-lang="en-US" oldref="131">REM remove the first entry from the ListBox</paragraph>
+  <paragraph role="paragraph" id="par_id3151302" l10n="U" xml-lang="en-US" oldref="132">oDialog1Model = oDialog1.Model</paragraph>
+  <paragraph role="paragraph" id="par_id3153976" l10n="U" xml-lang="en-US" oldref="133">oListBox = oDialog1.GetControl("ListBox1")</paragraph>
+  <paragraph role="paragraph" id="par_id3155383" l10n="U" xml-lang="en-US" oldref="134">oListbox.removeitems(0,1)</paragraph>
+  <paragraph role="paragraph" id="par_id3150892" l10n="U" xml-lang="en-US" oldref="135">end sub</paragraph>
+  <embed href="text/shared/00/00000004.xhp#related"/>
+  <embed href="text/sbasic/guide/control_properties.xhp#control_properties"/>
+  <embed href="text/sbasic/guide/create_dialog.xhp#create_dialog"/>
+  <embed href="text/sbasic/guide/insert_control.xhp#insert_control"/>
+  <embed href="text/sbasic/guide/show_dialog.xhp#show_dialog"/>
+  
+ </body>
+</helpdocument>

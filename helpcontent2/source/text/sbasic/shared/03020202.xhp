@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--***********************************************************************
+ *
+ *  The Contents of this file are made available subject to the terms of
+ *  either of the following licenses
+ *
+ *         - GNU Lesser General Public License Version 2.1
+ *         - Sun Industry Standards Source License Version 1.1
+ *
+ *  Sun Microsystems Inc., October, 2000
+ *
+ *  GNU Lesser General Public License Version 2.1
+ *  =============================================
+ *  Copyright 2000 by Sun Microsystems, Inc.
+ *  901 San Antonio Road, Palo Alto, CA 94303, USA
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License version 2.1, as published by the Free Software Foundation.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+ *  MA  02111-1307  USA
+ *
+ *
+ *  Sun Industry Standards Source License Version 1.1
+ *  =================================================
+ *  The contents of this file are subject to the Sun Industry Standards
+ *  Source License Version 1.1 (the "License"); You may not use this file
+ *  except in compliance with the License. You may obtain a copy of the
+ *  License at http://www.openoffice.org/license.html.
+ *
+ *  Software provided under this License is provided on an "AS IS" basis,
+ *  WITHOUT WARRUNTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+ *  WITHOUT LIMITATION, WARRUNTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
+ *  See the License for the specific provisions governing your rights and
+ *  obligations concerning the Software.
+ *
+ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc..
+ *
+ *  Copyright: 2000 by Sun Microsystems, Inc.
+ *
+ *  All Rights Reserved.
+ *
+ *  Contributor(s): _______________________________________
+ *
+ *
+ ************************************************************************--><helpdocument version="1.0">
+<meta>
+<topic id="textsbasicshared03020202xml" indexer="include" status="PUBLISH">
+<title xml-lang="en-US" id="tit">Input# Statement [Runtime]</title>
+<filename>/text/sbasic/shared/03020202.xhp</filename>
+</topic>
+<history>
+<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
+<lastedited date="2003-10-31T00:00:00">converted from old format - fpe</lastedited>
+</history>
+</meta>
+<body>
+  
+  
+  <section id="input">
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3154908"><bookmark_value>Input;function</bookmark_value></bookmark><paragraph id="hd_id3154908" role="heading" level="1" oldref="1" l10n="U" xml-lang="en-US"><link href="text/sbasic/shared/03020202.xhp" name="Input# Statement [Runtime]">Input# Statement [Runtime]</link></paragraph>
+  <paragraph role="paragraph" id="par_id3156424" l10n="U" xml-lang="en-US" oldref="2">Reads data from an open sequential file.</paragraph>
+  </section>
+  <paragraph role="heading" level="2" id="hd_id3125863" l10n="U" xml-lang="en-US" oldref="3">Syntax:</paragraph>
+  <paragraph role="paragraph" id="par_id3150440" l10n="U" xml-lang="en-US" oldref="4">Input #FileNumber As Integer; var1[, var2[, var3[,...]]]</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3146121" l10n="U" xml-lang="en-US" oldref="5">Parameters:</paragraph>
+  <paragraph l10n="U" role="paragraph" id="par_id3145749" xml-lang="en-US" oldref="6"><emph>FileNumber:</emph> Number of the file that contains the data that you want to read. The file must be opened with the Open statement using the key word INPUT.</paragraph>
+  <paragraph l10n="U" role="paragraph" id="par_id3150011" xml-lang="en-US" oldref="7"><emph>var:</emph> A numeric or string variable that you assign the values read from the opened file to.</paragraph>
+  <paragraph xml-lang="en-US" role="paragraph" id="par_id3159153" l10n="U" oldref="8">The <emph>Input#</emph> statement reads numeric values or strings from an open file and assigns the data to one or more variables. A numeric variable is read up to the first carriage return (Asc=13), line feed (Asc=10), space, or comma. String variables are read to up to the first carriage return (Asc=13), line feed (Asc=10), or comma.</paragraph>
+  <paragraph role="paragraph" id="par_id3146984" l10n="U" xml-lang="en-US" oldref="9">Data and data types in the opened file must appear in the same order as the variables that are passed in the &quot;var&quot; parameter. If you assign non-numeric values to a numeric variable, &quot;var&quot; is assigned a value of &quot;0&quot;.</paragraph>
+  <paragraph xml-lang="en-US" role="paragraph" id="par_id3156442" l10n="U" oldref="10">Records that are separated by commas, commas cannot be assigned to a string variable. Quotation marks (&quot;) in the file are disregarded as well. If you want to read these characters from the file, use the <emph>Line Input#</emph> statement to read pure text files (files containing only printable characters) line by line.</paragraph>
+  <paragraph role="paragraph" id="par_id3147349" l10n="U" xml-lang="en-US" oldref="11">If the end of the file is reached while reading a data element, an error occurs and the process is aborted.</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3152578" l10n="U" xml-lang="en-US" oldref="12">Example:</paragraph>
+  <paragraph role="paragraph" id="par_id3144765" l10n="U" xml-lang="en-US" oldref="13">Sub ExampleWorkWithAFile</paragraph>
+  <paragraph role="paragraph" id="par_id3145799" l10n="U" xml-lang="en-US" oldref="14">Dim iNumber As Integer</paragraph>
+  <paragraph role="paragraph" id="par_id3145252" l10n="U" xml-lang="en-US" oldref="15">Dim sLine As String</paragraph>
+  <paragraph role="paragraph" id="par_id3149410" l10n="U" xml-lang="en-US" oldref="16">Dim aFile As String</paragraph>
+  <paragraph role="paragraph" id="par_id3149959" l10n="U" xml-lang="en-US" oldref="39">Dim sMsg as String</paragraph>
+  <paragraph role="paragraph" id="par_id3153417" l10n="U" xml-lang="en-US" oldref="17">aFile = &quot;c:\data.txt&quot;</paragraph>
+  
+  <paragraph role="paragraph" id="par_id3150752" l10n="U" xml-lang="en-US" oldref="19">iNumber = Freefile</paragraph>
+  <paragraph role="paragraph" id="par_id3153707" l10n="U" xml-lang="en-US" oldref="20">Open aFile For Output As #iNumber</paragraph>
+  <paragraph role="paragraph" id="par_id3150321" l10n="U" xml-lang="en-US" oldref="21">Print #iNumber, &quot;This is a line of text&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3154756" l10n="U" xml-lang="en-US" oldref="22">Print #iNumber, &quot;This is another line of text&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3148408" l10n="U" xml-lang="en-US" oldref="23">Close #iNumber</paragraph>
+  
+  <paragraph role="paragraph" id="par_id3155937" l10n="U" xml-lang="en-US" oldref="27">iNumber = Freefile</paragraph>
+  <paragraph role="paragraph" id="par_id3154702" l10n="U" xml-lang="en-US" oldref="28">Open aFile For Input As iNumber</paragraph>
+  <paragraph role="paragraph" id="par_id3155959" l10n="U" xml-lang="en-US" oldref="29">While not eof(iNumber)</paragraph>
+  <paragraph role="paragraph" id="par_id3145232" l10n="U" xml-lang="en-US" oldref="30">Line Input #iNumber, sLine</paragraph>
+  <paragraph role="paragraph" id="par_id3147345" l10n="U" xml-lang="en-US" oldref="31">If sLine &lt;&gt;&quot;&quot; then</paragraph>
+  <paragraph role="paragraph" id="par_id3150298" l10n="U" xml-lang="en-US" oldref="32">sMsg = sMsg &amp; sLine &amp; chr(13)</paragraph>
+  <paragraph role="paragraph" id="par_id3154021" l10n="U" xml-lang="en-US" oldref="34">end if</paragraph>
+  <paragraph role="paragraph" id="par_id3154665" l10n="U" xml-lang="en-US" oldref="35">wend</paragraph>
+  <paragraph role="paragraph" id="par_id3155607" l10n="U" xml-lang="en-US" oldref="36">Close #iNumber</paragraph>
+  <paragraph role="paragraph" id="par_id3153268" l10n="U" xml-lang="en-US" oldref="40">Msgbox sMsg</paragraph>
+  <paragraph role="paragraph" id="par_id3152584" l10n="U" xml-lang="en-US" oldref="37">End Sub</paragraph>
+  
+ </body>
+</helpdocument>

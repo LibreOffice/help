@@ -1,0 +1,109 @@
+#*************************************************************************
+#
+#   $RCSfile: makefile.pmk,v $
+#
+#   $Revision: 1.1 $
+#
+#   last change: $Author: fpe $ $Date: 2004-08-18 10:52:38 $
+#
+#   The Contents of this file are made available subject to the terms of
+#   either of the following licenses
+#
+#          - GNU Lesser General Public License Version 2.1
+#          - Sun Industry Standards Source License Version 1.1
+#
+#   Sun Microsystems Inc., October, 2000
+#
+#   GNU Lesser General Public License Version 2.1
+#   =============================================
+#   Copyright 2000 by Sun Microsystems, Inc.
+#   901 San Antonio Road, Palo Alto, CA 94303, USA
+#
+#   This library is free software; you can redistribute it and/or
+#   modify it under the terms of the GNU Lesser General Public
+#   License version 2.1, as published by the Free Software Foundation.
+#
+#   This library is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#   Lesser General Public License for more details.
+#
+#   You should have received a copy of the GNU Lesser General Public
+#   License along with this library; if not, write to the Free Software
+#   Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+#   MA  02111-1307  USA
+#
+#
+#   Sun Industry Standards Source License Version 1.1
+#   =================================================
+#   The contents of this file are subject to the Sun Industry Standards
+#   Source License Version 1.1 (the "License"); You may not use this file
+#   except in compliance with the License. You may obtain a copy of the
+#   License at http://www.openoffice.org/license.html.
+#
+#   Software provided under this License is provided on an "AS IS" basis,
+#   WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING,
+#   WITHOUT LIMITATION, WARRANTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+#   MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
+#   See the License for the specific provisions governing your rights and
+#   obligations concerning the Software.
+#
+#   The Initial Developer of the Original Code is: Sun Microsystems, Inc.
+#
+#   Copyright: 2000 by Sun Microsystems, Inc.
+#
+#   All Rights Reserved.
+#
+#   Contributor(s): _______________________________________
+#
+#
+#
+#*************************************************************************
+
+SHELL_PACKAGE:=$(subst,/,$/ $(PACKAGE))
+HLANGZIPFILES=$(foreach,i,$(HZIPFILES) $(foreach,j,$(alllangiso) $(MISC)$/$j$/$(SHELL_PACKAGE)$/$(i:b).hzip))
+HDEPFILES=$(foreach,i,$(HLANGZIPFILES) $(i:s/hzip/dphh/))
+
+ALLTAR : $(HLANGZIPFILES) $(MISC)$/$(TARGET)_dep_langs.mk
+
+$(MISC)$/%_dep_langs.mk :
+    @+-$(RM) $@ > $(NULLDEV)
+    @+echo helpdep_langs=$(alllangiso) > $@
+
+.INCLUDE : $(MISC)$/$(TARGET)_dep_langs.mk
+
+$(MISC)$/$(TARGET)_dep_langs.mk .PHONY :
+
+missing_helpdep_langs=$(alllangiso)
+some_dummy_var:=$(foreach,i,$(helpdep_langs) $(assign missing_helpdep_langs:=$(strip $(subst,$i, $(missing_helpdep_langs)))))
+.IF "$(missing_helpdep_langs)"!=""
+HELPTRANSPHONY:=.PHONY
+.ENDIF			# "$(missing_helpdep_langs)"!=""
+
+$(MISC)$/%.hzip : $(MISC)$/%.xhp
+    @+-$(MKDIR) -p $(@:d)
+    java -cp $(my_cp) com.sun.star.help.HelpCompiler -c $< -o $@ -src "$(PRJ)$/source" -sty "$(PRJ)$/source$/auxiliary$/embed.xsl" -idx "$(PRJ)$/source$/auxiliary$/index.xsl" -mod $(MODULE) -lang {$(subst,$/, $(subst,text$/, $(subst,$(MODULE)$/, $(subst,$(MISC), $(@:d:d:d)))))} > $(@:d:d)$/$(@:b).dphh_
+
+$(MISC)$/%.dphh : $(MISC)$/%.dphh_
+    @+$(RENAME) {$@}_ $@
+    $(TOUCH) $@
+
+$(MISC)$/%.xhp  $(HELPTRANSPHONY): $(MISC)$/$(TARGET)__$$(@:b).done
+    $(TOUCH) $@
+    @+echo -----------------------------------------------
+
+$(MISC)$/$(TARGET)__%.done : %.xhp
+    +$(WRAPCMD) helpex -p help2 -r $(PRJ) -i $< -x $(MISC) -y $(SHELL_PACKAGE)$/{$(subst,$(TARGET)__, $(@:b))}.xhp -l all -lf $(alllangiso:t",") -m localize.sdf && $(TOUCH) $@
+    +$(TYPE) $(mktmp $(subst,\,/ $(foreach,i,$(alllangiso) $(MISC)$/$i$/$(SHELL_PACKAGE)$/{$(subst,$(TARGET)__, $(@:b))}.xhp))) | xargs $(TOUCH)
+
+# urks - dmake mixes up operators and strings :-(
+.IF "$(HLANGZIPFILES:s/defined/xxx/)"!=""
+$(HLANGZIPFILES) : $(MISC)$/$(TARGET)__$$(@:b).done
+
+$(foreach,i,$(HZIPFILES) $(MISC)$/$(TARGET)__$(i:b).done) $(HELPTRANSPHONY) : localize.sdf makefile.mk
+.ENDIF          # "$(HLANGZIPFILES)"!=""
+
+# urks - dmake mixes up operators and strings :-(
+.IF "$(HDEPFILES:s/defined/xxx/)"!=""
+.INCLUDE .IGNORE : $(HDEPFILES)
+.ENDIF          # "$(HDEPFILES)"!=""

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--***********************************************************************
+ *
+ *  The Contents of this file are made available subject to the terms of
+ *  either of the following licenses
+ *
+ *         - GNU Lesser General Public License Version 2.1
+ *         - Sun Industry Standards Source License Version 1.1
+ *
+ *  Sun Microsystems Inc., October, 2000
+ *
+ *  GNU Lesser General Public License Version 2.1
+ *  =============================================
+ *  Copyright 2000 by Sun Microsystems, Inc.
+ *  901 San Antonio Road, Palo Alto, CA 94303, USA
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License version 2.1, as published by the Free Software Foundation.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+ *  MA  02111-1307  USA
+ *
+ *
+ *  Sun Industry Standards Source License Version 1.1
+ *  =================================================
+ *  The contents of this file are subject to the Sun Industry Standards
+ *  Source License Version 1.1 (the "License"); You may not use this file
+ *  except in compliance with the License. You may obtain a copy of the
+ *  License at http://www.openoffice.org/license.html.
+ *
+ *  Software provided under this License is provided on an "AS IS" basis,
+ *  WITHOUT WARRUNTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+ *  WITHOUT LIMITATION, WARRUNTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
+ *  See the License for the specific provisions governing your rights and
+ *  obligations concerning the Software.
+ *
+ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc..
+ *
+ *  Copyright: 2000 by Sun Microsystems, Inc.
+ *
+ *  All Rights Reserved.
+ *
+ *  Contributor(s): _______________________________________
+ *
+ *
+ ************************************************************************--><helpdocument version="1.0">
+<meta>
+<topic id="textsbasicshared03020205xml" indexer="include" status="PUBLISH">
+<title xml-lang="en-US" id="tit">Write Statement [Runtime]</title>
+<filename>/text/sbasic/shared/03020205.xhp</filename>
+</topic>
+<history>
+<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
+<lastedited date="2003-10-31T00:00:00">converted from old format - fpe</lastedited>
+</history>
+</meta>
+<body>
+  
+  
+  <section id="write">
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3147229"><bookmark_value>Write;function</bookmark_value></bookmark><paragraph id="hd_id3147229" role="heading" level="1" oldref="1" l10n="U" xml-lang="en-US"><link href="text/sbasic/shared/03020205.xhp" name="Write Statement [Runtime]">Write Statement [Runtime]</link></paragraph>
+  <paragraph role="paragraph" id="par_id3154685" l10n="U" xml-lang="en-US" oldref="2">Writes data to a sequential file.</paragraph>
+  </section>
+  <paragraph role="heading" level="2" id="hd_id3150449" l10n="U" xml-lang="en-US" oldref="3">Syntax:</paragraph>
+  <paragraph role="paragraph" id="par_id3145785" l10n="U" xml-lang="en-US" oldref="4">Write [#]FileName, [Expressionlist]</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3151116" l10n="U" xml-lang="en-US" oldref="5">Parameters:</paragraph>
+  <paragraph l10n="U" role="paragraph" id="par_id3153728" xml-lang="en-US" oldref="6"><emph>FileName:</emph> Any numeric expression that contains the file number that was set by the Open statement for the respective file.</paragraph>
+  <paragraph l10n="U" role="paragraph" id="par_id3146120" xml-lang="en-US" oldref="7"><emph>Expressionlist:</emph> Variables or expressions that you want to enter in a file, separated by commas.</paragraph>
+  <paragraph xml-lang="en-US" role="paragraph" id="par_id3150010" l10n="U" oldref="8">If the expression list is omitted, the <emph>Write#</emph> statement appends an empty line to the file.</paragraph>
+  <paragraph xml-lang="en-US" oldref="9" role="paragraph" id="par_id3163713" l10n="U">To add an expression list to a new or an existing file, the file must be opened in the <emph> Output</emph> or <emph>Append</emph> mode.</paragraph>
+  <paragraph xml-lang="en-US" oldref="10" role="paragraph" id="par_id3147428" l10n="U">The <emph>Write#</emph> statement enters data that is enclosed by quotation marks and separated by commas into a file. You do not need to use delimiters in the list. The end of a file created with the <emph>Write#</emph> statement is indicated by a line end symbol.</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3151073" l10n="U" xml-lang="en-US" oldref="11">Example:</paragraph>
+  <paragraph role="paragraph" id="par_id3145252" l10n="U" xml-lang="en-US" oldref="12">Sub ExampleWrite</paragraph>
+  <paragraph role="paragraph" id="par_id3149958" l10n="U" xml-lang="en-US" oldref="13">Dim iCount As Integer</paragraph>
+  <paragraph role="paragraph" id="par_id3156284" l10n="U" xml-lang="en-US" oldref="14">Dim sValue As String</paragraph>
+  <paragraph role="paragraph" id="par_id3145645" l10n="U" xml-lang="en-US" oldref="15">iCount = Freefile</paragraph>
+  <paragraph role="paragraph" id="par_id3153417" l10n="U" xml-lang="en-US" oldref="16">open &quot;C:\data.txt&quot; for OutPut as iCount</paragraph>
+  <paragraph role="paragraph" id="par_id3149401" l10n="U" xml-lang="en-US" oldref="17">sValue = &quot;Hamburg&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3156275" l10n="U" xml-lang="en-US" oldref="18">Write #iCount,sValue,200</paragraph>
+  <paragraph role="paragraph" id="par_id3146913" l10n="U" xml-lang="en-US" oldref="19">sValue = &quot;New York&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3155064" l10n="U" xml-lang="en-US" oldref="20">Write #iCount,sValue,300</paragraph>
+  <paragraph role="paragraph" id="par_id3150322" l10n="U" xml-lang="en-US" oldref="21">sValue = &quot;Miami&quot;</paragraph>
+  <paragraph role="paragraph" id="par_id3155766" l10n="U" xml-lang="en-US" oldref="22">Write #iCount,sValue,450</paragraph>
+  <paragraph role="paragraph" id="par_id3145643" l10n="U" xml-lang="en-US" oldref="23">close #iCount</paragraph>
+  <paragraph role="paragraph" id="par_id3150044" l10n="U" xml-lang="en-US" oldref="24">end sub</paragraph>
+  
+ </body>
+</helpdocument>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--***********************************************************************
+ *
+ *  The Contents of this file are made available subject to the terms of
+ *  either of the following licenses
+ *
+ *         - GNU Lesser General Public License Version 2.1
+ *         - Sun Industry Standards Source License Version 1.1
+ *
+ *  Sun Microsystems Inc., October, 2000
+ *
+ *  GNU Lesser General Public License Version 2.1
+ *  =============================================
+ *  Copyright 2000 by Sun Microsystems, Inc.
+ *  901 San Antonio Road, Palo Alto, CA 94303, USA
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License version 2.1, as published by the Free Software Foundation.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+ *  MA  02111-1307  USA
+ *
+ *
+ *  Sun Industry Standards Source License Version 1.1
+ *  =================================================
+ *  The contents of this file are subject to the Sun Industry Standards
+ *  Source License Version 1.1 (the "License"); You may not use this file
+ *  except in compliance with the License. You may obtain a copy of the
+ *  License at http://www.openoffice.org/license.html.
+ *
+ *  Software provided under this License is provided on an "AS IS" basis,
+ *  WITHOUT WARRUNTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+ *  WITHOUT LIMITATION, WARRUNTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
+ *  See the License for the specific provisions governing your rights and
+ *  obligations concerning the Software.
+ *
+ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc..
+ *
+ *  Copyright: 2000 by Sun Microsystems, Inc.
+ *
+ *  All Rights Reserved.
+ *
+ *  Contributor(s): _______________________________________
+ *
+ *
+ ************************************************************************-->
+<helpdocument version="1.0">
+<meta>
+<topic id="textsbasicshared03090403xml" indexer="include" status="PUBLISH">
+<title xml-lang="en-US" id="tit">Declare Statement [Runtime]</title>
+<filename>/text/sbasic/shared/03090403.xhp</filename>
+</topic>
+<history>
+<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
+<lastedited date="2003-10-31T00:00:00">converted from old format - fpe</lastedited>
+</history>
+</meta>
+<body>
+  
+  
+  <section id="declare">
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3148473"><bookmark_value>Declare;statement</bookmark_value></bookmark><paragraph id="hd_id3148473" role="heading" level="1" oldref="1" l10n="U" xml-lang="en-US"><link href="text/sbasic/shared/03090403.xhp" name="Declare Statement [Runtime]">Declare Statement [Runtime]</link></paragraph>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3145316"><bookmark_value>DLL (Dynamic Link Library)</bookmark_value></bookmark><paragraph role="paragraph" id="par_id3145316" l10n="U" xml-lang="en-US" oldref="2">Declares and defines a subroutine in a  that you want to  execute from $[officename] Basic.</paragraph>
+  </section>
+  <paragraph l10n="U" role="paragraph" id="par_id3146795" xml-lang="en-US" oldref="3">See also: <link href="text/sbasic/shared/03090405.xhp" name="FreeLibrary">FreeLibrary</link></paragraph>
+  <paragraph role="heading" level="2" id="hd_id3156344" l10n="U" xml-lang="en-US" oldref="4">Syntax:</paragraph>
+  <paragraph role="paragraph" id="par_id3148664" l10n="U" xml-lang="en-US" oldref="5">Declare {Sub | Function} Name Lib "Libname" [Alias "Aliasname"] [Parameter] [As Type]</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3153360" l10n="U" xml-lang="en-US" oldref="6">Parameters:</paragraph>
+  <paragraph l10n="U" role="paragraph" id="par_id3154140" xml-lang="en-US" oldref="8"><emph>Name:</emph> A different name than defined in the DLL, to call the subroutine from $[officename] Basic.</paragraph>
+  <paragraph l10n="U" role="paragraph" id="par_id3150870" xml-lang="en-US" oldref="9"><emph>Aliasname</emph>: Name of the subroutine as defined in the DLL.</paragraph>
+  <paragraph l10n="U" role="paragraph" id="par_id3154684" xml-lang="en-US" oldref="10"><emph>Libname:</emph> File or system name of the DLL. This library is automatically loaded the first time the function is used.</paragraph>
+  <paragraph l10n="U" role="paragraph" id="par_id3148452" xml-lang="en-US" oldref="11"><emph>Argumentlist:</emph> List of parameters representing arguments that are passed to the procedure when it is called. The type and number of parameters is dependent on the executed procedure.</paragraph>
+  <paragraph l10n="U" role="paragraph" id="par_id3147289" xml-lang="en-US" oldref="12"><emph>Type:</emph> Defines the data type of the value that is returned by a function procedure. You can exclude this parameter if a type-declaration character is entered after the name.</paragraph>
+  <paragraph xml-lang="en-US" role="warning" id="par_id3146922" l10n="U" oldref="13">To pass a parameter to a subroutine as a value instead of as a reference, the parameter must be indicated by the keyword <emph>ByVal</emph>.</paragraph>
+  <paragraph role="heading" level="2" id="hd_id3153951" l10n="U" xml-lang="en-US" oldref="14">Example:</paragraph>
+  <paragraph role="paragraph" id="par_id3154320" l10n="U" xml-lang="en-US" oldref="15">Declare Sub MyMessageBeep Lib "user32.dll" Alias "MessageBeep" ( long )</paragraph>
+  
+  <paragraph role="paragraph" id="par_id3150417" l10n="U" xml-lang="en-US" oldref="17">Sub ExampleDeclare</paragraph>
+  <paragraph role="paragraph" id="par_id3149959" l10n="U" xml-lang="en-US" oldref="18">Dim lValue As Long</paragraph>
+  <paragraph role="paragraph" id="par_id3145647" l10n="U" xml-lang="en-US" oldref="19">lValue = 5000</paragraph>
+  <paragraph role="paragraph" id="par_id3145801" l10n="U" xml-lang="en-US" oldref="20">MyMessageBeep( lValue )</paragraph>
+  <paragraph role="paragraph" id="par_id3145253" l10n="U" xml-lang="en-US" oldref="21">FreeLibrary("user32.dll" )</paragraph>
+  <paragraph role="paragraph" id="par_id3149402" l10n="U" xml-lang="en-US" oldref="22">End Sub</paragraph>
+  
+ </body>
+</helpdocument>
