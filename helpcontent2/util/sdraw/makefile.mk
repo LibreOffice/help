@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-18 10:59:45 $
+#*    last change       $Author: fpe $ $Date: 2004-08-18 11:52:17 $
 #*
-#*    $Revision: 1.1 $
+#*    $Revision: 1.2 $
 #*
 #*    $Logfile:$
 #*
@@ -37,12 +37,12 @@ ZIP1LIST=$(LANGDIR)$/text$/sdraw$/* -x "*.dphh*" -x "*.hzip"
 LINKNAME=sdraw
 LINKADDEDFILES= \
    -add help$/LANGUAGE$/sdraw.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/sdraw.cfg \
-   -add help$/LANGUAGE$/sdraw.jar  $(BIN)$/sdraw_xml_LANGUAGE.zip
+   -add help$/LANGUAGE$/sdraw.jar  $(BIN)$/sdraw_xhp_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/sdraw.cfg \
-   $(BIN)$/sdraw_xml_LANGUAGE.zip
+   $(BIN)$/sdraw_xhp_LANGUAGE.zip
 
 
 LINKLINKFILES= \
@@ -501,6 +501,7 @@ LINKLINKFILES= \
    text$/shared$/01$/05320000.hzip \
    text$/shared$/01$/05340100.hzip \
    text$/shared$/01$/05340200.hzip \
+   text$/shared$/01$/05340300.hzip \
    text$/shared$/01$/05340400.hzip \
    text$/shared$/01$/05340402.hzip \
    text$/shared$/01$/05340404.hzip \
@@ -565,7 +566,10 @@ LINKLINKFILES= \
    text$/shared$/01$/about_meta_tags.hzip \
    text$/shared$/01$/gallery.hzip \
    text$/shared$/01$/gallery_files.hzip \
+   text$/shared$/01$/grid.hzip \
+   text$/shared$/01$/guides.hzip \
    text$/shared$/01$/mediaplayer.hzip \
+   text$/shared$/01$/moviesound.hzip \
    text$/shared$/01$/packagemanager.hzip \
    text$/shared$/01$/password_dlg.hzip \
    text$/shared$/01$/password_main.hzip \
@@ -830,6 +834,14 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/11190000.hzip \
    text$/shared$/explorer$/database$/30000000.hzip \
    text$/shared$/explorer$/database$/30100000.hzip \
+   text$/shared$/explorer$/database$/dabaadvprop.hzip \
+   text$/shared$/explorer$/database$/dabaadvpropdat.hzip \
+   text$/shared$/explorer$/database$/dabaadvpropgen.hzip \
+   text$/shared$/explorer$/database$/dabaprop.hzip \
+   text$/shared$/explorer$/database$/dabapropadd.hzip \
+   text$/shared$/explorer$/database$/dabapropcon.hzip \
+   text$/shared$/explorer$/database$/dabapropgen.hzip \
+   text$/shared$/explorer$/database$/menuedit.hzip \
    text$/shared$/guide$/aaa_start.hzip \
    text$/shared$/guide$/accessibility.hzip \
    text$/shared$/guide$/active_help_on_off.hzip \

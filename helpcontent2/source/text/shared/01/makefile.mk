@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-18 10:56:09 $
+#*    last change       $Author: fpe $ $Date: 2004-08-18 11:52:03 $
 #*
-#*    $Revision: 1.1 $
+#*    $Revision: 1.2 $
 #*
 #*    $Logfile:$
 #*
@@ -30,7 +30,7 @@ MODULE  = shared
 .INCLUDE : $(PRJ)$/settings.pmk
 .INCLUDE : settings.mk
 
-# this list matches the *.xml files to process
+# this list matches the *.xhp files to process
 HZIPFILES = \
     01010000.hzip \
     01010001.hzip \
@@ -236,6 +236,7 @@ HZIPFILES = \
     05320000.hzip \
     05340100.hzip \
     05340200.hzip \
+    05340300.hzip \
     05340400.hzip \
     05340402.hzip \
     05340404.hzip \
@@ -300,7 +301,10 @@ HZIPFILES = \
     about_meta_tags.hzip \
     gallery.hzip \
     gallery_files.hzip \
+    grid.hzip \
+    guides.hzip \
     mediaplayer.hzip \
+    moviesound.hzip \
     packagemanager.hzip \
     password_dlg.hzip \
     password_main.hzip \

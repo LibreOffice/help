@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-18 10:57:48 $
+#*    last change       $Author: fpe $ $Date: 2004-08-18 11:52:08 $
 #*
-#*    $Revision: 1.1 $
+#*    $Revision: 1.2 $
 #*
 #*    $Logfile:$
 #*
@@ -30,7 +30,7 @@ MODULE  = simpress
 .INCLUDE : $(PRJ)$/settings.pmk
 .INCLUDE : settings.mk
 
-# this list matches the *.xml files to process
+# this list matches the *.xhp files to process
 HZIPFILES = \
     00000004.hzip \
     00000401.hzip \

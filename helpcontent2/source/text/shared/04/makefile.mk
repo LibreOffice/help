@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-18 10:56:33 $
+#*    last change       $Author: fpe $ $Date: 2004-08-18 11:52:05 $
 #*
-#*    $Revision: 1.1 $
+#*    $Revision: 1.2 $
 #*
 #*    $Logfile:$
 #*
@@ -30,7 +30,7 @@ MODULE  = shared
 .INCLUDE : $(PRJ)$/settings.pmk
 .INCLUDE : settings.mk
 
-# this list matches the *.xml files to process
+# this list matches the *.xhp files to process
 HZIPFILES = \
     01010000.hzip \
     01020000.hzip 

@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-18 10:57:05 $
+#*    last change       $Author: fpe $ $Date: 2004-08-18 11:52:06 $
 #*
-#*    $Revision: 1.1 $
+#*    $Revision: 1.2 $
 #*
 #*    $Logfile:$
 #*
@@ -30,7 +30,7 @@ MODULE  = shared
 .INCLUDE : $(PRJ)$/settings.pmk
 .INCLUDE : settings.mk
 
-# this list matches the *.xml files to process
+# this list matches the *.xhp files to process
 HZIPFILES = \
     02000000.hzip \
     02000002.hzip \
@@ -78,7 +78,15 @@ HZIPFILES = \
     11180500.hzip \
     11190000.hzip \
     30000000.hzip \
-    30100000.hzip 
+    30100000.hzip \
+    dabaadvprop.hzip \
+    dabaadvpropdat.hzip \
+    dabaadvpropgen.hzip \
+    dabaprop.hzip \
+    dabapropadd.hzip \
+    dabapropcon.hzip \
+    dabapropgen.hzip \
+    menuedit.hzip 
     
 # --- Targets ------------------------------------------------------
 

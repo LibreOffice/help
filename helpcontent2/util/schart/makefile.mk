@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-18 10:59:44 $
+#*    last change       $Author: fpe $ $Date: 2004-08-18 11:52:17 $
 #*
-#*    $Revision: 1.1 $
+#*    $Revision: 1.2 $
 #*
 #*    $Logfile:$
 #*
@@ -37,12 +37,12 @@ ZIP1LIST=$(LANGDIR)$/text$/schart$/* -x "*.dphh*" -x "*.hzip"
 LINKNAME=schart
 LINKADDEDFILES= \
    -add help$/LANGUAGE$/schart.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/schart.tree \
-   -add help$/LANGUAGE$/schart.jar  $(BIN)$/schart_xml_LANGUAGE.zip
+   -add help$/LANGUAGE$/schart.jar  $(BIN)$/schart_xhp_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/schart.tree \
-   $(BIN)$/schart_xml_LANGUAGE.zip
+   $(BIN)$/schart_xhp_LANGUAGE.zip
 
 
 LINKLINKFILES= \
