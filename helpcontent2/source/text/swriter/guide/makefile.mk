@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-27 10:03:58 $
+#*    last change       $Author: rt $ $Date: 2005-01-28 10:35:00 $
 #*
-#*    $Revision: 1.6 $
+#*    $Revision: 1.7 $
 #*
 #*    $Logfile:$
 #*
@@ -71,7 +71,6 @@ XHPFILES = \
    header_with_line.xhp \
    hidden_text.xhp \
    hyperlinks.xhp \
-   import_bulletlist.xhp \
    indices_delete.xhp \
    indices_edit.xhp \
    indices_enter.xhp \
