@@ -15,10 +15,15 @@
 	xmlns:index="http://sun.com/2000/XMLSearch"	
 	xmlns:text="http://openoffice.org/2000/text">
 
-<xsl:param name="Language" select="'de'"/>
+<xsl:param name="Language" select="'en-US'"/>
 
 <xsl:template match="helpdocument|body">
-	<xsl:apply-templates/>
+  <xsl:choose>
+    <xsl:when test="meta/topic[@indexer='exclude']"/>
+    <xsl:otherwise>
+      <xsl:apply-templates/>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <xsl:template match="title">
