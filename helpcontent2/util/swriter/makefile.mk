@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-27 10:06:08 $
+#*    last change       $Author: rt $ $Date: 2005-01-28 10:51:00 $
 #*
-#*    $Revision: 1.10 $
+#*    $Revision: 1.11 $
 #*
 #*    $Logfile:$
 #*
@@ -256,6 +256,7 @@ LINKLINKFILES= \
    text$/swriter$/02$/06140000.xhp \
    text$/swriter$/02$/08010000.xhp \
    text$/swriter$/02$/08080000.xhp \
+   text$/swriter$/02$/08090000.xhp \
    text$/swriter$/02$/10010000.xhp \
    text$/swriter$/02$/10020000.xhp \
    text$/swriter$/02$/10030000.xhp \
@@ -325,7 +326,6 @@ LINKLINKFILES= \
    text$/swriter$/guide$/header_with_line.xhp \
    text$/swriter$/guide$/hidden_text.xhp \
    text$/swriter$/guide$/hyperlinks.xhp \
-   text$/swriter$/guide$/import_bulletlist.xhp \
    text$/swriter$/guide$/indices_delete.xhp \
    text$/swriter$/guide$/indices_edit.xhp \
    text$/swriter$/guide$/indices_enter.xhp \
@@ -433,8 +433,6 @@ LINKLINKFILES= \
    text$/swriter$/main0214.xhp \
    text$/swriter$/main0215.xhp \
    text$/swriter$/main0216.xhp \
-   text$/swriter$/main0218.xhp \
-   text$/swriter$/main0219.xhp \
    text$/swriter$/main0220.xhp \
    text$/swriter$/main0503.xhp \
    text$/shared$/00$/00000001.xhp \
@@ -555,7 +553,6 @@ LINKLINKFILES= \
    text$/shared$/01$/02250000.xhp \
    text$/shared$/01$/03010000.xhp \
    text$/shared$/01$/03020000.xhp \
-   text$/shared$/01$/03030000.xhp \
    text$/shared$/01$/03040000.xhp \
    text$/shared$/01$/03050000.xhp \
    text$/shared$/01$/03060000.xhp \
@@ -691,7 +688,6 @@ LINKLINKFILES= \
    text$/shared$/01$/05340500.xhp \
    text$/shared$/01$/05340600.xhp \
    text$/shared$/01$/05350000.xhp \
-   text$/shared$/01$/05350100.xhp \
    text$/shared$/01$/05350200.xhp \
    text$/shared$/01$/05350300.xhp \
    text$/shared$/01$/05350400.xhp \
@@ -883,7 +879,6 @@ LINKLINKFILES= \
    text$/shared$/02$/14060000.xhp \
    text$/shared$/02$/14070000.xhp \
    text$/shared$/02$/18010000.xhp \
-   text$/shared$/02$/18020000.xhp \
    text$/shared$/02$/18030000.xhp \
    text$/shared$/02$/19090000.xhp \
    text$/shared$/02$/20020000.xhp \
@@ -1095,6 +1090,7 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/menuinsert.xhp \
    text$/shared$/explorer$/database$/menutools.xhp \
    text$/shared$/explorer$/database$/menuview.xhp \
+   text$/shared$/explorer$/database$/password.xhp \
    text$/shared$/explorer$/database$/querywizard00.xhp \
    text$/shared$/explorer$/database$/querywizard01.xhp \
    text$/shared$/explorer$/database$/querywizard02.xhp \
