@@ -15,6 +15,8 @@
   Changes Log
     May 24 2004 Created
     Aug 24 2004 Fixed for help2 CWS
+    Aug 27 2004 Added css link, fixed missing embed-mode for variable
+                Removed width/height for images
 ***********************************************************************//-->
 
 <!--***********************************************************************
@@ -175,10 +177,11 @@
 
 <!-- Create the document skeleton -->
 <xsl:template match="/">
+	<xsl:variable name="csslink" select="concat($urlpre,'/',$urlpost)"/>
 	<html>
 		<head>
 			<title><xsl:value-of select="$title"/></title>
-			<link href="{$css}" rel="Stylesheet" type="text/css" /> <!-- stylesheet link -->
+			<link href="{$csslink}" rel="Stylesheet" type="text/css" /> <!-- stylesheet link -->
   		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 		</head>
 		<body lang="{$lang}">
@@ -345,6 +348,10 @@
 		<xsl:value-of select="./alt"/>
 	</xsl:variable>
 	
+	<xsl:variable name="width" select="''"/>
+	<xsl:variable name="height" select="''"/>
+	
+	<!--
 	<xsl:variable name="width">
 		<xsl:choose>
 			<xsl:when test="contains(@width,'cm')">
@@ -355,7 +362,9 @@
 			</xsl:when>
 		</xsl:choose>
 	</xsl:variable>
+	//-->
 	
+	<!--
 	<xsl:variable name="height">
 	<xsl:choose>
 		<xsl:when test="contains(@height,'cm')">
@@ -366,6 +375,7 @@
 			</xsl:when>
 		</xsl:choose>
 	</xsl:variable>
+	//-->
 	
 	<img src="{$src}" alt="{$alt}" title="{$alt}">
 		<xsl:if test="not($width='')"><xsl:attribute name="width"><xsl:value-of select="$width"/></xsl:attribute></xsl:if>
@@ -714,7 +724,7 @@
 			</xsl:otherwise>
 		
 		</xsl:choose>
-		
+
 
 </xsl:template>
 
@@ -798,6 +808,12 @@
 
 <!-- VARIABLE -->
 <xsl:template match="variable">
+		<a name="{@id}"></a>
+		<xsl:apply-templates />
+</xsl:template>
+
+<!-- VARIABLE -->
+<xsl:template match="variable" mode="embedded">
 		<a name="{@id}"></a>
 		<xsl:apply-templates />
 </xsl:template>
