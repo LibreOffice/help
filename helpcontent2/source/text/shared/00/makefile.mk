@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-19 19:54:13 $
+#*    last change       $Author: rt $ $Date: 2004-11-26 20:27:26 $
 #*
-#*    $Revision: 1.3 $
+#*    $Revision: 1.4 $
 #*
 #*    $Logfile:$
 #*
@@ -15,12 +15,12 @@
 
 # edit to match directory level 
 PRJ		= ..$/..$/..$/..
-# same for all makefiles in "help2"
-PRJNAME = help2
+# same for all makefiles in "helpcontent2"
+PRJNAME = helpcontent2
 # edit to match the current package
 PACKAGE = text/shared/00
 # uniqe name (module wide);
-# using a modified forme of package should do here
+# using a modified form of package should do here
 TARGET  = text_shared_00
 # edit to match the current module
 MODULE  = shared
@@ -32,48 +32,48 @@ MODULE  = shared
 
 # this list matches the *.xhp files to process
 HZIPFILES = \
-    00000001.hzip \
-    00000002.hzip \
-    00000003.hzip \
-    00000004.hzip \
-    00000005.hzip \
-    00000007.hzip \
-    00000010.hzip \
-    00000011.hzip \
-    00000020.hzip \
-    00000021.hzip \
-    00000040.hzip \
-    00000099.hzip \
-    00000202.hzip \
-    00000203.hzip \
-    00000204.hzip \
-    00000205.hzip \
-    00000206.hzip \
-    00000207.hzip \
-    00000208.hzip \
-    00000210.hzip \
-    00000212.hzip \
-    00000213.hzip \
-    00000214.hzip \
-    00000215.hzip \
-    00000401.hzip \
-    00000402.hzip \
-    00000403.hzip \
-    00000404.hzip \
-    00000406.hzip \
-    00000407.hzip \
-    00000408.hzip \
-    00000409.hzip \
-    00000450.hzip \
-    00040500.hzip \
-    00040501.hzip \
-    00040502.hzip \
-    00040503.hzip \
-    01000000.hzip \
-    01010000.hzip \
-    01020000.hzip \
-    01050000.hzip \
-    icon_alt.hzip 
+   00000001.hzip \
+   00000002.hzip \
+   00000003.hzip \
+   00000004.hzip \
+   00000005.hzip \
+   00000007.hzip \
+   00000010.hzip \
+   00000011.hzip \
+   00000020.hzip \
+   00000021.hzip \
+   00000040.hzip \
+   00000099.hzip \
+   00000202.hzip \
+   00000203.hzip \
+   00000204.hzip \
+   00000205.hzip \
+   00000206.hzip \
+   00000207.hzip \
+   00000208.hzip \
+   00000210.hzip \
+   00000212.hzip \
+   00000213.hzip \
+   00000214.hzip \
+   00000215.hzip \
+   00000401.hzip \
+   00000402.hzip \
+   00000403.hzip \
+   00000404.hzip \
+   00000406.hzip \
+   00000407.hzip \
+   00000408.hzip \
+   00000409.hzip \
+   00000450.hzip \
+   00040500.hzip \
+   00040501.hzip \
+   00040502.hzip \
+   00040503.hzip \
+   01000000.hzip \
+   01010000.hzip \
+   01020000.hzip \
+   01050000.hzip \
+   icon_alt.hzip 
     
 # --- Targets ------------------------------------------------------
 
