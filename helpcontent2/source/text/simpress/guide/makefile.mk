@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:57:04 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 10:00:58 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,41 +31,41 @@ MODULE  = simpress
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   3d_create.hzip \
-   animated_gif_create.hzip \
-   animated_gif_save.hzip \
-   animated_objects.hzip \
-   animated_slidechange.hzip \
-   arrange_slides.hzip \
-   background.hzip \
-   change_scale.hzip \
-   footer.hzip \
-   html_export.hzip \
-   html_import.hzip \
-   individual.hzip \
-   keyboard.hzip \
-   layer_move.hzip \
-   layer_new.hzip \
-   layer_tipps.hzip \
-   layers.hzip \
-   line_arrow_styles.hzip \
-   line_draw.hzip \
-   line_edit.hzip \
-   livemode.hzip \
-   main.hzip \
-   masterpage.hzip \
-   move_object.hzip \
-   orgchart.hzip \
-   page_copy.hzip \
-   palette_files.hzip \
-   print_tofit.hzip \
-   printing.hzip \
-   rehearse_timings.hzip \
-   select_object.hzip \
-   table_insert.hzip \
-   text2curve.hzip \
-   vectorize.hzip 
+XHPFILES = \
+   3d_create.xhp \
+   animated_gif_create.xhp \
+   animated_gif_save.xhp \
+   animated_objects.xhp \
+   animated_slidechange.xhp \
+   arrange_slides.xhp \
+   background.xhp \
+   change_scale.xhp \
+   footer.xhp \
+   html_export.xhp \
+   html_import.xhp \
+   individual.xhp \
+   keyboard.xhp \
+   layer_move.xhp \
+   layer_new.xhp \
+   layer_tipps.xhp \
+   layers.xhp \
+   line_arrow_styles.xhp \
+   line_draw.xhp \
+   line_edit.xhp \
+   livemode.xhp \
+   main.xhp \
+   masterpage.xhp \
+   move_object.xhp \
+   orgchart.xhp \
+   page_copy.xhp \
+   palette_files.xhp \
+   print_tofit.xhp \
+   printing.xhp \
+   rehearse_timings.xhp \
+   select_object.xhp \
+   table_insert.xhp \
+   text2curve.xhp \
+   vectorize.xhp 
     
 # --- Targets ------------------------------------------------------
 
