@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-28 10:44:20 $
+#*    last change       $Author: hr $ $Date: 2005-02-11 15:15:43 $
 #*
-#*    $Revision: 1.12 $
+#*    $Revision: 1.13 $
 #*
 #*    $Logfile:$
 #*
@@ -19,32 +19,34 @@ PRJ		= ..$/..
 PRJNAME = helpcontent2
 # uniqe name (module wide);
 # using a modified form of package should do here
-TARGET  = util
+TARGET  = util_scalc
 
 # --- Settings -----------------------------------------------------
 
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
+.IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_scalc
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
-ZIP1LIST=$(LANGDIR)$/text$/scalc$/* -x "*.dphh*" -x "*.hzip"
+ZIP1LIST=$(LANGDIR)$/text$/scalc$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
+.ENDIF			# "$(SOLAR_JAVA)"!=""
 
 
 LINKNAME=scalc
 LINKADDEDFILES= \
    -add scalc.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.cfg \
-   -add scalc.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.tree \
+   -add scalc.tree $(MISC)$/LANGUAGE$/scalc.tree \
    -add scalc.jar  $(BIN)$/xhp_scalc_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.cfg \
-   $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.tree \
+   $(MISC)$/LANGUAGE$/scalc.tree \
    $(BIN)$/xhp_scalc_LANGUAGE.zip
 
 
