@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-28 10:51:00 $
+#*    last change       $Author: hr $ $Date: 2005-02-11 15:17:17 $
 #*
-#*    $Revision: 1.11 $
+#*    $Revision: 1.12 $
 #*
 #*    $Logfile:$
 #*
@@ -19,32 +19,34 @@ PRJ		= ..$/..
 PRJNAME = helpcontent2
 # uniqe name (module wide);
 # using a modified form of package should do here
-TARGET  = util
+TARGET  = util_swriter
 
 # --- Settings -----------------------------------------------------
 
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
+.IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_swriter
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
-ZIP1LIST=$(LANGDIR)$/text$/swriter$/* -x "*.dphh*" -x "*.hzip"
+ZIP1LIST=$(LANGDIR)$/text$/swriter$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
+.ENDIF			# "$(SOLAR_JAVA)"!=""
 
 
 LINKNAME=swriter
 LINKADDEDFILES= \
    -add swriter.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.cfg \
-   -add swriter.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.tree \
+   -add swriter.tree $(MISC)$/LANGUAGE$/swriter.tree \
    -add swriter.jar  $(BIN)$/xhp_swriter_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.cfg \
-   $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.tree \
+   $(MISC)$/LANGUAGE$/swriter.tree \
    $(BIN)$/xhp_swriter_LANGUAGE.zip
 
 
