@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-28 10:49:26 $
+#*    last change       $Author: hr $ $Date: 2005-02-11 15:17:02 $
 #*
-#*    $Revision: 1.11 $
+#*    $Revision: 1.12 $
 #*
 #*    $Logfile:$
 #*
@@ -19,32 +19,34 @@ PRJ		= ..$/..
 PRJNAME = helpcontent2
 # uniqe name (module wide);
 # using a modified form of package should do here
-TARGET  = util
+TARGET  = util_smath
 
 # --- Settings -----------------------------------------------------
 
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
+.IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_smath
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
-ZIP1LIST=$(LANGDIR)$/text$/smath$/* -x "*.dphh*" -x "*.hzip"
+ZIP1LIST=$(LANGDIR)$/text$/smath$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
+.ENDIF			# "$(SOLAR_JAVA)"!=""
 
 
 LINKNAME=smath
 LINKADDEDFILES= \
    -add smath.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/smath.cfg \
-   -add smath.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/smath.tree \
+   -add smath.tree $(MISC)$/LANGUAGE$/smath.tree \
    -add smath.jar  $(BIN)$/xhp_smath_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/smath.cfg \
-   $(PRJ)$/source$/auxiliary$/LANGUAGE$/smath.tree \
+   $(MISC)$/LANGUAGE$/smath.tree \
    $(BIN)$/xhp_smath_LANGUAGE.zip
 
 
