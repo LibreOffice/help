@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:58:37 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 10:02:24 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,15 +31,15 @@ MODULE  = smath
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   align.hzip \
-   attributes.hzip \
-   brackets.hzip \
-   comment.hzip \
-   keyboard.hzip \
-   main.hzip \
-   newline.hzip \
-   parentheses.hzip 
+XHPFILES = \
+   align.xhp \
+   attributes.xhp \
+   brackets.xhp \
+   comment.xhp \
+   keyboard.xhp \
+   main.xhp \
+   newline.xhp \
+   parentheses.xhp 
     
 # --- Targets ------------------------------------------------------
 
