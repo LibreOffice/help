@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-28 10:42:54 $
+#*    last change       $Author: hr $ $Date: 2005-02-11 15:15:30 $
 #*
-#*    $Revision: 1.12 $
+#*    $Revision: 1.13 $
 #*
 #*    $Logfile:$
 #*
@@ -19,32 +19,34 @@ PRJ		= ..$/..
 PRJNAME = helpcontent2
 # uniqe name (module wide);
 # using a modified form of package should do here
-TARGET  = util
+TARGET  = util_sbasic
 
 # --- Settings -----------------------------------------------------
 
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
+.IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_sbasic
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
-ZIP1LIST=$(LANGDIR)$/text$/sbasic$/* -x "*.dphh*" -x "*.hzip"
+ZIP1LIST=$(LANGDIR)$/text$/sbasic$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
+.ENDIF			# "$(SOLAR_JAVA)"!=""
 
 
 LINKNAME=sbasic
 LINKADDEDFILES= \
    -add sbasic.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/sbasic.cfg \
-   -add sbasic.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/sbasic.tree \
+   -add sbasic.tree $(MISC)$/LANGUAGE$/sbasic.tree \
    -add sbasic.jar  $(BIN)$/xhp_sbasic_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/sbasic.cfg \
-   $(PRJ)$/source$/auxiliary$/LANGUAGE$/sbasic.tree \
+   $(MISC)$/LANGUAGE$/sbasic.tree \
    $(BIN)$/xhp_sbasic_LANGUAGE.zip
 
 
