@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2004-08-24 11:11:28 $
+#*    last change       $Author: fpe $ $Date: 2004-08-26 09:49:18 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -306,7 +306,6 @@ LINKLINKFILES= \
    text$/sbasic$/shared$/03120314.hzip \
    text$/sbasic$/shared$/03120315.hzip \
    text$/sbasic$/shared$/03120400.hzip \
-   text$/sbasic$/shared$/03120401.hzip \
    text$/sbasic$/shared$/03120402.hzip \
    text$/sbasic$/shared$/03120403.hzip \
    text$/sbasic$/shared$/03130000.hzip \
@@ -694,7 +693,6 @@ LINKLINKFILES= \
    text$/shared$/02$/02140000.hzip \
    text$/shared$/02$/02160000.hzip \
    text$/shared$/02$/02170000.hzip \
-   text$/shared$/02$/02210000.hzip \
    text$/shared$/02$/03110000.hzip \
    text$/shared$/02$/03120000.hzip \
    text$/shared$/02$/03130000.hzip \
