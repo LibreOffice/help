@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 
-		 =========================
-                  DEBUG VERSION ONLY
-		=========================
- 
-//-->
 
 <!--***********************************************************************
   This is the main transformation style sheet for transforming.
@@ -24,6 +18,8 @@
     Dec 08 2004 #i38483#, fixed wrong handling of web links
                 #i37377#, fixed missing usage of Database parameter for switching
     Jan 04 2005 #i38905#, fixed buggy branding replacement template
+    Mar 17 2005 #i43972#, added language info to image URL, evaluate Language parameter
+                evaluate new localize attribute in images
 ***********************************************************************//-->
 
 <!--***********************************************************************
@@ -115,7 +111,7 @@
 <xsl:variable name="topic_id" select="/helpdocument/meta/topic/@id"/>
 <xsl:variable name="topic_status" select="/helpdocument/meta/topic/@status"/>
 <xsl:variable name="title" select="/helpdocument/meta/topic/title"/>
-<xsl:variable name="lang" select="/helpdocument/meta/topic/title/@xml-lang"/>
+<xsl:variable name="doclang" select="/helpdocument/meta/topic/title/@xml-lang"/>
 
 <!-- Module and the corresponding switching values-->
 <xsl:param name="Database" select="'swriter'"/>
@@ -150,13 +146,17 @@
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:param>
+<xsl:param name="Language" select="'en-US'"/>
+<xsl:variable name="lang" select="$Language"/>
+
+
 
 <!-- parts of help and image urls -->
 
  
 <xsl:variable name="help_url_prefix" select="'vnd.sun.star.help://'"/>
 <xsl:variable name="img_url_prefix" select="concat('vnd.sun.star.pkg://',$imgrepos,'/')"/>
-<xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no',$am,'DbPAR=',$Database)"/>
+<xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no')"/>
 <xsl:variable name="urlpre" select="$help_url_prefix" /> 
 <xsl:variable name="linkprefix" select="$urlpre"/>
 <xsl:variable name="linkpostfix" select="$urlpost"/>
@@ -193,16 +193,11 @@
   		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 		</head>
 		<body lang="{$lang}">
-			<!-- DEBUG ME START	
+			<!-- DEBUG ME START
 			<xsl:variable name="srcname"><xsl:value-of select="concat('file:///k:/WORKBENCH/helpcontent2/source',$filename)"/></xsl:variable>
 			<div class="debug">
 				<p class="{/helpdocument/meta/topic/@status}">
-				<xsl:if test="/helpdocument/meta/topic[@indexer='exclude']">NOT INDEXED - </xsl:if>
 				<a href="{$srcname}"><xsl:value-of select="$filename"/></a></p>
-				<p><xsl:value-of select="count(//embed)"/> embedded sections<br/>
-				<xsl:value-of select="count(//embedvar)"/> embedded variables<br/>
-				<xsl:value-of select="count(//image)"/> images<br/>
-				<xsl:value-of select="count(//link)"/> links</p>
 			</div>
 			DEBUG ME END	
 			//-->
@@ -812,7 +807,31 @@
 
 <!-- Insert an image -->
 <xsl:template name="insertimage">
-	<xsl:variable name="src"><xsl:value-of select="concat($img_url_prefix,@src)"/></xsl:variable>
+	
+	<xsl:variable name="fpath">
+		<xsl:call-template name="getfpath">
+			<xsl:with-param name="s"><xsl:value-of select="@src"/></xsl:with-param>
+		</xsl:call-template>
+	</xsl:variable>
+	
+	<xsl:variable name="fname">
+		<xsl:call-template name="getfname">
+			<xsl:with-param name="s"><xsl:value-of select="@src"/></xsl:with-param>
+		</xsl:call-template>
+	</xsl:variable>
+	
+	<xsl:variable name="src">
+		<xsl:choose>
+			<xsl:when test="(@localize='true') and not($lang='en-US')">
+				<xsl:value-of select="concat($img_url_prefix,$fpath,$lang,'/',$fname)"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="concat($img_url_prefix,$fpath,$fname)"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	
+	<!--<xsl:variable name="src"><xsl:value-of select="concat($img_url_prefix,@src)"/></xsl:variable>-->
 	<xsl:variable name="alt"><xsl:value-of select="./alt"/></xsl:variable>
 	<xsl:variable name="width" select="''"/> <!-- Images don't all have the correct size -->
 	<xsl:variable name="height" select="''"/><!-- Image don't all have the correct size -->
@@ -905,6 +924,36 @@
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:apply-templates />
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:template>
+
+<xsl:template name="getfpath">
+	<xsl:param name="s"/>
+	<xsl:param name="p"/>
+	<xsl:choose>
+		<xsl:when test="contains($s,'/')">
+			<xsl:call-template name="getfpath">
+				<xsl:with-param name="p"><xsl:value-of select="concat($p,substring-before($s,'/'),'/')"/></xsl:with-param>
+				<xsl:with-param name="s"><xsl:value-of select="substring-after($s,'/')"/></xsl:with-param>
+			</xsl:call-template>
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:value-of select="$p"/>
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:template>
+
+<xsl:template name="getfname">
+	<xsl:param name="s"/>
+	<xsl:choose>
+		<xsl:when test="contains($s,'/')">
+			<xsl:call-template name="getfname">
+				<xsl:with-param name="s"><xsl:value-of select="substring-after($s,'/')"/></xsl:with-param>
+			</xsl:call-template>
+		</xsl:when>
+		<xsl:otherwise>
+			<xsl:value-of select="$s"/>
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
