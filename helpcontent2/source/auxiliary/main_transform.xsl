@@ -128,7 +128,7 @@
 <xsl:param name="productversion" select="''"/>
 <!-- this is were the images are -->
 <xsl:param name="imgrepos" select="''"/>
-
+<xsl:param name="Id" />
 <!-- (lame) distinction between OS and Commercial -->
 <xsl:param name="distrib">
 	<xsl:choose>
@@ -182,9 +182,9 @@
   		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 		</head>
 		<body lang="{$lang}">
-		<!-- DEBUG
+<!-- DEBUG
 			<xsl:value-of select="$filename"/>
-		//--> 
+//-->
 			<xsl:apply-templates select="/helpdocument/body"/>
 		</body>
 	</html>
@@ -427,19 +427,35 @@
 		
 		<xsl:otherwise>
 			<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
-			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,@href,$linkpostfix)"/></xsl:variable>
-			<a href="{$href}"><xsl:apply-templates /></a>
+			<xsl:choose>
+				<xsl:when test="contains(@href,'#')">
+					<xsl:variable name="anchor"><xsl:value-of select="concat('#',substring-after(@href,'#'))"/></xsl:variable>
+					<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,substring-before(@href,'#'),$linkpostfix,$anchor)"/></xsl:variable>
+					<a href="{$href}"><xsl:apply-templates /></a>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,@href,$linkpostfix)"/></xsl:variable>
+					<a href="{$href}"><xsl:apply-templates /></a>
+				</xsl:otherwise>
+			</xsl:choose>
 		</xsl:otherwise>
 	
 	</xsl:choose>
 </xsl:template>
 
 <xsl:template match="link" mode="embedded">
-	<xsl:variable name="href">
 		<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
-		<xsl:value-of select="concat($linkprefix,$archive,@href,$linkpostfix)"/>
-	</xsl:variable>
-	<a href="{$href}"><xsl:apply-templates /></a>
+		<xsl:choose>
+			<xsl:when test="contains(@href,'#')">
+				<xsl:variable name="anchor"><xsl:value-of select="concat('#',substring-after(@href,'#'))"/></xsl:variable>
+				<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,substring-before(@href,'#'),$linkpostfix,$anchor)"/></xsl:variable>
+				<a href="{$href}"><xsl:apply-templates /></a>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,@href,$linkpostfix)"/></xsl:variable>
+				<a href="{$href}"><xsl:apply-templates /></a>
+			</xsl:otherwise>
+		</xsl:choose>
 </xsl:template>
 
 <!-- LIST -->
@@ -775,6 +791,10 @@
 
 <!-- TOPIC -->
 <xsl:template match="topic"/>
+
+<xsl:template match="help-id-missing">
+	<xsl:value-of select="$Id"/>
+</xsl:template>
 
 <!-- VARIABLE -->
 <xsl:template match="variable">
