@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-19 19:54:07 $
+#*    last change       $Author: rt $ $Date: 2004-11-26 15:48:00 $
 #*
-#*    $Revision: 1.3 $
+#*    $Revision: 1.4 $
 #*
 #*    $Logfile:$
 #*
@@ -15,12 +15,12 @@
 
 # edit to match directory level 
 PRJ		= ..$/..$/..$/..$/..
-# same for all makefiles in "help2"
-PRJNAME = help2
+# same for all makefiles in "helpcontent2"
+PRJNAME = helpcontent2
 # edit to match the current package
 PACKAGE = text/sbasic/shared/02
 # uniqe name (module wide);
-# using a modified forme of package should do here
+# using a modified form of package should do here
 TARGET  = text_sbasic_shared_02
 # edit to match the current module
 MODULE  = sbasic
@@ -32,24 +32,24 @@ MODULE  = sbasic
 
 # this list matches the *.xhp files to process
 HZIPFILES = \
-    11010000.hzip \
-    11020000.hzip \
-    11030000.hzip \
-    11040000.hzip \
-    11050000.hzip \
-    11060000.hzip \
-    11070000.hzip \
-    11080000.hzip \
-    11090000.hzip \
-    11090100.hzip \
-    11100000.hzip \
-    11110000.hzip \
-    11120000.hzip \
-    11140000.hzip \
-    11150000.hzip \
-    11160000.hzip \
-    11170000.hzip \
-    20000000.hzip 
+   11010000.hzip \
+   11020000.hzip \
+   11030000.hzip \
+   11040000.hzip \
+   11050000.hzip \
+   11060000.hzip \
+   11070000.hzip \
+   11080000.hzip \
+   11090000.hzip \
+   11090100.hzip \
+   11100000.hzip \
+   11110000.hzip \
+   11120000.hzip \
+   11140000.hzip \
+   11150000.hzip \
+   11160000.hzip \
+   11170000.hzip \
+   20000000.hzip 
     
 # --- Targets ------------------------------------------------------
 
