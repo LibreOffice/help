@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-27 10:04:24 $
+#*    last change       $Author: rt $ $Date: 2005-01-28 10:42:54 $
 #*
-#*    $Revision: 1.11 $
+#*    $Revision: 1.12 $
 #*
 #*    $Logfile:$
 #*
@@ -451,7 +451,6 @@ LINKLINKFILES= \
    text$/shared$/01$/02250000.xhp \
    text$/shared$/01$/03010000.xhp \
    text$/shared$/01$/03020000.xhp \
-   text$/shared$/01$/03030000.xhp \
    text$/shared$/01$/03040000.xhp \
    text$/shared$/01$/03050000.xhp \
    text$/shared$/01$/03060000.xhp \
@@ -587,7 +586,6 @@ LINKLINKFILES= \
    text$/shared$/01$/05340500.xhp \
    text$/shared$/01$/05340600.xhp \
    text$/shared$/01$/05350000.xhp \
-   text$/shared$/01$/05350100.xhp \
    text$/shared$/01$/05350200.xhp \
    text$/shared$/01$/05350300.xhp \
    text$/shared$/01$/05350400.xhp \
@@ -779,7 +777,6 @@ LINKLINKFILES= \
    text$/shared$/02$/14060000.xhp \
    text$/shared$/02$/14070000.xhp \
    text$/shared$/02$/18010000.xhp \
-   text$/shared$/02$/18020000.xhp \
    text$/shared$/02$/18030000.xhp \
    text$/shared$/02$/19090000.xhp \
    text$/shared$/02$/20020000.xhp \
@@ -991,6 +988,7 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/menuinsert.xhp \
    text$/shared$/explorer$/database$/menutools.xhp \
    text$/shared$/explorer$/database$/menuview.xhp \
+   text$/shared$/explorer$/database$/password.xhp \
    text$/shared$/explorer$/database$/querywizard00.xhp \
    text$/shared$/explorer$/database$/querywizard01.xhp \
    text$/shared$/explorer$/database$/querywizard02.xhp \
