@@ -17,48 +17,89 @@
 
 <xsl:param name="Language" select="'de'"/>
 
-<xsl:template match="office:document|office:body">
+<xsl:template match="helpdocument|body">
 	<xsl:apply-templates/>
 </xsl:template>
 
-<xsl:template match="headingheading">
+<xsl:template match="title">
   <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
       <xsl:apply-templates/>
   </index:element>
 </xsl:template>
 
-<xsl:template match="text:p">
+<xsl:template match="table">
   <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
       <xsl:apply-templates/>
   </index:element>
 </xsl:template>
 
-<xsl:template match="text:span">
+<xsl:template match="tablecell">
   <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
       <xsl:apply-templates/>
   </index:element>
 </xsl:template>
 
-<xsl:template match="help:to-be-embedded">
+<xsl:template match="tablerow">
   <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
       <xsl:apply-templates/>
   </index:element>
 </xsl:template>
 
-
-<xsl:template match="help:key-word">
+<xsl:template match="list">
   <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
       <xsl:apply-templates/>
   </index:element>
 </xsl:template>
 
-<xsl:template match="help:link">
+<xsl:template match="listitem">
   <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
       <xsl:apply-templates/>
   </index:element>
 </xsl:template>
 
-<xsl:template match="help:help-text[@value='visible']">
+<xsl:template match="item">
+  <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
+      <xsl:apply-templates/>
+  </index:element>
+</xsl:template>
+
+<xsl:template match="emph">
+  <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
+      <xsl:apply-templates/>
+  </index:element>
+</xsl:template>
+
+<xsl:template match="paragraph">
+  <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
+      <xsl:apply-templates/>
+  </index:element>
+</xsl:template>
+
+<xsl:template match="section">
+  <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
+      <xsl:apply-templates/>
+  </index:element>
+</xsl:template>
+
+<xsl:template match="bookmark">
+  <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
+      <xsl:apply-templates/>
+  </index:element>
+</xsl:template>
+
+<xsl:template match="bookmark_value">
+  <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
+      <xsl:apply-templates/>
+  </index:element>
+</xsl:template>
+
+<xsl:template match="link">
+  <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
+      <xsl:apply-templates/>
+  </index:element>
+</xsl:template>
+
+<xsl:template match="ahelp[@visibility='visible']">
   <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
       <xsl:apply-templates/>
   </index:element>
@@ -69,7 +110,6 @@
     <xsl:value-of select="."/>
   </index:text>
 </xsl:template>
-
 
 <xsl:template match="*"/>
 	
