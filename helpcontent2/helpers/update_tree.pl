@@ -77,7 +77,7 @@ sub do_english {
     print "Processing en-US\n";
     undef %helpsection; undef %node; undef %topic;
     &readtreestrings;
-  &gettreefiles;
+    &gettreefiles;
     &processtreefiles('en-US');	
 }
 
@@ -210,7 +210,7 @@ sub processtreefiles {
                 } else { # localized comes from the localize sdf
                     if (defined($title{$id})) {
                         print ".";
-                        $l = "<topic id=\"$module/$id\">$cnt</topic>\n";
+                        $l = "<topic id=\"$module/$id\">$title{$id}</topic>\n";
                     } else {
                         print "!";
                     }
