@@ -37,8 +37,8 @@
  *  License at http://www.openoffice.org/license.html.
  *
  *  Software provided under this License is provided on an "AS IS" basis,
- *  WITHOUT WARRUNTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
- *  WITHOUT LIMITATION, WARRUNTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+ *  WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+ *  WITHOUT LIMITATION, WARRANTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
  *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
  *  See the License for the specific provisions governing your rights and
  *  obligations concerning the Software.
@@ -62,7 +62,7 @@
 </topic>
 <history>
 <created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-<lastedited date="2004-10-18T16:19:52">UFI: brushed up this doc due to #i29327#
+<lastedited date="2005-02-21T14:12:03">UFI: brushed up this doc due to #i29327#
 dedr: reviewed
 UFI: added HYPERLINK function #i27972#; dedr. reviewed</lastedited>
 </history>
@@ -82,7 +82,7 @@ UFI: added HYPERLINK function #i27972#; dedr. reviewed</lastedited>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/HID_FUNC_ADRESSE" id="bm_id3147546" localize="false"/>
 <paragraph role="heading" id="hd_id3146968" xml-lang="en-US" level="2" l10n="U" oldref="3">ADDRESS</paragraph>
-<paragraph role="paragraph" id="par_id3155762" xml-lang="en-US" l10n="U" oldref="4"><ahelp hid="HID_FUNC_ADRESSE">Returns a cell address (reference) as text, according to the specified row and column numbers.</ahelp> Optionally, you can determine whether the address is interpreted as an absolute address (for example, $A$1) or as a relative address (as A1) or in a mixed form (A$1 or $A1). You can also specify the name of the sheet.</paragraph>
+<paragraph role="paragraph" id="par_id3155762" xml-lang="en-US" l10n="CHG" oldref="4"><ahelp hid="HID_FUNC_ADRESSE">Returns a cell address (reference) as text, according to the specified row and column numbers.</ahelp> You can determine whether the address is interpreted as an absolute address (for example, $A$1) or as a relative address (as A1) or in a mixed form (A$1 or $A1). You can also specify the name of the sheet.</paragraph>
 <paragraph role="heading" id="hd_id3151196" xml-lang="en-US" level="3" l10n="U" oldref="5">Syntax</paragraph>
 <paragraph role="code" id="par_id3154707" xml-lang="en-US" l10n="U" oldref="6">ADDRESS(row; column; abs;sheet)</paragraph>
 <paragraph role="paragraph" id="par_id3147505" xml-lang="en-US" l10n="U" oldref="7">
@@ -91,7 +91,7 @@ UFI: added HYPERLINK function #i27972#; dedr. reviewed</lastedited>
 <emph>column</emph> represents the column number for the cell reference (the number, not the letter)</paragraph>
 <paragraph role="paragraph" id="par_id3153074" xml-lang="en-US" l10n="U" oldref="9">
 <emph>abs</emph> determines the type of reference:</paragraph>
-<paragraph role="paragraph" id="par_id3153298" xml-lang="en-US" l10n="U" oldref="10">1 or empty: absolute ($A$1)</paragraph>
+<paragraph role="paragraph" id="par_id3153298" xml-lang="en-US" l10n="CHG" oldref="10">1: absolute ($A$1)</paragraph>
 <paragraph role="paragraph" id="par_id3150431" xml-lang="en-US" l10n="U" oldref="11">2: row reference type is absolute; column reference is relative (A$1)</paragraph>
 <paragraph role="paragraph" id="par_id3146096" xml-lang="en-US" l10n="U" oldref="12">3: row (relative); column (absolute) ($A1)</paragraph>
 <paragraph role="paragraph" id="par_id3153334" xml-lang="en-US" l10n="U" oldref="13">4: relative (A1)</paragraph>
@@ -206,6 +206,9 @@ UFI: added HYPERLINK function #i27972#; dedr. reviewed</lastedited>
 <emph>column</emph> (optional) represents the column number of the reference range, for which to return a value.</paragraph>
 <paragraph role="paragraph" id="par_id3155514" xml-lang="en-US" l10n="U" oldref="54">
 <emph>range</emph> (optional) represents the index of the subrange if referring to a multiple range.</paragraph>
+<paragraph role="paragraph" id="par_idN10A2E" xml-lang="en-US" l10n="NEW">
+<embedvar href="text/scalc/00/00000004.xhp#optional"/>
+</paragraph>
 <paragraph role="heading" id="hd_id3145264" xml-lang="en-US" level="3" l10n="U" oldref="55">Example</paragraph>
 <paragraph role="paragraph" id="par_id3159112" xml-lang="en-US" l10n="U" oldref="56">=INDEX(Prices;4;1) returns the value from row 4 and column 1 of the database range defined in <emph>Data - Define</emph> as <emph>Prices</emph>.</paragraph>
 <paragraph role="paragraph" id="par_id3150691" xml-lang="en-US" l10n="U" oldref="57">=INDEX(SumX;4;1) returns the value from the range <emph>SumX</emph> in row 4 and column 1 as defined in <emph>Insert - Names - Define</emph>.</paragraph>
@@ -351,6 +354,9 @@ UFI: added HYPERLINK function #i27972#; dedr. reviewed</lastedited>
 <emph>Height</emph> is the optional vertical height for an area that starts at the new reference position.</paragraph>
 <paragraph role="paragraph" id="par_id3147278" xml-lang="en-US" l10n="U" oldref="119">
 <emph>Width</emph> is the optional horizontal width for an area that starts at the new reference position.</paragraph>
+<paragraph role="paragraph" id="par_idN1104B" xml-lang="en-US" l10n="NEW">
+<embedvar href="text/scalc/00/00000004.xhp#optional"/>
+</paragraph>
 <paragraph role="heading" id="hd_id3155586" xml-lang="en-US" level="3" l10n="U" oldref="120">Example</paragraph>
 <paragraph role="paragraph" id="par_id3149744" xml-lang="en-US" l10n="CHG" oldref="121">=OFFSET(A1; 2; 2) returns the value in cell C3 (A1 moved by two rows and two columns down). If C3 contains the value 100 this function returns the value 100.</paragraph>
 <paragraph role="paragraph" id="par_id3153739" xml-lang="en-US" l10n="U" oldref="122">=SUM(OFFSET(A1; 2; 2; 5; 6)) determines the total of the area that starts in cell C3 and has a height of 5 rows and a width of 6 columns (area=C3:H7).</paragraph>
@@ -387,6 +393,9 @@ UFI: added HYPERLINK function #i27972#; dedr. reviewed</lastedited>
 <emph>Time</emph> is an optional time range in seconds. If this parameter is missing the style will not be changed after a certain amount of time has passed.</paragraph>
 <paragraph role="paragraph" id="par_id3149520" xml-lang="en-US" l10n="U" oldref="139">
 <emph>Style2</emph> is the optional name of a cell style assigned to the cell after a certain amount of time has passed. If this parameter is missing "Standard" is assumed.</paragraph>
+<paragraph role="paragraph" id="par_idN111CA" xml-lang="en-US" l10n="NEW">
+<embedvar href="text/scalc/00/00000004.xhp#optional"/>
+</paragraph>
 <paragraph role="heading" id="hd_id3159254" xml-lang="en-US" level="3" l10n="U" oldref="140">Example</paragraph>
 <paragraph role="paragraph" id="par_id3151374" xml-lang="en-US" l10n="U" oldref="141">=STYLE("Invisible";60;"Default") formats the cell in transparent format for 60 seconds after the document was recalculated or loaded, then the Default format is assigned. Both cell formats have to be defined beforehand.</paragraph>
 </section>
