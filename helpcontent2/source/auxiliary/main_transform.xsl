@@ -14,6 +14,7 @@
   =========================================================================
   Changes Log
     May 24 2004 Created
+    Aug 24 2004 Fixed for help2 CWS
 ***********************************************************************//-->
 
 <!--***********************************************************************
@@ -142,19 +143,21 @@
 
 <!-- parts of help and image urls -->
 
-<xsl:variable name="help_url_prefix" select="concat('vnd.sun.star.help://',$module,'/')"/>
+<xsl:variable name="help_url_prefix" select="'vnd.sun.star.help://'"/>
 <xsl:variable name="img_url_prefix" select="concat('vnd.sun.star.pkg://',$imgrepos,'/')"/>
 <xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no')"/>
 <xsl:variable name="urlpre" select="$help_url_prefix" /> 
 <xsl:variable name="linkprefix" select="$urlpre"/>
 <xsl:variable name="linkpostfix" select="$urlpost"/>
 
+
 <!-- DEBUG: 
-<xsl:variable name="help_url_prefix" select="'file:///handbuch/WORKBENCH/help2/source/'"/>
-<xsl:variable name="img_url_prefix" select="'file:///handbuch/WORKBENCH/help2images/'"/>
-<xsl:variable name="urlpre" select="$help_url_prefix" /> 
+<xsl:variable name="help_url_prefix" select="''"/>
+<xsl:variable name="img_url_prefix" select="''"/>
 <xsl:variable name="urlpost" select="''"/>
-<xsl:variable name="linkprefix" select="'http://localhost/cgi-bin/help.pl?fn='"/>
+<xsl:variable name="urlpre" select="$help_url_prefix" /> 
+<xsl:variable name="linkprefix" select="$urlpre"/>
+<xsl:variable name="linkpostfix" select="$urlpost"/>
 -->
 
 <xsl:variable name="css" select="'default.css'"/>
@@ -179,6 +182,7 @@
   		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 		</head>
 		<body lang="{$lang}">
+			<xsl:value-of select="$filename"/>
 			<xsl:apply-templates select="/helpdocument/body"/>
 		</body>
 	</html>
@@ -194,6 +198,7 @@
 
 <!-- BOOKMARK -->
 <xsl:template match="bookmark">
+	<a name="{@id}"></a>
 	<xsl:choose>
 		<xsl:when test="starts-with(@branch,'hid')">
 		</xsl:when>
@@ -284,15 +289,19 @@
 <xsl:template match="embed">
 
 	<div class="embedded">
-		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'),$urlpost)"/></xsl:variable>
+		<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
+		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$archive,substring-before(@href,'#'),$urlpost)"/></xsl:variable>
 		<xsl:variable name="anchor"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
 		<xsl:variable name="doc" select="document($href)"/>
 		<xsl:apply-templates select="$doc//section[@id=$anchor]"/>
-		<xsl:if test="not($doc//section[@id=$anchor])"> <!-- fallback for embeds that actually should be embedvars -->
+		
+		<xsl:if test="not($doc//section[@id=$anchor])">  <!--fallback for embeds that actually should be embedvars -->
 			<p>
 				<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
+	
 			</p>
-		</xsl:if>	
+		</xsl:if>
+		
 	</div>
 
 </xsl:template>
@@ -300,10 +309,12 @@
 <!-- EMBEDVAR -->
 <xsl:template match="embedvar">
 	<xsl:if test="not(@href='text/shared/00/00000004.xhp#wie')"> <!-- special treatment if howtoget links -->
-		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'),$urlpost)"/></xsl:variable>
+		<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
+		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$archive,substring-before(@href,'#'),$urlpost)"/></xsl:variable>
 		<xsl:variable name="anchor"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
 		<xsl:variable name="doc" select="document($href)"/>
 		<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
+
 	</xsl:if>
 </xsl:template>
 
@@ -381,25 +392,30 @@
 	//-->
 		
 	<xsl:when test="contains(child::embedvar/@href,'/00/00000004.xhp#wie')"> <!-- special treatment of howtoget links -->
-				<xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,substring-before(child::embedvar/@href,'#'),$urlpost)"/></xsl:variable>
+				<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(child::embedvar/@href,'text/'),'/'),'/')"/></xsl:variable>
+				<xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,$archive,substring-before(child::embedvar/@href,'#'),$urlpost)"/></xsl:variable>
 				<xsl:variable name="tmp_doc" select="document($tmp_href)"/>
 				<div class="howtoget">
 				<table class="howtoget" width="100%" border="1" cellpadding="3" cellspacing="0" rules="none">
 					<tr>
 						<td>
+
 							<p class="howtogetheader"><xsl:apply-templates select="$tmp_doc//variable[@id='wie']"/></p>
+
 						</td>
 					</tr>
 					<tr>
 						<td>
-							<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'),$urlpost)"/></xsl:variable>
+
+							<xsl:variable name="archive1"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
+							<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$archive1,substring-before(@href,'#'),$urlpost)"/></xsl:variable>
 							<xsl:variable name="anchor"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
 							<xsl:variable name="doc" select="document($href)"/>
 							<xsl:apply-templates select="$doc//section[@id=$anchor]"/>
-		
-							<xsl:if test="not($doc//section[@id=$anchor])"> <!-- fallback for embeds that actually should be embedvars -->
+							<xsl:if test="not($doc//section[@id=$anchor])">  <!-- fallback for embeds that actually should be embedvars --> 
 								<p><xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/></p>
 							</xsl:if>
+
 						</td>
 					</tr>
 				</table>
@@ -408,7 +424,8 @@
 		</xsl:when>
 		
 		<xsl:otherwise>
-			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,@href,$linkpostfix)"/></xsl:variable>
+			<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
+			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,@href,$linkpostfix)"/></xsl:variable>
 			<a href="{$href}"><xsl:apply-templates /></a>
 		</xsl:otherwise>
 	
@@ -417,7 +434,8 @@
 
 <xsl:template match="link" mode="embedded">
 	<xsl:variable name="href">
-		<xsl:value-of select="concat($linkprefix,@href,$linkpostfix)"/>
+		<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
+		<xsl:value-of select="concat($linkprefix,$archive,@href,$linkpostfix)"/>
 	</xsl:variable>
 	<a href="{$href}"><xsl:apply-templates /></a>
 </xsl:template>
@@ -464,7 +482,7 @@
 		
 		<xsl:when test="@role='note'">
 			<xsl:variable name="alt">
-				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$alttext,$urlpost)"/></xsl:variable>
+				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/',$alttext,$urlpost)"/></xsl:variable>
 				<xsl:variable name="anchor"><xsl:value-of select="'alt_note'"/></xsl:variable>
 				<xsl:variable name="doc" select="document($href)"/>
 				<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
@@ -484,7 +502,7 @@
 		
 		<xsl:when test="@role='tip'">
 		<xsl:variable name="alt">
-				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$alttext,$urlpost)"/></xsl:variable>
+				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/',$alttext,$urlpost)"/></xsl:variable>
 				<xsl:variable name="anchor"><xsl:value-of select="'alt_tip'"/></xsl:variable>
 				<xsl:variable name="doc" select="document($href)"/>
 				<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
@@ -504,7 +522,7 @@
 		
 		<xsl:when test="@role='warning'">
 		<xsl:variable name="alt">
-				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$alttext,$urlpost)"/></xsl:variable>
+				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/',$alttext,$urlpost)"/></xsl:variable>
 				<xsl:variable name="anchor"><xsl:value-of select="'alt_warning'"/></xsl:variable>
 				<xsl:variable name="doc" select="document($href)"/>
 				<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
@@ -556,7 +574,7 @@
 		
 		<xsl:when test="@role='note'">
 			<xsl:variable name="alt">
-				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$alttext,$urlpost)"/></xsl:variable>
+				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/',$alttext,$urlpost)"/></xsl:variable>
 				<xsl:variable name="anchor"><xsl:value-of select="'alt_note'"/></xsl:variable>
 				<xsl:variable name="doc" select="document($href)"/>
 				<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
@@ -576,7 +594,7 @@
 		
 		<xsl:when test="@role='tip'">
 		<xsl:variable name="alt">
-				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$alttext,$urlpost)"/></xsl:variable>
+				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/',$alttext,$urlpost)"/></xsl:variable>
 				<xsl:variable name="anchor"><xsl:value-of select="'alt_tip'"/></xsl:variable>
 				<xsl:variable name="doc" select="document($href)"/>
 				<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
@@ -596,7 +614,7 @@
 		
 		<xsl:when test="@role='warning'">
 		<xsl:variable name="alt">
-				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$alttext,$urlpost)"/></xsl:variable>
+				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/',$alttext,$urlpost)"/></xsl:variable>
 				<xsl:variable name="anchor"><xsl:value-of select="'alt_warning'"/></xsl:variable>
 				<xsl:variable name="doc" select="document($href)"/>
 				<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
@@ -644,7 +662,7 @@
 			
 			<xsl:when test="@id='relatedtopics'">
 				<div class="relatedtopics">
-				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>
+				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>
 				<xsl:variable name="anchor"><xsl:value-of select="'related'"/></xsl:variable>
 				<xsl:variable name="doc" select="document($href)"/>
 				<p class="related">
@@ -655,7 +673,7 @@
 			</xsl:when>
 			
 			<xsl:when test="@id='howtoget'">
-				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>
+				<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>
 				<xsl:variable name="doc" select="document($href)"/>
 				<div class="howtoget">
 				<table class="howtoget" width="100%" border="1" cellpadding="3" cellspacing="0" rules="none">
@@ -780,14 +798,14 @@
 		</xsl:when>
 		<xsl:when test="contains($string,$brand2)">
 			<xsl:value-of select="substring-before($string,$brand2)"/>
-			<xsl:value-of select="$productname"/>
+			<xsl:value-of select="$productversion"/>
 			<xsl:call-template name="brand">
 				<xsl:with-param name="string" select="substring-after($string,$brand2)"/>
 			</xsl:call-template>
 		</xsl:when>
 		<xsl:when test="contains($string,$brand3)">
 			<xsl:value-of select="substring-before($string,$brand3)"/>
-			<xsl:value-of select="$productversion"/>
+			<xsl:value-of select="$productname"/>
 			<xsl:call-template name="brand">
 				<xsl:with-param name="string" select="substring-after($string,$brand3)"/>
 			</xsl:call-template>
