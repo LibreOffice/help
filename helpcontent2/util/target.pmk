@@ -2,9 +2,9 @@
 #
 #   $RCSfile: target.pmk,v $
 #
-#   $Revision: 1.7 $
+#   $Revision: 1.8 $
 #
-#   last change: $Author: rt $ $Date: 2005-01-27 10:12:14 $
+#   last change: $Author: hr $ $Date: 2005-02-11 18:24:05 $
 #
 #   The Contents of this file are made available subject to the terms of
 #   either of the following licenses
@@ -69,5 +69,5 @@ ALLTAR : $(LINKALLTARGETS)
 
 $(LINKALLTARGETS) : $(foreach,i,$(LINKLINKFILES) $(MISC)$/$$(@:b:s/_/./:e:s/.//)/$i) $(subst,LANGUAGE,$$(@:b:s/_/./:e:s/.//) $(LINKADDEDDEPS)) $(MISC)$/xhp_changed.flag
     @+-$(MKDIR) -p $(@:d)
-    $(WRAPCMD) $(JAVAI) -Djava.library.path=$(SOLARSHAREDBIN) -cp $(my_cp) com.sun.star.help.HelpLinker @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers/hid.lst -src $(MISC) -sty $(PRJ)$/source$/auxiliary$/embed.xsl -idx $(PRJ)$/source$/auxiliary$/index.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(MISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@)
+    $(JAVAI) -Djava.library.path=$(SOLARSHAREDBIN) -cp $(my_cp) com.sun.star.help.HelpLinker @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers/hid.lst -src $(MISC) -sty $(PRJ)$/source$/auxiliary$/embed.xsl -idx $(PRJ)$/source$/auxiliary$/index.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(MISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@)
 
