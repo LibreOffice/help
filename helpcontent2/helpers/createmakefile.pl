@@ -254,7 +254,7 @@ LAD
    -add highcontrast2.css  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrast2.css \\
    -add highcontrastwhite.css  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrastwhite.css \\
    -add highcontrastblack.css  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrastblack.css \\
-   -add err.html  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/err.html \\
+   -add err.html  \$(MISC)\$/LANGUAGE\$/text\$/shared\$/05\$/err_html.xhp
 LAF
     
     $linkaddeddeps = <<"LAD";
@@ -265,7 +265,7 @@ LAF
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrast2.css \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrastwhite.css \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrastblack.css \\
-   \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/err.html \\
+   \$(MISC)\$/LANGUAGE\$/text\$/shared\$/05\$/err_html.xhp
 LAD
     
     $linklinkfiles = '';
@@ -374,7 +374,7 @@ sub terminate {
     $err = shift;
     print "$err\n\n";
     $msg = <<"MSG";
-createmakefile.pl -dir=[directory name] -linkdir=[directory name] [-recursive] [-all]
+createmakefile.pl -dir=[directory name] -linkdir=[directory name] [-recursive] [-all] 
   -dir        Directory to start
   -linkdir    Directory to write the link makefiles
   -recursive  Write makefiles recursively
