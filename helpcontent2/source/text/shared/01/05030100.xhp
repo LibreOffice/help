@@ -62,7 +62,7 @@
 </topic>
 <history>
 <created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-<lastedited date="2004-07-27T10:13:51">UFI: fixed #i22750#
+<lastedited date="2004-10-22T10:36:58">UFI: fixed #i22750#
 FPE: fixed #105095#, resolved some switches
 DED: reviewed changes</lastedited>
 </history>
@@ -75,12 +75,11 @@ DED: reviewed changes</lastedited>
 <bookmark_value>text; paragraph indents</bookmark_value>
 <bookmark_value>right indents in paragraphs</bookmark_value>
 <bookmark_value>lines; indents</bookmark_value>
-<bookmark_value>spacing; paragraphs</bookmark_value>
 <bookmark_value>spacing; between paragraphs in footnotes</bookmark_value>
 <bookmark_value>footnotes; spacing between paragraphs</bookmark_value>
 <bookmark_value>paragraphs; spacing</bookmark_value>
 <bookmark_value>line spacing; paragraph</bookmark_value>
-<bookmark_value>spacing; lines</bookmark_value>
+<bookmark_value>spacing; lines and paragraphs</bookmark_value>
 <bookmark_value>single line spacing in text</bookmark_value>
 <bookmark_value>one and a half line spacing in text</bookmark_value>
 <bookmark_value>double line spacing in paragraphs</bookmark_value>
@@ -110,7 +109,7 @@ DED: reviewed changes</lastedited>
 <paragraph role="paragraph" id="par_id3154390" xml-lang="en-US" l10n="CHG" oldref="10"><ahelp hid="SVX:METRICFIELD:RID_SVXPAGE_STD_PARAGRAPH:ED_RIGHTINDENT">Enter the amount of space that you want to indent the paragraph from the page margin. If you want the paragraph to extend into the page margin, enter a negative number. In Left-to-Right languages, the right edge of the paragraph is indented with respect to the right page margin. In Right-to-Left languages, the left edge of the paragraph is indented with respect to the left page margin.</ahelp></paragraph>
 <bookmark xml-lang="en-US" branch="hid/SVX:METRICFIELD:RID_SVXPAGE_STD_PARAGRAPH:ED_FLINEINDENT" id="bm_id3144762" localize="false"/>
 <paragraph role="heading" id="hd_id3149169" xml-lang="en-US" level="3" l10n="U" oldref="7">First line</paragraph>
-<paragraph role="paragraph" id="par_id3150651" xml-lang="en-US" l10n="U" oldref="8"><ahelp hid="SVX:METRICFIELD:RID_SVXPAGE_STD_PARAGRAPH:ED_FLINEINDENT">Indents the first line of a paragraph by the amount that you enter. To indent the first line of a paragraph that uses numbering or bullets, choose <emph>Format - Numbering/Bullets</emph>, click the <emph>Position </emph>tab, and then enter an amount in the <emph>Minimum space numbering &lt;=&gt; text</emph> box.</ahelp></paragraph>
+<paragraph role="paragraph" id="par_id3150651" xml-lang="en-US" l10n="U" oldref="8"><ahelp hid="SVX:METRICFIELD:RID_SVXPAGE_STD_PARAGRAPH:ED_FLINEINDENT">Indents the first line of a paragraph by the amount that you enter. To indent the first line of a paragraph that uses numbering or bullets, choose <emph>Format - Bullets and Numbering</emph>, click the <emph>Position </emph>tab, and then enter an amount in the <emph>Minimum space numbering &lt;=&gt; text</emph> box.</ahelp></paragraph>
 <bookmark xml-lang="en-US" branch="hid/SVX:CHECKBOX:RID_SVXPAGE_STD_PARAGRAPH:CB_AUTO" id="bm_id3155994" localize="false"/>
 <paragraph role="heading" id="hd_id3150288" xml-lang="en-US" level="3" l10n="U" oldref="52"><switchinline select="appl"><caseinline select="WRITER">Automatic 
 </caseinline></switchinline></paragraph>
@@ -154,33 +153,12 @@ DED: reviewed changes</lastedited>
 <paragraph role="heading" id="hd_id3146923" xml-lang="en-US" level="3" l10n="U" oldref="30">Single</paragraph>
 <paragraph role="paragraph" id="par_id3150011" xml-lang="en-US" l10n="U" oldref="31"><variable id="einzeiligtext">Applies single line spacing to the current paragraph. This is the default setting. 
 </variable></paragraph>
-<switch select="sys">
-<case select="MAC">
-</case>
-<default>
-<paragraph role="tip" id="par_id3147332" xml-lang="en-US" l10n="U" oldref="32">To quickly apply single line spacing, position your cursor in a paragraph, and then press Ctrl+1.</paragraph>
-</default>
-</switch>
 <paragraph role="heading" id="hd_id3148500" xml-lang="en-US" level="3" l10n="U" oldref="33">1.5 lines</paragraph>
 <paragraph role="paragraph" id="par_id3150094" xml-lang="en-US" l10n="U" oldref="34"><variable id="eineinhalbzeiligtext">Sets the line spacing to one and half lines. This corresponds to a vertical space that is half of the font height. 
 </variable></paragraph>
-<switch select="sys">
-<case select="MAC">
-</case>
-<default>
-<paragraph role="tip" id="par_id3150424" xml-lang="en-US" l10n="U" oldref="35">To quickly apply 1.5 line spacing, position your cursor in a paragraph, and then press Ctrl+5.</paragraph>
-</default>
-</switch>
 <paragraph role="heading" id="hd_id3149378" xml-lang="en-US" level="3" l10n="U" oldref="36">Double</paragraph>
 <paragraph role="paragraph" id="par_id3154512" xml-lang="en-US" l10n="U" oldref="37"><variable id="zweizeiligtext">Sets the line spacing to two lines. This corresponds to a vertical space that is equal to the font height. 
 </variable></paragraph>
-<switch select="sys">
-<case select="MAC">
-</case>
-<default>
-<paragraph role="tip" id="par_id3145164" xml-lang="en-US" l10n="U" oldref="38">To quickly apply double line spacing, position your cursor in a paragraph, and then press Ctrl+2.</paragraph>
-</default>
-</switch>
 <switch select="appl">
 <case select="WRITER">
 <paragraph role="heading" id="hd_id3151206" xml-lang="en-US" level="3" l10n="U" oldref="39">Proportional</paragraph>
@@ -209,8 +187,10 @@ DED: reviewed changes</lastedited>
 <paragraph role="paragraph" id="par_id3156315" xml-lang="en-US" l10n="U" oldref="51"><switchinline select="appl"><caseinline select="WRITER"><ahelp hid="SVX:CHECKBOX:RID_SVXPAGE_STD_PARAGRAPH:CB_REGISTER">Aligns the baseline of each line of text to a vertical document grid, so that each line is the same height. To use this feature, you must first activate the <emph>Register-true </emph>option for the current page style. To do this, choose <emph>Format - Page</emph>, click on the <emph>Page </emph>tab, and then select the<emph> Register-true</emph> box in the<emph> Layout settings</emph> area.</ahelp>
 </caseinline></switchinline></paragraph>
 <switch select="appl">
-<case select="WRITER"><embed href="text/shared/00/00000004.xhp#related"/>
+<case select="WRITER">
+<section id="relatedtopics">
 <paragraph role="paragraph" id="par_id9267250" xml-lang="en-US" l10n="NEW"><link href="text/swriter/guide/registertrue.xhp" name="Writing Register-true">Writing Register-true</link></paragraph>
+</section>
 </case>
 </switch>
 </body>
