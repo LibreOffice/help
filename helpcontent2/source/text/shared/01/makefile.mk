@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-27 09:57:10 $
+#*    last change       $Author: rt $ $Date: 2005-01-28 10:00:37 $
 #*
-#*    $Revision: 1.6 $
+#*    $Revision: 1.7 $
 #*
 #*    $Logfile:$
 #*
@@ -108,7 +108,6 @@ XHPFILES = \
    02250000.xhp \
    03010000.xhp \
    03020000.xhp \
-   03030000.xhp \
    03040000.xhp \
    03050000.xhp \
    03060000.xhp \
@@ -244,7 +243,6 @@ XHPFILES = \
    05340500.xhp \
    05340600.xhp \
    05350000.xhp \
-   05350100.xhp \
    05350200.xhp \
    05350300.xhp \
    05350400.xhp \
