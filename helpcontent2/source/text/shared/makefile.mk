@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-18 11:52:02 $
+#*    last change       $Author: fpe $ $Date: 2004-08-19 19:54:14 $
 #*
-#*    $Revision: 1.2 $
+#*    $Revision: 1.3 $
 #*
 #*    $Logfile:$
 #*
@@ -23,7 +23,7 @@ PACKAGE = text/shared
 # using a modified forme of package should do here
 TARGET  = text_shared
 # edit to match the current module
-MODULE  = text/shared
+MODULE  = shared
 
 # --- Settings -----------------------------------------------------
 

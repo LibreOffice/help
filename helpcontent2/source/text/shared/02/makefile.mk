@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-18 11:52:04 $
+#*    last change       $Author: fpe $ $Date: 2004-08-19 19:54:14 $
 #*
-#*    $Revision: 1.2 $
+#*    $Revision: 1.3 $
 #*
 #*    $Logfile:$
 #*
@@ -75,7 +75,6 @@ HZIPFILES = \
     02140000.hzip \
     02160000.hzip \
     02170000.hzip \
-    02210000.hzip \
     03110000.hzip \
     03120000.hzip \
     03130000.hzip \
