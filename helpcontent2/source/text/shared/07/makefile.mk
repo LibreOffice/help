@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:54:32 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:58:11 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,8 +31,8 @@ MODULE  = shared
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   09000000.hzip 
+XHPFILES = \
+   09000000.xhp 
     
 # --- Targets ------------------------------------------------------
 
