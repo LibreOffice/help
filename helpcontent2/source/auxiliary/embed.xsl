@@ -31,6 +31,11 @@ All others
 	<xsl:apply-templates mode="embedded"/>
 </xsl:template>
 
+<xsl:template match="paragraph[@role='heading']">
+    <title>
+        <xsl:apply-templates/>
+    </title>
+</xsl:template>
 <!-- 
 ###################################################### 
 EMBED
