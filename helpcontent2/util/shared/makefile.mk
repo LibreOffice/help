@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-11-27 00:25:32 $
+#*    last change       $Author: rt $ $Date: 2004-12-16 13:01:34 $
 #*
-#*    $Revision: 1.9 $
+#*    $Revision: 1.10 $
 #*
 #*    $Logfile:$
 #*
@@ -23,17 +23,16 @@ TARGET  = util
 
 # --- Settings -----------------------------------------------------
 
-.INCLUDE : $(PRJ)$/settings.pmk
 .INCLUDE : settings.mk
+.INCLUDE : $(PRJ)$/settings.pmk
 
-.IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
+zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_shared
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/shared$/* -x "*.dphh*" -x "*.hzip"
-.ENDIF
 
 
 LINKNAME=shared
@@ -45,7 +44,7 @@ LINKADDEDFILES= \
    -add highcontrast2.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast2.css \
    -add highcontrastwhite.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastwhite.css \
    -add highcontrastblack.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastblack.css \
-   -add err.html  $(PRJ)$/source$/auxiliary$/LANGUAGE$/err.html \
+   -add err.html  $(MISC)$/LANGUAGE$/text$/shared$/05$/err_html.xhp
 
 
 LINKADDEDDEPS= \
@@ -56,7 +55,7 @@ LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast2.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastwhite.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastblack.css \
-   $(PRJ)$/source$/auxiliary$/LANGUAGE$/err.html \
+   $(MISC)$/LANGUAGE$/text$/shared$/05$/err_html.xhp
 
 
 LINKLINKFILES= \
