@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-27 09:53:41 $
+#*    last change       $Author: rt $ $Date: 2005-01-28 09:54:16 $
 #*
-#*    $Revision: 1.6 $
+#*    $Revision: 1.7 $
 #*
 #*    $Logfile:$
 #*
@@ -56,7 +56,6 @@ XHPFILES = \
    currency_format.xhp \
    database_define.xhp \
    database_filter.xhp \
-   database_group.xhp \
    database_sort.xhp \
    datapilot.xhp \
    datapilot_createtable.xhp \
