@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-19 19:54:22 $
+#*    last change       $Author: rt $ $Date: 2004-11-26 23:36:18 $
 #*
-#*    $Revision: 1.3 $
+#*    $Revision: 1.4 $
 #*
 #*    $Logfile:$
 #*
@@ -15,12 +15,12 @@
 
 # edit to match directory level 
 PRJ		= ..$/..$/..
-# same for all makefiles in "help2"
-PRJNAME = help2
+# same for all makefiles in "helpcontent2"
+PRJNAME = helpcontent2
 # edit to match the current package
 PACKAGE = text/swriter
 # uniqe name (module wide);
-# using a modified forme of package should do here
+# using a modified form of package should do here
 TARGET  = text_swriter
 # edit to match the current module
 MODULE  = swriter
@@ -32,31 +32,32 @@ MODULE  = swriter
 
 # this list matches the *.xhp files to process
 HZIPFILES = \
-    main0000.hzip \
-    main0100.hzip \
-    main0101.hzip \
-    main0102.hzip \
-    main0103.hzip \
-    main0104.hzip \
-    main0105.hzip \
-    main0106.hzip \
-    main0107.hzip \
-    main0200.hzip \
-    main0202.hzip \
-    main0203.hzip \
-    main0204.hzip \
-    main0205.hzip \
-    main0206.hzip \
-    main0208.hzip \
-    main0210.hzip \
-    main0213.hzip \
-    main0214.hzip \
-    main0215.hzip \
-    main0216.hzip \
-    main0218.hzip \
-    main0219.hzip \
-    main0220.hzip \
-    main0503.hzip 
+   main0000.hzip \
+   main0100.hzip \
+   main0101.hzip \
+   main0102.hzip \
+   main0103.hzip \
+   main0104.hzip \
+   main0105.hzip \
+   main0106.hzip \
+   main0107.hzip \
+   main0110.hzip \
+   main0200.hzip \
+   main0202.hzip \
+   main0203.hzip \
+   main0204.hzip \
+   main0205.hzip \
+   main0206.hzip \
+   main0208.hzip \
+   main0210.hzip \
+   main0213.hzip \
+   main0214.hzip \
+   main0215.hzip \
+   main0216.hzip \
+   main0218.hzip \
+   main0219.hzip \
+   main0220.hzip \
+   main0503.hzip 
     
 # --- Targets ------------------------------------------------------
 
