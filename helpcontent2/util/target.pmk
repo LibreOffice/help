@@ -2,9 +2,9 @@
 #
 #   $RCSfile: target.pmk,v $
 #
-#   $Revision: 1.1 $
+#   $Revision: 1.2 $
 #
-#   last change: $Author: fpe $ $Date: 2004-08-18 10:59:43 $
+#   last change: $Author: hjs $ $Date: 2004-08-19 11:47:51 $
 #
 #   The Contents of this file are made available subject to the terms of
 #   either of the following licenses
@@ -67,5 +67,5 @@ ALLTAR : $(LINKALLTARGETS)
 
 $(LINKALLTARGETS) : $(foreach,i,$(LINKLINKFILES) $(MISC)$/$$(@:b:s/_/./:e:s/.//)/$i) $(subst,LANGUAGE,$$(@:b:s/_/./:e:s/.//) $(LINKADDEDDEPS))
     @+-$(MKDIR) -p $(@:d)
-    java -Djava.library.path=$(SOLARSHAREDBIN) -cp $(my_cp) com.sun.star.help.HelpLinker -mod $(LINKNAME) -hid $(PRJ)$/helpers/hid.lst -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(MISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@
+    java -Djava.library.path=$(SOLARSHAREDBIN) -cp $(my_cp) com.sun.star.help.HelpLinker @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers/hid.lst -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(MISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@)
 
