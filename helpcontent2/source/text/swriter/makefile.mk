@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-27 10:02:48 $
+#*    last change       $Author: rt $ $Date: 2005-01-28 10:27:21 $
 #*
-#*    $Revision: 1.6 $
+#*    $Revision: 1.7 $
 #*
 #*    $Logfile:$
 #*
@@ -54,8 +54,6 @@ XHPFILES = \
    main0214.xhp \
    main0215.xhp \
    main0216.xhp \
-   main0218.xhp \
-   main0219.xhp \
    main0220.xhp \
    main0503.xhp 
     
