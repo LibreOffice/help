@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-27 09:58:58 $
+#*    last change       $Author: rt $ $Date: 2005-01-28 10:12:55 $
 #*
-#*    $Revision: 1.6 $
+#*    $Revision: 1.7 $
 #*
 #*    $Logfile:$
 #*
@@ -108,6 +108,7 @@ XHPFILES = \
    menuinsert.xhp \
    menutools.xhp \
    menuview.xhp \
+   password.xhp \
    querywizard00.xhp \
    querywizard01.xhp \
    querywizard02.xhp \
