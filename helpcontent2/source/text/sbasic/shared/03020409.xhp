@@ -52,54 +52,57 @@
  *  Contributor(s): _______________________________________
  *
  *
- ************************************************************************--><helpdocument version="1.0">
+ ************************************************************************-->
+	
+<helpdocument version="1.0">
 <meta>
 <topic id="textsbasicshared03020409xml" indexer="include" status="PUBLISH">
-<title xml-lang="en-US" id="tit">GetAttr Function [Runtime]</title>
+<title id="tit" xml-lang="en-US">GetAttr Function [Runtime]</title>
 <filename>/text/sbasic/shared/03020409.xhp</filename>
 </topic>
 <history>
 <created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-<lastedited date="2003-10-31T00:00:00">converted from old format - fpe</lastedited>
+<lastedited date="2004-09-01T15:28:56">converted from old format - fpe</lastedited>
 </history>
 </meta>
 <body>
-  
-  
-  <section id="getattr">
-  <bookmark xml-lang="en-US" branch="index" id="bm_id3150984"><bookmark_value>GetAttr;function</bookmark_value></bookmark><paragraph id="hd_id3150984" role="heading" level="1" oldref="1" l10n="U" xml-lang="en-US"><link href="text/sbasic/shared/03020409.xhp" name="GetAttr Function [Runtime]">GetAttr Function [Runtime]</link></paragraph>
-  <paragraph role="paragraph" id="par_id3154347" l10n="U" xml-lang="en-US" oldref="2">Returns a bit pattern that identifies the file type or the name of a volume or a directory.</paragraph>
-  </section>
-  <paragraph role="heading" level="2" id="hd_id3149457" l10n="U" xml-lang="en-US" oldref="3">Syntax:</paragraph>
-  <paragraph role="paragraph" id="par_id3150359" l10n="U" xml-lang="en-US" oldref="4">GetAttr (Text As String)</paragraph>
-  <paragraph role="heading" level="2" id="hd_id3151211" l10n="U" xml-lang="en-US" oldref="5">Return value:</paragraph>
-  <paragraph role="paragraph" id="par_id3154909" l10n="U" xml-lang="en-US" oldref="6">Integer</paragraph>
-  <paragraph role="heading" level="2" id="hd_id3145172" l10n="U" xml-lang="en-US" oldref="7">Parameters:</paragraph>
-  <paragraph l10n="U" xml-lang="en-US" role="paragraph" id="par_id3151042" oldref="8"><emph>Text:</emph> Any string expression that contains an unambiguous file specification. You can also use <link href="text/sbasic/shared/00000002.xhp" name="URL notation">URL notation</link>.</paragraph>
-  <paragraph role="paragraph" id="par_id3161831" l10n="U" xml-lang="en-US" oldref="9">This function determines the attributes for a specified file and returns the bit pattern that can help you to identify the following file attributes:</paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
-  <embed href="text/sbasic/shared/00000003.xhp#err5"/>
-  <embed href="text/sbasic/shared/00000003.xhp#err53"/>
-  <paragraph role="heading" level="2" id="hd_id3145364" l10n="U" xml-lang="en-US" oldref="10">Value</paragraph>
-  <paragraph role="paragraph" id="par_id3147349" l10n="U" xml-lang="en-US" oldref="11">0 : Normal files.</paragraph>
-  <paragraph role="paragraph" id="par_id3147434" l10n="U" xml-lang="en-US" oldref="12">1 : Read-only files.</paragraph>
-  <paragraph role="paragraph" id="par_id3159154" l10n="U" xml-lang="en-US" oldref="15">8 : Returns the name of the volume</paragraph>
-  <paragraph role="paragraph" id="par_id3145271" l10n="U" xml-lang="en-US" oldref="16">16 : Returns the name of the directory only.</paragraph>
-  <paragraph role="paragraph" id="par_id3153953" l10n="U" xml-lang="en-US" oldref="17">32 : File was changed since last backup (Archive bit).</paragraph>
-  <paragraph role="paragraph" id="par_id3156444" l10n="U" xml-lang="en-US" oldref="18">If you want to know if a bit of the attribute byte is set, use the following query method:</paragraph>
-  <paragraph role="heading" level="2" id="hd_id3153094" l10n="U" xml-lang="en-US" oldref="19">Example:</paragraph>
-  <paragraph role="paragraph" id="par_id3154491" l10n="U" xml-lang="en-US" oldref="20">Sub ExampleSetGetAttr</paragraph>
-  <paragraph role="paragraph" id="par_id3155415" l10n="U" xml-lang="en-US" oldref="21">On Error Goto ErrorHandler REM Define target for error-handler</paragraph>
-  <paragraph role="paragraph" id="par_id3154944" l10n="U" xml-lang="en-US" oldref="22">If Dir(&quot;C:\test&quot;,16)=&quot;&quot; Then MkDir &quot;C:\test&quot;</paragraph>
-  <paragraph role="paragraph" id="par_id3151075" l10n="U" xml-lang="en-US" oldref="23">If Dir(&quot;C:\test\autoexec.sav&quot;)=&quot;&quot; THEN Filecopy &quot;c:\autoexec.bat&quot;, &quot;c:\test\autoexec.sav&quot;</paragraph>
-  <paragraph role="paragraph" id="par_id3149959" l10n="U" xml-lang="en-US" oldref="24">SetAttr &quot;c:\test\autoexec.sav&quot; ,0</paragraph>
-  <paragraph role="paragraph" id="par_id3153418" l10n="U" xml-lang="en-US" oldref="25">Filecopy &quot;c:\autoexec.bat&quot;, &quot;c:\test\autoexec.sav&quot;</paragraph>
-  <paragraph role="paragraph" id="par_id3149122" l10n="U" xml-lang="en-US" oldref="26">SetAttr &quot;c:\test\autoexec.sav&quot; ,1</paragraph>
-  <paragraph role="paragraph" id="par_id3154480" l10n="U" xml-lang="en-US" oldref="27">print GetAttr( &quot;c:\test\autoexec.sav&quot; )</paragraph>
-  <paragraph role="paragraph" id="par_id3150753" l10n="U" xml-lang="en-US" oldref="28">end</paragraph>
-  <paragraph role="paragraph" id="par_id3150323" l10n="U" xml-lang="en-US" oldref="29">ErrorHandler:</paragraph>
-  <paragraph role="paragraph" id="par_id3154754" l10n="U" xml-lang="en-US" oldref="30">Print Error</paragraph>
-  <paragraph role="paragraph" id="par_id3155764" l10n="U" xml-lang="en-US" oldref="31">end</paragraph>
-  <paragraph role="paragraph" id="par_id3156382" l10n="U" xml-lang="en-US" oldref="32">end sub</paragraph>
- </body>
+<section id="getattr">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3150984"><bookmark_value>GetAttr function</bookmark_value>
+</bookmark>
+<paragraph role="heading" id="hd_id3150984" xml-lang="en-US" level="1" l10n="U" oldref="1"><link href="text/sbasic/shared/03020409.xhp" name="GetAttr Function [Runtime]">GetAttr Function [Runtime]</link></paragraph>
+<paragraph role="paragraph" id="par_id3154347" xml-lang="en-US" l10n="U" oldref="2">Returns a bit pattern that identifies the file type or the name of a volume or a directory.</paragraph>
+</section>
+<paragraph role="heading" id="hd_id3149457" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
+<paragraph role="code" id="par_id3150359" xml-lang="en-US" l10n="U" oldref="4">GetAttr (Text As String)</paragraph>
+<paragraph role="heading" id="hd_id3151211" xml-lang="en-US" level="2" l10n="U" oldref="5">Return value:</paragraph>
+<paragraph role="paragraph" id="par_id3154909" xml-lang="en-US" l10n="U" oldref="6">Integer</paragraph>
+<paragraph role="heading" id="hd_id3145172" xml-lang="en-US" level="2" l10n="U" oldref="7">Parameters:</paragraph>
+<paragraph role="paragraph" id="par_id3151042" xml-lang="en-US" l10n="U" oldref="8">
+<emph>Text:</emph> Any string expression that contains an unambiguous file specification. You can also use <link href="text/sbasic/shared/00000002.xhp" name="URL notation">URL notation</link>.</paragraph>
+<paragraph role="paragraph" id="par_id3161831" xml-lang="en-US" l10n="U" oldref="9">This function determines the attributes for a specified file and returns the bit pattern that can help you to identify the following file attributes:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
+<embed href="text/sbasic/shared/00000003.xhp#err5"/>
+<embed href="text/sbasic/shared/00000003.xhp#err53"/>
+<paragraph role="heading" id="hd_id3145364" xml-lang="en-US" level="2" l10n="U" oldref="10">Value</paragraph>
+<paragraph role="paragraph" id="par_id3147349" xml-lang="en-US" l10n="U" oldref="11">0 : Normal files.</paragraph>
+<paragraph role="paragraph" id="par_id3147434" xml-lang="en-US" l10n="U" oldref="12">1 : Read-only files.</paragraph>
+<paragraph role="paragraph" id="par_id3159154" xml-lang="en-US" l10n="U" oldref="15">8 : Returns the name of the volume</paragraph>
+<paragraph role="paragraph" id="par_id3145271" xml-lang="en-US" l10n="U" oldref="16">16 : Returns the name of the directory only.</paragraph>
+<paragraph role="paragraph" id="par_id3153953" xml-lang="en-US" l10n="U" oldref="17">32 : File was changed since last backup (Archive bit).</paragraph>
+<paragraph role="paragraph" id="par_id3156444" xml-lang="en-US" l10n="U" oldref="18">If you want to know if a bit of the attribute byte is set, use the following query method:</paragraph>
+<paragraph role="heading" id="hd_id3153094" xml-lang="en-US" level="2" l10n="U" oldref="19">Example:</paragraph>
+<paragraph role="code" id="par_id3154491" xml-lang="en-US" l10n="U" oldref="20">Sub ExampleSetGetAttr</paragraph>
+<paragraph role="code" id="par_id3155415" xml-lang="en-US" l10n="U" oldref="21">On Error Goto ErrorHandler REM Define target for error-handler</paragraph>
+<paragraph role="code" id="par_id3154944" xml-lang="en-US" l10n="U" oldref="22">If Dir("C:\test",16)="" Then MkDir "C:\test"</paragraph>
+<paragraph role="code" id="par_id3151075" xml-lang="en-US" l10n="U" oldref="23">If Dir("C:\test\autoexec.sav")="" THEN Filecopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
+<paragraph role="code" id="par_id3149959" xml-lang="en-US" l10n="U" oldref="24">SetAttr "c:\test\autoexec.sav" ,0</paragraph>
+<paragraph role="code" id="par_id3153418" xml-lang="en-US" l10n="U" oldref="25">Filecopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
+<paragraph role="code" id="par_id3149122" xml-lang="en-US" l10n="U" oldref="26">SetAttr "c:\test\autoexec.sav" ,1</paragraph>
+<paragraph role="code" id="par_id3154480" xml-lang="en-US" l10n="U" oldref="27">print GetAttr( "c:\test\autoexec.sav" )</paragraph>
+<paragraph role="code" id="par_id3150753" xml-lang="en-US" l10n="U" oldref="28">end</paragraph>
+<paragraph role="code" id="par_id3150323" xml-lang="en-US" l10n="U" oldref="29">ErrorHandler:</paragraph>
+<paragraph role="code" id="par_id3154754" xml-lang="en-US" l10n="U" oldref="30">Print Error</paragraph>
+<paragraph role="code" id="par_id3155764" xml-lang="en-US" l10n="U" oldref="31">end</paragraph>
+<paragraph role="code" id="par_id3156382" xml-lang="en-US" l10n="U" oldref="32">end sub</paragraph>
+</body>
 </helpdocument>
