@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-19 19:54:09 $
+#*    last change       $Author: rt $ $Date: 2004-11-26 16:25:15 $
 #*
-#*    $Revision: 1.3 $
+#*    $Revision: 1.4 $
 #*
 #*    $Logfile:$
 #*
@@ -15,12 +15,12 @@
 
 # edit to match directory level 
 PRJ		= ..$/..$/..$/..
-# same for all makefiles in "help2"
-PRJNAME = help2
+# same for all makefiles in "helpcontent2"
+PRJNAME = helpcontent2
 # edit to match the current package
 PACKAGE = text/scalc/05
 # uniqe name (module wide);
-# using a modified forme of package should do here
+# using a modified form of package should do here
 TARGET  = text_scalc_05
 # edit to match the current module
 MODULE  = scalc
@@ -32,7 +32,7 @@ MODULE  = scalc
 
 # this list matches the *.xhp files to process
 HZIPFILES = \
-    02140000.hzip 
+   02140000.hzip 
     
 # --- Targets ------------------------------------------------------
 
