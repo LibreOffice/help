@@ -3,7 +3,7 @@
 <xsl:output indent="yes" method="xml"/>
 
 <!-- SPECIFY YOUR FILE SYSTEM ROOT PATH TO THE HELP FILES -->
-<xsl:param name="fsroot" select="'file:///'"/>
+<xsl:param name="fsroot" select="'file:///handbuch/WORKBENCH/helpcontent2/source/'"/>
 
 <!--
 ######################################################
@@ -25,6 +25,15 @@ All others
     <xsl:apply-templates select="*|@*|comment()|processing-instruction()|text()" mode="embedded"/>
   </xsl:copy>
 </xsl:template>
+
+<xsl:template match="bookmark" mode="embedded">
+	<bookmark>
+		<xsl:copy-of select="@*"/>
+		<xsl:attribute name="embedded">true</xsl:attribute>
+		<xsl:apply-templates />
+	</bookmark>
+</xsl:template>
+
 
 <xsl:template match="bookmark_value" mode="embedded">
 	<bookmark_value embedded="true">
