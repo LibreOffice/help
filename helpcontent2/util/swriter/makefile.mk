@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hjs $ $Date: 2004-08-26 15:17:46 $
+#*    last change       $Author: hr $ $Date: 2004-11-09 11:48:29 $
 #*
-#*    $Revision: 1.6 $
+#*    $Revision: 1.7 $
 #*
 #*    $Logfile:$
 #*
@@ -26,12 +26,14 @@ TARGET  = swriter_util
 .INCLUDE : $(PRJ)$/settings.pmk
 .INCLUDE : settings.mk
 
+.IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
 ZIP1TARGET=swriter_xhp
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/swriter$/* -x "*.dphh*" -x "*.hzip"
+.ENDIF
 
 
 LINKNAME=swriter
