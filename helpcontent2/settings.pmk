@@ -1,3 +1,7 @@
 
 my_cp=$(CLASSPATH)$(PATH_SEPERATOR)$(SOLARBINDIR)$/jaxp.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/parser.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/xt.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/unoil.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/ridl.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/jurt.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/jut.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/xmlsearch.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/db.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/xmlsearch.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/xmlhelp.jar
 
+.INCLUDE : $(INCCOM)$/aux_langs.mk
+
+aux_alllangiso:=$(foreach,i,$(alllangiso) $(foreach,j,$(aux_langdirs) $(eq,$i,$j  $i $(NULL))))
+
