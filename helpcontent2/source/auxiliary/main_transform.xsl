@@ -17,10 +17,12 @@
     Aug 24 2004 Fixed for help2 CWS
     Aug 27 2004 Added css link, fixed missing embed-mode for variable
                 Removed width/height for images
-		Sep 03 2004 Modularized xsl, added some embedded modes
-		Oct 08 2004 Fixed bug wrong mode "embedded" for links
-		            Added embedded modes for embed and embedvar (for cascaded embeds)
-								Added <p> tags around falsely embedded pars and vars
+    Sep 03 2004 Modularized xsl, added some embedded modes
+    Oct 08 2004 Fixed bug wrong mode "embedded" for links
+                Added embedded modes for embed and embedvar (for cascaded embeds)
+                Added <p> tags around falsely embedded pars and vars
+    Dec 08 2004 #i38483#, fixed wrong handling of web links
+                #i37377#, fixed missing usage of Database parameter for switching
 ***********************************************************************//-->
 
 <!--***********************************************************************
@@ -115,7 +117,8 @@
 <xsl:variable name="lang" select="/helpdocument/meta/topic/title/@xml-lang"/>
 
 <!-- Module and the corresponding switching values-->
-<xsl:param name="module" select="'swriter'"/>
+<xsl:param name="Database" select="'swriter'"/>
+<xsl:variable name="module" select="$Database"/>
 <xsl:variable name="appl">
 	<xsl:choose>
 		<xsl:when test="$module = 'swriter'"><xsl:value-of select="'WRITER'"/></xsl:when>
@@ -621,6 +624,9 @@
 			<xsl:variable name="anchor"><xsl:value-of select="concat('#',substring-after(@href,'#'))"/></xsl:variable>
 			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,substring-before(@href,'#'),$linkpostfix,$anchor)"/></xsl:variable>
 			<a href="{$href}"><xsl:apply-templates /></a>
+		</xsl:when>
+		<xsl:when test="starts-with(@href,'http://')">  <!-- web links -->
+			<a href="{@href}"><xsl:apply-templates /></a>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,@href,$linkpostfix)"/></xsl:variable>
