@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-28 10:00:37 $
+#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:40 $
 #*
-#*    $Revision: 1.7 $
+#*    $Revision: 1.8 $
 #*
 #*    $Logfile:$
 #*
@@ -304,7 +304,6 @@ XHPFILES = \
    gallery_files.xhp \
    grid.xhp \
    guides.xhp \
-   liststyles.xhp \
    mediaplayer.xhp \
    moviesound.xhp \
    packagemanager.xhp \
