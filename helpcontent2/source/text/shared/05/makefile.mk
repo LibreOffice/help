@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:54:12 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:57:57 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,17 +31,17 @@ MODULE  = shared
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   00000001.hzip \
-   00000002.hzip \
-   00000100.hzip \
-   00000110.hzip \
-   00000120.hzip \
-   00000130.hzip \
-   00000140.hzip \
-   00000150.hzip \
-   00000160.hzip \
-   err_html.hzip 
+XHPFILES = \
+   00000001.xhp \
+   00000002.xhp \
+   00000100.xhp \
+   00000110.xhp \
+   00000120.xhp \
+   00000130.xhp \
+   00000140.xhp \
+   00000150.xhp \
+   00000160.xhp \
+   err_html.xhp 
     
 # --- Targets ------------------------------------------------------
 
