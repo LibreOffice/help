@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:55:41 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:59:32 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,91 +31,91 @@ MODULE  = shared
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   01000000.hzip \
-   01010000.hzip \
-   01010100.hzip \
-   01010200.hzip \
-   01010300.hzip \
-   01010301.hzip \
-   01010400.hzip \
-   01010401.hzip \
-   01010500.hzip \
-   01010501.hzip \
-   01010600.hzip \
-   01010700.hzip \
-   01010800.hzip \
-   01010900.hzip \
-   01010950.hzip \
-   01011000.hzip \
-   01012000.hzip \
-   01013000.hzip \
-   01014000.hzip \
-   01020000.hzip \
-   01020100.hzip \
-   01020200.hzip \
-   01020300.hzip \
-   01020400.hzip \
-   01030000.hzip \
-   01030300.hzip \
-   01030500.hzip \
-   01040000.hzip \
-   01040200.hzip \
-   01040300.hzip \
-   01040301.hzip \
-   01040400.hzip \
-   01040500.hzip \
-   01040600.hzip \
-   01040700.hzip \
-   01040900.hzip \
-   01041000.hzip \
-   01041100.hzip \
-   01050000.hzip \
-   01050100.hzip \
-   01050300.hzip \
-   01060000.hzip \
-   01060100.hzip \
-   01060200.hzip \
-   01060300.hzip \
-   01060400.hzip \
-   01060401.hzip \
-   01060500.hzip \
-   01060600.hzip \
-   01060700.hzip \
-   01070000.hzip \
-   01070100.hzip \
-   01070300.hzip \
-   01070400.hzip \
-   01070500.hzip \
-   01080000.hzip \
-   01090000.hzip \
-   01090100.hzip \
-   01110000.hzip \
-   01110100.hzip \
-   01130100.hzip \
-   01130200.hzip \
-   01140000.hzip \
-   01150000.hzip \
-   01150100.hzip \
-   01150200.hzip \
-   01150300.hzip \
-   01160000.hzip \
-   01160100.hzip \
-   01160200.hzip \
-   01160201.hzip \
-   java.hzip \
-   javaclasspath.hzip \
-   javaparameters.hzip \
-   macrosecurity.hzip \
-   macrosecurity_sl.hzip \
-   macrosecurity_ts.hzip \
-   mailmerge.hzip \
-   serverauthentication.hzip \
-   testaccount.hzip \
-   viewcertificate.hzip \
-   viewcertificate_c.hzip \
-   viewcertificate_d.hzip \
-   viewcertificate_g.hzip 
+XHPFILES = \
+   01000000.xhp \
+   01010000.xhp \
+   01010100.xhp \
+   01010200.xhp \
+   01010300.xhp \
+   01010301.xhp \
+   01010400.xhp \
+   01010401.xhp \
+   01010500.xhp \
+   01010501.xhp \
+   01010600.xhp \
+   01010700.xhp \
+   01010800.xhp \
+   01010900.xhp \
+   01010950.xhp \
+   01011000.xhp \
+   01012000.xhp \
+   01013000.xhp \
+   01014000.xhp \
+   01020000.xhp \
+   01020100.xhp \
+   01020200.xhp \
+   01020300.xhp \
+   01020400.xhp \
+   01030000.xhp \
+   01030300.xhp \
+   01030500.xhp \
+   01040000.xhp \
+   01040200.xhp \
+   01040300.xhp \
+   01040301.xhp \
+   01040400.xhp \
+   01040500.xhp \
+   01040600.xhp \
+   01040700.xhp \
+   01040900.xhp \
+   01041000.xhp \
+   01041100.xhp \
+   01050000.xhp \
+   01050100.xhp \
+   01050300.xhp \
+   01060000.xhp \
+   01060100.xhp \
+   01060200.xhp \
+   01060300.xhp \
+   01060400.xhp \
+   01060401.xhp \
+   01060500.xhp \
+   01060600.xhp \
+   01060700.xhp \
+   01070000.xhp \
+   01070100.xhp \
+   01070300.xhp \
+   01070400.xhp \
+   01070500.xhp \
+   01080000.xhp \
+   01090000.xhp \
+   01090100.xhp \
+   01110000.xhp \
+   01110100.xhp \
+   01130100.xhp \
+   01130200.xhp \
+   01140000.xhp \
+   01150000.xhp \
+   01150100.xhp \
+   01150200.xhp \
+   01150300.xhp \
+   01160000.xhp \
+   01160100.xhp \
+   01160200.xhp \
+   01160201.xhp \
+   java.xhp \
+   javaclasspath.xhp \
+   javaparameters.xhp \
+   macrosecurity.xhp \
+   macrosecurity_sl.xhp \
+   macrosecurity_ts.xhp \
+   mailmerge.xhp \
+   serverauthentication.xhp \
+   testaccount.xhp \
+   viewcertificate.xhp \
+   viewcertificate_c.xhp \
+   viewcertificate_d.xhp \
+   viewcertificate_g.xhp 
     
 # --- Targets ------------------------------------------------------
 
