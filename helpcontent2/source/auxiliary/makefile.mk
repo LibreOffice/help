@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2005-02-11 14:53:59 $
+#*    last change       $Author: vg $ $Date: 2005-03-08 18:03:05 $
 #*
-#*    $Revision: 1.3 $
+#*    $Revision: 1.4 $
 #*
 #*    $Logfile:$
 #*
@@ -45,6 +45,10 @@ aux_langdirs:=$(subst,CVS, $(shell +-dir /ba:d ))
 .ENDIF          # "$(GUI)"=="UNX"
 
 aux_alllangiso:=$(foreach,i,$(alllangiso) $(foreach,j,$(aux_langdirs) $(eq,$i,$j  $i $(NULL))))
+
+WITH_LANG!:=$(aux_alllangiso)
+
+.EXPORT : WITH_LANG
 
 LOCTREEFILES:=$(foreach,i,$(aux_alllangiso) $(foreach,j,$(TREEFILES) $(MISC)$/$i$/$j))
 
