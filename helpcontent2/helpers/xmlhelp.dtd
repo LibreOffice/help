@@ -1,5 +1,6 @@
 <!-- 
 Version 20-Apr-2004
+ added <help-id-missing> element
 -->
 
 <!ELEMENT ahelp (#PCDATA | embedvar | br | comment | emph | item | link | switchinline | variable)*>
@@ -70,7 +71,7 @@ Version 20-Apr-2004
   markup (keep | ignore) #IMPLIED
 >
 
-<!ELEMENT emph (#PCDATA | item | comment)*>
+<!ELEMENT emph (#PCDATA | item | comment | help-id-missing)*>
 
 <!ELEMENT filename (#PCDATA)>
 
@@ -134,7 +135,7 @@ Version 20-Apr-2004
   width CDATA #IMPLIED
 >
 
-<!ELEMENT paragraph (#PCDATA | image | comment | embedvar | br | emph | item | link | switchinline | variable | ahelp | object | bookmark)*>
+<!ELEMENT paragraph (#PCDATA | image | comment | embedvar | br | emph | item | link | switchinline | variable | ahelp | object | bookmark | help-id-missing)*>
 <!ATTLIST paragraph
   role CDATA #REQUIRED
   level CDATA #IMPLIED
@@ -210,3 +211,5 @@ Version 20-Apr-2004
   id CDATA #REQUIRED
   visibility (hidden | visible) #IMPLIED
 >
+
+<!ELEMENT help-id-missing EMPTY>
