@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hjs $ $Date: 2004-08-26 15:17:45 $
+#*    last change       $Author: hr $ $Date: 2004-11-09 11:47:39 $
 #*
-#*    $Revision: 1.6 $
+#*    $Revision: 1.7 $
 #*
 #*    $Logfile:$
 #*
@@ -26,12 +26,14 @@ TARGET  = sdraw_util
 .INCLUDE : $(PRJ)$/settings.pmk
 .INCLUDE : settings.mk
 
+.IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
 ZIP1TARGET=sdraw_xhp
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/sdraw$/* -x "*.dphh*" -x "*.hzip"
+.ENDIF
 
 
 LINKNAME=sdraw
