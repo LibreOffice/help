@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:52:50 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:56:54 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,49 +31,49 @@ MODULE  = shared
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   00000001.hzip \
-   00000002.hzip \
-   00000003.hzip \
-   00000004.hzip \
-   00000005.hzip \
-   00000007.hzip \
-   00000010.hzip \
-   00000011.hzip \
-   00000020.hzip \
-   00000021.hzip \
-   00000040.hzip \
-   00000099.hzip \
-   00000202.hzip \
-   00000203.hzip \
-   00000204.hzip \
-   00000205.hzip \
-   00000206.hzip \
-   00000207.hzip \
-   00000208.hzip \
-   00000210.hzip \
-   00000212.hzip \
-   00000213.hzip \
-   00000214.hzip \
-   00000215.hzip \
-   00000401.hzip \
-   00000402.hzip \
-   00000403.hzip \
-   00000404.hzip \
-   00000406.hzip \
-   00000407.hzip \
-   00000408.hzip \
-   00000409.hzip \
-   00000450.hzip \
-   00040500.hzip \
-   00040501.hzip \
-   00040502.hzip \
-   00040503.hzip \
-   01000000.hzip \
-   01010000.hzip \
-   01020000.hzip \
-   01050000.hzip \
-   icon_alt.hzip 
+XHPFILES = \
+   00000001.xhp \
+   00000002.xhp \
+   00000003.xhp \
+   00000004.xhp \
+   00000005.xhp \
+   00000007.xhp \
+   00000010.xhp \
+   00000011.xhp \
+   00000020.xhp \
+   00000021.xhp \
+   00000040.xhp \
+   00000099.xhp \
+   00000202.xhp \
+   00000203.xhp \
+   00000204.xhp \
+   00000205.xhp \
+   00000206.xhp \
+   00000207.xhp \
+   00000208.xhp \
+   00000210.xhp \
+   00000212.xhp \
+   00000213.xhp \
+   00000214.xhp \
+   00000215.xhp \
+   00000401.xhp \
+   00000402.xhp \
+   00000403.xhp \
+   00000404.xhp \
+   00000406.xhp \
+   00000407.xhp \
+   00000408.xhp \
+   00000409.xhp \
+   00000450.xhp \
+   00040500.xhp \
+   00040501.xhp \
+   00040502.xhp \
+   00040503.xhp \
+   01000000.xhp \
+   01010000.xhp \
+   01020000.xhp \
+   01050000.xhp \
+   icon_alt.xhp 
     
 # --- Targets ------------------------------------------------------
 
