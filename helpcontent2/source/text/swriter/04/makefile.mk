@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-11-26 23:59:51 $
+#*    last change       $Author: rt $ $Date: 2004-12-16 12:59:42 $
 #*
-#*    $Revision: 1.4 $
+#*    $Revision: 1.5 $
 #*
 #*    $Logfile:$
 #*
@@ -27,8 +27,8 @@ MODULE  = swriter
 
 # --- Settings -----------------------------------------------------
 
-.INCLUDE : $(PRJ)$/settings.pmk
 .INCLUDE : settings.mk
+.INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
 HZIPFILES = \
