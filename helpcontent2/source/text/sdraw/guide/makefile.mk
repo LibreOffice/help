@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-27 09:56:23 $
+#*    last change       $Author: rt $ $Date: 2005-01-28 10:05:47 $
 #*
-#*    $Revision: 1.6 $
+#*    $Revision: 1.7 $
 #*
 #*    $Logfile:$
 #*
@@ -47,9 +47,7 @@ XHPFILES = \
    keyboard.xhp \
    main.xhp \
    rotate_object.xhp \
-   text_3d.xhp \
-   text_enter.xhp \
-   text_to_bitmap.xhp 
+   text_enter.xhp 
     
 # --- Targets ------------------------------------------------------
 
