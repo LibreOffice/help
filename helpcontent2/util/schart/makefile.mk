@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2004-08-24 11:11:28 $
+#*    last change       $Author: hjs $ $Date: 2004-08-26 15:17:44 $
 #*
-#*    $Revision: 1.6 $
+#*    $Revision: 1.7 $
 #*
 #*    $Logfile:$
 #*
@@ -19,7 +19,7 @@ PRJ		= ..$/..
 PRJNAME = help2
 # uniqe name (module wide);
 # using a modified forme of package should do here
-TARGET  = util
+TARGET  = schart_util
 
 # --- Settings -----------------------------------------------------
 
