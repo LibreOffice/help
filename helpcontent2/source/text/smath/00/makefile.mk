@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-27 10:01:26 $
+#*    last change       $Author: vg $ $Date: 2005-03-09 12:47:54 $
 #*
-#*    $Revision: 1.6 $
+#*    $Revision: 1.7 $
 #*
 #*    $Logfile:$
 #*

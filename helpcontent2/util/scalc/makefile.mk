@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-08 17:56:14 $
+#*    last change       $Author: vg $ $Date: 2005-03-09 12:46:59 $
 #*
-#*    $Revision: 1.14 $
+#*    $Revision: 1.15 $
 #*
 #*    $Logfile:$
 #*
@@ -665,7 +665,6 @@ LINKLINKFILES= \
    text$/shared$/01$/gallery_files.xhp \
    text$/shared$/01$/grid.xhp \
    text$/shared$/01$/guides.xhp \
-   text$/shared$/01$/liststyles.xhp \
    text$/shared$/01$/mediaplayer.xhp \
    text$/shared$/01$/moviesound.xhp \
    text$/shared$/01$/packagemanager.xhp \
@@ -935,8 +934,6 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/02010100.xhp \
    text$/shared$/explorer$/database$/02010101.xhp \
    text$/shared$/explorer$/database$/04000000.xhp \
-   text$/shared$/explorer$/database$/04000001.xhp \
-   text$/shared$/explorer$/database$/04010000.xhp \
    text$/shared$/explorer$/database$/04030000.xhp \
    text$/shared$/explorer$/database$/05000000.xhp \
    text$/shared$/explorer$/database$/05000001.xhp \

@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-01-27 09:51:20 $
+#*    last change       $Author: vg $ $Date: 2005-03-09 12:49:50 $
 #*
-#*    $Revision: 1.6 $
+#*    $Revision: 1.7 $
 #*
 #*    $Logfile:$
 #*
@@ -286,6 +286,7 @@ XHPFILES = \
    03132200.xhp \
    03132300.xhp \
    03132400.xhp \
+   03132500.xhp \
    05060700.xhp \
    keys.xhp \
    main0211.xhp \
