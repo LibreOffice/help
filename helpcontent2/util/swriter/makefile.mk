@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-20 10:24:42 $
+#*    last change       $Author: fpe $ $Date: 2004-08-24 10:55:21 $
 #*
-#*    $Revision: 1.4 $
+#*    $Revision: 1.5 $
 #*
 #*    $Logfile:$
 #*
@@ -28,7 +28,7 @@ TARGET  = util
 
 common_build_zip:=
 zip1generatedlangs=TRUE
-ZIP1TARGET=swriter_xml
+ZIP1TARGET=swriter_xhp
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/swriter$/* -x "*.dphh*" -x "*.hzip"
@@ -777,7 +777,6 @@ LINKLINKFILES= \
    text$/shared$/02$/02140000.hzip \
    text$/shared$/02$/02160000.hzip \
    text$/shared$/02$/02170000.hzip \
-   text$/shared$/02$/02210000.hzip \
    text$/shared$/02$/03110000.hzip \
    text$/shared$/02$/03120000.hzip \
    text$/shared$/02$/03130000.hzip \

@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-24 10:46:07 $
+#*    last change       $Author: fpe $ $Date: 2004-08-24 10:55:20 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -28,7 +28,7 @@ TARGET  = util
 
 common_build_zip:=
 zip1generatedlangs=TRUE
-ZIP1TARGET=shared_xml
+ZIP1TARGET=shared_xhp
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/shared$/* -x "*.dphh*" -x "*.hzip"
