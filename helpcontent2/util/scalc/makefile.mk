@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2004-11-09 11:47:14 $
+#*    last change       $Author: rt $ $Date: 2004-11-27 00:24:54 $
 #*
-#*    $Revision: 1.7 $
+#*    $Revision: 1.8 $
 #*
 #*    $Logfile:$
 #*
@@ -15,11 +15,11 @@
 
 # edit to match directory level 
 PRJ		= ..$/..
-# same for all makefiles in "help2"
-PRJNAME = help2
+# same for all makefiles in "helpcontent2"
+PRJNAME = helpcontent2
 # uniqe name (module wide);
-# using a modified forme of package should do here
-TARGET  = scalc_util
+# using a modified form of package should do here
+TARGET  = util
 
 # --- Settings -----------------------------------------------------
 
@@ -28,6 +28,7 @@ TARGET  = scalc_util
 
 common_build_zip:=
 zip1generatedlangs=TRUE
+
 .IF "$(SOLAR_JAVA)"!=""
 ZIP1TARGET=scalc_xhp
 ZIP1FLAGS= -u -r
@@ -39,13 +40,13 @@ LINKNAME=scalc
 LINKADDEDFILES= \
    -add scalc.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.cfg \
    -add scalc.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.tree \
-   -add scalc.jar  $(BIN)$/scalc_xhp_LANGUAGE.zip
+   -add scalc.jar  $(BIN)$/xhp_scalc_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.cfg \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.tree \
-   $(BIN)$/scalc_xhp_LANGUAGE.zip
+   $(BIN)$/xhp_scalc_LANGUAGE.zip
 
 
 LINKLINKFILES= \
@@ -91,6 +92,7 @@ LINKLINKFILES= \
    text$/scalc$/01$/04060000.hzip \
    text$/scalc$/01$/04060100.hzip \
    text$/scalc$/01$/04060101.hzip \
+   text$/scalc$/01$/04060102.hzip \
    text$/scalc$/01$/04060103.hzip \
    text$/scalc$/01$/04060104.hzip \
    text$/scalc$/01$/04060105.hzip \
@@ -130,8 +132,6 @@ LINKLINKFILES= \
    text$/scalc$/01$/05050100.hzip \
    text$/scalc$/01$/05050300.hzip \
    text$/scalc$/01$/05060000.hzip \
-   text$/scalc$/01$/05060100.hzip \
-   text$/scalc$/01$/05060200.hzip \
    text$/scalc$/01$/05070000.hzip \
    text$/scalc$/01$/05070500.hzip \
    text$/scalc$/01$/05080000.hzip \
@@ -139,7 +139,6 @@ LINKLINKFILES= \
    text$/scalc$/01$/05080200.hzip \
    text$/scalc$/01$/05080300.hzip \
    text$/scalc$/01$/05080400.hzip \
-   text$/scalc$/01$/05090000.hzip \
    text$/scalc$/01$/05100000.hzip \
    text$/scalc$/01$/05110000.hzip \
    text$/scalc$/01$/05120000.hzip \
@@ -198,8 +197,11 @@ LINKLINKFILES= \
    text$/scalc$/01$/12090102.hzip \
    text$/scalc$/01$/12090103.hzip \
    text$/scalc$/01$/12090104.hzip \
+   text$/scalc$/01$/12090105.hzip \
+   text$/scalc$/01$/12090106.hzip \
    text$/scalc$/01$/12090200.hzip \
    text$/scalc$/01$/12090300.hzip \
+   text$/scalc$/01$/12090400.hzip \
    text$/scalc$/01$/12100000.hzip \
    text$/scalc$/01$/12120000.hzip \
    text$/scalc$/01$/12120100.hzip \
@@ -222,12 +224,12 @@ LINKLINKFILES= \
    text$/scalc$/01$/func_time.hzip \
    text$/scalc$/01$/func_timevalue.hzip \
    text$/scalc$/01$/func_today.hzip \
+   text$/scalc$/01$/func_weekday.hzip \
    text$/scalc$/01$/func_weeknum.hzip \
    text$/scalc$/01$/func_weeknumadd.hzip \
    text$/scalc$/01$/func_workday.hzip \
    text$/scalc$/01$/func_year.hzip \
    text$/scalc$/01$/func_yearfrac.hzip \
-   text$/scalc$/01$/taskpanel.hzip \
    text$/scalc$/02$/02130000.hzip \
    text$/scalc$/02$/02140000.hzip \
    text$/scalc$/02$/02150000.hzip \
@@ -274,10 +276,12 @@ LINKLINKFILES= \
    text$/scalc$/guide$/database_filter.hzip \
    text$/scalc$/guide$/database_group.hzip \
    text$/scalc$/guide$/database_sort.hzip \
+   text$/scalc$/guide$/datapilot.hzip \
    text$/scalc$/guide$/datapilot_createtable.hzip \
    text$/scalc$/guide$/datapilot_deletetable.hzip \
    text$/scalc$/guide$/datapilot_edittable.hzip \
    text$/scalc$/guide$/datapilot_filtertable.hzip \
+   text$/scalc$/guide$/datapilot_grouping.hzip \
    text$/scalc$/guide$/datapilot_tipps.hzip \
    text$/scalc$/guide$/datapilot_updatetable.hzip \
    text$/scalc$/guide$/dbase_files.hzip \
@@ -313,6 +317,7 @@ LINKLINKFILES= \
    text$/scalc$/guide$/rename_table.hzip \
    text$/scalc$/guide$/rounding_numbers.hzip \
    text$/scalc$/guide$/row_height.hzip \
+   text$/scalc$/guide$/scenario.hzip \
    text$/scalc$/guide$/sorted_list.hzip \
    text$/scalc$/guide$/specialfilter.hzip \
    text$/scalc$/guide$/super_subscript.hzip \
@@ -611,6 +616,8 @@ LINKLINKFILES= \
    text$/shared$/01$/06010000.hzip \
    text$/shared$/01$/06010101.hzip \
    text$/shared$/01$/06010500.hzip \
+   text$/shared$/01$/06010600.hzip \
+   text$/shared$/01$/06010601.hzip \
    text$/shared$/01$/06020000.hzip \
    text$/shared$/01$/06030000.hzip \
    text$/shared$/01$/06040000.hzip \
@@ -624,19 +631,19 @@ LINKLINKFILES= \
    text$/shared$/01$/06050100.hzip \
    text$/shared$/01$/06050200.hzip \
    text$/shared$/01$/06050300.hzip \
-   text$/shared$/01$/06050400.hzip \
    text$/shared$/01$/06050500.hzip \
    text$/shared$/01$/06050600.hzip \
    text$/shared$/01$/06130000.hzip \
    text$/shared$/01$/06130001.hzip \
    text$/shared$/01$/06130010.hzip \
    text$/shared$/01$/06130100.hzip \
+   text$/shared$/01$/06130200.hzip \
    text$/shared$/01$/06130500.hzip \
    text$/shared$/01$/06140000.hzip \
+   text$/shared$/01$/06140100.hzip \
    text$/shared$/01$/06140101.hzip \
    text$/shared$/01$/06140102.hzip \
    text$/shared$/01$/06140200.hzip \
-   text$/shared$/01$/06140300.hzip \
    text$/shared$/01$/06140400.hzip \
    text$/shared$/01$/06140401.hzip \
    text$/shared$/01$/06140402.hzip \
@@ -655,10 +662,12 @@ LINKLINKFILES= \
    text$/shared$/01$/07080000.hzip \
    text$/shared$/01$/08060100.hzip \
    text$/shared$/01$/about_meta_tags.hzip \
+   text$/shared$/01$/digitalsignatures.hzip \
    text$/shared$/01$/gallery.hzip \
    text$/shared$/01$/gallery_files.hzip \
    text$/shared$/01$/grid.hzip \
    text$/shared$/01$/guides.hzip \
+   text$/shared$/01$/liststyles.hzip \
    text$/shared$/01$/mediaplayer.hzip \
    text$/shared$/01$/moviesound.hzip \
    text$/shared$/01$/packagemanager.hzip \
@@ -666,6 +675,13 @@ LINKLINKFILES= \
    text$/shared$/01$/password_main.hzip \
    text$/shared$/01$/ref_pdf_export.hzip \
    text$/shared$/01$/ref_pdf_send_as.hzip \
+   text$/shared$/01$/securitywarning.hzip \
+   text$/shared$/01$/selectcertificate.hzip \
+   text$/shared$/01$/xformsdata.hzip \
+   text$/shared$/01$/xformsdataadd.hzip \
+   text$/shared$/01$/xformsdataaddcon.hzip \
+   text$/shared$/01$/xformsdatachange.hzip \
+   text$/shared$/01$/xformsdataname.hzip \
    text$/shared$/02$/01110000.hzip \
    text$/shared$/02$/01140000.hzip \
    text$/shared$/02$/01170000.hzip \
@@ -675,6 +691,7 @@ LINKLINKFILES= \
    text$/shared$/02$/01170004.hzip \
    text$/shared$/02$/01170100.hzip \
    text$/shared$/02$/01170101.hzip \
+   text$/shared$/02$/01170102.hzip \
    text$/shared$/02$/01170103.hzip \
    text$/shared$/02$/01170200.hzip \
    text$/shared$/02$/01170201.hzip \
@@ -803,7 +820,14 @@ LINKLINKFILES= \
    text$/shared$/02$/24080000.hzip \
    text$/shared$/02$/24090000.hzip \
    text$/shared$/02$/24100000.hzip \
+   text$/shared$/02$/basicshapes.hzip \
+   text$/shared$/02$/blockarrows.hzip \
+   text$/shared$/02$/callouts.hzip \
+   text$/shared$/02$/flowcharts.hzip \
+   text$/shared$/02$/fontwork.hzip \
    text$/shared$/02$/paintbrush.hzip \
+   text$/shared$/02$/stars.hzip \
+   text$/shared$/02$/symbolshapes.hzip \
    text$/shared$/04$/01010000.hzip \
    text$/shared$/04$/01020000.hzip \
    text$/shared$/05$/00000001.hzip \
@@ -817,6 +841,7 @@ LINKLINKFILES= \
    text$/shared$/05$/00000160.hzip \
    text$/shared$/05$/err_html.hzip \
    text$/shared$/07$/09000000.hzip \
+   text$/shared$/3dsettings_toolbar.hzip \
    text$/shared$/autokorr$/01000000.hzip \
    text$/shared$/autokorr$/02000000.hzip \
    text$/shared$/autokorr$/03000000.hzip \
@@ -831,23 +856,41 @@ LINKLINKFILES= \
    text$/shared$/autokorr$/12000000.hzip \
    text$/shared$/autokorr$/13000000.hzip \
    text$/shared$/autopi$/01000000.hzip \
-   text$/shared$/autopi$/01020600.hzip \
-   text$/shared$/autopi$/01020700.hzip \
-   text$/shared$/autopi$/01020800.hzip \
-   text$/shared$/autopi$/01030000.hzip \
-   text$/shared$/autopi$/01030100.hzip \
-   text$/shared$/autopi$/01030200.hzip \
-   text$/shared$/autopi$/01030300.hzip \
-   text$/shared$/autopi$/01030400.hzip \
-   text$/shared$/autopi$/01030500.hzip \
+   text$/shared$/autopi$/01010000.hzip \
+   text$/shared$/autopi$/01010100.hzip \
+   text$/shared$/autopi$/01010200.hzip \
+   text$/shared$/autopi$/01010300.hzip \
+   text$/shared$/autopi$/01010400.hzip \
+   text$/shared$/autopi$/01010500.hzip \
+   text$/shared$/autopi$/01010600.hzip \
+   text$/shared$/autopi$/01020000.hzip \
+   text$/shared$/autopi$/01020100.hzip \
+   text$/shared$/autopi$/01020200.hzip \
+   text$/shared$/autopi$/01020300.hzip \
+   text$/shared$/autopi$/01020400.hzip \
+   text$/shared$/autopi$/01020500.hzip \
+   text$/shared$/autopi$/01040000.hzip \
+   text$/shared$/autopi$/01040100.hzip \
+   text$/shared$/autopi$/01040200.hzip \
+   text$/shared$/autopi$/01040300.hzip \
+   text$/shared$/autopi$/01040400.hzip \
+   text$/shared$/autopi$/01040500.hzip \
+   text$/shared$/autopi$/01040600.hzip \
    text$/shared$/autopi$/01050000.hzip \
    text$/shared$/autopi$/01050100.hzip \
    text$/shared$/autopi$/01050200.hzip \
    text$/shared$/autopi$/01050300.hzip \
    text$/shared$/autopi$/01050400.hzip \
    text$/shared$/autopi$/01050500.hzip \
-   text$/shared$/autopi$/01060000.hzip \
    text$/shared$/autopi$/01090000.hzip \
+   text$/shared$/autopi$/01090100.hzip \
+   text$/shared$/autopi$/01090200.hzip \
+   text$/shared$/autopi$/01090210.hzip \
+   text$/shared$/autopi$/01090220.hzip \
+   text$/shared$/autopi$/01090300.hzip \
+   text$/shared$/autopi$/01090400.hzip \
+   text$/shared$/autopi$/01090500.hzip \
+   text$/shared$/autopi$/01090600.hzip \
    text$/shared$/autopi$/01100000.hzip \
    text$/shared$/autopi$/01100100.hzip \
    text$/shared$/autopi$/01100150.hzip \
@@ -875,8 +918,21 @@ LINKLINKFILES= \
    text$/shared$/autopi$/01170000.hzip \
    text$/shared$/autopi$/01170200.hzip \
    text$/shared$/autopi$/01170300.hzip \
+   text$/shared$/autopi$/01170400.hzip \
    text$/shared$/autopi$/01170500.hzip \
+   text$/shared$/autopi$/purchase.hzip \
+   text$/shared$/autopi$/startup.hzip \
    text$/shared$/autopi$/webwizard00.hzip \
+   text$/shared$/autopi$/webwizard01.hzip \
+   text$/shared$/autopi$/webwizard02.hzip \
+   text$/shared$/autopi$/webwizard03.hzip \
+   text$/shared$/autopi$/webwizard04.hzip \
+   text$/shared$/autopi$/webwizard05.hzip \
+   text$/shared$/autopi$/webwizard05bi.hzip \
+   text$/shared$/autopi$/webwizard05is.hzip \
+   text$/shared$/autopi$/webwizard06.hzip \
+   text$/shared$/autopi$/webwizard07.hzip \
+   text$/shared$/autopi$/webwizard07fc.hzip \
    text$/shared$/explorer$/database$/02000000.hzip \
    text$/shared$/explorer$/database$/02000002.hzip \
    text$/shared$/explorer$/database$/02010100.hzip \
@@ -927,11 +983,47 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/dabaadvprop.hzip \
    text$/shared$/explorer$/database$/dabaadvpropdat.hzip \
    text$/shared$/explorer$/database$/dabaadvpropgen.hzip \
+   text$/shared$/explorer$/database$/dabadoc.hzip \
    text$/shared$/explorer$/database$/dabaprop.hzip \
    text$/shared$/explorer$/database$/dabapropadd.hzip \
    text$/shared$/explorer$/database$/dabapropcon.hzip \
    text$/shared$/explorer$/database$/dabapropgen.hzip \
+   text$/shared$/explorer$/database$/dabawiz00.hzip \
+   text$/shared$/explorer$/database$/dabawiz01.hzip \
+   text$/shared$/explorer$/database$/dabawiz02.hzip \
+   text$/shared$/explorer$/database$/dabawiz02access.hzip \
+   text$/shared$/explorer$/database$/dabawiz02adabas.hzip \
+   text$/shared$/explorer$/database$/dabawiz02ado.hzip \
+   text$/shared$/explorer$/database$/dabawiz02jdbc.hzip \
+   text$/shared$/explorer$/database$/dabawiz02ldap.hzip \
+   text$/shared$/explorer$/database$/dabawiz02mysql.hzip \
+   text$/shared$/explorer$/database$/dabawiz02odbc.hzip \
+   text$/shared$/explorer$/database$/dabawiz02oracle.hzip \
+   text$/shared$/explorer$/database$/dabawiz02spreadsheet.hzip \
+   text$/shared$/explorer$/database$/dabawiz02text.hzip \
+   text$/shared$/explorer$/database$/dabawiz03auth.hzip \
+   text$/shared$/explorer$/database$/main.hzip \
+   text$/shared$/explorer$/database$/menubar.hzip \
    text$/shared$/explorer$/database$/menuedit.hzip \
+   text$/shared$/explorer$/database$/menufile.hzip \
+   text$/shared$/explorer$/database$/menuinsert.hzip \
+   text$/shared$/explorer$/database$/menutools.hzip \
+   text$/shared$/explorer$/database$/menuview.hzip \
+   text$/shared$/explorer$/database$/querywizard00.hzip \
+   text$/shared$/explorer$/database$/querywizard01.hzip \
+   text$/shared$/explorer$/database$/querywizard02.hzip \
+   text$/shared$/explorer$/database$/querywizard03.hzip \
+   text$/shared$/explorer$/database$/querywizard04.hzip \
+   text$/shared$/explorer$/database$/querywizard05.hzip \
+   text$/shared$/explorer$/database$/querywizard06.hzip \
+   text$/shared$/explorer$/database$/querywizard07.hzip \
+   text$/shared$/explorer$/database$/querywizard08.hzip \
+   text$/shared$/explorer$/database$/tablewizard00.hzip \
+   text$/shared$/explorer$/database$/tablewizard01.hzip \
+   text$/shared$/explorer$/database$/tablewizard02.hzip \
+   text$/shared$/explorer$/database$/tablewizard03.hzip \
+   text$/shared$/explorer$/database$/tablewizard04.hzip \
+   text$/shared$/fontwork_toolbar.hzip \
    text$/shared$/guide$/aaa_start.hzip \
    text$/shared$/guide$/accessibility.hzip \
    text$/shared$/guide$/active_help_on_off.hzip \
@@ -960,11 +1052,18 @@ LINKLINKFILES= \
    text$/shared$/guide$/data_addressbook.hzip \
    text$/shared$/guide$/data_dbase2office.hzip \
    text$/shared$/guide$/data_enter_sql.hzip \
+   text$/shared$/guide$/data_forms.hzip \
+   text$/shared$/guide$/data_new.hzip \
    text$/shared$/guide$/data_office2calc.hzip \
+   text$/shared$/guide$/data_queries.hzip \
+   text$/shared$/guide$/data_register.hzip \
    text$/shared$/guide$/data_report.hzip \
+   text$/shared$/guide$/data_reports.hzip \
    text$/shared$/guide$/data_search.hzip \
    text$/shared$/guide$/data_search2.hzip \
    text$/shared$/guide$/data_tabledefine.hzip \
+   text$/shared$/guide$/data_tables.hzip \
+   text$/shared$/guide$/data_view.hzip \
    text$/shared$/guide$/database_main.hzip \
    text$/shared$/guide$/doc_autosave.hzip \
    text$/shared$/guide$/doc_open.hzip \
@@ -980,10 +1079,12 @@ LINKLINKFILES= \
    text$/shared$/guide$/error_report.hzip \
    text$/shared$/guide$/export_ms.hzip \
    text$/shared$/guide$/fax.hzip \
+   text$/shared$/guide$/filternavigator.hzip \
+   text$/shared$/guide$/find_attributes.hzip \
    text$/shared$/guide$/flat_icons.hzip \
    text$/shared$/guide$/floating_toolbar.hzip \
+   text$/shared$/guide$/fontwork.hzip \
    text$/shared$/guide$/formfields.hzip \
-   text$/shared$/guide$/functionbar_edit.hzip \
    text$/shared$/guide$/gallery_insert.hzip \
    text$/shared$/guide$/hyperlink_edit.hzip \
    text$/shared$/guide$/hyperlink_insert.hzip \
@@ -993,8 +1094,6 @@ LINKLINKFILES= \
    text$/shared$/guide$/insert_bitmap.hzip \
    text$/shared$/guide$/insert_graphic_drawit.hzip \
    text$/shared$/guide$/insert_specialchar.hzip \
-   text$/shared$/guide$/install_change.hzip \
-   text$/shared$/guide$/install_repair.hzip \
    text$/shared$/guide$/integratinguno.hzip \
    text$/shared$/guide$/keyboard.hzip \
    text$/shared$/guide$/labels.hzip \
@@ -1009,6 +1108,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/measurement_units.hzip \
    text$/shared$/guide$/microsoft_terms.hzip \
    text$/shared$/guide$/mobiledevicefilters.hzip \
+   text$/shared$/guide$/ms_doctypes.hzip \
    text$/shared$/guide$/ms_import_export_limitations.hzip \
    text$/shared$/guide$/ms_user.hzip \
    text$/shared$/guide$/navigator.hzip \
@@ -1017,10 +1117,10 @@ LINKLINKFILES= \
    text$/shared$/guide$/numbering_stop.hzip \
    text$/shared$/guide$/pageformat_max.hzip \
    text$/shared$/guide$/paintbrush.hzip \
+   text$/shared$/guide$/pasting.hzip \
    text$/shared$/guide$/print_blackwhite.hzip \
    text$/shared$/guide$/print_faster.hzip \
    text$/shared$/guide$/protection.hzip \
-   text$/shared$/guide$/quicklaunch.hzip \
    text$/shared$/guide$/redlining.hzip \
    text$/shared$/guide$/redlining_accept.hzip \
    text$/shared$/guide$/redlining_doccompare.hzip \
@@ -1029,21 +1129,20 @@ LINKLINKFILES= \
    text$/shared$/guide$/redlining_protect.hzip \
    text$/shared$/guide$/redlining_versions.hzip \
    text$/shared$/guide$/round_corner.hzip \
+   text$/shared$/guide$/scripting.hzip \
    text$/shared$/guide$/space_hyphen.hzip \
    text$/shared$/guide$/spadmin.hzip \
    text$/shared$/guide$/standard_template.hzip \
    text$/shared$/guide$/start_parameters.hzip \
-   text$/shared$/guide$/symbolbar_switch.hzip \
    text$/shared$/guide$/table_cellmerge.hzip \
    text$/shared$/guide$/tabs.hzip \
    text$/shared$/guide$/text_color.hzip \
    text$/shared$/guide$/textmode_change.hzip \
    text$/shared$/guide$/undo_formatting.hzip \
-   text$/shared$/guide$/url_autocomplete.hzip \
-   text$/shared$/guide$/url_open.hzip \
    text$/shared$/guide$/version_number.hzip \
    text$/shared$/guide$/viewing_file_properties.hzip \
    text$/shared$/guide$/workfolder.hzip \
+   text$/shared$/guide$/xforms.hzip \
    text$/shared$/guide$/xsltfilter.hzip \
    text$/shared$/main0108.hzip \
    text$/shared$/main0201.hzip \
@@ -1083,6 +1182,8 @@ LINKLINKFILES= \
    text$/shared$/optionen$/01020000.hzip \
    text$/shared$/optionen$/01020100.hzip \
    text$/shared$/optionen$/01020200.hzip \
+   text$/shared$/optionen$/01020300.hzip \
+   text$/shared$/optionen$/01020400.hzip \
    text$/shared$/optionen$/01030000.hzip \
    text$/shared$/optionen$/01030300.hzip \
    text$/shared$/optionen$/01030500.hzip \
@@ -1094,9 +1195,9 @@ LINKLINKFILES= \
    text$/shared$/optionen$/01040500.hzip \
    text$/shared$/optionen$/01040600.hzip \
    text$/shared$/optionen$/01040700.hzip \
-   text$/shared$/optionen$/01040801.hzip \
    text$/shared$/optionen$/01040900.hzip \
    text$/shared$/optionen$/01041000.hzip \
+   text$/shared$/optionen$/01041100.hzip \
    text$/shared$/optionen$/01050000.hzip \
    text$/shared$/optionen$/01050100.hzip \
    text$/shared$/optionen$/01050300.hzip \
@@ -1128,9 +1229,21 @@ LINKLINKFILES= \
    text$/shared$/optionen$/01150300.hzip \
    text$/shared$/optionen$/01160000.hzip \
    text$/shared$/optionen$/01160100.hzip \
+   text$/shared$/optionen$/01160200.hzip \
+   text$/shared$/optionen$/01160201.hzip \
    text$/shared$/optionen$/java.hzip \
    text$/shared$/optionen$/javaclasspath.hzip \
    text$/shared$/optionen$/javaparameters.hzip \
+   text$/shared$/optionen$/macrosecurity.hzip \
+   text$/shared$/optionen$/macrosecurity_sl.hzip \
+   text$/shared$/optionen$/macrosecurity_ts.hzip \
+   text$/shared$/optionen$/mailmerge.hzip \
+   text$/shared$/optionen$/serverauthentication.hzip \
+   text$/shared$/optionen$/testaccount.hzip \
+   text$/shared$/optionen$/viewcertificate.hzip \
+   text$/shared$/optionen$/viewcertificate_c.hzip \
+   text$/shared$/optionen$/viewcertificate_d.hzip \
+   text$/shared$/optionen$/viewcertificate_g.hzip \
    text$/shared$/tree_strings.hzip \
    text$/schart$/00$/00000004.hzip \
    text$/schart$/01$/03010000.hzip \
@@ -1188,4 +1301,3 @@ LINKLINKFILES= \
 
 .INCLUDE :  target.mk
 .INCLUDE :  $(PRJ)$/util$/target.pmk
-
