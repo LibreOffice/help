@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 12:54:57 $
+#*    last change       $Author: rt $ $Date: 2005-01-27 09:58:43 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -31,85 +31,85 @@ MODULE  = shared
 .INCLUDE : $(PRJ)$/settings.pmk
 
 # this list matches the *.xhp files to process
-HZIPFILES = \
-   01000000.hzip \
-   01010000.hzip \
-   01010100.hzip \
-   01010200.hzip \
-   01010300.hzip \
-   01010400.hzip \
-   01010500.hzip \
-   01010600.hzip \
-   01020000.hzip \
-   01020100.hzip \
-   01020200.hzip \
-   01020300.hzip \
-   01020400.hzip \
-   01020500.hzip \
-   01040000.hzip \
-   01040100.hzip \
-   01040200.hzip \
-   01040300.hzip \
-   01040400.hzip \
-   01040500.hzip \
-   01040600.hzip \
-   01050000.hzip \
-   01050100.hzip \
-   01050200.hzip \
-   01050300.hzip \
-   01050400.hzip \
-   01050500.hzip \
-   01090000.hzip \
-   01090100.hzip \
-   01090200.hzip \
-   01090210.hzip \
-   01090220.hzip \
-   01090300.hzip \
-   01090400.hzip \
-   01090500.hzip \
-   01090600.hzip \
-   01100000.hzip \
-   01100100.hzip \
-   01100150.hzip \
-   01100200.hzip \
-   01100300.hzip \
-   01100400.hzip \
-   01100500.hzip \
-   01110000.hzip \
-   01110100.hzip \
-   01110200.hzip \
-   01110300.hzip \
-   01110400.hzip \
-   01110500.hzip \
-   01110600.hzip \
-   01120000.hzip \
-   01120100.hzip \
-   01120200.hzip \
-   01120300.hzip \
-   01120400.hzip \
-   01120500.hzip \
-   01130000.hzip \
-   01130100.hzip \
-   01130200.hzip \
-   01150000.hzip \
-   01170000.hzip \
-   01170200.hzip \
-   01170300.hzip \
-   01170400.hzip \
-   01170500.hzip \
-   purchase.hzip \
-   startup.hzip \
-   webwizard00.hzip \
-   webwizard01.hzip \
-   webwizard02.hzip \
-   webwizard03.hzip \
-   webwizard04.hzip \
-   webwizard05.hzip \
-   webwizard05bi.hzip \
-   webwizard05is.hzip \
-   webwizard06.hzip \
-   webwizard07.hzip \
-   webwizard07fc.hzip 
+XHPFILES = \
+   01000000.xhp \
+   01010000.xhp \
+   01010100.xhp \
+   01010200.xhp \
+   01010300.xhp \
+   01010400.xhp \
+   01010500.xhp \
+   01010600.xhp \
+   01020000.xhp \
+   01020100.xhp \
+   01020200.xhp \
+   01020300.xhp \
+   01020400.xhp \
+   01020500.xhp \
+   01040000.xhp \
+   01040100.xhp \
+   01040200.xhp \
+   01040300.xhp \
+   01040400.xhp \
+   01040500.xhp \
+   01040600.xhp \
+   01050000.xhp \
+   01050100.xhp \
+   01050200.xhp \
+   01050300.xhp \
+   01050400.xhp \
+   01050500.xhp \
+   01090000.xhp \
+   01090100.xhp \
+   01090200.xhp \
+   01090210.xhp \
+   01090220.xhp \
+   01090300.xhp \
+   01090400.xhp \
+   01090500.xhp \
+   01090600.xhp \
+   01100000.xhp \
+   01100100.xhp \
+   01100150.xhp \
+   01100200.xhp \
+   01100300.xhp \
+   01100400.xhp \
+   01100500.xhp \
+   01110000.xhp \
+   01110100.xhp \
+   01110200.xhp \
+   01110300.xhp \
+   01110400.xhp \
+   01110500.xhp \
+   01110600.xhp \
+   01120000.xhp \
+   01120100.xhp \
+   01120200.xhp \
+   01120300.xhp \
+   01120400.xhp \
+   01120500.xhp \
+   01130000.xhp \
+   01130100.xhp \
+   01130200.xhp \
+   01150000.xhp \
+   01170000.xhp \
+   01170200.xhp \
+   01170300.xhp \
+   01170400.xhp \
+   01170500.xhp \
+   purchase.xhp \
+   startup.xhp \
+   webwizard00.xhp \
+   webwizard01.xhp \
+   webwizard02.xhp \
+   webwizard03.xhp \
+   webwizard04.xhp \
+   webwizard05.xhp \
+   webwizard05bi.xhp \
+   webwizard05is.xhp \
+   webwizard06.xhp \
+   webwizard07.xhp \
+   webwizard07fc.xhp 
     
 # --- Targets ------------------------------------------------------
 
