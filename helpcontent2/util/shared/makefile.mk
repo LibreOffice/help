@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 13:01:34 $
+#*    last change       $Author: hr $ $Date: 2005-02-11 15:16:36 $
 #*
-#*    $Revision: 1.10 $
+#*    $Revision: 1.11 $
 #*
 #*    $Logfile:$
 #*
@@ -19,25 +19,27 @@ PRJ		= ..$/..
 PRJNAME = helpcontent2
 # uniqe name (module wide);
 # using a modified form of package should do here
-TARGET  = util
+TARGET  = util_shared
 
 # --- Settings -----------------------------------------------------
 
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
+.IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_shared
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
-ZIP1LIST=$(LANGDIR)$/text$/shared$/* -x "*.dphh*" -x "*.hzip"
+ZIP1LIST=$(LANGDIR)$/text$/shared$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
+.ENDIF			# "$(SOLAR_JAVA)"!=""
 
 
 LINKNAME=shared
 LINKADDEDFILES= \
-   -add shared.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/shared.tree \
+   -add shared.tree $(MISC)$/LANGUAGE$/shared.tree \
    -add shared.jar  $(BIN)$/xhp_shared_LANGUAGE.zip \
    -add default.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/default.css \
    -add highcontrast1.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast1.css \
@@ -48,7 +50,7 @@ LINKADDEDFILES= \
 
 
 LINKADDEDDEPS= \
-   $(PRJ)$/source$/auxiliary$/LANGUAGE$/shared.tree \
+   $(MISC)$/LANGUAGE$/shared.tree \
    $(BIN)$/xhp_shared_LANGUAGE.zip \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/default.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast1.css \
