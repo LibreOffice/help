@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-20 10:24:40 $
+#*    last change       $Author: ihi $ $Date: 2004-08-24 11:11:28 $
 #*
-#*    $Revision: 1.4 $
+#*    $Revision: 1.5 $
 #*
 #*    $Logfile:$
 #*
@@ -28,7 +28,7 @@ TARGET  = util
 
 common_build_zip:=
 zip1generatedlangs=TRUE
-ZIP1TARGET=sbasic_xml
+ZIP1TARGET=sbasic_xhp
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/sbasic$/* -x "*.dphh*" -x "*.hzip"
