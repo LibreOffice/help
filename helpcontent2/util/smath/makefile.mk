@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: fpe $ $Date: 2004-08-18 11:52:19 $
+#*    last change       $Author: ihi $ $Date: 2004-08-18 16:19:24 $
 #*
-#*    $Revision: 1.2 $
+#*    $Revision: 1.3 $
 #*
 #*    $Logfile:$
 #*
@@ -28,7 +28,7 @@ TARGET  = util
 
 common_build_zip:=
 zip1generatedlangs=TRUE
-ZIP1TARGET=smath_xml
+ZIP1TARGET=smath_xhp
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/smath$/* -x "*.dphh*" -x "*.hzip"
