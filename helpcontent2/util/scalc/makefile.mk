@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2004-08-18 16:19:22 $
+#*    last change       $Author: fpe $ $Date: 2004-08-20 10:24:40 $
 #*
-#*    $Revision: 1.3 $
+#*    $Revision: 1.4 $
 #*
 #*    $Logfile:$
 #*
@@ -28,7 +28,7 @@ TARGET  = util
 
 common_build_zip:=
 zip1generatedlangs=TRUE
-ZIP1TARGET=scalc_xhp
+ZIP1TARGET=scalc_xml
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/scalc$/* -x "*.dphh*" -x "*.hzip"
@@ -36,9 +36,9 @@ ZIP1LIST=$(LANGDIR)$/text$/scalc$/* -x "*.dphh*" -x "*.hzip"
 
 LINKNAME=scalc
 LINKADDEDFILES= \
-   -add help$/LANGUAGE$/scalc.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.cfg \
-   -add help$/LANGUAGE$/scalc.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.tree \
-   -add help$/LANGUAGE$/scalc.jar  $(BIN)$/scalc_xhp_LANGUAGE.zip
+   -add scalc.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.cfg \
+   -add scalc.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.tree \
+   -add scalc.jar  $(BIN)$/scalc_xhp_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
@@ -325,6 +325,26 @@ LINKLINKFILES= \
    text$/scalc$/guide$/value_with_name.hzip \
    text$/scalc$/guide$/webquery.hzip \
    text$/scalc$/guide$/year2000.hzip \
+   text$/scalc$/main0000.hzip \
+   text$/scalc$/main0100.hzip \
+   text$/scalc$/main0101.hzip \
+   text$/scalc$/main0102.hzip \
+   text$/scalc$/main0103.hzip \
+   text$/scalc$/main0104.hzip \
+   text$/scalc$/main0105.hzip \
+   text$/scalc$/main0106.hzip \
+   text$/scalc$/main0107.hzip \
+   text$/scalc$/main0112.hzip \
+   text$/scalc$/main0200.hzip \
+   text$/scalc$/main0202.hzip \
+   text$/scalc$/main0203.hzip \
+   text$/scalc$/main0205.hzip \
+   text$/scalc$/main0206.hzip \
+   text$/scalc$/main0208.hzip \
+   text$/scalc$/main0210.hzip \
+   text$/scalc$/main0214.hzip \
+   text$/scalc$/main0218.hzip \
+   text$/scalc$/main0503.hzip \
    text$/shared$/00$/00000001.hzip \
    text$/shared$/00$/00000002.hzip \
    text$/shared$/00$/00000003.hzip \
@@ -1025,6 +1045,22 @@ LINKLINKFILES= \
    text$/shared$/guide$/viewing_file_properties.hzip \
    text$/shared$/guide$/workfolder.hzip \
    text$/shared$/guide$/xsltfilter.hzip \
+   text$/shared$/main0108.hzip \
+   text$/shared$/main0201.hzip \
+   text$/shared$/main0208.hzip \
+   text$/shared$/main0209.hzip \
+   text$/shared$/main0212.hzip \
+   text$/shared$/main0213.hzip \
+   text$/shared$/main0214.hzip \
+   text$/shared$/main0226.hzip \
+   text$/shared$/main0227.hzip \
+   text$/shared$/main0300.hzip \
+   text$/shared$/main0302.hzip \
+   text$/shared$/main0400.hzip \
+   text$/shared$/main0500.hzip \
+   text$/shared$/main0600.hzip \
+   text$/shared$/main0650.hzip \
+   text$/shared$/main0800.hzip \
    text$/shared$/optionen$/01000000.hzip \
    text$/shared$/optionen$/01010000.hzip \
    text$/shared$/optionen$/01010100.hzip \
@@ -1095,6 +1131,7 @@ LINKLINKFILES= \
    text$/shared$/optionen$/java.hzip \
    text$/shared$/optionen$/javaclasspath.hzip \
    text$/shared$/optionen$/javaparameters.hzip \
+   text$/shared$/tree_strings.hzip \
    text$/schart$/00$/00000004.hzip \
    text$/schart$/01$/03010000.hzip \
    text$/schart$/01$/04010000.hzip \
@@ -1132,6 +1169,19 @@ LINKLINKFILES= \
    text$/schart$/02$/01220000.hzip \
    text$/schart$/02$/02020000.hzip \
    text$/schart$/04$/01020000.hzip \
+   text$/schart$/main0000.hzip \
+   text$/schart$/main0100.hzip \
+   text$/schart$/main0101.hzip \
+   text$/schart$/main0102.hzip \
+   text$/schart$/main0103.hzip \
+   text$/schart$/main0104.hzip \
+   text$/schart$/main0105.hzip \
+   text$/schart$/main0106.hzip \
+   text$/schart$/main0107.hzip \
+   text$/schart$/main0200.hzip \
+   text$/schart$/main0202.hzip \
+   text$/schart$/main0203.hzip \
+   text$/schart$/main0503.hzip \
 
 
 # --- Targets ------------------------------------------------------

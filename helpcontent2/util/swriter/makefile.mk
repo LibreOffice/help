@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2004-08-18 16:19:24 $
+#*    last change       $Author: fpe $ $Date: 2004-08-20 10:24:42 $
 #*
-#*    $Revision: 1.3 $
+#*    $Revision: 1.4 $
 #*
 #*    $Logfile:$
 #*
@@ -28,7 +28,7 @@ TARGET  = util
 
 common_build_zip:=
 zip1generatedlangs=TRUE
-ZIP1TARGET=swriter_xhp
+ZIP1TARGET=swriter_xml
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/swriter$/* -x "*.dphh*" -x "*.hzip"
@@ -36,9 +36,9 @@ ZIP1LIST=$(LANGDIR)$/text$/swriter$/* -x "*.dphh*" -x "*.hzip"
 
 LINKNAME=swriter
 LINKADDEDFILES= \
-   -add help$/LANGUAGE$/swriter.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.cfg \
-   -add help$/LANGUAGE$/swriter.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.tree \
-   -add help$/LANGUAGE$/swriter.jar  $(BIN)$/swriter_xhp_LANGUAGE.zip
+   -add swriter.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.cfg \
+   -add swriter.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.tree \
+   -add swriter.jar  $(BIN)$/swriter_xhp_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
@@ -389,6 +389,31 @@ LINKLINKFILES= \
    text$/swriter$/guide$/word_completion.hzip \
    text$/swriter$/guide$/words_count.hzip \
    text$/swriter$/guide$/wrap.hzip \
+   text$/swriter$/main0000.hzip \
+   text$/swriter$/main0100.hzip \
+   text$/swriter$/main0101.hzip \
+   text$/swriter$/main0102.hzip \
+   text$/swriter$/main0103.hzip \
+   text$/swriter$/main0104.hzip \
+   text$/swriter$/main0105.hzip \
+   text$/swriter$/main0106.hzip \
+   text$/swriter$/main0107.hzip \
+   text$/swriter$/main0200.hzip \
+   text$/swriter$/main0202.hzip \
+   text$/swriter$/main0203.hzip \
+   text$/swriter$/main0204.hzip \
+   text$/swriter$/main0205.hzip \
+   text$/swriter$/main0206.hzip \
+   text$/swriter$/main0208.hzip \
+   text$/swriter$/main0210.hzip \
+   text$/swriter$/main0213.hzip \
+   text$/swriter$/main0214.hzip \
+   text$/swriter$/main0215.hzip \
+   text$/swriter$/main0216.hzip \
+   text$/swriter$/main0218.hzip \
+   text$/swriter$/main0219.hzip \
+   text$/swriter$/main0220.hzip \
+   text$/swriter$/main0503.hzip \
    text$/shared$/00$/00000001.hzip \
    text$/shared$/00$/00000002.hzip \
    text$/shared$/00$/00000003.hzip \
@@ -1089,6 +1114,22 @@ LINKLINKFILES= \
    text$/shared$/guide$/viewing_file_properties.hzip \
    text$/shared$/guide$/workfolder.hzip \
    text$/shared$/guide$/xsltfilter.hzip \
+   text$/shared$/main0108.hzip \
+   text$/shared$/main0201.hzip \
+   text$/shared$/main0208.hzip \
+   text$/shared$/main0209.hzip \
+   text$/shared$/main0212.hzip \
+   text$/shared$/main0213.hzip \
+   text$/shared$/main0214.hzip \
+   text$/shared$/main0226.hzip \
+   text$/shared$/main0227.hzip \
+   text$/shared$/main0300.hzip \
+   text$/shared$/main0302.hzip \
+   text$/shared$/main0400.hzip \
+   text$/shared$/main0500.hzip \
+   text$/shared$/main0600.hzip \
+   text$/shared$/main0650.hzip \
+   text$/shared$/main0800.hzip \
    text$/shared$/optionen$/01000000.hzip \
    text$/shared$/optionen$/01010000.hzip \
    text$/shared$/optionen$/01010100.hzip \
@@ -1159,6 +1200,7 @@ LINKLINKFILES= \
    text$/shared$/optionen$/java.hzip \
    text$/shared$/optionen$/javaclasspath.hzip \
    text$/shared$/optionen$/javaparameters.hzip \
+   text$/shared$/tree_strings.hzip \
    text$/schart$/00$/00000004.hzip \
    text$/schart$/01$/03010000.hzip \
    text$/schart$/01$/04010000.hzip \
@@ -1196,6 +1238,19 @@ LINKLINKFILES= \
    text$/schart$/02$/01220000.hzip \
    text$/schart$/02$/02020000.hzip \
    text$/schart$/04$/01020000.hzip \
+   text$/schart$/main0000.hzip \
+   text$/schart$/main0100.hzip \
+   text$/schart$/main0101.hzip \
+   text$/schart$/main0102.hzip \
+   text$/schart$/main0103.hzip \
+   text$/schart$/main0104.hzip \
+   text$/schart$/main0105.hzip \
+   text$/schart$/main0106.hzip \
+   text$/schart$/main0107.hzip \
+   text$/schart$/main0200.hzip \
+   text$/schart$/main0202.hzip \
+   text$/schart$/main0203.hzip \
+   text$/schart$/main0503.hzip \
 
 
 # --- Targets ------------------------------------------------------

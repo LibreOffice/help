@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2004-08-18 16:19:22 $
+#*    last change       $Author: fpe $ $Date: 2004-08-20 10:24:40 $
 #*
-#*    $Revision: 1.3 $
+#*    $Revision: 1.4 $
 #*
 #*    $Logfile:$
 #*
@@ -28,7 +28,7 @@ TARGET  = util
 
 common_build_zip:=
 zip1generatedlangs=TRUE
-ZIP1TARGET=schart_xhp
+ZIP1TARGET=schart_xml
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/schart$/* -x "*.dphh*" -x "*.hzip"
@@ -36,8 +36,8 @@ ZIP1LIST=$(LANGDIR)$/text$/schart$/* -x "*.dphh*" -x "*.hzip"
 
 LINKNAME=schart
 LINKADDEDFILES= \
-   -add help$/LANGUAGE$/schart.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/schart.tree \
-   -add help$/LANGUAGE$/schart.jar  $(BIN)$/schart_xhp_LANGUAGE.zip
+   -add schart.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/schart.tree \
+   -add schart.jar  $(BIN)$/schart_xhp_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \

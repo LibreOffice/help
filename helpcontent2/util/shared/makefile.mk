@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2004-08-18 16:19:23 $
+#*    last change       $Author: fpe $ $Date: 2004-08-20 10:24:41 $
 #*
-#*    $Revision: 1.3 $
+#*    $Revision: 1.4 $
 #*
 #*    $Logfile:$
 #*
@@ -28,7 +28,7 @@ TARGET  = util
 
 common_build_zip:=
 zip1generatedlangs=TRUE
-ZIP1TARGET=shared_xhp
+ZIP1TARGET=shared_xml
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/shared$/* -x "*.dphh*" -x "*.hzip"
@@ -36,14 +36,14 @@ ZIP1LIST=$(LANGDIR)$/text$/shared$/* -x "*.dphh*" -x "*.hzip"
 
 LINKNAME=shared
 LINKADDEDFILES= \
-   -add help$/LANGUAGE$/shared.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/shared.tree \
-   -add help$/LANGUAGE$/shared.jar  $(BIN)$/shared_xhp_LANGUAGE.zip \
-   -add help$/LANGUAGE$/default.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/default.css \
-   -add help$/LANGUAGE$/highcontrast1.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast1.css \
-   -add help$/LANGUAGE$/highcontrast2.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast2.css \
-   -add help$/LANGUAGE$/highcontrastwhite.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastwhite.css \
-   -add help$/LANGUAGE$/highcontrastblack.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastblack.css \
-   -add help$/LANGUAGE$/err.html  $(PRJ)$/source$/auxiliary$/LANGUAGE$/err.html \
+   -add shared.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/shared.tree \
+   -add shared.jar  $(BIN)$/shared_xhp_LANGUAGE.zip \
+   -add default.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/default.css \
+   -add highcontrast1.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast1.css \
+   -add highcontrast2.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast2.css \
+   -add highcontrastwhite.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastwhite.css \
+   -add highcontrastblack.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastblack.css \
+   -add err.html  $(PRJ)$/source$/auxiliary$/LANGUAGE$/err.html \
    -add help$/main_transform.xsl  $(PRJ)$/source$/auxiliary$/main_transform.xsl
 
 

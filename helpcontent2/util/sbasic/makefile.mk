@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2004-08-18 16:19:22 $
+#*    last change       $Author: fpe $ $Date: 2004-08-20 10:24:40 $
 #*
-#*    $Revision: 1.3 $
+#*    $Revision: 1.4 $
 #*
 #*    $Logfile:$
 #*
@@ -28,7 +28,7 @@ TARGET  = util
 
 common_build_zip:=
 zip1generatedlangs=TRUE
-ZIP1TARGET=sbasic_xhp
+ZIP1TARGET=sbasic_xml
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(MISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/sbasic$/* -x "*.dphh*" -x "*.hzip"
@@ -36,9 +36,9 @@ ZIP1LIST=$(LANGDIR)$/text$/sbasic$/* -x "*.dphh*" -x "*.hzip"
 
 LINKNAME=sbasic
 LINKADDEDFILES= \
-   -add help$/LANGUAGE$/sbasic.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/sbasic.cfg \
-   -add help$/LANGUAGE$/sbasic.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/sbasic.tree \
-   -add help$/LANGUAGE$/sbasic.jar  $(BIN)$/sbasic_xhp_LANGUAGE.zip
+   -add sbasic.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/sbasic.cfg \
+   -add sbasic.tree $(PRJ)$/source$/auxiliary$/LANGUAGE$/sbasic.tree \
+   -add sbasic.jar  $(BIN)$/sbasic_xhp_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
@@ -1031,6 +1031,22 @@ LINKLINKFILES= \
    text$/shared$/guide$/viewing_file_properties.hzip \
    text$/shared$/guide$/workfolder.hzip \
    text$/shared$/guide$/xsltfilter.hzip \
+   text$/shared$/main0108.hzip \
+   text$/shared$/main0201.hzip \
+   text$/shared$/main0208.hzip \
+   text$/shared$/main0209.hzip \
+   text$/shared$/main0212.hzip \
+   text$/shared$/main0213.hzip \
+   text$/shared$/main0214.hzip \
+   text$/shared$/main0226.hzip \
+   text$/shared$/main0227.hzip \
+   text$/shared$/main0300.hzip \
+   text$/shared$/main0302.hzip \
+   text$/shared$/main0400.hzip \
+   text$/shared$/main0500.hzip \
+   text$/shared$/main0600.hzip \
+   text$/shared$/main0650.hzip \
+   text$/shared$/main0800.hzip \
    text$/shared$/optionen$/01000000.hzip \
    text$/shared$/optionen$/01010000.hzip \
    text$/shared$/optionen$/01010100.hzip \
@@ -1101,6 +1117,7 @@ LINKLINKFILES= \
    text$/shared$/optionen$/java.hzip \
    text$/shared$/optionen$/javaclasspath.hzip \
    text$/shared$/optionen$/javaparameters.hzip \
+   text$/shared$/tree_strings.hzip \
 
 
 # --- Targets ------------------------------------------------------
