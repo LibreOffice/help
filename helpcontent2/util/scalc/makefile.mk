@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2005-02-11 15:15:43 $
+#*    last change       $Author: vg $ $Date: 2005-03-08 17:56:14 $
 #*
-#*    $Revision: 1.13 $
+#*    $Revision: 1.14 $
 #*
 #*    $Logfile:$
 #*
@@ -991,6 +991,7 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/dabawiz02access.xhp \
    text$/shared$/explorer$/database$/dabawiz02adabas.xhp \
    text$/shared$/explorer$/database$/dabawiz02ado.xhp \
+   text$/shared$/explorer$/database$/dabawiz02dbase.xhp \
    text$/shared$/explorer$/database$/dabawiz02jdbc.xhp \
    text$/shared$/explorer$/database$/dabawiz02ldap.xhp \
    text$/shared$/explorer$/database$/dabawiz02mysql.xhp \
@@ -1003,6 +1004,7 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/menubar.xhp \
    text$/shared$/explorer$/database$/menuedit.xhp \
    text$/shared$/explorer$/database$/menufile.xhp \
+   text$/shared$/explorer$/database$/menufilesave.xhp \
    text$/shared$/explorer$/database$/menuinsert.xhp \
    text$/shared$/explorer$/database$/menutools.xhp \
    text$/shared$/explorer$/database$/menuview.xhp \
@@ -1021,6 +1023,7 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/tablewizard02.xhp \
    text$/shared$/explorer$/database$/tablewizard03.xhp \
    text$/shared$/explorer$/database$/tablewizard04.xhp \
+   text$/shared$/explorer$/database$/toolbars.xhp \
    text$/shared$/fontwork_toolbar.xhp \
    text$/shared$/guide$/aaa_start.xhp \
    text$/shared$/guide$/accessibility.xhp \
@@ -1201,7 +1204,6 @@ LINKLINKFILES= \
    text$/shared$/optionen$/01050300.xhp \
    text$/shared$/optionen$/01060000.xhp \
    text$/shared$/optionen$/01060100.xhp \
-   text$/shared$/optionen$/01060200.xhp \
    text$/shared$/optionen$/01060300.xhp \
    text$/shared$/optionen$/01060400.xhp \
    text$/shared$/optionen$/01060401.xhp \
