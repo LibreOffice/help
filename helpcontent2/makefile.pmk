@@ -2,9 +2,9 @@
 #
 #   $RCSfile: makefile.pmk,v $
 #
-#   $Revision: 1.8 $
+#   $Revision: 1.9 $
 #
-#   last change: $Author: rt $ $Date: 2005-01-27 10:11:04 $
+#   last change: $Author: hr $ $Date: 2005-02-11 14:53:04 $
 #
 #   The Contents of this file are made available subject to the terms of
 #   either of the following licenses
@@ -64,7 +64,7 @@ SHELL_PACKAGE:=$(subst,/,$/ $(PACKAGE))
 HLANGXHPFILES:=$(foreach,i,$(XHPFILES) $(foreach,j,$(aux_alllangiso) $(MISC)$/$j$/$(SHELL_PACKAGE)$/$(i:f)))
 
 .IF "$(SOLAR_JAVA)"!=""
-ALLTAR : $(foreach,i,$(XHPFILES:b) $(MISC)$/$(TARGET).$i.done) $(MISC)$/xhp_changed.flag
+ALLTAR : $(foreach,i,$(XHPFILES:b) $(MISC)$/$(TARGET).$i.done) $(MISC)$/xhp_changed.flag optix
 .ENDIF
 
 $(HLANGXHPFILES) : $$(@:d)thisdir.created
@@ -73,8 +73,7 @@ $(MISC)$/{$(aux_alllangiso)}$/$(SHELL_PACKAGE)$/%.xhp : %.xhp
     @$(TOUCH) $@
 
 $(foreach,i,$(XHPFILES:b) $(MISC)$/$(TARGET).$i.done) : $(MISC)$/{$(aux_alllangiso)}$/$(SHELL_PACKAGE)$/$$(@:b:e:s/.//).xhp
-    @+$(WRAPCMD) helpex -QQ -p help2 -r $(PRJ) -i $(uniq $(<:f)) -x $(MISC) -y $(SHELL_PACKAGE)$/$(@:b:e:s/.//).xhp -l all -lf $(aux_alllangiso:t",") -m localize.sdf $(noout) && $(TOUCH) $@
-    @+$(ECHON) .
+    @+$(WRAPCMD) helpex -QQ -p help2 -r $(PRJ) -i $(uniq $(<:f)) -x $(MISC) -y $(SHELL_PACKAGE)$/$(@:b:e:s/.//).xhp -l all -lf $(aux_alllangiso:t",") -m localize.sdf && $(TOUCH) $@
 
 # urks - dmake mixes up operators and strings :-(
 .IF "$(HLANGXHPFILES:s/defined/xxx/)"!=""
@@ -88,7 +87,15 @@ $(foreach,i,$(XHPFILES) $(MISC)$/$(TARGET).$(i:b).done) : localize.sdf makefile.
 
 $(MISC)$/xhp_changed.flag : $(HLANGXHPFILES)
     @+$(TOUCH) $@
+# it's hard to get just a newline...	
+.IF "$(OS)"=="SOLARIS"
+    @+$(ECHONL) " "
+.ELSE			# "$(OS)"=="SOLARIS"
     @+$(ECHONL)
+.ENDIF			# "$(OS)"=="SOLARIS"
+
+optix: $(foreach,i,$(XHPFILES) $(MISC)$/$(TARGET).$(i:b).done)
+    @+echo done
 
 %.created :
     @+-$(MKDIRHIER) $(@:d) $(noout)
