@@ -2,9 +2,9 @@
 #
 #   $RCSfile: makefile.pmk,v $
 #
-#   $Revision: 1.1 $
+#   $Revision: 1.2 $
 #
-#   last change: $Author: fpe $ $Date: 2004-08-18 10:52:38 $
+#   last change: $Author: hr $ $Date: 2004-10-11 13:43:46 $
 #
 #   The Contents of this file are made available subject to the terms of
 #   either of the following licenses
@@ -82,7 +82,7 @@ HELPTRANSPHONY:=.PHONY
 
 $(MISC)$/%.hzip : $(MISC)$/%.xhp
     @+-$(MKDIR) -p $(@:d)
-    java -cp $(my_cp) com.sun.star.help.HelpCompiler -c $< -o $@ -src "$(PRJ)$/source" -sty "$(PRJ)$/source$/auxiliary$/embed.xsl" -idx "$(PRJ)$/source$/auxiliary$/index.xsl" -mod $(MODULE) -lang {$(subst,$/, $(subst,text$/, $(subst,$(MODULE)$/, $(subst,$(MISC), $(@:d:d:d)))))} > $(@:d:d)$/$(@:b).dphh_
+    $(WRAPCMD) java -cp $(my_cp) com.sun.star.help.HelpCompiler -c $< -o $@ -src "$(PRJ)$/source" -sty "$(PRJ)$/source$/auxiliary$/embed.xsl" -idx "$(PRJ)$/source$/auxiliary$/index.xsl" -mod $(MODULE) -lang {$(subst,$/, $(subst,text$/, $(subst,$(MODULE)$/, $(subst,$(MISC), $(@:d:d:d)))))} > $(@:d:d)$/$(@:b).dphh_
 
 $(MISC)$/%.dphh : $(MISC)$/%.dphh_
     @+$(RENAME) {$@}_ $@
