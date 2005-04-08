@@ -262,6 +262,8 @@ sub read_loc {
                 $file =~ s/.*text\\/text\\/g;
                 #convert \ to / in filename
                 $file =~ s/\\/\//g;
+                #fpe: i46823 - need to encode &s, added encoding
+                $text =~ s/&(?!amp;)/&amp;/g;
                 # add entry to the hash
                 $loc_title{$lang}->{$file} = $text;
             }
@@ -273,12 +275,16 @@ sub read_loc {
                 if ($text =~ /^<help_section/) {
                     #example: <help_section application="scalc" id="08" title="表計算ドキュメント"> 
                     my ($fld1,$app,$fld3,$id,$fld5,$sec_title) = split('"', $text, 7);
+                    #fpe: i46823 - need to encode &s, added encoding
+                    $sec_title =~ s/&(?!amp;)/&amp;/g;
                     $helpsection{$lang}->{$id} = $sec_title; 
                 } elsif ($text =~/<node id=/) {
                     # example: <node id="0205" title="Tabelas em documentos de texto"> 
                     # BEWARE: title may contain escaped '"' so only match " not preceded by \
                     # using a zero‐width negative look‐behind assertion.
                     my ($fld1,$id,$fld3,$node_title,$Fld5) = split(/(?<!\\)"/, $text, 5);
+                    #fpe: i46823 - need to encode &s, added encoding
+                    $node_title =~ s/&(?!amp;)/&amp;/g;
                     $node{$lang}->{$id} = $node_title;
                 }
             }
