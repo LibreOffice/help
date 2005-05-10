@@ -20,6 +20,7 @@
     Jan 04 2005 #i38905#, fixed buggy branding replacement template
     Mar 17 2005 #i43972#, added language info to image URL, evaluate Language parameter
                 evaluate new localize attribute in images
+    May 10 2005 #i48785#, fixed wrong setting of distrib variable
 ***********************************************************************//-->
 
 <!--***********************************************************************
@@ -139,7 +140,7 @@
 <xsl:param name="distrib">
 	<xsl:choose>
 		<xsl:when test="starts-with($productname,'OpenOffice')">
-			<xsl:value-of select="'OPENSOURCE'"/>
+			<xsl:value-of select="'OpenSource'"/>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:value-of select="'COMMERCIAL'"/>
@@ -160,15 +161,6 @@
 <xsl:variable name="urlpre" select="$help_url_prefix" /> 
 <xsl:variable name="linkprefix" select="$urlpre"/>
 <xsl:variable name="linkpostfix" select="$urlpost"/>
-
-<!-- DEBUG:
-<xsl:variable name="help_url_prefix" select="'file:///opt/staroffice8-cwshelp2/help/en'"/>
-<xsl:variable name="img_url_prefix" select="''"/>
-<xsl:variable name="urlpost" select="''"/>
-<xsl:variable name="urlpre" select="$help_url_prefix" /> 
-<xsl:variable name="linkprefix" select="$urlpre"/>
-<xsl:variable name="linkpostfix" select="$urlpost"/>
-//-->
 
 <xsl:variable name="css" select="'default.css'"/>
 
@@ -193,14 +185,6 @@
   		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 		</head>
 		<body lang="{$lang}">
-			<!-- DEBUG ME START
-			<xsl:variable name="srcname"><xsl:value-of select="concat('file:///k:/WORKBENCH/helpcontent2/source',$filename)"/></xsl:variable>
-			<div class="debug">
-				<p class="{/helpdocument/meta/topic/@status}">
-				<a href="{$srcname}"><xsl:value-of select="$filename"/></a></p>
-			</div>
-			DEBUG ME END	
-			//-->
 			<xsl:apply-templates select="/helpdocument/body"/>
 		</body>
 	</html>
