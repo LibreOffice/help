@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:46 $
+#*    last change       $Author: hr $ $Date: 2005-09-28 12:02:48 $
 #*
-#*    $Revision: 1.15 $
+#*    $Revision: 1.16 $
 #*
 #*    $Logfile:$
 #*
@@ -32,7 +32,7 @@ zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_sbasic
 ZIP1FLAGS= -u -r
-ZIP1DIR=$(MISC)$/$(LANGDIR)
+ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/sbasic$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
 .ENDIF			# "$(SOLAR_JAVA)"!=""
 
@@ -40,13 +40,13 @@ ZIP1LIST=$(LANGDIR)$/text$/sbasic$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
 LINKNAME=sbasic
 LINKADDEDFILES= \
    -add sbasic.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/sbasic.cfg \
-   -add sbasic.tree $(MISC)$/LANGUAGE$/sbasic.tree \
+   -add sbasic.tree $(COMMONMISC)$/LANGUAGE$/sbasic.tree \
    -add sbasic.jar  $(BIN)$/xhp_sbasic_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/sbasic.cfg \
-   $(MISC)$/LANGUAGE$/sbasic.tree \
+   $(COMMONMISC)$/LANGUAGE$/sbasic.tree \
    $(BIN)$/xhp_sbasic_LANGUAGE.zip
 
 

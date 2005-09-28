@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 12:46:59 $
+#*    last change       $Author: hr $ $Date: 2005-09-28 12:03:20 $
 #*
-#*    $Revision: 1.15 $
+#*    $Revision: 1.16 $
 #*
 #*    $Logfile:$
 #*
@@ -32,7 +32,7 @@ zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_scalc
 ZIP1FLAGS= -u -r
-ZIP1DIR=$(MISC)$/$(LANGDIR)
+ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/scalc$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
 .ENDIF			# "$(SOLAR_JAVA)"!=""
 
@@ -40,13 +40,13 @@ ZIP1LIST=$(LANGDIR)$/text$/scalc$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
 LINKNAME=scalc
 LINKADDEDFILES= \
    -add scalc.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.cfg \
-   -add scalc.tree $(MISC)$/LANGUAGE$/scalc.tree \
+   -add scalc.tree $(COMMONMISC)$/LANGUAGE$/scalc.tree \
    -add scalc.jar  $(BIN)$/xhp_scalc_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.cfg \
-   $(MISC)$/LANGUAGE$/scalc.tree \
+   $(COMMONMISC)$/LANGUAGE$/scalc.tree \
    $(BIN)$/xhp_scalc_LANGUAGE.zip
 
 
