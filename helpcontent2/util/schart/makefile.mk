@@ -3,15 +3,16 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-23 13:02:48 $
+#*    last change       $Author: hr $ $Date: 2005-09-28 12:03:42 $
 #*
-#*    $Revision: 1.13 $
+#*    $Revision: 1.14 $
 #*
 #*    $Logfile:$
 #*
 #*    Copyright 2000 Sun Microsystems, Inc. All Rights Reserved.
 #*
 #*************************************************************************
+
 # edit to match directory level 
 PRJ		= ..$/..
 # same for all makefiles in "helpcontent2"
@@ -31,19 +32,19 @@ zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_schart
 ZIP1FLAGS= -u -r
-ZIP1DIR=$(MISC)$/$(LANGDIR)
+ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/schart$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
 .ENDIF			# "$(SOLAR_JAVA)"!=""
 
 
 LINKNAME=schart
 LINKADDEDFILES= \
-   -add schart.tree $(MISC)$/LANGUAGE$/schart.tree \
+   -add schart.tree $(COMMONMISC)$/LANGUAGE$/schart.tree \
    -add schart.jar  $(BIN)$/xhp_schart_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
-   $(MISC)$/LANGUAGE$/schart.tree \
+   $(COMMONMISC)$/LANGUAGE$/schart.tree \
    $(BIN)$/xhp_schart_LANGUAGE.zip
 
 
