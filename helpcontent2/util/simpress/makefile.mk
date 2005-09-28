@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:48 $
+#*    last change       $Author: hr $ $Date: 2005-09-28 12:05:36 $
 #*
-#*    $Revision: 1.14 $
+#*    $Revision: 1.15 $
 #*
 #*    $Logfile:$
 #*
@@ -32,7 +32,7 @@ zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_simpress
 ZIP1FLAGS= -u -r
-ZIP1DIR=$(MISC)$/$(LANGDIR)
+ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/simpress$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
 .ENDIF			# "$(SOLAR_JAVA)"!=""
 
@@ -40,13 +40,13 @@ ZIP1LIST=$(LANGDIR)$/text$/simpress$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
 LINKNAME=simpress
 LINKADDEDFILES= \
    -add simpress.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/simpress.cfg \
-   -add simpress.tree $(MISC)$/LANGUAGE$/simpress.tree \
+   -add simpress.tree $(COMMONMISC)$/LANGUAGE$/simpress.tree \
    -add simpress.jar  $(BIN)$/xhp_simpress_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/simpress.cfg \
-   $(MISC)$/LANGUAGE$/simpress.tree \
+   $(COMMONMISC)$/LANGUAGE$/simpress.tree \
    $(BIN)$/xhp_simpress_LANGUAGE.zip
 
 
