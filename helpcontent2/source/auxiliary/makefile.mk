@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-23 10:27:44 $
+#*    last change       $Author: hr $ $Date: 2005-09-28 12:02:06 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -34,16 +34,15 @@ TREEFILES  = \
 
 .INCLUDE :  target.mk
 
-ALLTAR : aux_dirs $(MISC)$/treefiles.done
-
-AUX_DIR_LIST:=$(shell +$(FIND) . -type d ! -name "." | $(GREP) -v "CVS")
+ALLTAR : aux_dirs $(COMMONMISC)$/treefiles.done
 
 .IF "$(GUI)"=="UNX" || "$(USE_SHELL)"!="4nt"
-aux_langdirs:=$(shell +find ./ -type d ! -name CVS ! -name "." | sed "s/\.\/\///" | sed "s/\.\///" )
-.ELSE           # "$(GUI)"=="UNX"
-aux_langdirs:=$(subst,CVS, $(shell +-dir /ba:d ))
-.ENDIF          # "$(GUI)"=="UNX"
-
+t_aux_langdirs:=$(shell +find ./ -type f -name "*.cfg" | sed "s/\.\/\///" | sed "s/\.\///" )
+.ELSE           # "$(GUI)"=="UNX" || "$(USE_SHELL)"!="4nt"
+t_aux_langdirs:=$(subst,$(PWD)\, $(shell +-dir /bs *.cfg))
+.ENDIF          # "$(GUI)"=="UNX" || "$(USE_SHELL)"!="4nt"
+    
+aux_langdirs:=$(uniq $(t_aux_langdirs:d:d))
 
 aux_alllangiso:=$(foreach,i,$(alllangiso) $(foreach,j,$(aux_langdirs) $(eq,$i,$j  $i $(NULL))))
 
@@ -51,9 +50,9 @@ WITH_LANG!:=$(aux_alllangiso)
 
 .EXPORT : WITH_LANG
 
-LOCTREEFILES:=$(foreach,i,$(aux_alllangiso) $(foreach,j,$(TREEFILES) $(MISC)$/$i$/$j))
+LOCTREEFILES:=$(foreach,i,$(aux_alllangiso) $(foreach,j,$(TREEFILES) $(COMMONMISC)$/$i$/$j))
 
-$(MISC)$/treefiles.done : $(LOCTREEFILES)
+$(COMMONMISC)$/treefiles.done : $(LOCTREEFILES)
     @+$(PERL) $(PRJ)$/helpers$/update_tree.pl && $(TOUCH) $@
 
 %.created:
