@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:49 $
+#*    last change       $Author: hr $ $Date: 2005-09-28 12:05:57 $
 #*
-#*    $Revision: 1.14 $
+#*    $Revision: 1.15 $
 #*
 #*    $Logfile:$
 #*
@@ -32,7 +32,7 @@ zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_smath
 ZIP1FLAGS= -u -r
-ZIP1DIR=$(MISC)$/$(LANGDIR)
+ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/smath$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
 .ENDIF			# "$(SOLAR_JAVA)"!=""
 
@@ -40,13 +40,13 @@ ZIP1LIST=$(LANGDIR)$/text$/smath$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
 LINKNAME=smath
 LINKADDEDFILES= \
    -add smath.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/smath.cfg \
-   -add smath.tree $(MISC)$/LANGUAGE$/smath.tree \
+   -add smath.tree $(COMMONMISC)$/LANGUAGE$/smath.tree \
    -add smath.jar  $(BIN)$/xhp_smath_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/smath.cfg \
-   $(MISC)$/LANGUAGE$/smath.tree \
+   $(COMMONMISC)$/LANGUAGE$/smath.tree \
    $(BIN)$/xhp_smath_LANGUAGE.zip
 
 

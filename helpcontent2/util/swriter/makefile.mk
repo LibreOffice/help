@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:49 $
+#*    last change       $Author: hr $ $Date: 2005-09-28 12:06:25 $
 #*
-#*    $Revision: 1.14 $
+#*    $Revision: 1.15 $
 #*
 #*    $Logfile:$
 #*
@@ -32,7 +32,7 @@ zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_swriter
 ZIP1FLAGS= -u -r
-ZIP1DIR=$(MISC)$/$(LANGDIR)
+ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/swriter$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
 .ENDIF			# "$(SOLAR_JAVA)"!=""
 
@@ -40,13 +40,13 @@ ZIP1LIST=$(LANGDIR)$/text$/swriter$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
 LINKNAME=swriter
 LINKADDEDFILES= \
    -add swriter.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.cfg \
-   -add swriter.tree $(MISC)$/LANGUAGE$/swriter.tree \
+   -add swriter.tree $(COMMONMISC)$/LANGUAGE$/swriter.tree \
    -add swriter.jar  $(BIN)$/xhp_swriter_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.cfg \
-   $(MISC)$/LANGUAGE$/swriter.tree \
+   $(COMMONMISC)$/LANGUAGE$/swriter.tree \
    $(BIN)$/xhp_swriter_LANGUAGE.zip
 
 
