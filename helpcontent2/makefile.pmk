@@ -4,9 +4,9 @@
 #
 #   $RCSfile: makefile.pmk,v $
 #
-#   $Revision: 1.10 $
+#   $Revision: 1.11 $
 #
-#   last change: $Author: rt $ $Date: 2005-09-07 15:26:04 $
+#   last change: $Author: hr $ $Date: 2005-09-28 12:00:35 $
 #
 #   The Contents of this file are made available subject to
 #   the terms of GNU Lesser General Public License Version 2.1.
@@ -34,31 +34,31 @@
 #*************************************************************************
 
 SHELL_PACKAGE:=$(subst,/,$/ $(PACKAGE))
-HLANGXHPFILES:=$(foreach,i,$(XHPFILES) $(foreach,j,$(aux_alllangiso) $(MISC)$/$j$/$(SHELL_PACKAGE)$/$(i:f)))
+HLANGXHPFILES:=$(foreach,i,$(XHPFILES) $(foreach,j,$(aux_alllangiso) $(COMMONMISC)$/$j$/$(SHELL_PACKAGE)$/$(i:f)))
 
 .IF "$(SOLAR_JAVA)"!=""
-ALLTAR : $(foreach,i,$(XHPFILES:b) $(MISC)$/$(TARGET).$i.done) $(MISC)$/xhp_changed.flag optix
+ALLTAR : $(foreach,i,$(XHPFILES:b) $(COMMONMISC)$/$(TARGET).$i.done) $(COMMONMISC)$/xhp_changed.flag optix
 .ENDIF
 
 $(HLANGXHPFILES) : $$(@:d)thisdir.created
 
-$(MISC)$/{$(aux_alllangiso)}$/$(SHELL_PACKAGE)$/%.xhp : %.xhp
+$(COMMONMISC)$/{$(aux_alllangiso)}$/$(SHELL_PACKAGE)$/%.xhp : %.xhp
     @$(TOUCH) $@
 
-$(foreach,i,$(XHPFILES:b) $(MISC)$/$(TARGET).$i.done) : $(MISC)$/{$(aux_alllangiso)}$/$(SHELL_PACKAGE)$/$$(@:b:e:s/.//).xhp
-    @+$(WRAPCMD) helpex -QQ -p help2 -r $(PRJ) -i $(uniq $(<:f)) -x $(MISC) -y $(SHELL_PACKAGE)$/$(@:b:e:s/.//).xhp -l all -lf $(aux_alllangiso:t",") -m localize.sdf && $(TOUCH) $@
+$(foreach,i,$(XHPFILES:b) $(COMMONMISC)$/$(TARGET).$i.done) : $(COMMONMISC)$/{$(aux_alllangiso)}$/$(SHELL_PACKAGE)$/$$(@:b:e:s/.//).xhp
+    @+$(WRAPCMD) helpex -QQ -p help2 -r $(PRJ) -i $(uniq $(<:f)) -x $(COMMONMISC) -y $(SHELL_PACKAGE)$/$(@:b:e:s/.//).xhp -l all -lf $(aux_alllangiso:t",") -m localize.sdf && $(TOUCH) $@
 
 # urks - dmake mixes up operators and strings :-(
 .IF "$(HLANGXHPFILES:s/defined/xxx/)"!=""
 
 .IF "$(HELPTRANSPHONY)"!=""
-$(foreach,i,$(XHPFILES) $(MISC)$/$(TARGET).$(i:b).done) .PHONY :
+$(foreach,i,$(XHPFILES) $(COMMONMISC)$/$(TARGET).$(i:b).done) .PHONY :
 .ELSE           # "$(HELPTRANSPHONY)"!=""
-$(foreach,i,$(XHPFILES) $(MISC)$/$(TARGET).$(i:b).done) : localize.sdf makefile.mk
+$(foreach,i,$(XHPFILES) $(COMMONMISC)$/$(TARGET).$(i:b).done) : localize.sdf makefile.mk
 .ENDIF          # "$(HELPTRANSPHONY)"!=""
 .ENDIF          # "$(HLANGXHPFILES)"!=""
 
-$(MISC)$/xhp_changed.flag : $(HLANGXHPFILES)
+$(COMMONMISC)$/xhp_changed.flag : $(HLANGXHPFILES)
     @+$(TOUCH) $@
 # it's hard to get just a newline...	
 .IF "$(OS)"=="SOLARIS"
@@ -67,7 +67,7 @@ $(MISC)$/xhp_changed.flag : $(HLANGXHPFILES)
     @+$(ECHONL)
 .ENDIF			# "$(OS)"=="SOLARIS"
 
-optix: $(foreach,i,$(XHPFILES) $(MISC)$/$(TARGET).$(i:b).done)
+optix: $(foreach,i,$(XHPFILES) $(COMMONMISC)$/$(TARGET).$(i:b).done)
     @+echo done
 
 %.created :
