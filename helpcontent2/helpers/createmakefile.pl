@@ -145,13 +145,13 @@ for $d(@dirs) {
     
     $linkaddedfiles = <<"LAF";
    -add $module.cfg \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
-   -add $module.tree \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   -add $module.tree \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    -add $module.jar  \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
-   \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAD
     
@@ -173,13 +173,13 @@ LAD
     
     $linkaddedfiles = <<"LAF";
    -add $module.cfg \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
-   -add $module.tree \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   -add $module.tree \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    -add $module.jar  \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
-   \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAD
     
@@ -200,12 +200,12 @@ LAD
     $module = "schart";
     
     $linkaddedfiles = <<"LAF";
-   -add $module.tree \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   -add $module.tree \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    -add $module.jar  \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
-   \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAD
     
@@ -251,25 +251,25 @@ LAD
     $module = "shared";
     
     $linkaddedfiles = <<"LAF";
-   -add $module.tree \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   -add $module.tree \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    -add $module.jar  \$(BIN)\$/xhp_${module}_LANGUAGE.zip \\
    -add default.css  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/default.css \\
    -add highcontrast1.css  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrast1.css \\
    -add highcontrast2.css  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrast2.css \\
    -add highcontrastwhite.css  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrastwhite.css \\
    -add highcontrastblack.css  \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrastblack.css \\
-   -add err.html  \$(MISC)\$/LANGUAGE\$/text\$/shared\$/05\$/err_html.xhp
+   -add err.html  \$(COMMONMISC)\$/LANGUAGE\$/text\$/shared\$/05\$/err_html.xhp
 LAF
     
     $linkaddeddeps = <<"LAD";
-   \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    \$(BIN)\$/xhp_${module}_LANGUAGE.zip \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/default.css \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrast1.css \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrast2.css \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrastwhite.css \\
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/highcontrastblack.css \\
-   \$(MISC)\$/LANGUAGE\$/text\$/shared\$/05\$/err_html.xhp
+   \$(COMMONMISC)\$/LANGUAGE\$/text\$/shared\$/05\$/err_html.xhp
 LAD
     
     $linklinkfiles = '';
@@ -287,13 +287,13 @@ LAD
     
     $linkaddedfiles = <<"LAF";
    -add $module.cfg \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
-   -add $module.tree \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   -add $module.tree \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    -add $module.jar  \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
-   \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAD
     
@@ -317,13 +317,13 @@ LAD
     
     $linkaddedfiles = <<"LAF";
    -add $module.cfg \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
-   -add $module.tree \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   -add $module.tree \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    -add $module.jar  \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
-   \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAD
     
@@ -344,13 +344,13 @@ LAD
     
     $linkaddedfiles = <<"LAF";
    -add $module.cfg \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
-   -add $module.tree \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   -add $module.tree \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    -add $module.jar  \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
    \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
-   \$(MISC)\$/LANGUAGE\$/$module.tree \\
+   \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAD
     
