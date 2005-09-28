@@ -12,19 +12,25 @@ $| = 1;
 my $prj = $ENV{ENVPRJ};
 
 my $inpath = $ENV{INPATH};
-my $with_lang = $ENV{WITH_LANG};  
 terminate() if ( ! defined $inpath );
+
+my $destpath = $inpath;
+my $with_lang = $ENV{WITH_LANG};
+
+if ( defined $ENV{COMMON_OUTDIR} ) {
+    $destpath =~ s/$ENV{OUTPATH}/$ENV{COMMON_OUTDIR}/;
+}
 
 if ( ! defined $prj ) {
 # do someting that works for manual call
     ($scriptname = `pwd`) =~ s/\n/\/$0/;
     ($tree_src = $scriptname) =~ s/\/update_tree.pl/\/..\/source\/auxiliary/;
-    ($tree_dest = $scriptname) =~ s/\/update_tree.pl/\/..\/$inpath\/misc/;
+    ($tree_dest = $scriptname) =~ s/\/update_tree.pl/\/..\/$destpath\/misc/;
     ($source_dir = $scriptname) =~ s/\/update_tree.pl/\/..\/source/;
     $treestrings = "$source_dir/text/shared/tree_strings.xhp";
 } else {
     $tree_src = "$prj\/source\/auxiliary";
-    $tree_dest = "$prj\/$inpath\/misc";
+    $tree_dest = "$prj\/$destpath\/misc";
     $source_dir = "$prj\/source";
     $treestrings = "$source_dir/text/shared/tree_strings.xhp";
 
@@ -149,6 +155,8 @@ sub gettreefiles {
 sub processtreefiles {
     $lng = shift;
     
+    use File::Temp qw/ tempfile /; 
+
     for $tv(@treeviews) {
         print "\nProcessing $tv\n";
         @lines = &readtv("$tree_src/$tv");
@@ -217,14 +225,17 @@ sub processtreefiles {
          if ( ! -d "$tree_dest/$lng" ) { 
             mkdir "$tree_dest/$lng" or die "\nCouldn't create directory \"$tree_dest/$lng\"";
         }
-        $tvout = "$tree_dest/$lng/$tv";
-        if (open TV, ">$tvout") {
+        my $treeoutdir = "$tree_dest/$lng";
+        my $tmpname_template=$tv."_XXXXX";
+        my ( $treetmpfilehandle, $treetmpfile ) = tempfile($tmpname_template, DIR => $treeoutdir);
+        if (open TV, ">$treetmpfile") {
             for $line(@lines) { 
                 $line =~ s/\$\[officename\]/%PRODUCTNAME/g;
                 $line =~ s/\$\[officeversion\]/%PRODUCTVERSION/g;
                 print TV $line;    
             }  
             close TV;
+            rename($treetmpfile, "$tree_dest/$lng/$tv") or &terminate("Cannot write to $tvout");
       } else {
             &terminate("Cannot write to $tvout");
         }
