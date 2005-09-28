@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 12:50:41 $
+#*    last change       $Author: hr $ $Date: 2005-09-28 12:05:12 $
 #*
-#*    $Revision: 1.12 $
+#*    $Revision: 1.13 $
 #*
 #*    $Logfile:$
 #*
@@ -32,32 +32,32 @@ zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_shared
 ZIP1FLAGS= -u -r
-ZIP1DIR=$(MISC)$/$(LANGDIR)
+ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/shared$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
 .ENDIF			# "$(SOLAR_JAVA)"!=""
 
 
 LINKNAME=shared
 LINKADDEDFILES= \
-   -add shared.tree $(MISC)$/LANGUAGE$/shared.tree \
+   -add shared.tree $(COMMONMISC)$/LANGUAGE$/shared.tree \
    -add shared.jar  $(BIN)$/xhp_shared_LANGUAGE.zip \
    -add default.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/default.css \
    -add highcontrast1.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast1.css \
    -add highcontrast2.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast2.css \
    -add highcontrastwhite.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastwhite.css \
    -add highcontrastblack.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastblack.css \
-   -add err.html  $(MISC)$/LANGUAGE$/text$/shared$/05$/err_html.xhp
+   -add err.html  $(COMMONMISC)$/LANGUAGE$/text$/shared$/05$/err_html.xhp
 
 
 LINKADDEDDEPS= \
-   $(MISC)$/LANGUAGE$/shared.tree \
+   $(COMMONMISC)$/LANGUAGE$/shared.tree \
    $(BIN)$/xhp_shared_LANGUAGE.zip \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/default.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast1.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast2.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastwhite.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrastblack.css \
-   $(MISC)$/LANGUAGE$/text$/shared$/05$/err_html.xhp
+   $(COMMONMISC)$/LANGUAGE$/text$/shared$/05$/err_html.xhp
 
 
 LINKLINKFILES= \
