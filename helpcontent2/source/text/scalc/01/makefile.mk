@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:35 $
+#*    last change       $Author: kz $ $Date: 2005-10-05 12:02:11 $
 #*
-#*    $Revision: 1.7 $
+#*    $Revision: 1.8 $
 #*
 #*    $Logfile:$
 #*
@@ -181,6 +181,7 @@ XHPFILES = \
    12120100.xhp \
    12120200.xhp \
    12120300.xhp \
+   format_graphic.xhp \
    func_date.xhp \
    func_datevalue.xhp \
    func_day.xhp \
