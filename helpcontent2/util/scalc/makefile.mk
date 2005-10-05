@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2005-09-28 12:03:20 $
+#*    last change       $Author: kz $ $Date: 2005-10-05 14:56:55 $
 #*
-#*    $Revision: 1.16 $
+#*    $Revision: 1.17 $
 #*
 #*    $Logfile:$
 #*
@@ -208,6 +208,7 @@ LINKLINKFILES= \
    text$/scalc$/01$/12120100.xhp \
    text$/scalc$/01$/12120200.xhp \
    text$/scalc$/01$/12120300.xhp \
+   text$/scalc$/01$/format_graphic.xhp \
    text$/scalc$/01$/func_date.xhp \
    text$/scalc$/01$/func_datevalue.xhp \
    text$/scalc$/01$/func_day.xhp \
@@ -819,6 +820,7 @@ LINKLINKFILES= \
    text$/shared$/02$/basicshapes.xhp \
    text$/shared$/02$/blockarrows.xhp \
    text$/shared$/02$/callouts.xhp \
+   text$/shared$/02$/colortoolbar.xhp \
    text$/shared$/02$/flowcharts.xhp \
    text$/shared$/02$/fontwork.xhp \
    text$/shared$/02$/paintbrush.xhp \
@@ -1063,6 +1065,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/data_tables.xhp \
    text$/shared$/guide$/data_view.xhp \
    text$/shared$/guide$/database_main.xhp \
+   text$/shared$/guide$/digital_signatures.xhp \
    text$/shared$/guide$/doc_autosave.xhp \
    text$/shared$/guide$/doc_open.xhp \
    text$/shared$/guide$/doc_save.xhp \
@@ -1088,6 +1091,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/hyperlink_insert.xhp \
    text$/shared$/guide$/hyperlink_rel_abs.xhp \
    text$/shared$/guide$/hyperlink_search.xhp \
+   text$/shared$/guide$/imagemap.xhp \
    text$/shared$/guide$/import_ms.xhp \
    text$/shared$/guide$/insert_bitmap.xhp \
    text$/shared$/guide$/insert_graphic_drawit.xhp \

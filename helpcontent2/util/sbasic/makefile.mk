@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2005-09-28 12:02:48 $
+#*    last change       $Author: kz $ $Date: 2005-10-05 14:56:35 $
 #*
-#*    $Revision: 1.16 $
+#*    $Revision: 1.17 $
 #*
 #*    $Logfile:$
 #*
@@ -157,6 +157,9 @@ LINKLINKFILES= \
    text$/sbasic$/shared$/03030106.xhp \
    text$/sbasic$/shared$/03030107.xhp \
    text$/sbasic$/shared$/03030108.xhp \
+   text$/sbasic$/shared$/03030110.xhp \
+   text$/sbasic$/shared$/03030120.xhp \
+   text$/sbasic$/shared$/03030130.xhp \
    text$/sbasic$/shared$/03030200.xhp \
    text$/sbasic$/shared$/03030201.xhp \
    text$/sbasic$/shared$/03030202.xhp \
@@ -238,6 +241,10 @@ LINKLINKFILES= \
    text$/sbasic$/shared$/03090411.xhp \
    text$/sbasic$/shared$/03090412.xhp \
    text$/sbasic$/shared$/03100000.xhp \
+   text$/sbasic$/shared$/03100050.xhp \
+   text$/sbasic$/shared$/03100060.xhp \
+   text$/sbasic$/shared$/03100070.xhp \
+   text$/sbasic$/shared$/03100080.xhp \
    text$/sbasic$/shared$/03100100.xhp \
    text$/sbasic$/shared$/03100300.xhp \
    text$/sbasic$/shared$/03100400.xhp \
@@ -247,6 +254,10 @@ LINKLINKFILES= \
    text$/sbasic$/shared$/03100900.xhp \
    text$/sbasic$/shared$/03101000.xhp \
    text$/sbasic$/shared$/03101100.xhp \
+   text$/sbasic$/shared$/03101110.xhp \
+   text$/sbasic$/shared$/03101120.xhp \
+   text$/sbasic$/shared$/03101130.xhp \
+   text$/sbasic$/shared$/03101140.xhp \
    text$/sbasic$/shared$/03101300.xhp \
    text$/sbasic$/shared$/03101400.xhp \
    text$/sbasic$/shared$/03101500.xhp \
@@ -258,6 +269,7 @@ LINKLINKFILES= \
    text$/sbasic$/shared$/03102200.xhp \
    text$/sbasic$/shared$/03102300.xhp \
    text$/sbasic$/shared$/03102400.xhp \
+   text$/sbasic$/shared$/03102450.xhp \
    text$/sbasic$/shared$/03102600.xhp \
    text$/sbasic$/shared$/03102700.xhp \
    text$/sbasic$/shared$/03102800.xhp \
@@ -280,6 +292,7 @@ LINKLINKFILES= \
    text$/sbasic$/shared$/03104400.xhp \
    text$/sbasic$/shared$/03104500.xhp \
    text$/sbasic$/shared$/03104600.xhp \
+   text$/sbasic$/shared$/03104700.xhp \
    text$/sbasic$/shared$/03110000.xhp \
    text$/sbasic$/shared$/03110100.xhp \
    text$/sbasic$/shared$/03120000.xhp \
@@ -804,6 +817,7 @@ LINKLINKFILES= \
    text$/shared$/02$/basicshapes.xhp \
    text$/shared$/02$/blockarrows.xhp \
    text$/shared$/02$/callouts.xhp \
+   text$/shared$/02$/colortoolbar.xhp \
    text$/shared$/02$/flowcharts.xhp \
    text$/shared$/02$/fontwork.xhp \
    text$/shared$/02$/paintbrush.xhp \
@@ -1048,6 +1062,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/data_tables.xhp \
    text$/shared$/guide$/data_view.xhp \
    text$/shared$/guide$/database_main.xhp \
+   text$/shared$/guide$/digital_signatures.xhp \
    text$/shared$/guide$/doc_autosave.xhp \
    text$/shared$/guide$/doc_open.xhp \
    text$/shared$/guide$/doc_save.xhp \
@@ -1073,6 +1088,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/hyperlink_insert.xhp \
    text$/shared$/guide$/hyperlink_rel_abs.xhp \
    text$/shared$/guide$/hyperlink_search.xhp \
+   text$/shared$/guide$/imagemap.xhp \
    text$/shared$/guide$/import_ms.xhp \
    text$/shared$/guide$/insert_bitmap.xhp \
    text$/shared$/guide$/insert_graphic_drawit.xhp \
