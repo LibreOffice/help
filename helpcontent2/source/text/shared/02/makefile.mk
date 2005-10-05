@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:40 $
+#*    last change       $Author: kz $ $Date: 2005-10-05 13:28:58 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -172,6 +172,7 @@ XHPFILES = \
    basicshapes.xhp \
    blockarrows.xhp \
    callouts.xhp \
+   colortoolbar.xhp \
    flowcharts.xhp \
    fontwork.xhp \
    paintbrush.xhp \
