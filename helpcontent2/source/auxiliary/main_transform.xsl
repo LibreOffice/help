@@ -21,6 +21,9 @@
     Mar 17 2005 #i43972#, added language info to image URL, evaluate Language parameter
                 evaluate new localize attribute in images
     May 10 2005 #i48785#, fixed wrong setting of distrib variable
+    Aug 16 2005 workaround for #i53365#
+    Aug 19 2005 fixed missing list processing in embedded sections
+    Aug 19 2005 #i53535#, fixed wrong handling of Database parameter
 ***********************************************************************//-->
 
 <!--
@@ -29,9 +32,9 @@
  
     $RCSfile: main_transform.xsl,v $
  
-    $Revision: 1.14 $
+    $Revision: 1.15 $
  
-    last change: $Author: rt $ $Date: 2005-09-07 15:27:02 $
+    last change: $Author: kz $ $Date: 2005-10-05 11:39:25 $
  
     The Contents of this file are made available subject to
     the terms of GNU Lesser General Public License Version 2.1.
@@ -112,6 +115,9 @@
 <xsl:param name="System" select="'WIN'"/>
 <xsl:param name="productname" select="'Office'"/>
 <xsl:param name="productversion" select="''"/>
+<xsl:variable name="pversion">
+	<xsl:value-of select="translate($productversion,' ','')"/>
+</xsl:variable>
 <!-- this is were the images are -->
 <xsl:param name="imgrepos" select="''"/>
 <xsl:param name="Id" />
@@ -132,8 +138,6 @@
 
 
 <!-- parts of help and image urls -->
-
- 
 <xsl:variable name="help_url_prefix" select="'vnd.sun.star.help://'"/>
 <xsl:variable name="img_url_prefix" select="concat('vnd.sun.star.pkg://',$imgrepos,'/')"/>
 <xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no')"/>
@@ -305,9 +309,29 @@
 	</xsl:choose>
 </xsl:template>
 
+<xsl:template match="list" mode="embedded">
+	<xsl:choose>
+		<xsl:when test="@type='ordered'">
+			<ol>
+				<xsl:if test="@startwith">
+					<xsl:attribute name="start"><xsl:value-of select="@startwith"/></xsl:attribute>
+				</xsl:if>
+				<xsl:apply-templates mode="embedded"/>
+			</ol>
+		</xsl:when>
+		<xsl:otherwise>
+			<ul><xsl:apply-templates mode="embedded"/></ul>
+		</xsl:otherwise>
+	</xsl:choose>
+</xsl:template>
+
 <!-- LISTITEM -->
 <xsl:template match="listitem">
 	<li><xsl:apply-templates /></li>
+</xsl:template>
+
+<xsl:template match="listitem" mode="embedded">
+	<li><xsl:apply-templates mode="embedded"/></li>
 </xsl:template>
 
 <!-- META, SEE HEADER -->
@@ -506,7 +530,7 @@
 		<xsl:when test="contains($string,$brand2)">
 		    <xsl:variable name="newstr">
                 <xsl:value-of select="substring-before($string,$brand2)"/>
-                <xsl:value-of select="$productversion"/>
+                <xsl:value-of select="$pversion"/>
                 <xsl:value-of select="substring-after($string,$brand2)"/>
            </xsl:variable>
 			<xsl:call-template name="brand">
@@ -528,7 +552,7 @@
         <xsl:when test="contains($string,$brand4)">
 			    <xsl:variable name="newstr">
                 <xsl:value-of select="substring-before($string,$brand4)"/>
-                <xsl:value-of select="$productversion"/>
+                <xsl:value-of select="$pversion"/>
                 <xsl:value-of select="substring-after($string,$brand4)"/>
            </xsl:variable>
 			<xsl:call-template name="brand">
@@ -597,17 +621,18 @@
 <!-- Create a link -->
 <xsl:template name="createlink">
 <xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
+<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="$archive"/></xsl:call-template></xsl:variable>
 	<xsl:choose>
 		<xsl:when test="contains(@href,'#')">
 			<xsl:variable name="anchor"><xsl:value-of select="concat('#',substring-after(@href,'#'))"/></xsl:variable>
-			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,substring-before(@href,'#'),$linkpostfix,$anchor)"/></xsl:variable>
+			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,substring-before(@href,'#'),$linkpostfix,$dbpostfix,$anchor)"/></xsl:variable>
 			<a href="{$href}"><xsl:apply-templates /></a>
 		</xsl:when>
 		<xsl:when test="starts-with(@href,'http://')">  <!-- web links -->
 			<a href="{@href}"><xsl:apply-templates /></a>
 		</xsl:when>
 		<xsl:otherwise>
-			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,@href,$linkpostfix)"/></xsl:variable>
+			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,@href,$linkpostfix,$dbpostfix)"/></xsl:variable>
 			<a href="{$href}"><xsl:apply-templates /></a>
 		</xsl:otherwise>
 	</xsl:choose>
@@ -623,8 +648,9 @@
 			<xsl:when test="$type='warning'"><xsl:value-of select="$warning_img"/></xsl:when>
 		</xsl:choose>
 	</xsl:variable>
+	<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="'shared'"/></xsl:call-template></xsl:variable>
 	<xsl:variable name="alt">
-		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/',$alttext,$urlpost)"/></xsl:variable>
+		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/',$alttext,$urlpost,$dbpostfix)"/></xsl:variable>
 		<xsl:variable name="anchor"><xsl:value-of select="concat('alt_',$type)"/></xsl:variable>
 		<xsl:variable name="doc" select="document($href)"/>
 		<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
@@ -849,7 +875,8 @@
 <xsl:template name="resolveembed">
 	<div class="embedded">
 		<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
-		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$archive,substring-before(@href,'#'),$urlpost)"/></xsl:variable>
+		<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="$archive"/></xsl:call-template></xsl:variable>
+		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$archive,substring-before(@href,'#'),$urlpost,$dbpostfix)"/></xsl:variable>
 		<xsl:variable name="anc"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
 		<xsl:variable name="docum" select="document($href)"/>
 		
@@ -864,7 +891,8 @@
 <xsl:template name="resolveembedvar">
 	<xsl:if test="not(@href='text/shared/00/00000004.xhp#wie')"> <!-- special treatment if howtoget links -->
 		<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
-		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$archive,substring-before(@href,'#'),$urlpost)"/></xsl:variable>
+		<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="$archive"/></xsl:call-template></xsl:variable>
+		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$archive,substring-before(@href,'#'),$urlpost,$dbpostfix)"/></xsl:variable>
 		<xsl:variable name="anchor"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
 		<xsl:variable name="doc" select="document($href)"/>
 		<xsl:choose>
@@ -919,6 +947,17 @@
 			<xsl:value-of select="$s"/>
 		</xsl:otherwise>
 	</xsl:choose>
+</xsl:template>
+
+<xsl:template name="createDBpostfix">
+	<xsl:param name="archive"/>
+	<xsl:variable name="newDB">
+		<xsl:choose>
+			<xsl:when test="(substring($archive,1,6) = 'shared') or (substring($archive,1,6) = 'schart')"><xsl:value-of select="$Database"/></xsl:when>
+			<xsl:otherwise><xsl:value-of select="substring-before($archive,'/')"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	<xsl:value-of select="concat($am,'DbPAR=',$newDB)"/>
 </xsl:template>
 
 </xsl:stylesheet>
