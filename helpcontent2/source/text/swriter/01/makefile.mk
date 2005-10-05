@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:45 $
+#*    last change       $Author: kz $ $Date: 2005-10-05 14:28:51 $
 #*
-#*    $Revision: 1.7 $
+#*    $Revision: 1.8 $
 #*
 #*    $Logfile:$
 #*
@@ -192,6 +192,7 @@ XHPFILES = \
    06210000.xhp \
    06220000.xhp \
    06990000.xhp \
+   format_object.xhp \
    mailmerge00.xhp \
    mailmerge01.xhp \
    mailmerge02.xhp \
