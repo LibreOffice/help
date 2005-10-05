@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2005-09-28 12:06:25 $
+#*    last change       $Author: kz $ $Date: 2005-10-05 15:00:17 $
 #*
-#*    $Revision: 1.15 $
+#*    $Revision: 1.16 $
 #*
 #*    $Logfile:$
 #*
@@ -218,6 +218,7 @@ LINKLINKFILES= \
    text$/swriter$/01$/06210000.xhp \
    text$/swriter$/01$/06220000.xhp \
    text$/swriter$/01$/06990000.xhp \
+   text$/swriter$/01$/format_object.xhp \
    text$/swriter$/01$/mailmerge00.xhp \
    text$/swriter$/01$/mailmerge01.xhp \
    text$/swriter$/01$/mailmerge02.xhp \
@@ -905,6 +906,7 @@ LINKLINKFILES= \
    text$/shared$/02$/basicshapes.xhp \
    text$/shared$/02$/blockarrows.xhp \
    text$/shared$/02$/callouts.xhp \
+   text$/shared$/02$/colortoolbar.xhp \
    text$/shared$/02$/flowcharts.xhp \
    text$/shared$/02$/fontwork.xhp \
    text$/shared$/02$/paintbrush.xhp \
@@ -1149,6 +1151,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/data_tables.xhp \
    text$/shared$/guide$/data_view.xhp \
    text$/shared$/guide$/database_main.xhp \
+   text$/shared$/guide$/digital_signatures.xhp \
    text$/shared$/guide$/doc_autosave.xhp \
    text$/shared$/guide$/doc_open.xhp \
    text$/shared$/guide$/doc_save.xhp \
@@ -1174,6 +1177,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/hyperlink_insert.xhp \
    text$/shared$/guide$/hyperlink_rel_abs.xhp \
    text$/shared$/guide$/hyperlink_search.xhp \
+   text$/shared$/guide$/imagemap.xhp \
    text$/shared$/guide$/import_ms.xhp \
    text$/shared$/guide$/insert_bitmap.xhp \
    text$/shared$/guide$/insert_graphic_drawit.xhp \
