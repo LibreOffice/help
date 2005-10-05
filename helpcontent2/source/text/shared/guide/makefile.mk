@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 12:47:31 $
+#*    last change       $Author: kz $ $Date: 2005-10-05 13:56:35 $
 #*
-#*    $Revision: 1.7 $
+#*    $Revision: 1.8 $
 #*
 #*    $Logfile:$
 #*
@@ -73,6 +73,7 @@ XHPFILES = \
    data_tables.xhp \
    data_view.xhp \
    database_main.xhp \
+   digital_signatures.xhp \
    doc_autosave.xhp \
    doc_open.xhp \
    doc_save.xhp \
@@ -98,6 +99,7 @@ XHPFILES = \
    hyperlink_insert.xhp \
    hyperlink_rel_abs.xhp \
    hyperlink_search.xhp \
+   imagemap.xhp \
    import_ms.xhp \
    insert_bitmap.xhp \
    insert_graphic_drawit.xhp \
