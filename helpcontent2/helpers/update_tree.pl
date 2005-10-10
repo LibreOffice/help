@@ -17,7 +17,7 @@ terminate() if ( ! defined $inpath );
 my $destpath = $inpath;
 my $with_lang = $ENV{WITH_LANG};
 
-if ( defined $ENV{COMMON_OUTDIR} ) {
+if ( defined $ENV{COMMON_OUTDIR} && $ENV{COMMON_OUTDIR} ne "" ) {
     $destpath =~ s/$ENV{OUTPATH}/$ENV{COMMON_OUTDIR}/;
 }
 
@@ -235,6 +235,7 @@ sub processtreefiles {
                 print TV $line;    
             }  
             close TV;
+            chmod 0664, $treetmpfile or &terminate("Cannot change rights on $treetmpfile");
             rename($treetmpfile, "$tree_dest/$lng/$tv") or &terminate("Cannot write to $tvout");
       } else {
             &terminate("Cannot write to $tvout");
