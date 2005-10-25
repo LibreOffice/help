@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2005-09-28 12:05:12 $
+#*    last change       $Author: hr $ $Date: 2005-10-25 11:39:16 $
 #*
-#*    $Revision: 1.13 $
+#*    $Revision: 1.14 $
 #*
 #*    $Logfile:$
 #*
@@ -33,7 +33,7 @@ zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_shared
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
-ZIP1LIST=$(LANGDIR)$/text$/shared$/* -x "*.dphh*" -x "*.hzip" -x "*.created"
+ZIP1LIST=$(LANGDIR)$/text$/shared$/* -x "*.xhp????*"-x "*.dphh*" -x "*.hzip" -x "*.created"
 .ENDIF			# "$(SOLAR_JAVA)"!=""
 
 
