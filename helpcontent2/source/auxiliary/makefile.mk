@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2005-09-28 12:02:06 $
+#*    last change       $Author: hr $ $Date: 2005-10-28 11:59:32 $
 #*
-#*    $Revision: 1.6 $
+#*    $Revision: 1.7 $
 #*
 #*    $Logfile:$
 #*
@@ -39,9 +39,9 @@ ALLTAR : aux_dirs $(COMMONMISC)$/treefiles.done
 .IF "$(GUI)"=="UNX" || "$(USE_SHELL)"!="4nt"
 t_aux_langdirs:=$(shell +find ./ -type f -name "*.cfg" | sed "s/\.\/\///" | sed "s/\.\///" )
 .ELSE           # "$(GUI)"=="UNX" || "$(USE_SHELL)"!="4nt"
-t_aux_langdirs:=$(subst,$(PWD)\, $(shell +-dir /bs *.cfg))
+t_aux_langdirs:=$(subst,./, $(shell +$(FIND) ./ -type f -name "*.cfg"))
 .ENDIF          # "$(GUI)"=="UNX" || "$(USE_SHELL)"!="4nt"
-    
+
 aux_langdirs:=$(uniq $(t_aux_langdirs:d:d))
 
 aux_alllangiso:=$(foreach,i,$(alllangiso) $(foreach,j,$(aux_langdirs) $(eq,$i,$j  $i $(NULL))))
