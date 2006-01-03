@@ -1,6 +1,8 @@
 #!/usr/bin/perl
 
+use Cwd 'abs_path';
 use File::Find;
+use File::Copy qw/cp mv/;
 use File::Basename;
 use Benchmark;
 
@@ -45,14 +47,12 @@ if ( ! defined $prj ) {
 # Update English from xhp
 #-------------------------------
 &do_english;
-
 #-------------------------------
 # Update localizations from sdf
 #-------------------------------
 
 @langs = split /\s+/, $with_lang;
 &read_loc;
-
 print "################\nUpdating the treefiles for @langs \n";
 for $l(@langs) {
     if ($l ne "en-US") {
@@ -86,7 +86,9 @@ update_tree.pl
 
    Requires a valid SO/OOo environment.
 MSG
-    die "$msg\n";
+   print "$msg\n";
+   exit( -1 );
+   # die "$msg\n";
 }
 
 #---------------------------------------------------
@@ -154,7 +156,6 @@ sub gettreefiles {
 #------------------------------------
 sub processtreefiles {
     $lng = shift;
-    
     use File::Temp qw/ tempfile /; 
 
     for $tv(@treeviews) {
@@ -227,7 +228,8 @@ sub processtreefiles {
         }
         my $treeoutdir = "$tree_dest/$lng";
         my $tmpname_template=$tv."_XXXXX";
-        my ( $treetmpfilehandle, $treetmpfile ) = tempfile($tmpname_template, DIR => $treeoutdir);
+        my ( $treetmpfilehandle, $treetmpfile ) = tempfile($tmpname_template , DIR => $ENV{TMP} );
+        close $treetmpfilehandle ;
         if (open TV, ">$treetmpfile") {
             for $line(@lines) { 
                 $line =~ s/\$\[officename\]/%PRODUCTNAME/g;
@@ -236,7 +238,17 @@ sub processtreefiles {
             }  
             close TV;
             chmod 0664, $treetmpfile or &terminate("Cannot change rights on $treetmpfile");
-            rename($treetmpfile, "$tree_dest/$lng/$tv") or &terminate("Cannot write to $tvout");
+            if( $ENV{ USE_SHELL } eq "4nt" )
+            {
+                $tree_dest =~ s/\//\\/g ;
+                unlink "$tree_dest\\$lng\\$tv" ;
+                mv $treetmpfile , "$tree_dest\\$lng\\$tv" or &terminate("Cannot mv $treetmpfile to $tree_dest\\$lng\\$tv" );
+            }
+            else
+            {
+                unlink "$tree_dest/$lng/$tv" ;
+                mv $treetmpfile , "$tree_dest/$lng/$tv" or &terminate("Cannot write to $tree_dest/$lng/$tv");
+            }
       } else {
             &terminate("Cannot write to $tvout");
         }
@@ -268,8 +280,10 @@ sub read_loc {
         print ".";
         open(LOCALIZE_SDF, $fname) || die 'Cannot open "localize.sdf".'."$fname";
         while (<LOCALIZE_SDF>) {
-            my ($Fld1,$file,$Fld3,$Fld4,$id,$Fld6,$Fld7,$Fld8,$Fld9,$lang,$text) = split($FS, $_, 12);
-            if ($id eq 'tit') {
+            my $sdf_line = $_;
+        my ($Fld1,$file,$Fld3,$Fld4,$id,$Fld6,$Fld7,$Fld8,$Fld9,$lang,$text) = split($FS, $sdf_line , 12);
+            next if ( $Fld1 =~ /^#/); 
+        if ($id eq 'tit') {
                 #strip filename
                 $file =~ s/.*text\\/text\\/g;
                 #convert \ to / in filename
@@ -288,15 +302,24 @@ sub read_loc {
                     #example: <help_section application="scalc" id="08" title="表計算ドキュメント"> 
                     my ($fld1,$app,$fld3,$id,$fld5,$sec_title) = split('"', $text, 7);
                     #fpe: i46823 - need to encode &s, added encoding
-                    $sec_title =~ s/&(?!amp;)/&amp;/g;
-                    $helpsection{$lang}->{$id} = $sec_title; 
+                    if( defined $sec_title )
+                    {
+                        $sec_title =~ s/&(?!amp;)/&amp;/g;
+                        #unquot \<item ... /\>
+                        terminate( "\n\nERROR: Bad string in file '$fname' will cause invalid xml tree file \n---\n'$sdf_line'\n---\nPlease remove or replace < = '&lt;' and  > = '&gt;' within the title attribute '$sec_title'\n") , if( $sec_title =~ /[\<\>]/ );
+                        $helpsection{$lang}->{$id} = $sec_title; 
+                    }
                 } elsif ($text =~/<node id=/) {
                     # example: <node id="0205" title="Tabelas em documentos de texto"> 
                     # BEWARE: title may contain escaped '"' so only match " not preceded by \
                     # using a zero‐width negative look‐behind assertion.
                     my ($fld1,$id,$fld3,$node_title,$Fld5) = split(/(?<!\\)"/, $text, 5);
                     #fpe: i46823 - need to encode &s, added encoding
-                    $node_title =~ s/&(?!amp;)/&amp;/g;
+                    if( defined $node_title )
+                    {
+                        $node_title =~ s/&(?!amp;)/&amp;/g;
+                           terminate( "\n\nERROR: Bad string in '$fname' will cause invalid xml tree file \n---\n'$sdf_line'\n---\nPlease remove or replace < = '&lt;' and  > = '&gt;' within the title attribute '$node_title'\n") , if( $node_title =~ /[\<\>]/ );
+                    }
                     $node{$lang}->{$id} = $node_title;
                 }
             }
