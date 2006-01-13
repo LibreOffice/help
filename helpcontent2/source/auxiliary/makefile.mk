@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-12-14 15:34:01 $
+#*    last change       $Author: rt $ $Date: 2006-01-13 16:16:48 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -34,7 +34,7 @@ TREEFILES  = \
 
 .INCLUDE :  target.mk
 
-ALLTAR : aux_dirs $(COMMONMISC)$/treefiles.done
+ALLTAR : aux_dirs $(COMMONMISC)$/treefiles.done $(COMMONBIN)$/helpimg.ilst
 
 .IF "$(GUI)"=="UNX" || "$(USE_SHELL)"!="4nt"
 t_aux_langdirs:=$(shell +find ./ -name "*.cfg" | sed "s/\.\/\///" | sed "s/\.\///" )
@@ -63,4 +63,10 @@ $(LOCTREEFILES) : $(TREEFILES) $(PRJ)$/source$/text$/shared$/localize.sdf $$(@:d
 
 aux_dirs .PHONY :
     +echo aux_langdirs:=$(aux_langdirs) > $(INCCOM)$/aux_langs.mk
+
+$(COMMONBIN)$/helpimg.ilst .PHONY:
+    +-$(RM) $@
+    $(PERL) $(PRJ)$/helpers$/create_ilst.pl -dir=$(SOLARSRC)/default_images/res/helpimg > $@.$(INPATH)
+    +$(RENAME) $@.$(INPATH) $@
+    
 
