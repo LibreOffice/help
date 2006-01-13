@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2004-12-16 13:00:10 $
+#*    last change       $Author: rt $ $Date: 2006-01-13 16:17:16 $
 #*
-#*    $Revision: 1.5 $
+#*    $Revision: 1.6 $
 #*
 #*    $Logfile:$
 #*
@@ -34,7 +34,3 @@ ZIP1LIST=main_transform*.xsl
 
 .INCLUDE :  target.mk
 
-ALLTAR : $(COMMONBIN)$/helpimg.ilst
-
-$(COMMONBIN)$/helpimg.ilst: helpimg.ilst
-    +$(COPY) $< $@
