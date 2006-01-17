@@ -7,9 +7,9 @@ eval 'exec perl -wS $0 ${1+"$@"}'
 #
 #   $RCSfile: create_ilst.pl,v $
 #
-#   $Revision: 1.3 $
+#   $Revision: 1.4 $
 #
-#   last change: $Author: rt $ $Date: 2006-01-13 16:16:00 $
+#   last change: $Author: obo $ $Date: 2006-01-17 12:23:19 $
 #
 #   The Contents of this file are made available subject to
 #   the terms of GNU Lesser General Public License Version 2.1.
@@ -45,9 +45,13 @@ $params = join "|", "",@ARGV,"";
 ($params =~ /-dir/) ? ($startdir = $params) =~ (s/.*-dir=([^\|]*).*$/$1/gs) : (($startdir = `pwd`) =~ s/\n//gs);
 ($params =~ /-pre/) ? ($pre = $params) =~ (s/.*-pre=([^\|]*).*$/$1/gs) : ($pre = "helpimg");
 
+my $startdir_regexp = $startdir;
+$startdir_regexp =~ s/\\/\\\\/g;
+
+
 if ( -d $startdir ) {
     find(sub{push @files, $File::Find::name if (($File::Find::name=~/\.png$/));},$startdir);
-    foreach ( @files ) { s#.*$startdir/##; };
+    foreach ( @files ) { s#.*$startdir_regexp[\\/]##; };
     for (sort(@files)) {
         print "%GLOBALRES%/$pre/$_\n";
     }
