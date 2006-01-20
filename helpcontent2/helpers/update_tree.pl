@@ -7,9 +7,9 @@ eval 'exec perl -wS $0 ${1+"$@"}'
 #
 #   $RCSfile: update_tree.pl,v $
 #
-#   $Revision: 1.10 $
+#   $Revision: 1.11 $
 #
-#   last change: $Author: rt $ $Date: 2006-01-13 16:16:20 $
+#   last change: $Author: obo $ $Date: 2006-01-20 12:08:29 $
 #
 #   The Contents of this file are made available subject to
 #   the terms of GNU Lesser General Public License Version 2.1.
@@ -193,6 +193,7 @@ sub gettreefiles {
 sub processtreefiles {
     $lng = shift;
     use File::Temp qw/ tempfile /; 
+    use File::Spec;
 
     for $tv(@treeviews) {
         print "\nProcessing $tv\n";
@@ -264,7 +265,7 @@ sub processtreefiles {
         }
         my $treeoutdir = "$tree_dest/$lng";
         my $tmpname_template=$tv."_XXXXX";
-        my ( $treetmpfilehandle, $treetmpfile ) = tempfile($tmpname_template , DIR => $ENV{TMP} );
+        my ( $treetmpfilehandle, $treetmpfile ) = tempfile($tmpname_template , DIR => File::Spec->tmpdir() );
         close $treetmpfilehandle ;
         if (open TV, ">$treetmpfile") {
             for $line(@lines) { 
@@ -274,7 +275,7 @@ sub processtreefiles {
             }  
             close TV;
             chmod 0664, $treetmpfile or &terminate("Cannot change rights on $treetmpfile");
-            if( $ENV{ USE_SHELL } eq "4nt" )
+            if( $^O eq 'MSWin32' )
             {
                 $tree_dest =~ s/\//\\/g ;
                 unlink "$tree_dest\\$lng\\$tv" ;
