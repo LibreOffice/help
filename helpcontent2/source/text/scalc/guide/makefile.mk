@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:36 $
+#*    last change       $Author: obo $ $Date: 2006-03-27 10:53:37 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -37,6 +37,7 @@ XHPFILES = \
    auto_off.xhp \
    autofilter.xhp \
    autoformat.xhp \
+   borders.xhp \
    calc_date.xhp \
    calc_series.xhp \
    calc_timevalues.xhp \
