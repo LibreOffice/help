@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 12:46:33 $
+#*    last change       $Author: obo $ $Date: 2006-03-27 12:40:35 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -39,6 +39,7 @@ XHPFILES = \
    auto_spellcheck.xhp \
    autocorr_except.xhp \
    autotext.xhp \
+   borders.xhp \
    calculate.xhp \
    calculate_clipboard.xhp \
    calculate_intable.xhp \
