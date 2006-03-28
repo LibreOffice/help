@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: obo $ $Date: 2006-03-27 12:54:45 $
+#*    last change       $Author: obo $ $Date: 2006-03-28 13:29:35 $
 #*
-#*    $Revision: 1.19 $
+#*    $Revision: 1.20 $
 #*
 #*    $Logfile:$
 #*
@@ -297,7 +297,6 @@ LINKLINKFILES= \
    text$/swriter$/guide$/auto_spellcheck.xhp \
    text$/swriter$/guide$/autocorr_except.xhp \
    text$/swriter$/guide$/autotext.xhp \
-   text$/swriter$/guide$/borders.xhp \
    text$/swriter$/guide$/calculate.xhp \
    text$/swriter$/guide$/calculate_clipboard.xhp \
    text$/swriter$/guide$/calculate_intable.xhp \

@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: obo $ $Date: 2006-03-27 12:51:52 $
+#*    last change       $Author: obo $ $Date: 2006-03-28 13:29:34 $
 #*
-#*    $Revision: 1.20 $
+#*    $Revision: 1.21 $
 #*
 #*    $Logfile:$
 #*
@@ -257,7 +257,6 @@ LINKLINKFILES= \
    text$/scalc$/guide$/auto_off.xhp \
    text$/scalc$/guide$/autofilter.xhp \
    text$/scalc$/guide$/autoformat.xhp \
-   text$/scalc$/guide$/borders.xhp \
    text$/scalc$/guide$/calc_date.xhp \
    text$/scalc$/guide$/calc_series.xhp \
    text$/scalc$/guide$/calc_timevalues.xhp \
