@@ -4,9 +4,9 @@
 #
 #   $RCSfile: makefile.pmk,v $
 #
-#   $Revision: 1.12 $
+#   $Revision: 1.13 $
 #
-#   last change: $Author: kz $ $Date: 2006-01-03 14:40:43 $
+#   last change: $Author: obo $ $Date: 2006-03-29 13:24:41 $
 #
 #   The Contents of this file are made available subject to
 #   the terms of GNU Lesser General Public License Version 2.1.
@@ -37,24 +37,25 @@ SHELL_PACKAGE:=$(subst,/,$/ $(PACKAGE))
 HLANGXHPFILES:=$(foreach,i,$(XHPFILES) $(foreach,j,$(aux_alllangiso) $(COMMONMISC)$/$j$/$(SHELL_PACKAGE)$/$(i:f)))
 
 .IF "$(SOLAR_JAVA)"!=""
-ALLTAR : $(foreach,i,$(XHPFILES:b) $(COMMONMISC)$/$(TARGET).$i.done) $(COMMONMISC)$/xhp_changed.flag optix
+ALLTAR : $(COMMONMISC)$/$(TARGET).done $(COMMONMISC)$/xhp_changed.flag optix
 .ENDIF
 
 $(HLANGXHPFILES) : $$(@:d)thisdir.created
 
 $(COMMONMISC)$/{$(aux_alllangiso)}$/$(SHELL_PACKAGE)$/%.xhp : %.xhp
-    @$(TOUCH) $@
+    @$(NULL)
 
-$(foreach,i,$(XHPFILES:b) $(COMMONMISC)$/$(TARGET).$i.done) : $(COMMONMISC)$/{$(aux_alllangiso)}$/$(SHELL_PACKAGE)$/$$(@:b:e:s/.//).xhp
-    @+$(WRAPCMD) helpex -QQ -p helpcontent2 -r $(PRJ) -i $(uniq $(<:f)) -x $(COMMONMISC) -y $(SHELL_PACKAGE)$/$(@:b:e:s/.//).xhp -l all -lf $(aux_alllangiso:t",") -m localize.sdf && $(TOUCH) $@
+$(COMMONMISC)$/$(TARGET).done : $(HLANGXHPFILES)
+    @+$(WRAPCMD) helpex -QQ -p helpcontent2 -r $(PRJ) -i @$(mktmp $(uniq $(foreach,i,$? $(!eq,$(i:f),$(i:f:s/.xhp//) $(i:f) $(XHPFILES))))) -x $(COMMONMISC) -y $(SHELL_PACKAGE) -l all -lf $(aux_alllangiso:t",") -m localize.sdf && $(TOUCH) $@
 
 # urks - dmake mixes up operators and strings :-(
 .IF "$(HLANGXHPFILES:s/defined/xxx/)"!=""
 
 .IF "$(HELPTRANSPHONY)"!=""
-$(foreach,i,$(XHPFILES) $(COMMONMISC)$/$(TARGET).$(i:b).done) .PHONY :
+$(foreach,i,$(XHPFILES) $(COMMONMISC)$/$(TARGET).done) .PHONY :
 .ELSE           # "$(HELPTRANSPHONY)"!=""
-$(foreach,i,$(XHPFILES) $(COMMONMISC)$/$(TARGET).$(i:b).done) : localize.sdf makefile.mk
+
+$(COMMONMISC)$/$(TARGET).done : localize.sdf makefile.mk
 .ENDIF          # "$(HELPTRANSPHONY)"!=""
 .ENDIF          # "$(HLANGXHPFILES)"!=""
 
@@ -67,7 +68,7 @@ $(COMMONMISC)$/xhp_changed.flag : $(HLANGXHPFILES)
     @+$(ECHONL)
 .ENDIF			# "$(OS)"=="SOLARIS"
 
-optix: $(foreach,i,$(XHPFILES) $(COMMONMISC)$/$(TARGET).$(i:b).done)
+optix: $(foreach,i,$(XHPFILES) $(COMMONMISC)$/$(TARGET).done)
     @+echo done
 
 %.created :
