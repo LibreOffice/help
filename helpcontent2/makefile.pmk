@@ -4,9 +4,9 @@
 #
 #   $RCSfile: makefile.pmk,v $
 #
-#   $Revision: 1.13 $
+#   $Revision: 1.14 $
 #
-#   last change: $Author: obo $ $Date: 2006-03-29 13:24:41 $
+#   last change: $Author: hr $ $Date: 2006-04-19 15:34:25 $
 #
 #   The Contents of this file are made available subject to
 #   the terms of GNU Lesser General Public License Version 2.1.
@@ -37,38 +37,36 @@ SHELL_PACKAGE:=$(subst,/,$/ $(PACKAGE))
 HLANGXHPFILES:=$(foreach,i,$(XHPFILES) $(foreach,j,$(aux_alllangiso) $(COMMONMISC)$/$j$/$(SHELL_PACKAGE)$/$(i:f)))
 
 .IF "$(SOLAR_JAVA)"!=""
-ALLTAR : $(COMMONMISC)$/$(TARGET).done $(COMMONMISC)$/xhp_changed.flag optix
+ALLTAR : $(COMMONMISC)$/$(TARGET).done optix
 .ENDIF
 
 $(HLANGXHPFILES) : $$(@:d)thisdir.created
 
 $(COMMONMISC)$/{$(aux_alllangiso)}$/$(SHELL_PACKAGE)$/%.xhp : %.xhp
-    @$(NULL)
+    @$(TOUCH) $@
+# internal dependencies not sufficient to trigger merge?
+#    @$(NULL)
 
 $(COMMONMISC)$/$(TARGET).done : $(HLANGXHPFILES)
     @+$(WRAPCMD) helpex -QQ -p helpcontent2 -r $(PRJ) -i @$(mktmp $(uniq $(foreach,i,$? $(!eq,$(i:f),$(i:f:s/.xhp//) $(i:f) $(XHPFILES))))) -x $(COMMONMISC) -y $(SHELL_PACKAGE) -l all -lf $(aux_alllangiso:t",") -m localize.sdf && $(TOUCH) $@
-
-# urks - dmake mixes up operators and strings :-(
-.IF "$(HLANGXHPFILES:s/defined/xxx/)"!=""
-
-.IF "$(HELPTRANSPHONY)"!=""
-$(foreach,i,$(XHPFILES) $(COMMONMISC)$/$(TARGET).done) .PHONY :
-.ELSE           # "$(HELPTRANSPHONY)"!=""
-
-$(COMMONMISC)$/$(TARGET).done : localize.sdf makefile.mk
-.ENDIF          # "$(HELPTRANSPHONY)"!=""
-.ENDIF          # "$(HLANGXHPFILES)"!=""
-
-$(COMMONMISC)$/xhp_changed.flag : $(HLANGXHPFILES)
-    @+$(TOUCH) $@
-# it's hard to get just a newline...	
 .IF "$(OS)"=="SOLARIS"
     @+$(ECHONL) " "
 .ELSE			# "$(OS)"=="SOLARIS"
     @+$(ECHONL)
 .ENDIF			# "$(OS)"=="SOLARIS"
 
-optix: $(foreach,i,$(XHPFILES) $(COMMONMISC)$/$(TARGET).done)
+# urks - dmake mixes up operators and strings :-(
+.IF "$(HLANGXHPFILES:s/defined/xxx/)"!=""
+
+.IF "$(HELPTRANSPHONY)"!=""
+$(COMMONMISC)$/$(TARGET).done .PHONY :
+.ELSE           # "$(HELPTRANSPHONY)"!=""
+
+$(COMMONMISC)$/$(TARGET).done : localize.sdf makefile.mk
+.ENDIF          # "$(HELPTRANSPHONY)"!=""
+.ENDIF          # "$(HLANGXHPFILES)"!=""
+
+optix: $(COMMONMISC)$/$(TARGET).done
     @+echo done
 
 %.created :
