@@ -1,28 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--***********************************************************************
  *
- *  The Contents of this file are made available subject to
- *  the terms of GNU Lesser General Public License Version 2.1.
+ *  The Contents of this file are made available subject to the terms of
+ *  either of the following licenses
+ *
+ *         - GNU Lesser General Public License Version 2.1
+ *         - Sun Industry Standards Source License Version 1.1
+ *
+ *  Sun Microsystems Inc., October, 2000
+ *
+ *  GNU Lesser General Public License Version 2.1
+ *  =============================================
+ *  Copyright 2000 by Sun Microsystems, Inc.
+ *  901 San Antonio Road, Palo Alto, CA 94303, USA
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License version 2.1, as published by the Free Software Foundation.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+ *  MA  02111-1307  USA
  *
  *
- *    GNU Lesser General Public License Version 2.1
- *    =============================================
- *    Copyright 2005 by Sun Microsystems, Inc.
- *    901 San Antonio Road, Palo Alto, CA 94303, USA
+ *  Sun Industry Standards Source License Version 1.1
+ *  =================================================
+ *  The contents of this file are subject to the Sun Industry Standards
+ *  Source License Version 1.1 (the "License"); You may not use this file
+ *  except in compliance with the License. You may obtain a copy of the
+ *  License at http://www.openoffice.org/license.html.
  *
- *    This library is free software; you can redistribute it and/or
- *    modify it under the terms of the GNU Lesser General Public
- *    License version 2.1, as published by the Free Software Foundation.
+ *  Software provided under this License is provided on an "AS IS" basis,
+ *  WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+ *  WITHOUT LIMITATION, WARRANTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
+ *  See the License for the specific provisions governing your rights and
+ *  obligations concerning the Software.
  *
- *    This library is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *    Lesser General Public License for more details.
+ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc..
  *
- *    You should have received a copy of the GNU Lesser General Public
- *    License along with this library; if not, write to the Free Software
- *    Foundation, Inc., 59 Temple Place, Suite 330, Boston,
- *    MA  02111-1307  USA
+ *  Copyright: 2000 by Sun Microsystems, Inc.
+ *
+ *  All Rights Reserved.
+ *
+ *  Contributor(s): _______________________________________
+ *
  *
  ************************************************************************-->
 	
@@ -34,34 +62,53 @@
 </topic>
 <history>
 <created date="2005-04-08T13:51:19">Digital Signatures for Docs and Macros</created>
-<lastedited date="2005-04-27T10:45:32"/>
+<lastedited date="2005-11-24T11:06:43"/>
 </history>
 </meta>
 <body>
-<bookmark xml-lang="en-US" branch="index" id="bm_id7430951"><bookmark_value>signing documents;digital signatures</bookmark_value>
-<bookmark_value>certificates;using</bookmark_value>
-<bookmark_value>digital signatures;using</bookmark_value>
+<bookmark xml-lang="en-US" branch="index" id="bm_id7430951"><bookmark_value>signing documents</bookmark_value>
+<bookmark_value>certificates</bookmark_value>
+<bookmark_value>digital signatures</bookmark_value>
 </bookmark>
 <paragraph role="heading" id="par_idN10614" xml-lang="en-US" level="1" l10n="NEW"><variable id="digital_signatures"><link href="text/shared/guide/digital_signatures.xhp">Using Digital Signatures</link>
 </variable></paragraph>
 <paragraph role="paragraph" id="par_idN10632" xml-lang="en-US" l10n="NEW">In %PRODUCTNAME, you can digitally sign your documents and macros. </paragraph>
 <paragraph role="heading" id="par_idN10635" xml-lang="en-US" level="2" l10n="NEW">Overview</paragraph>
 <paragraph role="paragraph" id="par_idN10639" xml-lang="en-US" l10n="NEW">To sign a document digitally, you need a personal key, the certificate. A personal key is stored on your computer as a combination of a private key, which must be kept secret, and a public key, which you add to your documents when you sign them.</paragraph>
-<paragraph role="heading" id="par_idN1063C" xml-lang="en-US" level="3" l10n="NEW">Get a certificate</paragraph>
+<paragraph role="heading" id="hd_id9354228" xml-lang="en-US" level="2" l10n="NEW">Security Warnings</paragraph>
+<paragraph role="paragraph" id="par_id2372508" xml-lang="en-US" l10n="NEW">When you receive a signed document, and the software reports that the signature is valid, this does not mean that you can be absolutely sure that the document is the same that the sender has sent. Signing documents with software certificates is not a perfectly secure method. Numerous ways are possible to circumvent the security features.</paragraph>
+<paragraph role="paragraph" id="par_id7953123" xml-lang="en-US" l10n="NEW">Example: Think about someone wants to camouflage his identity to be a sender from your bank. He can easily get a certificate using a false name, then send you any signed e-mail pretending he is working for your bank. You will get that e-mail, and the e-mail or the document within has the "valid signed" icon. </paragraph>
+<paragraph role="paragraph" id="par_id6195257" xml-lang="en-US" l10n="NEW">Do not trust the icon. Inspect and verify the certificates.</paragraph>
+<paragraph role="warning" id="par_id8635517" xml-lang="en-US" l10n="NEW">The validation of a signature is not a legally binding assurement of any kind.</paragraph>
+<paragraph role="paragraph" id="par_id6075624" xml-lang="en-US" l10n="NEW">On Windows operating systems, the Windows features of validating a signature are used. On Solaris and Linux systems, files that are supplied by Thunderbird, Mozilla or Firefox are used. You must ensure that the files that are in use within your system are really the original files that were supplied by the original developers. For malevolent intruders, there are numerous ways to replace original files with other files that they supply.</paragraph>
+<paragraph role="warning" id="par_id6819971" xml-lang="en-US" l10n="NEW">The messages about validation of a signature that you see in %PRODUCTNAME are the messages that the validation files return. The %PRODUCTNAME software has no way to ensure that the messages reflect the true status of any certificate. The %PRODUCTNAME software only displays the messages that other files that are not under control of %PRODUCTNAME report. There is no legal responsibility of %PRODUCTNAME that the displayed messages reflect the true status of a digital signature.</paragraph>
+<paragraph role="heading" id="par_idN1063C" xml-lang="en-US" level="2" l10n="NEW">Get a certificate</paragraph>
 <paragraph role="paragraph" id="par_idN10640" xml-lang="en-US" l10n="NEW">You can get a certificate from a certification authority, which may be a private company or a governmental institution. Some certification authorities want money for their service, for example when they certify your identity. Other certificates are free of costs, for example those offered by some e-mail providers, which certify your e-mail address. A few of the companies that offer certificates to private persons are listed in the following, in alphabetical order: <link href="http://www.globalsign.net">GlobalSign</link> , <link href="http://www.thawte.com">Thawte</link>, <link href="http://www.verisign.com">Verisign</link>.</paragraph>
-<paragraph role="heading" id="par_idN106F6" xml-lang="en-US" level="3" l10n="NEW">Manage your certificates</paragraph>
+<paragraph role="heading" id="par_idN106F6" xml-lang="en-US" level="2" l10n="NEW">Manage your certificates</paragraph>
 <switch select="sys">
 <case select="WIN">
 <paragraph role="paragraph" id="par_idN1070A" xml-lang="en-US" l10n="NEW">If you are using Microsoft Windows, you can manage your certificates from the Control Panel applet "Internet Options" on the "Contents" tab page.</paragraph>
+<paragraph role="paragraph" id="par_id8311410" xml-lang="en-US" l10n="NEW">Import your new root certificate into the Trusted Root Certification Authorities list.</paragraph>
 </case>
 <default>
 <paragraph role="paragraph" id="par_idN1071D" xml-lang="en-US" l10n="NEW">If you are using Solaris or Linux, you must install a recent version of Thunderbird, Mozilla Suite, or Firefox software to install some system files that are needed for encryption.</paragraph>
-<paragraph role="paragraph" id="par_idN10720" xml-lang="en-US" l10n="NEW">If you have created different profiles in Thunderbird, Mozilla, or Firefox, and you want %PRODUCTNAME to use one specified profile for certificates, then you can set the environment variable MOZILLA_CERTIFICATE_FOLDER to point to the folder of that specified profile.</paragraph>
+<paragraph role="tip" id="par_idN10720" xml-lang="en-US" l10n="NEW">If you have created different profiles in Thunderbird, Mozilla, or Firefox, and you want %PRODUCTNAME to use one specified profile for certificates, then you can set the environment variable MOZILLA_CERTIFICATE_FOLDER to point to the folder of that specified profile.</paragraph>
+<list type="ordered">
+<listitem>
+<paragraph role="paragraph" id="par_id944242" xml-lang="en-US" l10n="NEW">Open your Web browser's preferences dialog, select the Privacy &amp; Security tab page, click on Certificates - Manage Certificates. </paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_id6452223" xml-lang="en-US" l10n="NEW">Import your new root certificate, then select and edit the certificate. Enable the root certificate to be trusted at least for web and email access. This ensures that the certificate can sign your documents. You may edit any intermediate certificate in the same way, but it is not mandatory for signing documents.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="paragraph" id="par_id6486098" xml-lang="en-US" l10n="NEW">When you have edited the new certificates, restart %PRODUCTNAME.</paragraph>
+</listitem>
+</list>
 </default>
 </switch>
-<paragraph role="heading" id="par_idN1066D" xml-lang="en-US" level="3" l10n="NEW">Save and sign the document</paragraph>
+<paragraph role="heading" id="par_idN1066D" xml-lang="en-US" level="2" l10n="NEW">Save and sign the document</paragraph>
 <paragraph role="paragraph" id="par_idN10671" xml-lang="en-US" l10n="NEW">When you apply a digital signature to a document, a kind of checksum is computed from the document's content plus your personal key. The checksum and your public key are stored together with the document.</paragraph>
-<paragraph role="heading" id="par_idN10674" xml-lang="en-US" level="3" l10n="NEW">Open a signed document</paragraph>
+<paragraph role="heading" id="par_idN10674" xml-lang="en-US" level="2" l10n="NEW">Open a signed document</paragraph>
 <paragraph role="paragraph" id="par_idN10678" xml-lang="en-US" l10n="NEW">When someone later opens the document on any computer with a recent version of %PRODUCTNAME, the program will compute the checksum again and compare it with the stored checksum. If both are the same, the program will signal that you see the original, unchanged document. In addition, the program can show you the public key information from the certificate.</paragraph>
 <paragraph role="paragraph" id="par_idN1067B" xml-lang="en-US" l10n="NEW">You can compare the public key with the public key that is published on the web site of the certificate authority.</paragraph>
 <paragraph role="paragraph" id="par_idN1067E" xml-lang="en-US" l10n="NEW">Whenever someone changes something in the document, this change breaks the digital signature. After the change, there will be no sign that you see the original document.</paragraph>
