@@ -1,36 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--***********************************************************************
  *
- *  OpenOffice.org - a multi-platform office productivity suite
+ *  The Contents of this file are made available subject to the terms of
+ *  either of the following licenses
  *
- *  $RCSfile: 03103500.xhp,v $
+ *         - GNU Lesser General Public License Version 2.1
+ *         - Sun Industry Standards Source License Version 1.1
  *
- *  $Revision: 1.5 $
+ *  Sun Microsystems Inc., October, 2000
  *
- *  last change: $Author: obo $ $Date: 2006-03-28 13:29:01 $
+ *  GNU Lesser General Public License Version 2.1
+ *  =============================================
+ *  Copyright 2000 by Sun Microsystems, Inc.
+ *  901 San Antonio Road, Palo Alto, CA 94303, USA
  *
- *  The Contents of this file are made available subject to
- *  the terms of GNU Lesser General Public License Version 2.1.
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License version 2.1, as published by the Free Software Foundation.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+ *  MA  02111-1307  USA
  *
  *
- *    GNU Lesser General Public License Version 2.1
- *    =============================================
- *    Copyright 2005 by Sun Microsystems, Inc.
- *    901 San Antonio Road, Palo Alto, CA 94303, USA
+ *  Sun Industry Standards Source License Version 1.1
+ *  =================================================
+ *  The contents of this file are subject to the Sun Industry Standards
+ *  Source License Version 1.1 (the "License"); You may not use this file
+ *  except in compliance with the License. You may obtain a copy of the
+ *  License at http://www.openoffice.org/license.html.
  *
- *    This library is free software; you can redistribute it and/or
- *    modify it under the terms of the GNU Lesser General Public
- *    License version 2.1, as published by the Free Software Foundation.
+ *  Software provided under this License is provided on an "AS IS" basis,
+ *  WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING,
+ *  WITHOUT LIMITATION, WARRANTIES THAT THE SOFTWARE IS FREE OF DEFECTS,
+ *  MERCHANTABLE, FIT FOR A PARTICULAR PURPOSE, OR NON-INFRINGING.
+ *  See the License for the specific provisions governing your rights and
+ *  obligations concerning the Software.
  *
- *    This library is distributed in the hope that it will be useful,
- *    but WITHOUT ANY WARRANTY; without even the implied warranty of
- *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *    Lesser General Public License for more details.
+ *  The Initial Developer of the Original Code is: Sun Microsystems, Inc..
  *
- *    You should have received a copy of the GNU Lesser General Public
- *    License along with this library; if not, write to the Free Software
- *    Foundation, Inc., 59 Temple Place, Suite 330, Boston,
- *    MA  02111-1307  USA
+ *  Copyright: 2000 by Sun Microsystems, Inc.
+ *
+ *  All Rights Reserved.
+ *
+ *  Contributor(s): _______________________________________
+ *
  *
  ************************************************************************-->
 	
@@ -42,7 +62,7 @@
 </topic>
 <history>
 <created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-<lastedited date="2004-08-24T14:27:29">converted from old format - fpe</lastedited>
+<lastedited date="2005-11-11T13:14:35">converted from old format - fpe</lastedited>
 </history>
 </meta>
 <body>
@@ -56,15 +76,23 @@
 <paragraph role="heading" id="hd_id3149657" xml-lang="en-US" level="2" l10n="U" oldref="4">Syntax:</paragraph>
 <paragraph role="paragraph" id="par_id3150400" xml-lang="en-US" l10n="U" oldref="5">Static VarName[(start To end)] [As VarType], VarName2[(start To end)] [As VarType], ...</paragraph>
 <paragraph role="heading" id="hd_id3148452" xml-lang="en-US" level="2" l10n="U" oldref="6">Example:</paragraph>
-<paragraph role="paragraph" id="par_id3156214" xml-lang="en-US" l10n="U" oldref="7">Sub ExampleStatic</paragraph>
-<paragraph role="paragraph" id="par_id3154217" xml-lang="en-US" l10n="U" oldref="8">Static iInit As Integer</paragraph>
-<paragraph role="paragraph" id="par_id3154124" xml-lang="en-US" l10n="U" oldref="9">if iInit = 0 then iInit = InitVar() REM Test if variable is already initialized</paragraph>
-<paragraph role="paragraph" id="par_id3151041" xml-lang="en-US" l10n="U" oldref="10">iInit = iInit + 1</paragraph>
-<paragraph role="paragraph" id="par_id3150870" xml-lang="en-US" l10n="U" oldref="11">MsgBox iInit,0,"The answer is"</paragraph>
-<paragraph role="paragraph" id="par_id3153771" xml-lang="en-US" l10n="U" oldref="13">End Sub</paragraph>
-<paragraph role="paragraph" id="par_id3151115" xml-lang="en-US" l10n="U" oldref="15">REM Function for initialization of the static variable</paragraph>
-<paragraph role="paragraph" id="par_id3148618" xml-lang="en-US" l10n="U" oldref="16">Function InitVar() As Integer</paragraph>
-<paragraph role="paragraph" id="par_id3145272" xml-lang="en-US" l10n="U" oldref="17">InitVar = 40 REM any value for initialization</paragraph>
-<paragraph role="paragraph" id="par_id3150487" xml-lang="en-US" l10n="U" oldref="18">End Function</paragraph>
+<paragraph role="code" id="par_id3156214" xml-lang="en-US" l10n="U" oldref="7">Sub ExampleStatic</paragraph>
+<paragraph role="code" id="par_id1940061" xml-lang="en-US" l10n="NEW">Dim iCount as Integer, iResult as Integer</paragraph>
+<paragraph role="code" id="par_id878627" xml-lang="en-US" l10n="NEW">For iCount = 0 to 2</paragraph>
+<paragraph role="code" id="par_id7914059" xml-lang="en-US" l10n="NEW">iResult = InitVar()</paragraph>
+<paragraph role="code" id="par_id299691" xml-lang="en-US" l10n="NEW">Next iCount</paragraph>
+<paragraph role="code" id="par_id3150870" xml-lang="en-US" l10n="CHG" oldref="11">MsgBox iResult,0,"The answer is"</paragraph>
+<paragraph role="code" id="par_id3153771" xml-lang="en-US" l10n="U" oldref="13">End Sub</paragraph>
+<paragraph role="code" id="par_id3151115" xml-lang="en-US" l10n="U" oldref="15">REM Function for initialization of the static variable</paragraph>
+<paragraph role="code" id="par_id3148618" xml-lang="en-US" l10n="U" oldref="16">Function InitVar() As Integer</paragraph>
+<paragraph role="code" id="par_id3154217" xml-lang="en-US" l10n="U" oldref="8">Static iInit As Integer</paragraph>
+<paragraph role="code" id="par_id1057161" xml-lang="en-US" l10n="NEW">Const iMinimum as Integer = 40 REM minimum return value of this function</paragraph>
+<paragraph role="code" id="par_id580462" xml-lang="en-US" l10n="NEW">if iInit = 0 then REM check if initialized</paragraph>
+<paragraph role="code" id="par_id7382732" xml-lang="en-US" l10n="NEW">iInit = iMinimum</paragraph>
+<paragraph role="code" id="par_id5779900" xml-lang="en-US" l10n="NEW">else</paragraph>
+<paragraph role="code" id="par_id3151041" xml-lang="en-US" l10n="U" oldref="10">iInit = iInit + 1</paragraph>
+<paragraph role="code" id="par_id5754264" xml-lang="en-US" l10n="NEW">end if</paragraph>
+<paragraph role="code" id="par_id6529435" xml-lang="en-US" l10n="NEW">InitVar = iInit</paragraph>
+<paragraph role="code" id="par_id3150487" xml-lang="en-US" l10n="U" oldref="18">End Function</paragraph>
 </body>
 </helpdocument>
