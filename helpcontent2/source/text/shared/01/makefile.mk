@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:40 $
+#*    last change       $Author: vg $ $Date: 2006-05-23 14:24:48 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -282,7 +282,6 @@ XHPFILES = \
    06140102.xhp \
    06140200.xhp \
    06140400.xhp \
-   06140401.xhp \
    06140402.xhp \
    06140500.xhp \
    06150000.xhp \
@@ -300,6 +299,7 @@ XHPFILES = \
    08060100.xhp \
    about_meta_tags.xhp \
    digitalsignatures.xhp \
+   formatting_mark.xhp \
    gallery.xhp \
    gallery_files.xhp \
    grid.xhp \
