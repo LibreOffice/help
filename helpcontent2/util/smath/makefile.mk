@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2005-12-14 15:35:56 $
+#*    last change       $Author: vg $ $Date: 2006-05-23 16:04:33 $
 #*
-#*    $Revision: 1.18 $
+#*    $Revision: 1.19 $
 #*
 #*    $Logfile:$
 #*
@@ -410,7 +410,6 @@ LINKLINKFILES= \
    text$/shared$/01$/06140102.xhp \
    text$/shared$/01$/06140200.xhp \
    text$/shared$/01$/06140400.xhp \
-   text$/shared$/01$/06140401.xhp \
    text$/shared$/01$/06140402.xhp \
    text$/shared$/01$/06140500.xhp \
    text$/shared$/01$/06150000.xhp \
@@ -428,6 +427,7 @@ LINKLINKFILES= \
    text$/shared$/01$/08060100.xhp \
    text$/shared$/01$/about_meta_tags.xhp \
    text$/shared$/01$/digitalsignatures.xhp \
+   text$/shared$/01$/formatting_mark.xhp \
    text$/shared$/01$/gallery.xhp \
    text$/shared$/01$/gallery_files.xhp \
    text$/shared$/01$/grid.xhp \
@@ -727,7 +727,6 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/11030000.xhp \
    text$/shared$/explorer$/database$/11030100.xhp \
    text$/shared$/explorer$/database$/11040000.xhp \
-   text$/shared$/explorer$/database$/11060000.xhp \
    text$/shared$/explorer$/database$/11080000.xhp \
    text$/shared$/explorer$/database$/11090000.xhp \
    text$/shared$/explorer$/database$/11110000.xhp \
@@ -942,11 +941,9 @@ LINKLINKFILES= \
    text$/shared$/optionen$/01010700.xhp \
    text$/shared$/optionen$/01010800.xhp \
    text$/shared$/optionen$/01010900.xhp \
-   text$/shared$/optionen$/01010950.xhp \
    text$/shared$/optionen$/01011000.xhp \
    text$/shared$/optionen$/01012000.xhp \
    text$/shared$/optionen$/01013000.xhp \
-   text$/shared$/optionen$/01014000.xhp \
    text$/shared$/optionen$/01020000.xhp \
    text$/shared$/optionen$/01020100.xhp \
    text$/shared$/optionen$/01020200.xhp \
