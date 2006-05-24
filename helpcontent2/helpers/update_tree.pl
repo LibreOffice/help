@@ -7,9 +7,9 @@ eval 'exec perl -wS $0 ${1+"$@"}'
 #
 #   $RCSfile: update_tree.pl,v $
 #
-#   $Revision: 1.11 $
+#   $Revision: 1.12 $
 #
-#   last change: $Author: obo $ $Date: 2006-01-20 12:08:29 $
+#   last change: $Author: vg $ $Date: 2006-05-24 13:11:32 $
 #
 #   The Contents of this file are made available subject to
 #   the terms of GNU Lesser General Public License Version 2.1.
@@ -58,6 +58,11 @@ my $with_lang = $ENV{WITH_LANG};
 if ( defined $ENV{COMMON_OUTDIR} && $ENV{COMMON_OUTDIR} ne "" ) {
     $destpath =~ s/$ENV{OUTPATH}/$ENV{COMMON_OUTDIR}/;
 }
+
+# Always use / directory separators
+$prj =~ s/\\/\//g if defined($prj);
+$inpath =~ s/\\/\//g;
+$destpath =~ s/\\/\//g;
 
 if ( ! defined $prj ) {
 # do someting that works for manual call
