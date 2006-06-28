@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2006-05-17 14:04:09 $
+#*    last change       $Author: ihi $ $Date: 2006-06-28 15:35:37 $
 #*
-#*    $Revision: 1.11 $
+#*    $Revision: 1.12 $
 #*
 #*    $Logfile:$
 #*
@@ -70,6 +70,7 @@ XHPFILES = \
    design.xhp \
    edit_multitables.xhp \
    filters.xhp \
+   finding.xhp \
    format_table.xhp \
    format_value.xhp \
    format_value_userdef.xhp \
