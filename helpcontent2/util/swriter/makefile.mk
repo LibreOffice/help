@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2006-05-23 16:05:30 $
+#*    last change       $Author: ihi $ $Date: 2006-06-28 16:37:52 $
 #*
-#*    $Revision: 1.22 $
+#*    $Revision: 1.23 $
 #*
 #*    $Logfile:$
 #*
@@ -297,6 +297,8 @@ LINKLINKFILES= \
    text$/swriter$/guide$/auto_spellcheck.xhp \
    text$/swriter$/guide$/autocorr_except.xhp \
    text$/swriter$/guide$/autotext.xhp \
+   text$/swriter$/guide$/border_object.xhp \
+   text$/swriter$/guide$/border_page.xhp \
    text$/swriter$/guide$/borders.xhp \
    text$/swriter$/guide$/calculate.xhp \
    text$/swriter$/guide$/calculate_clipboard.xhp \
@@ -318,6 +320,7 @@ LINKLINKFILES= \
    text$/swriter$/guide$/fields_date.xhp \
    text$/swriter$/guide$/fields_enter.xhp \
    text$/swriter$/guide$/fields_userdata.xhp \
+   text$/swriter$/guide$/finding.xhp \
    text$/swriter$/guide$/footer_nextpage.xhp \
    text$/swriter$/guide$/footer_pagenumber.xhp \
    text$/swriter$/guide$/footnote_usage.xhp \
@@ -361,6 +364,7 @@ LINKLINKFILES= \
    text$/swriter$/guide$/numbering_paras.xhp \
    text$/swriter$/guide$/page_break.xhp \
    text$/swriter$/guide$/pagebackground.xhp \
+   text$/swriter$/guide$/pagenumbers.xhp \
    text$/swriter$/guide$/pageorientation.xhp \
    text$/swriter$/guide$/pagestyles.xhp \
    text$/swriter$/guide$/para_style_quickuse.xhp \
@@ -1118,8 +1122,6 @@ LINKLINKFILES= \
    text$/shared$/guide$/autocorr_url.xhp \
    text$/shared$/guide$/autohide.xhp \
    text$/shared$/guide$/background.xhp \
-   text$/shared$/guide$/border_object.xhp \
-   text$/shared$/guide$/border_page.xhp \
    text$/shared$/guide$/border_paragraph.xhp \
    text$/shared$/guide$/border_table.xhp \
    text$/shared$/guide$/breaking_lines.xhp \
