@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2006-05-23 16:00:46 $
+#*    last change       $Author: ihi $ $Date: 2006-06-28 15:57:10 $
 #*
-#*    $Revision: 1.23 $
+#*    $Revision: 1.24 $
 #*
 #*    $Logfile:$
 #*
@@ -290,6 +290,7 @@ LINKLINKFILES= \
    text$/scalc$/guide$/design.xhp \
    text$/scalc$/guide$/edit_multitables.xhp \
    text$/scalc$/guide$/filters.xhp \
+   text$/scalc$/guide$/finding.xhp \
    text$/scalc$/guide$/format_table.xhp \
    text$/scalc$/guide$/format_value.xhp \
    text$/scalc$/guide$/format_value_userdef.xhp \
@@ -645,6 +646,7 @@ LINKLINKFILES= \
    text$/shared$/01$/06140102.xhp \
    text$/shared$/01$/06140200.xhp \
    text$/shared$/01$/06140400.xhp \
+   text$/shared$/01$/06140401.xhp \
    text$/shared$/01$/06140402.xhp \
    text$/shared$/01$/06140500.xhp \
    text$/shared$/01$/06150000.xhp \
@@ -1032,8 +1034,6 @@ LINKLINKFILES= \
    text$/shared$/guide$/autocorr_url.xhp \
    text$/shared$/guide$/autohide.xhp \
    text$/shared$/guide$/background.xhp \
-   text$/shared$/guide$/border_object.xhp \
-   text$/shared$/guide$/border_page.xhp \
    text$/shared$/guide$/border_paragraph.xhp \
    text$/shared$/guide$/border_table.xhp \
    text$/shared$/guide$/breaking_lines.xhp \
@@ -1176,9 +1176,11 @@ LINKLINKFILES= \
    text$/shared$/optionen$/01010700.xhp \
    text$/shared$/optionen$/01010800.xhp \
    text$/shared$/optionen$/01010900.xhp \
+   text$/shared$/optionen$/01010950.xhp \
    text$/shared$/optionen$/01011000.xhp \
    text$/shared$/optionen$/01012000.xhp \
    text$/shared$/optionen$/01013000.xhp \
+   text$/shared$/optionen$/01014000.xhp \
    text$/shared$/optionen$/01020000.xhp \
    text$/shared$/optionen$/01020100.xhp \
    text$/shared$/optionen$/01020200.xhp \
