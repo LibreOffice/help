@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2005-10-05 13:56:35 $
+#*    last change       $Author: ihi $ $Date: 2006-06-28 15:43:02 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -40,8 +40,6 @@ XHPFILES = \
    autocorr_url.xhp \
    autohide.xhp \
    background.xhp \
-   border_object.xhp \
-   border_page.xhp \
    border_paragraph.xhp \
    border_table.xhp \
    breaking_lines.xhp \
