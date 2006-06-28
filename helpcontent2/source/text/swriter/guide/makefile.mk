@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2006-05-17 15:20:04 $
+#*    last change       $Author: ihi $ $Date: 2006-06-28 16:36:59 $
 #*
-#*    $Revision: 1.11 $
+#*    $Revision: 1.12 $
 #*
 #*    $Logfile:$
 #*
@@ -39,6 +39,8 @@ XHPFILES = \
    auto_spellcheck.xhp \
    autocorr_except.xhp \
    autotext.xhp \
+   border_object.xhp \
+   border_page.xhp \
    borders.xhp \
    calculate.xhp \
    calculate_clipboard.xhp \
@@ -60,6 +62,7 @@ XHPFILES = \
    fields_date.xhp \
    fields_enter.xhp \
    fields_userdata.xhp \
+   finding.xhp \
    footer_nextpage.xhp \
    footer_pagenumber.xhp \
    footnote_usage.xhp \
@@ -103,6 +106,7 @@ XHPFILES = \
    numbering_paras.xhp \
    page_break.xhp \
    pagebackground.xhp \
+   pagenumbers.xhp \
    pageorientation.xhp \
    pagestyles.xhp \
    para_style_quickuse.xhp \
