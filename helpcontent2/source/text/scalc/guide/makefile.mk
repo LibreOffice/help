@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2006-06-28 15:35:37 $
+#*    last change       $Author: ihi $ $Date: 2006-06-29 09:54:23 $
 #*
-#*    $Revision: 1.12 $
+#*    $Revision: 1.13 $
 #*
 #*    $Logfile:$
 #*
@@ -33,7 +33,6 @@ MODULE  = scalc
 # this list matches the *.xhp files to process
 XHPFILES = \
    address_auto.xhp \
-   address_byname.xhp \
    auto_off.xhp \
    autofilter.xhp \
    autoformat.xhp \
