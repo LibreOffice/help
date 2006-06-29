@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2006-06-28 16:37:52 $
+#*    last change       $Author: ihi $ $Date: 2006-06-29 10:06:50 $
 #*
-#*    $Revision: 1.23 $
+#*    $Revision: 1.24 $
 #*
 #*    $Logfile:$
 #*
@@ -735,6 +735,7 @@ LINKLINKFILES= \
    text$/shared$/01$/06140102.xhp \
    text$/shared$/01$/06140200.xhp \
    text$/shared$/01$/06140400.xhp \
+   text$/shared$/01$/06140401.xhp \
    text$/shared$/01$/06140402.xhp \
    text$/shared$/01$/06140500.xhp \
    text$/shared$/01$/06150000.xhp \
@@ -1264,9 +1265,11 @@ LINKLINKFILES= \
    text$/shared$/optionen$/01010700.xhp \
    text$/shared$/optionen$/01010800.xhp \
    text$/shared$/optionen$/01010900.xhp \
+   text$/shared$/optionen$/01010950.xhp \
    text$/shared$/optionen$/01011000.xhp \
    text$/shared$/optionen$/01012000.xhp \
    text$/shared$/optionen$/01013000.xhp \
+   text$/shared$/optionen$/01014000.xhp \
    text$/shared$/optionen$/01020000.xhp \
    text$/shared$/optionen$/01020100.xhp \
    text$/shared$/optionen$/01020200.xhp \
