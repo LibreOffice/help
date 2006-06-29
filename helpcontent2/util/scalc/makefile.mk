@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2006-06-28 15:57:10 $
+#*    last change       $Author: ihi $ $Date: 2006-06-29 10:05:36 $
 #*
-#*    $Revision: 1.24 $
+#*    $Revision: 1.25 $
 #*
 #*    $Logfile:$
 #*
@@ -253,7 +253,6 @@ LINKLINKFILES= \
    text$/scalc$/04$/01020000.xhp \
    text$/scalc$/05$/02140000.xhp \
    text$/scalc$/guide$/address_auto.xhp \
-   text$/scalc$/guide$/address_byname.xhp \
    text$/scalc$/guide$/auto_off.xhp \
    text$/scalc$/guide$/autofilter.xhp \
    text$/scalc$/guide$/autoformat.xhp \
