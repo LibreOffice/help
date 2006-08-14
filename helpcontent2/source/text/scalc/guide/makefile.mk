@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2006-06-29 09:54:23 $
+#*    last change       $Author: hr $ $Date: 2006-08-14 15:01:45 $
 #*
-#*    $Revision: 1.13 $
+#*    $Revision: 1.14 $
 #*
 #*    $Logfile:$
 #*
@@ -103,6 +103,7 @@ XHPFILES = \
    sorted_list.xhp \
    specialfilter.xhp \
    super_subscript.xhp \
+   table_cellmerge.xhp \
    table_rotate.xhp \
    table_view.xhp \
    text_numbers.xhp \
