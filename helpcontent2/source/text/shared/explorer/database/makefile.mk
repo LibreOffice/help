@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2006-05-23 14:50:19 $
+#*    last change       $Author: hr $ $Date: 2006-08-14 15:36:20 $
 #*
-#*    $Revision: 1.10 $
+#*    $Revision: 1.11 $
 #*
 #*    $Logfile:$
 #*
@@ -54,26 +54,15 @@ XHPFILES = \
    05040000.xhp \
    05040100.xhp \
    05040200.xhp \
-   11000000.xhp \
    11000002.xhp \
-   11010000.xhp \
-   11010100.xhp \
    11020000.xhp \
    11030000.xhp \
    11030100.xhp \
-   11040000.xhp \
    11080000.xhp \
    11090000.xhp \
-   11110000.xhp \
-   11120000.xhp \
-   11150000.xhp \
    11150200.xhp \
-   11160000.xhp \
    11170000.xhp \
    11170100.xhp \
-   11180000.xhp \
-   11180500.xhp \
-   11190000.xhp \
    30000000.xhp \
    30100000.xhp \
    dabaadvprop.xhp \
