@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2006-06-28 15:39:14 $
+#*    last change       $Author: hr $ $Date: 2006-08-14 15:16:04 $
 #*
-#*    $Revision: 1.10 $
+#*    $Revision: 1.11 $
 #*
 #*    $Logfile:$
 #*
@@ -318,7 +318,8 @@ XHPFILES = \
    xformsdataadd.xhp \
    xformsdataaddcon.xhp \
    xformsdatachange.xhp \
-   xformsdataname.xhp 
+   xformsdataname.xhp \
+   xformsdatatab.xhp 
     
 # --- Targets ------------------------------------------------------
 
