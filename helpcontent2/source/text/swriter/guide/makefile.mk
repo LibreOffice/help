@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2006-06-28 16:36:59 $
+#*    last change       $Author: hr $ $Date: 2006-08-14 15:56:45 $
 #*
-#*    $Revision: 1.12 $
+#*    $Revision: 1.13 $
 #*
 #*    $Logfile:$
 #*
@@ -134,6 +134,7 @@ XHPFILES = \
    stylist_fromselect.xhp \
    stylist_update.xhp \
    subscript.xhp \
+   table_cellmerge.xhp \
    table_cells.xhp \
    table_delete.xhp \
    table_insert.xhp \
