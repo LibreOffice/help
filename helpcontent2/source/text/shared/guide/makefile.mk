@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2006-06-28 15:43:02 $
+#*    last change       $Author: hr $ $Date: 2006-08-14 15:44:31 $
 #*
-#*    $Revision: 1.9 $
+#*    $Revision: 1.10 $
 #*
 #*    $Logfile:$
 #*
@@ -59,8 +59,8 @@ XHPFILES = \
    data_dbase2office.xhp \
    data_enter_sql.xhp \
    data_forms.xhp \
+   data_im_export.xhp \
    data_new.xhp \
-   data_office2calc.xhp \
    data_queries.xhp \
    data_register.xhp \
    data_report.xhp \
@@ -142,7 +142,6 @@ XHPFILES = \
    spadmin.xhp \
    standard_template.xhp \
    start_parameters.xhp \
-   table_cellmerge.xhp \
    tabs.xhp \
    text_color.xhp \
    textmode_change.xhp \
