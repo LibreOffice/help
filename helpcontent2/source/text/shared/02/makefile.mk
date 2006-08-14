@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2005-10-05 13:28:58 $
+#*    last change       $Author: hr $ $Date: 2006-08-14 15:21:37 $
 #*
-#*    $Revision: 1.9 $
+#*    $Revision: 1.10 $
 #*
 #*    $Logfile:$
 #*
@@ -154,11 +154,8 @@ XHPFILES = \
    20040000.xhp \
    20050000.xhp \
    20060000.xhp \
-   20080000.xhp \
    20090000.xhp \
    20100000.xhp \
-   20110000.xhp \
-   20120000.xhp \
    24010000.xhp \
    24020000.xhp \
    24030000.xhp \
@@ -175,6 +172,7 @@ XHPFILES = \
    colortoolbar.xhp \
    flowcharts.xhp \
    fontwork.xhp \
+   more_controls.xhp \
    paintbrush.xhp \
    stars.xhp \
    symbolshapes.xhp 
