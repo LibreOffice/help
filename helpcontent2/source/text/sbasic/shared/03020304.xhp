@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--***********************************************************************
+<!--
+ ***********************************************************************
  *
  *  OpenOffice.org - a multi-platform office productivity suite
  *
  *  $RCSfile: 03020304.xhp,v $
  *
- *  $Revision: 1.3 $
+ *  $Revision: 1.4 $
  *
- *  last change: $Author: rt $ $Date: 2005-09-07 15:46:56 $
+ *  last change: $Author: hr $ $Date: 2006-08-14 14:57:49 $
  *
  *  The Contents of this file are made available subject to
  *  the terms of GNU Lesser General Public License Version 2.1.
@@ -32,7 +33,8 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston,
  *    MA  02111-1307  USA
  *
- ************************************************************************-->
+ ************************************************************************
+ -->
 	
 <helpdocument version="1.0">
 <meta>
@@ -42,7 +44,7 @@
 </topic>
 <history>
 <created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-<lastedited date="2004-09-01T15:25:45">converted from old format - fpe</lastedited>
+<lastedited date="2006-02-08T13:29:32">converted from old format - fpe</lastedited>
 </history>
 </meta>
 <body>
@@ -50,7 +52,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3154367"><bookmark_value>Seek function</bookmark_value>
 </bookmark>
 <paragraph role="heading" id="hd_id3154367" xml-lang="en-US" level="1" l10n="U" oldref="1"><link href="text/sbasic/shared/03020304.xhp" name="Seek Function [Runtime]">Seek Function [Runtime]</link></paragraph>
-<paragraph role="paragraph" id="par_id3156280" xml-lang="en-US" l10n="U" oldref="2">Determines the position for the next writing or reading in a file that was opened with the open statement. The return value corresponds to the value determined by the Seek statement:</paragraph>
+<paragraph role="paragraph" id="par_id3156280" xml-lang="en-US" l10n="CHG" oldref="2">Returns the position for the next writing or reading in a file that was opened with the open statement.<comment>UFI: see #61750</comment></paragraph>
 </section>
 <paragraph role="paragraph" id="par_id3153194" xml-lang="en-US" l10n="U" oldref="3">For random access files, the Seek function returns the number of the next record to be read.</paragraph>
 <paragraph role="paragraph" id="par_id3161831" xml-lang="en-US" l10n="U" oldref="4">For all other files, the function returns the byte position at which the next operation is to occur.</paragraph>
@@ -60,20 +62,7 @@
 <paragraph role="heading" id="hd_id3148575" xml-lang="en-US" level="2" l10n="U" oldref="8">Return value:</paragraph>
 <paragraph role="paragraph" id="par_id3159156" xml-lang="en-US" l10n="U" oldref="9">Long</paragraph>
 <paragraph role="heading" id="hd_id3149665" xml-lang="en-US" level="2" l10n="U" oldref="10">Parameters:</paragraph>
-<paragraph role="paragraph" id="par_id3148645" xml-lang="en-US" l10n="U" oldref="11">
-<emph>FileNumber:</emph> Returns the file number determined by the Open statement.</paragraph>
-<paragraph role="heading" id="hd_id3150011" xml-lang="en-US" level="2" l10n="U" oldref="12">Example:</paragraph>
-<paragraph role="code" id="par_id3153877" xml-lang="en-US" l10n="U" oldref="13">Sub ExampleSeek</paragraph>
-<paragraph role="code" id="par_id3150417" xml-lang="en-US" l10n="U" oldref="14">Dim i As Integer</paragraph>
-<paragraph role="code" id="par_id3156284" xml-lang="en-US" l10n="U" oldref="15">Dim iNumber As Integer</paragraph>
-<paragraph role="code" id="par_id3153157" xml-lang="en-US" l10n="U" oldref="16">iNumber = Freefile</paragraph>
-<paragraph role="code" id="par_id3149413" xml-lang="en-US" l10n="U" oldref="17">Open "c:\Data.txt" For Random As #iNumber</paragraph>
-<paragraph role="code" id="par_id3155602" xml-lang="en-US" l10n="U" oldref="18">For i = 1 To 10</paragraph>
-<paragraph role="code" id="par_id3149400" xml-lang="en-US" l10n="U" oldref="19">PUT #iNumber, , i</paragraph>
-<paragraph role="code" id="par_id3149123" xml-lang="en-US" l10n="U" oldref="20">Next i</paragraph>
-<paragraph role="code" id="par_id3156275" xml-lang="en-US" l10n="U" oldref="21">Seek #iNumber, 2</paragraph>
-<paragraph role="code" id="par_id3154479" xml-lang="en-US" l10n="U" oldref="22">Get #1, , i</paragraph>
-<paragraph role="code" id="par_id3148405" xml-lang="en-US" l10n="U" oldref="23">Print "Date: "; i;" Next Record: "; Seek(iNumber)</paragraph>
-<paragraph role="code" id="par_id3149020" xml-lang="en-US" l10n="U" oldref="24">end sub</paragraph>
+<paragraph role="paragraph" id="par_id3148645" xml-lang="en-US" l10n="CHG" oldref="11">
+<emph>FileNumber:</emph> The data channel number used in the Open statement.</paragraph>
 </body>
 </helpdocument>
