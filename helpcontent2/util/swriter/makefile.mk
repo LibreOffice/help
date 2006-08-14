@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2006-06-29 10:06:50 $
+#*    last change       $Author: hr $ $Date: 2006-08-14 15:59:49 $
 #*
-#*    $Revision: 1.24 $
+#*    $Revision: 1.25 $
 #*
 #*    $Logfile:$
 #*
@@ -392,6 +392,7 @@ LINKLINKFILES= \
    text$/swriter$/guide$/stylist_fromselect.xhp \
    text$/swriter$/guide$/stylist_update.xhp \
    text$/swriter$/guide$/subscript.xhp \
+   text$/swriter$/guide$/table_cellmerge.xhp \
    text$/swriter$/guide$/table_cells.xhp \
    text$/swriter$/guide$/table_delete.xhp \
    text$/swriter$/guide$/table_insert.xhp \
@@ -772,6 +773,7 @@ LINKLINKFILES= \
    text$/shared$/01$/xformsdataaddcon.xhp \
    text$/shared$/01$/xformsdatachange.xhp \
    text$/shared$/01$/xformsdataname.xhp \
+   text$/shared$/01$/xformsdatatab.xhp \
    text$/shared$/02$/01110000.xhp \
    text$/shared$/02$/01140000.xhp \
    text$/shared$/02$/01170000.xhp \
@@ -894,11 +896,8 @@ LINKLINKFILES= \
    text$/shared$/02$/20040000.xhp \
    text$/shared$/02$/20050000.xhp \
    text$/shared$/02$/20060000.xhp \
-   text$/shared$/02$/20080000.xhp \
    text$/shared$/02$/20090000.xhp \
    text$/shared$/02$/20100000.xhp \
-   text$/shared$/02$/20110000.xhp \
-   text$/shared$/02$/20120000.xhp \
    text$/shared$/02$/24010000.xhp \
    text$/shared$/02$/24020000.xhp \
    text$/shared$/02$/24030000.xhp \
@@ -915,6 +914,7 @@ LINKLINKFILES= \
    text$/shared$/02$/colortoolbar.xhp \
    text$/shared$/02$/flowcharts.xhp \
    text$/shared$/02$/fontwork.xhp \
+   text$/shared$/02$/more_controls.xhp \
    text$/shared$/02$/paintbrush.xhp \
    text$/shared$/02$/stars.xhp \
    text$/shared$/02$/symbolshapes.xhp \
@@ -1045,26 +1045,15 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/05040000.xhp \
    text$/shared$/explorer$/database$/05040100.xhp \
    text$/shared$/explorer$/database$/05040200.xhp \
-   text$/shared$/explorer$/database$/11000000.xhp \
    text$/shared$/explorer$/database$/11000002.xhp \
-   text$/shared$/explorer$/database$/11010000.xhp \
-   text$/shared$/explorer$/database$/11010100.xhp \
    text$/shared$/explorer$/database$/11020000.xhp \
    text$/shared$/explorer$/database$/11030000.xhp \
    text$/shared$/explorer$/database$/11030100.xhp \
-   text$/shared$/explorer$/database$/11040000.xhp \
    text$/shared$/explorer$/database$/11080000.xhp \
    text$/shared$/explorer$/database$/11090000.xhp \
-   text$/shared$/explorer$/database$/11110000.xhp \
-   text$/shared$/explorer$/database$/11120000.xhp \
-   text$/shared$/explorer$/database$/11150000.xhp \
    text$/shared$/explorer$/database$/11150200.xhp \
-   text$/shared$/explorer$/database$/11160000.xhp \
    text$/shared$/explorer$/database$/11170000.xhp \
    text$/shared$/explorer$/database$/11170100.xhp \
-   text$/shared$/explorer$/database$/11180000.xhp \
-   text$/shared$/explorer$/database$/11180500.xhp \
-   text$/shared$/explorer$/database$/11190000.xhp \
    text$/shared$/explorer$/database$/30000000.xhp \
    text$/shared$/explorer$/database$/30100000.xhp \
    text$/shared$/explorer$/database$/dabaadvprop.xhp \
@@ -1142,8 +1131,8 @@ LINKLINKFILES= \
    text$/shared$/guide$/data_dbase2office.xhp \
    text$/shared$/guide$/data_enter_sql.xhp \
    text$/shared$/guide$/data_forms.xhp \
+   text$/shared$/guide$/data_im_export.xhp \
    text$/shared$/guide$/data_new.xhp \
-   text$/shared$/guide$/data_office2calc.xhp \
    text$/shared$/guide$/data_queries.xhp \
    text$/shared$/guide$/data_register.xhp \
    text$/shared$/guide$/data_report.xhp \
@@ -1225,7 +1214,6 @@ LINKLINKFILES= \
    text$/shared$/guide$/spadmin.xhp \
    text$/shared$/guide$/standard_template.xhp \
    text$/shared$/guide$/start_parameters.xhp \
-   text$/shared$/guide$/table_cellmerge.xhp \
    text$/shared$/guide$/tabs.xhp \
    text$/shared$/guide$/text_color.xhp \
    text$/shared$/guide$/textmode_change.xhp \
@@ -1244,8 +1232,6 @@ LINKLINKFILES= \
    text$/shared$/main0214.xhp \
    text$/shared$/main0226.xhp \
    text$/shared$/main0227.xhp \
-   text$/shared$/main0300.xhp \
-   text$/shared$/main0302.xhp \
    text$/shared$/main0400.xhp \
    text$/shared$/main0500.xhp \
    text$/shared$/main0600.xhp \
