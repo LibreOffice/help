@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--***********************************************************************
+<!--
+ ***********************************************************************
  *
  *  The Contents of this file are made available subject to the terms of
  *  either of the following licenses
@@ -52,7 +53,8 @@
  *  Contributor(s): _______________________________________
  *
  *
- ************************************************************************-->
+ ************************************************************************
+ -->
 	
 <helpdocument version="1.0">
 <meta>
@@ -62,7 +64,7 @@
 </topic>
 <history>
 <created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-<lastedited date="2006-01-24T11:07:36">converted from old format - fpe</lastedited>
+<lastedited date="2006-02-07T11:45:17">converted from old format - fpe</lastedited>
 </history>
 </meta>
 <body>
@@ -110,7 +112,7 @@
 <paragraph role="heading" id="hd_id3156426" xml-lang="en-US" level="3" l10n="U" oldref="7">Capitalize first letter of every sentence.</paragraph>
 <paragraph role="paragraph" id="par_id3155339" xml-lang="en-US" l10n="U" oldref="8">Capitalizes the first letter of every sentence.</paragraph>
 <paragraph role="heading" id="hd_id3145072" xml-lang="en-US" level="3" l10n="U" oldref="24">Automatic *bold* and _underline_</paragraph>
-<paragraph role="paragraph" id="par_id3153577" xml-lang="en-US" l10n="U" oldref="26">Automatically applies bold formatting to text enclosed by asterisks (*), and underling to text enclosed by underscores ( _ ), for example, *bold*. The asterisks and underscores are not displayed after the formatting is applied.</paragraph>
+<paragraph role="paragraph" id="par_id3153577" xml-lang="en-US" l10n="CHG" oldref="26">Automatically applies bold formatting to text enclosed by asterisks (*), and underline to text enclosed by underscores ( _ ), for example, *bold*. The asterisks and underscores are not displayed after the formatting is applied.</paragraph>
 <paragraph role="note" id="par_id3153127" xml-lang="en-US" l10n="U" oldref="105">This feature does not work if the formatting characters * or _ are entered with an <link href="text/shared/00/00000005.xhp#IME" name="Input Method Editor">Input Method Editor</link>.</paragraph>
 <paragraph role="heading" id="hd_id3150275" xml-lang="en-US" level="3" l10n="U" oldref="17">URL Recognition</paragraph>
 <paragraph role="paragraph" id="par_id3158430" xml-lang="en-US" l10n="U" oldref="18">Automatically creates a hyperlink when you type a <link href="text/shared/00/00000002.xhp#url" name="URL">URL</link>.</paragraph>
@@ -118,10 +120,74 @@
 <paragraph role="paragraph" id="par_id3149235" xml-lang="en-US" l10n="U" oldref="16">Replaces 1/2, 1/4, 3/4 with the corresponding fraction characters.</paragraph>
 <paragraph role="heading" id="hd_id3159400" xml-lang="en-US" level="3" l10n="U" oldref="25">Replace 1st ... with 1^st ...</paragraph>
 <paragraph role="paragraph" id="par_id3154173" xml-lang="en-US" l10n="U" oldref="27">Displays the text characters of ordinals, such as 1st, 2nd, or 3rd, as superscripts.</paragraph>
-<paragraph role="heading" id="hd_id3148473" xml-lang="en-US" level="3" l10n="U" oldref="19"><switchinline select="sys"><caseinline select="UNIX">
-</caseinline><defaultinline>Replace Dashes</defaultinline></switchinline></paragraph>
-<paragraph role="paragraph" id="par_id3144439" xml-lang="en-US" l10n="U" oldref="20"><switchinline select="sys"><caseinline select="UNIX">
-</caseinline><defaultinline>Replaces one or two hyphens preceded by and followed by a space with an en dash. If no space is added after the hyphen(s), an em dash is inserted.</defaultinline></switchinline></paragraph>
+<switch select="sys">
+<case select="UNIX">
+</case>
+<default>
+<paragraph role="heading" id="hd_id3148473" xml-lang="en-US" level="3" l10n="U" oldref="19">Replace Dashes<comment>UFI: changed switches, added table, #61325#</comment></paragraph>
+<paragraph role="paragraph" id="par_id3144439" xml-lang="en-US" l10n="CHG" oldref="20">Replaces one or two hyphens with a long dash (see the following table).</paragraph>
+<paragraph role="paragraph" id="par_id87282" xml-lang="en-US" l10n="NEW">Text will be replaced after you type a trailing white space (space, tab, or return).</paragraph>
+<table id="tbl_id2444227">
+<tablerow>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablehead" id="par_id3408612" xml-lang="en-US" l10n="NEW">Text that you type:</paragraph>
+</tablecell>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablehead" id="par_id4362010" xml-lang="en-US" l10n="NEW">Result that you get:</paragraph>
+</tablecell>
+</tablerow>
+<tablerow>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id1432844" xml-lang="en-US" l10n="NEW">A - B (A, space, minus, space, B)</paragraph>
+</tablecell>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id7553941" xml-lang="en-US" l10n="NEW">A – B (A, space, en-dash, space, B)</paragraph>
+</tablecell>
+</tablerow>
+<tablerow>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id1421246" xml-lang="en-US" l10n="NEW">A -- B (A, space, minus, minus, space, B)</paragraph>
+</tablecell>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id2305673" xml-lang="en-US" l10n="NEW">A – B (A, space, en-dash, space, B)</paragraph>
+</tablecell>
+</tablerow>
+<tablerow>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id8703573" xml-lang="en-US" l10n="NEW">A--B (A, minus, minus, B)</paragraph>
+</tablecell>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id6049684" xml-lang="en-US" l10n="NEW">A—B (A, em-dash, B)</paragraph>
+</tablecell>
+</tablerow>
+<tablerow>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id2219916" xml-lang="en-US" l10n="NEW">A-B (A, minus, B)</paragraph>
+</tablecell>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id1868037" xml-lang="en-US" l10n="NEW">A-B (unchanged)</paragraph>
+</tablecell>
+</tablerow>
+<tablerow>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id714438" xml-lang="en-US" l10n="NEW">A -B (A, space, minus, B)</paragraph>
+</tablecell>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id3924985" xml-lang="en-US" l10n="NEW">A -B (unchanged)</paragraph>
+</tablecell>
+</tablerow>
+<tablerow>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id1486861" xml-lang="en-US" l10n="NEW">A --B (A, space, minus, minus, B)</paragraph>
+</tablecell>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id844141" xml-lang="en-US" l10n="NEW">A –B (A, space, en-dash, B)</paragraph>
+</tablecell>
+</tablerow>
+</table>
+
+</default>
+</switch>
 <paragraph role="heading" id="hd_id3152472" xml-lang="en-US" level="3" l10n="U" oldref="99"><switchinline select="appl"><caseinline select="WRITER">Delete spaces and tabs at beginning and end of paragraph 
 </caseinline></switchinline></paragraph>
 <paragraph role="paragraph" id="par_id3156024" xml-lang="en-US" l10n="U" oldref="100"><switchinline select="appl"><caseinline select="WRITER">Removes spaces and tabs at the beginning of a paragraph. To use this option, the <emph>Apply Styles</emph> option must also be selected. 
