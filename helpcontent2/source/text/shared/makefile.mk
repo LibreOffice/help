@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2005-10-05 12:58:41 $
+#*    last change       $Author: hr $ $Date: 2006-08-14 15:05:42 $
 #*
-#*    $Revision: 1.9 $
+#*    $Revision: 1.10 $
 #*
 #*    $Logfile:$
 #*
@@ -43,8 +43,6 @@ XHPFILES = \
    main0214.xhp \
    main0226.xhp \
    main0227.xhp \
-   main0300.xhp \
-   main0302.xhp \
    main0400.xhp \
    main0500.xhp \
    main0600.xhp \
