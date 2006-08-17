@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2006-06-28 15:44:15 $
+#*    last change       $Author: vg $ $Date: 2006-08-17 14:06:56 $
 #*
-#*    $Revision: 1.10 $
+#*    $Revision: 1.11 $
 #*
 #*    $Logfile:$
 #*
@@ -46,7 +46,6 @@ XHPFILES = \
    01010700.xhp \
    01010800.xhp \
    01010900.xhp \
-   01010950.xhp \
    01011000.xhp \
    01012000.xhp \
    01013000.xhp \

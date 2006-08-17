@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2006-08-14 15:59:35 $
+#*    last change       $Author: vg $ $Date: 2006-08-17 14:07:09 $
 #*
-#*    $Revision: 1.21 $
+#*    $Revision: 1.22 $
 #*
 #*    $Logfile:$
 #*
@@ -925,7 +925,6 @@ LINKLINKFILES= \
    text$/shared$/optionen$/01010700.xhp \
    text$/shared$/optionen$/01010800.xhp \
    text$/shared$/optionen$/01010900.xhp \
-   text$/shared$/optionen$/01010950.xhp \
    text$/shared$/optionen$/01011000.xhp \
    text$/shared$/optionen$/01012000.xhp \
    text$/shared$/optionen$/01013000.xhp \
