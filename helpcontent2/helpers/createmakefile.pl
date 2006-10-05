@@ -121,7 +121,7 @@ for $d(@dirs) {
             close MK;
             print "makefile created\n";
         } else {
-            &terminate("Cannot write to ${d}makefile.mk\n");
+            &terminate("Cannot write to ${d}/makefile.mk\n");
         }
     } else {
         print "NO makefile created\n";
