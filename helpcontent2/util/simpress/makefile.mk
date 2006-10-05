@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2006-08-17 14:06:49 $
+#*    last change       $Author: kz $ $Date: 2006-10-05 13:49:50 $
 #*
-#*    $Revision: 1.22 $
+#*    $Revision: 1.23 $
 #*
 #*    $Logfile:$
 #*
@@ -1158,6 +1158,7 @@ LINKLINKFILES= \
    text$/shared$/optionen$/macrosecurity_sl.xhp \
    text$/shared$/optionen$/macrosecurity_ts.xhp \
    text$/shared$/optionen$/mailmerge.xhp \
+   text$/shared$/optionen$/online_update.xhp \
    text$/shared$/optionen$/serverauthentication.xhp \
    text$/shared$/optionen$/testaccount.xhp \
    text$/shared$/optionen$/viewcertificate.xhp \
