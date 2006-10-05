@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2006-08-17 14:06:56 $
+#*    last change       $Author: kz $ $Date: 2006-10-05 13:40:34 $
 #*
-#*    $Revision: 1.11 $
+#*    $Revision: 1.12 $
 #*
 #*    $Logfile:$
 #*
@@ -108,6 +108,7 @@ XHPFILES = \
    macrosecurity_sl.xhp \
    macrosecurity_ts.xhp \
    mailmerge.xhp \
+   online_update.xhp \
    serverauthentication.xhp \
    testaccount.xhp \
    viewcertificate.xhp \
