@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2006-01-13 16:16:48 $
+#*    last change       $Author: kz $ $Date: 2006-10-05 10:50:24 $
 #*
-#*    $Revision: 1.9 $
+#*    $Revision: 1.10 $
 #*
 #*    $Logfile:$
 #*
@@ -62,7 +62,7 @@ $(LOCTREEFILES) : $(TREEFILES) $(PRJ)$/source$/text$/shared$/localize.sdf $$(@:d
     @+$(TOUCH) $@
 
 aux_dirs .PHONY :
-    +echo aux_langdirs:=$(aux_langdirs) > $(INCCOM)$/aux_langs.mk
+    echo aux_langdirs:=$(aux_langdirs) > $(INCCOM)$/aux_langs.mk
 
 $(COMMONBIN)$/helpimg.ilst .PHONY:
     +-$(RM) $@
