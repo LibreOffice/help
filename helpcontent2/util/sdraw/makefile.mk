@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2006-10-05 13:49:28 $
+#*    last change       $Author: vg $ $Date: 2006-11-01 17:24:35 $
 #*
-#*    $Revision: 1.24 $
+#*    $Revision: 1.25 $
 #*
 #*    $Logfile:$
 #*
@@ -261,6 +261,7 @@ LINKLINKFILES= \
    text$/simpress$/guide$/printing.xhp \
    text$/simpress$/guide$/rehearse_timings.xhp \
    text$/simpress$/guide$/select_object.xhp \
+   text$/simpress$/guide$/show.xhp \
    text$/simpress$/guide$/table_insert.xhp \
    text$/simpress$/guide$/text2curve.xhp \
    text$/simpress$/guide$/vectorize.xhp \
