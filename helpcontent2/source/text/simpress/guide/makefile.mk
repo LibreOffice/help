@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 12:49:03 $
+#*    last change       $Author: vg $ $Date: 2006-11-01 17:20:17 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -62,6 +62,7 @@ XHPFILES = \
    printing.xhp \
    rehearse_timings.xhp \
    select_object.xhp \
+   show.xhp \
    table_insert.xhp \
    text2curve.xhp \
    vectorize.xhp 
