@@ -4,9 +4,9 @@
 #
 #   $RCSfile: makefile.pmk,v $
 #
-#   $Revision: 1.17 $
+#   $Revision: 1.18 $
 #
-#   last change: $Author: kz $ $Date: 2006-10-05 10:50:10 $
+#   last change: $Author: kz $ $Date: 2006-11-08 11:53:34 $
 #
 #   The Contents of this file are made available subject to
 #   the terms of GNU Lesser General Public License Version 2.1.
@@ -47,8 +47,18 @@ $(COMMONMISC)$/{$(aux_alllangiso)}$/$(SHELL_PACKAGE)$/%.xhp :| %.xhp
 # internal dependencies not sufficient to trigger merge?
 #    @$(NULL)
 
+
 $(COMMONMISC)$/$(TARGET).done : $(HLANGXHPFILES)
+.IF "$(WITH_LANG)"!=""
     @+$(WRAPCMD) helpex -QQ -p helpcontent2 -r $(PRJ) -i @$(mktmp $(uniq $(foreach,i,$? $(!eq,$(i:f),$(i:f:s/.xhp//) $(i:f) $(XHPFILES))))) -x $(COMMONMISC) -y $(SHELL_PACKAGE) -l all -lf $(aux_alllangiso:t",") -m localize.sdf && $(TOUCH) $@
+.ELSE			# "$(WITH_LANG)"!=""
+.IF "$(USE_SHELL)"=="4nt"
+# it's getting real ugly...
+    +(cmd /c $(TYPE) $(mktmp $(uniq $(foreach,i,$? $(!eq,$(i:f),$(i:f:s/.xhp//) $(i:f) $(XHPFILES))))) | xargs --verbose --max-args=15 cp -t $(COMMONMISC)$/en-US$/$(SHELL_PACKAGE))  && $(TOUCH) $@
+.ELSE			# "$(USE_SHELL)"=="4nt"
+    cp $(uniq $(foreach,i,$? $(!eq,$(i:f),$(i:f:s/.xhp//) $(i:f) $(XHPFILES)))) $(COMMONMISC)$/en-US$/$(SHELL_PACKAGE) && $(TOUCH) $@
+.ENDIF			# "$(USE_SHELL)"=="4nt"
+.ENDIF			# "$(WITH_LANG)"!=""
 .IF "$(OS)"=="SOLARIS"
     @+$(ECHONL) " "
 .ELSE			# "$(OS)"=="SOLARIS"
@@ -65,7 +75,10 @@ $(COMMONMISC)$/xhp_changed.flag : $(HLANGXHPFILES)
 $(COMMONMISC)$/$(TARGET).done .PHONY :
 .ELSE           # "$(HELPTRANSPHONY)"!=""
 
-$(COMMONMISC)$/$(TARGET).done : localize.sdf makefile.mk
+$(COMMONMISC)$/$(TARGET).done : makefile.mk
+.IF "$(WITH_LANG)"!=""
+$(COMMONMISC)$/$(TARGET).done : localize.sdf
+.ENDIF			# "$(WITH_LANG)"!=""
 .ENDIF          # "$(HELPTRANSPHONY)"!=""
 .ENDIF          # "$(HLANGXHPFILES)"!=""
 
