@@ -6,9 +6,9 @@
  *
  *  $RCSfile: 04060107.xhp,v $
  *
- *  $Revision: 1.8 $
+ *  $Revision: 1.9 $
  *
- *  last change: $Author: ihi $ $Date: 2006-06-29 09:39:27 $
+ *  last change: $Author: rt $ $Date: 2006-12-01 16:50:24 $
  *
  *  The Contents of this file are made available subject to
  *  the terms of GNU Lesser General Public License Version 2.1.
@@ -44,7 +44,7 @@
 </topic>
 <history>
 <created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-<lastedited date="2006-04-11T13:08:49">UFI: sorted, added note text to every syntax description, added spec "Conditional Array Calculation and Specific Array Handling"
+<lastedited date="2006-11-07T12:39:41">UFI: sorted, added note text to every syntax description, added spec "Conditional Array Calculation and Specific Array Handling"
 dedr: reviewed, fixed #i31269#
 UFI: someone deleted the example table, so most examples became meaningless -&gt; I deleted those examples</lastedited>
 </history>
@@ -52,9 +52,9 @@ UFI: someone deleted the example table, so most examples became meaningless -&gt
 <body>
 <bookmark xml-lang="en-US" branch="index" id="bm_id3147273"><bookmark_value>matrices; functions</bookmark_value>
 <bookmark_value>Function Wizard; arrays</bookmark_value>
-<bookmark_value>arrays</bookmark_value>
+<bookmark_value>array formulas</bookmark_value>
 <bookmark_value>formulas;arrays</bookmark_value>
-<bookmark_value>functions;arrays</bookmark_value>
+<bookmark_value>functions;array functions</bookmark_value>
 <bookmark_value>creating; array formulas</bookmark_value>
 <bookmark_value>editing; array formulas</bookmark_value>
 <bookmark_value>copying; array formulas</bookmark_value>
@@ -136,10 +136,10 @@ UFI: someone deleted the example table, so most examples became meaningless -&gt
 <paragraph role="paragraph" id="par_id3158432" xml-lang="en-US" l10n="U" oldref="279">To multiply the values in the individual cells by 10 in the above array, you do not need to apply a formula to each individual cell or value. Instead you just need to use a single array formula. Select a range of 3 x 3 cells on another part of the spreadsheet, enter the formula "=10*A1:C3" and confirm this entry using the key combination <switchinline select="sys"><caseinline select="MAC">Command 
 </caseinline><defaultinline>Ctrl</defaultinline></switchinline>+Shift+Enter. The result is a 3 x 3 array in which the individual values in the cell range (A1:C3) are multiplied by a factor of 10.</paragraph>
 <paragraph role="paragraph" id="par_id3149156" xml-lang="en-US" l10n="U" oldref="280">In addition to multiplication, you can also use other operators on the reference range (an array). With $[officename] Calc, you can add (+), subtract (-), multiply (*), divide (/), use exponents (^), concatenation (&amp;) and comparisons (=, &lt;&gt;, &lt;, &gt;, &lt;=, &gt;=). The operators can be used on each individual value in the cell range and return the result as an array if the array formula was entered.</paragraph>
-<paragraph role="paragraph" id="par_id3166456" xml-lang="en-US" l10n="U" oldref="326">When you change comparison operators in an array formula, empty cells follow the same rules as single comparisons; that is, it could be represented either by 0 or as an empty string. Therefore, the array formulas {=A1:A2=""} and {=A1:A2=0} will both return TRUE if cells A1 and A2 are empty.</paragraph>
+<paragraph role="paragraph" id="par_id3166456" xml-lang="en-US" l10n="CHG" oldref="326">Comparison operators in an array formula treat empty cells in the same way as in a normal formula, that is, either as zero or as an empty string. For example, if cells A1 and A2 are empty the array formulas {=A1:A2=""} and {=A1:A2=0} will both return a 1 column 2 row array of cells containing TRUE.</paragraph>
 <paragraph role="heading" id="hd_id3150713" xml-lang="en-US" level="3" l10n="U" oldref="281">When do you use array formulas?</paragraph>
 <paragraph role="paragraph" id="par_id3149787" xml-lang="en-US" l10n="U" oldref="282">Use array formulas if you have to repeat calculations using different values. If you decide to change the calculation method later, you only have to update the array formula. To add an array formula, select the entire array range and then <link href="text/scalc/01/04060107.xhp" name="make the required change to the array formula">make the required change to the array formula</link>.</paragraph>
-<paragraph role="paragraph" id="par_id3149798" xml-lang="en-US" l10n="U" oldref="283">array formulas are also a space saving option when several values must be calculated, since they are not very memory-intensive. In addition, arrays are an essential tool for carrying out complex calculations, because you can have several cell ranges included in your calculations. $[officename] has different math functions for arrays, such as the MMULT function for multiplying two arrays or the SUMPRODUCT function for calculating the scalar products of two arrays.</paragraph>
+<paragraph role="paragraph" id="par_id3149798" xml-lang="en-US" l10n="U" oldref="283">Array formulas are also a space saving option when several values must be calculated, since they are not very memory-intensive. In addition, arrays are an essential tool for carrying out complex calculations, because you can have several cell ranges included in your calculations. $[officename] has different math functions for arrays, such as the MMULT function for multiplying two arrays or the SUMPRODUCT function for calculating the scalar products of two arrays.</paragraph>
 <paragraph role="heading" id="hd_id3155588" xml-lang="en-US" level="2" l10n="U" oldref="284">Using Array Formulas in $[officename] Calc</paragraph>
 <paragraph role="paragraph" id="par_id3152876" xml-lang="en-US" l10n="U" oldref="285">You can also create a "normal" formula in which the reference range, such as parameters, indicate an array formula. The result is obtained from the intersection of the reference range and the rows or columns in which the formula is found. If there is no intersection or if the range at the intersection covers several rows or columns, a #VALUE! error message appears. The following example illustrates this concept:</paragraph>
 <paragraph role="heading" id="hd_id3151271" xml-lang="en-US" level="3" l10n="U" oldref="313">Creating Array Formulas</paragraph>
