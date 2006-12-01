@@ -6,9 +6,9 @@
  *
  *  $RCSfile: 01010300.xhp,v $
  *
- *  $Revision: 1.9 $
+ *  $Revision: 1.10 $
  *
- *  last change: $Author: kz $ $Date: 2006-10-05 15:51:45 $
+ *  last change: $Author: rt $ $Date: 2006-12-01 16:57:25 $
  *
  *  The Contents of this file are made available subject to
  *  the terms of GNU Lesser General Public License Version 2.1.
@@ -44,7 +44,7 @@
 </topic>
 <history>
 <created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-<lastedited date="2006-07-11T09:39:33">UFI: cleaned up paths</lastedited>
+<lastedited date="2006-10-23T16:59:25">UFI: cleaned up paths</lastedited>
 </history>
 </meta>
 <body>
@@ -69,13 +69,8 @@
 <paragraph role="heading" id="hd_id3147229" xml-lang="en-US" level="2" l10n="U" oldref="6">Edit</paragraph>
 <paragraph role="paragraph" id="par_id3151177" xml-lang="en-US" l10n="CHG" oldref="7"><ahelp hid="SVX:PUSHBUTTON:RID_SFXPAGE_PATH:BTN_PATH">Click to display the <emph>Select Path</emph> or <emph>Edit Paths</emph> dialog.</ahelp></paragraph>
 <paragraph role="paragraph" id="par_id3153193" xml-lang="en-US" l10n="U" oldref="162">You can change the sequence of entries by clicking the bar in the <emph>Type</emph> column. The column width can be changed by moving the separator between the columns with the mouse.</paragraph>
-<paragraph role="paragraph" id="par_id3150439" xml-lang="en-US" l10n="CHG" oldref="190">In the following list of paths, {netinstall} stands for the main $[officename] directory, which may reside on a network file server. The user data for each user is stored in the {user} directory, which is located in the user's <switchinline select="sys"><caseinline select="UNIX">home 
-</caseinline><defaultinline>Documents and Settings</defaultinline></switchinline> directory.</paragraph>
-<paragraph role="heading" id="hd_id3152598" xml-lang="en-US" level="3" l10n="CHG" oldref="198">Entries in the path list with more than one path</paragraph>
-<section id="mehrpfad">
-<paragraph role="paragraph" id="par_id3153363" xml-lang="en-US" l10n="CHG" oldref="191">Some entries may contain more than one path. The {netinstall} directory contains files that can only be read, not written, by all users. The system administrator can define common templates, AutoTexts, or graphics in the {netinstall} directory. </paragraph>
-<paragraph role="paragraph" id="par_id1166722" xml-lang="en-US" l10n="CHG">Every user has an own {user} directory, to which the user also has write-access. On UNIX systems, this directory is inside the Home directory, on Windows systems it resides inside "Documents and Settings\[username]\Application Data".<comment>UFI: removed misleading sentence, see #i64262 and 64264</comment></paragraph>
-</section>
+<paragraph role="paragraph" id="par_id3150439" xml-lang="en-US" l10n="CHG" oldref="190">In the following list of paths, the paths for the shared folders in the directory where %PRODUCTNAME is installed, are not shown. The user data for each user is stored in the {user} directory, which is located in the user's <switchinline select="sys"><caseinline select="UNIX">home 
+</caseinline><defaultinline>Documents and Settings</defaultinline></switchinline> directory.</paragraph><comment>removed "mehrpfad" section. See http://specs.openoffice.org/appwide/options_settings/OOoPaths.odt</comment>
 <table id="tbl_id3145364">
 <tablerow>
 <tablecell colspan="" rowspan="">
@@ -93,7 +88,7 @@
 <paragraph role="tablecontent" id="par_id7243568" xml-lang="en-US" l10n="NEW">AutoCorrect</paragraph>
 </tablecell>
 <tablecell colspan="" rowspan="">
-<paragraph role="tablecontent" id="par_id4124576" xml-lang="en-US" l10n="NEW">{netinstall}/user/autocorr;{user}/share/autocorr</paragraph>
+<paragraph role="tablecontent" id="par_id4124576" xml-lang="en-US" l10n="CHG">{user}/share/autocorr</paragraph>
 </tablecell>
 <tablecell colspan="" rowspan="">
 <paragraph role="tablecontent" id="par_id9914242" xml-lang="en-US" l10n="NEW">Contains the settings of the AutoCorrect dialog box.</paragraph>
@@ -104,10 +99,10 @@
 <paragraph role="tablecontent" id="par_id9106723" xml-lang="en-US" l10n="NEW">AutoText</paragraph>
 </tablecell>
 <tablecell colspan="" rowspan="">
-<paragraph role="tablecontent" id="par_id3588976" xml-lang="en-US" l10n="NEW">{netinstall}/user/autotext;{user}/share/autotext/{language}</paragraph>
+<paragraph role="tablecontent" id="par_id3588976" xml-lang="en-US" l10n="CHG">{user}/share/autotext/{language}</paragraph>
 </tablecell>
 <tablecell colspan="" rowspan="">
-<paragraph role="tablecontent" id="par_id6577349" xml-lang="en-US" l10n="NEW">Your AutoTexts are stored in the specified folders.</paragraph>
+<paragraph role="tablecontent" id="par_id6577349" xml-lang="en-US" l10n="CHG">Your AutoTexts are stored in the specified folder.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
@@ -123,14 +118,38 @@
 </tablerow>
 <tablerow>
 <tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id8316599" xml-lang="en-US" l10n="NEW">AutoCorrect</paragraph>
+</tablecell>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id3753776" xml-lang="en-US" l10n="NEW"><switchinline select="sys"><caseinline select="UNIX">{user}/user/autocorr 
+</caseinline><defaultinline>{user}\user\autocorr</defaultinline></switchinline></paragraph>
+</tablecell>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id5284279" xml-lang="en-US" l10n="NEW">This folder stores your own AutoCorrect texts.</paragraph>
+</tablecell>
+</tablerow>
+<tablerow>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id4494766" xml-lang="en-US" l10n="NEW">AutoText</paragraph>
+</tablecell>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id7858516" xml-lang="en-US" l10n="NEW"><switchinline select="sys"><caseinline select="UNIX">{user}/user/autotext 
+</caseinline><defaultinline>{user}\user\autotext</defaultinline></switchinline></paragraph>
+</tablecell>
+<tablecell colspan="" rowspan="">
+<paragraph role="tablecontent" id="par_id973540" xml-lang="en-US" l10n="NEW">This folder stores your own AutoText texts.</paragraph>
+</tablecell>
+</tablerow>
+<tablerow>
+<tablecell colspan="" rowspan="">
 <paragraph role="tablecontent" id="par_id3154493" xml-lang="en-US" l10n="U" oldref="68">Gallery</paragraph>
 </tablecell>
 <tablecell colspan="" rowspan="">
-<paragraph role="tablecontent" id="par_id3154484" xml-lang="en-US" l10n="CHG" oldref="69"><switchinline select="sys"><caseinline select="UNIX">{netinstall}/share/gallery;{user}/user/gallery 
-</caseinline><defaultinline>{netinstall}\share\gallery;{user}\user\gallery</defaultinline></switchinline></paragraph>
+<paragraph role="tablecontent" id="par_id3154484" xml-lang="en-US" l10n="CHG" oldref="69"><switchinline select="sys"><caseinline select="UNIX">{user}/user/gallery 
+</caseinline><defaultinline>{user}\user\gallery</defaultinline></switchinline></paragraph>
 </tablecell>
 <tablecell colspan="" rowspan="">
-<paragraph role="tablecontent" id="par_id3156289" xml-lang="en-US" l10n="U" oldref="70">The Gallery is contained in this folder.</paragraph>
+<paragraph role="tablecontent" id="par_id3156289" xml-lang="en-US" l10n="CHG" oldref="70">New Gallery themes are stored in this folder.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
@@ -138,8 +157,8 @@
 <paragraph role="tablecontent" id="par_id3151333" xml-lang="en-US" l10n="U" oldref="26">Graphics</paragraph>
 </tablecell>
 <tablecell colspan="" rowspan="">
-<paragraph role="tablecontent" id="par_id3152890" xml-lang="en-US" l10n="CHG" oldref="27"><switchinline select="sys"><caseinline select="UNIX">{netinstall}/share/gallery 
-</caseinline><defaultinline>{netinstall}\share\gallery</defaultinline></switchinline></paragraph>
+<paragraph role="tablecontent" id="par_id3152890" xml-lang="en-US" l10n="CHG" oldref="27"><switchinline select="sys"><caseinline select="UNIX">{user}/user/gallery 
+</caseinline><defaultinline>{user}\user\gallery</defaultinline></switchinline></paragraph>
 </tablecell>
 <tablecell colspan="" rowspan="">
 <paragraph role="tablecontent" id="par_id3148597" xml-lang="en-US" l10n="U" oldref="28">This folder is displayed when you first call the dialog for opening or saving a graphic object.</paragraph>
@@ -159,13 +178,14 @@
 </tablerow>
 <tablerow>
 <tablecell colspan="" rowspan="">
-<paragraph role="tablecontent" id="par_id6203802" xml-lang="en-US" l10n="NEW">Templates</paragraph>
+<paragraph role="tablecontent" id="par_id4680928" xml-lang="en-US" l10n="NEW">Templates</paragraph>
 </tablecell>
 <tablecell colspan="" rowspan="">
-<paragraph role="tablecontent" id="par_id7072359" xml-lang="en-US" l10n="NEW">{netinstall}/share/template/{language};{user}/user/template</paragraph>
+<paragraph role="tablecontent" id="par_id9014252" xml-lang="en-US" l10n="NEW"><switchinline select="sys"><caseinline select="UNIX">{user}/user/template 
+</caseinline><defaultinline>{user}\user\template</defaultinline></switchinline></paragraph>
 </tablecell>
 <tablecell colspan="" rowspan="">
-<paragraph role="tablecontent" id="par_id9989623" xml-lang="en-US" l10n="NEW">The templates originate from these folders and sub-folders.</paragraph>
+<paragraph role="tablecontent" id="par_id6011841" xml-lang="en-US" l10n="NEW">In this folder you can store your own templates.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
@@ -220,20 +240,10 @@
 </tablerow>
 <tablerow>
 <tablecell colspan="" rowspan="">
-<paragraph role="tablecontent" id="par_id3150121" xml-lang="en-US" l10n="CHG" oldref="128">{netinstall}/share/plugin or {user}/user/plugin</paragraph>
+<paragraph role="tablecontent" id="par_id3150121" xml-lang="en-US" l10n="CHG" oldref="128">{user}/user/plugin</paragraph>
 </tablecell>
 <tablecell colspan="" rowspan="">
 <paragraph role="tablecontent" id="par_id3166466" xml-lang="en-US" l10n="CHG" oldref="129">This folder contains the <link href="text/shared/00/00000002.xhp#plugin" name="Plug-ins">Plug-ins</link> that you installed in $[officename]. $[officename] recognizes the plug-ins installed in Netscape, Mozilla, or the Microsoft Internet Explorer, so you normally do not need to install plug-ins in this folder.</paragraph>
-</tablecell>
-</tablerow>
-<tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="tablecontent" id="par_id3166458" xml-lang="en-US" l10n="CHG" oldref="200"><switchinline select="sys"><caseinline select="WIN">{netinstall}/share/fonts/truetype 
-</caseinline></switchinline></paragraph>
-</tablecell>
-<tablecell colspan="" rowspan="">
-<paragraph role="tablecontent" id="par_id3147377" xml-lang="en-US" l10n="CHG" oldref="201"><switchinline select="sys"><caseinline select="WIN">If a user installed $[officename] without administrator rights, the supplied Truetype fonts will be installed here. 
-</caseinline></switchinline></paragraph>
 </tablecell>
 </tablerow>
 </table>
