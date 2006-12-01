@@ -6,9 +6,9 @@
  *
  *  $RCSfile: 04060104.xhp,v $
  *
- *  $Revision: 1.4 $
+ *  $Revision: 1.5 $
  *
- *  last change: $Author: ihi $ $Date: 2006-06-29 09:38:56 $
+ *  last change: $Author: rt $ $Date: 2006-12-01 16:49:43 $
  *
  *  The Contents of this file are made available subject to
  *  the terms of GNU Lesser General Public License Version 2.1.
@@ -44,13 +44,13 @@
 </topic>
 <history>
 <created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-<lastedited date="2006-04-04T13:51:03">converted from old format - fpe</lastedited>
+<lastedited date="2006-11-07T11:43:35">converted from old format - fpe</lastedited>
 </history>
 </meta>
 <body>
 <bookmark xml-lang="en-US" branch="index" id="bm_id3147247"><bookmark_value>information functions</bookmark_value>
 <bookmark_value>Function Wizard; information</bookmark_value>
-<bookmark_value>functions; information</bookmark_value>
+<bookmark_value>functions; information functions</bookmark_value>
 </bookmark>
 <paragraph role="heading" id="hd_id3147247" xml-lang="en-US" level="1" l10n="U" oldref="1">Information Functions</paragraph>
 <paragraph role="paragraph" id="par_id3147499" xml-lang="en-US" l10n="CHG" oldref="2"><variable id="informationtext">This category contains the <emph>Information</emph> functions. 
@@ -196,12 +196,15 @@
 </bookmark><comment>mw added "formula cells;" and "displaying;"</comment>
 <bookmark xml-lang="en-US" branch="hid/HID_FUNC_FORMEL" id="bm_id3155373" localize="false"/>
 <paragraph role="heading" id="hd_id3150688" xml-lang="en-US" level="2" l10n="U" oldref="147">FORMULA</paragraph>
-<paragraph role="paragraph" id="par_id3158417" xml-lang="en-US" l10n="U" oldref="148"><ahelp hid="HID_FUNC_FORMEL">Displays the formula of a formula cell at any position.</ahelp> The formula will be returned as a string in the <emph>Reference</emph> position. If no formula cell can be found,or if the presented argument is not a reference, the error value #N/A is set.</paragraph>
+<paragraph role="paragraph" id="par_id3158417" xml-lang="en-US" l10n="CHG" oldref="148"><ahelp hid="HID_FUNC_FORMEL">Displays the formula of a formula cell as a text string.</ahelp></paragraph>
 <paragraph role="heading" id="hd_id3154954" xml-lang="en-US" level="3" l10n="U" oldref="149">Syntax</paragraph>
 <paragraph role="code" id="par_id3147535" xml-lang="en-US" l10n="CHG" oldref="150">FORMULA(reference)</paragraph>
+<paragraph role="paragraph" id="par_id3014313" xml-lang="en-US" l10n="NEW">
+<emph>reference</emph> is a reference to a cell containing a formula.</paragraph>
+<paragraph role="paragraph" id="par_id8857081" xml-lang="en-US" l10n="NEW">An invalid reference or a reference to a cell with no formula results in the error value #N/A.</paragraph>
 <paragraph role="heading" id="hd_id3152820" xml-lang="en-US" level="3" l10n="U" oldref="151">Example</paragraph>
-<paragraph role="paragraph" id="par_id3153179" xml-lang="en-US" l10n="U" oldref="152">The cell A8 contains the result of a formula having the value 23. You can now use the <emph>Formula</emph> function in cell A1 to display the formula in cell A8.</paragraph>
-<paragraph role="paragraph" id="par_id3153923" xml-lang="en-US" l10n="U" oldref="153">=FORMULA(A8)</paragraph>
+<paragraph role="paragraph" id="par_id3153179" xml-lang="en-US" l10n="CHG" oldref="152">If cell A8 contains the formula =SUM(1;2;3) then</paragraph>
+<paragraph role="paragraph" id="par_id3153923" xml-lang="en-US" l10n="CHG" oldref="153">FORMULA(A8) returns the text "=SUM(1;2;3)" (without the double quotes).</paragraph>
 </section>
 <section id="isref">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3155409"><bookmark_value>ISREF function</bookmark_value>
@@ -225,14 +228,15 @@
 </bookmark><comment>mw added "error codes,"</comment>
 <bookmark xml-lang="en-US" branch="hid/HID_FUNC_ISTFEHL" id="bm_id3145081" localize="false"/>
 <paragraph role="heading" id="hd_id3154812" xml-lang="en-US" level="2" l10n="U" oldref="45">ISERR</paragraph>
-<paragraph role="paragraph" id="par_id3149282" xml-lang="en-US" l10n="U" oldref="46"><ahelp hid="HID_FUNC_ISTFEHL">Returns TRUE if the value refers to any error value except #N/A. </ahelp> You can use this function to control error values in certain cells.</paragraph>
+<paragraph role="paragraph" id="par_id3149282" xml-lang="en-US" l10n="CHG" oldref="46"><ahelp hid="HID_FUNC_ISTFEHL">Tests for error conditions, except the #N/A error value, and returns TRUE or FALSE.</ahelp></paragraph>
 <embed href="text/shared/00/00000001.xhp#wahr"/>
 <paragraph role="heading" id="hd_id3149450" xml-lang="en-US" level="3" l10n="U" oldref="47">Syntax</paragraph>
 <paragraph role="code" id="par_id3156312" xml-lang="en-US" l10n="U" oldref="48">ISERR(value)</paragraph>
-<paragraph role="paragraph" id="par_id3146857" xml-lang="en-US" l10n="U" oldref="49">
-<emph>Value</emph> is any value or expression in which a test is performed to determine whether an error value not equal to #N/A is present.</paragraph>
+<paragraph role="paragraph" id="par_id3146857" xml-lang="en-US" l10n="CHG" oldref="49">
+<emph>Value</emph> is any value or expression which is tested to see whether an error value other than #N/A is present.</paragraph>
 <paragraph role="heading" id="hd_id3153212" xml-lang="en-US" level="3" l10n="U" oldref="50">Example</paragraph>
-<paragraph role="paragraph" id="par_id3153276" xml-lang="en-US" l10n="U" oldref="51">ISERR(C5) returns FALSE.</paragraph>
+<paragraph role="paragraph" id="par_id3153276" xml-lang="en-US" l10n="CHG" oldref="51">ISERR(C8) where cell C8 contains =1/0 returns TRUE, because 1/0 is an error.</paragraph>
+<paragraph role="paragraph" id="par_id8456984" xml-lang="en-US" l10n="NEW">ISERR(C9) where cell C9 contains =NA() returns FALSE, because ISERR() ignores the #N/A error.</paragraph>
 </section>
 <section id="iserror">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3147081"><bookmark_value>ISERROR function</bookmark_value>
@@ -240,14 +244,15 @@
 </bookmark><comment>mw added "recognizing;"</comment>
 <bookmark xml-lang="en-US" branch="hid/HID_FUNC_ISTFEHLER" id="bm_id3145206" localize="false"/>
 <paragraph role="heading" id="hd_id3147081" xml-lang="en-US" level="2" l10n="U" oldref="53">ISERROR</paragraph>
-<paragraph role="paragraph" id="par_id3156316" xml-lang="en-US" l10n="U" oldref="54"><ahelp hid="HID_FUNC_ISTFEHLER">The ISERROR tests if the cells contain general error values. ISERROR recognizes the #N/A error value.</ahelp></paragraph>
+<paragraph role="paragraph" id="par_id3156316" xml-lang="en-US" l10n="CHG" oldref="54"><ahelp hid="HID_FUNC_ISTFEHLER">Tests for error conditions, including the #N/A error value, and returns TRUE or FALSE.</ahelp></paragraph>
 <embed href="text/shared/00/00000001.xhp#wahr"/>
 <paragraph role="heading" id="hd_id3147569" xml-lang="en-US" level="3" l10n="U" oldref="55">Syntax</paragraph>
 <paragraph role="code" id="par_id3153155" xml-lang="en-US" l10n="U" oldref="56">ISERROR(value)</paragraph>
-<paragraph role="paragraph" id="par_id3154047" xml-lang="en-US" l10n="U" oldref="57">
-<emph>Value</emph> is any value where a test is performed to determine whether it is an error value.</paragraph>
+<paragraph role="paragraph" id="par_id3154047" xml-lang="en-US" l10n="CHG" oldref="57">
+<emph>Value</emph> is or refers to the value to be tested. ISERROR() returns TRUE if there is an error and FALSE if not.</paragraph>
 <paragraph role="heading" id="hd_id3155994" xml-lang="en-US" level="3" l10n="U" oldref="58">Example</paragraph>
-<paragraph role="paragraph" id="par_id3150256" xml-lang="en-US" l10n="U" oldref="59">ISERROR(C8) returns FALSE.</paragraph>
+<paragraph role="paragraph" id="par_id3150256" xml-lang="en-US" l10n="CHG" oldref="59">ISERROR(C8) where cell C8 contains =1/0 returns TRUE, because 1/0 is an error.</paragraph>
+<paragraph role="paragraph" id="par_id1889095" xml-lang="en-US" l10n="NEW">ISERROR(C9) where cell C9 contains =NA() returns TRUE.</paragraph>
 </section>
 <section id="isformula">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3153618"><bookmark_value>ISFORMULA function</bookmark_value>
@@ -318,14 +323,14 @@
 </bookmark><comment>mw added "number formats;" and "logical..."</comment>
 <bookmark xml-lang="en-US" branch="hid/HID_FUNC_ISTLOG" id="bm_id3158424" localize="false"/>
 <paragraph role="heading" id="hd_id3155356" xml-lang="en-US" level="2" l10n="U" oldref="85">ISLOGICAL</paragraph>
-<paragraph role="paragraph" id="par_id3148926" xml-lang="en-US" l10n="U" oldref="86"><ahelp hid="HID_FUNC_ISTLOG">Returns TRUE if the cell contains a logical number format.</ahelp> The function is used in order to check for both TRUE and FALSE values in certain cells.</paragraph>
+<paragraph role="paragraph" id="par_id3148926" xml-lang="en-US" l10n="CHG" oldref="86"><ahelp hid="HID_FUNC_ISTLOG">Tests for a logical value (TRUE or FALSE).</ahelp></paragraph>
 <embed href="text/shared/00/00000001.xhp#wahr"/>
 <paragraph role="heading" id="hd_id3149162" xml-lang="en-US" level="3" l10n="U" oldref="87">Syntax</paragraph>
 <paragraph role="code" id="par_id3148918" xml-lang="en-US" l10n="U" oldref="88">ISLOGICAL(value)</paragraph>
-<paragraph role="paragraph" id="par_id3146946" xml-lang="en-US" l10n="U" oldref="89">
-<emph>Value</emph> is the value to be tested for logical number format.</paragraph>
+<paragraph role="paragraph" id="par_id3146946" xml-lang="en-US" l10n="CHG" oldref="89">Returns TRUE if <emph>Value</emph> is a logical value (TRUE or FALSE), and returns FALSE otherwise.</paragraph>
 <paragraph role="heading" id="hd_id3150709" xml-lang="en-US" level="3" l10n="U" oldref="90">Example</paragraph>
-<paragraph role="paragraph" id="par_id3166442" xml-lang="en-US" l10n="U" oldref="91">ISLOGICAL(D5) returns FALSE as a result.</paragraph>
+<paragraph role="paragraph" id="par_id3166442" xml-lang="en-US" l10n="CHG" oldref="91">ISLOGICAL(99) returns FALSE, because 99 is a number, not a logical value.</paragraph>
+<paragraph role="paragraph" id="par_id3556016" xml-lang="en-US" l10n="NEW">ISLOGICAL(ISNA(D4)) returns TRUE whatever the contents of cell D4, because ISNA() returns a logical value.</paragraph>
 </section>
 <section id="isna">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3153685"><bookmark_value>ISNA function</bookmark_value>
@@ -393,16 +398,16 @@
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/HID_FUNC_N" id="bm_id3153786" localize="false"/>
 <paragraph role="heading" id="hd_id3153694" xml-lang="en-US" level="2" l10n="U" oldref="119">N</paragraph>
-<paragraph role="paragraph" id="par_id3150405" xml-lang="en-US" l10n="U" oldref="120"><ahelp hid="HID_FUNC_N">Returns the number 1, if the parameter is TRUE. Returns the parameter, if the parameter is a number. Returns the number 0 for other parameters.</ahelp></paragraph>
+<paragraph role="paragraph" id="par_id3150405" xml-lang="en-US" l10n="CHG" oldref="120"><ahelp hid="HID_FUNC_N">Returns the numeric value.</ahelp></paragraph>
 <embed href="text/shared/00/00000001.xhp#wahr"/>
 <paragraph role="heading" id="hd_id3145774" xml-lang="en-US" level="3" l10n="U" oldref="121">Syntax</paragraph>
 <paragraph role="code" id="par_id3153883" xml-lang="en-US" l10n="U" oldref="122">N(value)</paragraph>
-<paragraph role="paragraph" id="par_id3151101" xml-lang="en-US" l10n="U" oldref="123">
-<emph>Value</emph> is the parameter to be converted into a number.</paragraph>
+<paragraph role="paragraph" id="par_id3151101" xml-lang="en-US" l10n="CHG" oldref="123">
+<emph>Value</emph> is the parameter to be converted into a number. N() returns the numeric value if it can. It returns the logical values TRUE and FALSE as 1 and 0 respectively. It returns text and errors as 0.</paragraph>
 <paragraph role="heading" id="hd_id3147097" xml-lang="en-US" level="3" l10n="U" oldref="124">Example</paragraph>
-<paragraph role="paragraph" id="par_id3154117" xml-lang="en-US" l10n="U" oldref="125">N(TRUE) returns 1</paragraph>
+<paragraph role="paragraph" id="par_id3154117" xml-lang="en-US" l10n="CHG" oldref="125">N(123) returns 123</paragraph>
+<paragraph role="paragraph" id="par_id2337717" xml-lang="en-US" l10n="NEW">N(TRUE) returns 1</paragraph>
 <paragraph role="paragraph" id="par_id3153781" xml-lang="en-US" l10n="U" oldref="126">N(FALSE) returns 0</paragraph>
-<paragraph role="paragraph" id="par_id3146911" xml-lang="en-US" l10n="U" oldref="127">N(100) returns 100</paragraph>
 <paragraph role="paragraph" id="par_id3154670" xml-lang="en-US" l10n="U" oldref="243">N("abc") returns 0</paragraph>
 </section>
 <section id="na">
