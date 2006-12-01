@@ -24,6 +24,7 @@
     Aug 16 2005 workaround for #i53365#
     Aug 19 2005 fixed missing list processing in embedded sections
     Aug 19 2005 #i53535#, fixed wrong handling of Database parameter
+		Oct 17 2006 #i70462#, disabled sorting to avoid output of error messages to console
 ***********************************************************************//-->
 
 <!--
@@ -32,9 +33,9 @@
  
     $RCSfile: main_transform.xsl,v $
  
-    $Revision: 1.15 $
+    $Revision: 1.16 $
  
-    last change: $Author: kz $ $Date: 2005-10-05 11:39:25 $
+    last change: $Author: rt $ $Date: 2006-12-01 16:45:59 $
  
     The Contents of this file are made available subject to
     the terms of GNU Lesser General Public License Version 2.1.
@@ -451,10 +452,16 @@
 
 <!-- SORT -->
 <xsl:template match="sort" >
+  <!-- sorting disabled due to #i70462#
 	<xsl:apply-templates><xsl:sort select="descendant::paragraph"/></xsl:apply-templates>
+	//-->
+	<xsl:apply-templates />
 </xsl:template>
 <xsl:template match="sort" mode="embedded">
+<!-- sorting disabled due to #i70462#
 	<xsl:apply-templates><xsl:sort select="descendant::paragraph"/></xsl:apply-templates>
+	//-->
+	<xsl:apply-templates />
 </xsl:template>
 
 <!-- SWITCH -->
