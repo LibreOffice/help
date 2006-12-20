@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2006-12-19 16:25:50 $
+#*    last change       $Author: ihi $ $Date: 2006-12-20 13:50:28 $
 #*
-#*    $Revision: 1.12 $
+#*    $Revision: 1.13 $
 #*
 #*    $Logfile:$
 #*
@@ -301,6 +301,7 @@ XHPFILES = \
    08060100.xhp \
    about_meta_tags.xhp \
    digitalsignatures.xhp \
+   extensionupdate.xhp \
    formatting_mark.xhp \
    gallery.xhp \
    gallery_files.xhp \
