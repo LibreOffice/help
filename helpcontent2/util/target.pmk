@@ -4,9 +4,9 @@
 #
 #   $RCSfile: target.pmk,v $
 #
-#   $Revision: 1.14 $
+#   $Revision: 1.15 $
 #
-#   last change: $Author: obo $ $Date: 2006-07-13 11:12:49 $
+#   last change: $Author: obo $ $Date: 2007-01-25 15:32:24 $
 #
 #   The Contents of this file are made available subject to
 #   the terms of GNU Lesser General Public License Version 2.1.
@@ -54,7 +54,7 @@ CLASSPATH!:=$(my_cp)
 .ENDIF
 
 $(LINKALLTARGETS) : $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/$$(@:b:s/_/./:e:s/.//)/$i) $(subst,LANGUAGE,$$(@:b:s/_/./:e:s/.//) $(LINKADDEDDEPS)) $(COMMONMISC)$/xhp_changed.flag
-    @+-$(MKDIR) -p $(@:d)
+    @-$(MKDIR) -p $(@:d)
 .IF "$(JAVAAOTCOMPILER)" != ""
     com.sun.star.help.HelpLinker @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers/hid.lst -src $(COMMONMISC) -sty $(PRJ)$/source$/auxiliary$/embed.xsl -idx $(PRJ)$/source$/auxiliary$/index.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@)
 .ELSE
