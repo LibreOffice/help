@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2006-12-19 16:30:02 $
+#*    last change       $Author: vg $ $Date: 2007-02-07 12:02:50 $
 #*
-#*    $Revision: 1.29 $
+#*    $Revision: 1.30 $
 #*
 #*    $Logfile:$
 #*
@@ -672,6 +672,7 @@ LINKLINKFILES= \
    text$/shared$/01$/guides.xhp \
    text$/shared$/01$/mediaplayer.xhp \
    text$/shared$/01$/moviesound.xhp \
+   text$/shared$/01$/online_update.xhp \
    text$/shared$/01$/packagemanager.xhp \
    text$/shared$/01$/password_dlg.xhp \
    text$/shared$/01$/password_main.xhp \
