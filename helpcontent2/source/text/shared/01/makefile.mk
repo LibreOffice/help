@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2006-12-20 13:50:28 $
+#*    last change       $Author: vg $ $Date: 2007-02-07 11:38:10 $
 #*
-#*    $Revision: 1.13 $
+#*    $Revision: 1.14 $
 #*
 #*    $Logfile:$
 #*
@@ -309,6 +309,7 @@ XHPFILES = \
    guides.xhp \
    mediaplayer.xhp \
    moviesound.xhp \
+   online_update.xhp \
    packagemanager.xhp \
    password_dlg.xhp \
    password_main.xhp \
