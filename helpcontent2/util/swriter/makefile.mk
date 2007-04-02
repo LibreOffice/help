@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-02-07 12:04:11 $
+#*    last change       $Author: rt $ $Date: 2007-04-02 16:02:09 $
 #*
-#*    $Revision: 1.29 $
+#*    $Revision: 1.30 $
 #*
 #*    $Logfile:$
 #*
@@ -333,6 +333,7 @@ LINKLINKFILES= \
    text$/swriter$/guide$/header_with_line.xhp \
    text$/swriter$/guide$/hidden_text.xhp \
    text$/swriter$/guide$/hyperlinks.xhp \
+   text$/swriter$/guide$/indenting.xhp \
    text$/swriter$/guide$/indices_delete.xhp \
    text$/swriter$/guide$/indices_edit.xhp \
    text$/swriter$/guide$/indices_enter.xhp \
@@ -755,6 +756,7 @@ LINKLINKFILES= \
    text$/shared$/01$/08060100.xhp \
    text$/shared$/01$/about_meta_tags.xhp \
    text$/shared$/01$/digitalsignatures.xhp \
+   text$/shared$/01$/extensionupdate.xhp \
    text$/shared$/01$/formatting_mark.xhp \
    text$/shared$/01$/gallery.xhp \
    text$/shared$/01$/gallery_files.xhp \
