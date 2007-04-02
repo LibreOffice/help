@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2005-10-05 11:51:58 $
+#*    last change       $Author: rt $ $Date: 2007-04-02 14:50:42 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -80,7 +80,6 @@ XHPFILES = \
    03020203.xhp \
    03020204.xhp \
    03020205.xhp \
-   03020300.xhp \
    03020301.xhp \
    03020302.xhp \
    03020303.xhp \
