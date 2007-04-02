@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-02-07 12:04:00 $
+#*    last change       $Author: rt $ $Date: 2007-04-02 16:01:56 $
 #*
-#*    $Revision: 1.25 $
+#*    $Revision: 1.26 $
 #*
 #*    $Logfile:$
 #*
@@ -429,6 +429,7 @@ LINKLINKFILES= \
    text$/shared$/01$/08060100.xhp \
    text$/shared$/01$/about_meta_tags.xhp \
    text$/shared$/01$/digitalsignatures.xhp \
+   text$/shared$/01$/extensionupdate.xhp \
    text$/shared$/01$/formatting_mark.xhp \
    text$/shared$/01$/gallery.xhp \
    text$/shared$/01$/gallery_files.xhp \
