@@ -4,9 +4,9 @@
 #
 #   $RCSfile: makefile.pmk,v $
 #
-#   $Revision: 1.20 $
+#   $Revision: 1.21 $
 #
-#   last change: $Author: vg $ $Date: 2007-02-06 14:12:25 $
+#   last change: $Author: rt $ $Date: 2007-04-26 13:55:36 $
 #
 #   The Contents of this file are made available subject to
 #   the terms of GNU Lesser General Public License Version 2.1.
@@ -54,7 +54,7 @@ $(COMMONMISC)$/$(TARGET).done : $(HLANGXHPFILES)
 .ELSE			# "$(WITH_LANG)"!=""
 .IF "$(USE_SHELL)"=="4nt"
 # it's getting real ugly...
-    (cmd /c $(TYPE) $(mktmp $(uniq $(foreach,i,$? $(!eq,$(i:f),$(i:f:s/.xhp//) $(i:f) $(XHPFILES))))) | xargs --verbose --max-args=15 cp -t $(COMMONMISC)$/en-US$/$(SHELL_PACKAGE))  && $(TOUCH) $@
+    (cmd /c type $(mktmp $(uniq $(foreach,i,$? $(!eq,$(i:f),$(i:f:s/.xhp//) $(i:f) $(XHPFILES))))) | xargs --verbose --max-args=15 cp -t $(COMMONMISC)$/en-US$/$(SHELL_PACKAGE))  && $(TOUCH) $@
 .ELSE			# "$(USE_SHELL)"=="4nt"
     cp $(uniq $(foreach,i,$? $(!eq,$(i:f),$(i:f:s/.xhp//) $(i:f) $(XHPFILES)))) $(COMMONMISC)$/en-US$/$(SHELL_PACKAGE) && $(TOUCH) $@
 .ENDIF			# "$(USE_SHELL)"=="4nt"
