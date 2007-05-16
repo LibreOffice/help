@@ -1,6 +1,10 @@
 <!-- 
-Version 03-Feb-2006
-  added optional localize attribute to images
+Version 2.2
+  06 Dec 2006
+	Changed versioning scheme to follow OOo version numbering
+  Added hookup_to attribute to section element
+	Added type attribute to embed elements to allow for embedded searches
+  Allowing links to contain images to allow for images serving as links
 -->
 
 <!ELEMENT ahelp (#PCDATA | embedvar | br | comment | emph | item | link | switchinline | variable)*>
@@ -63,6 +67,7 @@ Version 03-Feb-2006
   href CDATA #REQUIRED
   role CDATA #IMPLIED
   level CDATA #IMPLIED
+	type CDATA #IMPLIED
 >
 
 <!ELEMENT embedvar EMPTY>
@@ -101,7 +106,7 @@ Version 03-Feb-2006
   date CDATA #REQUIRED
 >
 
-<!ELEMENT link (#PCDATA | embedvar | emph | item | variable | switchinline)*>
+<!ELEMENT link (#PCDATA | embedvar | emph | item | variable | switchinline | image)*>
 <!ATTLIST link
   href CDATA #REQUIRED
   name CDATA #IMPLIED
@@ -150,6 +155,7 @@ Version 03-Feb-2006
 <!ELEMENT section (section | paragraph | table | list | comment | bookmark | embed | switch | sort )*>
 <!ATTLIST section
   id CDATA #REQUIRED
+	hookup_to CDATA #IMPLIED
 >
 
 <!ELEMENT sort (section+)>
