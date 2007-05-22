@@ -33,9 +33,9 @@
  
     $RCSfile: main_transform.xsl,v $
  
-    $Revision: 1.16 $
+    $Revision: 1.17 $
  
-    last change: $Author: rt $ $Date: 2006-12-01 16:45:59 $
+    last change: $Author: vg $ $Date: 2007-05-22 15:32:19 $
  
     The Contents of this file are made available subject to
     the terms of GNU Lesser General Public License Version 2.1.
@@ -960,7 +960,7 @@
 	<xsl:param name="archive"/>
 	<xsl:variable name="newDB">
 		<xsl:choose>
-			<xsl:when test="(substring($archive,1,6) = 'shared') or (substring($archive,1,6) = 'schart')"><xsl:value-of select="$Database"/></xsl:when>
+			<xsl:when test="(substring($archive,1,6) = 'shared')"><xsl:value-of select="$Database"/></xsl:when>
 			<xsl:otherwise><xsl:value-of select="substring-before($archive,'/')"/></xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
