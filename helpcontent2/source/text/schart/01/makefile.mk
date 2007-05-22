@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:38 $
+#*    last change       $Author: vg $ $Date: 2007-05-22 15:49:48 $
 #*
-#*    $Revision: 1.7 $
+#*    $Revision: 1.8 $
 #*
 #*    $Logfile:$
 #*
@@ -58,10 +58,23 @@ XHPFILES = \
    05060000.xhp \
    05070000.xhp \
    05080000.xhp \
-   05090000.xhp \
-   05100000.xhp \
    05110000.xhp \
-   05120000.xhp 
+   05120000.xhp \
+   choose_chart_type.xhp \
+   smooth_line_properties.xhp \
+   three_d_view.xhp \
+   type_area.xhp \
+   type_column_bar.xhp \
+   type_column_line.xhp \
+   type_line.xhp \
+   type_net.xhp \
+   type_pie.xhp \
+   type_stock.xhp \
+   type_xy.xhp \
+   wiz_chart_elements.xhp \
+   wiz_chart_type.xhp \
+   wiz_data_range.xhp \
+   wiz_data_series.xhp 
     
 # --- Targets ------------------------------------------------------
 
