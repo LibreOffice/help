@@ -200,16 +200,22 @@ LAD
     $module = "schart";
     
     $linkaddedfiles = <<"LAF";
+   -add $module.cfg \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
    -add $module.tree \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    -add $module.jar  \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAF
     
     $linkaddeddeps = <<"LAD";
+   \$(PRJ)\$/source\$/auxiliary\$/LANGUAGE\$/$module.cfg \\
    \$(COMMONMISC)\$/LANGUAGE\$/$module.tree \\
    \$(BIN)\$/xhp_${module}_LANGUAGE.zip
 LAD
     
     $linklinkfiles = '';
+
+    for (@shared) {	$linklinkfiles = $linklinkfiles . "   $_ \\\n";	}
+    for (@schart) {	$linklinkfiles = $linklinkfiles . "   $_ \\\n";	}
+
 
     $auth = "script";
     $date = sprintf "%4d/%02d/%02d %02d:%02d:%02d",$year+1900,$mon,$mday,$hour,$min,$sec;
