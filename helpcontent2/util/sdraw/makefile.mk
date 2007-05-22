@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2007-04-02 16:01:04 $
+#*    last change       $Author: vg $ $Date: 2007-05-22 16:01:44 $
 #*
-#*    $Revision: 1.28 $
+#*    $Revision: 1.29 $
 #*
 #*    $Logfile:$
 #*
@@ -426,11 +426,6 @@ LINKLINKFILES= \
    text$/shared$/01$/04150300.xhp \
    text$/shared$/01$/04150400.xhp \
    text$/shared$/01$/04150500.xhp \
-   text$/shared$/01$/04160100.xhp \
-   text$/shared$/01$/04160101.xhp \
-   text$/shared$/01$/04160102.xhp \
-   text$/shared$/01$/04160103.xhp \
-   text$/shared$/01$/04160109.xhp \
    text$/shared$/01$/04160300.xhp \
    text$/shared$/01$/04160500.xhp \
    text$/shared$/01$/04180100.xhp \
@@ -1195,10 +1190,23 @@ LINKLINKFILES= \
    text$/schart$/01$/05060000.xhp \
    text$/schart$/01$/05070000.xhp \
    text$/schart$/01$/05080000.xhp \
-   text$/schart$/01$/05090000.xhp \
-   text$/schart$/01$/05100000.xhp \
    text$/schart$/01$/05110000.xhp \
    text$/schart$/01$/05120000.xhp \
+   text$/schart$/01$/choose_chart_type.xhp \
+   text$/schart$/01$/smooth_line_properties.xhp \
+   text$/schart$/01$/three_d_view.xhp \
+   text$/schart$/01$/type_area.xhp \
+   text$/schart$/01$/type_column_bar.xhp \
+   text$/schart$/01$/type_column_line.xhp \
+   text$/schart$/01$/type_line.xhp \
+   text$/schart$/01$/type_net.xhp \
+   text$/schart$/01$/type_pie.xhp \
+   text$/schart$/01$/type_stock.xhp \
+   text$/schart$/01$/type_xy.xhp \
+   text$/schart$/01$/wiz_chart_elements.xhp \
+   text$/schart$/01$/wiz_chart_type.xhp \
+   text$/schart$/01$/wiz_data_range.xhp \
+   text$/schart$/01$/wiz_data_series.xhp \
    text$/schart$/02$/01190000.xhp \
    text$/schart$/02$/01200000.xhp \
    text$/schart$/02$/01210000.xhp \
@@ -1206,17 +1214,6 @@ LINKLINKFILES= \
    text$/schart$/02$/02020000.xhp \
    text$/schart$/04$/01020000.xhp \
    text$/schart$/main0000.xhp \
-   text$/schart$/main0100.xhp \
-   text$/schart$/main0101.xhp \
-   text$/schart$/main0102.xhp \
-   text$/schart$/main0103.xhp \
-   text$/schart$/main0104.xhp \
-   text$/schart$/main0105.xhp \
-   text$/schart$/main0106.xhp \
-   text$/schart$/main0107.xhp \
-   text$/schart$/main0200.xhp \
-   text$/schart$/main0202.xhp \
-   text$/schart$/main0203.xhp \
    text$/schart$/main0503.xhp \
 
 
