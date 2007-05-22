@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2007-04-02 16:00:51 $
+#*    last change       $Author: vg $ $Date: 2007-05-22 16:01:32 $
 #*
-#*    $Revision: 1.16 $
+#*    $Revision: 1.17 $
 #*
 #*    $Logfile:$
 #*
@@ -187,11 +187,6 @@ LINKLINKFILES= \
    text$/shared$/01$/04150300.xhp \
    text$/shared$/01$/04150400.xhp \
    text$/shared$/01$/04150500.xhp \
-   text$/shared$/01$/04160100.xhp \
-   text$/shared$/01$/04160101.xhp \
-   text$/shared$/01$/04160102.xhp \
-   text$/shared$/01$/04160103.xhp \
-   text$/shared$/01$/04160109.xhp \
    text$/shared$/01$/04160300.xhp \
    text$/shared$/01$/04160500.xhp \
    text$/shared$/01$/04180100.xhp \
