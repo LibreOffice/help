@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:36 $
+#*    last change       $Author: vg $ $Date: 2007-05-22 15:45:46 $
 #*
-#*    $Revision: 1.7 $
+#*    $Revision: 1.8 $
 #*
 #*    $Logfile:$
 #*
@@ -33,17 +33,6 @@ MODULE  = schart
 # this list matches the *.xhp files to process
 XHPFILES = \
    main0000.xhp \
-   main0100.xhp \
-   main0101.xhp \
-   main0102.xhp \
-   main0103.xhp \
-   main0104.xhp \
-   main0105.xhp \
-   main0106.xhp \
-   main0107.xhp \
-   main0200.xhp \
-   main0202.xhp \
-   main0203.xhp \
    main0503.xhp 
     
 # --- Targets ------------------------------------------------------
