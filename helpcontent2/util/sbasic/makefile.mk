@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2007-06-05 10:20:29 $
+#*    last change       $Author: vg $ $Date: 2007-06-08 16:20:35 $
 #*
-#*    $Revision: 1.29 $
+#*    $Revision: 1.30 $
 #*
 #*    $Logfile:$
 #*
@@ -26,6 +26,7 @@ TARGET  = util_sbasic
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
+.IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
@@ -33,6 +34,8 @@ ZIP1TARGET=xhp_sbasic
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/sbasic$/* -x "*.xhp????*" -x "*.dphh*" -x "*.hzip" -x "*.created"
+.ENDIF			# "$(SOLAR_JAVA)"!=""
+
 
 LINKNAME=sbasic
 LINKADDEDFILES= \

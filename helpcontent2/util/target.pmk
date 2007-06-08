@@ -4,9 +4,9 @@
 #
 #   $RCSfile: target.pmk,v $
 #
-#   $Revision: 1.17 $
+#   $Revision: 1.18 $
 #
-#   last change: $Author: ihi $ $Date: 2007-06-05 10:20:06 $
+#   last change: $Author: vg $ $Date: 2007-06-08 16:35:26 $
 #
 #   The Contents of this file are made available subject to
 #   the terms of GNU Lesser General Public License Version 2.1.
@@ -36,7 +36,27 @@
 LINKALLTARGETS=$(foreach,i,$(aux_alllangiso) $(BIN)$/$(LINKNAME)_$i.zip)
 LINKALLADDEDDEPS=$(foreach,i,$(aux_alllangiso) $(subst,LANGUAGE,$i $(LINKADDEDDPES)))
 
+.IF "$(SOLAR_JAVA)"!=""
 ALLTAR : $(LINKALLTARGETS)
+.ENDIF
+
+.IF "$(SYSTEM_DB)" != "YES"
+JAVA_LIBRARY_PATH= -Djava.library.path=$(SOLARSHAREDBIN)
+.ENDIF
+
+.IF "$(JDK)" != "gcj"
+JAVA_VM_HEAP_SIZE = -Xms256m -Xmx256m
+.ENDIF
+
+.IF "$(JAVAAOTCOMPILER)" != ""
+CLASSPATH!:=$(my_cp)
+.EXPORT : CLASSPATH
+.ENDIF
 
 $(LINKALLTARGETS) : $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/$$(@:b:s/_/./:e:s/.//)/$i) $(subst,LANGUAGE,$$(@:b:s/_/./:e:s/.//) $(LINKADDEDDEPS)) $(COMMONMISC)$/xhp_changed.flag
-    $(WRAPCMD) HelpLinker @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers/hid.lst -src $(COMMONMISC) -sty $(PRJ)$/source$/auxiliary$/embed.xsl -idx $(PRJ)$/source$/auxiliary$/index.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@)
+.IF "$(JAVAAOTCOMPILER)" != ""
+    com.sun.star.help.HelpLinker @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers/hid.lst -src $(COMMONMISC) -sty $(PRJ)$/source$/auxiliary$/embed.xsl -idx $(PRJ)$/source$/auxiliary$/index.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@)
+.ELSE
+    $(JAVAI) $(JAVA_VM_HEAP_SIZE) $(JAVA_LIBRARY_PATH) -Djavax.xml.parsers.SAXParserFactory=org.apache.xerces.jaxp.SAXParserFactoryImpl -Djavax.xml.parsers.DocumentBuilderFactory=org.apache.xerces.jaxp.DocumentBuilderFactoryImpl -cp $(my_cp) com.sun.star.help.HelpLinker @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers/hid.lst -src $(COMMONMISC) -sty $(PRJ)$/source$/auxiliary$/embed.xsl -idx $(PRJ)$/source$/auxiliary$/index.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@)
+.ENDIF
+
