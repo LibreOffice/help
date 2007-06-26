@@ -4,9 +4,9 @@
 #
 #   $RCSfile: makefile.pmk,v $
 #
-#   $Revision: 1.23 $
+#   $Revision: 1.24 $
 #
-#   last change: $Author: vg $ $Date: 2007-06-08 16:13:43 $
+#   last change: $Author: hr $ $Date: 2007-06-26 12:34:07 $
 #
 #   The Contents of this file are made available subject to
 #   the terms of GNU Lesser General Public License Version 2.1.
@@ -36,9 +36,7 @@
 SHELL_PACKAGE:=$(subst,/,$/ $(PACKAGE))
 HLANGXHPFILES:=$(foreach,i,$(XHPFILES) $(foreach,j,$(aux_alllangiso) $(COMMONMISC)$/$j$/$(SHELL_PACKAGE)$/$(i:f)))
 
-.IF "$(SOLAR_JAVA)"!=""
 ALLTAR : $(COMMONMISC)$/$(TARGET).done $(COMMONMISC)$/xhp_changed.flag optix
-.ENDIF
 
 $(HLANGXHPFILES) : $$(@:d)thisdir.created
 
