@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-06-08 16:33:17 $
+#*    last change       $Author: hr $ $Date: 2007-06-26 12:36:25 $
 #*
-#*    $Revision: 1.29 $
+#*    $Revision: 1.30 $
 #*
 #*    $Logfile:$
 #*
@@ -26,7 +26,6 @@ TARGET  = util_smath
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-.IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
@@ -34,8 +33,6 @@ ZIP1TARGET=xhp_smath
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/smath$/* -x "*.xhp????*" -x "*.dphh*" -x "*.hzip" -x "*.created"
-.ENDIF			# "$(SOLAR_JAVA)"!=""
-
 
 LINKNAME=smath
 LINKADDEDFILES= \
