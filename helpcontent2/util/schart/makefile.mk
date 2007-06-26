@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-06-08 16:23:29 $
+#*    last change       $Author: hr $ $Date: 2007-06-26 12:35:14 $
 #*
-#*    $Revision: 1.19 $
+#*    $Revision: 1.20 $
 #*
 #*    $Logfile:$
 #*
@@ -26,7 +26,6 @@ TARGET  = util_schart
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-.IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
@@ -34,8 +33,6 @@ ZIP1TARGET=xhp_schart
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/schart$/* -x "*.xhp????*" -x "*.dphh*" -x "*.hzip" -x "*.created"
-.ENDIF			# "$(SOLAR_JAVA)"!=""
-
 
 LINKNAME=schart
 LINKADDEDFILES= \

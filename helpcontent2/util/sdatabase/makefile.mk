@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-06-08 16:27:01 $
+#*    last change       $Author: hr $ $Date: 2007-06-26 12:35:28 $
 #*
-#*    $Revision: 1.19 $
+#*    $Revision: 1.20 $
 #*
 #*    $Logfile:$
 #*
@@ -26,7 +26,6 @@ TARGET  = util_sdatabase
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-.IF "$(SOLAR_JAVA)"!=""
 common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
@@ -34,8 +33,6 @@ ZIP1TARGET=xhp_sdatabase
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
 ZIP1LIST=$(LANGDIR)$/text$/shared$/explorer$/database$/main.xhp
-.ENDIF			# "$(SOLAR_JAVA)"!=""
-
 
 LINKNAME=sdatabase
 LINKADDEDFILES= \
