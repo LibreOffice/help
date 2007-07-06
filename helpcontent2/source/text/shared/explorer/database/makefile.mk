@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2006-08-14 15:36:20 $
+#*    last change       $Author: rt $ $Date: 2007-07-06 09:34:50 $
 #*
-#*    $Revision: 1.11 $
+#*    $Revision: 1.12 $
 #*
 #*    $Logfile:$
 #*
@@ -106,6 +106,12 @@ XHPFILES = \
    querywizard06.xhp \
    querywizard07.xhp \
    querywizard08.xhp \
+   rep_datetime.xhp \
+   rep_main.xhp \
+   rep_navigator.xhp \
+   rep_pagenumbers.xhp \
+   rep_prop.xhp \
+   rep_sort.xhp \
    tablewizard00.xhp \
    tablewizard01.xhp \
    tablewizard02.xhp \
