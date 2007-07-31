@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2007-06-26 12:35:14 $
+#*    last change       $Author: hr $ $Date: 2007-07-31 15:42:54 $
 #*
-#*    $Revision: 1.20 $
+#*    $Revision: 1.21 $
 #*
 #*    $Logfile:$
 #*
@@ -243,6 +243,7 @@ LINKLINKFILES= \
    text$/shared$/01$/05140100.xhp \
    text$/shared$/01$/05150101.xhp \
    text$/shared$/01$/05190000.xhp \
+   text$/shared$/01$/05190100.xhp \
    text$/shared$/01$/05200000.xhp \
    text$/shared$/01$/05200100.xhp \
    text$/shared$/01$/05200200.xhp \
@@ -353,6 +354,7 @@ LINKLINKFILES= \
    text$/shared$/01$/08060100.xhp \
    text$/shared$/01$/about_meta_tags.xhp \
    text$/shared$/01$/digitalsignatures.xhp \
+   text$/shared$/01$/extensionupdate.xhp \
    text$/shared$/01$/formatting_mark.xhp \
    text$/shared$/01$/gallery.xhp \
    text$/shared$/01$/gallery_files.xhp \
@@ -360,6 +362,8 @@ LINKLINKFILES= \
    text$/shared$/01$/guides.xhp \
    text$/shared$/01$/mediaplayer.xhp \
    text$/shared$/01$/moviesound.xhp \
+   text$/shared$/01$/online_update.xhp \
+   text$/shared$/01$/online_update_dialog.xhp \
    text$/shared$/01$/packagemanager.xhp \
    text$/shared$/01$/password_dlg.xhp \
    text$/shared$/01$/password_main.xhp \
@@ -696,6 +700,12 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/querywizard06.xhp \
    text$/shared$/explorer$/database$/querywizard07.xhp \
    text$/shared$/explorer$/database$/querywizard08.xhp \
+   text$/shared$/explorer$/database$/rep_datetime.xhp \
+   text$/shared$/explorer$/database$/rep_main.xhp \
+   text$/shared$/explorer$/database$/rep_navigator.xhp \
+   text$/shared$/explorer$/database$/rep_pagenumbers.xhp \
+   text$/shared$/explorer$/database$/rep_prop.xhp \
+   text$/shared$/explorer$/database$/rep_sort.xhp \
    text$/shared$/explorer$/database$/tablewizard00.xhp \
    text$/shared$/explorer$/database$/tablewizard01.xhp \
    text$/shared$/explorer$/database$/tablewizard02.xhp \

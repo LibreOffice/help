@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2007-06-26 12:35:28 $
+#*    last change       $Author: hr $ $Date: 2007-07-31 15:43:06 $
 #*
-#*    $Revision: 1.20 $
+#*    $Revision: 1.21 $
 #*
 #*    $Logfile:$
 #*
@@ -361,6 +361,7 @@ LINKLINKFILES= \
    text$/shared$/01$/mediaplayer.xhp \
    text$/shared$/01$/moviesound.xhp \
    text$/shared$/01$/online_update.xhp \
+   text$/shared$/01$/online_update_dialog.xhp \
    text$/shared$/01$/packagemanager.xhp \
    text$/shared$/01$/password_dlg.xhp \
    text$/shared$/01$/password_main.xhp \
@@ -697,6 +698,12 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/querywizard06.xhp \
    text$/shared$/explorer$/database$/querywizard07.xhp \
    text$/shared$/explorer$/database$/querywizard08.xhp \
+   text$/shared$/explorer$/database$/rep_datetime.xhp \
+   text$/shared$/explorer$/database$/rep_main.xhp \
+   text$/shared$/explorer$/database$/rep_navigator.xhp \
+   text$/shared$/explorer$/database$/rep_pagenumbers.xhp \
+   text$/shared$/explorer$/database$/rep_prop.xhp \
+   text$/shared$/explorer$/database$/rep_sort.xhp \
    text$/shared$/explorer$/database$/tablewizard00.xhp \
    text$/shared$/explorer$/database$/tablewizard01.xhp \
    text$/shared$/explorer$/database$/tablewizard02.xhp \
