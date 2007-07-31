@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-05-22 15:55:53 $
+#*    last change       $Author: hr $ $Date: 2007-07-31 15:37:50 $
 #*
-#*    $Revision: 1.15 $
+#*    $Revision: 1.16 $
 #*
 #*    $Logfile:$
 #*
@@ -305,6 +305,7 @@ XHPFILES = \
    mediaplayer.xhp \
    moviesound.xhp \
    online_update.xhp \
+   online_update_dialog.xhp \
    packagemanager.xhp \
    password_dlg.xhp \
    password_main.xhp \
