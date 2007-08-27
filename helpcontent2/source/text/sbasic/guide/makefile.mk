@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:33 $
+#*    last change       $Author: vg $ $Date: 2007-08-27 14:25:30 $
 #*
-#*    $Revision: 1.7 $
+#*    $Revision: 1.8 $
 #*
 #*    $Logfile:$
 #*
@@ -36,7 +36,8 @@ XHPFILES = \
    create_dialog.xhp \
    insert_control.xhp \
    sample_code.xhp \
-   show_dialog.xhp 
+   show_dialog.xhp \
+   translation.xhp 
     
 # --- Targets ------------------------------------------------------
 
