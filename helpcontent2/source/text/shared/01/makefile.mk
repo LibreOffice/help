@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2007-07-31 15:37:50 $
+#*    last change       $Author: vg $ $Date: 2007-08-27 14:39:05 $
 #*
-#*    $Revision: 1.16 $
+#*    $Revision: 1.17 $
 #*
 #*    $Logfile:$
 #*
@@ -62,7 +62,6 @@ XHPFILES = \
    01110101.xhp \
    01110300.xhp \
    01110400.xhp \
-   01120000.xhp \
    01130000.xhp \
    01140000.xhp \
    01160000.xhp \
@@ -313,6 +312,7 @@ XHPFILES = \
    ref_pdf_send_as.xhp \
    securitywarning.xhp \
    selectcertificate.xhp \
+   webhtml.xhp \
    xformsdata.xhp \
    xformsdataadd.xhp \
    xformsdataaddcon.xhp \
