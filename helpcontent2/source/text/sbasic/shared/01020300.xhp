@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--***********************************************************************
+
+<!--
+ ***********************************************************************
  *
  *  OpenOffice.org - a multi-platform office productivity suite
  *
- *  $RCSfile: 01020300.xhp,v $
+ *  $RCSfile: 01020300.xhp,v $fileonly,v $
  *
- *  $Revision: 1.3 $
+ *  $Revision: 1.4 $
  *
- *  last change: $Author: rt $ $Date: 2005-09-07 15:32:04 $
+ *  last change: $Author: vg $ $Date: 2007-08-27 14:25:50 $
  *
  *  The Contents of this file are made available subject to
  *  the terms of GNU Lesser General Public License Version 2.1.
@@ -32,20 +34,16 @@
  *    Foundation, Inc., 59 Temple Place, Suite 330, Boston,
  *    MA  02111-1307  USA
  *
- ************************************************************************-->
-	
-<helpdocument version="1.0">
+ ************************************************************************
+ -->
+
+
+		<helpdocument version="1.0">
 <meta>
 <topic id="textsbasicshared01020300xml" indexer="include" status="PUBLISH">
 <title id="tit" xml-lang="en-US">Using Procedures and Functions</title>
 <filename>/text/sbasic/shared/01020300.xhp</filename>
 </topic>
-<history>
-<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-<lastedited date="2004-09-01T14:50:17">UFI: fixes #i24866#
-YJ: checked
-dedr: fixed #i30798#</lastedited>
-</history>
 </meta>
 <body>
 <section id="prozedur">
@@ -106,6 +104,22 @@ dedr: fixed #i30798#</lastedited>
 <paragraph role="paragraph" id="par_id3152994" xml-lang="en-US" l10n="U" oldref="63">The variable is only valid in this module.</paragraph>
 <paragraph role="code" id="par_id3150886" xml-lang="en-US" l10n="U" oldref="64">DIM VarName As TYPENAME</paragraph>
 <paragraph role="paragraph" id="par_id3150368" xml-lang="en-US" l10n="U" oldref="65">The variable is only valid in this module.</paragraph>
+<paragraph role="heading" id="hd_id5097506" xml-lang="en-US" level="3" l10n="NEW">Example for private variables</paragraph>
+<paragraph role="paragraph" id="par_id8738975" xml-lang="en-US" l10n="NEW">Enforce private variables to be private across modules by setting CompatibilityMode(true).</paragraph><comment>from i17948, see i54894</comment><paragraph role="code" id="par_id146488" xml-lang="en-US" l10n="NEW">REM ***** Module1 *****</paragraph>
+<paragraph role="code" id="par_id2042298" xml-lang="en-US" l10n="NEW">Private myText As String</paragraph>
+<paragraph role="code" id="par_id2969756" xml-lang="en-US" l10n="NEW">Sub initMyText</paragraph>
+<paragraph role="code" id="par_id9475997" xml-lang="en-US" l10n="NEW">myText = "Hello"</paragraph>
+<paragraph role="code" id="par_id6933500" xml-lang="en-US" l10n="NEW">print "in module1 : ", myText</paragraph>
+<paragraph role="code" id="par_id631733" xml-lang="en-US" l10n="NEW">End Sub</paragraph>
+<paragraph role="code" id="par_id8234199" xml-lang="en-US" l10n="NEW">REM ***** Module2 *****</paragraph>
+<paragraph role="code" id="par_id6969512" xml-lang="en-US" l10n="NEW">'Option Explicit</paragraph>
+<paragraph role="code" id="par_id1196935" xml-lang="en-US" l10n="NEW">Sub demoBug</paragraph>
+<paragraph role="code" id="par_id1423993" xml-lang="en-US" l10n="NEW">CompatibilityMode( true )</paragraph>
+<paragraph role="code" id="par_id6308786" xml-lang="en-US" l10n="NEW">initMyText</paragraph>
+<paragraph role="code" id="par_id4104129" xml-lang="en-US" l10n="NEW">' Now returns empty string</paragraph>
+<paragraph role="code" id="par_id7906125" xml-lang="en-US" l10n="NEW">' (or rises error for Option Explicit)</paragraph>
+<paragraph role="code" id="par_id8055970" xml-lang="en-US" l10n="NEW">print "Now in module2 : ", myText</paragraph>
+<paragraph role="code" id="par_id2806176" xml-lang="en-US" l10n="NEW">End Sub</paragraph>
 <paragraph role="heading" id="hd_id3154368" xml-lang="en-US" level="3" l10n="U" oldref="66">Saving Variable Content after Exiting a SUB or FUNCTION</paragraph>
 <paragraph role="code" id="par_id3156288" xml-lang="en-US" l10n="U" oldref="67">DIM STATIC VarName As TYPENAME</paragraph>
 <paragraph role="paragraph" id="par_id3154486" xml-lang="en-US" l10n="U" oldref="68">The variable retains its value until the next time the FUNCTION or SUB is entered. The declaration must exist inside a SUB or a FUNCTION.</paragraph>
