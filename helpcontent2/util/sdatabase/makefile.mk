@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2007-07-31 15:43:06 $
+#*    last change       $Author: vg $ $Date: 2007-08-27 15:00:07 $
 #*
-#*    $Revision: 1.21 $
+#*    $Revision: 1.22 $
 #*
 #*    $Logfile:$
 #*
@@ -118,7 +118,6 @@ LINKLINKFILES= \
    text$/shared$/01$/01110101.xhp \
    text$/shared$/01$/01110300.xhp \
    text$/shared$/01$/01110400.xhp \
-   text$/shared$/01$/01120000.xhp \
    text$/shared$/01$/01130000.xhp \
    text$/shared$/01$/01140000.xhp \
    text$/shared$/01$/01160000.xhp \
@@ -369,6 +368,7 @@ LINKLINKFILES= \
    text$/shared$/01$/ref_pdf_send_as.xhp \
    text$/shared$/01$/securitywarning.xhp \
    text$/shared$/01$/selectcertificate.xhp \
+   text$/shared$/01$/webhtml.xhp \
    text$/shared$/01$/xformsdata.xhp \
    text$/shared$/01$/xformsdataadd.xhp \
    text$/shared$/01$/xformsdataaddcon.xhp \
