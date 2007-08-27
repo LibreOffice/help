@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2005-10-05 12:02:11 $
+#*    last change       $Author: vg $ $Date: 2007-08-27 14:31:05 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -32,6 +32,7 @@ MODULE  = scalc
 
 # this list matches the *.xhp files to process
 XHPFILES = \
+   01120000.xhp \
    02110000.xhp \
    02120000.xhp \
    02120100.xhp \
