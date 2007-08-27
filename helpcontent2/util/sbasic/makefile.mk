@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2007-07-31 15:42:27 $
+#*    last change       $Author: vg $ $Date: 2007-08-27 14:59:31 $
 #*
-#*    $Revision: 1.32 $
+#*    $Revision: 1.33 $
 #*
 #*    $Logfile:$
 #*
@@ -53,6 +53,7 @@ LINKLINKFILES= \
    text$/sbasic$/guide$/insert_control.xhp \
    text$/sbasic$/guide$/sample_code.xhp \
    text$/sbasic$/guide$/show_dialog.xhp \
+   text$/sbasic$/guide$/translation.xhp \
    text$/sbasic$/shared$/00000002.xhp \
    text$/sbasic$/shared$/00000003.xhp \
    text$/sbasic$/shared$/01$/06130000.xhp \
@@ -87,7 +88,6 @@ LINKLINKFILES= \
    text$/sbasic$/shared$/02$/11070000.xhp \
    text$/sbasic$/shared$/02$/11080000.xhp \
    text$/sbasic$/shared$/02$/11090000.xhp \
-   text$/sbasic$/shared$/02$/11090100.xhp \
    text$/sbasic$/shared$/02$/11100000.xhp \
    text$/sbasic$/shared$/02$/11110000.xhp \
    text$/sbasic$/shared$/02$/11120000.xhp \
@@ -417,7 +417,6 @@ LINKLINKFILES= \
    text$/shared$/01$/01110101.xhp \
    text$/shared$/01$/01110300.xhp \
    text$/shared$/01$/01110400.xhp \
-   text$/shared$/01$/01120000.xhp \
    text$/shared$/01$/01130000.xhp \
    text$/shared$/01$/01140000.xhp \
    text$/shared$/01$/01160000.xhp \
@@ -668,6 +667,7 @@ LINKLINKFILES= \
    text$/shared$/01$/ref_pdf_send_as.xhp \
    text$/shared$/01$/securitywarning.xhp \
    text$/shared$/01$/selectcertificate.xhp \
+   text$/shared$/01$/webhtml.xhp \
    text$/shared$/01$/xformsdata.xhp \
    text$/shared$/01$/xformsdataadd.xhp \
    text$/shared$/01$/xformsdataaddcon.xhp \
