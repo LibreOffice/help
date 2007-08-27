@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2005-10-05 14:28:51 $
+#*    last change       $Author: vg $ $Date: 2007-08-27 14:58:06 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -32,6 +32,7 @@ MODULE  = swriter
 
 # this list matches the *.xhp files to process
 XHPFILES = \
+   01120000.xhp \
    01150000.xhp \
    01160100.xhp \
    01160200.xhp \
