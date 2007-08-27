@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2007-07-31 15:43:19 $
+#*    last change       $Author: vg $ $Date: 2007-08-27 15:00:26 $
 #*
-#*    $Revision: 1.33 $
+#*    $Revision: 1.34 $
 #*
 #*    $Logfile:$
 #*
@@ -184,7 +184,6 @@ LINKLINKFILES= \
    text$/simpress$/02$/04020000.xhp \
    text$/simpress$/02$/04030000.xhp \
    text$/simpress$/02$/04040000.xhp \
-   text$/simpress$/02$/04050000.xhp \
    text$/simpress$/02$/04060000.xhp \
    text$/simpress$/02$/04070000.xhp \
    text$/simpress$/02$/08020000.xhp \
@@ -357,7 +356,6 @@ LINKLINKFILES= \
    text$/shared$/01$/01110101.xhp \
    text$/shared$/01$/01110300.xhp \
    text$/shared$/01$/01110400.xhp \
-   text$/shared$/01$/01120000.xhp \
    text$/shared$/01$/01130000.xhp \
    text$/shared$/01$/01140000.xhp \
    text$/shared$/01$/01160000.xhp \
@@ -608,6 +606,7 @@ LINKLINKFILES= \
    text$/shared$/01$/ref_pdf_send_as.xhp \
    text$/shared$/01$/securitywarning.xhp \
    text$/shared$/01$/selectcertificate.xhp \
+   text$/shared$/01$/webhtml.xhp \
    text$/shared$/01$/xformsdata.xhp \
    text$/shared$/01$/xformsdataadd.xhp \
    text$/shared$/01$/xformsdataaddcon.xhp \
