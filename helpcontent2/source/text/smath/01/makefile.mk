@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 14:08:44 $
+#*    last change       $Author: vg $ $Date: 2007-09-21 10:13:43 $
 #*
-#*    $Revision: 1.7 $
+#*    $Revision: 1.8 $
 #*
 #*    $Logfile:$
 #*
@@ -66,6 +66,15 @@ XHPFILES = \
    03091300.xhp \
    03091400.xhp \
    03091500.xhp \
+   03091501.xhp \
+   03091502.xhp \
+   03091503.xhp \
+   03091504.xhp \
+   03091505.xhp \
+   03091506.xhp \
+   03091507.xhp \
+   03091508.xhp \
+   03091509.xhp \
    03091600.xhp \
    05010000.xhp \
    05010100.xhp \
