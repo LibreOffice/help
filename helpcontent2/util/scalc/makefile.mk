@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-08-27 14:59:44 $
+#*    last change       $Author: vg $ $Date: 2007-09-21 10:19:50 $
 #*
-#*    $Revision: 1.37 $
+#*    $Revision: 1.38 $
 #*
 #*    $Logfile:$
 #*
@@ -304,6 +304,7 @@ LINKLINKFILES= \
    text$/scalc$/guide$/main.xhp \
    text$/scalc$/guide$/mark_cells.xhp \
    text$/scalc$/guide$/matrixformula.xhp \
+   text$/scalc$/guide$/move_dragdrop.xhp \
    text$/scalc$/guide$/multi_tables.xhp \
    text$/scalc$/guide$/multioperation.xhp \
    text$/scalc$/guide$/multitables.xhp \
@@ -621,6 +622,7 @@ LINKLINKFILES= \
    text$/shared$/01$/06040400.xhp \
    text$/shared$/01$/06040500.xhp \
    text$/shared$/01$/06040600.xhp \
+   text$/shared$/01$/06040700.xhp \
    text$/shared$/01$/06050000.xhp \
    text$/shared$/01$/06050100.xhp \
    text$/shared$/01$/06050200.xhp \
@@ -1241,6 +1243,7 @@ LINKLINKFILES= \
    text$/schart$/01$/04030000.xhp \
    text$/schart$/01$/04040000.xhp \
    text$/schart$/01$/04050000.xhp \
+   text$/schart$/01$/04050100.xhp \
    text$/schart$/01$/04060000.xhp \
    text$/schart$/01$/04070000.xhp \
    text$/schart$/01$/05010000.xhp \
@@ -1261,7 +1264,6 @@ LINKLINKFILES= \
    text$/schart$/01$/05060000.xhp \
    text$/schart$/01$/05070000.xhp \
    text$/schart$/01$/05080000.xhp \
-   text$/schart$/01$/05110000.xhp \
    text$/schart$/01$/05120000.xhp \
    text$/schart$/01$/choose_chart_type.xhp \
    text$/schart$/01$/smooth_line_properties.xhp \
