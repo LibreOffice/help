@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-08-27 15:01:13 $
+#*    last change       $Author: vg $ $Date: 2007-09-21 10:21:19 $
 #*
-#*    $Revision: 1.36 $
+#*    $Revision: 1.37 $
 #*
 #*    $Logfile:$
 #*
@@ -257,7 +257,6 @@ LINKLINKFILES= \
    text$/swriter$/02$/06140000.xhp \
    text$/swriter$/02$/08010000.xhp \
    text$/swriter$/02$/08080000.xhp \
-   text$/swriter$/02$/08090000.xhp \
    text$/swriter$/02$/10010000.xhp \
    text$/swriter$/02$/10020000.xhp \
    text$/swriter$/02$/10030000.xhp \
@@ -353,7 +352,6 @@ LINKLINKFILES= \
    text$/swriter$/guide$/join_numbered_lists.xhp \
    text$/swriter$/guide$/jump2statusbar.xhp \
    text$/swriter$/guide$/keyboard.xhp \
-   text$/swriter$/guide$/link_edit.xhp \
    text$/swriter$/guide$/load_styles.xhp \
    text$/swriter$/guide$/main.xhp \
    text$/swriter$/guide$/navigator.xhp \
@@ -386,6 +384,7 @@ LINKLINKFILES= \
    text$/swriter$/guide$/select_language.xhp \
    text$/swriter$/guide$/send2html.xhp \
    text$/swriter$/guide$/shortcut_writing.xhp \
+   text$/swriter$/guide$/smarttags.xhp \
    text$/swriter$/guide$/spellcheck_dialog.xhp \
    text$/swriter$/guide$/stylist_fillformat.xhp \
    text$/swriter$/guide$/stylist_fromselect.xhp \
@@ -712,6 +711,7 @@ LINKLINKFILES= \
    text$/shared$/01$/06040400.xhp \
    text$/shared$/01$/06040500.xhp \
    text$/shared$/01$/06040600.xhp \
+   text$/shared$/01$/06040700.xhp \
    text$/shared$/01$/06050000.xhp \
    text$/shared$/01$/06050100.xhp \
    text$/shared$/01$/06050200.xhp \
@@ -1332,6 +1332,7 @@ LINKLINKFILES= \
    text$/schart$/01$/04030000.xhp \
    text$/schart$/01$/04040000.xhp \
    text$/schart$/01$/04050000.xhp \
+   text$/schart$/01$/04050100.xhp \
    text$/schart$/01$/04060000.xhp \
    text$/schart$/01$/04070000.xhp \
    text$/schart$/01$/05010000.xhp \
@@ -1352,7 +1353,6 @@ LINKLINKFILES= \
    text$/schart$/01$/05060000.xhp \
    text$/schart$/01$/05070000.xhp \
    text$/schart$/01$/05080000.xhp \
-   text$/schart$/01$/05110000.xhp \
    text$/schart$/01$/05120000.xhp \
    text$/schart$/01$/choose_chart_type.xhp \
    text$/schart$/01$/smooth_line_properties.xhp \
