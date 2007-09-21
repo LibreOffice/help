@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-08-27 15:00:59 $
+#*    last change       $Author: vg $ $Date: 2007-09-21 10:21:07 $
 #*
-#*    $Revision: 1.32 $
+#*    $Revision: 1.33 $
 #*
 #*    $Logfile:$
 #*
@@ -83,6 +83,15 @@ LINKLINKFILES= \
    text$/smath$/01$/03091300.xhp \
    text$/smath$/01$/03091400.xhp \
    text$/smath$/01$/03091500.xhp \
+   text$/smath$/01$/03091501.xhp \
+   text$/smath$/01$/03091502.xhp \
+   text$/smath$/01$/03091503.xhp \
+   text$/smath$/01$/03091504.xhp \
+   text$/smath$/01$/03091505.xhp \
+   text$/smath$/01$/03091506.xhp \
+   text$/smath$/01$/03091507.xhp \
+   text$/smath$/01$/03091508.xhp \
+   text$/smath$/01$/03091509.xhp \
    text$/smath$/01$/03091600.xhp \
    text$/smath$/01$/05010000.xhp \
    text$/smath$/01$/05010100.xhp \
@@ -103,6 +112,7 @@ LINKLINKFILES= \
    text$/smath$/guide$/main.xhp \
    text$/smath$/guide$/newline.xhp \
    text$/smath$/guide$/parentheses.xhp \
+   text$/smath$/guide$/text.xhp \
    text$/smath$/main0000.xhp \
    text$/smath$/main0100.xhp \
    text$/smath$/main0101.xhp \
@@ -384,6 +394,7 @@ LINKLINKFILES= \
    text$/shared$/01$/06040400.xhp \
    text$/shared$/01$/06040500.xhp \
    text$/shared$/01$/06040600.xhp \
+   text$/shared$/01$/06040700.xhp \
    text$/shared$/01$/06050000.xhp \
    text$/shared$/01$/06050100.xhp \
    text$/shared$/01$/06050200.xhp \
