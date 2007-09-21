@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 12:49:16 $
+#*    last change       $Author: vg $ $Date: 2007-09-21 10:14:25 $
 #*
-#*    $Revision: 1.7 $
+#*    $Revision: 1.8 $
 #*
 #*    $Logfile:$
 #*
@@ -39,7 +39,8 @@ XHPFILES = \
    keyboard.xhp \
    main.xhp \
    newline.xhp \
-   parentheses.xhp 
+   parentheses.xhp \
+   text.xhp 
     
 # --- Targets ------------------------------------------------------
 
