@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2006-08-14 15:01:45 $
+#*    last change       $Author: vg $ $Date: 2007-09-21 09:46:36 $
 #*
-#*    $Revision: 1.14 $
+#*    $Revision: 1.15 $
 #*
 #*    $Logfile:$
 #*
@@ -86,6 +86,7 @@ XHPFILES = \
    main.xhp \
    mark_cells.xhp \
    matrixformula.xhp \
+   move_dragdrop.xhp \
    multi_tables.xhp \
    multioperation.xhp \
    multitables.xhp \
