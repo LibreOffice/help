@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-08-31 16:37:18 $
+#*    last change       $Author: vg $ $Date: 2007-09-21 10:20:03 $
 #*
-#*    $Revision: 1.22 $
+#*    $Revision: 1.23 $
 #*
 #*    $Logfile:$
 #*
@@ -317,6 +317,7 @@ LINKLINKFILES= \
    text$/shared$/01$/06040400.xhp \
    text$/shared$/01$/06040500.xhp \
    text$/shared$/01$/06040600.xhp \
+   text$/shared$/01$/06040700.xhp \
    text$/shared$/01$/06050000.xhp \
    text$/shared$/01$/06050100.xhp \
    text$/shared$/01$/06050200.xhp \
@@ -936,6 +937,7 @@ LINKLINKFILES= \
    text$/schart$/01$/04030000.xhp \
    text$/schart$/01$/04040000.xhp \
    text$/schart$/01$/04050000.xhp \
+   text$/schart$/01$/04050100.xhp \
    text$/schart$/01$/04060000.xhp \
    text$/schart$/01$/04070000.xhp \
    text$/schart$/01$/05010000.xhp \
@@ -956,7 +958,6 @@ LINKLINKFILES= \
    text$/schart$/01$/05060000.xhp \
    text$/schart$/01$/05070000.xhp \
    text$/schart$/01$/05080000.xhp \
-   text$/schart$/01$/05110000.xhp \
    text$/schart$/01$/05120000.xhp \
    text$/schart$/01$/choose_chart_type.xhp \
    text$/schart$/01$/smooth_line_properties.xhp \
