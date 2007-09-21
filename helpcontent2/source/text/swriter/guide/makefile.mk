@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2007-04-02 15:55:41 $
+#*    last change       $Author: vg $ $Date: 2007-09-21 10:18:46 $
 #*
-#*    $Revision: 1.14 $
+#*    $Revision: 1.15 $
 #*
 #*    $Logfile:$
 #*
@@ -97,7 +97,6 @@ XHPFILES = \
    join_numbered_lists.xhp \
    jump2statusbar.xhp \
    keyboard.xhp \
-   link_edit.xhp \
    load_styles.xhp \
    main.xhp \
    navigator.xhp \
@@ -130,6 +129,7 @@ XHPFILES = \
    select_language.xhp \
    send2html.xhp \
    shortcut_writing.xhp \
+   smarttags.xhp \
    spellcheck_dialog.xhp \
    stylist_fillformat.xhp \
    stylist_fromselect.xhp \
