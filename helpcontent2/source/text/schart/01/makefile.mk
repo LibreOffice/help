@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-05-22 15:49:48 $
+#*    last change       $Author: vg $ $Date: 2007-09-21 09:48:14 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -38,6 +38,7 @@ XHPFILES = \
    04030000.xhp \
    04040000.xhp \
    04050000.xhp \
+   04050100.xhp \
    04060000.xhp \
    04070000.xhp \
    05010000.xhp \
@@ -58,7 +59,6 @@ XHPFILES = \
    05060000.xhp \
    05070000.xhp \
    05080000.xhp \
-   05110000.xhp \
    05120000.xhp \
    choose_chart_type.xhp \
    smooth_line_properties.xhp \
