@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: obo $ $Date: 2007-01-25 15:32:14 $
+#*    last change       $Author: rt $ $Date: 2007-11-06 15:56:17 $
 #*
-#*    $Revision: 1.12 $
+#*    $Revision: 1.13 $
 #*
 #*    $Logfile:$
 #*
@@ -38,9 +38,9 @@ ALLTAR : aux_dirs $(COMMONMISC)$/treefiles.done $(COMMONBIN)$/helpimg.ilst
 
 .IF "$(WITH_LANG)"!=""
 .IF "$(GUI)"=="UNX" || "$(USE_SHELL)"!="4nt"
-t_aux_langdirs:=$(shell find ./ -name "*.cfg" | sed "s/\.\/\///" | sed "s/\.\///" )
+t_aux_langdirs:=$(shell @find ./ -name "*.cfg" | sed "s/\.\/\///" | sed "s/\.\///" )
 .ELSE           # "$(GUI)"=="UNX" || "$(USE_SHELL)"!="4nt"
-t_aux_langdirs:=$(subst,./, $(shell $(FIND) ./ -name "*.cfg"))
+t_aux_langdirs:=$(subst,./, $(shell @$(FIND) ./ -name "*.cfg"))
 .ENDIF          # "$(GUI)"=="UNX" || "$(USE_SHELL)"!="4nt"
 
 aux_langdirs:=$(uniq $(t_aux_langdirs:d:d))
