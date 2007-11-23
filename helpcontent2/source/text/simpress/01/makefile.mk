@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 12:47:42 $
+#*    last change       $Author: ihi $ $Date: 2007-11-23 17:52:53 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -82,11 +82,6 @@ XHPFILES = \
    05120000.xhp \
    05120100.xhp \
    05130000.xhp \
-   05130005.xhp \
-   05130006.xhp \
-   05130007.xhp \
-   05130008.xhp \
-   05130009.xhp \
    05140000.xhp \
    05150000.xhp \
    05170000.xhp \
