@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-09-21 10:20:03 $
+#*    last change       $Author: ihi $ $Date: 2007-11-23 18:24:25 $
 #*
-#*    $Revision: 1.23 $
+#*    $Revision: 1.24 $
 #*
 #*    $Logfile:$
 #*
@@ -336,7 +336,6 @@ LINKLINKFILES= \
    text$/shared$/01$/06140102.xhp \
    text$/shared$/01$/06140200.xhp \
    text$/shared$/01$/06140400.xhp \
-   text$/shared$/01$/06140401.xhp \
    text$/shared$/01$/06140402.xhp \
    text$/shared$/01$/06140500.xhp \
    text$/shared$/01$/06150000.xhp \
@@ -371,6 +370,7 @@ LINKLINKFILES= \
    text$/shared$/01$/ref_pdf_send_as.xhp \
    text$/shared$/01$/securitywarning.xhp \
    text$/shared$/01$/selectcertificate.xhp \
+   text$/shared$/01$/webhtml.xhp \
    text$/shared$/01$/xformsdata.xhp \
    text$/shared$/01$/xformsdataadd.xhp \
    text$/shared$/01$/xformsdataaddcon.xhp \
@@ -774,6 +774,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/fontwork.xhp \
    text$/shared$/guide$/formfields.xhp \
    text$/shared$/guide$/gallery_insert.xhp \
+   text$/shared$/guide$/groups.xhp \
    text$/shared$/guide$/hyperlink_edit.xhp \
    text$/shared$/guide$/hyperlink_insert.xhp \
    text$/shared$/guide$/hyperlink_rel_abs.xhp \
