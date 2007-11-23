@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-09-21 10:21:19 $
+#*    last change       $Author: ihi $ $Date: 2007-11-23 18:25:44 $
 #*
-#*    $Revision: 1.37 $
+#*    $Revision: 1.38 $
 #*
 #*    $Logfile:$
 #*
@@ -180,9 +180,7 @@ LINKLINKFILES= \
    text$/swriter$/01$/05120500.xhp \
    text$/swriter$/01$/05120600.xhp \
    text$/swriter$/01$/05130000.xhp \
-   text$/swriter$/01$/05130001.xhp \
    text$/swriter$/01$/05130002.xhp \
-   text$/swriter$/01$/05130003.xhp \
    text$/swriter$/01$/05130004.xhp \
    text$/swriter$/01$/05130100.xhp \
    text$/swriter$/01$/05140000.xhp \
@@ -238,6 +236,7 @@ LINKLINKFILES= \
    text$/swriter$/01$/mm_seladdblo.xhp \
    text$/swriter$/01$/mm_seladdlis.xhp \
    text$/swriter$/01$/mm_seltab.xhp \
+   text$/swriter$/01$/selection_mode.xhp \
    text$/swriter$/02$/02110000.xhp \
    text$/swriter$/02$/03210000.xhp \
    text$/swriter$/02$/03220000.xhp \
@@ -730,7 +729,6 @@ LINKLINKFILES= \
    text$/shared$/01$/06140102.xhp \
    text$/shared$/01$/06140200.xhp \
    text$/shared$/01$/06140400.xhp \
-   text$/shared$/01$/06140401.xhp \
    text$/shared$/01$/06140402.xhp \
    text$/shared$/01$/06140500.xhp \
    text$/shared$/01$/06150000.xhp \
@@ -1169,6 +1167,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/fontwork.xhp \
    text$/shared$/guide$/formfields.xhp \
    text$/shared$/guide$/gallery_insert.xhp \
+   text$/shared$/guide$/groups.xhp \
    text$/shared$/guide$/hyperlink_edit.xhp \
    text$/shared$/guide$/hyperlink_insert.xhp \
    text$/shared$/guide$/hyperlink_rel_abs.xhp \
