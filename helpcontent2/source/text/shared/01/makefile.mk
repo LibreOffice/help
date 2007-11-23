@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-09-21 09:56:44 $
+#*    last change       $Author: ihi $ $Date: 2007-11-23 17:05:18 $
 #*
-#*    $Revision: 1.18 $
+#*    $Revision: 1.19 $
 #*
 #*    $Logfile:$
 #*
@@ -278,7 +278,6 @@ XHPFILES = \
    06140102.xhp \
    06140200.xhp \
    06140400.xhp \
-   06140401.xhp \
    06140402.xhp \
    06140500.xhp \
    06150000.xhp \
