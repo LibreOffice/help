@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-08-27 14:58:06 $
+#*    last change       $Author: ihi $ $Date: 2007-11-23 18:08:21 $
 #*
-#*    $Revision: 1.9 $
+#*    $Revision: 1.10 $
 #*
 #*    $Logfile:$
 #*
@@ -157,9 +157,7 @@ XHPFILES = \
    05120500.xhp \
    05120600.xhp \
    05130000.xhp \
-   05130001.xhp \
    05130002.xhp \
-   05130003.xhp \
    05130004.xhp \
    05130100.xhp \
    05140000.xhp \
@@ -214,7 +212,8 @@ XHPFILES = \
    mm_newaddlis.xhp \
    mm_seladdblo.xhp \
    mm_seladdlis.xhp \
-   mm_seltab.xhp 
+   mm_seltab.xhp \
+   selection_mode.xhp 
     
 # --- Targets ------------------------------------------------------
 
