@@ -7,9 +7,9 @@
  *
  *  $RCSfile: 04060109.xhp,v $fileonly,v $
  *
- *  $Revision: 1.14 $
+ *  $Revision: 1.15 $
  *
- *  last change: $Author: vg $ $Date: 2007-09-21 09:44:18 $
+ *  last change: $Author: ihi $ $Date: 2007-11-23 16:24:37 $
  *
  *  The Contents of this file are made available subject to
  *  the terms of GNU Lesser General Public License Version 2.1.
@@ -516,15 +516,15 @@
 <paragraph role="paragraph" id="par_id4809411" xml-lang="en-US" l10n="NEW">If no <emph>Field n / Item n</emph> pairs are given, the grand total is returned. Otherwise, each pair adds a constraint that the result must satisfy. <emph>Field n</emph> is the name of a field from the DataPilot table. <emph>Item n</emph> is the name of an item from that field.</paragraph>
 <paragraph role="paragraph" id="par_id6454969" xml-lang="en-US" l10n="NEW">If the DataPilot table contains only a single result value that fulfills all of the constraints, or a subtotal result that summarizes all matching values, that result is returned. If there is no matching result, or several ones without a subtotal for them, an error is returned. These conditions apply to results that are included in the DataPilot table.</paragraph>
 <paragraph role="paragraph" id="par_id79042" xml-lang="en-US" l10n="NEW">If the source data contains entries that are hidden by settings of the DataPilot table, they are ignored. The order of the Field/Item pairs is not significant. Field and item names are not case-sensitive.</paragraph>
-<paragraph role="paragraph" id="par_id7928708" xml-lang="en-US" l10n="NEW">If no constraint for a page field is given, the field's selected value is implicitly used. If a constraint for a page field is given, it must match the field's selected value, or an error is returned.</paragraph>
+<paragraph role="paragraph" id="par_id7928708" xml-lang="en-US" l10n="CHG">If no constraint for a page field is given, the field's selected value is implicitly used. If a constraint for a page field is given, it must match the field's selected value, or an error is returned. Page fields are the fields at the top left of a DataPilot table, populated using the "Page Fields" area of the DataPilot Layout dialog. From each page field, an item (value) can be selected, which means only that item is included in the calculation.</paragraph>
 <paragraph role="paragraph" id="par_id3864253" xml-lang="en-US" l10n="NEW">Subtotal values from the DataPilot table are only used if they use the function "auto" (except when specified in the constraint, see <item type="literal">Second Syntax</item> below).</paragraph>
 <paragraph role="heading" id="hd_id3144016" xml-lang="en-US" level="3" l10n="NEW">Second Syntax</paragraph>
 <paragraph role="paragraph" id="par_id9937131" xml-lang="en-US" l10n="NEW">
 <emph>DataPilot</emph> has the same meaning as in the first syntax.</paragraph>
-<paragraph role="paragraph" id="par_id5616626" xml-lang="en-US" l10n="NEW">
-<emph>Constraints</emph> is a space-separated list. Entries can be quoted (single quotes). </paragraph>
+<paragraph role="paragraph" id="par_id5616626" xml-lang="en-US" l10n="CHG">
+<emph>Constraints</emph> is a space-separated list. Entries can be quoted (single quotes). The whole string must be enclosed in quotes (double quotes), unless you reference the string from another cell.</paragraph>
 <paragraph role="paragraph" id="par_id4076357" xml-lang="en-US" l10n="NEW">One of the entries can be the data field name. The data field name can be left out if the DataPilot table contains only one data field, otherwise it must be present. </paragraph>
-<paragraph role="paragraph" id="par_id8231757" xml-lang="en-US" l10n="NEW">Each of the other entries specifies a constraint in the form <item type="literal">Field[Item]</item>. The item must be enclosed in square brackets, unless the item name is unique within all fields that are used in the DataPilot table. </paragraph>
+<paragraph role="paragraph" id="par_id8231757" xml-lang="en-US" l10n="CHG">Each of the other entries specifies a constraint in the form <item type="literal">Field[Item]</item> (with literal characters [ and ]), or only <item type="literal">Item</item> if the item name is unique within all fields that are used in the DataPilot table.<comment>i82342</comment></paragraph>
 <paragraph role="paragraph" id="par_id3168736" xml-lang="en-US" l10n="NEW">A function name can be added in the form <emph>Field[Item;Function]</emph>, which will cause the constraint to match only subtotal values which use that function. The possible function names are Sum, Count, Average, Max, Min, Product, CountNums, StDev, StDevp, Var, and Varp, case-insensitive.</paragraph><comment>UFI: Example from spec doc is quite difficult to localize. Try to find other one</comment></section>
 </sort></body>
 </helpdocument>
