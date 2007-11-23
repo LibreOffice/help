@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-09-21 10:19:37 $
+#*    last change       $Author: ihi $ $Date: 2007-11-23 18:23:58 $
 #*
-#*    $Revision: 1.34 $
+#*    $Revision: 1.35 $
 #*
 #*    $Logfile:$
 #*
@@ -633,7 +633,6 @@ LINKLINKFILES= \
    text$/shared$/01$/06140102.xhp \
    text$/shared$/01$/06140200.xhp \
    text$/shared$/01$/06140400.xhp \
-   text$/shared$/01$/06140401.xhp \
    text$/shared$/01$/06140402.xhp \
    text$/shared$/01$/06140500.xhp \
    text$/shared$/01$/06150000.xhp \
@@ -1072,6 +1071,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/fontwork.xhp \
    text$/shared$/guide$/formfields.xhp \
    text$/shared$/guide$/gallery_insert.xhp \
+   text$/shared$/guide$/groups.xhp \
    text$/shared$/guide$/hyperlink_edit.xhp \
    text$/shared$/guide$/hyperlink_insert.xhp \
    text$/shared$/guide$/hyperlink_rel_abs.xhp \
