@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2006-08-14 15:44:31 $
+#*    last change       $Author: ihi $ $Date: 2007-11-23 17:38:28 $
 #*
-#*    $Revision: 1.10 $
+#*    $Revision: 1.11 $
 #*
 #*    $Logfile:$
 #*
@@ -93,6 +93,7 @@ XHPFILES = \
    fontwork.xhp \
    formfields.xhp \
    gallery_insert.xhp \
+   groups.xhp \
    hyperlink_edit.xhp \
    hyperlink_insert.xhp \
    hyperlink_rel_abs.xhp \
