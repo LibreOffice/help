@@ -7,9 +7,9 @@
  *
  *  $RCSfile: 04060107.xhp,v $fileonly,v $
  *
- *  $Revision: 1.12 $
+ *  $Revision: 1.13 $
  *
- *  last change: $Author: vg $ $Date: 2007-09-21 09:44:03 $
+ *  last change: $Author: ihi $ $Date: 2007-11-23 16:24:21 $
  *
  *  The Contents of this file are made available subject to
  *  the terms of GNU Lesser General Public License Version 2.1.
@@ -49,6 +49,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3147273"><bookmark_value>matrices; functions</bookmark_value>
 <bookmark_value>Function Wizard; arrays</bookmark_value>
 <bookmark_value>array formulas</bookmark_value>
+<bookmark_value>inline array constants</bookmark_value>
 <bookmark_value>formulas;arrays</bookmark_value>
 <bookmark_value>functions;array functions</bookmark_value>
 <bookmark_value>editing; array formulas</bookmark_value>
@@ -142,6 +143,22 @@
 <paragraph role="note" id="par_id3151120" xml-lang="en-US" l10n="U" oldref="315">Array formulas appear in braces in $[officename] Calc. You cannot create array formulas by manually entering the braces.</paragraph>
 </section>
 <paragraph role="paragraph" id="par_id3154342" xml-lang="en-US" l10n="U" oldref="5">The cells in a results array are automatically protected against changes. However, you can edit or copy the array formula by selecting the entire array cell range.</paragraph>
+<paragraph role="heading" id="hd_id8834803" xml-lang="en-US" level="3" l10n="NEW">Using Inline Array Constants in Formulas</paragraph>
+<paragraph role="paragraph" id="par_id985747" xml-lang="en-US" l10n="NEW">Calc supports inline matrix/array constants in formulas. An inline array is surrounded by curly braces '{' and '}'. Elements can be each a number (including negatives), a logical constant (TRUE, FALSE), or a literal string. Non-constant expressions are not allowed. Arrays can be entered with one or more rows, and one or more columns. All rows must consist of the same number of elements, all columns must consist of the same number of elements. </paragraph>
+<paragraph role="paragraph" id="par_id936613" xml-lang="en-US" l10n="NEW">The column separator (separating elements in one row) is the ';' semicolon. The row separator is a '|' pipe symbol. The separators are not language and locale dependent. </paragraph>
+<paragraph role="paragraph" id="par_id1877498" xml-lang="en-US" l10n="NEW">Arrays can not be nested.</paragraph>
+<paragraph role="paragraph" id="par_id4262520" xml-lang="en-US" l10n="NEW">
+<emph>Examples:</emph>
+</paragraph>
+<paragraph role="code" id="par_id9387493" xml-lang="en-US" l10n="NEW">={1;2;3}</paragraph>
+<paragraph role="paragraph" id="par_id8207037" xml-lang="en-US" l10n="NEW">An array with one row consisting of the three numbers 1, 2, and 3.</paragraph>
+<paragraph role="paragraph" id="par_id6757103" xml-lang="en-US" l10n="NEW">To enter this array constant, you select three cells in a row, then you type the formula <item type="literal">={1;2;3}</item> using the curly braces and the semicolons, then press <item type="keycode">Ctrl+Shift+Enter</item>.</paragraph>
+<paragraph role="code" id="par_id8868068" xml-lang="en-US" l10n="NEW">={1;2;3|4;5;6}</paragraph>
+<paragraph role="paragraph" id="par_id6626483" xml-lang="en-US" l10n="NEW">An array with two rows and three values in each row.</paragraph>
+<paragraph role="code" id="par_id5262916" xml-lang="en-US" l10n="NEW">={0;1;2|FALSE;TRUE;"two"}</paragraph>
+<paragraph role="paragraph" id="par_id1623889" xml-lang="en-US" l10n="NEW">A mixed data array.</paragraph>
+<paragraph role="code" id="par_id7781914" xml-lang="en-US" l10n="NEW">=SIN({1;2;3})</paragraph>
+<paragraph role="paragraph" id="par_id300912" xml-lang="en-US" l10n="NEW">Entered as a matrix formula, delivers the result of three SIN calculations with the arguments 1, 2, and 3.</paragraph>
 <paragraph role="heading" id="hd_id3148660" xml-lang="en-US" level="3" l10n="U" oldref="316">Editing Array Formulas</paragraph>
 <list type="ordered">
 <listitem>
