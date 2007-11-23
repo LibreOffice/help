@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-09-21 10:19:50 $
+#*    last change       $Author: ihi $ $Date: 2007-11-23 18:24:12 $
 #*
-#*    $Revision: 1.38 $
+#*    $Revision: 1.39 $
 #*
 #*    $Logfile:$
 #*
@@ -141,7 +141,6 @@ LINKLINKFILES= \
    text$/scalc$/01$/05100000.xhp \
    text$/scalc$/01$/05110000.xhp \
    text$/scalc$/01$/05120000.xhp \
-   text$/scalc$/01$/05130005.xhp \
    text$/scalc$/01$/06020000.xhp \
    text$/scalc$/01$/06030000.xhp \
    text$/scalc$/01$/06030100.xhp \
@@ -230,6 +229,7 @@ LINKLINKFILES= \
    text$/scalc$/01$/func_workday.xhp \
    text$/scalc$/01$/func_year.xhp \
    text$/scalc$/01$/func_yearfrac.xhp \
+   text$/scalc$/01$/text2columns.xhp \
    text$/scalc$/02$/02130000.xhp \
    text$/scalc$/02$/02140000.xhp \
    text$/scalc$/02$/02150000.xhp \
@@ -259,6 +259,7 @@ LINKLINKFILES= \
    text$/scalc$/guide$/calc_series.xhp \
    text$/scalc$/guide$/calc_timevalues.xhp \
    text$/scalc$/guide$/calculate.xhp \
+   text$/scalc$/guide$/cell_enter.xhp \
    text$/scalc$/guide$/cell_protect.xhp \
    text$/scalc$/guide$/cell_unprotect.xhp \
    text$/scalc$/guide$/cellcopy.xhp \
@@ -641,7 +642,6 @@ LINKLINKFILES= \
    text$/shared$/01$/06140102.xhp \
    text$/shared$/01$/06140200.xhp \
    text$/shared$/01$/06140400.xhp \
-   text$/shared$/01$/06140401.xhp \
    text$/shared$/01$/06140402.xhp \
    text$/shared$/01$/06140500.xhp \
    text$/shared$/01$/06150000.xhp \
@@ -1080,6 +1080,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/fontwork.xhp \
    text$/shared$/guide$/formfields.xhp \
    text$/shared$/guide$/gallery_insert.xhp \
+   text$/shared$/guide$/groups.xhp \
    text$/shared$/guide$/hyperlink_edit.xhp \
    text$/shared$/guide$/hyperlink_insert.xhp \
    text$/shared$/guide$/hyperlink_rel_abs.xhp \
