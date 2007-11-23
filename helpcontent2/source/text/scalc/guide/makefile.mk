@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-09-21 09:46:36 $
+#*    last change       $Author: ihi $ $Date: 2007-11-23 16:32:42 $
 #*
-#*    $Revision: 1.15 $
+#*    $Revision: 1.16 $
 #*
 #*    $Logfile:$
 #*
@@ -41,6 +41,7 @@ XHPFILES = \
    calc_series.xhp \
    calc_timevalues.xhp \
    calculate.xhp \
+   cell_enter.xhp \
    cell_protect.xhp \
    cell_unprotect.xhp \
    cellcopy.xhp \
