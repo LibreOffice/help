@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-09-21 10:20:55 $
+#*    last change       $Author: ihi $ $Date: 2007-11-23 18:25:15 $
 #*
-#*    $Revision: 1.34 $
+#*    $Revision: 1.35 $
 #*
 #*    $Logfile:$
 #*
@@ -139,11 +139,6 @@ LINKLINKFILES= \
    text$/simpress$/01$/05120000.xhp \
    text$/simpress$/01$/05120100.xhp \
    text$/simpress$/01$/05130000.xhp \
-   text$/simpress$/01$/05130005.xhp \
-   text$/simpress$/01$/05130006.xhp \
-   text$/simpress$/01$/05130007.xhp \
-   text$/simpress$/01$/05130008.xhp \
-   text$/simpress$/01$/05130009.xhp \
    text$/simpress$/01$/05140000.xhp \
    text$/simpress$/01$/05150000.xhp \
    text$/simpress$/01$/05170000.xhp \
@@ -574,7 +569,6 @@ LINKLINKFILES= \
    text$/shared$/01$/06140102.xhp \
    text$/shared$/01$/06140200.xhp \
    text$/shared$/01$/06140400.xhp \
-   text$/shared$/01$/06140401.xhp \
    text$/shared$/01$/06140402.xhp \
    text$/shared$/01$/06140500.xhp \
    text$/shared$/01$/06150000.xhp \
@@ -1013,6 +1007,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/fontwork.xhp \
    text$/shared$/guide$/formfields.xhp \
    text$/shared$/guide$/gallery_insert.xhp \
+   text$/shared$/guide$/groups.xhp \
    text$/shared$/guide$/hyperlink_edit.xhp \
    text$/shared$/guide$/hyperlink_insert.xhp \
    text$/shared$/guide$/hyperlink_rel_abs.xhp \
