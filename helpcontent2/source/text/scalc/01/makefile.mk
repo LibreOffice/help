@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-08-27 14:31:05 $
+#*    last change       $Author: ihi $ $Date: 2007-11-23 16:28:13 $
 #*
-#*    $Revision: 1.9 $
+#*    $Revision: 1.10 $
 #*
 #*    $Logfile:$
 #*
@@ -117,7 +117,6 @@ XHPFILES = \
    05100000.xhp \
    05110000.xhp \
    05120000.xhp \
-   05130005.xhp \
    06020000.xhp \
    06030000.xhp \
    06030100.xhp \
@@ -205,7 +204,8 @@ XHPFILES = \
    func_weeknumadd.xhp \
    func_workday.xhp \
    func_year.xhp \
-   func_yearfrac.xhp 
+   func_yearfrac.xhp \
+   text2columns.xhp 
     
 # --- Targets ------------------------------------------------------
 
