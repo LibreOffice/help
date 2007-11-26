@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2007-11-23 18:25:15 $
+#*    last change       $Author: ihi $ $Date: 2007-11-26 14:31:04 $
 #*
-#*    $Revision: 1.35 $
+#*    $Revision: 1.36 $
 #*
 #*    $Logfile:$
 #*
@@ -219,10 +219,6 @@ LINKLINKFILES= \
    text$/simpress$/02$/13170000.xhp \
    text$/simpress$/02$/13180000.xhp \
    text$/simpress$/02$/13190000.xhp \
-   text$/simpress$/02$/13200000.xhp \
-   text$/simpress$/02$/13210000.xhp \
-   text$/simpress$/02$/13220000.xhp \
-   text$/simpress$/02$/13230000.xhp \
    text$/simpress$/04$/01020000.xhp \
    text$/simpress$/guide$/3d_create.xhp \
    text$/simpress$/guide$/animated_gif_create.xhp \
