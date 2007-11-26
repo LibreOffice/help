@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-08-27 14:53:19 $
+#*    last change       $Author: ihi $ $Date: 2007-11-26 14:27:56 $
 #*
-#*    $Revision: 1.8 $
+#*    $Revision: 1.9 $
 #*
 #*    $Logfile:$
 #*
@@ -73,11 +73,7 @@ XHPFILES = \
    13160000.xhp \
    13170000.xhp \
    13180000.xhp \
-   13190000.xhp \
-   13200000.xhp \
-   13210000.xhp \
-   13220000.xhp \
-   13230000.xhp 
+   13190000.xhp 
     
 # --- Targets ------------------------------------------------------
 
