@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2007-11-23 18:25:27 $
+#*    last change       $Author: vg $ $Date: 2008-01-24 14:17:47 $
 #*
-#*    $Revision: 1.34 $
+#*    $Revision: 1.35 $
 #*
 #*    $Logfile:$
 #*
@@ -109,6 +109,7 @@ LINKLINKFILES= \
    text$/smath$/guide$/brackets.xhp \
    text$/smath$/guide$/comment.xhp \
    text$/smath$/guide$/keyboard.xhp \
+   text$/smath$/guide$/limits.xhp \
    text$/smath$/guide$/main.xhp \
    text$/smath$/guide$/newline.xhp \
    text$/smath$/guide$/parentheses.xhp \
