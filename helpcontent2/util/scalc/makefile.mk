@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2007-11-23 18:24:12 $
+#*    last change       $Author: rt $ $Date: 2008-01-29 15:32:29 $
 #*
-#*    $Revision: 1.39 $
+#*    $Revision: 1.40 $
 #*
 #*    $Logfile:$
 #*
@@ -189,6 +189,7 @@ LINKLINKFILES= \
    text$/scalc$/01$/12080400.xhp \
    text$/scalc$/01$/12080500.xhp \
    text$/scalc$/01$/12080600.xhp \
+   text$/scalc$/01$/12080700.xhp \
    text$/scalc$/01$/12090000.xhp \
    text$/scalc$/01$/12090100.xhp \
    text$/scalc$/01$/12090101.xhp \
