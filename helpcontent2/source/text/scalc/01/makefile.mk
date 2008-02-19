@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2008-01-29 15:13:30 $
+#*    last change       $Author: rt $ $Date: 2008-02-19 22:36:27 $
 #*
-#*    $Revision: 1.11 $
+#*    $Revision: 1.12 $
 #*
 #*    $Logfile:$
 #*
@@ -206,6 +206,8 @@ XHPFILES = \
    func_workday.xhp \
    func_year.xhp \
    func_yearfrac.xhp \
+   solver.xhp \
+   solver_options.xhp \
    text2columns.xhp 
     
 # --- Targets ------------------------------------------------------
