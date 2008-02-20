@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2007-09-21 10:18:46 $
+#*    last change       $Author: rt $ $Date: 2008-02-20 01:56:16 $
 #*
-#*    $Revision: 1.15 $
+#*    $Revision: 1.16 $
 #*
 #*    $Logfile:$
 #*
@@ -69,12 +69,15 @@ XHPFILES = \
    footnote_with_line.xhp \
    form_letters_main.xhp \
    globaldoc.xhp \
+   globaldoc_howtos.xhp \
    header_footer.xhp \
    header_pagestyles.xhp \
    header_with_chapter.xhp \
    header_with_line.xhp \
    hidden_text.xhp \
+   hidden_text_display.xhp \
    hyperlinks.xhp \
+   hyphen_prevent.xhp \
    indenting.xhp \
    indices_delete.xhp \
    indices_edit.xhp \
@@ -100,6 +103,7 @@ XHPFILES = \
    load_styles.xhp \
    main.xhp \
    navigator.xhp \
+   nonprintable_text.xhp \
    number_date_conv.xhp \
    number_sequence.xhp \
    numbering_lines.xhp \
@@ -161,6 +165,7 @@ XHPFILES = \
    using_numbering.xhp \
    using_thesaurus.xhp \
    word_completion.xhp \
+   word_completion_adjust.xhp \
    words_count.xhp \
    wrap.xhp 
     
