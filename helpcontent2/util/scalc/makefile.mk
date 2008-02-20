@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2008-01-29 15:32:29 $
+#*    last change       $Author: rt $ $Date: 2008-02-20 01:57:43 $
 #*
-#*    $Revision: 1.40 $
+#*    $Revision: 1.41 $
 #*
 #*    $Logfile:$
 #*
@@ -230,6 +230,8 @@ LINKLINKFILES= \
    text$/scalc$/01$/func_workday.xhp \
    text$/scalc$/01$/func_year.xhp \
    text$/scalc$/01$/func_yearfrac.xhp \
+   text$/scalc$/01$/solver.xhp \
+   text$/scalc$/01$/solver_options.xhp \
    text$/scalc$/01$/text2columns.xhp \
    text$/scalc$/02$/02130000.xhp \
    text$/scalc$/02$/02140000.xhp \
@@ -365,7 +367,6 @@ LINKLINKFILES= \
    text$/shared$/00$/00000011.xhp \
    text$/shared$/00$/00000020.xhp \
    text$/shared$/00$/00000021.xhp \
-   text$/shared$/00$/00000040.xhp \
    text$/shared$/00$/00000099.xhp \
    text$/shared$/00$/00000202.xhp \
    text$/shared$/00$/00000203.xhp \
