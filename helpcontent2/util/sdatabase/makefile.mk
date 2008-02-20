@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2007-11-23 18:24:38 $
+#*    last change       $Author: rt $ $Date: 2008-02-20 01:58:07 $
 #*
-#*    $Revision: 1.24 $
+#*    $Revision: 1.25 $
 #*
 #*    $Logfile:$
 #*
@@ -56,7 +56,6 @@ LINKLINKFILES= \
    text$/shared$/00$/00000011.xhp \
    text$/shared$/00$/00000020.xhp \
    text$/shared$/00$/00000021.xhp \
-   text$/shared$/00$/00000040.xhp \
    text$/shared$/00$/00000099.xhp \
    text$/shared$/00$/00000202.xhp \
    text$/shared$/00$/00000203.xhp \
