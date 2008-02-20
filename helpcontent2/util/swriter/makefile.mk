@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2007-11-23 18:25:44 $
+#*    last change       $Author: rt $ $Date: 2008-02-20 01:59:05 $
 #*
-#*    $Revision: 1.38 $
+#*    $Revision: 1.39 $
 #*
 #*    $Logfile:$
 #*
@@ -323,12 +323,15 @@ LINKLINKFILES= \
    text$/swriter$/guide$/footnote_with_line.xhp \
    text$/swriter$/guide$/form_letters_main.xhp \
    text$/swriter$/guide$/globaldoc.xhp \
+   text$/swriter$/guide$/globaldoc_howtos.xhp \
    text$/swriter$/guide$/header_footer.xhp \
    text$/swriter$/guide$/header_pagestyles.xhp \
    text$/swriter$/guide$/header_with_chapter.xhp \
    text$/swriter$/guide$/header_with_line.xhp \
    text$/swriter$/guide$/hidden_text.xhp \
+   text$/swriter$/guide$/hidden_text_display.xhp \
    text$/swriter$/guide$/hyperlinks.xhp \
+   text$/swriter$/guide$/hyphen_prevent.xhp \
    text$/swriter$/guide$/indenting.xhp \
    text$/swriter$/guide$/indices_delete.xhp \
    text$/swriter$/guide$/indices_edit.xhp \
@@ -354,6 +357,7 @@ LINKLINKFILES= \
    text$/swriter$/guide$/load_styles.xhp \
    text$/swriter$/guide$/main.xhp \
    text$/swriter$/guide$/navigator.xhp \
+   text$/swriter$/guide$/nonprintable_text.xhp \
    text$/swriter$/guide$/number_date_conv.xhp \
    text$/swriter$/guide$/number_sequence.xhp \
    text$/swriter$/guide$/numbering_lines.xhp \
@@ -415,6 +419,7 @@ LINKLINKFILES= \
    text$/swriter$/guide$/using_numbering.xhp \
    text$/swriter$/guide$/using_thesaurus.xhp \
    text$/swriter$/guide$/word_completion.xhp \
+   text$/swriter$/guide$/word_completion_adjust.xhp \
    text$/swriter$/guide$/words_count.xhp \
    text$/swriter$/guide$/wrap.xhp \
    text$/swriter$/main0000.xhp \
@@ -451,7 +456,6 @@ LINKLINKFILES= \
    text$/shared$/00$/00000011.xhp \
    text$/shared$/00$/00000020.xhp \
    text$/shared$/00$/00000021.xhp \
-   text$/shared$/00$/00000040.xhp \
    text$/shared$/00$/00000099.xhp \
    text$/shared$/00$/00000202.xhp \
    text$/shared$/00$/00000203.xhp \
