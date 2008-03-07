@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2008-03-07 11:54:39 $
+#*    last change       $Author: kz $ $Date: 2008-03-07 12:04:30 $
 #*
-#*    $Revision: 1.37 $
+#*    $Revision: 1.38 $
 #*
 #*    $Logfile:$
 #*
@@ -1025,6 +1025,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/chart_insert.xhp \
    text$/shared$/guide$/chart_legend.xhp \
    text$/shared$/guide$/chart_title.xhp \
+   text$/shared$/guide$/collab.xhp \
    text$/shared$/guide$/configure_overview.xhp \
    text$/shared$/guide$/contextmenu.xhp \
    text$/shared$/guide$/copy_drawfunctions.xhp \
