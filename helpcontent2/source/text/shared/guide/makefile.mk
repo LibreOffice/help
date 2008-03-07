@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2007-11-23 17:38:28 $
+#*    last change       $Author: kz $ $Date: 2008-03-07 12:01:22 $
 #*
-#*    $Revision: 1.11 $
+#*    $Revision: 1.12 $
 #*
 #*    $Logfile:$
 #*
@@ -49,6 +49,7 @@ XHPFILES = \
    chart_insert.xhp \
    chart_legend.xhp \
    chart_title.xhp \
+   collab.xhp \
    configure_overview.xhp \
    contextmenu.xhp \
    copy_drawfunctions.xhp \
