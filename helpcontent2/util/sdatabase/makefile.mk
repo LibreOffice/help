@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2008-03-07 12:05:14 $
+#*    last change       $Author: kz $ $Date: 2008-03-07 12:41:09 $
 #*
-#*    $Revision: 1.27 $
+#*    $Revision: 1.28 $
 #*
 #*    $Logfile:$
 #*
@@ -750,6 +750,8 @@ LINKLINKFILES= \
    text$/shared$/guide$/data_view.xhp \
    text$/shared$/guide$/database_main.xhp \
    text$/shared$/guide$/digital_signatures.xhp \
+   text$/shared$/guide$/digitalsign_receive.xhp \
+   text$/shared$/guide$/digitalsign_send.xhp \
    text$/shared$/guide$/doc_autosave.xhp \
    text$/shared$/guide$/doc_open.xhp \
    text$/shared$/guide$/doc_save.xhp \
@@ -830,6 +832,8 @@ LINKLINKFILES= \
    text$/shared$/guide$/workfolder.xhp \
    text$/shared$/guide$/xforms.xhp \
    text$/shared$/guide$/xsltfilter.xhp \
+   text$/shared$/guide$/xsltfilter_create.xhp \
+   text$/shared$/guide$/xsltfilter_distribute.xhp \
    text$/shared$/main0108.xhp \
    text$/shared$/main0201.xhp \
    text$/shared$/main0208.xhp \
