@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2007-11-23 16:32:42 $
+#*    last change       $Author: kz $ $Date: 2008-03-07 12:14:49 $
 #*
-#*    $Revision: 1.16 $
+#*    $Revision: 1.17 $
 #*
 #*    $Logfile:$
 #*
@@ -36,6 +36,7 @@ XHPFILES = \
    auto_off.xhp \
    autofilter.xhp \
    autoformat.xhp \
+   background.xhp \
    borders.xhp \
    calc_date.xhp \
    calc_series.xhp \
