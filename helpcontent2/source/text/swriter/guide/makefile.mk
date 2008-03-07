@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: rt $ $Date: 2008-02-20 01:56:16 $
+#*    last change       $Author: kz $ $Date: 2008-03-07 12:36:49 $
 #*
-#*    $Revision: 1.16 $
+#*    $Revision: 1.17 $
 #*
 #*    $Logfile:$
 #*
@@ -39,6 +39,7 @@ XHPFILES = \
    auto_spellcheck.xhp \
    autocorr_except.xhp \
    autotext.xhp \
+   background.xhp \
    border_object.xhp \
    border_page.xhp \
    borders.xhp \
@@ -119,6 +120,7 @@ XHPFILES = \
    print_small.xhp \
    printer_tray.xhp \
    printing_order.xhp \
+   protection.xhp \
    references.xhp \
    references_modify.xhp \
    registertrue.xhp \
