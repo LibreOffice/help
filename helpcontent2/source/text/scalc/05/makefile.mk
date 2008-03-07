@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: vg $ $Date: 2005-03-09 12:50:14 $
+#*    last change       $Author: kz $ $Date: 2008-03-07 12:12:25 $
 #*
-#*    $Revision: 1.7 $
+#*    $Revision: 1.8 $
 #*
 #*    $Logfile:$
 #*
@@ -32,7 +32,8 @@ MODULE  = scalc
 
 # this list matches the *.xhp files to process
 XHPFILES = \
-   02140000.xhp 
+   02140000.xhp \
+   empty_cells.xhp 
     
 # --- Targets ------------------------------------------------------
 
