@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2008-03-07 12:01:22 $
+#*    last change       $Author: kz $ $Date: 2008-03-07 12:24:46 $
 #*
-#*    $Revision: 1.12 $
+#*    $Revision: 1.13 $
 #*
 #*    $Logfile:$
 #*
@@ -73,6 +73,8 @@ XHPFILES = \
    data_view.xhp \
    database_main.xhp \
    digital_signatures.xhp \
+   digitalsign_receive.xhp \
+   digitalsign_send.xhp \
    doc_autosave.xhp \
    doc_open.xhp \
    doc_save.xhp \
@@ -152,7 +154,9 @@ XHPFILES = \
    viewing_file_properties.xhp \
    workfolder.xhp \
    xforms.xhp \
-   xsltfilter.xhp 
+   xsltfilter.xhp \
+   xsltfilter_create.xhp \
+   xsltfilter_distribute.xhp 
     
 # --- Targets ------------------------------------------------------
 
