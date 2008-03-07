@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: ihi $ $Date: 2007-11-23 17:05:18 $
+#*    last change       $Author: kz $ $Date: 2008-03-07 11:50:08 $
 #*
-#*    $Revision: 1.19 $
+#*    $Revision: 1.20 $
 #*
 #*    $Logfile:$
 #*
@@ -124,7 +124,6 @@ XHPFILES = \
    04150000.xhp \
    04150100.xhp \
    04150200.xhp \
-   04150300.xhp \
    04150400.xhp \
    04150500.xhp \
    04160300.xhp \
