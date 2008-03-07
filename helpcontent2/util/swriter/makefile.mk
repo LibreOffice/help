@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2008-03-07 12:06:30 $
+#*    last change       $Author: kz $ $Date: 2008-03-07 12:42:37 $
 #*
-#*    $Revision: 1.41 $
+#*    $Revision: 1.42 $
 #*
 #*    $Logfile:$
 #*
@@ -293,6 +293,7 @@ LINKLINKFILES= \
    text$/swriter$/guide$/auto_spellcheck.xhp \
    text$/swriter$/guide$/autocorr_except.xhp \
    text$/swriter$/guide$/autotext.xhp \
+   text$/swriter$/guide$/background.xhp \
    text$/swriter$/guide$/border_object.xhp \
    text$/swriter$/guide$/border_page.xhp \
    text$/swriter$/guide$/borders.xhp \
@@ -373,6 +374,7 @@ LINKLINKFILES= \
    text$/swriter$/guide$/print_small.xhp \
    text$/swriter$/guide$/printer_tray.xhp \
    text$/swriter$/guide$/printing_order.xhp \
+   text$/swriter$/guide$/protection.xhp \
    text$/swriter$/guide$/references.xhp \
    text$/swriter$/guide$/references_modify.xhp \
    text$/swriter$/guide$/registertrue.xhp \
@@ -1150,6 +1152,8 @@ LINKLINKFILES= \
    text$/shared$/guide$/data_view.xhp \
    text$/shared$/guide$/database_main.xhp \
    text$/shared$/guide$/digital_signatures.xhp \
+   text$/shared$/guide$/digitalsign_receive.xhp \
+   text$/shared$/guide$/digitalsign_send.xhp \
    text$/shared$/guide$/doc_autosave.xhp \
    text$/shared$/guide$/doc_open.xhp \
    text$/shared$/guide$/doc_save.xhp \
@@ -1230,6 +1234,8 @@ LINKLINKFILES= \
    text$/shared$/guide$/workfolder.xhp \
    text$/shared$/guide$/xforms.xhp \
    text$/shared$/guide$/xsltfilter.xhp \
+   text$/shared$/guide$/xsltfilter_create.xhp \
+   text$/shared$/guide$/xsltfilter_distribute.xhp \
    text$/shared$/main0108.xhp \
    text$/shared$/main0201.xhp \
    text$/shared$/main0208.xhp \
