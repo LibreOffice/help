@@ -7,9 +7,9 @@
  *
  *  $RCSfile: digital_signatures.xhp,v $fileonly,v $
  *
- *  $Revision: 1.11 $
+ *  $Revision: 1.12 $
  *
- *  last change: $Author: ihi $ $Date: 2007-11-23 17:34:15 $
+ *  last change: $Author: kz $ $Date: 2008-03-07 12:23:22 $
  *
  *  The Contents of this file are made available subject to
  *  the terms of GNU Lesser General Public License Version 2.1.
@@ -41,125 +41,43 @@
 		<helpdocument version="1.0">
 <meta>
 <topic id="textsharedguidedigital_signaturesxhp" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">Using Digital Signatures</title>
+<title xml-lang="en-US" id="tit">About Digital Signatures</title>
 <filename>/text/shared/guide/digital_signatures.xhp</filename>
 </topic>
 </meta>
 <body>
-<bookmark xml-lang="en-US" branch="index" id="bm_id7430951"><bookmark_value>signing documents with digital signatures</bookmark_value>
-<bookmark_value>certificates</bookmark_value>
-<bookmark_value>digital signatures</bookmark_value>
-</bookmark><comment>mw made every entry a one level entry</comment><paragraph role="heading" id="par_idN10614" xml-lang="en-US" level="1" l10n="NEW"><variable id="digital_signatures"><link href="text/shared/guide/digital_signatures.xhp">Using Digital Signatures</link>
+  
+  
+  
+<bookmark xml-lang="en-US" branch="index" id="bm_id7430951"><bookmark_value>certificates</bookmark_value>
+<bookmark_value>digital signatures;overview</bookmark_value>
+<bookmark_value>security;digital signatures</bookmark_value>
+</bookmark>
+  <comment>mw moved 1 entry to digitalsign_send.xhp and made "digital signatures" a two level entry and added a new entry</comment>
+  <paragraph xml-lang="en-US" id="hd_id2767418" role="heading" level="1" l10n="NEW"><variable id="digital_signatures"><link href="text/shared/guide/digital_signatures.xhp">About Digital Signatures</link> 
 </variable></paragraph>
-<paragraph role="paragraph" id="par_idN10632" xml-lang="en-US" l10n="NEW">In %PRODUCTNAME, you can digitally sign your documents and macros. </paragraph>
-<paragraph role="heading" id="par_idN10635" xml-lang="en-US" level="2" l10n="NEW">Overview</paragraph>
-<paragraph role="paragraph" id="par_idN10639" xml-lang="en-US" l10n="NEW">To sign a document digitally, you need a personal key, the certificate. A personal key is stored on your computer as a combination of a private key, which must be kept secret, and a public key, which you add to your documents when you sign them.</paragraph>
-<paragraph role="heading" id="hd_id9354228" xml-lang="en-US" level="2" l10n="NEW">Security Warnings</paragraph>
-<paragraph role="paragraph" id="par_id2372508" xml-lang="en-US" l10n="NEW">When you receive a signed document, and the software reports that the signature is valid, this does not mean that you can be absolutely sure that the document is the same that the sender has sent. Signing documents with software certificates is not a perfectly secure method. Numerous ways are possible to circumvent the security features.</paragraph>
-<paragraph role="paragraph" id="par_id7953123" xml-lang="en-US" l10n="NEW">Example: Think about someone wants to camouflage his identity to be a sender from your bank. He can easily get a certificate using a false name, then send you any signed e-mail pretending he is working for your bank. You will get that e-mail, and the e-mail or the document within has the "valid signed" icon. </paragraph>
-<paragraph role="paragraph" id="par_id6195257" xml-lang="en-US" l10n="NEW">Do not trust the icon. Inspect and verify the certificates.</paragraph>
-<paragraph role="warning" id="par_id8635517" xml-lang="en-US" l10n="CHG">The validation of a signature is not a legally binding guarantee of any kind.</paragraph>
-<paragraph role="paragraph" id="par_id6075624" xml-lang="en-US" l10n="NEW">On Windows operating systems, the Windows features of validating a signature are used. On Solaris and Linux systems, files that are supplied by Thunderbird, Mozilla or Firefox are used. You must ensure that the files that are in use within your system are really the original files that were supplied by the original developers. For malevolent intruders, there are numerous ways to replace original files with other files that they supply.</paragraph>
-<paragraph role="warning" id="par_id6819971" xml-lang="en-US" l10n="NEW">The messages about validation of a signature that you see in %PRODUCTNAME are the messages that the validation files return. The %PRODUCTNAME software has no way to ensure that the messages reflect the true status of any certificate. The %PRODUCTNAME software only displays the messages that other files that are not under control of %PRODUCTNAME report. There is no legal responsibility of %PRODUCTNAME that the displayed messages reflect the true status of a digital signature.</paragraph>
-<paragraph role="heading" id="par_idN1063C" xml-lang="en-US" level="2" l10n="NEW">Get a certificate</paragraph>
-<paragraph role="paragraph" id="par_idN10640" xml-lang="en-US" l10n="NEW">You can get a certificate from a certification authority, which may be a private company or a governmental institution. Some certification authorities want money for their service, for example when they certify your identity. Other certificates are free of costs, for example those offered by some e-mail providers, which certify your e-mail address. A few of the companies that offer certificates to private persons are listed in the following, in alphabetical order: <link href="http://www.globalsign.net">GlobalSign</link> , <link href="http://www.thawte.com">Thawte</link>, <link href="http://www.verisign.com">Verisign</link>.</paragraph>
-<paragraph role="heading" id="par_idN106F6" xml-lang="en-US" level="2" l10n="NEW">Manage your certificates</paragraph>
-<switch select="sys">
-<case select="WIN"><paragraph role="paragraph" id="par_idN1070A" xml-lang="en-US" l10n="NEW">If you are using Microsoft Windows, you can manage your certificates from the Control Panel applet "Internet Options" on the "Contents" tab page.</paragraph>
-<paragraph role="paragraph" id="par_id8311410" xml-lang="en-US" l10n="NEW">Import your new root certificate into the Trusted Root Certification Authorities list.</paragraph>
-</case>
-<default>
-<paragraph role="paragraph" id="par_idN1071D" xml-lang="en-US" l10n="NEW">If you are using Solaris or Linux, you must install a recent version of Thunderbird, Mozilla Suite, or Firefox software to install some system files that are needed for encryption.</paragraph>
-<paragraph role="tip" id="par_idN10720" xml-lang="en-US" l10n="NEW">If you have created different profiles in Thunderbird, Mozilla, or Firefox, and you want %PRODUCTNAME to use one specified profile for certificates, then you can set the environment variable MOZILLA_CERTIFICATE_FOLDER to point to the folder of that specified profile.</paragraph>
-<list type="ordered">
-<listitem>
-<paragraph role="paragraph" id="par_id944242" xml-lang="en-US" l10n="NEW">Open your Web browser's preferences dialog, select the Privacy &amp; Security tab page, click on Certificates - Manage Certificates. </paragraph>
-</listitem>
-<listitem>
-<paragraph role="paragraph" id="par_id6452223" xml-lang="en-US" l10n="NEW">Import your new root certificate, then select and edit the certificate. Enable the root certificate to be trusted at least for web and email access. This ensures that the certificate can sign your documents. You may edit any intermediate certificate in the same way, but it is not mandatory for signing documents.</paragraph>
-</listitem>
-<listitem>
-<paragraph role="paragraph" id="par_id6486098" xml-lang="en-US" l10n="NEW">When you have edited the new certificates, restart %PRODUCTNAME.</paragraph>
-</listitem>
-</list>
-</default>
-</switch>
-<paragraph role="heading" id="par_idN1066D" xml-lang="en-US" level="2" l10n="NEW">Save and sign the document</paragraph>
-<paragraph role="paragraph" id="par_idN10671" xml-lang="en-US" l10n="NEW">When you apply a digital signature to a document, a kind of checksum is computed from the document's content plus your personal key. The checksum and your public key are stored together with the document.</paragraph>
-<paragraph role="heading" id="par_idN10674" xml-lang="en-US" level="2" l10n="NEW">Open a signed document</paragraph>
-<paragraph role="paragraph" id="par_idN10678" xml-lang="en-US" l10n="NEW">When someone later opens the document on any computer with a recent version of %PRODUCTNAME, the program will compute the checksum again and compare it with the stored checksum. If both are the same, the program will signal that you see the original, unchanged document. In addition, the program can show you the public key information from the certificate.</paragraph>
-<paragraph role="paragraph" id="par_idN1067B" xml-lang="en-US" l10n="NEW">You can compare the public key with the public key that is published on the web site of the certificate authority.</paragraph>
-<paragraph role="paragraph" id="par_idN1067E" xml-lang="en-US" l10n="NEW">Whenever someone changes something in the document, this change breaks the digital signature. After the change, there will be no sign that you see the original document.</paragraph>
-<paragraph role="heading" id="par_idN10681" xml-lang="en-US" level="2" l10n="NEW">Signing a document</paragraph>
-<list type="ordered">
-<listitem>
-<paragraph role="paragraph" id="par_idN10688" xml-lang="en-US" l10n="NEW">Choose <emph>File - Digital Signatures</emph>.</paragraph>
-</listitem>
-<listitem>
-<paragraph role="paragraph" id="par_idN10690" xml-lang="en-US" l10n="NEW">A message box advises you to save the document. Click <emph>Yes</emph> to save the file.</paragraph>
-</listitem>
-<listitem>
-<paragraph role="paragraph" id="par_idN10698" xml-lang="en-US" l10n="NEW">After saving, you see the <link href="text/shared/01/digitalsignatures.xhp">Digital Signatures</link> dialog. Click <emph>Add</emph> to add a public key to the document.</paragraph>
-</listitem>
-<listitem>
-<paragraph role="paragraph" id="par_idN106AE" xml-lang="en-US" l10n="NEW">In the <link href="text/shared/01/selectcertificate.xhp">Select Certificate</link> dialog, select your certificate and click OK. </paragraph>
-</listitem>
-<listitem>
-<paragraph role="paragraph" id="par_idN106C0" xml-lang="en-US" l10n="NEW">You see again the Digital Signatures dialog, where you can add more certificates if you want. Click OK to add the public key to the saved file.</paragraph>
-</listitem>
-</list>
-<paragraph role="paragraph" id="par_idN106C3" xml-lang="en-US" l10n="NEW">A signed document shows an icon 
-<image id="img_id262764" src="xmlsecurity/res/certificate_16.png" width="0.1665inch" height="0.1665inch"><alt id="alt_id262764" xml-lang="en-US">icon</alt>
-	</image> in the status bar. You can double-click the icon in the status bar to view the certificate.</paragraph>
-<paragraph role="heading" id="par_idN106E0" xml-lang="en-US" level="2" l10n="NEW">Signing the macros inside a document</paragraph>
-<paragraph role="paragraph" id="par_idN106E4" xml-lang="en-US" l10n="NEW">Normally, macros are part of a document. If you sign a document, the macros inside the document are signed automatically. If you want to sign only the macros, but not the document, proceed as follows:</paragraph>
-<list type="ordered">
-<listitem>
-<paragraph role="paragraph" id="par_idN106EA" xml-lang="en-US" l10n="NEW">Choose <emph>Tools - Macros - Digital Signature</emph>.</paragraph>
-</listitem>
-<listitem>
-<paragraph role="paragraph" id="par_idN106F2" xml-lang="en-US" l10n="NEW">Apply the signature as described above for documents.</paragraph>
-</listitem>
-</list>
-<paragraph role="paragraph" id="par_idN106F5" xml-lang="en-US" l10n="NEW">When you open the Basic IDE that contains signed macros, you see an icon 
-<image id="img_id9252296" src="xmlsecurity/res/certificate_16.png" width="0.1665inch" height="0.1665inch"><alt id="alt_id9252296" xml-lang="en-US">icon</alt>
-	</image> in the status bar. You can double-click the icon in the status bar to view the certificate.</paragraph><comment>WebDAV see issue 32935</comment><comment>main dialog IDs are here to lead the user initially to this help page</comment><comment>Examine certificate button</comment>
-<bookmark xml-lang="en-US" branch="hid/1311740419" id="bm_id2454298" localize="false"/><paragraph role="paragraph" id="par_id5734733" xml-lang="en-US" l10n="NEW"><ahelp hid="." visibility="hidden">Click to open the View Certificate dialog.</ahelp></paragraph><comment>Accept this certificate temporarily for this session radio button</comment>
-<bookmark xml-lang="en-US" branch="hid/1311736321" id="bm_id2307199" localize="false"/><paragraph role="paragraph" id="par_id561540" xml-lang="en-US" l10n="NEW"><ahelp hid="." visibility="hidden">Choose this setting to accept the certificate until you exit %PRODUCTNAME.</ahelp></paragraph><comment>Do not accept this certificate and do not connect to this Web site radio button</comment>
-<bookmark xml-lang="en-US" branch="hid/1311736326" id="bm_id9983825" localize="false"/><paragraph role="paragraph" id="par_id7705618" xml-lang="en-US" l10n="NEW"><ahelp hid="." visibility="hidden">Choose this setting to cancel the connection.</ahelp></paragraph>
-<paragraph role="heading" id="hd_id607013" xml-lang="en-US" level="2" l10n="NEW">Opening a document using WebDAV over HTTPS</paragraph>
-<paragraph role="paragraph" id="par_id1399578" xml-lang="en-US" l10n="NEW">In %PRODUCTNAME, you can open and save documents that are stored on a WebDAV server, using the secure HTTPS protocol.</paragraph>
-<paragraph role="paragraph" id="par_id598162" xml-lang="en-US" l10n="NEW">You must use the %PRODUCTNAME file dialogs to use WebDAV over HTTPS.</paragraph>
-<list type="ordered">
-<listitem>
-<paragraph role="paragraph" id="par_id7309793" xml-lang="en-US" l10n="NEW">Choose <item type="menuitem">Tools - Options - %PRODUCTNAME - General</item>. Ensure that <emph>Use %PRODUCTNAME dialogs</emph> is enabled. Click OK to close the dialog.</paragraph>
-</listitem>
-<listitem>
-<paragraph role="paragraph" id="par_id1227759" xml-lang="en-US" l10n="NEW">Choose <item type="menuitem">File - Open</item>.</paragraph>
-</listitem>
-<listitem>
-<paragraph role="paragraph" id="par_id7424237" xml-lang="en-US" l10n="NEW">In the <emph>File name</emph> box, enter the path to the WebDAV folder. For example, enter <item type="literal">https://192.168.1.1/webfolder</item> to open a secure connection to the WebDAV server at the IP address 192.168.1.1, and to list the contents of the <item type="literal">webfolder</item> folder.</paragraph>
-</listitem>
-<listitem>
-<paragraph role="paragraph" id="par_id1388592" xml-lang="en-US" l10n="NEW">The first time you connect to a WebDAV server, you see the "Website Certified by an Unknown Authority" dialog.</paragraph>
-<paragraph role="paragraph" id="par_id343943" xml-lang="en-US" l10n="NEW">You should click the <emph>Examine Certificate</emph> button and examine the certificate.</paragraph>
-<paragraph role="paragraph" id="par_id8726767" xml-lang="en-US" l10n="NEW">If you accept the certificate, choose "Accept this certificate temporarily for this session" and click OK. Now you can open and save files from the WebDAV server without further questions, until you exit %PRODUCTNAME.</paragraph>
-<paragraph role="paragraph" id="par_id691549" xml-lang="en-US" l10n="NEW">If you do not trust the certificate, click Cancel.</paragraph>
-</listitem>
-<listitem>
-<paragraph role="paragraph" id="par_id9909665" xml-lang="en-US" l10n="NEW">If you did accept the certificate, you can now select the file name or file names you want to open and click Open.</paragraph>
-</listitem>
-</list>
-<paragraph role="paragraph" id="par_id3236182" xml-lang="en-US" l10n="NEW">If there is a mismatch of the domain name given in the certificate and the domain name you entered in the file dialog, then you see a dialog that allows you to choose from any of the following options:</paragraph>
-<bookmark xml-lang="en-US" branch="hid/1311773189" id="bm_id9141819" localize="false"/><paragraph role="paragraph" id="par_id1251258" xml-lang="en-US" l10n="NEW">View Certificate - <ahelp hid=".">Opens the View Certificate dialog.</ahelp></paragraph>
-<bookmark xml-lang="en-US" branch="hid/1311773188" id="bm_id6354869" localize="false"/><paragraph role="paragraph" id="par_id8111819" xml-lang="en-US" l10n="NEW">Continue - <ahelp hid=".">If you are sure both domains are the same, click the Continue button.</ahelp></paragraph>
-<paragraph role="paragraph" id="par_id9116794" xml-lang="en-US" l10n="NEW">Cancel Connection - Cancels the connection.</paragraph>
-<paragraph role="paragraph" id="par_id4381847" xml-lang="en-US" l10n="NEW">If you click Continue, you may see a dialog that asks you to enter your user name and password.</paragraph><comment>user name</comment>
-<bookmark xml-lang="en-US" branch="hid/1311344666" id="bm_id2685323" localize="false"/><paragraph role="paragraph" id="par_id1336710" xml-lang="en-US" l10n="NEW"><ahelp hid="." visibility="hidden">Enter your user name to log on to the WebDAV server.</ahelp></paragraph><comment>password</comment>
-<bookmark xml-lang="en-US" branch="hid/1311344669" id="bm_id6042664" localize="false"/><paragraph role="paragraph" id="par_id1221655" xml-lang="en-US" l10n="NEW"><ahelp hid="." visibility="hidden">Enter your password.</ahelp></paragraph><comment>remember password till end of session</comment>
-<bookmark xml-lang="en-US" branch="hid/1311343648" id="bm_id7889950" localize="false"/><paragraph role="paragraph" id="par_id3397320" xml-lang="en-US" l10n="NEW"><ahelp hid="." visibility="hidden">If you enable <emph>Remember password till end of session</emph>, your password will be remembered for subsequent WebDAV connections until you exit %PRODUCTNAME.</ahelp></paragraph>
-<section id="relatedtopics">
-<paragraph role="paragraph" id="par_id3204443" xml-lang="en-US" l10n="NEW"><link href="http://wiki.services.openoffice.org/wiki/How_to_use_digital_Signatures">English Wiki page on digital signatures</link></paragraph>
-</section>
-</body>
+  <paragraph xml-lang="en-US" id="par_idN10632" role="paragraph" l10n="NEW">In %PRODUCTNAME, you can digitally sign your documents and macros. </paragraph>
+  <paragraph xml-lang="en-US" id="hd_id6564531" role="heading" level="2" l10n="NEW">Certificates</paragraph>
+  <paragraph xml-lang="en-US" id="par_idN10639" role="paragraph" l10n="NEW">To sign a document digitally, you need a personal key, the certificate. A personal key is stored on your computer as a combination of a private key, which must be kept secret, and a public key, which you add to your documents when you sign them.</paragraph>
+  <paragraph xml-lang="en-US" id="par_idN1066D" role="heading" level="2" l10n="NEW">Save and sign the document</paragraph>
+  <paragraph xml-lang="en-US" id="par_idN10671" role="paragraph" l10n="NEW">When you apply a digital signature to a document, a kind of checksum is computed from the document's content plus your personal key. The checksum and your public key are stored together with the document.</paragraph>
+  <paragraph xml-lang="en-US" id="par_idN10674" role="heading" level="2" l10n="NEW">Open a signed document</paragraph>
+  <paragraph xml-lang="en-US" id="par_idN10678" role="paragraph" l10n="NEW">When someone later opens the document on any computer with a recent version of %PRODUCTNAME, the program will compute the checksum again and compare it with the stored checksum. If both are the same, the program will signal that you see the original, unchanged document. In addition, the program can show you the public key information from the certificate.</paragraph>
+  <paragraph xml-lang="en-US" id="par_idN1067B" role="paragraph" l10n="NEW">You can compare the public key with the public key that is published on the web site of the certificate authority.</paragraph>
+  <paragraph xml-lang="en-US" id="par_idN1067E" role="paragraph" l10n="NEW">Whenever someone changes something in the document, this change breaks the digital signature. After the change, there will be no sign that you see the original document.</paragraph>
+  <paragraph xml-lang="en-US" id="hd_id9354228" role="heading" level="2" l10n="NEW">Security Warnings</paragraph>
+  <paragraph xml-lang="en-US" id="par_id2372508" role="paragraph" l10n="NEW">When you receive a signed document, and the software reports that the signature is valid, this does not mean that you can be absolutely sure that the document is the same that the sender has sent. Signing documents with software certificates is not a perfectly secure method. Numerous ways are possible to circumvent the security features.</paragraph>
+  <paragraph xml-lang="en-US" id="par_id7953123" role="paragraph" l10n="NEW">Example: Think about someone wants to camouflage his identity to be a sender from your bank. He can easily get a certificate using a false name, then send you any signed e-mail pretending he is working for your bank. You will get that e-mail, and the e-mail or the document within has the "valid signed" icon. </paragraph>
+  <paragraph xml-lang="en-US" id="par_id6195257" role="paragraph" l10n="NEW">Do not trust the icon. Inspect and verify the certificates.</paragraph>
+  <paragraph xml-lang="en-US" id="par_id8635517" role="warning" l10n="CHG">The validation of a signature is not a legally binding guarantee of any kind.</paragraph>
+  <paragraph xml-lang="en-US" id="par_id6075624" role="paragraph" l10n="NEW">On Windows operating systems, the Windows features of validating a signature are used. On Solaris and Linux systems, files that are supplied by Thunderbird, Mozilla or Firefox are used. You must ensure that the files that are in use within your system are really the original files that were supplied by the original developers. For malevolent intruders, there are numerous ways to replace original files with other files that they supply.</paragraph>
+  <paragraph xml-lang="en-US" id="par_id6819971" role="warning" l10n="NEW">The messages about validation of a signature that you see in %PRODUCTNAME are the messages that the validation files return. The %PRODUCTNAME software has no way to ensure that the messages reflect the true status of any certificate. The %PRODUCTNAME software only displays the messages that other files that are not under control of %PRODUCTNAME report. There is no legal responsibility of %PRODUCTNAME that the displayed messages reflect the true status of a digital signature.</paragraph>
+  <section id="relatedtopics">
+   
+   <paragraph xml-lang="en-US" id="par_id3204443" role="paragraph" l10n="NEW"><link href="http://wiki.services.openoffice.org/wiki/How_to_use_digital_Signatures">English Wiki page on digital signatures</link></paragraph>
+   <paragraph xml-lang="en-US" id="par_id486465" role="paragraph" l10n="NEW"><link href="text/shared/guide/digitalsign_send.xhp">Applying digital signatures</link></paragraph>
+   <paragraph xml-lang="en-US" id="par_id3448591" role="paragraph" l10n="NEW"><link href="text/shared/guide/digitalsign_receive.xhp">Opening a document using WebDAV over HTTPS</link></paragraph>
+   
+  </section>
+ </body>
 </helpdocument>
