@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2008-03-07 12:04:44 $
+#*    last change       $Author: kz $ $Date: 2008-03-07 12:40:31 $
 #*
-#*    $Revision: 1.43 $
+#*    $Revision: 1.44 $
 #*
 #*    $Logfile:$
 #*
@@ -253,10 +253,12 @@ LINKLINKFILES= \
    text$/scalc$/02$/18020000.xhp \
    text$/scalc$/04$/01020000.xhp \
    text$/scalc$/05$/02140000.xhp \
+   text$/scalc$/05$/empty_cells.xhp \
    text$/scalc$/guide$/address_auto.xhp \
    text$/scalc$/guide$/auto_off.xhp \
    text$/scalc$/guide$/autofilter.xhp \
    text$/scalc$/guide$/autoformat.xhp \
+   text$/scalc$/guide$/background.xhp \
    text$/scalc$/guide$/borders.xhp \
    text$/scalc$/guide$/calc_date.xhp \
    text$/scalc$/guide$/calc_series.xhp \
@@ -1061,6 +1063,8 @@ LINKLINKFILES= \
    text$/shared$/guide$/data_view.xhp \
    text$/shared$/guide$/database_main.xhp \
    text$/shared$/guide$/digital_signatures.xhp \
+   text$/shared$/guide$/digitalsign_receive.xhp \
+   text$/shared$/guide$/digitalsign_send.xhp \
    text$/shared$/guide$/doc_autosave.xhp \
    text$/shared$/guide$/doc_open.xhp \
    text$/shared$/guide$/doc_save.xhp \
@@ -1141,6 +1145,8 @@ LINKLINKFILES= \
    text$/shared$/guide$/workfolder.xhp \
    text$/shared$/guide$/xforms.xhp \
    text$/shared$/guide$/xsltfilter.xhp \
+   text$/shared$/guide$/xsltfilter_create.xhp \
+   text$/shared$/guide$/xsltfilter_distribute.xhp \
    text$/shared$/main0108.xhp \
    text$/shared$/main0201.xhp \
    text$/shared$/main0208.xhp \
