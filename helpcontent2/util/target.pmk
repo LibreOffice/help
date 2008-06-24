@@ -8,7 +8,7 @@
 #
 # $RCSfile: target.pmk,v $
 #
-# $Revision: 1.21 $
+# $Revision: 1.22 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -34,5 +34,10 @@ LINKALLADDEDDEPS=$(foreach,i,$(aux_alllangiso) $(subst,LANGUAGE,$i $(LINKADDEDDP
 
 ALLTAR : $(LINKALLTARGETS)
 
+.IF "$(SYSTEM_DB)" != "YES"
+JAVA_LIBRARY_PATH= -Djava.library.path=$(SOLARSHAREDBIN)
+.ENDIF
+ 
 $(LINKALLTARGETS) : $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/$$(@:b:s/_/./:e:s/.//)/$i) $(subst,LANGUAGE,$$(@:b:s/_/./:e:s/.//) $(LINKADDEDDEPS)) $(COMMONMISC)$/xhp_changed.flag $(PRJ)$/helpers$/hid.lst
-    $(WRAPCMD) HelpLinker @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers/hid.lst -src $(COMMONMISC) -sty $(PRJ)$/source$/auxiliary$/embed.xsl -idx $(PRJ)$/source$/auxiliary$/index.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@)
+    $(WRAPCMD) HelpLinker @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers/hid.lst -src $(COMMONMISC) -sty $(PRJ)$/source$/auxiliary$/embed.xsl -zipdir $(MISC)$/ziptmp -idxcaption $(PRJ)$/source$/auxiliary$/idxcaption.xsl -idxcontent $(PRJ)$/source$/auxiliary$/idxcontent.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@)
+    $(JAVAI) $(JAVA_LIBRARY_PATH) -cp $(my_cp) com.sun.star.help.HelpIndexer -foo -mod $(LINKNAME) -zipdir $(MISC)$/ziptmp -o $@
