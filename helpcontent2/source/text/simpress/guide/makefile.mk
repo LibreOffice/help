@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.10 $
+# $Revision: 1.10.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -57,6 +57,7 @@ XHPFILES = \
    background.xhp \
    change_scale.xhp \
    footer.xhp \
+   gluepoints.xhp \
    html_export.xhp \
    html_import.xhp \
    individual.xhp \
