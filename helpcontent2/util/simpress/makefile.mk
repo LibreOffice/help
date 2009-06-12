@@ -3,9 +3,9 @@
 #*    $Workfile:$
 #*
 #*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2008-03-07 12:42:02 $
+#*    last change       $Author: hr $ $Date: 2007-06-26 12:34:21 $
 #*
-#*    $Revision: 1.40 $
+#*    $Revision: 1.11 $
 #*
 #*    $Logfile:$
 #*
@@ -930,6 +930,7 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/menuinsert.xhp \
    text$/shared$/explorer$/database$/menutools.xhp \
    text$/shared$/explorer$/database$/menuview.xhp \
+   text$/shared$/explorer$/database$/migrate_macros.xhp \
    text$/shared$/explorer$/database$/password.xhp \
    text$/shared$/explorer$/database$/querywizard00.xhp \
    text$/shared$/explorer$/database$/querywizard01.xhp \
