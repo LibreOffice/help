@@ -14,7 +14,7 @@
 #*************************************************************************
 
 PRJ		= ..$/..
-PRJNAME = help2
+PRJNAME = helpcontent2
 TARGET  = auxiliary
 
 # --- Settings -----------------------------------------------------
@@ -33,6 +33,7 @@ TREEFILES  = \
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk
+.EXPORT : LOCALIZESDF LOCALIZATION_FOUND TRYSDF
 
 ALLTAR : aux_dirs $(COMMONMISC)$/treefiles.done $(COMMONBIN)$/helpimg.ilst
 
@@ -58,7 +59,7 @@ LOCTREEFILES:=$(foreach,j,$(TREEFILES) $(COMMONMISC)$/en-US$/$j)
 .ENDIF			#IF "$(WITH_LANG)"!=""
 
 $(COMMONMISC)$/treefiles.done : $(LOCTREEFILES)
-    @$(PERL) $(PRJ)$/helpers$/update_tree.pl && $(TOUCH) $@
+    +$(PERL) $(PRJ)$/helpers$/update_tree.pl && $(TOUCH) $@
 
 %.created:
     @-$(MKDIRHIER) $(@:d) && $(TOUCH) $@
@@ -67,7 +68,9 @@ $(LOCTREEFILES) : $(TREEFILES) $$(@:d)$/dir.created
     @$(TOUCH) $@
 
 .IF "$(WITH_LANG)"!=""
-$(LOCTREEFILES) : $(PRJ)$/source$/text$/shared$/localize.sdf
+#$(LOCTREEFILES) : $(PRJ)$/source$/text$/shared$/localize.sdf
+$(LOCTREEFILES) : $(LOCALIZESDF:d:d:d:d)$/text$/shared/localize.sdf
+$(LOCALIZESDF:d:d:d:d)$/text$/shared/localize.sdf : $(LOCALIZESDF)
 .ENDIF			# "$(WITH_LANG)"!=""
 
 aux_dirs .PHONY :
