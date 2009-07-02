@@ -1288,6 +1288,7 @@ LINKLINKFILES= \
    text$/schart$/01$/smooth_line_properties.xhp \
    text$/schart$/01$/three_d_view.xhp \
    text$/schart$/01$/type_area.xhp \
+   text$/schart$/01$/type_bubble.xhp \
    text$/schart$/01$/type_column_bar.xhp \
    text$/schart$/01$/type_column_line.xhp \
    text$/schart$/01$/type_line.xhp \

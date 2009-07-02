@@ -81,6 +81,7 @@ XHPFILES = \
    smooth_line_properties.xhp \
    three_d_view.xhp \
    type_area.xhp \
+   type_bubble.xhp \
    type_column_bar.xhp \
    type_column_line.xhp \
    type_line.xhp \
