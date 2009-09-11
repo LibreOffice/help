@@ -1309,6 +1309,7 @@ LINKLINKFILES= \
    text$/schart$/02$/02020000.xhp \
    text$/schart$/04$/01020000.xhp \
    text$/schart$/main0000.xhp \
+   text$/schart$/main0202.xhp \
    text$/schart$/main0503.xhp \
 
 
