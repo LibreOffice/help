@@ -571,17 +571,19 @@
 </bookmark>
 <paragraph xml-lang="en-US" id="par_idN11798" role="heading" level="2" l10n="NEW">HYPERLINK</paragraph>
          <paragraph xml-lang="en-US" id="par_idN117F1" role="paragraph" l10n="NEW"><ahelp hid="HID_FUNC_HYPERLINK">When you click a cell that contains the HYPERLINK function, the hyperlink opens.</ahelp></paragraph>
-         <paragraph xml-lang="en-US" id="par_idN11800" role="paragraph" l10n="NEW">If you use the optional <emph>cell text</emph> parameter, the formula locates the URL, and then displays the text.</paragraph>
+         <paragraph xml-lang="en-US" id="par_idN11800" role="paragraph" l10n="NEW">If you use the optional <emph>CellText</emph> parameter, the formula locates the URL, and then displays the text or number.</paragraph>
          <paragraph xml-lang="en-US" id="par_idN11803" role="tip" l10n="NEW">To open a hyperlinked cell with the keyboard, select the cell, press F2 to enter the Edit mode, move the cursor in front of the hyperlink, press Shift+F10, and then choose <emph>Open Hyperlink</emph>.</paragraph>
          <paragraph xml-lang="en-US" id="par_idN1180A" role="heading" level="3" l10n="NEW">Syntax</paragraph>
          <paragraph xml-lang="en-US" id="par_idN1180E" role="code" l10n="NEW">HYPERLINK("URL") or HYPERLINK("URL"; "CellText")</paragraph>
-         <paragraph xml-lang="en-US" id="par_idN11811" role="paragraph" l10n="NEW">
-            <emph>URL</emph> specifies the link target. The optional <emph>CellText</emph> parameter is the text that is displayed in the cell and the result of the function. If the <emph>CellText</emph> parameter is not specified, the <emph>URL</emph> is displayed in the cell text and in the result of the function.</paragraph>
+         <paragraph xml-lang="en-US" id="par_idN11811" role="paragraph" l10n="CHG">
+            <emph>URL</emph> specifies the link target. The optional <emph>CellText</emph> parameter is the text or a number that is displayed in the cell and will be returned as the result. If the <emph>CellText</emph> parameter is not specified, the <emph>URL</emph> is displayed in the cell text and will be returned as the result.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id0907200912224576" role="paragraph" l10n="NEW">The number 0 is returned for empty cells and matrix elements.</paragraph>
          <paragraph xml-lang="en-US" id="par_idN11823" role="heading" level="3" l10n="NEW">Example</paragraph>
          <paragraph xml-lang="en-US" id="par_idN11827" role="paragraph" l10n="NEW">
             <item type="input">=HYPERLINK("http://www.example.org")</item> displays the text "http://www.example.org" in the cell and executes the hyperlink http://www.example.org when clicked.</paragraph>
          <paragraph xml-lang="en-US" id="par_idN1182A" role="paragraph" l10n="NEW">
             <item type="input">=HYPERLINK("http://www.example.org";"Click here")</item> displays the text "Click here" in the cell and executes the hyperlink http://www.example.org when clicked.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id0907200912224534" role="paragraph" l10n="NEW">=HYPERLINK("http://www.example.org";12345) displays the number 12345 and executes the hyperlink http://www.example.org when clicked.</paragraph>
          <paragraph xml-lang="en-US" id="par_idN1182D" role="paragraph" l10n="NEW">
             <item type="input">=HYPERLINK($B4)</item> where cell B4 contains <item type="input">http://www.example.org</item>. The function adds http://www.example.org to the URL of the hyperlink cell and returns the same text which is used as formula result.</paragraph>
          <paragraph xml-lang="en-US" id="par_idN11830" role="paragraph" l10n="NEW">
@@ -589,7 +591,7 @@
          <paragraph xml-lang="en-US" id="par_id8859523" role="paragraph" l10n="NEW">
             <item type="input">=HYPERLINK("#Sheet1.A1";"Go to top")</item> displays the text Go to top and jumps to cell Sheet1.A1 in this document.</paragraph>
          <paragraph xml-lang="en-US" id="par_id2958769" role="paragraph" l10n="NEW">
-            <item type="input">=HYPERLINK("file:///C:/writer.odt#Specification";"Go to Writer bookmark")</item> displays the text Go to Writer bookmark, loads the specified text document and jumps to bookmark "Specification".</paragraph>
+            <item type="input">=HYPERLINK("file:///C:/writer.odt#Specification";"Go to Writer bookmark")</item>displays the text Go to Writer bookmark, loads the specified text document and jumps to bookmark "Specification".</paragraph>
       </section>
       <section id="getpivotdata">
 <bookmark xml-lang="en-US" branch="index" id="bm_id7682424"><bookmark_value>GETPIVOTDATA function</bookmark_value>
