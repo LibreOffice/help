@@ -285,7 +285,8 @@ sub processtreefiles {
             else
             {
                 unlink "$tree_dest/$lng/$tv" ;
-                mv $treetmpfile , "$tree_dest/$lng/$tv" or &terminate("Cannot write to $tree_dest/$lng/$tv");
+                my $ret=mv $treetmpfile , "$tree_dest/$lng/$tv$inpath" or &terminate("Cannot write to $tree_dest/$lng/$tv$inpath - Error $!");
+                my $ret=mv "$tree_dest/$lng/$tv$inpath" , "$tree_dest/$lng/$tv" or &terminate("Cannot write to $tree_dest/$lng/$tv - Error $!");
             }
       } else {
             &terminate("Cannot write to $tvout");
