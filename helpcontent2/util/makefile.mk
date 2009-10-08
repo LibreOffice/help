@@ -29,7 +29,7 @@ TARGET  = plain_util
 ZIP1TARGET=helpxsl
 ZIP1FLAGS= -u -r
 ZIP1DIR=$(PRJ)$/source$/auxiliary
-ZIP1LIST=main_transform*.xsl 
+ZIP1LIST=main_transform*.xsl idxcaption.xsl idxcontent.xsl
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

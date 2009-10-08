@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.18 $
+# $Revision: 1.18.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -130,7 +130,6 @@ XHPFILES = \
    pagenumbers.xhp \
    pageorientation.xhp \
    pagestyles.xhp \
-   para_style_quickuse.xhp \
    print_brochure.xhp \
    print_preview.xhp \
    print_small.xhp \
