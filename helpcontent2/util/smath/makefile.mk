@@ -302,19 +302,25 @@ LINKLINKFILES= \
    text$/shared$/01$/05080400.xhp \
    text$/shared$/01$/05090000.xhp \
    text$/shared$/01$/05100000.xhp \
+   text$/shared$/01$/05100100.xhp \
+   text$/shared$/01$/05100200.xhp \
+   text$/shared$/01$/05100500.xhp \
+   text$/shared$/01$/05100600.xhp \
+   text$/shared$/01$/05100700.xhp \
    text$/shared$/01$/05110000.xhp \
    text$/shared$/01$/05110100.xhp \
    text$/shared$/01$/05110200.xhp \
    text$/shared$/01$/05110300.xhp \
    text$/shared$/01$/05110400.xhp \
    text$/shared$/01$/05110500.xhp \
-   text$/shared$/01$/05110600.xhp \
+   text$/shared$/01$/05110600m.xhp \
    text$/shared$/01$/05110700.xhp \
    text$/shared$/01$/05110800.xhp \
    text$/shared$/01$/05120000.xhp \
    text$/shared$/01$/05120100.xhp \
    text$/shared$/01$/05120200.xhp \
    text$/shared$/01$/05120300.xhp \
+   text$/shared$/01$/05120600.xhp \
    text$/shared$/01$/05140100.xhp \
    text$/shared$/01$/05150101.xhp \
    text$/shared$/01$/05190000.xhp \
@@ -503,6 +509,7 @@ LINKLINKFILES= \
    text$/shared$/02$/03140000.xhp \
    text$/shared$/02$/03150000.xhp \
    text$/shared$/02$/03200000.xhp \
+   text$/shared$/02$/04210000.xhp \
    text$/shared$/02$/05020000.xhp \
    text$/shared$/02$/05090000.xhp \
    text$/shared$/02$/05110000.xhp \
@@ -903,6 +910,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/spadmin.xhp \
    text$/shared$/guide$/standard_template.xhp \
    text$/shared$/guide$/start_parameters.xhp \
+   text$/shared$/guide$/startcenter.xhp \
    text$/shared$/guide$/tabs.xhp \
    text$/shared$/guide$/text_color.xhp \
    text$/shared$/guide$/textmode_change.xhp \

@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.14 $
+# $Revision: 1.14.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -162,6 +162,7 @@ XHPFILES = \
    spadmin.xhp \
    standard_template.xhp \
    start_parameters.xhp \
+   startcenter.xhp \
    tabs.xhp \
    text_color.xhp \
    textmode_change.xhp \
@@ -173,7 +174,7 @@ XHPFILES = \
    xsltfilter.xhp \
    xsltfilter_create.xhp \
    xsltfilter_distribute.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

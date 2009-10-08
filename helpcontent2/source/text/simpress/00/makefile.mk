@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.8 $
+# $Revision: 1.8.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -57,7 +57,7 @@ XHPFILES = \
    00000406.xhp \
    00000407.xhp \
    00000413.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

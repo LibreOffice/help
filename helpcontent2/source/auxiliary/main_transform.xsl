@@ -108,7 +108,7 @@
 	</xsl:choose>
 </xsl:variable>
 
-<!-- the other parameters given by the help caller -->
+  <!-- the other parameters given by the help caller -->
 <xsl:param name="System" select="'WIN'"/>
 <xsl:param name="productname" select="'Office'"/>
 <xsl:param name="productversion" select="''"/>
@@ -132,9 +132,11 @@
 <xsl:param name="Language" select="'en-US'"/>
 <xsl:variable name="lang" select="$Language"/>
 
+<xsl:param name="ExtensionId" select="''"/>
+<xsl:param name="ExtensionPath" select="''"/>
 
 
-<!-- parts of help and image urls -->
+  <!-- parts of help and image urls -->
 <xsl:variable name="help_url_prefix" select="'vnd.sun.star.help://'"/>
 <xsl:variable name="img_url_prefix" select="concat('vnd.sun.star.pkg://',$imgrepos,'/')"/>
 <xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no')"/>
@@ -811,18 +813,25 @@
 			<xsl:with-param name="s"><xsl:value-of select="@src"/></xsl:with-param>
 		</xsl:call-template>
 	</xsl:variable>
-	
-	<xsl:variable name="src">
-		<xsl:choose>
-			<xsl:when test="(@localize='true') and not($lang='en-US')">
-				<xsl:value-of select="concat($img_url_prefix,$fpath,$lang,'/',$fname)"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="concat($img_url_prefix,$fpath,$fname)"/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
-	
+
+  <xsl:variable name="src">
+    <xsl:choose>
+      <xsl:when test="not($ExtensionId='') and starts-with(@src,$ExtensionId)">
+        <xsl:value-of select="concat($ExtensionPath,'/',@src)"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:choose>
+          <xsl:when test="(@localize='true') and not($lang='en-US')">
+            <xsl:value-of select="concat($img_url_prefix,$fpath,$lang,'/',$fname)"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="concat($img_url_prefix,$fpath,$fname)"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  
 	<!--<xsl:variable name="src"><xsl:value-of select="concat($img_url_prefix,@src)"/></xsl:variable>-->
 	<xsl:variable name="alt"><xsl:value-of select="./alt"/></xsl:variable>
 	<xsl:variable name="width" select="''"/> <!-- Images don't all have the correct size -->

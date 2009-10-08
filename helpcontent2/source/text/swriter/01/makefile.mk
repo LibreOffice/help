@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.11 $
+# $Revision: 1.11.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -152,26 +152,19 @@ XHPFILES = \
    05090201.xhp \
    05090300.xhp \
    05100000.xhp \
-   05100100.xhp \
-   05100200.xhp \
    05100300.xhp \
    05100400.xhp \
-   05100500.xhp \
-   05100600.xhp \
-   05100700.xhp \
    05110000.xhp \
    05110100.xhp \
    05110200.xhp \
    05110300.xhp \
    05110500.xhp \
-   05110600.xhp \
    05120000.xhp \
    05120100.xhp \
    05120200.xhp \
    05120300.xhp \
    05120400.xhp \
    05120500.xhp \
-   05120600.xhp \
    05130000.xhp \
    05130002.xhp \
    05130004.xhp \
@@ -230,7 +223,7 @@ XHPFILES = \
    mm_seladdlis.xhp \
    mm_seltab.xhp \
    selection_mode.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

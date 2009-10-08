@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.21 $
+# $Revision: 1.21.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -183,19 +183,25 @@ XHPFILES = \
    05080400.xhp \
    05090000.xhp \
    05100000.xhp \
+   05100100.xhp \
+   05100200.xhp \
+   05100500.xhp \
+   05100600.xhp \
+   05100700.xhp \
    05110000.xhp \
    05110100.xhp \
    05110200.xhp \
    05110300.xhp \
    05110400.xhp \
    05110500.xhp \
-   05110600.xhp \
+   05110600m.xhp \
    05110700.xhp \
    05110800.xhp \
    05120000.xhp \
    05120100.xhp \
    05120200.xhp \
    05120300.xhp \
+   05120600.xhp \
    05140100.xhp \
    05150101.xhp \
    05190000.xhp \
@@ -334,7 +340,7 @@ XHPFILES = \
    xformsdatachange.xhp \
    xformsdataname.xhp \
    xformsdatatab.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

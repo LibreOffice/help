@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.9 $
+# $Revision: 1.9.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -89,7 +89,7 @@ XHPFILES = \
    01020000.xhp \
    01050000.xhp \
    icon_alt.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

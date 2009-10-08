@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.13 $
+# $Revision: 1.13.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -225,7 +225,7 @@ XHPFILES = \
    solver.xhp \
    solver_options.xhp \
    text2columns.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

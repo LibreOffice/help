@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.8 $
+# $Revision: 1.8.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -49,7 +49,7 @@ MODULE  = sdraw
 # this list matches the *.xhp files to process
 XHPFILES = \
    04010000.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

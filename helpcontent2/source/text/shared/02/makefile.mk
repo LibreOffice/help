@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.11 $
+# $Revision: 1.11.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -98,6 +98,7 @@ XHPFILES = \
    03140000.xhp \
    03150000.xhp \
    03200000.xhp \
+   04210000.xhp \
    05020000.xhp \
    05090000.xhp \
    05110000.xhp \
@@ -192,7 +193,7 @@ XHPFILES = \
    paintbrush.xhp \
    stars.xhp \
    symbolshapes.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

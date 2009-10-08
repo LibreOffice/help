@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.9 $
+# $Revision: 1.9.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -50,7 +50,7 @@ MODULE  = scalc
 XHPFILES = \
    02140000.xhp \
    empty_cells.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

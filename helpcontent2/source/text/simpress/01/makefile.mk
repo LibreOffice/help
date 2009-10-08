@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.10 $
+# $Revision: 1.10.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -78,7 +78,9 @@ XHPFILES = \
    04010000.xhp \
    04020000.xhp \
    04030000.xhp \
+   04030000m.xhp \
    04030100.xhp \
+   04040000m.xhp \
    04080100.xhp \
    04110000.xhp \
    04110100.xhp \
@@ -94,9 +96,12 @@ XHPFILES = \
    04990500.xhp \
    04990600.xhp \
    04990700.xhp \
+   05090000m.xhp \
    05100000.xhp \
+   05110500m.xhp \
    05120000.xhp \
    05120100.xhp \
+   05120500m.xhp \
    05130000.xhp \
    05140000.xhp \
    05150000.xhp \
@@ -136,7 +141,7 @@ XHPFILES = \
    effectoptionstiming.xhp \
    slidesorter.xhp \
    taskpanel.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.13 $
+# $Revision: 1.13.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -134,7 +134,7 @@ XHPFILES = \
    tablewizard03.xhp \
    tablewizard04.xhp \
    toolbars.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.18 $
+# $Revision: 1.18.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -133,7 +133,7 @@ XHPFILES = \
    value_with_name.xhp \
    webquery.xhp \
    year2000.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

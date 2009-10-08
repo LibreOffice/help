@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.9 $
+# $Revision: 1.9.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -64,7 +64,7 @@ XHPFILES = \
    main.xhp \
    rotate_object.xhp \
    text_enter.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

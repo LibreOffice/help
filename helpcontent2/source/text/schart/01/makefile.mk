@@ -8,7 +8,7 @@
 #
 # $RCSfile: makefile.mk,v $
 #
-# $Revision: 1.10 $
+# $Revision: 1.10.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -70,6 +70,7 @@ XHPFILES = \
    05040100.xhp \
    05040200.xhp \
    05040201.xhp \
+   05040202.xhp \
    05050000.xhp \
    05050100.xhp \
    05060000.xhp \
@@ -91,7 +92,7 @@ XHPFILES = \
    wiz_chart_type.xhp \
    wiz_data_range.xhp \
    wiz_data_series.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk
