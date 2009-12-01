@@ -109,6 +109,7 @@ XHPFILES = \
    multioperation.xhp \
    multitables.xhp \
    note_insert.xhp \
+   numbers_text.xhp \
    print_details.xhp \
    print_exact.xhp \
    print_landscape.xhp \

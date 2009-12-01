@@ -87,8 +87,8 @@
             <emph>Sheet</emph> represents the name of the sheet. It must be placed in double quotes.</paragraph>
          <paragraph xml-lang="en-US" id="hd_id3147299" role="heading" level="3" l10n="U"
                     oldref="15">Example:</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3148744" role="paragraph" l10n="U" oldref="16">
-            <item type="input">=ADDRESS(1;1;2;"Sheet2")</item> returns the following: Sheet2.A$1</paragraph>
+         <paragraph xml-lang="en-US" id="par_id3148744" role="paragraph" l10n="CHG" oldref="16">
+            <item type="input">=ADDRESS(1;1;2;;"Sheet2")</item> returns the following: Sheet2.A$1<comment>i 101187</comment></paragraph>
          <paragraph xml-lang="en-US" id="par_id3159260" role="paragraph" l10n="U" oldref="17">If the cell A1 in sheet 2 contains the value <item type="input">-6</item>, you can refer indirectly to the referenced cell using a function in B2 by entering <item type="input">=ABS(INDIRECT(B2))</item>. The result is the absolute value of the cell reference specified in B2, which in this case is 6.</paragraph>
       </section>
       <section id="Section2">
@@ -98,6 +98,7 @@
 <paragraph xml-lang="en-US" id="hd_id3150372" role="heading" level="2" l10n="U"
                     oldref="19">AREAS</paragraph>
          <paragraph xml-lang="en-US" id="par_id3150036" role="paragraph" l10n="U" oldref="20"><ahelp hid="HID_FUNC_BEREICHE">Returns the number of individual ranges that belong to a multiple range.</ahelp> A range can consist of contiguous cells or a single cell.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id061020090307073" role="paragraph" l10n="NEW">The function expects a single argument. If you state multiple ranges, you must enclose them into additional parentheses. Multiple ranges can be entered using the semicolon (;) as divider, but this gets automatically converted to the tilde (~) operator. The tilde is used to join ranges.</paragraph>
          <paragraph xml-lang="en-US" id="hd_id3145222" role="heading" level="3" l10n="U"
                     oldref="21">Syntax</paragraph>
          <paragraph xml-lang="en-US" id="par_id3155907" role="code" l10n="U" oldref="22">AREAS(Reference)</paragraph>
@@ -105,7 +106,7 @@
          <paragraph xml-lang="en-US" id="hd_id3148891" role="heading" level="3" l10n="U"
                     oldref="24">Example</paragraph>
          <paragraph xml-lang="en-US" id="par_id3149946" role="paragraph" l10n="U" oldref="25">
-            <item type="input">=AREAS(A1:B3;F2;G1)</item> returns 3, as it is a reference to three cells and/or areas.</paragraph>
+            <item type="input">=AREAS((A1:B3;F2;G1))</item> returns 3, as it is a reference to three cells and/or areas. After entry this gets converted to =AREAS((A1:B3~F2~G1)).</paragraph>
          <paragraph xml-lang="en-US" id="par_id3146820" role="paragraph" l10n="U" oldref="26">
             <item type="input">=AREAS(All)</item> returns 1 if you have defined an area named All under <emph>Data - Define Range</emph>.</paragraph>
       </section>
@@ -241,7 +242,7 @@
             <emph>Ref</emph> represents a reference to a cell or an area (in text form) for which to return the contents.</paragraph>
          <paragraph xml-lang="en-US" id="par_id1027200802470312" role="paragraph" l10n="NEW">
             <emph>A1</emph> (optional) - if set to 0, the R1C1 notation is used. If this parameter is absent or set to another value than 0, the A1 notation is used.</paragraph>
-         <paragraph xml-lang="en-US" id="par_idN10CAE" role="note" l10n="NEW">For interoperability with Microsoft Excel, the sheet address separator ! is allowed as in INDIRECT("filename!sheetname"&amp;B1).<comment>UFI: finally a fix for #i34465#</comment></paragraph>
+         <paragraph xml-lang="en-US" id="par_idN10CAE" role="note" l10n="NEW">If you open an Excel spreadsheet that uses indirect addresses calculated from string functions, the sheet addresses will not be translated automatically. For example, the Excel address in INDIRECT("filename!sheetname"&amp;B1) is not converted into the Calc address in INDIRECT("filename.sheetname"&amp;B1).<comment>UFI: for #i34465#</comment></paragraph>
          <paragraph xml-lang="en-US" id="par_id7687917" role="note" l10n="NEW">INDIRECT cannot resolve range names as in INDIRECT("RangeName").<comment>i83070</comment></paragraph>
          <paragraph xml-lang="en-US" id="hd_id3150389" role="heading" level="3" l10n="U"
                     oldref="67">Example</paragraph>
@@ -537,7 +538,7 @@
          <paragraph xml-lang="en-US" id="par_id3153701" role="paragraph" l10n="U" oldref="207">
             <item type="input">=ROW(D5:D8)</item> returns 5 because the ROW function is not used as array formula and only the number of the first row of the reference is returned.</paragraph>
          <paragraph xml-lang="en-US" id="par_id3150996" role="paragraph" l10n="U" oldref="208">
-            <item type="input">{=ROW(A1:E1)}</item> and <item type="input">=ROW(A1:E1)</item> both return 1 because the reference only contains row 1 as the first column in the table. (Because single-row areas only have one row number it does not make any difference whether or not the formula is used as an array formula.)</paragraph>
+            <item type="input">{=ROW(A1:E1)}</item> and <item type="input">=ROW(A1:E1)</item> both return 1 because the reference only contains row 1 as the first row in the table. (Because single-row areas only have one row number it does not make any difference whether or not the formula is used as an array formula.)</paragraph>
          <paragraph xml-lang="en-US" id="par_id3153671" role="paragraph" l10n="U" oldref="209">
             <item type="input">=ROW()</item> returns 3 if the formula was entered in row 3.</paragraph>
          <paragraph xml-lang="en-US" id="par_id3153790" role="paragraph" l10n="U" oldref="210">
@@ -570,17 +571,19 @@
 </bookmark>
 <paragraph xml-lang="en-US" id="par_idN11798" role="heading" level="2" l10n="NEW">HYPERLINK</paragraph>
          <paragraph xml-lang="en-US" id="par_idN117F1" role="paragraph" l10n="NEW"><ahelp hid="HID_FUNC_HYPERLINK">When you click a cell that contains the HYPERLINK function, the hyperlink opens.</ahelp></paragraph>
-         <paragraph xml-lang="en-US" id="par_idN11800" role="paragraph" l10n="NEW">If you use the optional <emph>cell text</emph> parameter, the formula locates the URL, and then displays the text.</paragraph>
+         <paragraph xml-lang="en-US" id="par_idN11800" role="paragraph" l10n="NEW">If you use the optional <emph>CellText</emph> parameter, the formula locates the URL, and then displays the text or number.</paragraph>
          <paragraph xml-lang="en-US" id="par_idN11803" role="tip" l10n="NEW">To open a hyperlinked cell with the keyboard, select the cell, press F2 to enter the Edit mode, move the cursor in front of the hyperlink, press Shift+F10, and then choose <emph>Open Hyperlink</emph>.</paragraph>
          <paragraph xml-lang="en-US" id="par_idN1180A" role="heading" level="3" l10n="NEW">Syntax</paragraph>
          <paragraph xml-lang="en-US" id="par_idN1180E" role="code" l10n="NEW">HYPERLINK("URL") or HYPERLINK("URL"; "CellText")</paragraph>
-         <paragraph xml-lang="en-US" id="par_idN11811" role="paragraph" l10n="NEW">
-            <emph>URL</emph> specifies the link target. The optional <emph>CellText</emph> parameter is the text that is displayed in the cell and the result of the function. If the <emph>CellText</emph> parameter is not specified, the <emph>URL</emph> is displayed in the cell text and in the result of the function.</paragraph>
+         <paragraph xml-lang="en-US" id="par_idN11811" role="paragraph" l10n="CHG">
+            <emph>URL</emph> specifies the link target. The optional <emph>CellText</emph> parameter is the text or a number that is displayed in the cell and will be returned as the result. If the <emph>CellText</emph> parameter is not specified, the <emph>URL</emph> is displayed in the cell text and will be returned as the result.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id0907200912224576" role="paragraph" l10n="NEW">The number 0 is returned for empty cells and matrix elements.</paragraph>
          <paragraph xml-lang="en-US" id="par_idN11823" role="heading" level="3" l10n="NEW">Example</paragraph>
          <paragraph xml-lang="en-US" id="par_idN11827" role="paragraph" l10n="NEW">
             <item type="input">=HYPERLINK("http://www.example.org")</item> displays the text "http://www.example.org" in the cell and executes the hyperlink http://www.example.org when clicked.</paragraph>
          <paragraph xml-lang="en-US" id="par_idN1182A" role="paragraph" l10n="NEW">
             <item type="input">=HYPERLINK("http://www.example.org";"Click here")</item> displays the text "Click here" in the cell and executes the hyperlink http://www.example.org when clicked.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id0907200912224534" role="paragraph" l10n="NEW">=HYPERLINK("http://www.example.org";12345) displays the number 12345 and executes the hyperlink http://www.example.org when clicked.</paragraph>
          <paragraph xml-lang="en-US" id="par_idN1182D" role="paragraph" l10n="NEW">
             <item type="input">=HYPERLINK($B4)</item> where cell B4 contains <item type="input">http://www.example.org</item>. The function adds http://www.example.org to the URL of the hyperlink cell and returns the same text which is used as formula result.</paragraph>
          <paragraph xml-lang="en-US" id="par_idN11830" role="paragraph" l10n="NEW">
@@ -588,7 +591,7 @@
          <paragraph xml-lang="en-US" id="par_id8859523" role="paragraph" l10n="NEW">
             <item type="input">=HYPERLINK("#Sheet1.A1";"Go to top")</item> displays the text Go to top and jumps to cell Sheet1.A1 in this document.</paragraph>
          <paragraph xml-lang="en-US" id="par_id2958769" role="paragraph" l10n="NEW">
-            <item type="input">=HYPERLINK("file:///C:/writer.odt#Specification";"Go to Writer bookmark")</item> displays the text Go to Writer bookmark, loads the specified text document and jumps to bookmark "Specification".</paragraph>
+            <item type="input">=HYPERLINK("file:///C:/writer.odt#Specification";"Go to Writer bookmark")</item>displays the text Go to Writer bookmark, loads the specified text document and jumps to bookmark "Specification".</paragraph>
       </section>
       <section id="getpivotdata">
 <bookmark xml-lang="en-US" branch="index" id="bm_id7682424"><bookmark_value>GETPIVOTDATA function</bookmark_value>
