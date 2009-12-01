@@ -6,9 +6,9 @@
 #
 # OpenOffice.org - a multi-platform office productivity suite
 #
-# $RCSfile: makefile.mk,v $
+# $RCSfile: makefile.template,v $
 #
-# $Revision: 1.13.4.4 $
+# $Revision: 1.5 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -112,6 +112,7 @@ XHPFILES = \
    menuinsert.xhp \
    menutools.xhp \
    menuview.xhp \
+   migrate_macros.xhp \
    password.xhp \
    querywizard00.xhp \
    querywizard01.xhp \
