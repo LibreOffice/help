@@ -6,9 +6,9 @@
 #
 # OpenOffice.org - a multi-platform office productivity suite
 #
-# $RCSfile: makefile.mk,v $
+# $RCSfile: makefile.template,v $
 #
-# $Revision: 1.9.4.4 $
+# $Revision: 1.5 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -89,7 +89,7 @@ XHPFILES = \
    01020000.xhp \
    01050000.xhp \
    icon_alt.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

@@ -38,6 +38,10 @@ use File::Copy qw/cp mv/;
 use File::Basename;
 use Benchmark;
 
+my $is_win = "false";
+
+$is_win = "true" , if ( defined $ENV{USE_SHELL} && $ENV{USE_SHELL} eq "4nt" );
+
 $t0 = new Benchmark;
 # update the tree files in <platform>/misc/*
 
@@ -60,12 +64,30 @@ $prj =~ s/\\/\//g if defined($prj);
 $inpath =~ s/\\/\//g;
 $destpath =~ s/\\/\//g;
 
+
 if ( ! defined $prj ) {
 # do someting that works for manual call
     ($scriptname = `pwd`) =~ s/\n/\/$0/;
     ($tree_src = $scriptname) =~ s/\/update_tree.pl/\/..\/source\/auxiliary/;
     ($tree_dest = $scriptname) =~ s/\/update_tree.pl/\/..\/$destpath\/misc/;
     ($source_dir = $scriptname) =~ s/\/update_tree.pl/\/..\/source/;
+    if ( defined $ENV{TRYSDF} && defined $ENV{LOCALIZESDF} )
+    {
+        if( defined $ENV{LOCALIZATION_FOUND} && $ENV{LOCALIZATION_FOUND} eq "YES" )
+        {
+            $source_dir = $ENV{TRYSDF};
+        }
+        else 
+        {
+            $source_dir = $ENV{LOCALIZESDF};
+        }
+        if( $is_win eq "false" ) { $source_dir =~ s/\/auxiliary\/localize.sdf$// ; }
+        else { $source_dir =~ s/\\auxiliary\\localize.sdf$// ; }
+ 
+    }
+    #else {die "ERROR: The env variables TRYSDF LOCALIZATION_FOUND LOCALIZESDF not found ... something is wrong!\n";}
+
+
     $treestrings = "$source_dir/text/shared/tree_strings.xhp";
 } else {
     $tree_src = "$prj\/source\/auxiliary";
@@ -73,10 +95,21 @@ if ( ! defined $prj ) {
     $source_dir = "$prj\/source";
     $treestrings = "$source_dir/text/shared/tree_strings.xhp";
 
-    print "$tree_src\n";
-    print "$tree_dest\n";
-    print "$source_dir\n";
-    print "$treestrings\n";
+    if ( defined $ENV{TRYSDF} && defined $ENV{LOCALIZESDF} )
+    {
+        if( defined $ENV{LOCALIZATION_FOUND} && $ENV{LOCALIZATION_FOUND} eq "YES" )
+        {
+            $source_dir = $ENV{TRYSDF};
+        }
+        else 
+        {
+            $source_dir = $ENV{LOCALIZESDF};
+        }
+        if( $is_win eq "false" ) { $source_dir =~ s/\/auxiliary\/localize.sdf$// ; }
+        else { $source_dir =~ s/\\auxiliary\\localize.sdf$// ; }
+    }
+    #else {die "ERROR: The env variables TRYSDF LOCALIZATION_FOUND LOCALIZESDF not found ... something is wrong!\n";}
+
 }
 
 # Get the English tree files as master
@@ -313,6 +346,9 @@ sub readtv {
 sub read_loc {
     print "\n\nReading localized titles...";
     $/ = "\n";
+    my $path = "$source_dir/text";
+    $path =~ s/\//\\/g , if $is_win eq "true";
+    print " in $source_dir/text\n";
     @files = `find $source_dir/text -name localize.sdf`;
     for my $fname (@files) {
         $FS = '\t';
