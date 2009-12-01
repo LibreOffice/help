@@ -39,9 +39,9 @@ JAVA_LIBRARY_PATH= -Djava.library.path=$(SOLARSHAREDBIN)
 .ENDIF
  
 $(LINKALLTARGETS) : $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/$$(@:b:s/_/./:e:s/.//)/$i) $(subst,LANGUAGE,$$(@:b:s/_/./:e:s/.//) $(LINKADDEDDEPS)) $(COMMONMISC)$/xhp_changed.flag $(PRJ)$/helpers$/hid.lst
-    $(HELPLINKER) @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers/hid.lst -src $(COMMONMISC) -sty $(PRJ)$/source$/auxiliary$/embed.xsl -zipdir $(MISC)$/ziptmp$(@:b) -idxcaption $(PRJ)$/source$/auxiliary$/idxcaption.xsl -idxcontent $(PRJ)$/source$/auxiliary$/idxcontent.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@)
+    $(HELPLINKER) @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers$/hid.lst -src $(COMMONMISC) -sty $(PRJ)$/source$/auxiliary$/embed.xsl -zipdir $(MISC)$/ziptmp$(@:b) -idxcaption $(PRJ)$/source$/auxiliary$/idxcaption.xsl -idxcontent $(PRJ)$/source$/auxiliary$/idxcontent.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@)
 .IF "$(SOLAR_JAVA)" == "TRUE"
-    $(JAVAI) $(JAVA_LIBRARY_PATH) -cp "$(my_cp)" com.sun.star.help.HelpIndexer -lang $(@:b:s/_/./:e:s/.//) -mod $(LINKNAME) -zipdir $(MISC)$/ziptmp$(@:b) -o $@
+    $(JAVAI) $(JAVA_LIBRARY_PATH) -cp "$(my_cp)" com.sun.star.help.HelpIndexerTool -lang $(@:b:s/_/./:e:s/.//) -mod $(LINKNAME) -zipdir $(MISC)$/ziptmp$(@:b) -o $@ -checkcfsname _0
 .ELSE
     -$(RM) $(MISC)$/ziptmp$(@:b)$/content/*.*
     -$(RM) $(MISC)$/ziptmp$(@:b)$/caption/*.*

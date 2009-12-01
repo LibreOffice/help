@@ -71,6 +71,8 @@ if ( ! defined $prj ) {
     ($tree_src = $scriptname) =~ s/\/update_tree.pl/\/..\/source\/auxiliary/;
     ($tree_dest = $scriptname) =~ s/\/update_tree.pl/\/..\/$destpath\/misc/;
     ($source_dir = $scriptname) =~ s/\/update_tree.pl/\/..\/source/;
+    ($source_dir_xhp = $scriptname) =~ s/\/update_tree.pl/\/..\/source/;
+
     if ( defined $ENV{TRYSDF} && defined $ENV{LOCALIZESDF} )
     {
         if( defined $ENV{LOCALIZATION_FOUND} && $ENV{LOCALIZATION_FOUND} eq "YES" )
@@ -93,6 +95,7 @@ if ( ! defined $prj ) {
     $tree_src = "$prj\/source\/auxiliary";
     $tree_dest = "$prj\/$destpath\/misc";
     $source_dir = "$prj\/source";
+    $source_dir_xhp = "$prj\/source";
     $treestrings = "$source_dir/text/shared/tree_strings.xhp";
 
     if ( defined $ENV{TRYSDF} && defined $ENV{LOCALIZESDF} )
@@ -238,7 +241,7 @@ sub processtreefiles {
                 ($id = $l) =~ s/^.*id="([^"]*)".*$/$1/gis;
                 ($module = $id) =~ s/^([^\/]*).*$/$1/;
                 $id =~ s/^.*?\///;
-                $file = "$source_dir/$id";
+                $file = "$source_dir_xhp/$id";
 
                 if ($lng eq 'en-US') { # english comes from the file
                     if (open F,$file) {
