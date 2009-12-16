@@ -326,6 +326,7 @@ LINKLINKFILES= \
    text$/shared$/01$/06050100.xhp \
    text$/shared$/01$/06050200.xhp \
    text$/shared$/01$/06050300.xhp \
+   text$/shared$/01$/06050400.xhp \
    text$/shared$/01$/06050500.xhp \
    text$/shared$/01$/06050600.xhp \
    text$/shared$/01$/06130000.xhp \
@@ -928,6 +929,7 @@ LINKLINKFILES= \
    text$/shared$/optionen$/01160100.xhp \
    text$/shared$/optionen$/01160200.xhp \
    text$/shared$/optionen$/01160201.xhp \
+   text$/shared$/optionen$/improvement.xhp \
    text$/shared$/optionen$/java.xhp \
    text$/shared$/optionen$/javaclasspath.xhp \
    text$/shared$/optionen$/javaparameters.xhp \
@@ -996,6 +998,7 @@ LINKLINKFILES= \
    text$/schart$/02$/02020000.xhp \
    text$/schart$/04$/01020000.xhp \
    text$/schart$/main0000.xhp \
+   text$/schart$/main0202.xhp \
    text$/schart$/main0503.xhp \
 
 

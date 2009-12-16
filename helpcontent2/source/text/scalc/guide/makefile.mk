@@ -109,6 +109,7 @@ XHPFILES = \
    multioperation.xhp \
    multitables.xhp \
    note_insert.xhp \
+   numbers_text.xhp \
    print_details.xhp \
    print_exact.xhp \
    print_landscape.xhp \
@@ -133,7 +134,7 @@ XHPFILES = \
    value_with_name.xhp \
    webquery.xhp \
    year2000.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

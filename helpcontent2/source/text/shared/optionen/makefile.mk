@@ -117,6 +117,7 @@ XHPFILES = \
    01160100.xhp \
    01160200.xhp \
    01160201.xhp \
+   improvement.xhp \
    java.xhp \
    javaclasspath.xhp \
    javaparameters.xhp \
@@ -131,7 +132,7 @@ XHPFILES = \
    viewcertificate_c.xhp \
    viewcertificate_d.xhp \
    viewcertificate_g.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

@@ -49,8 +49,9 @@ MODULE  = schart
 # this list matches the *.xhp files to process
 XHPFILES = \
    main0000.xhp \
+   main0202.xhp \
    main0503.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

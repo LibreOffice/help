@@ -285,6 +285,7 @@ XHPFILES = \
    06050100.xhp \
    06050200.xhp \
    06050300.xhp \
+   06050400.xhp \
    06050500.xhp \
    06050600.xhp \
    06130000.xhp \
@@ -340,7 +341,7 @@ XHPFILES = \
    xformsdatachange.xhp \
    xformsdataname.xhp \
    xformsdatatab.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk
