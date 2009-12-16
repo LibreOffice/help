@@ -24,7 +24,8 @@
     Aug 16 2005 workaround for #i53365#
     Aug 19 2005 fixed missing list processing in embedded sections
     Aug 19 2005 #i53535#, fixed wrong handling of Database parameter
-		Oct 17 2006 #i70462#, disabled sorting to avoid output of error messages to console
+    Oct 17 2006 #i70462#, disabled sorting to avoid output of error messages to console
+    Jun 15 2009 #i101799#, fixed wrong handling of http URLs with anchors
 ***********************************************************************//-->
 
 <!--
@@ -138,7 +139,7 @@
 
   <!-- parts of help and image urls -->
 <xsl:variable name="help_url_prefix" select="'vnd.sun.star.help://'"/>
-<xsl:variable name="img_url_prefix" select="concat('vnd.sun.star.pkg://',$imgrepos,'/')"/>
+<xsl:variable name="img_url_prefix" select="concat('vnd.sun.star.zip://',$imgrepos,'/')"/>
 <xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no')"/>
 <xsl:variable name="urlpre" select="$help_url_prefix" /> 
 <xsl:variable name="linkprefix" select="$urlpre"/>
@@ -628,13 +629,13 @@
 <xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
 <xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="$archive"/></xsl:call-template></xsl:variable>
 	<xsl:choose>
+		<xsl:when test="starts-with(@href,'http://')">  <!-- web links -->
+			<a href="{@href}"><xsl:apply-templates /></a>
+		</xsl:when>
 		<xsl:when test="contains(@href,'#')">
 			<xsl:variable name="anchor"><xsl:value-of select="concat('#',substring-after(@href,'#'))"/></xsl:variable>
 			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,substring-before(@href,'#'),$linkpostfix,$dbpostfix,$anchor)"/></xsl:variable>
 			<a href="{$href}"><xsl:apply-templates /></a>
-		</xsl:when>
-		<xsl:when test="starts-with(@href,'http://')">  <!-- web links -->
-			<a href="{@href}"><xsl:apply-templates /></a>
 		</xsl:when>
 		<xsl:otherwise>
 			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,@href,$linkpostfix,$dbpostfix)"/></xsl:variable>
