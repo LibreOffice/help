@@ -315,6 +315,7 @@ LINKLINKFILES= \
    text$/scalc$/guide$/multioperation.xhp \
    text$/scalc$/guide$/multitables.xhp \
    text$/scalc$/guide$/note_insert.xhp \
+   text$/scalc$/guide$/numbers_text.xhp \
    text$/scalc$/guide$/print_details.xhp \
    text$/scalc$/guide$/print_exact.xhp \
    text$/scalc$/guide$/print_landscape.xhp \
@@ -862,7 +863,6 @@ LINKLINKFILES= \
    text$/shared$/autokorr$/08000000.xhp \
    text$/shared$/autokorr$/09000000.xhp \
    text$/shared$/autokorr$/10000000.xhp \
-   text$/shared$/autokorr$/11000000.xhp \
    text$/shared$/autokorr$/12000000.xhp \
    text$/shared$/autokorr$/13000000.xhp \
    text$/shared$/autopi$/01000000.xhp \
