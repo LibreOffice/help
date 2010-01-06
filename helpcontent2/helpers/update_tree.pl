@@ -73,7 +73,7 @@ if ( ! defined $prj ) {
     ($source_dir = $scriptname) =~ s/\/update_tree.pl/\/..\/source/;
     ($source_dir_xhp = $scriptname) =~ s/\/update_tree.pl/\/..\/source/;
 
-    if ( defined $ENV{TRYSDF} && defined $ENV{LOCALIZESDF} )
+    if ( defined $ENV{TRYSDF} || defined $ENV{LOCALIZESDF} )
     {
         if( defined $ENV{LOCALIZATION_FOUND} && $ENV{LOCALIZATION_FOUND} eq "YES" )
         {
@@ -98,19 +98,16 @@ if ( ! defined $prj ) {
     $source_dir_xhp = "$prj\/source";
     $treestrings = "$source_dir/text/shared/tree_strings.xhp";
 
-    if ( defined $ENV{TRYSDF} && defined $ENV{LOCALIZESDF} )
+    if( defined $ENV{LOCALIZATION_FOUND} && $ENV{LOCALIZATION_FOUND} eq "YES" )
     {
-        if( defined $ENV{LOCALIZATION_FOUND} && $ENV{LOCALIZATION_FOUND} eq "YES" )
-        {
-            $source_dir = $ENV{TRYSDF};
-        }
-        else 
-        {
-            $source_dir = $ENV{LOCALIZESDF};
-        }
-        if( $is_win eq "false" ) { $source_dir =~ s/\/auxiliary\/localize.sdf$// ; }
-        else { $source_dir =~ s/\\auxiliary\\localize.sdf$// ; }
+        $source_dir = $ENV{TRYSDF};
     }
+    else 
+    {
+        $source_dir = $ENV{LOCALIZESDF};
+    }
+    if( $is_win eq "false" ) { $source_dir =~ s/\/auxiliary\/localize.sdf$// ; }
+    else { $source_dir =~ s/\\auxiliary\\localize.sdf$// ; }
     #else {die "ERROR: The env variables TRYSDF LOCALIZATION_FOUND LOCALIZESDF not found ... something is wrong!\n";}
 
 }

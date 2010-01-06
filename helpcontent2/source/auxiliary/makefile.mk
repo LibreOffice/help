@@ -22,13 +22,13 @@ TARGET  = auxiliary
 .INCLUDE : settings.mk
 
 TREEFILES  = \
-    sbasic.tree \
-    simpress.tree \
-    scalc.tree \
-    smath.tree \
-    schart.tree \
-    swriter.tree \
-    shared.tree
+	sbasic.tree \
+	simpress.tree \
+	scalc.tree \
+	smath.tree \
+	schart.tree \
+	swriter.tree \
+	shared.tree
 
 # --- Targets ------------------------------------------------------
 
@@ -59,26 +59,34 @@ LOCTREEFILES:=$(foreach,j,$(TREEFILES) $(COMMONMISC)$/en-US$/$j)
 .ENDIF			#IF "$(WITH_LANG)"!=""
 
 $(COMMONMISC)$/treefiles.done : $(LOCTREEFILES)
-    +$(PERL) $(PRJ)$/helpers$/update_tree.pl && $(TOUCH) $@
+	+$(PERL) $(PRJ)$/helpers$/update_tree.pl && $(TOUCH) $@
 
 %.created:
-    @-$(MKDIRHIER) $(@:d) && $(TOUCH) $@
+	@-$(MKDIRHIER) $(@:d) && $(TOUCH) $@
 
 $(LOCTREEFILES) : $(TREEFILES) $$(@:d)$/dir.created
-    @$(TOUCH) $@
+	@$(TOUCH) $@
 
 .IF "$(WITH_LANG)"!=""
-#$(LOCTREEFILES) : $(PRJ)$/source$/text$/shared$/localize.sdf
-$(LOCTREEFILES) : $(LOCALIZESDF:d:d:d:d)$/text$/shared/localize.sdf
-$(LOCALIZESDF:d:d:d:d)$/text$/shared/localize.sdf : $(LOCALIZESDF)
+.IF "$(LOCALIZATION_FOUND)"=="YES"
+$(LOCTREEFILES) : $(TRYSDF:d:d:d:d)$/text$/shared/localize.sdf
+.ELSE			# "$(LOCALIZATION_FOUND)"=="YES"
+$(COMMONMISC)/unpack.done : $(SOLARCOMMONSDFDIR)$/$(PRJNAME).zip
+    @@-$(MKDIRHIER) $(COMMONMISC)$/$(PRJNAME)_$(TARGET)
+	unzip -o -d $(COMMONMISC)$/$(PRJNAME) $(SOLARCOMMONSDFDIR)$/$(PRJNAME).zip 
+    $(TOUCH) $@
+
+$(LOCTREEFILES) : $(COMMONMISC)/unpack.done
+
+.ENDIF			# "$(LOCALIZATION_FOUND)"=="YES"
 .ENDIF			# "$(WITH_LANG)"!=""
 
 aux_dirs .PHONY :
     echo aux_langdirs:=$(aux_langdirs) > $(INCCOM)$/aux_langs.mk
 
 $(COMMONBIN)$/helpimg.ilst .PHONY:
-    -$(RM) $@
-    $(PERL) $(PRJ)$/helpers$/create_ilst.pl -dir=$(SOLARSRC)/default_images/res/helpimg > $@.$(INPATH)
-    $(RENAME) $@.$(INPATH) $@
-    
+	-$(RM) $@
+	$(PERL) $(PRJ)$/helpers$/create_ilst.pl -dir=$(SOLARSRC)/default_images/res/helpimg > $@.$(INPATH)
+	$(RENAME) $@.$(INPATH) $@
+	
 
