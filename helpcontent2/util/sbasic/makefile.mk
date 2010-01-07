@@ -95,6 +95,8 @@ LINKLINKFILES= \
    text$/sbasic$/shared$/02$/11150000.xhp \
    text$/sbasic$/shared$/02$/11160000.xhp \
    text$/sbasic$/shared$/02$/11170000.xhp \
+   text$/sbasic$/shared$/02$/11180000.xhp \
+   text$/sbasic$/shared$/02$/11190000.xhp \
    text$/sbasic$/shared$/02$/20000000.xhp \
    text$/sbasic$/shared$/03000000.xhp \
    text$/sbasic$/shared$/03010000.xhp \
