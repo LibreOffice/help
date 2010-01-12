@@ -38,10 +38,6 @@ use File::Copy qw/cp mv/;
 use File::Basename;
 use Benchmark;
 
-my $is_win = "false";
-
-$is_win = "true" , if ( defined $ENV{USE_SHELL} && $ENV{USE_SHELL} eq "4nt" );
-
 $t0 = new Benchmark;
 # update the tree files in <platform>/misc/*
 
@@ -83,9 +79,7 @@ if ( ! defined $prj ) {
         {
             $source_dir = $ENV{LOCALIZESDF};
         }
-        if( $is_win eq "false" ) { $source_dir =~ s/\/auxiliary\/localize.sdf$// ; }
-        else { $source_dir =~ s/\\auxiliary\\localize.sdf$// ; }
- 
+        $source_dir =~ s/\/auxiliary\/localize.sdf$// ;
     }
     #else {die "ERROR: The env variables TRYSDF LOCALIZATION_FOUND LOCALIZESDF not found ... something is wrong!\n";}
 
@@ -106,8 +100,7 @@ if ( ! defined $prj ) {
     {
         $source_dir = $ENV{LOCALIZESDF};
     }
-    if( $is_win eq "false" ) { $source_dir =~ s/\/auxiliary\/localize.sdf$// ; }
-    else { $source_dir =~ s/\\auxiliary\\localize.sdf$// ; }
+    $source_dir =~ s/\/auxiliary\/localize.sdf$// ;
     #else {die "ERROR: The env variables TRYSDF LOCALIZATION_FOUND LOCALIZESDF not found ... something is wrong!\n";}
 
 }
@@ -347,7 +340,6 @@ sub read_loc {
     print "\n\nReading localized titles...";
     $/ = "\n";
     my $path = "$source_dir/text";
-    $path =~ s/\//\\/g , if $is_win eq "true";
     print " in $source_dir/text\n";
     @files = `find $source_dir/text -name localize.sdf`;
     for my $fname (@files) {
