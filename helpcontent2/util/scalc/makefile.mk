@@ -315,6 +315,7 @@ LINKLINKFILES= \
    text$/scalc$/guide$/multioperation.xhp \
    text$/scalc$/guide$/multitables.xhp \
    text$/scalc$/guide$/note_insert.xhp \
+   text$/scalc$/guide$/numbers_text.xhp \
    text$/scalc$/guide$/print_details.xhp \
    text$/scalc$/guide$/print_exact.xhp \
    text$/scalc$/guide$/print_landscape.xhp \
