@@ -82,7 +82,7 @@ $(LOCTREEFILES) : $(COMMONMISC)/unpack.done
 .ENDIF			# "$(WITH_LANG)"!=""
 
 aux_dirs .PHONY :
-    echo aux_langdirs:=$(aux_langdirs) > $(INCCOM)$/aux_langs.mk
+    echo aux_langdirs:=$(aux_langdirs) > $(LOCAL_COMMON_OUT)/inc$/aux_langs.mk
 
 $(COMMONBIN)$/helpimg.ilst .PHONY:
     -$(RM) $@
