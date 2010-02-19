@@ -26,7 +26,7 @@ TARGET  = util_smath
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-common_build_zip:=
+#common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_smath
@@ -38,13 +38,13 @@ LINKNAME=smath
 LINKADDEDFILES= \
    -add smath.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/smath.cfg \
    -add smath.tree $(COMMONMISC)$/LANGUAGE$/smath.tree \
-   -add smath.jar  $(BIN)$/xhp_smath_LANGUAGE.zip
+   -add smath.jar  $(COMMONBIN)$/xhp_smath_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/smath.cfg \
    $(COMMONMISC)$/LANGUAGE$/smath.tree \
-   $(BIN)$/xhp_smath_LANGUAGE.zip
+   $(COMMONBIN)$/xhp_smath_LANGUAGE.zip
 
 
 LINKLINKFILES= \
