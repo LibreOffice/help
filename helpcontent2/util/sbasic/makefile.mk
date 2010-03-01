@@ -1,16 +1,28 @@
 #*************************************************************************
-#*
-#*    $Workfile:$
-#*
-#*    Creation date     KR 28.06.99
-#*    last change       $Author: hr $ $Date: 2007-06-26 12:34:21 $
-#*
-#*    $Revision: 1.11 $
-#*
-#*    $Logfile:$
-#*
-#*    Copyright 2000 Sun Microsystems, Inc. All Rights Reserved.
-#*
+#
+# DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+# 
+# Copyright 2000, 2010 Oracle and/or its affiliates.
+#
+# OpenOffice.org - a multi-platform office productivity suite
+#
+# This file is part of OpenOffice.org.
+#
+# OpenOffice.org is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License version 3
+# only, as published by the Free Software Foundation.
+#
+# OpenOffice.org is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License version 3 for more details
+# (a copy is included in the LICENSE file that accompanied this code).
+#
+# You should have received a copy of the GNU Lesser General Public License
+# version 3 along with OpenOffice.org.  If not, see
+# <http://www.openoffice.org/license.html>
+# for a copy of the LGPLv3 License.
+#
 #*************************************************************************
 
 # edit to match directory level 
@@ -95,6 +107,8 @@ LINKLINKFILES= \
    text$/sbasic$/shared$/02$/11150000.xhp \
    text$/sbasic$/shared$/02$/11160000.xhp \
    text$/sbasic$/shared$/02$/11170000.xhp \
+   text$/sbasic$/shared$/02$/11180000.xhp \
+   text$/sbasic$/shared$/02$/11190000.xhp \
    text$/sbasic$/shared$/02$/20000000.xhp \
    text$/sbasic$/shared$/03000000.xhp \
    text$/sbasic$/shared$/03010000.xhp \
