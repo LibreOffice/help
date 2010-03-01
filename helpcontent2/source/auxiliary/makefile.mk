@@ -68,9 +68,17 @@ $(LOCTREEFILES) : $(TREEFILES) $$(@:d)$/dir.created
 	@$(TOUCH) $@
 
 .IF "$(WITH_LANG)"!=""
-#$(LOCTREEFILES) : $(PRJ)$/source$/text$/shared$/localize.sdf
-$(LOCTREEFILES) : $(LOCALIZESDF:d:d:d:d)$/text$/shared/localize.sdf
-$(LOCALIZESDF:d:d:d:d)$/text$/shared/localize.sdf : $(LOCALIZESDF)
+.IF "$(LOCALIZATION_FOUND)"=="YES"
+$(LOCTREEFILES) : $(TRYSDF:d:d:d:d)$/text$/shared/localize.sdf
+.ELSE			# "$(LOCALIZATION_FOUND)"=="YES"
+$(COMMONMISC)/unpack.done : $(SOLARCOMMONSDFDIR)$/$(PRJNAME).zip
+    @@-$(MKDIRHIER) $(COMMONMISC)$/$(PRJNAME)_$(TARGET)
+	unzip -o -d $(COMMONMISC)$/$(PRJNAME) $(SOLARCOMMONSDFDIR)$/$(PRJNAME).zip 
+    $(TOUCH) $@
+
+$(LOCTREEFILES) : $(COMMONMISC)/unpack.done
+
+.ENDIF			# "$(LOCALIZATION_FOUND)"=="YES"
 .ENDIF			# "$(WITH_LANG)"!=""
 
 aux_dirs .PHONY :

@@ -6,12 +6,9 @@
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  * 
- * Copyright 2008 by Sun Microsystems, Inc.
+ * Copyright 2000, 2010 Oracle and/or its affiliates.
  *
  * OpenOffice.org - a multi-platform office productivity suite
- *
- * $RCSfile: soffice2xmlhelp.xsl,v $
- * $Revision: 1.12 $
  *
  * This file is part of OpenOffice.org.
  *
@@ -41,9 +38,11 @@
       </topic>
    </meta>
    <body>
-<bookmark xml-lang="en-US" branch="index" id="bm_id3145068"><bookmark_value>converting;text to numbers</bookmark_value>
-<bookmark_value>formats; text as numbers</bookmark_value>
-</bookmark>
+<bookmark xml-lang="en-US" branch="index" id="bm_id3145068"><bookmark_value>formats; text as numbers</bookmark_value>
+      <bookmark_value>time format conversion</bookmark_value>
+      <bookmark_value>date formats;conversion</bookmark_value>
+      <bookmark_value>converting;text, into numbers</bookmark_value>
+</bookmark><comment>mw changed "converting;" and added two index entries</comment>
 <paragraph xml-lang="en-US" id="hd_id0908200901265171" role="heading" level="1" l10n="NEW"><variable id="numbers_text"><link href="text/scalc/guide/numbers_text.xhp" name="Converting Text to Numbers">Converting Text to Numbers</link>
 </variable></paragraph>
       <section id="text">
@@ -84,9 +83,12 @@
          <paragraph xml-lang="en-US" id="par_id0908200901265420" role="paragraph" l10n="NEW">If only a time string is given, it may have an hours value of more than 24, while minutes and seconds can have a maximum value of 59.</paragraph>
          <paragraph xml-lang="en-US" id="par_id0908200901265448" role="paragraph" l10n="NEW">The conversion is done for single arguments only, as in =A1+A2, or ="1E2"+1. Cell range arguments are not affected, so SUM(A1:A2) differs from A1+A2 if at least one of the two cells contain a convertible string.</paragraph>
          <paragraph xml-lang="en-US" id="par_id090820090126540" role="paragraph" l10n="NEW">Strings inside formulas are also converted, such as in ="1999-11-22"+42, which returns the date 42 days after November 22nd, 1999. Calculations involving localized dates as strings inside the formula return an error. For example, the localized date string "11/22/1999" or "22.11.1999" cannot be used for the automatic conversion.</paragraph>
+         <paragraph xml-lang="en-US" id="hd_id1005200903485368" role="heading" level="2" l10n="NEW">Example</paragraph>
+         <paragraph xml-lang="en-US" id="par_id1005200903485359" role="paragraph" l10n="NEW">In A1 enter the text <item type="literal">'1e2</item> (which is converted to the number 100 internally).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id1005200903485341" role="paragraph" l10n="NEW">In A2 enter <item type="literal">=A1+1</item> (which correctly results in 101).</paragraph>
       </section>
       <section id="relatedtopics">
-      <embed href="text/scalc/guide/text_numbers.xhp#text_numbers"/>
+         <embed href="text/scalc/guide/text_numbers.xhp#text_numbers"/>
          <embed href="text/scalc/guide/integer_leading_zero.xhp#integer_leading_zero"/>
          <paragraph xml-lang="en-US" id="par_id0908200901265544" role="paragraph" l10n="NEW"><link href="text/shared/01/05020300.xhp" name="Format - Cells - Numbers">Format - Cells - Numbers</link></paragraph>
          <embed href="text/scalc/guide/format_value.xhp#format_value"/>
