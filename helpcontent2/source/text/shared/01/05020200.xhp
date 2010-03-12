@@ -11,7 +11,7 @@
  * OpenOffice.org - a multi-platform office productivity suite
  *
  * $RCSfile: soffice2xmlhelp.xsl,v $
- * $Revision: 1.10 $
+ * $Revision: 1.12 $
  *
  * This file is part of OpenOffice.org.
  *
@@ -58,9 +58,10 @@
          <bookmark_value>fonts; outlines</bookmark_value>
          <bookmark_value>shadows; characters</bookmark_value>
          <bookmark_value>fonts; shadows</bookmark_value>
-         <bookmark_value>colors; fonts</bookmark_value>
-         <bookmark_value>fonts;colors</bookmark_value>
-</bookmark><comment>ufi inserted "fonts;colors"</comment>
+         <bookmark_value>fonts;color ignored</bookmark_value>
+         <bookmark_value>ignored font colors</bookmark_value>
+         <bookmark_value>colors;ignored text color</bookmark_value>
+</bookmark><comment>ufi inserted "fonts;colors"</comment><comment>MW copied two entries about font colors to text/shared/guide/text_color</comment><comment>mw added 3 index entries about ignored font colors</comment>
 <bookmark xml-lang="en-US" branch="hid/HID_SVXPAGE_CHAR_EFFECTS" id="bm_id3147090" localize="false"/>
 <paragraph xml-lang="en-US" id="hd_id3153514" role="heading" level="1" l10n="U" oldref="1"><link href="text/shared/01/05020200.xhp" name="Font Effects">Font Effects</link></paragraph>
          <paragraph xml-lang="en-US" id="par_id3149205" role="paragraph" l10n="U" oldref="2"><ahelp hid="HID_SVXPAGE_CHAR_EFFECTS">Specify the font effects that you want to use.</ahelp></paragraph>
@@ -90,15 +91,16 @@
       </list>
 <switch select="appl">
 <case select="WRITER">
-<paragraph xml-lang="en-US" id="par_id3150037" role="warning" l10n="CHG" oldref="85">The text color is ignored when printing, if the <emph>Print black</emph> check box is selected in <emph><link href="text/shared/optionen/01040400.xhp" name="Writer - Print">%PRODUCTNAME Writer - Print</link></emph> in the Options dialog box.</paragraph>
+<paragraph xml-lang="en-US" id="par_id3150037" role="warning" l10n="CHG" oldref="85">The text color is ignored when printing, if the <emph>Print black</emph> check box is selected in <link href="text/shared/optionen/01040400.xhp" name="Writer - Print"><emph>%PRODUCTNAME Writer - Print</emph></link> in the Options dialog box.</paragraph>
 </case>
 </switch>
-<paragraph xml-lang="en-US" id="par_id7613757" role="warning" l10n="NEW">The text color is ignored on screen, if the <emph>Use automatic font color for screen display</emph> check box is selected in <emph><switchinline select="sys"><caseinline select="MAC">%PRODUCTNAME - Preferences</caseinline><defaultinline>Tools - Options</defaultinline></switchinline> - <link href="text/shared/optionen/01013000.xhp">%PRODUCTNAME - Accessibility</link></emph>.</paragraph>
+<paragraph xml-lang="en-US" id="par_id7613757" role="warning" l10n="NEW">The text color is ignored on screen, if the <emph>Use automatic font color for screen display</emph> check box is selected in <switchinline select="sys"><caseinline select="MAC"><emph>%PRODUCTNAME - Preferences</emph>
+</caseinline><defaultinline><emph>Tools - Options</emph></defaultinline></switchinline><emph> - </emph><link href="text/shared/optionen/01013000.xhp"><emph>%PRODUCTNAME - Accessibility</emph></link>.</paragraph>
 <bookmark xml-lang="en-US" branch="hid/SID_ATTR_CHAR_COLOR" id="bm_id5399546" localize="false"/>
 <bookmark xml-lang="en-US" branch="hid/.uno:Color" id="bm_id3155418" localize="false"/>
 <bookmark xml-lang="en-US" branch="hid/SID_ATTR_CHAR_COLOR2" id="bm_id371323" localize="false"/>
 <bookmark xml-lang="en-US" branch="hid/.uno:FontColor" id="bm_id3145801" localize="false"/>
-<paragraph xml-lang="en-US" id="par_id3144766" role="paragraph" l10n="CHG" oldref="84"><ahelp hid=".uno:FontColor" visibility="hidden"><variable id="textfarbe">Click to apply the current font color to the selected characters. You can also click here, and then drag a selection to change the text color. Click the arrow next to the icon to open the Font color toolbar.
+<paragraph xml-lang="en-US" id="par_id3144766" role="paragraph" l10n="CHG" oldref="84"><ahelp hid=".uno:FontColor" visibility="hidden"><variable id="textfarbe">Click to apply the current font color to the selected characters. You can also click here, and then drag a selection to change the text color. Click the arrow next to the icon to open the Font color toolbar. 
 </variable></ahelp></paragraph>
 <bookmark xml-lang="en-US" branch="hid/cui:ListBox:RID_SVXPAGE_CHAR_EFFECTS:LB_EFFECTS2" id="bm_id0123200902144733" localize="false"/>
 <switch select="appl">
@@ -144,14 +146,14 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id410168"><bookmark_value>blinking fonts</bookmark_value>
       <bookmark_value>flashing fonts</bookmark_value>
 </bookmark>
-<!-- removed HID SVX_CHECKBOX_RID_SVXPAGE_CHAR_EFFECTS_CB_BLINKING -->
 <bookmark xml-lang="en-US" branch="hid/cui:TriStateBox:RID_SVXPAGE_CHAR_EFFECTS:CB_BLINKING" id="bm_id012320090217277" localize="false"/>
 <paragraph xml-lang="en-US" id="hd_id3152941" role="heading" level="3" l10n="U"
                  oldref="15">Blinking</paragraph>
       <paragraph xml-lang="en-US" id="par_id3145662" role="paragraph" l10n="U" oldref="16"><ahelp hid="SVX_CHECKBOX_RID_SVXPAGE_CHAR_EFFECTS_CB_BLINKING">Makes the selected characters blink. You cannot change the blink frequency.</ahelp></paragraph>
 <bookmark xml-lang="en-US" branch="hid/cui:TriStateBox:RID_SVXPAGE_CHAR_EFFECTS:CB_CHARHIDDEN" id="bm_id0123200902180465" localize="false"/>
 <paragraph xml-lang="en-US" id="par_idN10B81" role="heading" level="3" l10n="NEW">Hidden</paragraph>
-      <paragraph xml-lang="en-US" id="par_idN10B85" role="paragraph" l10n="NEW"><ahelp hid="svx:TriStateBox:RID_SVXPAGE_CHAR_EFFECTS:CB_CHARHIDDEN">Hides the selected characters.</ahelp> To display the hidden text, ensure that <emph>Non-printing Characters</emph> is selected in the <emph>View</emph> menu. You can also choose <emph><switchinline select="sys"><caseinline select="MAC">%PRODUCTNAME - Preferences</caseinline><defaultinline>Tools - Options</defaultinline></switchinline> - %PRODUCTNAME Writer - Formatting Aids</emph> and select <emph>Hidden text</emph>.</paragraph>
+      <paragraph xml-lang="en-US" id="par_idN10B85" role="paragraph" l10n="NEW"><ahelp hid="svx:TriStateBox:RID_SVXPAGE_CHAR_EFFECTS:CB_CHARHIDDEN">Hides the selected characters.</ahelp> To display the hidden text, ensure that <emph>Non-printing Characters</emph> is selected in the <emph>View</emph> menu. You can also choose <switchinline select="sys"><caseinline select="MAC"><emph>%PRODUCTNAME - Preferences</emph>
+</caseinline><defaultinline><emph>Tools - Options</emph></defaultinline></switchinline><emph> - %PRODUCTNAME Writer - Formatting Aids</emph> and select <emph>Hidden text</emph>.</paragraph>
 </case>
 </switch>
 <bookmark xml-lang="en-US" branch="hid/.uno:Overline" id="bm_id0123200902261777" localize="false"/>
