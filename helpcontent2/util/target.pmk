@@ -25,7 +25,7 @@
 #
 #*************************************************************************
 
-LINKALLTARGETS=$(foreach,i,$(aux_alllangiso) $(BIN)$/$(LINKNAME)_$i.zip)
+LINKALLTARGETS=$(foreach,i,$(aux_alllangiso) $(COMMONBIN)$/$(LINKNAME)_$i.zip)
 LINKALLADDEDDEPS=$(foreach,i,$(aux_alllangiso) $(subst,LANGUAGE,$i $(LINKADDEDDPES)))
 
 ALLTAR : $(LINKALLTARGETS)
@@ -35,12 +35,14 @@ JAVA_LIBRARY_PATH= -Djava.library.path=$(SOLARSHAREDBIN)
 .ENDIF
  
 $(LINKALLTARGETS) : $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/$$(@:b:s/_/./:e:s/.//)/$i) $(subst,LANGUAGE,$$(@:b:s/_/./:e:s/.//) $(LINKADDEDDEPS)) $(COMMONMISC)$/xhp_changed.flag $(PRJ)$/helpers$/hid.lst
-    $(HELPLINKER) @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers$/hid.lst -src $(COMMONMISC) -sty $(PRJ)$/source$/auxiliary$/embed.xsl -zipdir $(MISC)$/ziptmp$(@:b) -idxcaption $(PRJ)$/source$/auxiliary$/idxcaption.xsl -idxcontent $(PRJ)$/source$/auxiliary$/idxcontent.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@)
+    $(HELPLINKER) @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers$/hid.lst -src $(COMMONMISC) -sty $(PRJ)$/source$/auxiliary$/embed.xsl -zipdir $(MISC)$/ziptmp$(@:b) -idxcaption $(PRJ)$/source$/auxiliary$/idxcaption.xsl -idxcontent $(PRJ)$/source$/auxiliary$/idxcontent.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@.$(INPATH))
 .IF "$(SOLAR_JAVA)" == "TRUE"
-    $(JAVAI) $(JAVAIFLAGS) $(JAVA_LIBRARY_PATH) -cp "$(my_cp)" com.sun.star.help.HelpIndexerTool -lang $(@:b:s/_/./:e:s/.//) -mod $(LINKNAME) -zipdir $(MISC)$/ziptmp$(@:b) -o $@ -checkcfsandsegname _0 _3
+    $(JAVAI) $(JAVAIFLAGS) $(JAVA_LIBRARY_PATH) -cp "$(my_cp)" com.sun.star.help.HelpIndexerTool -lang $(@:b:s/_/./:e:s/.//) -mod $(LINKNAME) -zipdir $(MISC)$/ziptmp$(@:b) -o $@.$(INPATH) -checkcfsandsegname _0 _3
+   $(RENAME) $@.$(INPATH) $@
 .ELSE
     -$(RM) $(MISC)$/ziptmp$(@:b)$/content/*.*
     -$(RM) $(MISC)$/ziptmp$(@:b)$/caption/*.*
-    zip -j -D $@ $(MISC)$/ziptmp$(@:b)$/*
+    zip -j -D $@.$(INPATH) $(MISC)$/ziptmp$(@:b)$/*
+    $(RENAME) $@.$(INPATH) $@
     -$(RM) $(MISC)$/ziptmp$(@:b)$/*.*
 .ENDIF

@@ -38,7 +38,7 @@ TARGET  = util_simpress
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-common_build_zip:=
+#common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_simpress
@@ -50,13 +50,13 @@ LINKNAME=simpress
 LINKADDEDFILES= \
    -add simpress.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/simpress.cfg \
    -add simpress.tree $(COMMONMISC)$/LANGUAGE$/simpress.tree \
-   -add simpress.jar  $(BIN)$/xhp_simpress_LANGUAGE.zip
+   -add simpress.jar  $(COMMONBIN)$/xhp_simpress_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/simpress.cfg \
    $(COMMONMISC)$/LANGUAGE$/simpress.tree \
-   $(BIN)$/xhp_simpress_LANGUAGE.zip
+   $(COMMONBIN)$/xhp_simpress_LANGUAGE.zip
 
 
 LINKLINKFILES= \
