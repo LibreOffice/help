@@ -38,7 +38,7 @@ TARGET  = util_shared
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-common_build_zip:=
+#common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_shared
@@ -49,7 +49,7 @@ ZIP1LIST=$(LANGDIR)$/text$/shared$/* -x "*.xhp????*" -x "*.dphh*" -x "*.hzip" -x
 LINKNAME=shared
 LINKADDEDFILES= \
    -add shared.tree $(COMMONMISC)$/LANGUAGE$/shared.tree \
-   -add shared.jar  $(BIN)$/xhp_shared_LANGUAGE.zip \
+   -add shared.jar  $(COMMONBIN)$/xhp_shared_LANGUAGE.zip \
    -add default.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/default.css \
    -add highcontrast1.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast1.css \
    -add highcontrast2.css  $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast2.css \
@@ -60,7 +60,7 @@ LINKADDEDFILES= \
 
 LINKADDEDDEPS= \
    $(COMMONMISC)$/LANGUAGE$/shared.tree \
-   $(BIN)$/xhp_shared_LANGUAGE.zip \
+   $(COMMONBIN)$/xhp_shared_LANGUAGE.zip \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/default.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast1.css \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/highcontrast2.css \
