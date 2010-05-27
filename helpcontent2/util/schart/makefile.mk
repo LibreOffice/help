@@ -38,7 +38,7 @@ TARGET  = util_schart
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-common_build_zip:=
+#common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_schart
@@ -50,13 +50,13 @@ LINKNAME=schart
 LINKADDEDFILES= \
    -add schart.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/schart.cfg \
    -add schart.tree $(COMMONMISC)$/LANGUAGE$/schart.tree \
-   -add schart.jar  $(BIN)$/xhp_schart_LANGUAGE.zip
+   -add schart.jar  $(COMMONBIN)$/xhp_schart_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/schart.cfg \
    $(COMMONMISC)$/LANGUAGE$/schart.tree \
-   $(BIN)$/xhp_schart_LANGUAGE.zip
+   $(COMMONBIN)$/xhp_schart_LANGUAGE.zip
 
 
 LINKLINKFILES= \
@@ -563,7 +563,6 @@ LINKLINKFILES= \
    text$/shared$/autokorr$/08000000.xhp \
    text$/shared$/autokorr$/09000000.xhp \
    text$/shared$/autokorr$/10000000.xhp \
-   text$/shared$/autokorr$/11000000.xhp \
    text$/shared$/autokorr$/12000000.xhp \
    text$/shared$/autokorr$/13000000.xhp \
    text$/shared$/autopi$/01000000.xhp \
