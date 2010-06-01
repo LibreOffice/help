@@ -38,7 +38,7 @@ TARGET  = util_scalc
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-common_build_zip:=
+#common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_scalc
@@ -50,13 +50,13 @@ LINKNAME=scalc
 LINKADDEDFILES= \
    -add scalc.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.cfg \
    -add scalc.tree $(COMMONMISC)$/LANGUAGE$/scalc.tree \
-   -add scalc.jar  $(BIN)$/xhp_scalc_LANGUAGE.zip
+   -add scalc.jar  $(COMMONBIN)$/xhp_scalc_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.cfg \
    $(COMMONMISC)$/LANGUAGE$/scalc.tree \
-   $(BIN)$/xhp_scalc_LANGUAGE.zip
+   $(COMMONBIN)$/xhp_scalc_LANGUAGE.zip
 
 
 LINKLINKFILES= \
@@ -875,7 +875,6 @@ LINKLINKFILES= \
    text$/shared$/autokorr$/08000000.xhp \
    text$/shared$/autokorr$/09000000.xhp \
    text$/shared$/autokorr$/10000000.xhp \
-   text$/shared$/autokorr$/11000000.xhp \
    text$/shared$/autokorr$/12000000.xhp \
    text$/shared$/autokorr$/13000000.xhp \
    text$/shared$/autopi$/01000000.xhp \
