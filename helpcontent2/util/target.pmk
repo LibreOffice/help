@@ -37,7 +37,11 @@ JAVA_LIBRARY_PATH= -Djava.library.path=$(SOLARSHAREDBIN)
 $(LINKALLTARGETS) : $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/$$(@:b:s/_/./:e:s/.//)/$i) $(subst,LANGUAGE,$$(@:b:s/_/./:e:s/.//) $(LINKADDEDDEPS)) $(COMMONMISC)$/xhp_changed.flag $(PRJ)$/helpers$/hid.lst
     $(HELPLINKER) @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers$/hid.lst -src $(COMMONMISC) -sty $(PRJ)$/source$/auxiliary$/embed.xsl -zipdir $(MISC)$/ziptmp$(@:b) -idxcaption $(PRJ)$/source$/auxiliary$/idxcaption.xsl -idxcontent $(PRJ)$/source$/auxiliary$/idxcontent.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@.$(INPATH))
 .IF "$(SOLAR_JAVA)" == "TRUE"
+.IF "$(CHECK_LUCENCE_INDEXER_OUTPUT)" == ""
+    $(JAVAI) $(JAVAIFLAGS) $(JAVA_LIBRARY_PATH) -cp "$(my_cp)" com.sun.star.help.HelpIndexerTool -lang $(@:b:s/_/./:e:s/.//) -mod $(LINKNAME) -zipdir $(MISC)$/ziptmp$(@:b) -o $@.$(INPATH)
+.ELSE
     $(JAVAI) $(JAVAIFLAGS) $(JAVA_LIBRARY_PATH) -cp "$(my_cp)" com.sun.star.help.HelpIndexerTool -lang $(@:b:s/_/./:e:s/.//) -mod $(LINKNAME) -zipdir $(MISC)$/ziptmp$(@:b) -o $@.$(INPATH) -checkcfsandsegname _0 _3
+.ENDIF
    $(RENAME) $@.$(INPATH) $@
 .ELSE
     -$(RM) $(MISC)$/ziptmp$(@:b)$/content/*.*
