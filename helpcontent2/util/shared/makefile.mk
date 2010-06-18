@@ -25,6 +25,7 @@
 #
 #*************************************************************************
 
+
 # edit to match directory level 
 PRJ		= ..$/..
 # same for all makefiles in "helpcontent2"

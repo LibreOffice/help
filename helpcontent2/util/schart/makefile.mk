@@ -25,6 +25,7 @@
 #
 #*************************************************************************
 
+
 # edit to match directory level 
 PRJ		= ..$/..
 # same for all makefiles in "helpcontent2"
@@ -126,6 +127,7 @@ LINKLINKFILES= \
    text$/shared$/01$/01100300.xhp \
    text$/shared$/01$/01100400.xhp \
    text$/shared$/01$/01100500.xhp \
+   text$/shared$/01$/01100600.xhp \
    text$/shared$/01$/01110000.xhp \
    text$/shared$/01$/01110100.xhp \
    text$/shared$/01$/01110101.xhp \
