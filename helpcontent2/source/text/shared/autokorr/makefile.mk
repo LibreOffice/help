@@ -54,11 +54,10 @@ XHPFILES = \
    08000000.xhp \
    09000000.xhp \
    10000000.xhp \
-   11000000.xhp \
    12000000.xhp \
    13000000.xhp 
     
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk
-.INCLUDE : $(PRJ)$/makefile.pmk
+.INCLUDE : tg_help.mk

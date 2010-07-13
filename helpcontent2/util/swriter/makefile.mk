@@ -25,6 +25,7 @@
 #
 #*************************************************************************
 
+
 # edit to match directory level 
 PRJ		= ..$/..
 # same for all makefiles in "helpcontent2"
@@ -38,7 +39,7 @@ TARGET  = util_swriter
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-common_build_zip:=
+#common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_swriter
@@ -50,13 +51,13 @@ LINKNAME=swriter
 LINKADDEDFILES= \
    -add swriter.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.cfg \
    -add swriter.tree $(COMMONMISC)$/LANGUAGE$/swriter.tree \
-   -add swriter.jar  $(BIN)$/xhp_swriter_LANGUAGE.zip
+   -add swriter.jar  $(COMMONBIN)$/xhp_swriter_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.cfg \
    $(COMMONMISC)$/LANGUAGE$/swriter.tree \
-   $(BIN)$/xhp_swriter_LANGUAGE.zip
+   $(COMMONBIN)$/xhp_swriter_LANGUAGE.zip
 
 
 LINKLINKFILES= \
@@ -517,6 +518,7 @@ LINKLINKFILES= \
    text$/shared$/01$/01100300.xhp \
    text$/shared$/01$/01100400.xhp \
    text$/shared$/01$/01100500.xhp \
+   text$/shared$/01$/01100600.xhp \
    text$/shared$/01$/01110000.xhp \
    text$/shared$/01$/01110100.xhp \
    text$/shared$/01$/01110101.xhp \
@@ -954,7 +956,6 @@ LINKLINKFILES= \
    text$/shared$/autokorr$/08000000.xhp \
    text$/shared$/autokorr$/09000000.xhp \
    text$/shared$/autokorr$/10000000.xhp \
-   text$/shared$/autokorr$/11000000.xhp \
    text$/shared$/autokorr$/12000000.xhp \
    text$/shared$/autokorr$/13000000.xhp \
    text$/shared$/autopi$/01000000.xhp \
