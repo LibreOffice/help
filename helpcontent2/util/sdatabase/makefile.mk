@@ -25,6 +25,7 @@
 #
 #*************************************************************************
 
+
 # edit to match directory level 
 PRJ		= ..$/..
 # same for all makefiles in "helpcontent2"
@@ -38,7 +39,7 @@ TARGET  = util_sdatabase
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-common_build_zip:=
+#common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_sdatabase
@@ -49,12 +50,12 @@ ZIP1LIST=$(LANGDIR)$/text$/shared$/explorer$/database$/main.xhp
 LINKNAME=sdatabase
 LINKADDEDFILES= \
    -add sdatabase.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/sdatabase.cfg \
-   -add sdatabase.jar  $(BIN)$/xhp_sdatabase_LANGUAGE.zip
+   -add sdatabase.jar  $(COMMONBIN)$/xhp_sdatabase_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/sdatabase.cfg \
-   $(BIN)$/xhp_sdatabase_LANGUAGE.zip
+   $(COMMONBIN)$/xhp_sdatabase_LANGUAGE.zip
 
 
 LINKLINKFILES= \
@@ -124,6 +125,7 @@ LINKLINKFILES= \
    text$/shared$/01$/01100300.xhp \
    text$/shared$/01$/01100400.xhp \
    text$/shared$/01$/01100500.xhp \
+   text$/shared$/01$/01100600.xhp \
    text$/shared$/01$/01110000.xhp \
    text$/shared$/01$/01110100.xhp \
    text$/shared$/01$/01110101.xhp \
@@ -561,7 +563,6 @@ LINKLINKFILES= \
    text$/shared$/autokorr$/08000000.xhp \
    text$/shared$/autokorr$/09000000.xhp \
    text$/shared$/autokorr$/10000000.xhp \
-   text$/shared$/autokorr$/11000000.xhp \
    text$/shared$/autokorr$/12000000.xhp \
    text$/shared$/autokorr$/13000000.xhp \
    text$/shared$/autopi$/01000000.xhp \
