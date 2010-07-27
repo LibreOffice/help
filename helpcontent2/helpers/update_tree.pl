@@ -47,9 +47,6 @@ terminate() if ( ! defined $inpath );
 my $destpath = $inpath;
 my $with_lang = $ENV{WITH_LANG};
 
-if ( defined $ENV{COMMON_OUTDIR} && $ENV{COMMON_OUTDIR} ne "" ) {
-    $destpath =~ s/$ENV{OUTPATH}/$ENV{COMMON_OUTDIR}/;
-}
 
 # Always use / directory separators
 $prj =~ s/\\/\//g if defined($prj);
