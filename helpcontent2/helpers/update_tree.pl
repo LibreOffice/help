@@ -5,13 +5,9 @@ eval 'exec perl -wS $0 ${1+"$@"}'
 #
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
-# Copyright 2008 by Sun Microsystems, Inc.
+# Copyright 2000, 2010 Oracle and/or its affiliates.
 #
 # OpenOffice.org - a multi-platform office productivity suite
-#
-# $RCSfile: update_tree.pl,v $
-#
-# $Revision: 1.13 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -60,23 +56,49 @@ $prj =~ s/\\/\//g if defined($prj);
 $inpath =~ s/\\/\//g;
 $destpath =~ s/\\/\//g;
 
+
 if ( ! defined $prj ) {
 # do someting that works for manual call
     ($scriptname = `pwd`) =~ s/\n/\/$0/;
     ($tree_src = $scriptname) =~ s/\/update_tree.pl/\/..\/source\/auxiliary/;
     ($tree_dest = $scriptname) =~ s/\/update_tree.pl/\/..\/$destpath\/misc/;
     ($source_dir = $scriptname) =~ s/\/update_tree.pl/\/..\/source/;
+    ($source_dir_xhp = $scriptname) =~ s/\/update_tree.pl/\/..\/source/;
+
+    if ( defined $ENV{TRYSDF} || defined $ENV{LOCALIZESDF} )
+    {
+        if( defined $ENV{LOCALIZATION_FOUND} && $ENV{LOCALIZATION_FOUND} eq "YES" )
+        {
+            $source_dir = $ENV{TRYSDF};
+        }
+        else 
+        {
+            $source_dir = $ENV{LOCALIZESDF};
+        }
+        $source_dir =~ s/\/auxiliary\/localize.sdf$// ;
+    }
+    #else {die "ERROR: The env variables TRYSDF LOCALIZATION_FOUND LOCALIZESDF not found ... something is wrong!\n";}
+
+
     $treestrings = "$source_dir/text/shared/tree_strings.xhp";
 } else {
     $tree_src = "$prj\/source\/auxiliary";
     $tree_dest = "$prj\/$destpath\/misc";
     $source_dir = "$prj\/source";
+    $source_dir_xhp = "$prj\/source";
     $treestrings = "$source_dir/text/shared/tree_strings.xhp";
 
-    print "$tree_src\n";
-    print "$tree_dest\n";
-    print "$source_dir\n";
-    print "$treestrings\n";
+    if( defined $ENV{LOCALIZATION_FOUND} && $ENV{LOCALIZATION_FOUND} eq "YES" )
+    {
+        $source_dir = $ENV{TRYSDF};
+    }
+    else 
+    {
+        $source_dir = $ENV{LOCALIZESDF};
+    }
+    $source_dir =~ s/\/auxiliary\/localize.sdf$// ;
+    #else {die "ERROR: The env variables TRYSDF LOCALIZATION_FOUND LOCALIZESDF not found ... something is wrong!\n";}
+
 }
 
 # Get the English tree files as master
@@ -205,7 +227,7 @@ sub processtreefiles {
                 ($id = $l) =~ s/^.*id="([^"]*)".*$/$1/gis;
                 ($module = $id) =~ s/^([^\/]*).*$/$1/;
                 $id =~ s/^.*?\///;
-                $file = "$source_dir/$id";
+                $file = "$source_dir_xhp/$id";
 
                 if ($lng eq 'en-US') { # english comes from the file
                     if (open F,$file) {
@@ -313,6 +335,8 @@ sub readtv {
 sub read_loc {
     print "\n\nReading localized titles...";
     $/ = "\n";
+    my $path = "$source_dir/text";
+    print " in $source_dir/text\n";
     @files = `find $source_dir/text -name localize.sdf`;
     for my $fname (@files) {
         $FS = '\t';

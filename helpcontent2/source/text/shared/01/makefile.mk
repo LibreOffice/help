@@ -2,13 +2,9 @@
 #
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
-# Copyright 2008 by Sun Microsystems, Inc.
+# Copyright 2000, 2010 Oracle and/or its affiliates.
 #
 # OpenOffice.org - a multi-platform office productivity suite
-#
-# $RCSfile: makefile.mk,v $
-#
-# $Revision: 1.21.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -73,6 +69,7 @@ XHPFILES = \
    01100300.xhp \
    01100400.xhp \
    01100500.xhp \
+   01100600.xhp \
    01110000.xhp \
    01110100.xhp \
    01110101.xhp \
@@ -285,6 +282,7 @@ XHPFILES = \
    06050100.xhp \
    06050200.xhp \
    06050300.xhp \
+   06050400.xhp \
    06050500.xhp \
    06050600.xhp \
    06130000.xhp \
@@ -344,4 +342,4 @@ XHPFILES = \
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk
-.INCLUDE : $(PRJ)$/makefile.pmk
+.INCLUDE : tg_help.mk

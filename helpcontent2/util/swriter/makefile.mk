@@ -1,17 +1,30 @@
 #*************************************************************************
-#*
-#*    $Workfile:$
-#*
-#*    Creation date     KR 28.06.99
-#*    last change       $Author: kz $ $Date: 2008-03-07 12:42:37 $
-#*
-#*    $Revision: 1.42 $
-#*
-#*    $Logfile:$
-#*
-#*    Copyright 2000 Sun Microsystems, Inc. All Rights Reserved.
-#*
+#
+# DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+# 
+# Copyright 2000, 2010 Oracle and/or its affiliates.
+#
+# OpenOffice.org - a multi-platform office productivity suite
+#
+# This file is part of OpenOffice.org.
+#
+# OpenOffice.org is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Lesser General Public License version 3
+# only, as published by the Free Software Foundation.
+#
+# OpenOffice.org is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Lesser General Public License version 3 for more details
+# (a copy is included in the LICENSE file that accompanied this code).
+#
+# You should have received a copy of the GNU Lesser General Public License
+# version 3 along with OpenOffice.org.  If not, see
+# <http://www.openoffice.org/license.html>
+# for a copy of the LGPLv3 License.
+#
 #*************************************************************************
+
 
 # edit to match directory level 
 PRJ		= ..$/..
@@ -26,7 +39,7 @@ TARGET  = util_swriter
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-common_build_zip:=
+#common_build_zip:=
 zip1generatedlangs=TRUE
 zip1langdirs=$(aux_alllangiso)
 ZIP1TARGET=xhp_swriter
@@ -38,13 +51,13 @@ LINKNAME=swriter
 LINKADDEDFILES= \
    -add swriter.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.cfg \
    -add swriter.tree $(COMMONMISC)$/LANGUAGE$/swriter.tree \
-   -add swriter.jar  $(BIN)$/xhp_swriter_LANGUAGE.zip
+   -add swriter.jar  $(COMMONBIN)$/xhp_swriter_LANGUAGE.zip
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.cfg \
    $(COMMONMISC)$/LANGUAGE$/swriter.tree \
-   $(BIN)$/xhp_swriter_LANGUAGE.zip
+   $(COMMONBIN)$/xhp_swriter_LANGUAGE.zip
 
 
 LINKLINKFILES= \
@@ -505,6 +518,7 @@ LINKLINKFILES= \
    text$/shared$/01$/01100300.xhp \
    text$/shared$/01$/01100400.xhp \
    text$/shared$/01$/01100500.xhp \
+   text$/shared$/01$/01100600.xhp \
    text$/shared$/01$/01110000.xhp \
    text$/shared$/01$/01110100.xhp \
    text$/shared$/01$/01110101.xhp \
@@ -717,6 +731,7 @@ LINKLINKFILES= \
    text$/shared$/01$/06050100.xhp \
    text$/shared$/01$/06050200.xhp \
    text$/shared$/01$/06050300.xhp \
+   text$/shared$/01$/06050400.xhp \
    text$/shared$/01$/06050500.xhp \
    text$/shared$/01$/06050600.xhp \
    text$/shared$/01$/06130000.xhp \
@@ -941,7 +956,6 @@ LINKLINKFILES= \
    text$/shared$/autokorr$/08000000.xhp \
    text$/shared$/autokorr$/09000000.xhp \
    text$/shared$/autokorr$/10000000.xhp \
-   text$/shared$/autokorr$/11000000.xhp \
    text$/shared$/autokorr$/12000000.xhp \
    text$/shared$/autokorr$/13000000.xhp \
    text$/shared$/autopi$/01000000.xhp \
@@ -1086,6 +1100,7 @@ LINKLINKFILES= \
    text$/shared$/explorer$/database$/menuinsert.xhp \
    text$/shared$/explorer$/database$/menutools.xhp \
    text$/shared$/explorer$/database$/menuview.xhp \
+   text$/shared$/explorer$/database$/migrate_macros.xhp \
    text$/shared$/explorer$/database$/password.xhp \
    text$/shared$/explorer$/database$/querywizard00.xhp \
    text$/shared$/explorer$/database$/querywizard01.xhp \
@@ -1318,6 +1333,7 @@ LINKLINKFILES= \
    text$/shared$/optionen$/01160100.xhp \
    text$/shared$/optionen$/01160200.xhp \
    text$/shared$/optionen$/01160201.xhp \
+   text$/shared$/optionen$/improvement.xhp \
    text$/shared$/optionen$/java.xhp \
    text$/shared$/optionen$/javaclasspath.xhp \
    text$/shared$/optionen$/javaparameters.xhp \
@@ -1367,6 +1383,7 @@ LINKLINKFILES= \
    text$/schart$/01$/smooth_line_properties.xhp \
    text$/schart$/01$/three_d_view.xhp \
    text$/schart$/01$/type_area.xhp \
+   text$/schart$/01$/type_bubble.xhp \
    text$/schart$/01$/type_column_bar.xhp \
    text$/schart$/01$/type_column_line.xhp \
    text$/schart$/01$/type_line.xhp \
@@ -1385,6 +1402,7 @@ LINKLINKFILES= \
    text$/schart$/02$/02020000.xhp \
    text$/schart$/04$/01020000.xhp \
    text$/schart$/main0000.xhp \
+   text$/schart$/main0202.xhp \
    text$/schart$/main0503.xhp \
 
 

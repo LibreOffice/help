@@ -2,13 +2,9 @@
 #
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 # 
-# Copyright 2008 by Sun Microsystems, Inc.
+# Copyright 2000, 2010 Oracle and/or its affiliates.
 #
 # OpenOffice.org - a multi-platform office productivity suite
-#
-# $RCSfile: makefile.mk,v $
-#
-# $Revision: 1.18.4.4 $
 #
 # This file is part of OpenOffice.org.
 #
@@ -109,6 +105,7 @@ XHPFILES = \
    multioperation.xhp \
    multitables.xhp \
    note_insert.xhp \
+   numbers_text.xhp \
    print_details.xhp \
    print_exact.xhp \
    print_landscape.xhp \
@@ -137,4 +134,4 @@ XHPFILES = \
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk
-.INCLUDE : $(PRJ)$/makefile.pmk
+.INCLUDE : tg_help.mk
