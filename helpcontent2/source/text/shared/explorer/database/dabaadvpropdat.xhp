@@ -49,7 +49,7 @@
       <paragraph xml-lang="en-US" id="par_id4572283" role="paragraph" l10n="NEW">The availability of the following controls depends on the type of database:</paragraph>
       <paragraph xml-lang="en-US" id="par_idN10590" role="heading" level="2" l10n="NEW">Use SQL92 naming constraints<comment>UFI: found this for dBase and for text file folder</comment></paragraph>
       <paragraph xml-lang="en-US" id="par_idN10594" role="paragraph" l10n="NEW"><ahelp hid=".">Only allows characters that conform to the SQL92 naming convention in a name in a data source. All other characters are rejected. Each name must begin with a lowercase letter, an uppercase letter, or an underscore ( _ ). The remaining characters can be ASCII letters, numbers, and underscores.</ahelp></paragraph>
-
+      <bookmark xml-lang="en-US" branch="hid/HID_DSADMIN_AS_BEFORE_CORRELATION_NAME" id="bm_id6617777328" localize="false"/>
       <paragraph xml-lang="en-US" id="par_idN105907" role="heading" level="2" l10n="NEW">Use keyword AS before table alias names</paragraph>
       <paragraph xml-lang="en-US" id="par_idN105947" role="paragraph" l10n="NEW"><ahelp hid=".">Some databases use the keyword "AS" between a name and its alias, while other databases use a whitespace. Enable this option to insert AS before the alias.</ahelp><comment>http://dba.openoffice.org/specifications/Data_Source_Property_Dialog.sxw</comment></paragraph>
 
@@ -93,8 +93,16 @@
       <paragraph xml-lang="en-US" id="par_id3837397" role="paragraph" l10n="NEW">The control box is available for all data source types which support write access to their data. The control box does not exist for spreadsheets, text, csv, and the various read-only address books.</paragraph>
       <paragraph xml-lang="en-US" id="hd_id0909200811170166" role="heading" level="2" l10n="NEW">Ignore currency field information</paragraph>
       <paragraph xml-lang="en-US" id="par_id0909200811170221" role="paragraph" l10n="NEW"><ahelp hid=".">Only for Oracle JDBC connections. When enabled it specifies that no column is treated as a currency field. The field type returned from the database driver is discarded.</ahelp></paragraph>
-<!-- removed HID 39067 -->
+
+<bookmark xml-lang="en-US" branch="hid/HID_DSADMIN_ESCAPE_DATETIME" id="bm_id4743451355" localize="false"/>
 <paragraph xml-lang="en-US" id="hd_id040920092139524" role="heading" level="2" l10n="NEW">Use ODBC conformant date/time literals</paragraph>
-      <paragraph xml-lang="en-US" id="par_id040920092139526" role="paragraph" l10n="NEW"><ahelp hid=".">Check to use ODBC conformant date/time literals.</ahelp></paragraph>
-   </body>
+<paragraph xml-lang="en-US" id="par_id040920092139526" role="paragraph" l10n="CHG"><ahelp hid=".">Use date/time literals that conform to ODBC standard.</ahelp></paragraph>
+
+<bookmark xml-lang="en-US" branch="hid/HID_DSADMIN_PRIMARY_KEY_SUPPORT" id="bm_id47434523231355" localize="false"/>
+<paragraph xml-lang="en-US" id="hd_id04092009442139524" role="heading" level="2" l10n="NEW">Supports primary keys</paragraph>
+<paragraph xml-lang="en-US" id="par_id04096620092139526" role="paragraph" l10n="NEW"><ahelp hid=".">Enable to overrule Base's heuristics used to detect whether the database supports primary keys.</ahelp></paragraph>
+<paragraph xml-lang="en-US" id="par_id66841631" role="paragraph" l10n="NEW">When connecting to a database using a generic API like ODBC, JDBC, or ADO, Base currently applies heuristics to determine whether this database supports primary keys. None of those APIs has dedicated support to retrieve this information.</paragraph>
+<paragraph xml-lang="en-US" id="par_id66841632" role="paragraph" l10n="NEW">The heuristics sometimes fails. This tri-state check box by default is set to the undetermined state, which means "apply the heuristics". If the check box is enabled, primary key support is assumed. If the check box is disabled, no primary key support is assumed.</paragraph>
+<paragraph xml-lang="en-US" id="par_id66841633" role="paragraph" l10n="NEW">Note that if this option is just for overruling the heuristics. If you enable the check box for a database which actually does not support primary keys, you will see some errors.</paragraph>
+</body>
 </helpdocument>
