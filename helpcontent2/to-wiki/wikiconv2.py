@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys
+import sys, signal
 import xml.parsers.expat
 
 root="source/"
@@ -416,12 +416,7 @@ class cparagraph:
     def char_data(self, data):
         if not self.parser_state or not len(data.strip()):
             return
-        text=""
-        if self.heading:
-            text = heading(self.depth) + " " + data + " "+heading(self.depth)
-        else:
-            text = data
-        self.objects.append(ctext(text))
+        self.objects.append(ctext(data))
         #self.wikitext = self.wikitext + text
 
     def print_all(self):
@@ -431,6 +426,10 @@ class cparagraph:
         if len(text):
             print text.encode('ascii','replace')
         return
+
+        # mark this as the heading
+        if self.objects.len() > 0 and self.heading:
+            print heading(self.depth)
 
         for i in self.objects:
             try:
@@ -446,6 +445,10 @@ class cparagraph:
                 i.print_all()
         if len(self.wikitext):
             print self.wikitext
+
+        # end of the heading mark
+        if self.objects.len() > 0 and self.heading:
+            print heading(self.depth)
 
     def get_all(self):
         for i in self.objects:
@@ -493,6 +496,11 @@ def loadallfiles(filename):
     for line in file:
         title = line.split(";")
         titles.append(title)
+
+def signal_handler(signal, frame):
+    sys.snderr.write( "You pressed Ctrl+C!" )
+    sys.exit(1)
+signal.signal(signal.SIGINT, signal_handler)
 
 if len(sys.argv) < 2:
     print "wikiconv2.py <inputfile.xph>"

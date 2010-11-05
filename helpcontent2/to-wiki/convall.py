@@ -27,11 +27,10 @@ for title in titles:
     try:
         file = open(outfile,"r")
     except:
-        print "Processing: "+infile
-        if not os.system(command):
-        #    print "Failed: "+command
-        #    sys.exit(1)
-            pass
+        #print "Processing: "+infile
+        if os.system(command) != 0:
+            print "Failed: "+command
+            sys.exit(1)
         continue
     print "Warning: Skipping: "+command
     file.close()
