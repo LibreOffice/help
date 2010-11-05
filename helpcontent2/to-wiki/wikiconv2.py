@@ -53,6 +53,7 @@ class cxml:
         self.depth=1
         if sectionid != "":
             self.parser_state=False
+
     def start_element(self, name, attrs):
         if name == 'section':
             if self.filter_section != "" and attrs['id'] == self.filter_section:
@@ -96,8 +97,10 @@ class cxml:
             return
         if self.filter_section != "" and name == 'section':
             self.parser_state=False
+
     def char_data(self, data):
         pass
+
     def get_curobj(self):
         if self.child_parsing:
             #try:
@@ -108,6 +111,7 @@ class cxml:
             #    return self.objects[len(self.objects)-1]
         else:
             return self
+
     def print_all(self):
         for i in self.objects:
             i.print_all()
@@ -157,6 +161,7 @@ class cimage:
 class ctext:
     def __init__(self, text):
         self.wikitext = replace_text(text)
+
     def print_all(self):
         print self.wikitext
 
@@ -316,11 +321,14 @@ class cvariable:
         if sectionid != "" and attrs['id']==sectionid:
             self.parser_state=False
         self.parent = parent
+
     def start_element(self, name, attrs):
         pass
+
     def end_element(self,name):
         if name == 'variable':
             parent.child_parsing = False
+
     def print_all(self):
         print self.wikitext
 
@@ -352,8 +360,10 @@ class cparagraph:
         self.wikitext=""
         if sectionid != "":
             self.parser_state = False
+
     def __del__(self):
         pass
+
     def start_element(self, name, attrs):
         if name == 'variable':
             if attrs['id'] == self.filter_section:
@@ -413,6 +423,7 @@ class cparagraph:
             text = data
         self.objects.append(ctext(text))
         #self.wikitext = self.wikitext + text
+
     def print_all(self):
         #if self.wikitext != "":
         #    print self.wikitext
@@ -475,7 +486,6 @@ def parsexhp(filename):
     buf = file.read()
     p.Parse(buf)
     file.close()
-
 
 def loadallfiles(filename):
     global titles
