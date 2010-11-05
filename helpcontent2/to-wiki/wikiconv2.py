@@ -302,8 +302,6 @@ class clink:
             text = "["+self.link+" "+self.wikitext+"]"
         else:
             text = "[["+self.lname+"|"+self.wikitext+"]]"
-        if self.parent.heading:
-            text = heading(self.parent.depth) + " " + text + " "+heading(self.parent.depth)
         text = replace_text(text)
         return text
 
@@ -427,10 +425,6 @@ class cparagraph:
             print text.encode('ascii','replace')
         return
 
-        # mark this as the heading
-        if self.objects.len() > 0 and self.heading:
-            print heading(self.depth)
-
         for i in self.objects:
             try:
                 raise i
@@ -446,11 +440,11 @@ class cparagraph:
         if len(self.wikitext):
             print self.wikitext
 
-        # end of the heading mark
-        if self.objects.len() > 0 and self.heading:
-            print heading(self.depth)
-
     def get_all(self):
+        # mark this as the heading
+        if len(self.objects) > 0 and self.heading:
+            self.wikitext = self.wikitext + heading(self.depth) + " "
+
         for i in self.objects:
             try:
                 raise i
@@ -462,6 +456,15 @@ class cparagraph:
                 if len(self.wikitext):
                     self.wikitext = self.wikitext + "\n"
                 self.wikitext = self.wikitext + "\n" + i.get_all()
+
+        # end of the heading mark
+        if len(self.objects) > 0 and self.heading:
+            self.wikitext = self.wikitext + " " + heading(self.depth)
+
+        # write an additional \n at the end of paragraph
+        if len(self.objects) > 0:
+            self.wikitext = self.wikitext + "\n"
+
         return self.wikitext
 
     def get_curobj(self):
@@ -498,7 +501,7 @@ def loadallfiles(filename):
         titles.append(title)
 
 def signal_handler(signal, frame):
-    sys.snderr.write( "You pressed Ctrl+C!" )
+    sys.stderr.write( "Exiting..." )
     sys.exit(1)
 signal.signal(signal.SIGINT, signal_handler)
 
