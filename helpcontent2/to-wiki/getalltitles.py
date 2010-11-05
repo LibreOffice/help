@@ -75,7 +75,7 @@ def end_element(name):
     if not parsing:
         return
     if name == 'title':
-        parsign = False
+        parsing = False
         istitle = False
 
 def char_data(data):
@@ -95,11 +95,13 @@ def parsexhp(filename):
     buf = file.read()
     p.Parse(buf)
     file.close()
-    title=get_module(filename)+"/"+title
-    title = title.replace(" ","_")
-    title = make_unique(title)
-    alltitles.append(title)
-    print filename+";"+title
+    if len(title):
+        title=get_module(filename)+"/"+title
+        title = title.replace(" ","_")
+        title = make_unique(title)
+        alltitles.append(title)
+        print filename+";"+title
+    title=""
 
 if len(sys.argv) < 2:
     print "getalltitles.py <directory>"
