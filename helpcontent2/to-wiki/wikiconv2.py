@@ -3,7 +3,7 @@
 import sys
 import xml.parsers.expat
 
-root="helpcontent2/source/"
+root="source/"
 
 titles = [[]]
 

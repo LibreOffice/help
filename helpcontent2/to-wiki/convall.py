@@ -20,7 +20,7 @@ for title in titles:
     try:
         outfile = "wiki/"+title[1].strip()
         infile  = title[0].strip()
-        command = "python wikiconv2.py "+infile+" > "+outfile
+        command = "python to-wiki/wikiconv2.py "+infile+" > "+outfile
     except:
         continue
 

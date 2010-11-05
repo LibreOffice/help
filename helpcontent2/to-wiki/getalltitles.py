@@ -41,25 +41,25 @@ replace_text_list = [
         ]
 
 modules_list = [
-        "sbasic",
-        "scalc",
-        "schart",
-        "sdraw",
-        "shared",
-        "simpress",
-        "smath",
-        "swriter"
+        ["sbasic","Basic"],
+        ["scalc","Calc"],
+        ["schart","Chart"],
+        ["sdraw","Draw"],
+        ["shared","All"],
+        ["simpress","Impress"],
+        ["smath","Math"],
+        ["swriter","Writer"]
         ]
 
 def get_module(text):
     for i in modules_list:
-        if text.find(i) >=0:
-            return i
+        if text.find(i[0]) >=0:
+            return i[1]
     return ""
 
 def replace_text(text):
     for i in replace_text_list:
-        if text.find(i[0]) >= 0:
+        while text.find(i[0]) >= 0:
             text = text.replace(i[0],i[1])
     return text
 
