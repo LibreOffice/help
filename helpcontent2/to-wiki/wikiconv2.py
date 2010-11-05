@@ -16,8 +16,8 @@ end_eles = [
         ]
 
 replace_text_list = [
-        ["$[officename]","LibreOffice"],
-        ["%PRODUCTNAME","LibreOffice"]
+        ["$[officename]","{{ProductName}}"],
+        ["%PRODUCTNAME","{{ProductName}}"]
         ]
 
 def get_link_filename(link, name):
