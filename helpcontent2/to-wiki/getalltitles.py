@@ -59,7 +59,7 @@ def get_module(text):
 
 def replace_text(text):
     for i in replace_text_list:
-        while text.find(i[0]) >= 0:
+        if text.find(i[0]) >= 0:
             text = text.replace(i[0],i[1])
     return text
 
