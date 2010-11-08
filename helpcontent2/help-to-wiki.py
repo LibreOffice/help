@@ -32,5 +32,8 @@ def create_wiki_dirs():
 # do the work
 create_wiki_dirs()
 
+print "Generating the titles..."
 os.system( "python to-wiki/getalltitles.py source/text > alltitles.csv" )
+
+print "Generating the wiki itself..."
 os.system( "python to-wiki/convall.py source/text" )
