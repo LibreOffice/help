@@ -5,7 +5,7 @@ import xml.parsers.expat
 
 root="source/"
 
-titles = [[]]
+titles = []
 
 start_eles = [
         ["emph","'''"]
@@ -32,6 +32,12 @@ def get_link_filename(link, name):
             pass
     return link
 
+def get_link_name(link):
+    for title in titles:
+        if title[0].find(link) >= 0:
+            return title[2].strip()
+    return link
+
 def replace_text(text):
     for i in replace_text_list:
         if text.find(i[0]) >= 0:
@@ -56,6 +62,8 @@ class cxml:
 
     def start_element(self, name, attrs):
         if name == 'section':
+            if attrs['id'] == "relatedtopics":
+                self.objects.append(ctext("{{RelatedTopics}}\n"))
             if self.filter_section != "" and attrs['id'] == self.filter_section:
                 self.parser_state=True
         if name == 'paragraph':
@@ -75,17 +83,13 @@ class cxml:
             if link.find("#") >= 0:
                 fname = link[:link.find("#")]
                 section = link[link.find("#")+1:]
-            #print "Parsing: "+fname+" Section: "+section
-            if fname.find("border") >= 0 or \
-               fname.find("background") >= 0:
-                print "Ignoring: "+fname
-            else:
-                self.child_parsing = True
-                child_xml = cxml(section)
-                child_xml.depth = self.depth +1
-                self.objects.append(child_xml)
-                parsexhp(root+fname)
-                self.child_parsing = False
+
+            my_attrs = {}
+            my_attrs['href'] = fname
+            my_attrs['name'] = get_link_name(fname)
+            self.objects.append(clink(my_attrs, self))
+            # add a '\n' after each of the links
+            self.objects.append(ctext(""))
 
         if name == 'table':
             child = ctable(attrs, self)
@@ -277,15 +281,16 @@ class ctable:
 
 class clink:
     def __init__(self, attrs, parent):
-        self.link       = attrs['href']
+        self.link = attrs['href']
         try:
-            self.lname      = attrs['name']
+            self.lname = attrs['name']
         except:
-            self.lname      = self.link[self.link.rfind("/")+1:]
+            self.lname = self.link[self.link.rfind("/")+1:]
         # Override lname
+        self.default_name = self.lname
         self.lname = get_link_filename(self.link, self.lname)
-        self.wikitext   = ""
-        self.parent     = parent
+        self.wikitext = ""
+        self.parent = parent
 
     def start_element(self, name, attrs):
         pass
@@ -298,11 +303,14 @@ class clink:
         self.wikitext = self.wikitext + data
 
     def get_all(self):
+        if self.wikitext == "":
+            self.wikitext = self.default_name
+
+        self.wikitext = replace_text(self.wikitext)
         if self.link.find("http") >= 0:
             text = "["+self.link+" "+self.wikitext+"]"
         else:
             text = "[["+self.lname+"|"+self.wikitext+"]]"
-        text = replace_text(text)
         return text
 
     def print_all(self):
