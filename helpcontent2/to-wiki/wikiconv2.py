@@ -207,6 +207,7 @@ class cbookmark:
         file = open("bookmarks.csv","a")
         for i in cbookmark.bookmarks_list:
             file.write(i.encode('ascii','replace')+"\n")
+        file.close()
 
 class cimage:
     def __init__(self, attrs, parent):
