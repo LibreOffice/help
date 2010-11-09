@@ -401,7 +401,7 @@ class cparagraph:
             self.parent.child_parsing = False
         if not self.parser_state:
             return
-        if self.filter_section != "" and name == 'varable':
+        if self.filter_section != "" and name == 'variable':
             self.parser_state = False
 
         global end_eles
@@ -495,9 +495,9 @@ def parsexhp(filename):
 
 def loadallfiles(filename):
     global titles
-    file=open(filename,"r")
+    file = open(filename, "r")
     for line in file:
-        title = line.split(";")
+        title = line.split(";", 2)
         titles.append(title)
 
 def signal_handler(signal, frame):

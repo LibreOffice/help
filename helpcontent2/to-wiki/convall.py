@@ -8,7 +8,7 @@ def loadallfiles(filename):
     global titles
     file=open(filename,"r")
     for line in file:
-        title = line.split(";")
+        title = line.split(";", 2)
         titles.append(title)
 
 loadallfiles("alltitles.csv")

@@ -29,15 +29,22 @@ def make_unique(title):
 replace_text_list = [
         ["$[officename]","LibreOffice"],
         ["%PRODUCTNAME","LibreOffice"],
-        ['"+"',"plus"],
-        ['"*"',"star"],
-        ['"-"',"minus"],
-        ['"/"',"slash"],
-        ['"^"',"cap"],
+        ['"+"',"Plus"],
+        ['"*"',"Star"],
+        ['"-"',"Minus"],
+        ['"/"',"Slash"],
+        ['"^"',"Cap"],
         [')','_'],
         ['(','_'],
         ['\\','_'],
-        ['/','_']
+        ['/','_'],
+        ['&',"and"],
+        [';','_']
+        ]
+
+replace_readable_list = [
+        ["$[officename]","{{ProductName}}"],
+        ["%PRODUCTNAME","{{ProductName}}"]
         ]
 
 modules_list = [
@@ -57,18 +64,25 @@ def get_module(text):
             return i[1]
     return ""
 
-def replace_text(text):
-    for i in replace_text_list:
+def replace_text(text, replace_list):
+    for i in replace_list:
         if text.find(i[0]) >= 0:
             text = text.replace(i[0],i[1])
     return text
 
+def wiki_text(text):
+    return replace_text(text, replace_text_list)
+
+def readable_text(text):
+    return replace_text(text, replace_readable_list)
+
 def start_element(name, attrs):
-    global parsing, istitle
+    global parsing, istitle, title
     if not parsing:
         return
     if name == 'title':
         istitle=True
+        title = ""
 
 def end_element(name):
     global parsing, istitle
@@ -82,7 +96,7 @@ def char_data(data):
     global title, parsing
     if not istitle:
         return
-    title = replace_text(data)
+    title = title + data
 
 def parsexhp(filename):
     global parsing, title
@@ -96,12 +110,12 @@ def parsexhp(filename):
     p.Parse(buf)
     file.close()
     if len(title):
-        title=get_module(filename)+"/"+title
-        title = title.replace(" ","_")
+        readable_title = readable_text(title)
+        title = get_module(filename) + "/" + wiki_text(title)
+        title = title.replace(" ", "_")
         title = make_unique(title)
         alltitles.append(title)
-        print filename+";"+title
-    title=""
+        print filename + ";" + title + ";" + readable_title
 
 if len(sys.argv) < 2:
     print "getalltitles.py <directory>"
