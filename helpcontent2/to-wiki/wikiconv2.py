@@ -20,6 +20,31 @@ replace_text_list = [
         ["%PRODUCTNAME","{{ProductName}}"]
         ]
 
+help_id_patterns = [
+        "HID",
+        "SID",
+        "FID",
+        "RID",
+        "TP_",
+        "MD_",
+        "FN_",
+        "DLG_",
+        "SW_",
+        "UID",
+        "basctl_",
+        "basic_",
+        "chart2_",
+        "dbaccess_",
+        "extensions_",
+        "filter_",
+        "formula_",
+        "fpicker_",
+        "framework_",
+        "goodies_"
+        ]
+
+help_file_name = ""
+
 def get_link_filename(link, name):
     text = link
     if link.find("http") >= 0:
@@ -61,6 +86,7 @@ class cxml:
             self.parser_state=False
 
     def start_element(self, name, attrs):
+        # TODO: Take care of nested sections
         if name == 'section':
             if attrs['id'] == "relatedtopics":
                 self.objects.append(ctext("{{RelatedTopics}}\n"))
@@ -96,6 +122,11 @@ class cxml:
             self.child_parsing = True
             self.objects.append(child)
 
+        if name == 'bookmark':
+            child = cbookmark(attrs, self)
+            self.child_parsing = True
+            self.objects.append(child)
+
     def end_element(self, name):
         if not self.parser_state:
             return
@@ -120,6 +151,62 @@ class cxml:
         for i in self.objects:
             i.print_all()
 
+
+class cbookmark:
+    bookmarks_list   = []
+    current_bookmark = ""
+
+    def __init__(self, attrs, parent):
+        self.parent = parent
+        self.bookmark = ""
+        text = attrs['branch'].encode('ascii','replace')
+        # text = text.upper()
+        for i in help_id_patterns:
+            if text.find(i) >= 0:
+               self.bookmark = text[text.rfind("/")+1:].replace(":","_")
+               break
+
+    def start_element(self, name, attrs):
+        pass
+
+    def end_element(self, name):
+        # Assumes no nested bookmark entries
+        if name == "bookmark":
+            self.parent.child_parsing = False
+
+    def char_data(self, data):
+        pass
+
+    def get_all(self):
+        cbookmark.current_bookmark = self.bookmark
+        return ""
+
+    def print_all(self):
+        self.get_all()
+        pass
+
+    def get_curobj(self):
+        return self
+
+    @staticmethod
+    def set_heading(data):
+        global help_file_name
+        if len(cbookmark.current_bookmark) > 0:
+            if data.find("]]") >= 0:
+                try:
+                    data = data[data.find("|")+1:data.find("]]")]
+                    data = data.replace("cui_","svx_")
+                except:
+                    pass
+            bookmark = cbookmark.current_bookmark+";"+help_file_name+"#"+data
+            cbookmark.bookmarks_list.append(bookmark)
+            cbookmark.current_bookmark = ""
+
+    @staticmethod
+    def save_bookmarks():
+        file = open("bookmarks.csv","a")
+        for i in cbookmark.bookmarks_list:
+            file.write(i.encode('ascii','replace')+"\n")
 
 class cimage:
     def __init__(self, attrs, parent):
@@ -395,6 +482,9 @@ class cparagraph:
             child = clink(attrs, self)
             self.child_parsing = True
             self.objects.append(child)
+        if name == 'bookmark':
+            # This shouldn't occur
+            print "Warning: Unhandled bookmark content!!!"
 
 
         global start_eles
@@ -468,6 +558,11 @@ class cparagraph:
         # end of the heading mark
         if len(self.objects) > 0 and self.heading:
             self.wikitext = self.wikitext + " " + heading(self.depth)
+            # Set bookmark info
+            head_txt = self.wikitext
+            head_txt = head_txt[head_txt.find("= ")+2:]
+            head_txt = head_txt[:head_txt.find(" =")]
+            cbookmark.set_heading(head_txt)
 
         # write an additional \n at the end of paragraph
         if len(self.objects) > 0:
@@ -517,6 +612,10 @@ if len(sys.argv) < 2:
     print "wikiconv2.py <inputfile.xph>"
     sys.exit(1)
 
+if len(sys.argv) > 2:
+    help_file_name = sys.argv[2]
+
 loadallfiles("alltitles.csv")
 parsexhp(sys.argv[1])
 head_obj.print_all()
+cbookmark.save_bookmarks()

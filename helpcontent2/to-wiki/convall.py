@@ -17,12 +17,10 @@ for title in titles:
     command = ""
     outfile = ""
     infile  = ""
-    try:
+    if len(title) > 1:
         outfile = "wiki/"+title[1].strip()
         infile  = title[0].strip()
-        command = "python to-wiki/wikiconv2.py "+infile+" > "+outfile
-    except:
-        continue
+        command = "python to-wiki/wikiconv2.py "+infile+" "+title[1].strip()+" > "+outfile
 
     try:
         file = open(outfile,"r")
