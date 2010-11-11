@@ -289,8 +289,13 @@ class ctabcell:
 
     def get_all(self):
         text = ""
+        first = True
         for i in self.objects:
-            text = text + i.get_all()
+            if first:
+                text = i.get_all()
+                first = False
+            else:
+                text = text + "\n" + i.get_all()
         return text
 
     def get_curobj(self):
@@ -346,17 +351,17 @@ class ctable:
         pass
 
     def get_all(self):
-        text = '{| border="1"' # + ' align="left"'
+        text = '{| border="1"\n' # + ' align="left"'
         if len(self.header):
             # text = text + "\n|+ caption"
-            text = text +"\n|-"
+            text = text +"|-\n"
             for i in self.header:
-                text = text + '\n! scope="col" | ' + i.get_all()
+                text = text + '! scope="col" | ' + i.get_all()
         for i in self.content:
-            text = text + "\n|-"
+            text = text + "|-\n"
             for j in i:
-                text = text + "\n| "+j.get_all()
-        text = text + "\n|}"
+                text = text + "| "+j.get_all()
+        text = text + "|}\n"
         return text
 
     def print_all(self):
