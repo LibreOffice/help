@@ -209,6 +209,30 @@ class cbookmark:
             file.write(i.encode('ascii','replace')+"\n")
         file.close()
 
+class ccomment:
+    def __init__(self, attrs, parent):
+        self.text = ''
+        self.parent  = parent
+
+    def start_element(self, name, attrs):
+        pass
+
+    def end_element(self, name):
+        if name == 'comment':
+            self.parent.child_parsing = False
+
+    def char_data(self, data):
+        self.text = self.text + data
+
+    def get_all(self):
+        return "<!-- " + self.text + " -->"
+
+    def print_all(self):
+        print self.get_all()
+
+    def get_curobj(self):
+        return self
+
 class cimage:
     def __init__(self, attrs, parent):
         self.src     = attrs['src']
@@ -492,6 +516,10 @@ class cparagraph:
             # This shouldn't occur
             print "Warning: Unhandled bookmark content!!!"
 
+        if name == 'comment':
+            child = ccomment(attrs, self)
+            self.child_parsing = True
+            self.objects.append(child)
 
         global start_eles
         for n in start_eles:
@@ -552,6 +580,8 @@ class cparagraph:
         for i in self.objects:
             try:
                 raise i
+            except ccomment:
+                self.wikitext = self.wikitext + i.get_all()
             except ctext:
                 self.wikitext = self.wikitext + i.wikitext
             except clink:
