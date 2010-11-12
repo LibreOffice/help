@@ -8,21 +8,47 @@ root="source/"
 titles = []
 
 # list of elements that we can directly convert to wiki text
-replace_start_list = [
-        ["emph","'''"],
-        ["comment","<!-- "]
-        ]
+replace_element = \
+    {'start':{'emph': "'''",
+              'comment': "<!-- "
+             },
+     'end':  {'emph': "'''",
+              'comment': " -->"
+             }
+    }
 
-replace_end_list = [
-        ["emph","'''"],
-        ["comment"," -->"]
-        ]
+replace_paragraph_role = \
+    {'start':{'heading1': '= ',
+              'heading2': '== ',
+              'heading3': '=== ',
+              'heading4': '==== ',
+              'heading5': '===== ',
+              'heading6': '====== ',
+              'paragraph': '',
+              'tablecontent': '| ',
+              'tablehead': '! scope="col" | ',
+              'tip': '{{Tip|',
+              'warning': '{{Warning|',
+             },
+     'end':{'heading1': ' =\n\n',
+            'heading2': ' ==\n\n',
+            'heading3': ' ===\n\n',
+            'heading4': ' ====\n\n',
+            'heading5': ' =====\n\n',
+            'heading6': ' ======\n\n',
+            'paragraph': '\n\n',
+            'tablecontent': '\n\n',
+            'tablehead': '\n\n',
+            'tip': '}}\n\n',
+            'warning': '}}\n\n',
+           }
+    }
 
 # text snippets that we need to convert
-replace_text_list = [
-        ["$[officename]","{{ProductName}}"],
-        ["%PRODUCTNAME","{{ProductName}}"]
-        ]
+replace_text_list = \
+    [["$[officename]", "{{ProductName}}"],
+     ["%PRODUCTNAME", "{{ProductName}}"]
+    ]
 
 help_id_patterns = [
         "HID",
@@ -106,20 +132,20 @@ class cxml:
             self.objects.append(para)
         if not self.parser_state:
             return
-        if name == 'embed':
-            link=attrs['href'].replace('"','')
-            fname=link
-            section=""
-            if link.find("#") >= 0:
-                fname = link[:link.find("#")]
-                section = link[link.find("#")+1:]
+        #if name == 'embed':
+        #    link=attrs['href'].replace('"','')
+        #    fname=link
+        #    section=""
+        #    if link.find("#") >= 0:
+        #        fname = link[:link.find("#")]
+        #        section = link[link.find("#")+1:]
 
-            my_attrs = {}
-            my_attrs['href'] = fname
-            my_attrs['name'] = get_link_name(fname)
-            self.objects.append(clink(my_attrs, self))
-            # add a '\n' after each of the links
-            self.objects.append(ctext(""))
+        #    my_attrs = {}
+        #    my_attrs['href'] = fname
+        #    my_attrs['name'] = get_link_name(fname)
+        #    self.objects.append(clink(my_attrs, self))
+        #    # add a '\n' after each of the links
+        #    self.objects.append(ctext(""))
 
         if name == 'table':
             child = ctable(attrs, self)
@@ -142,19 +168,14 @@ class cxml:
 
     def get_curobj(self):
         if self.child_parsing:
-            #try:
-            #    raise self.objects[len(self.objects)-1]
-            #except cxml:
             return self.objects[len(self.objects)-1].get_curobj()
-            #except:
-            #    return self.objects[len(self.objects)-1]
-        else:
-            return self
+        return self
 
-    def print_all(self):
+    def get_all(self):
+        text = ""
         for i in self.objects:
-            i.print_all()
-
+            text = text + i.get_all()
+        return text
 
 class cbookmark:
     bookmarks_list   = []
@@ -184,10 +205,6 @@ class cbookmark:
     def get_all(self):
         cbookmark.current_bookmark = self.bookmark
         return ""
-
-    def print_all(self):
-        self.get_all()
-        pass
 
     def get_curobj(self):
         return self
@@ -248,9 +265,6 @@ class cimage:
         wikitext = wikitext + self.alttext+"]]"
         return wikitext
 
-    def print_all(self):
-        print self.get_all()
-
     def get_curobj(self):
         return self
 
@@ -258,8 +272,8 @@ class ctext:
     def __init__(self, text):
         self.wikitext = replace_text(text)
 
-    def print_all(self):
-        print self.wikitext
+    def get_all(self):
+        return self.wikitext
 
 class ctabcell:
     def __init__(self, attrs, parent):
@@ -267,39 +281,24 @@ class ctabcell:
         self.objects = []
         self.child_parsing = False
         self.parent = parent
-        self.header = False
-        pass
 
     def start_element(self, name, attrs):
         if name == 'paragraph':
-            if attrs['role'] == 'tablehead':
-                self.header = True
-            para=cparagraph(attrs, self, '', 0)
-            self.child_parsing=True
+            para = cparagraph(attrs, self, '', 0)
+            self.child_parsing = True
             self.objects.append(para)
-        pass
 
     def end_element(self, name):
         if name == 'tablecell':
             self.parent.child_parsing = False
-        pass
 
     def char_data(self, data):
-        pass
-
-    def print_all(self):
-        for i in self.objects:
-            i.print_all()
+        return
 
     def get_all(self):
         text = ""
-        first = True
         for i in self.objects:
-            if first:
-                text = i.get_all()
-                first = False
-            else:
-                text = text + "\n" + i.get_all()
+            text = text + i.get_all()
         return text
 
     def get_curobj(self):
@@ -307,73 +306,65 @@ class ctabcell:
             return self.objects[len(self.objects)-1].get_curobj()
         return self
 
-
-class ctable:
+class ctabrow:
     def __init__(self, attrs, parent):
-        # TODO/Check: Might Require filtering too...
-        try:
-            self.tableid    = attrs['id']
-        except:
-            self.tableid    = 0
-        self.header         = []
-        self.crow           = []
-        self.content        = [[]]
-        self.child_parsing  = False
-        self.child          = None
-        self.parent         = parent
-
-    def check_add_cell(self):
-        if self.child:
-            self.crow.append(self.child)
-            self.child = None
-
-    def check_add_row(self):
-        if len(self.crow):
-            if self.crow[0].header:
-                self.header = self.crow
-            else:
-                self.content.append(self.crow)
-            self.crow = []
+        self.objects = []
+        self.child_parsing = False
+        self.parent = parent
 
     def start_element(self, name, attrs):
         if name == 'tablecell':
-            self.check_add_cell()
-            self.child = ctabcell(attrs, self)
+            tabcell = ctabcell(attrs, self)
             self.child_parsing = True
-        if name == 'tablerow':
-            self.check_add_cell()
-            self.check_add_row()
+            self.objects.append(tabcell)
 
     def end_element(self, name):
-        if name == 'table':
-            # the following checks may be unnecessary
-            self.check_add_cell()
-            self.check_add_row()
+        if name == 'tablerow':
             self.parent.child_parsing = False
 
     def char_data(self, data):
-        pass
+        return
 
     def get_all(self):
-        text = '{| border="1"\n' # + ' align="left"'
-        if len(self.header):
-            # text = text + "\n|+ caption"
-            text = text +"|-\n"
-            for i in self.header:
-                text = text + '! scope="col" | ' + i.get_all()
-        for i in self.content:
-            text = text + "|-\n"
-            for j in i:
-                text = text + "| "+j.get_all()
-        text = text + "|}\n"
+        text = '|-\n'
+        for i in self.objects:
+            text = text + i.get_all()
         return text
-
-    def print_all(self):
-        print self.get_all().encode('ascii','replace')
 
     def get_curobj(self):
         if self.child_parsing:
-            return self.child.get_curobj()
+            return self.objects[len(self.objects)-1].get_curobj()
+        return self
+
+class ctable:
+    def __init__(self, attrs, parent):
+        self.objects = []
+        self.child_parsing = False
+        self.parent = parent
+
+    def start_element(self, name, attrs):
+        if name == 'tablerow':
+            tabrow = ctabrow(attrs, self)
+            self.child_parsing = True
+            self.objects.append(tabrow)
+
+    def end_element(self, name):
+        if name == 'table':
+            self.parent.child_parsing = False
+
+    def char_data(self, data):
+        return
+
+    def get_all(self):
+        text = '{| border="1"\n' # + ' align="left"'
+        for i in self.objects:
+            text = text + i.get_all()
+        text = text + '|}\n\n'
+        return text
+
+    def get_curobj(self):
+        if self.child_parsing:
+            return self.objects[len(self.objects)-1].get_curobj()
         return self
 
 class clink:
@@ -410,9 +401,6 @@ class clink:
             text = "[["+self.lname+"|"+self.wikitext+"]]"
         return text
 
-    def print_all(self):
-        print self.get_all()
-
     def get_curobj(self):
         return self
 
@@ -432,18 +420,13 @@ class cvariable:
         if name == 'variable':
             parent.child_parsing = False
 
-    def print_all(self):
-        print self.wikitext
-
 class cparagraph:
     def __init__(self, attrs, parent, sectionid, depth):
         self.child_parsing = False
-        self.heading=False
         try:
-            if attrs['role'] == "heading":
-                self.heading = True
+            self.role = attrs['role']
         except:
-            pass
+            self.role = 'paragraph'
 
         #try:
         #    self.level=parent.level+1
@@ -463,6 +446,7 @@ class cparagraph:
         self.wikitext=""
         if sectionid != "":
             self.parser_state = False
+        self.is_first = (len(self.parent.objects) == 0)
 
     def __del__(self):
         pass
@@ -471,13 +455,6 @@ class cparagraph:
         if name == 'variable':
             if attrs['id'] == self.filter_section:
                 self.parser_state=True
-        if name == 'paragraph':
-            if not self.parser_state:
-                child = cparagraph(attrs, self, self.filter_section, self.depth+1)
-            else:
-                child = cparagraph(attrs, self, "", self.depth+1)
-            self.child_parsing = True
-            self.objects.append(child)
 
         if not self.parser_state:
             return
@@ -496,11 +473,11 @@ class cparagraph:
             # This shouldn't occur
             print "Warning: Unhandled bookmark content!!!"
 
-        global replace_start_list
-        for n in replace_start_list:
-            if n[0] == name:
-                self.objects.append(ctext(n[1]))
-                break
+        try:
+            global replace_element
+            self.objects.append(ctext(replace_element['start'][name]))
+        except:
+            pass
 
     def end_element(self, name):
         if name == 'paragraph':
@@ -510,11 +487,11 @@ class cparagraph:
         if self.filter_section != "" and name == 'variable':
             self.parser_state = False
 
-        global replace_end_list
-        for n in replace_end_list:
-            if n[0] == name:
-                self.objects.append(ctext(n[1]))
-                break
+        try:
+            global replace_element
+            self.objects.append(ctext(replace_element['end'][name]))
+        except:
+            pass
 
     def char_data(self, data):
         if not self.parser_state or not len(data.strip()):
@@ -522,66 +499,46 @@ class cparagraph:
         self.objects.append(ctext(data))
         #self.wikitext = self.wikitext + text
 
-    def print_all(self):
-        #if self.wikitext != "":
-        #    print self.wikitext
-        text = self.get_all()
-        if len(text):
-            print text.encode('ascii','replace')
-        return
-
-        for i in self.objects:
-            try:
-                raise i
-            except ctext:
-                self.wikitext = self.wikitext + i.wikitext
-            except clink:
-                self.wikitext = self.wikitext + i.get_all() + " "
-            except:
-                if len(self.wikitext):
-                    print self.wikitext
-                    self.wikitext=""
-                i.print_all()
-        if len(self.wikitext):
-            print self.wikitext
-
     def get_all(self):
-        # mark this as the heading
-        if len(self.objects) > 0 and self.heading:
-            self.wikitext = self.wikitext + heading(self.depth) + " "
+        role = self.role
+        if role == 'heading':
+            if self.depth < 6:
+                role = 'heading%d'% self.depth
+            else:
+                role = 'heading6'
+        if ( role == 'tablecontent' or role == 'tablehead' ) and not self.is_first:
+            role = 'paragraph'
 
-        for i in self.objects:
-            try:
-                raise i
-            except ctext:
-                self.wikitext = self.wikitext + i.wikitext
-            except clink:
-                self.wikitext = self.wikitext + i.get_all() + " "
-            except:
-                if len(self.wikitext):
-                    self.wikitext = self.wikitext + "\n"
-                self.wikitext = self.wikitext + "\n" + i.get_all()
-
-        # end of the heading mark
-        if len(self.objects) > 0 and self.heading:
-            self.wikitext = self.wikitext + " " + heading(self.depth)
-            # Set bookmark info
-            head_txt = self.wikitext
-            head_txt = head_txt[head_txt.find("= ")+2:]
-            head_txt = head_txt[:head_txt.find(" =")]
-            cbookmark.set_heading(head_txt)
-
-        # write an additional \n at the end of paragraph
+        # prepend the markup according to the role
         if len(self.objects) > 0:
-            self.wikitext = self.wikitext + "\n"
+            try:
+                self.wikitext = self.wikitext + replace_paragraph_role['start'][role]
+            except:
+                sys.stderr.write( "Unknown paragraph role start: " + role + "\n" )
+
+        # the text itself
+        text = ""
+        for i in self.objects:
+            text = text + i.get_all()
+        self.wikitext = self.wikitext + text
+
+        # set bookmark info
+        if self.role == "heading":
+            cbookmark.set_heading(text)
+
+        # append the markup according to the role
+        if len(self.objects) > 0:
+            try:
+                self.wikitext = self.wikitext + replace_paragraph_role['end'][role]
+            except:
+                sys.stderr.write( "Unknown paragraph role end: " + role + "\n" )
 
         return self.wikitext
 
     def get_curobj(self):
         if self.child_parsing:
             return self.objects[len(self.objects)-1].get_curobj()
-        else:
-            return self
+        return self
 
 head_obj=cxml("")
 def start_element(name, attrs):
@@ -624,5 +581,5 @@ if len(sys.argv) > 2:
 
 loadallfiles("alltitles.csv")
 parsexhp(sys.argv[1])
-head_obj.print_all()
+print head_obj.get_all().encode('ascii','replace')
 cbookmark.save_bookmarks()
