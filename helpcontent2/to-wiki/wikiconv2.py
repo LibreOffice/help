@@ -18,7 +18,8 @@ replace_element = \
     }
 
 replace_paragraph_role = \
-    {'start':{'heading1': '= ',
+    {'start':{'code': '<code>',
+              'heading1': '= ',
               'heading2': '== ',
               'heading3': '=== ',
               'heading4': '==== ',
@@ -32,7 +33,8 @@ replace_paragraph_role = \
               'tip': '{{Tip|',
               'warning': '{{Warning|',
              },
-     'end':{'heading1': ' =\n\n',
+     'end':{'code': '</code>\n\n',
+            'heading1': ' =\n\n',
             'heading2': ' ==\n\n',
             'heading3': ' ===\n\n',
             'heading4': ' ====\n\n',
