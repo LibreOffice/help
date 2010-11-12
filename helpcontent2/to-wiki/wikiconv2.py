@@ -93,6 +93,32 @@ help_id_patterns = [
 
 help_file_name = ""
 
+all_help_id_mappings = [[]]
+
+def load_all_help_ids():
+    file = open("helpers/help_hid.lst")
+    for line in file:
+        ids = line.strip().upper().split(",")
+        if len(ids) >= 2:
+            all_help_id_mappings.append(ids)
+
+def get_help_id_res2(name):
+    file = open("helpers/hid.lst")
+    for line in file:
+        ids = line.strip().upper().split(" ")
+        if len(ids) >= 2:
+            if ids[0] == name:
+                return ids[1]
+    # if none found
+    return "0"
+
+def get_help_id(name):
+    name = name.strip().replace("cui_","svx_").upper()
+    for i in all_help_id_mappings:
+        if len(i) >= 2 and i[0].strip() == name:
+            return i[1].strip()
+    return get_help_id_res2(name)
+
 def get_link_filename(link, name):
     text = link
     if link.find("http") >= 0:
@@ -239,16 +265,17 @@ class cbookmark:
             if data.find("]]") >= 0:
                 try:
                     data = data[data.find("|")+1:data.find("]]")]
-                    data = data.replace("cui_","svx_")
                 except:
                     pass
-            bookmark = cbookmark.current_bookmark+";"+help_file_name+"#"+data
+            help_id = get_help_id(cbookmark.current_bookmark)
+            bookmark = "    { "+help_id+", \""+help_file_name+"#"+data.replace("\"","\\\"")+"\" },"
+            bookmark = bookmark.encode('ascii','replace')
             cbookmark.bookmarks_list.append(bookmark)
             cbookmark.current_bookmark = ""
 
     @staticmethod
     def save_bookmarks():
-        file = open("bookmarks.csv","a")
+        file = open("bookmarks.h","a")
         for i in cbookmark.bookmarks_list:
             file.write(i.encode('ascii','replace')+"\n")
         file.close()
@@ -686,6 +713,10 @@ if len(sys.argv) < 2:
 if len(sys.argv) > 2:
     help_file_name = sys.argv[2]
 
+# TODO: Currently the following files are loaded for every
+# file which is converted. Combine the batch converter with
+# this file to generate quicker help files.
+load_all_help_ids()
 loadallfiles("alltitles.csv")
 parsexhp(sys.argv[1])
 print head_obj.get_all().encode('ascii','replace')
