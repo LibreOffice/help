@@ -19,30 +19,42 @@ replace_element = \
 
 replace_paragraph_role = \
     {'start':{'code': '<code>',
+              'codeintip': '<code>',
+              'example': '<code>',
               'heading1': '= ',
               'heading2': '== ',
               'heading3': '=== ',
               'heading4': '==== ',
               'heading5': '===== ',
               'heading6': '====== ',
+              'head1': '= ', # used only in one file, probably in error?
+              'head2': '== ', # used only in one file, probably in error?
               'listitem': '',
               'note': '{{Note|',
               'paragraph': '',
+              'related': '', # used only in one file, probably in error?
+              'relatedtopics': '', # used only in one file, probably in error?
               'tablecontent': '| ',
               'tablehead': '! scope="col" | ',
               'tip': '{{Tip|',
               'warning': '{{Warning|',
              },
      'end':{'code': '</code>\n\n',
+            'codeintip': '</code>\n\n',
+            'example': '</code>\n\n',
             'heading1': ' =\n\n',
             'heading2': ' ==\n\n',
             'heading3': ' ===\n\n',
             'heading4': ' ====\n\n',
             'heading5': ' =====\n\n',
             'heading6': ' ======\n\n',
+            'head1': ' =\n\n', # used only in one file, probably in error?
+            'head2': ' ==\n\n', # used only in one file, probably in error?
             'listitem': '\n',
             'note': '}}\n\n',
             'paragraph': '\n\n',
+            'related': '\n\n', # used only in one file, probably in error?
+            'relatedtopics': '\n\n', # used only in one file, probably in error?
             'tablecontent': '\n\n',
             'tablehead': '\n\n',
             'tip': '}}\n\n',
