@@ -107,7 +107,12 @@ def parsexhp(filename):
     p.EndElementHandler = end_element
     p.CharacterDataHandler = char_data
     buf = file.read()
-    p.Parse(buf)
+    try:
+        p.Parse(buf)
+    except:
+        sys.stderr.write('Cannot parse %s, skipping it\n'% filename)
+        file.close()
+        return
     file.close()
     if len(title):
         readable_title = readable_text(title)

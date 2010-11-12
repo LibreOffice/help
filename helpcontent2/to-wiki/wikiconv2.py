@@ -24,6 +24,8 @@ replace_paragraph_role = \
               'heading4': '==== ',
               'heading5': '===== ',
               'heading6': '====== ',
+              'listitem': '',
+              'note': '{{Note|',
               'paragraph': '',
               'tablecontent': '| ',
               'tablehead': '! scope="col" | ',
@@ -36,6 +38,8 @@ replace_paragraph_role = \
             'heading4': ' ====\n\n',
             'heading5': ' =====\n\n',
             'heading6': ' ======\n\n',
+            'listitem': '\n',
+            'note': '}}\n\n',
             'paragraph': '\n\n',
             'tablecontent': '\n\n',
             'tablehead': '\n\n',
@@ -149,6 +153,11 @@ class cxml:
 
         if name == 'table':
             child = ctable(attrs, self)
+            self.child_parsing = True
+            self.objects.append(child)
+
+        if name == 'list':
+            child = clist(attrs, self)
             self.child_parsing = True
             self.objects.append(child)
 
@@ -360,6 +369,90 @@ class ctable:
         for i in self.objects:
             text = text + i.get_all()
         text = text + '|}\n\n'
+        return text
+
+    def get_curobj(self):
+        if self.child_parsing:
+            return self.objects[len(self.objects)-1].get_curobj()
+        return self
+
+class clistitem:
+    def __init__(self, attrs, parent):
+        # TODO: colspan rowspan
+        self.objects = []
+        self.child_parsing = False
+        self.parent = parent
+
+    def start_element(self, name, attrs):
+        if name == 'paragraph':
+            para = cparagraph(attrs, self, '', 0)
+            self.child_parsing = True
+            self.objects.append(para)
+
+    def end_element(self, name):
+        if name == 'listitem':
+            self.parent.child_parsing = False
+
+    def char_data(self, data):
+        return
+
+    def get_all(self):
+        text = ""
+        prefix = '*'
+        postfix = ''
+        if self.parent.startwith > 0:
+            prefix = '<li>'
+            postfix = '</li>'
+        elif self.parent.type == 'ordered':
+            prefix = '#'
+
+        # add the text itself
+        for i in self.objects:
+            text = text + prefix + i.get_all() + postfix
+
+        return text
+
+    def get_curobj(self):
+        if self.child_parsing:
+            return self.objects[len(self.objects)-1].get_curobj()
+        return self
+
+class clist:
+    def __init__(self, attrs, parent):
+        self.objects = []
+        self.child_parsing = False
+        self.parent = parent
+        self.type = attrs['type']
+        try:
+            self.startwith = int(attrs['startwith'])
+        except:
+            self.startwith = 0
+
+    def start_element(self, name, attrs):
+        if name == 'listitem':
+            listitem = clistitem(attrs, self)
+            self.child_parsing = True
+            self.objects.append(listitem)
+
+    def end_element(self, name):
+        if name == 'list':
+            self.parent.child_parsing = False
+
+    def char_data(self, data):
+        return
+
+    def get_all(self):
+        text = ""
+        if self.startwith > 0:
+            text = text + '<ol start="%d">\n'% self.startwith
+
+        for i in self.objects:
+            text = text + i.get_all()
+
+        if self.startwith > 0:
+            text = text + '</ol>\n'
+        else:
+            text = text + '\n'
         return text
 
     def get_curobj(self):
