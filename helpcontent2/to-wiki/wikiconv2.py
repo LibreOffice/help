@@ -36,6 +36,7 @@ replace_paragraph_role = \
               'relatedtopics': '', # used only in one file, probably in error?
               'tablecontent': '| ',
               'tablehead': '! scope="col" | ',
+              'variable': '',
               'tip': '{{Tip|',
               'warning': '{{Warning|',
              },
@@ -57,6 +58,7 @@ replace_paragraph_role = \
             'relatedtopics': '\n\n', # used only in one file, probably in error?
             'tablecontent': '\n\n',
             'tablehead': '\n\n',
+            'variable': '',
             'tip': '}}\n\n',
             'warning': '}}\n\n',
            }
@@ -153,13 +155,13 @@ def replace_text(text):
 # self.parent - parent object
 class ElementBase:
     def __init__(self, name, parent):
-	self.name = name
+        self.name = name
         self.objects = []
         self.child_parsing = False
         self.parent = parent
 
     def start_element(self, name, attrs):
-	pass
+        pass
 
     def end_element(self, name):
         if name == self.name:
@@ -167,6 +169,11 @@ class ElementBase:
 
     def char_data(self, data):
         pass
+
+    def get_curobj(self):
+        if self.child_parsing:
+            return self.objects[len(self.objects)-1].get_curobj()
+        return self
 
     # construct the wiki representation of this object, including the objects
     # held in self.objects (here only the text of the objects)
@@ -176,80 +183,76 @@ class ElementBase:
             text = text + i.get_all()
         return text
 
-    def get_curobj(self):
-        if self.child_parsing:
-            return self.objects[len(self.objects)-1].get_curobj()
-        return self
+    # for handling variables, and embedding in general
+    # id - the variable name we want to get
+    def get_variable(self, id):
+        for i in self.objects:
+            if i != None:
+                var = i.get_variable(id)
+                if var != None:
+                    return var
+        return None
 
 class cxml(ElementBase):
-    def __init__(self, sectionid):
-	ElementBase.__init__(self, None, None)
+    def __init__(self, follow_embed):
+        ElementBase.__init__(self, None, None)
+        self.follow_embed = follow_embed
 
-        self.filter_section=sectionid
-        self.parser_state=True
         self.depth=1
-        if sectionid != "":
-            self.parser_state=False
 
     def start_element(self, name, attrs):
         # TODO: Take care of nested sections
         if name == 'section':
             if attrs['id'] == "relatedtopics":
                 self.objects.append(ctext("{{RelatedTopics}}\n"))
-            if self.filter_section != "" and attrs['id'] == self.filter_section:
-                self.parser_state=True
-        if name == 'paragraph':
-            if not self.parser_state:
-                para=cparagraph(attrs, self, self.filter_section, self.depth)
-            else:
-                para=cparagraph(attrs, self, '', self.depth)
+        elif name == 'paragraph':
+            para = cparagraph(attrs, self, self.depth)
             self.depth = para.depth
             self.child_parsing=True
             self.objects.append(para)
-        if not self.parser_state:
-            return
-        #if name == 'embed':
-        #    link=attrs['href'].replace('"','')
-        #    fname=link
-        #    section=""
-        #    if link.find("#") >= 0:
-        #        fname = link[:link.find("#")]
-        #        section = link[link.find("#")+1:]
-
-        #    my_attrs = {}
-        #    my_attrs['href'] = fname
-        #    my_attrs['name'] = get_link_name(fname)
-        #    self.objects.append(clink(my_attrs, self))
-        #    # add a '\n' after each of the links
-        #    self.objects.append(ctext(""))
-
-        if name == 'table':
+        elif name == 'table':
             child = ctable(attrs, self)
             self.child_parsing = True
             self.objects.append(child)
-
-        if name == 'list':
+        elif name == 'list':
             child = clist(attrs, self)
             self.child_parsing = True
             self.objects.append(child)
-
-        if name == 'bookmark':
+        elif name == 'bookmark':
             child = cbookmark(attrs, self)
             self.child_parsing = True
             self.objects.append(child)
+        if name == 'embed' and self.follow_embed:
+            link = attrs['href'].replace('"', '')
+            fname = link
+            id = ''
+            if link.find("#") >= 0:
+                fname = link[:link.find("#")]
+                id = link[link.find("#")+1:]
+            else:
+                sys.stderr.write('Reference without a "#" in "%s".'% link)
 
-    def end_element(self, name):
-        if not self.parser_state:
-            return
-        if self.filter_section != "" and name == 'section':
-            self.parser_state=False
+            # parse another xhp
+            global head_obj
+            save_head_obj = head_obj
+            head_obj = cxml(False)
+            parsexhp('source/' + fname)
+            parsed = head_obj
+            head_obj = save_head_obj
+
+            var = parsed.get_variable(id)
+            if var != None:
+                self.objects.append(var)
+            else:
+                sys.stderr.write('Cannot find reference "#%s" in "%s".\n'% \
+                        (id, fname))
 
 class cbookmark(ElementBase):
     bookmarks_list   = []
     current_bookmark = ""
 
     def __init__(self, attrs, parent):
-	ElementBase.__init__(self, 'bookmark', parent)
+        ElementBase.__init__(self, 'bookmark', parent)
         self.bookmark = ""
         text = attrs['branch'].encode('ascii','replace')
         # text = text.upper()
@@ -286,7 +289,7 @@ class cbookmark(ElementBase):
 
 class cimage(ElementBase):
     def __init__(self, attrs, parent):
-	ElementBase.__init__(self, 'image', parent)
+        ElementBase.__init__(self, 'image', parent)
         self.src     = attrs['src']
         try:
             self.width   = attrs['width']
@@ -328,19 +331,22 @@ class ctext:
     def get_all(self):
         return self.wikitext
 
+    def get_variable(self, id):
+        return None
+
 class ctabcell(ElementBase):
     def __init__(self, attrs, parent):
-	ElementBase.__init__(self, 'tablecell', parent)
+        ElementBase.__init__(self, 'tablecell', parent)
 
     def start_element(self, name, attrs):
         if name == 'paragraph':
-            para = cparagraph(attrs, self, '', 0)
+            para = cparagraph(attrs, self, 0)
             self.child_parsing = True
             self.objects.append(para)
 
 class ctabrow(ElementBase):
     def __init__(self, attrs, parent):
-	ElementBase.__init__(self, 'tablerow', parent)
+        ElementBase.__init__(self, 'tablerow', parent)
 
     def start_element(self, name, attrs):
         if name == 'tablecell':
@@ -354,7 +360,7 @@ class ctabrow(ElementBase):
 
 class ctable(ElementBase):
     def __init__(self, attrs, parent):
-	ElementBase.__init__(self, 'table', parent)
+        ElementBase.__init__(self, 'table', parent)
 
     def start_element(self, name, attrs):
         if name == 'tablerow':
@@ -363,19 +369,19 @@ class ctable(ElementBase):
             self.objects.append(tabrow)
 
     def get_all(self):
-	# + ' align="left"' etc.?
+        # + ' align="left"' etc.?
         text = '{| border="1"\n' + \
-	    ElementBase.get_all(self) + \
-	    '|}\n\n'
+            ElementBase.get_all(self) + \
+            '|}\n\n'
         return text
 
 class clistitem(ElementBase):
     def __init__(self, attrs, parent):
-	ElementBase.__init__(self, 'listitem', parent)
+        ElementBase.__init__(self, 'listitem', parent)
 
     def start_element(self, name, attrs):
         if name == 'paragraph':
-            para = cparagraph(attrs, self, '', 0)
+            para = cparagraph(attrs, self, 0)
             self.child_parsing = True
             self.objects.append(para)
 
@@ -397,7 +403,7 @@ class clistitem(ElementBase):
 
 class clist(ElementBase):
     def __init__(self, attrs, parent):
-	ElementBase.__init__(self, 'list', parent)
+        ElementBase.__init__(self, 'list', parent)
 
         self.type = attrs['type']
         try:
@@ -426,7 +432,7 @@ class clist(ElementBase):
 
 class clink(ElementBase):
     def __init__(self, attrs, parent):
-	ElementBase.__init__(self, 'link', parent)
+        ElementBase.__init__(self, 'link', parent)
 
         self.link = attrs['href']
         try:
@@ -452,25 +458,9 @@ class clink(ElementBase):
             text = "[["+self.lname+"|"+self.wikitext+"]]"
         return text
 
-## Not used yet - cparagraph itself handles it (as of now)
-#class cvariable:
-#    def __init__(self, sectionid, parent):
-#        self.parser_state=True
-#        self.wikitext=""
-#        if sectionid != "" and attrs['id']==sectionid:
-#            self.parser_state=False
-#        self.parent = parent
-#
-#    def start_element(self, name, attrs):
-#        pass
-#
-#    def end_element(self,name):
-#        if name == 'variable':
-#            parent.child_parsing = False
-
 class cparagraph(ElementBase):
-    def __init__(self, attrs, parent, sectionid, depth):
-	ElementBase.__init__(self, 'paragraph', parent)
+    def __init__(self, attrs, parent, depth):
+        ElementBase.__init__(self, 'paragraph', parent)
 
         try:
             self.role = attrs['role']
@@ -481,35 +471,26 @@ class cparagraph(ElementBase):
             self.level=int(attrs['level'])
         except:
             self.level=0
-        self.filter_section=sectionid
-        self.parser_state=True
         if depth > self.level:
             self.depth = depth
         else:
             self.depth = self.level
-        if sectionid != "":
-            self.parser_state = False
         self.is_first = (len(self.parent.objects) == 0)
 
     def start_element(self, name, attrs):
         if name == 'variable':
-            if attrs['id'] == self.filter_section:
-                self.parser_state=True
-
-        if not self.parser_state:
-            return
-        if name == 'embed':
-            # This shouldn't occur
-            print "Warning: Skipped Embedded content!!!"
-        if name == 'image':
+            child = cvariable(attrs, self, self.depth)
+            self.child_parsing = True
+            self.objects.append(child)
+        elif name == 'image':
             child = cimage(attrs, self)
             self.child_parsing = True
             self.objects.append(child)
-        if name == 'link':
+        elif name == 'link':
             child = clink(attrs, self)
             self.child_parsing = True
             self.objects.append(child)
-        if name == 'bookmark':
+        elif name == 'bookmark':
             # This shouldn't occur
             print "Warning: Unhandled bookmark content!!!"
 
@@ -520,12 +501,7 @@ class cparagraph(ElementBase):
             pass
 
     def end_element(self, name):
-	ElementBase.end_element(self, name)
-
-        if not self.parser_state:
-            return
-        if self.filter_section != "" and name == 'variable':
-            self.parser_state = False
+        ElementBase.end_element(self, name)
 
         try:
             global replace_element
@@ -534,8 +510,6 @@ class cparagraph(ElementBase):
             pass
 
     def char_data(self, data):
-        if not self.parser_state or not len(data.strip()):
-            return
         self.objects.append(ctext(data))
 
     def get_all(self):
@@ -549,7 +523,7 @@ class cparagraph(ElementBase):
             role = 'paragraph'
 
         # prepend the markup according to the role
-	text = ''
+        text = ''
         if len(self.objects) > 0:
             try:
                 text = text + replace_paragraph_role['start'][role]
@@ -557,7 +531,7 @@ class cparagraph(ElementBase):
                 sys.stderr.write( "Unknown paragraph role start: " + role + "\n" )
 
         # the text itself
-	text = text + ElementBase.get_all(self)
+        text = text + ElementBase.get_all(self)
 
         # set bookmark info
         if self.role == "heading":
@@ -572,7 +546,19 @@ class cparagraph(ElementBase):
 
         return text
 
-head_obj=cxml("")
+class cvariable(cparagraph):
+    def __init__(self, attrs, parent, depth):
+        cparagraph.__init__(self, attrs, parent, depth)
+        self.name = 'variable'
+        self.role = 'variable'
+        self.id = attrs['id']
+
+    def get_variable(self, id):
+        if id == self.id:
+            return self
+        return None
+
+head_obj=cxml(True)
 def start_element(name, attrs):
     head_obj.get_curobj().start_element(name,attrs)
 
@@ -583,6 +569,7 @@ def char_data(data):
     head_obj.get_curobj().char_data(data)
 
 def parsexhp(filename):
+    #sys.stderr.write('Parsing: %s\n'% filename)
     file=open(filename,"r")
     p = xml.parsers.expat.ParserCreate()
     p.StartElementHandler = start_element
