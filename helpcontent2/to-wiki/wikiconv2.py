@@ -64,6 +64,9 @@ replace_paragraph_role = \
            }
     }
 
+section_id_mapping = \
+    {'relatedtopics': 'RelatedTopics'}
+
 # text snippets that we need to convert
 replace_text_list = \
     [["$[officename]", "{{ProductName}}"],
@@ -145,6 +148,18 @@ def replace_text(text):
             text = text.replace(i[0],i[1])
     return text
 
+def href_to_fname_id(href):
+    link = href.replace('"', '')
+    fname = link
+    id = ''
+    if link.find("#") >= 0:
+        fname = link[:link.find("#")]
+        id = link[link.find("#")+1:]
+    else:
+        sys.stderr.write('Reference without a "#" in "%s".'% link)
+
+    return [fname, id]
+
 # Base class for all the elements
 #
 # self.name - name of the element, to drop the self.child_parsing flag
@@ -160,14 +175,14 @@ class ElementBase:
         self.child_parsing = False
         self.parent = parent
 
-    def start_element(self, name, attrs):
+    def start_element(self, parser, name, attrs):
         pass
 
-    def end_element(self, name):
+    def end_element(self, parser, name):
         if name == self.name:
             self.parent.child_parsing = False
 
-    def char_data(self, data):
+    def char_data(self, parser, data):
         pass
 
     def get_curobj(self):
@@ -198,18 +213,26 @@ class ElementBase:
                     return var
         return None
 
-class XhpFile(ElementBase):
-    def __init__(self, follow_embed):
-        ElementBase.__init__(self, None, None)
-        self.follow_embed = follow_embed
+    # embed part of another file into current structure
+    def embed_href(self, fname, id):
+        # parse another xhp
+        parser = XhpParser('source/' + fname, False)
+        var = parser.get_variable(id)
 
+        if var != None:
+            self.objects.append(var)
+        elif parser.follow_embed:
+            sys.stderr.write('Cannot find reference "#%s" in "%s".\n'% \
+                    (id, fname))
+
+class XhpFile(ElementBase):
+    def __init__(self):
+        ElementBase.__init__(self, None, None)
         self.depth=1
 
-    def start_element(self, name, attrs):
-        # TODO: Take care of nested sections
+    def start_element(self, parser, name, attrs):
         if name == 'section':
-            if attrs['id'] == "relatedtopics":
-                self.objects.append(Text("{{RelatedTopics}}\n"))
+            self.parse_child(Section(attrs, self, self.depth))
         elif name == 'paragraph':
             para = Paragraph(attrs, self, self.depth)
             self.depth = para.depth
@@ -220,30 +243,9 @@ class XhpFile(ElementBase):
             self.parse_child(List(attrs, self))
         elif name == 'bookmark':
             self.parse_child(Bookmark(attrs, self))
-        if name == 'embed' and self.follow_embed:
-            link = attrs['href'].replace('"', '')
-            fname = link
-            id = ''
-            if link.find("#") >= 0:
-                fname = link[:link.find("#")]
-                id = link[link.find("#")+1:]
-            else:
-                sys.stderr.write('Reference without a "#" in "%s".'% link)
-
-            # parse another xhp
-            global head_obj
-            save_head_obj = head_obj
-            head_obj = XhpFile(False)
-            parsexhp('source/' + fname)
-            parsed = head_obj
-            head_obj = save_head_obj
-
-            var = parsed.get_variable(id)
-            if var != None:
-                self.objects.append(var)
-            else:
-                sys.stderr.write('Cannot find reference "#%s" in "%s".\n'% \
-                        (id, fname))
+        elif name == 'embed' and parser.follow_embed:
+            (fname, id) = href_to_fname_id(attrs['href'])
+            self.embed_href(fname, id)
 
 class Bookmark(ElementBase):
     bookmarks_list   = []
@@ -298,17 +300,17 @@ class Image(ElementBase):
         self.alt     = False
         self.alttext = ""
 
-    def start_element(self, name, attrs):
+    def start_element(self, parser, name, attrs):
         if name == 'alt':
             self.alt = True
 
-    def end_element(self, name):
-        ElementBase.end_element(self, name)
+    def end_element(self, parser, name):
+        ElementBase.end_element(self, parser, name)
 
         if name == 'alt':
             self.alt = False
 
-    def char_data(self, data):
+    def char_data(self, parser, data):
         if self.alt:
             self.alttext = self.alttext + data
 
@@ -336,7 +338,7 @@ class TableCell(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'tablecell', parent)
 
-    def start_element(self, name, attrs):
+    def start_element(self, parser, name, attrs):
         if name == 'paragraph':
             self.parse_child(Paragraph(attrs, self, 0))
 
@@ -344,7 +346,7 @@ class TableRow(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'tablerow', parent)
 
-    def start_element(self, name, attrs):
+    def start_element(self, parser, name, attrs):
         if name == 'tablecell':
             self.parse_child(TableCell(attrs, self))
 
@@ -356,7 +358,7 @@ class Table(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'table', parent)
 
-    def start_element(self, name, attrs):
+    def start_element(self, parser, name, attrs):
         if name == 'tablerow':
             self.parse_child(TableRow(attrs, self))
 
@@ -371,7 +373,7 @@ class ListItem(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'listitem', parent)
 
-    def start_element(self, name, attrs):
+    def start_element(self, parser, name, attrs):
         if name == 'paragraph':
             self.parse_child(Paragraph(attrs, self, 0))
 
@@ -401,7 +403,7 @@ class List(ElementBase):
         except:
             self.startwith = 0
 
-    def start_element(self, name, attrs):
+    def start_element(self, parser, name, attrs):
         if name == 'listitem':
             self.parse_child(ListItem(attrs, self))
 
@@ -418,6 +420,51 @@ class List(ElementBase):
             text = text + '\n'
         return text
 
+class Section(ElementBase):
+    def __init__(self, attrs, parent, depth):
+        ElementBase.__init__(self, 'section', parent)
+        self.depth = depth
+        self.id = attrs['id']
+
+    def start_element(self, parser, name, attrs):
+        # sections can be nested
+        if name == 'section':
+            self.parse_child(Section(attrs, self, self.depth))
+        elif name == 'embed':
+            (fname, id) = href_to_fname_id(attrs['href'])
+            if parser.follow_embed:
+                self.embed_href(fname, id)
+        elif name == 'paragraph':
+            para = Paragraph(attrs, self, self.depth)
+            self.depth = para.depth
+            self.parse_child(para)
+
+    def get_all(self):
+        mapping = ''
+        try:
+            mapping = section_id_mapping[self.id]
+        except:
+            pass
+
+        # some of the section ids are used as real id's, some of them have
+        # function (like relatetopics), and have to be templatized
+        text = ''
+        if mapping != '':
+            text = text + '{{%s|'% mapping
+        text = text + ElementBase.get_all(self)
+        if mapping != '':
+            text = text + '}}\n\n'
+
+        return text
+
+    def get_variable(self, id):
+        var = ElementBase.get_variable(self, id)
+        if var != None:
+            return var
+        if id == self.id:
+            return self
+        return None
+
 class Link(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'link', parent)
@@ -432,7 +479,7 @@ class Link(ElementBase):
         self.lname = get_link_filename(self.link, self.lname)
         self.wikitext = ""
 
-    def char_data(self, data):
+    def char_data(self, parser, data):
         self.wikitext = self.wikitext + data
 
     def get_all(self):
@@ -465,7 +512,7 @@ class Paragraph(ElementBase):
             self.depth = self.level
         self.is_first = (len(self.parent.objects) == 0)
 
-    def start_element(self, name, attrs):
+    def start_element(self, parser, name, attrs):
         if name == 'variable':
             self.parse_child(Variable(attrs, self, self.depth))
         elif name == 'image':
@@ -482,8 +529,8 @@ class Paragraph(ElementBase):
         except:
             pass
 
-    def end_element(self, name):
-        ElementBase.end_element(self, name)
+    def end_element(self, parser, name):
+        ElementBase.end_element(self, parser, name)
 
         try:
             global replace_element
@@ -491,7 +538,7 @@ class Paragraph(ElementBase):
         except:
             pass
 
-    def char_data(self, data):
+    def char_data(self, parser, data):
         self.objects.append(Text(data))
 
     def get_all(self):
@@ -540,27 +587,38 @@ class Variable(Paragraph):
             return self
         return None
 
-head_obj = XhpFile(True)
 
-def start_element(name, attrs):
-    head_obj.get_curobj().start_element(name,attrs)
+class XhpParser:
+    def __init__(self, filename, follow_embed):
+        self.head_obj = XhpFile()
+        self.filename = filename
+        self.follow_embed = follow_embed
 
-def end_element(name):
-    head_obj.get_curobj().end_element(name)
+        file = open(filename, "r")
+        p = xml.parsers.expat.ParserCreate()
 
-def char_data(data):
-    head_obj.get_curobj().char_data(data)
+        p.StartElementHandler = self.start_element
+        p.EndElementHandler = self.end_element
+        p.CharacterDataHandler = self.char_data
 
-def parsexhp(filename):
-    #sys.stderr.write('Parsing: %s\n'% filename)
-    file=open(filename,"r")
-    p = xml.parsers.expat.ParserCreate()
-    p.StartElementHandler = start_element
-    p.EndElementHandler = end_element
-    p.CharacterDataHandler = char_data
-    buf = file.read()
-    p.Parse(buf)
-    file.close()
+        buf = file.read()
+        p.Parse(buf)
+        file.close()
+
+    def start_element(self, name, attrs):
+        self.head_obj.get_curobj().start_element(self, name, attrs)
+
+    def end_element(self, name):
+        self.head_obj.get_curobj().end_element(self, name)
+
+    def char_data(self, data):
+        self.head_obj.get_curobj().char_data(self, data)
+
+    def get_all(self):
+        return self.head_obj.get_all()
+
+    def get_variable(self, id):
+        return self.head_obj.get_variable(id)
 
 def loadallfiles(filename):
     global titles
@@ -586,6 +644,8 @@ if len(sys.argv) > 2:
 # this file to generate quicker help files.
 load_all_help_ids()
 loadallfiles("alltitles.csv")
-parsexhp(sys.argv[1])
-print head_obj.get_all().encode('ascii','replace')
+
+parser = XhpParser(sys.argv[1], True)
+print parser.get_all().encode('ascii','replace')
+
 Bookmark.save_bookmarks()
