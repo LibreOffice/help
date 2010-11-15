@@ -175,6 +175,11 @@ class ElementBase:
             return self.objects[len(self.objects)-1].get_curobj()
         return self
 
+    # start parsing a child element
+    def parse_child(self, child):
+        self.child_parsing = True
+        self.objects.append(child)
+
     # construct the wiki representation of this object, including the objects
     # held in self.objects (here only the text of the objects)
     def get_all(self):
@@ -193,7 +198,7 @@ class ElementBase:
                     return var
         return None
 
-class cxml(ElementBase):
+class XhpFile(ElementBase):
     def __init__(self, follow_embed):
         ElementBase.__init__(self, None, None)
         self.follow_embed = follow_embed
@@ -204,24 +209,17 @@ class cxml(ElementBase):
         # TODO: Take care of nested sections
         if name == 'section':
             if attrs['id'] == "relatedtopics":
-                self.objects.append(ctext("{{RelatedTopics}}\n"))
+                self.objects.append(Text("{{RelatedTopics}}\n"))
         elif name == 'paragraph':
-            para = cparagraph(attrs, self, self.depth)
+            para = Paragraph(attrs, self, self.depth)
             self.depth = para.depth
-            self.child_parsing=True
-            self.objects.append(para)
+            self.parse_child(para)
         elif name == 'table':
-            child = ctable(attrs, self)
-            self.child_parsing = True
-            self.objects.append(child)
+            self.parse_child(Table(attrs, self))
         elif name == 'list':
-            child = clist(attrs, self)
-            self.child_parsing = True
-            self.objects.append(child)
+            self.parse_child(List(attrs, self))
         elif name == 'bookmark':
-            child = cbookmark(attrs, self)
-            self.child_parsing = True
-            self.objects.append(child)
+            self.parse_child(Bookmark(attrs, self))
         if name == 'embed' and self.follow_embed:
             link = attrs['href'].replace('"', '')
             fname = link
@@ -235,7 +233,7 @@ class cxml(ElementBase):
             # parse another xhp
             global head_obj
             save_head_obj = head_obj
-            head_obj = cxml(False)
+            head_obj = XhpFile(False)
             parsexhp('source/' + fname)
             parsed = head_obj
             head_obj = save_head_obj
@@ -247,7 +245,7 @@ class cxml(ElementBase):
                 sys.stderr.write('Cannot find reference "#%s" in "%s".\n'% \
                         (id, fname))
 
-class cbookmark(ElementBase):
+class Bookmark(ElementBase):
     bookmarks_list   = []
     current_bookmark = ""
 
@@ -262,32 +260,32 @@ class cbookmark(ElementBase):
                break
 
     def get_all(self):
-        cbookmark.current_bookmark = self.bookmark
+        Bookmark.current_bookmark = self.bookmark
         return ""
 
     @staticmethod
     def set_heading(data):
         global help_file_name
-        if len(cbookmark.current_bookmark) > 0:
+        if len(Bookmark.current_bookmark) > 0:
             if data.find("]]") >= 0:
                 try:
                     data = data[data.find("|")+1:data.find("]]")]
                 except:
                     pass
-            help_id = get_help_id(cbookmark.current_bookmark)
+            help_id = get_help_id(Bookmark.current_bookmark)
             bookmark = "    { "+help_id+", \""+help_file_name+"#"+data.replace("\"","\\\"")+"\" },"
             bookmark = bookmark.encode('ascii','replace')
-            cbookmark.bookmarks_list.append(bookmark)
-            cbookmark.current_bookmark = ""
+            Bookmark.bookmarks_list.append(bookmark)
+            Bookmark.current_bookmark = ""
 
     @staticmethod
     def save_bookmarks():
         file = open("bookmarks.h","a")
-        for i in cbookmark.bookmarks_list:
+        for i in Bookmark.bookmarks_list:
             file.write(i.encode('ascii','replace')+"\n")
         file.close()
 
-class cimage(ElementBase):
+class Image(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'image', parent)
         self.src     = attrs['src']
@@ -324,7 +322,7 @@ class cimage(ElementBase):
     def get_curobj(self):
         return self
 
-class ctext:
+class Text:
     def __init__(self, text):
         self.wikitext = replace_text(text)
 
@@ -334,39 +332,33 @@ class ctext:
     def get_variable(self, id):
         return None
 
-class ctabcell(ElementBase):
+class TableCell(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'tablecell', parent)
 
     def start_element(self, name, attrs):
         if name == 'paragraph':
-            para = cparagraph(attrs, self, 0)
-            self.child_parsing = True
-            self.objects.append(para)
+            self.parse_child(Paragraph(attrs, self, 0))
 
-class ctabrow(ElementBase):
+class TableRow(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'tablerow', parent)
 
     def start_element(self, name, attrs):
         if name == 'tablecell':
-            tabcell = ctabcell(attrs, self)
-            self.child_parsing = True
-            self.objects.append(tabcell)
+            self.parse_child(TableCell(attrs, self))
 
     def get_all(self):
         text = '|-\n' + ElementBase.get_all(self)
         return text
 
-class ctable(ElementBase):
+class Table(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'table', parent)
 
     def start_element(self, name, attrs):
         if name == 'tablerow':
-            tabrow = ctabrow(attrs, self)
-            self.child_parsing = True
-            self.objects.append(tabrow)
+            self.parse_child(TableRow(attrs, self))
 
     def get_all(self):
         # + ' align="left"' etc.?
@@ -375,15 +367,13 @@ class ctable(ElementBase):
             '|}\n\n'
         return text
 
-class clistitem(ElementBase):
+class ListItem(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'listitem', parent)
 
     def start_element(self, name, attrs):
         if name == 'paragraph':
-            para = cparagraph(attrs, self, 0)
-            self.child_parsing = True
-            self.objects.append(para)
+            self.parse_child(Paragraph(attrs, self, 0))
 
     def get_all(self):
         text = ""
@@ -401,7 +391,7 @@ class clistitem(ElementBase):
 
         return text
 
-class clist(ElementBase):
+class List(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'list', parent)
 
@@ -413,9 +403,7 @@ class clist(ElementBase):
 
     def start_element(self, name, attrs):
         if name == 'listitem':
-            listitem = clistitem(attrs, self)
-            self.child_parsing = True
-            self.objects.append(listitem)
+            self.parse_child(ListItem(attrs, self))
 
     def get_all(self):
         text = ""
@@ -430,7 +418,7 @@ class clist(ElementBase):
             text = text + '\n'
         return text
 
-class clink(ElementBase):
+class Link(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'link', parent)
 
@@ -458,7 +446,7 @@ class clink(ElementBase):
             text = "[["+self.lname+"|"+self.wikitext+"]]"
         return text
 
-class cparagraph(ElementBase):
+class Paragraph(ElementBase):
     def __init__(self, attrs, parent, depth):
         ElementBase.__init__(self, 'paragraph', parent)
 
@@ -479,24 +467,18 @@ class cparagraph(ElementBase):
 
     def start_element(self, name, attrs):
         if name == 'variable':
-            child = cvariable(attrs, self, self.depth)
-            self.child_parsing = True
-            self.objects.append(child)
+            self.parse_child(Variable(attrs, self, self.depth))
         elif name == 'image':
-            child = cimage(attrs, self)
-            self.child_parsing = True
-            self.objects.append(child)
+            self.parse_child(Image(attrs, self))
         elif name == 'link':
-            child = clink(attrs, self)
-            self.child_parsing = True
-            self.objects.append(child)
+            self.parse_child(Link(attrs, self))
         elif name == 'bookmark':
             # This shouldn't occur
             print "Warning: Unhandled bookmark content!!!"
 
         try:
             global replace_element
-            self.objects.append(ctext(replace_element['start'][name]))
+            self.objects.append(Text(replace_element['start'][name]))
         except:
             pass
 
@@ -505,12 +487,12 @@ class cparagraph(ElementBase):
 
         try:
             global replace_element
-            self.objects.append(ctext(replace_element['end'][name]))
+            self.objects.append(Text(replace_element['end'][name]))
         except:
             pass
 
     def char_data(self, data):
-        self.objects.append(ctext(data))
+        self.objects.append(Text(data))
 
     def get_all(self):
         role = self.role
@@ -535,7 +517,7 @@ class cparagraph(ElementBase):
 
         # set bookmark info
         if self.role == "heading":
-            cbookmark.set_heading(text)
+            Bookmark.set_heading(text)
 
         # append the markup according to the role
         if len(self.objects) > 0:
@@ -546,9 +528,9 @@ class cparagraph(ElementBase):
 
         return text
 
-class cvariable(cparagraph):
+class Variable(Paragraph):
     def __init__(self, attrs, parent, depth):
-        cparagraph.__init__(self, attrs, parent, depth)
+        Paragraph.__init__(self, attrs, parent, depth)
         self.name = 'variable'
         self.role = 'variable'
         self.id = attrs['id']
@@ -558,7 +540,8 @@ class cvariable(cparagraph):
             return self
         return None
 
-head_obj=cxml(True)
+head_obj = XhpFile(True)
+
 def start_element(name, attrs):
     head_obj.get_curobj().start_element(name,attrs)
 
@@ -605,4 +588,4 @@ load_all_help_ids()
 loadallfiles("alltitles.csv")
 parsexhp(sys.argv[1])
 print head_obj.get_all().encode('ascii','replace')
-cbookmark.save_bookmarks()
+Bookmark.save_bookmarks()
