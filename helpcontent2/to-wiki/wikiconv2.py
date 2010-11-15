@@ -143,17 +143,49 @@ def replace_text(text):
             text = text.replace(i[0],i[1])
     return text
 
-def heading(level):
-    str=""
-    for i in range(0,level):
-        str = str+"="
-    return str
+# Base class for all the elements
+#
+# self.name - name of the element, to drop the self.child_parsing flag
+# self.objects - collects the child objects that are constructed during
+#                parsing of the child elements
+# self.child_parsing - flag whether we are parsing a child, or the object
+#                      itself
+# self.parent - parent object
+class ElementBase:
+    def __init__(self, name, parent):
+	self.name = name
+        self.objects = []
+        self.child_parsing = False
+        self.parent = parent
 
-class cxml:
+    def start_element(self, name, attrs):
+	pass
+
+    def end_element(self, name):
+        if name == self.name:
+            self.parent.child_parsing = False
+
+    def char_data(self, data):
+        pass
+
+    # construct the wiki representation of this object, including the objects
+    # held in self.objects (here only the text of the objects)
+    def get_all(self):
+        text = ''
+        for i in self.objects:
+            text = text + i.get_all()
+        return text
+
+    def get_curobj(self):
+        if self.child_parsing:
+            return self.objects[len(self.objects)-1].get_curobj()
+        return self
+
+class cxml(ElementBase):
     def __init__(self, sectionid):
+	ElementBase.__init__(self, None, None)
+
         self.filter_section=sectionid
-        self.objects=[]
-        self.child_parsing=False
         self.parser_state=True
         self.depth=1
         if sectionid != "":
@@ -212,26 +244,12 @@ class cxml:
         if self.filter_section != "" and name == 'section':
             self.parser_state=False
 
-    def char_data(self, data):
-        pass
-
-    def get_curobj(self):
-        if self.child_parsing:
-            return self.objects[len(self.objects)-1].get_curobj()
-        return self
-
-    def get_all(self):
-        text = ""
-        for i in self.objects:
-            text = text + i.get_all()
-        return text
-
-class cbookmark:
+class cbookmark(ElementBase):
     bookmarks_list   = []
     current_bookmark = ""
 
     def __init__(self, attrs, parent):
-        self.parent = parent
+	ElementBase.__init__(self, 'bookmark', parent)
         self.bookmark = ""
         text = attrs['branch'].encode('ascii','replace')
         # text = text.upper()
@@ -240,23 +258,9 @@ class cbookmark:
                self.bookmark = text[text.rfind("/")+1:].replace(":","_")
                break
 
-    def start_element(self, name, attrs):
-        pass
-
-    def end_element(self, name):
-        # Assumes no nested bookmark entries
-        if name == "bookmark":
-            self.parent.child_parsing = False
-
-    def char_data(self, data):
-        pass
-
     def get_all(self):
         cbookmark.current_bookmark = self.bookmark
         return ""
-
-    def get_curobj(self):
-        return self
 
     @staticmethod
     def set_heading(data):
@@ -280,8 +284,9 @@ class cbookmark:
             file.write(i.encode('ascii','replace')+"\n")
         file.close()
 
-class cimage:
+class cimage(ElementBase):
     def __init__(self, attrs, parent):
+	ElementBase.__init__(self, 'image', parent)
         self.src     = attrs['src']
         try:
             self.width   = attrs['width']
@@ -291,18 +296,16 @@ class cimage:
         self.align   = 'left'
         self.alt     = False
         self.alttext = ""
-        self.parent  = parent
 
     def start_element(self, name, attrs):
         if name == 'alt':
             self.alt = True
 
     def end_element(self, name):
+        ElementBase.end_element(self, name)
+
         if name == 'alt':
             self.alt = False
-
-        if name == 'image':
-            self.parent.child_parsing = False
 
     def char_data(self, data):
         if self.alt:
@@ -325,12 +328,9 @@ class ctext:
     def get_all(self):
         return self.wikitext
 
-class ctabcell:
+class ctabcell(ElementBase):
     def __init__(self, attrs, parent):
-        # TODO: colspan rowspan
-        self.objects = []
-        self.child_parsing = False
-        self.parent = parent
+	ElementBase.__init__(self, 'tablecell', parent)
 
     def start_element(self, name, attrs):
         if name == 'paragraph':
@@ -338,29 +338,9 @@ class ctabcell:
             self.child_parsing = True
             self.objects.append(para)
 
-    def end_element(self, name):
-        if name == 'tablecell':
-            self.parent.child_parsing = False
-
-    def char_data(self, data):
-        return
-
-    def get_all(self):
-        text = ""
-        for i in self.objects:
-            text = text + i.get_all()
-        return text
-
-    def get_curobj(self):
-        if self.child_parsing:
-            return self.objects[len(self.objects)-1].get_curobj()
-        return self
-
-class ctabrow:
+class ctabrow(ElementBase):
     def __init__(self, attrs, parent):
-        self.objects = []
-        self.child_parsing = False
-        self.parent = parent
+	ElementBase.__init__(self, 'tablerow', parent)
 
     def start_element(self, name, attrs):
         if name == 'tablecell':
@@ -368,29 +348,13 @@ class ctabrow:
             self.child_parsing = True
             self.objects.append(tabcell)
 
-    def end_element(self, name):
-        if name == 'tablerow':
-            self.parent.child_parsing = False
-
-    def char_data(self, data):
-        return
-
     def get_all(self):
-        text = '|-\n'
-        for i in self.objects:
-            text = text + i.get_all()
+        text = '|-\n' + ElementBase.get_all(self)
         return text
 
-    def get_curobj(self):
-        if self.child_parsing:
-            return self.objects[len(self.objects)-1].get_curobj()
-        return self
-
-class ctable:
+class ctable(ElementBase):
     def __init__(self, attrs, parent):
-        self.objects = []
-        self.child_parsing = False
-        self.parent = parent
+	ElementBase.__init__(self, 'table', parent)
 
     def start_element(self, name, attrs):
         if name == 'tablerow':
@@ -398,44 +362,22 @@ class ctable:
             self.child_parsing = True
             self.objects.append(tabrow)
 
-    def end_element(self, name):
-        if name == 'table':
-            self.parent.child_parsing = False
-
-    def char_data(self, data):
-        return
-
     def get_all(self):
-        text = '{| border="1"\n' # + ' align="left"'
-        for i in self.objects:
-            text = text + i.get_all()
-        text = text + '|}\n\n'
+	# + ' align="left"' etc.?
+        text = '{| border="1"\n' + \
+	    ElementBase.get_all(self) + \
+	    '|}\n\n'
         return text
 
-    def get_curobj(self):
-        if self.child_parsing:
-            return self.objects[len(self.objects)-1].get_curobj()
-        return self
-
-class clistitem:
+class clistitem(ElementBase):
     def __init__(self, attrs, parent):
-        # TODO: colspan rowspan
-        self.objects = []
-        self.child_parsing = False
-        self.parent = parent
+	ElementBase.__init__(self, 'listitem', parent)
 
     def start_element(self, name, attrs):
         if name == 'paragraph':
             para = cparagraph(attrs, self, '', 0)
             self.child_parsing = True
             self.objects.append(para)
-
-    def end_element(self, name):
-        if name == 'listitem':
-            self.parent.child_parsing = False
-
-    def char_data(self, data):
-        return
 
     def get_all(self):
         text = ""
@@ -449,20 +391,14 @@ class clistitem:
 
         # add the text itself
         for i in self.objects:
-            text = text + prefix + i.get_all() + postfix
+            text = text + prefix + ElementBase.get_all(self)
 
         return text
 
-    def get_curobj(self):
-        if self.child_parsing:
-            return self.objects[len(self.objects)-1].get_curobj()
-        return self
-
-class clist:
+class clist(ElementBase):
     def __init__(self, attrs, parent):
-        self.objects = []
-        self.child_parsing = False
-        self.parent = parent
+	ElementBase.__init__(self, 'list', parent)
+
         self.type = attrs['type']
         try:
             self.startwith = int(attrs['startwith'])
@@ -475,20 +411,12 @@ class clist:
             self.child_parsing = True
             self.objects.append(listitem)
 
-    def end_element(self, name):
-        if name == 'list':
-            self.parent.child_parsing = False
-
-    def char_data(self, data):
-        return
-
     def get_all(self):
         text = ""
         if self.startwith > 0:
             text = text + '<ol start="%d">\n'% self.startwith
 
-        for i in self.objects:
-            text = text + i.get_all()
+        text = text + ElementBase.get_all(self)
 
         if self.startwith > 0:
             text = text + '</ol>\n'
@@ -496,13 +424,10 @@ class clist:
             text = text + '\n'
         return text
 
-    def get_curobj(self):
-        if self.child_parsing:
-            return self.objects[len(self.objects)-1].get_curobj()
-        return self
-
-class clink:
+class clink(ElementBase):
     def __init__(self, attrs, parent):
+	ElementBase.__init__(self, 'link', parent)
+
         self.link = attrs['href']
         try:
             self.lname = attrs['name']
@@ -512,14 +437,6 @@ class clink:
         self.default_name = self.lname
         self.lname = get_link_filename(self.link, self.lname)
         self.wikitext = ""
-        self.parent = parent
-
-    def start_element(self, name, attrs):
-        pass
-
-    def end_element(self, name):
-        if name == "link":
-            self.parent.child_parsing = False
 
     def char_data(self, data):
         self.wikitext = self.wikitext + data
@@ -535,55 +452,44 @@ class clink:
             text = "[["+self.lname+"|"+self.wikitext+"]]"
         return text
 
-    def get_curobj(self):
-        return self
+## Not used yet - cparagraph itself handles it (as of now)
+#class cvariable:
+#    def __init__(self, sectionid, parent):
+#        self.parser_state=True
+#        self.wikitext=""
+#        if sectionid != "" and attrs['id']==sectionid:
+#            self.parser_state=False
+#        self.parent = parent
+#
+#    def start_element(self, name, attrs):
+#        pass
+#
+#    def end_element(self,name):
+#        if name == 'variable':
+#            parent.child_parsing = False
 
-# Not used yet - cparagraph itself handles it (as of now)
-class cvariable:
-    def __init__(self, sectionid, parent):
-        self.parser_state=True
-        self.wikitext=""
-        if sectionid != "" and attrs['id']==sectionid:
-            self.parser_state=False
-        self.parent = parent
-
-    def start_element(self, name, attrs):
-        pass
-
-    def end_element(self,name):
-        if name == 'variable':
-            parent.child_parsing = False
-
-class cparagraph:
+class cparagraph(ElementBase):
     def __init__(self, attrs, parent, sectionid, depth):
-        self.child_parsing = False
+	ElementBase.__init__(self, 'paragraph', parent)
+
         try:
             self.role = attrs['role']
         except:
             self.role = 'paragraph'
 
-        #try:
-        #    self.level=parent.level+1
-        #except:
         try:
             self.level=int(attrs['level'])
         except:
             self.level=0
         self.filter_section=sectionid
-        self.parent = parent
-        self.objects=[]
         self.parser_state=True
         if depth > self.level:
             self.depth = depth
         else:
             self.depth = self.level
-        self.wikitext=""
         if sectionid != "":
             self.parser_state = False
         self.is_first = (len(self.parent.objects) == 0)
-
-    def __del__(self):
-        pass
 
     def start_element(self, name, attrs):
         if name == 'variable':
@@ -614,8 +520,8 @@ class cparagraph:
             pass
 
     def end_element(self, name):
-        if name == 'paragraph':
-            self.parent.child_parsing = False
+	ElementBase.end_element(self, name)
+
         if not self.parser_state:
             return
         if self.filter_section != "" and name == 'variable':
@@ -631,7 +537,6 @@ class cparagraph:
         if not self.parser_state or not len(data.strip()):
             return
         self.objects.append(ctext(data))
-        #self.wikitext = self.wikitext + text
 
     def get_all(self):
         role = self.role
@@ -644,17 +549,15 @@ class cparagraph:
             role = 'paragraph'
 
         # prepend the markup according to the role
+	text = ''
         if len(self.objects) > 0:
             try:
-                self.wikitext = self.wikitext + replace_paragraph_role['start'][role]
+                text = text + replace_paragraph_role['start'][role]
             except:
                 sys.stderr.write( "Unknown paragraph role start: " + role + "\n" )
 
         # the text itself
-        text = ""
-        for i in self.objects:
-            text = text + i.get_all()
-        self.wikitext = self.wikitext + text
+	text = text + ElementBase.get_all(self)
 
         # set bookmark info
         if self.role == "heading":
@@ -663,16 +566,11 @@ class cparagraph:
         # append the markup according to the role
         if len(self.objects) > 0:
             try:
-                self.wikitext = self.wikitext + replace_paragraph_role['end'][role]
+                text = text + replace_paragraph_role['end'][role]
             except:
                 sys.stderr.write( "Unknown paragraph role end: " + role + "\n" )
 
-        return self.wikitext
-
-    def get_curobj(self):
-        if self.child_parsing:
-            return self.objects[len(self.objects)-1].get_curobj()
-        return self
+        return text
 
 head_obj=cxml("")
 def start_element(name, attrs):
