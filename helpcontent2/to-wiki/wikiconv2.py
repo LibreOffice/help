@@ -9,11 +9,11 @@ titles = []
 
 # list of elements that we can directly convert to wiki text
 replace_element = \
-    {'start':{'emph': "'''",
-              'comment': "<!-- "
+    {'start':{'br': '<br/>',
+              'emph': "'''"
              },
-     'end':  {'emph': "'''",
-              'comment': " -->"
+     'end':  {'br': '',
+              'emph': "'''"
              }
     }
 
@@ -240,7 +240,9 @@ class XhpFile(ElementBase):
             pass
         elif name == 'bookmark':
             self.parse_child(Bookmark(attrs, self))
-        elif name == 'embed':
+        elif name == 'comment':
+            self.parse_child(Comment(attrs, self))
+        elif name == 'embed' or name == 'embedvar':
             if parser.follow_embed:
                 (fname, id) = href_to_fname_id(attrs['href'])
                 self.embed_href(fname, id)
@@ -341,6 +343,17 @@ class Image(ElementBase):
     def get_curobj(self):
         return self
 
+class Comment(ElementBase):
+    def __init__(self, attrs, parent):
+        ElementBase.__init__(self, 'comment', parent)
+        self.text = ''
+
+    def char_data(self, parser, data):
+        self.text = self.text + data
+
+    def get_all(self):
+        return '<!-- ' + self.text + ' -->'
+
 class Text:
     def __init__(self, text):
         self.wikitext = replace_text(text)
@@ -356,7 +369,9 @@ class TableCell(ElementBase):
         ElementBase.__init__(self, 'tablecell', parent)
 
     def start_element(self, parser, name, attrs):
-        if name == 'paragraph':
+        if name == 'comment':
+            self.parse_child(Comment(attrs, self))
+        elif name == 'paragraph':
             self.parse_child(Paragraph(attrs, self, 0))
         else:
             self.unhandled_element(name)
@@ -380,7 +395,9 @@ class Table(ElementBase):
         ElementBase.__init__(self, 'table', parent)
 
     def start_element(self, parser, name, attrs):
-        if name == 'tablerow':
+        if name == 'comment':
+            self.parse_child(Comment(attrs, self))
+        elif name == 'tablerow':
             self.parse_child(TableRow(attrs, self))
         else:
             self.unhandled_element(name)
@@ -462,7 +479,9 @@ class Section(ElementBase):
     def start_element(self, parser, name, attrs):
         if name == 'bookmark':
             self.parse_child(Bookmark(attrs, self))
-        elif name == 'embed':
+        elif name == 'comment':
+            self.parse_child(Comment(attrs, self))
+        elif name == 'embed' or name == 'embedvar':
             (fname, id) = href_to_fname_id(attrs['href'])
             if parser.follow_embed:
                 self.embed_href(fname, id)
@@ -597,6 +616,12 @@ class Paragraph(ElementBase):
             # TODO extended tips are ignored for now, just the text is used
             # verbatim
             pass
+        elif name == 'comment':
+            self.parse_child(Comment(attrs, self))
+        elif name == 'embedvar':
+            if parser.follow_embed:
+                (fname, id) = href_to_fname_id(attrs['href'])
+                self.embed_href(fname, id)
         elif name == 'image':
             self.parse_child(Image(attrs, self))
         elif name == 'link':
