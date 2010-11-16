@@ -225,6 +225,10 @@ class ElementBase:
             sys.stderr.write('Cannot find reference "#%s" in "%s".\n'% \
                     (id, fname))
 
+    def unhandled_element(self, name):
+        sys.stderr.write('Warning: Unhandled element "%s" in "%s"\n'% \
+                (name, self.name))
+
 class XhpFile(ElementBase):
     def __init__(self):
         ElementBase.__init__(self, None, None)
@@ -243,9 +247,12 @@ class XhpFile(ElementBase):
             self.parse_child(List(attrs, self))
         elif name == 'bookmark':
             self.parse_child(Bookmark(attrs, self))
-        elif name == 'embed' and parser.follow_embed:
-            (fname, id) = href_to_fname_id(attrs['href'])
-            self.embed_href(fname, id)
+        elif name == 'embed':
+            if parser.follow_embed:
+                (fname, id) = href_to_fname_id(attrs['href'])
+                self.embed_href(fname, id)
+        else:
+            self.unhandled_element(name)
 
 class Bookmark(ElementBase):
     bookmarks_list   = []
@@ -303,6 +310,8 @@ class Image(ElementBase):
     def start_element(self, parser, name, attrs):
         if name == 'alt':
             self.alt = True
+        else:
+            self.unhandled_element(name)
 
     def end_element(self, parser, name):
         ElementBase.end_element(self, parser, name)
@@ -341,6 +350,8 @@ class TableCell(ElementBase):
     def start_element(self, parser, name, attrs):
         if name == 'paragraph':
             self.parse_child(Paragraph(attrs, self, 0))
+        else:
+            self.unhandled_element(name)
 
 class TableRow(ElementBase):
     def __init__(self, attrs, parent):
@@ -349,6 +360,8 @@ class TableRow(ElementBase):
     def start_element(self, parser, name, attrs):
         if name == 'tablecell':
             self.parse_child(TableCell(attrs, self))
+        else:
+            self.unhandled_element(name)
 
     def get_all(self):
         text = '|-\n' + ElementBase.get_all(self)
@@ -361,6 +374,8 @@ class Table(ElementBase):
     def start_element(self, parser, name, attrs):
         if name == 'tablerow':
             self.parse_child(TableRow(attrs, self))
+        else:
+            self.unhandled_element(name)
 
     def get_all(self):
         # + ' align="left"' etc.?
@@ -376,6 +391,8 @@ class ListItem(ElementBase):
     def start_element(self, parser, name, attrs):
         if name == 'paragraph':
             self.parse_child(Paragraph(attrs, self, 0))
+        else:
+            self.unhandled_element(name)
 
     def get_all(self):
         text = ""
@@ -406,6 +423,8 @@ class List(ElementBase):
     def start_element(self, parser, name, attrs):
         if name == 'listitem':
             self.parse_child(ListItem(attrs, self))
+        else:
+            self.unhandled_element(name)
 
     def get_all(self):
         text = ""
@@ -427,10 +446,7 @@ class Section(ElementBase):
         self.id = attrs['id']
 
     def start_element(self, parser, name, attrs):
-        # sections can be nested
-        if name == 'section':
-            self.parse_child(Section(attrs, self, self.depth))
-        elif name == 'embed':
+        if name == 'embed':
             (fname, id) = href_to_fname_id(attrs['href'])
             if parser.follow_embed:
                 self.embed_href(fname, id)
@@ -438,6 +454,13 @@ class Section(ElementBase):
             para = Paragraph(attrs, self, self.depth)
             self.depth = para.depth
             self.parse_child(para)
+        elif name == 'section':
+            # sections can be nested
+            self.parse_child(Section(attrs, self, self.depth))
+        elif name == 'table':
+            self.parse_child(Table(attrs, self))
+        else:
+            self.unhandled_element(name)
 
     def get_all(self):
         mapping = ''
@@ -519,15 +542,12 @@ class Paragraph(ElementBase):
             self.parse_child(Image(attrs, self))
         elif name == 'link':
             self.parse_child(Link(attrs, self))
-        elif name == 'bookmark':
-            # This shouldn't occur
-            print "Warning: Unhandled bookmark content!!!"
-
-        try:
-            global replace_element
-            self.objects.append(Text(replace_element['start'][name]))
-        except:
-            pass
+        else:
+            try:
+                global replace_element
+                self.objects.append(Text(replace_element['start'][name]))
+            except:
+                self.unhandled_element(name)
 
     def end_element(self, parser, name):
         ElementBase.end_element(self, parser, name)
