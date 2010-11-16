@@ -31,12 +31,12 @@ replace_paragraph_role = \
               'head2': '== ', # used only in one file, probably in error?
               'listitem': '',
               'note': '{{Note|',
+              'null': '', # special paragraph for Variable, CaseInline, etc.
               'paragraph': '',
               'related': '', # used only in one file, probably in error?
               'relatedtopics': '', # used only in one file, probably in error?
               'tablecontent': '| ',
               'tablehead': '! scope="col" | ',
-              'variable': '',
               'tip': '{{Tip|',
               'warning': '{{Warning|',
              },
@@ -53,12 +53,12 @@ replace_paragraph_role = \
             'head2': ' ==\n\n', # used only in one file, probably in error?
             'listitem': '\n',
             'note': '}}\n\n',
+            'null': '', # special paragraph for Variable, CaseInline, etc.
             'paragraph': '\n\n',
             'related': '\n\n', # used only in one file, probably in error?
             'relatedtopics': '\n\n', # used only in one file, probably in error?
             'tablecontent': '\n\n',
             'tablehead': '\n\n',
-            'variable': '',
             'tip': '}}\n\n',
             'warning': '}}\n\n',
            }
@@ -235,22 +235,30 @@ class XhpFile(ElementBase):
         self.depth=1
 
     def start_element(self, parser, name, attrs):
-        if name == 'section':
-            self.parse_child(Section(attrs, self, self.depth))
-        elif name == 'paragraph':
-            para = Paragraph(attrs, self, self.depth)
-            self.depth = para.depth
-            self.parse_child(para)
-        elif name == 'table':
-            self.parse_child(Table(attrs, self))
-        elif name == 'list':
-            self.parse_child(List(attrs, self))
+        if name == 'body':
+            # ignored, we flatten the structure
+            pass
         elif name == 'bookmark':
             self.parse_child(Bookmark(attrs, self))
         elif name == 'embed':
             if parser.follow_embed:
                 (fname, id) = href_to_fname_id(attrs['href'])
                 self.embed_href(fname, id)
+        elif name == 'helpdocument':
+            # ignored, we flatten the structure
+            pass
+        elif name == 'list':
+            self.parse_child(List(attrs, self))
+        elif name == 'meta':
+            self.parse_child(Meta(attrs, self))
+        elif name == 'paragraph':
+            para = Paragraph(attrs, self, self.depth)
+            self.depth = para.depth
+            self.parse_child(para)
+        elif name == 'section':
+            self.parse_child(Section(attrs, self, self.depth))
+        elif name == 'table':
+            self.parse_child(Table(attrs, self))
         else:
             self.unhandled_element(name)
 
@@ -439,6 +447,12 @@ class List(ElementBase):
             text = text + '\n'
         return text
 
+# we ignore the entire <meta> part of xhp
+# TODO - do we need it for something?
+class Meta(ElementBase):
+    def __init__(self, attrs, parent):
+        ElementBase.__init__(self, 'meta', parent)
+
 class Section(ElementBase):
     def __init__(self, attrs, parent, depth):
         ElementBase.__init__(self, 'section', parent)
@@ -446,7 +460,9 @@ class Section(ElementBase):
         self.id = attrs['id']
 
     def start_element(self, parser, name, attrs):
-        if name == 'embed':
+        if name == 'bookmark':
+            self.parse_child(Bookmark(attrs, self))
+        elif name == 'embed':
             (fname, id) = href_to_fname_id(attrs['href'])
             if parser.follow_embed:
                 self.embed_href(fname, id)
@@ -516,6 +532,47 @@ class Link(ElementBase):
             text = "[["+self.lname+"|"+self.wikitext+"]]"
         return text
 
+class SwitchInline(ElementBase):
+    def __init__(self, attrs, parent):
+        ElementBase.__init__(self, 'switchinline', parent)
+        self.switch = attrs['select']
+
+    def start_element(self, parser, name, attrs):
+        if name == 'caseinline':
+            self.parse_child(CaseInline(attrs, self, False))
+        elif name == 'defaultinline':
+            self.parse_child(CaseInline(attrs, self, True))
+        else:
+            self.unhandled_element(name)
+
+    def get_all(self):
+        if self.switch == 'sys':
+            system = {'MAC':'', 'UNIX':'', 'WIN':'', 'default':''}
+            for i in self.objects:
+                if i.case == 'MAC' or i.case == 'UNIX' or \
+                   i.case == 'WIN' or i.case == 'default':
+                    system[i.case] = i.get_all()
+                else:
+                    sys.stderr.write('Unhandled "%s" case in "sys" switchinline.\n'% \
+                            i.case )
+            return '{{System|%s|%s|%s|%s}}'% (system['default'], \
+                    system['MAC'], system['UNIX'], system['WIN'])
+        elif self.switch == 'appl':
+            if len(self.objects) == 1:
+                appls = {'CALC':'Calc', 'CHART':'Chart', 'DRAW':'Draw', \
+                         'MATH':'Math', 'WRITER':'Writer'}
+                obj = self.objects[0]
+                try:
+                    app = appls[obj.case]
+                    return '{{OnlyIn%s|%s}}'% (app, obj.get_all())
+                except:
+                    sys.stderr.write('Unhandled "%s" (%s) case in "appl" switchinline.\n'% \
+                            (obj.case, obj.get_all()))
+            else:
+                sys.stderr.write('Can handle only 1 condition in "appl" switchinline.\n')
+
+        return ''
+
 class Paragraph(ElementBase):
     def __init__(self, attrs, parent, depth):
         ElementBase.__init__(self, 'paragraph', parent)
@@ -536,12 +593,18 @@ class Paragraph(ElementBase):
         self.is_first = (len(self.parent.objects) == 0)
 
     def start_element(self, parser, name, attrs):
-        if name == 'variable':
-            self.parse_child(Variable(attrs, self, self.depth))
+        if name == 'ahelp':
+            # TODO extended tips are ignored for now, just the text is used
+            # verbatim
+            pass
         elif name == 'image':
             self.parse_child(Image(attrs, self))
         elif name == 'link':
             self.parse_child(Link(attrs, self))
+        elif name == 'switchinline':
+            self.parse_child(SwitchInline(attrs, self))
+        elif name == 'variable':
+            self.parse_child(Variable(attrs, self, self.depth))
         else:
             try:
                 global replace_element
@@ -599,7 +662,7 @@ class Variable(Paragraph):
     def __init__(self, attrs, parent, depth):
         Paragraph.__init__(self, attrs, parent, depth)
         self.name = 'variable'
-        self.role = 'variable'
+        self.role = 'null'
         self.id = attrs['id']
 
     def get_variable(self, id):
@@ -607,6 +670,17 @@ class Variable(Paragraph):
             return self
         return None
 
+class CaseInline(Paragraph):
+    def __init__(self, attrs, parent, is_default):
+        Paragraph.__init__(self, attrs, parent, 0)
+
+        self.role = 'null'
+        if is_default:
+            self.name = 'defaultinline'
+            self.case = 'default'
+        else:
+            self.name = 'caseinline'
+            self.case = attrs['select']
 
 class XhpParser:
     def __init__(self, filename, follow_embed):
