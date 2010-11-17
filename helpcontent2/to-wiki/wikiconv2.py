@@ -2,10 +2,13 @@
 
 import sys, signal
 import xml.parsers.expat
+import codecs
 
 root="source/"
 
 titles = []
+
+localization_data = [[]]
 
 # list of elements that we can directly convert to wiki text
 replace_element = \
@@ -101,14 +104,14 @@ help_file_name = ""
 all_help_id_mappings = [[]]
 
 def load_all_help_ids():
-    file = open("helpers/help_hid.lst")
+    file = codecs.open("helpers/help_hid.lst", "r", "utf-8")
     for line in file:
         ids = line.strip().upper().split(",")
         if len(ids) >= 2:
             all_help_id_mappings.append(ids)
 
 def get_help_id_res2(name):
-    file = open("helpers/hid.lst")
+    file = codecs.open("helpers/hid.lst", "r", "utf-8")
     for line in file:
         ids = line.strip().upper().split(" ")
         if len(ids) >= 2:
@@ -146,6 +149,27 @@ def replace_text(text):
     for i in replace_text_list:
         if text.find(i[0]) >= 0:
             text = text.replace(i[0],i[1])
+    return text
+
+def load_localization_data(sdf_file):
+    try:
+        file = codecs.open(sdf_file, "r", "utf-8")
+        for line in file:
+            line = line.strip()
+            # TODO: Check if multiple \t needs to be merged
+            if line.find("#") == 0:
+                continue
+            localization_data.append(line.split("\t"))
+    except:
+        return
+
+def get_localized_text(id, text):
+    for line in localization_data:
+        try:
+            if line[4].strip() == id.strip():
+                return line[10]
+        except:
+            pass
     return text
 
 def href_to_fname_id(href):
@@ -198,7 +222,7 @@ class ElementBase:
     # construct the wiki representation of this object, including the objects
     # held in self.objects (here only the text of the objects)
     def get_all(self):
-        text = ''
+        text = u''
         for i in self.objects:
             text = text + i.get_all()
         return text
@@ -299,7 +323,7 @@ class Bookmark(ElementBase):
 
     @staticmethod
     def save_bookmarks():
-        file = open("bookmarks.h","a")
+        file = codecs.open("bookmarks.h", "a", "utf-8")
         for i in Bookmark.bookmarks_list:
             file.write(i.encode('ascii','replace')+"\n")
         file.close()
@@ -601,6 +625,11 @@ class Paragraph(ElementBase):
         except:
             self.role = 'paragraph'
 
+        try: 
+            self.id = attrs['id']
+        except:
+            self.id = ""
+
         try:
             self.level=int(attrs['level'])
         except:
@@ -647,7 +676,7 @@ class Paragraph(ElementBase):
             pass
 
     def char_data(self, parser, data):
-        self.objects.append(Text(data))
+        self.objects.append(Text(get_localized_text(self.id, data)))
 
     def get_all(self):
         role = self.role
@@ -713,7 +742,7 @@ class XhpParser:
         self.filename = filename
         self.follow_embed = follow_embed
 
-        file = open(filename, "r")
+        file = codecs.open(filename, "r", "utf-8")
         p = xml.parsers.expat.ParserCreate()
 
         p.StartElementHandler = self.start_element
@@ -741,7 +770,7 @@ class XhpParser:
 
 def loadallfiles(filename):
     global titles
-    file = open(filename, "r")
+    file = codecs.open(filename, "r", "utf-8")
     for line in file:
         title = line.split(";", 2)
         titles.append(title)
@@ -752,11 +781,14 @@ def signal_handler(signal, frame):
 signal.signal(signal.SIGINT, signal_handler)
 
 if len(sys.argv) < 2:
-    print "wikiconv2.py <inputfile.xph>"
+    print "wikiconv2.py <inputfile.xph> [Help Filename] [localize.sdf]"
     sys.exit(1)
 
 if len(sys.argv) > 2:
     help_file_name = sys.argv[2]
+
+if len(sys.argv) > 3:
+    load_localization_data(sys.argv[3])
 
 # TODO: Currently the following files are loaded for every
 # file which is converted. Combine the batch converter with
@@ -765,6 +797,10 @@ load_all_help_ids()
 loadallfiles("alltitles.csv")
 
 parser = XhpParser(sys.argv[1], True)
+# Enable these lines once the convall.py is combined with this one
+# file1 = codecs.open(helpfilename, "wb", "utf-8")
+# file1.write(parser.get_all()))
+# file1.close()
 print parser.get_all().encode('ascii','replace')
 
 Bookmark.save_bookmarks()

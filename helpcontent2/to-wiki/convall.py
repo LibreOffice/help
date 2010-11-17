@@ -3,6 +3,7 @@
 import os, sys
 
 titles = [[]]
+localization = ""
 
 def loadallfiles(filename):
     global titles
@@ -12,6 +13,8 @@ def loadallfiles(filename):
         titles.append(title)
 
 loadallfiles("alltitles.csv")
+if len(sys.argv) > 1:
+    localization = sys.argv[1]
 
 for title in titles:
     command = ""
@@ -20,7 +23,7 @@ for title in titles:
     if len(title) > 1:
         outfile = "wiki/"+title[1].strip()
         infile  = title[0].strip()
-        command = "python to-wiki/wikiconv2.py "+infile+" "+title[1].strip()+" > "+outfile
+        command = "python to-wiki/wikiconv2.py "+infile+" "+title[1].strip()+" "+localization+" > "+outfile
 
     try:
         file = open(outfile,"r")
