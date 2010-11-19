@@ -249,9 +249,9 @@ class ElementBase:
             sys.stderr.write('Cannot find reference "#%s" in "%s".\n'% \
                     (id, fname))
 
-    def unhandled_element(self, name):
-        sys.stderr.write('Warning: Unhandled element "%s" in "%s"\n'% \
-                (name, self.name))
+    def unhandled_element(self, parser, name):
+        sys.stderr.write('Warning: Unhandled element "%s" in "%s" (%s)\n'% \
+                (name, self.name, parser.filename))
 
 class XhpFile(ElementBase):
     def __init__(self):
@@ -286,7 +286,7 @@ class XhpFile(ElementBase):
         elif name == 'table':
             self.parse_child(Table(attrs, self))
         else:
-            self.unhandled_element(name)
+            self.unhandled_element(parser, name)
 
 class Bookmark(ElementBase):
     bookmarks_list   = []
@@ -345,7 +345,7 @@ class Image(ElementBase):
         if name == 'alt':
             self.alt = True
         else:
-            self.unhandled_element(name)
+            self.unhandled_element(parser, name)
 
     def end_element(self, parser, name):
         ElementBase.end_element(self, parser, name)
@@ -398,7 +398,7 @@ class TableCell(ElementBase):
         elif name == 'paragraph':
             self.parse_child(Paragraph(attrs, self, 0))
         else:
-            self.unhandled_element(name)
+            self.unhandled_element(parser, name)
 
 class TableRow(ElementBase):
     def __init__(self, attrs, parent):
@@ -408,7 +408,7 @@ class TableRow(ElementBase):
         if name == 'tablecell':
             self.parse_child(TableCell(attrs, self))
         else:
-            self.unhandled_element(name)
+            self.unhandled_element(parser, name)
 
     def get_all(self):
         text = '|-\n' + ElementBase.get_all(self)
@@ -424,7 +424,7 @@ class Table(ElementBase):
         elif name == 'tablerow':
             self.parse_child(TableRow(attrs, self))
         else:
-            self.unhandled_element(name)
+            self.unhandled_element(parser, name)
 
     def get_all(self):
         # + ' align="left"' etc.?
@@ -441,7 +441,7 @@ class ListItem(ElementBase):
         if name == 'paragraph':
             self.parse_child(Paragraph(attrs, self, 0))
         else:
-            self.unhandled_element(name)
+            self.unhandled_element(parser, name)
 
     def get_all(self):
         text = ""
@@ -473,7 +473,7 @@ class List(ElementBase):
         if name == 'listitem':
             self.parse_child(ListItem(attrs, self))
         else:
-            self.unhandled_element(name)
+            self.unhandled_element(parser, name)
 
     def get_all(self):
         text = ""
@@ -519,7 +519,7 @@ class Section(ElementBase):
         elif name == 'table':
             self.parse_child(Table(attrs, self))
         else:
-            self.unhandled_element(name)
+            self.unhandled_element(parser, name)
 
     def get_all(self):
         mapping = ''
@@ -586,10 +586,12 @@ class SwitchInline(ElementBase):
         elif name == 'defaultinline':
             self.parse_child(CaseInline(attrs, self, True))
         else:
-            self.unhandled_element(name)
+            self.unhandled_element(parser, name)
 
     def get_all(self):
-        if self.switch == 'sys':
+        if len(self.objects) == 0:
+            return ''
+        elif self.switch == 'sys':
             system = {'MAC':'', 'UNIX':'', 'WIN':'', 'default':''}
             for i in self.objects:
                 if i.case == 'MAC' or i.case == 'UNIX' or \
@@ -598,8 +600,12 @@ class SwitchInline(ElementBase):
                 else:
                     sys.stderr.write('Unhandled "%s" case in "sys" switchinline.\n'% \
                             i.case )
-            return '{{System|%s|%s|%s|%s}}'% (system['default'], \
-                    system['MAC'], system['UNIX'], system['WIN'])
+            text = '{{System'
+            for i in [['default', 'default'], ['MAC', 'mac'], \
+                      ['UNIX', 'unx'], ['WIN', 'win']]:
+                if system[i[0]] != '':
+                    text = '%s|%s=%s'% (text, i[1], system[i[0]])
+            return text + '}}'
         elif self.switch == 'appl':
             if len(self.objects) == 1:
                 appls = {'CALC':'Calc', 'CHART':'Chart', 'DRAW':'Draw', \
@@ -664,7 +670,7 @@ class Paragraph(ElementBase):
                 global replace_element
                 self.objects.append(Text(replace_element['start'][name]))
             except:
-                self.unhandled_element(name)
+                self.unhandled_element(parser, name)
 
     def end_element(self, parser, name):
         ElementBase.end_element(self, parser, name)
@@ -742,7 +748,7 @@ class XhpParser:
         self.filename = filename
         self.follow_embed = follow_embed
 
-        file = codecs.open(filename, "r", "utf-8")
+        file = open(filename, "r")
         p = xml.parsers.expat.ParserCreate()
 
         p.StartElementHandler = self.start_element
