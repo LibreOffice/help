@@ -509,6 +509,8 @@ class Section(ElementBase):
             (fname, id) = href_to_fname_id(attrs['href'])
             if parser.follow_embed:
                 self.embed_href(fname, id)
+        elif name == 'list':
+            self.parse_child(List(attrs, self))
         elif name == 'paragraph':
             para = Paragraph(attrs, self, self.depth)
             self.depth = para.depth
@@ -622,6 +624,41 @@ class SwitchInline(ElementBase):
 
         return ''
 
+class Item(ElementBase):
+    replace_type = \
+            {'start':{'input': '<code>',
+                      'keycode': '{{KeyCode|',
+                      'literal': '<code>',
+                      'menuitem': '{{MenuItem|',
+                      'productname': ''
+                     },
+             'end':{'input': '</code>',
+                    'keycode': '}}',
+                    'literal': '</code>',
+                    'menuitem': '}}',
+                    'productname': ''
+                   }}
+
+    def __init__(self, attrs, parent):
+        ElementBase.__init__(self, 'item', parent)
+
+        self.type = attrs['type']
+        self.text = ''
+
+    def char_data(self, parser, data):
+        self.text = self.text + data
+
+    def get_all(self):
+        try:
+            return self.replace_type['start'][self.type] + \
+                   replace_text(self.text) + \
+                   self.replace_type['end'][self.type]
+        except:
+            sys.stderr.write('Unhandled item type "%s".\n'% self.type)
+
+        return replace_text(self.text)
+
+
 class Paragraph(ElementBase):
     def __init__(self, attrs, parent, depth):
         ElementBase.__init__(self, 'paragraph', parent)
@@ -659,6 +696,8 @@ class Paragraph(ElementBase):
                 self.embed_href(fname, id)
         elif name == 'image':
             self.parse_child(Image(attrs, self))
+        elif name == 'item':
+            self.parse_child(Item(attrs, self))
         elif name == 'link':
             self.parse_child(Link(attrs, self))
         elif name == 'switchinline':
