@@ -238,9 +238,9 @@ class ElementBase:
         return None
 
     # embed part of another file into current structure
-    def embed_href(self, fname, id):
+    def embed_href(self, current_app, fname, id):
         # parse another xhp
-        parser = XhpParser('source/' + fname, False)
+        parser = XhpParser('source/' + fname, False, current_app)
         var = parser.get_variable(id)
 
         if var != None:
@@ -269,7 +269,7 @@ class XhpFile(ElementBase):
         elif name == 'embed' or name == 'embedvar':
             if parser.follow_embed:
                 (fname, id) = href_to_fname_id(attrs['href'])
-                self.embed_href(fname, id)
+                self.embed_href(parser.current_app, fname, id)
         elif name == 'helpdocument':
             # ignored, we flatten the structure
             pass
@@ -508,7 +508,7 @@ class Section(ElementBase):
         elif name == 'embed' or name == 'embedvar':
             (fname, id) = href_to_fname_id(attrs['href'])
             if parser.follow_embed:
-                self.embed_href(fname, id)
+                self.embed_href(parser.current_app, fname, id)
         elif name == 'list':
             self.parse_child(List(attrs, self))
         elif name == 'paragraph':
@@ -581,8 +581,10 @@ class SwitchInline(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'switchinline', parent)
         self.switch = attrs['select']
+        self.embedding_app = ''
 
     def start_element(self, parser, name, attrs):
+        self.embedding_app = parser.embedding_app
         if name == 'caseinline':
             self.parse_child(CaseInline(attrs, self, False))
         elif name == 'defaultinline':
@@ -609,18 +611,23 @@ class SwitchInline(ElementBase):
                     text = '%s|%s=%s'% (text, i[1], system[i[0]])
             return text + '}}'
         elif self.switch == 'appl':
-            if len(self.objects) == 1:
-                appls = {'CALC':'Calc', 'CHART':'Chart', 'DRAW':'Draw', \
-                         'MATH':'Math', 'WRITER':'Writer'}
-                obj = self.objects[0]
-                try:
-                    app = appls[obj.case]
-                    return '{{OnlyIn%s|%s}}'% (app, obj.get_all())
-                except:
-                    sys.stderr.write('Unhandled "%s" (%s) case in "appl" switchinline.\n'% \
-                            (obj.case, obj.get_all()))
+            if self.embedding_app == '':
+                text = ''
+                for i in self.objects:
+                    appls = {'CALC':'Calc', 'CHART':'Chart', 'DRAW':'Draw', \
+                             'IMPRESS': 'Impress', 'MATH':'Math', 'WRITER':'Writer'}
+                    obj = self.objects[0]
+                    try:
+                        app = appls[obj.case]
+                        text = text + '{{OnlyIn%s|%s}}'% (app, obj.get_all())
+                    except:
+                        sys.stderr.write('Unhandled "%s" (%s) case in "appl" switchinline.\n'% \
+                                (obj.case, obj.get_all()))
+                return text
             else:
-                sys.stderr.write('Can handle only 1 condition in "appl" switchinline.\n')
+                for i in self.objects:
+                    if i.case == self.embedding_app:
+                        return i.get_all()
 
         return ''
 
@@ -693,7 +700,7 @@ class Paragraph(ElementBase):
         elif name == 'embedvar':
             if parser.follow_embed:
                 (fname, id) = href_to_fname_id(attrs['href'])
-                self.embed_href(fname, id)
+                self.embed_href(parser.current_app, fname, id)
         elif name == 'image':
             self.parse_child(Image(attrs, self))
         elif name == 'item':
@@ -782,10 +789,19 @@ class CaseInline(Paragraph):
             self.case = attrs['select']
 
 class XhpParser:
-    def __init__(self, filename, follow_embed):
+    def __init__(self, filename, follow_embed, embedding_app):
         self.head_obj = XhpFile()
         self.filename = filename
         self.follow_embed = follow_embed
+        self.embedding_app = embedding_app
+
+        self.current_app = ''
+        for i in [['scalc', 'CALC'], ['sdraw', 'DRAW'], \
+                  ['schart', 'CHART'], ['simpress', 'IMPRESS'], \
+                  ['smath', 'MATH'], ['swriter', 'WRITER']]:
+            if filename.find('/%s/'% i[0]) >= 0:
+                self.current_app = i[1]
+                break
 
         file = open(filename, "r")
         p = xml.parsers.expat.ParserCreate()
@@ -841,7 +857,7 @@ if len(sys.argv) > 3:
 load_all_help_ids()
 loadallfiles("alltitles.csv")
 
-parser = XhpParser(sys.argv[1], True)
+parser = XhpParser(sys.argv[1], True, '')
 # Enable these lines once the convall.py is combined with this one
 # file1 = codecs.open(helpfilename, "wb", "utf-8")
 # file1.write(parser.get_all()))
