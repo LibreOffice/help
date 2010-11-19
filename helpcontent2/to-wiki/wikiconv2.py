@@ -289,6 +289,8 @@ class XhpFile(ElementBase):
             self.parse_child(para)
         elif name == 'section':
             self.parse_child(Section(attrs, self, self.depth))
+        elif name == 'switch':
+            self.parse_child(Switch(attrs, self))
         elif name == 'table':
             self.parse_child(Table(attrs, self))
         else:
@@ -449,10 +451,19 @@ class TableCell(ElementBase):
         ElementBase.__init__(self, 'tablecell', parent)
 
     def start_element(self, parser, name, attrs):
-        if name == 'comment':
+        if name == 'bookmark':
+            self.parse_child(Bookmark(attrs, self))
+        elif name == 'comment':
             self.parse_child(Comment(attrs, self))
+        elif name == 'embed' or name == 'embedvar':
+            (fname, id) = href_to_fname_id(attrs['href'])
+            if parser.follow_embed:
+                self.embed_href(parser.current_app, fname, id)
         elif name == 'paragraph':
             self.parse_child(Paragraph(attrs, self, 0))
+        elif name == 'section':
+            # FIXME depth, should we use something better than 0?
+            self.parse_child(Section(attrs, self, 0))
         else:
             self.unhandled_element(parser, name)
 
@@ -494,7 +505,13 @@ class ListItem(ElementBase):
         ElementBase.__init__(self, 'listitem', parent)
 
     def start_element(self, parser, name, attrs):
-        if name == 'paragraph':
+        if name == 'bookmark':
+            self.parse_child(Bookmark(attrs, self))
+        elif name == 'embed' or name == 'embedvar':
+            (fname, id) = href_to_fname_id(attrs['href'])
+            if parser.follow_embed:
+                self.embed_href(parser.current_app, fname, id)
+        elif name == 'paragraph':
             self.parse_child(Paragraph(attrs, self, 0))
         else:
             self.unhandled_element(parser, name)
@@ -574,6 +591,8 @@ class Section(ElementBase):
         elif name == 'section':
             # sections can be nested
             self.parse_child(Section(attrs, self, self.depth))
+        elif name == 'switch':
+            self.parse_child(Switch(attrs, self))
         elif name == 'table':
             self.parse_child(Table(attrs, self))
         else:
@@ -667,6 +686,8 @@ class SwitchInline(ElementBase):
                     text = '%s|%s=%s'% (text, i[1], system[i[0]])
             return text + '}}'
         elif self.switch == 'appl':
+            # we want directly use the right text, when inlining something
+            # 'shared' into an 'app'
             if self.embedding_app == '':
                 text = ''
                 for i in self.objects:
@@ -686,6 +707,52 @@ class SwitchInline(ElementBase):
                         return i.get_all()
 
         return ''
+
+class Case(ElementBase):
+    def __init__(self, attrs, parent, is_default):
+        ElementBase.__init__(self, 'case', parent)
+
+        if is_default:
+            self.name = 'default'
+            self.case = 'default'
+        else:
+            self.case = attrs['select']
+
+    def start_element(self, parser, name, attrs):
+        if name == 'bookmark':
+            self.parse_child(Bookmark(attrs, self))
+        elif name == 'comment':
+            self.parse_child(Comment(attrs, self))
+        elif name == 'embed' or name == 'embedvar':
+            if parser.follow_embed:
+                (fname, id) = href_to_fname_id(attrs['href'])
+                self.embed_href(parser.current_app, fname, id)
+        elif name == 'list':
+            self.parse_child(List(attrs, self))
+        elif name == 'paragraph':
+            # FIXME depth, should we use something better than 0?
+            self.parse_child(Paragraph(attrs, self, 0))
+        elif name == 'section':
+            # FIXME depth, should we use something better than 0?
+            self.parse_child(Section(attrs, self, 0))
+        elif name == 'table':
+            self.parse_child(Table(attrs, self))
+        else:
+            self.unhandled_element(parser, name)
+
+class Switch(SwitchInline):
+    def __init__(self, attrs, parent):
+        SwitchInline.__init__(self, attrs, parent)
+        self.name = 'switch'
+
+    def start_element(self, parser, name, attrs):
+        self.embedding_app = parser.embedding_app
+        if name == 'case':
+            self.parse_child(Case(attrs, self, False))
+        elif name == 'default':
+            self.parse_child(Case(attrs, self, True))
+        else:
+            self.unhandled_element(parser, name)
 
 class Item(ElementBase):
     replace_type = \
