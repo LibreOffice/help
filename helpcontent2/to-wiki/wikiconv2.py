@@ -874,7 +874,7 @@ class XhpParser:
                 self.current_app = i[1]
                 break
 
-        file = open(filename, "r")
+        file = codecs.open(filename, "r", "utf-8")
         p = xml.parsers.expat.ParserCreate()
 
         p.StartElementHandler = self.start_element
