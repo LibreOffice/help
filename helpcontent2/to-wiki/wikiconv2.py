@@ -167,10 +167,14 @@ def get_localized_text(id, text):
     for line in localization_data:
         try:
             if line[4].strip() == id.strip():
-                return line[10]
+                return line[10].replace("\\\"","\"").replace("\\<","<").replace("\\>",">").replace("<?>","?")
         except:
             pass
-    return text
+    return ""
+
+def get_localized_objects(loc_text, attrs):
+    p = LocalizedText(loc_text, attrs)
+    return p.parse()
 
 def href_to_fname_id(href):
     link = href.replace('"', '')
@@ -198,6 +202,7 @@ class ElementBase:
         self.objects = []
         self.child_parsing = False
         self.parent = parent
+        self.warn_unhandled_elements = False
 
     def start_element(self, parser, name, attrs):
         pass
@@ -250,8 +255,9 @@ class ElementBase:
                     (id, fname))
 
     def unhandled_element(self, parser, name):
-        sys.stderr.write('Warning: Unhandled element "%s" in "%s" (%s)\n'% \
-                (name, self.name, parser.filename))
+        if self.warn_unhandled_elements:
+            sys.stderr.write('Warning: Unhandled element "%s" in "%s" (%s)\n'% \
+                            (name, self.name, parser.filename))
 
 class XhpFile(ElementBase):
     def __init__(self):
@@ -288,6 +294,51 @@ class XhpFile(ElementBase):
         else:
             self.unhandled_element(parser, name)
 
+class LocalizedText(ElementBase):
+    def __init__(self, data, attrs):
+        # Initialized with some 'tag' such that the parser
+        # never needs to access the parent (which in this 
+        # case is null)
+        ElementBase.__init__(self, 'localizedtext', None)
+        header = u'<?xml version="1.0" encoding="UTF-8"?><paragraph>'
+        self.data = header + data #+ '</paragraph>'
+        self.follow_embed = True
+        self.head_obj = None
+        self.attrs = attrs
+        #print self.data.encode('utf-8')
+
+    def parse(self):
+        p = xml.parsers.expat.ParserCreate()
+        p.StartElementHandler = self.start_element
+        p.EndElementHandler = self.end_element
+        p.CharacterDataHandler = self.char_data
+        try:
+            p.Parse(self.data.encode('utf-8'))
+        except:
+            # TODO: Check different exceptions
+            pass
+        return self.objects[0].objects
+
+    def start_element(self, name, attrs):
+        if name == 'paragraph':
+            self.parse_child(Paragraph(self.attrs, self, 0))
+        else:
+            if self.child_parsing:
+                self.get_curobj().start_element(None, name, attrs)
+            else:
+                self.unhandled_element(name)
+
+    def char_data(self, data):
+        if self.child_parsing:
+            self.get_curobj().char_data(self, data)
+        else:
+            # Should never occur
+            print "Unhandled Data:"+data
+
+    def end_element(self, name):
+        if self.child_parsing:
+            self.get_curobj().end_element(self, name)
+
 class Bookmark(ElementBase):
     bookmarks_list   = []
     current_bookmark = ""
@@ -295,7 +346,7 @@ class Bookmark(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'bookmark', parent)
         self.bookmark = ""
-        text = attrs['branch'].encode('ascii','replace')
+        text = attrs['branch'] #.encode('ascii','replace')
         # text = text.upper()
         for i in help_id_patterns:
             if text.find(i) >= 0:
@@ -309,6 +360,11 @@ class Bookmark(ElementBase):
     @staticmethod
     def set_heading(data):
         global help_file_name
+        if data.find("= ") >= 0:
+            data = data[data.find("= ")+2:]
+        if data.find(" =") >= 0:
+            data = data[:data.find(" =")]
+        data = data.strip()
         if len(Bookmark.current_bookmark) > 0:
             if data.find("]]") >= 0:
                 try:
@@ -317,7 +373,7 @@ class Bookmark(ElementBase):
                     pass
             help_id = get_help_id(Bookmark.current_bookmark)
             bookmark = "    { "+help_id+", \""+help_file_name+"#"+data.replace("\"","\\\"")+"\" },"
-            bookmark = bookmark.encode('ascii','replace')
+            #bookmark = bookmark.encode('ascii','replace')
             Bookmark.bookmarks_list.append(bookmark)
             Bookmark.current_bookmark = ""
 
@@ -325,7 +381,7 @@ class Bookmark(ElementBase):
     def save_bookmarks():
         file = codecs.open("bookmarks.h", "a", "utf-8")
         for i in Bookmark.bookmarks_list:
-            file.write(i.encode('ascii','replace')+"\n")
+            file.write(i+"\n")
         file.close()
 
 class Image(ElementBase):
@@ -689,6 +745,7 @@ class Paragraph(ElementBase):
         else:
             self.depth = self.level
         self.is_first = (len(self.parent.objects) == 0)
+        self.localized_objects = []
 
     def start_element(self, parser, name, attrs):
         if name == 'ahelp':
@@ -728,9 +785,23 @@ class Paragraph(ElementBase):
             pass
 
     def char_data(self, parser, data):
-        self.objects.append(Text(get_localized_text(self.id, data)))
+        if len(self.localized_objects):
+            return
+        loc_text = u''
+        if len(self.id):
+            loc_text = get_localized_text(self.id, data)
+        if len(loc_text):
+            attrs = {'role':self.role,
+                     'level':self.level}
+            self.localized_objects = get_localized_objects(loc_text, attrs)
+        else:
+            self.objects.append(Text(data))
 
     def get_all(self):
+        # Localization objects present, drop the other objects
+        if len(self.localized_objects):
+            self.objects = self.localized_objects
+
         role = self.role
         if role == 'heading':
             if self.depth < 6:
@@ -749,11 +820,7 @@ class Paragraph(ElementBase):
                 sys.stderr.write( "Unknown paragraph role start: " + role + "\n" )
 
         # the text itself
-        text = text + ElementBase.get_all(self)
-
-        # set bookmark info
-        if self.role == "heading":
-            Bookmark.set_heading(text)
+        text = text + ElementBase.get_all(self) #.strip()
 
         # append the markup according to the role
         if len(self.objects) > 0:
@@ -761,6 +828,10 @@ class Paragraph(ElementBase):
                 text = text + replace_paragraph_role['end'][role]
             except:
                 sys.stderr.write( "Unknown paragraph role end: " + role + "\n" )
+
+        # set bookmark info
+        if self.role.find("heading") >= 0:
+            Bookmark.set_heading(text)
 
         return text
 
@@ -811,7 +882,7 @@ class XhpParser:
         p.CharacterDataHandler = self.char_data
 
         buf = file.read()
-        p.Parse(buf)
+        p.Parse(buf.encode('utf-8'))
         file.close()
 
     def start_element(self, name, attrs):
@@ -859,9 +930,9 @@ loadallfiles("alltitles.csv")
 
 parser = XhpParser(sys.argv[1], True, '')
 # Enable these lines once the convall.py is combined with this one
-# file1 = codecs.open(helpfilename, "wb", "utf-8")
-# file1.write(parser.get_all()))
-# file1.close()
-print parser.get_all().encode('ascii','replace')
+#file1 = codecs.open("t.txt", "wb", "utf-8")
+#file1.write(parser.get_all())
+#file1.close()
+print parser.get_all().encode('utf-8')
 
 Bookmark.save_bookmarks()

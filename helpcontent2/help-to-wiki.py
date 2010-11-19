@@ -51,14 +51,9 @@ def create_wiki_dirs():
             pass
 
 def create_wiki_header():
-    try:
-        file = open( "bookmarks.h", "r" )
-        file.close()
-        sys.stdout.write( "bookmarks.h already exists! Ignoring...\n" )
-    except:
-        file = open( "bookmarks.h", "w" )
-        file.write( header_template )
-        file.close()
+    file = open( "bookmarks.h", "w" )
+    file.write( header_template )
+    file.close()
 
 def create_wiki_footer():
     file = open( "bookmarks.h", "a" )
@@ -75,7 +70,10 @@ print "Generating the titles..."
 os.system( "python to-wiki/getalltitles.py source/text > alltitles.csv" )
 
 print "Generating the wiki itself..."
-os.system( "python to-wiki/convall.py source/text" )
+localization = ""
+if len(sys.argv) > 1:
+    localization = sys.argv[1]
+os.system( "python to-wiki/convall.py "+localization )
 
 # close the bookmarks.h template
 create_wiki_footer()
