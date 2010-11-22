@@ -13,10 +13,12 @@ localization_data = [[]]
 # list of elements that we can directly convert to wiki text
 replace_element = \
     {'start':{'br': '<br/>',
-              'emph': "'''"
+              'emph': "'''",
+              'help-id-missing': "'''Missing help ID.'''"
              },
      'end':  {'br': '',
-              'emph': "'''"
+              'emph': "'''",
+              'help-id-missing': ""
              }
     }
 
@@ -202,7 +204,6 @@ class ElementBase:
         self.objects = []
         self.child_parsing = False
         self.parent = parent
-        self.warn_unhandled_elements = False
 
     def start_element(self, parser, name, attrs):
         pass
@@ -255,9 +256,8 @@ class ElementBase:
                     (id, fname))
 
     def unhandled_element(self, parser, name):
-        if self.warn_unhandled_elements:
-            sys.stderr.write('Warning: Unhandled element "%s" in "%s" (%s)\n'% \
-                            (name, self.name, parser.filename))
+        sys.stderr.write('Warning: Unhandled element "%s" in "%s" (%s)\n'% \
+                        (name, self.name, parser.filename))
 
 class XhpFile(ElementBase):
     def __init__(self):
@@ -289,6 +289,8 @@ class XhpFile(ElementBase):
             self.parse_child(para)
         elif name == 'section':
             self.parse_child(Section(attrs, self, self.depth))
+        elif name == 'sort':
+            self.parse_child(Sort(attrs, self))
         elif name == 'switch':
             self.parse_child(Switch(attrs, self))
         elif name == 'table':
@@ -624,6 +626,30 @@ class Section(ElementBase):
             return self
         return None
 
+class Sort(ElementBase):
+    def __init__(self, attrs, parent):
+        ElementBase.__init__(self, 'sort', parent)
+
+        try:
+            self.order = attrs['order']
+        except:
+            self.order = 'asc'
+
+    def start_element(self, parser, name, attrs):
+        if name == 'section':
+            # FIXME depth, should we use something better than 0?
+            self.parse_child(Section(attrs, self, 0))
+        else:
+            self.unhandled_element(parser, name)
+
+    def get_all(self):
+        rev = False
+        if self.order == 'asc':
+            rev = True
+        self.objects = sorted(self.objects, key=lambda obj: obj.id, reverse=rev)
+
+        return ElementBase.get_all(self)
+
 class Link(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'link', parent)
@@ -676,6 +702,13 @@ class SwitchInline(ElementBase):
                 if i.case == 'MAC' or i.case == 'UNIX' or \
                    i.case == 'WIN' or i.case == 'default':
                     system[i.case] = i.get_all()
+                elif i.case == 'OS2':
+                    # ignore, there is only one mention of OS2, which is a
+                    # 'note to translators', and no meat
+                    pass
+                elif i.case == 'HIDE_HERE':
+                    # do what the name suggest ;-)
+                    pass
                 else:
                     sys.stderr.write('Unhandled "%s" case in "sys" switchinline.\n'% \
                             i.case )
@@ -975,7 +1008,7 @@ def loadallfiles(filename):
         titles.append(title)
 
 def signal_handler(signal, frame):
-    sys.stderr.write( "Exiting..." )
+    sys.stderr.write( 'Exiting...\n' )
     sys.exit(1)
 signal.signal(signal.SIGINT, signal_handler)
 
@@ -1003,3 +1036,5 @@ parser = XhpParser(sys.argv[1], True, '')
 print parser.get_all().encode('utf-8')
 
 Bookmark.save_bookmarks()
+
+# vim:set shiftwidth=4 softtabstop=4 expandtab:
