@@ -725,14 +725,17 @@ class SwitchInline(ElementBase):
                 text = ''
                 for i in self.objects:
                     appls = {'CALC':'Calc', 'CHART':'Chart', 'DRAW':'Draw', \
-                             'IMPRESS': 'Impress', 'MATH':'Math', 'WRITER':'Writer'}
-                    obj = self.objects[0]
+                             'IMPRESS': 'Impress', 'MATH':'Math', \
+                             'WRITER':'Writer', 'default':''}
                     try:
-                        app = appls[obj.case]
-                        text = text + '{{OnlyIn%s|%s}}'% (app, obj.get_all())
+                        app = appls[i.case]
+                        if app == '':
+                            text = text + i.get_all()
+                        else:
+                            text = text + '{{OnlyIn%s|%s}}'% (app, i.get_all())
                     except:
-                        sys.stderr.write('Unhandled "%s" (%s) case in "appl" switchinline.\n'% \
-                                (obj.case, obj.get_all()))
+                        sys.stderr.write('Unhandled "%s" case in "appl" switchinline.\n'% \
+                                i.case)
                 return text
             else:
                 for i in self.objects:
