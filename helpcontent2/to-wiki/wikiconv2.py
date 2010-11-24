@@ -165,42 +165,41 @@ def load_localization_data(sdf_file):
     except:
         return
 
+def replace_gt_lt(str,char,replace):
+    # Add additional space to catch strings starting with <=
+    str = " "+str
+    index = -1
+    while True:
+        index = str.find(char, index+1)
+        if index < 0:
+            break
+        if str[index-1] != '\\':
+            str = str[:index]+replace+str[index+1:]
+    return str[1:]
+
+
 def get_localized_text(id, text):
     # Note: The order is important
     replace_localized_strs = [
-            ["\\\\<","&lt;"],
-            ["\\\\>","&gt;"],
             ["\\\"","\""],
-            ["\\<","<"],
-            ["\\>",">"],
             ["& Chr(13)&","<br>"],
             ["& Chr(13) &","<br>"],
             ["&","&amp;"],
-            ["\\n","<br>"],
+            ["\\n","\n"],
             ["\\t","\t"],
+            ["\\\\<","&lt;"],
+            ["\\\\>","&gt;"],
             ]
     for line in localization_data:
-        try:
-            if line[4].strip() == id.strip():
-                # Add additional space to catch strings starting with <=
-                str = " "+line[10]
-                while True:
-                    index = str.find("<")
-                    if index > 0:
-                        if str[index-1] != "\\":
-                            str = str[:index-1]+"&lt;"+str[index+1:]
-                            continue
-                    index = str.find(">")
-                    if index > 0:
-                        if str[index-1] != "\\":
-                            str = str[:index-1]+"&gt;"+str[index+1:]
-                            continue
-                    break
-                for i in replace_localized_strs:
-                    str = str.replace(i[0],i[1])
-                return str.strip()
-        except:
-            pass
+        if len(line) > 10 and line[4].strip() == id.strip():
+            str = line[10]
+            for i in replace_localized_strs:
+                str = str.replace(i[0],i[1])
+            str = replace_gt_lt(str,"<","&lt;")
+            str = replace_gt_lt(str,">","&gt;")
+            # Finally replace the \< and \> tokens
+            str = str.replace("\\<","<").replace("\\>",">")
+            return str
     return ""
 
 def get_localized_objects(parser, loc_text, attrs):
