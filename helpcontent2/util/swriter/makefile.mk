@@ -390,7 +390,6 @@ LINKLINKFILES= \
    text$/swriter$/guide$/section_edit.xhp \
    text$/swriter$/guide$/section_insert.xhp \
    text$/swriter$/guide$/sections.xhp \
-   text$/swriter$/guide$/select_language.xhp \
    text$/swriter$/guide$/send2html.xhp \
    text$/swriter$/guide$/shortcut_writing.xhp \
    text$/swriter$/guide$/smarttags.xhp \
@@ -463,17 +462,11 @@ LINKLINKFILES= \
    text$/shared$/00$/00000020.xhp \
    text$/shared$/00$/00000021.xhp \
    text$/shared$/00$/00000099.xhp \
-   text$/shared$/00$/00000202.xhp \
-   text$/shared$/00$/00000203.xhp \
-   text$/shared$/00$/00000204.xhp \
-   text$/shared$/00$/00000205.xhp \
+   text$/shared$/00$/00000200.xhp \
    text$/shared$/00$/00000206.xhp \
    text$/shared$/00$/00000207.xhp \
    text$/shared$/00$/00000208.xhp \
    text$/shared$/00$/00000210.xhp \
-   text$/shared$/00$/00000212.xhp \
-   text$/shared$/00$/00000213.xhp \
-   text$/shared$/00$/00000214.xhp \
    text$/shared$/00$/00000215.xhp \
    text$/shared$/00$/00000401.xhp \
    text$/shared$/00$/00000402.xhp \
