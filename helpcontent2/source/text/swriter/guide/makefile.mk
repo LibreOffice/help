@@ -143,7 +143,6 @@ XHPFILES = \
    section_edit.xhp \
    section_insert.xhp \
    sections.xhp \
-   select_language.xhp \
    send2html.xhp \
    shortcut_writing.xhp \
    smarttags.xhp \
