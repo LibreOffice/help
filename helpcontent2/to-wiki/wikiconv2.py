@@ -6,7 +6,7 @@ import codecs
 
 root="source/"
 
-titles = []
+titles = [[]]
 
 localization_data = [[]]
 
@@ -1050,29 +1050,33 @@ def signal_handler(signal, frame):
     sys.exit(1)
 signal.signal(signal.SIGINT, signal_handler)
 
-if len(sys.argv) < 2:
-    print "wikiconv2.py <inputfile.xph> [Help Filename] [localize.sdf]"
-    sys.exit(1)
+def wikiconv2(inputfile, help_filename, outputfile):
+    global help_file_name
+    help_file_name = help_filename
+    parser = XhpParser(inputfile, True, '')
+    file = codecs.open(outputfile, "wb", "utf-8")
+    file.write(parser.get_all())
+    file.close()
+    Bookmark.save_bookmarks()
 
-if len(sys.argv) > 2:
-    help_file_name = sys.argv[2]
-
-if len(sys.argv) > 3:
-    load_localization_data(sys.argv[3])
-
-# TODO: Currently the following files are loaded for every
-# file which is converted. Combine the batch converter with
-# this file to generate quicker help files.
+# Main Function
 load_all_help_ids()
 loadallfiles("alltitles.csv")
+if len(sys.argv) > 1:
+    load_localization_data(sys.argv[1])
 
-parser = XhpParser(sys.argv[1], True, '')
-# Enable these lines once the convall.py is combined with this one
-#file1 = codecs.open("t.txt", "wb", "utf-8")
-#file1.write(parser.get_all())
-#file1.close()
-print parser.get_all().encode('utf-8')
-
-Bookmark.save_bookmarks()
+for title in titles:
+    outfile = ""
+    infile  = ""
+    if len(title) > 1:
+        outfile = "wiki/"+title[1].strip()
+        infile  = title[0].strip()
+        try:
+            file = open(outfile,"r")
+        except:    
+            wikiconv2(infile,title[1].strip(),outfile)
+            continue
+        print "Warning: Skipping: "+infile+" > "+outfile
+        file.close()
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:

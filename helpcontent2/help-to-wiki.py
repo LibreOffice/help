@@ -73,7 +73,7 @@ print "Generating the wiki itself..."
 localization = ""
 if len(sys.argv) > 1:
     localization = sys.argv[1]
-os.system( "python to-wiki/convall.py "+localization )
+os.system( "python to-wiki/wikiconv2.py "+localization )
 
 # close the bookmarks.h template
 create_wiki_footer()
