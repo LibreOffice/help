@@ -28,7 +28,6 @@ for title in titles:
     try:
         file = open(outfile,"r")
     except:
-        #print "Processing: "+infile
         if os.system(command) != 0:
             print "Failed: "+command
             sys.exit(1)

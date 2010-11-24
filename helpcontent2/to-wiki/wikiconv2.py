@@ -166,16 +166,45 @@ def load_localization_data(sdf_file):
         return
 
 def get_localized_text(id, text):
+    # Note: The order is important
+    replace_localized_strs = [
+            ["\\\\<","&lt;"],
+            ["\\\\>","&gt;"],
+            ["\\\"","\""],
+            ["\\<","<"],
+            ["\\>",">"],
+            ["& Chr(13)&","<br>"],
+            ["& Chr(13) &","<br>"],
+            ["&","&amp;"],
+            ["\\n","<br>"],
+            ["\\t","\t"],
+            ]
     for line in localization_data:
         try:
             if line[4].strip() == id.strip():
-                return line[10].replace("\\\"","\"").replace("\\<","<").replace("\\>",">").replace("<?>","?")
+                # Add additional space to catch strings starting with <=
+                str = " "+line[10]
+                while True:
+                    index = str.find("<")
+                    if index > 0:
+                        if str[index-1] != "\\":
+                            str = str[:index-1]+"&lt;"+str[index+1:]
+                            continue
+                    index = str.find(">")
+                    if index > 0:
+                        if str[index-1] != "\\":
+                            str = str[:index-1]+"&gt;"+str[index+1:]
+                            continue
+                    break
+                for i in replace_localized_strs:
+                    str = str.replace(i[0],i[1])
+                return str.strip()
         except:
             pass
     return ""
 
-def get_localized_objects(loc_text, attrs):
-    p = LocalizedText(loc_text, attrs)
+def get_localized_objects(parser, loc_text, attrs):
+    p = LocalizedText(parser, loc_text, attrs)
     return p.parse()
 
 def href_to_fname_id(href):
@@ -256,8 +285,11 @@ class ElementBase:
                     (id, fname))
 
     def unhandled_element(self, parser, name):
+        filename = "Localization File"
+        if parser:
+            filename = parser.filename
         sys.stderr.write('Warning: Unhandled element "%s" in "%s" (%s)\n'% \
-                        (name, self.name, parser.filename))
+                        (name, self.name, filename))
 
 class XhpFile(ElementBase):
     def __init__(self):
@@ -299,16 +331,18 @@ class XhpFile(ElementBase):
             self.unhandled_element(parser, name)
 
 class LocalizedText(ElementBase):
-    def __init__(self, data, attrs):
+    def __init__(self, parser, data, attrs):
         # Initialized with some 'tag' such that the parser
         # never needs to access the parent (which in this 
         # case is null)
         ElementBase.__init__(self, 'localizedtext', None)
         header = u'<?xml version="1.0" encoding="UTF-8"?><paragraph>'
         self.data = header + data #+ '</paragraph>'
+        self.xml = self.data.encode('utf-8')
         self.follow_embed = True
         self.head_obj = None
         self.attrs = attrs
+        self.parser = parser
         #print self.data.encode('utf-8')
 
     def parse(self):
@@ -317,10 +351,12 @@ class LocalizedText(ElementBase):
         p.EndElementHandler = self.end_element
         p.CharacterDataHandler = self.char_data
         try:
-            p.Parse(self.data.encode('utf-8'))
+            p.Parse(self.xml)
         except:
             # TODO: Check different exceptions
-            pass
+            sys.stderr.write('Trying to parse: '+self.xml+'\n')
+            print self.xml
+            raise
         return self.objects[0].objects
 
     def start_element(self, name, attrs):
@@ -328,16 +364,16 @@ class LocalizedText(ElementBase):
             self.parse_child(Paragraph(self.attrs, self, 0))
         else:
             if self.child_parsing:
-                self.get_curobj().start_element(None, name, attrs)
+                self.get_curobj().start_element(self.parser, name, attrs)
             else:
-                self.unhandled_element(name)
+                self.unhandled_element(None, name)
 
     def char_data(self, data):
         if self.child_parsing:
             self.get_curobj().char_data(self, data)
         else:
             # Should never occur
-            print "Unhandled Data:"+data
+            self.unhandled_element(None,"Unhandled Data:"+data)
 
     def end_element(self, name):
         if self.child_parsing:
@@ -896,7 +932,7 @@ class Paragraph(ElementBase):
         if len(loc_text):
             attrs = {'role':self.role,
                      'level':self.level}
-            self.localized_objects = get_localized_objects(loc_text, attrs)
+            self.localized_objects = get_localized_objects(parser, loc_text, attrs)
         else:
             self.objects.append(Text(data))
 
