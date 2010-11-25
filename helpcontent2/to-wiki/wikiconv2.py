@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 
 import sys, signal
+import thread, threading, time
 import xml.parsers.expat
 import codecs
+from threading import Thread
 
 root="source/"
+max_threads = 4
 
 titles = [[]]
 
@@ -100,8 +103,6 @@ help_id_patterns = [
         "framework_",
         "goodies_"
         ]
-
-help_file_name = ""
 
 all_help_id_mappings = [[]]
 
@@ -272,9 +273,9 @@ class ElementBase:
         return None
 
     # embed part of another file into current structure
-    def embed_href(self, current_app, fname, id):
+    def embed_href(self, parser, fname, id):
         # parse another xhp
-        parser = XhpParser('source/' + fname, False, current_app)
+        parser = XhpParser('source/' + fname, False, parser.current_app, parser.help_file_name)
         var = parser.get_variable(id)
 
         if var != None:
@@ -306,7 +307,7 @@ class XhpFile(ElementBase):
         elif name == 'embed' or name == 'embedvar':
             if parser.follow_embed:
                 (fname, id) = href_to_fname_id(attrs['href'])
-                self.embed_href(parser.current_app, fname, id)
+                self.embed_href(parser, fname, id)
         elif name == 'helpdocument':
             # ignored, we flatten the structure
             pass
@@ -397,8 +398,7 @@ class Bookmark(ElementBase):
         return ""
 
     @staticmethod
-    def set_heading(data):
-        global help_file_name
+    def set_heading(data, help_file_name):
         if data.find("= ") >= 0:
             data = data[data.find("= ")+2:]
         if data.find(" =") >= 0:
@@ -495,7 +495,7 @@ class TableCell(ElementBase):
         elif name == 'embed' or name == 'embedvar':
             (fname, id) = href_to_fname_id(attrs['href'])
             if parser.follow_embed:
-                self.embed_href(parser.current_app, fname, id)
+                self.embed_href(parser, fname, id)
         elif name == 'paragraph':
             self.parse_child(Paragraph(attrs, self, 0))
         elif name == 'section':
@@ -547,7 +547,7 @@ class ListItem(ElementBase):
         elif name == 'embed' or name == 'embedvar':
             (fname, id) = href_to_fname_id(attrs['href'])
             if parser.follow_embed:
-                self.embed_href(parser.current_app, fname, id)
+                self.embed_href(parser, fname, id)
         elif name == 'paragraph':
             self.parse_child(Paragraph(attrs, self, 0))
         else:
@@ -618,7 +618,7 @@ class Section(ElementBase):
         elif name == 'embed' or name == 'embedvar':
             (fname, id) = href_to_fname_id(attrs['href'])
             if parser.follow_embed:
-                self.embed_href(parser.current_app, fname, id)
+                self.embed_href(parser, fname, id)
         elif name == 'list':
             self.parse_child(List(attrs, self))
         elif name == 'paragraph':
@@ -800,7 +800,7 @@ class Case(ElementBase):
         elif name == 'embed' or name == 'embedvar':
             if parser.follow_embed:
                 (fname, id) = href_to_fname_id(attrs['href'])
-                self.embed_href(parser.current_app, fname, id)
+                self.embed_href(parser, fname, id)
         elif name == 'list':
             self.parse_child(List(attrs, self))
         elif name == 'paragraph':
@@ -898,7 +898,7 @@ class Paragraph(ElementBase):
         elif name == 'embedvar':
             if parser.follow_embed:
                 (fname, id) = href_to_fname_id(attrs['href'])
-                self.embed_href(parser.current_app, fname, id)
+                self.embed_href(parser, fname, id)
         elif name == 'image':
             self.parse_child(Image(attrs, self))
         elif name == 'item':
@@ -976,8 +976,8 @@ class Paragraph(ElementBase):
                 sys.stderr.write( "Unknown paragraph role end: " + role + "\n" )
 
         # set bookmark info
-        if self.role.find("heading") >= 0:
-            Bookmark.set_heading(text)
+        #if self.role.find("heading") >= 0:
+        #    Bookmark.set_heading(text, parser.help_file_name)
 
         return text
 
@@ -1005,11 +1005,12 @@ class CaseInline(Paragraph):
             self.case = attrs['select']
 
 class XhpParser:
-    def __init__(self, filename, follow_embed, embedding_app):
+    def __init__(self, filename, follow_embed, embedding_app, help_file_name):
         self.head_obj = XhpFile()
         self.filename = filename
         self.follow_embed = follow_embed
         self.embedding_app = embedding_app
+        self.help_file_name = help_file_name
 
         self.current_app = ''
         for i in [['scalc', 'CALC'], ['sdraw', 'DRAW'], \
@@ -1057,14 +1058,19 @@ def signal_handler(signal, frame):
     sys.exit(1)
 signal.signal(signal.SIGINT, signal_handler)
 
-def wikiconv2(inputfile, help_filename, outputfile):
-    global help_file_name
-    help_file_name = help_filename
-    parser = XhpParser(inputfile, True, '')
-    file = codecs.open(outputfile, "wb", "utf-8")
-    file.write(parser.get_all())
-    file.close()
-    Bookmark.save_bookmarks()
+class WikiConv2(Thread):
+    def __init__(self, inputfile, help_file_name, outputfile):
+        Thread.__init__(self)
+        self.inputfile = inputfile
+        self.help_file_name = help_file_name
+        self.outputfile = outputfile
+
+    def run(self):
+        parser = XhpParser(self.inputfile, True, '', self.help_file_name)
+        file = codecs.open(self.outputfile, "wb", "utf-8")
+        file.write(parser.get_all())
+        file.close()
+        #Bookmark.save_bookmarks()
 
 # Main Function
 load_all_help_ids()
@@ -1073,6 +1079,9 @@ if len(sys.argv) > 1:
     load_localization_data(sys.argv[1])
 
 for title in titles:
+    while threading.active_count() > max_threads:
+        time.sleep(0.1)
+
     outfile = ""
     infile  = ""
     if len(title) > 1:
@@ -1082,7 +1091,8 @@ for title in titles:
             file = open(outfile,"r")
         except:    
             try:
-                wikiconv2(infile,title[1].strip(),outfile)
+                wiki = WikiConv2(infile,title[1].strip(),outfile)
+                wiki.start()
                 continue
             except:
                 print 'Failed to convert "%s" into "%s".\n'% \
