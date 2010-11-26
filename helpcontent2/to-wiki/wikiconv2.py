@@ -764,10 +764,13 @@ class SwitchInline(ElementBase):
                              'WRITER':'Writer', 'default':''}
                     try:
                         app = appls[i.case]
-                        if app == '':
-                            text = text + i.get_all()
+                        all = i.get_all()
+                        if all == '':
+                            pass
+                        elif app == '':
+                            text = text + all
                         else:
-                            text = text + '{{OnlyIn%s|%s}}'% (app, i.get_all())
+                            text = text + '{{OnlyIn%s|%s}}'% (app, all)
                     except:
                         sys.stderr.write('Unhandled "%s" case in "appl" switchinline.\n'% \
                                 i.case)
@@ -958,7 +961,7 @@ class Paragraph(ElementBase):
                 sys.stderr.write( "Unknown paragraph role start: " + role + "\n" )
 
         # the text itself
-        text = text + ElementBase.get_all(self) #.strip()
+        text = text + ElementBase.get_all(self).strip()
 
         # append the markup according to the role
         if len(self.objects) > 0:
@@ -977,7 +980,6 @@ class Variable(Paragraph):
     def __init__(self, attrs, parent, depth):
         Paragraph.__init__(self, attrs, parent, depth)
         self.name = 'variable'
-        self.role = 'null'
         self.id = attrs['id']
 
     def get_variable(self, id):
@@ -1074,8 +1076,12 @@ for title in titles:
         try:
             file = open(outfile,"r")
         except:    
-            wikiconv2(infile,title[1].strip(),outfile)
-            continue
+            try:
+                wikiconv2(infile,title[1].strip(),outfile)
+                continue
+            except:
+                print 'Failed to convert "%s" into "%s".\n'% \
+                        (title[1].strip(), outfile)
         print "Warning: Skipping: "+infile+" > "+outfile
         file.close()
 
