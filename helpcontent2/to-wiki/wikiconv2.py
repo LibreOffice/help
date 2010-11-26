@@ -926,6 +926,11 @@ class Paragraph(ElementBase):
             pass
 
     def char_data(self, parser, data):
+        if self.role == 'paragraph' or self.role == 'heading':
+            if data != '' and data[0] == ' ':
+                data = ' ' + data.lstrip()
+            data = data.replace('\n', ' ')
+
         if len(self.localized_objects):
             return
         loc_text = u''
