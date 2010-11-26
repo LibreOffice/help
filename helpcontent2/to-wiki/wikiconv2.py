@@ -13,6 +13,8 @@ titles = [[]]
 
 localization_data = [[]]
 
+bookmarks_lock = threading.Lock()
+
 # list of elements that we can directly convert to wiki text
 replace_element = \
     {'start':{'br': '<br/>',
@@ -249,6 +251,19 @@ class ElementBase:
             return self.objects[len(self.objects)-1].get_curobj()
         return self
 
+    def get_bookmark_obj(self):
+        l = len(self.objects)
+        if l > 0:
+            for i in range(0,l):
+                try:
+                    raise self.objects[l-i]
+                except Bookmark:
+                    return self.objects[l-i]
+                except:
+                    pass
+        return None
+
+
     # start parsing a child element
     def parse_child(self, child):
         self.child_parsing = True
@@ -301,7 +316,7 @@ class XhpFile(ElementBase):
             # ignored, we flatten the structure
             pass
         elif name == 'bookmark':
-            self.parse_child(Bookmark(attrs, self))
+            self.parse_child(Bookmark(attrs, self, parser))
         elif name == 'comment':
             self.parse_child(Comment(attrs, self))
         elif name == 'embed' or name == 'embedvar':
@@ -380,10 +395,7 @@ class LocalizedText(ElementBase):
             self.get_curobj().end_element(self, name)
 
 class Bookmark(ElementBase):
-    bookmarks_list   = []
-    current_bookmark = ""
-
-    def __init__(self, attrs, parent):
+    def __init__(self, attrs, parent, parser):
         ElementBase.__init__(self, 'bookmark', parent)
         self.bookmark = ""
         text = attrs['branch'] #.encode('ascii','replace')
@@ -392,29 +404,41 @@ class Bookmark(ElementBase):
             if text.find(i) >= 0:
                self.bookmark = text[text.rfind("/")+1:].replace(":","_")
                break
+        self.help_file_name = parser.help_file_name
+        self.parser = parser
 
     def get_all(self):
-        Bookmark.current_bookmark = self.bookmark
         return ""
 
-    @staticmethod
-    def set_heading(data, help_file_name):
+    def get_bookmark(self):
+        return self.bookmark
+
+    def set_heading(self, data):
+        help_file_name = self.help_file_name
         if data.find("= ") >= 0:
             data = data[data.find("= ")+2:]
         if data.find(" =") >= 0:
             data = data[:data.find(" =")]
         data = data.strip()
-        if len(Bookmark.current_bookmark) > 0:
+        if len(self.bookmark) > 0:
             if data.find("]]") >= 0:
                 try:
                     data = data[data.find("|")+1:data.find("]]")]
                 except:
                     pass
-            help_id = get_help_id(Bookmark.current_bookmark)
+            if data.find("}}") >= 0:
+                try:
+                    index = data.find("|")
+                    if index < 0:
+                        index = data.find("{{")+1
+                    index = index + 1
+                    data = data[index:data.find("}}")]
+                except:
+                    pass
+            help_id = get_help_id(self.bookmark)
             bookmark = "    { "+help_id+", \""+help_file_name+"#"+data.replace("\"","\\\"")+"\" },"
-            #bookmark = bookmark.encode('ascii','replace')
-            Bookmark.bookmarks_list.append(bookmark)
-            Bookmark.current_bookmark = ""
+            self.parser.add_bookmark(bookmark)
+
 
     @staticmethod
     def save_bookmarks():
@@ -489,7 +513,7 @@ class TableCell(ElementBase):
 
     def start_element(self, parser, name, attrs):
         if name == 'bookmark':
-            self.parse_child(Bookmark(attrs, self))
+            self.parse_child(Bookmark(attrs, self, parser))
         elif name == 'comment':
             self.parse_child(Comment(attrs, self))
         elif name == 'embed' or name == 'embedvar':
@@ -543,7 +567,7 @@ class ListItem(ElementBase):
 
     def start_element(self, parser, name, attrs):
         if name == 'bookmark':
-            self.parse_child(Bookmark(attrs, self))
+            self.parse_child(Bookmark(attrs, self, parser))
         elif name == 'embed' or name == 'embedvar':
             (fname, id) = href_to_fname_id(attrs['href'])
             if parser.follow_embed:
@@ -612,7 +636,7 @@ class Section(ElementBase):
 
     def start_element(self, parser, name, attrs):
         if name == 'bookmark':
-            self.parse_child(Bookmark(attrs, self))
+            self.parse_child(Bookmark(attrs, self, parser))
         elif name == 'comment':
             self.parse_child(Comment(attrs, self))
         elif name == 'embed' or name == 'embedvar':
@@ -794,7 +818,7 @@ class Case(ElementBase):
 
     def start_element(self, parser, name, attrs):
         if name == 'bookmark':
-            self.parse_child(Bookmark(attrs, self))
+            self.parse_child(Bookmark(attrs, self, parser))
         elif name == 'comment':
             self.parse_child(Comment(attrs, self))
         elif name == 'embed' or name == 'embedvar':
@@ -887,6 +911,7 @@ class Paragraph(ElementBase):
             self.depth = self.level
         self.is_first = (len(self.parent.objects) == 0)
         self.localized_objects = []
+        self.bookmark = parent.get_bookmark_obj()
 
     def start_element(self, parser, name, attrs):
         if name == 'ahelp':
@@ -976,8 +1001,11 @@ class Paragraph(ElementBase):
                 sys.stderr.write( "Unknown paragraph role end: " + role + "\n" )
 
         # set bookmark info
-        #if self.role.find("heading") >= 0:
-        #    Bookmark.set_heading(text, parser.help_file_name)
+        try:
+            if self.role.find("heading") >= 0:
+                self.bookmark.set_heading(text)
+        except:
+            pass
 
         return text
 
@@ -1011,6 +1039,7 @@ class XhpParser:
         self.follow_embed = follow_embed
         self.embedding_app = embedding_app
         self.help_file_name = help_file_name
+        self.bookmarks = []
 
         self.current_app = ''
         for i in [['scalc', 'CALC'], ['sdraw', 'DRAW'], \
@@ -1046,6 +1075,18 @@ class XhpParser:
     def get_variable(self, id):
         return self.head_obj.get_variable(id)
 
+    def add_bookmark(self, bookmark):
+        self.bookmarks.append(bookmark)
+
+    def save_bookmarks(self):
+        global bookmarks_lock
+        bookmarks_lock.acquire()
+        file = codecs.open("bookmarks.h", "a", "utf-8")
+        for i in self.bookmarks:
+            file.write(i+"\n")
+        file.close() 
+        bookmarks_lock.release()
+
 def loadallfiles(filename):
     global titles
     file = codecs.open(filename, "r", "utf-8")
@@ -1070,7 +1111,7 @@ class WikiConv2(Thread):
         file = codecs.open(self.outputfile, "wb", "utf-8")
         file.write(parser.get_all())
         file.close()
-        #Bookmark.save_bookmarks()
+        parser.save_bookmarks()
 
 # Main Function
 load_all_help_ids()
@@ -1099,5 +1140,8 @@ for title in titles:
                         (title[1].strip(), outfile)
         print "Warning: Skipping: "+infile+" > "+outfile
         file.close()
+
+time.sleep(0.1)
+#Bookmark.save_bookmarks()
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:
