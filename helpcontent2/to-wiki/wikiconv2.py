@@ -13,7 +13,7 @@ titles = [[]]
 
 localization_data = [[]]
 
-bookmarks_lock = threading.Lock()
+redirects = []
 
 # list of elements that we can directly convert to wiki text
 replace_element = \
@@ -251,19 +251,6 @@ class ElementBase:
             return self.objects[len(self.objects)-1].get_curobj()
         return self
 
-    def get_bookmark_obj(self):
-        l = len(self.objects)
-        if l > 0:
-            for i in range(0,l):
-                try:
-                    raise self.objects[l-i]
-                except Bookmark:
-                    return self.objects[l-i]
-                except:
-                    pass
-        return None
-
-
     # start parsing a child element
     def parse_child(self, child):
         self.child_parsing = True
@@ -288,9 +275,9 @@ class ElementBase:
         return None
 
     # embed part of another file into current structure
-    def embed_href(self, parser, fname, id):
+    def embed_href(self, parent_parser, fname, id):
         # parse another xhp
-        parser = XhpParser('source/' + fname, False, parser.current_app, parser.help_file_name)
+        parser = XhpParser('source/' + fname, False, parent_parser.current_app, parent_parser.wiki_page_name)
         var = parser.get_variable(id)
 
         if var != None:
@@ -316,7 +303,7 @@ class XhpFile(ElementBase):
             # ignored, we flatten the structure
             pass
         elif name == 'bookmark':
-            self.parse_child(Bookmark(attrs, self, parser))
+            self.parse_child(Bookmark(attrs, self, 'div', parser))
         elif name == 'comment':
             self.parse_child(Comment(attrs, self))
         elif name == 'embed' or name == 'embedvar':
@@ -395,57 +382,48 @@ class LocalizedText(ElementBase):
             self.get_curobj().end_element(self, name)
 
 class Bookmark(ElementBase):
-    def __init__(self, attrs, parent, parser):
+    def __init__(self, attrs, parent, type, parser):
         ElementBase.__init__(self, 'bookmark', parent)
-        self.bookmark = ""
-        text = attrs['branch'] #.encode('ascii','replace')
-        # text = text.upper()
-        for i in help_id_patterns:
-            if text.find(i) >= 0:
-               self.bookmark = text[text.rfind("/")+1:].replace(":","_")
-               break
-        self.help_file_name = parser.help_file_name
-        self.parser = parser
+
+        self.type = type
+
+        self.id = attrs['id']
+        self.app = ''
+        self.redirect = ''
+        self.target = ''
+
+        # let's construct the name of the redirect, so that we can point
+        # to the wikihelp directly from the LO code; wiki then takes care of
+        # the correct redirect
+        branch = attrs['branch']
+        if branch.find('hid/') == 0 and (parser.current_app_raw != '' or parser.follow_embed):
+            name = branch[branch.find('/') + 1:]
+
+            if name.find('.uno:') == 0:
+                self.app = parser.current_app_raw
+                self.redirect = name
+                self.target = parser.wiki_page_name
 
     def get_all(self):
-        return ""
+        global redirects
+        # first of all, we need to create a redirect page for this one
+        if self.redirect != '' and self.target != '':
+            if self.app != '':
+                redirects.append(['%s/%s'% (self.app, self.redirect), self.target])
+            else:
+                for i in ['swriter', 'scalc', 'simpress', 'sdraw', 'smath', \
+                        'schart', 'sbasic', 'sdatabase']:
+                    redirects.append(['%s/%s'% (i, self.redirect), self.target])
 
-    def get_bookmark(self):
-        return self.bookmark
+        # then we also have to setup ID inside the page
+        if self.type == 'div':
+            return '<div id="%s"></div>\n'% self.id
+        elif self.type == 'span':
+            return '<span id="%s"></span>'% self.id
+        else:
+            sys.stderr.write('Unknown bookmark type "%s"'% self.type)
 
-    def set_heading(self, data):
-        help_file_name = self.help_file_name
-        if data.find("= ") >= 0:
-            data = data[data.find("= ")+2:]
-        if data.find(" =") >= 0:
-            data = data[:data.find(" =")]
-        data = data.strip()
-        if len(self.bookmark) > 0:
-            if data.find("]]") >= 0:
-                try:
-                    data = data[data.find("|")+1:data.find("]]")]
-                except:
-                    pass
-            if data.find("}}") >= 0:
-                try:
-                    index = data.find("|")
-                    if index < 0:
-                        index = data.find("{{")+1
-                    index = index + 1
-                    data = data[index:data.find("}}")]
-                except:
-                    pass
-            help_id = get_help_id(self.bookmark)
-            bookmark = "    { "+help_id+", \""+help_file_name+"#"+data.replace("\"","\\\"")+"\" },"
-            self.parser.add_bookmark(bookmark)
-
-
-    @staticmethod
-    def save_bookmarks():
-        file = codecs.open("bookmarks.h", "a", "utf-8")
-        for i in Bookmark.bookmarks_list:
-            file.write(i+"\n")
-        file.close()
+        return ''
 
 class Image(ElementBase):
     def __init__(self, attrs, parent):
@@ -513,7 +491,7 @@ class TableCell(ElementBase):
 
     def start_element(self, parser, name, attrs):
         if name == 'bookmark':
-            self.parse_child(Bookmark(attrs, self, parser))
+            self.parse_child(Bookmark(attrs, self, 'div', parser))
         elif name == 'comment':
             self.parse_child(Comment(attrs, self))
         elif name == 'embed' or name == 'embedvar':
@@ -567,7 +545,7 @@ class ListItem(ElementBase):
 
     def start_element(self, parser, name, attrs):
         if name == 'bookmark':
-            self.parse_child(Bookmark(attrs, self, parser))
+            self.parse_child(Bookmark(attrs, self, 'span', parser))
         elif name == 'embed' or name == 'embedvar':
             (fname, id) = href_to_fname_id(attrs['href'])
             if parser.follow_embed:
@@ -636,7 +614,7 @@ class Section(ElementBase):
 
     def start_element(self, parser, name, attrs):
         if name == 'bookmark':
-            self.parse_child(Bookmark(attrs, self, parser))
+            self.parse_child(Bookmark(attrs, self, 'div', parser))
         elif name == 'comment':
             self.parse_child(Comment(attrs, self))
         elif name == 'embed' or name == 'embedvar':
@@ -826,7 +804,7 @@ class Case(ElementBase):
 
     def start_element(self, parser, name, attrs):
         if name == 'bookmark':
-            self.parse_child(Bookmark(attrs, self, parser))
+            self.parse_child(Bookmark(attrs, self, 'div', parser))
         elif name == 'comment':
             self.parse_child(Comment(attrs, self))
         elif name == 'embed' or name == 'embedvar':
@@ -919,7 +897,6 @@ class Paragraph(ElementBase):
             self.depth = self.level
         self.is_first = (len(self.parent.objects) == 0)
         self.localized_objects = []
-        self.bookmark = parent.get_bookmark_obj()
 
     def start_element(self, parser, name, attrs):
         if name == 'ahelp':
@@ -1008,13 +985,6 @@ class Paragraph(ElementBase):
             except:
                 sys.stderr.write( "Unknown paragraph role end: " + role + "\n" )
 
-        # set bookmark info
-        try:
-            if self.role.find("heading") >= 0:
-                self.bookmark.set_heading(text)
-        except:
-            pass
-
         return text
 
 class Variable(Paragraph):
@@ -1041,19 +1011,20 @@ class CaseInline(Paragraph):
             self.case = attrs['select']
 
 class XhpParser:
-    def __init__(self, filename, follow_embed, embedding_app, help_file_name):
+    def __init__(self, filename, follow_embed, embedding_app, wiki_page_name):
         self.head_obj = XhpFile()
         self.filename = filename
         self.follow_embed = follow_embed
-        self.help_file_name = help_file_name
-        self.bookmarks = []
+        self.wiki_page_name = wiki_page_name
 
         self.current_app = ''
+        self.current_app_raw = ''
         for i in [['sbasic', 'BASIC'], ['scalc', 'CALC'], \
-                  ['sdraw', 'DRAW'], ['schart', 'CHART'], \
-                  ['simpress', 'IMPRESS'], \
+                  ['sdatabase', 'DATABASE'], ['sdraw', 'DRAW'], \
+                  ['schart', 'CHART'], ['simpress', 'IMPRESS'], \
                   ['smath', 'MATH'], ['swriter', 'WRITER']]:
             if filename.find('/%s/'% i[0]) >= 0:
+                self.current_app_raw = i[0]
                 self.current_app = i[1]
                 break
 
@@ -1088,18 +1059,6 @@ class XhpParser:
     def get_variable(self, id):
         return self.head_obj.get_variable(id)
 
-    def add_bookmark(self, bookmark):
-        self.bookmarks.append(bookmark)
-
-    def save_bookmarks(self):
-        global bookmarks_lock
-        bookmarks_lock.acquire()
-        file = codecs.open("bookmarks.h", "a", "utf-8")
-        for i in self.bookmarks:
-            file.write(i+"\n")
-        file.close() 
-        bookmarks_lock.release()
-
 def loadallfiles(filename):
     global titles
     file = codecs.open(filename, "r", "utf-8")
@@ -1113,18 +1072,17 @@ def signal_handler(signal, frame):
 signal.signal(signal.SIGINT, signal_handler)
 
 class WikiConv2(Thread):
-    def __init__(self, inputfile, help_file_name, outputfile):
+    def __init__(self, inputfile, wiki_page_name, outputfile):
         Thread.__init__(self)
         self.inputfile = inputfile
-        self.help_file_name = help_file_name
+        self.wiki_page_name = wiki_page_name
         self.outputfile = outputfile
 
     def run(self):
-        parser = XhpParser(self.inputfile, True, '', self.help_file_name)
+        parser = XhpParser(self.inputfile, True, '', self.wiki_page_name)
         file = codecs.open(self.outputfile, "wb", "utf-8")
         file.write(parser.get_all())
         file.close()
-        parser.save_bookmarks()
 
 # Main Function
 load_all_help_ids()
@@ -1155,6 +1113,5 @@ for title in titles:
         file.close()
 
 time.sleep(0.1)
-#Bookmark.save_bookmarks()
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:
