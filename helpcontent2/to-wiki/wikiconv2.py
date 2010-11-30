@@ -7,7 +7,7 @@ import codecs
 from threading import Thread
 
 root="source/"
-max_threads = 4
+max_threads = 25
 
 titles = [[]]
 
@@ -339,7 +339,7 @@ class XhpFile(ElementBase):
         elif name == 'sort':
             self.parse_child(Sort(attrs, self))
         elif name == 'switch':
-            self.parse_child(Switch(attrs, self))
+            self.parse_child(Switch(attrs, self, parser.embedding_app))
         elif name == 'table':
             self.parse_child(Table(attrs, self))
         else:
@@ -653,7 +653,7 @@ class Section(ElementBase):
             # sections can be nested
             self.parse_child(Section(attrs, self, self.depth))
         elif name == 'switch':
-            self.parse_child(Switch(attrs, self))
+            self.parse_child(Switch(attrs, self, parser.embedding_app))
         elif name == 'table':
             self.parse_child(Table(attrs, self))
         else:
@@ -738,13 +738,12 @@ class Link(ElementBase):
         return text
 
 class SwitchInline(ElementBase):
-    def __init__(self, attrs, parent):
+    def __init__(self, attrs, parent, app):
         ElementBase.__init__(self, 'switchinline', parent)
         self.switch = attrs['select']
-        self.embedding_app = ''
+        self.embedding_app = app
 
     def start_element(self, parser, name, attrs):
-        self.embedding_app = parser.embedding_app
         if name == 'caseinline':
             self.parse_child(CaseInline(attrs, self, False))
         elif name == 'defaultinline':
@@ -782,22 +781,31 @@ class SwitchInline(ElementBase):
             # 'shared' into an 'app'
             if self.embedding_app == '':
                 text = ''
+                default = ''
                 for i in self.objects:
-                    appls = {'CALC':'Calc', 'CHART':'Chart', 'DRAW':'Draw', \
-                             'IMPRESS': 'Impress', 'MATH':'Math', \
-                             'WRITER':'Writer', 'default':''}
+                    appls = {'BASIC':'Basic', 'CALC':'Calc', \
+                             'CHART':'Chart', 'DRAW':'Draw', \
+                             'IMAGE':'Draw', 'IMPRESS': 'Impress', \
+                             'MATH':'Math', 'WRITER':'Writer', \
+                             'OFFICE':'', 'default':''}
                     try:
                         app = appls[i.case]
                         all = i.get_all()
                         if all == '':
                             pass
                         elif app == '':
-                            text = text + all
+                            default = all
                         else:
-                            text = text + '{{OnlyIn%s|%s}}'% (app, all)
+                            text = text + '{{WhenIn%s|%s}}'% (app, all)
                     except:
                         sys.stderr.write('Unhandled "%s" case in "appl" switchinline.\n'% \
                                 i.case)
+
+                if text == '':
+                    text = default
+                elif default != '':
+                    text = text + '{{WhenDefault|%s}}'% default
+
                 return text
             else:
                 for i in self.objects:
@@ -839,8 +847,8 @@ class Case(ElementBase):
             self.unhandled_element(parser, name)
 
 class Switch(SwitchInline):
-    def __init__(self, attrs, parent):
-        SwitchInline.__init__(self, attrs, parent)
+    def __init__(self, attrs, parent, app):
+        SwitchInline.__init__(self, attrs, parent, app)
         self.name = 'switch'
 
     def start_element(self, parser, name, attrs):
@@ -931,7 +939,7 @@ class Paragraph(ElementBase):
         elif name == 'link':
             self.parse_child(Link(attrs, self))
         elif name == 'switchinline':
-            self.parse_child(SwitchInline(attrs, self))
+            self.parse_child(SwitchInline(attrs, self, parser.embedding_app))
         elif name == 'variable':
             self.parse_child(Variable(attrs, self, self.depth))
         else:
@@ -1037,17 +1045,22 @@ class XhpParser:
         self.head_obj = XhpFile()
         self.filename = filename
         self.follow_embed = follow_embed
-        self.embedding_app = embedding_app
         self.help_file_name = help_file_name
         self.bookmarks = []
 
         self.current_app = ''
-        for i in [['scalc', 'CALC'], ['sdraw', 'DRAW'], \
-                  ['schart', 'CHART'], ['simpress', 'IMPRESS'], \
+        for i in [['sbasic', 'BASIC'], ['scalc', 'CALC'], \
+                  ['sdraw', 'DRAW'], ['schart', 'CHART'], \
+                  ['simpress', 'IMPRESS'], \
                   ['smath', 'MATH'], ['swriter', 'WRITER']]:
             if filename.find('/%s/'% i[0]) >= 0:
                 self.current_app = i[1]
                 break
+
+        if embedding_app != '':
+            self.embedding_app = embedding_app
+        else:
+            self.embedding_app = self.current_app
 
         file = codecs.open(filename, "r", "utf-8")
         p = xml.parsers.expat.ParserCreate()
@@ -1121,7 +1134,7 @@ if len(sys.argv) > 1:
 
 for title in titles:
     while threading.active_count() > max_threads:
-        time.sleep(0.1)
+        time.sleep(0.001)
 
     outfile = ""
     infile  = ""

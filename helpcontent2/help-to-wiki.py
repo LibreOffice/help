@@ -28,11 +28,11 @@ footer_template = "\
 
 def create_wiki_dirs():
     dirs = [
+            "All",
             "Basic",
             "Calc",
             "Chart",
             "Draw",
-            "All",
             "Impress",
             "Math",
             "Writer"
@@ -77,3 +77,5 @@ os.system( "python to-wiki/wikiconv2.py "+localization )
 
 # close the bookmarks.h template
 create_wiki_footer()
+
+# vim:set shiftwidth=4 softtabstop=4 expandtab:

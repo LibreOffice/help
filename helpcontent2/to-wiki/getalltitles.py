@@ -51,15 +51,15 @@ modules_list = [
         ["scalc","Calc"],
         ["schart","Chart"],
         ["sdraw","Draw"],
-        ["shared","All"],
         ["simpress","Impress"],
         ["smath","Math"],
-        ["swriter","Writer"]
+        ["swriter","Writer"],
+        ["shared","All"]
         ]
 
 def get_module(text):
     for i in modules_list:
-        if text.find(i[0]) >=0:
+        if text.find('/' + i[0] + '/') >=0:
             return i[1]
     return ""
 
@@ -98,6 +98,10 @@ class TitleParser:
         return self.title.strip()
 
 def parsexhp(filename):
+    module = get_module(filename)
+    if module == '':
+        return
+
     parsing = True
     file=open(filename,"r")
     p = xml.parsers.expat.ParserCreate()
@@ -114,19 +118,20 @@ def parsexhp(filename):
         return
     file.close()
     title = tp.get_title()
-    if len(title):
+    if len(title) > 0:
         readable_title = readable_text(title)
-        title = get_module(filename) + "/" + wiki_text(title)
-        title = title.replace(" ", "_")
-        title = title.replace("___", "_")
-        title = title.replace("__", "_")
+        title = module + '/' + wiki_text(title)
+        title = title.replace(' ', '_')
+        title = title.replace('___', '_')
+        title = title.replace('__', '_')
+        title = title.strip('_')
         title = make_unique(title)
         alltitles.append(title)
-        print filename + ";" + title + ";" + readable_title
+        print filename + ';' + title + ';' + readable_title
 
 if len(sys.argv) < 2:
     print "getalltitles.py <directory>"
-    print "e.g. getalltitles.py helcontent2/source/text/scalc"
+    print "e.g. getalltitles.py source/text/scalc"
     sys.exit(1)
 
 pattern = "xhp"
