@@ -7,14 +7,22 @@ import sys, os
 
 def create_wiki_dirs():
     dirs = [
-            "All",
+            "Common",
             "Basic",
             "Calc",
             "Chart",
             "Draw",
             "Impress",
             "Math",
-            "Writer"
+            "Writer",
+            "swriter",
+            "scalc",
+            "simpress",
+            "sdraw",
+            "smath",
+            "schart",
+            "sbasic",
+            "sdatabase"
            ]
 
     try:

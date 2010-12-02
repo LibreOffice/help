@@ -13,6 +13,11 @@ titles = [[]]
 
 localization_data = [[]]
 
+# content of the hid.lst file for easier searching
+hid_lst = {}
+
+# to collect a list of pages that will be redirections to the pages with nice
+# names
 redirects = []
 
 # list of elements that we can directly convert to wiki text
@@ -83,54 +88,13 @@ replace_text_list = \
      ["%PRODUCTNAME", "{{ProductName}}"]
     ]
 
-help_id_patterns = [
-        "HID",
-        "SID",
-        "FID",
-        "RID",
-        "TP_",
-        "MD_",
-        "FN_",
-        "DLG_",
-        "SW_",
-        "UID",
-        "basctl_",
-        "basic_",
-        "chart2_",
-        "dbaccess_",
-        "extensions_",
-        "filter_",
-        "formula_",
-        "fpicker_",
-        "framework_",
-        "goodies_"
-        ]
-
-all_help_id_mappings = [[]]
-
-def load_all_help_ids():
-    file = codecs.open("helpers/help_hid.lst", "r", "utf-8")
-    for line in file:
-        ids = line.strip().upper().split(",")
-        if len(ids) >= 2:
-            all_help_id_mappings.append(ids)
-
-def get_help_id_res2(name):
+def load_hid_lst():
     file = codecs.open("helpers/hid.lst", "r", "utf-8")
     for line in file:
-        ids = line.strip().upper().split(" ")
-        if len(ids) >= 2:
-            if ids[0] == name:
-                return ids[1]
-    # if none found
-    return "0"
-
-def get_help_id(name):
-    name = name.strip().replace("cui_","svx_").upper()
-    for i in all_help_id_mappings:
-        if len(i) >= 2 and i[0].strip() == name:
-            return i[1].strip()
-    return get_help_id_res2(name)
+        ids = line.strip().split(" ")
+        if len(ids) == 2:
+            hid_lst[ids[0].upper()] = ids[1]
+    file.close()
 
 def get_link_filename(link, name):
     text = link
@@ -165,6 +129,7 @@ def load_localization_data(sdf_file):
             if line.find("#") == 0:
                 continue
             localization_data.append(line.split("\t"))
+        file.close()
     except:
         return
 
@@ -399,10 +364,14 @@ class Bookmark(ElementBase):
         if branch.find('hid/') == 0 and (parser.current_app_raw != '' or parser.follow_embed):
             name = branch[branch.find('/') + 1:]
 
-            if name.find('.uno:') == 0:
-                self.app = parser.current_app_raw
+            self.app = parser.current_app_raw
+            self.target = parser.wiki_page_name
+            if name.find('.uno:') == 0 or name.find('.HelpId:') == 0:
                 self.redirect = name
-                self.target = parser.wiki_page_name
+            elif name.upper() in hid_lst:
+                self.redirect = hid_lst[name.upper()]
+            #else:
+            #    sys.stderr.write('Unhandled redirect "%s"\n'% name)
 
     def get_all(self):
         global redirects
@@ -1065,6 +1034,7 @@ def loadallfiles(filename):
     for line in file:
         title = line.split(";", 2)
         titles.append(title)
+    file.close()
 
 def signal_handler(signal, frame):
     sys.stderr.write( 'Exiting...\n' )
@@ -1085,7 +1055,7 @@ class WikiConv2(Thread):
         file.close()
 
 # Main Function
-load_all_help_ids()
+load_hid_lst()
 loadallfiles("alltitles.csv")
 if len(sys.argv) > 1:
     load_localization_data(sys.argv[1])
@@ -1113,5 +1083,12 @@ for title in titles:
         file.close()
 
 time.sleep(0.1)
+
+# generate the redirects
+print "Generating the redirects..."
+for redir in redirects:
+    file = open('wiki/%s'% redir[0], "w")
+    file.write('#REDIRECT [[%s]]\n'% redir[1])
+    file.close()
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:

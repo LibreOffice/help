@@ -54,7 +54,7 @@ modules_list = [
         ["simpress","Impress"],
         ["smath","Math"],
         ["swriter","Writer"],
-        ["shared","All"]
+        ["shared","Common"]
         ]
 
 def get_module(text):
