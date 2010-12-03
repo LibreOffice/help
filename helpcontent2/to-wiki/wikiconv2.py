@@ -261,6 +261,22 @@ class ElementBase:
         sys.stderr.write('Warning: Unhandled element "%s" in "%s" (%s)\n'% \
                         (name, self.name, filename))
 
+# Base class for trivial elements that operate on char_data
+#
+# Like <comment>, or <title>
+class TextElementBase(ElementBase):
+    def __init__(self, attrs, parent, element_name, start, end):
+        ElementBase.__init__(self, element_name, parent)
+        self.text = u''
+        self.start = start
+        self.end = end
+
+    def char_data(self, parser, data):
+        self.text = self.text + data
+
+    def get_all(self):
+        return self.start + replace_text(self.text) + self.end
+
 class XhpFile(ElementBase):
     def __init__(self):
         ElementBase.__init__(self, None, None)
@@ -440,16 +456,9 @@ class Image(ElementBase):
     def get_curobj(self):
         return self
 
-class Comment(ElementBase):
+class Comment(TextElementBase):
     def __init__(self, attrs, parent):
-        ElementBase.__init__(self, 'comment', parent)
-        self.text = ''
-
-    def char_data(self, parser, data):
-        self.text = self.text + data
-
-    def get_all(self):
-        return '<!-- ' + self.text + ' -->'
+        TextElementBase.__init__(self, attrs, parent, 'comment', '<!-- ', ' -->')
 
 class Text:
     def __init__(self, text):
@@ -576,11 +585,38 @@ class List(ElementBase):
             text = text + '\n'
         return text
 
-# we ignore the entire <meta> part of xhp
-# TODO - do we need it for something?
+# To handle elements that should be completely ignored
+class Ignore(ElementBase):
+    def __init__(self, attrs, parent, element_name):
+        ElementBase.__init__(self, element_name, parent)
+
+class Title(TextElementBase):
+    def __init__(self, attrs, parent):
+        TextElementBase.__init__(self, attrs, parent, 'title', '{{Lang|', '}}\n\n')
+
+class Topic(ElementBase):
+    def __init__(self, attrs, parent):
+        ElementBase.__init__(self, 'topic', parent)
+
+    def start_element(self, parser, name, attrs):
+        if name == 'title':
+            self.parse_child(Title(attrs, self))
+        elif name == 'filename':
+            self.parse_child(Ignore(attrs, self, name))
+        else:
+            self.unhandled_element(parser, name)
+
 class Meta(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'meta', parent)
+
+    def start_element(self, parser, name, attrs):
+        if name == 'topic':
+            self.parse_child(Topic(attrs, self))
+        elif name == 'history' or name == 'lastedited':
+            self.parse_child(Ignore(attrs, self, name))
+        else:
+            self.unhandled_element(parser, name)
 
 class Section(ElementBase):
     def __init__(self, attrs, parent, depth):
