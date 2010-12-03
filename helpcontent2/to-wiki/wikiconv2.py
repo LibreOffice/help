@@ -280,7 +280,6 @@ class TextElementBase(ElementBase):
 class XhpFile(ElementBase):
     def __init__(self):
         ElementBase.__init__(self, None, None)
-        self.depth=1
 
     def start_element(self, parser, name, attrs):
         if name == 'body':
@@ -302,11 +301,9 @@ class XhpFile(ElementBase):
         elif name == 'meta':
             self.parse_child(Meta(attrs, self))
         elif name == 'paragraph':
-            para = Paragraph(attrs, self, self.depth)
-            self.depth = para.depth
-            self.parse_child(para)
+            self.parse_child(Paragraph(attrs, self))
         elif name == 'section':
-            self.parse_child(Section(attrs, self, self.depth))
+            self.parse_child(Section(attrs, self))
         elif name == 'sort':
             self.parse_child(Sort(attrs, self))
         elif name == 'switch':
@@ -347,7 +344,7 @@ class LocalizedText(ElementBase):
 
     def start_element(self, name, attrs):
         if name == 'paragraph':
-            self.parse_child(Paragraph(self.attrs, self, 0))
+            self.parse_child(Paragraph(self.attrs, self))
         else:
             if self.child_parsing:
                 self.get_curobj().start_element(self.parser, name, attrs)
@@ -484,10 +481,9 @@ class TableCell(ElementBase):
             if parser.follow_embed:
                 self.embed_href(parser, fname, id)
         elif name == 'paragraph':
-            self.parse_child(Paragraph(attrs, self, 0))
+            self.parse_child(Paragraph(attrs, self))
         elif name == 'section':
-            # FIXME depth, should we use something better than 0?
-            self.parse_child(Section(attrs, self, 0))
+            self.parse_child(Section(attrs, self))
         else:
             self.unhandled_element(parser, name)
 
@@ -536,7 +532,7 @@ class ListItem(ElementBase):
             if parser.follow_embed:
                 self.embed_href(parser, fname, id)
         elif name == 'paragraph':
-            self.parse_child(Paragraph(attrs, self, 0))
+            self.parse_child(Paragraph(attrs, self))
         else:
             self.unhandled_element(parser, name)
 
@@ -619,9 +615,8 @@ class Meta(ElementBase):
             self.unhandled_element(parser, name)
 
 class Section(ElementBase):
-    def __init__(self, attrs, parent, depth):
+    def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'section', parent)
-        self.depth = depth
         self.id = attrs['id']
 
     def start_element(self, parser, name, attrs):
@@ -636,12 +631,10 @@ class Section(ElementBase):
         elif name == 'list':
             self.parse_child(List(attrs, self))
         elif name == 'paragraph':
-            para = Paragraph(attrs, self, self.depth)
-            self.depth = para.depth
-            self.parse_child(para)
+            self.parse_child(Paragraph(attrs, self))
         elif name == 'section':
             # sections can be nested
-            self.parse_child(Section(attrs, self, self.depth))
+            self.parse_child(Section(attrs, self))
         elif name == 'switch':
             self.parse_child(Switch(attrs, self, parser.embedding_app))
         elif name == 'table':
@@ -686,8 +679,7 @@ class Sort(ElementBase):
 
     def start_element(self, parser, name, attrs):
         if name == 'section':
-            # FIXME depth, should we use something better than 0?
-            self.parse_child(Section(attrs, self, 0))
+            self.parse_child(Section(attrs, self))
         else:
             self.unhandled_element(parser, name)
 
@@ -826,11 +818,9 @@ class Case(ElementBase):
         elif name == 'list':
             self.parse_child(List(attrs, self))
         elif name == 'paragraph':
-            # FIXME depth, should we use something better than 0?
-            self.parse_child(Paragraph(attrs, self, 0))
+            self.parse_child(Paragraph(attrs, self))
         elif name == 'section':
-            # FIXME depth, should we use something better than 0?
-            self.parse_child(Section(attrs, self, 0))
+            self.parse_child(Section(attrs, self))
         elif name == 'table':
             self.parse_child(Table(attrs, self))
         else:
@@ -886,7 +876,7 @@ class Item(ElementBase):
 
 
 class Paragraph(ElementBase):
-    def __init__(self, attrs, parent, depth):
+    def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'paragraph', parent)
 
         try:
@@ -900,13 +890,10 @@ class Paragraph(ElementBase):
             self.id = ""
 
         try:
-            self.level=int(attrs['level'])
+            self.level = int(attrs['level'])
         except:
-            self.level=0
-        if depth > self.level:
-            self.depth = depth
-        else:
-            self.depth = self.level
+            self.level = 0
+
         self.is_first = (len(self.parent.objects) == 0)
         self.localized_objects = []
 
@@ -930,7 +917,7 @@ class Paragraph(ElementBase):
         elif name == 'switchinline':
             self.parse_child(SwitchInline(attrs, self, parser.embedding_app))
         elif name == 'variable':
-            self.parse_child(Variable(attrs, self, self.depth))
+            self.parse_child(Variable(attrs, self))
         else:
             try:
                 global replace_element
@@ -972,8 +959,10 @@ class Paragraph(ElementBase):
 
         role = self.role
         if role == 'heading':
-            if self.depth < 6:
-                role = 'heading%d'% self.depth
+            if self.level <= 0:
+                sys.stderr.write('Heading, but the level is %d.\n'% self.level)
+            elif self.level < 6:
+                role = 'heading%d'% self.level
             else:
                 role = 'heading6'
         if ( role == 'tablecontent' or role == 'tablehead' ) and not self.is_first:
@@ -1000,8 +989,8 @@ class Paragraph(ElementBase):
         return text
 
 class Variable(Paragraph):
-    def __init__(self, attrs, parent, depth):
-        Paragraph.__init__(self, attrs, parent, depth)
+    def __init__(self, attrs, parent):
+        Paragraph.__init__(self, attrs, parent)
         self.name = 'variable'
         self.id = attrs['id']
 
@@ -1012,7 +1001,7 @@ class Variable(Paragraph):
 
 class CaseInline(Paragraph):
     def __init__(self, attrs, parent, is_default):
-        Paragraph.__init__(self, attrs, parent, 0)
+        Paragraph.__init__(self, attrs, parent)
 
         self.role = 'null'
         if is_default:
@@ -1130,7 +1119,7 @@ while threading.active_count() > 1:
     time.sleep(0.001)
 
 # set of the images used here
-print 'Writing the collection of images to "images.txt"...'
+print 'Generating "images.txt", the list of used images...'
 file = open('images.txt', "w")
 for image in images:
     file.write('%s\n'% image)
