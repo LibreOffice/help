@@ -1089,7 +1089,9 @@ for title in titles:
         print "Warning: Skipping: "+infile+" > "+outfile
         file.close()
 
-time.sleep(0.1)
+# wait for everyone to finish
+while threading.active_count() > 1:
+    time.sleep(0.001)
 
 # set of the images used here
 print 'Writing the collection of images to "images.txt"...'
