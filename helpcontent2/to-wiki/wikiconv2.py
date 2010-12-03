@@ -281,11 +281,6 @@ class XhpFile(ElementBase):
     def __init__(self):
         ElementBase.__init__(self, None, None)
 
-        # we want to ignore the 1st level="1" heading, because in most of the
-        # cases, it is the only level="1" heading in the file, and it is the
-        # same as the page title
-        self.ignore_heading = True
-
     def start_element(self, parser, name, attrs):
         if name == 'body':
             # ignored, we flatten the structure
@@ -306,18 +301,7 @@ class XhpFile(ElementBase):
         elif name == 'meta':
             self.parse_child(Meta(attrs, self))
         elif name == 'paragraph':
-            ignore_this = False
-            try:
-                if attrs['role'] == 'heading' and int(attrs['level']) == 1 \
-                        and self.ignore_heading and parser.follow_embed:
-                    self.ignore_heading = False
-                    ignore_this = True
-            except:
-                pass
-            if ignore_this:
-                self.parse_child(Ignore(attrs, self, 'paragraph'))
-            else:
-                self.parse_child(Paragraph(attrs, self))
+            parser.parse_paragraph(attrs, self)
         elif name == 'section':
             self.parse_child(Section(attrs, self))
         elif name == 'sort':
@@ -497,7 +481,7 @@ class TableCell(ElementBase):
             if parser.follow_embed:
                 self.embed_href(parser, fname, id)
         elif name == 'paragraph':
-            self.parse_child(Paragraph(attrs, self))
+            parser.parse_paragraph(attrs, self)
         elif name == 'section':
             self.parse_child(Section(attrs, self))
         else:
@@ -548,7 +532,7 @@ class ListItem(ElementBase):
             if parser.follow_embed:
                 self.embed_href(parser, fname, id)
         elif name == 'paragraph':
-            self.parse_child(Paragraph(attrs, self))
+            parser.parse_paragraph(attrs, self)
         else:
             self.unhandled_element(parser, name)
 
@@ -647,7 +631,7 @@ class Section(ElementBase):
         elif name == 'list':
             self.parse_child(List(attrs, self))
         elif name == 'paragraph':
-            self.parse_child(Paragraph(attrs, self))
+            parser.parse_paragraph(attrs, self)
         elif name == 'section':
             # sections can be nested
             self.parse_child(Section(attrs, self))
@@ -834,7 +818,7 @@ class Case(ElementBase):
         elif name == 'list':
             self.parse_child(List(attrs, self))
         elif name == 'paragraph':
-            self.parse_child(Paragraph(attrs, self))
+            parser.parse_paragraph(attrs, self)
         elif name == 'section':
             self.parse_child(Section(attrs, self))
         elif name == 'table':
@@ -1034,6 +1018,11 @@ class XhpParser:
         self.follow_embed = follow_embed
         self.wiki_page_name = wiki_page_name
 
+        # we want to ignore the 1st level="1" heading, because in most of the
+        # cases, it is the only level="1" heading in the file, and it is the
+        # same as the page title
+        self.ignore_heading = True
+
         self.current_app = ''
         self.current_app_raw = ''
         for i in [['sbasic', 'BASIC'], ['scalc', 'CALC'], \
@@ -1075,6 +1064,20 @@ class XhpParser:
 
     def get_variable(self, id):
         return self.head_obj.get_variable(id)
+
+    def parse_paragraph(self, attrs, obj):
+        ignore_this = False
+        try:
+            if attrs['role'] == 'heading' and int(attrs['level']) == 1 \
+                    and self.ignore_heading and self.follow_embed:
+                self.ignore_heading = False
+                ignore_this = True
+        except:
+            pass
+        if ignore_this:
+            obj.parse_child(Ignore(attrs, obj, 'paragraph'))
+        else:
+            obj.parse_child(Paragraph(attrs, obj))
 
 def loadallfiles(filename):
     global titles
