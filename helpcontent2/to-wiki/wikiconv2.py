@@ -20,6 +20,9 @@ hid_lst = {}
 # names
 redirects = []
 
+# to collect images that we will up-load later
+images = set()
+
 # list of elements that we can directly convert to wiki text
 replace_element = \
     {'start':{'br': '<br/>',
@@ -424,7 +427,11 @@ class Image(ElementBase):
             self.alttext = self.alttext + data
 
     def get_all(self):
-        wikitext = "[[Image:"+self.src+"|border|"+self.align+"|"
+        global images
+        images.add(self.src)
+
+        name = self.src[self.src.rfind('/') + 1:]
+        wikitext = "[[Image:"+name+"|border|"+self.align+"|"
         if len(self.width):
             wikitext = wikitext + self.width+"x"+self.height+"|"
         wikitext = wikitext + self.alttext+"]]"
@@ -1084,11 +1091,22 @@ for title in titles:
 
 time.sleep(0.1)
 
+# set of the images used here
+print 'Writing the collection of images to "images.txt"...'
+file = open('images.txt', "w")
+for image in images:
+    file.write('%s\n'% image)
+file.close()
+
 # generate the redirects
-print "Generating the redirects..."
+print 'Generating the redirects...'
 for redir in redirects:
-    file = open('wiki/%s'% redir[0], "w")
-    file.write('#REDIRECT [[%s]]\n'% redir[1])
-    file.close()
+    fname = 'wiki/%s'% redir[0]
+    try:
+        file = open(fname, "w")
+        file.write('#REDIRECT [[%s]]\n'% redir[1])
+        file.close()
+    except:
+        sys.stderr.write('Unable to write "%s".\n'%'wiki/%s'% fname)
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:
