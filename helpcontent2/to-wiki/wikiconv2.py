@@ -372,6 +372,7 @@ class Bookmark(ElementBase):
         self.app = ''
         self.redirect = ''
         self.target = ''
+        self.authoritative = False
 
         # let's construct the name of the redirect, so that we can point
         # to the wikihelp directly from the LO code; wiki then takes care of
@@ -382,6 +383,7 @@ class Bookmark(ElementBase):
 
             self.app = parser.current_app_raw
             self.target = parser.wiki_page_name
+            self.authoritative = parser.follow_embed
             if name.find('.uno:') == 0 or name.find('.HelpId:') == 0:
                 self.redirect = name
             elif name.upper() in hid_lst:
@@ -393,12 +395,8 @@ class Bookmark(ElementBase):
         global redirects
         # first of all, we need to create a redirect page for this one
         if self.redirect != '' and self.target != '':
-            if self.app != '':
-                redirects.append(['%s/%s'% (self.app, self.redirect), self.target])
-            else:
-                for i in ['swriter', 'scalc', 'simpress', 'sdraw', 'smath', \
-                        'schart', 'sbasic', 'sdatabase']:
-                    redirects.append(['%s/%s'% (i, self.redirect), self.target])
+            redirects.append([self.app, self.redirect, self.target, \
+                self.authoritative])
 
         # then we also have to setup ID inside the page
         if self.type == 'div':
@@ -1145,14 +1143,49 @@ for image in images:
 file.close()
 
 # generate the redirects
-print 'Generating the redirects...'
-for redir in redirects:
-    fname = 'wiki/%s'% redir[0]
+def write_link(r, target):
+    fname = 'wiki/%s'% r
     try:
         file = open(fname, "w")
-        file.write('#REDIRECT [[%s]]\n'% redir[1])
+        file.write('#REDIRECT [[%s]]\n'% target)
         file.close()
     except:
         sys.stderr.write('Unable to write "%s".\n'%'wiki/%s'% fname)
+
+print 'Generating the redirects...'
+written = {}
+# in the first pass, immediately writte the links that are embedded, so that
+# we can always point to that source versions
+for redir in redirects:
+    app = redir[0]
+    redirect = redir[1]
+    target = redir[2]
+    authoritative = redir[3]
+
+    if app != '':
+        r = '%s/%s'% (app, redirect)
+        if authoritative:
+            write_link(r, target)
+            written[r] = True
+        else:
+            try:
+                written[r]
+            except:
+                written[r] = False
+
+# in the second pass, output the wiki links
+for redir in redirects:
+    app = redir[0]
+    redirect = redir[1]
+    target = redir[2]
+
+    if app == '':
+        for i in ['swriter', 'scalc', 'simpress', 'sdraw', 'smath', \
+                  'schart', 'sbasic', 'sdatabase']:
+            write_link('%s/%s'% (i, redirect), target)
+    else:
+        r = '%s/%s'% (app, redirect)
+        if not written[r]:
+            write_link(r, target)
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:
