@@ -316,7 +316,7 @@ class XhpFile(ElementBase):
 class LocalizedText(ElementBase):
     def __init__(self, parser, data, attrs):
         # Initialized with some 'tag' such that the parser
-        # never needs to access the parent (which in this 
+        # never needs to access the parent (which in this
         # case is null)
         ElementBase.__init__(self, 'localizedtext', None)
         header = u'<?xml version="1.0" encoding="UTF-8"?><paragraph>'
@@ -882,7 +882,7 @@ class Paragraph(ElementBase):
         except:
             self.role = 'paragraph'
 
-        try: 
+        try:
             self.id = attrs['id']
         except:
             self.id = ""
@@ -1090,7 +1090,7 @@ def signal_handler(signal, frame):
     sys.exit(1)
 signal.signal(signal.SIGINT, signal_handler)
 
-class WikiConv2(Thread):
+class WikiConverter(Thread):
     def __init__(self, inputfile, wiki_page_name, outputfile):
         Thread.__init__(self)
         self.inputfile = inputfile
@@ -1103,46 +1103,6 @@ class WikiConv2(Thread):
         file.write(parser.get_all())
         file.close()
 
-# Main Function
-load_hid_lst()
-loadallfiles("alltitles.csv")
-if len(sys.argv) > 1:
-    load_localization_data(sys.argv[1])
-
-for title in titles:
-    while threading.active_count() > max_threads:
-        time.sleep(0.001)
-
-    outfile = ""
-    infile  = ""
-    if len(title) > 1:
-        outfile = "wiki/"+title[1].strip()
-        infile  = title[0].strip()
-        try:
-            file = open(outfile,"r")
-        except:    
-            try:
-                wiki = WikiConv2(infile,title[1].strip(),outfile)
-                wiki.start()
-                continue
-            except:
-                print 'Failed to convert "%s" into "%s".\n'% \
-                        (title[1].strip(), outfile)
-        print "Warning: Skipping: "+infile+" > "+outfile
-        file.close()
-
-# wait for everyone to finish
-while threading.active_count() > 1:
-    time.sleep(0.001)
-
-# set of the images used here
-print 'Generating "images.txt", the list of used images...'
-file = open('images.txt', "w")
-for image in images:
-    file.write('%s\n'% image)
-file.close()
-
-# generate the redirects
 def write_link(r, target):
     fname = 'wiki/%s'% r
     try:
@@ -1152,40 +1112,87 @@ def write_link(r, target):
     except:
         sys.stderr.write('Unable to write "%s".\n'%'wiki/%s'% fname)
 
-print 'Generating the redirects...'
-written = {}
-# in the first pass, immediately writte the links that are embedded, so that
-# we can always point to that source versions
-for redir in redirects:
-    app = redir[0]
-    redirect = redir[1]
-    target = redir[2]
-    authoritative = redir[3]
-
-    if app != '':
-        r = '%s/%s'% (app, redirect)
-        if authoritative:
-            write_link(r, target)
-            written[r] = True
+def write_redirects():
+    print 'Generating the redirects...'
+    written = {}
+    # in the first pass, immediately writte the links that are embedded, so that
+    # we can always point to that source versions
+    for redir in redirects:
+        app = redir[0]
+        redirect = redir[1]
+        target = redir[2]
+        authoritative = redir[3]
+    
+        if app != '':
+            r = '%s/%s'% (app, redirect)
+            if authoritative:
+                write_link(r, target)
+                written[r] = True
+            else:
+                try:
+                    written[r]
+                except:
+                    written[r] = False
+    
+    # in the second pass, output the wiki links
+    for redir in redirects:
+        app = redir[0]
+        redirect = redir[1]
+        target = redir[2]
+    
+        if app == '':
+            for i in ['swriter', 'scalc', 'simpress', 'sdraw', 'smath', \
+                      'schart', 'sbasic', 'sdatabase']:
+                write_link('%s/%s'% (i, redirect), target)
         else:
+            r = '%s/%s'% (app, redirect)
+            if not written[r]:
+                write_link(r, target)
+
+# Main Function
+def convert(generate_redirects, localizations):
+    print "Generating the wiki itself..."
+    load_hid_lst()
+    loadallfiles("alltitles.csv")
+
+    if len(localizations) > 1:
+        load_localization_data(localizations[1])
+
+    for title in titles:
+        while threading.active_count() > max_threads:
+            time.sleep(0.001)
+    
+        outfile = ""
+        infile  = ""
+        if len(title) > 1:
+            outfile = "wiki/"+title[1].strip()
+            infile  = title[0].strip()
             try:
-                written[r]
+                file = open(outfile,"r")
             except:
-                written[r] = False
+                try:
+                    wiki = WikiConverter(infile,title[1].strip(),outfile)
+                    wiki.start()
+                    continue
+                except:
+                    print 'Failed to convert "%s" into "%s".\n'% \
+                            (title[1].strip(), outfile)
+            print "Warning: Skipping: "+infile+" > "+outfile
+            file.close()
+    
+    # wait for everyone to finish
+    while threading.active_count() > 1:
+        time.sleep(0.001)
 
-# in the second pass, output the wiki links
-for redir in redirects:
-    app = redir[0]
-    redirect = redir[1]
-    target = redir[2]
+    # set of the images used here
+    print 'Generating "images.txt", the list of used images...'
+    file = open('images.txt', "w")
+    for image in images:
+        file.write('%s\n'% image)
+    file.close()
 
-    if app == '':
-        for i in ['swriter', 'scalc', 'simpress', 'sdraw', 'smath', \
-                  'schart', 'sbasic', 'sdatabase']:
-            write_link('%s/%s'% (i, redirect), target)
-    else:
-        r = '%s/%s'% (app, redirect)
-        if not written[r]:
-            write_link(r, target)
+    # generate the redirects
+    if generate_redirects:
+        write_redirects()
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:
