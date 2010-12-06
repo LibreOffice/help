@@ -79,6 +79,28 @@ replace_paragraph_role = \
             'tablehead': '\n\n',
             'tip': '}}\n\n',
             'warning': '}}\n\n',
+           },
+     'templ':{'code': False,
+              'codeintip': False,
+              'example': False,
+              'heading1': False,
+              'heading2': False,
+              'heading3': False,
+              'heading4': False,
+              'heading5': False,
+              'heading6': False,
+              'head1': False,
+              'head2': False,
+              'listitem': False,
+              'note': True,
+              'null': False,
+              'paragraph': False,
+              'related': False,
+              'relatedtopics': False,
+              'tablecontent': False,
+              'tablehead': False,
+              'tip': True,
+              'warning': True,
            }
     }
 
@@ -123,6 +145,28 @@ def replace_text(text):
             text = text.replace(i[0],i[1])
     return text
 
+# modify the text so that in templates like {{Name|something}}, the 'something'
+# does not look like template params
+def escape_equals_sign(text):
+    depth = 0
+    t = ''
+    for i in text:
+        if i == '=':
+            if depth == 0:
+                t = t + '&#61;'
+            else:
+                t = t + '='
+        else:
+            t = t + i
+            if i == '{' or i == '[' or i == '<':
+                depth = depth + 1
+            elif i == '}' or i == ']' or i == '>':
+                depth = depth - 1
+                if depth < 0:
+                    depth = 0
+
+    return t
+
 def load_localization_data(sdf_file):
     try:
         file = codecs.open(sdf_file, "r", "utf-8")
@@ -147,7 +191,6 @@ def replace_gt_lt(str,char,replace):
         if str[index-1] != '\\':
             str = str[:index]+replace+str[index+1:]
     return str[1:]
-
 
 def get_localized_text(id, text):
     # Note: The order is important
@@ -265,17 +308,21 @@ class ElementBase:
 #
 # Like <comment>, or <title>
 class TextElementBase(ElementBase):
-    def __init__(self, attrs, parent, element_name, start, end):
+    def __init__(self, attrs, parent, element_name, start, end, templ):
         ElementBase.__init__(self, element_name, parent)
         self.text = u''
         self.start = start
         self.end = end
+        self.templ = templ
 
     def char_data(self, parser, data):
         self.text = self.text + data
 
     def get_all(self):
-        return self.start + replace_text(self.text) + self.end
+        if self.templ:
+            return self.start + escape_equals_sign(replace_text(self.text)) + self.end
+        else:
+            return self.start + replace_text(self.text) + self.end
 
 class XhpFile(ElementBase):
     def __init__(self):
@@ -453,7 +500,7 @@ class Image(ElementBase):
 
 class Comment(TextElementBase):
     def __init__(self, attrs, parent):
-        TextElementBase.__init__(self, attrs, parent, 'comment', '<!-- ', ' -->')
+        TextElementBase.__init__(self, attrs, parent, 'comment', '<!-- ', ' -->', False)
 
 class Text:
     def __init__(self, text):
@@ -586,7 +633,7 @@ class Ignore(ElementBase):
 
 class Title(TextElementBase):
     def __init__(self, attrs, parent):
-        TextElementBase.__init__(self, attrs, parent, 'title', '{{Lang|', '}}\n\n')
+        TextElementBase.__init__(self, attrs, parent, 'title', '{{Lang|', '}}\n\n', True)
 
 class Topic(ElementBase):
     def __init__(self, attrs, parent):
@@ -651,10 +698,10 @@ class Section(ElementBase):
         # function (like relatetopics), and have to be templatized
         text = ''
         if mapping != '':
-            text = text + '{{%s|'% mapping
-        text = text + ElementBase.get_all(self)
-        if mapping != '':
-            text = text + '}}\n\n'
+            text = '{{%s|%s}}\n\n'% (mapping, \
+                    escape_equals_sign(ElementBase.get_all(self)))
+        else:
+            text = ElementBase.get_all(self)
 
         return text
 
@@ -776,7 +823,7 @@ class SwitchInline(ElementBase):
                         elif app == '':
                             default = all
                         else:
-                            text = text + '{{WhenIn%s|%s}}'% (app, all)
+                            text = text + '{{WhenIn%s|%s}}'% (app, escape_equals_sign(all))
                     except:
                         sys.stderr.write('Unhandled "%s" case in "appl" switchinline.\n'% \
                                 i.case)
@@ -784,7 +831,7 @@ class SwitchInline(ElementBase):
                 if text == '':
                     text = default
                 elif default != '':
-                    text = text + '{{WhenDefault|%s}}'% default
+                    text = text + '{{WhenDefault|%s}}'% escape_equals_sign(default)
 
                 return text
             else:
@@ -851,7 +898,13 @@ class Item(ElementBase):
                     'literal': '</code>',
                     'menuitem': '}}',
                     'productname': ''
-                   }}
+                   },
+             'templ':{'input': False,
+                      'keycode': True,
+                      'literal': False,
+                      'menuitem': True,
+                      'productname': False
+                     }}
 
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'item', parent)
@@ -864,8 +917,13 @@ class Item(ElementBase):
 
     def get_all(self):
         try:
+            text = ''
+            if self.replace_type['templ'][self.type]:
+                text = escape_equals_sign(replace_text(self.text))
+            else:
+                text = replace_text(self.text)
             return self.replace_type['start'][self.type] + \
-                   replace_text(self.text) + \
+                   text + \
                    self.replace_type['end'][self.type]
         except:
             sys.stderr.write('Unhandled item type "%s".\n'% self.type)
@@ -975,7 +1033,10 @@ class Paragraph(ElementBase):
                 sys.stderr.write( "Unknown paragraph role start: " + role + "\n" )
 
         # the text itself
-        text = text + ElementBase.get_all(self).strip()
+        if replace_paragraph_role['templ'][role]:
+            text = text + escape_equals_sign(ElementBase.get_all(self).strip())
+        else:
+            text = text + ElementBase.get_all(self).strip()
 
         # append the markup according to the role
         if len(self.objects) > 0:
