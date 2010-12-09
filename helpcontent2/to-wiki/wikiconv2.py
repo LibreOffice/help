@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys, signal
+import sys
 import thread, threading, time
 import xml.parsers.expat
 import codecs
@@ -69,7 +69,7 @@ replace_paragraph_role = \
             'heading6': ' ======\n\n',
             'head1': ' =\n\n', # used only in one file, probably in error?
             'head2': ' ==\n\n', # used only in one file, probably in error?
-            'listitem': '\n',
+            'listitem': '',
             'note': '}}\n\n',
             'null': '', # special paragraph for Variable, CaseInline, etc.
             'paragraph': '\n\n',
@@ -577,25 +577,28 @@ class ListItem(ElementBase):
             if parser.follow_embed:
                 self.embed_href(parser, fname, id)
         elif name == 'paragraph':
-            parser.parse_paragraph(attrs, self)
+            self.parse_child(ListItemParagraph(attrs, self))
         else:
             self.unhandled_element(parser, name)
 
     def get_all(self):
-        text = ""
-        prefix = '*'
-        postfix = ''
+        text = '*'
+        postfix = '\n'
         if self.parent.startwith > 0:
-            prefix = '<li>'
+            text = '<li>'
             postfix = '</li>'
         elif self.parent.type == 'ordered':
-            prefix = '#'
+            text = '#'
 
         # add the text itself
+        linebreak = False
         for i in self.objects:
-            text = text + prefix + ElementBase.get_all(self)
+            if linebreak:
+                text = text + '<br/>'
+            text = text + i.get_all()
+            linebreak = True
 
-        return text
+        return text + postfix
 
 class List(ElementBase):
     def __init__(self, attrs, parent):
@@ -1070,6 +1073,12 @@ class CaseInline(Paragraph):
             self.name = 'caseinline'
             self.case = attrs['select']
 
+class ListItemParagraph(Paragraph):
+    def __init__(self, attrs, parent):
+        Paragraph.__init__(self, attrs, parent)
+
+        self.role = 'null'
+
 class XhpParser:
     def __init__(self, filename, follow_embed, embedding_app, wiki_page_name):
         self.head_obj = XhpFile()
@@ -1145,11 +1154,6 @@ def loadallfiles(filename):
         title = line.split(";", 2)
         titles.append(title)
     file.close()
-
-def signal_handler(signal, frame):
-    sys.stderr.write( 'Exiting...\n' )
-    sys.exit(1)
-signal.signal(signal.SIGINT, signal_handler)
 
 class WikiConverter(Thread):
     def __init__(self, inputfile, wiki_page_name, outputfile):

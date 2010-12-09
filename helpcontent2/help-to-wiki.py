@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys, os, getopt
+import sys, os, getopt, signal
 
 sys.path.append(sys.path[0]+"/to-wiki")
 import wikiconv2
@@ -65,7 +65,13 @@ for opt, arg in opts:
     elif opt in ('-r', '--redirects'):
         generate_redirects = True
 
+def signal_handler(signal, frame):
+    sys.stderr.write( 'Exiting...\n' )
+    sys.exit(1)
+
 # Do the work
+signal.signal(signal.SIGINT, signal_handler)
+
 create_wiki_dirs()
 
 print "Generating the titles..."
