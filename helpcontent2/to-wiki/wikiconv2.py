@@ -994,7 +994,8 @@ class Paragraph(ElementBase):
             pass
 
     def char_data(self, parser, data):
-        if self.role == 'paragraph' or self.role == 'heading':
+        if self.role == 'paragraph' or self.role == 'heading' or \
+                self.role == 'listitem':
             if data != '' and data[0] == ' ':
                 data = ' ' + data.lstrip()
             data = data.replace('\n', ' ')
@@ -1008,7 +1009,7 @@ class Paragraph(ElementBase):
             attrs = {'role':self.role,
                      'level':self.level}
             self.localized_objects = get_localized_objects(parser, loc_text, attrs)
-        else:
+        elif len(data):
             self.objects.append(Text(data))
 
     def get_all(self):
@@ -1077,7 +1078,7 @@ class ListItemParagraph(Paragraph):
     def __init__(self, attrs, parent):
         Paragraph.__init__(self, attrs, parent)
 
-        self.role = 'null'
+        self.role = 'listitem'
 
 class XhpParser:
     def __init__(self, filename, follow_embed, embedding_app, wiki_page_name):
