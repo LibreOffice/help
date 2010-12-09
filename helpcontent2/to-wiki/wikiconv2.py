@@ -23,21 +23,11 @@ redirects = []
 # to collect images that we will up-load later
 images = set()
 
-# list of elements that we can directly convert to wiki text
-replace_element = \
-    {'start':{'br': '<br/>',
-              'emph': "'''",
-              'help-id-missing': "'''Missing help ID.'''"
-             },
-     'end':  {'br': '',
-              'emph': "'''",
-              'help-id-missing': ""
-             }
-    }
-
+# various types of paragraphs
 replace_paragraph_role = \
     {'start':{'code': '<code>',
               'codeintip': '<code>',
+              'emph' : '', # must be empty to be able to strip empty <emph/>
               'example': '<code>',
               'heading1': '= ',
               'heading2': '== ',
@@ -60,6 +50,7 @@ replace_paragraph_role = \
              },
      'end':{'code': '</code>\n\n',
             'codeintip': '</code>\n\n',
+            'emph' : '',
             'example': '</code>\n\n',
             'heading1': ' =\n\n',
             'heading2': ' ==\n\n',
@@ -82,6 +73,7 @@ replace_paragraph_role = \
            },
      'templ':{'code': False,
               'codeintip': False,
+              'emph' : False,
               'example': False,
               'heading1': False,
               'heading2': False,
@@ -498,9 +490,17 @@ class Image(ElementBase):
     def get_curobj(self):
         return self
 
+class Br(TextElementBase):
+    def __init__(self, attrs, parent):
+        TextElementBase.__init__(self, attrs, parent, 'br', '<br/>', '', False)
+
 class Comment(TextElementBase):
     def __init__(self, attrs, parent):
         TextElementBase.__init__(self, attrs, parent, 'comment', '<!-- ', ' -->', False)
+
+class HelpIdMissing(TextElementBase):
+    def __init__(self, attrs, parent):
+        TextElementBase.__init__(self, attrs, parent, 'help-id-missing', '{{MissingHelpId}}', '', False)
 
 class Text:
     def __init__(self, text):
@@ -624,7 +624,7 @@ class List(ElementBase):
         text = text + ElementBase.get_all(self)
 
         if self.startwith > 0:
-            text = text + '</ol>\n'
+            text = text + '\n</ol>\n'
         else:
             text = text + '\n'
         return text
@@ -961,12 +961,18 @@ class Paragraph(ElementBase):
             # TODO extended tips are ignored for now, just the text is used
             # verbatim
             pass
+        elif name == 'br':
+            self.parse_child(Br(attrs, self))
         elif name == 'comment':
             self.parse_child(Comment(attrs, self))
+        elif name == 'emph':
+            self.parse_child(Emph(attrs, self))
         elif name == 'embedvar':
             if parser.follow_embed:
                 (fname, id) = href_to_fname_id(attrs['href'])
                 self.embed_href(parser, fname, id)
+        elif name == 'help-id-missing':
+            self.parse_child(HelpIdMissing(attrs, self))
         elif name == 'image':
             self.parse_child(Image(attrs, self))
         elif name == 'item':
@@ -978,20 +984,10 @@ class Paragraph(ElementBase):
         elif name == 'variable':
             self.parse_child(Variable(attrs, self))
         else:
-            try:
-                global replace_element
-                self.objects.append(Text(replace_element['start'][name]))
-            except:
-                self.unhandled_element(parser, name)
+            self.unhandled_element(parser, name)
 
     def end_element(self, parser, name):
         ElementBase.end_element(self, parser, name)
-
-        try:
-            global replace_element
-            self.objects.append(Text(replace_element['end'][name]))
-        except:
-            pass
 
     def char_data(self, parser, data):
         if self.role == 'paragraph' or self.role == 'heading' or \
@@ -1037,10 +1033,14 @@ class Paragraph(ElementBase):
                 sys.stderr.write( "Unknown paragraph role start: " + role + "\n" )
 
         # the text itself
+        children = ElementBase.get_all(self)
+        if self.role != 'emph':
+            children = children.strip()
+
         if replace_paragraph_role['templ'][role]:
-            text = text + escape_equals_sign(ElementBase.get_all(self).strip())
+            text = text + escape_equals_sign(children)
         else:
-            text = text + ElementBase.get_all(self).strip()
+            text = text + children
 
         # append the markup according to the role
         if len(self.objects) > 0:
@@ -1073,6 +1073,18 @@ class CaseInline(Paragraph):
         else:
             self.name = 'caseinline'
             self.case = attrs['select']
+
+class Emph(Paragraph):
+    def __init__(self, attrs, parent):
+        Paragraph.__init__(self, attrs, parent)
+        self.name = 'emph'
+        self.role = 'emph'
+
+    def get_all(self):
+        text = Paragraph.get_all(self)
+        if len(text):
+            return "'''" + text + "'''"
+        return ''
 
 class ListItemParagraph(Paragraph):
     def __init__(self, attrs, parent):
