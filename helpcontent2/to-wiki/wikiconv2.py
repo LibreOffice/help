@@ -1048,18 +1048,20 @@ class Paragraph(ElementBase):
             else:
                 role = 'tablenextpara'
 
-        # prepend the markup according to the role
-        text = ''
-        if len(self.objects) > 0:
-            try:
-                text = text + replace_paragraph_role['start'][role]
-            except:
-                sys.stderr.write( "Unknown paragraph role start: " + role + "\n" )
-
         # the text itself
         children = ElementBase.get_all(self)
         if self.role != 'emph':
             children = children.strip()
+
+        if len(children) == 0:
+            return ''
+
+        # prepend the markup according to the role
+        text = ''
+        try:
+            text = text + replace_paragraph_role['start'][role]
+        except:
+            sys.stderr.write( "Unknown paragraph role start: " + role + "\n" )
 
         if replace_paragraph_role['templ'][role]:
             text = text + escape_equals_sign(children)
@@ -1067,11 +1069,10 @@ class Paragraph(ElementBase):
             text = text + children
 
         # append the markup according to the role
-        if len(self.objects) > 0:
-            try:
-                text = text + replace_paragraph_role['end'][role]
-            except:
-                sys.stderr.write( "Unknown paragraph role end: " + role + "\n" )
+        try:
+            text = text + replace_paragraph_role['end'][role]
+        except:
+            sys.stderr.write( "Unknown paragraph role end: " + role + "\n" )
 
         return text
 
