@@ -975,9 +975,11 @@ class Paragraph(ElementBase):
 
     def start_element(self, parser, name, attrs):
         if name == 'ahelp':
-            # TODO extended tips are ignored for now, just the text is used
-            # verbatim
-            pass
+            try:
+                if attrs['visibility'] == 'hidden':
+                    self.parse_child(Ignore(attrs, self, name))
+            except:
+                pass
         elif name == 'br':
             self.parse_child(Br(attrs, self))
         elif name == 'comment':
