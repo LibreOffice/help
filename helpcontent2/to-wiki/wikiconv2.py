@@ -49,6 +49,7 @@ replace_paragraph_role = \
               'tablenextpara': '\n',
               'tablenextparacode': '\n<code>',
               'tip': '{{Tip|',
+              'variable': '',
               'warning': '{{Warning|',
              },
      'end':{'code': '</code>\n\n',
@@ -75,6 +76,7 @@ replace_paragraph_role = \
             'tablenextpara': '\n',
             'tablenextparacode': '</code>\n',
             'tip': '}}\n\n',
+            'variable': '',
             'warning': '}}\n\n',
            },
      'templ':{'code': False,
@@ -101,6 +103,7 @@ replace_paragraph_role = \
               'tablenextpara': False,
               'tablenextparacode': False,
               'tip': True,
+              'variable': False,
               'warning': True,
            }
     }
@@ -293,6 +296,11 @@ class ElementBase:
         var = parser.get_variable(id)
 
         if var != None:
+            try:
+                if var.role == 'variable':
+                    var.role = 'paragraph'
+            except:
+                pass
             self.objects.append(var)
         elif parser.follow_embed:
             sys.stderr.write('Cannot find reference "#%s" in "%s".\n'% \
@@ -1000,7 +1008,7 @@ class Paragraph(ElementBase):
 
     def char_data(self, parser, data):
         if self.role == 'paragraph' or self.role == 'heading' or \
-                self.role == 'listitem':
+                self.role == 'listitem' or self.role == 'variable':
             if data != '' and data[0] == ' ':
                 data = ' ' + data.lstrip()
             data = data.replace('\n', ' ')
@@ -1069,6 +1077,7 @@ class Variable(Paragraph):
     def __init__(self, attrs, parent):
         Paragraph.__init__(self, attrs, parent)
         self.name = 'variable'
+        self.role = 'variable'
         self.id = attrs['id']
 
     def get_variable(self, id):
