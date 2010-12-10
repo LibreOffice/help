@@ -44,7 +44,10 @@ replace_paragraph_role = \
               'related': '', # used only in one file, probably in error?
               'relatedtopics': '', # used only in one file, probably in error?
               'tablecontent': '| ',
+              'tablecontentcode': '| <code>',
               'tablehead': '! scope="col" | ',
+              'tablenextpara': '\n',
+              'tablenextparacode': '\n<code>',
               'tip': '{{Tip|',
               'warning': '{{Warning|',
              },
@@ -66,8 +69,11 @@ replace_paragraph_role = \
             'paragraph': '\n\n',
             'related': '\n\n', # used only in one file, probably in error?
             'relatedtopics': '\n\n', # used only in one file, probably in error?
-            'tablecontent': '\n\n',
-            'tablehead': '\n\n',
+            'tablecontent': '\n',
+            'tablecontentcode': '</code>\n',
+            'tablehead': '\n',
+            'tablenextpara': '\n',
+            'tablenextparacode': '</code>\n',
             'tip': '}}\n\n',
             'warning': '}}\n\n',
            },
@@ -90,7 +96,10 @@ replace_paragraph_role = \
               'related': False,
               'relatedtopics': False,
               'tablecontent': False,
+              'tablecontentcode': False,
               'tablehead': False,
+              'tablenextpara': False,
+              'tablenextparacode': False,
               'tip': True,
               'warning': True,
            }
@@ -526,7 +535,7 @@ class TableCell(ElementBase):
             if parser.follow_embed:
                 self.embed_href(parser, fname, id)
         elif name == 'paragraph':
-            parser.parse_paragraph(attrs, self)
+            self.parse_child(TableContentParagraph(attrs, self))
         elif name == 'section':
             self.parse_child(Section(attrs, self))
         else:
@@ -1021,8 +1030,13 @@ class Paragraph(ElementBase):
                 role = 'heading%d'% self.level
             else:
                 role = 'heading6'
-        if ( role == 'tablecontent' or role == 'tablehead' ) and not self.is_first:
-            role = 'paragraph'
+
+        # if we are not the first para in the table, we need special handling
+        if not self.is_first and role.find('table') == 0:
+            if role == 'tablecontentcode':
+                role = 'tablenextparacode'
+            else:
+                role = 'tablenextpara'
 
         # prepend the markup according to the role
         text = ''
@@ -1089,8 +1103,16 @@ class Emph(Paragraph):
 class ListItemParagraph(Paragraph):
     def __init__(self, attrs, parent):
         Paragraph.__init__(self, attrs, parent)
-
         self.role = 'listitem'
+
+class TableContentParagraph(Paragraph):
+    def __init__(self, attrs, parent):
+        Paragraph.__init__(self, attrs, parent)
+        if self.role != 'tablehead' and self.role != 'tablecontent':
+            if self.role == 'code':
+                self.role = 'tablecontentcode'
+            else:
+                self.role = 'tablecontent'
 
 class XhpParser:
     def __init__(self, filename, follow_embed, embedding_app, wiki_page_name):
