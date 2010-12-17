@@ -3,11 +3,16 @@
 use MediaWiki::API;
 use File::Find();
 use File::Slurp;
+use Getopt::Std;
 
 # help
 sub usage {
     print <<EOM;
-upload-wiki.pl - Uploads the wiki/ subdir to a real wiki installation.
+upload-wiki.pl [...] - Uploads the wiki/ subdir to a real wiki installation.
+
+  -i - Upload also the images
+  -p - Don't upload the pages themselves
+  -r - Upload also the redirects
 
 You need a wikisetup.txt in this directory, to be able to authentificate you.
 The content should be:
@@ -30,6 +35,18 @@ images/    - directory with an unpack of images_tango.zip
 EOM
     exit 1;
 }
+
+%options = ();
+getopts( "hipr", \%options );
+
+usage() if ( defined $options{h} );
+
+my $upload_images = 0;
+my $upload_pages = 1;
+my $upload_redirects = 0;
+$upload_images = 1 if ( defined $options{i} );
+$upload_pages = 0 if ( defined $options{p} );
+$upload_redirects = 1 if ( defined $options{r} );
 
 # first of all, read the configuration from wikisetup.txt
 my ( $url, $upload_url, $name, $password );
@@ -64,14 +81,21 @@ if ( !defined( $url ) || !defined( $upload_url ) || !defined( $name ) || !define
     usage();
 }
 
-if ( ! -d 'wiki' || ! -f 'images.txt' ) {
-    print "Missing the wiki/ subdir or images.txt, re-run help-to-wiki.py.\n\n";
+if ( ! -d 'wiki' ) {
+    print "Missing the wiki/ subdir, re-run help-to-wiki.py.\n\n";
     usage();
 }
 
-if ( ! -d 'images' ) {
-    print "Missing images/ subdir - mkdir images ; cd images ; unzip /path/to/images_tango.zip\n\n";
-    usage();
+if ( $upload_images ) {
+    if ( ! -f 'images.txt' ) {
+        print "Missing images.txt, re-run help-to-wiki.py.\n\n";
+        usage();
+    }
+
+    if ( ! -d 'images' ) {
+        print "Missing images/ subdir - mkdir images ; cd images ; unzip /path/to/images_tango.zip\n\n";
+        usage();
+    }
 }
 
 # initialize the wiki
@@ -88,6 +112,15 @@ sub upload_article {
 
     my $pagename = $File::Find::name;
     $pagename =~ s/^wiki\///;
+
+    # pages starting with lowercase 's' are redirects
+    if ( $pagename =~ /^s/ ) {
+        return if ( !$upload_redirects );
+    }
+    else {
+        return if ( !$upload_pages );
+    }
+
     my $text = read_file( $_ );
 
     print "Uploading page '$pagename'\n";
@@ -99,30 +132,32 @@ sub upload_article {
 File::Find::find( {wanted => \&upload_article}, 'wiki/' );
 
 # upload the images
-open( IN, "images.txt" ) || usage();
-while ( my $line = <IN> ) {
-    chomp( $line );
-    $fname = "images/$line";
-    if ( ! -f $fname ) {
-        print "Image '$fname' not found, skipped.\n";
-        next;
-    }
-    if ( ! $fname =~ /\.(png|gif|jpg|jpeg)$/ ) {
-        print "Image '$line' ignored, not a jpg/png/gif.\n";
-        next;
-    }
+if ( $upload_images ) {
+    open( IN, "images.txt" ) || usage();
+    while ( my $line = <IN> ) {
+        chomp( $line );
+        $fname = "images/$line";
+        if ( ! -f $fname ) {
+            print "Image '$fname' not found, skipped.\n";
+            next;
+        }
+        if ( ! $fname =~ /\.(png|gif|jpg|jpeg)$/ ) {
+            print "Image '$line' ignored, not a jpg/png/gif.\n";
+            next;
+        }
 
-    my $imagename = $line;
-    if ( $line =~ /\/([^\/]*)$/ ) {
-        $imagename = $1;
-    }
-    my $image = read_file( $fname );
+        my $imagename = $line;
+        if ( $line =~ /\/([^\/]*)$/ ) {
+            $imagename = $1;
+        }
+        my $image = read_file( $fname );
 
-    print "Uploading image '$imagename'\n";
-    $mw->upload( {
-            title => $imagename,
-            summary => 'Initial upload.',
-            data => $image } ) || die $mw->{error}->{code} . ': ' . $mw->{error}->{details};
+        print "Uploading image '$imagename'\n";
+        $mw->upload( {
+                title => $imagename,
+                summary => 'Initial upload.',
+                data => $image } ) || die $mw->{error}->{code} . ': ' . $mw->{error}->{details};
+    }
 }
 
 # clean up
