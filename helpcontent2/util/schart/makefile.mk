@@ -855,6 +855,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/xsltfilter_distribute.xhp \
    text$/shared$/main0108.xhp \
    text$/shared$/main0201.xhp \
+   text$/shared$/main0204.xhp \
    text$/shared$/main0208.xhp \
    text$/shared$/main0209.xhp \
    text$/shared$/main0212.xhp \
