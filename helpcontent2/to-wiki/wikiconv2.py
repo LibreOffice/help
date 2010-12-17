@@ -451,7 +451,8 @@ class Bookmark(ElementBase):
         global redirects
         # first of all, we need to create a redirect page for this one
         if self.redirect != '' and self.target != '':
-            redirects.append([self.app, self.redirect, self.target, \
+            redirects.append([self.app, self.redirect, \
+                '%s#%s'% (self.target, self.id), \
                 self.authoritative])
 
         # then we also have to setup ID inside the page
