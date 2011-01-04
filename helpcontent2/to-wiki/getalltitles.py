@@ -26,6 +26,7 @@ def make_unique(title):
 replace_text_list = [
         ["$[officename]",""], # to fit both LibreOffice and BrOffice
         ["%PRODUCTNAME",""], # to fit both LibreOffice and BrOffice
+        ["$PRODUCTNAME",""], # to fit both LibreOffice and BrOffice
         ['"+"',"Plus"],
         ['"*"',"Star"],
         ['"-"',"Minus"],
@@ -43,7 +44,8 @@ replace_text_list = [
 
 replace_readable_list = [
         ["$[officename]","{{ProductName}}"],
-        ["%PRODUCTNAME","{{ProductName}}"]
+        ["%PRODUCTNAME","{{ProductName}}"],
+        ["$PRODUCTNAME","{{ProductName}}"]
         ]
 
 modules_list = [

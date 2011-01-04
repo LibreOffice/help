@@ -114,7 +114,8 @@ section_id_mapping = \
 # text snippets that we need to convert
 replace_text_list = \
     [["$[officename]", "{{ProductName}}"],
-     ["%PRODUCTNAME", "{{ProductName}}"]
+     ["%PRODUCTNAME", "{{ProductName}}"],
+     ["$PRODUCTNAME", "{{ProductName}}"]
     ]
 
 def load_hid_lst():
