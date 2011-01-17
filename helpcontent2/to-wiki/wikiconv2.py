@@ -199,7 +199,7 @@ def replace_gt_lt(str,char,replace):
             str = str[:index]+replace+str[index+1:]
     return str[1:]
 
-def get_localized_text(id, text):
+def get_localized_text(id):
     # Note: The order is important
     replace_localized_strs = [
             ["\\\"","\""],
@@ -222,10 +222,6 @@ def get_localized_text(id, text):
             str = str.replace("\\<","<").replace("\\>",">")
             return str
     return ""
-
-def get_localized_objects(parser, loc_text, attrs):
-    p = LocalizedText(parser, loc_text, attrs)
-    return p.parse()
 
 def href_to_fname_id(href):
     link = href.replace('"', '')
@@ -310,9 +306,10 @@ class ElementBase:
                     (id, fname))
 
     def unhandled_element(self, parser, name):
-        filename = "Localization File"
-        if parser:
+        try:
             filename = parser.filename
+        except:
+            filename = "Localized paragraph"
         sys.stderr.write('Warning: Unhandled element "%s" in "%s" (%s)\n'% \
                         (name, self.name, filename))
 
@@ -371,55 +368,6 @@ class XhpFile(ElementBase):
             self.parse_child(Table(attrs, self))
         else:
             self.unhandled_element(parser, name)
-
-class LocalizedText(ElementBase):
-    def __init__(self, parser, data, attrs):
-        # Initialized with some 'tag' such that the parser
-        # never needs to access the parent (which in this
-        # case is null)
-        ElementBase.__init__(self, 'localizedtext', None)
-        header = u'<?xml version="1.0" encoding="UTF-8"?><paragraph>'
-        self.data = header + data #+ '</paragraph>'
-        self.xml = self.data.encode('utf-8')
-        self.follow_embed = True
-        self.head_obj = None
-        self.attrs = attrs
-        self.parser = parser
-        #print self.data.encode('utf-8')
-
-    def parse(self):
-        p = xml.parsers.expat.ParserCreate()
-        p.StartElementHandler = self.start_element
-        p.EndElementHandler = self.end_element
-        p.CharacterDataHandler = self.char_data
-        try:
-            p.Parse(self.xml)
-        except:
-            # TODO: Check different exceptions
-            sys.stderr.write('Trying to parse: '+self.xml+'\n')
-            print self.xml
-            raise
-        return self.objects[0].objects
-
-    def start_element(self, name, attrs):
-        if name == 'paragraph':
-            self.parse_child(Paragraph(self.attrs, self))
-        else:
-            if self.child_parsing:
-                self.get_curobj().start_element(self.parser, name, attrs)
-            else:
-                self.unhandled_element(None, name)
-
-    def char_data(self, data):
-        if self.child_parsing:
-            self.get_curobj().char_data(self, data)
-        else:
-            # Should never occur
-            self.unhandled_element(None,"Unhandled Data:"+data)
-
-    def end_element(self, name):
-        if self.child_parsing:
-            self.get_curobj().end_element(self, name)
 
 class Bookmark(ElementBase):
     def __init__(self, attrs, parent, type, parser):
@@ -975,7 +923,6 @@ class Paragraph(ElementBase):
             self.level = 0
 
         self.is_first = (len(self.parent.objects) == 0)
-        self.localized_objects = []
 
     def start_element(self, parser, name, attrs):
         if name == 'ahelp':
@@ -1002,15 +949,16 @@ class Paragraph(ElementBase):
             self.parse_child(Item(attrs, self))
         elif name == 'link':
             self.parse_child(Link(attrs, self))
+        elif name == 'localized':
+            # we ignore this tag, it is added arbitrary for the paragraphs
+            # that come from .sdf files
+            pass
         elif name == 'switchinline':
             self.parse_child(SwitchInline(attrs, self, parser.embedding_app))
         elif name == 'variable':
             self.parse_child(Variable(attrs, self))
         else:
             self.unhandled_element(parser, name)
-
-    def end_element(self, parser, name):
-        ElementBase.end_element(self, parser, name)
 
     def char_data(self, parser, data):
         if self.role == 'paragraph' or self.role == 'heading' or \
@@ -1019,23 +967,10 @@ class Paragraph(ElementBase):
                 data = ' ' + data.lstrip()
             data = data.replace('\n', ' ')
 
-        if len(self.localized_objects):
-            return
-        loc_text = u''
-        if len(self.id):
-            loc_text = get_localized_text(self.id, data)
-        if len(loc_text):
-            attrs = {'role':self.role,
-                     'level':self.level}
-            self.localized_objects = get_localized_objects(parser, loc_text, attrs)
-        elif len(data):
+        if len(data):
             self.objects.append(Text(data))
 
     def get_all(self):
-        # Localization objects present, drop the other objects
-        if len(self.localized_objects):
-            self.objects = self.localized_objects
-
         role = self.role
         if role == 'heading':
             if self.level <= 0:
@@ -1130,44 +1065,20 @@ class TableContentParagraph(Paragraph):
             else:
                 self.role = 'tablecontent'
 
-class XhpParser:
-    def __init__(self, filename, follow_embed, embedding_app, wiki_page_name):
-        self.head_obj = XhpFile()
-        self.filename = filename
+class ParserBase:
+    def __init__(self, follow_embed, embedding_app, current_app, wiki_page_name, head_object, buffer):
+        self.head_obj = head_object
         self.follow_embed = follow_embed
+        self.embedding_app = embedding_app
+        self.current_app = current_app
         self.wiki_page_name = wiki_page_name
 
-        # we want to ignore the 1st level="1" heading, because in most of the
-        # cases, it is the only level="1" heading in the file, and it is the
-        # same as the page title
-        self.ignore_heading = True
-
-        self.current_app = ''
-        self.current_app_raw = ''
-        for i in [['sbasic', 'BASIC'], ['scalc', 'CALC'], \
-                  ['sdatabase', 'DATABASE'], ['sdraw', 'DRAW'], \
-                  ['schart', 'CHART'], ['simpress', 'IMPRESS'], \
-                  ['smath', 'MATH'], ['swriter', 'WRITER']]:
-            if filename.find('/%s/'% i[0]) >= 0:
-                self.current_app_raw = i[0]
-                self.current_app = i[1]
-                break
-
-        if embedding_app != '':
-            self.embedding_app = embedding_app
-        else:
-            self.embedding_app = self.current_app
-
-        file = codecs.open(filename, "r", "utf-8")
         p = xml.parsers.expat.ParserCreate()
-
         p.StartElementHandler = self.start_element
         p.EndElementHandler = self.end_element
         p.CharacterDataHandler = self.char_data
 
-        buf = file.read()
-        p.Parse(buf.encode('utf-8'))
-        file.close()
+        p.Parse(buffer)
 
     def start_element(self, name, attrs):
         self.head_obj.get_curobj().start_element(self, name, attrs)
@@ -1193,10 +1104,55 @@ class XhpParser:
                 ignore_this = True
         except:
             pass
+
+        try:
+            localized_text = get_localized_text(attrs['id'])
+        except:
+            pass
+
         if ignore_this:
+            obj.parse_child(Ignore(attrs, obj, 'paragraph'))
+        elif localized_text != '':
+            # parse the localized text
+            localized_para = Paragraph(attrs, obj)
+            text = u'<?xml version="1.0" encoding="UTF-8"?><localized>' + localized_text + '</localized>'
+            ParserBase(self.follow_embed, self.embedding_app, self.current_app, self.wiki_page_name, \
+                    localized_para, text.encode('utf-8'))
+            # add it to the overall structure
+            obj.objects.append(localized_para)
+            # and ignore the original text
             obj.parse_child(Ignore(attrs, obj, 'paragraph'))
         else:
             obj.parse_child(Paragraph(attrs, obj))
+
+class XhpParser(ParserBase):
+    def __init__(self, filename, follow_embed, embedding_app, wiki_page_name):
+        self.filename = filename
+
+        # we want to ignore the 1st level="1" heading, because in most of the
+        # cases, it is the only level="1" heading in the file, and it is the
+        # same as the page title
+        self.ignore_heading = True
+
+        current_app = ''
+        self.current_app_raw = ''
+        for i in [['sbasic', 'BASIC'], ['scalc', 'CALC'], \
+                  ['sdatabase', 'DATABASE'], ['sdraw', 'DRAW'], \
+                  ['schart', 'CHART'], ['simpress', 'IMPRESS'], \
+                  ['smath', 'MATH'], ['swriter', 'WRITER']]:
+            if filename.find('/%s/'% i[0]) >= 0:
+                self.current_app_raw = i[0]
+                current_app = i[1]
+                break
+
+        if embedding_app == '':
+            embedding_app = current_app
+
+        file = codecs.open(filename, "r", "utf-8")
+        buf = file.read()
+        file.close()
+
+        ParserBase.__init__(self, follow_embed, embedding_app, current_app, wiki_page_name, XhpFile(), buf.encode('utf-8'))
 
 def loadallfiles(filename):
     global titles
