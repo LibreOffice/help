@@ -182,8 +182,10 @@ def load_localization_data(sdf_file):
                 continue
             localization_data.append(line.split("\t"))
         file.close()
+        return True
     except:
-        return
+        sys.stderr.write('Error: Cannot open .sdf file "%s"\n'% sdf_file)
+        return False
 
 def replace_gt_lt(str,char,replace):
     # Add additional space to catch strings starting with <=
@@ -1269,8 +1271,10 @@ def convert(generate_redirects, localizations):
     load_hid_lst()
     loadallfiles("alltitles.csv")
 
-    if len(localizations) > 1:
-        load_localization_data(localizations[1])
+    if len(localizations) > 0:
+        sys.stderr.write('Using localizations from "%s"\n'% localizations[0])
+        if not load_localization_data(localizations[0]):
+            return
 
     for title in titles:
         while threading.active_count() > max_threads:
