@@ -11,7 +11,8 @@ max_threads = 25
 
 titles = [[]]
 
-localization_data = [[]]
+# map of id -> localized text
+localization_data = {}
 
 # content of the hid.lst file for easier searching
 hid_lst = {}
@@ -175,53 +176,51 @@ def escape_equals_sign(text):
 def load_localization_data(sdf_file):
     try:
         file = codecs.open(sdf_file, "r", "utf-8")
-        for line in file:
-            line = line.strip()
-            # TODO: Check if multiple \t needs to be merged
-            if line.find("#") == 0:
-                continue
-            localization_data.append(line.split("\t"))
-        file.close()
-        return True
     except:
         sys.stderr.write('Error: Cannot open .sdf file "%s"\n'% sdf_file)
         return False
 
-def replace_gt_lt(str,char,replace):
-    # Add additional space to catch strings starting with <=
-    str = " "+str
-    index = -1
-    while True:
-        index = str.find(char, index+1)
-        if index < 0:
-            break
-        if str[index-1] != '\\':
-            str = str[:index]+replace+str[index+1:]
-    return str[1:]
+    for line in file:
+        line = line.strip()
+        if line[0] == '#':
+            continue
+        spl = line.split("\t")
+        localization_data[spl[4]] = spl[10]
+
+    file.close()
+    return True
+
+def unescape(str):
+    unescape_map = {'<': {True:'<', False:'&lt;'},
+                    '>': {True:'>', False:'&gt;'},
+                    '&': {True:'&', False:'&amp;'},
+                    '"': {True:'"', False:'"'}}
+    result = ''
+    escape = False
+    for c in str:
+        if c == '\\':
+            if escape:
+                result = result + '\\'
+                escape = False
+            else:
+                escape = True
+        else:
+            try:
+                replace = unescape_map[c]
+                result = result + replace[escape]
+            except:
+                result = result + c
+            escape = False
+
+    return result
 
 def get_localized_text(id):
-    # Note: The order is important
-    replace_localized_strs = [
-            ["\\\"","\""],
-            ["& Chr(13)&","<br>"],
-            ["& Chr(13) &","<br>"],
-            ["&","&amp;"],
-            ["\\n","\n"],
-            ["\\t","\t"],
-            ["\\\\<","&lt;"],
-            ["\\\\>","&gt;"],
-            ]
-    for line in localization_data:
-        if len(line) > 10 and line[4].strip() == id.strip():
-            str = line[10]
-            for i in replace_localized_strs:
-                str = str.replace(i[0],i[1])
-            str = replace_gt_lt(str,"<","&lt;")
-            str = replace_gt_lt(str,">","&gt;")
-            # Finally replace the \< and \> tokens
-            str = str.replace("\\<","<").replace("\\>",">")
-            return str
-    return ""
+    try:
+        str = localization_data[id.strip()]
+    except:
+        return ''
+
+    return unescape(str)
 
 def href_to_fname_id(href):
     link = href.replace('"', '')
