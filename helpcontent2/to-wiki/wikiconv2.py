@@ -495,7 +495,7 @@ class TableCell(ElementBase):
             if parser.follow_embed:
                 self.embed_href(parser, fname, id)
         elif name == 'paragraph':
-            self.parse_child(TableContentParagraph(attrs, self))
+            parser.parse_localized_paragraph(TableContentParagraph(attrs, self), attrs, self)
         elif name == 'section':
             self.parse_child(Section(attrs, self))
         else:
@@ -546,7 +546,7 @@ class ListItem(ElementBase):
             if parser.follow_embed:
                 self.embed_href(parser, fname, id)
         elif name == 'paragraph':
-            self.parse_child(ListItemParagraph(attrs, self))
+            parser.parse_localized_paragraph(ListItemParagraph(attrs, self), attrs, self)
         else:
             self.unhandled_element(parser, name)
 
@@ -1096,6 +1096,26 @@ class ParserBase:
     def get_variable(self, id):
         return self.head_obj.get_variable(id)
 
+    def parse_localized_paragraph(self, paragraph, attrs, obj):
+        localized_text = ''
+        try:
+            localized_text = get_localized_text(self.filename, attrs['id'])
+        except:
+            pass
+
+        if localized_text != '':
+            # parse the localized text
+            text = u'<?xml version="1.0" encoding="UTF-8"?><localized>' + localized_text + '</localized>'
+            ParserBase(self.filename, self.follow_embed, self.embedding_app, \
+                    self.current_app, self.wiki_page_name, \
+                    paragraph, text.encode('utf-8'))
+            # add it to the overall structure
+            obj.objects.append(paragraph)
+            # and ignore the original text
+            obj.parse_child(Ignore(attrs, obj, 'paragraph'))
+        else:
+            obj.parse_child(paragraph)
+
     def parse_paragraph(self, attrs, obj):
         ignore_this = False
         try:
@@ -1106,26 +1126,10 @@ class ParserBase:
         except:
             pass
 
-        try:
-            localized_text = get_localized_text(self.filename, attrs['id'])
-        except:
-            pass
-
         if ignore_this:
             obj.parse_child(Ignore(attrs, obj, 'paragraph'))
-        elif localized_text != '':
-            # parse the localized text
-            localized_para = Paragraph(attrs, obj)
-            text = u'<?xml version="1.0" encoding="UTF-8"?><localized>' + localized_text + '</localized>'
-            ParserBase(self.filename, self.follow_embed, self.embedding_app, \
-                    self.current_app, self.wiki_page_name, \
-                    localized_para, text.encode('utf-8'))
-            # add it to the overall structure
-            obj.objects.append(localized_para)
-            # and ignore the original text
-            obj.parse_child(Ignore(attrs, obj, 'paragraph'))
         else:
-            obj.parse_child(Paragraph(attrs, obj))
+            self.parse_localized_paragraph(Paragraph(attrs, obj), attrs, obj)
 
 class XhpParser(ParserBase):
     def __init__(self, filename, follow_embed, embedding_app, wiki_page_name):
