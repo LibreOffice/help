@@ -185,7 +185,12 @@ def load_localization_data(sdf_file):
         if line[0] == '#':
             continue
         spl = line.split("\t")
-        localization_data[spl[4]] = spl[10]
+
+        # the form of the key is like
+        # source/text/shared/explorer/database/02010100.xhp#hd_id3149233
+        # otherwise we are getting duplicates
+        key = '%s#%s'% (spl[1].replace('\\', '/'), spl[4])
+        localization_data[key] = spl[10]
 
     file.close()
     return True
@@ -214,9 +219,9 @@ def unescape(str):
 
     return result
 
-def get_localized_text(id):
+def get_localized_text(filename, id):
     try:
-        str = localization_data[id.strip()]
+        str = localization_data['%s#%s'% (filename, id)]
     except:
         return ''
 
@@ -305,12 +310,8 @@ class ElementBase:
                     (id, fname))
 
     def unhandled_element(self, parser, name):
-        try:
-            filename = parser.filename
-        except:
-            filename = "Localized paragraph"
         sys.stderr.write('Warning: Unhandled element "%s" in "%s" (%s)\n'% \
-                        (name, self.name, filename))
+                        (name, self.name, parser.filename))
 
 # Base class for trivial elements that operate on char_data
 #
@@ -1065,12 +1066,13 @@ class TableContentParagraph(Paragraph):
                 self.role = 'tablecontent'
 
 class ParserBase:
-    def __init__(self, follow_embed, embedding_app, current_app, wiki_page_name, head_object, buffer):
-        self.head_obj = head_object
+    def __init__(self, filename, follow_embed, embedding_app, current_app, wiki_page_name, head_object, buffer):
+        self.filename = filename
         self.follow_embed = follow_embed
         self.embedding_app = embedding_app
         self.current_app = current_app
         self.wiki_page_name = wiki_page_name
+        self.head_obj = head_object
 
         p = xml.parsers.expat.ParserCreate()
         p.StartElementHandler = self.start_element
@@ -1105,7 +1107,7 @@ class ParserBase:
             pass
 
         try:
-            localized_text = get_localized_text(attrs['id'])
+            localized_text = get_localized_text(self.filename, attrs['id'])
         except:
             pass
 
@@ -1115,7 +1117,8 @@ class ParserBase:
             # parse the localized text
             localized_para = Paragraph(attrs, obj)
             text = u'<?xml version="1.0" encoding="UTF-8"?><localized>' + localized_text + '</localized>'
-            ParserBase(self.follow_embed, self.embedding_app, self.current_app, self.wiki_page_name, \
+            ParserBase(self.filename, self.follow_embed, self.embedding_app, \
+                    self.current_app, self.wiki_page_name, \
                     localized_para, text.encode('utf-8'))
             # add it to the overall structure
             obj.objects.append(localized_para)
@@ -1126,8 +1129,6 @@ class ParserBase:
 
 class XhpParser(ParserBase):
     def __init__(self, filename, follow_embed, embedding_app, wiki_page_name):
-        self.filename = filename
-
         # we want to ignore the 1st level="1" heading, because in most of the
         # cases, it is the only level="1" heading in the file, and it is the
         # same as the page title
@@ -1151,7 +1152,7 @@ class XhpParser(ParserBase):
         buf = file.read()
         file.close()
 
-        ParserBase.__init__(self, follow_embed, embedding_app, current_app, wiki_page_name, XhpFile(), buf.encode('utf-8'))
+        ParserBase.__init__(self, filename, follow_embed, embedding_app, current_app, wiki_page_name, XhpFile(), buf.encode('utf-8'))
 
 def loadallfiles(filename):
     global titles
