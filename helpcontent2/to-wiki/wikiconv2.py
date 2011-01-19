@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
-import sys
-import thread, threading, time
+import os, sys, thread, threading, time
 import xml.parsers.expat
 import codecs
 from threading import Thread
@@ -9,7 +8,7 @@ from threading import Thread
 root="source/"
 max_threads = 25
 
-titles = [[]]
+titles = []
 
 # map of id -> localized text
 localization_data = {}
@@ -120,6 +119,8 @@ replace_text_list = \
     ]
 
 def load_hid_lst():
+    global hid_lst
+    hid_lst = {}
     file = codecs.open("helpers/hid.lst", "r", "utf-8")
     for line in file:
         ids = line.strip().split(" ")
@@ -174,6 +175,8 @@ def escape_equals_sign(text):
     return t
 
 def load_localization_data(sdf_file):
+    global localization_data
+    localization_data = {}
     try:
         file = codecs.open(sdf_file, "r", "utf-8")
     except:
@@ -295,7 +298,9 @@ class ElementBase:
     # embed part of another file into current structure
     def embed_href(self, parent_parser, fname, id):
         # parse another xhp
-        parser = XhpParser('source/' + fname, False, parent_parser.current_app, parent_parser.wiki_page_name)
+        parser = XhpParser('source/' + fname, False, \
+                parent_parser.current_app, parent_parser.wiki_page_name, \
+                parent_parser.lang)
         var = parser.get_variable(id)
 
         if var != None:
@@ -603,9 +608,19 @@ class Ignore(ElementBase):
     def __init__(self, attrs, parent, element_name):
         ElementBase.__init__(self, element_name, parent)
 
-class Title(TextElementBase):
+class OrigTitle(TextElementBase):
     def __init__(self, attrs, parent):
+        TextElementBase.__init__(self, attrs, parent, 'title', '{{OrigLang|', '}}\n\n', True)
+
+class Title(TextElementBase):
+    def __init__(self, attrs, parent, localized_title):
         TextElementBase.__init__(self, attrs, parent, 'title', '{{Lang|', '}}\n\n', True)
+        self.localized_title = localized_title
+
+    def get_all(self):
+        if self.localized_title != '':
+            self.text = self.localized_title
+        return TextElementBase.get_all(self)
 
 class Topic(ElementBase):
     def __init__(self, attrs, parent):
@@ -613,7 +628,10 @@ class Topic(ElementBase):
 
     def start_element(self, parser, name, attrs):
         if name == 'title':
-            self.parse_child(Title(attrs, self))
+            if parser.lang == '':
+                self.parse_child(OrigTitle(attrs, self))
+            else:
+                self.parse_child(Title(attrs, self, get_localized_text(parser.filename, 'tit')))
         elif name == 'filename':
             self.parse_child(Ignore(attrs, self, name))
         else:
@@ -709,7 +727,7 @@ class Sort(ElementBase):
         return ElementBase.get_all(self)
 
 class Link(ElementBase):
-    def __init__(self, attrs, parent):
+    def __init__(self, attrs, parent, lang):
         ElementBase.__init__(self, 'link', parent)
 
         self.link = attrs['href']
@@ -721,6 +739,7 @@ class Link(ElementBase):
         self.default_name = self.lname
         self.lname = get_link_filename(self.link, self.lname)
         self.wikitext = ""
+        self.lang = lang
 
     def char_data(self, parser, data):
         self.wikitext = self.wikitext + data
@@ -732,6 +751,8 @@ class Link(ElementBase):
         self.wikitext = replace_text(self.wikitext)
         if self.link.find("http") >= 0:
             text = "["+self.link+" "+self.wikitext+"]"
+        elif self.lang != '':
+            text = '[[%s/%s|%s]]'% (self.lname, self.lang, self.wikitext)
         else:
             text = "[["+self.lname+"|"+self.wikitext+"]]"
         return text
@@ -948,7 +969,7 @@ class Paragraph(ElementBase):
         elif name == 'item':
             self.parse_child(Item(attrs, self))
         elif name == 'link':
-            self.parse_child(Link(attrs, self))
+            self.parse_child(Link(attrs, self, parser.lang))
         elif name == 'localized':
             # we ignore this tag, it is added arbitrary for the paragraphs
             # that come from .sdf files
@@ -1066,12 +1087,13 @@ class TableContentParagraph(Paragraph):
                 self.role = 'tablecontent'
 
 class ParserBase:
-    def __init__(self, filename, follow_embed, embedding_app, current_app, wiki_page_name, head_object, buffer):
+    def __init__(self, filename, follow_embed, embedding_app, current_app, wiki_page_name, lang, head_object, buffer):
         self.filename = filename
         self.follow_embed = follow_embed
         self.embedding_app = embedding_app
         self.current_app = current_app
         self.wiki_page_name = wiki_page_name
+        self.lang = lang
         self.head_obj = head_object
 
         p = xml.parsers.expat.ParserCreate()
@@ -1107,7 +1129,7 @@ class ParserBase:
             # parse the localized text
             text = u'<?xml version="1.0" encoding="UTF-8"?><localized>' + localized_text + '</localized>'
             ParserBase(self.filename, self.follow_embed, self.embedding_app, \
-                    self.current_app, self.wiki_page_name, \
+                    self.current_app, self.wiki_page_name, self.lang, \
                     paragraph, text.encode('utf-8'))
             # add it to the overall structure
             obj.objects.append(paragraph)
@@ -1132,7 +1154,7 @@ class ParserBase:
             self.parse_localized_paragraph(Paragraph(attrs, obj), attrs, obj)
 
 class XhpParser(ParserBase):
-    def __init__(self, filename, follow_embed, embedding_app, wiki_page_name):
+    def __init__(self, filename, follow_embed, embedding_app, wiki_page_name, lang):
         # we want to ignore the 1st level="1" heading, because in most of the
         # cases, it is the only level="1" heading in the file, and it is the
         # same as the page title
@@ -1156,10 +1178,12 @@ class XhpParser(ParserBase):
         buf = file.read()
         file.close()
 
-        ParserBase.__init__(self, filename, follow_embed, embedding_app, current_app, wiki_page_name, XhpFile(), buf.encode('utf-8'))
+        ParserBase.__init__(self, filename, follow_embed, embedding_app,
+                current_app, wiki_page_name, lang, XhpFile(), buf.encode('utf-8'))
 
 def loadallfiles(filename):
     global titles
+    titles = []
     file = codecs.open(filename, "r", "utf-8")
     for line in file:
         title = line.split(";", 2)
@@ -1167,14 +1191,15 @@ def loadallfiles(filename):
     file.close()
 
 class WikiConverter(Thread):
-    def __init__(self, inputfile, wiki_page_name, outputfile):
+    def __init__(self, inputfile, wiki_page_name, lang, outputfile):
         Thread.__init__(self)
         self.inputfile = inputfile
         self.wiki_page_name = wiki_page_name
+        self.lang = lang
         self.outputfile = outputfile
 
     def run(self):
-        parser = XhpParser(self.inputfile, True, '', self.wiki_page_name)
+        parser = XhpParser(self.inputfile, True, '', self.wiki_page_name, self.lang)
         file = codecs.open(self.outputfile, "wb", "utf-8")
         file.write(parser.get_all())
         file.close()
@@ -1226,37 +1251,50 @@ def write_redirects():
                 write_link(r, target)
 
 # Main Function
-def convert(generate_redirects, localizations):
-    print "Generating the wiki itself..."
+def convert(generate_redirects, lang, sdf_file):
+    if lang == '':
+        print 'Generating the wiki main pages...'
+    else:
+        print 'Generating the wiki pages for language %s...'% lang
     load_hid_lst()
     loadallfiles("alltitles.csv")
 
-    if len(localizations) > 0:
-        sys.stderr.write('Using localizations from "%s"\n'% localizations[0])
-        if not load_localization_data(localizations[0]):
+    if lang != '':
+        sys.stderr.write('Using localizations from "%s"\n'% sdf_file)
+        if not load_localization_data(sdf_file):
             return
 
     for title in titles:
         while threading.active_count() > max_threads:
             time.sleep(0.001)
     
-        outfile = ""
-        infile  = ""
-        if len(title) > 1:
-            outfile = "wiki/"+title[1].strip()
-            infile  = title[0].strip()
+        infile = title[0].strip()
+        wikiname = title[1].strip()
+        articledir = 'wiki/' + wikiname
+        try:
+            os.mkdir(articledir)
+        except:
+            pass
+
+        outfile = ''
+        if lang != '':
+            wikiname = '%s/%s'% (wikiname, lang)
+            outfile = '%s/%s'% (articledir, lang)
+        else:
+            outfile = '%s/MAIN'% articledir
+
+        try:
+            file = open(outfile, 'r')
+        except:
             try:
-                file = open(outfile,"r")
+                wiki = WikiConverter(infile, wikiname, lang, outfile)
+                wiki.start()
+                continue
             except:
-                try:
-                    wiki = WikiConverter(infile,title[1].strip(),outfile)
-                    wiki.start()
-                    continue
-                except:
-                    print 'Failed to convert "%s" into "%s".\n'% \
-                            (title[1].strip(), outfile)
-            print "Warning: Skipping: "+infile+" > "+outfile
-            file.close()
+                print 'Failed to convert "%s" into "%s".\n'% \
+                        (infile, outfile)
+        sys.stderr.write('Warning: Skipping: %s > %s\n'% (infile, outfile))
+        file.close()
     
     # wait for everyone to finish
     while threading.active_count() > 1:

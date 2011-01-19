@@ -77,6 +77,21 @@ create_wiki_dirs()
 print "Generating the titles..."
 os.system( "python to-wiki/getalltitles.py source/text > alltitles.csv" )
 
-wikiconv2.convert(generate_redirects, args)
+try:
+    sdf_path = args[0]
+except:
+    sdf_path = '../../l10n/l10n/source'
+    sys.stderr.write('Path to the .sdf files not provided, using "%s"\n'% sdf_path)
+
+# [16:26:45] <kendy> sophi, timar: Obviously, I am testing with Czech ;-)
+# [16:27:05] <timar> kendy: HUngarian :)
+# [16:27:25] <kendy> timar: :-)
+# [16:27:26] <timar> kendy: Slovenian for Martin
+# [16:28:00] <timar> kendy: and German, Italian, French, Spanish (with large user base)
+# [16:28:13] <sophi> kendy: catalan
+# [16:28:38] <sophi> kendy: also japanese and russian
+# [16:29:48] <sophi> kendy: ans I would say vi too, so you have all kind of script/language and good communities behind ;)
+for lang in ['', 'cs']:
+    wikiconv2.convert(generate_redirects, lang, '%s/%s/localize.sdf'% (sdf_path, lang))
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:
