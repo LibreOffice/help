@@ -128,7 +128,7 @@ sub upload_article {
     $mw->edit( {
             action => 'edit',
             title => $pagename,
-            text => $text } ) || die $mw->{error}->{code} . ': ' . $mw->{error}->{details};
+            text => $text }, { skip_encoding => 1 } ) || die $mw->{error}->{code} . ': ' . $mw->{error}->{details};
 }
 File::Find::find( {wanted => \&upload_article}, 'wiki/' );
 
