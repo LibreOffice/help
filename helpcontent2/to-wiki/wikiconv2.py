@@ -1253,9 +1253,15 @@ def write_redirects():
 # Main Function
 def convert(generate_redirects, lang, sdf_file):
     if lang == '':
-        print 'Generating the wiki main pages...'
+        print 'Generating the main wiki pages...'
     else:
         print 'Generating the wiki pages for language %s...'% lang
+
+    global redirects
+    redirects = []
+    global images
+    images = set()
+
     load_hid_lst()
     loadallfiles("alltitles.csv")
 
@@ -1300,15 +1306,16 @@ def convert(generate_redirects, lang, sdf_file):
     while threading.active_count() > 1:
         time.sleep(0.001)
 
-    # set of the images used here
-    print 'Generating "images.txt", the list of used images...'
-    file = open('images.txt', "w")
-    for image in images:
-        file.write('%s\n'% image)
-    file.close()
+    if lang == '':
+        # set of the images used here
+        print 'Generating "images.txt", the list of used images...'
+        file = open('images.txt', "w")
+        for image in images:
+            file.write('%s\n'% image)
+        file.close()
 
-    # generate the redirects
-    if generate_redirects:
-        write_redirects()
+        # generate the redirects
+        if generate_redirects:
+            write_redirects()
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:
