@@ -610,11 +610,11 @@ class Ignore(ElementBase):
 
 class OrigTitle(TextElementBase):
     def __init__(self, attrs, parent):
-        TextElementBase.__init__(self, attrs, parent, 'title', '{{OrigLang|', '}}\n\n', True)
+        TextElementBase.__init__(self, attrs, parent, 'title', '{{OrigLang|', '}}\n', True)
 
 class Title(TextElementBase):
     def __init__(self, attrs, parent, localized_title):
-        TextElementBase.__init__(self, attrs, parent, 'title', '{{Lang|', '}}\n\n', True)
+        TextElementBase.__init__(self, attrs, parent, 'title', '{{Lang|', '}}\n', True)
         self.localized_title = localized_title
 
     def get_all(self):
