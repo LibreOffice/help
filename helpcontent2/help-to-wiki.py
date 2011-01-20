@@ -91,7 +91,7 @@ except:
 # [16:28:13] <sophi> kendy: catalan
 # [16:28:38] <sophi> kendy: also japanese and russian
 # [16:29:48] <sophi> kendy: ans I would say vi too, so you have all kind of script/language and good communities behind ;)
-for lang in ['', 'ca', 'cs', 'de', 'es', 'fr', 'hu', 'it', 'ja', 'ru', 'sl', 'vi']:
+for lang in ['', 'ca', 'cs', 'de', 'es', 'fr', 'hu', 'it', 'ja', 'pt', 'pt-BR', 'ru', 'sl', 'vi']:
     wikiconv2.convert(generate_redirects, lang, '%s/%s/localize.sdf'% (sdf_path, lang))
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:
