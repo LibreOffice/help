@@ -129,22 +129,23 @@ def load_hid_lst():
     file.close()
 
 def get_link_filename(link, name):
-    text = link
-    if link.find("http") >= 0:
+    text = link.strip()
+    fragment = ''
+    if text.find('http') == 0:
         text = name
+    else:
+        f = text.find('#')
+        if f >= 0:
+            fragment = text[f:]
+            text = text[0:f]
+
     for title in titles:
         try:
             if title[0].find(text) >= 0:
-                return title[1].strip()
+                return (title[1].strip(), fragment)
         except:
             pass
-    return link
-
-def get_link_name(link):
-    for title in titles:
-        if title[0].find(link) >= 0:
-            return title[2].strip()
-    return link
+    return (link, '')
 
 def replace_text(text):
     for i in replace_text_list:
@@ -737,7 +738,7 @@ class Link(ElementBase):
             self.lname = self.link[self.link.rfind("/")+1:]
         # Override lname
         self.default_name = self.lname
-        self.lname = get_link_filename(self.link, self.lname)
+        (self.lname, self.fragment) = get_link_filename(self.link, self.lname)
         self.wikitext = ""
         self.lang = lang
 
@@ -749,12 +750,12 @@ class Link(ElementBase):
             self.wikitext = self.default_name
 
         self.wikitext = replace_text(self.wikitext)
-        if self.link.find("http") >= 0:
-            text = "["+self.link+" "+self.wikitext+"]"
+        if self.link.find("http") == 0:
+            text = '[%s %s]'% (self.link, self.wikitext)
         elif self.lang != '':
-            text = '[[%s/%s|%s]]'% (self.lname, self.lang, self.wikitext)
+            text = '[[%s/%s%s|%s]]'% (self.lname, self.lang, self.fragment, self.wikitext)
         else:
-            text = "[["+self.lname+"|"+self.wikitext+"]]"
+            text = '[[%s%s|%s]]'% (self.lname, self.fragment, self.wikitext)
         return text
 
 class SwitchInline(ElementBase):
