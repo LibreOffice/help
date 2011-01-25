@@ -883,27 +883,45 @@ class Item(ElementBase):
     replace_type = \
             {'start':{'input': '<code>',
                       'keycode': '{{KeyCode|',
+                      'tasto': '{{KeyCode|',
+                      'litera': '<code>',
                       'literal': '<code>',
                       'menuitem': '{{MenuItem|',
-                      'productname': ''
+                      'mwnuitem': '{{MenuItem|',
+                      'OpenOffice.org': '',
+                      'productname': '',
+                      'unknown': '<code>'
                      },
              'end':{'input': '</code>',
                     'keycode': '}}',
+                    'tasto': '}}',
+                    'litera': '</code>',
                     'literal': '</code>',
                     'menuitem': '}}',
-                    'productname': ''
+                    'mwnuitem': '}}',
+                    'OpenOffice.org': '',
+                    'productname': '',
+                    'unknown': '</code>'
                    },
              'templ':{'input': False,
                       'keycode': True,
+                      'tasto': True,
+                      'litera': False,
                       'literal': False,
                       'menuitem': True,
-                      'productname': False
+                      'mwnuitem': True,
+                      'OpenOffice.org': False,
+                      'productname': False,
+                      'unknown': False
                      }}
 
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'item', parent)
 
-        self.type = attrs['type']
+        try:
+            self.type = attrs['type']
+        except:
+            self.type = 'unknown'
         self.text = ''
 
     def char_data(self, parser, data):
