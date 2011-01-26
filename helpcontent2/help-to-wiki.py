@@ -12,8 +12,9 @@ def usage():
     print '''
 help-to-wiki.py - converts .xhp files into a wiki
 
--h, --help      - this help
--r, --redirects - generate also redirect pages
+-h, --help            - this help
+-n, --no-translations - generate only English pages
+-r, --redirects       - generate also redirect pages
 
 Most probably, you want to generate the redirects only once when you initially
 populate the wiki, and then only update the ones that broke.\n'''
@@ -50,9 +51,20 @@ def create_wiki_dirs():
         except:
             pass
 
+# Langs to handle
+# [16:26:45] <kendy> sophi, timar: Obviously, I am testing with Czech ;-)
+# [16:27:05] <timar> kendy: HUngarian :)
+# [16:27:25] <kendy> timar: :-)
+# [16:27:26] <timar> kendy: Slovenian for Martin
+# [16:28:00] <timar> kendy: and German, Italian, French, Spanish (with large user base)
+# [16:28:13] <sophi> kendy: catalan
+# [16:28:38] <sophi> kendy: also japanese and russian
+# [16:29:48] <sophi> kendy: ans I would say vi too, so you have all kind of script/language and good communities behind ;)
+langs = ['', 'ca', 'cs', 'de', 'es', 'fr', 'hu', 'it', 'ja', 'pt', 'pt-BR', 'ru', 'sl', 'vi']
+
 # Argument handling
 try:
-    opts, args = getopt.getopt(sys.argv[1:], 'hr', ['help', 'redirects'])
+    opts, args = getopt.getopt(sys.argv[1:], 'hnr', ['help', 'no-translations', 'redirects'])
 except getopt.GetoptError:
     usage()
     sys.exit(1)
@@ -62,6 +74,8 @@ for opt, arg in opts:
     if opt in ('-h', '--help'):
         usage()
         sys.exit()
+    elif opt in ('-n', '--no-translations'):
+        langs = ['']
     elif opt in ('-r', '--redirects'):
         generate_redirects = True
 
@@ -83,15 +97,8 @@ except:
     sdf_path = '../../l10n/l10n/source'
     sys.stderr.write('Path to the .sdf files not provided, using "%s"\n'% sdf_path)
 
-# [16:26:45] <kendy> sophi, timar: Obviously, I am testing with Czech ;-)
-# [16:27:05] <timar> kendy: HUngarian :)
-# [16:27:25] <kendy> timar: :-)
-# [16:27:26] <timar> kendy: Slovenian for Martin
-# [16:28:00] <timar> kendy: and German, Italian, French, Spanish (with large user base)
-# [16:28:13] <sophi> kendy: catalan
-# [16:28:38] <sophi> kendy: also japanese and russian
-# [16:29:48] <sophi> kendy: ans I would say vi too, so you have all kind of script/language and good communities behind ;)
-for lang in ['', 'ca', 'cs', 'de', 'es', 'fr', 'hu', 'it', 'ja', 'pt', 'pt-BR', 'ru', 'sl', 'vi']:
+# do the work
+for lang in langs:
     wikiconv2.convert(generate_redirects, lang, '%s/%s/localize.sdf'% (sdf_path, lang))
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:
