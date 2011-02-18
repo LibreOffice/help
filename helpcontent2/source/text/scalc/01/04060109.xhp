@@ -6,7 +6,7 @@
  *
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
- * Copyright 2000, 2010 Oracle and/or its affiliates.
+ * Copyright 2000, 2011 Oracle and/or its affiliates.
  *
  * OpenOffice.org - a multi-platform office productivity suite
  *
@@ -594,29 +594,29 @@
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_GETPIVOTDATA" id="bm_id897854" localize="false"/>
 <paragraph xml-lang="en-US" id="hd_id3747062" role="heading" level="2" l10n="NEW">GETPIVOTDATA</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3593859" role="paragraph" l10n="NEW"><ahelp hid=".">The GETPIVOTDATA function returns a result value from a DataPilot table. The value is addressed using field and item names, so it remains valid if the layout of the DataPilot table changes.</ahelp></paragraph>
+         <paragraph xml-lang="en-US" id="par_id3593859" role="paragraph" l10n="CHG"><ahelp hid=".">The GETPIVOTDATA function returns a result value from a pivot table. The value is addressed using field and item names, so it remains valid if the layout of the pivot table changes.</ahelp></paragraph>
          <paragraph xml-lang="en-US" id="hd_id9741508" role="heading" level="3" l10n="NEW">Syntax</paragraph>
          <paragraph xml-lang="en-US" id="par_id909451" role="paragraph" l10n="NEW">Two different syntax definitions can be used:</paragraph>
-         <paragraph xml-lang="en-US" id="par_id1665089" role="code" l10n="NEW">GETPIVOTDATA(TargetField; DataPilot; [ Field 1; Item 1; ... ])</paragraph>
-         <paragraph xml-lang="en-US" id="par_id4997100" role="code" l10n="NEW">GETPIVOTDATA(DataPilot; Constraints)</paragraph>
+         <paragraph xml-lang="en-US" id="par_id1665089" role="code" l10n="CHG">GETPIVOTDATA(TargetField; pivot table; [ Field 1; Item 1; ... ])</paragraph>
+         <paragraph xml-lang="en-US" id="par_id4997100" role="code" l10n="CHG">GETPIVOTDATA(pivot table; Constraints)</paragraph>
          <paragraph xml-lang="en-US" id="par_id1672109" role="paragraph" l10n="NEW">The second syntax is assumed if exactly two parameters are given, of which the first parameter is a cell or cell range reference. The first syntax is assumed in all other cases. The Function Wizard shows the first syntax.</paragraph>
          <paragraph xml-lang="en-US" id="hd_id9464094" role="heading" level="3" l10n="NEW">First Syntax</paragraph>
          <paragraph xml-lang="en-US" id="par_id9302346" role="paragraph" l10n="NEW">
-            <emph>TargetField</emph> is a string that selects one of the DataPilot table's data fields. The string can be the name of the source column, or the data field name as shown in the table (like "Sum - Sales").</paragraph>
+            <emph>TargetField</emph> is a string that selects one of the pivot table's data fields. The string can be the name of the source column, or the data field name as shown in the table (like "Sum - Sales").</paragraph>
          <paragraph xml-lang="en-US" id="par_id8296151" role="paragraph" l10n="NEW">
-            <emph>DataPilot</emph> is a reference to a cell or cell range that is positioned within a DataPilot table or contains a DataPilot table. If the cell range contains several DataPilot tables, the table that was created last is used.</paragraph>
-         <paragraph xml-lang="en-US" id="par_id4809411" role="paragraph" l10n="NEW">If no <emph>Field n / Item n</emph> pairs are given, the grand total is returned. Otherwise, each pair adds a constraint that the result must satisfy. <emph>Field n</emph> is the name of a field from the DataPilot table. <emph>Item n</emph> is the name of an item from that field.</paragraph>
-         <paragraph xml-lang="en-US" id="par_id6454969" role="paragraph" l10n="NEW">If the DataPilot table contains only a single result value that fulfills all of the constraints, or a subtotal result that summarizes all matching values, that result is returned. If there is no matching result, or several ones without a subtotal for them, an error is returned. These conditions apply to results that are included in the DataPilot table.</paragraph>
-         <paragraph xml-lang="en-US" id="par_id79042" role="paragraph" l10n="NEW">If the source data contains entries that are hidden by settings of the DataPilot table, they are ignored. The order of the Field/Item pairs is not significant. Field and item names are not case-sensitive.</paragraph>
-         <paragraph xml-lang="en-US" id="par_id7928708" role="paragraph" l10n="CHG">If no constraint for a page field is given, the field's selected value is implicitly used. If a constraint for a page field is given, it must match the field's selected value, or an error is returned. Page fields are the fields at the top left of a DataPilot table, populated using the "Page Fields" area of the DataPilot Layout dialog. From each page field, an item (value) can be selected, which means only that item is included in the calculation.</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3864253" role="paragraph" l10n="NEW">Subtotal values from the DataPilot table are only used if they use the function "auto" (except when specified in the constraint, see <item type="literal">Second Syntax</item> below).</paragraph>
+            <emph>pivot table</emph> is a reference to a cell or cell range that is positioned within a pivot table or contains a pivot table. If the cell range contains several pivot tables, the table that was created last is used.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id4809411" role="paragraph" l10n="NEW">If no <emph>Field n / Item n</emph> pairs are given, the grand total is returned. Otherwise, each pair adds a constraint that the result must satisfy. <emph>Field n</emph> is the name of a field from the pivot table. <emph>Item n</emph> is the name of an item from that field.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id6454969" role="paragraph" l10n="NEW">If the pivot table contains only a single result value that fulfills all of the constraints, or a subtotal result that summarizes all matching values, that result is returned. If there is no matching result, or several ones without a subtotal for them, an error is returned. These conditions apply to results that are included in the pivot table.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id79042" role="paragraph" l10n="NEW">If the source data contains entries that are hidden by settings of the pivot table, they are ignored. The order of the Field/Item pairs is not significant. Field and item names are not case-sensitive.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id7928708" role="paragraph" l10n="CHG">If no constraint for a page field is given, the field's selected value is implicitly used. If a constraint for a page field is given, it must match the field's selected value, or an error is returned. Page fields are the fields at the top left of a pivot table, populated using the "Page Fields" area of the pivot table layout dialog. From each page field, an item (value) can be selected, which means only that item is included in the calculation.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id3864253" role="paragraph" l10n="NEW">Subtotal values from the pivot table are only used if they use the function "auto" (except when specified in the constraint, see <item type="literal">Second Syntax</item> below).</paragraph>
          <paragraph xml-lang="en-US" id="hd_id3144016" role="heading" level="3" l10n="NEW">Second Syntax</paragraph>
          <paragraph xml-lang="en-US" id="par_id9937131" role="paragraph" l10n="NEW">
-            <emph>DataPilot</emph> has the same meaning as in the first syntax.</paragraph>
+            <emph>pivot table</emph> has the same meaning as in the first syntax.</paragraph>
          <paragraph xml-lang="en-US" id="par_id5616626" role="paragraph" l10n="CHG">
             <emph>Constraints</emph> is a space-separated list. Entries can be quoted (single quotes). The whole string must be enclosed in quotes (double quotes), unless you reference the string from another cell.</paragraph>
-         <paragraph xml-lang="en-US" id="par_id4076357" role="paragraph" l10n="NEW">One of the entries can be the data field name. The data field name can be left out if the DataPilot table contains only one data field, otherwise it must be present. </paragraph>
-         <paragraph xml-lang="en-US" id="par_id8231757" role="paragraph" l10n="CHG">Each of the other entries specifies a constraint in the form <item type="literal">Field[Item]</item> (with literal characters [ and ]), or only <item type="literal">Item</item> if the item name is unique within all fields that are used in the DataPilot table.<comment>i82342</comment></paragraph>
+         <paragraph xml-lang="en-US" id="par_id4076357" role="paragraph" l10n="NEW">One of the entries can be the data field name. The data field name can be left out if the pivot table contains only one data field, otherwise it must be present.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id8231757" role="paragraph" l10n="CHG">Each of the other entries specifies a constraint in the form <item type="literal">Field[Item]</item> (with literal characters [ and ]), or only <item type="literal">Item</item> if the item name is unique within all fields that are used in the pivot table.<comment>i82342</comment></paragraph>
          <paragraph xml-lang="en-US" id="par_id3168736" role="paragraph" l10n="CHG">A function name can be added in the form <emph>Field[Item;Function]</emph>, which will cause the constraint to match only subtotal values which use that function. The possible function names are Sum, Count, Average, Max, Min, Product, Count (Numbers only), StDev (Sample), StDevP (Population), Var (Sample), and VarP (Population), case-insensitive.</paragraph><comment>UFI: Example from spec doc is quite difficult to localize. Try to find other one</comment>
 </section>
 </sort>
