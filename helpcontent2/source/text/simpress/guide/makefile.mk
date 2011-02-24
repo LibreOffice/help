@@ -79,7 +79,7 @@ XHPFILES = \
    table_insert.xhp \
    text2curve.xhp \
    vectorize.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

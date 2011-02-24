@@ -137,7 +137,7 @@ XHPFILES = \
    effectoptionstiming.xhp \
    slidesorter.xhp \
    taskpanel.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

@@ -131,7 +131,7 @@ XHPFILES = \
    tablewizard03.xhp \
    tablewizard04.xhp \
    toolbars.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

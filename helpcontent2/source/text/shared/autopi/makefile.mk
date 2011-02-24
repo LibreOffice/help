@@ -122,7 +122,7 @@ XHPFILES = \
    webwizard06.xhp \
    webwizard07.xhp \
    webwizard07fc.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

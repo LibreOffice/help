@@ -46,7 +46,7 @@ MODULE  = scalc
 XHPFILES = \
    02140000.xhp \
    empty_cells.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

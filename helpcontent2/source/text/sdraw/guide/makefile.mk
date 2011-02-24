@@ -60,7 +60,7 @@ XHPFILES = \
    main.xhp \
    rotate_object.xhp \
    text_enter.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

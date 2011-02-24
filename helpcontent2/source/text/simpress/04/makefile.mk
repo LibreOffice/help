@@ -45,7 +45,7 @@ MODULE  = simpress
 # this list matches the *.xhp files to process
 XHPFILES = \
    01020000.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

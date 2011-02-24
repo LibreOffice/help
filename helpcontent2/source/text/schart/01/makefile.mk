@@ -89,7 +89,7 @@ XHPFILES = \
    wiz_chart_type.xhp \
    wiz_data_range.xhp \
    wiz_data_series.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

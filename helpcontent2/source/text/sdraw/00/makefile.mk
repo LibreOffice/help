@@ -45,7 +45,7 @@ MODULE  = sdraw
 # this list matches the *.xhp files to process
 XHPFILES = \
    00000004.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

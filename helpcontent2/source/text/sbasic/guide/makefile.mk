@@ -50,7 +50,7 @@ XHPFILES = \
    sample_code.xhp \
    show_dialog.xhp \
    translation.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

@@ -45,7 +45,7 @@ MODULE  = shared
 # this list matches the *.xhp files to process
 XHPFILES = \
    09000000.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

@@ -54,7 +54,7 @@ XHPFILES = \
    newline.xhp \
    parentheses.xhp \
    text.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

@@ -189,7 +189,7 @@ XHPFILES = \
    paintbrush.xhp \
    stars.xhp \
    symbolshapes.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

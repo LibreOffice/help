@@ -221,7 +221,7 @@ XHPFILES = \
    solver.xhp \
    solver_options.xhp \
    text2columns.xhp 
-    
+	
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk
