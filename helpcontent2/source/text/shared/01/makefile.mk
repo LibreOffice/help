@@ -321,8 +321,6 @@ XHPFILES = \
    guides.xhp \
    mediaplayer.xhp \
    moviesound.xhp \
-   online_update.xhp \
-   online_update_dialog.xhp \
    packagemanager.xhp \
    password_dlg.xhp \
    password_main.xhp \
@@ -337,7 +335,7 @@ XHPFILES = \
    xformsdatachange.xhp \
    xformsdataname.xhp \
    xformsdatatab.xhp 
-    
+
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk
