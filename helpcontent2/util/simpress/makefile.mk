@@ -615,8 +615,6 @@ LINKLINKFILES= \
    text$/shared$/01$/guides.xhp \
    text$/shared$/01$/mediaplayer.xhp \
    text$/shared$/01$/moviesound.xhp \
-   text$/shared$/01$/online_update.xhp \
-   text$/shared$/01$/online_update_dialog.xhp \
    text$/shared$/01$/packagemanager.xhp \
    text$/shared$/01$/password_dlg.xhp \
    text$/shared$/01$/password_main.xhp \
@@ -1177,7 +1175,6 @@ LINKLINKFILES= \
    text$/shared$/optionen$/01160100.xhp \
    text$/shared$/optionen$/01160200.xhp \
    text$/shared$/optionen$/01160201.xhp \
-   text$/shared$/optionen$/improvement.xhp \
    text$/shared$/optionen$/java.xhp \
    text$/shared$/optionen$/javaclasspath.xhp \
    text$/shared$/optionen$/javaparameters.xhp \
@@ -1185,7 +1182,6 @@ LINKLINKFILES= \
    text$/shared$/optionen$/macrosecurity_sl.xhp \
    text$/shared$/optionen$/macrosecurity_ts.xhp \
    text$/shared$/optionen$/mailmerge.xhp \
-   text$/shared$/optionen$/online_update.xhp \
    text$/shared$/optionen$/serverauthentication.xhp \
    text$/shared$/optionen$/testaccount.xhp \
    text$/shared$/optionen$/viewcertificate.xhp \
