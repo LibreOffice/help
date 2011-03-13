@@ -36,8 +36,8 @@ JAVA_LIBRARY_PATH= -Djava.library.path=$(SOLARSHAREDBIN)
 
 XSL_DIR*:=$(SOLARBINDIR)
 
-$(LINKALLTARGETS) : $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/$$(@:b:s/_/./:e:s/.//)/$i) $(subst,LANGUAGE,$$(@:b:s/_/./:e:s/.//) $(LINKADDEDDEPS)) $(COMMONMISC)$/xhp_changed.flag $(PRJ)$/helpers$/hid.lst
-    $(HELPLINKER) @$(mktmp -mod $(LINKNAME) -hid $(PRJ)$/helpers$/hid.lst -src $(COMMONMISC) -sty $(XSL_DIR)/embed.xsl -zipdir $(MISC)$/ziptmp$(@:b) -idxcaption $(XSL_DIR)/idxcaption.xsl -idxcontent $(XSL_DIR)/idxcontent.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@.$(INPATH))
+$(LINKALLTARGETS) : $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/$$(@:b:s/_/./:e:s/.//)/$i) $(subst,LANGUAGE,$$(@:b:s/_/./:e:s/.//) $(LINKADDEDDEPS)) $(COMMONMISC)$/xhp_changed.flag
+    $(HELPLINKER) @$(mktmp -mod $(LINKNAME) -src $(COMMONMISC) -sty $(XSL_DIR)/embed.xsl -zipdir $(MISC)$/ziptmp$(@:b) -idxcaption $(XSL_DIR)/idxcaption.xsl -idxcontent $(XSL_DIR)/idxcontent.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@.$(INPATH))
 .IF "$(SOLAR_JAVA)" == "TRUE"
 .IF "$(CHECK_LUCENCE_INDEXER_OUTPUT)" == ""
     $(JAVAI) $(JAVAIFLAGS) $(JAVA_LIBRARY_PATH) -cp "$(my_cp)" com.sun.star.help.HelpIndexerTool -lang $(@:b:s/_/./:e:s/.//) -mod $(LINKNAME) -zipdir $(MISC)$/ziptmp$(@:b) -o $@.$(INPATH)
