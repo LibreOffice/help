@@ -305,17 +305,11 @@ LINKLINKFILES= \
    text$/shared$/00$/00000020.xhp \
    text$/shared$/00$/00000021.xhp \
    text$/shared$/00$/00000099.xhp \
-   text$/shared$/00$/00000202.xhp \
-   text$/shared$/00$/00000203.xhp \
-   text$/shared$/00$/00000204.xhp \
-   text$/shared$/00$/00000205.xhp \
+   text$/shared$/00$/00000200.xhp \
    text$/shared$/00$/00000206.xhp \
    text$/shared$/00$/00000207.xhp \
    text$/shared$/00$/00000208.xhp \
    text$/shared$/00$/00000210.xhp \
-   text$/shared$/00$/00000212.xhp \
-   text$/shared$/00$/00000213.xhp \
-   text$/shared$/00$/00000214.xhp \
    text$/shared$/00$/00000215.xhp \
    text$/shared$/00$/00000401.xhp \
    text$/shared$/00$/00000402.xhp \
@@ -1091,6 +1085,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/xsltfilter_distribute.xhp \
    text$/shared$/main0108.xhp \
    text$/shared$/main0201.xhp \
+   text$/shared$/main0204.xhp \
    text$/shared$/main0208.xhp \
    text$/shared$/main0209.xhp \
    text$/shared$/main0212.xhp \
