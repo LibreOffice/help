@@ -66,6 +66,7 @@ WITH_LANG!:=$(aux_alllangiso)
 LOCTREEFILES:=$(foreach,i,$(aux_alllangiso) $(foreach,j,$(TREEFILES) $(COMMONMISC)$/$i$/$j))
 .ELSE			#IF "$(WITH_LANG)"!=""
 aux_langdirs:=en-US
+help_exist:=en-US
 LOCTREEFILES:=$(foreach,j,$(TREEFILES) $(COMMONMISC)$/en-US$/$j)
 .ENDIF			#IF "$(WITH_LANG)"!=""
 
