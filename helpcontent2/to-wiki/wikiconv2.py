@@ -194,7 +194,10 @@ def load_localization_data(sdf_file):
         # source/text/shared/explorer/database/02010100.xhp#hd_id3149233
         # otherwise we are getting duplicates
         key = '%s#%s'% (spl[1].replace('\\', '/'), spl[4])
-        localization_data[key] = spl[10]
+        try:
+            localization_data[key] = spl[10]
+        except:
+            sys.stderr.write('Warning: Ignored line "%s"\n'% line.encode('utf-8'))
 
     file.close()
     return True

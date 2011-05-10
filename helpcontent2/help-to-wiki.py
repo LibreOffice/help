@@ -10,7 +10,9 @@ import wikiconv2
 
 def usage():
     print '''
-help-to-wiki.py - converts .xhp files into a wiki
+help-to-wiki.py [params] [path to l10n]
+
+Converts .xhp files into a wiki
 
 -h, --help            - this help
 -n, --no-translations - generate only English pages
@@ -52,15 +54,9 @@ def create_wiki_dirs():
             pass
 
 # Langs to handle
-# [16:26:45] <kendy> sophi, timar: Obviously, I am testing with Czech ;-)
-# [16:27:05] <timar> kendy: HUngarian :)
-# [16:27:25] <kendy> timar: :-)
-# [16:27:26] <timar> kendy: Slovenian for Martin
-# [16:28:00] <timar> kendy: and German, Italian, French, Spanish (with large user base)
-# [16:28:13] <sophi> kendy: catalan
-# [16:28:38] <sophi> kendy: also japanese and russian
-# [16:29:48] <sophi> kendy: ans I would say vi too, so you have all kind of script/language and good communities behind ;)
-langs = ['', 'ca', 'cs', 'de', 'es', 'fr', 'hu', 'it', 'ja', 'pt', 'pt-BR', 'ru', 'sl', 'vi']
+langs = ['', 'ca', 'cs', 'da', 'de', 'es', 'fr', 'hu', \
+         'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'pt-BR', 'ru', \
+         'sl', 'sv', 'vi', 'zh-CN', 'zh-TW' ]
 
 # Argument handling
 try:
