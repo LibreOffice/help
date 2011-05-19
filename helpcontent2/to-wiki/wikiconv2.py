@@ -13,9 +13,6 @@ titles = []
 # map of id -> localized text
 localization_data = {}
 
-# content of the hid.lst file for easier searching
-hid_lst = {}
-
 # to collect a list of pages that will be redirections to the pages with nice
 # names
 redirects = []
@@ -117,16 +114,6 @@ replace_text_list = \
      ["%PRODUCTNAME", "{{ProductName}}"],
      ["$PRODUCTNAME", "{{ProductName}}"]
     ]
-
-def load_hid_lst():
-    global hid_lst
-    hid_lst = {}
-    file = codecs.open("helpers/hid.lst", "r", "utf-8")
-    for line in file:
-        ids = line.strip().split(" ")
-        if len(ids) == 2:
-            hid_lst[ids[0].upper()] = ids[1]
-    file.close()
 
 def get_link_filename(link, name):
     text = link.strip()
@@ -400,12 +387,7 @@ class Bookmark(ElementBase):
             self.app = parser.current_app_raw
             self.target = parser.wiki_page_name
             self.authoritative = parser.follow_embed
-            if name.find('.uno:') == 0 or name.find('.HelpId:') == 0:
-                self.redirect = name
-            elif name.upper() in hid_lst:
-                self.redirect = hid_lst[name.upper()]
-            #else:
-            #    sys.stderr.write('Unhandled redirect "%s"\n'% name)
+            self.redirect = name
 
     def get_all(self):
         global redirects
@@ -1284,7 +1266,6 @@ def convert(generate_redirects, lang, sdf_file):
     global images
     images = set()
 
-    load_hid_lst()
     loadallfiles("alltitles.csv")
 
     if lang != '':
