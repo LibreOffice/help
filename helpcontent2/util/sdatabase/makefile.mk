@@ -360,7 +360,6 @@ LINKLINKFILES= \
    text$/shared$/01$/06990000.xhp \
    text$/shared$/01$/07010000.xhp \
    text$/shared$/01$/07080000.xhp \
-   text$/shared$/01$/08060100.xhp \
    text$/shared$/01$/about_meta_tags.xhp \
    text$/shared$/01$/digitalsignatures.xhp \
    text$/shared$/01$/extensionupdate.xhp \
@@ -622,7 +621,6 @@ LINKLINKFILES= \
    text$/shared$/autopi$/01170400.xhp \
    text$/shared$/autopi$/01170500.xhp \
    text$/shared$/autopi$/purchase.xhp \
-   text$/shared$/autopi$/startup.xhp \
    text$/shared$/autopi$/webwizard00.xhp \
    text$/shared$/autopi$/webwizard01.xhp \
    text$/shared$/autopi$/webwizard02.xhp \

@@ -110,7 +110,6 @@ XHPFILES = \
    01170400.xhp \
    01170500.xhp \
    purchase.xhp \
-   startup.xhp \
    webwizard00.xhp \
    webwizard01.xhp \
    webwizard02.xhp \
