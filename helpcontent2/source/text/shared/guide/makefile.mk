@@ -112,7 +112,6 @@ XHPFILES = \
    hyperlink_edit.xhp \
    hyperlink_insert.xhp \
    hyperlink_rel_abs.xhp \
-   hyperlink_search.xhp \
    imagemap.xhp \
    import_ms.xhp \
    insert_bitmap.xhp \

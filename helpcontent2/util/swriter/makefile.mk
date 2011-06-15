@@ -847,7 +847,6 @@ LINKLINKFILES= \
    text$/shared$/02$/09010000.xhp \
    text$/shared$/02$/09020000.xhp \
    text$/shared$/02$/09030000.xhp \
-   text$/shared$/02$/09050000.xhp \
    text$/shared$/02$/09060000.xhp \
    text$/shared$/02$/09070000.xhp \
    text$/shared$/02$/09070100.xhp \
@@ -1180,7 +1179,6 @@ LINKLINKFILES= \
    text$/shared$/guide$/hyperlink_edit.xhp \
    text$/shared$/guide$/hyperlink_insert.xhp \
    text$/shared$/guide$/hyperlink_rel_abs.xhp \
-   text$/shared$/guide$/hyperlink_search.xhp \
    text$/shared$/guide$/imagemap.xhp \
    text$/shared$/guide$/import_ms.xhp \
    text$/shared$/guide$/insert_bitmap.xhp \
@@ -1242,7 +1240,6 @@ LINKLINKFILES= \
    text$/shared$/main0201.xhp \
    text$/shared$/main0204.xhp \
    text$/shared$/main0208.xhp \
-   text$/shared$/main0209.xhp \
    text$/shared$/main0212.xhp \
    text$/shared$/main0213.xhp \
    text$/shared$/main0214.xhp \
