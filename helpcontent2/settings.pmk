@@ -1,4 +1,5 @@
 .INCLUDE : $(LOCAL_COMMON_OUT)/inc$/aux_langs.mk
+.INCLUDE : $(LOCAL_COMMON_OUT)/inc$/help_exist.mk
 
 my_cp:=$(CLASSPATH)$(PATH_SEPERATOR)$(SOLARBINDIR)$/jaxp.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/juh.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/parser.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/xt.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/unoil.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/ridl.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/jurt.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/xmlsearch.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/LuceneHelpWrapper.jar$(PATH_SEPERATOR)$(SOLARBINDIR)$/HelpIndexerTool.jar$
 
@@ -12,4 +13,5 @@ my_cp!:=$(my_cp)$(PATH_SEPERATOR)$(SOLARBINDIR)/lucene-core-2.3.jar$(PATH_SEPERA
 JAVA_LIBRARY_PATH= -Djava.library.path=$(SOLARSHAREDBIN)
 .ENDIF 
 
-aux_alllangiso:=$(foreach,i,$(alllangiso) $(foreach,j,$(aux_langdirs) $(eq,$i,$j  $i $(NULL))))
+aux_alllangiso_all:=$(foreach,i,$(alllangiso) $(foreach,j,$(aux_langdirs) $(eq,$i,$j  $i $(NULL))))
+aux_alllangiso:=$(foreach,i,$(aux_alllangiso_all) $(foreach,j,$(help_exist) $(eq,$i,$j  $i $(NULL))))

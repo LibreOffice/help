@@ -574,7 +574,6 @@ LINKLINKFILES= \
    text$/shared$/01$/04060100.xhp \
    text$/shared$/01$/04060200.xhp \
    text$/shared$/01$/04100000.xhp \
-   text$/shared$/01$/04110000.xhp \
    text$/shared$/01$/04140000.xhp \
    text$/shared$/01$/04150000.xhp \
    text$/shared$/01$/04150100.xhp \
@@ -753,7 +752,6 @@ LINKLINKFILES= \
    text$/shared$/01$/06990000.xhp \
    text$/shared$/01$/07010000.xhp \
    text$/shared$/01$/07080000.xhp \
-   text$/shared$/01$/08060100.xhp \
    text$/shared$/01$/about_meta_tags.xhp \
    text$/shared$/01$/digitalsignatures.xhp \
    text$/shared$/01$/extensionupdate.xhp \
@@ -764,8 +762,6 @@ LINKLINKFILES= \
    text$/shared$/01$/guides.xhp \
    text$/shared$/01$/mediaplayer.xhp \
    text$/shared$/01$/moviesound.xhp \
-   text$/shared$/01$/online_update.xhp \
-   text$/shared$/01$/online_update_dialog.xhp \
    text$/shared$/01$/packagemanager.xhp \
    text$/shared$/01$/password_dlg.xhp \
    text$/shared$/01$/password_main.xhp \
@@ -851,7 +847,6 @@ LINKLINKFILES= \
    text$/shared$/02$/09010000.xhp \
    text$/shared$/02$/09020000.xhp \
    text$/shared$/02$/09030000.xhp \
-   text$/shared$/02$/09050000.xhp \
    text$/shared$/02$/09060000.xhp \
    text$/shared$/02$/09070000.xhp \
    text$/shared$/02$/09070100.xhp \
@@ -1017,7 +1012,6 @@ LINKLINKFILES= \
    text$/shared$/autopi$/01170400.xhp \
    text$/shared$/autopi$/01170500.xhp \
    text$/shared$/autopi$/purchase.xhp \
-   text$/shared$/autopi$/startup.xhp \
    text$/shared$/autopi$/webwizard00.xhp \
    text$/shared$/autopi$/webwizard01.xhp \
    text$/shared$/autopi$/webwizard02.xhp \
@@ -1185,7 +1179,6 @@ LINKLINKFILES= \
    text$/shared$/guide$/hyperlink_edit.xhp \
    text$/shared$/guide$/hyperlink_insert.xhp \
    text$/shared$/guide$/hyperlink_rel_abs.xhp \
-   text$/shared$/guide$/hyperlink_search.xhp \
    text$/shared$/guide$/imagemap.xhp \
    text$/shared$/guide$/import_ms.xhp \
    text$/shared$/guide$/insert_bitmap.xhp \
@@ -1247,7 +1240,6 @@ LINKLINKFILES= \
    text$/shared$/main0201.xhp \
    text$/shared$/main0204.xhp \
    text$/shared$/main0208.xhp \
-   text$/shared$/main0209.xhp \
    text$/shared$/main0212.xhp \
    text$/shared$/main0213.xhp \
    text$/shared$/main0214.xhp \
@@ -1327,7 +1319,6 @@ LINKLINKFILES= \
    text$/shared$/optionen$/01160100.xhp \
    text$/shared$/optionen$/01160200.xhp \
    text$/shared$/optionen$/01160201.xhp \
-   text$/shared$/optionen$/improvement.xhp \
    text$/shared$/optionen$/java.xhp \
    text$/shared$/optionen$/javaclasspath.xhp \
    text$/shared$/optionen$/javaparameters.xhp \
@@ -1335,7 +1326,6 @@ LINKLINKFILES= \
    text$/shared$/optionen$/macrosecurity_sl.xhp \
    text$/shared$/optionen$/macrosecurity_ts.xhp \
    text$/shared$/optionen$/mailmerge.xhp \
-   text$/shared$/optionen$/online_update.xhp \
    text$/shared$/optionen$/serverauthentication.xhp \
    text$/shared$/optionen$/testaccount.xhp \
    text$/shared$/optionen$/viewcertificate.xhp \

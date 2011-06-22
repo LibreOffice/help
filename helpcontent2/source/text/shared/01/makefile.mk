@@ -132,7 +132,6 @@ XHPFILES = \
    04060100.xhp \
    04060200.xhp \
    04100000.xhp \
-   04110000.xhp \
    04140000.xhp \
    04150000.xhp \
    04150100.xhp \
@@ -311,7 +310,6 @@ XHPFILES = \
    06990000.xhp \
    07010000.xhp \
    07080000.xhp \
-   08060100.xhp \
    about_meta_tags.xhp \
    digitalsignatures.xhp \
    extensionupdate.xhp \
@@ -322,8 +320,6 @@ XHPFILES = \
    guides.xhp \
    mediaplayer.xhp \
    moviesound.xhp \
-   online_update.xhp \
-   online_update_dialog.xhp \
    packagemanager.xhp \
    password_dlg.xhp \
    password_main.xhp \
@@ -338,7 +334,7 @@ XHPFILES = \
    xformsdatachange.xhp \
    xformsdataname.xhp \
    xformsdatatab.xhp 
-    
+
 # --- Targets ------------------------------------------------------
 
 .INCLUDE :  target.mk

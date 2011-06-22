@@ -50,7 +50,6 @@ XHPFILES = \
    main0201.xhp \
    main0204.xhp \
    main0208.xhp \
-   main0209.xhp \
    main0212.xhp \
    main0213.xhp \
    main0214.xhp \
