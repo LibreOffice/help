@@ -2,7 +2,6 @@
 """
 Convert an XML-Dump to platformspecific help files.
 Copyright 2011 Timo Richter
-Licensed under GNU GPLv3
 
 This program depends on:
 mwlib
