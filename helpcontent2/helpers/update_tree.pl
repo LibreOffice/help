@@ -68,15 +68,12 @@ if ( ! defined $prj ) {
         {
             $source_dir = $ENV{TRYSDF};
         }
-        else 
+        elsif( defined $ENV{LOCALIZESDF} && $ENV{LOCALIZESDF} ne "" )
         {
             $source_dir = $ENV{LOCALIZESDF};
         }
         $source_dir =~ s/\/auxiliary\/localize.sdf$// ;
     }
-    #else {die "ERROR: The env variables TRYSDF LOCALIZATION_FOUND LOCALIZESDF not found ... something is wrong!\n";}
-
-
     $treestrings = "$source_dir/text/shared/tree_strings.xhp";
 } else {
     $tree_src = "$prj\/source\/auxiliary";
@@ -89,13 +86,11 @@ if ( ! defined $prj ) {
     {
         $source_dir = $ENV{TRYSDF};
     }
-    else 
+    elsif ( defined $ENV{LOCALIZESDF} && $ENV{LOCALIZESDF} ne "" )
     {
         $source_dir = $ENV{LOCALIZESDF};
     }
     $source_dir =~ s/\/auxiliary\/localize.sdf$// ;
-    #else {die "ERROR: The env variables TRYSDF LOCALIZATION_FOUND LOCALIZESDF not found ... something is wrong!\n";}
-
 }
 
 # Get the English tree files as master
@@ -107,15 +102,22 @@ if ( ! defined $prj ) {
 # Update localizations from sdf
 #-------------------------------
 
-@langs = split /\s+/, $with_lang;
-&read_loc;
-print "################\nUpdating the treefiles for @langs \n";
-for $l(@langs) {
-    if ($l ne "en-US") {
-        &do_lang($l);
+if( defined $with_lang && $with_lang ne "" )
+{
+    @langs = split /\s+/, $with_lang;
+    &read_loc;
+    print "################\nUpdating the treefiles for @langs \n";
+    for $l(@langs)
+    {
+        if ($l ne "en-US") {
+            &do_lang($l);
+        }
     }
 }
-
+else
+{
+    print "\nNo WITH_LANG set, skipping l10n\n";
+}
 #-------------------------------
 #
 $t1 = new Benchmark;
