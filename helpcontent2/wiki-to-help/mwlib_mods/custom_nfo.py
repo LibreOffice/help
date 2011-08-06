@@ -14,5 +14,7 @@ class WikiDB(mwlib.cdbwiki.WikiDB):
                 print "Mod: WikiDB"
                 self.nfo = self.get_data("nfo") or self.nfo
                 self.siteinfo = self.get_data("siteinfo") or self.siteinfo
-mwlib.cdbwiki.WikiDB=WikiDB
+
+def apply():
+    mwlib.cdbwiki.WikiDB=WikiDB
 

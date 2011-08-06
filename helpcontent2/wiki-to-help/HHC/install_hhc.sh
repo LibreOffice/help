@@ -32,6 +32,10 @@ cd "$HHDIR"
 
 # Install HTML Help Workshop
 wget -O htmlhelp.exe 'http://go.microsoft.com/fwlink/?LinkId=14188'
+
+# unneccessary
+#wine htmlhelp.exe
+
 cabextract -F hhc.exe htmlhelp.exe
 cabextract -F HHA.dll htmlhelp.exe
 
@@ -40,12 +44,15 @@ cabextract -F hhupd.exe htmlhelp.exe
 cabextract -F itircl.dll hhupd.exe
 cabextract -F itss.dll hhupd.exe
 cabextract -F itcc.dll htmlhelp.exe
+cabextract -F hhctrl.ocx hhupd.exe
 cp -a itircl.dll "$WINEPREFIX/drive_c/windows/system32/"
 cp -a itcc.dll "$WINEPREFIX/drive_c/windows/system32/"
 cp -a itss.dll "$WINEPREFIX/drive_c/windows/system32/"
+cp -a hhctrl.ocx "$WINEPREFIX/drive_c/windows/system32/"
 wine regsvr32 'C:\WINDOWS\SYSTEM32\itcc.dll'
 wine regsvr32 'C:\WINDOWS\SYSTEM32\itircl.dll'
 wine regsvr32 'C:\WINDOWS\SYSTEM32\itss.dll'
+wine regsvr32 'C:\WINDOWS\SYSTEM32\hhctrl.ocx'
 
 # Install MFC40.DLL
 wget -N http://activex.microsoft.com/controls/vc/mfc40.cab

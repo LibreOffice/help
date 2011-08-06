@@ -26,7 +26,8 @@ class Main(object):
     createChm = True # final
     keepTmp = True # final
     workingDir = "./test" # final
-    style=os.path.join(scriptpath,'xsl/htmlhelp/htmlhelp.xsl') # final
+    #style=os.path.join(scriptpath,'xsl/htmlhelp/htmlhelp.xsl') # final
+    style=os.path.join(scriptpath,'htmlhelp.xsl') # final
 
     tmp=None
 
@@ -55,7 +56,8 @@ class Main(object):
         except OSError:
             pass
 
-    def createMetabook(self,xmldump,output):
+    @staticmethod
+    def createMetabook(xmldump,output): # TODO: move to class Metabook
         """
         @xmldump String path
         @output String path
@@ -68,7 +70,7 @@ class Main(object):
         with open(output,"w") as f:
             m.write(f)
 
-    def convert(self,source,dest,startpage=None):
+    def convert(self,source,dest,startpage=None,title="LibreOffice"):
         """
         Create the converted files.
         @source XML-Dump-file
@@ -87,7 +89,7 @@ class Main(object):
         #MW.render("--config=%s/wikiconf.txt"%(tmp),
         #    "-w","docbook","-o",tmp+"/docbook.xml",*names)
         MW.render("--config=%s/wikiconf.txt"%(tmp),
-            "-w","docbook","-o",tmp+"/docbook.xml","-m",metabook)
+            "-w","docbook","-o",tmp+"/docbook.xml","-m",metabook,"--title",title)
         #and mwlib.apps.render
         #self.ex(self.mwpath+"mw-buildcdb","--input",source,"--output",tmp) and \
         #self.ex(
