@@ -23,25 +23,36 @@ class Article(object):
 class Metabook(object):
     """ 
     I am your metabook and wish you a pleasant evening. 
+    Sequence of usage:
+        m = Metabook()
+        m.loadTemplate(...)
+        m.loadArticles(xml input)
+        m.createBook()
+        m.write(output)
+    If template, in- and output are files, use fromFileToFile()
     """
     ArticleClass = Article # final
     artTags = ["title"] # final
 
     m = {} # Dict metabook
-    source = "" # String input file, xmldump
-    dest = "" # FileObject destination of json metabook
+    template = None
+    items = []
+    #source = "" # String input file, xmldump
+    #dest = "" # FileObject destination of json metabook
 
     def getClone(self):
         m = Metabook()
-        m.m = self.m.copy()
+        m.template = self.template # No copy() neccessary here
+        m.ArticleClass = self.ArticleClass
+        m.artTags = self.artTags
+        #m.m = self.m.copy()
         #m.dest = self.dest
-        #m.source = self.source
         return m
 
     def getArtTags(self,filename,tagnames):
         """ 
         Get Article Tags
-        Reads all title tags from an xml file and returns a list of all titles.
+        Reads all specified tags from an xml file and returns a list of all tags.
         @filename XML-file
         @tagnames List of String Tagnames
         @return List of Dict<String Tagname, String Value>
@@ -80,32 +91,64 @@ class Metabook(object):
         Loads an existing json file at the beginning 
         @jsonStruct File object
         """
-        self.m = json.load(jsonStruct)
+        self.template = json.load(jsonStruct)
         #self.m = self.load_data(source)
 
-    def setArticles(self):
-        pages = self.getArtTags(self.source,self.artTags)
+    def loadArticles(self,source):
+        """
+        Loads the articles and saves them as objects to self.items
+        """
+        pages = self.getArtTags(source,self.artTags)
+        self.items = [self.ArticleClass(page) for page in pages]
+        """return
         items=[]
         for page in pages:
-            #item=self.itemTag.copy()
-            #item["title"] = name
             item = self.ArticleClass(page)
             if item.getInclude():
                 items.append(item.toDict())
         self.m["items"] = items
+        """
+
+    def createBook(self):
+        """
+        Convert all article objects to dicts and merge them with the template.
+        The result is saved to self.m
+        """
+        if self.template is None:
+            self.m = []
+        else:
+            self.m = self.template.copy()
+        self.m["items"] = []
+        for item in self.items:
+            if item.getInclude():
+                self.m["items"].append(item.toDict())
 
     def __call__(self,source):
         """
-        Creates a metabook for @source and saves it to @dest
+        Creates a metabook for @source and writes it to self.m. To continue, 
+            use write()
         @source xml-dump
-        @dest File object as destination of json-file
         """
-        self.source = source
-        #self.dest = dest
-        #self.loadStructure()
-        self.setArticles()
+        self.loadArticles(source)
+        self.createBook()
 
     def write(self,dest):
         json.dump(self.m,dest)
         
+    def fromFileToFile(jsonStructFile,xmldump,output): 
+        """
+        Creates a Metabook from a file and writes it to a file.
+        Short cut Function. This loads a metabook template file, creates the 
+            metabook content from @xmldump and writes the book to @output.
+        @jsonStructFile String path to Metabook template
+        @xmldump String path
+        @output String path
+        """
+        #m = MetabookTranslated()
+        with open(jsonStructFile,"r") as f:
+            self.loadTemplate(f)
+        self.__call__(xmldump)
+        with open(output,"w") as f:
+            self.write(f)
+
 

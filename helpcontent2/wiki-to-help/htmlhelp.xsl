@@ -17,8 +17,7 @@
      ******************************************************************** -->
 
 <xsl:import href="xsl/html/chunk.xsl"/>
-<xsl:param name="htmlhelp.use.hhk" select="0"></xsl:param>
+<xsl:param name="htmlhelp.use.hhk" select="1"></xsl:param>
 <xsl:include href="xsl/htmlhelp/htmlhelp-common.xsl"/>
-<xsl:param name="generate.index" select="1"/>
 
 </xsl:stylesheet>

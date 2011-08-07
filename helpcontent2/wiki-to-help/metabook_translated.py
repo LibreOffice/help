@@ -1,5 +1,5 @@
 import metabook
-import re
+import re, os
 
 class ArticleTranslated(metabook.Article):
     lang = "en" # default language code
@@ -47,9 +47,67 @@ class MetabookTranslated(metabook.Metabook):
     ArticleClass=ArticleTranslated
     artTags = ["title","comment"]
 
-    def splitByLanguage(self):
+class LanguageSeparator(object):
+    """
+    A translated metabook is a metabook where all titles are in the destination
+    language. 
+    This class splits a translated metabook into many books with homogenous languages.
+    """
+    books={} # Dict<Str lang, Metabook>
+    sortedItems={} # Dict<Str lang, List<TranslatedArticle>>
+    items=[] # List<TranslatedArticle>
+
+    def __init__(self, book):
+        self.book = book
+        self.items = book.items
+
+    def splitItemsByLanguage(self):
         """
         @return List of Metabook
         """
-        pass
+        sortedItems={}
+        for item in self.items:
+            if item.lang in sortedItems.keys():
+                sortedItems[item.lang].append(item)
+            else:
+                sortedItems[item.lang] = [item]
+        self.sortedItems = sortedItems
+        #return sortedItems
+
+    def createBooksByLanguage(self):
+        for lang, items in self.sortedItems.iteritems():
+            m = self.book.getClone()
+            m.items = items
+            m.lang = lang
+            self.books[lang] = m
+        
+    @staticmethod
+    def fromFileToFiles(jsonStructFile,xmldump,output): 
+        """
+        Creates a Metabook from a file and writes it to one file per language.
+        Short cut Function. This loads a metabook template file, creates the 
+            metabook content from @xmldump and writes the book to @output.
+        @jsonStructFile String path to Metabook template
+        @xmldump String path
+        @output String path to output directory
+        @return Dict<String lang, String output>
+        """
+        m = MetabookTranslated()
+        with open(jsonStructFile,"r") as f:
+            m.loadTemplate(f)
+
+        m.loadArticles(xmldump)
+        ls = LanguageSeparator(m)
+        ls.splitItemsByLanguage()
+        ls.createBooksByLanguage()
+
+        pathlist={}
+
+        for lang, book in ls.books.iteritems():
+            book.createBook()
+            dest = os.path.join(output,"metabook_%s.json" % lang)
+            pathlist[lang] = dest
+            with open(dest,"w") as f:
+                book.write(f)
+        return pathlist
 
