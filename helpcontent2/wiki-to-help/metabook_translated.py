@@ -39,6 +39,7 @@ class ArticleTranslated(metabook.Article):
 
 class MetabookTranslated(metabook.Metabook):
     """ 
+    This metabook contains all articles with translated titles.
     This concrete metabook expects article titles in this form:
         Category/Title/lang
     Comments include this:
@@ -63,7 +64,7 @@ class LanguageSeparator(object):
 
     def splitItemsByLanguage(self):
         """
-        @return List of Metabook
+        Sort the articles in self.items by language and put them to self.sortedItems
         """
         sortedItems={}
         for item in self.items:
@@ -75,6 +76,10 @@ class LanguageSeparator(object):
         #return sortedItems
 
     def createBooksByLanguage(self):
+        """
+        Generate metabooks to self.books.
+        Create a metabook for each language from self.sortedItems.
+        """
         for lang, items in self.sortedItems.iteritems():
             m = self.book.getClone()
             m.items = items

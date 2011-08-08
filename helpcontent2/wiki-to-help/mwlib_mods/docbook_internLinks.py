@@ -37,6 +37,7 @@ import lxml.etree
 class MyDocBookWriter(mwlib.docbookwriter.DocBookWriter):
     def getTargetId(self,title):
         """ Transform "The first article" to "The_first_article" """
+        # See mwlib.zipwiki.normalize_title()
         return title.replace(" ","_")
 
     def dbwriteArticle(self, a):

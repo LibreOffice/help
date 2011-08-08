@@ -27,9 +27,10 @@ class Main(object):
     ''' Defines program parameters and returns them as a dictionary '''
     def parseArgs(self):
         parser = argparse.ArgumentParser(description='Conversion from a mediawiki xml-dumpfile to helpfiles')
-        parser.add_argument("--startpage", metavar="Path", dest="startpage", default=None, type=str, help="Sets a HTML-file as the start page")
+        parser.add_argument("--startpage", metavar="PATH", dest="startpage", default=None, type=str, help="Sets a HTML-file as the start page")
+        parser.add_argument("--images", metavar="PATH", dest="imgPath", default=None, type=str, help="Uses images from PATH")
         parser.add_argument("--keep", dest="keepTmp", default=False, action='store_true', help="Keeps temporary files in /tmp")
-        parser.add_argument("--only-en", dest="onlyEn", action='store_true', default=False, help="Convert only English articles")
+        parser.add_argument("--only-en", dest="onlyEn", action='store_true', default=False, help="Converts only English articles")
         parser.add_argument("--no-chm", dest="createChm", default=True, action='store_false', help="Avoids creation of a CHM file at the end")
         parser.add_argument("input", type=str, help="XML input")
         parser.add_argument("output", type=str, help="Directory for output")
@@ -45,6 +46,7 @@ class Main(object):
             dest=args.output,
             startpage=args.startpage,
             onlyEn=args.onlyEn,
+            imgPath=args.imgPath,
         )()
         exit(int(not r))
 
@@ -52,7 +54,6 @@ class Main(object):
 class Converter(object):
     createChm = None # 
     keepTmp = None # 
-    #workingDir = "./test" # final
     #style=os.path.join(scriptpath,'xsl/htmlhelp/htmlhelp.xsl') # final
     style=os.path.join(scriptpath,'htmlhelp.xsl') # final
     title="LibreOffice" # final
@@ -69,11 +70,10 @@ class Converter(object):
         print cmd
         return (subprocess.Popen(cmd).wait() == 0)
 
-    def __init__(self,source,dest,onlyEn,keepTmp=False,createChm=True,startpage=None):
+    def __init__(self,source,dest,onlyEn,imgPath,
+        keepTmp=False,createChm=True,startpage=None):
         """
-        @source XML-Dump-file
-        @dest Directory for output
-        @startpage Path to an html file
+        Parameters are documented in Main.parseArgs()
         """
         self.createChm = createChm
         self.keepTmp=keepTmp
@@ -88,6 +88,11 @@ class Converter(object):
         self.dest=dest
         self.startpage=startpage
         self.onlyEn = onlyEn
+        if imgPath:
+            self.imgPath = os.path.join(imgPath,"IMAGENAME")
+        else:
+            self.imgPath = "IMAGENAME"
+
         
     def createDir(self,path):
         try:
@@ -126,7 +131,8 @@ class Converter(object):
         docbookfile = os.path.join(tmp,"docbook_%s.xml"%lang)
         chmDest = os.path.join(self.dest,lang+".chm")
 
-        MW.render("--config=%s/wikiconf.txt"%(tmp),
+        MW.render("-L",lang,"-W","imagesrcresolver=%s"%self.imgPath,
+            "--config=%s/wikiconf.txt"%(tmp),
             "-w","docbook","-o",docbookfile,"-m",metabook,"--title",self.title)
         shutil.copy(docbookfile,self.dest)
         if not self.ex("/usr/bin/xsltproc","--nonet","--novalid","-o",tmp+'/',self.style,docbookfile): return False
