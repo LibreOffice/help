@@ -5,6 +5,12 @@ Usage: import mwlib_mods
 
 # The order of the imports is relevant!
 
+import docbook_grammar
+docbook_grammar.apply()
+
+import docbook_table_tags
+docbook_table_tags.apply()
+
 import docbookwriter_options
 docbookwriter_options.apply()
 

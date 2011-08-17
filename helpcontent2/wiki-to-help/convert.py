@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+#!/usr/bin/python -i
 """
 Convert an XML-Dump to platformspecific help files.
 Copyright 2011 Timo Richter
@@ -115,17 +116,17 @@ class Converter(object):
 
     def setupImgPath(self):
         """
-        If --images is not given, the path will be in the format "name.jpg".
+        If --images is not given, the path will be in the format "images/name.jpg".
         If --images is given a zipfile, it is being extracted to "images/".
         If --images is a directory, it is being copied to "images/".
         The filenames in images/ are being stored to self.includeFiles.
         """ 
         imgDest = "images" # puts images to output/imgDest/
         if not self.imgPath:
-            self.imgPath = "IMAGENAME"
+            self.imgPath = os.path.join(imgDest,"IMAGENAME")
             return
         extension = os.path.splitext(self.imgPath)[1].lower()
-        imgTmp = os.path.join(self.tmp,"images")
+        imgTmp = os.path.join(self.tmp,imgDest)
         print "Copying images..."
         if extension == ".zip":
             self.ex("unzip","-q","-o","-j","-d",imgTmp,self.imgPath)

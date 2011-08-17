@@ -3,6 +3,8 @@ This enables the conversion of article links to internal links within the docboo
 Usage:
     import docbook_internLinks
     docbook_internLinks.apply()
+Requires:
+    docbook_grammar
 
 Author: Timo Richter
 """
@@ -22,13 +24,6 @@ class MyAdapt(mwlib.nuwiki.adapt):
 
 def setupAdapt():
     mwlib.nuwiki.adapt = MyAdapt
-
-
-## Set up docbookwriter.grammar
-import mwlib.docbookwriter
-import docbook45grammar
-def setupGrammar():
-    mwlib.docbookwriter.grammar = docbook45grammar.grammar
 
 
 ## Set up docbookwriter
@@ -75,7 +70,7 @@ def setupDocBookWriter():
 
 def apply():
     setupAdapt()
-    setupGrammar()
+    #setupGrammar()
     setupDocBookWriter()
 
 
