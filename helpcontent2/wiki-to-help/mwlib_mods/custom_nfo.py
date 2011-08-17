@@ -11,7 +11,6 @@ class WikiDB(mwlib.cdbwiki.WikiDB):
                 except(RuntimeError):
                     print("Warning: "+"could not get siteinfo for language %r" % (lang,))
                     print("Please set up a custom siteinfo and nfo.")
-                print "Mod: WikiDB"
                 self.nfo = self.get_data("nfo") or self.nfo
                 self.siteinfo = self.get_data("siteinfo") or self.siteinfo
 

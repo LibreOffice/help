@@ -5,10 +5,10 @@ Writes <article>...</article> instead of <article><section>...</section></articl
 
 import mwlib.docbookwriter
 #import lxml.etree
-#Element = mwlib.docbookwriter.Element
+Element = mwlib.docbookwriter.Element
+SubElement = mwlib.docbookwriter.SubElement
 class MyDocBookWriter(mwlib.docbookwriter.DocBookWriter):
     def dbwriteArticle(self, a):
-        from mwlib.docbookwriter import *
         """
         this generates the root element if not available
         """

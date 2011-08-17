@@ -61,7 +61,7 @@ class Converter(object):
     keepTmp = None # 
     #style=os.path.join(scriptpath,'xsl/htmlhelp/htmlhelp.xsl') # final
     style=os.path.join(scriptpath,'htmlhelp.xsl') # final
-    title="LibreOffice" # final
+    title="Book" # final
 
     tmp=None
     includeFiles=[]
@@ -87,6 +87,25 @@ class Converter(object):
         self.verbose = verbose
         self.ex = Executor(showErr=verbose,showOutput=True,showCmd=verbose)
         self.hhc = HHC(showErr=True,showOutput=verbose,showCmd=verbose)
+        self.title = self.getTitle(self.title)
+
+    def getTitle(self,default=None):
+        """
+        If given, return TEXT from <siteinfo><sitename>TEXT</sitename></siteinfo>
+            in xml file self.source.
+        Otherwise return @default
+        """
+        import xml.dom.minidom
+        print "Loading title"
+        dom = xml.dom.minidom.parse(self.source)
+        try:
+            siteinfo = dom.getElementsByTagName("siteinfo")[0]
+            sitename = siteinfo.getElementsByTagName("sitename")[0]
+            name = sitename.childNodes[0].data
+        except IndexError:
+            return default
+        else:
+            return name
         
     def createDir(self,path):
         try:
@@ -107,11 +126,12 @@ class Converter(object):
             return
         extension = os.path.splitext(self.imgPath)[1].lower()
         imgTmp = os.path.join(self.tmp,"images")
-        print "Moving images..."
+        print "Copying images..."
         if extension == ".zip":
             self.ex("unzip","-q","-o","-j","-d",imgTmp,self.imgPath)
         else:
             shutil.copytree(self.imgPath,imgTmp)
+        shutil.copytree(imgTmp, os.path.join(self.dest,imgDest) )
         self.imgPath = os.path.join(imgDest,"IMAGENAME")
         # Save filenames for inclusion in chm
         for fname in os.listdir(imgTmp):
@@ -134,6 +154,8 @@ class Converter(object):
         """
         tmp = self.tmp
         self.createDir(self.dest)
+
+        print "Working directory: "+tmp
 
         self.setupImgPath()
 
@@ -158,7 +180,7 @@ class Converter(object):
         """
         print "Rendering language "+lang
         tmp = self.tmp
-        docbookfile = os.path.join(tmp,"docbook_%s.xml"%lang)
+        docbookfile = os.path.join(tmp,"%s.xml"%lang)
         chmDest = os.path.join(self.dest,lang+".chm")
 
         renderArgs = ("-L",lang,"-W","imagesrcresolver=%s"%self.imgPath,

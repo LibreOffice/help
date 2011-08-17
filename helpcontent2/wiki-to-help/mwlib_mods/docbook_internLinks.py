@@ -33,7 +33,9 @@ def setupGrammar():
 
 ## Set up docbookwriter
 import mwlib.docbookwriter
-import lxml.etree
+#import lxml.etree
+Element = mwlib.docbookwriter.Element
+SubElement = mwlib.docbookwriter.SubElement
 class MyDocBookWriter(mwlib.docbookwriter.DocBookWriter):
     def getTargetId(self,title):
         """ Transform "The first article" to "The_first_article" """
@@ -51,7 +53,6 @@ class MyDocBookWriter(mwlib.docbookwriter.DocBookWriter):
         return e
 
     def dbwriteArticleLink(self, obj):
-        Element = mwlib.docbookwriter.Element
         a = Element("link")
         if obj.target:
             a.set("linkend", obj.target)

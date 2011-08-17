@@ -37,7 +37,6 @@ def setupWriter():
 import mwlib.docbookwriter
 class MyDocBookWriter(mwlib.docbookwriter.DocBookWriter):
     def dbwriteImageLink(self, obj): 
-        print "Mod:dbwriteImageLink"
         if obj.target:
             name = obj.target
             obj.target = name[name.find(":") + 1:]
