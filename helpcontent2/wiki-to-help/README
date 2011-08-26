@@ -10,6 +10,7 @@ The following programs are required:
  - python-lxml
  - xsltproc
  - unzip
+ - docbook-xsl-stylesheets
 
 HHC-Installer depends on:
  - wine
@@ -28,6 +29,24 @@ HHC-Installer depends on:
 2 USAGE
 
 See ./convert.py -h
+
+For the correct operation, you need to modify htmlhelp.xsl to point to your
+docbook-xsl-stylesheets installation, like:
+
+--- a/helpcontent2/wiki-to-help/htmlhelp.xsl
++++ b/helpcontent2/wiki-to-help/htmlhelp.xsl
+@@ -16,8 +16,8 @@
+ 
+      ******************************************************************** -->
+ 
+-<xsl:import href="xsl/html/chunk.xsl"/>
++<xsl:import href="/usr/share/xml/docbook/stylesheet/nwalsh/1.76.1/html/chunk.xsl"/>
+ <xsl:param name="htmlhelp.use.hhk" select="1"></xsl:param>
+-<xsl:include href="xsl/htmlhelp/htmlhelp-common.xsl"/>
++<xsl:include href="/usr/share/xml/docbook/stylesheet/nwalsh/1.76.1/htmlhelp/htmlhelp-common.xsl"/>
+ 
+ </xsl:stylesheet>
+
 
 3 LICENSE
 
