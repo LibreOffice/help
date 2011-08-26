@@ -15,11 +15,12 @@ Microsoft HHC: http://go.microsoft.com/fwlink/?LinkId=14188
 
 import subprocess, tempfile, os, shutil, argparse
 
-import mwlib_mods
+#import mwlib_mods # is being imported. see below
 from hhc import HHC
 from mw import MW
 from metabook_translated import MetabookTranslated
 from metabook_translated import LanguageSeparator
+from executor import Executor
 
 scriptpath=os.path.dirname(os.path.realpath(__file__) )
 
@@ -28,10 +29,11 @@ class Main(object):
     def parseArgs(self):
         parser = argparse.ArgumentParser(description='Conversion from a mediawiki xml-dumpfile to helpfiles')
         parser.add_argument("--startpage", metavar="PATH", dest="startpage", default=None, type=str, help="Sets a HTML-file as the start page")
-        parser.add_argument("--images", metavar="PATH", dest="imgPath", default=None, type=str, help="Uses images from PATH")
+        parser.add_argument("--images", metavar="PATH", dest="imgPath", default=None, type=str, help="Uses images from PATH. PATH is a zipfile or a directory.")
         parser.add_argument("--keep", dest="keepTmp", default=False, action='store_true', help="Keeps temporary files in /tmp")
         parser.add_argument("--only-en", dest="onlyEn", action='store_true', default=False, help="Converts only English articles")
         parser.add_argument("--no-chm", dest="createChm", default=True, action='store_false', help="Avoids creation of a CHM file at the end")
+        parser.add_argument("-v", dest="verbose", default=False, action='store_true', help="Verbose")
         parser.add_argument("input", type=str, help="XML input")
         parser.add_argument("output", type=str, help="Directory for output")
 
@@ -39,6 +41,7 @@ class Main(object):
 
     def __init__(self):
         args = self.parseArgs()
+        import mwlib_mods
         r = Converter(
             keepTmp=args.keepTmp, 
             createChm=args.createChm,
@@ -47,11 +50,13 @@ class Main(object):
             startpage=args.startpage,
             onlyEn=args.onlyEn,
             imgPath=args.imgPath,
+            verbose=args.verbose,
         )()
         exit(int(not r))
 
 
 class Converter(object):
+    verbose=False
     createChm = None # 
     keepTmp = None # 
     #style=os.path.join(scriptpath,'xsl/htmlhelp/htmlhelp.xsl') # final
@@ -59,18 +64,9 @@ class Converter(object):
     title="LibreOffice" # final
 
     tmp=None
+    includeFiles=[]
 
-    def ex(self,*cmd):
-        """
-        Execute a program
-        @cmd Command, args
-        @return boolean True if succeed
-        """
-        cmd = [elem for elem in cmd]
-        print cmd
-        return (subprocess.Popen(cmd).wait() == 0)
-
-    def __init__(self,source,dest,onlyEn,imgPath,
+    def __init__(self,source,dest,onlyEn,imgPath,verbose,
         keepTmp=False,createChm=True,startpage=None):
         """
         Parameters are documented in Main.parseArgs()
@@ -79,7 +75,6 @@ class Converter(object):
         self.keepTmp=keepTmp
         self.tmp = tempfile.mkdtemp()
         self.style = os.path.abspath(self.style)
-        self.hhc = HHC()
         source = os.path.abspath(source)
         dest = os.path.abspath(dest)
         if startpage is not None:
@@ -88,17 +83,49 @@ class Converter(object):
         self.dest=dest
         self.startpage=startpage
         self.onlyEn = onlyEn
-        if imgPath:
-            self.imgPath = os.path.join(imgPath,"IMAGENAME")
-        else:
-            self.imgPath = "IMAGENAME"
-
+        self.imgPath = imgPath
+        self.verbose = verbose
+        self.ex = Executor(showErr=verbose,showOutput=True,showCmd=verbose)
+        self.hhc = HHC(showErr=True,showOutput=verbose,showCmd=verbose)
         
     def createDir(self,path):
         try:
             os.mkdir(path)
         except OSError:
             pass
+
+    def setupImgPath(self):
+        """
+        If --images is not given, the path will be in the format "name.jpg".
+        If --images is given a zipfile, it is being extracted to "images/".
+        If --images is a directory, it is being copied to "images/".
+        The filenames in images/ are being stored to self.includeFiles.
+        """ 
+        imgDest = "images" # puts images to output/imgDest/
+        if not self.imgPath:
+            self.imgPath = "IMAGENAME"
+            return
+        extension = os.path.splitext(self.imgPath)[1].lower()
+        imgTmp = os.path.join(self.tmp,"images")
+        print "Moving images..."
+        if extension == ".zip":
+            self.ex("unzip","-q","-o","-j","-d",imgTmp,self.imgPath)
+        else:
+            shutil.copytree(self.imgPath,imgTmp)
+        self.imgPath = os.path.join(imgDest,"IMAGENAME")
+        # Save filenames for inclusion in chm
+        for fname in os.listdir(imgTmp):
+            fpath = os.path.join(imgDest,fname)
+            self.includeFiles.append(fpath)
+
+    def writeHhp(self):
+        """
+        Writes changes to the .hhp-file.
+        self.includeFiles will be flushed to the hhp.
+        """
+        hhp=os.path.join(self.tmp,"htmlhelp.hhp")
+        with open(hhp,"a") as f:
+            f.write("\n".join(self.includeFiles))
 
     def __call__(self):
         """
@@ -107,6 +134,8 @@ class Converter(object):
         """
         tmp = self.tmp
         self.createDir(self.dest)
+
+        self.setupImgPath()
 
         shutil.copy(os.path.join(scriptpath,"nfo.json"),tmp)
         metabook_template = os.path.join(scriptpath,"metabook.json")
@@ -127,16 +156,20 @@ class Converter(object):
         @lang Language of book
         @metabook Path to metabook-json-file
         """
+        print "Rendering language "+lang
         tmp = self.tmp
         docbookfile = os.path.join(tmp,"docbook_%s.xml"%lang)
         chmDest = os.path.join(self.dest,lang+".chm")
 
-        MW.render("-L",lang,"-W","imagesrcresolver=%s"%self.imgPath,
+        renderArgs = ("-L",lang,"-W","imagesrcresolver=%s"%self.imgPath,
             "--config=%s/wikiconf.txt"%(tmp),
             "-w","docbook","-o",docbookfile,"-m",metabook,"--title",self.title)
+        MW.quietCall(MW.render,renderArgs,showErr=self.verbose)
         shutil.copy(docbookfile,self.dest)
+        print "Parsing docbook"
         if not self.ex("/usr/bin/xsltproc","--nonet","--novalid","-o",tmp+'/',self.style,docbookfile): return False
         self.setStartpage(self.startpage)
+        self.writeHhp()
         if self.createChm:
             print("Compiling chm...")
             self.hhc(tmp)

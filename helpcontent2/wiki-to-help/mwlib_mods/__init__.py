@@ -17,6 +17,6 @@ docbook_internLinks.apply()
 import custom_nfo
 custom_nfo.apply()
 
-#import images_from_path
-#images_from_path.apply()
+import indexterm_from_title
+indexterm_from_title.apply()
 
