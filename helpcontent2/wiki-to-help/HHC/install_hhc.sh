@@ -14,15 +14,18 @@
 #           Abortion of install if anything fails, e.g. the download of HHC.
 #
 
-echo "Please wait"
+which wine > /dev/null 2>&1 || { echo "Please install 'wine'." ; exit 1 ; }
+which cabextract > /dev/null 2>&1 || { echo "Please install 'cabextract'." ; exit 1 ; }
+which wget > /dev/null 2>&1 || { echo "Please install 'wget'." ; exit 1 ; }
 
-cd "$(dirname "$0")" # cd to path of this script
+echo "Going to install hhc.exe to your wine installation..."
 
+cd "$(dirname $0)" # cd to path of this script
 
 WINEPREFIX=${WINEPREFIX:=$HOME/.wine}
-test -d "$WINEPREFIX" || wineprefixcreate 2>> /dev/null
+test -d "$WINEPREFIX" || winecfg
 HHDIR="${WINEPREFIX}/dosdevices/c:/htmlhelp"
-mkdir "$HHDIR"
+mkdir -p "$HHDIR"
 
 # Setup the registry
 # Set Wine's Windows version to Windows 2000 (or above), and add an override to use the native itss.dll, both via winecfg.
@@ -61,7 +64,6 @@ cabextract -F mfc40.dll mfc40.exe
 cp -a mfc40.dll "$WINEPREFIX/drive_c/windows/system32/"
 
 echo
-echo Done.
+echo Done, hhc.exe installed.
 
 exit 0
-
