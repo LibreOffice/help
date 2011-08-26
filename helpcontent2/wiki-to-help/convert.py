@@ -13,17 +13,19 @@ Microsoft HHC: http://go.microsoft.com/fwlink/?LinkId=14188
 
 """
 
-import xml.dom.minidom as minidom
 import subprocess, tempfile, os, shutil
 
+import mwlib_mods
 from hhc import HHC
 from mw import MW
+from metabook_translated import MetabookTranslated
 
 scriptpath=os.path.dirname(os.path.realpath(__file__) )
 
 class Main(object):
+    createChm = True # final
+    keepTmp = True # final
     workingDir = "./test" # final
-    #mwpath='/usr/local/bin/' # final
     style=os.path.join(scriptpath,'xsl/htmlhelp/htmlhelp.xsl') # final
 
     tmp=None
@@ -47,6 +49,25 @@ class Main(object):
         self.hhc = HHC()
         self.convert("test2.xml",self.workingDir)
 
+    def createDir(self,path):
+        try:
+            os.mkdir(path)
+        except OSError:
+            pass
+
+    def createMetabook(self,xmldump,output):
+        """
+        @xmldump String path
+        @output String path
+        """
+        m = MetabookTranslated()
+        jsonStructFile = os.path.join(scriptpath,"metabook.json")
+        with open(jsonStructFile,"r") as f:
+            m.loadTemplate(f)
+        m(xmldump)
+        with open(output,"w") as f:
+            m.write(f)
+
     def convert(self,source,dest,startpage=None):
         """
         Create the converted files.
@@ -55,15 +76,18 @@ class Main(object):
         @startpage Path to an html file
         """
         tmp = self.tmp
-        try:
-            os.mkdir(dest)
-        except OSError:
-            pass
-        names = self.getArtNames(source)
-        MW.buildcdb(source,tmp)
-        MW.render("--config=%s/wikiconf.txt"%(tmp),
-            "-w","docbook","-o",tmp+"/docbook.xml",*names)
+        self.createDir(dest)
 
+        shutil.copy(os.path.join(scriptpath,"nfo.json"),tmp)
+        #names = self.getArtNames(source)
+        metabook=os.path.join(tmp,"metabook.json")
+        self.createMetabook(source,metabook)
+        
+        MW.buildcdb(source,tmp)
+        #MW.render("--config=%s/wikiconf.txt"%(tmp),
+        #    "-w","docbook","-o",tmp+"/docbook.xml",*names)
+        MW.render("--config=%s/wikiconf.txt"%(tmp),
+            "-w","docbook","-o",tmp+"/docbook.xml","-m",metabook)
         #and mwlib.apps.render
         #self.ex(self.mwpath+"mw-buildcdb","--input",source,"--output",tmp) and \
         #self.ex(
@@ -72,6 +96,7 @@ class Main(object):
         (shutil.copy(tmp+'/docbook.xml',dest) or True) \
         and self.ex("/usr/bin/xsltproc","--nonet","--novalid","-o",tmp+'/',self.style,tmp+'/docbook.xml') \
         and self.setStartpage(startpage) \
+        and self.createChm \
         and (self.hhc(tmp) or True) \
         and (shutil.copy(os.path.join(tmp,'htmlhelp.chm'),dest) or True)
 
@@ -89,23 +114,8 @@ class Main(object):
         return True
 
     def __del__(self):
-        shutil.rmtree(self.tmp) # remove temp files
-        pass
-
-    def getArtNames(self,filename):
-        """
-        Get Article Names
-        Reads all title tags from an xml file and returns a list of all titles.
-        @filename XML-file
-        @return List of Strings
-        """
-        dom=minidom.parse(filename)
-        elements=dom.getElementsByTagName("title")
-        names=[]
-        for element in elements:
-            name=element.childNodes[0].data
-            names.append(name)
-        return names
+        if not self.keepTmp:
+            shutil.rmtree(self.tmp) # remove temp files
 
 if __name__ == '__main__':
     Main()

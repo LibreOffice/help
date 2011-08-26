@@ -1,8 +1,12 @@
-import mwlib.cdbwiki, mwlib.apps.render, mwlib.apps
+#import mwlib.cdbwiki, mwlib.apps.render, mwlib.apps
+import mwlib.apps
 import sys
 
 class MW(object):
-    """ This is the proxy class for mwlib """
+    """ 
+    Use this adapter class to call mwlib within python.
+    Example: import mw; MW.buildcdb("in.xml","out")
+    """
 
     @staticmethod
     def _setArgs(function,args):
@@ -23,4 +27,5 @@ class MW(object):
 
     @staticmethod
     def render(*args):
+        import mwlib.apps.render
         return MW._setArgs(mwlib.apps.render.Main(),args)
