@@ -67,7 +67,8 @@ class MyDocBookWriter(mwlib.docbookwriter.DocBookWriter):
         nested tables not supported in DocBook V4.4
         """
         table = Element("informaltable") #border=1
-        tgroup = SubElement(table,"tgroup")
+        tgroup = SubElement(table,"tgroup",cols="1") # FIXME: cols=1 is not always correct
+        
         tbody = SubElement(tgroup,"tbody")
         setVList(table, t)           
         if t.caption:

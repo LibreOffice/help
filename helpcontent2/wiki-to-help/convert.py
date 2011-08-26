@@ -190,7 +190,8 @@ class Converter(object):
         MW.quietCall(MW.render,renderArgs,showErr=self.verbose)
         shutil.copy(docbookfile,self.dest)
         print "Parsing docbook"
-        if not self.ex("/usr/bin/xsltproc","--nonet","--novalid","-o",tmp+'/',self.style,docbookfile): return False
+        xsltreturn = self.ex("/usr/bin/xsltproc","--nonet","--novalid","-o",tmp+'/',self.style,docbookfile)
+        if not xsltreturn: return False
         self.setStartpage(self.startpage)
         self.writeHhp()
         if self.createChm:
