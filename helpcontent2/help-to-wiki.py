@@ -90,11 +90,11 @@ os.system( "python to-wiki/getalltitles.py source/text > alltitles.csv" )
 try:
     sdf_path = args[0]
 except:
-    sdf_path = '../../l10n/l10n/source'
+    sdf_path = '../../translations/unxlngx6.pro/misc/sdf-l10n'
     sys.stderr.write('Path to the .sdf files not provided, using "%s"\n'% sdf_path)
 
 # do the work
 for lang in langs:
-    wikiconv2.convert(generate_redirects, lang, '%s/%s/localize.sdf'% (sdf_path, lang))
+    wikiconv2.convert(generate_redirects, lang, '%s/%s.sdf'% (sdf_path, lang))
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:
