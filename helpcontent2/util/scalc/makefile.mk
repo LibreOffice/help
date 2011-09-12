@@ -119,6 +119,7 @@ LINKLINKFILES= \
    text$/scalc$/01$/04060116.xhp \
    text$/scalc$/01$/04060118.xhp \
    text$/scalc$/01$/04060119.xhp \
+   text$/scalc$/01$/04060120.xhp \
    text$/scalc$/01$/04060181.xhp \
    text$/scalc$/01$/04060182.xhp \
    text$/scalc$/01$/04060183.xhp \
