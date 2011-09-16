@@ -54,7 +54,7 @@ ALLTAR : aux_dirs $(COMMONMISC)$/treefiles.done $(COMMONBIN)$/helpimg.ilst
 t_aux_langdirs:=$(shell @find ./ -name "*.cfg" | sed "s/\.\/\///" | sed "s/\.\///" )
 
 aux_langdirs:=$(uniq $(t_aux_langdirs:d:d))
-help_exist:=$(shell @find $(L10N_MODULE)/source/ -type d -name "helpcontent2" | sed -e "s|/helpcontent2||" -e "s|^.*/||" ) en-US
+help_exist:=$(shell @find $(L10N_MODULE)/source/ -type d -name "helpcontent2" | sed -e "s|/helpcontent2||" -e "s|^.*/||" ) en-US qtz
 
 aux_alllangiso_all:=$(foreach,i,$(alllangiso) $(foreach,j,$(aux_langdirs) $(eq,$i,$j  $i $(NULL))))
 aux_alllangiso:=$(foreach,i,$(aux_alllangiso_all) $(foreach,j,$(help_exist) $(eq,$i,$j  $i $(NULL))))
