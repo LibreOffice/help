@@ -227,7 +227,6 @@ LINKLINKFILES= \
    text$/simpress$/02$/13040000.xhp \
    text$/simpress$/02$/13050000.xhp \
    text$/simpress$/02$/13060000.xhp \
-   text$/simpress$/02$/13070000.xhp \
    text$/simpress$/02$/13080000.xhp \
    text$/simpress$/02$/13090000.xhp \
    text$/simpress$/02$/13100000.xhp \
