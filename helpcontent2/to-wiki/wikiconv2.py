@@ -472,8 +472,10 @@ class Text:
 class TableCell(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'tablecell', parent)
+        self.cellHasChildElement = False
 
     def start_element(self, parser, name, attrs):
+        self.cellHasChildElement = True
         if name == 'bookmark':
             self.parse_child(Bookmark(attrs, self, 'div', parser))
         elif name == 'comment':
@@ -488,6 +490,18 @@ class TableCell(ElementBase):
             self.parse_child(Section(attrs, self))
         else:
             self.unhandled_element(parser, name)
+
+    def get_all(self):
+        text = ''
+        if not self.cellHasChildElement: # an empty element
+            if self.parent.isTableHeader: # get from TableRow Element
+                role = 'tablehead'
+            else:
+                role = 'tablecontent'
+            text = text + replace_paragraph_role['start'][role]
+            text = text + replace_paragraph_role['end'][role]
+        text = text + ElementBase.get_all(self)
+        return text
 
 class TableRow(ElementBase):
     def __init__(self, attrs, parent):
@@ -1086,6 +1100,10 @@ class TableContentParagraph(Paragraph):
                 self.role = 'tablecontentcode'
             else:
                 self.role = 'tablecontent'
+        if self.role == 'tablehead':
+            self.parent.parent.isTableHeader = True # self.parent.parent is TableRow Element
+        else:
+            self.parent.parent.isTableHeader = False
 
 class ParserBase:
     def __init__(self, filename, follow_embed, embedding_app, current_app, wiki_page_name, lang, head_object, buffer):
