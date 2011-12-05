@@ -16,8 +16,8 @@
 
      ******************************************************************** -->
 
-<xsl:import href="xsl/html/chunk.xsl"/>
+<xsl:import href="/usr/share/xml/docbook/stylesheet/nwalsh/1.76.1/html/chunk.xsl"/>
 <xsl:param name="htmlhelp.use.hhk" select="1"></xsl:param>
-<xsl:include href="xsl/htmlhelp/htmlhelp-common.xsl"/>
+<xsl:include href="/usr/share/xml/docbook/stylesheet/nwalsh/1.76.1/htmlhelp/htmlhelp-common.xsl"/>
 
 </xsl:stylesheet>
