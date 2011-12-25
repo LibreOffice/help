@@ -531,7 +531,7 @@ class Table(ElementBase):
 
     def get_all(self):
         # + ' align="left"' etc.?
-        text = '{| border="1"\n' + \
+        text = '{| class="wikitable"\n' + \
             ElementBase.get_all(self) + \
             '|}\n\n'
         return text
