@@ -119,6 +119,7 @@ XHPFILES = \
    macrosecurity_sl.xhp \
    macrosecurity_ts.xhp \
    mailmerge.xhp \
+   online_update.xhp \
    serverauthentication.xhp \
    testaccount.xhp \
    viewcertificate.xhp \
