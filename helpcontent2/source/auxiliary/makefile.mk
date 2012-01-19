@@ -99,7 +99,7 @@ aux_dirs .PHONY :
 
 $(COMMONBIN)$/helpimg.ilst .PHONY:
     -$(RM) $@
-    $(PERL) $(PRJ)$/helpers$/create_ilst.pl -dir=$(SOLARSRC)/icon-themes/galaxy/res/helpimg > $@.$(INPATH)
+    $(PERL) $(PRJ)$/helpers$/create_ilst.pl -dir=$(SRC_ROOT)/icon-themes/galaxy/res/helpimg > $@.$(INPATH)
     $(RENAME) $@.$(INPATH) $@
     
 
