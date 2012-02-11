@@ -60,8 +60,10 @@ aux_alllangiso_all:=$(foreach,i,$(alllangiso) $(foreach,j,$(aux_langdirs) $(eq,$
 aux_alllangiso:=$(foreach,i,$(aux_alllangiso_all) $(foreach,j,$(help_exist) $(eq,$i,$j  $i $(NULL))))
 
 WITH_LANG!:=$(aux_alllangiso)
-
 .EXPORT : WITH_LANG
+
+XMLLINT !:=$(XMLLINT)
+.EXPORT : XMLLINT
 
 LOCTREEFILES:=$(foreach,i,$(aux_alllangiso) $(foreach,j,$(TREEFILES) $(COMMONMISC)$/$i$/$j))
 .ELSE			#IF "$(WITH_LANG)"!=""
