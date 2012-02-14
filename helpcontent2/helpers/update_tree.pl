@@ -309,7 +309,11 @@ sub processtreefiles {
                 unlink "$tree_dest/$lng/$tv" ;
                 my $ret=mv $treetmpfile , "$tree_dest/$lng/$tv$inpath" or &terminate("Cannot write to $tree_dest/$lng/$tv$inpath - Error $!");
                 my $ret=mv "$tree_dest/$lng/$tv$inpath" , "$tree_dest/$lng/$tv" or &terminate("Cannot write to $tree_dest/$lng/$tv - Error $!");
-                system("$xmllint --noout --noent $tree_dest/$lng/$tv") == 0 or &terminate("$tree_dest/$lng/$tv is illformed xml (xmllint)" );
+                #xmllint is crashing on windows, fixme
+                if( $^O ne 'cygwin' )
+                {
+                    system("$xmllint --noout --noent $tree_dest/$lng/$tv") == 0 or &terminate("$tree_dest/$lng/$tv is illformed xml ($xmllint on $^O)" );
+                }
             }
       } else {
             &terminate("Cannot write to $tvout");

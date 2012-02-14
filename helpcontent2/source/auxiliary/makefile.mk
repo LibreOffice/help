@@ -47,6 +47,8 @@ TREEFILES  = \
 
 .INCLUDE :  target.mk
 .EXPORT : LOCALIZESDF LOCALIZATION_FOUND TRYSDF L10N_MODULE
+XMLLINT !:=$(XMLLINT)
+.EXPORT : XMLLINT
 
 ALLTAR : aux_dirs $(COMMONMISC)$/treefiles.done $(COMMONBIN)$/helpimg.ilst
 
@@ -61,9 +63,6 @@ aux_alllangiso:=$(foreach,i,$(aux_alllangiso_all) $(foreach,j,$(help_exist) $(eq
 
 WITH_LANG!:=$(aux_alllangiso)
 .EXPORT : WITH_LANG
-
-XMLLINT !:=$(XMLLINT)
-.EXPORT : XMLLINT
 
 LOCTREEFILES:=$(foreach,i,$(aux_alllangiso) $(foreach,j,$(TREEFILES) $(COMMONMISC)$/$i$/$j))
 .ELSE			#IF "$(WITH_LANG)"!=""
