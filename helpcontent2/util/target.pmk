@@ -30,25 +30,10 @@ LINKALLADDEDDEPS=$(foreach,i,$(aux_alllangiso) $(subst,LANGUAGE,$i $(LINKADDEDDP
 
 ALLTAR : $(LINKALLTARGETS)
 
-.IF "$(SYSTEM_DB)" != "YES"
-JAVA_LIBRARY_PATH= -Djava.library.path=$(SOLARSHAREDBIN)
-.ENDIF
-
 XSL_DIR*:=$(SOLARBINDIR)
 
 $(LINKALLTARGETS) : $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/$$(@:b:s/_/./:e:s/.//)/$i) $(subst,LANGUAGE,$$(@:b:s/_/./:e:s/.//) $(LINKADDEDDEPS)) $(COMMONMISC)$/xhp_changed.flag
     $(HELPLINKER) @$(mktmp -mod $(LINKNAME) -src $(COMMONMISC) -sty $(XSL_DIR)/embed.xsl -zipdir $(MISC)$/ziptmp$(@:b) -idxcaption $(XSL_DIR)/idxcaption.xsl -idxcontent $(XSL_DIR)/idxcontent.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@.$(INPATH))
-.IF "$(SOLAR_JAVA)" == "TRUE"
-.IF "$(CHECK_LUCENCE_INDEXER_OUTPUT)" == ""
-    $(JAVAI) $(JAVAIFLAGS) $(JAVA_LIBRARY_PATH) -cp "$(my_cp)" com.sun.star.help.HelpIndexerTool -lang $(@:b:s/_/./:e:s/.//) -mod $(LINKNAME) -zipdir $(MISC)$/ziptmp$(@:b) -o $@.$(INPATH)
-.ELSE
-    $(JAVAI) $(JAVAIFLAGS) $(JAVA_LIBRARY_PATH) -cp "$(my_cp)" com.sun.star.help.HelpIndexerTool -lang $(@:b:s/_/./:e:s/.//) -mod $(LINKNAME) -zipdir $(MISC)$/ziptmp$(@:b) -o $@.$(INPATH) -checkcfsandsegname _0 _3
-.ENDIF
-   $(RENAME) $@.$(INPATH) $@
-.ELSE
-    -$(RM) $(MISC)$/ziptmp$(@:b)$/content/*.*
-    -$(RM) $(MISC)$/ziptmp$(@:b)$/caption/*.*
-    zip -j -D $@.$(INPATH) $(MISC)$/ziptmp$(@:b)$/*
-    $(RENAME) $@.$(INPATH) $@
-    -$(RM) $(MISC)$/ziptmp$(@:b)$/*.*
-.ENDIF
+    $(HELPINDEXER) -lang $(@:b:s/_/./:e:s/.//) -mod $(LINKNAME) -srcdir $(MISC)$/ziptmp$(@:b) -zipdir $(MISC)$/ziptmp$(@:b)
+    cd $(MISC)$/ziptmp$(@:b) && zip -rX --filesync zipfile.zip $(LINKNAME).*
+    $(RENAME) $(MISC)$/ziptmp$(@:b)$/zipfile.zip $@
