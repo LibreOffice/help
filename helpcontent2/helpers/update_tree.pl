@@ -32,9 +32,7 @@ use Cwd 'abs_path';
 use File::Find;
 use File::Copy qw/cp mv/;
 use File::Basename;
-use Benchmark;
 
-$t0 = new Benchmark;
 # update the tree files in <platform>/misc/*
 
 $| = 1;
@@ -107,7 +105,6 @@ if( defined $with_lang && $with_lang ne "" )
 {
     @langs = split /\s+/, $with_lang;
     &read_loc;
-    print "################\nUpdating the treefiles for @langs \n";
     for $l(@langs)
     {
         if ($l ne "en-US") {
@@ -121,9 +118,6 @@ else
 }
 #-------------------------------
 #
-$t1 = new Benchmark;
-$td = timediff($t1, $t0);
-print timestr($td),"\n";
 
 ####################
 # SUBS
@@ -143,7 +137,7 @@ update_tree.pl
    localized tree files are written based on the English tree
    file and the localized help topic titles.
 
-   Requires a valid SO/OOo environment.
+   Requires a valid LibreOffice build environment.
 MSG
    print "$msg\n";
    exit( -1 );
@@ -163,14 +157,12 @@ sub do_english {
 #---------------------------------------------------
 sub do_lang {
     $lng = shift;
-    print "\n---------------------------------------------------\nProcessing $lng\n";
+    print "Processing $lng\n";
     &processtreefiles($lng);
-    print "\n";
 }
 
 #---------------------------------------------------
 sub readtreestrings {
-    print "Reading tree strings for en-US...";
     if (open TREE, $treestrings) {
         while (<TREE>) {
             chomp;
@@ -195,21 +187,18 @@ sub readtreestrings {
     } else {
         &terminate("Error opening $treestrings");
     }
-    print "done\n";
 }
 
 #------------------------------------
 sub gettreefiles {
     # Read the tree files from the directory
     # this list is also used for all foreign languages
-    print "Reading tree files...";
     if (opendir ENUS, "$tree_src") {
         @treeviews = grep /\.tree/, readdir ENUS;
         closedir ENUS;
     } else {
         &terminate("Cannot open directory $tree_src");
     }
-    print "done\n";
 }
 
 #------------------------------------
@@ -219,9 +208,7 @@ sub processtreefiles {
     use File::Spec;
 
     for $tv(@treeviews) {
-        print "\nProcessing $tv\n";
         @lines = &readtv("$tree_src/$tv");
-        print "Read ".scalar @lines." lines\n";
         for $l(@lines) {
             if ($l =~ /topic/) {
                 ($id = $l) =~ s/^.*id="([^"]*)".*$/$1/gis;
@@ -231,23 +218,18 @@ sub processtreefiles {
 
                 if ($lng eq 'en-US') { # english comes from the file
                     if (open F,$file) {
-                        print ".";
                         undef $/; $cnt = <F>; close F;
                         $cnt =~ s/^.*<title[^>]+id="tit"[^>]*>([^<]*)<\/title>.*$/$1/gis;
                         $cnt =~ s/&apos;/\'/gis; $cnt =~ s/&amp;/+/gis;
                         $cnt =~ s/&quot;/\'/gis; $cnt =~ s/&/+/gis;
                         $l = "<topic id=\"$module/$id\">$cnt</topic>\n";
                     } else {
-                        print "!";
                         $l = "<!-- removed $module/$id -->\n";
                     }
                 } else { # localized comes from the localize sdf
-                    #print "\nid: $id";
                     if (defined($loc_title{$lng}->{$id})) {
-                        print ".";
                         $l = "<topic id=\"$module/$id\">$loc_title{$lng}->{$id}</topic>\n";
                     } else {
-                        print "!";
                     }
                 }
             }
@@ -273,7 +255,6 @@ sub processtreefiles {
                     if (defined($helpsection{$id})) {
                         $l =~ s/title="(.*)"/title="$helpsection{$id}"/;
                     } else {
-                        print "#";
                         $l =~ s/title="(.*)"/title="NOTFOUND:$id"/;
                     }
                 } else {
@@ -338,14 +319,11 @@ sub readtv {
 # read entries form localize.sdf files
 #------------------------------------
 sub read_loc {
-    print "\n\nReading localized titles...";
     $/ = "\n";
     my $path = "$source_dir/text";
-    print " in $source_dir/text\n";
     @files = `find $source_dir/text -name localize.sdf`;
     for my $fname (@files) {
         $FS = '\t';
-        print ".";
         open(LOCALIZE_SDF, $fname) || die 'Cannot open "localize.sdf".'."$fname";
         while (<LOCALIZE_SDF>) {
             my $sdf_line = $_;
@@ -401,7 +379,4 @@ sub read_loc {
         push(@langstat, "$lang:\t ".$no_elements." matches\n");
         $total_elements += $no_elements;
     }
-    print "\ndone reading a total of ".$total_elements." localized titles for ".scalar(keys(%loc_title))." languages from ".scalar @files ." files\n";
-    print sort(@langstat);
 }
-

@@ -33,7 +33,8 @@ ALLTAR : $(LINKALLTARGETS)
 XSL_DIR*:=$(SOLARBINDIR)
 
 $(LINKALLTARGETS) : $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/$$(@:b:s/_/./:e:s/.//)/$i) $(subst,LANGUAGE,$$(@:b:s/_/./:e:s/.//) $(LINKADDEDDEPS)) $(COMMONMISC)$/xhp_changed.flag
-    $(HELPLINKER) @$(mktmp -mod $(LINKNAME) -src $(COMMONMISC) -sty $(XSL_DIR)/embed.xsl -zipdir $(MISC)$/ziptmp$(@:b) -idxcaption $(XSL_DIR)/idxcaption.xsl -idxcontent $(XSL_DIR)/idxcontent.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@.$(INPATH))
-    $(HELPINDEXER) -lang $(@:b:s/_/./:e:s/.//) -mod $(LINKNAME) -dir $(MISC)$/ziptmp$(@:b)
-    cd $(MISC)$/ziptmp$(@:b) && zip -rX --filesync zipfile.zip $(LINKNAME).*
-    $(RENAME) $(MISC)$/ziptmp$(@:b)$/zipfile.zip $@
+    $(COMMAND_ECHO)$(HELPLINKER) @$(mktmp -mod $(LINKNAME) -src $(COMMONMISC) -sty $(XSL_DIR)/embed.xsl -zipdir $(MISC)$/ziptmp$(@:b) -idxcaption $(XSL_DIR)/idxcaption.xsl -idxcontent $(XSL_DIR)/idxcontent.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@.$(INPATH))
+    $(COMMAND_ECHO)$(HELPINDEXER) -lang $(@:b:s/_/./:e:s/.//) -mod $(LINKNAME) -dir $(MISC)$/ziptmp$(@:b)
+    @echo [ building ZIP ] $(@:f)
+    $(COMMAND_ECHO)cd $(MISC)$/ziptmp$(@:b) && zip $(ZIP_VERBOSITY) -rX --filesync zipfile.zip $(LINKNAME).*
+    $(COMMAND_ECHO)$(RENAME) $(MISC)$/ziptmp$(@:b)$/zipfile.zip $@

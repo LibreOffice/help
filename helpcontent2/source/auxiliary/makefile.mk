@@ -72,7 +72,7 @@ LOCTREEFILES:=$(foreach,j,$(TREEFILES) $(COMMONMISC)$/en-US$/$j)
 .ENDIF			#IF "$(WITH_LANG)"!=""
 
 $(COMMONMISC)$/treefiles.done : $(LOCTREEFILES)
-    +$(PERL) $(PRJ)$/helpers$/update_tree.pl && $(TOUCH) $@
+    $(COMMAND_ECHO)+$(PERL) $(PRJ)$/helpers$/update_tree.pl && $(TOUCH) $@
 
 %.created:
     @-$(MKDIRHIER) $(@:d) && $(TOUCH) $@
@@ -95,12 +95,12 @@ $(LOCTREEFILES) : $(COMMONMISC)/unpack.done
 .ENDIF			# "$(WITH_LANG)"!=""
 
 aux_dirs .PHONY :
-    echo aux_langdirs:=$(aux_langdirs) > $(LOCAL_COMMON_OUT)/inc$/aux_langs.mk
-    echo help_exist:=$(help_exist) > $(LOCAL_COMMON_OUT)/inc$/help_exist.mk
+    @echo aux_langdirs:=$(aux_langdirs) > $(LOCAL_COMMON_OUT)/inc$/aux_langs.mk
+    @echo help_exist:=$(help_exist) > $(LOCAL_COMMON_OUT)/inc$/help_exist.mk
 
 $(COMMONBIN)$/helpimg.ilst .PHONY:
-    -$(RM) $@
-    $(PERL) $(PRJ)$/helpers$/create_ilst.pl -dir=$(SRC_ROOT)/icon-themes/galaxy/res/helpimg > $@.$(INPATH)
-    $(RENAME) $@.$(INPATH) $@
+    @@-$(RM) $@
+    $(COMMAND_ECHO)$(PERL) $(PRJ)$/helpers$/create_ilst.pl -dir=$(SRC_ROOT)/icon-themes/galaxy/res/helpimg > $@.$(INPATH)
+    $(COMMAND_ECHO)$(RENAME) $@.$(INPATH) $@
     
 
