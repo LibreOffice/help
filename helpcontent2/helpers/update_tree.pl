@@ -315,9 +315,9 @@ sub readtv {
     }
 }
 
-#------------------------------------
-# read entries form localize.sdf files
-#------------------------------------
+#-------------------------------------
+# read entries from localize.sdf files
+#-------------------------------------
 sub read_loc {
     $/ = "\n";
     my $path = "$source_dir/text";
@@ -336,6 +336,8 @@ sub read_loc {
                 $file =~ s/\\/\//g;
                 #fpe: i46823 - need to encode &s, added encoding
                 $text =~ s/&(?!amp;)/&amp;/g;
+                #help xml tags are not allowed in .tree files
+                $text =~ s/\\<.*?\\>//g;
                 # add entry to the hash
                 $loc_title{$lang}->{$file} = $text;
             }
@@ -351,6 +353,8 @@ sub read_loc {
                     if( defined $sec_title )
                     {
                         $sec_title =~ s/&(?!amp;)/&amp;/g;
+                        #help xml tags are not allowed in .tree files
+                        $sec_title =~ s/\\<.*?\\>//g;
                         #unquot \<item ... /\>
                         terminate( "\n\nERROR: Bad string in file '$fname' will cause invalid xml tree file \n---\n'$sdf_line'\n---\nPlease remove or replace < = '&lt;' and  > = '&gt;' within the title attribute '$sec_title'\n") , if( $sec_title =~ /[\<\>]/ );
                         $helpsection{$lang}->{$id} = $sec_title; 
@@ -364,6 +368,8 @@ sub read_loc {
                     if( defined $node_title )
                     {
                         $node_title =~ s/&(?!amp;)/&amp;/g;
+                        #help xml tags are not allowed in .tree files
+                        $node_title =~ s/\\<.*?\\>//g;
                            terminate( "\n\nERROR: Bad string in '$fname' will cause invalid xml tree file \n---\n'$sdf_line'\n---\nPlease remove or replace < = '&lt;' and  > = '&gt;' within the title attribute '$node_title'\n") , if( $node_title =~ /[\<\>]/ );
                     }
                     $node{$lang}->{$id} = $node_title;
