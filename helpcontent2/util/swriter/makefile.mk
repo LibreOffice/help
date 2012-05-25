@@ -290,6 +290,7 @@ LINKLINKFILES= \
    text$/swriter$/02$/19030000.xhp \
    text$/swriter$/02$/19040000.xhp \
    text$/swriter$/02$/19050000.xhp \
+   text$/swriter$/02$/word_count_stb.xhp \
    text$/swriter$/04$/01020000.xhp \
    text$/swriter$/guide$/anchor_object.xhp \
    text$/swriter$/guide$/arrange_chapters.xhp \
