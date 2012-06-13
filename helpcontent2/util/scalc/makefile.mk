@@ -222,6 +222,7 @@ LINKLINKFILES= \
    text$/scalc$/01$/12120300.xhp \
    text$/scalc$/01$/format_graphic.xhp \
    text$/scalc$/01$/func_date.xhp \
+   text$/scalc$/01$/func_datedif.xhp \
    text$/scalc$/01$/func_datevalue.xhp \
    text$/scalc$/01$/func_day.xhp \
    text$/scalc$/01$/func_days.xhp \
