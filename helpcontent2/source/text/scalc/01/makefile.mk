@@ -197,6 +197,7 @@ XHPFILES = \
    12120300.xhp \
    format_graphic.xhp \
    func_date.xhp \
+   func_datedif.xhp \
    func_datevalue.xhp \
    func_day.xhp \
    func_days.xhp \
