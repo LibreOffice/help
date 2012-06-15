@@ -987,6 +987,7 @@ LINKLINKFILES= \
    text$/shared$/optionen$/01060500.xhp \
    text$/shared$/optionen$/01060600.xhp \
    text$/shared$/optionen$/01060700.xhp \
+   text$/shared$/optionen$/01060800.xhp \
    text$/shared$/optionen$/01070000.xhp \
    text$/shared$/optionen$/01070100.xhp \
    text$/shared$/optionen$/01070300.xhp \
