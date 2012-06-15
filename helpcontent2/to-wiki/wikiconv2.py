@@ -40,8 +40,8 @@ replace_paragraph_role = \
               'paragraph': '',
               'related': '', # used only in one file, probably in error?
               'relatedtopics': '', # used only in one file, probably in error?
-              'tablecontent': '| ',
-              'tablecontentcode': '| <code>',
+              'tablecontent': '| | ',
+              'tablecontentcode': '| | <code>',
               'tablehead': '! scope="col" | ',
               'tablenextpara': '\n',
               'tablenextparacode': '\n<code>',
