@@ -153,6 +153,8 @@ LINKLINKFILES= \
    text$/scalc$/01$/05080300.xhp \
    text$/scalc$/01$/05080400.xhp \
    text$/scalc$/01$/05100000.xhp \
+   text$/scalc$/01$/05100100.xhp \
+   text$/scalc$/01$/05100200.xhp \
    text$/scalc$/01$/05110000.xhp \
    text$/scalc$/01$/05120000.xhp \
    text$/scalc$/01$/06020000.xhp \
@@ -545,8 +547,6 @@ LINKLINKFILES= \
    text$/shared$/01$/05080400.xhp \
    text$/shared$/01$/05090000.xhp \
    text$/shared$/01$/05100000.xhp \
-   text$/shared$/01$/05100100.xhp \
-   text$/shared$/01$/05100200.xhp \
    text$/shared$/01$/05100500.xhp \
    text$/shared$/01$/05100600.xhp \
    text$/shared$/01$/05100700.xhp \
