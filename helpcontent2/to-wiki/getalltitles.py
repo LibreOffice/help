@@ -123,7 +123,7 @@ def parsexhp(filename):
     title = tp.get_title()
     if len(title) > 0:
         readable_title = readable_text(title)
-        title = module + '/' + wiki_text(title)
+        title = '3.5/' + module + '/' + wiki_text(title)
         title = title.replace(' ', '_')
         title = title.replace('___', '_')
         title = title.replace('__', '_')

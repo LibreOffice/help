@@ -43,13 +43,14 @@ def create_wiki_dirs():
 
     try:
         os.mkdir( "wiki" )
+        os.mkdir( "wiki/3.5" )
     except:
         sys.stdout.write( "wiki already generated - the wiki/ subdir exists\n" )
         sys.exit( 1 )
 
     for i in dirs:
         try:
-            os.mkdir( "wiki/" + i )
+            os.mkdir( "wiki/3.5/" + i )
         except:
             pass
 
