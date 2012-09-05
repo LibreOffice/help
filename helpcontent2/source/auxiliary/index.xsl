@@ -74,6 +74,18 @@
   </index:element>
 </xsl:template>
 
+<xsl:template match="sub">
+  <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
+      <xsl:apply-templates/>
+  </index:element>
+</xsl:template>
+
+<xsl:template match="sup">
+  <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
+      <xsl:apply-templates/>
+  </index:element>
+</xsl:template>
+
 <xsl:template match="paragraph">
   <index:element index:tokenizer="com.sun.xmlsearch.util.SimpleTokenizer">
       <xsl:apply-templates/>

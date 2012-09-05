@@ -3,7 +3,7 @@ Version 03-Feb-2006
   added optional localize attribute to images
 -->
 
-<!ELEMENT ahelp (#PCDATA | embedvar | br | comment | emph | item | link | switchinline | variable)*>
+<!ELEMENT ahelp (#PCDATA | embedvar | br | comment | emph | sub | sup | item | link | switchinline | variable)*>
 <!ATTLIST ahelp
   hid CDATA #REQUIRED
   visibility (hidden | visible) #IMPLIED
@@ -30,7 +30,7 @@ Version 03-Feb-2006
 
 <!ELEMENT br EMPTY>
 
-<!ELEMENT caption (#PCDATA | embedvar | br | emph | item | link | switchinline | variable)*>
+<!ELEMENT caption (#PCDATA | embedvar | br | emph | sub | sup | item | link | switchinline | variable)*>
 <!ATTLIST caption
   xml-lang CDATA #REQUIRED
   id CDATA #REQUIRED
@@ -42,7 +42,7 @@ Version 03-Feb-2006
   select CDATA #REQUIRED
 >
 
-<!ELEMENT caseinline (#PCDATA | image | embedvar | br | emph | item | link | switchinline | variable | ahelp | object)*>
+<!ELEMENT caseinline (#PCDATA | image | embedvar | br | emph | sub | sup | item | link | switchinline | variable | ahelp | object)*>
 <!ATTLIST caseinline
   select CDATA #REQUIRED
 >
@@ -56,7 +56,7 @@ Version 03-Feb-2006
 
 <!ELEMENT default (paragraph | table | comment | bookmark | embed | link | list | switch | section | sort)*>
 
-<!ELEMENT defaultinline (#PCDATA | image | embedvar | br | emph | item | link | switchinline | variable | ahelp | object)*>
+<!ELEMENT defaultinline (#PCDATA | image | embedvar | br | emph | sub | sup | item | link | switchinline | variable | ahelp | object)*>
 
 <!ELEMENT embed EMPTY>
 <!ATTLIST embed
@@ -72,6 +72,10 @@ Version 03-Feb-2006
 >
 
 <!ELEMENT emph (#PCDATA | item | comment | help-id-missing)*>
+
+<!ELEMENT sub (#PCDATA | item | comment | help-id-missing)*>
+
+<!ELEMENT sup (#PCDATA | item | comment | help-id-missing)*>
 
 <!ELEMENT filename (#PCDATA)>
 
@@ -101,7 +105,7 @@ Version 03-Feb-2006
   date CDATA #REQUIRED
 >
 
-<!ELEMENT link (#PCDATA | embedvar | emph | item | variable | switchinline)*>
+<!ELEMENT link (#PCDATA | embedvar | emph | sub | sup | item | variable | switchinline)*>
 <!ATTLIST link
   href CDATA #REQUIRED
   name CDATA #IMPLIED
@@ -136,7 +140,7 @@ Version 03-Feb-2006
   width CDATA #IMPLIED
 >
 
-<!ELEMENT paragraph (#PCDATA | image | comment | embedvar | br | emph | item | link | switchinline | variable | ahelp | object | bookmark | help-id-missing)*>
+<!ELEMENT paragraph (#PCDATA | image | comment | embedvar | br | emph | sub | sup | item | link | switchinline | variable | ahelp | object | bookmark | help-id-missing)*>
 <!ATTLIST paragraph
   role CDATA #REQUIRED
   level CDATA #IMPLIED
@@ -207,7 +211,7 @@ Version 03-Feb-2006
 	status (DRAFT | FINAL | PUBLISH | STALLED | DEPRECATED) #IMPLIED
 >
 
-<!ELEMENT variable (#PCDATA | ahelp | embedvar | br | emph | item | link | variable | image | object | switchinline)*>
+<!ELEMENT variable (#PCDATA | ahelp | embedvar | br | emph | sub | sup | item | link | variable | image | object | switchinline)*>
 <!ATTLIST variable
   id CDATA #REQUIRED
   visibility (hidden | visible) #IMPLIED
