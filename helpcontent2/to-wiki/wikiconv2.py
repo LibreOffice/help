@@ -22,7 +22,8 @@ images = set()
 
 # various types of paragraphs
 replace_paragraph_role = \
-    {'start':{'code': '<code>',
+    {'start':{'bascode': '',
+              'code': '<code>',
               'codeintip': '<code>',
               'emph' : '', # must be empty to be able to strip empty <emph/>
               'example': '<code>',
@@ -40,6 +41,7 @@ replace_paragraph_role = \
               'paragraph': '',
               'related': '', # used only in one file, probably in error?
               'relatedtopics': '', # used only in one file, probably in error?
+              'sup' : '',
               'tablecontent': '| | ',
               'tablecontentcode': '| | <code>',
               'tablehead': '! scope="col" | ',
@@ -49,7 +51,8 @@ replace_paragraph_role = \
               'variable': '',
               'warning': '{{Warning|',
              },
-     'end':{'code': '</code>\n\n',
+     'end':{'bascode': '\n',
+            'code': '</code>\n\n',
             'codeintip': '</code>\n\n',
             'emph' : '',
             'example': '</code>\n\n',
@@ -67,6 +70,7 @@ replace_paragraph_role = \
             'paragraph': '\n\n',
             'related': '\n\n', # used only in one file, probably in error?
             'relatedtopics': '\n\n', # used only in one file, probably in error?
+            'sup' : '',
             'tablecontent': '\n',
             'tablecontentcode': '</code>\n',
             'tablehead': '\n',
@@ -76,7 +80,8 @@ replace_paragraph_role = \
             'variable': '',
             'warning': '}}\n\n',
            },
-     'templ':{'code': False,
+     'templ':{'bascode': False,
+              'code': False,
               'codeintip': False,
               'emph' : False,
               'example': False,
@@ -94,6 +99,7 @@ replace_paragraph_role = \
               'paragraph': False,
               'related': False,
               'relatedtopics': False,
+              'sup' : False,
               'tablecontent': False,
               'tablecontentcode': False,
               'tablehead': False,
@@ -362,6 +368,8 @@ class XhpFile(ElementBase):
             self.parse_child(Switch(attrs, self, parser.embedding_app))
         elif name == 'table':
             self.parse_child(Table(attrs, self))
+        elif name == 'bascode':
+            self.parse_child(BasicCode(attrs, self))
         else:
             self.unhandled_element(parser, name)
 
@@ -491,6 +499,9 @@ class TableCell(ElementBase):
             parser.parse_localized_paragraph(TableContentParagraph(attrs, self), attrs, self)
         elif name == 'section':
             self.parse_child(Section(attrs, self))
+        elif name == 'bascode':
+            # ignored, do not syntax highlight in table cells
+            pass
         else:
             self.unhandled_element(parser, name)
 
@@ -518,6 +529,20 @@ class TableRow(ElementBase):
 
     def get_all(self):
         text = '|-\n' + ElementBase.get_all(self)
+        return text
+
+class BasicCode(ElementBase):
+    def __init__(self, attrs, parent):
+        ElementBase.__init__(self, 'bascode', parent)
+
+    def start_element(self, parser, name, attrs):
+        if name == 'paragraph':
+            parser.parse_localized_paragraph(BasicCodeParagraph(attrs, self), attrs, self)
+        else:
+            self.unhandled_element(parser, name)
+
+    def get_all(self):
+        text = '<source lang="oobas">\n' + ElementBase.get_all(self) + '</source>\n\n'
         return text
 
 class Table(ElementBase):
@@ -674,6 +699,8 @@ class Section(ElementBase):
             self.parse_child(Switch(attrs, self, parser.embedding_app))
         elif name == 'table':
             self.parse_child(Table(attrs, self))
+        elif name == 'bascode':
+            self.parse_child(BasicCode(attrs, self))
         else:
             self.unhandled_element(parser, name)
 
@@ -976,6 +1003,8 @@ class Paragraph(ElementBase):
             self.parse_child(Comment(attrs, self))
         elif name == 'emph':
             self.parse_child(Emph(attrs, self))
+        elif name == 'sup':
+            self.parse_child(Sup(attrs, self))
         elif name == 'embedvar':
             if parser.follow_embed:
                 (fname, id) = href_to_fname_id(attrs['href'])
@@ -1090,16 +1119,35 @@ class Emph(Paragraph):
             return "'''" + text + "'''"
         return ''
 
+class Sup(Paragraph):
+    def __init__(self, attrs, parent):
+        Paragraph.__init__(self, attrs, parent)
+        self.name = 'sup'
+        self.role = 'sup'
+
+    def get_all(self):
+        text = Paragraph.get_all(self)
+        if len(text):
+            return "<sup>" + text + "</sup>"
+        return ''
+
 class ListItemParagraph(Paragraph):
     def __init__(self, attrs, parent):
         Paragraph.__init__(self, attrs, parent)
         self.role = 'listitem'
+
+class BasicCodeParagraph(Paragraph):
+    def __init__(self, attrs, parent):
+        Paragraph.__init__(self, attrs, parent)
+        self.role = 'bascode'
 
 class TableContentParagraph(Paragraph):
     def __init__(self, attrs, parent):
         Paragraph.__init__(self, attrs, parent)
         if self.role != 'tablehead' and self.role != 'tablecontent':
             if self.role == 'code':
+                self.role = 'tablecontentcode'
+            elif self.role == 'bascode':
                 self.role = 'tablecontentcode'
             else:
                 self.role = 'tablecontent'
