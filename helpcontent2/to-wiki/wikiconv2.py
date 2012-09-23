@@ -419,11 +419,6 @@ class Image(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'image', parent)
         self.src     = attrs['src']
-        try:
-            self.width   = attrs['width']
-            self.height  = attrs['height']
-        except:
-            self.width = self.height = ""
         self.align   = 'left'
         self.alt     = False
         self.alttext = ""
@@ -450,8 +445,6 @@ class Image(ElementBase):
 
         name = self.src[self.src.rfind('/') + 1:]
         wikitext = "[[Image:"+name+"|border|"+self.align+"|"
-        if len(self.width):
-            wikitext = wikitext + self.width+"x"+self.height+"|"
         wikitext = wikitext + self.alttext+"]]"
         return wikitext
 
