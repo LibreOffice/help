@@ -1050,7 +1050,7 @@ class Paragraph(ElementBase):
 
         # the text itself
         children = ElementBase.get_all(self)
-        if self.role != 'emph':
+        if self.role != 'emph' and self.role != 'bascode':
             children = children.strip()
 
         if len(children) == 0:
