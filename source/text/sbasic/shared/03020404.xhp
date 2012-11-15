@@ -47,7 +47,9 @@
 <paragraph role="paragraph" id="par_id3153381" xml-lang="en-US" l10n="U" oldref="2">Returns the name of a file, a directory, or all of the files and the directories on a drive or in a directory that match the specified search path.</paragraph>
 </section>
 <paragraph role="heading" id="hd_id3154365" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
-<paragraph role="code" id="par_id3156282" xml-lang="en-US" l10n="U" oldref="4">Dir [(Text As String) [, Attrib As Integer]]</paragraph>
+<bascode>
+<paragraph role="bascode" id="par_id3156282" xml-lang="en-US" l10n="U" oldref="4">Dir [(Text As String) [, Attrib As Integer]]</paragraph>
+</bascode>
 <paragraph role="heading" id="hd_id3156424" xml-lang="en-US" level="2" l10n="U" oldref="5">Return value:</paragraph>
 <paragraph role="paragraph" id="par_id3153193" xml-lang="en-US" l10n="U" oldref="6">String</paragraph>
 <paragraph role="heading" id="hd_id3153770" xml-lang="en-US" level="2" l10n="U" oldref="7">Parameters:</paragraph>
@@ -65,23 +67,25 @@
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 <embed href="text/sbasic/shared/00000003.xhp#err53"/>
 <paragraph role="heading" id="hd_id3154942" xml-lang="en-US" level="2" l10n="U" oldref="20">Example:</paragraph>
-<paragraph role="code" id="par_id3147125" xml-lang="en-US" l10n="U" oldref="21">Sub ExampleDir</paragraph>
-<paragraph role="code" id="par_id3148455" xml-lang="en-US" l10n="U" oldref="22">REM Displays all files and directories</paragraph>
-<paragraph role="code" id="par_id3147396" xml-lang="en-US" l10n="U" oldref="23">Dim sPath As String</paragraph>
-<paragraph role="code" id="par_id3149378" xml-lang="en-US" l10n="U" oldref="24">Dim sDir as String, sValue as String</paragraph>
-<paragraph role="code" id="par_id3153416" xml-lang="en-US" l10n="U" oldref="27">sDir="Directories:"</paragraph>
-<paragraph role="code" id="par_id3153838" xml-lang="en-US" l10n="U" oldref="29">sPath = CurDir</paragraph>
-<paragraph role="code" id="par_id3150327" xml-lang="en-US" l10n="CHG" oldref="30">sValue = Dir$(sPath + getPathSeparator + "*",16)</paragraph>
-<paragraph role="code" id="par_id3155064" xml-lang="en-US" l10n="U" oldref="31">Do</paragraph>
-<paragraph role="code" id="par_id3153764" xml-lang="en-US" l10n="U" oldref="32">If sValue &lt;&gt; "." and sValue &lt;&gt; ".." Then</paragraph>
-<paragraph role="code" id="par_id3155766" xml-lang="en-US" l10n="U" oldref="33">if (GetAttr( sPath + getPathSeparator + sValue) AND 16) &gt;0 then</paragraph>
-<paragraph role="code" id="par_id3154253" xml-lang="en-US" l10n="U" oldref="34">REM get the directories</paragraph>
-<paragraph role="code" id="par_id3159264" xml-lang="en-US" l10n="U" oldref="35">sDir = sDir &amp; chr(13) &amp; sValue</paragraph>
-<paragraph role="code" id="par_id3145148" xml-lang="en-US" l10n="U" oldref="43">End If</paragraph>
-<paragraph role="code" id="par_idN10700" xml-lang="en-US" l10n="NEW">End If</paragraph>
-<paragraph role="code" id="par_id3147324" xml-lang="en-US" l10n="U" oldref="44">sValue = Dir$</paragraph>
-<paragraph role="code" id="par_id3155335" xml-lang="en-US" l10n="U" oldref="45">Loop Until sValue = ""</paragraph>
-<paragraph role="code" id="par_id3147345" xml-lang="en-US" l10n="U" oldref="46">MsgBox sDir,0,sPath</paragraph>
-<paragraph role="code" id="par_id3163808" xml-lang="en-US" l10n="U" oldref="48">End sub</paragraph>
+<bascode>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleDir</paragraph>
+<paragraph role="bascode" id="par_id3148455" xml-lang="en-US" l10n="U" oldref="22">' Displays all files and directories</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sPath As String</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sDir As String, sValue As String</paragraph>
+<paragraph role="bascode" id="par_id3153416" xml-lang="en-US" l10n="U" oldref="27">    sDir="Directories:"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    sPath = CurDir</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    sValue = Dir$(sPath + getPathSeparator + "*",16)</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Do</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        If sValue &lt;&gt; "." And sValue &lt;&gt; ".." Then</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">            If (GetAttr( sPath + getPathSeparator + sValue) And 16) &gt;0 Then</paragraph>
+<paragraph role="bascode" id="par_id3154253" xml-lang="en-US" l10n="U" oldref="34">                ' Get the directories</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">                sDir = sDir &amp; chr(13) &amp; sValue</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">            End If</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        End If</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        sValue = Dir$</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Loop Until sValue = ""</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    MsgBox sDir,0,sPath</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+</bascode>
 </body>
 </helpdocument>

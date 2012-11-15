@@ -49,7 +49,9 @@
 <paragraph role="paragraph" id="par_id3150769" xml-lang="en-US" l10n="U" oldref="2">Opens a data channel.</paragraph>
 </section>
 <paragraph role="heading" id="hd_id3147230" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
-<paragraph role="code" id="par_id3154124" xml-lang="en-US" l10n="CHG" oldref="4">Open FileName As String [For Mode] [Access IOMode] [Protected] As [#]FileNumber As Integer [Len = DatasetLength]<comment>i37502</comment></paragraph>
+<bascode>
+<paragraph role="bascode" id="par_id3154124" xml-lang="en-US" l10n="CHG" oldref="4">Open FileName As String [For Mode] [Access IOMode] [Protected] As [#]FileNumber As Integer [Len = DatasetLength]<comment>i37502</comment></paragraph>
+</bascode>
 <paragraph role="heading" id="hd_id3156280" xml-lang="en-US" level="2" l10n="U" oldref="5">Parameters:</paragraph>
 <paragraph role="paragraph" id="par_id3155132" xml-lang="en-US" l10n="U" oldref="6">
 <emph>FileName: </emph>Name and path of the file that you wan to open. If you try to read a file that does not exist (Access = Read), an error message appears. If you try to write to a file that does not exist (Access = Write), a new file is created.</paragraph>
@@ -65,27 +67,29 @@
 <emph>DatasetLength:</emph> For random access files, set the length of the records.<comment>#61736</comment></paragraph>
 <paragraph role="note" id="par_id3153418" xml-lang="en-US" l10n="U" oldref="12">You can only modify the contents of a file that was opened with the Open statement. If you try to open a file that is already open, an error message appears.</paragraph>
 <paragraph role="heading" id="hd_id3149123" xml-lang="en-US" level="2" l10n="U" oldref="13">Example:</paragraph>
-<paragraph role="code" id="par_id3150749" xml-lang="en-US" l10n="U" oldref="14">Sub ExampleWorkWithAFile</paragraph>
-<paragraph role="code" id="par_id3155064" xml-lang="en-US" l10n="U" oldref="15">Dim iNumber As Integer</paragraph>
-<paragraph role="code" id="par_id3154754" xml-lang="en-US" l10n="U" oldref="16">Dim sLine As String</paragraph>
-<paragraph role="code" id="par_id3153711" xml-lang="en-US" l10n="U" oldref="17">Dim aFile As String</paragraph>
-<paragraph role="code" id="par_id3155764" xml-lang="en-US" l10n="U" oldref="40">Dim sMsg as String</paragraph>
-<paragraph role="code" id="par_id3159264" xml-lang="en-US" l10n="U" oldref="18">aFile = "c:\data.txt"</paragraph>
-<paragraph role="code" id="par_id3153963" xml-lang="en-US" l10n="U" oldref="20">iNumber = Freefile</paragraph>
-<paragraph role="code" id="par_id3155959" xml-lang="en-US" l10n="U" oldref="21">Open aFile For Output As #iNumber</paragraph>
-<paragraph role="code" id="par_id3154705" xml-lang="en-US" l10n="U" oldref="22">Print #iNumber, "This is a line of text"</paragraph>
-<paragraph role="code" id="par_id3146916" xml-lang="en-US" l10n="U" oldref="23">Print #iNumber, "This is another line of text"</paragraph>
-<paragraph role="code" id="par_id3150942" xml-lang="en-US" l10n="U" oldref="24">Close #iNumber</paragraph>
-<paragraph role="code" id="par_id3150300" xml-lang="en-US" l10n="U" oldref="28">iNumber = Freefile</paragraph>
-<paragraph role="code" id="par_id3154022" xml-lang="en-US" l10n="U" oldref="29">Open aFile For Input As iNumber</paragraph>
-<paragraph role="code" id="par_id3150783" xml-lang="en-US" l10n="U" oldref="30">While not eof(iNumber)</paragraph>
-<paragraph role="code" id="par_id3153270" xml-lang="en-US" l10n="U" oldref="31">Line Input #iNumber, sLine</paragraph>
-<paragraph role="code" id="par_id3153784" xml-lang="en-US" l10n="U" oldref="32">If sLine &lt;&gt;"" then</paragraph>
-<paragraph role="code" id="par_id3149208" xml-lang="en-US" l10n="U" oldref="33">sMsg = sMsg &amp; sLine &amp; chr(13)</paragraph>
-<paragraph role="code" id="par_id3150304" xml-lang="en-US" l10n="U" oldref="35">end if</paragraph>
-<paragraph role="code" id="par_id3151217" xml-lang="en-US" l10n="U" oldref="36">wend</paragraph>
-<paragraph role="code" id="par_id3152582" xml-lang="en-US" l10n="U" oldref="37">Close #iNumber</paragraph>
-<paragraph role="code" id="par_id3159100" xml-lang="en-US" l10n="U" oldref="41">Msgbox sMsg</paragraph>
-<paragraph role="code" id="par_id3159091" xml-lang="en-US" l10n="U" oldref="38">End Sub</paragraph>
+<bascode>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleWorkWithAFile</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sLine As String</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sMsg As String</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    aFile = "c:\data.txt"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Open aFile For Output As #iNumber</paragraph>
+<paragraph role="bascode" id="par_id3154705" xml-lang="en-US" l10n="U" oldref="22">    Print #iNumber, "This is a line of text"</paragraph>
+<paragraph role="bascode" id="par_id3146916" xml-lang="en-US" l10n="U" oldref="23">    Print #iNumber, "This is another line of text"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Open aFile For Input As iNumber</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    While Not eof(iNumber)</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        Line Input #iNumber, sLine</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        If sLine &lt;&gt;"" Then</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">            sMsg = sMsg &amp; sLine &amp; chr(13)</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        End If</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Wend</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    MsgBox sMsg</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+</bascode>
 </body>
 </helpdocument>

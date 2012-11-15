@@ -49,16 +49,22 @@ dedr: fixed #i31078#</lastedited>
 </section>
 <paragraph role="paragraph" id="par_id3153681" xml-lang="en-US" l10n="U" oldref="51">Many Uno interfaces let you register listeners on a special listener interface. This allows you to listen for specific events and call up the appropriate listener method. The CreateUnoListener function waits for the called listener interface and then passes the interface an object that the interface supports. This object is then passed to the method to register the listener.</paragraph>
 <paragraph role="heading" id="hd_id3148685" xml-lang="en-US" level="2" l10n="U" oldref="50">Syntax:</paragraph>
-<paragraph role="paragraph" id="par_id3143228" xml-lang="en-US" l10n="U" oldref="49">oListener = CreateUnoListener( Prefixname, ListenerInterfaceName )</paragraph>
+<bascode>
+<paragraph role="bascode" id="par_id3143228" xml-lang="en-US" oldref="49">oListener = CreateUnoListener( Prefixname, ListenerInterfaceName )</paragraph>
+</bascode>
 <paragraph role="heading" id="hd_id3147574" xml-lang="en-US" level="2" l10n="U" oldref="48">Example:</paragraph>
 <paragraph role="paragraph" id="par_id3154046" xml-lang="en-US" l10n="U" oldref="47">The following example is based on a Basic library object.</paragraph>
-<paragraph role="paragraph" id="par_id3155136" xml-lang="en-US" l10n="U" oldref="46">Dim oListener</paragraph>
-<paragraph role="paragraph" id="par_id3148944" xml-lang="en-US" l10n="U" oldref="45">oListener = CreateUnoListener( "ContListener_","com.sun.star.container.XContainerListener" )</paragraph>
+<bascode>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim oListener</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">oListener = CreateUnoListener( "ContListener_","com.sun.star.container.XContainerListener" )</paragraph>
+</bascode>
 <paragraph role="paragraph" id="par_id3149294" xml-lang="en-US" l10n="U" oldref="44">The CreateUnoListener method requires two parameters. The first is a prefix and is explained in detail below. The second parameter is the fully qualified name of the Listener interface that you want to use.</paragraph>
 <paragraph role="paragraph" id="par_id3149670" xml-lang="en-US" l10n="U" oldref="43">The Listener must then be added to the Broadcaster Object. This is done by calling the appropriate method for adding a Listener. These methods always follow the pattern "addFooListener", where "Foo" is the Listener Interface Type, without the 'X'. In this example, the addContainerListener method is called to register the XContainerListener:</paragraph>
-<paragraph role="paragraph" id="par_id3154164" xml-lang="en-US" l10n="U" oldref="42">Dim oLib</paragraph>
-<paragraph role="paragraph" id="par_id3154940" xml-lang="en-US" l10n="U" oldref="41">oLib = BasicLibraries.Library1 ' Library1 must exist!</paragraph>
-<paragraph role="paragraph" id="par_id3150359" xml-lang="en-US" l10n="U" oldref="40">oLib.addContainerListener( oListener ) ' Register the listener</paragraph>
+<bascode>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim oLib</paragraph>
+<paragraph role="bascode" id="par_id3154940" xml-lang="en-US" l10n="U" oldref="41">oLib = BasicLibraries.Library1 ' Library1 must exist!</paragraph>
+<paragraph role="bascode" id="par_id3150359" xml-lang="en-US" l10n="U" oldref="40">oLib.addContainerListener( oListener ) ' Register the listener</paragraph>
+</bascode>
 <paragraph role="paragraph" id="par_id3154138" xml-lang="en-US" l10n="U" oldref="39">The Listener is now registered. When an event occurs, the corresponding Listener calls the appropriate method from the com.sun.star.container.XContainerListener Interface.</paragraph>
 <paragraph role="paragraph" id="par_id3148922" xml-lang="en-US" l10n="U" oldref="38">The prefix calls registered Listeners from Basic-subroutines. The Basic run-time system searches for Basic-subroutines or functions that have the name "PrefixListenerMethode" and calls them when found. Otherwise, a run-time error occurs.</paragraph>
 <paragraph role="paragraph" id="par_id3150768" xml-lang="en-US" l10n="U" oldref="37">In this example, the Listener-Interface uses the following methods:</paragraph>
@@ -104,26 +110,33 @@ dedr: fixed #i31078#</lastedited>
 </listitem>
 </list>
 <paragraph role="paragraph" id="par_id3150592" xml-lang="en-US" l10n="U" oldref="23">An event structure type that contains information about an event exists for every Listener type. When a Listener method is called, an instance of this event is passed to the method as a parameter. Basic Listener methods can also call these event objects, so long as the appropriate parameter is passed in the Sub declaration. For example:</paragraph>
-<paragraph role="paragraph" id="par_id3149582" xml-lang="en-US" l10n="U" oldref="22">Sub ContListener_disposing( oEvent )</paragraph>
-<paragraph role="paragraph" id="par_id3153876" xml-lang="en-US" l10n="U" oldref="21">MsgBox "disposing"</paragraph>
-<paragraph role="paragraph" id="par_id3149959" xml-lang="en-US" l10n="U" oldref="20">MsgBox oEvent.Dbg_Properties</paragraph>
-<paragraph role="paragraph" id="par_id3154490" xml-lang="en-US" l10n="U" oldref="19">End Sub</paragraph>
-<paragraph role="paragraph" id="par_id3156285" xml-lang="en-US" l10n="U" oldref="18">Sub ContListener_elementInserted( oEvent )</paragraph>
-<paragraph role="paragraph" id="par_id3154098" xml-lang="en-US" l10n="U" oldref="17">MsgBox "elementInserted"</paragraph>
-<paragraph role="paragraph" id="par_id3155601" xml-lang="en-US" l10n="U" oldref="16">MsgBox oEvent.Dbg_Properties</paragraph>
-<paragraph role="paragraph" id="par_id3153415" xml-lang="en-US" l10n="U" oldref="15">End Sub</paragraph>
-<paragraph role="paragraph" id="par_id3154272" xml-lang="en-US" l10n="U" oldref="14">Sub ContListener_elementRemoved( oEvent )</paragraph>
-<paragraph role="paragraph" id="par_id3153947" xml-lang="en-US" l10n="U" oldref="13">MsgBox "elementRemoved"</paragraph>
-<paragraph role="paragraph" id="par_id3146914" xml-lang="en-US" l10n="U" oldref="12">MsgBox oEvent.Dbg_Properties</paragraph>
-<paragraph role="paragraph" id="par_id3150749" xml-lang="en-US" l10n="U" oldref="11">End Sub</paragraph>
-<paragraph role="paragraph" id="par_id3145642" xml-lang="en-US" l10n="U" oldref="10">Sub ContListener_elementReplaced( oEvent )</paragraph>
-<paragraph role="paragraph" id="par_id3148915" xml-lang="en-US" l10n="U" oldref="9">MsgBox "elementReplaced"</paragraph>
-<paragraph role="paragraph" id="par_id3148995" xml-lang="en-US" l10n="U" oldref="8">MsgBox oEvent.Dbg_Properties</paragraph>
-<paragraph role="paragraph" id="par_id3148407" xml-lang="en-US" l10n="U" oldref="7">End Sub</paragraph>
+<bascode>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ContListener_disposing( oEvent )</paragraph>
+<paragraph role="bascode" id="par_id3153876" xml-lang="en-US" l10n="U" oldref="21">    MsgBox "disposing"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    MsgBox oEvent.Dbg_Properties</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US"> </paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ContListener_elementInserted( oEvent )</paragraph>
+<paragraph role="bascode" id="par_id3154098" xml-lang="en-US" l10n="U" oldref="17">    MsgBox "elementInserted"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    MsgBox oEvent.Dbg_Properties</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US"> </paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ContListener_elementRemoved( oEvent )</paragraph>
+<paragraph role="bascode" id="par_id3153947" xml-lang="en-US" l10n="U" oldref="13">    MsgBox "elementRemoved"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    MsgBox oEvent.Dbg_Properties</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US"> </paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ContListener_elementReplaced( oEvent )</paragraph>
+<paragraph role="bascode" id="par_id3148915" xml-lang="en-US" l10n="U" oldref="9">    MsgBox "elementReplaced"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    MsgBox oEvent.Dbg_Properties</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+</bascode>
 <paragraph role="paragraph" id="par_id3156056" xml-lang="en-US" l10n="U" oldref="6">You do not need to include the parameter of an event object if the object is not used:</paragraph>
-<paragraph role="paragraph" id="par_id3150042" xml-lang="en-US" l10n="U" oldref="5">' Minimal implementation of Sub disposing</paragraph>
-<paragraph role="paragraph" id="par_id3151249" xml-lang="en-US" l10n="U" oldref="4">Sub ContListener_disposing</paragraph>
-<paragraph role="paragraph" id="par_id3155333" xml-lang="en-US" l10n="U" oldref="3">End Sub</paragraph>
+<bascode>
+<paragraph role="bascode" id="par_id3150042" xml-lang="en-US" l10n="U" oldref="5">' Minimal implementation of Sub disposing</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ContListener_disposing</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+</bascode>
 <paragraph role="warning" id="par_id3150940" xml-lang="en-US" l10n="U" oldref="2">Listener methods must <emph>always</emph> be implemented to avoid Basic run-time errors.</paragraph>
 </body>
 </helpdocument>

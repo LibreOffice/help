@@ -49,7 +49,9 @@
 <paragraph role="paragraph" id="par_id3156280" xml-lang="en-US" l10n="U" oldref="2">Reads strings from a sequential file into a variable.</paragraph>
 </section>
 <paragraph role="heading" id="hd_id3150447" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
-<paragraph role="code" id="par_id3147229" xml-lang="en-US" l10n="U" oldref="4">Line Input #FileNumber As Integer, Var As String </paragraph>
+<bascode>
+<paragraph role="bascode" id="par_id3147229" xml-lang="en-US" l10n="U" oldref="4">Line Input #FileNumber As Integer, Var As String </paragraph>
+</bascode>
 <paragraph role="heading" id="hd_id3145173" xml-lang="en-US" level="2" l10n="U" oldref="5">Parameters:</paragraph>
 <paragraph role="paragraph" id="par_id3161832" xml-lang="en-US" l10n="CHG" oldref="6">
 <emph>FileNumber: </emph>Number of the file that contains the data that you want to read. The file must have been opened in advance with the Open statement using the key word INPUT.</paragraph>
@@ -57,27 +59,29 @@
 <emph>var:</emph> The name of the variable that stores the result.</paragraph>
 <paragraph role="paragraph" id="par_id3150010" xml-lang="en-US" l10n="U" oldref="8">With the <emph>Line Input#</emph> statement, you can read strings from an open file into a variable. String variables are read line-by-line up to the first carriage return (Asc=13) or linefeed (Asc=10). Line end marks are not included in the resulting string.</paragraph>
 <paragraph role="heading" id="hd_id3163711" xml-lang="en-US" level="2" l10n="U" oldref="9">Example:</paragraph>
-<paragraph role="code" id="par_id3145271" xml-lang="en-US" l10n="U" oldref="10">Sub ExampleWorkWithAFile</paragraph>
-<paragraph role="code" id="par_id3156444" xml-lang="en-US" l10n="U" oldref="11">Dim iNumber As Integer</paragraph>
-<paragraph role="code" id="par_id3147349" xml-lang="en-US" l10n="U" oldref="12">Dim sLine As String</paragraph>
-<paragraph role="code" id="par_id3149664" xml-lang="en-US" l10n="U" oldref="13">Dim aFile As String</paragraph>
-<paragraph role="code" id="par_id3147436" xml-lang="en-US" l10n="U" oldref="36">Dim sMsg as String</paragraph>
-<paragraph role="code" id="par_id3154730" xml-lang="en-US" l10n="U" oldref="14">aFile = "c:\data.txt"</paragraph>
-<paragraph role="code" id="par_id3145647" xml-lang="en-US" l10n="U" oldref="16">iNumber = Freefile</paragraph>
-<paragraph role="code" id="par_id3149959" xml-lang="en-US" l10n="U" oldref="17">Open aFile For Output As #iNumber</paragraph>
-<paragraph role="code" id="par_id3147124" xml-lang="en-US" l10n="U" oldref="18">Print #iNumber, "This is a line of text"</paragraph>
-<paragraph role="code" id="par_id3153415" xml-lang="en-US" l10n="U" oldref="19">Print #iNumber, "This is another line of text"</paragraph>
-<paragraph role="code" id="par_id3146969" xml-lang="en-US" l10n="U" oldref="20">Close #iNumber</paragraph>
-<paragraph role="code" id="par_id3154482" xml-lang="en-US" l10n="U" oldref="24">iNumber = Freefile</paragraph>
-<paragraph role="code" id="par_id3150321" xml-lang="en-US" l10n="U" oldref="25">Open aFile For Input As iNumber</paragraph>
-<paragraph role="code" id="par_id3155443" xml-lang="en-US" l10n="U" oldref="26">While not eof(iNumber)</paragraph>
-<paragraph role="code" id="par_id3155764" xml-lang="en-US" l10n="U" oldref="27">Line Input #iNumber, sLine</paragraph>
-<paragraph role="code" id="par_id3156382" xml-lang="en-US" l10n="U" oldref="28">If sLine &lt;&gt;"" then</paragraph>
-<paragraph role="code" id="par_id3147338" xml-lang="en-US" l10n="U" oldref="29">sMsg = sMsg &amp; sLine &amp; chr(13)</paragraph>
-<paragraph role="code" id="par_id3147362" xml-lang="en-US" l10n="U" oldref="31">end if</paragraph>
-<paragraph role="code" id="par_id3155333" xml-lang="en-US" l10n="U" oldref="32">wend</paragraph>
-<paragraph role="code" id="par_id3153965" xml-lang="en-US" l10n="U" oldref="33">Close #iNumber</paragraph>
-<paragraph role="code" id="par_id3147345" xml-lang="en-US" l10n="U" oldref="37">Msgbox sMsg</paragraph>
-<paragraph role="code" id="par_id3149257" xml-lang="en-US" l10n="U" oldref="34">End Sub</paragraph>
+<bascode>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleWorkWithAFile</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sLine As String</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sMsg As String</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    aFile = "c:\data.txt"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Open aFile For Output As #iNumber</paragraph>
+<paragraph role="bascode" id="par_id3147124" xml-lang="en-US" l10n="U" oldref="18">    Print #iNumber, "This is a line of text"</paragraph>
+<paragraph role="bascode" id="par_id3153415" xml-lang="en-US" l10n="U" oldref="19">    Print #iNumber, "This is another line of text"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Open aFile For Input As iNumber</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    While Not EOF(iNumber)</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        Line Input #iNumber, sLine</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        If sLine &lt;&gt;"" Then</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">            sMsg = sMsg &amp; sLine &amp; chr(13)</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        End If</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Wend</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    MsgBox sMsg</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+</bascode>
 </body>
 </helpdocument>

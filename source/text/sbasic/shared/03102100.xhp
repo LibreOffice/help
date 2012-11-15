@@ -49,12 +49,16 @@
 <paragraph role="paragraph" id="par_id3143271" xml-lang="en-US" l10n="U" oldref="2">Declares a variable or an array.</paragraph>
 </section>
 <paragraph role="paragraph" id="par_id3154686" xml-lang="en-US" l10n="U" oldref="3">If the variables are separated by commas (for example, DIM sPar1, sPar2, sPar3 AS STRING), only Variant variables can be defined. Use a separate definition line for each variable.</paragraph>
-<paragraph role="code" id="par_id3156422" xml-lang="en-US" l10n="U" oldref="4">DIM sPar1 AS STRING</paragraph>
-<paragraph role="code" id="par_id3159252" xml-lang="en-US" l10n="U" oldref="5">DIM sPar2 AS STRING</paragraph>
-<paragraph role="code" id="par_id3153142" xml-lang="en-US" l10n="U" oldref="6">DIM sPar3 AS STRING</paragraph>
+<bascode>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sPar1 As String</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sPar2 As String</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sPar3 As String</paragraph>
+</bascode>
 <paragraph role="paragraph" id="par_id3152576" xml-lang="en-US" l10n="U" oldref="7">Dim declares local variables within subroutines. Global variables are declared with the PUBLIC or the PRIVATE statement.</paragraph>
 <paragraph role="heading" id="hd_id3156443" xml-lang="en-US" level="2" l10n="U" oldref="8">Syntax:</paragraph>
-<paragraph role="paragraph" id="par_id3149412" xml-lang="en-US" l10n="U" oldref="9">[ReDim]Dim VarName [(start To end)] [As VarType][, VarName2 [(start To end)] [As VarType][,...]]</paragraph>
+<bascode>
+<paragraph role="bascode" id="par_id3149412" xml-lang="en-US" oldref="9">[ReDim]Dim VarName [(start To end)] [As VarType][, VarName2 [(start To end)] [As VarType][,...]]</paragraph>
+</bascode>
 <paragraph role="heading" id="hd_id3147397" xml-lang="en-US" level="2" l10n="U" oldref="10">Parameters:</paragraph>
 <paragraph role="paragraph" id="par_id3154730" xml-lang="en-US" l10n="U" oldref="11">
 <emph>VarName:</emph> Any variable or array name.</paragraph>
@@ -96,25 +100,28 @@
 <paragraph role="paragraph" id="par_id3149529" xml-lang="en-US" l10n="U" oldref="34">DIM text(20,2) as String REM 63 elements; form 0 to 20 level 1, from 0 to 20 level 2 and from 0 to 20 level 3.</paragraph>
 <paragraph role="paragraph" id="par_id3159239" xml-lang="en-US" l10n="U" oldref="35">You can declare an array types as dynamic if a ReDim statement defines the number of dimensions in the subroutine or the function that contains the array. Generally, you can only define an array dimension once, and you cannot modify it. Within a subroutine, you can declare an array with ReDim. You can only define dimensions with numeric expressions. This ensures that the fields are only as large as necessary.</paragraph>
 <paragraph role="heading" id="hd_id3150344" xml-lang="en-US" level="2" l10n="U" oldref="36">Example:</paragraph>
-<paragraph role="paragraph" id="par_id3150206" xml-lang="en-US" l10n="U" oldref="37">Sub ExampleDim1</paragraph>
-<paragraph role="paragraph" id="par_id3154201" xml-lang="en-US" l10n="U" oldref="38">Dim sVar As String</paragraph>
-<paragraph role="paragraph" id="par_id3146134" xml-lang="en-US" l10n="U" oldref="39">Dim iVar As Integer</paragraph>
-<paragraph role="paragraph" id="par_id3154657" xml-lang="en-US" l10n="CHG" oldref="40">sVar = "Office"</paragraph>
-<paragraph role="paragraph" id="par_id3148459" xml-lang="en-US" l10n="U" oldref="41">End Sub</paragraph>
-<paragraph role="paragraph" id="par_id3166424" xml-lang="en-US" l10n="U" oldref="43">Sub ExampleDim2</paragraph>
-<paragraph role="paragraph" id="par_id3149036" xml-lang="en-US" l10n="U" oldref="44">REM Two-dimensional data field</paragraph>
-<paragraph role="paragraph" id="par_id3149737" xml-lang="en-US" l10n="U" oldref="45">Dim stext(20,2) as String</paragraph>
-<paragraph role="paragraph" id="par_id3153782" xml-lang="en-US" l10n="U" oldref="46">Const sDim as String = " Dimension:"</paragraph>
-<paragraph role="paragraph" id="par_id3150518" xml-lang="en-US" l10n="U" oldref="48">for i = 0 to 20</paragraph>
-<paragraph role="paragraph" id="par_id3166428" xml-lang="en-US" l10n="U" oldref="49">for ii = 0 to 2</paragraph>
-<paragraph role="paragraph" id="par_id3152994" xml-lang="en-US" l10n="U" oldref="50">stext(i,ii) = str(i) &amp; sDim &amp; str(ii)</paragraph>
-<paragraph role="paragraph" id="par_id3150202" xml-lang="en-US" l10n="U" oldref="51">next ii</paragraph>
-<paragraph role="paragraph" id="par_id3154370" xml-lang="en-US" l10n="U" oldref="52">next i</paragraph>
-<paragraph role="paragraph" id="par_id3156166" xml-lang="en-US" l10n="U" oldref="54">for i = 0 to 20</paragraph>
-<paragraph role="paragraph" id="par_id3148815" xml-lang="en-US" l10n="U" oldref="55">for ii = 0 to 2</paragraph>
-<paragraph role="paragraph" id="par_id3146981" xml-lang="en-US" l10n="U" oldref="56">msgbox stext(i,ii)</paragraph>
-<paragraph role="paragraph" id="par_id3155125" xml-lang="en-US" l10n="U" oldref="57">next ii</paragraph>
-<paragraph role="paragraph" id="par_id3154528" xml-lang="en-US" l10n="U" oldref="58">next i</paragraph>
-<paragraph role="paragraph" id="par_id3155087" xml-lang="en-US" l10n="U" oldref="59">End Sub</paragraph>
+<bascode>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleDim1</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sVar As String</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim iVar As Integer</paragraph>
+<paragraph role="bascode" id="par_id3154657" xml-lang="en-US" l10n="CHG" oldref="40">    sVar = "Office"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US"> </paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleDim2</paragraph>
+<paragraph role="bascode" id="par_id3149036" xml-lang="en-US" l10n="U" oldref="44">' Two-dimensional data field</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim stext(20,2) As String</paragraph>
+<paragraph role="bascode" id="par_id3153782" xml-lang="en-US" l10n="U" oldref="46">Const sDim As String = " Dimension:"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">For i = 0 To 20</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    For ii = 0 To 2</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        stext(i,ii) = str(i) &amp; sDim &amp; str(ii)</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Next ii</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Next i</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">For i = 0 To 20</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    For ii = 0 To 2</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        MsgBox stext(i,ii)</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Next ii</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Next i</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+</bascode>
 </body>
 </helpdocument>

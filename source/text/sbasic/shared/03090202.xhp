@@ -50,11 +50,13 @@
 <paragraph role="paragraph" id="par_id3143267" xml-lang="en-US" l10n="U" oldref="2">Repeats the statements between the For...Next block a specified number of times.</paragraph>
 </section>
 <paragraph role="heading" id="hd_id3156153" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
-<paragraph role="paragraph" id="par_id3148473" xml-lang="en-US" l10n="U" oldref="4">For counter=start To end [Step step]</paragraph>
-<paragraph role="paragraph" id="par_id3156024" xml-lang="en-US" l10n="U" oldref="5">statement block</paragraph>
-<paragraph role="paragraph" id="par_id3146796" xml-lang="en-US" l10n="U" oldref="6">[Exit For]</paragraph>
-<paragraph role="paragraph" id="par_id3159414" xml-lang="en-US" l10n="U" oldref="7">statement block</paragraph>
-<paragraph role="paragraph" id="par_id3153897" xml-lang="en-US" l10n="U" oldref="8">Next [counter]</paragraph>
+<bascode>
+<paragraph role="bascode" id="par_id3148473" xml-lang="en-US" oldref="4">For counter=start To end [Step step]</paragraph>
+<paragraph role="bascode" id="par_id3156024" xml-lang="en-US" oldref="5">statement block</paragraph>
+<paragraph role="bascode" id="par_id3146796" xml-lang="en-US" l10n="U" oldref="6">[Exit For]</paragraph>
+<paragraph role="bascode" id="par_id3159414" xml-lang="en-US" l10n="U" oldref="7">statement block</paragraph>
+<paragraph role="bascode" id="par_id3153897" xml-lang="en-US" l10n="U" oldref="8">Next [counter]</paragraph>
+</bascode>
 <paragraph role="heading" id="hd_id3150400" xml-lang="en-US" level="2" l10n="U" oldref="9">Variables:</paragraph>
 <paragraph role="paragraph" id="par_id3150358" xml-lang="en-US" l10n="U" oldref="10">
 <emph>Counter:</emph> Loop counter initially assigned the value to the right of the equal sign (start). Only numeric variables are valid. The loop counter increases or decreases according to the variable Step until End is passed.</paragraph>
@@ -78,33 +80,35 @@
 <paragraph role="paragraph" id="par_id3156286" xml-lang="en-US" l10n="U" oldref="25">Note: In nested <emph>For...Next</emph> loops, if you exit a loop unconditionally with <emph>Exit For</emph>, only one loop is exited.</paragraph>
 <paragraph role="heading" id="hd_id3148457" xml-lang="en-US" level="2" l10n="U" oldref="26">Example</paragraph>
 <paragraph role="paragraph" id="par_id3151074" xml-lang="en-US" l10n="U" oldref="27">The following example uses two nested loops to sort a string array with 10 elements ( sEntry() ), that are first filled with various contents:</paragraph>
-<paragraph role="paragraph" id="par_id3155603" xml-lang="en-US" l10n="U" oldref="28">Sub ExampleSort</paragraph>
-<paragraph role="paragraph" id="par_id3156275" xml-lang="en-US" l10n="U" oldref="29">Dim sEntry(9) As String</paragraph>
-<paragraph role="paragraph" id="par_id3155066" xml-lang="en-US" l10n="U" oldref="30">Dim iCount As Integer</paragraph>
-<paragraph role="paragraph" id="par_id3150751" xml-lang="en-US" l10n="U" oldref="31">Dim iCount2 As Integer</paragraph>
-<paragraph role="paragraph" id="par_id3155446" xml-lang="en-US" l10n="U" oldref="32">Dim sTemp As String</paragraph>
-<paragraph role="paragraph" id="par_id3155767" xml-lang="en-US" l10n="U" oldref="42">sEntry(0) = "Jerry"</paragraph>
-<paragraph role="paragraph" id="par_id3153711" xml-lang="en-US" l10n="U" oldref="33">sEntry(1) = "Patty"</paragraph>
-<paragraph role="paragraph" id="par_id3148993" xml-lang="en-US" l10n="U" oldref="34">sEntry(2) = "Kurt"</paragraph>
-<paragraph role="paragraph" id="par_id3156382" xml-lang="en-US" l10n="U" oldref="35">sEntry(3) = "Thomas"</paragraph>
-<paragraph role="paragraph" id="par_id3155174" xml-lang="en-US" l10n="U" oldref="36">sEntry(4) = "Michael"</paragraph>
-<paragraph role="paragraph" id="par_id3166448" xml-lang="en-US" l10n="U" oldref="37">sEntry(5) = "David"</paragraph>
-<paragraph role="paragraph" id="par_id3149255" xml-lang="en-US" l10n="U" oldref="38">sEntry(6) = "Cathy"</paragraph>
-<paragraph role="paragraph" id="par_id3149565" xml-lang="en-US" l10n="U" oldref="39">sEntry(7) = "Susie"</paragraph>
-<paragraph role="paragraph" id="par_id3145148" xml-lang="en-US" l10n="U" oldref="40">sEntry(8) = "Edward"</paragraph>
-<paragraph role="paragraph" id="par_id3145229" xml-lang="en-US" l10n="U" oldref="41">sEntry(9) = "Christine"</paragraph>
-<paragraph role="paragraph" id="par_id3149107" xml-lang="en-US" l10n="U" oldref="44">For iCount = 0 To 9</paragraph>
-<paragraph role="paragraph" id="par_id3148485" xml-lang="en-US" l10n="U" oldref="45">For iCount2 = iCount + 1 To 9</paragraph>
-<paragraph role="paragraph" id="par_id3155608" xml-lang="en-US" l10n="U" oldref="46">If sEntry(iCount) &gt; sEntry(iCount2) Then</paragraph>
-<paragraph role="paragraph" id="par_id3150938" xml-lang="en-US" l10n="U" oldref="47">sTemp = sEntry(iCount)</paragraph>
-<paragraph role="paragraph" id="par_id3153790" xml-lang="en-US" l10n="U" oldref="48">sEntry(iCount) = sEntry(iCount2)</paragraph>
-<paragraph role="paragraph" id="par_id3149210" xml-lang="en-US" l10n="U" oldref="49">sEntry(iCount2) = sTemp</paragraph>
-<paragraph role="paragraph" id="par_id3153781" xml-lang="en-US" l10n="U" oldref="50">End If</paragraph>
-<paragraph role="paragraph" id="par_id3158446" xml-lang="en-US" l10n="U" oldref="51">Next iCount2</paragraph>
-<paragraph role="paragraph" id="par_id3150783" xml-lang="en-US" l10n="U" oldref="52">Next iCount</paragraph>
-<paragraph role="paragraph" id="par_id3151278" xml-lang="en-US" l10n="U" oldref="57">For iCount = 0 To 9</paragraph>
-<paragraph role="paragraph" id="par_id3148462" xml-lang="en-US" l10n="U" oldref="58">Print sEntry(iCount)</paragraph>
-<paragraph role="paragraph" id="par_id3149528" xml-lang="en-US" l10n="U" oldref="59">Next iCount</paragraph>
-<paragraph role="paragraph" id="par_id3152580" xml-lang="en-US" l10n="U" oldref="60">End Sub</paragraph>
+<bascode>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleSort</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sEntry(9) As String</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim iCount As Integer</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim iCount2 As Integer</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sTemp As String</paragraph>
+<paragraph role="bascode" id="par_id3155767" xml-lang="en-US" l10n="U" oldref="42">    sEntry(0) = "Jerry"</paragraph>
+<paragraph role="bascode" id="par_id3153711" xml-lang="en-US" l10n="U" oldref="33">    sEntry(1) = "Patty"</paragraph>
+<paragraph role="bascode" id="par_id3148993" xml-lang="en-US" l10n="U" oldref="34">    sEntry(2) = "Kurt"</paragraph>
+<paragraph role="bascode" id="par_id3156382" xml-lang="en-US" l10n="U" oldref="35">    sEntry(3) = "Thomas"</paragraph>
+<paragraph role="bascode" id="par_id3155174" xml-lang="en-US" l10n="U" oldref="36">    sEntry(4) = "Michael"</paragraph>
+<paragraph role="bascode" id="par_id3166448" xml-lang="en-US" l10n="U" oldref="37">    sEntry(5) = "David"</paragraph>
+<paragraph role="bascode" id="par_id3149255" xml-lang="en-US" l10n="U" oldref="38">    sEntry(6) = "Cathy"</paragraph>
+<paragraph role="bascode" id="par_id3149565" xml-lang="en-US" l10n="U" oldref="39">    sEntry(7) = "Susie"</paragraph>
+<paragraph role="bascode" id="par_id3145148" xml-lang="en-US" l10n="U" oldref="40">    sEntry(8) = "Edward"</paragraph>
+<paragraph role="bascode" id="par_id3145229" xml-lang="en-US" l10n="U" oldref="41">    sEntry(9) = "Christine"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    For iCount = 0 To 9</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        For iCount2 = iCount + 1 To 9</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">            If sEntry(iCount) &gt; sEntry(iCount2) Then</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">                sTemp = sEntry(iCount)</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">                sEntry(iCount) = sEntry(iCount2)</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">                sEntry(iCount2) = sTemp</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">            End If</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        Next iCount2</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Next iCount</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    For iCount = 0 To 9</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        Print sEntry(iCount)</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Next iCount</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+</bascode>
 </body>
 </helpdocument>

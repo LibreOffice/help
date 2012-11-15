@@ -47,7 +47,9 @@
 <paragraph role="paragraph" id="par_id3154347" xml-lang="en-US" l10n="U" oldref="2">Returns a bit pattern that identifies the file type or the name of a volume or a directory.</paragraph>
 </section>
 <paragraph role="heading" id="hd_id3149457" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
-<paragraph role="code" id="par_id3150359" xml-lang="en-US" l10n="U" oldref="4">GetAttr (Text As String)</paragraph>
+<bascode>
+<paragraph role="bascode" id="par_id3150359" xml-lang="en-US" l10n="U" oldref="4">GetAttr (Text As String)</paragraph>
+</bascode>
 <paragraph role="heading" id="hd_id3151211" xml-lang="en-US" level="2" l10n="U" oldref="5">Return value:</paragraph>
 <paragraph role="paragraph" id="par_id3154909" xml-lang="en-US" l10n="U" oldref="6">Integer</paragraph>
 <paragraph role="heading" id="hd_id3145172" xml-lang="en-US" level="2" l10n="U" oldref="7">Parameters:</paragraph>
@@ -65,18 +67,20 @@
 <paragraph role="paragraph" id="par_id3153953" xml-lang="en-US" l10n="U" oldref="17">32 : File was changed since last backup (Archive bit).</paragraph>
 <paragraph role="paragraph" id="par_id3156444" xml-lang="en-US" l10n="U" oldref="18">If you want to know if a bit of the attribute byte is set, use the following query method:</paragraph>
 <paragraph role="heading" id="hd_id3153094" xml-lang="en-US" level="2" l10n="U" oldref="19">Example:</paragraph>
-<paragraph role="code" id="par_id3154491" xml-lang="en-US" l10n="U" oldref="20">Sub ExampleSetGetAttr</paragraph>
-<paragraph role="code" id="par_id3155415" xml-lang="en-US" l10n="U" oldref="21">On Error Goto ErrorHandler REM Define target for error-handler</paragraph>
-<paragraph role="code" id="par_id3154944" xml-lang="en-US" l10n="U" oldref="22">If Dir("C:\test",16)="" Then MkDir "C:\test"</paragraph>
-<paragraph role="code" id="par_id3151075" xml-lang="en-US" l10n="U" oldref="23">If Dir("C:\test\autoexec.sav")="" THEN Filecopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
-<paragraph role="code" id="par_id3149959" xml-lang="en-US" l10n="U" oldref="24">SetAttr "c:\test\autoexec.sav" ,0</paragraph>
-<paragraph role="code" id="par_id3153418" xml-lang="en-US" l10n="U" oldref="25">Filecopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
-<paragraph role="code" id="par_id3149122" xml-lang="en-US" l10n="U" oldref="26">SetAttr "c:\test\autoexec.sav" ,1</paragraph>
-<paragraph role="code" id="par_id3154480" xml-lang="en-US" l10n="U" oldref="27">print GetAttr( "c:\test\autoexec.sav" )</paragraph>
-<paragraph role="code" id="par_id3150753" xml-lang="en-US" l10n="U" oldref="28">end</paragraph>
-<paragraph role="code" id="par_id3150323" xml-lang="en-US" l10n="U" oldref="29">ErrorHandler:</paragraph>
-<paragraph role="code" id="par_id3154754" xml-lang="en-US" l10n="U" oldref="30">Print Error</paragraph>
-<paragraph role="code" id="par_id3155764" xml-lang="en-US" l10n="U" oldref="31">end</paragraph>
-<paragraph role="code" id="par_id3156382" xml-lang="en-US" l10n="U" oldref="32">end sub</paragraph>
+<bascode>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleSetGetAttr</paragraph>
+<paragraph role="bascode" id="par_id3155415" xml-lang="en-US" l10n="U" oldref="21">On Error GoTo ErrorHandler ' Define target for error handler</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    If Dir("C:\test",16)="" Then MkDir "C:\test"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        If Dir("C:\test\autoexec.sav")="" Then FileCopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">            SetAttr "c:\test\autoexec.sav" ,0</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">            FileCopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">            SetAttr "c:\test\autoexec.sav" ,1</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">            Print GetAttr( "c:\test\autoexec.sav" )</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        End</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">ErrorHandler:</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        Print Error</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    End</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+</bascode>
 </body>
 </helpdocument>

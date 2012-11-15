@@ -50,25 +50,30 @@
 </section>
 <paragraph role="warning" id="par_id3147264" xml-lang="en-US" l10n="U" oldref="3">The <emph>Static statement</emph> cannot be used to define variable arrays. Arrays must be specified according to a fixed size.</paragraph>
 <paragraph role="heading" id="hd_id3149657" xml-lang="en-US" level="2" l10n="U" oldref="4">Syntax:</paragraph>
-<paragraph role="paragraph" id="par_id3150400" xml-lang="en-US" l10n="U" oldref="5">Static VarName[(start To end)] [As VarType], VarName2[(start To end)] [As VarType], ...</paragraph>
+<bascode>
+<paragraph role="bascode" id="par_id3150400" xml-lang="en-US" oldref="5">Static VarName[(start To end)] [As VarType], VarName2[(start To end)] [As VarType], ...</paragraph>
+</bascode>
 <paragraph role="heading" id="hd_id3148452" xml-lang="en-US" level="2" l10n="U" oldref="6">Example:</paragraph>
-<paragraph role="code" id="par_id3156214" xml-lang="en-US" l10n="U" oldref="7">Sub ExampleStatic</paragraph>
-<paragraph role="code" id="par_id1940061" xml-lang="en-US" l10n="NEW">Dim iCount as Integer, iResult as Integer</paragraph>
-<paragraph role="code" id="par_id878627" xml-lang="en-US" l10n="NEW">For iCount = 0 to 2</paragraph>
-<paragraph role="code" id="par_id7914059" xml-lang="en-US" l10n="NEW">iResult = InitVar()</paragraph>
-<paragraph role="code" id="par_id299691" xml-lang="en-US" l10n="NEW">Next iCount</paragraph>
-<paragraph role="code" id="par_id3150870" xml-lang="en-US" l10n="CHG" oldref="11">MsgBox iResult,0,"The answer is"</paragraph>
-<paragraph role="code" id="par_id3153771" xml-lang="en-US" l10n="U" oldref="13">End Sub</paragraph>
-<paragraph role="code" id="par_id3151115" xml-lang="en-US" l10n="U" oldref="15">REM Function for initialization of the static variable</paragraph>
-<paragraph role="code" id="par_id3148618" xml-lang="en-US" l10n="U" oldref="16">Function InitVar() As Integer</paragraph>
-<paragraph role="code" id="par_id3154217" xml-lang="en-US" l10n="U" oldref="8">Static iInit As Integer</paragraph>
-<paragraph role="code" id="par_id1057161" xml-lang="en-US" l10n="NEW">Const iMinimum as Integer = 40 REM minimum return value of this function</paragraph>
-<paragraph role="code" id="par_id580462" xml-lang="en-US" l10n="NEW">if iInit = 0 then REM check if initialized</paragraph>
-<paragraph role="code" id="par_id7382732" xml-lang="en-US" l10n="NEW">iInit = iMinimum</paragraph>
-<paragraph role="code" id="par_id5779900" xml-lang="en-US" l10n="NEW">else</paragraph>
-<paragraph role="code" id="par_id3151041" xml-lang="en-US" l10n="U" oldref="10">iInit = iInit + 1</paragraph>
-<paragraph role="code" id="par_id5754264" xml-lang="en-US" l10n="NEW">end if</paragraph>
-<paragraph role="code" id="par_id6529435" xml-lang="en-US" l10n="NEW">InitVar = iInit</paragraph>
-<paragraph role="code" id="par_id3150487" xml-lang="en-US" l10n="U" oldref="18">End Function</paragraph>
+<bascode>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleStatic</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Dim iCount As Integer, iResult As Integer</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    For iCount = 0 To 2</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        iResult = InitVar()</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Next iCount</paragraph>
+<paragraph role="bascode" id="par_id3150870" xml-lang="en-US" l10n="CHG" oldref="11">    MsgBox iResult,0,"The answer is"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US"> </paragraph>
+<paragraph role="bascode" id="par_id3151115" xml-lang="en-US" l10n="U" oldref="15">' Function for initialization of the static variable</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Function InitVar() As Integer</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Static iInit As Integer</paragraph>
+<paragraph role="bascode" id="par_id1057161" xml-lang="en-US">    Const iMinimum As Integer = 40 ' minimum return value of this function</paragraph>
+<paragraph role="bascode" id="par_id580462" xml-lang="en-US">    If iInit = 0 Then ' check if initialized</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        iInit = iMinimum</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Else</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">        iInit = iInit + 1</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    End If</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    InitVar = iInit</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Function</paragraph>
+</bascode>
 </body>
 </helpdocument>
