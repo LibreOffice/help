@@ -30,6 +30,7 @@ PRJ		= ..$/..
 PRJNAME = helpcontent2
 TARGET  = text
 
+
 # --- Settings -----------------------------------------------------
 
 .INCLUDE : settings.mk
@@ -73,16 +74,3 @@ $(COMMONMISC)$/treefiles.done : $(LOCTREEFILES)
 $(LOCTREEFILES) : $(foreach,tree,$(TREEFILES) ../auxiliary/$(tree)) $$(@:d)$/dir.created
     @$(TOUCH) $@
 
-.IF "$(WITH_LANG)"!=""
-.IF "$(LOCALIZATION_FOUND)"=="YES"
-$(LOCTREEFILES) : $(TRYSDF:d:d:d:d)$/text$/shared/localize.sdf
-.ELSE			# "$(LOCALIZATION_FOUND)"=="YES"
-$(COMMONMISC)/unpack.done : $(SOLARCOMMONSDFDIR)$/$(PRJNAME).zip
-    @@-$(MKDIRHIER) $(COMMONMISC)$/$(PRJNAME)_$(TARGET)
-    unzip -o -d $(COMMONMISC)$/$(PRJNAME) $(SOLARCOMMONSDFDIR)$/$(PRJNAME).zip 
-    $(TOUCH) $@
-
-$(LOCTREEFILES) : $(COMMONMISC)/unpack.done
-
-.ENDIF			# "$(LOCALIZATION_FOUND)"=="YES"
-.ENDIF			# "$(WITH_LANG)"!=""
