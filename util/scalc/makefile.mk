@@ -1261,7 +1261,6 @@ LINKLINKFILES= \
    text$/shared$/optionen$/viewcertificate_c.xhp \
    text$/shared$/optionen$/viewcertificate_d.xhp \
    text$/shared$/optionen$/viewcertificate_g.xhp \
-   text$/shared$/tree_strings.xhp \
    text$/schart$/00$/00000004.xhp \
    text$/schart$/01$/03010000.xhp \
    text$/schart$/01$/04010000.xhp \

@@ -945,7 +945,6 @@ LINKLINKFILES= \
    text$/shared$/optionen$/viewcertificate_c.xhp \
    text$/shared$/optionen$/viewcertificate_d.xhp \
    text$/shared$/optionen$/viewcertificate_g.xhp \
-   text$/shared$/tree_strings.xhp \
 
 
 # --- Targets ------------------------------------------------------

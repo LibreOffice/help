@@ -59,8 +59,7 @@ XHPFILES = \
    main0500.xhp \
    main0600.xhp \
    main0650.xhp \
-   main0800.xhp \
-   tree_strings.xhp 
+   main0800.xhp
     
 # --- Targets ------------------------------------------------------
 
