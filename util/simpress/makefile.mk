@@ -294,6 +294,7 @@ LINKLINKFILES= \
    text$/simpress$/main0213.xhp \
    text$/simpress$/main0214.xhp \
    text$/simpress$/main0503.xhp \
+   text$/simpress$/presenter.xhp \
    text$/shared$/00$/00000001.xhp \
    text$/shared$/00$/00000002.xhp \
    text$/shared$/00$/00000003.xhp \
