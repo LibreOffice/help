@@ -56,13 +56,13 @@ LOCSWRITER:=$(foreach,i,$(aux_alllangiso) $(COMMONMISC)$/$i$/swriter.tree)
 LOCSHARED:=$(foreach,i,$(aux_alllangiso) $(COMMONMISC)$/$i$/shared.tree)
 .ELSE			#IF "$(WITH_LANG)"!=""
 
-LOCSBASIC:=$(COMMONMISC)$/en_US$/sbasic.tree
-LOCSIMPRESS:=$(COMMONMISC)$/en_US$/simpress.tree
-LOCSCALC:=$(COMMONMISC)$/en_US$/scalc.tree
-LOCSMATH:=$(COMMONMISC)$/en_US$/smath.tree
-LOCSCHART:=$(COMMONMISC)$/en_US$/schart.tree
-LOCSWRITER:=$(COMMONMISC)$/en_US$/swriter.tree
-LOCSHARED:=$(COMMONMISC)$/en_US$/shared.tree
+LOCSBASIC:=$(COMMONMISC)$/en-US$/sbasic.tree
+LOCSIMPRESS:=$(COMMONMISC)$/en-US$/simpress.tree
+LOCSCALC:=$(COMMONMISC)$/en-US$/scalc.tree
+LOCSMATH:=$(COMMONMISC)$/en-US$/smath.tree
+LOCSCHART:=$(COMMONMISC)$/en-US$/schart.tree
+LOCSWRITER:=$(COMMONMISC)$/en-US$/swriter.tree
+LOCSHARED:=$(COMMONMISC)$/en-US$/shared.tree
 .ENDIF			#IF "$(WITH_LANG)"!=""
 
 $(COMMONMISC)$/sbasic.tree.done : $(LOCSBASIC)
