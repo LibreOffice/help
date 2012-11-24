@@ -118,7 +118,8 @@ section_id_mapping = \
 replace_text_list = \
     [["$[officename]", "{{ProductName}}"],
      ["%PRODUCTNAME", "{{ProductName}}"],
-     ["$PRODUCTNAME", "{{ProductName}}"]
+     ["$PRODUCTNAME", "{{ProductName}}"],
+     ["font size", u"\u200dfont size"]
     ]
 
 def get_link_filename(link, name):
