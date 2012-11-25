@@ -151,6 +151,7 @@ XHPFILES = \
    redlining_enter.xhp \
    redlining_protect.xhp \
    redlining_versions.xhp \
+   redlining_navigation.xhp \
    round_corner.xhp \
    scripting.xhp \
    space_hyphen.xhp \
