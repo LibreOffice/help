@@ -1221,6 +1221,7 @@ LINKLINKFILES= \
    text$/shared$/guide$/redlining_enter.xhp \
    text$/shared$/guide$/redlining_protect.xhp \
    text$/shared$/guide$/redlining_versions.xhp \
+   text$/shared$/guide$/redlining_navigation.xhp \
    text$/shared$/guide$/round_corner.xhp \
    text$/shared$/guide$/scripting.xhp \
    text$/shared$/guide$/space_hyphen.xhp \
