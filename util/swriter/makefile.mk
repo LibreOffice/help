@@ -452,6 +452,7 @@ LINKLINKFILES= \
    text$/swriter$/main0216.xhp \
    text$/swriter$/main0220.xhp \
    text$/swriter$/main0503.xhp \
+   text$/swriter$/LibreLogo.xhp \
    text$/shared$/00$/00000001.xhp \
    text$/shared$/00$/00000002.xhp \
    text$/shared$/00$/00000003.xhp \
