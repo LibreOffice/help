@@ -36,6 +36,7 @@ replace_paragraph_role = \
               'head1': '= ', # used only in one file, probably in error?
               'head2': '== ', # used only in one file, probably in error?
               'listitem': '',
+              'logocode': '<code>',
               'note': '{{Note|',
               'null': '', # special paragraph for Variable, CaseInline, etc.
               'paragraph': '',
@@ -65,6 +66,7 @@ replace_paragraph_role = \
             'head1': ' =\n\n', # used only in one file, probably in error?
             'head2': ' ==\n\n', # used only in one file, probably in error?
             'listitem': '',
+            'logocode': '</code>\n\n',
             'note': '}}\n\n',
             'null': '', # special paragraph for Variable, CaseInline, etc.
             'paragraph': '\n\n',
@@ -94,6 +96,7 @@ replace_paragraph_role = \
               'head1': False,
               'head2': False,
               'listitem': False,
+              'logocode': False,
               'note': True,
               'null': False,
               'paragraph': False,
@@ -571,6 +574,8 @@ class ListItem(ElementBase):
                 self.embed_href(parser, fname, id)
         elif name == 'paragraph':
             parser.parse_localized_paragraph(ListItemParagraph(attrs, self), attrs, self)
+        elif name == 'list':
+            self.parse_child(List(attrs, self))
         else:
             self.unhandled_element(parser, name)
 
@@ -1051,7 +1056,7 @@ class Paragraph(ElementBase):
 
         # the text itself
         children = ElementBase.get_all(self)
-        if self.role != 'emph' and self.role != 'bascode':
+        if self.role != 'emph' and self.role != 'bascode' and self.role != 'logocode':
             children = children.strip()
 
         if len(children) == 0:
@@ -1142,6 +1147,8 @@ class TableContentParagraph(Paragraph):
             if self.role == 'code':
                 self.role = 'tablecontentcode'
             elif self.role == 'bascode':
+                self.role = 'tablecontentcode'
+            elif self.role == 'logocode':
                 self.role = 'tablecontentcode'
             else:
                 self.role = 'tablecontent'
