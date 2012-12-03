@@ -67,8 +67,7 @@ XHPFILES = \
    main0215.xhp \
    main0216.xhp \
    main0220.xhp \
-   main0503.xhp \
-   LibreLogo.xhp
+   main0503.xhp
     
 # --- Targets ------------------------------------------------------
 
