@@ -63,7 +63,7 @@ def create_wiki_dirs():
 # Langs to handle
 langs = ['', 'ca', 'cs', 'da', 'de', 'es', 'fr', 'hu', \
          'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'pt-BR', 'ru', \
-         'sl', 'sv', 'vi', 'zh-CN', 'zh-TW' ]
+         'sl', 'sv', 'tr', 'vi', 'zh-CN', 'zh-TW' ]
 
 # Argument handling
 try:
