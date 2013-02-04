@@ -95,13 +95,13 @@ print "Generating the titles..."
 os.system( "python to-wiki/getalltitles.py source/text > alltitles.csv" )
 
 try:
-    sdf_path = args[0]
+    po_path = args[0]
 except:
-    sdf_path = '../../translations/unxlngx6.pro/misc/sdf-l10n'
-    sys.stderr.write('Path to the .sdf files not provided, using "%s"\n'% sdf_path)
+    po_path = '../translations/source'
+    sys.stderr.write('Path to the .po files not provided, using "%s"\n'% po_path)
 
 # do the work
 for lang in langs:
-    wikiconv2.convert(generate_redirects, lang, '%s/%s.sdf'% (sdf_path, lang))
+    wikiconv2.convert(generate_redirects, lang, '%s/%s/helpcontent2/source'% (po_path, lang))
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:
