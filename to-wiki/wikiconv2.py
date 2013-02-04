@@ -7,7 +7,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
-import os, sys, thread, threading, time
+import os, sys, thread, threading, time, re
 import xml.parsers.expat
 import codecs
 from threading import Thread
@@ -179,31 +179,79 @@ def escape_equals_sign(text):
 
     return t
 
-def load_localization_data(sdf_file):
+def xopen(path, mode, encoding):
+    """Wrapper around open() to support both python2 and python3."""
+    if sys.version_info >= (3,):
+        return open(path, mode, encoding=encoding)
+    else:
+        return open(path, mode)
+
+# used by ecape_help_text
+helptagre = re.compile('''<[/]??[a-z_\-]+?(?:| +[a-zA-Z]+?=[\\\\]??".*?") *[/]??>''')
+
+def escape_help_text(text):
+    """Escapes the help text as it would be in an SDF file."""
+
+    for tag in helptagre.findall(text):
+        escapethistag = False
+        for escape_tag in ["ahelp", "link", "item", "emph", "defaultinline", "switchinline", "caseinline", "variable", "bookmark_value", "image", "embedvar", "alt"]:
+            if tag.startswith("<%s" % escape_tag) or tag == "</%s>" % escape_tag:
+                escapethistag = True
+        if tag in ["<br/>", "<help-id-missing/>"]:
+            escapethistag = True
+        if escapethistag:
+            escaped_tag = ("\\<" + tag[1:-1] + "\\>")
+            text = text.replace(tag, escaped_tag)
+    return text
+
+
+def load_localization_data(po_root):
     global localization_data
     localization_data = {}
-    try:
-        file = codecs.open(sdf_file, "r", "utf-8")
-    except:
-        sys.stderr.write('Error: Cannot open .sdf file "%s"\n'% sdf_file)
-        return False
-
-    for line in file:
-        line = line.strip()
-        if line[0] == '#':
-            continue
-        spl = line.split("\t")
-
-        # the form of the key is like
-        # source/text/shared/explorer/database/02010100.xhp#hd_id3149233
-        # otherwise we are getting duplicates
-        key = '%s#%s'% (spl[1].replace('\\', '/'), spl[4])
-        try:
-            localization_data[key] = spl[10]
-        except:
-            sys.stderr.write('Warning: Ignored line "%s"\n'% line.encode('utf-8'))
-
-    file.close()
+    for root, dirs, files in os.walk(po_root):
+        for file in files:
+            if re.search(r'\.po$', file) == None:
+                continue
+            path = "%s/%s" % (root, file)
+            sock = xopen(path, "r", encoding='utf-8')
+            hashKey = None
+            transCollecting = False
+            trans = ""
+            it = iter(sock)
+            line = next(it, None)
+            while line != None:
+                line=line.decode("utf-8")
+                if line.startswith('msgctxt ""'): # constructing the hashKey
+                    key=[]
+                    allGood = True
+                    i=0
+                    while i<2 and allGood:
+                        msgctxt_line = next(it, None);
+                        if  msgctxt_line != None and msgctxt_line.strip().startswith('"'):
+                            key.append( msgctxt_line[1:-4] ) #-4 cuts \\n"\n from the end of the line
+                            i=i+1
+                        else:
+                            allGood = False
+                    if i==2: #hash key is allowed to be constructed
+                        hashKey = '#'.join( (re.sub(r'^.*helpcontent2/source/', r'source/', path[:-3]) + '/' + key[0] , key[1]) )
+                    else:
+                        hashKey = None
+                elif hashKey != None: # constructing trans value for hashKey
+                    if transCollecting:
+                        if line.startswith('"'):
+                            trans= trans + line.strip()[1:-1]
+                        else:
+                            transCollecting = False
+                            localization_data[hashKey] = escape_help_text(trans)
+                            hashKey = None
+                    elif line.startswith('msgstr '):
+                        trans = line.strip()[8:-1]
+                        if trans == '': # possibly multiline
+                            transCollecting = True
+                        else:
+                            localization_data[hashKey] = escape_help_text(trans)
+                            hashKey = None
+                line = next(it, None)
     return True
 
 def unescape(str):
@@ -683,7 +731,7 @@ class Meta(ElementBase):
 class Section(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'section', parent)
-        self.id = attrs['id']
+        self.id = attrs[ 'id' ]
 
     def start_element(self, parser, name, attrs):
         if name == 'bookmark':
@@ -1329,7 +1377,7 @@ def write_redirects():
                 write_link(r, target)
 
 # Main Function
-def convert(generate_redirects, lang, sdf_file):
+def convert(generate_redirects, lang, po_root):
     if lang == '':
         print 'Generating the main wiki pages...'
     else:
@@ -1343,8 +1391,8 @@ def convert(generate_redirects, lang, sdf_file):
     loadallfiles("alltitles.csv")
 
     if lang != '':
-        sys.stderr.write('Using localizations from "%s"\n'% sdf_file)
-        if not load_localization_data(sdf_file):
+        sys.stderr.write('Using localizations from "%s"\n'% po_root)
+        if not load_localization_data(po_root):
             return
 
     for title in titles:
