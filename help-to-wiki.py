@@ -97,7 +97,6 @@ os.system( "python to-wiki/getalltitles.py source/text > alltitles.csv" )
 try:
     po_path = args[0]
 except:
-    #sdf_path = '../../translations/unxlngx6.pro/misc/sdf-l10n'
     po_path = '../translations/source'
     sys.stderr.write('Path to the .po files not provided, using "%s"\n'% po_path)
 

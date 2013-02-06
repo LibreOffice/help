@@ -7,7 +7,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
-import os, sys, thread, threading, time, re
+import os, sys, thread, threading, time, re, copy
 import xml.parsers.expat
 import codecs
 from threading import Thread
@@ -298,6 +298,9 @@ def href_to_fname_id(href):
 
     return [fname, id]
 
+# Exception classes
+class UnhandledItemType(Exception):
+    pass
 # Base class for all the elements
 #
 # self.name - name of the element, to drop the self.child_parsing flag
@@ -548,7 +551,7 @@ class TableCell(ElementBase):
             if parser.follow_embed:
                 self.embed_href(parser, fname, id)
         elif name == 'paragraph':
-            parser.parse_localized_paragraph(TableContentParagraph(attrs, self), attrs, self)
+            parser.parse_localized_paragraph(TableContentParagraph, attrs, self)
         elif name == 'section':
             self.parse_child(Section(attrs, self))
         elif name == 'bascode':
@@ -589,7 +592,7 @@ class BasicCode(ElementBase):
 
     def start_element(self, parser, name, attrs):
         if name == 'paragraph':
-            parser.parse_localized_paragraph(BasicCodeParagraph(attrs, self), attrs, self)
+            parser.parse_localized_paragraph(BasicCodeParagraph, attrs, self)
         else:
             self.unhandled_element(parser, name)
 
@@ -628,7 +631,7 @@ class ListItem(ElementBase):
             if parser.follow_embed:
                 self.embed_href(parser, fname, id)
         elif name == 'paragraph':
-            parser.parse_localized_paragraph(ListItemParagraph(attrs, self), attrs, self)
+            parser.parse_localized_paragraph(ListItemParagraph, attrs, self)
         elif name == 'list':
             self.parse_child(List(attrs, self))
         else:
@@ -1018,8 +1021,12 @@ class Item(ElementBase):
                    text + \
                    self.replace_type['end'][self.type]
         except:
-            sys.stderr.write('Unhandled item type "%s".\n'% self.type)
-
+            try:
+                sys.stderr.write('Unhandled item type "%s".\n'% self.type)
+            except:
+                sys.stderr.write('Unhandled item type. Possibly type has been localized.\n')
+            finally:
+                raise UnhandledItemType
         return replace_text(self.text)
 
 
@@ -1110,7 +1117,10 @@ class Paragraph(ElementBase):
                 role = 'tablenextpara'
 
         # the text itself
-        children = ElementBase.get_all(self)
+        try:
+            children = ElementBase.get_all(self)
+        except UnhandledItemType:
+            raise UnhandledItemType('Paragraph id: '+str(self.id))
         if self.role != 'emph' and self.role != 'bascode' and self.role != 'logocode':
             children = children.strip()
 
@@ -1244,23 +1254,30 @@ class ParserBase:
     def get_variable(self, id):
         return self.head_obj.get_variable(id)
 
-    def parse_localized_paragraph(self, paragraph, attrs, obj):
+    def parse_localized_paragraph(self, Paragraph_type, attrs, obj):
         localized_text = ''
         try:
             localized_text = get_localized_text(self.filename, attrs['id'])
         except:
             pass
 
+        paragraph = Paragraph_type(attrs, obj)
         if localized_text != '':
             # parse the localized text
             text = u'<?xml version="1.0" encoding="UTF-8"?><localized>' + localized_text + '</localized>'
-            ParserBase(self.filename, self.follow_embed, self.embedding_app, \
-                    self.current_app, self.wiki_page_name, self.lang, \
-                    paragraph, text.encode('utf-8'))
-            # add it to the overall structure
-            obj.objects.append(paragraph)
-            # and ignore the original text
-            obj.parse_child(Ignore(attrs, obj, 'paragraph'))
+            try:
+                ParserBase(self.filename, self.follow_embed, self.embedding_app, \
+                        self.current_app, self.wiki_page_name, self.lang, \
+                        paragraph, text.encode('utf-8'))
+            except xml.parsers.expat.ExpatError:
+                sys.stderr.write( 'Invalid XML in translated text. Using the original text. Error location:\n'\
+                                  + 'Curren xhp: ' + self.filename + '\nParagraph id: ' + attrs['id'] + '\n')
+                obj.parse_child(Paragraph_type(attrs, obj)) # new paragraph must be created because "paragraph" is corrupted by "ParserBase"
+            else:
+                # add it to the overall structure
+                obj.objects.append(paragraph)
+                # and ignore the original text
+                obj.parse_child(Ignore(attrs, obj, 'paragraph'))
         else:
             obj.parse_child(paragraph)
 
@@ -1277,7 +1294,7 @@ class ParserBase:
         if ignore_this:
             obj.parse_child(Ignore(attrs, obj, 'paragraph'))
         else:
-            self.parse_localized_paragraph(Paragraph(attrs, obj), attrs, obj)
+            self.parse_localized_paragraph(Paragraph, attrs, obj)
 
 class XhpParser(ParserBase):
     def __init__(self, filename, follow_embed, embedding_app, wiki_page_name, lang):
