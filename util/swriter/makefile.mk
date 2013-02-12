@@ -30,25 +30,15 @@ TARGET  = util_swriter
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-#common_build_zip:=
-zip1generatedlangs=TRUE
-zip1langdirs=$(aux_alllangiso)
-ZIP1TARGET=xhp_swriter
-ZIP1FLAGS= -u -r
-ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
-ZIP1LIST=$(LANGDIR)$/text$/swriter$/* -x "*.xhp????*" -x "*.dphh*" -x "*.hzip" -x "*.created"
-
 LINKNAME=swriter
 LINKADDEDFILES= \
    -add swriter.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.cfg \
-   -add swriter.tree $(COMMONMISC)$/LANGUAGE$/swriter.tree \
-   -add swriter.jar  $(COMMONBIN)$/xhp_swriter_LANGUAGE.zip
+   -add swriter.tree $(COMMONMISC)$/LANGUAGE$/swriter.tree 
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/swriter.cfg \
-   $(COMMONMISC)$/LANGUAGE$/swriter.tree \
-   $(COMMONBIN)$/xhp_swriter_LANGUAGE.zip
+   $(COMMONMISC)$/LANGUAGE$/swriter.tree
 
 
 LINKLINKFILES= \

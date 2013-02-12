@@ -29,25 +29,16 @@ TARGET  = util_sbasic
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-#common_build_zip:=
-zip1generatedlangs=TRUE
-zip1langdirs=$(aux_alllangiso)
-ZIP1TARGET=xhp_sbasic
-ZIP1FLAGS= -u -r
-ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
-ZIP1LIST=$(LANGDIR)$/text$/sbasic$/* -x "*.xhp????*" -x "*.dphh*" -x "*.hzip" -x "*.created"
 
 LINKNAME=sbasic
 LINKADDEDFILES= \
    -add sbasic.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/sbasic.cfg \
-   -add sbasic.tree $(COMMONMISC)$/LANGUAGE$/sbasic.tree \
-   -add sbasic.jar  $(COMMONBIN)$/xhp_sbasic_LANGUAGE.zip
+   -add sbasic.tree $(COMMONMISC)$/LANGUAGE$/sbasic.tree
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/sbasic.cfg \
-   $(COMMONMISC)$/LANGUAGE$/sbasic.tree \
-   $(COMMONBIN)$/xhp_sbasic_LANGUAGE.zip
+   $(COMMONMISC)$/LANGUAGE$/sbasic.tree
 
 
 LINKLINKFILES= \

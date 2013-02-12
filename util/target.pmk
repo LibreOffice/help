@@ -27,5 +27,9 @@ $(LINKALLTARGETS) : $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/$$(@:b:s/_/./:e:
     $(COMMAND_ECHO)$(HELPLINKER) @$(mktmp -mod $(LINKNAME) -src $(COMMONMISC) -sty $(XSL_DIR)/embed.xsl -zipdir $(MISC)$/ziptmp$(@:b) -idxcaption $(XSL_DIR)/idxcaption.xsl -idxcontent $(XSL_DIR)/idxcontent.xsl -lang {$(subst,$(LINKNAME)_, $(@:b))} $(subst,LANGUAGE,{$(subst,$(LINKNAME)_, $(@:b))} $(LINKADDEDFILES)) $(foreach,i,$(LINKLINKFILES) $(COMMONMISC)$/{$(subst,$(LINKNAME)_, $(@:b))}/$i) -o $@.$(INPATH))
     $(COMMAND_ECHO)$(HELPINDEXER) -lang $(@:b:s/_/./:e:s/.//) -mod $(LINKNAME) -dir $(MISC)$/ziptmp$(@:b)
     @echo [ building ZIP ] $(@:f)
-    $(COMMAND_ECHO)cd $(MISC)$/ziptmp$(@:b) && zip $(ZIP_VERBOSITY) -rX --filesync zipfile.zip $(LINKNAME).* *.css *.html
+.IF "$(LINKNAME)"=="sdatabase"
+    $(COMMAND_ECHO)cd $(MISC)$/ziptmp$(@:b) && zip $(ZIP_VERBOSITY) -0 -rX --filesync zipfile.zip $(LINKNAME).*
+.ELSE
+    $(COMMAND_ECHO)cd $(MISC)$/ziptmp$(@:b) && zip $(ZIP_VERBOSITY) -0 -rX $(LINKNAME).jar text/$(LINKNAME) && zip $(ZIP_VERBOSITY) -0 -rX --filesync zipfile.zip $(LINKNAME).* *.css *.html
+.ENDIF
     $(COMMAND_ECHO)$(RENAME) $(MISC)$/ziptmp$(@:b)$/zipfile.zip $@

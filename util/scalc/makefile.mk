@@ -30,25 +30,16 @@ TARGET  = util_scalc
 .INCLUDE : settings.mk
 .INCLUDE : $(PRJ)$/settings.pmk
 
-#common_build_zip:=
-zip1generatedlangs=TRUE
-zip1langdirs=$(aux_alllangiso)
-ZIP1TARGET=xhp_scalc
-ZIP1FLAGS= -u -r
-ZIP1DIR=$(COMMONMISC)$/$(LANGDIR)
-ZIP1LIST=$(LANGDIR)$/text$/scalc$/* -x "*.xhp????*" -x "*.dphh*" -x "*.hzip" -x "*.created"
 
 LINKNAME=scalc
 LINKADDEDFILES= \
    -add scalc.cfg $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.cfg \
-   -add scalc.tree $(COMMONMISC)$/LANGUAGE$/scalc.tree \
-   -add scalc.jar  $(COMMONBIN)$/xhp_scalc_LANGUAGE.zip
+   -add scalc.tree $(COMMONMISC)$/LANGUAGE$/scalc.tree
 
 
 LINKADDEDDEPS= \
    $(PRJ)$/source$/auxiliary$/LANGUAGE$/scalc.cfg \
-   $(COMMONMISC)$/LANGUAGE$/scalc.tree \
-   $(COMMONBIN)$/xhp_scalc_LANGUAGE.zip
+   $(COMMONMISC)$/LANGUAGE$/scalc.tree
 
 
 LINKLINKFILES= \
