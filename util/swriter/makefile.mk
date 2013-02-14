@@ -125,7 +125,6 @@ LINKLINKFILES= \
    text$/swriter$/01$/04180400.xhp \
    text$/swriter$/01$/04190000.xhp \
    text$/swriter$/01$/04200000.xhp \
-   text$/swriter$/01$/04210000.xhp \
    text$/swriter$/01$/04220000.xhp \
    text$/swriter$/01$/04230000.xhp \
    text$/swriter$/01$/04990000.xhp \
@@ -337,7 +336,6 @@ LINKLINKFILES= \
    text$/swriter$/guide$/insert_graphic_fromdraw.xhp \
    text$/swriter$/guide$/insert_graphic_gallery.xhp \
    text$/swriter$/guide$/insert_graphic_scan.xhp \
-   text$/swriter$/guide$/insert_line.xhp \
    text$/swriter$/guide$/insert_tab_innumbering.xhp \
    text$/swriter$/guide$/join_numbered_lists.xhp \
    text$/swriter$/guide$/jump2statusbar.xhp \

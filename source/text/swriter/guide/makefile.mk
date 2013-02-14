@@ -99,7 +99,6 @@ XHPFILES = \
    insert_graphic_fromdraw.xhp \
    insert_graphic_gallery.xhp \
    insert_graphic_scan.xhp \
-   insert_line.xhp \
    insert_tab_innumbering.xhp \
    join_numbered_lists.xhp \
    jump2statusbar.xhp \
