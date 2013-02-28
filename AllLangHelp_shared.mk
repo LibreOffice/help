@@ -28,7 +28,8 @@ $(eval $(call gb_AllLangHelp_add_localized_files,shared,helpcontent2/source/auxi
 	highcontrastwhite.css \
 ))
 
-# TODO: handle err_html.xhp -> err.html
+$(eval $(call gb_AllLangHelp_add_helpdir_file,shared,err.html,helpcontent2/source/text/shared/05/err_html))
+
 $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/00/00000001 \
     helpcontent2/source/text/shared/00/00000002 \
