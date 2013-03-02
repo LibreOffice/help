@@ -773,7 +773,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/main \
     helpcontent2/source/text/shared/guide/measurement_units \
     helpcontent2/source/text/shared/guide/microsoft_terms \
-    helpcontent2/source/text/shared/guide/mobiledevicefilters \
     helpcontent2/source/text/shared/guide/ms_doctypes \
     helpcontent2/source/text/shared/guide/ms_import_export_limitations \
     helpcontent2/source/text/shared/guide/ms_user \
