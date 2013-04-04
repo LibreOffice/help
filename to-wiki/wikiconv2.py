@@ -1271,7 +1271,7 @@ class ParserBase:
                         paragraph, text.encode('utf-8'))
             except xml.parsers.expat.ExpatError:
                 sys.stderr.write( 'Invalid XML in translated text. Using the original text. Error location:\n'\
-                                  + 'Curren xhp: ' + self.filename + '\nParagraph id: ' + attrs['id'] + '\n')
+                                  + 'Current xhp: ' + self.filename + '\nParagraph id: ' + attrs['id'] + '\n')
                 obj.parse_child(Paragraph_type(attrs, obj)) # new paragraph must be created because "paragraph" is corrupted by "ParserBase"
             else:
                 # add it to the overall structure
