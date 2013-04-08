@@ -61,7 +61,7 @@ def create_wiki_dirs():
             pass
 
 # Langs to handle (fully translated or otherwise important)
-langs = ['', 'ast', 'bg', 'bn', 'bn_IN', 'ca', 'cs', 'da', 'de', \
+langs = ['', 'ast', 'bg', 'bn', 'bn-IN', 'ca', 'cs', 'da', 'de', \
          'el', 'es', 'eu', 'fi', 'fr', 'hu', 'it', 'ja', 'km', \
          'ko', 'nb', 'nl', 'om', 'pl', 'pt', 'pt-BR', 'ru', \
          'sl', 'sv', 'tr', 'vi', 'zh-CN', 'zh-TW' ]
