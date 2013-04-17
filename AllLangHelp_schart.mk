@@ -48,6 +48,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,schart,\
     helpcontent2/source/text/schart/01/05120000 \
     helpcontent2/source/text/schart/01/choose_chart_type \
     helpcontent2/source/text/schart/01/smooth_line_properties \
+    helpcontent2/source/text/schart/01/stepped_line_properties \
     helpcontent2/source/text/schart/01/three_d_view \
     helpcontent2/source/text/schart/01/type_area \
     helpcontent2/source/text/schart/01/type_bubble \
