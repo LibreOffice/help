@@ -120,6 +120,7 @@ sub upload_article {
     my $pagename = $File::Find::name;
     $pagename =~ s/^wiki\///;
     $pagename =~ s/\/MAIN$//;
+    $pagename =~ s/%2F/\//g;
 
     # pages starting with lowercase 's' are redirects
     if ( $pagename =~ /^s/ ) {
