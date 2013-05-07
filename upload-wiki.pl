@@ -105,6 +105,8 @@ if ( $upload_images ) {
     }
 }
 
+$ENV{PERL_LWP_SSL_VERIFY_HOSTNAME}=0;
+
 # initialize the wiki
 my $mw = MediaWiki::API->new();
 $mw->{config}->{api_url} = $url;
