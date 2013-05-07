@@ -457,7 +457,7 @@ class Bookmark(ElementBase):
             self.app = parser.current_app_raw
             self.target = parser.wiki_page_name
             self.authoritative = parser.follow_embed
-            self.redirect = name
+            self.redirect = name.replace("/", "%2F")
 
     def get_all(self):
         global redirects
@@ -1359,7 +1359,7 @@ def write_link(r, target):
 def write_redirects():
     print 'Generating the redirects...'
     written = {}
-    # in the first pass, immediately writte the links that are embedded, so that
+    # in the first pass, immediately write the links that are embedded, so that
     # we can always point to that source versions
     for redir in redirects:
         app = redir[0]
