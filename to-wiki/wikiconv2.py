@@ -129,7 +129,8 @@ replace_text_list = \
     [["$[officename]", "{{ProductName}}"],
      ["%PRODUCTNAME", "{{ProductName}}"],
      ["$PRODUCTNAME", "{{ProductName}}"],
-     ["font size", u"\u200dfont size"]
+     ["font size", u"\u200dfont size"],
+     ["''","<nowiki>''</nowiki>"]
     ]
 
 def get_link_filename(link, name):
