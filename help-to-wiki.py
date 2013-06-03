@@ -49,6 +49,7 @@ def create_wiki_dirs():
            ]
 
     try:
+        os.mkdir( "wiki" )
         os.mkdir( "wiki/4.0" )
     except:
         sys.stdout.write( "wiki already generated - the wiki/ subdir exists\n" )
