@@ -53,22 +53,31 @@
 <paragraph role="paragraph" id="par_id3154011" xml-lang="en-US" l10n="U" oldref="11">If the expression to be printed exceeds a certain length, the display will automatically wrap to the next line.</paragraph>
 <paragraph role="note" id="par_id3146969" xml-lang="en-US" l10n="U" oldref="12">You can insert the Tab function, enclosed by semicolons, between arguments to indent the output to a specific position, or you can use the <emph>Spc</emph> function to insert a specified number of spaces.</paragraph>
 <paragraph role="heading" id="hd_id3146912" xml-lang="en-US" level="2" l10n="U" oldref="13">Example:</paragraph>
+<switch select="sys">
+<case select="WIN">
 <bascode>
 <paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExamplePrint</paragraph>
 <paragraph role="bascode" localize="false" xml-lang="en-US">    Print "ABC"</paragraph>
 <paragraph role="bascode" localize="false" xml-lang="en-US">    Print "ABC","123"</paragraph>
 <paragraph role="bascode" localize="false" xml-lang="en-US">    i = FreeFile()</paragraph>
-<switch select="sys">
-<case select="WIN">
 <paragraph role="bascode" localize="false" xml-lang="en-US">    Open "C:\Temp.txt" For Output As i</paragraph>
-</case>
-<default>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Open "~/temp.txt" For Output As i</paragraph>
-</default>
-</switch>
 <paragraph role="bascode" localize="false" xml-lang="en-US">    Print #i, "ABC"</paragraph>
 <paragraph role="bascode" localize="false" xml-lang="en-US">    Close #i</paragraph>
 <paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
+</case>
+<default>
+<bascode>
+<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExamplePrint</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Print "ABC"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Print "ABC","123"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    i = FreeFile()</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Open "~/temp.txt" For Output As i</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Print #i, "ABC"</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">    Close #i</paragraph>
+<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+</bascode>
+</default>
+</switch>
 </body>
 </helpdocument>
