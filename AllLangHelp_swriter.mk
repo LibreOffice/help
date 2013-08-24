@@ -255,6 +255,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/guide/autocorr_except \
     helpcontent2/source/text/swriter/guide/autotext \
     helpcontent2/source/text/swriter/guide/background \
+    helpcontent2/source/text/swriter/guide/border_character \
     helpcontent2/source/text/swriter/guide/border_object \
     helpcontent2/source/text/swriter/guide/border_page \
     helpcontent2/source/text/swriter/guide/borders \
