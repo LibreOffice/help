@@ -35,7 +35,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3150772"><bookmark_value>CDate function</bookmark_value>
 </bookmark>
 <paragraph role="heading" id="hd_id3150772" xml-lang="en-US" level="1" l10n="U" oldref="1"><link href="text/sbasic/shared/03100300.xhp" name="CDate Function [Runtime]">CDate Function [Runtime]</link></paragraph>
-<paragraph role="paragraph" id="par_id3150986" xml-lang="en-US" l10n="U" oldref="2">Converts any string or numeric expression to a date value.</paragraph>
+<paragraph role="paragraph" id="par_id3150986" xml-lang="en-US" l10n="U" oldref="2">Converts any string, numeric expression or UNO Date / Time / DateTime struct to a date value.</paragraph>
 </section>
 <paragraph role="heading" id="hd_id3148944" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
 <bascode>
@@ -45,8 +45,13 @@
 <paragraph role="paragraph" id="par_id3159414" xml-lang="en-US" l10n="U" oldref="6">Date</paragraph>
 <paragraph role="heading" id="hd_id3153525" xml-lang="en-US" level="2" l10n="U" oldref="7">Parameters:</paragraph>
 <paragraph role="paragraph" id="par_id3150359" xml-lang="en-US" l10n="U" oldref="8">
-<emph>Expression:</emph> Any string or numeric expression that you want to convert.</paragraph>
-<paragraph role="paragraph" id="par_id3125864" xml-lang="en-US" l10n="U" oldref="9">When you convert a string expression, the date and time must be entered in the format MM.DD.YYYY HH.MM.SS, as defined by the <emph>DateValue</emph> and <emph>TimeValue</emph> function conventions. In numeric expressions, values to the left of the decimal represent the date, beginning from December 31, 1899. Values to the right of the decimal represent the time.</paragraph>
+<emph>Expression:</emph>The expression to convert. Must be a string, numeric, or one of the following UNO structs:
+</paragraph>
+<list type="unordered">
+<listitem><paragraph id="li_id3150741" xml-lang="en-US" l10n="U" role="listitem">com.sun.star.util.Date</paragraph></listitem>
+<listitem><paragraph id="li_id3150742" xml-lang="en-US" l10n="U" role="listitem">com.sun.star.util.Time</paragraph></listitem>
+<listitem><paragraph id="li_id3150743" xml-lang="en-US" l10n="U" role="listitem">com.sun.star.util.DateTime</paragraph></listitem>
+<paragraph role="paragraph" id="par_id3125864" xml-lang="en-US" l10n="U" oldref="9">When you convert a string expression, the date and time must be entered in the format MM.DD.YYYY HH.MM.SS, as defined by the <emph>DateValue</emph> and <emph>TimeValue</emph> function conventions. In numeric expressions, values to the left of the decimal represent the date, as number of days since December 30, 1899. Values to the right of the decimal represent the time, as fraction of a day.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 <paragraph role="heading" id="hd_id3156422" xml-lang="en-US" level="2" l10n="U" oldref="10">Example:</paragraph>
