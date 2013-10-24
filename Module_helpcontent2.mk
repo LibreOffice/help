@@ -20,7 +20,6 @@ $(eval $(call gb_Module_add_targets,helpcontent2,\
 	AllLangHelp_smath \
 	AllLangHelp_swriter \
 	CustomTarget_imagelist \
-	Package_imagelist \
 ))
 
 # vim: set noet sw=4 ts=4:
