@@ -44,6 +44,8 @@
 <paragraph role="paragraph" xml-lang="en-US" id="par_390">To reset the command line click triple in it or press Ctrl-A to select the previous commands, and type the new commands.</paragraph>
 <paragraph role="heading" level="2" xml-lang="en-US" id="hd_400">Syntax highlighting/Translating</paragraph>
 <paragraph role="paragraph" xml-lang="en-US" id="par_410">It expands and upper case Logo commands in the Writer document. Change the language of the document (Tools » Options » Language Settings » Languages » Western) and click on this icon to translate the Logo program to the selected language.</paragraph>
+<paragraph role="heading" level="2" xml-lang="en-US" id="hd_413">Graphical user interface of basic turtle settings</paragraph>
+<paragraph role="paragraph" xml-lang="en-US" id="par_415">Turtle shape of LibreLogo is a normal fixed size drawing object. You can positionate and rotate it on standard way, too, using the mouse and the Rotate icon of the Drawing Object Properties toolbar. Modify Line Width, Line Color and Area Color settings of the turtle shape to set PENSIZE, PENCOLOR and FILLCOLOR attributes of LibreLogo.</paragraph>
 <paragraph role="heading" level="2" xml-lang="en-US" id="hd_420">Program editing</paragraph>
 <paragraph role="paragraph" xml-lang="en-US" id="par_430">LibreLogo drawings and programs use the same Writer document. The LibreLogo canvas is on the first page of the Writer document. You can insert a page break before the LibreLogo programs and set the zoom/font size for a comfortable two page layout for LibreLogo programming: left (first) page is the canvas, right (second) page is for the LibreLogo programs.</paragraph>
 <paragraph role="heading" level="1" xml-lang="en-US" id="hd_440">LibreLogo programming language</paragraph>
@@ -150,6 +152,8 @@
 <paragraph role="logocode" xml-lang="en-US" id="par_1130"> PENSIZE 100 ; line width is 100 points<br/> PENSIZE ANY ; equivalent of PENSIZE RANDOM 10<br/></paragraph>
 <paragraph role="heading" level="3" xml-lang="en-US" id="hd_1140">PENCOLOR/PENCOLOUR (pc)</paragraph>
 <paragraph role="logocode" xml-lang="en-US" id="par_1150"> PENCOLOR “red” ; set red pen color (by color name, see color constants)<br/> PENCOLOR [255, 255, 0] ; set yellow color (RGB list)<br/> PENCOLOR 0xffff00 ; set yellow color (hexa code)<br/> PENCOLOR 0 ; set black color (0x000000)<br/> PENCOLOR ANY ; random color<br/> PENCOLOR [5] ; set red color (by color identifier, see color constants)<br/> PENCOLOR “invisible” ; invisible pen color for shapes without visible outline<br/> PENCOLOR “~red” ; set random red color<br/></paragraph>
+<paragraph role="heading" level="3" xml-lang="en-US" id="hd_1153">PENCAP/LINECAP</paragraph>
+<paragraph role="logocode" xml-lang="en-US" id="par_1155"> PENCAP “none” ; without extra line end (default)<br/> PENCAP “round” ; rounded line end<br/> PENCAP “square” ; square line end<br/></paragraph>
 <paragraph role="heading" level="3" xml-lang="en-US" id="hd_1160">PENJOINT/LINEJOINT</paragraph>
 <paragraph role="logocode" xml-lang="en-US" id="par_1170"> PENJOINT “rounded” ; rounded line joint (default)<br/> PENJOINT “miter” ; sharp line joint<br/> PENJOINT “bevel” ; bevel line joint<br/> PENJOINT “none” ; without line joint<br/></paragraph>
 <paragraph role="heading" level="3" xml-lang="en-US" id="hd_1180">PENSTYLE</paragraph>
@@ -195,7 +199,7 @@
         <paragraph role="listitem" xml-lang="en-US" id="par_1540">starting new line shapes;</paragraph>
     </listitem>
     <listitem>
-        <paragraph role="listitem" xml-lang="en-US" id="par_1545">file saving;</paragraph>
+        <paragraph role="listitem" xml-lang="en-US" id="par_1545">saving SVG images and SVG/SMIL animations;</paragraph>
     </listitem>
     <listitem>
         <paragraph role="listitem" xml-lang="en-US" id="par_1550">keeping the consistency of positions and line shapes at the left border.</paragraph>
@@ -207,8 +211,10 @@
 <paragraph role="logocode" xml-lang="en-US" id="par_1590"> TO tree location<br/>   PENUP POSITION location HEADING 0 PENDOWN<br/>   PICTURE [ FORWARD 100 CIRCLE 100 ] ; tree-like grouped shape<br/> END<br/> <br/> PICTURE [ tree [30, 50] tree [100, 50] ] ; grouped shapes in a grouped shape<br/></paragraph>
 <paragraph role="heading" level="3" xml-lang="en-US" id="hd_1600">Starting new line shapes</paragraph>
 <paragraph role="logocode" xml-lang="en-US" id="par_1610"> PICTURE ; start a new line shape<br/> FORWARD 10 PICTURE FORWARD 10 ; two line shapes<br/></paragraph>
-<paragraph role="heading" level="3" xml-lang="en-US" id="hd_1614">File saving (only SVG)</paragraph>
+<paragraph role="heading" level="3" xml-lang="en-US" id="hd_1614">Saving SVG images</paragraph>
 <paragraph role="logocode" xml-lang="en-US" id="par_1617"> PICTURE “example.svg” [ CIRCLE 5 ] ; save the picture as an SVG image file in the user folder<br/> PICTURE “Desktop/example.svg” [ FORWARD 100 CIRCLE 5 ] ; as above, with a relative path<br/> PICTURE “/home/user/example.svg” [ CIRCLE 5 ] ; absolute path for Unix/Linux<br/> PICTURE “C:\example.svg” [ CIRCLE 5 ] ; absolute path for Windows<br/></paragraph>
+<paragraph role="heading" level="3" xml-lang="en-US" id="hd_1618">Saving SVG/SMIL animations (drawings with SLEEP commands)</paragraph>
+<paragraph role="logocode" xml-lang="en-US" id="par_1619"> PICTURE “animation.svg” [ CIRCLE 5 SLEEP 1000 CIRCLE 99 ] ; save as an SVG/SMIL animation (see also SLEEP)<br/> PICTURE “animation2.svg” [ CIRCLE 5 SLEEP 1000 CIRCLE 99 SLEEP 2000 ] ; as above, but using SLEEP after the last object will result looping: after 2 seconds the SVG animation restarts in SMIL-conformant browsers</paragraph>
 <paragraph role="heading" level="3" xml-lang="en-US" id="hd_1620">Consistency at the left border</paragraph>
 <paragraph role="paragraph" xml-lang="en-US" id="par_1630">Use picture to keep the consistency of positions and line shapes at the left border of Writer:</paragraph>
 <paragraph role="logocode" xml-lang="en-US" id="par_1640"> PICTURE [ CIRCLE 20 POSITION [-100, 100] CIRCLE 20 ]<br/></paragraph>
