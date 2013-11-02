@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+<!--
+===================================================================================================================
+===                      The Access2Base library is a part of the LibreOffice project.                          ===
+===                      Full documentation is available on http://www.access2base.com                          ===
+===================================================================================================================
+
+	Access2Base is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of 
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+	Access2Base is free software; you can redistribute it and/or modify it under the terms of either (at your option):
+
+	1) The Mozilla Public License, v. 2.0. If a copy of the MPL was not
+	distributed with this file, you can obtain one at http://mozilla.org/MPL/2.0/ .
+
+	2) The GNU Lesser General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version. If a copy of the LGPL was not
+	distributed with this file, see http://www.gnu.org/licenses/ .
+ -->
+
+
+<helpdocument version="1.0">
+<meta>
+ <topic id="textsbasicsharedA2B001xml" indexer="include" status="PUBLISH">
+  <title id="tit" xml-lang="en-US">Access2Base</title>
+  <filename>/text/sbasic/guide/access2base.xhp</filename>
+  <history>
+   <created date="2013-11-01T00:00:00">Access2Base topic first insertion, by Jean-Pierre Ledure</created>
+   <lastedited date="2013-11-01T00:00:00">None</lastedited>
+  </history>
+ </topic>
+</meta>
+<body>
+ <bookmark xml-lang="en-US" branch="index" id="bm_idA2B001"><bookmark_value>Access2Base</bookmark_value>
+ </bookmark>
+ <paragraph role="heading" id="hd_idA2B002" xml-lang="en-US" level="1" l10n="U">Access2Base</paragraph>
+ <paragraph role="heading" id="hd_idA2B003" xml-lang="en-US" level="2" l10n="U">What is Access2Base ?</paragraph>
+ <paragraph role="paragraph" id="par_idA2B004" xml-lang="en-US" l10n="U">Access2Base is a LibreOffice Basic library of macros for (business or personal) application developers and advanced users. It is one of the libraries stored in "LibreOffice macros and dialogs".</paragraph>
+ <paragraph role="paragraph" id="par_idA2B005" xml-lang="en-US" l10n="U">The provided macros implement functionalities, all directly inspired by Microsoft Access. The macros are callable from a LibreOffice <emph>Base</emph> application only.</paragraph>
+ <paragraph role="paragraph" id="par_idA2B006" xml-lang="en-US" l10n="U">The API provided by Access2Base is intended to be more concise, intuitive and easy to learn than the standard UNO API (API = Application Programming Interface).</paragraph>
+ <br/>
+ <paragraph role="warning" id="par_idA2B007" xml-lang="en-US" l10n="U"><emph>The library is documented online on <link href="http://www.access2base.com" name="http://www.access2base.com">http://www.access2base.com</link></emph></paragraph>
+ <paragraph role="heading" id="hd_idA2B008" xml-lang="en-US" level="2" l10n="U">The implemented macros include:</paragraph>
+ <list type="ordered" format="1">
+  <listitem>
+   <paragraph role="listitem" id="par_idA2B009" xml-lang="en-US" l10n="U">a simplified and extensible API for <emph>forms</emph>, <emph>dialogs</emph> and <emph>controls</emph> manipulations similar with the MSAccess object model</paragraph>
+  </listitem>
+  <listitem>
+   <paragraph role="listitem" id="par_idA2B010" xml-lang="en-US" l10n="U">an API for database access with the <emph>table</emph>, <emph>query</emph>, <emph>recordset</emph> and <emph>field</emph> objects</paragraph>
+  </listitem>
+  <listitem>
+   <paragraph role="listitem" id="par_idA2B011" xml-lang="en-US" l10n="U">a number of <emph>actions</emph> with a syntax identical to their corresponding MSAccess macros/actions</paragraph>
+  </listitem>
+  <listitem>
+   <paragraph role="listitem" id="par_idA2B012" xml-lang="en-US" l10n="U">the <emph>DLookup</emph>, <emph>DSum</emph>, ... database functions</paragraph>
+  </listitem>
+  <listitem>
+   <paragraph role="listitem" id="par_idA2B013" xml-lang="en-US" l10n="U">the support of the shortcut notations like <item type="literal">Forms!myForm!myControl</item></paragraph>
+  </listitem>
+ </list>
+ <paragraph role="paragraph" id="par_idA2B014" xml-lang="en-US" l10n="U">+</paragraph>
+ <list type="ordered" format="1" startwith="6">
+  <listitem>
+   <paragraph role="listitem" id="par_idA2B015" xml-lang="en-US" l10n="U">a consistent errors and exceptions handler</paragraph>
+  </listitem>
+  <listitem>
+   <paragraph role="listitem" id="par_idA2B016" xml-lang="en-US" l10n="U">facilities for programming form, dialog and control <emph>events</emph></paragraph>
+  </listitem>
+  <listitem>
+   <paragraph role="listitem" id="par_idA2B017" xml-lang="en-US" l10n="U">the support of both embedded forms and standalone (Writer) forms</paragraph>
+  </listitem>
+ </list>
+  <paragraph role="heading" id="hd_idA2B018" xml-lang="en-US" level="2" l10n="U">Compare Access2Base with MSAccess VBA</paragraph>
+  <bascode>
+   <paragraph role="bascode" id="hd_idA2B019" xml-lang="en-US" localize="false" l10n="U">REM Open a form ... </paragraph>
+   <paragraph role="bascode" id="hd_idA2B020" xml-lang="en-US" localize="false" l10n="U">          OpenForm("myForm") </paragraph>
+   <paragraph role="bascode" id="hd_idA2B021" xml-lang="en-US" localize="false" l10n="U">REM Move a form to new left-top coordinates ... </paragraph>
+   <paragraph role="bascode" id="hd_idA2B022" xml-lang="en-US" localize="false" l10n="U">          Dim ofForm As Object		' In VBA =>		Dim ofForm As Form </paragraph>
+   <paragraph role="bascode" id="hd_idA2B023" xml-lang="en-US" localize="false" l10n="U">          Set ofForm = Forms("myForm") </paragraph>
+   <paragraph role="bascode" id="hd_idA2B024" xml-lang="en-US" localize="false" l10n="U">          ofForm.Move(100, 200) </paragraph>
+   <paragraph role="bascode" id="hd_idA2B025" xml-lang="en-US" localize="false" l10n="U">REM Get the value of a control ... </paragraph>
+   <paragraph role="bascode" id="hd_idA2B026" xml-lang="en-US" localize="false" l10n="U">          Dim ocControl As Object </paragraph>
+   <paragraph role="bascode" id="hd_idA2B027" xml-lang="en-US" localize="false" l10n="U">          ocControl = ofForm.Controls("myControl") </paragraph>
+   <paragraph role="bascode" id="hd_idA2B028" xml-lang="en-US" localize="false" l10n="U">          MsgBox ocControl.Value </paragraph>
+   <paragraph role="bascode" id="hd_idA2B029" xml-lang="en-US" localize="false" l10n="U">REM Hide a control ... </paragraph>
+   <paragraph role="bascode" id="hd_idA2B030" xml-lang="en-US" localize="false" l10n="U">          ocControl.Visible = False </paragraph>
+   <paragraph role="bascode" id="hd_idA2B031" xml-lang="en-US" localize="false" l10n="U">REM ... or alternatively ... </paragraph>
+   <paragraph role="bascode" id="hd_idA2B032" xml-lang="en-US" localize="false" l10n="U">          setValue("Forms!myForm!myControl.Visible", False)	'    Shortcut notation </paragraph>
+   <paragraph role="bascode" id="hd_idA2B033" xml-lang="en-US" localize="false" l10n="U">			' In VBA => 	Forms!myForm!myControl.Visible = False </paragraph>
+  </bascode>
+</body>
+</helpdocument>

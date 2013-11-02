@@ -16,6 +16,7 @@ $(eval $(call gb_AllLangHelp_use_linked_modules,sbasic,\
 ))
 
 $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
+    helpcontent2/source/text/sbasic/guide/access2base \
     helpcontent2/source/text/sbasic/guide/control_properties \
     helpcontent2/source/text/sbasic/guide/create_dialog \
     helpcontent2/source/text/sbasic/guide/insert_control \
