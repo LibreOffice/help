@@ -125,6 +125,12 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03030107 \
     helpcontent2/source/text/sbasic/shared/03030108 \
     helpcontent2/source/text/sbasic/shared/03030110 \
+    helpcontent2/source/text/sbasic/shared/03030111 \
+    helpcontent2/source/text/sbasic/shared/03030112 \
+    helpcontent2/source/text/sbasic/shared/03030113 \
+    helpcontent2/source/text/sbasic/shared/03030114 \
+    helpcontent2/source/text/sbasic/shared/03030115 \
+    helpcontent2/source/text/sbasic/shared/03030116 \
     helpcontent2/source/text/sbasic/shared/03030120 \
     helpcontent2/source/text/sbasic/shared/03030130 \
     helpcontent2/source/text/sbasic/shared/03030200 \
