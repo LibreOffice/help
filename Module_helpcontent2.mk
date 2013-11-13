@@ -10,6 +10,10 @@
 $(eval $(call gb_Module_Module,helpcontent2))
 
 $(eval $(call gb_Module_add_targets,helpcontent2,\
+	CustomTarget_imagelist \
+))
+
+$(eval $(call gb_Module_add_l10n_targets,helpcontent2,\
 	AllLangHelp_sbasic \
 	AllLangHelp_scalc \
 	AllLangHelp_schart \
@@ -19,7 +23,6 @@ $(eval $(call gb_Module_add_targets,helpcontent2,\
 	AllLangHelp_simpress \
 	AllLangHelp_smath \
 	AllLangHelp_swriter \
-	CustomTarget_imagelist \
 ))
 
 # vim: set noet sw=4 ts=4:
