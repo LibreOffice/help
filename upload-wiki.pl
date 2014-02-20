@@ -136,7 +136,7 @@ sub upload_article {
 
     RETRY:
     print "Uploading page '$pagename'\n";
-    if ( $mw->edit( {
+    unless ( $mw->edit( {
             action => 'edit',
             title => $pagename,
             text => $text }, { skip_encoding => 1 } ) )
