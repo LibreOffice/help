@@ -134,11 +134,19 @@ sub upload_article {
 
     my $text = read_file( $_ );
 
+    RETRY:
     print "Uploading page '$pagename'\n";
-    $mw->edit( {
+    if ( $mw->edit( {
             action => 'edit',
             title => $pagename,
-            text => $text }, { skip_encoding => 1 } ) || print 'Error: ' . $mw->{error}->{code} . ': ' . $mw->{error}->{details} . "\n";
+            text => $text }, { skip_encoding => 1 } ) )
+    {
+        print 'Error: ' . $mw->{error}->{code} . ': ' . $mw->{error}->{details} . "\n";
+        print "Waiting for 10 seconds...\n";
+        sleep 10;
+        print "Retry!\n";
+        goto RETRY;
+    }
 }
 File::Find::find( {wanted => \&upload_article}, 'wiki/' );
 
