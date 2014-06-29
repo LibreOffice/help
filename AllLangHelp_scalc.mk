@@ -192,6 +192,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_minute \
     helpcontent2/source/text/scalc/01/func_month \
     helpcontent2/source/text/scalc/01/func_networkdays \
+    helpcontent2/source/text/scalc/01/func_numbervalue \
     helpcontent2/source/text/scalc/01/func_now \
     helpcontent2/source/text/scalc/01/func_second \
     helpcontent2/source/text/scalc/01/func_time \
