@@ -206,6 +206,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_yearfrac \
     helpcontent2/source/text/scalc/01/solver \
     helpcontent2/source/text/scalc/01/solver_options \
+    helpcontent2/source/text/scalc/01/statistics \
     helpcontent2/source/text/scalc/01/text2columns \
     helpcontent2/source/text/scalc/02/02130000 \
     helpcontent2/source/text/scalc/02/02140000 \
