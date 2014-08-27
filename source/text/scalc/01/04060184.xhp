@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <helpdocument version="1.0">
-	
+
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -19,7 +19,7 @@
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  -->
 
-	
+
 <meta>
 <topic id="textscalc0104060184xml" indexer="include">
 <title xml-lang="en-US" id="tit">Statistical Functions Part Four</title>
@@ -416,6 +416,35 @@ oldref="118">Example</paragraph>
 <paragraph xml-lang="en-US" id="par_id3159147" role="paragraph" l10n="CHG" oldref="119">
 <item type="input">=PERCENTILE(A1:A50;0.1)</item> represents the value in the data set, which equals 10% of the total data scale in A1:A50.</paragraph>
 </section>
+<section id="percentileexc">
+<bookmark xml-lang="en-US" branch="index" id="bm_id2853100"><bookmark_value>PERCENTILE.EXC function</bookmark_value>
+</bookmark>
+<bookmark xml-lang="en-US" branch="hid/HID_FUNC_PERCENTILE_EXC" id="bm_id2855394" localize="false"/>
+<paragraph xml-lang="en-US" id="hd_id2853100" role="heading" level="2" l10n="U" oldref="112">PERCENTILE.EXC</paragraph>
+<paragraph xml-lang="en-US" id="par_id2854940" role="paragraph" l10n="U" oldref="113"><ahelp hid="HID_FUNC_PERCENTILE_EXC">Returns the <item type="literal">Alpha</item>'th percentile of a supplied range of values for a given value of <item type="literal">Alpha</item>, within the range 0 to 1 (exclusive).</ahelp> A percentile returns the scale value for a data series which goes from the smallest (<item type="literal">Alpha=0</item>) to the largest value (<item type="literal">Alpha=1</item>) of a data series. For <item type="literal">Alpha</item> = 25%, the percentile means the first quartile; <item type="literal">Alpha</item> = 50% is the MEDIAN.</paragraph>
+<paragraph xml-lang="en-US" id="par_id2754940" role="warning" l10n="U" oldref="113">If <item type="literal">Alpha</item> is not a multiple of <item type="literal">1/(n+1)</item>, (where n is the number of values in the supplied array), the function interpolates between the values in the supplied array, to calculate the percentile value. However, if <item type="literal">Alpha</item> is less than <item type="literal">1/(n+1)</item> or <item type="literal">Alpha</item> is greater than <item type="literal">n/(n+1)</item>, the function is unable to interpolate, and so returns an error.</paragraph>
+<paragraph xml-lang="en-US" id="par_id2653976" role="note">The difference between <item type="input">PERCENTILE.INC</item> and <item type="input">PERCENTILE.EXC</item> is that, in the <item type="input">PERCENTILE.INC</item> function the value of alpha is is within the range 0 to 1 inclusive, and in the <item type="input">PERCENTILE.EXC</item> function, the value of alpha is within the range 0 to 1 exclusive.</paragraph>
+<paragraph xml-lang="en-US" id="hd_id2850531" role="heading" level="3" l10n="U" oldref="114">Syntax</paragraph>
+<paragraph xml-lang="en-US" id="par_id2848813" role="code" l10n="U" oldref="115">PERCENTILE.EXC(Data; Alpha)</paragraph>
+<paragraph xml-lang="en-US" id="par_id2853054" role="paragraph" l10n="U" oldref="116"><emph>Data</emph> represents the array of data.</paragraph>
+<paragraph xml-lang="en-US" id="par_id2854212" role="paragraph" l10n="U" oldref="117"><emph>Alpha</emph> represents the percentage of the scale between 0 and 1.</paragraph>
+<paragraph xml-lang="en-US" id="hd_id2854290" role="heading" level="3" l10n="U" oldref="118">Example</paragraph>
+<paragraph xml-lang="en-US" id="par_id2859147" role="paragraph" l10n="CHG" oldref="119"><item type="input">=PERCENTILE.EXC(A1:A50;10%)</item> represents the value in the data set, which equals 10% of the total data scale in A1:A50.</paragraph>
+</section>
+<section id="percentileinc">
+<bookmark xml-lang="en-US" branch="index" id="bm_id2953100"><bookmark_value>PERCENTILE.INC function</bookmark_value>
+</bookmark>
+<bookmark xml-lang="en-US" branch="hid/HID_FUNC_PERCENTILE_INC" id="bm_id2955394" localize="false"/>
+<paragraph xml-lang="en-US" id="hd_id2953100" role="heading" level="2" l10n="U" oldref="112">PERCENTILE.INC</paragraph>
+<paragraph xml-lang="en-US" id="par_id2954940" role="paragraph" l10n="U" oldref="113"><ahelp hid="HID_FUNC_PERCENTILE_INC">Returns the alpha-percentile of data values in an array.</ahelp> A percentile returns the scale value for a data series which goes from the smallest (Alpha=0) to the largest value (alpha=1) of a data series. For <item type="literal">Alpha</item> = 25%, the percentile means the first quartile; <item type="literal">Alpha</item> = 50% is the MEDIAN.</paragraph>
+<paragraph xml-lang="en-US" id="par_id2753976" role="note">The difference between <item type="input">PERCENTILE.INC</item> and <item type="input">PERCENTILE.EXC</item> is that, in the <item type="input">PERCENTILE.INC</item> function the value of alpha is is within the range 0 to 1 inclusive, and in the <item type="input">PERCENTILE.EXC</item> function, the value of alpha is within the range 0 to 1 exclusive.</paragraph>
+<paragraph xml-lang="en-US" id="hd_id2950531" role="heading" level="3" l10n="U" oldref="114">Syntax</paragraph>
+<paragraph xml-lang="en-US" id="par_id2948813" role="code" l10n="U" oldref="115">PERCENTILE.INC(Data; Alpha)</paragraph>
+<paragraph xml-lang="en-US" id="par_id2953054" role="paragraph" l10n="U" oldref="116"><emph>Data</emph> represents the array of data.</paragraph>
+<paragraph xml-lang="en-US" id="par_id2954212" role="paragraph" l10n="U" oldref="117"><emph>Alpha</emph> represents the percentage of the scale between 0 and 1.</paragraph>
+<paragraph xml-lang="en-US" id="hd_id2954290" role="heading" level="3" l10n="U" oldref="118">Example</paragraph>
+<paragraph xml-lang="en-US" id="par_id2959147" role="paragraph" l10n="CHG" oldref="119"><item type="input">=PERCENTILE.INC(A1:A50;0.1)</item> represents the value in the data set, which equals 10% of the total data scale in A1:A50.</paragraph>
+</section>
 <section id="percentrank">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3148807"><bookmark_value>PERCENTRANK function</bookmark_value>
 </bookmark>
@@ -433,6 +462,34 @@ oldref="127">Example</paragraph>
 <paragraph xml-lang="en-US" id="par_id3149163" role="paragraph" l10n="U" oldref="128">
 <item type="input">=PERCENTRANK(A1:A50;50)</item> returns the percentage rank of the value 50 from the total range of all values found in A1:A50. If 50 falls outside the total range, an error message will appear.</paragraph>
 </section>
+<section id="percentrankexc">
+<bookmark xml-lang="en-US" branch="index" id="bm_id2848807"><bookmark_value>PERCENTRANK.EXC function</bookmark_value></bookmark>
+<bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_PERCENTRANK_EXC" id="bm_id2854902" localize="false"/>
+<paragraph xml-lang="en-US" id="hd_id2848807" role="heading" level="2" l10n="U" oldref="121">PERCENTRANK.EXC</paragraph>
+<paragraph xml-lang="en-US" id="par_id2853573" role="paragraph" l10n="U" oldref="122"><ahelp hid="HID_FUNC_PERCENTRANK_EXC"> Returns the relative position, between 0 and 1 (exclusive), of a specified value within a supplied array.</ahelp></paragraph>
+<paragraph xml-lang="en-US" id="par_id2553976" role="note">The difference between <item type="input">PERCENTRANK.INC</item> and <item type="input">PERCENTRANK.EXC</item> is that <item type="input">PERCENTRANK.INC</item> calculates a value in the range 0 to 1 inclusive, whereas the <item type="input">PERCENTRANK.EXC</item> function calculates a value in the range 0 to 1 exclusive.</paragraph>
+<paragraph xml-lang="en-US" id="hd_id2847512" role="heading" level="3" l10n="U" oldref="123">Syntax</paragraph>
+<paragraph xml-lang="en-US" id="par_id2847238" role="code" l10n="U" oldref="124">PERCENTRANK.EXC(Data; Value; Significance)</paragraph>
+<paragraph xml-lang="en-US" id="par_id2854266" role="paragraph" l10n="U" oldref="125"><emph>Data</emph> represents the array of data in the sample.</paragraph>
+<paragraph xml-lang="en-US" id="par_id2848475" role="paragraph" l10n="U" oldref="126"><emph>Value</emph> represents the value whose percentile rank must be determined.</paragraph>
+<paragraph xml-lang="en-US" id="par_id2748475" role="paragraph" l10n="U" oldref="126"><emph>Significance</emph> An optional argument that specifies the number of significant digits that the returned percentage value is rounded to.</paragraph>
+<paragraph xml-lang="en-US" id="hd_id2855364" role="heading" level="3" l10n="U" oldref="127">Example</paragraph>
+<paragraph xml-lang="en-US" id="par_id2849163" role="paragraph" l10n="U" oldref="128"><item type="input">=PERCENTRANK.EXC(A1:A50;50)</item> returns the percentage rank of the value 50 from the total range of all values found in A1:A50. If 50 falls outside the total range, an error message will appear.</paragraph>
+</section>
+<section id="percentrankinc">
+<bookmark xml-lang="en-US" branch="index" id="bm_id2948807"><bookmark_value>PERCENTRANK.INC function</bookmark_value></bookmark>
+<bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_PERCENTRANK_INC" id="bm_id2954902" localize="false"/>
+<paragraph xml-lang="en-US" id="hd_id2948807" role="heading" level="2" l10n="U" oldref="121">PERCENTRANK.INC</paragraph>
+<paragraph xml-lang="en-US" id="par_id2953573" role="paragraph" l10n="U" oldref="122"><ahelp hid="HID_FUNC_PERCENTRANK_INC">Returns the relative position, between 0 and 1 (inclusive), of a specified value within a supplied array.</ahelp></paragraph>
+<paragraph xml-lang="en-US" id="par_id2453976" role="note">The difference between <item type="input">PERCENTRANK.INC</item> and <item type="input">PERCENTRANK.EXC</item> is that <item type="input">PERCENTRANK.INC</item> calculates a value in the range 0 to 1 inclusive, whereas the <item type="input">PERCENTRANK.EXC</item> function calculates a value in the range 0 to 1 exclusive.</paragraph>
+<paragraph xml-lang="en-US" id="hd_id2947512" role="heading" level="3" l10n="U" oldref="123">Syntax</paragraph>
+<paragraph xml-lang="en-US" id="par_id2947238" role="code" l10n="U" oldref="124">PERCENTRANK.INC(Data; Value; Significance)</paragraph>
+<paragraph xml-lang="en-US" id="par_id2954266" role="paragraph" l10n="U" oldref="125"><emph>Data</emph> represents the array of data in the sample.</paragraph>
+<paragraph xml-lang="en-US" id="par_id2948475" role="paragraph" l10n="U" oldref="126"><emph>Value</emph> represents the value whose percentile rank must be determined.</paragraph>
+<paragraph xml-lang="en-US" id="par_id2648475" role="paragraph" l10n="U" oldref="126"><emph>Significance</emph> An optional argument that specifies the number of significant digits that the returned percentage value is rounded to.</paragraph>
+<paragraph xml-lang="en-US" id="hd_id2955364" role="heading" level="3" l10n="U" oldref="127">Example</paragraph>
+<paragraph xml-lang="en-US" id="par_id2949163" role="paragraph" l10n="U" oldref="128"><item type="input">=PERCENTRANK.INC(A1:A50;50)</item> returns the percentage rank of the value 50 from the total range of all values found in A1:A50. If 50 falls outside the total range, an error message will appear.</paragraph>
+</section>
 <section id="quartile">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3166442"><bookmark_value>QUARTILE function</bookmark_value>
 </bookmark>
@@ -449,6 +506,36 @@ oldref="132">Syntax</paragraph>
 oldref="136">Example</paragraph>
 <paragraph xml-lang="en-US" id="par_id3159276" role="paragraph" l10n="CHG" oldref="137">
 <item type="input">=QUARTILE(A1:A50;2)</item> returns the value of which 50% of the scale corresponds to the lowest to highest values in the range A1:A50.</paragraph>
+</section>
+<section id="quartileexc">
+<bookmark xml-lang="en-US" branch="index" id="bm_id2866442"><bookmark_value>QUARTILE.EXC function</bookmark_value>
+</bookmark>
+<bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_QUARTILE_EXC" id="bm_id2950709" localize="false"/>
+<paragraph xml-lang="en-US" id="hd_id2866442" role="heading" level="2" l10n="U" oldref="130">QUARTILE.EXC</paragraph>
+<paragraph xml-lang="en-US" id="par_id2846958" role="paragraph" l10n="U" oldref="131"><ahelp hid="HID_FUNC_QUARTILE_EXC">Returns a requested quartile of a supplied range of values, based on a percentile range of 0 to 1 exclusive.</ahelp></paragraph>
+<paragraph xml-lang="en-US" id="par_id2353976" role="note">The difference between <item type="input">QUARTILE.INC</item> and <item type="input">QUARTILE.EXC</item> is that the <item type="input">QUARTILE.INC</item> function bases its calculation on a percentile range of 0 to 1 inclusive, whereas the <item type="input">QUARTILE.EXC</item> function bases its calculation on a percentile range of 0 to 1 exclusive.</paragraph>
+<paragraph xml-lang="en-US" id="hd_id2852942" role="heading" level="3" l10n="U" oldref="132">Syntax</paragraph>
+<paragraph xml-lang="en-US" id="par_id2853684" role="code" l10n="U" oldref="133">QUARTILE.EXC(Data; Type)</paragraph>
+<paragraph xml-lang="en-US" id="par_id2853387" role="paragraph" l10n="U" oldref="134"><emph>Data</emph> represents the range of data values for which you want to calculate the specified quartile.</paragraph>
+<paragraph xml-lang="en-US" id="par_id2855589" role="paragraph" l10n="U" oldref="135"><emph>Type</emph> An integer between 1 and 3, representing the required quartile. (if type = 1 or 3, the supplied array must contain more than 2 values) </paragraph>
+<paragraph xml-lang="en-US" id="hd_id2849103" role="heading" level="3" l10n="U" oldref="136">Example</paragraph>
+<paragraph xml-lang="en-US" id="par_id2859276" role="paragraph" l10n="CHG" oldref="137">
+<item type="input">=QUARTILE.EXC(A1:A50;2)</item> returns the value of which 50% of the scale corresponds to the lowest to highest values in the range A1:A50.</paragraph>
+</section>
+<section id="quartileinc">
+<bookmark xml-lang="en-US" branch="index" id="bm_id2966442"><bookmark_value>QUARTILE.INC function</bookmark_value>
+</bookmark>
+<bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_QUARTILE_INC" id="bm_id2950709" localize="false"/>
+<paragraph xml-lang="en-US" id="hd_id2966442" role="heading" level="2" l10n="U" oldref="130">QUARTILE.INC</paragraph>
+<paragraph xml-lang="en-US" id="par_id2946958" role="paragraph" l10n="U" oldref="131"><ahelp hid="HID_FUNC_QUARTILE_INC">Returns the quartile of a data set.</ahelp></paragraph>
+<paragraph xml-lang="en-US" id="par_id2253976" role="note">The difference between <item type="input">QUARTILE.INC</item> and <item type="input">QUARTILE.EXC</item> is that the <item type="input">QUARTILE.INC</item> function bases its calculation on a percentile range of 0 to 1 inclusive, whereas the <item type="input">QUARTILE.EXC</item> function bases its calculation on a percentile range of 0 to 1 exclusive.</paragraph>
+<paragraph xml-lang="en-US" id="hd_id2952942" role="heading" level="3" l10n="U" oldref="132">Syntax</paragraph>
+<paragraph xml-lang="en-US" id="par_id2953684" role="code" l10n="U" oldref="133">QUARTILE.INC(Data; Type)</paragraph>
+<paragraph xml-lang="en-US" id="par_id2953387" role="paragraph" l10n="U" oldref="134"><emph>Data</emph> represents the array of data in the sample.</paragraph>
+<paragraph xml-lang="en-US" id="par_id2955589" role="paragraph" l10n="U" oldref="135"><emph>Type</emph> represents the type of quartile. (0 = MIN, 1 = 25%, 2 = 50% (MEDIAN), 3 = 75% and 4 = MAX.)</paragraph>
+<paragraph xml-lang="en-US" id="hd_id2949103" role="heading" level="3" l10n="U" oldref="136">Example</paragraph>
+<paragraph xml-lang="en-US" id="par_id2959276" role="paragraph" l10n="CHG" oldref="137">
+<item type="input">=QUARTILE.INC(A1:A50;2)</item> returns the value of which 50% of the scale corresponds to the lowest to highest values in the range A1:A50.</paragraph>
 </section>
 </sort>
 <section id="relatedtopics">
