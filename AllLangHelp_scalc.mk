@@ -200,6 +200,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_timevalue \
     helpcontent2/source/text/scalc/01/func_today \
     helpcontent2/source/text/scalc/01/func_weekday \
+    helpcontent2/source/text/scalc/01/func_webservice \
     helpcontent2/source/text/scalc/01/func_weeknum \
     helpcontent2/source/text/scalc/01/func_weeknumadd \
     helpcontent2/source/text/scalc/01/func_workday \
