@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ -->
+<helpdocument version="1.0">
+     <meta>
+         <topic id="textscalc01func_webservice" indexer="include" status="PUBLISH">
+             <title id="tit" xml-lang="en-US">WEBSERVICE</title>
+             <filename>/text/scalc/01/func_webservice.xhp</filename>
+         </topic>
+     </meta>
+     <body>
+     <section id="webservice">
+     <bookmark xml-lang="en-US" branch="index" id="bm_id3149012"><bookmark_value>WEBSERVICE function</bookmark_value>
+     </bookmark>
+     <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_WEBSERVICE" id="bm_id3150028" localize="false"/>
+     <paragraph role="heading" id="hd_id3149012" xml-lang="en-US" level="2" l10n="U" oldref="186">WEBSERVICE</paragraph>
+     <paragraph role="paragraph" id="par_id3149893" xml-lang="en-US" l10n="U" oldref="187"><ahelp hid="HID_FUNC_WEBSERVICE">Get some web content from a URI.</ahelp></paragraph>
+     <paragraph role="heading" id="hd_id3146944" xml-lang="en-US" level="3" l10n="U" oldref="188">Syntax</paragraph>
+     <paragraph role="code" id="par_id3154844" xml-lang="en-US" l10n="U" oldref="189">WEBSERVICE(URI)</paragraph>
+     <paragraph role="paragraph" id="par_id3147469" xml-lang="en-US" l10n="U" oldref="190"><emph>URI: </emph> URI text of the web service.</paragraph>
+     <paragraph role="heading" id="hd_id3150141" xml-lang="en-US" level="3" l10n="U" oldref="193">Example</paragraph>
+     <paragraph role="paragraph" id="par_id3146142" xml-lang="en-US" l10n="CHG" oldref="195">=WEBSERVICE("http://api.openweathermap.org/data/2.5/forecast?q=Copenhagen,dk&amp;mode=xml&amp;units=metric") </paragraph>
+     <paragraph role="paragraph" id="par_id3146143" xml-lang="en-US">Returns the web page content of "http://api.openweathermap.org/data/2.5/forecast?q=Copenhagen,dk&amp;mode=xml&amp;units=metric"</paragraph>
+   </section>
+   <section id="filterxml">
+          <bookmark xml-lang="en-US" branch="index" id="bm_id2949012">
+       <bookmark_value>FILTERXML function</bookmark_value>
+     </bookmark>
+     <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_FILTERXML" id="bm_id2950028" localize="false"/>
+     <paragraph role="heading" id="hd_id2949012" xml-lang="en-US" level="2" l10n="U" oldref="186">FILTERXML</paragraph>
+     <paragraph role="paragraph" id="par_id2949893" xml-lang="en-US" l10n="U" oldref="187"><ahelp hid="HID_FUNC_FILTERXML">Apply a XPath expression to a XML document.</ahelp></paragraph>
+     <paragraph role="heading" id="hd_id2946944" xml-lang="en-US" level="3" l10n="U" oldref="188">Syntax</paragraph>
+     <paragraph role="code" id="par_id2954844" xml-lang="en-US" l10n="U" oldref="189">FILTERXML(XML Document; XPath expression)</paragraph>
+     <paragraph role="paragraph" id="par_id2947469" xml-lang="en-US" l10n="U" oldref="190"><emph>XML Document (required):</emph> String containing a valid XML stream.</paragraph>
+     <paragraph role="paragraph" id="par_id2847469" xml-lang="en-US" l10n="U" oldref="190"><emph>XPath expression (required):</emph> String containing a valid XPath expression.</paragraph>
+     <paragraph role="heading" id="hd_id2950141" xml-lang="en-US" level="3" l10n="U" oldref="193">Example</paragraph>
+     <paragraph role="paragraph" id="par_id2946142" xml-lang="en-US" l10n="CHG" oldref="195">=FILTERXML(WEBSERVICE("http://api.openweathermap.org/data/2.5/forecast?q=Copenhagen,dk&amp;mode=xml&amp;units=metric");"number(/weatherdata/forecast/time[2]/temperature/@value)")</paragraph>
+     <paragraph role="paragraph" id="par_id2946143" xml-lang="en-US"> Returns information on Copenhagen weather temperature.</paragraph>
+   </section>
+ </body>
+</helpdocument>
