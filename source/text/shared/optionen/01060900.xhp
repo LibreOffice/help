@@ -22,13 +22,19 @@
         <bookmark_value>formula options;formula syntax</bookmark_value>
         <bookmark_value>formula options;separators</bookmark_value>
         <bookmark_value>formula options;reference syntax in string parameters</bookmark_value>
-        <bookmark_value>separators;function</bookmark_value>
+	<bookmark_value>formula options;recalculating spreadsheets</bookmark_value>
+        <bookmark_value>formula options;large spreadsheet files</bookmark_value>
+        <bookmark_value>formula options;loading spreadsheet files</bookmark_value>
+	<bookmark_value>separators;function</bookmark_value>
         <bookmark_value>separators;array column</bookmark_value>
         <bookmark_value>separators;array row</bookmark_value>
+        <bookmark_value>recalculating;formula options</bookmark_value>
+        <bookmark_value>recalculating;large spreadsheet files</bookmark_value>
+	<bookmark_value>loading;large spreadsheet files</bookmark_value>
     </bookmark>
     <bookmark xml-lang="en-US" branch="hid/modules/scalc/ui/optformula/OptFormula" id="bm_id3149095" localize="false"/>
     <paragraph xml-lang="en-US" id="hd_id3145071" role="heading" level="1"><link href="text/shared/optionen/01060900.xhp" name="Formula">Formula</link></paragraph>
-    <paragraph xml-lang="en-US" id="par_id3147576" role="paragraph"><ahelp hid=".">Defines formula syntax options for %PRODUCTNAME Calc.</ahelp></paragraph>
+    <paragraph xml-lang="en-US" id="par_id3147576" role="paragraph"><ahelp hid=".">Defines formula syntax options and loading options for %PRODUCTNAME Calc.</ahelp></paragraph>
     </section>
     <section id="howtoget">
        <embed href="text/shared/00/00000406.xhp#exopfo"/>
@@ -58,5 +64,35 @@
     <paragraph xml-lang="en-US" id="par_id0155419" role="paragraph"><item type="input">={1,2,3,4,5;6,7,8,9,10}</item></paragraph>
     <paragraph xml-lang="en-US" id="hd_id5149399" role="heading" level="2">Detailed calculation settings</paragraph>
     <paragraph xml-lang="en-US" id="par_id1015549" role="paragraph">Here you can configure the formula syntax to use when parsing references given in string parameters. This affects built-in functions such as INDIRECT that takes a reference as a string value.</paragraph>
-</body>
+    <paragraph xml-lang="en-US" id="hd_id5149400" role="heading" level="2">Recalculation on File Load</paragraph>
+<paragraph xml-lang="en-US" id="par_id2335549" role="paragraph">Recalculating formulas can take significant time while loading very large files.</paragraph>
+<paragraph xml-lang="en-US" id="par_id2115549" role="heading" level="3">Excel 2007 and newer:</paragraph>
+<paragraph xml-lang="en-US" id="par_id2015549" role="paragraph">
+Loading a large spreadsheet file can take a long time. If you don't need to update your large spreadsheet data immediately, you can postpone the recalculation at a better time.
+%PRODUCTNAME allows you to defer recalculation of Excel 2007 (and above) spreadsheets to speedup loading time.
+</paragraph>
+<paragraph xml-lang="en-US" id="par_id2215549" role="heading" level="3">ODF Spreadsheets (not saved by %PRODUCTNAME):</paragraph>
+<paragraph xml-lang="en-US" id="par_id2016549" role="paragraph">
+Recent versions of %PRODUCTNAME caches spreadsheet formula results into its ODF file.
+This feature helps %PRODUCTNAME to recalculate a large ODF spreadsheet saved by %PRODUCTNAME faster.
+</paragraph>
+<paragraph xml-lang="en-US" id="par_id2017549" role="paragraph">
+For ODF spreadsheets saved by other programs, where such cached formula results may not exist, recalculation can be deferred to speedup file loading as with Excel 2007 files.
+</paragraph>
+<paragraph xml-lang="en-US" id="par_id2315549" role="paragraph">For the entries above the following choices are possible:</paragraph>
+    <list type="unordered">
+       <listitem>
+        <paragraph xml-lang="en-US" id="par_id3256155" role="listitem"><emph>Never recalculate</emph> - No formulas will be recalculated on loading the file.</paragraph>
+       </listitem>
+       <listitem>
+        <paragraph xml-lang="en-US" id="par_id3247530" role="listitem"><emph>Always recalculate</emph> - All formulas will be recalculated on file load.</paragraph>
+       </listitem>
+       <listitem>
+        <paragraph xml-lang="en-US" id="par_id3253061" role="listitem"><emph>Prompt user</emph> - Prompt user for action.</paragraph>
+       </listitem>
+    </list>
+    <paragraph xml-lang="en-US" id="par_id2010549" role="tip">
+      %PRODUCTNAME saved ODF spreadsheets will honor <emph>Never recalculate</emph> and <emph>Always recalculate</emph> options.
+    </paragraph>
+    </body>
 </helpdocument>
