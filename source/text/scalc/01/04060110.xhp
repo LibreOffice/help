@@ -331,8 +331,12 @@
          <paragraph xml-lang="en-US" id="par_id2946786" role="code" l10n="U" oldref="98">LEFTB("Text"; Number_bytes)</paragraph>
          <paragraph xml-lang="en-US" id="par_id2947274" role="paragraph" l10n="U" oldref="99"><emph>Text</emph> is the text where the initial partial words are to be determined.</paragraph>
          <paragraph xml-lang="en-US" id="par_id2953152" role="paragraph" l10n="U" oldref="100"><emph>Number_bytes</emph> (optional) specifies the number of characters you want LEFTB to extract, based on bytes. If this parameter is not defined, one character is returned.</paragraph>
-         <paragraph xml-lang="en-US" id="hd_id2950260" role="heading" level="3" l10n="U" oldref="101">Example</paragraph>
-         <paragraph xml-lang="en-US" id="par_id2949141" role="paragraph" l10n="U" oldref="102"><item type="input">=LEFTB("output";3)</item> returns “out”.</paragraph>
+         <paragraph xml-lang="en-US" id="hd_id2950260" role="heading" level="3">Examples</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2949141" role="paragraph"><item type="input">LEFTB("中国";1)</item> returns " " (1 byte is only half a DBCS character and a space character is returned instead).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2949151" role="paragraph"><item type="input">LEFTB("中国";2)</item> returns "中" (2 bytes constitute one complete DBCS character).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2949161" role="paragraph"><item type="input">LEFTB("中国";3)</item> returns "中 " (3 bytes constitute one DBCS character and a half; the last character returned is therefore a space character).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2949171" role="paragraph"><item type="input">LEFTB("中国";4)</item> returns "中国" (4 bytes constitute two complete DBCS characters).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2949181" role="paragraph"><item type="input">LEFTB("office";3)</item> returns "off" (3 non-DBCS characters each consisting of 1 byte).</paragraph>
       </section>
       <section id="len">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3156110"><bookmark_value>LEN function</bookmark_value>
@@ -362,7 +366,10 @@
          <paragraph xml-lang="en-US" id="hd_id2955108" role="heading" level="3" l10n="U" oldref="106">Syntax</paragraph>
          <paragraph xml-lang="en-US" id="par_id2954063" role="code" l10n="U" oldref="107">LENB("Text")</paragraph>
          <paragraph xml-lang="en-US" id="par_id2946894" role="paragraph" l10n="U" oldref="108"><emph>Text</emph> is the text whose length is to be determined.</paragraph>
-         <paragraph xml-lang="en-US" id="hd_id2953884" role="heading" level="3" l10n="U" oldref="109">Example</paragraph>
+         <paragraph xml-lang="en-US" id="hd_id2953884" role="heading" level="3">Examples</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2956018" role="paragraph"><item type="input">LENB("中")</item> returns 2 (1 DBCS character consisting of 2 bytes).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2956028" role="paragraph"><item type="input">LENB("中国")</item> returns 4 (2 DBCS characters each consisting of 2 bytes).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2956038" role="paragraph"><item type="input">LENB("office")</item> returns 6 (6 non-DBCS characters each consisting of 1 byte).</paragraph>
          <paragraph xml-lang="en-US" id="par_id2956008" role="paragraph" l10n="U" oldref="110">
              <item type="input">=LENB("Good Afternoon")</item> returns 14.</paragraph>
          <paragraph xml-lang="en-US" id="par_id2954300" role="paragraph" l10n="U" oldref="111">
@@ -417,9 +424,18 @@
          <paragraph xml-lang="en-US" id="par_id2948820" role="paragraph" l10n="U" oldref="152"><emph>Text</emph> is the text containing the characters to extract.</paragraph>
          <paragraph xml-lang="en-US" id="par_id2950774" role="paragraph" l10n="U" oldref="153"><emph>Start</emph> is the position of the first character in the text to extract.</paragraph>
          <paragraph xml-lang="en-US" id="par_id2953063" role="paragraph" l10n="U" oldref="154"><emph>Number_bytes</emph> specifies the number of characters MIDB will return from text, in bytes.</paragraph>
-         <paragraph xml-lang="en-US" id="hd_id2950509" role="heading" level="3" l10n="U" oldref="155">Example</paragraph>
-         <paragraph xml-lang="en-US" id="par_id2958407" role="paragraph" l10n="U" oldref="156">
-            <item type="input">=MIDB("office";2;2)</item> returns ff.</paragraph>
+         <paragraph xml-lang="en-US" id="hd_id2950509" role="heading" level="3">Examples</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2958417" role="paragraph"><item type="input">MIDB("中国";1;0)</item> returns "" (0 bytes is always an empty string).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2958427" role="paragraph"><item type="input">MIDB("中国";1;1)</item> returns " " (1 byte is only half a DBCS character and therefore the result is a space character).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2958437" role="paragraph"><item type="input">MIDB("中国";1;2)</item> returns "中" (2 bytes constitute one complete DBCS character).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2958447" role="paragraph"><item type="input">MIDB("中国";1;3)</item> returns "中 " (3 bytes constitute one and a half DBCS character; the last byte results in a space character).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2958457" role="paragraph"><item type="input">MIDB("中国";1;4)</item> returns "中国" (4 bytes constitute two complete DBCS characters).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2958467" role="paragraph"><item type="input">MIDB("中国";2;1)</item> returns " " (byte position 2 is not at the beginning of a character in a DBCS string; 1 space character is returned).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2958477" role="paragraph"><item type="input">MIDB("中国";2;2)</item> returns " " (byte position 2 points to the last half of the first character in the DBCS string; the 2 bytes asked for therefore constitutes the last half of the first character and the first half of the second character in the string; 2 space characters are therefore returned).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2958487" role="paragraph"><item type="input">MIDB("中国";2;3)</item> returns " 国" (byte position 2 is not at the beginning of a character in a DBCS string; a space character is returned for byte position 2).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2958497" role="paragraph"><item type="input">MIDB("中国";3;1)</item> returns " " (byte position 3 is at the beginning of a character in a DBCS string, but 1 byte is only half a DBCS character and a space character is therefore returned instead).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2958507" role="paragraph"><item type="input">MIDB("中国";3;2)</item> returns "国" (byte position 3 is at the beginning of a character in a DBCS string, and 2 bytes constitute one DBCS character).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2958517" role="paragraph"><item type="input">MIDB("office";2;3)</item> returns "ffi" (byte position 2 is at the beginning of a character in a non-DBCS string, and 3 bytes of a non-DBCS string constitute 3 characters).</paragraph>
       </section>
       <section id="proper">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3159143"><bookmark_value>PROPER function</bookmark_value>
@@ -511,9 +527,12 @@
          <paragraph xml-lang="en-US" id="par_id2954344" role="code" l10n="U" oldref="116">RIGHTB("Text"; Number_bytes)</paragraph>
          <paragraph xml-lang="en-US" id="par_id2949426" role="paragraph" l10n="U" oldref="117"><emph>Text</emph> is the text of which the right part is to be determined.</paragraph>
          <paragraph xml-lang="en-US" id="par_id2953350" role="paragraph" l10n="U" oldref="118"><emph>Number_bytes</emph> (optional) specifies the number of characters you want RIGHTB to extract, based on bytes.</paragraph>
-         <paragraph xml-lang="en-US" id="hd_id2948661" role="heading" level="3" l10n="U" oldref="119">Example</paragraph>
-         <paragraph xml-lang="en-US" id="par_id2951132" role="paragraph" l10n="U" oldref="120">
-            <item type="input">=RIGHTB("Sun";2)</item> returns un.</paragraph>
+         <paragraph xml-lang="en-US" id="hd_id2948661" role="heading" level="3">Examples</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2951132" role="paragraph"><item type="input">RIGHTB("中国";1)</item> returns " " (1 byte is only half a DBCS character and a space character is returned instead).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2951142" role="paragraph"><item type="input">RIGHTB("中国";2)</item> returns "国" (2 bytes constitute one complete DBCS character).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2951152" role="paragraph"><item type="input">RIGHTB("中国";3)</item> returns " 国" (3 bytes constitute one half DBCS character and one whole DBCS character; a space is returned for the first half).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2951162" role="paragraph"><item type="input">RIGHTB("中国";4)</item> returns "中国" (4 bytes constitute two complete DBCS characters).</paragraph>
+         <paragraph xml-lang="en-US" id="par_id2951172" role="paragraph"><item type="input">RIGHTB("office";3)</item> returns "ice" (3 non-DBCS characters each consisting of 1 byte).</paragraph>
       </section>
       <section id="roman">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3153534"><bookmark_value>ROMAN function</bookmark_value>
