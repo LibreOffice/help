@@ -257,7 +257,41 @@
 <bookmark xml-lang="en-US" branch="hid/filter/ui/pdfsecuritypage/enablea11y" id="bm_id3429059" localize="false"/>
 <paragraph xml-lang="en-US" id="hd_id9312417" role="heading" level="2" l10n="NEW">Enable text access for accessibility tools</paragraph>
       <paragraph xml-lang="en-US" id="par_id9089022" role="paragraph" l10n="NEW"><ahelp hid=".">Select to enable text access for accessibility tools.</ahelp></paragraph>
-      <paragraph xml-lang="en-US" id="hd_id3150507" role="heading" level="2" l10n="U"
+<bookmark xml-lang="en-US" branch="hid/filter/ui/pdfsignpage/pdfsignpage" id="bm_id18720359" localize="false"/>
+      <paragraph xml-lang="en-US" id="hd_id13068636" role="heading" level="1">Digital Signatures tab</paragraph>
+      <paragraph xml-lang="en-US" id="par_id22107303" role="paragraph">This tab contains the options related to exporting to a digitally signed PDF.</paragraph>
+      <paragraph xml-lang="en-US" id="par_id22107304" role="paragraph">Digital signatures are used to ensure that the PDF was really created by the original author (i.e. you), and that the document has not been modified since it was signed.</paragraph>
+      <paragraph xml-lang="en-US" id="par_id22107305" role="paragraph">The signed PDF export uses the keys and X.509 certificates already stored in your default key store location or on a smartcard.</paragraph>
+<switch select="sys"><case select="WIN"><!-- Windows uses Crypto API, not NSS --></case><default>
+      <paragraph xml-lang="en-US" id="par_id22107306" role="paragraph">The key store to be used can be selected under <emph><switchinline select="sys"><caseinline select="MAC">%PRODUCTNAME - Preferences</caseinline><defaultinline>Tools - Options</defaultinline></switchinline> - %PRODUCTNAME - Security - Certificate Path</emph>.</paragraph>
+</default></switch>
+      <paragraph xml-lang="en-US" id="par_id22107307" role="paragraph">When using a smartcard, it must already be configured for use by your key store. This is usually done during installation of the smartcard software.</paragraph>
+<bookmark xml-lang="en-US" branch="hid/filter/ui/pdfsignpage/cert" id="bm_id18720358" localize="false"/>
+      <paragraph xml-lang="en-US" id="hd_id12927335" role="heading" level="2">Use this certificate to digitally sign PDF documents</paragraph>
+      <paragraph xml-lang="en-US" id="par_id12107303" role="paragraph"><ahelp hid=".">Allows you to select a certificate to be used for signing this PDF export.</ahelp></paragraph>
+<bookmark xml-lang="en-US" branch="hid/filter/ui/pdfsignpage/select" id="bm_id11476485" localize="false"/>
+      <paragraph xml-lang="en-US" id="hd_id17985168" role="heading" level="2">Select</paragraph>
+      <paragraph xml-lang="en-US" id="par_id12507303" role="paragraph"><ahelp hid=".">Opens the <emph>Select Certificate</emph> dialog.</ahelp></paragraph>
+      <paragraph xml-lang="en-US" id="par_id12507403" role="paragraph">All certificates found in your selected key store are displayed. If the key store is protected by a password, you are prompted for it. When using a smartcard that is protected by a PIN, you are also prompted for that.</paragraph>
+      <paragraph xml-lang="en-US" id="par_id12507503" role="paragraph">Select the certificate to use for digitally signing the exported PDF by clicking on the corresponding line, then click <emph>OK</emph>.</paragraph>
+      <paragraph xml-lang="en-US" id="par_id12507603" role="paragraph">All other fields on the <emph>Digital Signatures</emph> tab will be accessible only after a certificate has been selected.</paragraph>
+<bookmark xml-lang="en-US" branch="hid/filter/ui/pdfsignpage/password" id="bm_id21476485" localize="false"/>
+      <paragraph xml-lang="en-US" id="hd_id1876186" role="heading" level="2">Certificate password</paragraph>
+      <paragraph xml-lang="en-US" id="par_id13939634" role="paragraph"><ahelp hid=".">Enter the password used for protecting the private key associated with the selected certificate.</ahelp> Usually this is the key store password.</paragraph>
+      <paragraph xml-lang="en-US" id="par_id13932634" role="note">If the key store password has already been entered in the <emph>Select Certificate</emph> dialog, the key store may already be unlocked and not require the password again. But to be on the safe side, enter it nevertheless.</paragraph>
+      <paragraph xml-lang="en-US" id="par_id13933634" role="warning">When using a smartcard, enter the PIN here. Some smartcard software will prompt you for the PIN again before signing. This is cumbersome, but that's how smartcards work.</paragraph>
+<bookmark xml-lang="en-US" branch="hid/filter/ui/pdfsignpage/location" id="bm_id12693472" localize="false"/>
+<bookmark xml-lang="en-US" branch="hid/filter/ui/pdfsignpage/contact" id="bm_id13693472" localize="false"/>
+<bookmark xml-lang="en-US" branch="hid/filter/ui/pdfsignpage/reason" id="bm_id14693472" localize="false"/>
+      <paragraph xml-lang="en-US" id="hd_id1599688" role="heading" level="2">Location, Contact information, Reason</paragraph>
+      <paragraph xml-lang="en-US" id="par_id11371501" role="paragraph">These three fields allow you to optionally enter additional information about the digital signature that will be applied to the PDF (Where, by whom and why it was made). It will be embedded in the appropriate PDF fields and will be visible to anyone viewing the PDF. Each or all of the three fields may be left blank.</paragraph>
+<bookmark xml-lang="en-US" branch="hid/filter/ui/pdfsignpage/tsa" id="bm_id18849147" localize="false"/>
+      <paragraph xml-lang="en-US" id="hd_id14661702" role="heading" level="2">Time Stamp Authority</paragraph>
+      <paragraph xml-lang="en-US" id="par_id17868892" role="paragraph"><ahelp hid=".">Allows you to optionally select a Time Stamping Authority (TSA) URL. </ahelp></paragraph>
+      <paragraph xml-lang="en-US" id="par_id29089022" role="paragraph">During the PDF signing process, the TSA will be used to obtain a digitally signed timestamp that is then embedded in the signature. This (RFC 3161) timestamp will allow anyone viewing the PDF to verify when the document was signed.</paragraph>
+      <paragraph xml-lang="en-US" id="par_id39089022" role="paragraph">The list of TSA URLs that can be selected is maintained under <emph><switchinline select="sys"><caseinline select="MAC">%PRODUCTNAME - Preferences</caseinline><defaultinline>Tools - Options</defaultinline></switchinline> - %PRODUCTNAME - Security - TSAs</emph>.</paragraph>
+      <paragraph xml-lang="en-US" id="par_id49089022" role="paragraph">If no TSA URL is selected (the default), the signature will not be timestamped, but will use the current time from your local computer.</paragraph>
+      <paragraph xml-lang="en-US" id="hd_id3150507" role="heading" level="1" l10n="U"
                  oldref="50">Export button</paragraph>
       <paragraph xml-lang="en-US" id="par_id3146975" role="paragraph" l10n="U" oldref="51"><ahelp hid=".">Exports the current file in PDF format.</ahelp></paragraph>
    </body>
