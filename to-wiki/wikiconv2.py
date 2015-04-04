@@ -578,6 +578,7 @@ class TableRow(ElementBase):
         ElementBase.__init__(self, 'tablerow', parent)
 
     def start_element(self, parser, name, attrs):
+        self.isTableHeader = False
         if name == 'tablecell':
             self.parse_child(TableCell(attrs, self))
         else:
@@ -1367,7 +1368,7 @@ def write_redirects():
         redirect = redir[1]
         target = redir[2]
         authoritative = redir[3]
-    
+
         if app != '':
             r = '%s/%s'% (app, redirect)
             if authoritative:
@@ -1378,13 +1379,13 @@ def write_redirects():
                     written[r]
                 except:
                     written[r] = False
-    
+
     # in the second pass, output the wiki links
     for redir in redirects:
         app = redir[0]
         redirect = redir[1]
         target = redir[2]
-    
+
         if app == '':
             for i in ['swriter', 'scalc', 'simpress', 'sdraw', 'smath', \
                       'schart', 'sbasic', 'sdatabase']:
@@ -1416,7 +1417,7 @@ def convert(generate_redirects, lang, po_root):
     for title in titles:
         while threading.active_count() > max_threads:
             time.sleep(0.001)
-    
+
         infile = title[0].strip()
         wikiname = title[1].strip()
         articledir = 'wiki/' + wikiname
@@ -1444,7 +1445,7 @@ def convert(generate_redirects, lang, po_root):
                         (infile, outfile)
         sys.stderr.write('Warning: Skipping: %s > %s\n'% (infile, outfile))
         file.close()
-    
+
     # wait for everyone to finish
     while threading.active_count() > 1:
         time.sleep(0.001)
