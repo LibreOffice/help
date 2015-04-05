@@ -52,9 +52,15 @@ replace_paragraph_role = \
               'sup' : '',
               'tablecontent': '| | ',
               'tablecontentcode': '| | <code>',
+              'tablecontentnote': '| |{{Note|',
+              'tablecontenttip': '| |{{Tip|',
+              'tablecontentwarning': '| |{{Warning|',
               'tablehead': '! scope="col" | ',
+              'tablenextnote': '\n{{Note|',
               'tablenextpara': '\n',
               'tablenextparacode': '\n<code>',
+              'tablenexttip': '\n{{Tip|',
+              'tablenextwarning': '\n{{Warning|',
               'tip': '{{Tip|',
               'variable': '',
               'warning': '{{Warning|',
@@ -82,9 +88,15 @@ replace_paragraph_role = \
             'sup' : '',
             'tablecontent': '\n',
             'tablecontentcode': '</code>\n',
+            'tablecontentnote': '}}\n\n',
+            'tablecontenttip': '}}\n\n',
+            'tablecontentwarning': '}}\n\n',
             'tablehead': '\n',
+            'tablenextnote': '}}\n\n',
             'tablenextpara': '\n',
             'tablenextparacode': '</code>\n',
+            'tablenexttip': '}}\n\n',
+            'tablenextwarning': '}}\n\n',
             'tip': '}}\n\n',
             'variable': '',
             'warning': '}}\n\n',
@@ -112,9 +124,15 @@ replace_paragraph_role = \
               'sup' : False,
               'tablecontent': False,
               'tablecontentcode': False,
+              'tablecontentnote': True,
+              'tablecontenttip': True,
+              'tablecontentwarning': True,
               'tablehead': False,
+              'tablenextnote': True,
               'tablenextpara': False,
               'tablenextparacode': False,
+              'tablenexttip': True,
+              'tablenextwarning': True,
               'tip': True,
               'variable': False,
               'warning': True,
@@ -1122,6 +1140,12 @@ class Paragraph(ElementBase):
         if not self.is_first and role.find('table') == 0:
             if role == 'tablecontentcode':
                 role = 'tablenextparacode'
+            elif role == 'tablecontentnote':
+                role = 'tablenextnote'
+            elif role == 'tablecontenttip':
+                role = 'tablenexttip'
+            elif role == 'tablecontentwarning':
+                role = 'tablenextwarning'
             else:
                 role = 'tablenextpara'
 
@@ -1224,6 +1248,12 @@ class TableContentParagraph(Paragraph):
                 self.role = 'tablecontentcode'
             elif self.role == 'logocode':
                 self.role = 'tablecontentcode'
+            elif self.role == 'note':
+                self.role = 'tablecontentnote'
+            elif self.role == 'tip':
+                self.role = 'tablecontenttip'
+            elif self.role == 'warning':
+                self.role = 'tablecontentwarning'
             else:
                 self.role = 'tablecontent'
         if self.role == 'tablehead':
