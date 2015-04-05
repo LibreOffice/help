@@ -418,7 +418,7 @@ class XhpFile(ElementBase):
             # ignored, we flatten the structure
             pass
         elif name == 'list':
-            self.parse_child(List(attrs, self))
+            self.parse_child(List(attrs, self, False))
         elif name == 'meta':
             self.parse_child(Meta(attrs, self))
         elif name == 'paragraph':
@@ -558,6 +558,8 @@ class TableCell(ElementBase):
         elif name == 'bascode':
             # ignored, do not syntax highlight in table cells
             pass
+        elif name == 'list':
+            self.parse_child(List(attrs, self, True))
         else:
             self.unhandled_element(parser, name)
 
@@ -635,7 +637,7 @@ class ListItem(ElementBase):
         elif name == 'paragraph':
             parser.parse_localized_paragraph(ListItemParagraph, attrs, self)
         elif name == 'list':
-            self.parse_child(List(attrs, self))
+            self.parse_child(List(attrs, self, False))
         else:
             self.unhandled_element(parser, name)
 
@@ -659,9 +661,10 @@ class ListItem(ElementBase):
         return text + postfix
 
 class List(ElementBase):
-    def __init__(self, attrs, parent):
+    def __init__(self, attrs, parent, isInTable):
         ElementBase.__init__(self, 'list', parent)
 
+        self.isInTable = isInTable
         self.type = attrs['type']
         try:
             self.startwith = int(attrs['startwith'])
@@ -676,6 +679,8 @@ class List(ElementBase):
 
     def get_all(self):
         text = ""
+        if self.isInTable:
+            text = '| |\n'
         if self.startwith > 0:
             text = text + '<ol start="%d">\n'% self.startwith
 
@@ -748,7 +753,7 @@ class Section(ElementBase):
             if parser.follow_embed:
                 self.embed_href(parser, fname, id)
         elif name == 'list':
-            self.parse_child(List(attrs, self))
+            self.parse_child(List(attrs, self, False))
         elif name == 'paragraph':
             parser.parse_paragraph(attrs, self)
         elif name == 'section':
@@ -940,7 +945,7 @@ class Case(ElementBase):
                 (fname, id) = href_to_fname_id(attrs['href'])
                 self.embed_href(parser, fname, id)
         elif name == 'list':
-            self.parse_child(List(attrs, self))
+            self.parse_child(List(attrs, self, False))
         elif name == 'paragraph':
             parser.parse_paragraph(attrs, self)
         elif name == 'section':
