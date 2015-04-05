@@ -952,6 +952,8 @@ class Case(ElementBase):
             self.parse_child(Section(attrs, self))
         elif name == 'table':
             self.parse_child(Table(attrs, self))
+        elif name == 'bascode':
+            self.parse_child(BasicCode(attrs, self))
         else:
             self.unhandled_element(parser, name)
 
