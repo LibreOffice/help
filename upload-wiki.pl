@@ -11,6 +11,7 @@ use MediaWiki::API;
 use File::Find();
 use File::Slurp;
 use Getopt::Std;
+use Digest::SHA1 qw(sha1 sha1_hex sha1_base64);
 
 # help
 sub usage {
@@ -153,9 +154,12 @@ File::Find::find( {wanted => \&upload_article}, 'wiki/' );
 # upload the images
 if ( $upload_images ) {
     open( IN, "images.txt" ) || usage();
+    my $imagename = '';
+    my $imageuploadmsg = '';
+    my $image = '';    
     while ( my $line = <IN> ) {
         chomp( $line );
-        $fname = "images/$line";
+        my $fname = "images/$line";
         if ( ! -f $fname ) {
             print "Image '$fname' not found, skipped.\n";
             next;
@@ -163,19 +167,46 @@ if ( $upload_images ) {
         if ( ! $fname =~ /\.(png|gif|jpg|jpeg)$/ ) {
             print "Image '$line' ignored, not a jpg/png/gif.\n";
             next;
-        }
-
-        my $imagename = $line;
+        }        
+        
+        $imagename = $line;
         if ( $line =~ /\/([^\/]*)$/ ) {
             $imagename = $1;
         }
-        my $image = read_file( $fname );
-
-        print "Uploading image '$imagename'\n";
-        $mw->upload( {
-                title => $imagename,
-                summary => 'Initial upload.',
+        sub upload_file_to_mw {
+            $mw->upload( {
+                title => 'File:'.$imagename,
+                summary => $imageuploadmsg,
                 data => $image } ) || die $mw->{error}->{code} . ': ' . $mw->{error}->{details};
+        }
+        
+        $image = read_file( $fname );
+
+        # don't reupload an image if it is already present - otherwise it only bloats the wiki
+        my $imagesha1 = sha1_hex($image);
+        # get the sha1 request directly from the wiki
+        my $mwquery = $mw->api( {
+            action => 'query',
+            prop => 'imageinfo',
+            iiprop => 'sha1',
+            titles => 'File:'.$imagename } );        
+        my $mwimagesha1 = "";
+        #FIXME: bad style, this foreach should konsist only ONE imageid --> do that nicelier
+        foreach my $imageid (keys $mwquery->{'query'}{'pages'}) {
+            $mwimagesha1 = $mwquery->{'query'}{'pages'}{$imageid}{'imageinfo'}->[0]->{'sha1'};
+        }
+        
+        if (($imagesha1 ne $mwimagesha1) and ($mwimagesha1 ne '')) {
+            print "Updating image '$imagename', sha1 is different from already uploaded image.\n";
+            $imageuploadmsg = 'Updating image.';
+            upload_file_to_mw();
+        } elsif ($mwimagesha1 eq '') {
+            print "Initial upload of  image '$imagename'\n";
+            $imageuploadmsg = 'Initial upload.';
+            upload_file_to_mw();
+        } else {
+            print "Skipping image '$imagename', sha1 identially to already uploaded image.\n";
+        }
     }
 }
 
