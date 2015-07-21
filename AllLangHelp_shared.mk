@@ -898,6 +898,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/optionen/01160100 \
     helpcontent2/source/text/shared/optionen/01160200 \
     helpcontent2/source/text/shared/optionen/01160201 \
+    helpcontent2/source/text/shared/optionen/BasicIDE \
     helpcontent2/source/text/shared/optionen/java \
     helpcontent2/source/text/shared/optionen/javaclasspath \
     helpcontent2/source/text/shared/optionen/javaparameters \
