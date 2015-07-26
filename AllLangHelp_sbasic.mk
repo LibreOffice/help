@@ -319,6 +319,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03132400 \
     helpcontent2/source/text/sbasic/shared/03132500 \
     helpcontent2/source/text/sbasic/shared/05060700 \
+    helpcontent2/source/text/sbasic/shared/BasicIDE \
     helpcontent2/source/text/sbasic/shared/keys \
     helpcontent2/source/text/sbasic/shared/main0211 \
     helpcontent2/source/text/sbasic/shared/main0601 \
