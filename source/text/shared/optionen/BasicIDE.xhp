@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
@@ -19,23 +19,73 @@
 -->
 
 <meta>
-<topic id="topic_2015201522062086" indexer="include" status="PUBLISH">
-<title xml-lang="en-US" id="tit_basicide">Open CL</title>
-<filename>/text/shared/optionen/BasicIDE.xhp</filename>
-</topic>
+  <topic id="topic_2607201514535161" indexer="include" status="PUBLISH">
+    <title xml-lang="en-US" id="tit_BasicIDE">Basic IDE Options</title>
+    <filename>/text/shared/optionen/BasicIDE.xhp</filename>
+  </topic>
 </meta>
+
 <body>
 <section id="basicide">
 <bookmark xml-lang="en-US" branch="hid/cui/ui/optbasicidepage/OptBasicIDEPage" id="bm_id6882839" localize="false"/>
 <bookmark xml-lang="en-US" branch="index" id="bm_id4077578">
-<bookmark_value>Basic IDE;setting options</bookmark_value>
-<bookmark_value>setting options;Basic IDE</bookmark_value>
+  <bookmark_value>Basic IDE options;Autocorrection</bookmark_value>
+  <bookmark_value>Basic IDE options;Autocompletion</bookmark_value>
+  <bookmark_value>Basic IDE options;Autoclose quotes</bookmark_value>
+  <bookmark_value>Basic IDE options;Basic UNO extended types</bookmark_value>
+  <bookmark_value>Basic IDE options;Autoclose parenthesis</bookmark_value>
+  <bookmark_value>Basic IDE;options</bookmark_value>
+  <bookmark_value>options;Basic IDE</bookmark_value>
 </bookmark>
-<paragraph id="par_idN10558" role="heading" xml-lang="en-US" level="1"><link href="text/shared/optionen/BasicIDE.xhp">Basic IDE</link></paragraph>
+<paragraph id="par_idN10558" role="heading" xml-lang="en-US" level="1"><link href="text/shared/optionen/BasicIDE.xhp">Basic IDE Options</link></paragraph>
 <paragraph id="par_idN10568" role="paragraph" xml-lang="en-US">Defines the settings for the Basic IDE (Integrated Development Environment) to help edit macros in Basic.</paragraph>
-</section>
+</section><embed href="text/shared/optionen/experimental.xhp#experimental"/>
+
 <section id="howtoget"><embed href="text/shared/00/00000406.xhp#basicide"/>
 </section>
-<embed href="text/shared/need_help.xhp#needhelp"/>
+
+<paragraph id="hd_id2507201509433418" role="heading" xml-lang="en-US" level="2">Code Completion</paragraph>
+<paragraph id="par_id2607201514295746" role="paragraph" xml-lang="en-US">This feature helps the Basic programmer to complete the code, saves extensive typing and helps to reduce coding errors.</paragraph>
+
+<paragraph id="par_id2507201509433497" role="heading" xml-lang="en-US" level="3">Enable code completion</paragraph>
+<paragraph id="par_id2507201509570245" role="paragraph" xml-lang="en-US"><ahelp hid="cui/ui/optbasicidepage/codecomplete_enable">Display methods of a Basic object.</ahelp> Code completion will display the methods of a Basic object, provided the object is a UNO extended type. Its does not work on a generic <item type="literal">Object</item> or <item type="literal">Variant</item> Basic types.</paragraph>
+<paragraph id="par_id2507201516150454" role="paragraph" xml-lang="en-US">When a variable is a UNO interface or structure, a list box appears when pressing the dot after a variable's name (like <item type="literal">aVar.</item> [list box appears] ). Its methods and variables are listed in the list box, displayed just below. You can navigate between the suggested methods and variables with the arrow keys. To insert the selected entry, press the <item type="keycode">Enter</item> key or double click on it with the mouse. To cancel the list box, press the <item type="keycode">Esc</item> key.</paragraph>
+<paragraph id="par_id2507201516150494" role="paragraph" xml-lang="en-US">When typing the method's name, and pressing the <item type="keycode">Tab</item> key once, it will complete the selected entry, pressing the Tab key again will cycle through the matches with the longest prefix. For example, when <item type="literal">aVar.aMeth</item> is typed, it will cycle through <item type="literal">aMeth1, aMethod2, aMethod3</item> entries, and other entries are not hidden.</paragraph>
+<paragraph id="par_id2507201516150482" role="paragraph" xml-lang="en-US">Example:</paragraph>
+<embed href="text/sbasic/shared/code-stubs.xhp#BasicIDEOption01"/>
+<paragraph id="par_id2507201516150420" role="paragraph" xml-lang="en-US">is a valid variable definition, its methods can be accessed via the dot (".") operator:</paragraph>
+<embed href="text/sbasic/shared/code-stubs.xhp#BasicIDEOption02"/>
+<paragraph id="hd_id2507201509433468" role="heading" xml-lang="en-US" level="2">Code Suggestion</paragraph>
+<paragraph id="par_id250720150943346" role="paragraph" xml-lang="en-US">These are coding helpers for the Basic programmer.</paragraph>
+
+<paragraph id="hd_id2507201510011472" role="heading" xml-lang="en-US" level="3">Autocorrection</paragraph>
+
+<paragraph id="par_id2507201509570353" role="paragraph" xml-lang="en-US"><ahelp hid="cui/ui/optbasicidepage/autocorrect">Correct cases of Basic variables and keywords while typing.</ahelp> %PRODUCTNAME Basic IDE will modify the typing of Basic statements and Basic variables of your code to improve coding style and readability. Modifications of the code are based on the program's variables declarations and on the %PRODUCTNAME Basic commands parsed.</paragraph>
+<paragraph id="par_id2507201516150496" role="paragraph" xml-lang="en-US">Example: </paragraph>
+<embed href="text/sbasic/shared/code-stubs.xhp#BasicIDEOption03"/>
+<paragraph id="par_id2507201516150498" role="paragraph" xml-lang="en-US">and when writing <item type="literal">Intvar</item>, will be corrected to <item type="literal">intVar</item> to match the case existing in the declaration of <item type="literal">intVar</item> .</paragraph>
+<paragraph id="par_id2507201516150461" role="paragraph" xml-lang="en-US">Basic keywords are also automatically corrected (the list of the keywords is grabbed out from the parser).</paragraph>
+<paragraph id="par_id2507201516150462" role="paragraph" xml-lang="en-US">Examples: </paragraph>
+<paragraph id="par_id2507201516144117" role="code" xml-lang="en-US" localize="false">Integer, String, ReDim, ElseIf, etc...</paragraph>
+
+<paragraph id="hd_id2507201509433473" role="heading" xml-lang="en-US" level="3">Autoclose quotes</paragraph>
+<paragraph id="par_id2507201509433451" role="paragraph" xml-lang="en-US"><ahelp hid="cui/ui/optbasicidepage/autoclose_quotes">Automatically close open quotes.</ahelp> %PRODUCTNAME Basic IDE will add a closing quote each time you type an opening quote. Handy for inserting strings in the Basic code.</paragraph>
+
+<paragraph id="hd_id250720150943348" role="heading" xml-lang="en-US" level="3">Autoclose parenthesis</paragraph>
+<paragraph id="par_id2507201509433483" role="paragraph" xml-lang="en-US"><ahelp hid="cui/ui/optbasicidepage/autoclose_paren">Automatically close open parenthesis.</ahelp> %PRODUCTNAME Basic IDE will add a closing parenthesis “)” each time you type an opening parenthesis “(“.</paragraph>
+
+<paragraph id="hd_id2507201509433489" role="heading" xml-lang="en-US" level="3">Autoclose procedures</paragraph>
+<paragraph id="par_id2507201509433461" role="paragraph" xml-lang="en-US"><ahelp hid="cui/ui/optbasicidepage/autoclose_proc">Automatically insert closing statements for procedures.</ahelp> %PRODUCTNAME Basic IDE will add a statement <item type="literal">End Sub</item> or <item type="literal">End Function</item> after you type a <item type="literal">Sub</item> or <item type="literal">Function</item> statement and press <item type="keycode">Enter</item>.</paragraph>
+
+<paragraph id="hd_id2507201509433412" role="heading" xml-lang="en-US" level="2">Language Features</paragraph>
+
+<paragraph id="hd_id2507201509433456" role="heading" xml-lang="en-US" level="3">Use extended types</paragraph>
+<paragraph id="par_id2507201516150463" role="paragraph" xml-lang="en-US"><ahelp hid="cui/ui/optbasicidepage/extendedtypes_enable">Allow UNO object types as valid Basic types.</ahelp> This feature extend the Basic programming language standard types with the %PRODUCTNAME UNO types. This allows the programmer to define variables with the right UNO type and is necessary for the code completion feature.</paragraph>
+<paragraph id="par_id2507201516150422" role="warning" xml-lang="en-US">The use of UNO Extended Types in Basic programs can restrain interoperability of the program when executed in other office suites.</paragraph>
+
+<section id="relatedtopics">
+<paragraph id="par_id250720151836489" role="paragraph" xml-lang="en-US"><link href="text/sbasic/shared/01030100.xhp">Basic IDE</link></paragraph>
+</section>
 </body>
+
 </helpdocument>
