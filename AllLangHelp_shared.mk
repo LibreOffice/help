@@ -901,6 +901,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/optionen/BasicIDE \
     helpcontent2/source/text/shared/optionen/experimental \
     helpcontent2/source/text/shared/optionen/java \
+    helpcontent2/source/text/shared/optionen/expertconfig \
     helpcontent2/source/text/shared/optionen/javaclasspath \
     helpcontent2/source/text/shared/optionen/javaparameters \
     helpcontent2/source/text/shared/optionen/macrosecurity \
