@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This file incorporates work covered by the following license notice:
+ *
+ *   Licensed to the Apache Software Foundation (ASF) under one or more
+ *   contributor license agreements. See the NOTICE file distributed
+ *   with this work for additional information regarding copyright
+ *   ownership. The ASF licenses this file to you under the Apache
+ *   License, Version 2.0 (the "License"); you may not use this file
+ *   except in compliance with the License. You may obtain a copy of
+ *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+-->
+
+<meta>
+  <topic id="textscalc01func_aggregatexml">
+    <title id="tit" xml-lang="en-US">AGGREGATE function</title>
+    <filename>/text/scalc/01/func_aggregate.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+
+
+<section id="aggregate_function">
+<bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_AGGREGATE" id="bm_id13660154375100" localize="false"/>
+<bookmark xml-lang="en-US" branch="index" id="bm_id126123001625791">
+  <bookmark_value>AGGREGATE function</bookmark_value>
+</bookmark>
+
+
+<paragraph id="hd_id3154073" role="heading" level="2" xml-lang="en-US"><variable id="aggregate_head"><link href="text/scalc/01/func_aggregate.xhp">AGGREGATE</link></variable> function</paragraph>
+<paragraph id="par_id2209201514174373" role="paragraph" xml-lang="en-US"><ahelp hid="."><variable id="aggregate_des">This function returns an aggregate result of the calculations in the range. You can use different aggregate functions listed below. The Aggregate function enables you to omit hidden rows, errors, SUBTOTAL and other AGGREGATE function results in the calculation.</variable></ahelp></paragraph>
+</section>
+<paragraph id="par_id2209201514174453" role="note" xml-lang="en-US">AGGREGATE function is applied to vertical ranges of data with activated AutoFilter. If AutoFilter is not activated, automatic recalculation of the function result does not work for newly hidden rows. It is not supposed to work with horizontal ranges, however it can be applied to them as well, but with limitations. In particular, the AGGREGATE function applied to a horizontal data range does not recognize hiding columns, however correctly omits errors and results of SUBTOTAL and other AGGREGATE functions embedded into the row. </paragraph>
+
+<paragraph id="hd_id239693194826384" role="heading" level="3" xml-lang="en-US">Syntax</paragraph>
+<paragraph id="par_id200801176228491" role="codeindent1" xml-lang="en-US">AGGREGATE(Function, Option, ref1 [, ref2 [, …]])</paragraph>
+<paragraph id="par_id2309201516102726" role="paragraph" xml-lang="en-US">or</paragraph>
+<paragraph id="par_id30181907128680" role="codeindent1" xml-lang="en-US">AGGREGATE(Function, Option, Array [, k])</paragraph>
+<paragraph id="par_id2209201514174378" role="paragraph" xml-lang="en-US"><emph>Function</emph> – obligatory argument. A function index or a reference to a cell with value from 1 to 19, in accordance with the following table. </paragraph>
+
+<table id="table_functions_aggregate">
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511454963" role="tablehead" xml-lang="en-US">Function index</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511454945" role="tablehead" xml-lang="en-US">Function applied</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360097" role="tablecontent" localize="false" xml-lang="en-US">1</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360043" role="code" xml-lang="en-US">AVERAGE</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360099" role="tablecontent" localize="false" xml-lang="en-US">2</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id230920151136007" role="code" xml-lang="en-US">COUNT</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360027" role="tablecontent" localize="false" xml-lang="en-US">3</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360018" role="code" xml-lang="en-US">COUNTA</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id230920151136004" role="tablecontent" localize="false" xml-lang="en-US">4</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360026" role="code" xml-lang="en-US">MAX</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360080" role="tablecontent" localize="false" xml-lang="en-US">5</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360078" role="code" xml-lang="en-US">MIN</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360031" role="tablecontent" localize="false" xml-lang="en-US">6</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360087" role="code" xml-lang="en-US">PRODUCT</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360175" role="tablecontent" localize="false" xml-lang="en-US">7</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360153" role="code" xml-lang="en-US">STDEV.S</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id255902101420976" role="tablecontent" localize="false" xml-lang="en-US">8</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360178" role="code" xml-lang="en-US">STDEV.P</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360158" role="tablecontent" localize="false" xml-lang="en-US">9</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360199" role="code" xml-lang="en-US">SUM</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id29935318632937" role="tablecontent" localize="false" xml-lang="en-US">10</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360174" role="code" xml-lang="en-US">VAR.S</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360133" role="tablecontent" localize="false" xml-lang="en-US">11</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360120" role="code" xml-lang="en-US">VAR.P</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360171" role="tablecontent" localize="false" xml-lang="en-US">12</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360122" role="code" xml-lang="en-US">MEDIAN</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360111" role="tablecontent" localize="false" xml-lang="en-US">13</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id230920151136016" role="code" xml-lang="en-US">MODE.SNGL</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360130" role="tablecontent" localize="false" xml-lang="en-US">14</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360180" role="code" xml-lang="en-US">LARGE</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360116" role="tablecontent" localize="false" xml-lang="en-US">15</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360150" role="code" xml-lang="en-US">SMALL</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360132" role="tablecontent" localize="false" xml-lang="en-US">16</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360157" role="code" xml-lang="en-US">PERCENTILE.INC </paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360155" role="tablecontent" localize="false" xml-lang="en-US">17</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360151" role="code" xml-lang="en-US">QUARTILE.INC</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360162" role="tablecontent" localize="false" xml-lang="en-US">18</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id230920151136017" role="code" xml-lang="en-US">PERCENTILE.EXC</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201511360141" role="tablecontent" localize="false" xml-lang="en-US">19</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201511360169" role="code" xml-lang="en-US">QUARTILE.EXC</paragraph>
+    </tablecell>
+  </tablerow>
+</table>
+
+<paragraph id="par_id2209201514174372" role="paragraph" xml-lang="en-US"><emph>Option</emph> – obligatory argument. An option index or reference to a cell with value from 0 to 7 determines what to ignore in the range for the function.</paragraph>
+
+<table id="table_options_aggregate">
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201512011557" role="tablehead" xml-lang="en-US">Option index</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201512011551" role="tablehead" xml-lang="en-US">Option applied</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201512011582" role="tablecontent" localize="false" xml-lang="en-US">0</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201512011567" role="tablecontent" xml-lang="en-US">Ignore only nested SUBTOTAL and AGGREGATE functions </paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201512011554" role="tablecontent" localize="false" xml-lang="en-US">1</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id315771547630277" role="tablecontent" xml-lang="en-US">Ignore only hidden rows, nested SUBTOTAL and AGGREGATE functions </paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201512011521" role="tablecontent" localize="false" xml-lang="en-US">2</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201512011514" role="tablecontent" xml-lang="en-US">Ignore only errors, nested SUBTOTAL and AGGREGATE functions </paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201512011568" role="tablecontent" localize="false" xml-lang="en-US">3</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201512011547" role="tablecontent" xml-lang="en-US">Ignore hidden rows, errors, nested SUBTOTAL and AGGREGATE functions</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201512011515" role="tablecontent" localize="false" xml-lang="en-US">4</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201512011510" role="tablecontent" xml-lang="en-US">Ignore nothing</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201512011558" role="tablecontent" localize="false" xml-lang="en-US">5</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201512011592" role="tablecontent" xml-lang="en-US">Ignore only hidden rows</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201512011524" role="tablecontent" localize="false" xml-lang="en-US">6</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id230920151201150" role="tablecontent" xml-lang="en-US">Ignore only errors</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201512011519" role="tablecontent" localize="false" xml-lang="en-US">7</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201512011539" role="tablecontent" xml-lang="en-US">Ignore only hidden rows and errors</paragraph>
+    </tablecell>
+  </tablerow>
+</table>
+
+<paragraph id="par_id220402843321947" role="paragraph" xml-lang="en-US"><emph>Ref1</emph> – obligatory argument. The first numeric argument (if the range is set by a list of values inside the function) or a reference to a cell that contains it. </paragraph>
+<paragraph id="par_id2309201514193338" role="paragraph" xml-lang="en-US"><emph>Ref2,3,...</emph> – optional. A numeric argument or a reference to a cell (up to 253 arguments), for which you need the aggregate value.</paragraph>
+<paragraph id="par_id99381371214702" role="paragraph" xml-lang="en-US"><emph>Array</emph> – obligatory argument. The array can be specified by the boundaries of the range, the name of the named range or the column label.</paragraph>
+<paragraph id="par_id2309201515555812" role="note" xml-lang="en-US">For using column labels “Automatically find columns and rows labels” function needs to be enabled.</paragraph>
+<paragraph id="par_id2209201514174370" role="paragraph" xml-lang="en-US"><emph>k</emph> – obligatory argument for the following functions: LARGE, SMALL, PERCENTILE.INC, QUARTILE.INC, PERCENTILE.EXC, QUARTILE.EXC. It is a numeric argument, which must correspond to the second argument of these functions.</paragraph>
+<paragraph id="par_id2309201516525483" role="warning" xml-lang="en-US">If the second argument is necessary, but not specified, the function returns the error Err:511.<br/>If the second argument specified not correctly, the function returns the error Err:502.</paragraph>
+
+<paragraph id="hd_id198071265128228" role="heading" level="3" xml-lang="en-US">Examples</paragraph>
+
+<table id="Table_example_aggregate">
+  <tablerow>
+    <tablecell>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517365893" role="tablehead" localize="false" xml-lang="en-US">A</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517370258" role="tablehead" localize="false" xml-lang="en-US">B</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517370634" role="tablehead" localize="false" xml-lang="en-US">C</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201518440896" role="tablehead" localize="false" xml-lang="en-US">1</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201518454314" role="tablecontent" xml-lang="en-US"><emph>ColumnOne</emph></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201518454361" role="tablecontent" xml-lang="en-US"><emph>ColumnTwo</emph></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201518454323" role="tablecontent" xml-lang="en-US"><emph>ColumnThree</emph></paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201518441431" role="tablehead" localize="false" xml-lang="en-US">2</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id230920151737158" role="tablecontent" localize="false" xml-lang="en-US">34</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id230920151737193" role="tablecontent" localize="false" xml-lang="en-US">11</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id230920151737237" role="tablecontent" localize="false" xml-lang="en-US">12</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201518441863" role="tablehead" localize="false" xml-lang="en-US">3</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id230920151737314" role="tablecontent" localize="false" xml-lang="en-US">10</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517373578" role="tablecontent" localize="false" xml-lang="en-US">56</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517373986" role="tablecontent" localize="false" xml-lang="en-US">35</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201518442333" role="tablehead" localize="false" xml-lang="en-US">4</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id27530261624700" role="tablecontent" xml-lang="en-US">#DIV/0!</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517383112" role="tablecontent" localize="false" xml-lang="en-US">5</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517384053" role="tablecontent" xml-lang="en-US">3</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201518442714" role="tablehead" localize="false" xml-lang="en-US">5</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517381443" role="tablecontent" localize="false" xml-lang="en-US">20</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517384793" role="tablecontent" localize="false" xml-lang="en-US">8</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517384332" role="tablecontent" localize="false" xml-lang="en-US">1</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201518443189" role="tablehead" localize="false" xml-lang="en-US">6</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517381714" role="tablecontent" localize="false" xml-lang="en-US">0</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517385044" role="tablecontent" localize="false" xml-lang="en-US">8</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517390378" role="tablecontent" localize="false" xml-lang="en-US">9</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201518443420" role="tablehead" localize="false" xml-lang="en-US">7</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="id_par29987248418152" role="tablecontent" xml-lang="en-US">#VALUE!</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517385358" role="tablecontent" localize="false" xml-lang="en-US">20</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517391077" role="tablecontent" localize="false" xml-lang="en-US">21</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201518443714" role="tablehead" localize="false" xml-lang="en-US">8</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517382160" role="tablecontent" localize="false" xml-lang="en-US">5</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517385765" role="tablecontent" localize="false" xml-lang="en-US">7</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517391385" role="tablecontent" localize="false" xml-lang="en-US">8</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2309201518444120" role="tablehead" localize="false" xml-lang="en-US">9</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517382451" role="tablecontent" localize="false" xml-lang="en-US">14</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517390082" role="tablecontent" localize="false" xml-lang="en-US">0</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2309201517391680" role="tablecontent" localize="false" xml-lang="en-US">5</paragraph>
+    </tablecell>
+  </tablerow>
+</table>
+
+<paragraph id="par_id230920152006414" role="codeindent1" xml-lang="en-US">=AGGREGATE(4;1;A2:A9)</paragraph>
+<paragraph id="par_id2309201520064113" role="paragraph" xml-lang="en-US">Returns maximum value for the range A2:A9 =34, whereas =MAX(A2:A9) returns the error Err:511.</paragraph>
+<paragraph id="par_id2309201520064180" role="codeindent1" xml-lang="en-US">=AGGREGATE(9;5;A5:C5)</paragraph>
+<paragraph id="par_id2309201520064146" role="paragraph" xml-lang="en-US">Returns sum for the range A5:C5 =29, even if the some of the columns are hidden.</paragraph>
+<paragraph id="par_id2309201520064118" role="codeindent1" xml-lang="en-US">=AGGREGATE(9;5;B2:B9)</paragraph>
+<paragraph id="par_id2309201520064188" role="paragraph" xml-lang="en-US">Returns sum of the column B =115. If any row is hidden, the function omit its value, for example if the 7th row is hidden, the function returns 95.</paragraph>
+<paragraph id="par_id196152404026557" role="paragraph" xml-lang="en-US">If you need to apply the function with a 3-D range, this example shows how to do it.</paragraph>
+<paragraph id="par_id2309201520180167" role="codeindent1" xml-lang="en-US">=AGGREGATE(13;3;Sheet1.B2:B9:Sheet3.B2:B9)</paragraph>
+<paragraph id="par_id1919594426229" role="paragraph" xml-lang="en-US">The function returns mode of the values of second columns through sheets 1:3 (that have the same data) =8.</paragraph>
+<paragraph id="par_id2309201520395365" role="paragraph" xml-lang="en-US">You can use reference to a cell or a range for every argument in the formula. The following example shows how it works. Besides, it shows that you can use column labels to specify an array.</paragraph>
+<paragraph id="par_id2309201520395380" role="codeindent1" xml-lang="en-US">=AGGREGATE(E3;E5;'ColumnOne')</paragraph>
+<paragraph id="par_id2309201520395310" role="paragraph" xml-lang="en-US">If E5 =13 and E7 =5, the function returns mode of the first column =10.</paragraph>
+
+<section id="relatedtopics">
+<paragraph id="par_id241712879431120" role="paragraph" xml-lang="en-US"><link href="text/scalc/01/04060184.xhp#average">AVERAGE</link>, <link href="text/scalc/01/04060181.xhp#count">COUNT</link>, <link href="text/scalc/01/04060181.xhp#counta">COUNTA</link>, <link href="text/scalc/01/04060184.xhp#max">MAX</link>, <link href="text/scalc/01/04060184.xhp#min">MIN</link>, <link href="text/scalc/01/04060106.xhp#Section26">PRODUCT</link>, <link href="text/scalc/01/04060185.xhp#stdevdots">STDEV.S</link>, <link href="text/scalc/01/04060185.xhp#stdevdotp">STDEV.P</link>, <link href="text/scalc/01/04060106.xhp#Section16">SUM</link>, <link href="text/scalc/01/04060185.xhp#vardots">VAR.S</link>, <link href="text/scalc/01/04060185.xhp#vardotp">VAR.P</link>, <link href="text/scalc/01/04060184.xhp#median">MEDIAN</link>, <link href="text/scalc/01/04060184.xhp#modedotsngl">MODE.SNGL</link>, <link href="text/scalc/01/04060183.xhp#large">LARGE</link>, <link href="text/scalc/01/04060183.xhp#small">SMALL</link>, <link href="text/scalc/01/04060184.xhp#percentileinc">PERCENTILE.INC</link> , <link href="text/scalc/01/04060184.xhp#quartileinc">QUARTILE.INC</link>, <link href="text/scalc/01/04060184.xhp#percentileexc">PERCENTILE.EXC</link>, <link href="text/scalc/01/04060184.xhp#quartileexc">QUARTILE.EXC</link></paragraph>
+<paragraph id="par_id125062615028497" role="paragraph" xml-lang="en-US"><link href="text/shared/optionen/01060500.xhp#hd_id3156199">Automatically find column and row labels</link></paragraph>
+</section>
+</body>
+
+</helpdocument>
