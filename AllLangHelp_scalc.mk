@@ -180,6 +180,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/12120200 \
     helpcontent2/source/text/scalc/01/12120300 \
     helpcontent2/source/text/scalc/01/format_graphic \
+    helpcontent2/source/text/scalc/01/func_aggregate \
     helpcontent2/source/text/scalc/01/func_date \
     helpcontent2/source/text/scalc/01/func_datedif \
     helpcontent2/source/text/scalc/01/func_datevalue \
