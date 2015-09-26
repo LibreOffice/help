@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This file incorporates work covered by the following license notice:
+ *
+ *   Licensed to the Apache Software Foundation (ASF) under one or more
+ *   contributor license agreements. See the NOTICE file distributed
+ *   with this work for additional information regarding copyright
+ *   ownership. The ASF licenses this file to you under the Apache
+ *   License, Version 2.0 (the "License"); you may not use this file
+ *   except in compliance with the License. You may obtain a copy of
+ *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+-->
+
+<meta>
+  <topic id="textscalc01func_averageifxml">
+    <title id="tit" xml-lang="en-US">AVERAGEIF function</title>
+    <filename>/text/scalc/01/func_averageif.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+<section id="averageif_function">
+<bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_AVERAGEIF" id="bm_id19444137534261" localize="false"/>
+<bookmark xml-lang="en-US" branch="index" id="bm_id237812197829662">
+  <bookmark_value>AVERAGEIF function</bookmark_value>
+  <bookmark_value>arithmetic mean;satisfying condition</bookmark_value>
+</bookmark>
+<paragraph id="hd_id16852304621982" role="heading" level="2" xml-lang="en-US"><variable id="averageif_head"><link href="text/scalc/01/func_averageif.xhp">AVERAGEIF</link></variable> function</paragraph>
+<paragraph id="par_id7281266615152" role="paragraph" xml-lang="en-US"><ahelp hid="."><variable id="averageif_des">Returns the arithmetic mean of all cells in a range that satisfy a given condition. The AVERAGEIF function sums up all the results that match the logical test and divides this sum by the quantity of selected values.</variable></ahelp></paragraph>
+</section>
+<paragraph id="hd_id210572014129502" role="heading" level="3" xml-lang="en-US">Syntax</paragraph>
+<paragraph id="par_id200801176228491" role="code" xml-lang="en-US">AVERAGEIF(Range; Criteria [; Average_Range ])</paragraph>
+<paragraph id="par_id15226321619829" role="paragraph" xml-lang="en-US"><emph>Range</emph> – obligatory argument. An array, a name of named range or a label of a column or a row containing numbers for averaging or numbers or text for the condition.</paragraph>
+<paragraph id="par_id24499731228013" role="paragraph" xml-lang="en-US"><emph>Criteria</emph> – obligatory argument. A condition in the form of expression or cell reference with expression that defines what cells should be used to calculate the mean. The expression can contain text, numbers or regular expressions.</paragraph>
+<paragraph id="par_id174711913219765" role="paragraph" xml-lang="en-US"><emph>Average_Range</emph> – optional. It is a range of values for calculating the mean.</paragraph>
+<paragraph id="par_id45123108916423" role="note" xml-lang="en-US">Note that if the <emph>Average_Range</emph> is not specified, <emph>Range</emph> is used forboth, the calculation of the mean and the search according to the condition. If the <emph>Average_Range</emph> is specified, the <emph>Range</emph> is used only for the condition test, while <emph>Average_Range</emph> is used for the mean calculation.</paragraph>
+<paragraph id="par_id278275053653" role="warning" xml-lang="en-US">If a cell in the <emph>Average_Range</emph> is empty, function AVERAGEIF ignores this cell.<br/>If the whole range is empty, contains only text or all values of the range do not satisfy the condition (or any combination of those), the function returns the #DIV/0! error. </paragraph>
+<paragraph id="hd_id12562864315471" role="heading" level="3" xml-lang="en-US">Examples</paragraph>
+<paragraph id="hd_id2609201512474295" role="heading" level="4" xml-lang="en-US">Consider the following table</paragraph>
+<table id="table_averageif_example">
+  <tablerow>
+    <tablecell>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2509201517430799" role="tablehead" localize="false" xml-lang="en-US">A</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id250920151743116" role="tablehead" localize="false" xml-lang="en-US">B</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2509201517431582" role="tablehead" localize="false" xml-lang="en-US">C</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2509201517431967" role="tablehead" localize="false" xml-lang="en-US">1</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id18260631312423" role="tablecontent" xml-lang="en-US">pencil</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2509201517433075" role="tablecontent" localize="false" xml-lang="en-US">20</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2509201519383294" role="tablecontent" localize="false" xml-lang="en-US">65</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2509201517432278" role="tablehead" localize="false" xml-lang="en-US">2</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="" role="tablecontent" xml-lang="en-US">pen</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2509201517433391" role="tablecontent" localize="false" xml-lang="en-US">35</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id250920151938352" role="tablecontent" localize="false" xml-lang="en-US">85</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id250920151743267" role="tablehead" localize="false" xml-lang="en-US">3</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id252542413030532" role="tablecontent" xml-lang="en-US">notebook</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2509201517433781" role="tablecontent" localize="false" xml-lang="en-US">20</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2509201519383822" role="tablecontent" localize="false" xml-lang="en-US">190</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2509201519371339" role="tablehead" localize="false" xml-lang="en-US">4</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2509201519374677" role="tablecontent" xml-lang="en-US">book</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2509201519373350" role="tablecontent" localize="false" xml-lang="en-US">17</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2509201519384171" role="tablecontent" localize="false" xml-lang="en-US">180</paragraph>
+    </tablecell>
+  </tablerow>
+</table>
+<paragraph id="hd_id229513120314273" role="heading" level="4" xml-lang="en-US">Simple usage</paragraph>
+<paragraph id="par_id2509201519225446" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIF(B1:B4;"&lt;35")</item><br/>Calculates the average for values of the range B1:B4 that are less than 35. Returns 19, because the second row does not participate in the calculation.</paragraph>
+<paragraph id="par_id250920151922590" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIF(B1:B4;"&lt;"&amp;MAX(B1:B4))</item><br/>Calculates the average for values of the same range that are less than the maximum value of this range. Returns 19, because the largest value (the second row) does not participate in the calculation.</paragraph>
+<paragraph id="par_id2509201519230832" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIF(B1:B4;"&gt;"&amp;SMALL(B1:B4;1))</item><br/>Calculates the average for values of the same range that are greater than the first smallest value of this range. Returns 25, because the first smallest value (the fourth row) does not participate in the calculation.</paragraph>
+<paragraph id="hd_id2101254257133" role="heading" level="4" xml-lang="en-US">Using the Average_Range</paragraph>
+<paragraph id="par_id2509201519315584" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIF(B1:B4;"&lt;35";C1:C4)</item><br/>The function searches what values are less than 35 in the B1:B4 range, and calculates the average of corresponding values from the C1:C4 range. Returns 145, because the second row does not participate in the calculation. </paragraph>
+<paragraph id="par_id2509201519315535" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIF(B1:B4;"&gt;"&amp;MIN(B1:B4);C1:C4)</item><br/>The function searches what values from the range B1:B4 are greater than the least value in the B1:B4 range, and calculates the average of corresponding values from the C1:C4 range. Returns 113,3, because the fourth row (where there is the least value in the range B1:B4) does not participate in the calculation.</paragraph>
+<paragraph id="par_id2509201519315547" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIF(B1:B4;"&lt;"&amp;LARGE(B1:B4;2);C1:C4)</item><br/>The function searches what values from the range B1:B4 are less than the second large value in theB1:B4 range, and calculates the average of corresponding values from the C1:C4 range. Returns 180, because only the fourth row participates in the calculation. </paragraph>
+<paragraph id="hd_id30054471316969" role="heading" level="4" xml-lang="en-US">Using regular expressions</paragraph>
+<paragraph id="par_id2509201519360514" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIF(A1:A4;"pen";B1:B4)</item><br/>The function searches what cells from the range A1:A4 contain only the word “pen”, and calculates the average of corresponding values from the B1:B4 range. Returns 35, because only the second row participates in the calculation. The search is performed in the A1:A4 range, but the values are returned from the B1:B4 range.</paragraph>
+<paragraph id="par_id250920151936096" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIF(A1:A4;"pen.*";B1:B4)</item><br/>The function searches what cells from the range A1:A4 begin with “pen” ending with any quantity of other symbols, and calculates the average of corresponding values from the B1:B4 range. Returns 27.5, because now also “pencil” satisfies the condition, and both, first and second rows participate in the calculation. </paragraph>
+<paragraph id="par_id2509201519361352" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIF(A1:A4;".*book.*";B1:B4)</item><br/>The function searches what cells from the range A1:A4 contain “book” starting and ending with any quantity of other symbols, and calculates the average of corresponding values from the B1:B4 range. Returns 18.5, because only third and fourth rows participate in the calculation.</paragraph>
+<paragraph id="hd_id251309885188" role="heading" level="4" xml-lang="en-US">Reference to a cell for as a criteria</paragraph>
+<paragraph id="par_id177972099720424" role="paragraph" xml-lang="en-US">If you need to change criteria easily, you may want to specify it in a separate cell and use a reference to this cell in the condition of AVERAGEIF function. </paragraph>
+<paragraph id="par_id134941261230060" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIF(A1:A4;".*"&amp;E2&amp;".*";B1:B4)</item><br/>The function searches what cells from the range A1:A4 contain a combination of symbols specified in E2 starting and ending with any quantity of other symbols, and calculates the average of corresponding values from the B1:B4 range. If E2 = book, the function returns 18.5.</paragraph>
+<paragraph id="par_id134941261230060" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIF(A1:A4;"&lt;"&amp;E2;B1:B4)</item><br/>The function searches what cells from the range A1:A4 are less than the value specified in E2, and calculates the average of corresponding values from the B1:B4 range. If E2 = 35, the function returns 145.</paragraph>
+<section id="relatedtopics">
+<paragraph id="par_id171371269326270" role="paragraph" xml-lang="en-US"><link href="text/scalc/01/04060184.xhp#average">AVERAGE</link>, <link href="text/scalc/01/04060184.xhp#max">MAX</link>, <link href="text/scalc/01/04060184.xhp#min">MIN</link>, <link href="text/scalc/01/04060183.xhp#large">LARGE</link>, <link href="text/scalc/01/04060183.xhp#small">SMALL</link><br/></paragraph>
+<paragraph id="par_id251321802714497" role="paragraph"  localize="false" xml-lang="en-US"><embedvar href="text/shared/01/02100001.xhp#02100001"/></paragraph>
+</section>
+</body>
+</helpdocument>
