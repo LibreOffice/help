@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="textscalc01func_averageifsxml">
+    <title id="tit" xml-lang="en-US">AVERAGEIFS function</title>
+    <filename>text/scalc/01/func_averageifs.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+<section id="averageifs_function">
+<bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_AVERAGEIFS" id="bm_id536295362953629" localize="false"/>
+<bookmark xml-lang="en-US" branch="index" id="bm_id536715367153671">
+  <bookmark_value>AVERAGEIFS function</bookmark_value>
+  <bookmark_value>arithmetic mean;satisfying conditions</bookmark_value>
+</bookmark>
+<paragraph id="hd_id537445374453744" role="heading" level="2" xml-lang="en-US"><variable id="averageifs_head"><link href="text/scalc/01/func_averageifs.xhp">AVERAGEIFS</link></variable> function</paragraph>
+<paragraph id="par_id538405384053840" role="paragraph" xml-lang="en-US"><ahelp hid="."><variable id="averageifs_des">Returns the arithmetic mean of all cells in a range that satisfy given multiple criteria. The AVERAGEIFS function sums up all the results that match the logical tests and divides this sum by the quantity of selected values.</variable></ahelp></paragraph>
+</section>
+<paragraph id="hd_id538895388953889" role="heading" level="3" xml-lang="en-US">Syntax</paragraph>
+<paragraph id="par_id21050267713178" role="code" xml-lang="en-US">AVERAGEIFS(Average_range; Criterion_range1; Criterion1 [; Criterion_range2; Criterion2 [; ...]])</paragraph>
+<paragraph id="par_id165832700711773" role="paragraph" xml-lang="en-US"><emph>Average_range</emph> – required argument. It is a range of cells, a name of a named range or a label of a column or a row containing values for calculating the mean.</paragraph>
+<paragraph id="par_id23557225011065" role="paragraph" xml-lang="en-US"><emph>Criterion_range1</emph> – required argument. It is a range of cells, a name of a named range or a label of a column or a row containing values for finding the corresponding criterion.</paragraph>
+<paragraph id="par_id115612745015792" role="paragraph" xml-lang="en-US"><emph>Criterion1</emph> – required argument. A condition in the form of expression or cell reference with expression that defines what cells should be used to calculate the mean. The expression can contain text, numbers or regular expressions. </paragraph>
+<paragraph id="par_id249477513695" role="paragraph" xml-lang="en-US"><emph>Criterion_range2</emph> – Optional. Criterion_range2 and all the following mean the same as Criterion_range1.</paragraph>
+<paragraph id="par_id157492744623347" role="paragraph" xml-lang="en-US"><emph>Criterion2</emph> – Optional. Criterion2 and all the following mean the same as Criterion1.</paragraph>
+<paragraph id="par_id262061474420658" role="note" xml-lang="en-US">The logical relation between criteria can be defined as logical AND (conjunction). In other words, if and only if all given criteria are met, a value from the corresponding cell of the given Average_range is taken into calculation of the mean.<br/>
+The <emph>Criterion</emph> needs to be a string expression, in particular, the <emph>Criterion</emph> needs to be enclosed in quotation marks ("Criterion") with the exception of the names of functions, cell references and the operator of a string concatenation (&amp;).<br />
+The function can have up to 255 arguments, meaning that you can specify 127 criteria ranges and criteria for it.</paragraph><embed href="text/scalc/01/ODFF.xhp#odff"/>
+<paragraph id="par_id51531273215056" role="warning" xml-lang="en-US">If a cell in a range of values for calculating the mean is empty or contains text, the function AVERAGEIFS ignores this cell.<br/>
+If a cell contains TRUE, it is treated as 1, if a cell contains FALSE – as 0 (zero).<br/>
+If the whole range is empty, contains only text or all values of the range do not satisfy the condition (or any combination of those), the function returns the #DIV/0! error.<br/>
+If the range of values for calculating the mean and any range for finding criterion have unequal sizes, the function returns err:502.</paragraph>
+<paragraph id="par_id9397381616478" role="paragraph"  localize="false" xml-lang="en-US"><embed href="text/scalc/01/ex_data_stat_func.xhp#ex_func_average"/></paragraph>
+<paragraph id="par_id151201977228038" role="warning" xml-lang="en-US">In all examples below, ranges for average calculation contain the row #6, but it is ignored, because it contains text.</paragraph>
+<paragraph id="hd_id20733192524041" role="heading" level="4" xml-lang="en-US">Simple usage</paragraph>
+<paragraph id="par_id24004653627203" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIFS(B2:B6;B2:B6;">=20")</item></paragraph>
+<paragraph id="par_id30201168686268" role="paragraph" xml-lang="en-US">Calculates the average for values of the range B2:B6 that are greater than or equal to 20. Returns 25, because the fifth row does not meet the criterion.</paragraph>
+<paragraph id="par_id30279247419921" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIFS(C2:C6;B2:B6;">=20";C2:C6;">70")</item></paragraph>
+<paragraph id="par_id2930764965983" role="paragraph" xml-lang="en-US">Calculates the average for values of the range C2:C6 that are greater than 70 and correspond to cells of B2:B6 with values  greater than or equal to 20. Returns 137.5, because the second and fifth rows do not meet at least one criterion.</paragraph>
+<paragraph id="hd_id317532515726820" role="heading" level="4" xml-lang="en-US">Using regular expressions and nested functions</paragraph>
+<paragraph id="par_id457966021670" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIFS(C2:C6;B2:B6;">"&amp;MIN(B2:B6);B2:B6;"&lt;"&amp;MAX(B2:B6))</item></paragraph>
+<paragraph id="par_id66091035229950" role="paragraph" xml-lang="en-US">Calculates the average for values of the range C2:C6 that correspond to all values of the range B2:B6 except its minimum and maximum. Returns 127.5, because the third and fifth rows do not meet at least one criterion.</paragraph>
+<paragraph id="par_id303162761931870" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIFS(C2:C6;A2:A6;"pen.*";B2:B6;"&lt;"&amp;MAX(B2:B6))</item></paragraph>
+<paragraph id="par_id40031348913642" role="paragraph" xml-lang="en-US">Calculates the average for values of the range C2:C6 that correspond to all cells of the A2:A6 range starting with "pen" and to all cells of the B2:B6 range except its maximum. Returns 65, because only second row meets all criteria.</paragraph>
+<paragraph id="hd_id31201205191857" role="heading" level="4" xml-lang="en-US">Reference to a cell as a criterion</paragraph>
+<paragraph id="par_id316794795433" role="paragraph" xml-lang="en-US">If you need to change a criterion easily, you may want to specify it in a separate cell and use a reference to this cell in the condition of AVERAGEIFS function. For example, the above function can be rewritten as follows:</paragraph>
+<paragraph id="par_id67531072426731" role="paragraph" xml-lang="en-US"><item type="input">=AVERAGEIFS(C2:C6;A2:A6;E2&amp;".*";B2:B6;"&lt;"&amp;MAX(B2:B6))</item></paragraph>
+<paragraph id="par_id65612244926745" role="paragraph" xml-lang="en-US">If E2 = pen, the function returns 65, because the link to the cell is substituted with its content.</paragraph>
+<section id="relatedtopics">
+<paragraph id="par_id1279148769260" role="paragraph" xml-lang="en-US"><link href="text/scalc/01/04060184.xhp#average">AVERAGE</link>, <link href="text/scalc/01/04060184.xhp#averagea">AVERAGEA</link>, <embedvar href="text/scalc/01/func_averageif.xhp#averageif_head"/>, <link href="text/scalc/01/04060184.xhp#max">MAX</link>, <link href="text/scalc/01/04060184.xhp#min">MIN</link></paragraph>
+<paragraph id="par_id20741445030307" role="paragraph"  localize="false" xml-lang="en-US"><embedvar href="text/shared/01/02100001.xhp#02100001"/></paragraph>
+</section>
+</body>
+</helpdocument>
