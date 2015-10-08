@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="textscalc01func_sumifsxml">
+    <title id="tit" xml-lang="en-US">SUMIFS function</title>
+    <filename>text/scalc/01/func_sumifs.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+<section id="sumifs_function">
+<bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_SUMIFS" id="bm_id657666576665766" localize="false"/>
+<bookmark xml-lang="en-US" branch="index" id="bm_id658066580665806">
+  <bookmark_value>SUMIFS function</bookmark_value>
+  <bookmark_value>sum;satisfying conditions</bookmark_value>
+</bookmark>
+<paragraph id="hd_id658866588665886" role="heading" level="2" xml-lang="en-US"><variable id="sumifs_head"><link href="text/scalc/01/func_sumifs.xhp">SUMIFS</link></variable> function</paragraph>
+<paragraph id="par_id659756597565975" role="paragraph" xml-lang="en-US"><ahelp hid="."><variable id="sumifs_des">Returns the sum of the values of cells in a range that meets multiple criteria in multiple ranges.</variable></ahelp></paragraph>
+</section>
+
+<paragraph id="hd_id660246602466024" role="heading" level="3" xml-lang="en-US">Syntax</paragraph>
+<paragraph id="par_id11655988824213" role="code" xml-lang="en-US">SUMIFS( Sum_Range ; Criterion_range1 ; Criterion1 [ ; Criterion_range2 ; Criterion2 [;...]])</paragraph>
+
+<paragraph id="par_id59901690530236" role="paragraph" xml-lang="en-US"><emph>Sum_Range</emph> – required argument. It is a range of cells, a name of a named range or a label of a column or a row containing values for calculating the sum.</paragraph>
+<paragraph id="par_id14445505532098" role="paragraph" xml-lang="en-US"><emph>Criterion_range1</emph> – required argument. It is a range of cells, a name of a named range or a label of a column or a row containing values for finding the corresponding criterion.</paragraph>
+<paragraph id="par_id24470258022447" role="paragraph" xml-lang="en-US"><emph>Criterion1</emph> – required argument. A condition in the form of expression or cell reference with expression that defines what cells should be used to calculate the sum. The expression can contain text, numbers or regular expressions. </paragraph>
+<paragraph id="par_id111151356820933" role="paragraph" xml-lang="en-US"><emph>Criterion_range2</emph> – Optional. Criterion_range2 and all the following mean the same as Criterion_range1.</paragraph>
+<paragraph id="par_id14734320631376" role="paragraph" xml-lang="en-US"><emph>Criterion2</emph> – Optional. Criterion2 and all the following mean the same as Criterion1.</paragraph>
+
+<paragraph id="par_id94162948227556" role="note" xml-lang="en-US">The logical relation between criteria can be defined as logical AND (conjunction). In other words, if and only if all given criteria are met, a value from the corresponding cell of the given <emph>Sum_Range</emph> is taken into calculation of the sum.<br/>
+The <emph>Criterion</emph> needs to be a string expression, in particular, the <emph>Criterion</emph> needs to be enclosed in quotation marks ("Criterion") with the exception of the names of functions, cell references and the operator of a string concatenation (&amp;).<br />
+The operators equal to (=), not equal to (&lt;>), greater than (>), greater than or equal to (>=), less than (&lt;), and less than or equal to (&lt;=) can be used in criterion arguments for comparison of numbers.<br />
+The function can have up to 255 arguments, meaning that you can specify 127 criteria ranges and criteria for them.</paragraph>
+
+<embed href="text/scalc/01/ODFF.xhp#odff"/>
+
+<paragraph id="par_id175721789527973" role="warning" xml-lang="en-US">If a cell contains TRUE, it is treated as 1, if a cell contains FALSE – as 0 (zero).<br/>
+If the range of values for calculating the sum and any range for finding criterion have unequal sizes, the function returns err:502.</paragraph>
+
+<embed href="text/scalc/01/ex_data_stat_func.xhp#ex_func_average"/>
+<paragraph id="par_id1191767622119" role="warning" xml-lang="en-US">In all examples below, ranges for sum calculation contain the row #6, but it is ignored, because it contains text.</paragraph>
+
+<paragraph id="hd_id193452436229521" role="heading" level="4" xml-lang="en-US">Simple usage</paragraph>
+<paragraph id="par_id94321051525036" role="paragraph" xml-lang="en-US"><item type="input">=SUMIFS(B2:B6;B2:B6;">=20")</item></paragraph>
+<paragraph id="par_id28647227259438" role="paragraph" xml-lang="en-US">Calculates the sum of values of the range B2:B6 that are greater than or equal to 20. Returns 75, because the fifth row does not meet the criterion.</paragraph>
+<paragraph id="par_id36952767622741" role="paragraph" xml-lang="en-US"><item type="input">=SUMIFS(C2:C6;B2:B6;">=20";C2:C6;">70")</item></paragraph>
+<paragraph id="par_id189772445525114" role="paragraph" xml-lang="en-US">Calculates the sum of values of the range C2:C6 that are greater than 70 and correspond to cells of the B2:B6 range with values  greater than or equal to 20. Returns 275, because the second and the fifth rows do not meet at least one criterion.</paragraph>
+<paragraph id="hd_id30455222431067" role="heading" level="4" xml-lang="en-US">Using regular expressions and nested functions</paragraph>
+<paragraph id="par_id307691022525348" role="paragraph" xml-lang="en-US"><item type="input">=SUMIFS(C2:C6;B2:B6;">"&amp;MIN(B2:B6);B2:B6;"&lt;"&amp;MAX(B2:B6))</item></paragraph>
+<paragraph id="par_id27619246864839" role="paragraph" xml-lang="en-US">Calculates the sum of values of the range C2:C6 that correspond to all values of the range B2:B6 except its minimum and maximum. Returns 255, because the third and the fifth rows do not meet at least one criterion.</paragraph>
+<paragraph id="par_id220502883332563" role="paragraph" xml-lang="en-US"><item type="input">=SUMIFS(C2:C6;A2:A6;"pen.*";B2:B6;"&lt;"&amp;MAX(B2:B6))</item></paragraph>
+<paragraph id="par_id15342189586295" role="paragraph" xml-lang="en-US">Calculates the sum of values of the range C2:C6 that correspond to all cells of the A2:A6 range starting with "pen" and to all cells of the B2:B6 range except its maximum. Returns 65, because only second row meets all criteria.</paragraph>
+<paragraph id="hd_id8168283329426" role="heading" level="4" xml-lang="en-US">Reference to a cell as a criterion</paragraph>
+<paragraph id="par_id50762995519951" role="paragraph" xml-lang="en-US">If you need to change a criterion easily, you may want to specify it in a separate cell and use a reference to this cell in the condition of the SUMIFS function. For example, the above function can be rewritten as follows:</paragraph>
+<paragraph id="par_id135761606425300" role="paragraph" xml-lang="en-US"><item type="input">=SUMIFS(C2:C6;A2:A6;E2&amp;".*";B2:B6;"&lt;"&amp;MAX(B2:B6))</item></paragraph>
+<paragraph id="par_id30574750215839" role="paragraph" xml-lang="en-US">If E2 = pen, the function returns 65, because the link to the cell is substituted with its content.</paragraph>
+
+<section id="relatedtopics">
+    <paragraph id="par_id11921178730928" role="paragraph" xml-lang="en-US"><link href="text/scalc/01/04060106.xhp#Section16">SUM</link>, <link href="text/scalc/01/04060106.xhp#Section15">SUMIF</link>, <embedvar href="text/scalc/01/func_averageifs.xhp#averageifs_head"/>, <link href="text/scalc/01/04060184.xhp#max">MAX</link>, <link href="text/scalc/01/04060184.xhp#min">MIN</link></paragraph>
+<paragraph id="par_id15970172625152" role="paragraph"  localize="false" xml-lang="en-US"><embedvar href="text/shared/01/02100001.xhp#02100001"/></paragraph>
+    </section>
+</body>
+</helpdocument>
