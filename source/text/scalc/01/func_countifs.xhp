@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="textscalc01func_countifsxml">
+    <title id="tit" xml-lang="en-US">COUNTIFS function</title>
+    <filename>text/scalc/01/func_countifs.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+<section id="countifs_function">
+<bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_COUNTIFS" id="bm_id449544954495" localize="false"/>
+<bookmark xml-lang="en-US" branch="index" id="bm_id452245224522">
+  <bookmark_value>COUNTIFS function</bookmark_value>
+  <bookmark_value>counting row;satisfying criteria</bookmark_value>
+  <bookmark_value>counting column;satisfying criteria</bookmark_value>
+</bookmark>
+<paragraph id="hd_id456845684568" role="heading" level="2" xml-lang="en-US"><variable id="countifs_head"><link href="text/scalc/01/func_countifs.xhp">COUNTIFS</link></variable> function</paragraph>
+<paragraph id="par_id462646264626" role="paragraph" xml-lang="en-US"><ahelp hid="."><variable id="countifs_des">Returns the count of rows or columns that meet criteria in multiple ranges.</variable></ahelp></paragraph>
+</section>
+<paragraph id="hd_id465746574657" role="heading" level="3" xml-lang="en-US">Syntax</paragraph>
+<paragraph id="par_id27421466710275" role="code" xml-lang="en-US">COUNTIFS(Range1; Criterion1 [; Range2; Criterion2 [; ...]])</paragraph>
+<paragraph id="par_id242131304318587" role="paragraph" xml-lang="en-US"><emph>Range1</emph> – required argument. It is a range of cells, a name of a named range or a label of a column or a row containing values for counting and finding the corresponding criterion.</paragraph>
+<paragraph id="par_id23526994221948" role="paragraph" xml-lang="en-US"><emph>Criterion1</emph> – required argument. A condition in the form of expression or a cell reference to expression that defines what cells should be used for counting. The expression can contain text, numbers or regular expressions. </paragraph>
+<paragraph id="par_id190621657742" role="paragraph" xml-lang="en-US"><emph>Criterion_range2</emph> – Optional. Criterion_range2 and all the following mean the same as Criterion_range1.</paragraph>
+<paragraph id="par_id317001803813193" role="paragraph" xml-lang="en-US"><emph>Criterion2</emph> – Optional. Criterion2 and all the following mean the same as Criterion1.</paragraph>
+<paragraph id="par_id14223137501158" role="note" xml-lang="en-US">The logical relation between criteria can be defined as logical AND (conjunction). In other words, if and only if all given criteria are met, a row or a column is taken into counting.<br/>
+The <emph>Criterion</emph> needs to be a string expression, in particular, the <emph>Criterion</emph> needs to be enclosed in quotation marks ("Criterion") with the exception of the names of functions, cell references and the operator of a string concatenation (&amp;).<br />
+The operators equal to (=), not equal to (&lt;>), greater than (>), greater than or equal to (>=), less than (&lt;), and less than or equal to (&lt;=) can be used in criterion arguments for comparison of numbers.<br />
+The function can have up to 500 arguments, meaning that you can specify 250 pairs of ranges and criteria.</paragraph>
+<embed href="text/scalc/01/ODFF.xhp#odff"/>
+<paragraph id="par_id16654883224356" role="warning" xml-lang="en-US">If a cell contains TRUE, it is treated as 1, if a cell contains FALSE – as 0 (zero).<br/>
+If ranges for arguments <emph>Range</emph> have unequal sizes, the function returns err:502.</paragraph>
+<embed href="text/scalc/01/ex_data_stat_func.xhp#ex_func_average"/>
+<paragraph id="hd_id3861259759512" role="heading" level="4" xml-lang="en-US">Simple usage</paragraph>
+<paragraph id="par_id15856592423333" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(B2:B6;">=20")</item></paragraph>
+<paragraph id="par_id323511393121175" role="paragraph" xml-lang="en-US">Counts the amount of rows of the range B2:B6 with values greater than or equal to 20. Returns 3, because the fifth and the sixth rows do not meet the criterion.</paragraph>
+<paragraph id="par_id74301057922522" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(B2:B6;">=20";C2:C6;">70")</item></paragraph>
+<paragraph id="par_id109622995127628" role="paragraph" xml-lang="en-US">Counts the amount of rows that contain simultaneously values greater than 70 in the C2:C6 range and values greater than or equal to 20 in the B2:B6 range. Returns 2, because the second, the fifth and the sixth rows do not meet at least one criterion.</paragraph>
+<paragraph id="hd_id298462825526166" role="heading" level="4" xml-lang="en-US">Using regular expressions and nested functions</paragraph>
+<paragraph id="par_id22736248573471" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(B2:B6;"[:alpha:]*")</item></paragraph>
+<paragraph id="par_id22137303324873" role="paragraph" xml-lang="en-US">Counts the amount of rows of the B2:B6 range that contain only alphabet symbols. Returns 1, because only sixth row meets the criterion.</paragraph>
+<paragraph id="par_id82271340221411" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(B2:B6;">"&amp;MIN(B2:B6);B2:B6;"&lt;"&amp;MAX(B2:B6))</item></paragraph>
+<paragraph id="par_id1105320769334" role="paragraph" xml-lang="en-US">Counts the amount of rows of the B2:B6 range excluding rows with minimum and maximum values of this range. Returns 2, because the third, the fifth and the sixth rows do not meet at least one criterion.</paragraph>
+<paragraph id="par_id267603146513224" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(A2:A6;"pen.*";B2:B6;"&lt;"&amp;MAX(B2:B6))</item></paragraph>
+<paragraph id="par_id111252614832220" role="paragraph" xml-lang="en-US">Counts the amount of rows that correspond to all cells of the A2:A6 range starting with "pen" and to all cells of the B2:B6 range with exception of its maximum. Returns 1, because only second row meets all criteria.</paragraph>
+<paragraph id="hd_id212582362610399" role="heading" level="4" xml-lang="en-US">Reference to a cell as a criterion</paragraph>
+<paragraph id="par_id3245551524846" role="paragraph" xml-lang="en-US">If you need to change a criterion easily, you may want to specify it in a separate cell and use a reference to this cell in the condition of the COUNTIFS function. For example, the above function can be rewritten as follows:</paragraph>
+<paragraph id="par_id109501907712434" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(A2:A6;E2&amp;".*";B2:B6;"&lt;"&amp;MAX(B2:B6))</item></paragraph>
+<paragraph id="par_id738533068520" role="paragraph" xml-lang="en-US">If E2 = pen, the function returns 1, because the link to the cell is substituted with its content and it works as a function above.</paragraph>
+<section id="relatedtopics">
+<paragraph id="par_id14337286612130" role="paragraph" xml-lang="en-US"><link href="text/scalc/01/04060181.xhp#count">COUNT</link>, <link href="text/scalc/01/04060181.xhp#countif">COUNTIF</link>, <link href="text/scalc/01/04060181.xhp#counta">COUNTA</link>, <embedvar href="text/scalc/01/func_sumifs.xhp#sumifs_head"/>, <embedvar href="text/scalc/01/func_averageifs.xhp#averageifs_head"/>, <link href="text/scalc/01/04060184.xhp#max">MAX</link>, <link href="text/scalc/01/04060184.xhp#min">MIN</link></paragraph>
+<paragraph id="par_id235992404316585" role="paragraph"  localize="false" xml-lang="en-US"><embedvar href="text/shared/01/02100001.xhp#02100001"/></paragraph>
+</section>
+</body>
+</helpdocument>
