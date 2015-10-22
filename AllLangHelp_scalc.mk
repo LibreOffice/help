@@ -181,6 +181,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/12120300 \
     helpcontent2/source/text/scalc/01/ex_data_stat_func \
     helpcontent2/source/text/scalc/01/format_graphic \
+    helpcontent2/source/text/scalc/01/ful_func \
     helpcontent2/source/text/scalc/01/func_aggregate \
     helpcontent2/source/text/scalc/01/func_averageif \
     helpcontent2/source/text/scalc/01/func_averageifs \
@@ -196,6 +197,16 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_eomonth \
     helpcontent2/source/text/scalc/01/func_error_type \
     helpcontent2/source/text/scalc/01/func_hour \
+    helpcontent2/source/text/scalc/01/func_imcot \
+    helpcontent2/source/text/scalc/01/func_imcos \
+    helpcontent2/source/text/scalc/01/func_imcosh \
+    helpcontent2/source/text/scalc/01/func_imcsc \
+    helpcontent2/source/text/scalc/01/func_imcsch \
+    helpcontent2/source/text/scalc/01/func_imsec \
+    helpcontent2/source/text/scalc/01/func_imsech \
+    helpcontent2/source/text/scalc/01/func_imsin \
+    helpcontent2/source/text/scalc/01/func_imsinh \
+    helpcontent2/source/text/scalc/01/func_imtan \
     helpcontent2/source/text/scalc/01/func_minute \
     helpcontent2/source/text/scalc/01/func_month \
     helpcontent2/source/text/scalc/01/func_networkdays \
