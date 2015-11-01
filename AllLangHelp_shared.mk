@@ -340,6 +340,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/guides \
     helpcontent2/source/text/shared/01/mediaplayer \
     helpcontent2/source/text/shared/01/menu_edit_find \
+    helpcontent2/source/text/shared/01/menu_view_sidebar.xhp \
     helpcontent2/source/text/shared/01/moviesound \
     helpcontent2/source/text/shared/01/online_update \
     helpcontent2/source/text/shared/01/online_update_dialog \
