@@ -751,7 +751,7 @@ class Meta(ElementBase):
     def start_element(self, parser, name, attrs):
         if name == 'topic':
             self.parse_child(Topic(attrs, self))
-        elif name == 'history' or name == 'lastedited':
+        elif name == 'history':
             self.parse_child(Ignore(attrs, self, name))
         else:
             self.unhandled_element(parser, name)
