@@ -207,6 +207,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_imsin \
     helpcontent2/source/text/scalc/01/func_imsinh \
     helpcontent2/source/text/scalc/01/func_imtan \
+    helpcontent2/source/text/scalc/01/func_isoweeknum \
     helpcontent2/source/text/scalc/01/func_minute \
     helpcontent2/source/text/scalc/01/func_month \
     helpcontent2/source/text/scalc/01/func_networkdays \
@@ -220,6 +221,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_weekday \
     helpcontent2/source/text/scalc/01/func_webservice \
     helpcontent2/source/text/scalc/01/func_weeknum \
+    helpcontent2/source/text/scalc/01/func_weeknum_ooo \
     helpcontent2/source/text/scalc/01/func_weeknumadd \
     helpcontent2/source/text/scalc/01/func_workday \
     helpcontent2/source/text/scalc/01/func_year \
