@@ -229,6 +229,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/solver \
     helpcontent2/source/text/scalc/01/solver_options \
     helpcontent2/source/text/scalc/01/statistics \
+    helpcontent2/source/text/scalc/01/statistics_regression \
     helpcontent2/source/text/scalc/01/stat_data \
     helpcontent2/source/text/scalc/01/ODFF \
     helpcontent2/source/text/scalc/01/text2columns \
