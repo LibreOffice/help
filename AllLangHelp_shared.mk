@@ -91,6 +91,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/01100300 \
     helpcontent2/source/text/shared/01/01100400 \
     helpcontent2/source/text/shared/01/01100600 \
+    helpcontent2/source/text/shared/01/prop_font_embed \
     helpcontent2/source/text/shared/01/01110000 \
     helpcontent2/source/text/shared/01/01110101 \
     helpcontent2/source/text/shared/01/01110300 \
