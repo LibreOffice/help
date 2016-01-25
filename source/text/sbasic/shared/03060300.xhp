@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
+<helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -17,48 +16,52 @@
  *   License, Version 2.0 (the "License"); you may not use this file
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
- -->
-	
-<helpdocument version="1.0">
+-->
+
 <meta>
-<topic id="textsbasicshared03060300xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">Imp-Operator [Runtime]</title>
-<filename>/text/sbasic/shared/03060300.xhp</filename>
-</topic>
-<history>
-<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-</history>
+  <topic id="textsbasicshared03060300xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Imp-Operator [Runtime]</title>
+    <filename>/text/sbasic/shared/03060300.xhp</filename>
+  </topic>
 </meta>
+
 <body>
+
+
 <section id="imp">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3156024"><bookmark_value>Imp operator (logical)</bookmark_value>
+<bookmark xml-lang="en-US" branch="index" id="bm_id3156024">
+  <bookmark_value>Imp operator (logical)</bookmark_value>
 </bookmark>
-<paragraph role="heading" id="hd_id3156024" xml-lang="en-US" level="1" l10n="U" oldref="1"><link href="text/sbasic/shared/03060300.xhp" name="Imp-Operator [Runtime]">Imp Operator [Runtime]</link></paragraph>
-<paragraph role="paragraph" id="par_id3148947" xml-lang="en-US" l10n="U" oldref="2">Performs a logical implication on two expressions.</paragraph>
+
+
+<paragraph id="hd_id3156024" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03060300.xhp" name="Imp-Operator [Runtime]">Imp Operator [Runtime]</link></paragraph>
+<paragraph id="par_id3148947" role="paragraph" xml-lang="en-US">Performs a logical implication on two expressions.</paragraph>
 </section>
-<paragraph role="heading" id="hd_id3148664" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
+
+<paragraph id="hd_id3148664" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
 <bascode>
-<paragraph role="bascode" id="par_id3149656" xml-lang="en-US" oldref="4">Result = Expression1 Imp Expression2</paragraph>
+<paragraph id="par_id3149656" role="bascode" xml-lang="en-US">Result = Expression1 Imp Expression2</paragraph>
 </bascode>
-<paragraph role="heading" id="hd_id3151212" xml-lang="en-US" level="2" l10n="U" oldref="5">Parameters:</paragraph>
-<paragraph role="paragraph" id="par_id3154910" xml-lang="en-US" l10n="U" oldref="6">
-<emph>Result:</emph> Any numeric variable that contains the result of the implication.</paragraph>
-<paragraph role="paragraph" id="par_id3156281" xml-lang="en-US" l10n="U" oldref="7">
-<emph>Expression1, Expression2:</emph> Any expressions that you want to evaluate with the Imp operator.</paragraph>
-<paragraph role="paragraph" id="par_id3150440" xml-lang="en-US" l10n="U" oldref="8">If you use the Imp operator in Boolean expressions, False is only returned if the first expression evaluates to True and the second expression to False.</paragraph>
-<paragraph role="paragraph" id="par_id3163710" xml-lang="en-US" l10n="U" oldref="9">If you use the Imp operator in bit expressions, a bit is deleted from the result if the corresponding bit is set in the first expression and the corresponding bit is deleted in the second expression.</paragraph>
-<paragraph role="heading" id="hd_id3147318" xml-lang="en-US" level="2" l10n="U" oldref="10">Example:</paragraph>
+
+<paragraph id="hd_id3151212" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<paragraph id="par_id3154910" role="paragraph" xml-lang="en-US"> <emph>Result:</emph> Any numeric variable that contains the result of the implication.</paragraph>
+<paragraph id="par_id3156281" role="paragraph" xml-lang="en-US"> <emph>Expression1, Expression2:</emph> Any expressions that you want to evaluate with the Imp operator.</paragraph>
+<paragraph id="par_id3150440" role="paragraph" xml-lang="en-US">If you use the Imp operator in Boolean expressions, False is only returned if the first expression evaluates to True and the second expression to False.</paragraph>
+<paragraph id="par_id3163710" role="paragraph" xml-lang="en-US">If you use the Imp operator in bit expressions, a bit is deleted from the result if the corresponding bit is set in the first expression and the corresponding bit is deleted in the second expression.</paragraph>
+
+<paragraph id="hd_id3147318" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
 <bascode>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleImp</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim A As Variant, B As Variant, C As Variant, D As Variant</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim vOut As Variant</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    A = 10: B = 8: C = 6: D = Null</paragraph>
-<paragraph role="bascode" id="par_id3145750" xml-lang="en-US" l10n="U" oldref="15">    vOut = A &gt; B Imp B &gt; C ' returns -1</paragraph>
-<paragraph role="bascode" id="par_id3156441" xml-lang="en-US" l10n="CHG" oldref="16">    vOut = B &gt; A Imp B &gt; C ' returns -1</paragraph>
-<paragraph role="bascode" id="par_id3152596" xml-lang="en-US" l10n="CHG" oldref="17">    vOut = A &gt; B Imp B &gt; D ' returns 0</paragraph>
-<paragraph role="bascode" id="par_id3154942" xml-lang="en-US" l10n="CHG" oldref="18">    vOut = (B &gt; D Imp B &gt; A) ' returns -1</paragraph>
-<paragraph role="bascode" id="par_id3154492" xml-lang="en-US" l10n="CHG" oldref="19">    vOut = B Imp A ' returns -1</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1341575552" role="bascode" localize="false" xml-lang="en-US">Sub ExampleImp</paragraph>
+<paragraph id="par_idm1341574320" role="bascode" localize="false" xml-lang="en-US">Dim A As Variant, B As Variant, C As Variant, D As Variant</paragraph>
+<paragraph id="par_idm1341573040" role="bascode" localize="false" xml-lang="en-US">Dim vOut As Variant</paragraph>
+<paragraph id="par_idm1341571808" role="bascode" localize="false" xml-lang="en-US"> A = 10: B = 8: C = 6: D = Null</paragraph>
+<paragraph id="par_id3145750" role="bascode" xml-lang="en-US"> vOut = A &gt; B Imp B &gt; C ' returns -1</paragraph>
+<paragraph id="par_id3156441" role="bascode" xml-lang="en-US"> vOut = B &gt; A Imp B &gt; C ' returns -1</paragraph>
+<paragraph id="par_id3152596" role="bascode" xml-lang="en-US"> vOut = A &gt; B Imp B &gt; D ' returns 0</paragraph>
+<paragraph id="par_id3154942" role="bascode" xml-lang="en-US"> vOut = (B &gt; D Imp B &gt; A) ' returns -1</paragraph>
+<paragraph id="par_id3154492" role="bascode" xml-lang="en-US"> vOut = B Imp A ' returns -1</paragraph>
+<paragraph id="par_idm1341561584" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
 </body>
+
 </helpdocument>

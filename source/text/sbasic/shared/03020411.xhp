@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
-
+<helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -18,79 +16,86 @@
  *   License, Version 2.0 (the "License"); you may not use this file
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
- -->
+-->
 
-
-		<helpdocument version="1.0">
 <meta>
-<topic id="textsbasicshared03020411xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">MkDir Statement [Runtime]</title>
-<filename>/text/sbasic/shared/03020411.xhp</filename>
-</topic>
+  <topic id="textsbasicshared03020411xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">MkDir Statement [Runtime]</title>
+    <filename>/text/sbasic/shared/03020411.xhp</filename>
+  </topic>
 </meta>
+
 <body>
+
+
 <section id="mkdir">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3156421"><bookmark_value>MkDir statement</bookmark_value>
+<bookmark xml-lang="en-US" branch="index" id="bm_id3156421">
+  <bookmark_value>MkDir statement</bookmark_value>
 </bookmark>
-<paragraph role="heading" id="hd_id3156421" xml-lang="en-US" level="1" l10n="U" oldref="1"><link href="text/sbasic/shared/03020411.xhp" name="MkDir Statement [Runtime]">MkDir Statement [Runtime]</link></paragraph>
-<paragraph role="paragraph" id="par_id3147000" xml-lang="en-US" l10n="U" oldref="2">Creates a new directory on a data medium.</paragraph>
+
+
+<paragraph id="hd_id3156421" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03020411.xhp" name="MkDir Statement [Runtime]">MkDir Statement [Runtime]</link></paragraph>
+<paragraph id="par_id3147000" role="paragraph" xml-lang="en-US">Creates a new directory on a data medium.</paragraph>
 </section>
-<paragraph role="heading" id="hd_id3148520" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
+
+<paragraph id="hd_id3148520" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
 <bascode>
-<paragraph role="bascode" id="par_id3155150" xml-lang="en-US" l10n="U" oldref="4">MkDir Text As String</paragraph>
+<paragraph id="par_id3155150" role="bascode" xml-lang="en-US">MkDir Text As String</paragraph>
 </bascode>
-<paragraph role="heading" id="hd_id3156027" xml-lang="en-US" level="2" l10n="U" oldref="5">Parameters:</paragraph>
-<paragraph role="paragraph" id="par_id3153750" xml-lang="en-US" l10n="U" oldref="6">
-<emph>Text:</emph> Any string expression that specifies the name and path of the directory to be created. You can also use <link href="text/sbasic/shared/00000002.xhp" name="URL notation">URL notation</link>.</paragraph>
-<paragraph role="paragraph" id="par_id3153311" xml-lang="en-US" l10n="U" oldref="7">If the path is not determined, the directory is created in the current directory.</paragraph>
+
+<paragraph id="hd_id3156027" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<paragraph id="par_id3153750" role="paragraph" xml-lang="en-US"> <emph>Text:</emph> Any string expression that specifies the name and path of the directory to be created. You can also use <link href="text/sbasic/shared/00000002.xhp" name="URL notation">URL notation</link>.</paragraph>
+<paragraph id="par_id3153311" role="paragraph" xml-lang="en-US">If the path is not determined, the directory is created in the current directory.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 <embed href="text/sbasic/shared/00000003.xhp#err76"/>
-<paragraph role="heading" id="hd_id3155388" xml-lang="en-US" level="2" l10n="U" oldref="8">Example:</paragraph>
+
+<paragraph id="hd_id3155388" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
 <bascode>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleFileIO</paragraph>
-<paragraph role="bascode" id="par_id3149762" xml-lang="en-US" l10n="CHG" oldref="10">' Example for functions of the file organization</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Const sFile1 As String = "file://c|/autoexec.bat"</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Const sDir1 As String = "file://c|/Temp"</paragraph>
-<paragraph role="bascode" id="par_id3149669" xml-lang="en-US" l10n="U" oldref="13">Const sSubDir1 As String ="Test"</paragraph>
-<paragraph role="bascode" id="par_id3148663" xml-lang="en-US" l10n="U" oldref="14">Const sFile2 As String = "Copied.tmp"</paragraph>
-<paragraph role="bascode" id="par_id3154071" xml-lang="en-US" l10n="U" oldref="15">Const sFile3 As String = "Renamed.tmp"</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sFile As String</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    sFile = sDir1 + "/" + sSubDir1</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    ChDir( sDir1 )</paragraph>
-<paragraph role="bascode" id="par_id3154217" xml-lang="en-US" l10n="U" oldref="19">    If Dir(sSubDir1,16)="" Then ' Does the directory exist?</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">        MkDir sSubDir1</paragraph>
-<paragraph role="bascode" id="par_id3147228" xml-lang="en-US" l10n="U" oldref="21">        MsgBox sFile,0,"Create directory"</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    End If</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    sFile = sFile + "/" + sFile2</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    FileCopy sFile1 , sFile</paragraph>
-<paragraph role="bascode" id="par_id3153770" xml-lang="en-US" l10n="U" oldref="26">    MsgBox fSysURL(CurDir()),0,"Current directory"</paragraph>
-<paragraph role="bascode" id="par_id3159154" xml-lang="en-US" l10n="U" oldref="27">    MsgBox sFile &amp; Chr(13) &amp; FileDateTime( sFile ),0,"Creation time"</paragraph>
-<paragraph role="bascode" id="par_id3149484" xml-lang="en-US" l10n="U" oldref="28">    MsgBox sFile &amp; Chr(13)&amp; FileLen( sFile ),0,"File length"</paragraph>
-<paragraph role="bascode" id="par_id3152885" xml-lang="en-US" l10n="U" oldref="29">    MsgBox sFile &amp; Chr(13)&amp; GetAttr( sFile ),0,"File attributes"</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Name sFile As sDir1 + "/" + sSubDir1 + "/" + sFile3</paragraph>
-<paragraph role="bascode" id="par_id3153952" xml-lang="en-US" l10n="U" oldref="31">    ' Rename in the same directory</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    sFile = sDir1 + "/" + sSubDir1 + "/" + sFile3</paragraph>
-<paragraph role="bascode" id="par_id3147426" xml-lang="en-US" l10n="U" oldref="34">    SetAttr( sFile, 0 ) 'Delete all attributes</paragraph>
-<paragraph role="bascode" id="par_id3148647" xml-lang="en-US" l10n="U" oldref="35">    MsgBox sFile &amp; Chr(13) &amp; GetAttr( sFile ),0,"New file attributes"</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Kill sFile</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    RmDir sDir1 + "/" + sSubDir1</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-<paragraph role="bascode" id="par_id3153157" xml-lang="en-US" localize="false"> </paragraph>
-<paragraph role="bascode" id="par_id3150092" xml-lang="en-US" l10n="U" oldref="40">' Converts a system path in URL</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Function fSysURL( fSysFp As String ) As String</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim iPos As String</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    iPos = 1</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    iPos = Instr(iPos,fSysFp, getPathSeparator())</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Do While iPos &gt; 0</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">        Mid( fSysFp, iPos , 1,"/")</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">        iPos = Instr(iPos+1,fSysFp, getPathSeparator())</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Loop</paragraph>
-<paragraph role="bascode" id="par_id3156276" xml-lang="en-US" l10n="U" oldref="49">    ' the colon with DOS</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    iPos = Instr(1,fSysFp,":")</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    If iPos &gt; 0 Then Mid( fSysFp, iPos , 1,"|")</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    fSysURL = "file://" &amp; fSysFp</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">End Function</paragraph>
+<paragraph id="par_idm1341385136" role="bascode" localize="false" xml-lang="en-US">Sub ExampleFileIO</paragraph>
+<paragraph id="par_id3149762" role="bascode" xml-lang="en-US">' Example for functions of the file organization</paragraph>
+<paragraph id="par_idm1341382112" role="bascode" localize="false" xml-lang="en-US">Const sFile1 As String = "file://c|/autoexec.bat"</paragraph>
+<paragraph id="par_idm1341380848" role="bascode" localize="false" xml-lang="en-US">Const sDir1 As String = "file://c|/Temp"</paragraph>
+<paragraph id="par_id3149669" role="bascode" xml-lang="en-US">Const sSubDir1 As String ="Test"</paragraph>
+<paragraph id="par_id3148663" role="bascode" xml-lang="en-US">Const sFile2 As String = "Copied.tmp"</paragraph>
+<paragraph id="par_id3154071" role="bascode" xml-lang="en-US">Const sFile3 As String = "Renamed.tmp"</paragraph>
+<paragraph id="par_idm1341374400" role="bascode" localize="false" xml-lang="en-US">Dim sFile As String</paragraph>
+<paragraph id="par_idm1341373168" role="bascode" localize="false" xml-lang="en-US"> sFile = sDir1 + "/" + sSubDir1</paragraph>
+<paragraph id="par_idm1341371920" role="bascode" localize="false" xml-lang="en-US"> ChDir( sDir1 )</paragraph>
+<paragraph id="par_id3154217" role="bascode" xml-lang="en-US"> If Dir(sSubDir1,16)="" Then ' Does the directory exist?</paragraph>
+<paragraph id="par_idm1341368880" role="bascode" localize="false" xml-lang="en-US"> MkDir sSubDir1</paragraph>
+<paragraph id="par_id3147228" role="bascode" xml-lang="en-US"> MsgBox sFile,0,"Create directory"</paragraph>
+<paragraph id="par_idm1341365904" role="bascode" localize="false" xml-lang="en-US"> End If</paragraph>
+<paragraph id="par_idm1341364672" role="bascode" localize="false" xml-lang="en-US"> sFile = sFile + "/" + sFile2</paragraph>
+<paragraph id="par_idm1341363424" role="bascode" localize="false" xml-lang="en-US"> FileCopy sFile1 , sFile</paragraph>
+<paragraph id="par_id3153770" role="bascode" xml-lang="en-US"> MsgBox fSysURL(CurDir()),0,"Current directory"</paragraph>
+<paragraph id="par_id3159154" role="bascode" xml-lang="en-US"> MsgBox sFile &amp; Chr(13) &amp; FileDateTime( sFile ),0,"Creation time"</paragraph>
+<paragraph id="par_id3149484" role="bascode" xml-lang="en-US"> MsgBox sFile &amp; Chr(13)&amp; FileLen( sFile ),0,"File length"</paragraph>
+<paragraph id="par_id3152885" role="bascode" xml-lang="en-US"> MsgBox sFile &amp; Chr(13)&amp; GetAttr( sFile ),0,"File attributes"</paragraph>
+<paragraph id="par_idm1341354896" role="bascode" localize="false" xml-lang="en-US"> Name sFile As sDir1 + "/" + sSubDir1 + "/" + sFile3</paragraph>
+<paragraph id="par_id3153952" role="bascode" xml-lang="en-US"> ' Rename in the same directory</paragraph>
+<paragraph id="par_idm1341351856" role="bascode" localize="false" xml-lang="en-US"> sFile = sDir1 + "/" + sSubDir1 + "/" + sFile3</paragraph>
+<paragraph id="par_id3147426" role="bascode" xml-lang="en-US"> SetAttr( sFile, 0 ) 'Delete all attributes</paragraph>
+<paragraph id="par_id3148647" role="bascode" xml-lang="en-US"> MsgBox sFile &amp; Chr(13) &amp; GetAttr( sFile ),0,"New file attributes"</paragraph>
+<paragraph id="par_idm1341346992" role="bascode" localize="false" xml-lang="en-US"> Kill sFile</paragraph>
+<paragraph id="par_idm1341345760" role="bascode" localize="false" xml-lang="en-US"> RmDir sDir1 + "/" + sSubDir1</paragraph>
+<paragraph id="par_idm1341344512" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_id3153157" role="bascode" localize="false" xml-lang="en-US"> </paragraph>
+<paragraph id="par_id3150092" role="bascode" xml-lang="en-US">' Converts a system path in URL</paragraph>
+<paragraph id="par_idm1341100304" role="bascode" localize="false" xml-lang="en-US">Function fSysURL( fSysFp As String ) As String</paragraph>
+<paragraph id="par_idm1341099040" role="bascode" localize="false" xml-lang="en-US">Dim iPos As String</paragraph>
+<paragraph id="par_idm1341097808" role="bascode" localize="false" xml-lang="en-US"> iPos = 1</paragraph>
+<paragraph id="par_idm1341096576" role="bascode" localize="false" xml-lang="en-US"> iPos = Instr(iPos,fSysFp, getPathSeparator())</paragraph>
+<paragraph id="par_idm1341095312" role="bascode" localize="false" xml-lang="en-US"> Do While iPos &gt; 0</paragraph>
+<paragraph id="par_idm1341093984" role="bascode" localize="false" xml-lang="en-US"> Mid( fSysFp, iPos , 1,"/")</paragraph>
+<paragraph id="par_idm1341092768" role="bascode" localize="false" xml-lang="en-US"> iPos = Instr(iPos+1,fSysFp, getPathSeparator())</paragraph>
+<paragraph id="par_idm1341091504" role="bascode" localize="false" xml-lang="en-US"> Loop</paragraph>
+<paragraph id="par_id3156276" role="bascode" xml-lang="en-US"> ' the colon with DOS</paragraph>
+<paragraph id="par_idm1341088544" role="bascode" localize="false" xml-lang="en-US"> iPos = Instr(1,fSysFp,":")</paragraph>
+<paragraph id="par_idm1341087296" role="bascode" localize="false" xml-lang="en-US"> If iPos &gt; 0 Then Mid( fSysFp, iPos , 1,"|")</paragraph>
+<paragraph id="par_idm1341085952" role="bascode" localize="false" xml-lang="en-US"> fSysURL = "file://" &amp; fSysFp</paragraph>
+<paragraph id="par_idm1341084688" role="bascode" localize="false" xml-lang="en-US">End Function</paragraph>
 </bascode>
 </body>
+
 </helpdocument>

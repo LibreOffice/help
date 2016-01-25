@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
+<helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -17,52 +16,57 @@
  *   License, Version 2.0 (the "License"); you may not use this file
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
- -->
-	
-<helpdocument version="1.0">
+-->
+
 <meta>
-<topic id="textsbasicshared03120303xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">Left Function [Runtime]</title>
-<filename>/text/sbasic/shared/03120303.xhp</filename>
-</topic>
-<history>
-<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-</history>
+  <topic id="textsbasicshared03120303xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Left Function [Runtime]</title>
+    <filename>/text/sbasic/shared/03120303.xhp</filename>
+  </topic>
 </meta>
+
 <body>
+
+
 <section id="left">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3149346"><bookmark_value>Left function</bookmark_value>
+<bookmark xml-lang="en-US" branch="index" id="bm_id3149346">
+  <bookmark_value>Left function</bookmark_value>
 </bookmark>
-<paragraph role="heading" id="hd_id3149346" xml-lang="en-US" level="1" l10n="U" oldref="1"><link href="text/sbasic/shared/03120303.xhp" name="Left Function [Runtime]">Left Function [Runtime]</link></paragraph>
-<paragraph role="paragraph" id="par_id3147242" xml-lang="en-US" l10n="U" oldref="2">Returns the number of leftmost characters that you specify of a string expression.</paragraph>
+
+
+<paragraph id="hd_id3149346" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03120303.xhp" name="Left Function [Runtime]">Left Function [Runtime]</link></paragraph>
+<paragraph id="par_id3147242" role="paragraph" xml-lang="en-US">Returns the number of leftmost characters that you specify of a string expression.</paragraph>
 </section>
-<paragraph role="heading" id="hd_id3156153" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
+
+<paragraph id="hd_id3156153" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
 <bascode>
-<paragraph role="bascode" id="par_id3150771" xml-lang="en-US" oldref="4">Left (Text As String, n As Long)</paragraph>
+<paragraph id="par_id3150771" role="bascode" xml-lang="en-US">Left (Text As String, n As Long)</paragraph>
 </bascode>
-<paragraph role="heading" id="hd_id3153824" xml-lang="en-US" level="2" l10n="U" oldref="5">Return value:</paragraph>
-<paragraph role="paragraph" id="par_id3147530" xml-lang="en-US" l10n="U" oldref="6">String</paragraph>
-<paragraph role="heading" id="hd_id3148946" xml-lang="en-US" level="2" l10n="U" oldref="7">Parameters:</paragraph>
-<paragraph role="paragraph" id="par_id3148552" xml-lang="en-US" l10n="U" oldref="8">
-<emph>Text:</emph> Any string expression that you want to return the leftmost characters from.</paragraph>
-<paragraph role="paragraph" id="par_id3149456" xml-lang="en-US" l10n="CHG" oldref="9">
-<emph>n:</emph> Numeric expression that specifies the number of characters that you want to return. If <emph>n</emph> = 0, a zero-length string is returned. The maximum allowed value is 65535.</paragraph>
-<paragraph role="paragraph" id="par_id3150791" xml-lang="en-US" l10n="U" oldref="10">The following example converts a date in YYYY.MM.DD format to MM/DD/YYYY format.</paragraph>
+
+<paragraph id="hd_id3153824" role="heading" level="2" xml-lang="en-US">Return value:</paragraph>
+<paragraph id="par_id3147530" role="paragraph" xml-lang="en-US">String</paragraph>
+
+<paragraph id="hd_id3148946" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<paragraph id="par_id3148552" role="paragraph" xml-lang="en-US"> <emph>Text:</emph> Any string expression that you want to return the leftmost characters from.</paragraph>
+<paragraph id="par_id3149456" role="paragraph" xml-lang="en-US"> <emph>n:</emph> Numeric expression that specifies the number of characters that you want to return. If <emph>n</emph> = 0, a zero-length string is returned. The maximum allowed value is 65535.</paragraph>
+<paragraph id="par_id3150791" role="paragraph" xml-lang="en-US">The following example converts a date in YYYY.MM.DD format to MM/DD/YYYY format.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
-<paragraph role="heading" id="hd_id3125863" xml-lang="en-US" level="2" l10n="U" oldref="11">Example:</paragraph>
+
+<paragraph id="hd_id3125863" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
 <bascode>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleUSDate</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sInput As String</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sUS_date As String</paragraph>
-<paragraph role="bascode" id="par_id3150448" xml-lang="en-US" l10n="U" oldref="15">    sInput = InputBox("Please input a date in the international format 'YYYY-MM-DD'")</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    sUS_date = Mid(sInput, 6, 2)</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    sUS_date = sUS_date &amp; "/"</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    sUS_date = sUS_date &amp; Right(sInput, 2)</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    sUS_date = sUS_date &amp; "/"</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    sUS_date = sUS_date &amp; Left(sInput, 4)</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    MsgBox sUS_date</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1340818096" role="bascode" localize="false" xml-lang="en-US">Sub ExampleUSDate</paragraph>
+<paragraph id="par_idm1340816864" role="bascode" localize="false" xml-lang="en-US">Dim sInput As String</paragraph>
+<paragraph id="par_idm1340815632" role="bascode" localize="false" xml-lang="en-US">Dim sUS_date As String</paragraph>
+<paragraph id="par_id3150448" role="bascode" xml-lang="en-US"> sInput = InputBox("Please input a date in the international format 'YYYY-MM-DD'")</paragraph>
+<paragraph id="par_idm1340812576" role="bascode" localize="false" xml-lang="en-US"> sUS_date = Mid(sInput, 6, 2)</paragraph>
+<paragraph id="par_idm1340811328" role="bascode" localize="false" xml-lang="en-US"> sUS_date = sUS_date &amp; "/"</paragraph>
+<paragraph id="par_idm1340810064" role="bascode" localize="false" xml-lang="en-US"> sUS_date = sUS_date &amp; Right(sInput, 2)</paragraph>
+<paragraph id="par_idm1340808800" role="bascode" localize="false" xml-lang="en-US"> sUS_date = sUS_date &amp; "/"</paragraph>
+<paragraph id="par_idm1340807536" role="bascode" localize="false" xml-lang="en-US"> sUS_date = sUS_date &amp; Left(sInput, 4)</paragraph>
+<paragraph id="par_idm1340806272" role="bascode" localize="false" xml-lang="en-US"> MsgBox sUS_date</paragraph>
+<paragraph id="par_idm1340805040" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
 </body>
+
 </helpdocument>

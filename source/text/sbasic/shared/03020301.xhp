@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
+<helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -17,62 +16,68 @@
  *   License, Version 2.0 (the "License"); you may not use this file
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
- -->
-	
-<helpdocument version="1.0">
+-->
+
 <meta>
-<topic id="textsbasicshared03020301xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">Eof Function [Runtime]</title>
-<filename>/text/sbasic/shared/03020301.xhp</filename>
-</topic>
-<history>
-<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-</history>
+  <topic id="textsbasicshared03020301xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Eof Function [Runtime]</title>
+    <filename>/text/sbasic/shared/03020301.xhp</filename>
+  </topic>
 </meta>
+
 <body>
+
+
 <section id="eof">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3154598"><bookmark_value>Eof function</bookmark_value>
+<bookmark xml-lang="en-US" branch="index" id="bm_id3154598">
+  <bookmark_value>Eof function</bookmark_value>
 </bookmark>
-<paragraph role="heading" id="hd_id3154598" xml-lang="en-US" level="1" l10n="U" oldref="1"><link href="text/sbasic/shared/03020301.xhp" name="Eof Function [Runtime]">Eof Function [Runtime]</link></paragraph>
-<paragraph role="paragraph" id="par_id3147182" xml-lang="en-US" l10n="U" oldref="2">Determines if the file pointer has reached the end of a file.</paragraph>
+
+
+<paragraph id="hd_id3154598" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03020301.xhp" name="Eof Function [Runtime]">Eof Function [Runtime]</link></paragraph>
+<paragraph id="par_id3147182" role="paragraph" xml-lang="en-US">Determines if the file pointer has reached the end of a file.</paragraph>
 </section>
-<paragraph role="heading" id="hd_id3149119" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
+
+<paragraph id="hd_id3149119" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
 <bascode>
-<paragraph role="bascode" id="par_id3147399" xml-lang="en-US" l10n="U" oldref="4">Eof (intexpression As Integer)</paragraph>
+<paragraph id="par_id3147399" role="bascode" xml-lang="en-US">Eof (intexpression As Integer)</paragraph>
 </bascode>
-<paragraph role="heading" id="hd_id3153539" xml-lang="en-US" level="2" l10n="U" oldref="5">Return value:</paragraph>
-<paragraph role="paragraph" id="par_id3156027" xml-lang="en-US" l10n="U" oldref="6">Bool</paragraph>
-<paragraph role="heading" id="hd_id3152924" xml-lang="en-US" level="2" l10n="U" oldref="7">Parameters:</paragraph>
-<paragraph role="paragraph" id="par_id3153990" xml-lang="en-US" l10n="U" oldref="8">
-<emph>Intexpression:</emph> Any integer expression that evaluates to the number of an open file.</paragraph>
-<paragraph role="paragraph" id="par_id3153527" xml-lang="en-US" l10n="U" oldref="9">Use EOF to avoid errors when you attempt to get input past the end of a file. When you use the Input or Get statement to read from a file, the file pointer is advanced by the number of bytes read. When the end of a file is reached, EOF returns the value "True" (-1).</paragraph>
+
+<paragraph id="hd_id3153539" role="heading" level="2" xml-lang="en-US">Return value:</paragraph>
+<paragraph id="par_id3156027" role="paragraph" xml-lang="en-US">Bool</paragraph>
+
+<paragraph id="hd_id3152924" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<paragraph id="par_id3153990" role="paragraph" xml-lang="en-US"> <emph>Intexpression:</emph> Any integer expression that evaluates to the number of an open file.</paragraph>
+<paragraph id="par_id3153527" role="paragraph" xml-lang="en-US">Use EOF to avoid errors when you attempt to get input past the end of a file. When you use the Input or Get statement to read from a file, the file pointer is advanced by the number of bytes read. When the end of a file is reached, EOF returns the value "True" (-1).</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 <embed href="text/sbasic/shared/00000003.xhp#err52"/>
-<paragraph role="heading" id="hd_id3154046" xml-lang="en-US" level="2" l10n="U" oldref="10">Example:</paragraph>
+
+<paragraph id="hd_id3154046" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
 <bascode>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleWorkWithAFile</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sLine As String</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sMsg As String</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    aFile = "c:\data.txt"</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Open aFile For Output As #iNumber</paragraph>
-<paragraph role="bascode" id="par_id3153360" xml-lang="en-US" l10n="U" oldref="19">    Print #iNumber, "First line of text"</paragraph>
-<paragraph role="bascode" id="par_id3148797" xml-lang="en-US" l10n="U" oldref="20">    Print #iNumber, "Another line of text"</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Open aFile For Input As iNumber</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    While Not eof(iNumber)</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">        Line Input #iNumber, sLine</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">        If sLine &lt;&gt;"" Then</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">            sMsg = sMsg &amp; sLine &amp; chr(13)</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">        End If</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Wend</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    MsgBox sMsg</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1341592032" role="bascode" localize="false" xml-lang="en-US">Sub ExampleWorkWithAFile</paragraph>
+<paragraph id="par_idm1341590784" role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
+<paragraph id="par_idm1341589552" role="bascode" localize="false" xml-lang="en-US">Dim sLine As String</paragraph>
+<paragraph id="par_idm1341588320" role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
+<paragraph id="par_idm1341587088" role="bascode" localize="false" xml-lang="en-US">Dim sMsg As String</paragraph>
+<paragraph id="par_idm1341585856" role="bascode" localize="false" xml-lang="en-US"> aFile = "c:\data.txt"</paragraph>
+<paragraph id="par_idm1341584608" role="bascode" localize="false" xml-lang="en-US"> iNumber = Freefile</paragraph>
+<paragraph id="par_idm1341583376" role="bascode" localize="false" xml-lang="en-US"> Open aFile For Output As #iNumber</paragraph>
+<paragraph id="par_id3153360" role="bascode" xml-lang="en-US"> Print #iNumber, "First line of text"</paragraph>
+<paragraph id="par_id3148797" role="bascode" xml-lang="en-US"> Print #iNumber, "Another line of text"</paragraph>
+<paragraph id="par_idm1341578592" role="bascode" localize="false" xml-lang="en-US"> Close #iNumber</paragraph>
+<paragraph id="par_idm1341577360" role="bascode" localize="false" xml-lang="en-US"> iNumber = Freefile</paragraph>
+<paragraph id="par_idm1341576128" role="bascode" localize="false" xml-lang="en-US"> Open aFile For Input As iNumber</paragraph>
+<paragraph id="par_idm1341574880" role="bascode" localize="false" xml-lang="en-US"> While Not eof(iNumber)</paragraph>
+<paragraph id="par_idm1341573632" role="bascode" localize="false" xml-lang="en-US"> Line Input #iNumber, sLine</paragraph>
+<paragraph id="par_idm1341572384" role="bascode" localize="false" xml-lang="en-US"> If sLine &lt;&gt;"" Then</paragraph>
+<paragraph id="par_idm1341571136" role="bascode" localize="false" xml-lang="en-US"> sMsg = sMsg &amp; sLine &amp; chr(13)</paragraph>
+<paragraph id="par_idm1341569872" role="bascode" localize="false" xml-lang="en-US"> End If</paragraph>
+<paragraph id="par_idm1341568640" role="bascode" localize="false" xml-lang="en-US"> Wend</paragraph>
+<paragraph id="par_idm1341567408" role="bascode" localize="false" xml-lang="en-US"> Close #iNumber</paragraph>
+<paragraph id="par_idm1341566176" role="bascode" localize="false" xml-lang="en-US"> MsgBox sMsg</paragraph>
+<paragraph id="par_idm1341564944" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
 </body>
+
 </helpdocument>

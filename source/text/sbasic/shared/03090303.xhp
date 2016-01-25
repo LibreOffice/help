@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
+<helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -17,58 +16,62 @@
  *   License, Version 2.0 (the "License"); you may not use this file
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
- -->
-	
-<helpdocument version="1.0">
+-->
+
 <meta>
-<topic id="textsbasicshared03090303xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">On...GoSub Statement; On...GoTo Statement [Runtime]</title>
-<filename>/text/sbasic/shared/03090303.xhp</filename>
-</topic>
-<history>
-<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-</history>
+  <topic id="textsbasicshared03090303xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">On...GoSub Statement; On...GoTo Statement [Runtime]</title>
+    <filename>/text/sbasic/shared/03090303.xhp</filename>
+  </topic>
 </meta>
+
 <body>
+
+
 <section id="ongosub">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3153897"><bookmark_value>On...GoSub statement</bookmark_value>
-<bookmark_value>On...GoTo statement</bookmark_value>
+<bookmark xml-lang="en-US" branch="index" id="bm_id3153897">
+  <bookmark_value>On...GoSub statement</bookmark_value>
+  <bookmark_value>On...GoTo statement</bookmark_value>
 </bookmark>
-<paragraph role="heading" id="hd_id3153897" xml-lang="en-US" level="1" l10n="U" oldref="1"><link href="text/sbasic/shared/03090303.xhp" name="On...GoSub Statement; On...GoTo Statement [Runtime]">On...GoSub Statement; On...GoTo Statement [Runtime]</link></paragraph>
-<paragraph role="paragraph" id="par_id3150359" xml-lang="en-US" l10n="U" oldref="2">Branches to one of several specified lines in the program code, depending on the value of a numeric expression.</paragraph>
+
+
+<paragraph id="hd_id3153897" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03090303.xhp" name="On...GoSub Statement; On...GoTo Statement [Runtime]">On...GoSub Statement; On...GoTo Statement [Runtime]</link></paragraph>
+<paragraph id="par_id3150359" role="paragraph" xml-lang="en-US">Branches to one of several specified lines in the program code, depending on the value of a numeric expression.</paragraph>
 </section>
-<paragraph role="heading" id="hd_id3148798" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
+
+<paragraph id="hd_id3148798" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
 <bascode>
-<paragraph role="bascode" id="par_id3154366" xml-lang="en-US" oldref="4">On N GoSub Label1[, Label2[, Label3[,...]]]</paragraph>
-<paragraph role="bascode" id="par_id3150769" xml-lang="en-US" oldref="5">On NumExpression GoTo Label1[, Label2[, Label3[,...]]]</paragraph>
+<paragraph id="par_id3154366" role="bascode" xml-lang="en-US">On N GoSub Label1[, Label2[, Label3[,...]]]</paragraph>
+<paragraph id="par_id3150769" role="bascode" xml-lang="en-US">On NumExpression GoTo Label1[, Label2[, Label3[,...]]]</paragraph>
 </bascode>
-<paragraph role="heading" id="hd_id3156215" xml-lang="en-US" level="2" l10n="U" oldref="6">Parameters:</paragraph>
-<paragraph role="paragraph" id="par_id3148673" xml-lang="en-US" l10n="U" oldref="7">
-<emph>NumExpression:</emph> Any numeric expression between 0 and 255 that determines which of the lines the program branches to. If NumExpression is 0, the statement is not executed. If NumExpression is greater than 0, the program jumps to the label that has a position number that corresponds to the expression (1 = First label; 2 = Second label)</paragraph>
-<paragraph role="paragraph" id="par_id3153194" xml-lang="en-US" l10n="U" oldref="8">
-<emph>Label:</emph> Target line according to<emph> GoTo </emph>or <emph>GoSub</emph> structure.</paragraph>
-<paragraph role="note" id="par_id3156442" xml-lang="en-US" l10n="U" oldref="9">The <emph>GoTo</emph> or <emph>GoSub </emph>conventions are valid.</paragraph>
-<paragraph role="heading" id="hd_id3148645" xml-lang="en-US" level="2" l10n="U" oldref="10">Example:</paragraph>
+
+<paragraph id="hd_id3156215" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<paragraph id="par_id3148673" role="paragraph" xml-lang="en-US"> <emph>NumExpression:</emph> Any numeric expression between 0 and 255 that determines which of the lines the program branches to. If NumExpression is 0, the statement is not executed. If NumExpression is greater than 0, the program jumps to the label that has a position number that corresponds to the expression (1 = First label; 2 = Second label)</paragraph>
+<paragraph id="par_id3153194" role="paragraph" xml-lang="en-US"> <emph>Label:</emph> Target line according to<emph> GoTo </emph>or <emph>GoSub</emph> structure.</paragraph>
+<paragraph id="par_id3156442" role="note" xml-lang="en-US">The <emph>GoTo</emph> or <emph>GoSub </emph>conventions are valid.</paragraph>
+
+<paragraph id="hd_id3148645" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
 <bascode>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleOnGosub</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim iVar As Integer</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sVar As String</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    iVar = 2</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    sVar =""</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    On iVar GoSub Sub1, Sub2</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    On iVar GoTo Line1, Line2</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Exit Sub</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Sub1:</paragraph>
-<paragraph role="bascode" id="par_id3153948" xml-lang="en-US" l10n="U" oldref="21">    sVar =sVar &amp; " From Sub 1 to" : Return</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Sub2:</paragraph>
-<paragraph role="bascode" id="par_id3153708" xml-lang="en-US" l10n="U" oldref="23">    sVar =sVar &amp; " From Sub 2 to" : Return</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Line1:</paragraph>
-<paragraph role="bascode" id="par_id3150321" xml-lang="en-US" l10n="U" oldref="25">    sVar =sVar &amp; " Label 1" : GoTo Ende</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Line2:</paragraph>
-<paragraph role="bascode" id="par_id3155764" xml-lang="en-US" l10n="U" oldref="27">    sVar =sVar &amp; " Label 2"</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Ende:</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    MsgBox sVar,0,"On...GoSub"</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1341610144" role="bascode" localize="false" xml-lang="en-US">Sub ExampleOnGosub</paragraph>
+<paragraph id="par_idm1341608912" role="bascode" localize="false" xml-lang="en-US">Dim iVar As Integer</paragraph>
+<paragraph id="par_idm1341607680" role="bascode" localize="false" xml-lang="en-US">Dim sVar As String</paragraph>
+<paragraph id="par_idm1341606448" role="bascode" localize="false" xml-lang="en-US"> iVar = 2</paragraph>
+<paragraph id="par_idm1341605216" role="bascode" localize="false" xml-lang="en-US"> sVar =""</paragraph>
+<paragraph id="par_idm1341603984" role="bascode" localize="false" xml-lang="en-US"> On iVar GoSub Sub1, Sub2</paragraph>
+<paragraph id="par_idm1341602736" role="bascode" localize="false" xml-lang="en-US"> On iVar GoTo Line1, Line2</paragraph>
+<paragraph id="par_idm1341601488" role="bascode" localize="false" xml-lang="en-US"> Exit Sub</paragraph>
+<paragraph id="par_idm1341600256" role="bascode" localize="false" xml-lang="en-US">Sub1:</paragraph>
+<paragraph id="par_id3153948" role="bascode" xml-lang="en-US"> sVar =sVar &amp; " From Sub 1 to" : Return</paragraph>
+<paragraph id="par_idm1341597216" role="bascode" localize="false" xml-lang="en-US">Sub2:</paragraph>
+<paragraph id="par_id3153708" role="bascode" xml-lang="en-US"> sVar =sVar &amp; " From Sub 2 to" : Return</paragraph>
+<paragraph id="par_idm1341594128" role="bascode" localize="false" xml-lang="en-US">Line1:</paragraph>
+<paragraph id="par_id3150321" role="bascode" xml-lang="en-US"> sVar =sVar &amp; " Label 1" : GoTo Ende</paragraph>
+<paragraph id="par_idm1341591088" role="bascode" localize="false" xml-lang="en-US">Line2:</paragraph>
+<paragraph id="par_id3155764" role="bascode" xml-lang="en-US"> sVar =sVar &amp; " Label 2"</paragraph>
+<paragraph id="par_idm1341588128" role="bascode" localize="false" xml-lang="en-US">Ende:</paragraph>
+<paragraph id="par_idm1341586896" role="bascode" localize="false" xml-lang="en-US"> MsgBox sVar,0,"On...GoSub"</paragraph>
+<paragraph id="par_idm1341585648" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
 </body>
+
 </helpdocument>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
+<helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -17,61 +16,68 @@
  *   License, Version 2.0 (the "License"); you may not use this file
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
- -->
-	
-<helpdocument version="1.0">
+-->
+
 <meta>
-<topic id="textsbasicshared03020102xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">FreeFile Function[Runtime]</title>
-<filename>/text/sbasic/shared/03020102.xhp</filename>
-</topic>
-<history>
-<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-</history>
+  <topic id="textsbasicshared03020102xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">FreeFile Function[Runtime]</title>
+    <filename>/text/sbasic/shared/03020102.xhp</filename>
+  </topic>
 </meta>
+
 <body>
+
+
 <section id="freefile">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3150400"><bookmark_value>FreeFile function</bookmark_value>
+<bookmark xml-lang="en-US" branch="index" id="bm_id3150400">
+  <bookmark_value>FreeFile function</bookmark_value>
 </bookmark>
-<paragraph role="heading" id="hd_id3150400" xml-lang="en-US" level="1" l10n="U" oldref="1"><link href="text/sbasic/shared/03020102.xhp" name="FreeFile Function[Runtime]">FreeFile Function[Runtime]</link></paragraph>
-<paragraph role="paragraph" id="par_id3154366" xml-lang="en-US" l10n="U" oldref="2">Returns the next available file number for opening a file. Use this function to open a file using a file number that is not already in use by a currently open file.</paragraph>
+
+
+<paragraph id="hd_id3150400" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03020102.xhp" name="FreeFile Function[Runtime]">FreeFile Function[Runtime]</link></paragraph>
+<paragraph id="par_id3154366" role="paragraph" xml-lang="en-US">Returns the next available file number for opening a file. Use this function to open a file using a file number that is not already in use by a currently open file.</paragraph>
 </section>
-<paragraph role="heading" id="hd_id3150769" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
+
+<paragraph id="hd_id3150769" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
 <bascode>
-<paragraph role="bascode" localize="false" xml-lang="en-US">FreeFile</paragraph>
+<paragraph id="par_idm1341602048" role="bascode" localize="false" xml-lang="en-US">FreeFile</paragraph>
 </bascode>
-<paragraph role="heading" id="hd_id3151042" xml-lang="en-US" level="2" l10n="U" oldref="5">Return value:</paragraph>
-<paragraph role="paragraph" id="par_id3150440" xml-lang="en-US" l10n="U" oldref="6">Integer</paragraph>
-<paragraph role="heading" id="hd_id3148576" xml-lang="en-US" level="2" l10n="U" oldref="7">Parameters:</paragraph>
-<paragraph role="paragraph" id="par_id3155854" xml-lang="en-US" l10n="U" oldref="8">This function can only be used immediately in front of an Open statement. FreeFile returns the next available file number, but does not reserve it.</paragraph>
+
+<paragraph id="hd_id3151042" role="heading" level="2" xml-lang="en-US">Return value:</paragraph>
+<paragraph id="par_id3150440" role="paragraph" xml-lang="en-US">Integer</paragraph>
+
+<paragraph id="hd_id3148576" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<paragraph id="par_id3155854" role="paragraph" xml-lang="en-US">This function can only be used immediately in front of an Open statement. FreeFile returns the next available file number, but does not reserve it.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 <embed href="text/sbasic/shared/00000003.xhp#err67"/>
-<paragraph role="heading" id="hd_id3159153" xml-lang="en-US" level="2" l10n="U" oldref="9">Example:</paragraph>
+
+<paragraph id="hd_id3159153" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
 <bascode>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleWorkWithAFile</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sLine As String</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim sMsg As String</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    aFile = "c:\data.txt"</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    sMsg = ""</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Open aFile For Output As #iNumber</paragraph>
-<paragraph role="bascode" id="par_id3155416" xml-lang="en-US" l10n="U" oldref="18">    Print #iNumber, "First line of text"</paragraph>
-<paragraph role="bascode" id="par_id3153416" xml-lang="en-US" l10n="U" oldref="19">    Print #iNumber, "Another line of text"</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Open aFile For Input As #iNumber</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    While Not eof(#iNumber)</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">        Line Input #iNumber, sLine</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">        If sLine &lt;&gt;"" Then</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">            sMsg = sMsg &amp; sLine &amp; chr(13)</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">        End If</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Wend</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    MsgBox sMsg</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1341589136" role="bascode" localize="false" xml-lang="en-US">Sub ExampleWorkWithAFile</paragraph>
+<paragraph id="par_idm1341587888" role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
+<paragraph id="par_idm1341586656" role="bascode" localize="false" xml-lang="en-US">Dim sLine As String</paragraph>
+<paragraph id="par_idm1341585424" role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
+<paragraph id="par_idm1341584192" role="bascode" localize="false" xml-lang="en-US">Dim sMsg As String</paragraph>
+<paragraph id="par_idm1341582960" role="bascode" localize="false" xml-lang="en-US"> aFile = "c:\data.txt"</paragraph>
+<paragraph id="par_idm1341581712" role="bascode" localize="false" xml-lang="en-US"> sMsg = ""</paragraph>
+<paragraph id="par_idm1341580480" role="bascode" localize="false" xml-lang="en-US"> iNumber = Freefile</paragraph>
+<paragraph id="par_idm1341579248" role="bascode" localize="false" xml-lang="en-US"> Open aFile For Output As #iNumber</paragraph>
+<paragraph id="par_id3155416" role="bascode" xml-lang="en-US"> Print #iNumber, "First line of text"</paragraph>
+<paragraph id="par_id3153416" role="bascode" xml-lang="en-US"> Print #iNumber, "Another line of text"</paragraph>
+<paragraph id="par_idm1341574464" role="bascode" localize="false" xml-lang="en-US"> Close #iNumber</paragraph>
+<paragraph id="par_idm1341573232" role="bascode" localize="false" xml-lang="en-US"> iNumber = Freefile</paragraph>
+<paragraph id="par_idm1341572000" role="bascode" localize="false" xml-lang="en-US"> Open aFile For Input As #iNumber</paragraph>
+<paragraph id="par_idm1341570752" role="bascode" localize="false" xml-lang="en-US"> While Not eof(#iNumber)</paragraph>
+<paragraph id="par_idm1341569504" role="bascode" localize="false" xml-lang="en-US"> Line Input #iNumber, sLine</paragraph>
+<paragraph id="par_idm1341568256" role="bascode" localize="false" xml-lang="en-US"> If sLine &lt;&gt;"" Then</paragraph>
+<paragraph id="par_idm1341567008" role="bascode" localize="false" xml-lang="en-US"> sMsg = sMsg &amp; sLine &amp; chr(13)</paragraph>
+<paragraph id="par_idm1341565744" role="bascode" localize="false" xml-lang="en-US"> End If</paragraph>
+<paragraph id="par_idm1341564512" role="bascode" localize="false" xml-lang="en-US"> Wend</paragraph>
+<paragraph id="par_idm1341563280" role="bascode" localize="false" xml-lang="en-US"> Close #iNumber</paragraph>
+<paragraph id="par_idm1341562048" role="bascode" localize="false" xml-lang="en-US"> MsgBox sMsg</paragraph>
+<paragraph id="par_idm1341560816" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
 </body>
+
 </helpdocument>

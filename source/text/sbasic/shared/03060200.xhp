@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
+<helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -17,48 +16,52 @@
  *   License, Version 2.0 (the "License"); you may not use this file
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
- -->
-	
-<helpdocument version="1.0">
+-->
+
 <meta>
-<topic id="textsbasicshared03060200xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">Eqv Operator [Runtime]</title>
-<filename>/text/sbasic/shared/03060200.xhp</filename>
-</topic>
-<history>
-<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-</history>
+  <topic id="textsbasicshared03060200xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Eqv Operator [Runtime]</title>
+    <filename>/text/sbasic/shared/03060200.xhp</filename>
+  </topic>
 </meta>
+
 <body>
+
+
 <section id="eqv">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3156344"><bookmark_value>Eqv operator (logical)</bookmark_value>
+<bookmark xml-lang="en-US" branch="index" id="bm_id3156344">
+  <bookmark_value>Eqv operator (logical)</bookmark_value>
 </bookmark>
-<paragraph role="heading" id="hd_id3156344" xml-lang="en-US" level="1" l10n="CHG" oldref="1"><link href="text/sbasic/shared/03060200.xhp" name="Eqv Operator [Runtime]">Eqv Operator [Runtime]</link></paragraph>
-<paragraph role="paragraph" id="par_id3149656" xml-lang="en-US" l10n="U" oldref="2">Calculates the logical equivalence of two expressions.</paragraph>
+
+
+<paragraph id="hd_id3156344" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03060200.xhp" name="Eqv Operator [Runtime]">Eqv Operator [Runtime]</link></paragraph>
+<paragraph id="par_id3149656" role="paragraph" xml-lang="en-US">Calculates the logical equivalence of two expressions.</paragraph>
 </section>
-<paragraph role="heading" id="hd_id3154367" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
+
+<paragraph id="hd_id3154367" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
 <bascode>
-<paragraph role="bascode" id="par_id3154910" xml-lang="en-US" oldref="4">Result = Expression1 Eqv Expression2</paragraph>
+<paragraph id="par_id3154910" role="bascode" xml-lang="en-US">Result = Expression1 Eqv Expression2</paragraph>
 </bascode>
-<paragraph role="heading" id="hd_id3151043" xml-lang="en-US" level="2" l10n="U" oldref="5">Parameters:</paragraph>
-<paragraph role="paragraph" id="par_id3150869" xml-lang="en-US" l10n="U" oldref="6">
-<emph>Result:</emph> Any numeric variable that contains the result of the comparison.</paragraph>
-<paragraph role="paragraph" id="par_id3150448" xml-lang="en-US" l10n="U" oldref="7">
-<emph>Expression1, Expression2:</emph> Any expressions that you want to compare.</paragraph>
-<paragraph role="paragraph" id="par_id3149562" xml-lang="en-US" l10n="U" oldref="8">When testing for equivalence between Boolean expressions, the result is <emph>True</emph> if both expressions are either <emph>True</emph> or <emph>False</emph>.</paragraph>
-<paragraph role="paragraph" id="par_id3154319" xml-lang="en-US" l10n="U" oldref="9">In a bit-wise comparison, the Eqv operator only sets the corresponding bit in the result if a bit is set in both expressions, or in neither expression.</paragraph>
-<paragraph role="heading" id="hd_id3159154" xml-lang="en-US" level="2" l10n="U" oldref="10">Example:</paragraph>
+
+<paragraph id="hd_id3151043" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<paragraph id="par_id3150869" role="paragraph" xml-lang="en-US"> <emph>Result:</emph> Any numeric variable that contains the result of the comparison.</paragraph>
+<paragraph id="par_id3150448" role="paragraph" xml-lang="en-US"> <emph>Expression1, Expression2:</emph> Any expressions that you want to compare.</paragraph>
+<paragraph id="par_id3149562" role="paragraph" xml-lang="en-US">When testing for equivalence between Boolean expressions, the result is <emph>True</emph> if both expressions are either <emph>True</emph> or <emph>False</emph>.</paragraph>
+<paragraph id="par_id3154319" role="paragraph" xml-lang="en-US">In a bit-wise comparison, the Eqv operator only sets the corresponding bit in the result if a bit is set in both expressions, or in neither expression.</paragraph>
+
+<paragraph id="hd_id3159154" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
 <bascode>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleEqv</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim A As Variant, B As Variant, C As Variant, D As Variant<comment>see #i38265</comment></paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Dim vOut As Variant</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    A = 10: B = 8: C = 6: D = Null</paragraph>
-<paragraph role="bascode" id="par_id3152462" xml-lang="en-US" l10n="U" oldref="15">    vOut = A &gt; B Eqv B &gt; C ' returns -1</paragraph>
-<paragraph role="bascode" id="par_id3153191" xml-lang="en-US" l10n="CHG" oldref="16">    vOut = B &gt; A Eqv B &gt; C ' returns 0</paragraph>
-<paragraph role="bascode" id="par_id3145799" xml-lang="en-US" l10n="CHG" oldref="17">    vOut = A &gt; B Eqv B &gt; D ' returns 0</paragraph>
-<paragraph role="bascode" id="par_id3149412" xml-lang="en-US" l10n="CHG" oldref="18">    vOut = (B &gt; D Eqv B &gt; A) ' returns -1</paragraph>
-<paragraph role="bascode" id="par_id3149959" xml-lang="en-US" l10n="CHG" oldref="19">    vOut = B Eqv A ' returns -3</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1341574288" role="bascode" localize="false" xml-lang="en-US">Sub ExampleEqv</paragraph>
+<paragraph id="par_idm1341573056" role="bascode" localize="false" xml-lang="en-US">Dim A As Variant, B As Variant, C As Variant, D As Variant<comment>see #i38265</comment></paragraph>
+<paragraph id="par_idm1341571488" role="bascode" localize="false" xml-lang="en-US">Dim vOut As Variant</paragraph>
+<paragraph id="par_idm1341570256" role="bascode" localize="false" xml-lang="en-US"> A = 10: B = 8: C = 6: D = Null</paragraph>
+<paragraph id="par_id3152462" role="bascode" xml-lang="en-US"> vOut = A &gt; B Eqv B &gt; C ' returns -1</paragraph>
+<paragraph id="par_id3153191" role="bascode" xml-lang="en-US"> vOut = B &gt; A Eqv B &gt; C ' returns 0</paragraph>
+<paragraph id="par_id3145799" role="bascode" xml-lang="en-US"> vOut = A &gt; B Eqv B &gt; D ' returns 0</paragraph>
+<paragraph id="par_id3149412" role="bascode" xml-lang="en-US"> vOut = (B &gt; D Eqv B &gt; A) ' returns -1</paragraph>
+<paragraph id="par_id3149959" role="bascode" xml-lang="en-US"> vOut = B Eqv A ' returns -3</paragraph>
+<paragraph id="par_idm1341560048" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
 </body>
+
 </helpdocument>

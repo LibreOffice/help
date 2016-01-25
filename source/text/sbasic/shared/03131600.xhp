@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
+<helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -17,48 +16,55 @@
  *   License, Version 2.0 (the "License"); you may not use this file
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
- -->
-	
-<helpdocument version="1.0">
+-->
+
 <meta>
-<topic id="textsbasicshared03131600xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">CreateUnoService Function [Runtime]</title>
-<filename>/text/sbasic/shared/03131600.xhp</filename>
-</topic>
-<history>
-<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-</history>
+  <topic id="textsbasicshared03131600xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">CreateUnoService Function [Runtime]</title>
+    <filename>/text/sbasic/shared/03131600.xhp</filename>
+  </topic>
 </meta>
+
 <body>
+
+
 <section id="createunoservice">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3150682"><bookmark_value>CreateUnoService function</bookmark_value>
+<bookmark xml-lang="en-US" branch="index" id="bm_id3150682">
+  <bookmark_value>CreateUnoService function</bookmark_value>
 </bookmark>
-<paragraph role="heading" id="hd_id3150682" xml-lang="en-US" level="1" l10n="U" oldref="1"><link href="text/sbasic/shared/03131600.xhp" name="CreateUnoService Function [Runtime]">CreateUnoService Function [Runtime]</link></paragraph>
-<paragraph role="paragraph" id="par_id3152924" xml-lang="en-US" l10n="U" oldref="2">Instantiates a Uno service with the ProcessServiceManager.</paragraph>
+
+
+<paragraph id="hd_id3150682" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03131600.xhp" name="CreateUnoService Function [Runtime]">CreateUnoService Function [Runtime]</link></paragraph>
+<paragraph id="par_id3152924" role="paragraph" xml-lang="en-US">Instantiates a Uno service with the ProcessServiceManager.</paragraph>
 </section>
-<paragraph role="heading" id="hd_id3152801" xml-lang="en-US" level="2" l10n="U" oldref="3">Syntax:</paragraph>
+
+<paragraph id="hd_id3152801" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
 <bascode>
-<paragraph role="bascode" id="par_id3153346" xml-lang="en-US" oldref="4">oService = CreateUnoService( Uno service name )</paragraph>
+<paragraph id="par_id3153346" role="bascode" xml-lang="en-US">oService = CreateUnoService( Uno service name )</paragraph>
 </bascode>
-<paragraph role="paragraph" id="par_idN1060F" xml-lang="en-US">For a list of available services, go to: http://api.libreoffice.org/docs/common/ref/com/sun/star/module-ix.html</paragraph>
-<paragraph role="heading" id="hd_id3151111" xml-lang="en-US" level="2" l10n="U" oldref="5">Examples:</paragraph>
-<paragraph role="paragraph" id="par_id3154046" xml-lang="en-US" l10n="U" oldref="6">oIntrospection = CreateUnoService( "com.sun.star.beans.Introspection" )</paragraph>
-<bookmark xml-lang="en-US" branch="index" id="bm_id8334604"><bookmark_value>filepicker;API service</bookmark_value>
+<paragraph id="par_idN1060F" role="paragraph" xml-lang="en-US">For a list of available services, go to: http://api.libreoffice.org/docs/common/ref/com/sun/star/module-ix.html</paragraph>
+
+<paragraph id="hd_id3151111" role="heading" level="2" xml-lang="en-US">Examples:</paragraph>
+<paragraph id="par_id3154046" role="paragraph" xml-lang="en-US">oIntrospection = CreateUnoService( "com.sun.star.beans.Introspection" )</paragraph>
+<bookmark xml-lang="en-US" branch="index" id="bm_id8334604">
+  <bookmark_value>filepicker;API service</bookmark_value>
 </bookmark>
-<paragraph role="paragraph" id="par_idN10625" xml-lang="en-US" l10n="NEW">The following code uses a service to open a file open dialog:</paragraph>
+
+<paragraph id="par_idN10625" role="paragraph" xml-lang="en-US">The following code uses a service to open a file open dialog:</paragraph>
 <bascode>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Sub Main</paragraph>
-<paragraph role="bascode" id="par_idN1062B" xml-lang="en-US">    fName = FileOpenDialog ("Please select a file")</paragraph>
-<paragraph role="bascode" id="par_idN10630" xml-lang="en-US">    Print "file chosen: "+fName</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US"> </paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Function FileOpenDialog(title As String) As String</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    filepicker = createUnoService("com.sun.star.ui.dialogs.FilePicker")</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    filepicker.Title = title</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    filepicker.execute()</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    files = filepicker.getFiles()</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    FileOpenDialog=files(0)</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">End Function</paragraph>
+<paragraph id="par_idm1206777616" role="bascode" localize="false" xml-lang="en-US">Sub Main</paragraph>
+<paragraph id="par_idN1062B" role="bascode" xml-lang="en-US"> fName = FileOpenDialog ("Please select a file")</paragraph>
+<paragraph id="par_idN10630" role="bascode" xml-lang="en-US"> Print "file chosen: "+fName</paragraph>
+<paragraph id="par_idm1206774256" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1206773152" role="bascode" localize="false" xml-lang="en-US"> </paragraph>
+<paragraph id="par_idm1206772000" role="bascode" localize="false" xml-lang="en-US">Function FileOpenDialog(title As String) As String</paragraph>
+<paragraph id="par_idm1206770832" role="bascode" localize="false" xml-lang="en-US"> filepicker = createUnoService("com.sun.star.ui.dialogs.FilePicker")</paragraph>
+<paragraph id="par_idm1206769648" role="bascode" localize="false" xml-lang="en-US"> filepicker.Title = title</paragraph>
+<paragraph id="par_idm1206768496" role="bascode" localize="false" xml-lang="en-US"> filepicker.execute()</paragraph>
+<paragraph id="par_idm1206767344" role="bascode" localize="false" xml-lang="en-US"> files = filepicker.getFiles()</paragraph>
+<paragraph id="par_idm1206766192" role="bascode" localize="false" xml-lang="en-US"> FileOpenDialog=files(0)</paragraph>
+<paragraph id="par_idm1206765040" role="bascode" localize="false" xml-lang="en-US">End Function</paragraph>
 </bascode>
 </body>
+
 </helpdocument>

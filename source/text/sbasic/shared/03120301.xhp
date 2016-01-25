@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
+<helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -17,87 +16,82 @@
  *   License, Version 2.0 (the "License"); you may not use this file
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
- -->
-	
-<helpdocument version="1.0">
+-->
+
 <meta>
-<topic id="textsbasicshared03120301xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">Format Function [Runtime]</title>
-<filename>/text/sbasic/shared/03120301.xhp</filename>
-</topic>
-<history>
-<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-</history>
+  <topic id="textsbasicshared03120301xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Format Function [Runtime]</title>
+    <filename>/text/sbasic/shared/03120301.xhp</filename>
+  </topic>
 </meta>
+
 <body>
+
+
 <section id="format">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3153539"><bookmark_value>Format function</bookmark_value>
+<bookmark xml-lang="en-US" branch="index" id="bm_id3153539">
+  <bookmark_value>Format function</bookmark_value>
 </bookmark>
-<paragraph role="heading" id="hd_id3153539" xml-lang="en-US" level="1" l10n="U" oldref="1"><link href="text/sbasic/shared/03120301.xhp" name="Format Function [Runtime]">Format Function [Runtime]</link></paragraph>
-<paragraph role="paragraph" id="par_id3156042" xml-lang="en-US" l10n="U" oldref="2">Converts a number to a string, and then formats it according to the format that you specify.</paragraph>
+
+
+<paragraph id="hd_id3153539" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03120301.xhp" name="Format Function [Runtime]">Format Function [Runtime]</link></paragraph>
+<paragraph id="par_id3156042" role="paragraph" xml-lang="en-US">Converts a number to a string, and then formats it according to the format that you specify.</paragraph>
 </section>
-<paragraph role="heading" id="hd_id3145090" xml-lang="en-US" level="2" l10n="U" oldref="4">Syntax:</paragraph>
+
+<paragraph id="hd_id3145090" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
 <bascode>
-<paragraph role="bascode" id="par_id3153527" xml-lang="en-US" oldref="5">Format (Number [, Format As String])</paragraph>
+<paragraph id="par_id3153527" role="bascode" xml-lang="en-US">Format (Number [, Format As String])</paragraph>
 </bascode>
-<paragraph role="heading" id="hd_id3149178" xml-lang="en-US" level="2" l10n="U" oldref="6">Return value:</paragraph>
-<paragraph role="paragraph" id="par_id3148474" xml-lang="en-US" l10n="U" oldref="7">String</paragraph>
-<paragraph role="heading" id="hd_id3159176" xml-lang="en-US" level="2" l10n="U" oldref="8">Parameters:</paragraph>
-<paragraph role="paragraph" id="par_id3149415" xml-lang="en-US" l10n="U" oldref="9">
-<emph>Number:</emph> Numeric expression that you want to convert to a formatted string.</paragraph>
-<paragraph role="paragraph" id="par_id3147531" xml-lang="en-US" l10n="U" oldref="10">
-<emph>Format:</emph> String that specifies the format code for the number. If <emph>Format</emph> is omitted, the Format function works like the <emph>Str</emph> function.</paragraph>
-<paragraph role="heading" id="hd_id3147561" xml-lang="en-US" level="2" l10n="U" oldref="47">Formatting Codes</paragraph>
-<paragraph role="paragraph" id="par_id3147265" xml-lang="en-US" l10n="U" oldref="11">The following list describes the codes that you can use for formatting a number:</paragraph>
-<paragraph role="paragraph" id="par_id3153380" xml-lang="en-US" l10n="U" oldref="12">
-<emph>0:</emph> If <emph>Number</emph> has a digit at the position of the 0 in the format code, the digit is displayed, otherwise a zero is displayed.</paragraph>
-<paragraph role="paragraph" id="par_id3151210" xml-lang="en-US" l10n="U" oldref="13">If <emph>Number</emph> has fewer digits than the number of zeros in the format code, (on either side of the decimal), leading or trailing zeros are displayed. If the number has more digits to the left of the decimal separator than the amount of zeros in the format code, the additional digits are displayed without formatting.</paragraph>
-<paragraph role="paragraph" id="par_id3151176" xml-lang="en-US" l10n="U" oldref="14">Decimal places in the number are rounded according to the number of zeros that appear after the decimal separator in the <emph>Format </emph>code.</paragraph>
-<paragraph role="paragraph" id="par_id3154123" xml-lang="en-US" l10n="U" oldref="15">
-<emph>#:</emph> If <emph>Number</emph> contains a digit at the position of the # placeholder in the <emph>Format</emph> code, the digit is displayed, otherwise nothing is displayed at this position.</paragraph>
-<paragraph role="paragraph" id="par_id3148452" xml-lang="en-US" l10n="U" oldref="16">This symbol works like the 0, except that leading or trailing zeroes are not displayed if there are more # characters in the format code than digits in the number. Only the relevant digits of the number are displayed.</paragraph>
-<paragraph role="paragraph" id="par_id3159150" xml-lang="en-US" l10n="U" oldref="17">
-<emph>.:</emph> The decimal placeholder determines the number of decimal places to the left and right of the decimal separator.</paragraph>
-<paragraph role="paragraph" id="par_id3159252" xml-lang="en-US" l10n="U" oldref="18">If the format code contains only # placeholders to the left of this symbol, numbers less than 1 begin with a decimal separator. To always display a leading zero with fractional numbers, use 0 as a placeholder for the first digit to the left of the decimal separator.</paragraph>
-<paragraph role="paragraph" id="par_id3153368" xml-lang="en-US" l10n="U" oldref="19">
-<emph>%:</emph> Multiplies the number by 100 and inserts the percent sign (%) where the number appears in the format code.</paragraph>
-<paragraph role="paragraph" id="par_id3149481" xml-lang="en-US" l10n="U" oldref="20">
-<emph>E- E+ e- e+ :</emph> If the format code contains at least one digit placeholder (0 or #) to the right of the symbol E-, E+, e-, or e+, the number is formatted in the scientific or exponential format. The letter E or e is inserted between the number and the exponent. The number of placeholders for digits to the right of the symbol determines the number of digits in the exponent.</paragraph>
-<paragraph role="paragraph" id="par_id3149262" xml-lang="en-US" l10n="U" oldref="21">If the exponent is negative, a minus sign is displayed directly before an exponent with E-, E+, e-, e+. If the exponent is positive, a plus sign is only displayed before exponents with E+ or e+.</paragraph>
-<paragraph role="paragraph" id="par_id3148617" xml-lang="en-US" l10n="U" oldref="23">The thousands delimiter is displayed if the format code contains the delimiter enclosed by digit placeholders (0 or #).</paragraph>
-<paragraph role="paragraph" id="par_id3163713" xml-lang="en-US" l10n="CHG" oldref="29">The use of a period as a thousands and decimal separator is dependent on the regional setting. When you enter a number directly in Basic source code, always use a period as decimal delimiter. The actual character displayed as a decimal separator depends on the number format in your system settings.</paragraph>
-<paragraph role="paragraph" id="par_id3152887" xml-lang="en-US" l10n="U" oldref="24">
-<emph>- + $ ( ) space:</emph> A plus (+), minus (-), dollar ($), space, or brackets entered directly in the format code is displayed as a literal character.</paragraph>
-<paragraph role="paragraph" id="par_id3148576" xml-lang="en-US" l10n="U" oldref="25">To display characters other than the ones listed here, you must precede it by a backslash (\), or enclose it in quotation marks (" ").</paragraph>
-<paragraph role="paragraph" id="par_id3153139" xml-lang="en-US" l10n="U" oldref="26">\ : The backslash displays the next character in the format code.</paragraph>
-<paragraph role="paragraph" id="par_id3153366" xml-lang="en-US" l10n="U" oldref="27">Characters in the format code that have a special meaning can only be displayed as literal characters if they are preceded by a backslash. The backslash itself is not displayed, unless you enter a double backslash (\\) in the format code.</paragraph>
-<paragraph role="paragraph" id="par_id3155411" xml-lang="en-US" l10n="U" oldref="28">Characters that must be preceded by a backslash in the format code in order to be displayed as literal characters are date- and time-formatting characters (a, c, d, h, m, n, p, q, s, t, w, y, /, :), numeric-formatting characters (#, 0, %, E, e, comma, period), and string-formatting characters (@, &amp;, &lt;, &gt;, !).</paragraph>
-<paragraph role="paragraph" id="par_id3145749" xml-lang="en-US" l10n="U" oldref="30">You can also use the following predefined number formats. Except for "General Number", all of the predefined format codes return the number as a decimal number with two decimal places.</paragraph>
-<paragraph role="paragraph" id="par_id3150113" xml-lang="en-US" l10n="U" oldref="31">If you use predefined formats, the name of the format must be enclosed in quotation marks.</paragraph>
-<paragraph role="heading" id="hd_id3149377" xml-lang="en-US" level="2" l10n="U" oldref="32">Predefined format</paragraph>
-<paragraph role="paragraph" id="par_id3154730" xml-lang="en-US" l10n="U" oldref="33">
-<emph>General Number:</emph> Numbers are displayed as entered.</paragraph>
-<paragraph role="paragraph" id="par_id3153158" xml-lang="en-US" l10n="U" oldref="34">
-<emph>Currency:</emph> Inserts a dollar sign in front of the number and encloses negative numbers in brackets.</paragraph>
-<paragraph role="paragraph" id="par_id3154490" xml-lang="en-US" l10n="U" oldref="35">
-<emph>Fixed:</emph> Displays at least one digit in front of the decimal separator.</paragraph>
-<paragraph role="paragraph" id="par_id3153415" xml-lang="en-US" l10n="U" oldref="36">
-<emph>Standard:</emph> Displays numbers with a thousands separator.</paragraph>
-<paragraph role="paragraph" id="par_id3150715" xml-lang="en-US" l10n="U" oldref="37">
-<emph>Percent:</emph> Multiplies the number by 100 and appends a percent sign to the number.</paragraph>
-<paragraph role="paragraph" id="par_id3153836" xml-lang="en-US" l10n="U" oldref="38">
-<emph>Scientific:</emph> Displays numbers in scientific format (for example, 1.00E+03 for 1000).</paragraph>
-<paragraph role="paragraph" id="par_id3153707" xml-lang="en-US" l10n="U" oldref="39">A format code can be divided into three sections that are separated by semicolons. The first part defines the format for positive values, the second part for negative values, and the third part for zero. If you only specify one format code, it applies to all numbers.</paragraph>
+
+<paragraph id="hd_id3149178" role="heading" level="2" xml-lang="en-US">Return value:</paragraph>
+<paragraph id="par_id3148474" role="paragraph" xml-lang="en-US">String</paragraph>
+
+<paragraph id="hd_id3159176" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<paragraph id="par_id3149415" role="paragraph" xml-lang="en-US"> <emph>Number:</emph> Numeric expression that you want to convert to a formatted string.</paragraph>
+<paragraph id="par_id3147531" role="paragraph" xml-lang="en-US"> <emph>Format:</emph> String that specifies the format code for the number. If <emph>Format</emph> is omitted, the Format function works like the <emph>Str</emph> function.</paragraph>
+
+<paragraph id="hd_id3147561" role="heading" level="2" xml-lang="en-US">Formatting Codes</paragraph>
+<paragraph id="par_id3147265" role="paragraph" xml-lang="en-US">The following list describes the codes that you can use for formatting a number:</paragraph>
+<paragraph id="par_id3153380" role="paragraph" xml-lang="en-US"> <emph>0:</emph> If <emph>Number</emph> has a digit at the position of the 0 in the format code, the digit is displayed, otherwise a zero is displayed.</paragraph>
+<paragraph id="par_id3151210" role="paragraph" xml-lang="en-US">If <emph>Number</emph> has fewer digits than the number of zeros in the format code, (on either side of the decimal), leading or trailing zeros are displayed. If the number has more digits to the left of the decimal separator than the amount of zeros in the format code, the additional digits are displayed without formatting.</paragraph>
+<paragraph id="par_id3151176" role="paragraph" xml-lang="en-US">Decimal places in the number are rounded according to the number of zeros that appear after the decimal separator in the <emph>Format </emph>code.</paragraph>
+<paragraph id="par_id3154123" role="paragraph" xml-lang="en-US"> <emph>#:</emph> If <emph>Number</emph> contains a digit at the position of the # placeholder in the <emph>Format</emph> code, the digit is displayed, otherwise nothing is displayed at this position.</paragraph>
+<paragraph id="par_id3148452" role="paragraph" xml-lang="en-US">This symbol works like the 0, except that leading or trailing zeroes are not displayed if there are more # characters in the format code than digits in the number. Only the relevant digits of the number are displayed.</paragraph>
+<paragraph id="par_id3159150" role="paragraph" xml-lang="en-US"> <emph>.:</emph> The decimal placeholder determines the number of decimal places to the left and right of the decimal separator.</paragraph>
+<paragraph id="par_id3159252" role="paragraph" xml-lang="en-US">If the format code contains only # placeholders to the left of this symbol, numbers less than 1 begin with a decimal separator. To always display a leading zero with fractional numbers, use 0 as a placeholder for the first digit to the left of the decimal separator.</paragraph>
+<paragraph id="par_id3153368" role="paragraph" xml-lang="en-US"> <emph>%:</emph> Multiplies the number by 100 and inserts the percent sign (%) where the number appears in the format code.</paragraph>
+<paragraph id="par_id3149481" role="paragraph" xml-lang="en-US"> <emph>E- E+ e- e+ :</emph> If the format code contains at least one digit placeholder (0 or #) to the right of the symbol E-, E+, e-, or e+, the number is formatted in the scientific or exponential format. The letter E or e is inserted between the number and the exponent. The number of placeholders for digits to the right of the symbol determines the number of digits in the exponent.</paragraph>
+<paragraph id="par_id3149262" role="paragraph" xml-lang="en-US">If the exponent is negative, a minus sign is displayed directly before an exponent with E-, E+, e-, e+. If the exponent is positive, a plus sign is only displayed before exponents with E+ or e+.</paragraph>
+<paragraph id="par_id3148617" role="paragraph" xml-lang="en-US">The thousands delimiter is displayed if the format code contains the delimiter enclosed by digit placeholders (0 or #).</paragraph>
+<paragraph id="par_id3163713" role="paragraph" xml-lang="en-US">The use of a period as a thousands and decimal separator is dependent on the regional setting. When you enter a number directly in Basic source code, always use a period as decimal delimiter. The actual character displayed as a decimal separator depends on the number format in your system settings.</paragraph>
+<paragraph id="par_id3152887" role="paragraph" xml-lang="en-US"> <emph>- + $ ( ) space:</emph> A plus (+), minus (-), dollar ($), space, or brackets entered directly in the format code is displayed as a literal character.</paragraph>
+<paragraph id="par_id3148576" role="paragraph" xml-lang="en-US">To display characters other than the ones listed here, you must precede it by a backslash (\), or enclose it in quotation marks (" ").</paragraph>
+<paragraph id="par_id3153139" role="paragraph" xml-lang="en-US">\ : The backslash displays the next character in the format code.</paragraph>
+<paragraph id="par_id3153366" role="paragraph" xml-lang="en-US">Characters in the format code that have a special meaning can only be displayed as literal characters if they are preceded by a backslash. The backslash itself is not displayed, unless you enter a double backslash (\\) in the format code.</paragraph>
+<paragraph id="par_id3155411" role="paragraph" xml-lang="en-US">Characters that must be preceded by a backslash in the format code in order to be displayed as literal characters are date- and time-formatting characters (a, c, d, h, m, n, p, q, s, t, w, y, /, :), numeric-formatting characters (#, 0, %, E, e, comma, period), and string-formatting characters (@, &amp;, &lt;, &gt;, !).</paragraph>
+<paragraph id="par_id3145749" role="paragraph" xml-lang="en-US">You can also use the following predefined number formats. Except for "General Number", all of the predefined format codes return the number as a decimal number with two decimal places.</paragraph>
+<paragraph id="par_id3150113" role="paragraph" xml-lang="en-US">If you use predefined formats, the name of the format must be enclosed in quotation marks.</paragraph>
+
+<paragraph id="hd_id3149377" role="heading" level="2" xml-lang="en-US">Predefined format</paragraph>
+<paragraph id="par_id3154730" role="paragraph" xml-lang="en-US"> <emph>General Number:</emph> Numbers are displayed as entered.</paragraph>
+<paragraph id="par_id3153158" role="paragraph" xml-lang="en-US"> <emph>Currency:</emph> Inserts a dollar sign in front of the number and encloses negative numbers in brackets.</paragraph>
+<paragraph id="par_id3154490" role="paragraph" xml-lang="en-US"> <emph>Fixed:</emph> Displays at least one digit in front of the decimal separator.</paragraph>
+<paragraph id="par_id3153415" role="paragraph" xml-lang="en-US"> <emph>Standard:</emph> Displays numbers with a thousands separator.</paragraph>
+<paragraph id="par_id3150715" role="paragraph" xml-lang="en-US"> <emph>Percent:</emph> Multiplies the number by 100 and appends a percent sign to the number.</paragraph>
+<paragraph id="par_id3153836" role="paragraph" xml-lang="en-US"> <emph>Scientific:</emph> Displays numbers in scientific format (for example, 1.00E+03 for 1000).</paragraph>
+<paragraph id="par_id3153707" role="paragraph" xml-lang="en-US">A format code can be divided into three sections that are separated by semicolons. The first part defines the format for positive values, the second part for negative values, and the third part for zero. If you only specify one format code, it applies to all numbers.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#languageformat"/>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
-<paragraph role="heading" id="hd_id3149019" xml-lang="en-US" level="2" l10n="U" oldref="40">Example:</paragraph>
+
+<paragraph id="hd_id3149019" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
 <bascode>
-<paragraph role="bascode" localize="false" xml-lang="en-US">Sub ExampleFormat</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">    MsgBox Format(6328.2, "##,##0.00")</paragraph>
-<paragraph role="bascode" id="par_idN107A2" xml-lang="en-US">    ' always use a period as decimal delimiter when you enter numbers in Basic source code.</paragraph>
-<paragraph role="bascode" id="par_id3147339" xml-lang="en-US" l10n="U" oldref="46">    ' displays for example 6,328.20 in English locale, 6.328,20 in German locale.</paragraph>
-<paragraph role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1341556320" role="bascode" localize="false" xml-lang="en-US">Sub ExampleFormat</paragraph>
+<paragraph id="par_idm1341555088" role="bascode" localize="false" xml-lang="en-US"> MsgBox Format(6328.2, "##,##0.00")</paragraph>
+<paragraph id="par_idN107A2" role="bascode" xml-lang="en-US"> ' always use a period as decimal delimiter when you enter numbers in Basic source code.</paragraph>
+<paragraph id="par_id3147339" role="bascode" xml-lang="en-US"> ' displays for example 6,328.20 in English locale, 6.328,20 in German locale.</paragraph>
+<paragraph id="par_idm1341550752" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
 </body>
+
 </helpdocument>
