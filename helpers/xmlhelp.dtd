@@ -33,7 +33,9 @@ Version 03-Feb-2006
   localize CDATA #IMPLIED
 >
 
-<!ELEMENT body (section | paragraph | table | comment | bookmark | switch | embed | list | sort)*>
+<!ELEMENT bascode (paragraph+)>
+
+<!ELEMENT body (section | paragraph | table | comment | bookmark | switch | embed | list | sort | bascode)*>
 
 <!ELEMENT bookmark (bookmark_value)*>
 <!ATTLIST bookmark
@@ -54,7 +56,7 @@ Version 03-Feb-2006
   localize CDATA #IMPLIED
 >
 
-<!ELEMENT case (paragraph | table | comment | bookmark | embed | link | list | switch | section | sort)*>
+<!ELEMENT case (paragraph | table | comment | bookmark | embed | link | list | switch | section | sort | bascode)*>
 <!ATTLIST case
   select CDATA #REQUIRED
 >
@@ -71,7 +73,7 @@ Version 03-Feb-2006
   date CDATA #REQUIRED
 >
 
-<!ELEMENT default (paragraph | table | comment | bookmark | embed | link | list | switch | section | sort)*>
+<!ELEMENT default (paragraph | table | comment | bookmark | embed | link | list | switch | section | sort | bascode)*>
 
 <!ELEMENT defaultinline (#PCDATA | image | embedvar | br | emph | sub | sup | item | link | switchinline | variable | ahelp | object)*>
 
@@ -163,7 +165,7 @@ Version 03-Feb-2006
   localize CDATA #IMPLIED
 >
 
-<!ELEMENT section (section | paragraph | table | list | comment | bookmark | embed | switch | sort )*>
+<!ELEMENT section (section | paragraph | table | list | comment | bookmark | embed | switch | sort | bascode)*>
 <!ATTLIST section
   id CDATA #REQUIRED
 >
@@ -193,7 +195,7 @@ Version 03-Feb-2006
   id CDATA #REQUIRED
 >
 
-<!ELEMENT tablecell (section | paragraph | comment | embed | bookmark | image | list)*>
+<!ELEMENT tablecell (section | paragraph | comment | embed | bookmark | image | list | bascode)*>
 <!ATTLIST tablecell
   colspan CDATA #IMPLIED
   rowspan CDATA #IMPLIED
