@@ -215,6 +215,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_numbervalue \
     helpcontent2/source/text/scalc/01/func_now \
     helpcontent2/source/text/scalc/01/func_second \
+    helpcontent2/source/text/scalc/01/func_skewp \
     helpcontent2/source/text/scalc/01/func_sumifs \
     helpcontent2/source/text/scalc/01/func_time \
     helpcontent2/source/text/scalc/01/func_timevalue \
