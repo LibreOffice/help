@@ -25,6 +25,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/00/00000406 \
     helpcontent2/source/text/scalc/00/00000407 \
     helpcontent2/source/text/scalc/00/00000412 \
+    helpcontent2/source/text/scalc/00/sheet_menu \
     helpcontent2/source/text/scalc/01/01120000 \
     helpcontent2/source/text/scalc/01/02110000 \
     helpcontent2/source/text/scalc/01/02120000 \
