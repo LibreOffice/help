@@ -17,7 +17,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/helpimg.ilst :
 		$(SRCDIR)/helpcontent2/helpers/create_ilst.pl
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),PRL,1)
 	$(call gb_Helper_abbreviate_dirs,\
-		$(PERL) $< -dir=$(SRCDIR)/icon-themes/galaxy/res/helpimg > $@.out && \
+		$(PERL) $< -dir=$(SRCDIR)/helpcontent2/source/media > $@.out && \
 			mv $@.out $@ \
 	)
 
