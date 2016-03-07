@@ -408,6 +408,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/main0216 \
     helpcontent2/source/text/swriter/main0220 \
     helpcontent2/source/text/swriter/main0503 \
+    helpcontent2/source/text/swriter/menu/insert_header_footer \
+    helpcontent2/source/text/swriter/menu/insert_footnote_endnote \
+    helpcontent2/source/text/swriter/menu/insert_frame \
 ))
 
 # vim: set noet sw=4 ts=4:
