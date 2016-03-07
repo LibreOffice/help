@@ -830,6 +830,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/main0600 \
     helpcontent2/source/text/shared/main0650 \
     helpcontent2/source/text/shared/main0800 \
+    helpcontent2/source/text/shared/menu/insert_chart \
+    helpcontent2/source/text/shared/menu/insert_form_control \
+    helpcontent2/source/text/shared/menu/insert_shape \
     helpcontent2/source/text/shared/need_help \
     helpcontent2/source/text/shared/optionen/01000000 \
     helpcontent2/source/text/shared/optionen/01010000 \
