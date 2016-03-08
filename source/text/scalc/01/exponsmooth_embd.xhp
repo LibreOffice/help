@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+
+<meta>
+  <topic id="ID" indexer="Indexer">
+    <title id="tit" xml-lang="en-US">embeded text for exponential smoothing</title>
+    <filename>/text/scalc/01/exponsmooth_embd.xhp</filename>
+  </topic>
+</meta>
+<body>
+<section id="intro">
+  <paragraph id="par_id0403201618694534" role="paragraph" xml-lang="en-US">Exponential Smoothing is a method to smooth real values in time series in order to forecast probable future values.</paragraph>
+
+<paragraph id="par_id0403201618694535" role="paragraph" xml-lang="en-US">Exponential Triple Smoothing (ETS) is a set of algorithms in which both trend and periodical (seasonal) influences are processed. Exponential Double Smoothing (EDS) is an algorithm like ETS, but without the periodical influences. EDS produces linear forecasts.</paragraph>
+
+<paragraph id="par_id0403201618694537" role="tip" xml-lang="en-US">See the <link href="http://en.wikipedia.org/wiki/Exponential_smoothing">Wikipedia on Exponential smoothing algorithms</link> for more information.</paragraph>
+  </section>
+
+<section id="target">
+<paragraph id="par_id0403201618594534" role="paragraph" xml-lang="en-US"><emph>target (mandatory):</emph> A date, time or numeric single value or range. The data point/range for which to calculate a forecast.</paragraph>
+</section>
+
+<section id="values">
+<paragraph id="par_id040320161859459" role="paragraph" xml-lang="en-US"><emph>values (mandatory):</emph> A numeric array or range. <emph>values</emph> are the historical values, for which you want to forecast the next points.</paragraph>
+</section>
+
+<section id="timeline">
+<paragraph id="par_id0403201618594553" role="paragraph" xml-lang="en-US"><emph>timeline (mandatory):</emph> A numeric array or range. The time line (x-value) range for the historical values. </paragraph>
+<paragraph id="par_id040320161859450" role="note" xml-lang="en-US">The time line doesn't have to to be sorted, the functions will sort it for calculations. <br/>The time line values must have a consistent step between them. <br/>If a constant step can't be identified in the sorted time line, the functions will return the #NUM! error. <br/>If the ranges of the time line and historical values aren't of same size, the functions will return the #N/A error.<br/>If the time line contains less than 2 periods of data, the functions will return the #VALUE! Error.</paragraph>
+</section>
+
+<section id="datacompletion">
+<paragraph id="par_id0403201618594513" role="paragraph" xml-lang="en-US"><emph>data_completion (optional):</emph> a logical value TRUE or FALSE, a numeric 1 or 0, default is 1 (TRUE). A value of 0 (FALSE) will add missing data points with zero as historical value. A value of 1 (TRUE) will add missing data points by interpolating between the neighboring data points.</paragraph>
+<paragraph id="par_id0403201618594678" role="note" xml-lang="en-US">Although the time line requires a constant step between data points, the function support up to 30% missing data points, and will add these data points. </paragraph>
+</section>
+
+<section id="aggregation">
+<paragraph id="par_id0403201618594650" role="paragraph" xml-lang="en-US"><emph>aggregation (optional):</emph> A numeric value from 1 to 7, with default 1. The aggregation parameter is a numeric value indicating which method will be used:</paragraph>
+
+<table id="Tabela1">
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0403201618594696" role="tablehead" xml-lang="en-US">Aggregation</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id040320161859464" role="tablehead" xml-lang="en-US">Function</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0403201618564423" role="tablecontent" localize="false" xml-lang="en-US">1</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0403201618594636" role="tablecontent" xml-lang="en-US">AVERAGE</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0403201618565433" role="tablecontent" localize="false" xml-lang="en-US">2</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0403201618594692" role="tablecontent" xml-lang="en-US">COUNT</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0403201618565982" role="tablecontent" localize="false" xml-lang="en-US">3</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0403201618594633" role="tablecontent" xml-lang="en-US">COUNTA</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0403201618570026" role="tablecontent" localize="false" xml-lang="en-US">4</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id040320161859460" role="tablecontent" xml-lang="en-US">MAX</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0403201618570154" role="tablecontent" localize="false" xml-lang="en-US">5</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0403201618594658" role="tablecontent" xml-lang="en-US">MEDIAN</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0403201618570236" role="tablecontent" localize="false" xml-lang="en-US">6</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0403201618594671" role="tablecontent" xml-lang="en-US">MIN</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0403201618570394" role="tablecontent" localize="false" xml-lang="en-US">7</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0403201618594639" role="tablecontent" xml-lang="en-US">SUM</paragraph>
+    </tablecell>
+  </tablerow>
+</table>
+
+<paragraph id="par_id0403201618595033" role="note" xml-lang="en-US">Although the time line requires a constant step between data points, the functions will aggregate multiple points which have the same time stamp. </paragraph>
+</section>
+
+<section id="statistics">
+<paragraph id="par_id0503201619582693" role="paragraph" xml-lang="en-US"><emph>stat_type (mandatory)</emph>: A numerical value from 1 to 9. A value indicating which statistic will be returned for the given values and x-range.</paragraph>
+<paragraph id="par_id0503201619582620" role="paragraph" xml-lang="en-US">The following statistics can be returned:</paragraph>
+
+<table id="tbl_0503201619535874">
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0503201619582666" role="tablehead" xml-lang="en-US">stat_type</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id050320161958264" role="tablehead" xml-lang="en-US">Statistics</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0503201619582639" role="tablecontent" localize="false" xml-lang="en-US">1</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0503201619582658" role="tablecontent" xml-lang="en-US">Alpha smoothing parameter of ETS algorithm (base)</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0503201619582687" role="tablecontent" localize="false" xml-lang="en-US">2</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0503201619582673" role="tablecontent" xml-lang="en-US">Gamma smoothing parameter of ETS algorithm (trend)</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0503201619583658" role="tablecontent" localize="false" xml-lang="en-US">3</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0503201619582780" role="tablecontent" xml-lang="en-US">Beta smoothing parameter of ETS algorithm (periodic deviation)</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0503201619582737" role="tablecontent" localize="false" xml-lang="en-US">4</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0503201619582795" role="tablecontent" xml-lang="en-US">Mean absolute scaled error (MASE) - a measure of the accuracy of forecasts.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0503201619582782" role="tablecontent" localize="false" xml-lang="en-US">5</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0503201619582749" role="tablecontent" xml-lang="en-US">Symmetric mean absolute percentage error (SMAPE) - an accuracy measure based on percentage errors.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0503201619582739" role="tablecontent" localize="false" xml-lang="en-US">6</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0503201619582725" role="tablecontent" xml-lang="en-US">Mean absolute error (MAE)- a measure of the accuracy of forecasts.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0503201619582788" role="tablecontent" localize="false" xml-lang="en-US">7</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0503201619582750" role="tablecontent" xml-lang="en-US">Root mean squared error (RMSE) - a measure of the differences between predicted and observed values.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0503201619582741" role="tablecontent" localize="false" xml-lang="en-US">8</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0503201619582771" role="tablecontent" xml-lang="en-US">Step size detected time line (x-range). When a stepsize in months/quarters/years is detected, the stepsize is in months, otherwise the stepsize is in days in case of date(time) timeline and numeric in other cases. </paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0503201619582767" role="tablecontent" localize="false" xml-lang="en-US">9</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0503201619582717" role="tablecontent" xml-lang="en-US">Number of samples in period – this is the same as argument <emph>period_length</emph>, or the calculated number in case of argument <emph>period_length</emph> being 1. </paragraph>
+    </tablecell>
+  </tablerow>
+</table>
+
+</section>
+
+<section id="confidence">
+<paragraph id="par_id0503201619582665" role="paragraph" xml-lang="en-US"><emph>confidence (mandatory)</emph>: A numeric value between 0 and 1 (exclusive), default is 0.95. A value indicating a confidence level for the calculated prediction interval. </paragraph>
+<paragraph id="par_id0503201619582644" role="note" xml-lang="en-US">With values &lt;= 0 or &gt;= 1, the functions will return the #NUM! Error.</paragraph>
+</section>
+
+<section id="numsampperiod">
+<paragraph id="par_id0603201609412381" role="paragraph" xml-lang="en-US"><emph>period_length (optional)</emph>: A numeric value &gt;= 0, the default is 1. A positive integer indicating the number of samples in a period. </paragraph>
+<paragraph id="par_id0603201609412399" role="note" xml-lang="en-US">A value of 1 indicates that Calc is to determine the number of samples in a period automatically. <br/>A value of 0 indicates no periodic effects, a forecast is calculated with EDS algorithms. <br/>For all other positive values, forecasts are calculated with ETS algorithms.<br/>For values that not being a positive whole number, the functions will return the #NUM! Error.</paragraph>
+</section>
+
+<section id="etsadd">
+<paragraph id="par_id0603201608440579" role="code" xml-lang="en-US">forecast = basevalue + trend * ∆x + periodical_abberation.</paragraph>
+</section>
+
+<section id="etsmult">
+<paragraph id="par_id0603201608440675" role="code" xml-lang="en-US">forecast = ( basevalue + trend * ∆x ) * periodical_abberation.</paragraph>
+</section>
+
+<section id="exampledata">
+  <paragraph id="hd_id0603201610005796" role="heading" level="2" xml-lang="en-US">Examples</paragraph>
+  <paragraph id="hd_id0603201610005723" role="paragraph"  xml-lang="en-US">The table below contains a timeline and its associated values:</paragraph>
+<table id="Tabela3">
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0903201610293753" role="tablecontent" localize="false" xml-lang="en-US"/>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610300936" role="tablehead" localize="false" xml-lang="en-US">A</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610303544" role="tablehead" localize="false" xml-lang="en-US">B</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0903201610294112" role="tablehead" localize="false" xml-lang="en-US">1</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610312235" role="tablehead" xml-lang="en-US">Timeline</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610312228" role="tablehead" xml-lang="en-US">Values</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id090320161029434" role="tablehead" localize="false" xml-lang="en-US">2</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610301211" role="tablecontent" localize="false" xml-lang="en-US">01/2013</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610303777" role="tablecontent" localize="false" xml-lang="en-US">112</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0903201610294532" role="tablehead" localize="false" xml-lang="en-US">3</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610301377" role="tablecontent" localize="false" xml-lang="en-US">02/2013</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610303972" role="tablecontent" localize="false" xml-lang="en-US">118</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0903201610294658" role="tablehead" localize="false" xml-lang="en-US">4</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610301586" role="tablecontent" localize="false" xml-lang="en-US">03/2013</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610304214" role="tablecontent" localize="false" xml-lang="en-US">132</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0903201610294721" role="tablehead" localize="false" xml-lang="en-US">5</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610301829" role="tablecontent" localize="false" xml-lang="en-US">04/2013</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610304365" role="tablecontent" localize="false" xml-lang="en-US">100</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0903201610294810" role="tablehead" localize="false" xml-lang="en-US">6</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610301986" role="tablecontent" localize="false" xml-lang="en-US">05/2013</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610304419" role="tablecontent" localize="false" xml-lang="en-US">121</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0903201610295069" role="tablehead" localize="false" xml-lang="en-US">7</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610302140" role="tablecontent" localize="false" xml-lang="en-US">06/2013</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id090320161030452" role="tablecontent" localize="false" xml-lang="en-US">135</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0903201610295133" role="tablehead" localize="false" xml-lang="en-US">8</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610302288" role="tablecontent" localize="false" xml-lang="en-US">07/2013</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610304756" role="tablecontent" localize="false" xml-lang="en-US">148</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0903201610295347" role="tablehead" localize="false" xml-lang="en-US">9</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610302389" role="tablecontent" localize="false" xml-lang="en-US">08/2013</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id090320161030480" role="tablecontent" localize="false" xml-lang="en-US">148</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0903201610295495" role="tablehead" localize="false" xml-lang="en-US">10</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610302420" role="tablecontent" localize="false" xml-lang="en-US">09/2013</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610304994" role="tablecontent" localize="false" xml-lang="en-US">136</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0903201610295668" role="tablehead" localize="false" xml-lang="en-US">11</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610302687" role="tablecontent" localize="false" xml-lang="en-US">10/2013</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610305156" role="tablecontent" localize="false" xml-lang="en-US">119</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0903201610295729" role="tablehead" localize="false" xml-lang="en-US">12</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610302713" role="tablecontent" localize="false" xml-lang="en-US">11/2013</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610305294" role="tablecontent" localize="false" xml-lang="en-US">104</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0903201610300473" role="tablehead" localize="false" xml-lang="en-US">13</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610302922" role="tablecontent" localize="false" xml-lang="en-US">12/2013</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id0903201610305330" role="tablecontent" localize="false" xml-lang="en-US">118</paragraph>
+    </tablecell>
+  </tablerow>
+</table>
+</section>
+</body>
+
+</helpdocument>

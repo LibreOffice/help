@@ -198,6 +198,14 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_edate \
     helpcontent2/source/text/scalc/01/func_eomonth \
     helpcontent2/source/text/scalc/01/func_error_type \
+    helpcontent2/source/text/scalc/01/func_forecastetsadd \
+    helpcontent2/source/text/scalc/01/func_forecastetsmult \
+    helpcontent2/source/text/scalc/01/func_forecastetsstatadd \
+    helpcontent2/source/text/scalc/01/func_forecastetsstatmult \
+    helpcontent2/source/text/scalc/01/func_forecastetspiadd \
+    helpcontent2/source/text/scalc/01/func_forecastetspimult \
+    helpcontent2/source/text/scalc/01/func_forecastetsseason \
+    helpcontent2/source/text/scalc/01/exponsmooth_embd \
     helpcontent2/source/text/scalc/01/func_hour \
     helpcontent2/source/text/scalc/01/func_imcot \
     helpcontent2/source/text/scalc/01/func_imcos \
