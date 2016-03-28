@@ -44,12 +44,12 @@
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
 -->
 
-<xsl:stylesheet version="1.0" 
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns:math="http://www.w3.org/1998/Math/MathML">
 
-<xsl:output indent="yes" method="html" 
-doctype-system= "about:legacy-compat"/> 
+<xsl:output indent="yes" method="html"
+doctype-system= "about:legacy-compat"/>
 
 <!--
 ############################
@@ -118,7 +118,7 @@ doctype-system= "about:legacy-compat"/>
 <!-- <xsl:variable name="img_url_prefix" select="concat('vnd.libreoffice.image://',$imgtheme,'/')"/> -->
 <!--<xsl:variable name="urlpost" select=""/>-->
 <xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no')"/>
-<xsl:variable name="urlpre" select="$help_url_prefix" /> 
+<xsl:variable name="urlpre" select="$help_url_prefix" />
 <xsl:variable name="linkprefix" select="$urlpre"/>
 <xsl:variable name="linkpostfix" select="$urlpost"/>
 
@@ -170,6 +170,7 @@ doctype-system= "about:legacy-compat"/>
                             <td class="topmenu"><a href="/text/sbasic/shared/main0601.xhp">Basic</a></td>
                             <td class="topmenu"><a href="/text/smath/main0000.xhp">Math</a></td>
                             <td class="topmenu"><a href="/text/shared/explorer/database/main.xhp">Base</a></td>
+                            <td class="topmenu"><a href="/text/shared/guide/main.xhp">Guide</a></td>
                         </tr>
                       </table>
 		      <div id="xmfile"><p class="infopage">This page is: <xsl:value-of select="$filename"/></p></div>
@@ -302,13 +303,13 @@ doctype-system= "about:legacy-compat"/>
 			<xsl:apply-templates />
 		</xsl:when>
 		<xsl:when test="contains(child::embedvar/@href,'/00/00000004.xhp#wie')"> <!-- special treatment of howtoget links -->
-		
+
 			<xsl:call-template name="insert_howtoget">
 				<xsl:with-param name="linkhref" select="@href"/>
 			</xsl:call-template>
 		</xsl:when>
 		<xsl:otherwise>
-			<xsl:call-template name="createlink" /> 
+			<xsl:call-template name="createlink" />
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
@@ -367,23 +368,23 @@ doctype-system= "about:legacy-compat"/>
 <!-- PARAGRAPH -->
 <xsl:template match="paragraph">
 	<xsl:choose>
-		
+
 		<xsl:when test="@role='heading'">
 			<xsl:call-template name="insertheading">
 				<xsl:with-param name="level" select="@level"/>
 			</xsl:call-template>
 		</xsl:when>
-		
+
 		<xsl:when test="contains(' note warning tip ',@role)">
 			<xsl:call-template name="insertnote">
 				<xsl:with-param name="type" select="@role" />
 			</xsl:call-template>
 		</xsl:when>
-		
+
 		<xsl:when test="contains(descendant::embedvar/@href,'/00/00000004.xhp#wie')"> <!-- special treatment of howtoget links -->
 			<xsl:apply-templates />
-		</xsl:when>		
-		
+		</xsl:when>
+
 		<xsl:when test="@role='bascode'">
 			<xsl:call-template name="insertbascode" />
 		</xsl:when>
@@ -395,34 +396,34 @@ doctype-system= "about:legacy-compat"/>
 		<xsl:otherwise>
 			<xsl:call-template name="insertpara" />
 		</xsl:otherwise>
-	
+
 	</xsl:choose>
 </xsl:template>
 
 <xsl:template match="paragraph" mode="embedded">
 		<xsl:choose>
-		
+
 		<xsl:when test="@role='heading'">	<!-- increase the level of headings that are embedded -->
 			 <xsl:variable name="level"><xsl:value-of select="number(@level)+1"/></xsl:variable>
 			<xsl:call-template name="insertheading">
 				<xsl:with-param name="embedded" select="'yes'"/>
 			</xsl:call-template>
 		</xsl:when>
-		
+
 		<xsl:when test="contains(' note warning tip ',@role)">
 			<xsl:call-template name="insertnote">
 				<xsl:with-param name="type" select="@role" />
 			</xsl:call-template>
 		</xsl:when>
-		
+
 		<xsl:when test="contains(descendant::embedvar/@href,'/00/00000004.xhp#wie')"> <!-- special treatment of howtoget links -->
 			<xsl:apply-templates />
-		</xsl:when>		
-		
+		</xsl:when>
+
 		<xsl:otherwise>
 			<xsl:call-template name="insertpara" />
 		</xsl:otherwise>
-		
+
 	</xsl:choose>
 </xsl:template>
 
@@ -432,7 +433,7 @@ doctype-system= "about:legacy-compat"/>
 	<a name="{@id}"></a>
 
 		<xsl:choose>
-			
+
 			<xsl:when test="@id='relatedtopics'">
 				<div class="relatedtopics">
 					<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>-->
@@ -447,15 +448,15 @@ doctype-system= "about:legacy-compat"/>
 					</div>
 				</div>
 			</xsl:when>
-			
+
 			<xsl:when test="@id='howtoget'">
 				<xsl:call-template name="insert_howtoget" />
 			</xsl:when>
-			
+
 			<xsl:otherwise>
 						<xsl:apply-templates/>
 			</xsl:otherwise>
-		
+
 		</xsl:choose>
 
 </xsl:template>
@@ -522,7 +523,7 @@ doctype-system= "about:legacy-compat"/>
 <!-- In case of missing help files -->
 <xsl:template match="help-id-missing"><xsl:value-of select="$Id"/></xsl:template>
 
-<!-- 
+<!--
 ###################
 # NAMED TEMPLATES #
 ###################
@@ -531,9 +532,9 @@ doctype-system= "about:legacy-compat"/>
 <!-- Branding -->
 <xsl:template name="brand" >
 	<xsl:param name="string"/>
-	
+
     <xsl:choose>
-		
+
         <xsl:when test="contains($string,$brand1)">
            <xsl:variable name="newstr">
                 <xsl:value-of select="substring-before($string,$brand1)"/>
@@ -544,7 +545,7 @@ doctype-system= "about:legacy-compat"/>
 				<xsl:with-param name="string" select="$newstr"/>
 			</xsl:call-template>
 		</xsl:when>
-        
+
 		<xsl:when test="contains($string,$brand2)">
 		    <xsl:variable name="newstr">
                 <xsl:value-of select="substring-before($string,$brand2)"/>
@@ -555,7 +556,7 @@ doctype-system= "about:legacy-compat"/>
 				<xsl:with-param name="string" select="$newstr"/>
 			</xsl:call-template>
 		</xsl:when>
-        
+
 		<xsl:when test="contains($string,$brand3)">
 			<xsl:variable name="newstr">
                 <xsl:value-of select="substring-before($string,$brand3)"/>
@@ -566,7 +567,7 @@ doctype-system= "about:legacy-compat"/>
 				<xsl:with-param name="string" select="$newstr"/>
 			</xsl:call-template>
 		</xsl:when>
-		
+
         <xsl:when test="contains($string,$brand4)">
 			    <xsl:variable name="newstr">
                 <xsl:value-of select="substring-before($string,$brand4)"/>
@@ -577,12 +578,12 @@ doctype-system= "about:legacy-compat"/>
 				<xsl:with-param name="string" select="$newstr"/>
 			</xsl:call-template>
 		</xsl:when>
-		
+
         <xsl:otherwise>
 			<xsl:value-of select="$string"/>
 		</xsl:otherwise>
-	</xsl:choose> 
-    
+	</xsl:choose>
+
 </xsl:template>
 
 
@@ -633,14 +634,14 @@ doctype-system= "about:legacy-compat"/>
 						<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before($linkhref,'#'),$urlpost)"/></xsl:variable>
 						<xsl:variable name="anc"><xsl:value-of select="substring-after($linkhref,'#')"/></xsl:variable>
 						<xsl:variable name="docum" select="document($href)"/>
-						
+
 						<xsl:call-template name="insertembed">
 							<xsl:with-param name="doc" select="$docum" />
 							<xsl:with-param name="anchor" select="$anc" />
 						</xsl:call-template>
 
 					</xsl:otherwise>
-				</xsl:choose>				
+				</xsl:choose>
 				</div>
 			</td>
 		</tr>
@@ -766,7 +767,7 @@ doctype-system= "about:legacy-compat"/>
 <!-- Evaluate a default or defaultinline switch -->
 <xsl:template name="insertdefault">
 	<xsl:param name="embedded" />
-	
+
 	<xsl:choose>
 		<xsl:when test="parent::switch[@select='sys'] or parent::switchinline[@select='sys']">
 			<xsl:if test="not(../child::case[@select=$System]) and not(../child::caseinline[@select=$System])">
@@ -827,7 +828,7 @@ doctype-system= "about:legacy-compat"/>
 			</p>
 		</xsl:when>
 		<xsl:otherwise> <!-- then give up -->
-			<p class="bug">D'oh! You found a bug (<xsl:value-of select="@href"/> not found).</p> 
+			<p class="bug">D'oh! You found a bug (<xsl:value-of select="@href"/> not found).</p>
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
@@ -859,7 +860,7 @@ doctype-system= "about:legacy-compat"/>
 	<img src="{$src}" alt="{$alt}" title="{$alt}">
 		<xsl:if test="not($width='')"><xsl:attribute name="width"><xsl:value-of select="$width"/></xsl:attribute></xsl:if>
 		<xsl:if test="not($height='')"><xsl:attribute name="height"><xsl:value-of select="$height"/></xsl:attribute></xsl:if>
-	</img>  
+	</img>
 </xsl:template>
 
 <!-- Insert a Table -->
@@ -867,40 +868,40 @@ doctype-system= "about:legacy-compat"/>
 	<xsl:variable name="imgsrc">	<!-- see if we are in an image table -->
 		<xsl:value-of select="tablerow/tablecell[1]/paragraph[1]/image/@src"/>
 	</xsl:variable>
-	
+
 	<xsl:choose>
-		
+
 		<xsl:when test="count(descendant::tablecell)=1">
 			<table border="0" class="onecell" cellpadding="0" cellspacing="0">
 				<xsl:apply-templates />
 		 </table>
 		</xsl:when>
-		
+
 		<xsl:when test="descendant::tablecell[1]/descendant::image">
 			<table border="0" class="icontable" cellpadding="5" cellspacing="0">
 				<xsl:apply-templates mode="icontable"/>
 		 </table>
 		</xsl:when>
-		
+
 		<xsl:when test="@class='wide'">
 			<table border="1" class="{@class}" cellpadding="0" cellspacing="0" width="100%" >
 				<xsl:apply-templates />
 		 </table>
 		</xsl:when>
-		
+
 		<xsl:when test="not(@class='')">
 			<table border="1" class="{@class}" cellpadding="0" cellspacing="0" >
 				<xsl:apply-templates />
 		 </table>
 		</xsl:when>
-		
+
 		<xsl:otherwise>
 			<table border="1" class="border" cellpadding="0" cellspacing="0" >
 				<xsl:apply-templates />
 		 </table>
 		</xsl:otherwise>
 	</xsl:choose>
-	
+
 	<br/>
 </xsl:template>
 
@@ -917,7 +918,7 @@ doctype-system= "about:legacy-compat"/>
 		<p>href: <xsl:value-of select="$href"/></p>
 		<p>anchor: <xsl:value-of select="$anc"/></p>
 		<p>document: <xsl:value-of select="$docum"/></p>-->
-		
+
 		<xsl:call-template name="insertembed">
 			<xsl:with-param name="doc" select="$docum" />
 			<xsl:with-param name="anchor" select="$anc" />
@@ -939,7 +940,7 @@ doctype-system= "about:legacy-compat"/>
 				<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
 			</xsl:when>
 			<xsl:otherwise> <!-- or give up -->
-				<span class="bug">[<xsl:value-of select="@href"/> not found].</span> 
+				<span class="bug">[<xsl:value-of select="@href"/> not found].</span>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:if>
