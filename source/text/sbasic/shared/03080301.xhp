@@ -34,28 +34,27 @@
 </bookmark>
 
 
-<paragraph id="hd_id3150616" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03080301.xhp" name="Randomize Statement [Runtime]">Randomize Statement [Runtime]</link></paragraph>
-<paragraph id="par_id3145090" role="paragraph" xml-lang="en-US">Initializes the random-number generator.</paragraph>
+<paragraph id="hd_id3150616" role="heading" level="1" xml-lang="en-US"><variable id="heading_randomize"><link href="text/sbasic/shared/03080301.xhp" name="Randomize Statement [Runtime]">Randomize Statement [Runtime]</link></variable></paragraph>
+<paragraph id="par_id3145090" role="paragraph" xml-lang="en-US">Initializes the random-number generator used by the <emph>Rnd</emph> function.</paragraph>
 </section>
 
 <paragraph id="hd_id3147573" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
-<bascode>
 <paragraph id="par_id3145315" role="bascode" xml-lang="en-US">Randomize [Number]</paragraph>
-</bascode>
 
 <paragraph id="hd_id3152456" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
-<paragraph id="par_id3149670" role="paragraph" xml-lang="en-US"> <emph>Number:</emph> Any integer value that initializes the random-number generator.</paragraph>
+<paragraph id="par_id3149670" role="paragraph" xml-lang="en-US"> <emph>Number:</emph> Any integer value. Used as seed to initialize the random-number generator. Equal seeds result in equal random-number sequences by the <emph>Rnd</emph> function. If the parameter is omitted, the <emph>Randomize</emph> statement will be ignored.</paragraph>
+<paragraph id="par_id110520161656428611" role="note" xml-lang="en-US">Unless a predictable sequence of numbers is desired, there is no need to use the <emph>Randomize</emph> statement, as the random-number generator will be initialized automatically at first use – it will be seeded using a system-provided random-number generator that produces uniformly-distributed, non-deterministic random numbers. If no such generator is available on the system, the system time will be used as seed.</paragraph>
+<paragraph id="par_id12052016194258344" role="paragraph" xml-lang="en-US">The <emph>Randomize</emph> statement affects BASIC's <emph>Rnd</emph> function only. Other random-number generators (for example the Calc's RAND() function, etc.) are not affected by it.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 
 <paragraph id="hd_id3149655" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
-<bascode>
 <paragraph id="par_idm1340800064" role="bascode" localize="false" xml-lang="en-US">Sub ExampleRandomize</paragraph>
-<paragraph id="par_idm1340798832" role="bascode" localize="false" xml-lang="en-US">Dim iVar As Integer, sText As String</paragraph>
+<paragraph id="par_idm1340798832" role="bascode" localize="false" xml-lang="en-US">Dim iCount As Integer, iVar As Integer, sText As String</paragraph>
 <paragraph id="par_idm1340797584" role="bascode" localize="false" xml-lang="en-US">Dim iSpectral(10) As Integer</paragraph>
 <paragraph id="par_idm1340796336" role="bascode" localize="false" xml-lang="en-US"> Randomize 2^14-1</paragraph>
 <paragraph id="par_idm1340795104" role="bascode" localize="false" xml-lang="en-US"> For iCount = 1 To 1000</paragraph>
-<paragraph id="par_id3147288" role="bascode" xml-lang="en-US"> iVar = Int((10 * Rnd) ) ' Range from 0 To 9</paragraph>
+<paragraph id="par_id3147288" role="bascode" xml-lang="en-US"> iVar = Int(10 * Rnd) ' Range from 0 to 9</paragraph>
 <paragraph id="par_idm1340792112" role="bascode" localize="false" xml-lang="en-US"> iSpectral(iVar) = iSpectral(iVar) +1</paragraph>
 <paragraph id="par_idm1340790848" role="bascode" localize="false" xml-lang="en-US"> Next iCount</paragraph>
 <paragraph id="par_idm1341621328" role="bascode" localize="false" xml-lang="en-US"> sText = " | "</paragraph>
@@ -64,7 +63,10 @@
 <paragraph id="par_idm1341617536" role="bascode" localize="false" xml-lang="en-US"> Next iCount</paragraph>
 <paragraph id="par_id3148617" role="bascode" xml-lang="en-US"> MsgBox sText,0,"Spectral Distribution"</paragraph>
 <paragraph id="par_idm1341614560" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-</bascode>
+
+<section id="relatedtopics">
+<paragraph id="par_id110520162207025898" role="paragraph" localize="false" xml-lang="en-US"><embedvar href="text/sbasic/shared/03080302.xhp#heading_rnd"/></paragraph>
+</section>
 </body>
 
 </helpdocument>
