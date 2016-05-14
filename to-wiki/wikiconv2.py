@@ -989,74 +989,6 @@ class Switch(SwitchInline):
         else:
             self.unhandled_element(parser, name)
 
-class Item(ElementBase):
-    replace_type = \
-            {'start':{'input': '<code>',
-                      'keycode': '{{KeyCode|',
-                      'tasto': '{{KeyCode|',
-                      'litera': '<code>',
-                      'literal': '<code>',
-                      'menuitem': '{{MenuItem|',
-                      'mwnuitem': '{{MenuItem|',
-                      'OpenOffice.org': '',
-                      'productname': '',
-                      'unknown': '<code>'
-                     },
-             'end':{'input': '</code>',
-                    'keycode': '}}',
-                    'tasto': '}}',
-                    'litera': '</code>',
-                    'literal': '</code>',
-                    'menuitem': '}}',
-                    'mwnuitem': '}}',
-                    'OpenOffice.org': '',
-                    'productname': '',
-                    'unknown': '</code>'
-                   },
-             'templ':{'input': False,
-                      'keycode': True,
-                      'tasto': True,
-                      'litera': False,
-                      'literal': False,
-                      'menuitem': True,
-                      'mwnuitem': True,
-                      'OpenOffice.org': False,
-                      'productname': False,
-                      'unknown': False
-                     }}
-
-    def __init__(self, attrs, parent):
-        ElementBase.__init__(self, 'item', parent)
-
-        try:
-            self.type = attrs['type']
-        except:
-            self.type = 'unknown'
-        self.text = ''
-
-    def char_data(self, parser, data):
-        self.text = self.text + data
-
-    def get_all(self):
-        try:
-            text = ''
-            if self.replace_type['templ'][self.type]:
-                text = escape_equals_sign(replace_text(self.text))
-            else:
-                text = replace_text(self.text)
-            return self.replace_type['start'][self.type] + \
-                   text + \
-                   self.replace_type['end'][self.type]
-        except:
-            try:
-                sys.stderr.write('Unhandled item type "%s".\n'% self.type)
-            except:
-                sys.stderr.write('Unhandled item type. Possibly type has been localized.\n')
-            finally:
-                raise UnhandledItemType
-        return replace_text(self.text)
-
-
 class Paragraph(ElementBase):
     def __init__(self, attrs, parent):
         ElementBase.__init__(self, 'paragraph', parent)
@@ -1179,6 +1111,61 @@ class Paragraph(ElementBase):
             sys.stderr.write( "Unknown paragraph role end: " + role + "\n" )
 
         return text
+
+class Item(Paragraph):
+    replace_type = \
+            {'start':{'input': '<code>',
+                      'keycode': '{{KeyCode|',
+                      'tasto': '{{KeyCode|',
+                      'litera': '<code>',
+                      'literal': '<code>',
+                      'menuitem': '{{MenuItem|',
+                      'mwnuitem': '{{MenuItem|',
+                      'OpenOffice.org': '',
+                      'productname': '',
+                      'unknown': '<code>'
+                     },
+             'end':{'input': '</code>',
+                    'keycode': '}}',
+                    'tasto': '}}',
+                    'litera': '</code>',
+                    'literal': '</code>',
+                    'menuitem': '}}',
+                    'mwnuitem': '}}',
+                    'OpenOffice.org': '',
+                    'productname': '',
+                    'unknown': '</code>'
+                   },
+             'templ':{'input': False,
+                      'keycode': True,
+                      'tasto': True,
+                      'litera': False,
+                      'literal': False,
+                      'menuitem': True,
+                      'mwnuitem': True,
+                      'OpenOffice.org': False,
+                      'productname': False,
+                      'unknown': False
+                     }}
+
+    def __init__(self, attrs, parent):
+        ElementBase.__init__(self, 'item', parent)
+
+        try:
+            self.type = attrs['type']
+        except:
+            self.type = 'unknown'
+        self.text = ''
+
+    def char_data(self, parser, data):
+        self.text = self.text + data
+
+    def get_all(self):
+        text = ''
+        for i in self.objects:
+            text = text + i.get_all()
+        return self.replace_type['start'][self.type] + text + self.text + self.replace_type['end'][self.type]
+
 
 class Variable(Paragraph):
     def __init__(self, attrs, parent):
