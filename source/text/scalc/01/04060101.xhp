@@ -398,14 +398,14 @@
          </tablerow>
       </table>
 
-      <paragraph xml-lang="en-US" id="par_id3149282" role="paragraph" l10n="U" oldref="83">The formula in cell B16 is =DCOUNT(A1:E10;0;A13:E14)</paragraph>
+      <paragraph xml-lang="en-US" id="par_id3149282" role="paragraph" l10n="U" oldref="83">The formula in cell B16 is =DCOUNT(A1:E10;D1;A13:E14)</paragraph>
       <paragraph xml-lang="en-US" id="hd_id3150962" role="heading" level="3" l10n="U"
                  oldref="192">Database Function Parameters:</paragraph>
       <paragraph xml-lang="en-US" id="par_id3155837" role="paragraph" l10n="U" oldref="84">The following items are the parameter definitions for all database functions:</paragraph>
       <paragraph xml-lang="en-US" id="par_id3149453" role="paragraph" l10n="U" oldref="85">
 <emph>Database</emph> is the cell range defining the database.</paragraph>
       <paragraph xml-lang="en-US" id="par_id3151272" role="paragraph" l10n="U" oldref="86">
-<emph>DatabaseField</emph> specifies the column where the function operates on after the search criteria of the first parameter is applied and the data rows are selected. It is not related to the search criteria itself. Use the number 0 to specify the whole data range. <variable id="quotes">To reference a column by means of the column header name, place quotation marks around the header name.
+<emph>DatabaseField</emph> specifies the column where the function operates on after the search criteria of the first parameter is applied and the data rows are selected. It is not related to the search criteria itself. <variable id="quotes">To reference a column by means of the column header name, place quotation marks around the header name.
 </variable></paragraph>
       <paragraph xml-lang="en-US" id="par_id3147083" role="paragraph" l10n="U" oldref="87">
 <emph>SearchCriteria</emph> is the cell range containing search criteria. If you write several criteria in one row they are connected by AND. If you write the criteria in different rows they are connected by OR. Empty cells in the search criteria range will be ignored.</paragraph>
@@ -419,18 +419,18 @@
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DBANZAHL" id="bm_id3152926" localize="false"/>
 <paragraph xml-lang="en-US" id="hd_id3150882" role="heading" level="2" l10n="U"
                     oldref="88">DCOUNT</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3156133" role="paragraph" l10n="U" oldref="89"><ahelp hid="HID_FUNC_DBANZAHL">DCOUNT counts the number of rows (records) in a database that match the specified search criteria and contain numerical values.</ahelp></paragraph>
+         <paragraph xml-lang="en-US" id="par_id3156133" role="paragraph" l10n="U" oldref="89"><ahelp hid="HID_FUNC_DBANZAHL">DCOUNT counts the number of rows (records) in a database that match the specified search criteria and contain numerical values in the DatabaseField column.</ahelp></paragraph>
          <embed href="text/shared/00/00000001.xhp#regulaer"/>
          <paragraph xml-lang="en-US" id="hd_id3156099" role="heading" level="3" l10n="U"
                     oldref="90">Syntax</paragraph>
          <paragraph xml-lang="en-US" id="par_id3153218" role="code" l10n="U" oldref="91">DCOUNT(Database; DatabaseField; SearchCriteria)</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3153273" role="paragraph" l10n="U" oldref="187">For the DatabaseField parameter you can enter a cell to specify the column, or enter the number 0 for the entire database. The parameter cannot be empty. <embedvar href="text/scalc/01/04060101.xhp#quotes"/>
+         <paragraph xml-lang="en-US" id="par_id3153273" role="paragraph" l10n="U" oldref="187">For the DatabaseField parameter you can enter a cell to specify the column. <embedvar href="text/scalc/01/04060101.xhp#quotes"/>
 </paragraph>
          <paragraph xml-lang="en-US" id="hd_id3154743" role="heading" level="3" l10n="U"
                     oldref="92">Example</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3153623" role="paragraph" l10n="U" oldref="93">In the example above (scroll up, please), we want to know how many children have to travel more than 600 meters to school. The result is to be stored in cell B16. Set the cursor in cell B16. Enter the formula <item type="input">=DCOUNT(A1:E10;0;A13:E14)</item> in B16. The <emph>Function Wizard</emph> helps you to input ranges.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id3153623" role="paragraph" l10n="U" oldref="93">In the example above (scroll up, please), we want to know how many children have to travel more than 600 meters to school. The result is to be stored in cell B16. Set the cursor in cell B16. Enter the formula <item type="input">=DCOUNT(A1:E10;D1;A13:E14)</item> in B16. The <emph>Function Wizard</emph> helps you to input ranges.</paragraph>
          <paragraph xml-lang="en-US" id="par_id3149142" role="paragraph" l10n="U" oldref="94">
-<emph>Database</emph> is the range of data to be evaluated, including its headers: in this case A1:E10. <emph>DatabaseField</emph> specifies the column for the search criteria: in this case, the whole database. <emph>SearchCriteria</emph> is the range where you can enter the search parameters: in this case, A13:E14.</paragraph>
+<emph>Database</emph> is the range of data to be evaluated, including its headers: in this case A1:E10. <emph>DatabaseField</emph> specifies the column for the search criteria: in this case, the column with the numerical distance values. <emph>SearchCriteria</emph> is the range where you can enter the search parameters: in this case, A13:E14.</paragraph>
          <paragraph xml-lang="en-US" id="par_id3145652" role="paragraph" l10n="U" oldref="95">To learn how many children in second grade are over 7 years of age, delete the entry &gt;600 in cell D14 and enter <item type="input">2</item> in cell B14 under Grade, and enter <item type="input">&gt;7</item> in cell C14 to the right. The result is 2. Two children are in second grade and over 7 years of age. As both criteria are in the same row, they are connected by AND.</paragraph>
       </section>
       <section id="Section2">
