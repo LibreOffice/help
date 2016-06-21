@@ -991,7 +991,8 @@ class Switch(SwitchInline):
 
 class Item(ElementBase):
     replace_type = \
-            {'start':{'input': '<code>',
+            {'start':{'code': '<code>',
+                      'input': '<code>',
                       'keycode': '{{KeyCode|',
                       'tasto': '{{KeyCode|',
                       'litera': '<code>',
@@ -1002,7 +1003,8 @@ class Item(ElementBase):
                       'productname': '',
                       'unknown': '<code>'
                      },
-             'end':{'input': '</code>',
+             'end':{'code': '</code>',
+                    'input': '</code>',
                     'keycode': '}}',
                     'tasto': '}}',
                     'litera': '</code>',
@@ -1013,7 +1015,8 @@ class Item(ElementBase):
                     'productname': '',
                     'unknown': '</code>'
                    },
-             'templ':{'input': False,
+             'templ':{'code': False,
+                      'input': False,
                       'keycode': True,
                       'tasto': True,
                       'litera': False,
