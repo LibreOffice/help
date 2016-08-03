@@ -36,10 +36,14 @@
 <bookmark_value>Euro; currency formats</bookmark_value>
 <bookmark_value>date formats</bookmark_value>
 <bookmark_value>times, formats</bookmark_value>
+<bookmark_value>percentages, formats</bookmark_value>
+<bookmark_value>scientific notation, formats</bookmark_value>
+<bookmark_value>engineering notation, formats</bookmark_value>
+<bookmark_value>fraction, formats</bookmark_value>
 </bookmark><comment>mw made "time formats" a two level entry and deleted 2x "formats;"</comment>
 <paragraph role="heading" id="hd_id3153514" xml-lang="en-US" level="1" l10n="U" oldref="1"><variable id="zahlenformatcodes"><link href="text/shared/01/05020301.xhp" name="Number Format Codes">Number Format Codes</link>
 </variable></paragraph>
-<paragraph role="paragraph" id="par_id3150467" xml-lang="en-US" l10n="U" oldref="88">Number format codes can consist of up to three sections separated by a semicolon (;).</paragraph>
+<paragraph role="paragraph" id="par_id3150467" xml-lang="en-US" l10n="U" oldref="88">Number format codes can consist of up to four sections separated by a semicolon (;).</paragraph>
 <list type="ordered">
 <listitem>
 <paragraph role="listitem" id="par_id3150146" xml-lang="en-US" l10n="U" oldref="108">In a number format code with two sections, the first section applies to positive values and zero, and the second section applies to negative values.</paragraph>
@@ -49,6 +53,9 @@
 </listitem>
 <listitem>
 <paragraph role="listitem" id="par_id3155069" xml-lang="en-US" l10n="U" oldref="110">You can also assign conditions to the three sections, so that the format is only applied if a condition is met.</paragraph>
+</listitem>
+<listitem>
+<paragraph role="listitem" id="par_id3155070" xml-lang="en-US" l10n="U" oldref="249">Fourth section applies if the content is not a value, but some text. Content is represented by an at sign (@).</paragraph>
 </listitem>
 </list>
 <paragraph role="heading" id="hd_id3151262" xml-lang="en-US" level="2" l10n="U" oldref="229">Decimal Places and Significant Digits</paragraph>
@@ -151,7 +158,7 @@
 </table>
 
 <paragraph role="heading" id="hd_id3149276" xml-lang="en-US" level="3" l10n="U" oldref="230">Thousands Separator</paragraph>
-<paragraph role="paragraph" id="par_id3154380" xml-lang="en-US" l10n="U" oldref="21">Depending on your language setting, you can use a comma, a period or a blank as a thousands separator. You can also use the separator to reduce the size of the number that is displayed by a multiple of 1000.</paragraph>
+<paragraph role="paragraph" id="par_id3154380" xml-lang="en-US" l10n="U" oldref="21">Depending on your language setting, you can use a comma, a period or a blank as a thousands separator. You can also use the separator to reduce the size of the number that is displayed by a multiple of 1000 for each separator.</paragraph>
 <table id="tbl_id3150244">
 <tablerow>
 <tablecell>
@@ -228,20 +235,29 @@
 <paragraph role="paragraph" id="par_id3155312" xml-lang="en-US" l10n="U" oldref="112">You can define a number format so that it only applies when the condition that you specify is met. Conditions are enclosed by square brackets [ ].</paragraph>
 <paragraph role="paragraph" id="par_id3159179" xml-lang="en-US" l10n="U" oldref="115">You can use any combination of numbers and the &lt;, &lt;=, &gt;, &gt;=, = and &lt;&gt; operators.</paragraph>
 <paragraph role="paragraph" id="par_id3159196" xml-lang="en-US" l10n="U" oldref="236">For example, if you want to apply different colors to different temperature data, enter:</paragraph>
-<paragraph role="example" id="par_id3150872" xml-lang="en-US" l10n="U" oldref="113">[BLUE][&lt;0]#,0 "°C";[RED][&gt;30]#,0 "°C";[BLACK]#,0 "°C"</paragraph>
+<paragraph role="example" id="par_id3150872" xml-lang="en-US" l10n="U" oldref="113">[BLUE][&lt;0]#.0 "°C";[RED][&gt;30]#.0 "°C";[BLACK]#.0 "°C"</paragraph>
 <paragraph role="paragraph" id="par_id3157870" xml-lang="en-US" l10n="U" oldref="114">All temperatures below zero are blue, temperatures between 0 and 30 °C are black, and temperatures higher than 30 °C are red.</paragraph>
 <paragraph role="heading" id="hd_id3154833" xml-lang="en-US" level="3" l10n="U" oldref="90">Positive and Negative Numbers</paragraph>
 <paragraph role="paragraph" id="par_id3147295" xml-lang="en-US" l10n="U" oldref="91">To define a number format that adds a different text to a number depending on if the number is positive, negative, or equal to zero, use the following format:</paragraph>
 <paragraph role="example" id="par_id3153727" xml-lang="en-US" l10n="U" oldref="92">"plus" 0;"minus" 0;"null" 0</paragraph>
-<paragraph role="heading" id="hd_id3149260" xml-lang="en-US" level="2" l10n="U" oldref="83">Percentages and Scientific Notation</paragraph>
+
+<paragraph role="heading" id="hd_id3149260" xml-lang="en-US" level="2" l10n="U" oldref="83">Percentages, Scientific Notation and Fraction Representation</paragraph>
 <paragraph role="heading" id="hd_id3147218" xml-lang="en-US" level="3" l10n="U" oldref="237">Percentages</paragraph>
 <paragraph role="paragraph" id="par_id3151168" xml-lang="en-US" l10n="CHG" oldref="84">To display numbers as percentages, add the percent sign (%) to the number format.</paragraph>
 <paragraph role="heading" id="hd_id3156005" xml-lang="en-US" level="3" l10n="U" oldref="89">Scientific Notation</paragraph>
 <paragraph role="paragraph" id="par_id3146923" xml-lang="en-US" l10n="U" oldref="85">Scientific notation lets you write very large numbers or very small fractions in a compact form. For example, in scientific notation, 650000 is written as 6.5 x 10^5, and 0.000065 as 6.5 x 10^-5. <comment>Translators: use the decimal delimiter of your language (period or comma) for all number format codes in Calc.</comment>In <item type="productname">%PRODUCTNAME</item>, these numbers are written as 6.5E+5 and 6.5E-5, respectively. To create a number format that displays numbers using scientific notation, enter a # or 0, and then one of the following codes E-, E+, e- or e+. If sign is omitted after E or e, it won't appear for positive value of exponent. To get engineering notation, enter 3 digits (0 or #) in the integer part.For instance: ###.##E+00</paragraph>
+<paragraph role="heading" id="hd_id3156006" xml-lang="en-US" level="3" l10n="U" oldref="250">Fraction Representation</paragraph>
+<paragraph role="paragraph" id="par_id3146924" xml-lang="en-US" l10n="U" oldref="251">To represent a value as a fraction, format consists of two or three parts: integer optional part, numerator and denominator. Integer and numerator are separated by a blank or any quoted text. Numerator and denominator are separated by a slash character. Each part can consist of a combination of #, ? and 0 as placeholders.</paragraph>
+<paragraph role="paragraph" id="par_id3146925" xml-lang="en-US" l10n="U" oldref="252">Denominator is calculated to get the nearest value of the fraction with repsect to the number of placeholders. For example, PI value is represented as 3 16/113 with format:</paragraph>
+<paragraph role="example" id="par_id3146926" xml-lang="en-US" l10n="U" oldref="253"># ?/???</paragraph>
+<paragraph role="paragraph" id="par_id3146927" xml-lang="en-US" l10n="U" oldref="254">Denominator value can also be forced to the value replacing placeholders. For example, to get PI value as a multiple of 1/16th (i.e. 50/16), use format:</paragraph>
+<paragraph role="example" id="par_id3146929" xml-lang="en-US" l10n="U" oldref="255">?/16</paragraph>
+
 <paragraph role="heading" id="hd_id3159080" xml-lang="en-US" level="2" l10n="U" oldref="98">Number Format Codes of Currency Formats</paragraph>
 <paragraph role="paragraph" id="par_id3147318" xml-lang="en-US" l10n="CHG" oldref="99">The default currency format for the cells in your spreadsheet is determined by the regional setting of your operating system. If you want, you can apply a custom currency symbol to a cell. For example, enter #,##0.00 € to display 4.50 € (Euros).<comment>Translators: use the decimal delimiter of your language (period or comma) for all number format codes in Calc.</comment></paragraph>
 <paragraph role="paragraph" id="par_id3150032" xml-lang="en-US" l10n="U" oldref="167">You can also specify the locale setting for the currency by entering the locale code for the country after the symbol. For example, [$€-407] represents Euros in Germany. To view the locale code for a country, select the country in the <emph>Language</emph> list on the <emph>Numbers</emph> tab of the <emph>Format Cells</emph> dialog.</paragraph>
 <embed href="text/shared/01/05020300.xhp#waehrungtext"/>
+
 <paragraph role="heading" id="hd_id3157309" xml-lang="en-US" level="2" l10n="U" oldref="238">Date and Time Formats</paragraph>
 <paragraph role="heading" id="hd_id3153740" xml-lang="en-US" level="3" l10n="U" oldref="37">Date Formats</paragraph>
 <paragraph role="paragraph" id="par_id3152791" xml-lang="en-US" l10n="U" oldref="38">To display days, months and years, use the following number format codes. </paragraph>
@@ -841,7 +857,7 @@
 </caseinline></switchinline></paragraph>
 <switch select="appl">
 <case select="CALC"><embed href="text/shared/optionen/01010600.xhp#jahreszahlen"/>
-<paragraph role="note" id="par_id3143225" xml-lang="en-US" l10n="U" oldref="164">In <item type="productname">%PRODUCTNAME</item>, a date with the value "0" corresponds to Dec 30, 1899.</paragraph>
+<paragraph role="note" id="par_id3143225" xml-lang="en-US" l10n="U" oldref="164">By default in <item type="productname">%PRODUCTNAME</item>, a date with the value "0" corresponds to Dec 30, 1899.</paragraph>
 </case>
 </switch>
 <paragraph role="heading" id="hd_id3155870" xml-lang="en-US" level="3" l10n="U" oldref="61">Time Formats</paragraph>
@@ -860,7 +876,7 @@
 <paragraph role="tablecontent" id="par_id3154557" xml-lang="en-US" l10n="U" oldref="65">Hours as 0-23</paragraph>
 </tablecell>
 <tablecell>
-<paragraph role="code" id="par_id3156348" xml-lang="en-US" l10n="U" oldref="66">h</paragraph>
+<paragraph role="code" id="par_id3156348" xml-lang="en-US" l10n="U" oldref="66">H</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
@@ -868,7 +884,15 @@
 <paragraph role="tablecontent" id="par_id3143218" xml-lang="en-US" l10n="U" oldref="67">Hours as 00-23</paragraph>
 </tablecell>
 <tablecell>
-<paragraph role="code" id="par_id3155266" xml-lang="en-US" l10n="U" oldref="68">hh</paragraph>
+<paragraph role="code" id="par_id3155266" xml-lang="en-US" l10n="U" oldref="68">HH</paragraph>
+</tablecell>
+</tablerow>
+<tablerow>
+<tablecell>
+  <paragraph role="tablecontent" id="par_id3143219" xml-lang="en-US" l10n="U" oldref="243">Hours as 00 up to more than 23</paragraph>
+</tablecell>
+<tablecell>
+<paragraph role="code" id="par_id3155267" xml-lang="en-US" l10n="U" oldref="244">[HH]</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
@@ -876,7 +900,7 @@
 <paragraph role="tablecontent" id="par_id3150139" xml-lang="en-US" l10n="U" oldref="69">Minutes as 0-59</paragraph>
 </tablecell>
 <tablecell>
-<paragraph role="code" id="par_id3149588" xml-lang="en-US" l10n="U" oldref="70">m</paragraph>
+<paragraph role="code" id="par_id3149588" xml-lang="en-US" l10n="U" oldref="70">M</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
@@ -884,7 +908,15 @@
 <paragraph role="tablecontent" id="par_id3150531" xml-lang="en-US" l10n="U" oldref="71">Minutes as 00-59</paragraph>
 </tablecell>
 <tablecell>
-<paragraph role="code" id="par_id3147409" xml-lang="en-US" l10n="U" oldref="72">mm</paragraph>
+<paragraph role="code" id="par_id3147409" xml-lang="en-US" l10n="U" oldref="72">MM</paragraph>
+</tablecell>
+</tablerow>
+<tablerow>
+<tablecell>
+<paragraph role="tablecontent" id="par_id3150532" xml-lang="en-US" l10n="U" oldref="245">Minutes as 00 up to more than 59</paragraph>
+</tablecell>
+<tablecell>
+<paragraph role="code" id="par_id3147410" xml-lang="en-US" l10n="U" oldref="246">[MM]</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
@@ -892,7 +924,7 @@
 <paragraph role="tablecontent" id="par_id3154854" xml-lang="en-US" l10n="U" oldref="73">Seconds as 0-59</paragraph>
 </tablecell>
 <tablecell>
-<paragraph role="code" id="par_id3156173" xml-lang="en-US" l10n="U" oldref="74">s</paragraph>
+<paragraph role="code" id="par_id3156173" xml-lang="en-US" l10n="U" oldref="74">S</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
@@ -900,12 +932,21 @@
 <paragraph role="tablecontent" id="par_id3149506" xml-lang="en-US" l10n="U" oldref="75">Seconds as 00-59</paragraph>
 </tablecell>
 <tablecell>
-<paragraph role="code" id="par_id3157981" xml-lang="en-US" l10n="U" oldref="76">ss</paragraph>
+<paragraph role="code" id="par_id3157981" xml-lang="en-US" l10n="U" oldref="76">SS</paragraph>
+</tablecell>
+</tablerow>
+<tablerow>
+<tablecell>
+<paragraph role="tablecontent" id="par_id3149507" xml-lang="en-US" l10n="U" oldref="247">Seconds as 00 up to more than 59</paragraph>
+</tablecell>
+<tablecell>
+<paragraph role="code" id="par_id3157982" xml-lang="en-US" l10n="U" oldref="248">[SS]</paragraph>
 </tablecell>
 </tablerow>
 </table>
 
-<paragraph role="note" id="par_id3156039" xml-lang="en-US" l10n="U" oldref="77">To display seconds as fractions, add the decimal delimiter to your number format code. For example, enter <emph>hh:mm:ss.00</emph> to display the time as "01:02:03.45".<comment>Translators: use the decimal delimiter of your language (period or comma) for all number format codes in Calc.</comment></paragraph>
+<paragraph role="note" id="par_id3156039" xml-lang="en-US" l10n="U" oldref="77">To display seconds as fractions, add the decimal delimiter to your number format code. For example, enter <emph>HH:MM:SS.00</emph> to display the time as "01:02:03.45".<comment>Translators: use the decimal delimiter of your language (period or comma) for all number format codes in Calc.</comment></paragraph>
+<paragraph role="paragraph" id="par_id3148650" xml-lang="en-US" l10n="U" oldref="217">Minute time formats M and MM must be used in combination with hour or second time formats to avoid confusion with month date format.</paragraph>
 <paragraph role="paragraph" id="par_id3148649" xml-lang="en-US" l10n="U" oldref="102">If a time is entered in the form 02:03.45 or 01:02:03.45 or 25:01:02, the following formats are assigned if no other time format has been specified: MM:SS.00 or [HH]:MM:SS.00 or [HH]:MM:SS<comment>Translators: use the decimal delimiter of your language (period or comma) for all number format codes in Calc.</comment></paragraph>
 <paragraph role="heading" id="hd_id3158404" xml-lang="en-US" level="2" l10n="U" oldref="169">Displaying Numbers Using Native Characters</paragraph>
 <paragraph role="paragraph" id="par_id3149998" xml-lang="en-US" l10n="U" oldref="170">To display numbers using native number characters, use a [NatNum1], [NatNum2], ... [NatNum11] modifier at the beginning of a number format codes.</paragraph>
