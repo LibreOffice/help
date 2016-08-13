@@ -674,6 +674,10 @@ class ListItem(ElementBase):
             if linebreak:
                 text = text + '<br/>'
             text = text + i.get_all()
+            # when the object is another list (i.e. nested lists), only the first item
+            # gets the '#' sign in the front by the previous statement
+            # the below re.sub inserts the extra '#' for all additional items of the list
+            text = re.sub(r'\n\s*#', '\n##', text)
             linebreak = True
 
         return text + postfix
@@ -692,6 +696,8 @@ class List(ElementBase):
     def start_element(self, parser, name, attrs):
         if name == 'listitem':
             self.parse_child(ListItem(attrs, self))
+        elif name == 'list':
+            self.parse_child(List(attrs, self, self.isInTable))
         else:
             self.unhandled_element(parser, name)
 
