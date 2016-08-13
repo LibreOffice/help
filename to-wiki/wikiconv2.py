@@ -673,7 +673,12 @@ class ListItem(ElementBase):
         for i in self.objects:
             if linebreak:
                 text = text + '<br/>'
-            text = text + i.get_all()
+            ti = i.get_all()
+            ti = re.sub(r'\n\s*#', '\n##', ti)
+            # when the object is another list (i.e. nested lists), only the first item
+            # gets the '#' sign in the front by the previous statement
+            # the below re.sub inserts the extra '#' for all additional items of the list
+            text = text + ti
             linebreak = True
 
         return text + postfix
