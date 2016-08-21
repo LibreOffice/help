@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="textsharedguidecmisremotefilesxml">
+    <title id="tit" xml-lang="en-US">Using Remote Files</title>
+    <filename>/text/shared/guide/cmis-remote-files.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+
+
+<section id="using_remote_files">
+<bookmark xml-lang="en-US" branch="hid/fpicker/ui/remotefiledialog/RemoteFileDialog" id="bm_id3148069" localize="false"/>
+<paragraph id="hd_id150820161615009403" role="heading" level="1" xml-lang="en-US"><variable id="remote-files"><link href="text/shared/guide/cmis-remote-files.xhp">Opening and saving files on remote servers</link></variable></paragraph>
+<paragraph id="par_id15082016161546265" role="paragraph" xml-lang="en-US"><ahelp hid="hid/fpicker/ui/remotefiledialog/RemoteFileDialog">Remote Files Service User Guide</ahelp></paragraph>
+<paragraph id="par_id150820161816031425" role="paragraph" xml-lang="en-US">%PRODUCTNAME can open and save files stored on remote servers. Keeping files on remote servers allows to work with the documents using different computers. For example, you can work on a document in the office during the day and edit it at home for last-minute changes. Storing files on a remote server also backs up documents from computer loss or hard disk failure. Some servers are also able to check-in and check-out files, thus controlling their usage and access.</paragraph>
+<paragraph id="par_id150820161816033566" role="paragraph" xml-lang="en-US">%PRODUCTNAME supports many document servers that use well known network protocols such as FTP, WebDAV, Windows share, and SSH. It also supports popular services like Google Drive as well as commercial and open source servers that implement the OASIS CMIS standard.</paragraph>
+<paragraph id="par_id170820161605418200" role="paragraph" xml-lang="en-US">To work with a remote file service you must first <link href="text/shared/guide/cmis-remote-files-setup.xhp">setup a remote file connection</link>.</paragraph>
+</section>
+<bookmark xml-lang="en-US" branch="index" id="bm_id190820161715167576">
+  <bookmark_value>opening;CMIS remote file</bookmark_value>
+  <bookmark_value>opening;remote file</bookmark_value>
+  <bookmark_value>remote file service;opening file</bookmark_value>
+  <bookmark_value>opening remote file</bookmark_value>
+</bookmark>
+
+
+<paragraph id="par_id160820161854537016" role="heading" level="2" xml-lang="en-US">To open a file in a remote file service</paragraph>
+
+<list type="ordered">
+  <listitem>
+    <paragraph id="par_id170820161605411154" role="ol_item" xml-lang="en-US">Do one of the following:</paragraph>
+  </listitem>
+</list>
+
+<list type="unordered">
+  <listitem>
+    <paragraph id="par_id17082016160541995" role="ul_item" xml-lang="en-US">Choose <item type="menuitem">File → Open remote file</item> in any %PRODUCTNAME module</paragraph>
+  </listitem>
+  <listitem>
+    <paragraph id="par_id170820161605414687" role="ul_item" xml-lang="en-US">Click the <emph>Remote Files</emph> button the Start Center</paragraph>
+  </listitem>
+  <listitem>
+    <paragraph id="par_id170820161605418205" role="ul_item" xml-lang="en-US">The Remote Files dialog appears.</paragraph>
+  </listitem></list>
+
+<list type="ordered" startwith="2">
+  <listitem>
+    <paragraph id="par_id170820161605417597" role="ol_item" xml-lang="en-US">Select the file and click <emph>Open</emph> or press <emph>Enter</emph>.</paragraph>
+  </listitem>
+</list>
+<paragraph id="par_id150820161816053974" role="paragraph" xml-lang="en-US">The Remote Files dialog which then appears has many parts. The upper list box contains the list of remote servers you have previously defined. The line below the list box shows the path to access the folder. On the left is the folder structure of the user space in the server. The main pane displays the files in the remote folder.</paragraph>
+
+<section id="check">
+<bookmark xml-lang="en-US" branch="index" id="bm_id190820161721082861">
+  <bookmark_value>remote file service;file lock</bookmark_value>
+  <bookmark_value>remote file service;version control</bookmark_value>
+  <bookmark_value>remote file service;working copy</bookmark_value>
+  <bookmark_value>remote file service;check-out</bookmark_value>
+  <bookmark_value>remote file service;check-in</bookmark_value>
+</bookmark>
+
+
+<paragraph id="hd_id170820161605421283" role="heading" level="2" xml-lang="en-US">Checking out and checking in files</paragraph>
+<paragraph id="par_id170820161605429941" role="paragraph" xml-lang="en-US">Check Out and Check In services control updates to document and prevent unwanted overwrites in a CMIS remote service.</paragraph>
+<paragraph id="par_id17082016160542203" role="paragraph" xml-lang="en-US">Checking out a document locks it, preventing other users writing changes to it. Only one user can have a particular document checked out (locked) at any time. Checking in a document or canceling the check out unlocks the document.</paragraph>
+<paragraph id="par_id170820161605426690" role="note" xml-lang="en-US">There are no check controls for remote files in Windows Shares, WebDAV, FTP and SSH services.</paragraph>
+<paragraph id="par_id170820161605428976" role="paragraph" xml-lang="en-US">When a file is open from a CMIS remote file service, %PRODUCTNAME display a <emph>Check-out</emph> button on the top message area. Click the <emph>Check-out</emph> button to lock the file in the server to prevent edition by another user. Alternatively choose <item type="menuitem">File → Check-out</item> .</paragraph>
+<paragraph id="par_id190820161707153804" role="paragraph" xml-lang="en-US">%PRODUCTNAME creates a working copy of the file in the server (and inserts the string <item type="literal">(Working Copy)</item> in the file name) when a file is checked-out. Every edition and save operation is done in the working copy. You can save your file as many times you want. When you finished your changes, check-in the file.</paragraph>
+<paragraph id="par_id190820161707156843" role="paragraph" xml-lang="en-US">To check-in the file, choose <item type="menuitem">File → Check-in</item>. A dialog opens to insert comments about the last edition. These comments are recorded in the CMIS server for version control. The working copy replaces the existing file and its version number is updated.</paragraph>
+<paragraph id="par_id190820161707155303" role="paragraph" xml-lang="en-US">To cancel a check-out, choose <item type="menuitem">File → Cancel Check-Out</item>. A warning message will inform that the latest edition will be discarded. If confirmed, no version updates occurs.</paragraph>
+<paragraph id="par_id19082016170715785" role="warning" xml-lang="en-US">Remember to check-in the file when finishing using it. Not doing so will lock the file and no other user will be allowed to modify it.</paragraph>
+</section>
+<bookmark xml-lang="en-US" branch="index" id="bm_id190820161722159908">
+  <bookmark_value>remote file service;saving to remote server</bookmark_value>
+  <bookmark_value>remote file service;saving</bookmark_value>
+</bookmark>
+
+
+<paragraph id="hd_id170820161605423820" role="heading" level="2" xml-lang="en-US">To save a file in a remote file server</paragraph>
+
+<list type="ordered">
+  <listitem>
+    <paragraph id="par_id170820161605428770" role="ol_item" xml-lang="en-US">Do one of the following</paragraph>
+  </listitem>
+</list>
+
+<list type="unordered">
+  <listitem>
+    <paragraph id="par_id170820161605423872" role="ul_item" xml-lang="en-US">If the file was opened from a CMIS server, choose <item type="menuitem">File → Save</item>, click on the <emph>Save</emph> button or hit <item type="literal">Ctrl + S</item>.</paragraph>
+  </listitem>
+  <listitem>
+    <paragraph id="par_id190820161707166344" role="ul_item" xml-lang="en-US">If the file is not stored in a CMIS server, Choose <item type="menuitem">File → Save to Remote Server </item>or do a long click in the <emph>Save</emph> icon, and select <emph>Save Remote File</emph></paragraph>
+  </listitem>
+  <listitem>
+    <paragraph id="par_id170820161605428591" role="ul_item" xml-lang="en-US">The <emph>Remote files</emph> dialog appears</paragraph>
+  </listitem></list>
+
+<list type="ordered" startwith="2">
+  <listitem>
+    <paragraph id="par_id170820161605425024" role="ol_item" xml-lang="en-US">In the <emph>Filter</emph> list box, select the desired format.</paragraph>
+  </listitem>
+  <listitem>
+    <paragraph id="par_id170820161605424622" role="ol_item" xml-lang="en-US">Enter a name in the File name box and click <emph>Save</emph>.</paragraph>
+  </listitem>
+  <listitem>
+    <paragraph id="par_id190820161707163121" role="ol_item" xml-lang="en-US">If you will end working with the file, check-in the file, Go to <item type="menuitem">File → Check-in…</item>.</paragraph>
+  </listitem>
+</list>
+<bookmark xml-lang="en-US" branch="index" id="bm_id19082016172305788">
+  <bookmark_value>remote file service;CMIS properties</bookmark_value>
+  <bookmark_value>remote file service;file properties</bookmark_value>
+</bookmark>
+
+
+<paragraph id="hd_id190820161707169171" role="heading" level="2" xml-lang="en-US">Properties of files stored in CMIS servers</paragraph>
+<paragraph id="par_id19082016170716519" role="ol_item" xml-lang="en-US">Files stored in CMIS server have properties and metadata not available in a local storage. These metadata are important for controls and debugging of the CMIS connection and server implementation. All parameters dispalyed are read-only.</paragraph>
+<paragraph id="par_id190820161707161708" role="paragraph" xml-lang="en-US">Choose <item type="menuitem">File → Properties</item>, CMIS tab.</paragraph>
+
+<section id="relatedtopics">
+<paragraph id="par_id210820161033581776" role="paragraph" xml-lang="en-US"><link href="text/shared/guide/cmis-remote-files-setup.xhp">Setting up a remote file service</link></paragraph>
+</section>
+</body>
+
+</helpdocument>
