@@ -708,6 +708,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/chart_insert \
     helpcontent2/source/text/shared/guide/chart_legend \
     helpcontent2/source/text/shared/guide/chart_title \
+    helpcontent2/source/text/shared/guide/cmis-remote-files \
+    helpcontent2/source/text/shared/guide/cmis-remote-files-setup \
     helpcontent2/source/text/shared/guide/collab \
     helpcontent2/source/text/shared/guide/configure_overview \
     helpcontent2/source/text/shared/guide/contextmenu \
