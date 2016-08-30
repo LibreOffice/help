@@ -35,7 +35,8 @@ if ( -d $startdir ) {
     find(sub{push @files, $File::Find::name if (($File::Find::name=~/\.png$/));},$startdir);
     foreach ( @files ) { s#.*$startdir_regexp[\\/]##; };
     for (sort(@files)) {
-        print "%GLOBALRES%/$pre/$_\n";
+        ($pre eq "helpimg") ? ($prefix = "%GLOBALRES%/") : ($prefix = "%HELPCONTENT%/");
+        print "$prefix" . "$pre/$_\n";
     }
 } else {
     &terminate("Cannot find $startdir.");
