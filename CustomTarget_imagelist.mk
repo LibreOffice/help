@@ -11,6 +11,7 @@ $(eval $(call gb_CustomTarget_CustomTarget,helpcontent2/source/auxiliary))
 
 $(eval $(call gb_CustomTarget_register_targets,helpcontent2/source/auxiliary,\
 	helpimg.ilst \
+	screenshotimg.ilst \
 ))
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/helpimg.ilst : \
@@ -18,6 +19,14 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/helpimg.ilst :
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),PRL,1)
 	$(call gb_Helper_abbreviate_dirs,\
 		$(PERL) $< -dir=$(SRCDIR)/icon-themes/galaxy/res/helpimg > $@.out && \
+			mv $@.out $@ \
+	)
+
+$(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/screenshotimg.ilst : \
+		$(SRCDIR)/helpcontent2/helpers/create_ilst.pl
+	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),PRL,1)
+	$(call gb_Helper_abbreviate_dirs,\
+		$(PERL) $< -dir=$(SRCDIR)/helpcontent2/media/screenshots -pre=media/screenshots > $@.out && \
 			mv $@.out $@ \
 	)
 
