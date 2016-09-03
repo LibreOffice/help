@@ -137,18 +137,18 @@ def parsexhp(filename):
         title = title.strip('_')
         title = make_unique(title)
         alltitles.append(title)
-        print filename + ';' + title + ';' + readable_title
+        return((filename, title, readable_title))
 
-if len(sys.argv) < 2:
-    print "getalltitles.py <directory>"
-    print "e.g. getalltitles.py source/text/scalc"
-    sys.exit(1)
-
-pattern = "xhp"
-
-for root, dirs, files in os.walk(sys.argv[1]):
-    for i in files:
-        if i.find(pattern) >= 0:
-            parsexhp(root+"/"+i)
+# Main Function
+def gettitles(path):
+    pattern = "xhp"
+    alltitles = []
+    for root, dirs, files in os.walk(path):
+        for i in files:
+            if i.find(pattern) >= 0:
+                t = parsexhp(root+"/"+i)
+                if t is not None:
+                    alltitles.append(t)
+    return alltitles
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:

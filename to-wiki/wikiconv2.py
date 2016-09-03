@@ -1371,15 +1371,6 @@ class XhpParser(ParserBase):
         ParserBase.__init__(self, filename, follow_embed, embedding_app,
                 current_app, wiki_page_name, lang, XhpFile(), buf.encode('utf-8'))
 
-def loadallfiles(filename):
-    global titles
-    titles = []
-    file = codecs.open(filename, "r", "utf-8")
-    for line in file:
-        title = line.split(";", 2)
-        titles.append(title)
-    file.close()
-
 class WikiConverter(Thread):
     def __init__(self, inputfile, wiki_page_name, lang, outputfile):
         Thread.__init__(self)
@@ -1441,18 +1432,18 @@ def write_redirects():
                 write_link(r, target)
 
 # Main Function
-def convert(generate_redirects, lang, po_root):
+def convert(title_data, generate_redirects, lang, po_root):
     if lang == '':
         print 'Generating the main wiki pages...'
     else:
         print 'Generating the wiki pages for language %s...'% lang
 
+    global titles
+    titles = [t for t in title_data]
     global redirects
     redirects = []
     global images
     images = set()
-
-    loadallfiles("alltitles.csv")
 
     if lang != '':
         sys.stderr.write('Using localizations from "%s"\n'% po_root)

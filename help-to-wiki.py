@@ -11,9 +11,7 @@ import sys, os, getopt, signal
 
 sys.path.append(sys.path[0]+"/to-wiki")
 import wikiconv2
-
-# FIXME do proper modules from getalltitles & wikiconv2
-# [so far this is in fact just a shell thing]
+import getalltitles
 
 def usage():
     print '''
@@ -24,6 +22,7 @@ Converts .xhp files into a wiki
 -h, --help            - this help
 -n, --no-translations - generate only English pages
 -r, --redirects       - generate also redirect pages
+-t, --title-savefile  - save the title file
 
 Most probably, you want to generate the redirects only once when you initially
 populate the wiki, and then only update the ones that broke.\n'''
@@ -68,12 +67,13 @@ langs = ['', 'ast', 'bg', 'bn', 'bn-IN', 'ca', 'cs', 'da', 'de', \
 
 # Argument handling
 try:
-    opts, args = getopt.getopt(sys.argv[1:], 'hnr', ['help', 'no-translations', 'redirects'])
+    opts, args = getopt.getopt(sys.argv[1:], 'hnrt', ['help', 'no-translations', 'redirects', 'title-savefile'])
 except getopt.GetoptError:
     usage()
     sys.exit(1)
 
 generate_redirects = False
+title_savefile = False
 for opt, arg in opts:
     if opt in ('-h', '--help'):
         usage()
@@ -82,6 +82,8 @@ for opt, arg in opts:
         langs = ['']
     elif opt in ('-r', '--redirects'):
         generate_redirects = True
+    elif opt in ('-t', '--title-savefile'):
+        title_savefile = True
 
 def signal_handler(signal, frame):
     sys.stderr.write( 'Exiting...\n' )
@@ -93,7 +95,11 @@ signal.signal(signal.SIGINT, signal_handler)
 create_wiki_dirs()
 
 print "Generating the titles..."
-os.system( "python to-wiki/getalltitles.py source/text > alltitles.csv" )
+title_data = getalltitles.gettitles("source/text")
+if title_savefile:
+    with open ('alltitles.csv', 'w') as f:
+        for d in title_data:
+            f.write('%s;%s;%s\n' % (d[0], d[1], d[2]))
 
 try:
     po_path = args[0]
@@ -103,6 +109,6 @@ except:
 
 # do the work
 for lang in langs:
-    wikiconv2.convert(generate_redirects, lang, '%s/%s/helpcontent2/source'% (po_path, lang))
+    wikiconv2.convert(title_data, generate_redirects, lang, '%s/%s/helpcontent2/source'% (po_path, lang))
 
 # vim:set shiftwidth=4 softtabstop=4 expandtab:
