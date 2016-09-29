@@ -156,8 +156,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/04140000 \
     helpcontent2/source/text/shared/01/04150000 \
     helpcontent2/source/text/shared/01/04150100 \
-    helpcontent2/source/text/shared/01/04150400 \
-    helpcontent2/source/text/shared/01/04150500 \
     helpcontent2/source/text/shared/01/04160300 \
     helpcontent2/source/text/shared/01/04160500 \
     helpcontent2/source/text/shared/01/04180100 \
