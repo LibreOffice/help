@@ -546,12 +546,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/autopi/01040400 \
     helpcontent2/source/text/shared/autopi/01040500 \
     helpcontent2/source/text/shared/autopi/01040600 \
-    helpcontent2/source/text/shared/autopi/01050000 \
-    helpcontent2/source/text/shared/autopi/01050100 \
-    helpcontent2/source/text/shared/autopi/01050200 \
-    helpcontent2/source/text/shared/autopi/01050300 \
-    helpcontent2/source/text/shared/autopi/01050400 \
-    helpcontent2/source/text/shared/autopi/01050500 \
     helpcontent2/source/text/shared/autopi/01090000 \
     helpcontent2/source/text/shared/autopi/01090100 \
     helpcontent2/source/text/shared/autopi/01090200 \
