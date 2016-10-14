@@ -120,7 +120,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/01/effectoptionstext \
     helpcontent2/source/text/simpress/01/effectoptionstiming \
     helpcontent2/source/text/simpress/01/slidesorter \
-    helpcontent2/source/text/simpress/01/taskpanel \
     helpcontent2/source/text/simpress/02/04010000 \
     helpcontent2/source/text/simpress/02/04020000 \
     helpcontent2/source/text/simpress/02/04030000 \
