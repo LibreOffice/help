@@ -159,7 +159,7 @@ doctype-system= "about:legacy-compat"/>
                    <div id="TopRight" style="position: fixed;top: 5px;right: 5px;">
                    <p> Top Right Area</p>
                    </div>
-                   <div id="TopLeft" style="position: fixed;top: 5px;left: 5px;">
+                   <div id="TopLeft" style="display:none; position: fixed;top: 5px;left: 5px;">
                       <table>
                         <tr>
                             <td class="topmenu"><a href="/text/scalc/main0000.xhp">Calc</a></td>
