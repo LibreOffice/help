@@ -1,34 +1,31 @@
-<!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="default.css"/>
+<link href="/default.css" rel="Stylesheet" type="text/css" />
+<script type="text/javascript" src="/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/help.js"></script>
 </head>
 <body>
-     <div id="DisplayArea" style="position: fixed;bottom: 5px;right: 5px; overflow:auto; width: 70%;height: 90%;"> <p>Display Area</p>
-     </div>
-     <div id="BottomLeft" style="position: fixed;bottom: 5px;left: 5px; overflow:auto; width: 30%;height: 90%;">
-     <p>Index will be put here</p>
-     </div>
-     <div id="TopRight" style="position: fixed;top: 5px;right: 5px;">
-     <p> Top Right Area</p>
-     </div>
-     <div id="TopLeft" style="position: fixed;top: 5px;left: 5px;">
+<input type="text" id="search-bar" style="margin-top:20px"/>
+     <div id="DisplayArea"></div>
+     <div id="TopLeft">
          <table>
             <tr>
-               <td class="topmenu"><a href="/text/scalc/main0000.xhp">Calc</a></td>
-               <td class="topmenu"><a href="/text/swriter/main0000.xhp">Writer</a></td>
-               <td class="topmenu"><a href="/text/simpress/main0000.xhp">Impress</a></td>
-               <td class="topmenu"><a href="/text/sdraw/main0000.xhp">Draw</a></td>
-               <td class="topmenu"><a href="/text/schart/main0000.xhp">Chart</a></td>
-               <td class="topmenu"><a href="/text/sbasic/shared/main0601.xhp">Basic</a></td>
-               <td class="topmenu"><a href="/text/smath/main0000.xhp">Math</a></td>
-               <td class="topmenu"><a href="/text/shared/explorer/database/main.xhp">Base</a></td>
-               <td class="topmenu"><a href="/text/shared/guide/main.xhp">Guide</a></td>
+               <td class="topmenu"><p onclick="displayResult('/text/scalc/main0000.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=calc','calc')">Calc</p></td>
+               <td class="topmenu"><p onclick="displayResult('/text/swriter/main0000.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=writer','writer')">Writer</p></td>
+               <td class="topmenu"><p onclick="displayResult('/text/simpress/main0000.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=simpress','impress')">Impress</p></td>
+               <td class="topmenu"><p onclick="displayResult('/text/sdraw/main0000.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=sdraw','draw')">Draw</p></td>
+               <td class="topmenu"><p onclick="displayResult('/text/schart/main0000.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=schart','chart')">Chart</p></td>
+               <td class="topmenu"><p onclick="displayResult('/text/sbasic/shared/main0001.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=sbasic','basic')">Basic</p></td>
+               <td class="topmenu"><p onclick="displayResult('/text/smath/main0000.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=smath','math')">Math</p></td>
+               <td class="topmenu"><p onclick="displayResult('/text/shared/explorer/database/main.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=shared','shared')">Base</p></td>
+               <td class="topmenu"><p onclick="displayResult('/text/shared/guide/main.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=shared','shared')">Guide</p></td>
              </tr>
           </table>
-      <div id="xmfile">
-      <p class="infopage">This page is: <xsl:value-of select="$filename"/></p>
       </div>
-      </div>
+     <div id="BottomLeft">
+     </div>
+<script>
+$("#BottomLeft").load('/bookmark_shared.html');
+</script>
 </body>
 </html>
