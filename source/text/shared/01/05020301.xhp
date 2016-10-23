@@ -41,6 +41,8 @@
   <bookmark_value>scientific notation, formats</bookmark_value>
   <bookmark_value>engineering notation, formats</bookmark_value>
   <bookmark_value>fraction, formats</bookmark_value>
+  <bookmark_value>native numeral</bookmark_value>
+  <bookmark_value>LCID, extended</bookmark_value>
 </bookmark>
 <comment>mw made "time formats" a two level entry and deleted 2x "formats;"</comment>
 
@@ -269,7 +271,7 @@
 <paragraph id="par_id3151168" role="paragraph" xml-lang="en-US">To display numbers as percentages, add the percent sign (%) to the number format.</paragraph>
 
 <paragraph id="hd_id3156005" role="heading" level="3" xml-lang="en-US">Scientific Notation</paragraph>
-<paragraph id="par_id3146923" role="paragraph" xml-lang="en-US">Scientific notation lets you write very large numbers or very small fractions in a compact form. For example, in scientific notation, 650000 is written as 6.5 x 10^5, and 0.000065 as 6.5 x 10^-5. <comment>Translators: use the decimal delimiter of your language (period or comma) for all number format codes in Calc.</comment>In <item type="productname">%PRODUCTNAME</item>, these numbers are written as 6.5E+5 and 6.5E-5, respectively. To create a number format that displays numbers using scientific notation, enter a # or 0, and then one of the following codes E-, E+, e- or e+. If sign is omitted after E or e, it won't appear for positive value of exponent. To get engineering notation, enter 3 digits (0 or #) in the integer part.For instance: ###.##E+00</paragraph>
+<paragraph id="par_id3146923" role="paragraph" xml-lang="en-US">Scientific notation lets you write very large numbers or very small fractions in a compact form. For example, in scientific notation, 650000 is written as 6.5 x 10^5, and 0.000065 as 6.5 x 10^-5. <comment>Translators: use the decimal delimiter of your language (period or comma) for all number format codes in Calc.</comment>In <item type="productname">%PRODUCTNAME</item>, these numbers are written as 6.5E+5 and 6.5E-5, respectively. To create a number format that displays numbers using scientific notation, enter a # or 0, and then one of the following codes E-, E+, e- or e+. If sign is omitted after E or e, it won't appear for positive value of exponent. To get engineering notation, enter 3 digits (0 or #) in the integer part. For instance: ###.##E+00</paragraph>
 
 <paragraph id="hd_id3156006" role="heading" level="3" xml-lang="en-US">Fraction Representation</paragraph>
 <paragraph id="par_id3146924" role="paragraph" xml-lang="en-US">To represent a value as a fraction, format consists of two or three parts: integer optional part, numerator and denominator. Integer and numerator are separated by a blank or any quoted text. Numerator and denominator are separated by a slash character. Each part can consist of a combination of #, ? and 0 as placeholders.</paragraph>
@@ -716,9 +718,10 @@
 
 <paragraph id="hd_id3149929" role="heading" level="3" xml-lang="en-US">Entering Dates</paragraph>
 <paragraph id="par_id3148397" role="paragraph" xml-lang="en-US">To enter a date in a cell, use the Gregorian calendar format. For example, in an English locale, enter 1/2/2002 for Jan 2, 2002.</paragraph>
-<paragraph id="par_id3153274" role="paragraph" xml-lang="en-US">All date formats are dependent on the locale that is set in <switchinline select="sys"><caseinline select="MAC"><emph>%PRODUCTNAME - Preferences</emph>
+<paragraph id="par_id3153274" role="paragraph" xml-lang="en-US">All date formats are dependent on the locale that is set in <switchinline select="sys"><caseinline select="MAC"><emph>%PRODUCTNAME - Preferences</emph> 
 </caseinline><defaultinline><emph>Tools - Options</emph></defaultinline></switchinline><emph> - Language settings - Languages</emph>. For example, if your locale is set to 'Japanese', then the Gengou calendar is used. The default date format in <item type="productname">%PRODUCTNAME</item> uses the Gregorian Calendar.</paragraph>
 <paragraph id="par_id3153795" role="paragraph" xml-lang="en-US">To specify a calendar format that is independent of the locale, add a modifier in front of the date format. For example, to display a date using the Jewish calendar format in a non-Hebrew locale, enter: [~jewish]DD/MM/YYYY.</paragraph>
+<paragraph id="par_id231020161240096930" role="paragraph" xml-lang="en-US">The specified calendar is exported to MS-Excel using extended LCID. Extended LCID can also be used in the format string. It will be converted to a calendar modifier if it is supported. See <link href="text/shared/01/05020301.xhp#ExtendedLCID">Extended LCID</link> section below.</paragraph>
 
 <table id="tbl_id3145133">
   <tablerow>
@@ -787,7 +790,7 @@
   </tablerow>
 </table>
 
-<paragraph id="par_id3152419" role="paragraph" xml-lang="en-US"><switchinline select="appl"><caseinline select="CALC">If you perform a calculation that involves one or more cells using a date format, the result is formatted according to the following mappings:
+<paragraph id="par_id3152419" role="paragraph" xml-lang="en-US"><switchinline select="appl"><caseinline select="CALC">If you perform a calculation that involves one or more cells using a date format, the result is formatted according to the following mappings: 
 </caseinline></switchinline></paragraph>
 <switch select="appl">
 <case select="CALC">
@@ -885,7 +888,7 @@
 
 </case>
 </switch>
-<paragraph id="par_id3149174" role="paragraph" xml-lang="en-US"><switchinline select="appl"><caseinline select="CALC">The Date&amp;Time format displays the date and time that an entry was made to a cell with this format.
+<paragraph id="par_id3149174" role="paragraph" xml-lang="en-US"><switchinline select="appl"><caseinline select="CALC">The Date&amp;Time format displays the date and time that an entry was made to a cell with this format. 
 </caseinline></switchinline></paragraph>
 <switch select="appl">
 <case select="CALC">
@@ -985,16 +988,16 @@
 <paragraph id="par_id3148649" role="paragraph" xml-lang="en-US">If a time is entered in the form 02:03.45 or 01:02:03.45 or 25:01:02, the following formats are assigned if no other time format has been specified: MM:SS.00 or [HH]:MM:SS.00 or [HH]:MM:SS<comment>Translators: use the decimal delimiter of your language (period or comma) for all number format codes in Calc.</comment></paragraph>
 
 <paragraph id="hd_id3158404" role="heading" level="2" xml-lang="en-US">Displaying Numbers Using Native Characters</paragraph>
+
+<paragraph id="hd_id231020161309289931" role="heading" level="2" xml-lang="en-US">NatNum modifiers</paragraph>
 <paragraph id="par_id3149998" role="paragraph" xml-lang="en-US">To display numbers using native number characters, use a [NatNum1], [NatNum2], ... [NatNum11] modifier at the beginning of a number format codes.</paragraph>
 <paragraph id="par_id3154600" role="paragraph" xml-lang="en-US">The [NatNum1] modifier always uses a one to one character mapping to convert numbers to a string that matches the native number format code of the corresponding locale. The other modifiers produce different results if they are used with different locales. A locale can be the language and the territory for which the format code is defined, or a modifier such as [$-yyy] that follows the native number modifier. In this case, yyy is the hexadecimal MS-LCID that is also used in currency format codes. For example, to display a number using Japanese short Kanji characters in an English US locale, use the following number format code:</paragraph>
 <paragraph id="par_id3152546" role="example" xml-lang="en-US">[NatNum1][$-411]0</paragraph>
 <paragraph id="par_id3147269" role="paragraph" xml-lang="en-US">In the following list, the Microsoft Excel [DBNumX] modifier that corresponds to <item type="productname">%PRODUCTNAME</item> [NatNum] modifier is shown. If you want, you can use a [DBNumX] modifier instead of [NatNum] modifier for your locale. Whenever possible, <item type="productname">%PRODUCTNAME</item> internally maps [DBNumX] modifiers to [NatNumN] modifiers.</paragraph>
 <paragraph id="par_idN11234" role="paragraph" xml-lang="en-US">Displaying dates using [NatNum] modifiers can have a different effect than displaying other types of numbers. Such effects are indicated by 'CAL: '. For example, 'CAL: 1/4/4' indicates that the year is displayed using the [NatNum1] modifier, while the day and month are displayed using the [NatNum4] modifier. If 'CAL' is not specified, the date formats for that particular modifier are not supported.</paragraph>
-
-<paragraph id="hd_id150820161449146058" role="heading" level="3" xml-lang="en-US">[NatNum0]</paragraph>
+<paragraph id="hd_id150820161449146058" role="paragraph" xml-lang="en-US">[<emph>NatNum0</emph>]</paragraph>
 <paragraph id="par_id1508201614491484" role="paragraph" xml-lang="en-US">Try to convert any native number string to ASCII Arabic digits. If already ASCII, it remains ASCII.</paragraph>
-
-<paragraph id="par_id13082016175325372" role="heading" level="3" localize="false" xml-lang="en-US">[NatNum1]</paragraph>
+<paragraph id="par_id13082016175325372" role="paragraph" localize="false" xml-lang="en-US">[<emph>NatNum1</emph>]</paragraph>
 
 <table id="Table1">
   <tablerow>
@@ -1318,8 +1321,7 @@
   </tablerow>
 </table>
 
-
-<paragraph id="par_id130820161753318343" role="heading" level="3" localize="false" xml-lang="en-US">[NatNum2]</paragraph>
+<paragraph id="par_id130820161753318343" role="paragraph" localize="false" xml-lang="en-US">[<emph>NatNum2</emph>]</paragraph>
 
 <table id="Tabela1">
   <tablerow>
@@ -1390,8 +1392,7 @@
   </tablerow>
 </table>
 
-
-<paragraph id="par_id130820161753325177" role="heading" level="3" xml-lang="en-US">[NatNum3]</paragraph>
+<paragraph id="par_id130820161753325177" role="paragraph" xml-lang="en-US">[<emph>NatNum3</emph>]</paragraph>
 
 <table id="Tabela2">
   <tablerow>
@@ -1450,8 +1451,7 @@
   </tablerow>
 </table>
 
-
-<paragraph id="par_id130820161753334037" role="heading" level="3" localize="false" xml-lang="en-US">[NatNum4]</paragraph>
+<paragraph id="par_id130820161753334037" role="paragraph" localize="false" xml-lang="en-US">[<emph>NatNum4</emph>]</paragraph>
 
 <table id="Tabela3">
   <tablerow>
@@ -1508,8 +1508,7 @@
   </tablerow>
 </table>
 
-
-<paragraph id="par_id130820161753343499" role="heading" level="3" xml-lang="en-US">[NatNum5]</paragraph>
+<paragraph id="par_id130820161753343499" role="paragraph" xml-lang="en-US">[<emph>NatNum5</emph>]</paragraph>
 
 <table id="Tabela4">
   <tablerow>
@@ -1566,8 +1565,7 @@
   </tablerow>
 </table>
 
-
-<paragraph id="par_id130820161753358714" role="heading" level="3" localize="false" xml-lang="en-US">[NatNum6]</paragraph>
+<paragraph id="par_id130820161753358714" role="paragraph" localize="false" xml-lang="en-US">[<emph>NatNum6</emph>]</paragraph>
 
 <table id="Tabela5">
   <tablerow>
@@ -1623,8 +1621,7 @@
   </tablerow>
 </table>
 
-
-<paragraph id="par_id130820161753361819" role="heading" level="3" localize="false" xml-lang="en-US">[NatNum7]</paragraph>
+<paragraph id="par_id130820161753361819" role="paragraph" localize="false" xml-lang="en-US">[<emph>NatNum7</emph>]</paragraph>
 
 <table id="Tabela6">
   <tablerow>
@@ -1679,8 +1676,7 @@
   </tablerow>
 </table>
 
-
-<paragraph id="par_id13082016175336899" role="heading" level="3" localize="false" xml-lang="en-US">[NatNum8]</paragraph>
+<paragraph id="par_id13082016175336899" role="paragraph" localize="false" xml-lang="en-US">[<emph>NatNum8</emph>]</paragraph>
 
 <table id="Tabela7">
   <tablerow>
@@ -1736,8 +1732,7 @@
   </tablerow>
 </table>
 
-
-<paragraph id="par_id130820161753378934" role="heading" level="3" localize="false" xml-lang="en-US">[NatNum9]</paragraph>
+<paragraph id="par_id130820161753378934" role="paragraph" localize="false" xml-lang="en-US">[<emph>NatNum9</emph>]</paragraph>
 
 <table id="Tabela8">
   <tablerow>
@@ -1768,8 +1763,7 @@
   </tablerow>
 </table>
 
-
-<paragraph id="par_id130820161753379245" role="heading" level="3" localize="false" xml-lang="en-US">[NatNum10]</paragraph>
+<paragraph id="par_id130820161753379245" role="paragraph" localize="false" xml-lang="en-US">[<emph>NatNum10</emph>]</paragraph>
 
 <table id="Tabela9">
   <tablerow>
@@ -1802,8 +1796,7 @@
   </tablerow>
 </table>
 
-
-<paragraph id="par_id13082016175338983" role="heading" level="3" localize="false" xml-lang="en-US">[NatNum11]</paragraph>
+<paragraph id="par_id13082016175338983" role="paragraph" localize="false" xml-lang="en-US">[<emph>NatNum11</emph>]</paragraph>
 
 <table id="Tabela10">
   <tablerow>
@@ -1834,6 +1827,639 @@
   </tablerow>
 </table>
 
+
+<section id="ExtendedLCID">
+
+<paragraph id="hd_id231020161309281519" role="heading" level="3" xml-lang="en-US">Extended LCID</paragraph>
+<paragraph id="par_id23102016124541451" role="paragraph" xml-lang="en-US">If compatible, native numbering and calendar are exported to MS-Excel using extended LCID. Extended LCID can also be used in string format instead of NatNum modifier.</paragraph>
+<paragraph id="par_id23102016130928602" role="paragraph" xml-lang="en-US">Extended LCID consists of 8 hexadecimal digits: <emph>[$-NNCCLLLL]</emph>, with 2 first digits NN for native numerals, CC for calendar and LLLL for LCID code. For instance, [$-0D0741E] will be converted to [NatNum1][$-41E][~buddhist]: Thai numerals (0D) with Buddhist calendar (07) in Thai locale (041E).</paragraph>
+<paragraph id="par_id231020161309295474" role="paragraph" xml-lang="en-US"><emph>Native Numerals</emph></paragraph>
+<paragraph id="par_id231020161309291913" role="paragraph" xml-lang="en-US">Two first digits NN represents native numerals:</paragraph>
+
+<table id="tbl_23102016125042989">
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309383839" role="tablecontent" xml-lang="en-US"><emph>NN</emph></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161309383870" role="tablecontent" xml-lang="en-US"><emph>Numeral</emph></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161309384878" role="tablecontent" xml-lang="en-US"><emph>Representation</emph></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161309389959" role="tablecontent" xml-lang="en-US"><emph>Compatible LCID</emph></paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309399380" role="tablecontent" xml-lang="en-US">01</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161309391619" role="tablecontent" xml-lang="en-US">Arabic</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161309396637" role="tablecontent" xml-lang="en-US">1234567890</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161309393242" role="tablecontent" xml-lang="en-US">all</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309398212" role="tablecontent" xml-lang="en-US">02</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509387949" role="tablecontent" xml-lang="en-US">Eastern Arabic</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509384629" role="tablecontent" xml-lang="en-US">١٢٣٤٥٦٧٨٩٠</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id23102016150939771" role="tablecontent" xml-lang="en-US">401</paragraph>
+      <paragraph id="par_id231020161509398304" role="tablecontent" xml-lang="en-US">1401, 3c01, 0c01, 801, 2c01, 3401, 3001, 1001, 1801, 2001, 4001, 2801, 1c01, 3801, 2401</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id23102016130939725" role="tablecontent" xml-lang="en-US">03</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509394713" role="tablecontent" xml-lang="en-US">Persian</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509394097" role="tablecontent" xml-lang="en-US">۱۲۳۴۵۶۷۸۹۰</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509396846" role="tablecontent" xml-lang="en-US">429</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309408463" role="tablecontent" xml-lang="en-US">04</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509397579" role="tablecontent" xml-lang="en-US">Devanagari</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509393579" role="tablecontent" xml-lang="en-US">१२३४५६७८९०</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509391912" role="tablecontent" xml-lang="en-US">439</paragraph>
+      <paragraph id="par_id231020161509405633" role="tablecontent" xml-lang="en-US">44E, 461, 861</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309408346" role="tablecontent" xml-lang="en-US">05</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509408164" role="tablecontent" xml-lang="en-US">Bengali</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509402887" role="tablecontent" xml-lang="en-US">১২৩৪৫৬৭৮৯০</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509409038" role="tablecontent" xml-lang="en-US">445</paragraph>
+      <paragraph id="par_id231020161509404604" role="tablecontent" xml-lang="en-US">845</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309406290" role="tablecontent" xml-lang="en-US">06</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509405793" role="tablecontent" xml-lang="en-US">Punjabi</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id23102016150940241" role="tablecontent" xml-lang="en-US">੧੨੩੪੫੬੭੮੯੦</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509401607" role="tablecontent" xml-lang="en-US">446</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309403229" role="tablecontent" xml-lang="en-US">07</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509417889" role="tablecontent" xml-lang="en-US">Gujarati</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509418717" role="tablecontent" xml-lang="en-US">૧૨૩૪૫૬૭૮૯૦</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509418257" role="tablecontent" xml-lang="en-US">447</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309406397" role="tablecontent" xml-lang="en-US">08</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509417961" role="tablecontent" xml-lang="en-US">Oriya</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509415941" role="tablecontent" xml-lang="en-US">୧୨୩୪୫୬୭୮୯୦</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509412508" role="tablecontent" xml-lang="en-US">448</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309401440" role="tablecontent" xml-lang="en-US">09</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509428961" role="tablecontent" xml-lang="en-US">Tamil</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509413688" role="tablecontent" xml-lang="en-US">௧௨௩௪௫௬௭௮௯0</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509422594" role="tablecontent" xml-lang="en-US">449</paragraph>
+      <paragraph id="par_id231020161509423511" role="tablecontent" xml-lang="en-US">849</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309406637" role="tablecontent" xml-lang="en-US">0A</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509425901" role="tablecontent" xml-lang="en-US">Telugu</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509424675" role="tablecontent" xml-lang="en-US">౧౨౩౪౫౬౭౮౯౦</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509424950" role="tablecontent" xml-lang="en-US">44A</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id23102016130940143" role="tablecontent" xml-lang="en-US">0B</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509439802" role="tablecontent" xml-lang="en-US">Kannada</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509438337" role="tablecontent" xml-lang="en-US">೧೨೩೪೫೬೭೮೯೦</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509437941" role="tablecontent" xml-lang="en-US">44B</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id23102016130940898" role="tablecontent" xml-lang="en-US">0C</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509439635" role="tablecontent" xml-lang="en-US">Malayalam</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509438943" role="tablecontent" xml-lang="en-US">൧൨൩൪൫൬൭൮൯൦</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509438875" role="tablecontent" xml-lang="en-US">44C</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309412217" role="tablecontent" xml-lang="en-US">0D</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509447377" role="tablecontent" xml-lang="en-US">Thai</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509435696" role="tablecontent" xml-lang="en-US">๑๒๓๔๕๖๗๘๙๐</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509444294" role="tablecontent" xml-lang="en-US">41E</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309414612" role="tablecontent" xml-lang="en-US">0E</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509441865" role="tablecontent" xml-lang="en-US">Lao</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509441965" role="tablecontent" xml-lang="en-US">໑໒໓໔໕໖໗໘໙໐</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509441336" role="tablecontent" xml-lang="en-US">454</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id23102016130941180" role="tablecontent" xml-lang="en-US">0F</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509453645" role="tablecontent" xml-lang="en-US">Tibetan</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509445565" role="tablecontent" xml-lang="en-US">༡༢༣༤༥༦༧༨༩༠</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509453146" role="tablecontent" xml-lang="en-US">851</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309419644" role="tablecontent" xml-lang="en-US">10</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509455556" role="tablecontent" xml-lang="en-US">Burmese</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509459048" role="tablecontent" xml-lang="en-US">၁၂၃၄၅၆၇၈၉၀</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509451064" role="tablecontent" xml-lang="en-US">455</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309411926" role="tablecontent" xml-lang="en-US">11</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509468188" role="tablecontent" xml-lang="en-US">Tigrina</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509468954" role="tablecontent" xml-lang="en-US">፩፪፫፬፭፮፯፰፱0</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509469791" role="tablecontent" xml-lang="en-US">473</paragraph>
+      <paragraph id="par_id2310201615094683" role="tablecontent" xml-lang="en-US">873</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309411348" role="tablecontent" xml-lang="en-US">12</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509467357" role="tablecontent" xml-lang="en-US">Khmer</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509461064" role="tablecontent" xml-lang="en-US">១២៣៤៥៦៧៨៩០</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509479092" role="tablecontent" xml-lang="en-US">453</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309414612" role="tablecontent" xml-lang="en-US">13</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509473329" role="tablecontent" xml-lang="en-US">Mongolian</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509477869" role="tablecontent" xml-lang="en-US">᠑᠒᠓᠔᠕᠖᠗᠘᠙᠐</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509476436" role="tablecontent" xml-lang="en-US">C50</paragraph>
+      <paragraph id="par_id231020161509475815" role="tablecontent" xml-lang="en-US">850</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309413615" role="tablecontent" xml-lang="en-US">1B</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509481466" role="tablecontent" xml-lang="en-US">Japanese</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509473141" role="tablecontent" xml-lang="en-US">一二三四五六七八九〇</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509488271" role="tablecontent" xml-lang="en-US">411</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309418123" role="tablecontent" xml-lang="en-US">1C</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161656391202" role="tablecontent" xml-lang="en-US">(financial)</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509484357" role="tablecontent" xml-lang="en-US">壱弐参四伍六七八九〇</paragraph>
+    </tablecell>
+    <tablecell>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309425570" role="tablecontent" xml-lang="en-US">1D</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161656429927" role="tablecontent" xml-lang="en-US">(fullwidth Arabic)</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509591467" role="tablecontent" xml-lang="en-US">１２３４５６７８９０</paragraph>
+    </tablecell>
+    <tablecell>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309424572" role="tablecontent" xml-lang="en-US">1E</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509594133" role="tablecontent" xml-lang="en-US">Chinese - simplified</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509596356" role="tablecontent" xml-lang="en-US">一二三四五六七八九○</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509597132" role="tablecontent" xml-lang="en-US">804</paragraph>
+      <paragraph id="par_id231020161509598575" role="tablecontent" xml-lang="en-US">1004, 7804</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309425717" role="tablecontent" xml-lang="en-US">1F</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161656421782" role="tablecontent" xml-lang="en-US">(financial)</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161509596391" role="tablecontent" xml-lang="en-US">壹贰叁肆伍陆柒捌玖零</paragraph>
+    </tablecell>
+    <tablecell>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309423375" role="tablecontent" xml-lang="en-US">20</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161656426120" role="tablecontent" xml-lang="en-US">(fullwidth Arabic)</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510005629" role="tablecontent" xml-lang="en-US">１２３４５６７８９０</paragraph>
+    </tablecell>
+    <tablecell>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309422191" role="tablecontent" xml-lang="en-US">21</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510005692" role="tablecontent" xml-lang="en-US">Chinese - traditional</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510003302" role="tablecontent" xml-lang="en-US">一二三四五六七八九○</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510009924" role="tablecontent" xml-lang="en-US">C04</paragraph>
+      <paragraph id="par_id231020161510002085" role="tablecontent" xml-lang="en-US">1404</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309422076" role="tablecontent" xml-lang="en-US">22</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161656435830" role="tablecontent" xml-lang="en-US">(financial)</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510008728" role="tablecontent" xml-lang="en-US">壹貳參肆伍陸柒捌玖零</paragraph>
+    </tablecell>
+    <tablecell>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309421288" role="tablecontent" xml-lang="en-US">23</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161656439568" role="tablecontent" xml-lang="en-US">(fullwidth Arabic)</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510005585" role="tablecontent" xml-lang="en-US">１２３４５６７８９０</paragraph>
+    </tablecell>
+    <tablecell>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309428559" role="tablecontent" xml-lang="en-US">24</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510017298" role="tablecontent" xml-lang="en-US">Korean</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510014281" role="tablecontent" xml-lang="en-US">一二三四五六七八九０</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510016183" role="tablecontent" xml-lang="en-US">812</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309427580" role="tablecontent" xml-lang="en-US">25</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161656436379" role="tablecontent" xml-lang="en-US">(financial)</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510017956" role="tablecontent" xml-lang="en-US">壹貳參四伍六七八九零</paragraph>
+    </tablecell>
+    <tablecell>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309421953" role="tablecontent" xml-lang="en-US">26</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161656438773" role="tablecontent" xml-lang="en-US">(fullwidth Arabic)</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id23102016151001163" role="tablecontent" xml-lang="en-US">１２３４５６７８９０</paragraph>
+    </tablecell>
+    <tablecell>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161309436961" role="tablecontent" xml-lang="en-US">27</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510026939" role="tablecontent" xml-lang="en-US">Korean - Hangul</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510017167" role="tablecontent" xml-lang="en-US">일이삼사오육칠팔구영</paragraph>
+    </tablecell>
+    <tablecell>
+    </tablecell>
+  </tablerow>
+</table>
+
+<paragraph id="par_id231020161510022383" role="paragraph" xml-lang="en-US"><emph>Calendar</emph></paragraph>
+<paragraph id="par_id231020161510021223" role="paragraph" xml-lang="en-US">Two next digits CC are for calendar code. Each calendar is only valid for some LCID.</paragraph>
+
+<table id="tbl_23102016144703190">
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161510028115" role="tablecontent" xml-lang="en-US"><emph>CC</emph></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510022813" role="tablecontent" xml-lang="en-US"><emph>Calendar</emph></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510028097" role="tablecontent" xml-lang="en-US"><emph>Example </emph><emph>(YYYY-MM-DD)</emph></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510025567" role="tablecontent" xml-lang="en-US"><emph>Supported LCID</emph></paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161510032677" role="tablecontent" xml-lang="en-US">00</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510038464" role="tablecontent" xml-lang="en-US">Gregorian</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510032564" role="tablecontent" xml-lang="en-US">2016-08-31</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510032619" role="tablecontent" xml-lang="en-US">All</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161510033349" role="tablecontent" xml-lang="en-US">03</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510037287" role="tablecontent" xml-lang="en-US">Gengou</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510035843" role="tablecontent" xml-lang="en-US">28-08-31</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510041970" role="tablecontent" xml-lang="en-US">411 (Japanese)</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161510044812" role="tablecontent" xml-lang="en-US">05</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510049706" role="tablecontent" xml-lang="en-US">Unknown</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510042281" role="tablecontent" xml-lang="en-US">4349-08-31</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510047856" role="tablecontent" xml-lang="en-US">Unsupported</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161510048032" role="tablecontent" xml-lang="en-US">06 or 17</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510056158" role="tablecontent" xml-lang="en-US">Hijri</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510059401" role="tablecontent" xml-lang="en-US">1437-11-28</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510052682" role="tablecontent" xml-lang="en-US">401 (Arabic - Saudi Arabia), 1401 (Arabic - Algeria), 3c01 (Arabic - Bahrain), 0c01 (Arabic - Egypt), 801 (Arabic - Iraq), 2c01 (Arabic - Jordan), 3401 (Arabic - Kuwait), 3001 (Arabic - Lebanon), 1001 (Arabic - Libya), 1801 (Arabic - Morocco), 2001 (Arabic - Oman), 4001 (Arabic - Qatar), 2801 (Arabic - Syria), 1c01 (Arabic - Tunisia), 3801 (Arabic - U.A.E.), 2401 (Arabic - Yemen) and 429 (Farsi)</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161510052179" role="tablecontent" xml-lang="en-US">07</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id2310201615100511" role="tablecontent" xml-lang="en-US">Buddhist</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id23102016151005607" role="tablecontent" xml-lang="en-US">2559-08-31</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510059823" role="tablecontent" xml-lang="en-US">454 (Lao), 41E (Thai)</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161510065954" role="tablecontent" xml-lang="en-US">08</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510061354" role="tablecontent" xml-lang="en-US">Jewish</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510062369" role="tablecontent" xml-lang="en-US">5776-05-27</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510065493" role="tablecontent" xml-lang="en-US">40D (Hebrew)</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id2310201615100635" role="tablecontent" xml-lang="en-US">10</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510062635" role="tablecontent" xml-lang="en-US">Indian</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id23102016151007630" role="tablecontent" xml-lang="en-US">1938-06-09</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id23102016151007443" role="tablecontent" xml-lang="en-US">Unsupported</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161510074383" role="tablecontent" xml-lang="en-US">0E, 0F, 11, 12 or 13</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510072324" role="tablecontent" xml-lang="en-US">Unknown</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510071869" role="tablecontent" xml-lang="en-US">2016-07-29</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510079549" role="tablecontent" xml-lang="en-US">Unsupported</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161510074993" role="tablecontent" xml-lang="en-US">Unsupported</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510086169" role="tablecontent" xml-lang="en-US">Hanja</paragraph>
+    </tablecell>
+    <tablecell>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id23102016151008696" role="tablecontent" xml-lang="en-US">412 (Korean)</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id231020161510087847" role="tablecontent" xml-lang="en-US">Unsupported</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510081946" role="tablecontent" xml-lang="en-US">ROC</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510089684" role="tablecontent" xml-lang="en-US">0105-08-31</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id231020161510088509" role="tablecontent" xml-lang="en-US">404 (Chinese - Taiwan)</paragraph>
+    </tablecell>
+  </tablerow>
+</table>
+
+</section>
 </body>
 
 </helpdocument>
