@@ -15,21 +15,33 @@ if (response == 1){return xhttp.responseXML;}
 return xhttp.responseText;
 }
 
+function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 
 function displayResult(file, moduleName, language, system)
 {
 var xml = loadXMLDoc(file, 1);
-var xsl = loadXMLDoc('/online_transform.xsl', 1);
+var xsl = loadXMLDoc('online_transform.xsl', 1);
 var xsltProcessor;
 var resultDocument;
 var bookmarkHTML;
 var urlVars = getUrlVars(file);
   var module = urlVars["DbPAR"];
+  moduleName = moduleName || module;
   var language = urlVars["Language"];
   var system = urlVars["System"];
   var usedb = urlVars["UseDB"];
-  document.getElementById("DisplayArea").innerHTML= null; 
-  document.getElementById("BottomLeft").innerHTML= null; 
+  document.getElementById("DisplayArea").innerHTML= null;
+  document.getElementById("BottomLeft").innerHTML= null;
 // code for IE
 if (window.ActiveXObject || xhttp.responseType == "msxml-document")
   {
@@ -45,8 +57,9 @@ else if (document.implementation && document.implementation.createDocument)
     if (language){xsltProcessor.setParameter(null, "Language", language);}
     if (system){xsltProcessor.setParameter(null, "System", system);}
 
-    $(document).on('click', '#BottomLeft a', function(e) {
+    $(document).on('click', '#BottomLeft a, #DisplayArea a', function(e) {
       e.preventDefault();
+      $('#search-bar').val('');
       var xml = loadXMLDoc($(this).attr('href'), 1);
       var resultDocument = xsltProcessor.transformToFragment(xml,  document);
       $("#DisplayArea").html($(resultDocument).find('#DisplayArea').html());
@@ -57,16 +70,22 @@ else if (document.implementation && document.implementation.createDocument)
     resultDocument = xsltProcessor.transformToFragment(xml,  document);
     $("#DisplayArea").html($(resultDocument).find('#DisplayArea').html());
     // Handle bookmar panel
-    $("#BottomLeft").load('/bookmark_'+moduleName+'.html');
+    $("#BottomLeft").load('bookmark_'+moduleName+'.html');
   }
 }
 
+var debouncer = null;
 $(document).ready(function() {
   $('#search-bar').keyup(function() {
-    $("#BottomLeft ul li" ).show();
-    if($(this).val()) {
-      $("#BottomLeft ul a:not(:contains('" + $(this).val() + "'))" ).parent().hide();
+    if(debouncer) {
+      clearTimeout(debouncer);
     }
+    debouncer = setTimeout(function(){
+      $("#BottomLeft ul li" ).show();
+      if($('#search-bar').val()) {
+        $("#BottomLeft ul a:not(:contains('" + $('#search-bar').val() + "'))" ).parent().hide();
+      }
+    }, 500);
   });
 });
 
