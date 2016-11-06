@@ -44,12 +44,9 @@
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
 -->
 
-<xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-xmlns:math="http://www.w3.org/1998/Math/MathML">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:output indent="yes" method="html"
-doctype-system= "about:legacy-compat"/>
+<xsl:output indent="yes" method="html" doctype-system= "about:legacy-compat"/>
 
 <!--
 ############################
@@ -855,12 +852,8 @@ doctype-system= "about:legacy-compat"/>
   <p class="bug">Image: <xsl:value-of select="$src"/></p>
 	<!--<xsl:variable name="src"><xsl:value-of select="concat($img_url_prefix,@src)"/></xsl:variable>-->
 	<xsl:variable name="alt"><xsl:value-of select="./alt"/></xsl:variable>
-	<xsl:variable name="width" select="''"/> <!-- Images don't all have the correct size -->
-	<xsl:variable name="height" select="''"/><!-- Image don't all have the correct size -->
-	<img src="{$src}" alt="{$alt}" title="{$alt}">
-		<xsl:if test="not($width='')"><xsl:attribute name="width"><xsl:value-of select="$width"/></xsl:attribute></xsl:if>
-		<xsl:if test="not($height='')"><xsl:attribute name="height"><xsl:value-of select="$height"/></xsl:attribute></xsl:if>
-	</img>
+    <xsl:variable name="istyle"><xsl:value-of select="concat('width:',@width,';','height:',@height,';')"/></xsl:variable>
+	<img src="{$src}" alt="{$alt}" title="{$alt}" style="{$istyle}"></img>
 </xsl:template>
 
 <!-- Insert a Table -->
