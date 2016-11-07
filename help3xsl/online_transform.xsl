@@ -851,9 +851,34 @@
   </xsl:variable>
   <p class="bug">Image: <xsl:value-of select="$src"/></p>
 	<!--<xsl:variable name="src"><xsl:value-of select="concat($img_url_prefix,@src)"/></xsl:variable>-->
-	<xsl:variable name="alt"><xsl:value-of select="./alt"/></xsl:variable>
-    <xsl:variable name="istyle"><xsl:value-of select="concat('width:',@width,';','height:',@height,';')"/></xsl:variable>
-	<img src="{$src}" alt="{$alt}" title="{$alt}" style="{$istyle}"></img>
+  <xsl:variable name="alt"><xsl:value-of select="./alt"/></xsl:variable>
+  <xsl:variable name="width">
+        <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@width"/></xsl:call-template>
+  </xsl:variable>
+  <xsl:variable name="height">
+        <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
+  </xsl:variable>
+  <img src="{$src}" alt="{$alt}" title="{$alt}" style="concat('width:',$width,';','height:',$height,';')"></img>
+</xsl:template>
+
+<!-- changing measure to pixel -->
+<xsl:template name="convert2px">
+        <xsl:param name="value"/>
+        <xsl:choose>
+                <xsl:when test="contains($value, 'cm')">
+                     <xsl:value-of select="concat(round(number(substring-before($value, 'cm')) * $dpcm),'px')"/>
+                </xsl:when>
+                <xsl:when test="contains($value, 'in')">
+                     <xsl:value-of select="concat(round(number(substring-before($value, 'in')) * $dpi),'px')"/>
+                </xsl:when>
+                <xsl:when test="contains($value, 'px')">
+                     <xsl:value-of select="$value"/>
+                </xsl:when>
+                <xsl:otherwise>
+                     <xsl:message>measure_conversion.xsl: Find no conversion for <xsl:value-of select="$value"/> to 'px'!</xsl:message>
+                     <xsl:value-of select="$value"/>
+                </xsl:otherwise>
+       </xsl:choose>
 </xsl:template>
 
 <!-- Insert a Table -->
