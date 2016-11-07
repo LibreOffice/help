@@ -858,7 +858,8 @@
   <xsl:variable name="height">
         <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
   </xsl:variable>
-  <img src="{$src}" alt="{$alt}" title="{$alt}" style="concat('width:',$width,';','height:',$height,';')"></img>
+  <xsl:variable name="istyle"><xsl:value-of select="concat('width:',$width,';','height:',$height,';')"/></xsl:variable>
+  <img src="{$src}" alt="{$alt}" title="{$alt}" style="{$istyle}"></img>
 </xsl:template>
 
 <!-- changing measure to pixel -->
