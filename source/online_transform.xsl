@@ -110,7 +110,7 @@
 
   <!-- parts of help and image urls -->
 <!--<xsl:variable name="help_url_prefix" select="'vnd.sun.star.help://'"/>-->
-<xsl:variable name="help_url_prefix" select="'/'"/>
+<xsl:variable name="help_url_prefix" select="''"/>
 <xsl:variable name="img_url_prefix" select="concat('/media',$imgtheme,'/')"/>
 <!-- <xsl:variable name="img_url_prefix" select="concat('vnd.libreoffice.image://',$imgtheme,'/')"/> -->
 <!--<xsl:variable name="urlpost" select=""/>-->
@@ -159,15 +159,15 @@
                    <div id="TopLeft" style="display:none; position: fixed;top: 5px;left: 5px;">
                       <table>
                         <tr>
-                            <td class="topmenu"><a href="/text/scalc/main0000.xhp">Calc</a></td>
-                            <td class="topmenu"><a href="/text/swriter/main0000.xhp">Writer</a></td>
-                            <td class="topmenu"><a href="/text/simpress/main0000.xhp">Impress</a></td>
-                            <td class="topmenu"><a href="/text/sdraw/main0000.xhp">Draw</a></td>
-                            <td class="topmenu"><a href="/text/schart/main0000.xhp">Chart</a></td>
-                            <td class="topmenu"><a href="/text/sbasic/shared/main0601.xhp">Basic</a></td>
-                            <td class="topmenu"><a href="/text/smath/main0000.xhp">Math</a></td>
-                            <td class="topmenu"><a href="/text/shared/explorer/database/main.xhp">Base</a></td>
-                            <td class="topmenu"><a href="/text/shared/guide/main.xhp">Guide</a></td>
+                            <td class="topmenu"><a href="text/scalc/main0000.xhp">Calc</a></td>
+                            <td class="topmenu"><a href="text/swriter/main0000.xhp">Writer</a></td>
+                            <td class="topmenu"><a href="text/simpress/main0000.xhp">Impress</a></td>
+                            <td class="topmenu"><a href="text/sdraw/main0000.xhp">Draw</a></td>
+                            <td class="topmenu"><a href="text/schart/main0000.xhp">Chart</a></td>
+                            <td class="topmenu"><a href="text/sbasic/shared/main0601.xhp">Basic</a></td>
+                            <td class="topmenu"><a href="text/smath/main0000.xhp">Math</a></td>
+                            <td class="topmenu"><a href="text/shared/explorer/database/main.xhp">Base</a></td>
+                            <td class="topmenu"><a href="text/shared/guide/main.xhp">Guide</a></td>
                         </tr>
                       </table>
 		      <div id="xmfile"><p class="infopage">This page is: <xsl:value-of select="$filename"/></p></div>
@@ -433,7 +433,6 @@
 
 			<xsl:when test="@id='relatedtopics'">
 				<div class="relatedtopics">
-					<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>-->
 					<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>
 					<xsl:variable name="anchor"><xsl:value-of select="'related'"/></xsl:variable>
 					<xsl:variable name="doc" select="document($href)"/>
@@ -613,7 +612,6 @@
 <xsl:template name="insert_howtoget">
 	<xsl:param name="linkhref" />
 	<xsl:variable name="archive" select="'shared'"/>
-	<!--<xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'shared/text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>-->
 	<xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>
 	<xsl:variable name="tmp_doc" select="document($tmp_href)"/>
 	<table class="howtoget" width="100%" border="1" cellpadding="3" cellspacing="0">

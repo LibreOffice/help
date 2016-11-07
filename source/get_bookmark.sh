@@ -11,54 +11,54 @@ stub2='</ul></body></html>'
 ffile=bookmark_calc.html
 rm -f $ffile
 echo $stub1 > $ffile
-find ../source/text/scalc -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+find text/scalc -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_writer.html
 rm -f $ffile
 echo $stub1 > $ffile
-find ../source/text/swriter -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+find text/swriter -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_draw.html
 rm -f $ffile
 echo $stub1 > $ffile
-find ../source/text/sdraw -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+find text/sdraw -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_impress.html
 rm -f $ffile
 echo $stub1 > $ffile
-find ../source/text/simpress -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+find text/simpress -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_shared.html
 rm -f $ffile
 echo $stub1 > $ffile
-find ../source/text/shared -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+find text/shared -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_chart.html
 rm -f $ffile
 echo $stub1 > $ffile
-find ../source/text/schart -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+find text/schart -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_math.html
 rm -f $ffile
 echo $stub1 > $ffile
-find ../source/text/smath -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+find text/smath -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_basic.html
 rm -f $ffile
 echo $stub1 > $ffile
-find ../source/text/sbasic -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+find text/sbasic -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_base.html
 rm -f $ffile
 echo $stub1 > $ffile
-find ../source/text/shared/explorer/database -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+find text/shared/explorer/database -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
 echo $stub2 >> $ffile
 

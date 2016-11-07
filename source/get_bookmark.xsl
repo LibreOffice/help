@@ -23,7 +23,17 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 # Variables and Parameters #
 ############################
 //-->
-<xsl:variable name="filename" select="/helpdocument/meta/topic/filename"/>
+<xsl:variable name="fname" select="/helpdocument/meta/topic/filename"/>
+<xsl:variable name="filename">
+    <xsl:choose>
+        <xsl:when test="starts-with($fname, '/')">
+            <xsl:value-of select="substring($fname, 2)"/>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="$fname"/>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:variable>
 <!-- Product brand variables used in the help files -->
 <xsl:variable name="brand1" select="'$[officename]'"/>
 <xsl:variable name="brand2" select="'$[officeversion]'"/>
