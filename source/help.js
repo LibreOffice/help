@@ -66,6 +66,7 @@ function displayResult(file, moduleName, language, system)
     var usedb = urlVars["UseDB"];
     document.getElementById("DisplayArea").innerHTML= null;
     document.getElementById("BottomLeft").innerHTML= null;
+    document.getElementById("TopRight").innerHTML= null;
 
     if (window.ActiveXObject || xhttp.responseType == "msxml-document") {
         // code for IE
@@ -86,6 +87,7 @@ function displayResult(file, moduleName, language, system)
                 var xml = loadXMLDoc($(this).attr('href'), 1);
                 var resultDocument = xsltProcessor.transformToFragment(xml,  document);
                 $("#DisplayArea").html($(resultDocument).find('#DisplayArea').html());
+                $("#TopRight").html('<p class="bug">Contents displayed is: '+$(this).attr('href')+'</p>');
                 return false;
                 });
 
@@ -94,6 +96,7 @@ function displayResult(file, moduleName, language, system)
         $("#DisplayArea").html($(resultDocument).find('#DisplayArea').html());
         // Handle bookmar panel
         $("#BottomLeft").load('bookmark_'+moduleName+'.html');
+        $("#TopRight").html('<p class="bug">Contents displayed is: '+$(this).attr('href')+'</p>');
     }
 }
 
