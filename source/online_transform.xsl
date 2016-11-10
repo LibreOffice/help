@@ -111,7 +111,7 @@
   <!-- parts of help and image urls -->
 <!--<xsl:variable name="help_url_prefix" select="'vnd.sun.star.help://'"/>-->
 <xsl:variable name="help_url_prefix" select="''"/>
-<xsl:variable name="img_url_prefix" select="concat('/media',$imgtheme,'/')"/>
+<xsl:variable name="img_url_prefix" select="concat('media',$imgtheme,'/')"/>
 <!-- <xsl:variable name="img_url_prefix" select="concat('vnd.libreoffice.image://',$imgtheme,'/')"/> -->
 <!--<xsl:variable name="urlpost" select=""/>-->
 <xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no')"/>
@@ -121,11 +121,12 @@
 
 
 <xsl:variable name="css" select="'default.css'"/>
+<xsl:variable name="csslink" select="concat($urlpre,$css)"/>
 
 <!-- images for notes, tips and warnings -->
-<xsl:variable name="note_img" select="concat($img_url_prefix,'/helpimg/note.png')"/>
-<xsl:variable name="tip_img" select="concat($img_url_prefix,'/helpimg/tip.png')"/>
-<xsl:variable name="warning_img" select="concat($img_url_prefix,'/helpimg/warning.png')"/>
+<xsl:variable name="note_img" select="concat($img_url_prefix,'helpimg/note.png')"/>
+<xsl:variable name="tip_img" select="concat($img_url_prefix,'helpimg/tip.png')"/>
+<xsl:variable name="warning_img" select="concat($img_url_prefix,'helpimg/warning.png')"/>
 <!--<xsl:variable name="note_img" select="concat($img_url_prefix,$lang,'res/helpimg/note.png')"/>
 <xsl:variable name="tip_img" select="concat($img_url_prefix,'res/helpimg/tip.png')"/>
 <xsl:variable name="warning_img" select="concat($img_url_prefix,'res/helpimg/warning.png')"/>-->
@@ -137,43 +138,9 @@
 
 <!-- Create the document skeleton -->
 <xsl:template match="/">
-	<!--<xsl:variable name="csslink" select="concat($urlpre,'/',$urlpost)"/>-->
-	<xsl:variable name="csslink" select="concat($urlpre,'default.css')"/>
-<!--<![CDATA[<!DOCTYPE html>]]>-->
-	<html>
-		<head>
-			<title><xsl:value-of select="$title"/></title>
-			<link href="{$csslink}" rel="Stylesheet" type="text/css" />
-  		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-		</head>
-		<body lang="{$lang}">
-                   <div id="DisplayArea" style="position: fixed;bottom: 5px;right: 5px; overflow:auto; width: 70%;height: 90%;">
-			<xsl:apply-templates select="/helpdocument/body"/>
-                   </div>
-                   <div id="BottomLeft" style="position: fixed;bottom: 5px;left: 5px; overflow:auto; width: 30%;height: 90%;">
-                   <p>Index will be put here</p>
-                   </div>
-                   <div id="TopRight" style="position: fixed;top: 5px;right: 5px;">
-                   <p> Top Right Area</p>
-                   </div>
-                   <div id="TopLeft" style="display:none; position: fixed;top: 5px;left: 5px;">
-                      <table>
-                        <tr>
-                            <td class="topmenu"><a href="text/scalc/main0000.xhp">Calc</a></td>
-                            <td class="topmenu"><a href="text/swriter/main0000.xhp">Writer</a></td>
-                            <td class="topmenu"><a href="text/simpress/main0000.xhp">Impress</a></td>
-                            <td class="topmenu"><a href="text/sdraw/main0000.xhp">Draw</a></td>
-                            <td class="topmenu"><a href="text/schart/main0000.xhp">Chart</a></td>
-                            <td class="topmenu"><a href="text/sbasic/shared/main0601.xhp">Basic</a></td>
-                            <td class="topmenu"><a href="text/smath/main0000.xhp">Math</a></td>
-                            <td class="topmenu"><a href="text/shared/explorer/database/main.xhp">Base</a></td>
-                            <td class="topmenu"><a href="text/shared/guide/main.xhp">Guide</a></td>
-                        </tr>
-                      </table>
-		      <div id="xmfile"><p class="infopage">This page is: <xsl:value-of select="$filename"/></p></div>
-                 </div>
-		</body>
-	</html>
+               <div id="DisplayArea">
+                    <xsl:apply-templates select="/helpdocument/body"/>
+               </div>
 </xsl:template>
 
 <!-- AHELP -->
@@ -280,7 +247,7 @@
 </xsl:template>
 
 <!-- FILENAME -->
-<xsl:template match="filename" />
+<xsl:template match="filename"/>
 
 <!-- HISTORY -->
 <xsl:template match="history" />
@@ -688,7 +655,7 @@
 <!--	<p>href: <xsl:value-of select="$href"/></p>
 	<p>anchor: <xsl:value-of select="$anchor"/></p>
 	<p>document: <xsl:value-of select="$doc"/></p>-->
-	<p>image source: <xsl:value-of select="$imgsrc"/></p>
+	<p class="bug">image source: <xsl:value-of select="$imgsrc"/></p>
 	<div class="{$type}">
 		<table border="0" class="{$type}" cellspacing="0" cellpadding="5">
 			<tr>
