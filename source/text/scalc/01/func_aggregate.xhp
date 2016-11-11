@@ -277,11 +277,11 @@
 </table>
 
 <paragraph id="par_id220402843321947" role="paragraph" xml-lang="en-US"><emph>Ref1</emph> – obligatory argument. The first numeric argument (if the range is set by a list of values inside the function) or a reference to a cell that contains it. </paragraph>
-<paragraph id="par_id2309201514193338" role="paragraph" xml-lang="en-US"><emph>Ref2,3,...</emph> – optional. A numeric argument or a reference to a cell (up to 253 arguments), for which you need the aggregate value.</paragraph>
+<paragraph id="par_id2309201514193338" role="paragraph" xml-lang="en-US"><emph>Ref2, 3, ...</emph> – optional. A numeric argument or a reference to a cell (up to 253 arguments), for which you need the aggregate value.</paragraph>
 <paragraph id="par_id99381371214702" role="paragraph" xml-lang="en-US"><emph>Array</emph> – obligatory argument. The array can be specified by the boundaries of the range, the name of the named range or the column label.</paragraph>
 <paragraph id="par_id2309201515555812" role="note" xml-lang="en-US">For using column labels “Automatically find columns and rows labels” function needs to be enabled.</paragraph>
 <paragraph id="par_id2209201514174370" role="paragraph" xml-lang="en-US"><emph>k</emph> – obligatory argument for the following functions: LARGE, SMALL, PERCENTILE.INC, QUARTILE.INC, PERCENTILE.EXC, QUARTILE.EXC. It is a numeric argument, which must correspond to the second argument of these functions.</paragraph>
-<paragraph id="par_id2309201516525483" role="warning" xml-lang="en-US">If the second argument is necessary, but not specified, the function returns the error Err:511.<br/>If the second argument specified not correctly, the function returns the error Err:502.</paragraph>
+<paragraph id="par_id2309201516525483" role="warning" xml-lang="en-US">If the <emph>k</emph> argument is necessary, but not specified, the function returns the error Err:511.<br/>If the <emph>Function</emph> and/or <emph>Option</emph> arguments specified not correctly, the function returns the error Err:502.</paragraph>
 
 <paragraph id="hd_id198071265128228" role="heading" level="3" xml-lang="en-US">Examples</paragraph>
 
@@ -427,13 +427,13 @@
   </tablerow>
 </table>
 
-<paragraph id="par_id230920152006414" role="paragraph" xml-lang="en-US"><item type="input">=AGGREGATE(4;2;A2:A9)</item><br/>Returns maximum value for the range A2:A9 =34, whereas <item type="input">=MAX(A2:A9)</item> returns the error Err:511.</paragraph>
-<paragraph id="par_id2309201520064180" role="paragraph" xml-lang="en-US"><item type="input">=AGGREGATE(9;5;A5:C5)</item><br/>Returns sum for the range A5:C5 =29, even if some of the columns are hidden.</paragraph>
-<paragraph id="par_id2309201520064118" role="paragraph" xml-lang="en-US"><item type="input">=AGGREGATE(9;5;B2:B9)</item><br/>Returns sum of the column B =115. If any row is hidden, the function omit its value, for example if the 7th row is hidden, the function returns 95.</paragraph>
-<paragraph id="par_id196152404026557" role="paragraph" xml-lang="en-US">If you need to apply the function with a 3-D range, this example shows how to do it.</paragraph>
-<paragraph id="par_id2309201520180167" role="paragraph" xml-lang="en-US"><item type="input">=AGGREGATE(13;3;Sheet1.B2:B9:Sheet3.B2:B9)</item><br/>The function returns mode of the values of second columns through sheets 1:3 (that have the same data) =8.</paragraph>
+<paragraph id="par_id230920152006414" role="paragraph" xml-lang="en-US"><item type="input">=AGGREGATE(4;2;A2:A9)</item><br/>Returns maximum value for the range A2:A9 = 34, whereas <item type="input">=MAX(A2:A9)</item> returns the error Err:511.</paragraph>
+<paragraph id="par_id2309201520064180" role="paragraph" xml-lang="en-US"><item type="input">=AGGREGATE(9;5;A5:C5)</item><br/>Returns sum for the range A5:C5 = 29, even if some of the columns are hidden.</paragraph>
+<paragraph id="par_id2309201520064118" role="paragraph" xml-lang="en-US"><item type="input">=AGGREGATE(9;5;B2:B9)</item><br/>Returns sum of the column B = 115. If any row is hidden, the function omit its value, for example if the 7th row is hidden, the function returns 95.</paragraph>
+<paragraph id="par_id196152404026557" role="paragraph" xml-lang="en-US">If you need to apply the function with a 3D range, this example shows how to do it.</paragraph>
+<paragraph id="par_id2309201520180167" role="paragraph" xml-lang="en-US"><item type="input">=AGGREGATE(13;3;Sheet1.B2:B9:Sheet3.B2:B9)</item><br/>The function returns mode of the values of second columns through sheets 1:3 (that have the same data) = 8.</paragraph>
 <paragraph id="par_id2309201520395365" role="paragraph" xml-lang="en-US">You can use reference to a cell or a range for every argument in the formula. The following example shows how it works. Besides, it shows that you can use column labels to specify an array.</paragraph>
-<paragraph id="par_id2309201520395380" role="paragraph" xml-lang="en-US"><item type="input">=AGGREGATE(E3;E5;'ColumnOne')</item><br/>If E5 =13 and E7 =5, the function returns mode of the first column =10.</paragraph>
+<paragraph id="par_id2309201520395380" role="paragraph" xml-lang="en-US"><item type="input">=AGGREGATE(E3;E5;'ColumnOne')</item><br/>If E3 = 13 and E5 = 5, the function returns mode of the first column = 10.</paragraph>
 
 <section id="relatedtopics">
 <paragraph id="par_id241712879431120" role="paragraph" xml-lang="en-US"><link href="text/scalc/01/04060184.xhp#average">AVERAGE</link>, <link href="text/scalc/01/04060181.xhp#count">COUNT</link>, <link href="text/scalc/01/04060181.xhp#counta">COUNTA</link>, <link href="text/scalc/01/04060184.xhp#max">MAX</link>, <link href="text/scalc/01/04060184.xhp#min">MIN</link>, <link href="text/scalc/01/04060106.xhp#Section26">PRODUCT</link>, <link href="text/scalc/01/04060185.xhp#stdevdots">STDEV.S</link>, <link href="text/scalc/01/04060185.xhp#stdevdotp">STDEV.P</link>, <link href="text/scalc/01/04060106.xhp#Section16">SUM</link>, <link href="text/scalc/01/04060185.xhp#vardots">VAR.S</link>, <link href="text/scalc/01/04060185.xhp#vardotp">VAR.P</link>, <link href="text/scalc/01/04060184.xhp#median">MEDIAN</link>, <link href="text/scalc/01/04060184.xhp#modedotsngl">MODE.SNGL</link>, <link href="text/scalc/01/04060183.xhp#large">LARGE</link>, <link href="text/scalc/01/04060183.xhp#small">SMALL</link>, <link href="text/scalc/01/04060184.xhp#percentileinc">PERCENTILE.INC</link> , <link href="text/scalc/01/04060184.xhp#quartileinc">QUARTILE.INC</link>, <link href="text/scalc/01/04060184.xhp#percentileexc">PERCENTILE.EXC</link>, <link href="text/scalc/01/04060184.xhp#quartileexc">QUARTILE.EXC</link></paragraph>
