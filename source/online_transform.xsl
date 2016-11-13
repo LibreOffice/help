@@ -327,7 +327,8 @@
 <xsl:template match="meta" />
 
 <!-- OBJECT (UNUSED) -->
-<xsl:template match="object" />
+<xsl:template match="object"><xsl:call-template name="insertobject"/></xsl:template>
+<xsl:template match="object" mode="embedded"><xsl:call-template name="insertobject"/></xsl:template>
 
 <!-- PARAGRAPH -->
 <xsl:template match="paragraph">
@@ -655,7 +656,7 @@
 <!--	<p>href: <xsl:value-of select="$href"/></p>
 	<p>anchor: <xsl:value-of select="$anchor"/></p>
 	<p>document: <xsl:value-of select="$doc"/></p>-->
-	<p class="bug">image source: <xsl:value-of select="$imgsrc"/></p>
+	<p class="debug">image source: <xsl:value-of select="$imgsrc"/></p>
 	<div class="{$type}">
 		<table border="0" class="{$type}" cellspacing="0" cellpadding="5">
 			<tr>
@@ -814,7 +815,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  <p class="bug">Image: <xsl:value-of select="$src"/></p>
+  <p class="debug">Image: <xsl:value-of select="$src"/></p>
 	<!--<xsl:variable name="src"><xsl:value-of select="concat($img_url_prefix,@src)"/></xsl:variable>-->
   <xsl:variable name="alt"><xsl:value-of select="./alt"/></xsl:variable>
   <xsl:variable name="width">
@@ -825,6 +826,32 @@
   </xsl:variable>
   <xsl:variable name="istyle"><xsl:value-of select="concat('width:',$width,';','height:',$height,';')"/></xsl:variable>
   <img src="{$src}" alt="{$alt}" title="{$alt}" style="{$istyle}"></img>
+</xsl:template>
+
+<!-- Insert an object -->
+<xsl:template name="insertobject">
+  <xsl:variable name="data">
+       <xsl:value-of select="concat($img_url_prefix,@data)"/>
+  </xsl:variable>
+  <p class="debug">Object: <xsl:value-of select="$data"/></p>
+  <xsl:variable name="type"><xsl:value-of select="@type"/></xsl:variable>
+  <xsl:variable name="width">
+        <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@width"/></xsl:call-template>
+  </xsl:variable>
+  <xsl:variable name="height">
+        <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
+  </xsl:variable>
+  <xsl:choose>
+        <xsl:when test="starts-with($type,'video')">
+            <video src="{$data}" type="{$type}" width="{$width}" height="{$height}" controls="'1'"></video>
+        </xsl:when>
+        <xsl:when test="starts-with($type,'audio')">
+            <audio src="{$data}" type="{$type}" controls="'1'"></audio>
+        </xsl:when>
+        <xsl:otherwise>
+           <object width="{$width}" height="{$height}" data="{$data}"></object>
+        </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <!-- changing measure to pixel -->

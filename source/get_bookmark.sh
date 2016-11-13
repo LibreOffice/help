@@ -6,8 +6,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-stub1='<html><head><link rel="stylesheet" type="text/css" href="/default.css"/></head><body><ul class="indexlink">'
-stub2='</ul></body></html>'
+stub1='<ul class="indexlink">'
+stub2='</ul>'
 ffile=bookmark_calc.html
 rm -f $ffile
 echo $stub1 > $ffile
