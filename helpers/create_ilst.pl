@@ -35,7 +35,8 @@ if ( -d $startdir ) {
     find(sub{push @files, $File::Find::name if (($File::Find::name=~/\.png$/));},$startdir);
     foreach ( @files ) { s#.*$startdir_regexp[\\/]##; };
     for (sort(@files)) {
-        ($pre eq "helpimg") ? ($prefix = "%GLOBALRES%/") : ($prefix = "%HELPCONTENT%/");
+        # it's now all in one place so no need to distinguish GLOBALRES vs. HELPCONTENT
+        $prefix = "%MODULE%/";
         print "$prefix" . "$pre/$_\n";
     }
 } else {
