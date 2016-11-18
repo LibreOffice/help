@@ -9,10 +9,29 @@
 
 $(eval $(call gb_CustomTarget_CustomTarget,helpcontent2/source/auxiliary))
 
+icon_DIR := $(SRCDIR)/icon-themes/galaxy
+helpcontent2_DIR := $(SRCDIR)/helpcontent2/source
+
 $(eval $(call gb_CustomTarget_register_targets,helpcontent2/source/auxiliary,\
 	helpimg.ilst \
 	screenshotimg.ilst \
+	images_helpimg.zip \
 ))
+
+$(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/images_helpimg.zip : \
+		$(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/helpimg.ilst \
+		$(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/screenshotimg.ilst \
+	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),PRL,1)
+	$(call gb_Helper_abbreviate_dirs, \
+		ILSTFILE=$(call var2file,$(shell $(gb_MKTEMP)),100,$(filter %.ilst,$^)) && \
+		$(PERL) $(SRCDIR)/solenv/bin/packimages.pl \
+			-g $(icon_DIR) -m $(icon_DIR) -c $(icon_DIR) \
+			-e $(helpcontent2_DIR) \
+			-l $${ILSTFILE} \
+			-s $< -o $@ \
+			$(if $(findstring s,$(MAKEFLAGS)),> log_$*) && \
+		rm -rf $${ILSTFILE})
+
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/helpimg.ilst : \
 		$(SRCDIR)/helpcontent2/helpers/create_ilst.pl
