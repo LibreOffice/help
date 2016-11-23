@@ -843,13 +843,17 @@
   </xsl:variable>
   <xsl:choose>
         <xsl:when test="starts-with($type,'video')">
+          <div id="mediadiv">
             <video src="{$data}" type="{$type}" width="{$width}" height="{$height}" controls="'1'"></video>
+          </div>
         </xsl:when>
         <xsl:when test="starts-with($type,'audio')">
+          <div id="mediadiv">
             <audio src="{$data}" type="{$type}" controls="'1'"></audio>
+          </div>
         </xsl:when>
         <xsl:otherwise>
-           <object width="{$width}" height="{$height}" data="{$data}"></object>
+           <object width="{$width}" height="{$height}" data="{$data}" type="{$type}"></object>
         </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -889,7 +893,9 @@
 		</xsl:when>
 
 		<xsl:when test="descendant::tablecell[1]/descendant::image">
-			<table border="0" class="icontable" cellpadding="5" cellspacing="0">
+
+
+          <table border="0" class="icontable" cellpadding="5" cellspacing="0">
 				<xsl:apply-templates mode="icontable"/>
 		 </table>
 		</xsl:when>
