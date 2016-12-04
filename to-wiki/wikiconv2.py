@@ -46,6 +46,7 @@ replace_paragraph_role = \
               'logocode': '<code>',
               'note': '{{Note|1=',
               'null': '', # special paragraph for Variable, CaseInline, etc.
+              'ol_item': '',
               'paragraph': '',
               'related': '', # used only in one file, probably in error?
               'relatedtopics': '', # used only in one file, probably in error?
@@ -62,6 +63,7 @@ replace_paragraph_role = \
               'tablenexttip': '\n{{Tip|1=',
               'tablenextwarning': '\n{{Warning|1=',
               'tip': '{{Tip|1=',
+              'ul_item': '',
               'variable': '',
               'warning': '{{Warning|1=',
              },
@@ -82,6 +84,7 @@ replace_paragraph_role = \
             'logocode': '</code>\n\n',
             'note': '}}\n\n',
             'null': '', # special paragraph for Variable, CaseInline, etc.
+            'ol_item': '',
             'paragraph': '\n\n',
             'related': '\n\n', # used only in one file, probably in error?
             'relatedtopics': '\n\n', # used only in one file, probably in error?
@@ -98,6 +101,7 @@ replace_paragraph_role = \
             'tablenexttip': '}}\n\n',
             'tablenextwarning': '}}\n\n',
             'tip': '}}\n\n',
+            'ul_item': '',
             'variable': '',
             'warning': '}}\n\n',
            },
@@ -118,6 +122,7 @@ replace_paragraph_role = \
               'logocode': False,
               'note': True,
               'null': False,
+              'ol_item': False,
               'paragraph': False,
               'related': False,
               'relatedtopics': False,
@@ -134,6 +139,7 @@ replace_paragraph_role = \
               'tablenexttip': True,
               'tablenextwarning': True,
               'tip': True,
+              'ul_item': False,
               'variable': False,
               'warning': True,
            }
