@@ -602,7 +602,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/explorer/database/04030000 \
     helpcontent2/source/text/shared/explorer/database/05000000 \
     helpcontent2/source/text/shared/explorer/database/05000001 \
-    helpcontent2/source/text/shared/explorer/database/05000002 \
     helpcontent2/source/text/shared/explorer/database/05000003 \
     helpcontent2/source/text/shared/explorer/database/05010000 \
     helpcontent2/source/text/shared/explorer/database/05010100 \
@@ -622,11 +621,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/explorer/database/11030100 \
     helpcontent2/source/text/shared/explorer/database/11080000 \
     helpcontent2/source/text/shared/explorer/database/11090000 \
-    helpcontent2/source/text/shared/explorer/database/11150200 \
-    helpcontent2/source/text/shared/explorer/database/11170000 \
-    helpcontent2/source/text/shared/explorer/database/11170100 \
-    helpcontent2/source/text/shared/explorer/database/30000000 \
-    helpcontent2/source/text/shared/explorer/database/30100000 \
     helpcontent2/source/text/shared/explorer/database/dabaadvprop \
     helpcontent2/source/text/shared/explorer/database/dabaadvpropdat \
     helpcontent2/source/text/shared/explorer/database/dabaadvpropgen \
@@ -639,7 +633,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/explorer/database/dabawiz01 \
     helpcontent2/source/text/shared/explorer/database/dabawiz02 \
     helpcontent2/source/text/shared/explorer/database/dabawiz02access \
-    helpcontent2/source/text/shared/explorer/database/dabawiz02adabas \
     helpcontent2/source/text/shared/explorer/database/dabawiz02ado \
     helpcontent2/source/text/shared/explorer/database/dabawiz02dbase \
     helpcontent2/source/text/shared/explorer/database/dabawiz02jdbc \
