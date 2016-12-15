@@ -19,8 +19,8 @@
      <div id="TopLeft">
          <table>
             <tr>
-               <td><p class="topmenu" onclick="displayResult('text/scalc/main0000.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=calc','calc')">Calc</p></td>
-               <td><p class="topmenu" onclick="displayResult('text/swriter/main0000.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=writer','writer')">Writer</p></td>
+               <td><p class="topmenu" onclick="displayResult('text/scalc/main0000.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=scalc','calc')">Calc</p></td>
+               <td><p class="topmenu" onclick="displayResult('text/swriter/main0000.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=swriter','writer')">Writer</p></td>
                <td><p class="topmenu" onclick="displayResult('text/simpress/main0000.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=simpress','impress')">Impress</p></td>
                <td><p class="topmenu" onclick="displayResult('text/sdraw/main0000.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=sdraw','draw')">Draw</p></td>
                <td><p class="topmenu" onclick="displayResult('text/schart/main0000.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=schart','chart')">Chart</p></td>
@@ -34,13 +34,13 @@
       </div>
      <div id="BottomLeft"></div>
      <div id="TopRight"></div>
-<script>
+<script type="text/javascript">
 if (window.location.href.indexOf('?') && getParameterByName('page')) {
   var module = getParameterByName("DbPAR");
   var language = getParameterByName("Language");
   var system = getParameterByName("System");
   var usedb = getParameterByName("UseDB");
-  displayResult('text/' + getParameterByName('page') + '&DbPAR='+module+'&Language='+language+'&System='+system+'&UseDB='+usedb);
+  displayResult('text/' + getParameterByName('page') + '?&DbPAR='+module+'&Language='+language+'&System='+system+'&UseDB='+usedb);
 } else {
   displayResult('text/shared/main0108.xhp?Language=en-US&System=WIN&UseDB=no&DbPAR=shared','shared');
 }
