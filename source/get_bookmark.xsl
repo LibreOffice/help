@@ -53,9 +53,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
            <xsl:variable name="href" select="concat($filename,'#',@id)"/>
            <xsl:for-each select="bookmark_value">
 		     <li><a href="{$href}" target="_top">
-                     <xsl:apply-templates>
-                           <xsl:value-of select="."/>
-                     </xsl:apply-templates>
+                     <xsl:call-template name="brand"><xsl:with-param name="string">
+                          <xsl:value-of select="."/>
+                     </xsl:with-param></xsl:call-template>
                      </a></li><xsl:text>&#xA;</xsl:text>
            </xsl:for-each>
       </xsl:for-each>
