@@ -9,56 +9,83 @@
 stub1='<ul class="indexlink">'
 stub2='</ul>'
 ffile=bookmark_calc.html
-rm -f $ffile
+ffile2=temp.html
+rm -f $ffile $ffile2
+find text/scalc -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile2
 echo $stub1 > $ffile
-find text/scalc -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+awk 'NF' $ffile2 >> $ffile
+sort -k3b -t\> -s -o $ffile $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_writer.html
-rm -f $ffile
+rm -f $ffile $ffile2
+touch $ffile2
+find text/swriter -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile2
 echo $stub1 > $ffile
-find text/swriter -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+awk 'NF' $ffile2 >> $ffile
+sort -k3b -t\> -s -o $ffile $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_draw.html
-rm -f $ffile
+rm -f $ffile $ffile2
+touch $ffile2
+find text/sdraw -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile2
 echo $stub1 > $ffile
-find text/sdraw -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+awk 'NF' $ffile2 >> $ffile
+sort -k3b -t\> -s -o $ffile $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_impress.html
-rm -f $ffile
+rm -f $ffile $ffile2
+touch $ffile2
+find text/simpress -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile2
 echo $stub1 > $ffile
-find text/simpress -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+awk 'NF' $ffile2 >> $ffile
+sort -k3b -t\> -s -o $ffile $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_shared.html
-rm -f $ffile
+rm -f $ffile $ffile2
+touch $ffile2
+find text/shared -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile2
 echo $stub1 > $ffile
-find text/shared -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+awk 'NF' $ffile2 >> $ffile
+sort -k3b -t\> -s -o $ffile $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_chart.html
-rm -f $ffile
+rm -f $ffile $ffile2
+touch $ffile2
+find text/schart -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile2
 echo $stub1 > $ffile
-find text/schart -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+awk 'NF' $ffile2 >> $ffile
+sort -k3b -t\> -s -o $ffile $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_math.html
-rm -f $ffile
+rm -f $ffile $ffile2
+touch $ffile2
+find text/smath -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile2
 echo $stub1 > $ffile
-find text/smath -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+awk 'NF' $ffile2 >> $ffile
+sort -k3b -t\> -s -o $ffile $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_basic.html
-rm -f $ffile
+rm -f $ffile $ffile2
+touch $ffile2
+find text/sbasic -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile2
 echo $stub1 > $ffile
-find text/sbasic -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+awk 'NF' $ffile2 >> $ffile
+sort -k3b -t\> -s -o $ffile $ffile
 echo $stub2 >> $ffile
 
 ffile=bookmark_base.html
-rm -f $ffile
+rm -f $ffile $ffile2
+touch $ffile2
+find text/shared/explorer/database -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile2
 echo $stub1 > $ffile
-find text/shared/explorer/database -type f -name "*.xhp" -exec xsltproc get_bookmark.xsl {} + >> $ffile
+awk 'NF' $ffile2 >> $ffile
+sort -k3b -t\> -s -o $ffile $ffile
 echo $stub2 >> $ffile
-
+rm -f $ffile2
