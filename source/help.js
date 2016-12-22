@@ -7,7 +7,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-function loadXMLDoc(filename, response)
+function loadXMLDoc(filename)
 {
     if (window.ActiveXObject)
     {
@@ -24,11 +24,7 @@ function loadXMLDoc(filename, response)
     } catch(err) {} // Helping IE11
 
     xhttp.send("");
-    if (response == 1) {
-        return xhttp.responseXML;
-    }
-
-    return xhttp.responseText;
+    return xhttp.responseXML;
 }
 
 function getParameterByName(name, url) {
@@ -53,8 +49,8 @@ function getParameterByName(name, url) {
 
 function displayResult(file, moduleName, language, system)
 {
-    var xml = loadXMLDoc(file, 1);
-    var xsl = loadXMLDoc('online_transform.xsl', 1);
+    var xml = loadXMLDoc(file);
+    var xsl = loadXMLDoc('online_transform.xsl');
     var xsltProcessor;
     var resultDocument;
     var bookmarkHTML;
@@ -84,7 +80,7 @@ function displayResult(file, moduleName, language, system)
         $(document).on('click', '#BottomLeft a, #DisplayArea a', function(e) {
                 e.preventDefault();
                 $('#search-bar').val('');
-                var xml = loadXMLDoc($(this).attr('href'), 1);
+                var xml = loadXMLDoc($(this).attr('href'));
                 var resultDocument = xsltProcessor.transformToFragment(xml,  document);
                 $("#DisplayArea").html($(resultDocument).find('#DisplayArea').html());
                 $("#TopRight").html('<p class="bug">Contents displayed is: '+$(this).attr('href')+'</p>');
