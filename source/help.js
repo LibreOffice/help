@@ -7,7 +7,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-function loadXMLDoc(filename)
+function loadXMLDoc(filename, handler)
 {
     if (window.ActiveXObject)
     {
@@ -18,13 +18,13 @@ function loadXMLDoc(filename)
         xhttp = new XMLHttpRequest();
     }
 
-    xhttp.open("GET", filename, false);
+    xhttp.open("GET", filename);
+    xhttp.onload = handler;
     try {
         xhttp.responseType = "msxml-document"
     } catch(err) {} // Helping IE11
 
-    xhttp.send("");
-    return xhttp.responseXML;
+    xhttp.send();
 }
 
 function getParameterByName(name, url) {
@@ -47,14 +47,10 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-function displayResult(file, moduleName, language, system)
-{
-    var xml = loadXMLDoc(file);
-    var xsl = loadXMLDoc('online_transform.xsl');
+function displayXML(xml, xsl, urlVars, moduleName, language, system) {
     var xsltProcessor;
     var resultDocument;
     var bookmarkHTML;
-    var urlVars = getUrlVars(file);
     var module = urlVars["DbPAR"];
     moduleName = moduleName || module;
     var language = urlVars["Language"];
@@ -80,12 +76,22 @@ function displayResult(file, moduleName, language, system)
         $(document).on('click', '#BottomLeft a, #DisplayArea a', function(e) {
                 e.preventDefault();
                 $('#search-bar').val('');
-                var xml = loadXMLDoc($(this).attr('href'));
-                var resultDocument = xsltProcessor.transformToFragment(xml,  document);
-                $("#DisplayArea").html($(resultDocument).find('#DisplayArea').html());
-                $("#TopRight").html('<p class="bug">Contents displayed is: '+$(this).attr('href')+'</p>');
-                return false;
+
+                var fileName = $(this).attr('href');
+
+                loadXMLDoc(fileName, function() {
+                    var xmlDoc = this.responseXML;
+                    if (this.status == 200 && xmlDoc != null) {
+                        var resultDocument = xsltProcessor.transformToFragment(xmlDoc,  document);
+                        $("#DisplayArea").html($(resultDocument).find('#DisplayArea').html());
+                        $("#TopRight").html('<p class="bug">Contents displayed is: ' + fileName + '</p>');
+                    }
+                    else {
+                        console.log('Cannot load ' + fileName);
+                    }
                 });
+                return false;
+            });
 
         xsltProcessor.importStylesheet(xsl);
         resultDocument = xsltProcessor.transformToFragment(xml,  document);
@@ -94,6 +100,29 @@ function displayResult(file, moduleName, language, system)
         $("#BottomLeft").load('bookmark_'+moduleName+'.html');
         $("#TopRight").html('<p class="bug">Contents displayed is: '+$(this).attr('href')+'</p>');
     }
+}
+
+function displayResult(file, moduleName, language, system) {
+    // load the XSLT
+    loadXMLDoc('online_transform.xsl', function() {
+        var xsl = this.responseXML;
+
+        // load the actual XHP file
+        if (this.status == 200 && xsl != null) {
+            loadXMLDoc(file, function(){
+                var xml = this.responseXML;
+                if (this.status == 200 && xml != null) {
+                    displayXML(xml, xsl, getUrlVars(file), moduleName, language, system);
+                }
+                else {
+                    console.log('Cannot load ' + file);
+                }
+            });
+        }
+        else {
+            console.log('Cannot load online_transform.xsl');
+        }
+    });
 }
 
 var debouncer = null;
