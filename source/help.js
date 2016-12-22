@@ -127,18 +127,21 @@ function displayResult(file, moduleName, language, system) {
 
 var debouncer = null;
 $(document).ready(function() {
-        $('#search-bar').keyup(function() {
-                if(debouncer) {
-                clearTimeout(debouncer);
-                }
-                debouncer = setTimeout(function(){
-                        $("#BottomLeft ul li" ).show();
-                        if($('#search-bar').val()) {
-                        $("#BottomLeft ul a:not(:contains('" + $('#search-bar').val() + "'))" ).parent().hide();
-                        }
-                        }, 500);
-                });
-        });
+    $('#search-bar').keyup(function() {
+        if (debouncer) {
+            clearTimeout(debouncer);
+        }
+        debouncer = setTimeout(function(){
+            if ($('#search-bar').val()) {
+                $("#BottomLeft ul a:not(:contains('" + $('#search-bar').val() + "'))" ).parent().hide();
+                $("#BottomLeft ul a:contains('" + $('#search-bar').val() + "')" ).parent().show();
+            }
+            else {
+                $("#BottomLeft ul li" ).show();
+            }
+        }, 200);
+    });
+});
 
 //http://papermashup.com/read-url-get-variables-withjavascript/
 
