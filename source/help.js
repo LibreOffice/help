@@ -81,7 +81,7 @@ function displayXML(xml, xsl, urlVars, moduleName, language, system) {
 
                 loadXMLDoc(fileName, function() {
                     var xmlDoc = this.responseXML;
-                    if (this.status == 200 && xmlDoc != null) {
+                    if (xmlDoc != null) {
                         var resultDocument = xsltProcessor.transformToFragment(xmlDoc,  document);
                         $("#DisplayArea").html($(resultDocument).find('#DisplayArea').html());
                         $("#TopRight").html('<p class="bug">Contents displayed is: ' + fileName + '</p>');
@@ -108,10 +108,10 @@ function displayResult(file, moduleName, language, system) {
         var xsl = this.responseXML;
 
         // load the actual XHP file
-        if (this.status == 200 && xsl != null) {
+        if (xsl != null) {
             loadXMLDoc(file, function(){
                 var xml = this.responseXML;
-                if (this.status == 200 && xml != null) {
+                if (xml != null) {
                     displayXML(xml, xsl, getUrlVars(file), moduleName, language, system);
                 }
                 else {
