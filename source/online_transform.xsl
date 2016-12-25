@@ -369,9 +369,10 @@
 		<xsl:choose>
 
 		<xsl:when test="@role='heading'">	<!-- increase the level of headings that are embedded -->
-			 <xsl:variable name="level"><xsl:value-of select="number(@level)+1"/></xsl:variable>
+<!-- 			 <xsl:variable name="level"><xsl:value-of select="number(@level)+1"/></xsl:variable> -->
 			<xsl:call-template name="insertheading">
-				<xsl:with-param name="embedded" select="'yes'"/>
+                <xsl:with-param name="embedded" select="'yes'"/>
+                <xsl:with-param name="level" select="@level"/>
 			</xsl:call-template>
 		</xsl:when>
 
@@ -563,7 +564,7 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
-	<p class="{$role}"><xsl:apply-templates /></p>
+	<p id="{@id}" class="{$role}"><xsl:apply-templates /></p>
 </xsl:template>
 
 <!-- Insert Basic code snippet  -->
@@ -673,6 +674,7 @@
 	<xsl:param name="level" />
 	<xsl:param name="embedded" />
         <xsl:element name="{concat('h',$level)}">
+        <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
 		<xsl:choose>
 			<xsl:when test="$embedded = 'yes'">
 				<xsl:apply-templates mode="embedded"/>
