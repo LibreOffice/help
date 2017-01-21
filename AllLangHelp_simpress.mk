@@ -123,7 +123,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/02/04010000 \
     helpcontent2/source/text/simpress/02/04020000 \
     helpcontent2/source/text/simpress/02/04030000 \
-    helpcontent2/source/text/simpress/02/04040000 \
     helpcontent2/source/text/simpress/02/04060000 \
     helpcontent2/source/text/simpress/02/04070000 \
     helpcontent2/source/text/simpress/02/08020000 \
