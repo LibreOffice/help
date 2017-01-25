@@ -77,6 +77,10 @@ function displayXML(xml, xsl, urlVars, moduleName, language, system) {
                 e.preventDefault();
                 $('#search-bar').val('');
 
+                $('#breadcrumbs')
+                  .html('<span><span class="module">'+moduleName+'</span> > <span class="section">'+$(this).text()+'</span></span>');
+
+
                 var fileName = $(this).attr('href');
 
                 loadXMLDoc(fileName, function() {
@@ -103,6 +107,8 @@ function displayXML(xml, xsl, urlVars, moduleName, language, system) {
 }
 
 function displayResult(file, moduleName, language, system) {
+  $('#breadcrumbs')
+    .html('');
     // load the XSLT
     loadXMLDoc('online_transform.xsl', function() {
         var xsl = this.responseXML;
