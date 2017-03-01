@@ -66,7 +66,7 @@
 
 <paragraph id="hd_id3151262" role="heading" level="2" xml-lang="en-US">Decimal Places and Significant Digits</paragraph>
 <paragraph id="par_id3153624" role="paragraph" xml-lang="en-US">Use zero (0), the number sign (#) or the question mark (?) as placeholders in your number format code to represent numbers. The (#) only displays significant digits, while the (0) displays zeroes if there are fewer digits in the number than in the number format. The (?) works as the (#) but adds a space character to keep decimal alignment if there is a hidden non-significant zero.</paragraph>
-<paragraph id="par_id3153323" role="paragraph" xml-lang="en-US">Use question marks (?) to represent the number of digits to include in the numerator and the denominator of a fraction. Fractions that do not fit the pattern that you define are displayed as floating point numbers.</paragraph>
+<paragraph id="par_id3153323" role="paragraph" xml-lang="en-US">Use question marks (?), zeroes (0) or number signs (#) to represent the number of digits to include in the numerator and the denominator of a fraction. Fractions that do not fit the pattern that you define are displayed as floating point numbers.</paragraph>
 <paragraph id="par_id3148440" role="paragraph" xml-lang="en-US">If a number contains more digits to the right of the decimal delimiter than there are placeholders in the format, the number is rounded accordingly. If a number contains more digits to the left of the decimal delimiter than there are placeholders in the format, the entire number is displayed. Use the following list as a guide for using placeholders when you create a number format code:</paragraph>
 
 <table id="tbl_id3149760">
@@ -168,7 +168,7 @@
 
 
 <paragraph id="hd_id3149276" role="heading" level="3" xml-lang="en-US">Thousands Separator</paragraph>
-<paragraph id="par_id3154380" role="paragraph" xml-lang="en-US">Depending on your language setting, you can use a comma, a period or a blank as a thousands separator. You can also use the separator to reduce the size of the number that is displayed by a multiple of 1000 for each separator.</paragraph>
+<paragraph id="par_id3154380" role="paragraph" xml-lang="en-US">Depending on your language setting, you can use a comma, a period or a blank as a thousands separator. You can also use the separator to reduce the size of the number that is displayed by a multiple of 1000 for each separator. The examples below use comma as thousands separator:</paragraph>
 
 <table id="tbl_id3150244">
   <tablerow>
@@ -201,7 +201,7 @@
 <paragraph id="hd_id3154836" role="heading" level="2" xml-lang="en-US">Including Text in Number Format Codes</paragraph>
 
 <paragraph id="hd_id3150398" role="heading" level="3" xml-lang="en-US">Text and Numbers</paragraph>
-<paragraph id="par_id3154224" role="paragraph" xml-lang="en-US">To include text in a number format that is applied to a cell containing numbers, place a double quotation mark (") in front of and behind the text, or a backslash (\) before a single character. For example, enter <emph>#.# "meters"</emph> to display "3.5 meters" or <emph>#.# \m</emph> to display "3.5 m".</paragraph>
+<paragraph id="par_id3154224" role="paragraph" xml-lang="en-US">To include text in a number format that is applied to a cell containing numbers, place a double quotation mark (") in front of and behind the text, or a backslash (\) before a single character. For example, enter <emph>#.# "meters"</emph> to display "3.5 meters" or <emph>#.# \m</emph> to display "3.5 m". If you use space as thousands separator, you need to insert spaces between quotes in the previous examples: <emph>#.#" meters"</emph> or <emph>#.#\ \m</emph> to get the correct result.</paragraph>
 
 <paragraph id="hd_id3148979" role="heading" level="3" xml-lang="en-US">Text and Text</paragraph>
 <paragraph id="par_id3153338" role="paragraph" xml-lang="en-US">To include text in a number format that is applied to a cell that might contain text, enclose the text by double quotation marks (" "), and then add an at sign (@). For example, enter <emph>"Total for "@</emph> to display "Total for December".</paragraph>
@@ -271,7 +271,7 @@
 <paragraph id="par_id3151168" role="paragraph" xml-lang="en-US">To display numbers as percentages, add the percent sign (%) to the number format.</paragraph>
 
 <paragraph id="hd_id3156005" role="heading" level="3" xml-lang="en-US">Scientific Notation</paragraph>
-<paragraph id="par_id3146923" role="paragraph" xml-lang="en-US">Scientific notation lets you write very large numbers or very small fractions in a compact form. For example, in scientific notation, 650000 is written as 6.5 x 10^5, and 0.000065 as 6.5 x 10^-5. <comment>Translators: use the decimal delimiter of your language (period or comma) for all number format codes in Calc.</comment>In <item type="productname">%PRODUCTNAME</item>, these numbers are written as 6.5E+5 and 6.5E-5, respectively. To create a number format that displays numbers using scientific notation, enter a # or 0, and then one of the following codes E-, E+, e- or e+. If sign is omitted after E or e, it won't appear for positive value of exponent. To get engineering notation, enter 3 digits (0 or #) in the integer part. For instance: ###.##E+00</paragraph>
+<paragraph id="par_id3146923" role="paragraph" xml-lang="en-US">Scientific notation lets you write very large numbers or very small fractions in a compact form. For example, in scientific notation, 650000 is written as 6.5 x 10<sup>5</sup>, and 0.000065 as 6.5 x 10<sup>-5</sup>. <comment>Translators: use the decimal delimiter of your language (period or comma) for all number format codes in Calc.</comment>In <item type="productname">%PRODUCTNAME</item>, these numbers are written as 6.5E+5 and 6.5E-5, respectively. To create a number format that displays numbers using scientific notation, enter a # or 0, and then one of the following codes E-, E+, e- or e+. If sign is omitted after E or e, it won't appear for positive value of exponent. To get engineering notation, enter 3 digits (0 or #) in the integer part: <emph>###.##E+00</emph> for instance.</paragraph>
 
 <paragraph id="hd_id3156006" role="heading" level="3" xml-lang="en-US">Fraction Representation</paragraph>
 <paragraph id="par_id3146924" role="paragraph" xml-lang="en-US">To represent a value as a fraction, format consists of two or three parts: integer optional part, numerator and denominator. Integer and numerator are separated by a blank or any quoted text. Numerator and denominator are separated by a slash character. Each part can consist of a combination of #, ? and 0 as placeholders.</paragraph>
@@ -282,7 +282,7 @@
 
 <paragraph id="hd_id3159080" role="heading" level="2" xml-lang="en-US">Number Format Codes of Currency Formats</paragraph>
 <paragraph id="par_id3147318" role="paragraph" xml-lang="en-US">The default currency format for the cells in your spreadsheet is determined by the regional setting of your operating system. If you want, you can apply a custom currency symbol to a cell. For example, enter #,##0.00 € to display 4.50 € (Euros).<comment>Translators: use the decimal delimiter of your language (period or comma) for all number format codes in Calc.</comment></paragraph>
-<paragraph id="par_id3150032" role="paragraph" xml-lang="en-US">You can also specify the locale setting for the currency by entering the locale code for the country after the symbol. For example, [$€-407] represents Euros in Germany. To view the locale code for a country, select the country in the <emph>Language</emph> list on the <emph>Numbers</emph> tab of the <emph>Format Cells</emph> dialog.</paragraph>
+<paragraph id="par_id3150032" role="paragraph" xml-lang="en-US">You can also specify the locale setting for the currency by entering the locale code for the country after the symbol. For example, <emph>[$€-407]</emph> represents Euros in Germany. To view the locale code for a country, select the country in the <emph>Language</emph> list on the <emph>Numbers</emph> tab of the <emph>Format Cells</emph> dialog.</paragraph>
 <embed href="text/shared/01/05020300.xhp#waehrungtext"/>
 
 <paragraph id="hd_id3157309" role="heading" level="2" xml-lang="en-US">Date and Time Formats</paragraph>
@@ -1832,7 +1832,7 @@
 
 <paragraph id="hd_id231020161309281519" role="heading" level="3" xml-lang="en-US">Extended LCID</paragraph>
 <paragraph id="par_id23102016124541451" role="paragraph" xml-lang="en-US">If compatible, native numbering and calendar are exported to MS-Excel using extended LCID. Extended LCID can also be used in string format instead of NatNum modifier.</paragraph>
-<paragraph id="par_id23102016130928602" role="paragraph" xml-lang="en-US">Extended LCID consists of 8 hexadecimal digits: <emph>[$-NNCCLLLL]</emph>, with 2 first digits NN for native numerals, CC for calendar and LLLL for LCID code. For instance, [$-0D0741E] will be converted to [NatNum1][$-41E][~buddhist]: Thai numerals (0D) with Buddhist calendar (07) in Thai locale (041E).</paragraph>
+<paragraph id="par_id23102016130928602" role="paragraph" xml-lang="en-US">Extended LCID consists of 8 hexadecimal digits: <emph>[$-NNCCLLLL]</emph>, with 2 first digits NN for native numerals, CC for calendar and LLLL for LCID code. For instance, <emph>[$-0D0741E]</emph> will be converted to <emph>[NatNum1][$-41E][~buddhist]</emph>: Thai numerals (0D) with Buddhist calendar (07) in Thai locale (041E).</paragraph>
 <paragraph id="par_id231020161309295474" role="paragraph" xml-lang="en-US"><emph>Native Numerals</emph></paragraph>
 <paragraph id="par_id231020161309291913" role="paragraph" xml-lang="en-US">Two first digits NN represents native numerals:</paragraph>
 
