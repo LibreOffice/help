@@ -52,9 +52,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
       <xsl:for-each select="//bookmark[@branch='index']">
            <xsl:variable name="href" select="concat($filename,'#',@id)"/>
            <xsl:for-each select="bookmark_value">
-		     <li><a href="{$href}" target="_top">
-                     <xsl:call-template name="brand"><xsl:with-param name="string">
-                          <xsl:value-of select="."/>
+			<xsl:sort select="substring-before(., ';')"/>
+			<li><a href="{$href}" target="_top">
+			<xsl:call-template name="brand"><xsl:with-param name="string">
+                       	<xsl:value-of select="substring-before(., ';')"/><br/>
+			<xsl:value-of select="substring-after(., ';')"/>
                      </xsl:with-param></xsl:call-template>
                      </a></li><xsl:text>&#xA;</xsl:text>
            </xsl:for-each>
