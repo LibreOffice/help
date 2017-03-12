@@ -582,17 +582,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/autopi/01170300 \
     helpcontent2/source/text/shared/autopi/01170400 \
     helpcontent2/source/text/shared/autopi/01170500 \
-    helpcontent2/source/text/shared/autopi/webwizard00 \
-    helpcontent2/source/text/shared/autopi/webwizard01 \
-    helpcontent2/source/text/shared/autopi/webwizard02 \
-    helpcontent2/source/text/shared/autopi/webwizard03 \
-    helpcontent2/source/text/shared/autopi/webwizard04 \
-    helpcontent2/source/text/shared/autopi/webwizard05 \
-    helpcontent2/source/text/shared/autopi/webwizard05bi \
-    helpcontent2/source/text/shared/autopi/webwizard05is \
-    helpcontent2/source/text/shared/autopi/webwizard06 \
-    helpcontent2/source/text/shared/autopi/webwizard07 \
-    helpcontent2/source/text/shared/autopi/webwizard07fc \
     helpcontent2/source/text/shared/explorer/database/02000000 \
     helpcontent2/source/text/shared/explorer/database/02000002 \
     helpcontent2/source/text/shared/explorer/database/02010100 \
