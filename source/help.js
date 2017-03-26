@@ -47,6 +47,8 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+var navigationHistory = [];
+
 function displayXML(xml, xsl, urlVars, moduleName, language, system) {
     var xsltProcessor;
     var resultDocument;
@@ -79,6 +81,35 @@ function displayXML(xml, xsl, urlVars, moduleName, language, system) {
 
                 var fileName = $(this).attr('href');
 
+                navigationHistory.push({
+                    name: $(this).text(),
+                    fileName: fileName
+                });
+                if (navigationHistory.length > 5) {
+                  navigationHistory.shift();
+                }
+                var previousHistory = ''
+                navigationHistory.forEach(function(history) {
+                  previousHistory += '<span class="section" filename="' + history.fileName + '">' + history.name + '</span> > '
+                });
+                $('#NavigationHistory')
+                  .html('<span>' + previousHistory + '</span>');
+
+                $('#NavigationHistory span.section').click(function() {
+                  loadXMLDoc($(this).attr('filename'), function() {
+                      var xmlDoc = this.responseXML;
+                      if (xmlDoc != null) {
+                          var resultDocument = xsltProcessor.transformToFragment(xmlDoc,  document);
+                          $("#DisplayArea").html($(resultDocument).find('#DisplayArea').html());
+                          $("#TopRight").html('<p class="bug">Contents displayed is: ' + fileName + '</p>');
+                      }
+                      else {
+                          console.log('Cannot load ' + fileName);
+                      }
+                  });
+                })
+
+
                 loadXMLDoc(fileName, function() {
                     var xmlDoc = this.responseXML;
                     if (xmlDoc != null) {
@@ -103,6 +134,8 @@ function displayXML(xml, xsl, urlVars, moduleName, language, system) {
 }
 
 function displayResult(file, moduleName, language, system) {
+  $('#NavigationHistory')
+    .html('');
     // load the XSLT
     loadXMLDoc('online_transform.xsl', function() {
         var xsl = this.responseXML;
