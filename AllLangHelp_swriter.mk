@@ -185,7 +185,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/mailmerge07 \
     helpcontent2/source/text/swriter/01/mailmerge08 \
     helpcontent2/source/text/swriter/01/mm_copyto \
-    helpcontent2/source/text/swriter/01/mm_cusaddfie \
     helpcontent2/source/text/swriter/01/mm_cusaddlis \
     helpcontent2/source/text/swriter/01/mm_cusgrelin \
     helpcontent2/source/text/swriter/01/mm_emabod \
