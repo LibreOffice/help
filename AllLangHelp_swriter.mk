@@ -189,10 +189,13 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/mm_cusaddlis \
     helpcontent2/source/text/swriter/01/mm_cusgrelin \
     helpcontent2/source/text/swriter/01/mm_emabod \
+    helpcontent2/source/text/swriter/01/mm_emailmergeddoc \
     helpcontent2/source/text/swriter/01/mm_finent \
     helpcontent2/source/text/swriter/01/mm_matfie \
     helpcontent2/source/text/swriter/01/mm_newaddblo \
     helpcontent2/source/text/swriter/01/mm_newaddlis \
+    helpcontent2/source/text/swriter/01/mm_printmergeddoc \
+    helpcontent2/source/text/swriter/01/mm_savemergeddoc \
     helpcontent2/source/text/swriter/01/mm_seladdblo \
     helpcontent2/source/text/swriter/01/mm_seladdlis \
     helpcontent2/source/text/swriter/01/mm_seltab \
@@ -412,6 +415,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/menu/insert_header_footer \
     helpcontent2/source/text/swriter/menu/insert_footnote_endnote \
     helpcontent2/source/text/swriter/menu/insert_frame \
+    helpcontent2/source/text/swriter/mailmergetoolbar \
 ))
 
 # vim: set noet sw=4 ts=4:
