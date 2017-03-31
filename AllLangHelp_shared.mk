@@ -332,7 +332,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/gallery \
     helpcontent2/source/text/shared/01/gallery_files \
     helpcontent2/source/text/shared/01/grid \
-    helpcontent2/source/text/shared/01/grid_and_helplines \
     helpcontent2/source/text/shared/01/guides \
     helpcontent2/source/text/shared/01/mediaplayer \
     helpcontent2/source/text/shared/01/menu_edit_find \
