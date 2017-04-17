@@ -781,6 +781,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/start_parameters \
     helpcontent2/source/text/shared/guide/startcenter \
     helpcontent2/source/text/shared/guide/tabs \
+    helpcontent2/source/text/shared/guide/template_manager \
     helpcontent2/source/text/shared/guide/text_color \
     helpcontent2/source/text/shared/guide/textmode_change \
     helpcontent2/source/text/shared/guide/undo_formatting \
