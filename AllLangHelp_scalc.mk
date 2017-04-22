@@ -222,7 +222,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/common_func_workdaysintl \
     helpcontent2/source/text/scalc/01/func_networkdays \
     helpcontent2/source/text/scalc/01/func_networkdays.intl \
-    helpcontent2/source/text/scalc/01/func_workdays.intl \
+    helpcontent2/source/text/scalc/01/func_workday.intl \
     helpcontent2/source/text/scalc/01/func_numbervalue \
     helpcontent2/source/text/scalc/01/func_now \
     helpcontent2/source/text/scalc/01/func_rawsubtract \
