@@ -54,27 +54,114 @@
 <embed href="text/sbasic/shared/00000003.xhp#err53"/>
 
 <paragraph id="hd_id3145364" role="heading" level="2" xml-lang="en-US">Value</paragraph>
-<paragraph id="par_id3147349" role="paragraph" xml-lang="en-US">0 : Normal files.</paragraph>
-<paragraph id="par_id3147434" role="paragraph" xml-lang="en-US">1 : Read-only files.</paragraph>
-<paragraph id="par_id3159154" role="paragraph" xml-lang="en-US">8 : Returns the name of the volume</paragraph>
-<paragraph id="par_id3145271" role="paragraph" xml-lang="en-US">16 : Returns the name of the directory only.</paragraph>
-<paragraph id="par_id3153953" role="paragraph" xml-lang="en-US">32 : File was changed since last backup (Archive bit).</paragraph>
+
+<table id="Table1">
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170522586822" role="tablehead" xml-lang="en-US">Named constant</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170522583099" role="tablehead" xml-lang="en-US">Value</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170522583818" role="tablehead" xml-lang="en-US">Definition</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170522588740" role="tablecontent" xml-lang="en-US">ATTR_NORMAL</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170522583733" role="tablecontent" xml-lang="en-US">0</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3147349" role="paragraph" xml-lang="en-US"> Normal files.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170522587742" role="tablecontent" xml-lang="en-US">ATTR_READONLY</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170522584092" role="tablecontent" xml-lang="en-US">1</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3147434" role="paragraph" xml-lang="en-US"> Read-only files.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id05122017054654588" role="tablecontent" xml-lang="en-US">ATTR_HIDDEN</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170546549512" role="tablecontent" xml-lang="en-US">2</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170546544550" role="paragraph" xml-lang="en-US"> Hidden file</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170546546528" role="tablecontent" xml-lang="en-US">ATTR_SYSTEM</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170546548373" role="tablecontent" xml-lang="en-US">4</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170546546496" role="paragraph" xml-lang="en-US"> System file</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170522588594" role="tablecontent" xml-lang="en-US">ATTR_VOLUME</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170522581431" role="tablecontent" xml-lang="en-US">8</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3159154" role="paragraph" xml-lang="en-US"> Returns the name of the volume</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id05122017052258465" role="tablecontent" xml-lang="en-US">ATTR_DIRECTORY</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170522585148" role="tablecontent" xml-lang="en-US">16</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3145271" role="paragraph" xml-lang="en-US"> Returns the name of the directory only.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170522585987" role="tablecontent" xml-lang="en-US">ATTR_ARCHIVE</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170522583804" role="tablecontent" xml-lang="en-US">32</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3153953" role="paragraph" xml-lang="en-US"> File was changed since last backup (Archive bit).</paragraph>
+    </tablecell>
+  </tablerow>
+</table>
+
 <paragraph id="par_id3156444" role="paragraph" xml-lang="en-US">If you want to know if a bit of the attribute byte is set, use the following query method:</paragraph>
 
 <paragraph id="hd_id3153094" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
 <bascode>
 <paragraph id="par_idm1341566848" role="bascode" localize="false" xml-lang="en-US">Sub ExampleSetGetAttr</paragraph>
 <paragraph id="par_id3155415" role="bascode" xml-lang="en-US">On Error GoTo ErrorHandler ' Define target for error handler</paragraph>
-<paragraph id="par_idm1341563936" role="bascode" localize="false" xml-lang="en-US">    If Dir("C:\test",16)="" Then MkDir "C:\test"</paragraph>
-<paragraph id="par_idm1341562672" role="bascode" localize="false" xml-lang="en-US">        If Dir("C:\test\autoexec.sav")="" Then FileCopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
-<paragraph id="par_idm1341561360" role="bascode" localize="false" xml-lang="en-US">            SetAttr "c:\test\autoexec.sav" ,0</paragraph>
-<paragraph id="par_idm1341560096" role="bascode" localize="false" xml-lang="en-US">            FileCopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
-<paragraph id="par_idm1341558816" role="bascode" localize="false" xml-lang="en-US">            SetAttr "c:\test\autoexec.sav" ,1</paragraph>
-<paragraph id="par_idm1341557552" role="bascode" localize="false" xml-lang="en-US">            Print GetAttr( "c:\test\autoexec.sav" )</paragraph>
-<paragraph id="par_idm1341556288" role="bascode" localize="false" xml-lang="en-US">        End</paragraph>
+<paragraph id="par_idm1341563936" role="bascode" localize="false" xml-lang="en-US"> If Dir("C:\test",16)="" Then MkDir "C:\test"</paragraph>
+<paragraph id="par_idm1341562672" role="bascode" localize="false" xml-lang="en-US"> If Dir("C:\test\autoexec.sav")="" Then FileCopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
+<paragraph id="par_idm1341561360" role="bascode" localize="false" xml-lang="en-US"> SetAttr "c:\test\autoexec.sav" ,0</paragraph>
+<paragraph id="par_idm1341560096" role="bascode" localize="false" xml-lang="en-US"> FileCopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
+<paragraph id="par_idm1341558816" role="bascode" localize="false" xml-lang="en-US"> SetAttr "c:\test\autoexec.sav" ,1</paragraph>
+<paragraph id="par_idm1341557552" role="bascode" localize="false" xml-lang="en-US"> Print GetAttr( "c:\test\autoexec.sav" )</paragraph>
+<paragraph id="par_idm1341556288" role="bascode" localize="false" xml-lang="en-US"> End</paragraph>
 <paragraph id="par_idm1341555056" role="bascode" localize="false" xml-lang="en-US">ErrorHandler:</paragraph>
-<paragraph id="par_idm1341553824" role="bascode" localize="false" xml-lang="en-US">        Print Error</paragraph>
-<paragraph id="par_idm1341552592" role="bascode" localize="false" xml-lang="en-US">    End</paragraph>
+<paragraph id="par_idm1341553824" role="bascode" localize="false" xml-lang="en-US"> Print Error</paragraph>
+<paragraph id="par_idm1341552592" role="bascode" localize="false" xml-lang="en-US"> End</paragraph>
 <paragraph id="par_idm1341551360" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
 </body>
