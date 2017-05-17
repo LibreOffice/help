@@ -144,6 +144,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03030301 \
     helpcontent2/source/text/sbasic/shared/03030302 \
     helpcontent2/source/text/sbasic/shared/03030303 \
+    helpcontent2/source/text/sbasic/shared/03040000 \
     helpcontent2/source/text/sbasic/shared/03050000 \
     helpcontent2/source/text/sbasic/shared/03050100 \
     helpcontent2/source/text/sbasic/shared/03050200 \
