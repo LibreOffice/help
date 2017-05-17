@@ -67,7 +67,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/00/icon_alt \
     helpcontent2/source/text/shared/01/01010000 \
     helpcontent2/source/text/shared/01/01010001 \
-    helpcontent2/source/text/shared/01/01010100 \
     helpcontent2/source/text/shared/01/01010200 \
     helpcontent2/source/text/shared/01/01010201 \
     helpcontent2/source/text/shared/01/01010202 \
