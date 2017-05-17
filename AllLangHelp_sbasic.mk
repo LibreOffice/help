@@ -251,6 +251,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03103100 \
     helpcontent2/source/text/sbasic/shared/03103200 \
     helpcontent2/source/text/sbasic/shared/03103300 \
+    helpcontent2/source/text/sbasic/shared/03103350 \
     helpcontent2/source/text/sbasic/shared/03103400 \
     helpcontent2/source/text/sbasic/shared/03103450 \
     helpcontent2/source/text/sbasic/shared/03103500 \
@@ -323,6 +324,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/keys \
     helpcontent2/source/text/sbasic/shared/main0211 \
     helpcontent2/source/text/sbasic/shared/main0601 \
+    helpcontent2/source/text/sbasic/shared/vbasupport \
 ))
 
 # vim: set noet sw=4 ts=4:
