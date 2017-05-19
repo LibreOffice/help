@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This file incorporates work covered by the following license notice:
+ *
+ *   Licensed to the Apache Software Foundation (ASF) under one or more
+ *   contributor license agreements. See the NOTICE file distributed
+ *   with this work for additional information regarding copyright
+ *   ownership. The ASF licenses this file to you under the Apache
+ *   License, Version 2.0 (the "License"); you may not use this file
+ *   except in compliance with the License. You may obtain a copy of
+ *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+-->
+
+<meta>
+  <topic id="textsbasicshared03120401xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">InStrRev Function [Runtime - VBA]</title>
+    <filename>/text/sbasic/shared/03120411.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+
+
+<section id="instr">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3155934">
+  <bookmark_value>InStrRev function</bookmark_value>
+</bookmark>
+
+
+<paragraph id="hd_id3155934" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03120411.xhp" name="InStrRev Function [Runtime]">InStrRev Function [Runtime - VBA]</link></paragraph>
+<paragraph id="par_id3153990" role="paragraph" xml-lang="en-US">Returns the position of a string within another string, starting from the right side of the string. </paragraph>
+</section>
+<embed href="text/sbasic/shared/00000003.xhp#vbasupport"/>
+<paragraph id="par_id3147303" role="paragraph" xml-lang="en-US">The InStrRev function returns the position at which the match was found, from the right. If the string was not found, the function returns 0.</paragraph>
+
+<paragraph id="hd_id3145090" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<bascode>
+<paragraph id="par_id3146957" role="bascode" xml-lang="en-US">InStrRev (Text1 As String, Text2 As String [,Start As Long] [, Compare As Integer]) As Long</paragraph>
+</bascode>
+
+<paragraph id="hd_id3148538" role="heading" level="2" xml-lang="en-US">Return value:</paragraph>
+<paragraph id="par_id3149763" role="paragraph" xml-lang="en-US">Long</paragraph>
+
+<paragraph id="hd_id3148473" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<paragraph id="par_id3145609" role="paragraph" xml-lang="en-US"> <emph>Text1:</emph> The string expression that you want to search.</paragraph>
+<paragraph id="par_id3147559" role="paragraph" xml-lang="en-US"> <emph>Text2:</emph> The string expression that you want to search for.</paragraph>
+<paragraph id="par_id3153126" role="paragraph" xml-lang="en-US"> <emph>Start: </emph>Optional numeric expression that marks the position <emph>from the left </emph>in a string where the search for the specified substring starts. If you omit this parameter, the search starts at the last character of the string. The maximum allowed value is 65535.</paragraph>
+<paragraph id="par_id3154758" role="paragraph" xml-lang="en-US"> <emph>Compare:</emph> Optional numeric expression that defines the type of comparison. The value of this parameter can be </paragraph>
+<paragraph id="par_id051920170326028042" role="paragraph" xml-lang="en-US">1: The default value of 1 specifies a text comparison that is not case-sensitive.</paragraph>
+<paragraph id="par_id051920170326027721" role="paragraph" xml-lang="en-US">0: The value of 0 specifies a binary comparison that is case-sensitive.</paragraph>
+<paragraph id="par_id3153361" role="paragraph" xml-lang="en-US">To avoid a run-time error, do not set the Compare parameter if the first return parameter is omitted.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
+<embed href="text/sbasic/shared/00000003.xhp#err5"/>
+
+<paragraph id="hd_id3154366" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
+<bascode>
+<paragraph id="par_idm1341612352" role="bascode" localize="false" xml-lang="en-US">Sub ExamplePosition</paragraph>
+<paragraph id="par_idm1341611120" role="bascode" localize="false" xml-lang="en-US">Dim sInput As String</paragraph>
+<paragraph id="par_idm1341609888" role="bascode" localize="false" xml-lang="en-US">Dim iPos As Integer</paragraph>
+<paragraph id="par_id3144760" role="bascode" xml-lang="en-US"> sInput = "The book is on the table"</paragraph>
+<paragraph id="par_id3154125" role="bascode" xml-lang="en-US"> iPos = Instr(sInput,"the",10,1) ' Returns 1, search is case-insensitive</paragraph>
+<paragraph id="par_idm1341605120" role="bascode" localize="false" xml-lang="en-US"> Print iPos </paragraph>
+<paragraph id="par_id051920170322141162" role="bascode" xml-lang="en-US"> iPos = Instr(sInput,"the",10,0) ' Returns 0, search is case-sensitive</paragraph>
+<paragraph id="par_id051920170322458754" role="bascode" localize="false" xml-lang="en-US"> Print iPos</paragraph>
+<paragraph id="par_idm1341603888" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+</bascode>
+
+<section id="relatedtopics">
+<paragraph id="par_id051920170316395065" role="paragraph" xml-lang="en-US"><link href="text/sbasic/shared/03120401.xhp">InStr</link></paragraph>
+</section>
+</body>
+
+</helpdocument>
