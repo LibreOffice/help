@@ -277,6 +277,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03120103 \
     helpcontent2/source/text/sbasic/shared/03120104 \
     helpcontent2/source/text/sbasic/shared/03120105 \
+    helpcontent2/source/text/sbasic/shared/03120111 \
+    helpcontent2/source/text/sbasic/shared/03120112 \
     helpcontent2/source/text/sbasic/shared/03120200 \
     helpcontent2/source/text/sbasic/shared/03120201 \
     helpcontent2/source/text/sbasic/shared/03120202 \
@@ -325,6 +327,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/keys \
     helpcontent2/source/text/sbasic/shared/main0211 \
     helpcontent2/source/text/sbasic/shared/main0601 \
+    helpcontent2/source/text/sbasic/shared/special_vba_func \
     helpcontent2/source/text/sbasic/shared/vbasupport \
 ))
 
