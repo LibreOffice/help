@@ -7,24 +7,56 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-function loadXMLDoc(filename, handler)
-{
-    if (window.ActiveXObject)
-    {
-        xhttp = new ActiveXObject("Msxml2.XMLHTTP");
-    }
-    else
-    {
-        xhttp = new XMLHttpRequest();
-    }
+function setModule(module){
+var itemspan = document.getElementsByTagName("span");
 
-    xhttp.open("GET", filename);
-    xhttp.onload = handler;
-    try {
-        xhttp.responseType = "msxml-document"
-    } catch(err) {} // Helping IE11
+if (module == null){module="DEFAPP"}
+var n = itemspan.length;
+for (var i = 0; i < n; i++){
+   if (itemspan[i].getAttribute("value") == module){
+      itemspan[i].removeAttribute("hidden");
+   }
+}
+}
+function setSystem(system){
+var itemspan = document.getElementsByTagName("span");
+if (system == null){system="DEFSYS"}
+var n = itemspan.length;
+for (var i = 0; i < n; i++){
+   if (itemspan[i].getAttribute("value") == system){
+       itemspan[i].removeAttribute("hidden");
+   }
+}
+}
+/* add &DbPAR= and &System= to the links in DisplayArea div */
+function fixURL(module, system){
+  var itemlink = document.getElementById("DisplayArea").getElementsByTagName("a");
+  var n = itemlink.length;
+  var pSystem = (system == null) ? "":"&System="+system;
+  var pAppl = (module == null) ? "":"&DbPAR="+module;
+  for (var i = 0; i<n; i++) {
+      if(true){
+      var href = itemlink[i].getAttribute("href");
+      if (href != null){
+          if (!href.startsWith("http")) {
+              var pre = href.substring(0,href.indexOf('?'));
+              if (href.lastIndexOf('#') > 0){
+              var post = href.substring(href.lastIndexOf('#'),href.length);
+              }
+              else{
+                  post='';
+              }
+              var url = pre+'?'+pAppl+pSystem+post;
+              itemlink[i].setAttribute("href",url);
+          }
+      }
+  }
+  }
+}
 
-    xhttp.send();
+function displayBookmark(module){
+    if (module==null){module='WRITER'}
+    $("#BottomLeft").load('bookmark_'+module+'.html');
 }
 
 function getParameterByName(name, url) {
@@ -47,117 +79,6 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-var navigationHistory = [];
-
-function displayXML(xml, xsl, urlVars, moduleName, language, system) {
-    var xsltProcessor;
-    var resultDocument;
-    var bookmarkHTML;
-    var module = urlVars["DbPAR"];
-    moduleName = moduleName || module;
-    var language = urlVars["Language"];
-    var system = urlVars["System"];
-    var usedb = urlVars["UseDB"];
-    document.getElementById("DisplayArea").innerHTML= null;
-    document.getElementById("BottomLeft").innerHTML= null;
-    document.getElementById("TopRight").innerHTML= null;
-
-    if (window.ActiveXObject || xhttp.responseType == "msxml-document") {
-        // code for IE
-        ex = xml.transformNode(xsl);
-        document.getElementById("DisplayArea").innerHTML = ex;
-    }
-    else if (document.implementation && document.implementation.createDocument) {
-        // code for Chrome, Firefox, Opera, etc.
-        xsltProcessor = new XSLTProcessor();
-
-        if (module){xsltProcessor.setParameter(null, "appl", module);}
-        if (language){xsltProcessor.setParameter(null, "Language", language);}
-        if (system){xsltProcessor.setParameter(null, "System", system);}
-
-        $(document).on('click', '#BottomLeft a, #DisplayArea a', function(e) {
-                e.preventDefault();
-                $('#search-bar').val('');
-
-                var fileName = $(this).attr('href');
-
-                navigationHistory.push({
-                    name: $(this).text(),
-                    fileName: fileName
-                });
-                if (navigationHistory.length > 5) {
-                  navigationHistory.shift();
-                }
-                var previousHistory = ''
-                navigationHistory.forEach(function(history) {
-                  previousHistory += '<span class="section" filename="' + history.fileName + '">' + history.name + '</span> > '
-                });
-                $('#NavigationHistory')
-                  .html('<span>' + previousHistory + '</span>');
-
-                $('#NavigationHistory span.section').click(function() {
-                  loadXMLDoc($(this).attr('filename'), function() {
-                      var xmlDoc = this.responseXML;
-                      if (xmlDoc != null) {
-                          var resultDocument = xsltProcessor.transformToFragment(xmlDoc,  document);
-                          $("#DisplayArea").html($(resultDocument).find('#DisplayArea').html());
-                          $("#TopRight").html('<p class="bug">Contents displayed is: ' + fileName + '</p>');
-                      }
-                      else {
-                          console.log('Cannot load ' + fileName);
-                      }
-                  });
-                })
-
-
-                loadXMLDoc(fileName, function() {
-                    var xmlDoc = this.responseXML;
-                    if (xmlDoc != null) {
-                        var resultDocument = xsltProcessor.transformToFragment(xmlDoc,  document);
-                        $("#DisplayArea").html($(resultDocument).find('#DisplayArea').html());
-                        $("#TopRight").html('<p class="bug">Contents displayed is: ' + fileName + '</p>');
-                    }
-                    else {
-                        console.log('Cannot load ' + fileName);
-                    }
-                });
-                return false;
-            });
-
-        xsltProcessor.importStylesheet(xsl);
-        resultDocument = xsltProcessor.transformToFragment(xml,  document);
-        $("#DisplayArea").html($(resultDocument).find('#DisplayArea').html());
-        // Handle bookmar panel
-        $("#BottomLeft").load('bookmark_'+moduleName+'.html');
-        $("#TopRight").html('<p class="bug">Contents displayed is: '+$(this).attr('href')+'</p>');
-    }
-}
-
-function displayResult(file, moduleName, language, system) {
-  $('#NavigationHistory')
-    .html('');
-    // load the XSLT
-    loadXMLDoc('online_transform.xsl', function() {
-        var xsl = this.responseXML;
-
-        // load the actual XHP file
-        if (xsl != null) {
-            loadXMLDoc(file, function(){
-                var xml = this.responseXML;
-                if (xml != null) {
-                    displayXML(xml, xsl, getUrlVars(file), moduleName, language, system);
-                }
-                else {
-                    console.log('Cannot load ' + file);
-                }
-            });
-        }
-        else {
-            console.log('Cannot load online_transform.xsl');
-        }
-    });
-}
-
 var debouncer = null;
 $(document).ready(function() {
     $('#search-bar').keyup(function() {
@@ -175,14 +96,5 @@ $(document).ready(function() {
         }, 200);
     });
 });
-
-//http://papermashup.com/read-url-get-variables-withjavascript/
-
-function getUrlVars(file) {
-    var vars = {};
-    var parts = file.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {vars[key] = value;});
-    //var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {vars[key] = value;});
-    return vars;
-}
 
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */

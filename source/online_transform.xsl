@@ -1,31 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--***********************************************************************
-  This is the main transformation style sheet for transforming.
-  For use with LibreOffice 4.0+
-  =========================================================================
-  Changes Log
-    May 24 2004 Created
-    Aug 24 2004 Fixed for help2 CWS
-    Aug 27 2004 Added css link, fixed missing embed-mode for variable
-                Removed width/height for images
-    Sep 03 2004 Modularized xsl, added some embedded modes
-    Oct 08 2004 Fixed bug wrong mode "embedded" for links
-                Added embedded modes for embed and embedvar (for cascaded embeds)
-                Added <p> tags around falsely embedded pars and vars
-    Dec 08 2004 #i38483#, fixed wrong handling of web links
-                #i37377#, fixed missing usage of Database parameter for switching
-    Jan 04 2005 #i38905#, fixed buggy branding replacement template
-    Mar 17 2005 #i43972#, added language info to image URL, evaluate Language parameter
-                evaluate new localize attribute in images
-    May 10 2005 #i48785#, fixed wrong setting of distrib variable
-    Aug 16 2005 workaround for #i53365#
-    Aug 19 2005 fixed missing list processing in embedded sections
-    Aug 19 2005 #i53535#, fixed wrong handling of Database parameter
-    Oct 17 2006 #i70462#, disabled sorting to avoid output of error messages to console
-    Jun 15 2009 #i101799#, fixed wrong handling of http URLs with anchors
-***********************************************************************//-->
-
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -65,6 +38,7 @@
 <!-- For calculating pixel sizes -->
 <xsl:variable name="dpi" select="'96'"/>
 <xsl:variable name="dpcm" select="'38'"/>
+<xsl:variable name="dpmm" select="'3.8'"/>
 
 <!-- Product brand variables used in the help files -->
 <xsl:variable name="brand1" select="'$[officename]'"/>
@@ -99,6 +73,7 @@
 	<xsl:value-of select="translate($productversion,' ','')"/>
 </xsl:variable>
 <!-- this is were the images are -->
+
 <xsl:param name="imgtheme" select="''"/>
 <xsl:param name="Id" />
 <xsl:param name="Language" select="'en-US'"/>
@@ -111,13 +86,15 @@
   <!-- parts of help and image urls -->
 <!--<xsl:variable name="help_url_prefix" select="'vnd.sun.star.help://'"/>-->
 <xsl:variable name="help_url_prefix" select="''"/>
+<xsl:variable name="img_url_internal" select="''"/>
 <xsl:variable name="img_url_prefix" select="concat('media',$imgtheme,'/')"/>
 <!-- <xsl:variable name="img_url_prefix" select="concat('vnd.libreoffice.image://',$imgtheme,'/')"/> -->
 <!--<xsl:variable name="urlpost" select=""/>-->
 <xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no')"/>
 <xsl:variable name="urlpre" select="$help_url_prefix" />
 <xsl:variable name="linkprefix" select="$urlpre"/>
-<xsl:variable name="linkpostfix" select="$urlpost"/>
+<!--<xsl:variable name="linkpostfix" select="$urlpost"/>-->
+<xsl:variable name="linkpostfix" select="'?'"/>
 
 
 <xsl:variable name="css" select="'default.css'"/>
@@ -130,6 +107,7 @@
 <!--<xsl:variable name="note_img" select="concat($img_url_prefix,$lang,'res/helpimg/note.png')"/>
 <xsl:variable name="tip_img" select="concat($img_url_prefix,'res/helpimg/tip.png')"/>
 <xsl:variable name="warning_img" select="concat($img_url_prefix,'res/helpimg/warning.png')"/>-->
+
 <!--
 #############
 # Templates #
@@ -138,9 +116,81 @@
 
 <!-- Create the document skeleton -->
 <xsl:template match="/">
-               <div id="DisplayArea">
-                    <xsl:apply-templates select="/helpdocument/body"/>
-               </div>
+	<!--<xsl:variable name="csslink" select="concat($urlpre,'/',$urlpost)"/>-->
+	<xsl:variable name="csslink" select="concat($urlpre,'default.css')"/>
+        <xsl:variable name="bookmarkref" select="concat('bookmark_',$appl,'.html')"/>
+	<html>
+		<head>
+		        <!--<base href="file:///home/olivier/tmp/help/source/h/"/>-->
+		        <base href="/"/>
+			<title><xsl:value-of select="$title"/></title>
+			<link href="{$csslink}" rel="Stylesheet" type="text/css" />
+			<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+                        <script type="text/javascript" src="help.js"></script>
+  		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+		</head>
+		<body lang="{$lang}">
+                   <div id="DisplayArea">
+			<xsl:apply-templates select="/helpdocument/body"/>
+                        <div class="debug">
+                            <h3>Help content debug info:</h3>
+                            <p class="bug">This page is: <xsl:value-of select="$filename"/></p>
+                            <p>Title is: <xsl:value-of select="$title"/></p>
+                            <p id="bm_module"></p>
+                            <p id="bm_system"></p>
+                        </div>
+                   </div>
+                   <div id="BottomLeft"></div>
+                   <div id="TopRight">
+                       <script type="text/javascript">
+                       <![CDATA[
+                           (function() {
+                             var cx = '010161382024564278136:jcdsgegjym8';
+                             var gcse = document.createElement('script');
+                             gcse.type = 'text/javascript';
+                             gcse.async = true;
+                             gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                             var  s = document.getElementsByTagName('script')[0];
+                             s.parentNode.insertBefore(gcse, s);
+                           })();
+                       ]]>
+                       </script>
+                       <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
+                   </div>
+                   <div id="TopLeft">
+                      <table>
+                        <tr>
+                            <td class="topmenu"><a href="text/scalc/main0000.html?DbPAR=CALC">Calc</a></td>
+                            <td class="topmenu"><a href="text/swriter/main0000.html?DbPAR=WRITER">Writer</a></td>
+                            <td class="topmenu"><a href="text/simpress/main0000.html?DbPAR=IMPRESS">Impress</a></td>
+                            <td class="topmenu"><a href="text/sdraw/main0000.html?DbPAR=DRAW">Draw</a></td>
+                            <td class="topmenu"><a href="text/schart/main0000.html?DbPAR=CHART">Chart</a></td>
+                            <td class="topmenu"><a href="text/sbasic/shared/main0601.html?DbPAR=BASIC">Basic</a></td>
+                            <td class="topmenu"><a href="text/smath/main0000.html?DbPAR=MATH">Math</a></td>
+                            <td class="topmenu"><a href="text/shared/explorer/database/main.html?DbPAR=BASE">Base</a></td>
+                            <td class="topmenu"><a href="text/shared/guide/main.html?DbPAR=SHARED">Guide</a></td>
+                        </tr>
+                      </table>
+                      <p>Search: <input type="text" id="search-bar"/></p>
+                 </div>
+                 <script type="text/javascript">
+<![CDATA[
+if (window.location.href.indexOf('?')) {
+var module = getParameterByName("DbPAR");
+displayBookmark(module);
+setModule(module);
+var system = getParameterByName("System");
+setSystem(system);
+document.getElementById("bm_module").innerHTML ="Module is: "+module;
+document.getElementById("bm_system").innerHTML ="System is: "+system;
+fixURL(module,system);
+} else {
+window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER','_self');
+}
+]]>
+                 </script>
+                 </body>
+	</html>
 </xsl:template>
 
 <!-- AHELP -->
@@ -402,7 +452,8 @@
 
 			<xsl:when test="@id='relatedtopics'">
 				<div class="relatedtopics">
-					<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>
+					<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>-->
+					<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp')"/></xsl:variable>
 					<xsl:variable name="anchor"><xsl:value-of select="'related'"/></xsl:variable>
 					<xsl:variable name="doc" select="document($href)"/>
 					<p class="related">
@@ -581,7 +632,8 @@
 <xsl:template name="insert_howtoget">
 	<xsl:param name="linkhref" />
 	<xsl:variable name="archive" select="'shared'"/>
-	<xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>
+	<!--<xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>-->
+	<xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp')"/></xsl:variable>
 	<xsl:variable name="tmp_doc" select="document($tmp_href)"/>
 	<table class="howtoget" width="100%" border="1" cellpadding="3" cellspacing="0">
 		<tr>
@@ -595,7 +647,8 @@
 					<xsl:otherwise> <!-- old style -->
 						<xsl:variable name="archive1"><xsl:value-of select="concat(substring-before(substring-after($linkhref,'text/'),'/'),'/')"/></xsl:variable>
 						<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$archive1,substring-before($linkhref,'#'),$urlpost)"/></xsl:variable>-->
-						<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before($linkhref,'#'),$urlpost)"/></xsl:variable>
+						<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before($linkhref,'#'),$urlpost)"/></xsl:variable>-->
+						<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before($linkhref,'#'))"/></xsl:variable>
 						<xsl:variable name="anc"><xsl:value-of select="substring-after($linkhref,'#')"/></xsl:variable>
 						<xsl:variable name="docum" select="document($href)"/>
 
@@ -624,13 +677,16 @@
 		<xsl:when test="contains(@href,'#')">
 			<xsl:variable name="anchor"><xsl:value-of select="concat('#',substring-after(@href,'#'))"/></xsl:variable>
 			<!--<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,substring-before(@href,'#'),$linkpostfix,$dbpostfix,$anchor)"/></xsl:variable>-->
-			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,substring-before(@href,'#'),$linkpostfix,$dbpostfix,$anchor)"/></xsl:variable>
+			<!--<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,substring-before(@href,'#'),$linkpostfix,$dbpostfix,$anchor)"/></xsl:variable>-->
+			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,substring-before(@href, 'xhp'),'html',$anchor,$linkpostfix)"/></xsl:variable>
 			<a href="{$href}"><xsl:apply-templates /></a>
 		</xsl:when>
 		<xsl:otherwise>
 			<!--<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,@href,$linkpostfix,$dbpostfix)"/></xsl:variable>-->
 			<!--<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,@href,$linkpostfix,$dbpostfix)"/></xsl:variable>-->
-			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,@href,$linkpostfix,$dbpostfix)"/></xsl:variable>
+			
+			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,substring-before(@href, 'xhp'),'html',$linkpostfix)"/></xsl:variable>
+			
 			<a href="{$href}"><xsl:apply-templates /></a>
 		<!--	<span class="hotlink" onclick="javascript:displayResult('{$href}')"><xsl:apply-templates /></span>-->
 		</xsl:otherwise>
@@ -649,7 +705,9 @@
 	</xsl:variable>
 	<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="'shared'"/></xsl:call-template></xsl:variable>
 	<xsl:variable name="alt">
-		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/',$alttext,$urlpost,$dbpostfix)"/></xsl:variable>
+		<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/',$alttext,$urlpost,$dbpostfix)"/></xsl:variable>-->
+		<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/',$alttext)"/></xsl:variable>-->
+		<xsl:variable name="href"><xsl:value-of select="$alttext"/></xsl:variable>
 		<xsl:variable name="anchor"><xsl:value-of select="concat('alt_',$type)"/></xsl:variable>
 		<xsl:variable name="doc" select="document($href)"/>
 		<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
@@ -691,40 +749,40 @@
 	<xsl:param name="embedded" />
 	<xsl:choose>
 		<xsl:when test="parent::switch[@select='sys'] or parent::switchinline[@select='sys']">
-			<xsl:if test="@select = $System">
+			<!--<xsl:if test="@select = $System">-->
 				<xsl:choose>
 					<xsl:when test="$embedded = 'yes'">
-						<xsl:apply-templates mode="embedded"/>
+						<span hidden="true" itemprop="system" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:apply-templates />
+						<span  hidden="true" itemprop="system" value="{@select}"><xsl:apply-templates /></span>
 					</xsl:otherwise>
 				</xsl:choose>
-			</xsl:if>
+			<!--</xsl:if>-->
 		</xsl:when>
 		<xsl:when test="parent::switch[@select='appl'] or parent::switchinline[@select='appl']">
-			<xsl:if test="@select = $appl">
+			<!--<xsl:if test="@select = $appl">-->
 				<xsl:choose>
 					<xsl:when test="$embedded = 'yes'">
-						<xsl:apply-templates mode="embedded"/>
+						<span  hidden="true" itemprop="appl" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:apply-templates />
+						<span  hidden="true" itemprop="appl" value="{@select}"><xsl:apply-templates /></span>
 					</xsl:otherwise>
 				</xsl:choose>
-			</xsl:if>
+			<!--</xsl:if>-->
 		</xsl:when>
 		<xsl:when test="parent::switch[@select='distrib'] or parent::switchinline[@select='distrib']">
-			<xsl:if test="@select = $distrib">
+			<!--<xsl:if test="@select = $distrib">-->
 				<xsl:choose>
 					<xsl:when test="$embedded = 'yes'">
-						<xsl:apply-templates mode="embedded"/>
+						<span  hidden="true" itemprop="distrib" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:apply-templates />
+						<span  hidden="true" itemprop="distrib" value="{@select}"><xsl:apply-templates /></span>
 					</xsl:otherwise>
 				</xsl:choose>
-			</xsl:if>
+			<!--</xsl:if>-->
 		</xsl:when>
 	</xsl:choose>
 </xsl:template>
@@ -732,16 +790,15 @@
 <!-- Evaluate a default or defaultinline switch -->
 <xsl:template name="insertdefault">
 	<xsl:param name="embedded" />
-
 	<xsl:choose>
 		<xsl:when test="parent::switch[@select='sys'] or parent::switchinline[@select='sys']">
 			<xsl:if test="not(../child::case[@select=$System]) and not(../child::caseinline[@select=$System])">
 				<xsl:choose>
 					<xsl:when test="$embedded = 'yes'">
-						<xsl:apply-templates mode="embedded"/>
+						<span hidden="true" itemprop="system" value="DEFSYS"><xsl:apply-templates mode="embedded"/></span>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:apply-templates />
+						<span hidden="true" itemprop="system" value="DEFSYS"><xsl:apply-templates /></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:if>
@@ -750,10 +807,10 @@
 			<xsl:if test="not(../child::case[@select=$appl]) and not(../child::caseinline[@select=$appl])">
 				<xsl:choose>
 					<xsl:when test="$embedded = 'yes'">
-						<xsl:apply-templates mode="embedded"/>
+						<span hidden="true" itemprop="appl" value="DEFAPP"><xsl:apply-templates mode="embedded"/></span>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:apply-templates />
+						<span hidden="true" itemprop="appl" value="DEFAPP"><xsl:apply-templates /></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:if>
@@ -762,10 +819,10 @@
 			<xsl:if test="not(../child::case[@select=$distrib]) and not(../child::caseinline[@select=$distrib])">
 				<xsl:choose>
 					<xsl:when test="$embedded = 'yes'">
-						<xsl:apply-templates mode="embedded"/>
+						<span hidden="true" itemprop="distrib" value="DEFDIST"><xsl:apply-templates mode="embedded"/></span>
 					</xsl:when>
 					<xsl:otherwise>
-						<xsl:apply-templates />
+						<span hidden="true" itemprop="distrib" value="DEFDIST"><xsl:apply-templates /></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:if>
@@ -802,7 +859,10 @@
 <xsl:template name="insertimage">
   <xsl:variable name="src">
     <xsl:choose>
-      <xsl:when test="not($ExtensionId='') and starts-with(@src,$ExtensionId)">
+     <xsl:when test="starts-with(@src,'media/')">
+          <xsl:value-of select="concat($img_url_internal,@src)"/>
+     </xsl:when>
+    <xsl:when test="not($ExtensionId='') and starts-with(@src,$ExtensionId)">
         <xsl:value-of select="concat($ExtensionPath,'/',@src)"/>
       </xsl:when>
       <xsl:otherwise>
@@ -867,6 +927,9 @@
                 <xsl:when test="contains($value, 'cm')">
                      <xsl:value-of select="concat(round(number(substring-before($value, 'cm')) * $dpcm),'px')"/>
                 </xsl:when>
+                <xsl:when test="contains($value, 'mm')">
+                     <xsl:value-of select="concat(round(number(substring-before($value, 'mm')) * $dpmm),'px')"/>
+                </xsl:when>
                 <xsl:when test="contains($value, 'in')">
                      <xsl:value-of select="concat(round(number(substring-before($value, 'in')) * $dpi),'px')"/>
                 </xsl:when>
@@ -929,7 +992,8 @@
 		<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
 		<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="$archive"/></xsl:call-template></xsl:variable>
 		<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$archive,substring-before(@href,'#'),$urlpost,$dbpostfix)"/></xsl:variable>-->
-		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'),$urlpost,$dbpostfix)"/></xsl:variable>
+		<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'),$urlpost,$dbpostfix)"/></xsl:variable>-->
+		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'))"/></xsl:variable>
 		<xsl:variable name="anc"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
 		<xsl:variable name="docum" select="document($href)"/>
 <!--		<p>Archive: <xsl:value-of select="$archive"/></p>
@@ -951,7 +1015,8 @@
 		<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
 		<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="$archive"/></xsl:call-template></xsl:variable>
 		<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$archive,substring-before(@href,'#'),$urlpost,$dbpostfix)"/></xsl:variable>-->
-		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'),$urlpost,$dbpostfix)"/></xsl:variable>
+		<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'),$urlpost,$dbpostfix)"/></xsl:variable>-->
+		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'))"/></xsl:variable>
 		<xsl:variable name="anchor"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
 		<xsl:variable name="doc" select="document($href)"/>
 		<xsl:choose>
