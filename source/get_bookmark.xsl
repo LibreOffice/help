@@ -15,6 +15,7 @@ xsltproc get_bookmark.xsl file.xhp
 -->
 <xsl:stylesheet version="1.0"
 xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:param name="app"/>
 
 <xsl:output indent="yes" method="html"/>
 
@@ -50,7 +51,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <!-- Extract the bookmarks-->
 <xsl:template match="/">
       <xsl:for-each select="//bookmark[@branch='index']">
-           <xsl:variable name="href" select="concat($filename,'#',@id)"/>
+	      <xsl:variable name="hrefhtml" select="substring-before($filename,'xhp')"/>   
+	      <xsl:variable name="href" select="concat($hrefhtml,'html?DbPAR=',$app,'#',@id)"/>
+	   
            <xsl:for-each select="bookmark_value">
 		     <li><a href="{$href}" target="_top">
                      <xsl:call-template name="brand"><xsl:with-param name="string">
