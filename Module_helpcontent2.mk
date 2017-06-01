@@ -11,7 +11,7 @@ $(eval $(call gb_Module_Module,helpcontent2))
 
 $(eval $(call gb_Module_add_targets,helpcontent2,\
 	CustomTarget_imagelist \
-	Package_images \
+	Package_helpimages \
 ))
 
 $(eval $(call gb_Module_add_l10n_targets,helpcontent2,\
