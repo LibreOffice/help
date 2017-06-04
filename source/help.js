@@ -8,9 +8,10 @@
  */
 
 function setModule(module){
-var itemspan = document.getElementsByTagName("span");
+if (module == null){module="SHARED"}
 
-if (module == null){module="DEFAPP"}
+document.getElementById("bookmark"+module).hidden=false;
+var itemspan = document.getElementsByTagName("span");
 var n = itemspan.length;
 for (var i = 0; i < n; i++){
    if (itemspan[i].getAttribute("value") == module){
@@ -52,11 +53,6 @@ function fixURL(module, system){
       }
   }
   }
-}
-
-function displayBookmark(module){
-    if (module==null){module='WRITER'}
-    $("#BottomLeft").load('bookmark_'+module+'.html');
 }
 
 function getParameterByName(name, url) {
