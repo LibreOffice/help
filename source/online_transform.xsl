@@ -104,9 +104,6 @@
 <xsl:variable name="note_img" select="concat($img_url_prefix,'helpimg/note.png')"/>
 <xsl:variable name="tip_img" select="concat($img_url_prefix,'helpimg/tip.png')"/>
 <xsl:variable name="warning_img" select="concat($img_url_prefix,'helpimg/warning.png')"/>
-<!--<xsl:variable name="note_img" select="concat($img_url_prefix,$lang,'res/helpimg/note.png')"/>
-<xsl:variable name="tip_img" select="concat($img_url_prefix,'res/helpimg/tip.png')"/>
-<xsl:variable name="warning_img" select="concat($img_url_prefix,'res/helpimg/warning.png')"/>-->
 
 <!--
 #############
@@ -116,31 +113,45 @@
 
 <!-- Create the document skeleton -->
 <xsl:template match="/">
-	<!--<xsl:variable name="csslink" select="concat($urlpre,'/',$urlpost)"/>-->
 	<xsl:variable name="csslink" select="concat($urlpre,'default.css')"/>
         <xsl:variable name="bookmarkref" select="concat('bookmark_',$appl,'.html')"/>
 	<html>
 		<head>
-		        <!--<base href="file:///home/olivier/tmp/help/source/h/"/>-->
+<!-- 		        <base href="file:///home/tdf/git/core/helpcontent2/source/html/"/> -->
 		        <base href="/"/>
-			<title><xsl:value-of select="$title"/></title>
+                        <title><xsl:call-template name="brand"><xsl:with-param name="string">
+                               <xsl:value-of select="$title"/>
+                               </xsl:with-param></xsl:call-template></title>
 			<link href="{$csslink}" rel="Stylesheet" type="text/css" />
 			<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
                         <script type="text/javascript" src="help.js"></script>
+
   		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 		</head>
 		<body lang="{$lang}">
-                   <div id="DisplayArea">
+                   <div id="BottomLeft">
+                       <p>Search: <input type="text" id="search-bar"/></p>
+                       <ul id="bookmarkCALC" hidden="true" class="indexlink"></ul>
+                       <ul id="bookmarkCHART" hidden="true" class="indexlink"></ul>
+                       <ul id="bookmarkWRITER" hidden="true" class="indexlink"></ul>
+                       <ul id="bookmarkDRAW" hidden="true" class="indexlink"></ul>
+                       <ul id="bookmarkIMPRESS" hidden="true" class="indexlink"></ul>
+                       <ul id="bookmarkMATH" hidden="true" class="indexlink"></ul>
+                       <ul id="bookmarkBASE" hidden="true" class="indexlink"></ul>
+                       <ul id="bookmarkSHARED" hidden="true" class="indexlink"></ul>
+                       <ul id="bookmarkBASIC" hidden="true" class="indexlink"></ul>
+                   </div>
+		   <div id="DisplayArea">
 			<xsl:apply-templates select="/helpdocument/body"/>
                         <div class="debug">
-                            <h3>Help content debug info:</h3>
-                            <p class="bug">This page is: <xsl:value-of select="$filename"/></p>
+                            <h3 class="bug">Help content debug info:</h3>
+                            <p>This page is: <xsl:value-of select="$filename"/></p>
                             <p>Title is: <xsl:value-of select="$title"/></p>
                             <p id="bm_module"></p>
                             <p id="bm_system"></p>
                         </div>
                    </div>
-                   <div id="BottomLeft"></div>
+
                    <div id="TopRight">
                        <script type="text/javascript">
                        <![CDATA[
@@ -158,37 +169,35 @@
                        <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
                    </div>
                    <div id="TopLeft">
-                      <table>
-                        <tr>
-                            <td class="topmenu"><a href="text/scalc/main0000.html?DbPAR=CALC">Calc</a></td>
-                            <td class="topmenu"><a href="text/swriter/main0000.html?DbPAR=WRITER">Writer</a></td>
-                            <td class="topmenu"><a href="text/simpress/main0000.html?DbPAR=IMPRESS">Impress</a></td>
-                            <td class="topmenu"><a href="text/sdraw/main0000.html?DbPAR=DRAW">Draw</a></td>
-                            <td class="topmenu"><a href="text/schart/main0000.html?DbPAR=CHART">Chart</a></td>
-                            <td class="topmenu"><a href="text/sbasic/shared/main0601.html?DbPAR=BASIC">Basic</a></td>
-                            <td class="topmenu"><a href="text/smath/main0000.html?DbPAR=MATH">Math</a></td>
-                            <td class="topmenu"><a href="text/shared/explorer/database/main.html?DbPAR=BASE">Base</a></td>
-                            <td class="topmenu"><a href="text/shared/guide/main.html?DbPAR=SHARED">Guide</a></td>
-                        </tr>
-                      </table>
-                      <p>Search: <input type="text" id="search-bar"/></p>
+                       <nav id="TopMenu">
+                           <ul>
+                               <li><a href="text/scalc/main0000.html?DbPAR=CALC">Calc</a></li>
+                               <li><a href="text/swriter/main0000.html?DbPAR=WRITER">Writer</a></li>
+                               <li><a href="text/simpress/main0000.html?DbPAR=IMPRESS">Impress</a></li>
+                               <li><a href="text/sdraw/main0000.html?DbPAR=DRAW">Draw</a></li>
+                               <li><a href="text/schart/main0000.html?DbPAR=CHART">Chart</a></li>
+                               <li><a href="text/sbasic/shared/main0601.html?DbPAR=BASIC">Basic</a></li>
+                               <li><a href="text/smath/main0000.html?DbPAR=MATH">Math</a></li>
+                               <li><a href="text/shared/explorer/database/main.html?DbPAR=BASE">Base</a></li>
+                               <li><a href="text/shared/guide/main.html?DbPAR=SHARED">Guide</a></li>
+                           </ul>
+                       </nav>
                  </div>
                  <script type="text/javascript">
 <![CDATA[
-if (window.location.href.indexOf('?')) {
+if (window.location.href.indexOf('?') == -1) {
+window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER&System=WIN','_self');
+}
 var module = getParameterByName("DbPAR");
-displayBookmark(module);
 setModule(module);
 var system = getParameterByName("System");
 setSystem(system);
+fixURL(module,system);
 document.getElementById("bm_module").innerHTML ="Module is: "+module;
 document.getElementById("bm_system").innerHTML ="System is: "+system;
-fixURL(module,system);
-} else {
-window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER','_self');
-}
 ]]>
                  </script>
+                 <script type="text/javascript" src="bookmarks.js"/>
                  </body>
 	</html>
 </xsl:template>
@@ -688,7 +697,6 @@ window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER','_self');
 			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,substring-before(@href, 'xhp'),'html',$linkpostfix)"/></xsl:variable>
 			
 			<a href="{$href}"><xsl:apply-templates /></a>
-		<!--	<span class="hotlink" onclick="javascript:displayResult('{$href}')"><xsl:apply-templates /></span>-->
 		</xsl:otherwise>
 	</xsl:choose>
 </xsl:template>
@@ -749,7 +757,6 @@ window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER','_self');
 	<xsl:param name="embedded" />
 	<xsl:choose>
 		<xsl:when test="parent::switch[@select='sys'] or parent::switchinline[@select='sys']">
-			<!--<xsl:if test="@select = $System">-->
 				<xsl:choose>
 					<xsl:when test="$embedded = 'yes'">
 						<span hidden="true" itemprop="system" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
@@ -758,10 +765,8 @@ window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER','_self');
 						<span  hidden="true" itemprop="system" value="{@select}"><xsl:apply-templates /></span>
 					</xsl:otherwise>
 				</xsl:choose>
-			<!--</xsl:if>-->
 		</xsl:when>
 		<xsl:when test="parent::switch[@select='appl'] or parent::switchinline[@select='appl']">
-			<!--<xsl:if test="@select = $appl">-->
 				<xsl:choose>
 					<xsl:when test="$embedded = 'yes'">
 						<span  hidden="true" itemprop="appl" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
@@ -770,10 +775,8 @@ window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER','_self');
 						<span  hidden="true" itemprop="appl" value="{@select}"><xsl:apply-templates /></span>
 					</xsl:otherwise>
 				</xsl:choose>
-			<!--</xsl:if>-->
 		</xsl:when>
 		<xsl:when test="parent::switch[@select='distrib'] or parent::switchinline[@select='distrib']">
-			<!--<xsl:if test="@select = $distrib">-->
 				<xsl:choose>
 					<xsl:when test="$embedded = 'yes'">
 						<span  hidden="true" itemprop="distrib" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
@@ -782,7 +785,6 @@ window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER','_self');
 						<span  hidden="true" itemprop="distrib" value="{@select}"><xsl:apply-templates /></span>
 					</xsl:otherwise>
 				</xsl:choose>
-			<!--</xsl:if>-->
 		</xsl:when>
 	</xsl:choose>
 </xsl:template>
@@ -807,10 +809,10 @@ window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER','_self');
 			<xsl:if test="not(../child::case[@select=$appl]) and not(../child::caseinline[@select=$appl])">
 				<xsl:choose>
 					<xsl:when test="$embedded = 'yes'">
-						<span hidden="true" itemprop="appl" value="DEFAPP"><xsl:apply-templates mode="embedded"/></span>
+						<span hidden="true" itemprop="appl" value="SHARED"><xsl:apply-templates mode="embedded"/></span>
 					</xsl:when>
 					<xsl:otherwise>
-						<span hidden="true" itemprop="appl" value="DEFAPP"><xsl:apply-templates /></span>
+						<span hidden="true" itemprop="appl" value="SHARED"><xsl:apply-templates /></span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:if>
@@ -950,7 +952,6 @@ window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER','_self');
 	</xsl:variable>
 
 	<xsl:choose>
-
 		<xsl:when test="count(descendant::tablecell)=1">
 			<table border="0" class="onecell" cellpadding="0" cellspacing="0">
 				<xsl:apply-templates />
@@ -958,32 +959,29 @@ window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER','_self');
 		</xsl:when>
 
 		<xsl:when test="descendant::tablecell[1]/descendant::image">
-
-
-          <table border="0" class="icontable" cellpadding="5" cellspacing="0">
+                    <table border="0" class="icontable" cellpadding="5" cellspacing="0">
 				<xsl:apply-templates mode="icontable"/>
-		 </table>
+		    </table>
 		</xsl:when>
 
 		<xsl:when test="@class='wide'">
 			<table border="1" class="{@class}" cellpadding="0" cellspacing="0" width="100%" >
 				<xsl:apply-templates />
-		 </table>
+		        </table>
 		</xsl:when>
 
 		<xsl:when test="not(@class='')">
 			<table border="1" class="{@class}" cellpadding="0" cellspacing="0" >
 				<xsl:apply-templates />
-		 </table>
+		        </table>
 		</xsl:when>
 
 		<xsl:otherwise>
 			<table border="1" class="border" cellpadding="0" cellspacing="0" >
 				<xsl:apply-templates />
-		 </table>
+		        </table>
 		</xsl:otherwise>
 	</xsl:choose>
-
 	<br/>
 </xsl:template>
 
@@ -991,16 +989,9 @@ window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER','_self');
 	<div class="embedded">
 		<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
 		<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="$archive"/></xsl:call-template></xsl:variable>
-		<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$archive,substring-before(@href,'#'),$urlpost,$dbpostfix)"/></xsl:variable>-->
-		<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'),$urlpost,$dbpostfix)"/></xsl:variable>-->
 		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'))"/></xsl:variable>
 		<xsl:variable name="anc"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
 		<xsl:variable name="docum" select="document($href)"/>
-<!--		<p>Archive: <xsl:value-of select="$archive"/></p>
-		<p>dbPostfix: <xsl:value-of select="$dbpostfix"/></p>
-		<p>href: <xsl:value-of select="$href"/></p>
-		<p>anchor: <xsl:value-of select="$anc"/></p>
-		<p>document: <xsl:value-of select="$docum"/></p>-->
 
 		<xsl:call-template name="insertembed">
 			<xsl:with-param name="doc" select="$docum" />
@@ -1014,8 +1005,6 @@ window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER','_self');
 	<xsl:if test="not(@href='text/shared/00/00000004.xhp#wie')"> <!-- special treatment if howtoget links -->
 		<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
 		<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="$archive"/></xsl:call-template></xsl:variable>
-		<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$archive,substring-before(@href,'#'),$urlpost,$dbpostfix)"/></xsl:variable>-->
-		<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'),$urlpost,$dbpostfix)"/></xsl:variable>-->
 		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'))"/></xsl:variable>
 		<xsl:variable name="anchor"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
 		<xsl:variable name="doc" select="document($href)"/>
