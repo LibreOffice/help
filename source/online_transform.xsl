@@ -155,15 +155,15 @@
                    <div id="TopRight">
                        <script type="text/javascript">
                        <![CDATA[
-                           (function() {
+                             (function() {
                              var cx = '010161382024564278136:jcdsgegjym8';
                              var gcse = document.createElement('script');
                              gcse.type = 'text/javascript';
                              gcse.async = true;
                              gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-                             var  s = document.getElementsByTagName('script')[0];
+                             var s = document.getElementsByTagName('script')[0];
                              s.parentNode.insertBefore(gcse, s);
-                           })();
+                             })();
                        ]]>
                        </script>
                        <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
@@ -713,17 +713,12 @@ document.getElementById("bm_system").innerHTML ="System is: "+system;
 	</xsl:variable>
 	<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="'shared'"/></xsl:call-template></xsl:variable>
 	<xsl:variable name="alt">
-		<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/',$alttext,$urlpost,$dbpostfix)"/></xsl:variable>-->
-		<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'shared/',$alttext)"/></xsl:variable>-->
 		<xsl:variable name="href"><xsl:value-of select="$alttext"/></xsl:variable>
 		<xsl:variable name="anchor"><xsl:value-of select="concat('alt_',$type)"/></xsl:variable>
 		<xsl:variable name="doc" select="document($href)"/>
 		<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
 	</xsl:variable>
-<!--	<p>href: <xsl:value-of select="$href"/></p>
-	<p>anchor: <xsl:value-of select="$anchor"/></p>
-	<p>document: <xsl:value-of select="$doc"/></p>-->
-	<p class="debug">image source: <xsl:value-of select="$imgsrc"/></p>
+<!-- 	<p class="debug">image source: <xsl:value-of select="$imgsrc"/></p> -->
 	<div class="{$type}">
 		<table border="0" class="{$type}" cellspacing="0" cellpadding="5">
 			<tr>
@@ -864,6 +859,9 @@ document.getElementById("bm_system").innerHTML ="System is: "+system;
      <xsl:when test="starts-with(@src,'media/')">
           <xsl:value-of select="concat($img_url_internal,@src)"/>
      </xsl:when>
+     <xsl:when test="not(starts-with(@src,'media/'))">
+         <xsl:value-of select="concat($img_url_internal,'media/icon-theme/',@src)"/>
+     </xsl:when>
     <xsl:when test="not($ExtensionId='') and starts-with(@src,$ExtensionId)">
         <xsl:value-of select="concat($ExtensionPath,'/',@src)"/>
       </xsl:when>
@@ -879,7 +877,7 @@ document.getElementById("bm_system").innerHTML ="System is: "+system;
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  <p class="debug">Image: <xsl:value-of select="$src"/></p>
+<!--  <p class="debug">Image: <xsl:value-of select="$src"/></p>-->
 	<!--<xsl:variable name="src"><xsl:value-of select="concat($img_url_prefix,@src)"/></xsl:variable>-->
   <xsl:variable name="alt"><xsl:value-of select="./alt"/></xsl:variable>
   <xsl:variable name="width">
