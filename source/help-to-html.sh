@@ -22,3 +22,6 @@ outfile=$outdir$DIR/$name'html'
 xsltproc -o $outfile $filter $filep
 done
 ln -s text/shared/main0108.html $outdir'index.html'
+mkdir $outdir'media/icon-theme'
+# cp -rap ../../../../../icon-themes/galaxy/* $outdir/media/icon-theme/
+
