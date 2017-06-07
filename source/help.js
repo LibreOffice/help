@@ -7,71 +7,85 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
+// Used to set Apllication in caseinlie=APP
 function setModule(module){
-if (module == null){module="SHARED"}
+    if (module == null){module="SHARED"}
+    document.getElementById("bookmark"+module).hidden=false;
+    var itemspan = document.getElementsByTagName("span");
+    var n = itemspan.length;
+    for (var i = 0; i < n; i++){
+        if (itemspan[i].getAttribute("value") == module){
+            itemspan[i].removeAttribute("hidden");
+        }
+    }
+}
 
-document.getElementById("bookmark"+module).hidden=false;
-var itemspan = document.getElementsByTagName("span");
-var n = itemspan.length;
-for (var i = 0; i < n; i++){
-   if (itemspan[i].getAttribute("value") == module){
-      itemspan[i].removeAttribute("hidden");
-   }
-}
-}
+// Used to set system in caseinline=SYSTEM
 function setSystem(system){
-var itemspan = document.getElementsByTagName("span");
-if (system == null){system="DEFSYS"}
-var n = itemspan.length;
-for (var i = 0; i < n; i++){
-   if (itemspan[i].getAttribute("value") == system){
-       itemspan[i].removeAttribute("hidden");
-   }
-}
+    var itemspan = document.getElementsByTagName("span");
+    if (system == null){system="WIN"}
+    var n = itemspan.length;
+    for (var i = 0; i < n; i++){
+        if (itemspan[i].getAttribute("value") == system){
+            itemspan[i].removeAttribute("hidden");
+        }
+    }
 }
 /* add &DbPAR= and &System= to the links in DisplayArea div */
 function fixURL(module, system){
-  var itemlink = document.getElementById("DisplayArea").getElementsByTagName("a");
-  var n = itemlink.length;
-  var pSystem = (system == null) ? "":"&System="+system;
-  var pAppl = (module == null) ? "":"&DbPAR="+module;
-  for (var i = 0; i<n; i++) {
-      if(true){
-      var href = itemlink[i].getAttribute("href");
-      if (href != null){
-          if (!href.startsWith("http")) {
-              var pre = href.substring(0,href.indexOf('?'));
-              if (href.lastIndexOf('#') > 0){
-              var post = href.substring(href.lastIndexOf('#'),href.length);
-              }
-              else{
-                  post='';
-              }
-              var url = pre+'?'+pAppl+pSystem+post;
-              itemlink[i].setAttribute("href",url);
-          }
-      }
-  }
-  }
+    var itemlink = document.getElementById("DisplayArea").getElementsByTagName("a");
+    var pSystem = (system == null) ? "WIN" : system;
+    var pAppl = (module == null) ? "SHARED" : module;
+    var n = itemlink.length;
+    var item;
+    for (var i = 0; i<n; i++) {setURLParam(itemlink[i], pSystem, pAppl)
+    }
+}
+//Set the params inside URL
+function setURLParam (itemlink, pSystem, pAppl) {
+    var href = itemlink.getAttribute("href");
+    if (href != null){
+        // skip external links
+        if (!href.startsWith("http")) {
+            // handle bookmark.
+            if (href.lastIndexOf('#') != -1) {
+                var postf = href.substring(href.lastIndexOf('#'),href.length);
+                var pref = href.substring(0, href.lastIndexOf('#'));
+                itemlink.setAttribute("href", pref + "?" + '&DbPAR=' + pAppl + '&System=' + pSystem + postf);
+            }else{
+                itemlink.setAttribute("href", href + "?"+ '&DbPAR=' + pAppl + '&System=' + pSystem);
+            }
+        }
+    }
+}
+// Set System change buttons
+function setSystemURLButton (module) {
+    if (module == null){module="SHARED"}
+    var button = document.getElementById("lin").getElementsByTagName("a");
+    setURLParam(button[0],'UNIX', module);
+    button = document.getElementById("win").getElementsByTagName("a");
+    setURLParam(button[0],'WIN', module);
+    button = document.getElementById("mac").getElementsByTagName("a");
+    setURLParam(button[0],'MAC', module);
 }
 
 function getParameterByName(name, url) {
     if (!url) {
         url = window.location.href;
     }
-
+    
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
     var results = regex.exec(url);
-
+    
     if (!results) {
         return null;
     }
-
+    
     if (!results[2]) {
         return '';
     }
-
+    
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
