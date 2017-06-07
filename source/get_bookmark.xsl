@@ -11,13 +11,16 @@
 Stylesheet to extract index bookmarks from xhp files and output a link to
 the xhp file.
 Usage:
-xsltproc get_bookmark.xsl file.xhp
+xsltproc get_bookmark.xsl <file.xhp>
 -->
-<xsl:stylesheet version="1.0"
-xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:param name="app"/>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:output indent="yes" method="html"/>
+<xsl:param name="app"/>
+<xsl:param name="Language"/>
+<xsl:param name="productname" select="'LibreOffice'"/>
+<xsl:param name="productversion" select="'5.2'"/>
+
+<xsl:output indent="yes" method="text"/>
 
 <!--
 ############################
@@ -40,8 +43,6 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <xsl:variable name="brand2" select="'$[officeversion]'"/>
 <xsl:variable name="brand3" select="'%PRODUCTNAME'"/>
 <xsl:variable name="brand4" select="'%PRODUCTVERSION'"/>
-<xsl:param name="productname" select="'LibreOffice'"/>
-<xsl:param name="productversion" select="'5.2'"/>
 <!--
 #############
 # Templates #
@@ -51,16 +52,49 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 <!-- Extract the bookmarks-->
 <xsl:template match="/">
       <xsl:for-each select="//bookmark[@branch='index']">
-	      <xsl:variable name="hrefhtml" select="substring-before($filename,'xhp')"/>   
-	      <xsl:variable name="href" select="concat($hrefhtml,'html?DbPAR=',$app,'#',@id)"/>
+           <xsl:variable name="hrefhtml" select="substring-before($filename,'xhp')"/>   
+           <xsl:variable name="href" select="concat($Language,'/',$hrefhtml,'html?DbPAR=',$app,'#',@id)"/>
            <xsl:for-each select="bookmark_value">
-		     <li><a href="{$href}" target="_top">
-                     <xsl:call-template name="brand"><xsl:with-param name="string">
+                     <xsl:variable name="here1">
+                     
+                     <xsl:text disable-output-escaping="yes"><![CDATA[<li><a target="_top" href="]]></xsl:text>
+                     <xsl:value-of select="$href"/>
+                     <xsl:text disable-output-escaping="yes"><![CDATA["</a>]]></xsl:text>
+                     
+                     <xsl:call-template name="apostrophe"><xsl:with-param name="string">
                           <xsl:value-of select="."/>
                      </xsl:with-param></xsl:call-template>
-                     </a></li><xsl:text>\&#xA;</xsl:text>
+                     
+                     </xsl:variable>
+
+		     <xsl:call-template name="brand"><xsl:with-param name="string">
+                          <xsl:value-of select="$here1"/>
+                     </xsl:with-param></xsl:call-template>
+                     
+                     <xsl:text disable-output-escaping="yes"><![CDATA[</li>\]]>&#xA;</xsl:text>
            </xsl:for-each>
       </xsl:for-each>
+</xsl:template>
+
+<!-- weird characters inside bookmarks, replace by HTML entities-->
+<xsl:template name="apostrophe">
+    <xsl:param name="string"/>
+    <xsl:variable name="apost">&apos;</xsl:variable><!-- apostrophe -->
+    <xsl:choose>
+    <xsl:when test="contains($string,$apost)">
+         <xsl:variable name="newstr">
+                <xsl:value-of select="substring-before($string,$apost)"/>
+		<xsl:text disable-output-escaping="yes"><![CDATA[&]]>#39;</xsl:text>
+                <xsl:value-of select="substring-after($string,$apost)"/>
+           </xsl:variable>
+           <xsl:call-template name="apostrophe">
+                <xsl:with-param name="string" select="$newstr"/>
+           </xsl:call-template>
+    </xsl:when>
+    <xsl:otherwise>
+    <xsl:value-of select="$string"/>
+    </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <!-- Branding -->
@@ -68,6 +102,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:call-template name="brand">
 		<xsl:with-param name="string"><xsl:value-of select="."/></xsl:with-param>
 	</xsl:call-template>
+	<xsl:call-template name="apostrophe">
+		<xsl:with-param name="string"><xsl:value-of select="."/></xsl:with-param>
+	</xsl:call-template>	
 </xsl:template>
 
 
@@ -82,21 +119,21 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 <xsl:value-of select="$productname"/>
                 <xsl:value-of select="substring-after($string,$brand1)"/>
            </xsl:variable>
-			<xsl:call-template name="brand">
-				<xsl:with-param name="string" select="$newstr"/>
-			</xsl:call-template>
-		</xsl:when>
+		<xsl:call-template name="brand">
+			<xsl:with-param name="string" select="$newstr"/>
+		</xsl:call-template>
+        </xsl:when>
 
-		<xsl:when test="contains($string,$brand2)">
-		    <xsl:variable name="newstr">
+	<xsl:when test="contains($string,$brand2)">
+	    <xsl:variable name="newstr">
                 <xsl:value-of select="substring-before($string,$brand2)"/>
                 <xsl:value-of select="$pversion"/>
                 <xsl:value-of select="substring-after($string,$brand2)"/>
            </xsl:variable>
-			<xsl:call-template name="brand">
-				<xsl:with-param name="string" select="$newstr"/>
-			</xsl:call-template>
-		</xsl:when>
+		<xsl:call-template name="brand">
+			<xsl:with-param name="string" select="$newstr"/>
+		</xsl:call-template>
+	</xsl:when>
 
 		<xsl:when test="contains($string,$brand3)">
 			<xsl:variable name="newstr">
