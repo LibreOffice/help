@@ -65,7 +65,8 @@ Maps to HTML5 <object> tag:
 How to build the LibreOffice Browser help 
 ----------------------------------------------------------------- 
 
-1) run help-to-html.sh 
+1) run help-to-html.sh in helpcontent2/source/ folder. A previous language build must exist in workdir/HelpTranslatePartHelp/ . 
+The script will build all existing languages available in this folder. See help-to-html.sh script and adjust path.
 
 
 2) copy folder html/ to your root web server.
