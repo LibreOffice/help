@@ -728,25 +728,17 @@ document.getElementById("bm_system").innerHTML ="System is: "+system;
 
 <!-- Create a link -->
 <xsl:template name="createlink">
-<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
-<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="$archive"/></xsl:call-template></xsl:variable>
 	<xsl:choose>
 		<xsl:when test="starts-with(@href,'http://') or starts-with(@href,'https://')">  <!-- web links -->
 			<a href="{@href}"><xsl:apply-templates /></a>
 		</xsl:when>
-		<xsl:when test="contains(@href,'#')">
+		<xsl:when test="contains(@href,'#')"> <!-- internal links with bookmark -->
 			<xsl:variable name="anchor"><xsl:value-of select="concat('#',substring-after(@href,'#'))"/></xsl:variable>
-			<!--<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,substring-before(@href,'#'),$linkpostfix,$dbpostfix,$anchor)"/></xsl:variable>-->
-			<!--<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,substring-before(@href,'#'),$linkpostfix,$dbpostfix,$anchor)"/></xsl:variable>-->
 			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,substring-before(@href, 'xhp'),'html',$anchor,$linkpostfix)"/></xsl:variable>
 			<a href="{$href}"><xsl:apply-templates /></a>
 		</xsl:when>
-		<xsl:otherwise>
-			<!--<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,$archive,@href,$linkpostfix,$dbpostfix)"/></xsl:variable>-->
-			<!--<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,@href,$linkpostfix,$dbpostfix)"/></xsl:variable>-->
-			
+		<xsl:otherwise>			
 			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,substring-before(@href, 'xhp'),'html',$linkpostfix)"/></xsl:variable>
-			
 			<a href="{$href}"><xsl:apply-templates /></a>
 		</xsl:otherwise>
 	</xsl:choose>
