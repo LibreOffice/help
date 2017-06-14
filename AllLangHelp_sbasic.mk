@@ -326,6 +326,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03132500 \
     helpcontent2/source/text/sbasic/shared/03140000 \
     helpcontent2/source/text/sbasic/shared/03140001 \
+    helpcontent2/source/text/sbasic/shared/03140002 \
     helpcontent2/source/text/sbasic/shared/05060700 \
     helpcontent2/source/text/sbasic/shared/code-stubs \
     helpcontent2/source/text/sbasic/shared/keys \
