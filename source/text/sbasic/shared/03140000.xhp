@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This file incorporates work covered by the following license notice:
+ *
+ *   Licensed to the Apache Software Foundation (ASF) under one or more
+ *   contributor license agreements. See the NOTICE file distributed
+ *   with this work for additional information regarding copyright
+ *   ownership. The ASF licenses this file to you under the Apache
+ *   License, Version 2.0 (the "License"); you may not use this file
+ *   except in compliance with the License. You may obtain a copy of
+ *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+-->
+
+<meta>
+  <topic id="textsbasicshared03140000xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">DDB Function [Runtime - VBA]</title>
+    <filename>/text/sbasic/shared/03140000.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+
+
+<section id="ddb">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3150499">
+  <bookmark_value>DDB function</bookmark_value>
+</bookmark>
+
+
+<paragraph id="hd_id3150499" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03140000.xhp" name="DDB Function [Runtime - VBA]">DDB Function [Runtime - VBA]</link></paragraph>
+<paragraph id="par_id3151384" role="paragraph" xml-lang="en-US">Returns the depreciation of an asset for a specified period using the arithmetic-declining method.</paragraph>
+</section>
+<embed href="text/sbasic/shared/00000003.xhp#vbasupport"/>
+
+<paragraph id="hd_id061420170116474964" role="heading" level="2" xml-lang="en-US"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></paragraph>
+<bascode>
+<paragraph id="par_id3143267" role="bascode" localize="false" xml-lang="en-US">DDB (Cost As Double, Salvage As Double, Life as Double, Period as Double, [Factor as Variant])</paragraph>
+</bascode>
+
+<paragraph id="hd_id0614201701254487" role="heading" level="2" xml-lang="en-US"><embedvar href="text/sbasic/shared/00000003.xhp#functvalue"/></paragraph>
+<paragraph id="par_id3150669" role="paragraph" localize="false" xml-lang="en-US">Double</paragraph>
+
+<paragraph id="hd_id061420170125448913" role="heading" level="2" xml-lang="en-US"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></paragraph>
+<paragraph id="par_id061420170142332738" role="paragraph" xml-lang="en-US"><emph>Cost</emph> fixes the initial cost of an asset.</paragraph>
+<paragraph id="par_id061420170142331999" role="paragraph" xml-lang="en-US"><emph>Salvage</emph> fixes the value of an asset at the end of its life.</paragraph>
+<paragraph id="par_id061420170142338147" role="paragraph" xml-lang="en-US"><emph>Life</emph> is the number of periods (for example, years or months) defining how long the asset is to be used.</paragraph>
+<paragraph id="par_id061420170142338917" role="paragraph" xml-lang="en-US"><emph>Period</emph> states the period for which the value is to be calculated.</paragraph>
+<paragraph id="par_id061420170142335816" role="paragraph" xml-lang="en-US"><emph>Factor</emph> (optional) is the factor by which depreciation decreases. If a value is not entered, the default is factor 2.</paragraph>
+<paragraph id="par_id3145609" role="paragraph" xml-lang="en-US">Use this form of depreciation if you require a higher initial depreciation value as opposed to linear depreciation. The depreciation value gets less with each period and is usually used for assets whose value loss is higher shortly after purchase (for example, vehicles, computers). Please note that the book value will never reach zero under this calculation type.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
+<embed href="text/sbasic/shared/00000003.xhp#err5"/>
+
+<paragraph id="hd_id061420170125449765" role="heading" level="2" xml-lang="en-US"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></paragraph>
+<bascode>
+<paragraph id="par_id061420170142119551" role="bascode" localize="false" xml-lang="en-US">Sub ExampleDDB</paragraph>
+<paragraph id="par_id061420170142169416" role="bascode" localize="false" xml-lang="en-US"> Dim ddb_yr1 As Double</paragraph>
+<paragraph id="par_id06142017014218316" role="bascode" localize="false" xml-lang="en-US"> ddb_yr1 = DDB(75000,1,60,12,2)</paragraph>
+<paragraph id="par_id061420170142332315" role="bascode" xml-lang="en-US"> Print ddb_yr1 ' returns 1,721.81 currency units. </paragraph>
+<paragraph id="par_id061420170142255740" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+</bascode>
+
+<section id="relatedtopics">
+<paragraph id="par_id061420170153186192" role="paragraph" xml-lang="en-US"><link href="text/scalc/01/04060103.xhp#bm_id3149998">DDB function in CALC</link></paragraph>
+<paragraph id="par_id06142017015837916" role="paragraph" xml-lang="en-US"><link href="text/sbasic/shared/special_vba_func.xhp">VBA financial functions</link></paragraph>
+</section>
+</body>
+
+</helpdocument>
