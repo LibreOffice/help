@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This file incorporates work covered by the following license notice:
+ *
+ *   Licensed to the Apache Software Foundation (ASF) under one or more
+ *   contributor license agreements. See the NOTICE file distributed
+ *   with this work for additional information regarding copyright
+ *   ownership. The ASF licenses this file to you under the Apache
+ *   License, Version 2.0 (the "License"); you may not use this file
+ *   except in compliance with the License. You may obtain a copy of
+ *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+-->
+
+<meta>
+  <topic id="textsbasicshared03140004xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">MIRR Function [Runtime - VBA]</title>
+    <filename>/text/sbasic/shared/03140004.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+
+
+<section id="mirr">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3150499">
+  <bookmark_value>MIRR function</bookmark_value>
+</bookmark>
+
+
+<paragraph id="hd_id3150499" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03140004.xhp" name="MIRR Function [Runtime - VBA]">MIRR Function [Runtime - VBA]</link></paragraph>
+<paragraph id="par_id3151384" role="paragraph" xml-lang="en-US">Calculates the modified internal rate of return of a series of investments.</paragraph>
+</section>
+<embed href="text/sbasic/shared/00000003.xhp#vbasupport"/>
+
+<paragraph id="hd_id061420170116474964" role="heading" level="2" xml-lang="en-US"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></paragraph>
+<bascode>
+<paragraph id="par_id3143267" role="bascode" localize="false" xml-lang="en-US">MIRR(Values() as Double, Investment as Double, ReinvestRate as Double)</paragraph>
+</bascode>
+
+<paragraph id="hd_id0614201701254487" role="heading" level="2" xml-lang="en-US"><embedvar href="text/sbasic/shared/00000003.xhp#functvalue"/></paragraph>
+<paragraph id="par_id3150669" role="paragraph" localize="false" xml-lang="en-US">Double</paragraph>
+
+<paragraph id="hd_id061420170125448913" role="heading" level="2" xml-lang="en-US"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></paragraph>
+<paragraph id="par_id061420170730135034" role="paragraph" xml-lang="en-US"><emph>Values(): </emph>An array of cash flows, representing a series of payments and income, where negative values are treated as payments and positive values are treated as income. This array must contain at least one negative and at least one positive value.</paragraph>
+<paragraph id="par_id061620170513518949" role="paragraph" xml-lang="en-US"><emph>Investment</emph>: is the rate of interest of the investments (the negative values of the array).</paragraph>
+<paragraph id="par_id061420170730137782" role="paragraph" xml-lang="en-US"><emph>ReinvestRate:</emph> the rate of interest of the reinvestment (the positive values of the array).</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
+<embed href="text/sbasic/shared/00000003.xhp#err5"/>
+
+<paragraph id="hd_id061420170125449765" role="heading" level="2" xml-lang="en-US"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></paragraph>
+<bascode>
+<paragraph id="par_id06162017021753974" role="bascode" localize="false" xml-lang="en-US">REM ***** BASIC *****</paragraph>
+<paragraph id="par_id061620170217534991" role="bascode" localize="false" xml-lang="en-US">Option VBASupport 1</paragraph>
+<paragraph id="par_id061620170217535111" role="bascode" localize="false" xml-lang="en-US">Sub ExampleMIRR</paragraph>
+<paragraph id="par_id061620170217538573" role="bascode" localize="false" xml-lang="en-US"> Dim cashFlow(0 to 3) As Double</paragraph>
+<paragraph id="par_id06162017021753515" role="bascode" localize="false" xml-lang="en-US"> cashFlow(0) = -5</paragraph>
+<paragraph id="par_id061620170217538580" role="bascode" localize="false" xml-lang="en-US"> cashFlow(1) = 10</paragraph>
+<paragraph id="par_id061620170217543462" role="bascode" localize="false" xml-lang="en-US"> cashFlow(2) = 15</paragraph>
+<paragraph id="par_id061620170217549769" role="bascode" localize="false" xml-lang="en-US"> cashFlow(3) = 8</paragraph>
+<paragraph id="par_id061620170217542970" role="bascode" localize="false" xml-lang="en-US"> mirrValue = MIRR(cashFlow,0.5,0.1) * 100</paragraph>
+<paragraph id="par_id061620170217548258" role="bascode" xml-lang="en-US"> Print mirrValue ' returns 94.16. The modified internal rate of return of the cash flow.</paragraph>
+<paragraph id="par_id061620170217544542" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+</bascode>
+
+<section id="relatedtopics">
+<paragraph id="par_id061420170153186192" role="paragraph" xml-lang="en-US"><link href="text/scalc/01/04060119.xhp#bm_id3148974">MIRR function in CALC</link></paragraph>
+<paragraph id="par_id06142017015837916" role="paragraph" xml-lang="en-US"><link href="text/sbasic/shared/special_vba_func.xhp">VBA financial functions</link></paragraph>
+</section>
+</body>
+
+</helpdocument>
