@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This file incorporates work covered by the following license notice:
+ *
+ *   Licensed to the Apache Software Foundation (ASF) under one or more
+ *   contributor license agreements. See the NOTICE file distributed
+ *   with this work for additional information regarding copyright
+ *   ownership. The ASF licenses this file to you under the Apache
+ *   License, Version 2.0 (the "License"); you may not use this file
+ *   except in compliance with the License. You may obtain a copy of
+ *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+-->
+
+<meta>
+  <topic id="textsbasicshared03140003xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">IRR Function [Runtime - VBA]</title>
+    <filename>/text/sbasic/shared/03140003.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+
+
+<section id="irr">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3150499">
+  <bookmark_value>IRR function</bookmark_value>
+</bookmark>
+
+
+<paragraph id="hd_id3150499" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03140003.xhp" name="IRR Function [Runtime - VBA]">IRR Function [Runtime - VBA]</link></paragraph>
+<paragraph id="par_id3151384" role="paragraph" xml-lang="en-US">Calculates the internal rate of return for an investment.</paragraph>
+</section>
+<embed href="text/sbasic/shared/00000003.xhp#vbasupport"/>
+
+<paragraph id="hd_id061420170116474964" role="heading" level="2" xml-lang="en-US"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></paragraph>
+<bascode>
+<paragraph id="par_id3143267" role="bascode" localize="false" xml-lang="en-US">IRR(Values() as Double , [Guess as Variant])</paragraph>
+</bascode>
+
+<paragraph id="hd_id0614201701254487" role="heading" level="2" xml-lang="en-US"><embedvar href="text/sbasic/shared/00000003.xhp#functvalue"/></paragraph>
+<paragraph id="par_id3150669" role="paragraph" localize="false" xml-lang="en-US">Double</paragraph>
+
+<paragraph id="hd_id061420170125448913" role="heading" level="2" xml-lang="en-US"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></paragraph>
+<paragraph id="par_id061420170730135034" role="paragraph" xml-lang="en-US"><emph>Values(): </emph>The array of values of the cash-flow. The values represent cash flow values at regular intervals, at least one value must be negative (payments), and at least one value must be positive (income).</paragraph>
+<paragraph id="par_id061420170730137782" role="paragraph" xml-lang="en-US"><emph>Guess</emph> An initial estimate at what the IRR will be.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
+<embed href="text/sbasic/shared/00000003.xhp#err5"/>
+
+<paragraph id="hd_id061420170125449765" role="heading" level="2" xml-lang="en-US"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></paragraph>
+<bascode>
+<paragraph id="par_id06162017021753974" role="bascode" localize="false" xml-lang="en-US">REM ***** BASIC *****</paragraph>
+<paragraph id="par_id061620170217534991" role="bascode" localize="false" xml-lang="en-US">Option VBASupport 1</paragraph>
+<paragraph id="par_id061620170217535111" role="bascode" localize="false" xml-lang="en-US">Sub ExampleIRR</paragraph>
+<paragraph id="par_id061620170217538573" role="bascode" localize="false" xml-lang="en-US"> Dim cashFlow(0 to 3) As Double</paragraph>
+<paragraph id="par_id06162017021753515" role="bascode" localize="false" xml-lang="en-US"> cashFlow(0) = -10000</paragraph>
+<paragraph id="par_id061620170217538580" role="bascode" localize="false" xml-lang="en-US"> cashFlow(1) = 3500</paragraph>
+<paragraph id="par_id061620170217543462" role="bascode" localize="false" xml-lang="en-US"> cashFlow(2) = 7600</paragraph>
+<paragraph id="par_id061620170217549769" role="bascode" localize="false" xml-lang="en-US"> cashFlow(3) = 1000</paragraph>
+<paragraph id="par_id061620170217542970" role="bascode" localize="false" xml-lang="en-US"> irrValue = IRR(cashFlow) * 100</paragraph>
+<paragraph id="par_id061620170217548258" role="bascode" xml-lang="en-US"> Print irrValue ' returns 11.3321028236252 . The internal rate of return of the cash flow.</paragraph>
+<paragraph id="par_id061620170217544542" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+</bascode>
+
+<section id="relatedtopics">
+<paragraph id="par_id061420170153186192" role="paragraph" xml-lang="en-US"><link href="text/scalc/01/04060103.xhp#bm_id3153948">IRR function in CALC</link></paragraph>
+<paragraph id="par_id06142017015837916" role="paragraph" xml-lang="en-US"><link href="text/sbasic/shared/special_vba_func.xhp">VBA financial functions</link></paragraph>
+</section>
+</body>
+
+</helpdocument>
