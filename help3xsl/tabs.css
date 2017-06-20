@@ -1,0 +1,134 @@
+/*Copyright (c) 2017 by César Gabriel (http://codepen.io/CesarGabriel/pen/nLhAa)
+
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+#container {
+    margin: 0 auto;
+    width: 100%;  /* Ancho del contenedor */
+    height: 100%;
+}
+
+#container input {
+	height: 2.5em;
+	visibility: hidden;
+}
+
+#container label {
+	background: #f9f9f9;  /* Fondo de las pestañas */
+	border-radius: .25em .25em 0 0;
+	color: #888;  /* Color del texto de las pestañas */
+	cursor: pointer;
+	display: block;
+	float: left;
+	font-size: 1em;  /* Tamaño del texto de las pestañas */
+	height: 2.5em;
+	line-height: 2.5em;
+	margin-right: .25em;
+	padding: 0 1.5em;
+	text-align: center;
+}
+
+#container input:hover + label {
+	background: #ddd;  /* Fondo de las pestañas al pasar el cursor por encima */
+	color: #666;  /* Color del texto de las pestañas al pasar el cursor por encima */
+}
+
+#container input:checked + label {
+	background: #f1f1f1;  /* Fondo de las pestañas al presionar */
+	color: #444; /* Color de las pestañas al presionar */
+	position: relative;
+	z-index: 6;
+	/*
+	-webkit-transition: .1s;
+	-moz-transition: .1s;
+	-o-transition: .1s;
+	-ms-transition: .1s;
+	*/
+}
+
+#content {
+	background: #ffffff;  /* Fondo del contenido */
+	border-radius: 0 .25em .25em .25em;
+	min-height: 20em;  /* Alto del contenido */
+	position: relative;
+	width: 100%;
+        height:100%;
+	z-index: 5;
+}
+
+#content div {
+	opacity: 0;
+	padding: 1.em;
+	position: absolute;
+	z-index: -100;
+        width:100%;
+	/*
+	transition: all linear 0.1s;
+	*/
+}
+
+
+/*#content-1 p {
+	clear: both;
+	margin-bottom: 1em;
+}
+#content-1 p.left img {
+	float: left;
+	margin-right: 1em;
+}
+#content-1 p.last {
+	margin-bottom: 0;
+}
+*/
+#content-1 div#SearchBox {
+	background-color: #c2f6ba;
+	line-height:2em;
+	border: 1px solid #18A303;
+        vertical-align: center;
+        text-align: center;
+        position: absolute;
+        top:2px;
+        left:2px;
+}
+#content-1 div#Bookmarks {
+        top:50px;
+}
+#content-1 ul li {
+    list-style-type: none;
+}
+#content-1 p {
+	font-size: 16pt;
+	font-weight: bold;
+}
+
+#container input#tab-1:checked ~ #content #content-1,
+#container input#tab-2:checked ~ #content #content-2,
+#container input#tab-3:checked ~ #content #content-3
+{
+    opacity: 1;
+    z-index: 100;
+}
+
+#container input#tab-2:checked ~ #content #content-2 *
+{
+    opacity: 1;
+    z-index: 100;
+    visibility: visible;
+}
+
+#container input#tab-1:checked ~ #content #content-1 *
+{
+    opacity: 1;
+    z-index: 100;
+    visibility: visible;
+}
+
+#container input.visible {
+  visibility: visible !important;
+}

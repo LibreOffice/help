@@ -27,6 +27,9 @@
 ############################
 //-->
 
+<xsl:param name="productversion"/>
+
+
 <!-- General Usage -->
 <xsl:variable name="am" select="'&amp;'"/>
 <xsl:variable name="sl" select="'/'"/>
@@ -68,7 +71,7 @@
   <!-- the other parameters given by the help caller -->
 <xsl:param name="System" select="'WIN'"/>
 <xsl:param name="productname" select="'LibreOffice'"/>
-<xsl:param name="productversion" select="''"/>
+
 <xsl:variable name="pversion">
 	<xsl:value-of select="translate($productversion,' ','')"/>
 </xsl:variable>
@@ -86,19 +89,14 @@
   <!-- parts of help and image urls -->
 <!--<xsl:variable name="help_url_prefix" select="'vnd.sun.star.help://'"/>-->
 <xsl:variable name="help_url_prefix" select="''"/>
-<xsl:variable name="img_url_internal" select="''"/>
-<xsl:variable name="img_url_prefix" select="concat('media',$imgtheme,'/')"/>
-<!-- <xsl:variable name="img_url_prefix" select="concat('vnd.libreoffice.image://',$imgtheme,'/')"/> -->
-<!--<xsl:variable name="urlpost" select=""/>-->
+
+<xsl:variable name="img_url_internal" select="$productversion"/>
+<xsl:variable name="img_url_prefix" select="concat($productversion,'/media',$imgtheme,'/')"/>
 <xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no')"/>
 <xsl:variable name="urlpre" select="$help_url_prefix" />
-<xsl:variable name="linkprefix" select="concat('/',$lang,'/')"/>
+<xsl:variable name="linkprefix" select="concat($productversion,'/',$lang,'/')"/>
 <!--<xsl:variable name="linkpostfix" select="$urlpost"/>-->
 <xsl:variable name="linkpostfix" select="''"/>
-
-
-<xsl:variable name="css" select="'default.css'"/>
-<xsl:variable name="csslink" select="concat($urlpre,$css)"/>
 
 <!-- images for notes, tips and warnings -->
 <xsl:variable name="note_img" select="concat($img_url_prefix,'helpimg/note.png')"/>
@@ -113,144 +111,161 @@
 
 <!-- Create the document skeleton -->
 <xsl:template match="/">
-	<xsl:variable name="csslink" select="concat($urlpre,'default.css')"/>
-        <xsl:variable name="bookmarkref" select="concat($lang,'/bookmarks.js')"/>
-        <xsl:variable name="htmlpage"><xsl:call-template name="filehtml"><xsl:with-param name="file" select="$filename"/></xsl:call-template></xsl:variable>
-	<html>
-		<head>
-<!-- 		        <base href="file:///home/tdf/git/core/helpcontent2/source/html/"/> -->
-			<!--<base href="/{$lang}"/>-->
-                    <base href="/"/>
-                        <title><xsl:call-template name="brand"><xsl:with-param name="string">
-                               <xsl:value-of select="$title"/>
-                               </xsl:with-param></xsl:call-template></title>
-			<link href="{$csslink}" rel="Stylesheet" type="text/css" />
-			<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
-                        <script type="text/javascript" src="help.js"></script>
-
-  		<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-		</head>
-		<body lang="{$lang}">
-                   <div id="BottomLeft">
-                       <div id="SearchBox">
-			       <p><xsl:text disable-output-escaping="yes">&amp;nbsp;&amp;#x1f50e;&amp;nbsp;</xsl:text><input type="text" id="search-bar"/></p>
-                   </div>
-                       <ul id="bookmarkCALC" hidden="true"></ul>
-                       <ul id="bookmarkCHART" hidden="true"></ul>
-                       <ul id="bookmarkWRITER" hidden="true"></ul>
-                       <ul id="bookmarkDRAW" hidden="true"></ul>
-                       <ul id="bookmarkIMPRESS" hidden="true"></ul>
-                       <ul id="bookmarkMATH" hidden="true"></ul>
-                       <ul id="bookmarkBASE" hidden="true"></ul>
-                       <ul id="bookmarkSHARED" hidden="true"></ul>
-                       <ul id="bookmarkBASIC" hidden="true"></ul>
-                   </div>
-		   <div id="DisplayArea">
-			<xsl:apply-templates select="/helpdocument/body"/>
-                        <div class="debug">
-                            <h3 class="bug">Help content debug info:</h3>
-                            <p>This page is: <xsl:value-of select="$filename"/></p>
-                            <p>Title is: <xsl:value-of select="$title"/></p>
-                            <p id="bm_module"></p>
-                            <p id="bm_system"></p>
-                        </div>
-                   </div>
-                   <div id="TopLang"><!--<p>a</p></div>-->
-                   <nav>
-                   <ul>
-                       <li><a href="/en-US{$htmlpage}">EN</a></li>
-                       <li><a href="/ast{$htmlpage}">AST</a></li>
-                       <li><a href="/bg{$htmlpage}">BG</a></li>
-                       <li><a href="/bn{$htmlpage}">BN</a></li>
-                       <li><a href="/bn-IN{$htmlpage}">BN-IN</a></li>
-		       <li><a href="/ca{$htmlpage}">CA</a></li>
-                       <li><a href="/cs{$htmlpage}">CS</a></li>
-                       <li><a href="/da{$htmlpage}">DA</a></li>
-		       <li><a href="/de{$htmlpage}">DE</a></li>
-                       <li><a href="/el{$htmlpage}">EL</a></li>
-		       <li><a href="/es{$htmlpage}">ES</a></li>
-                       <li><a href="/eu{$htmlpage}">EU</a></li>
-                       <li><a href="/fi{$htmlpage}">FI</a></li>
-		       <li><a href="/fr{$htmlpage}">FR</a></li>
-                       <li><a href="/hu{$htmlpage}">HU</a></li>
-                       <li><a href="/it{$htmlpage}">IT</a></li>
-                       <li><a href="/ja{$htmlpage}">JA</a></li>
-                       <li><a href="/km{$htmlpage}">KM</a></li>
-                       <li><a href="/ko{$htmlpage}">KO</a></li>
-                       <li><a href="/nb{$htmlpage}">NB</a></li>
-                       <li><a href="/nl{$htmlpage}">NL</a></li>
-                       <li><a href="/om{$htmlpage}">OM</a></li>
-                       <li><a href="/pl{$htmlpage}">PL</a></li>
-		       <li><a href="/pt{$htmlpage}">PT</a></li>
-                       <li><a href="/pt-BR{$htmlpage}">PT-BR</a></li>
-                       <li><a href="/ru{$htmlpage}">RU</a></li>
-                       <li><a href="/sl{$htmlpage}">SL</a></li>
-                       <li><a href="/sv{$htmlpage}">SV</a></li>
-                       <li><a href="/tr{$htmlpage}">TR</a></li>
-                       <li><a href="/vi{$htmlpage}">VI</a></li>
-                       <li><a href="/zh-CN{$htmlpage}">ZH-CN</a></li>
-                       <li><a href="/zh-TW{$htmlpage}">ZH-TW</a></li>
-                   </ul>
-                   </nav>
-                   </div>
-                   <div id="TopRight">
-                       <script type="text/javascript">
-                       <![CDATA[
-                             (function() {
-                             var cx = '010161382024564278136:jcdsgegjym8';
-                             var gcse = document.createElement('script');
-                             gcse.type = 'text/javascript';
-                             gcse.async = true;
-                             gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-                             var s = document.getElementsByTagName('script')[0];
-                             s.parentNode.insertBefore(gcse, s);
-                             })();
-                       ]]>
-                       </script>
-                       <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
-                   </div>
-                   <div id="TopLeft">
-                       <nav id="SelectModules">
-                           <ul>
-                               <li><a href="/{$lang}/text/scalc/main0000.html?DbPAR=CALC">Calc</a></li>
-                               <li><a href="/{$lang}/text/swriter/main0000.html?DbPAR=WRITER">Writer</a></li>
-                               <li><a href="/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS">Impress</a></li>
-                               <li><a href="/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW">Draw</a></li>
-                               <li><a href="/{$lang}/text/schart/main0000.html?DbPAR=CHART">Chart</a></li>
-                               <li><a href="/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC">Basic</a></li>
-                               <li><a href="/{$lang}/text/smath/main0000.html?DbPAR=MATH">Math</a></li>
-                               <li><a href="/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE">Base</a></li>
-                               <li><a href="/{$lang}/text/shared/guide/main.html?DbPAR=SHARED">Guide</a></li>
-                           </ul>
-                       </nav>
-                 </div>
-                 <div id="TopSystem">
-                     <nav id="SelectSystem">
-                         <ul>
-                             <li id="win"><a href="{$lang}{$htmlpage}">Wndows</a></li>
-                             <li id="lin"><a href="{$lang}{$htmlpage}">Linux</a></li>
-                             <li id="mac"><a href="{$lang}{$htmlpage}">Mac</a></li>
-                         </ul>
-                     </nav>
-                 </div>
-                 <script type="text/javascript">
-<![CDATA[
-//if (window.location.href.indexOf('?') == -1) {
-//window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER&System=WIN','_self');
-//}
-var module = getParameterByName("DbPAR");
-setModule(module);
-var system = getParameterByName("System");
-setSystem(system);
-fixURL(module,system);
-setSystemURLButton(module);
-document.getElementById("bm_module").innerHTML ="Module is: "+module;
-document.getElementById("bm_system").innerHTML ="System is: "+system;
-]]>
-                 </script>
-                 <script type="text/javascript" src="{$bookmarkref}"/>
-                 </body>
-	</html>
+    <xsl:variable name="htmlpage"><xsl:call-template name="filehtml"><xsl:with-param name="file" select="$filename"/></xsl:call-template></xsl:variable>
+<html>
+<head>
+        <!--<base href="file:///home/tdf/git/core/helpcontent2/source/html/"/> -->
+        <base href="/"/>
+        <title><xsl:call-template name="brand"><xsl:with-param name="string">
+                    <xsl:value-of select="$title"/>
+                    </xsl:with-param></xsl:call-template>
+        </title>
+        <link href="{$productversion}/default.css" rel="Stylesheet" type="text/css" />
+        <link href="{$productversion}/tabs.css" rel="Stylesheet" type="text/css" />
+        <link href="{$productversion}/tree.css" rel="Stylesheet" type="text/css" />
+        <script type="text/javascript" src="{$productversion}/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="{$productversion}/help.js"></script>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+</head>
+<body lang="{$lang}">
+    <div id="BottomLeft">
+        <div id="container"> <!-- Tabs -->
+            <input id="tab-1" type="radio" name="tab-group" checked="checked" />
+            <label for="tab-1">Index</label>
+            <input id="tab-2" type="radio" name="tab-group" />
+            <label for="tab-2">Contents</label>
+            <input id="tab-3" type="radio" name="tab-group" />
+            <label for="tab-3">Search</label>
+            <div id="content">
+                <div id="content-1">
+                    <div id="SearchBox"><p>&#32;&#x1f50e;&#32;<input type="text" id="search-bar"/></p></div>
+                    <div id="Bookmarks">
+                        <ul id="bookmarkCALC" hidden="true"></ul>
+                        <ul id="bookmarkCHART" hidden="true"></ul>
+                        <ul id="bookmarkWRITER" hidden="true"></ul>
+                        <ul id="bookmarkDRAW" hidden="true"></ul>
+                        <ul id="bookmarkIMPRESS" hidden="true"></ul>
+                        <ul id="bookmarkMATH" hidden="true"></ul>
+                        <ul id="bookmarkBASE" hidden="true"></ul>
+                        <ul id="bookmarkSHARED" hidden="true"></ul>
+                        <ul id="bookmarkBASIC" hidden="true"></ul>
+                    </div>
+                </div>
+                <div id="content-2">
+                    <p>Lorem ipsum dolor sit amet</p>
+                </div>
+                <div id="content-3">
+                    <p>Lorem ipsum dolor sit amet</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="DisplayArea">
+        <xsl:apply-templates select="/helpdocument/body"/>
+        <div class="debug">
+            <h3 class="bug">Help content debug info:</h3>
+            <p>This page is: <xsl:value-of select="$filename"/></p>
+            <p>Title is: <xsl:value-of select="$title"/></p>
+            <p id="bm_module"></p>
+            <p id="bm_system"></p>
+        </div>
+    </div>
+    <div id="TopLang">
+        <nav>
+            <ul>
+                <li><a href="{$productversion}/en-US{$htmlpage}">EN</a></li>
+                <li><a href="{$productversion}/ast{$htmlpage}">AST</a></li>
+                <li><a href="{$productversion}/bg{$htmlpage}">BG</a></li>
+                <li><a href="{$productversion}/bn{$htmlpage}">BN</a></li>
+                <li><a href="{$productversion}/bn-IN{$htmlpage}">BN-IN</a></li>
+                <li><a href="{$productversion}/ca{$htmlpage}">CA</a></li>
+                <li><a href="{$productversion}/cs{$htmlpage}">CS</a></li>
+                <li><a href="{$productversion}/da{$htmlpage}">DA</a></li>
+                <li><a href="{$productversion}/de{$htmlpage}">DE</a></li>
+                <li><a href="{$productversion}/el{$htmlpage}">EL</a></li>
+                <li><a href="{$productversion}/es{$htmlpage}">ES</a></li>
+                <li><a href="{$productversion}/eu{$htmlpage}">EU</a></li>
+                <li><a href="{$productversion}/fi{$htmlpage}">FI</a></li>
+                <li><a href="{$productversion}/fr{$htmlpage}">FR</a></li>
+                <li><a href="{$productversion}/hu{$htmlpage}">HU</a></li>
+                <li><a href="{$productversion}/it{$htmlpage}">IT</a></li>
+                <li><a href="{$productversion}/ja{$htmlpage}">JA</a></li>
+                <li><a href="{$productversion}/km{$htmlpage}">KM</a></li>
+                <li><a href="{$productversion}/ko{$htmlpage}">KO</a></li>
+                <li><a href="{$productversion}/nb{$htmlpage}">NB</a></li>
+                <li><a href="{$productversion}/nl{$htmlpage}">NL</a></li>
+                <li><a href="{$productversion}/om{$htmlpage}">OM</a></li>
+                <li><a href="{$productversion}/pl{$htmlpage}">PL</a></li>
+                <li><a href="{$productversion}/pt{$htmlpage}">PT</a></li>
+                <li><a href="{$productversion}/pt-BR{$htmlpage}">PT-BR</a></li>
+                <li><a href="{$productversion}/ru{$htmlpage}">RU</a></li>
+                <li><a href="{$productversion}/sl{$htmlpage}">SL</a></li>
+                <li><a href="{$productversion}/sv{$htmlpage}">SV</a></li>
+                <li><a href="{$productversion}/tr{$htmlpage}">TR</a></li>
+                <li><a href="{$productversion}/vi{$htmlpage}">VI</a></li>
+                <li><a href="{$productversion}/zh-CN{$htmlpage}">ZH-CN</a></li>
+                <li><a href="{$productversion}/zh-TW{$htmlpage}">ZH-TW</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="TopRight">
+        <script type="text/javascript">
+            <![CDATA[
+            (function() {
+            var cx = '010161382024564278136:oejldkqc20o';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+            })();
+            ]]>
+        </script>
+        <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
+    </div>
+    <div id="TopLeft">
+        <nav id="SelectModules">
+            <ul>
+                <li><a href="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC">Calc</a></li>
+                <li><a href="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER">Writer</a></li>
+                <li><a href="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS">Impress</a></li>
+                <li><a href="{$productversion}/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW">Draw</a></li>
+                <li><a href="{$productversion}/{$lang}/text/schart/main0000.html?DbPAR=CHART">Chart</a></li>
+                <li><a href="{$productversion}/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC">Basic</a></li>
+                <li><a href="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH">Math</a></li>
+                <li><a href="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE">Base</a></li>
+                <li><a href="{$productversion}/{$lang}/text/shared/guide/main.html?DbPAR=SHARED">Guide</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="TopSystem">
+        <nav id="SelectSystem">
+            <ul>
+                <li id="win"><a href="{$productversion}/{$lang}{$htmlpage}">Wndows</a></li>
+                <li id="lin"><a href="{$productversion}/{$lang}{$htmlpage}">Linux</a></li>
+                <li id="mac"><a href="{$productversion}/{$lang}{$htmlpage}">Mac</a></li>
+            </ul>
+        </nav>
+    </div>
+    <script type="text/javascript">
+        <![CDATA[
+        //if (window.location.href.indexOf('?') == -1) {
+        //window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER&System=WIN','_self');
+        //}
+        var module = getParameterByName("DbPAR");
+        setModule(module);
+        var system = getParameterByName("System");
+        setSystem(system);
+        fixURL(module,system);
+        setSystemURLButton(module);
+        document.getElementById("bm_module").innerHTML ="Module is: "+module;
+        document.getElementById("bm_system").innerHTML ="System is: "+system;
+        ]]>
+    </script>
+    <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
+</body>
+</html>
 </xsl:template>
 
 <!-- AHELP -->
@@ -900,10 +915,10 @@ document.getElementById("bm_system").innerHTML ="System is: "+system;
   <xsl:variable name="src">
     <xsl:choose>
      <xsl:when test="starts-with(@src,'media/')">
-          <xsl:value-of select="concat($img_url_internal,@src)"/>
+          <xsl:value-of select="concat($img_url_internal,'/',@src)"/>
      </xsl:when>
      <xsl:when test="not(starts-with(@src,'media/'))">
-         <xsl:value-of select="concat($img_url_internal,'media/icon-theme/',@src)"/>
+         <xsl:value-of select="concat($img_url_internal,'/media/icon-themes/',@src)"/>
      </xsl:when>
     <xsl:when test="not($ExtensionId='') and starts-with(@src,$ExtensionId)">
         <xsl:value-of select="concat($ExtensionPath,'/',@src)"/>
