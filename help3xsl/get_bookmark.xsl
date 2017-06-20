@@ -18,7 +18,7 @@ xsltproc get_bookmark.xsl <file.xhp>
 <xsl:param name="app"/>
 <xsl:param name="Language"/>
 <xsl:param name="productname" select="'LibreOffice'"/>
-<xsl:param name="productversion" select="'5.2'"/>
+<xsl:param name="productversion"/>
 
 <xsl:output indent="yes" method="text"/>
 
@@ -53,24 +53,20 @@ xsltproc get_bookmark.xsl <file.xhp>
 <xsl:template match="/">
       <xsl:for-each select="//bookmark[@branch='index']">
            <xsl:variable name="hrefhtml" select="substring-before($filename,'xhp')"/>   
-           <xsl:variable name="href" select="concat($Language,'/',$hrefhtml,'html?DbPAR=',$app,'#',@id)"/>
+           <xsl:variable name="href" select="concat($productversion,'/',$Language,'/',$hrefhtml,'html?DbPAR=',$app,'#',@id)"/>
            <xsl:for-each select="bookmark_value">
                      <xsl:variable name="here1">
-                     
                      <xsl:text disable-output-escaping="yes"><![CDATA[<li><a target="_top" href="]]></xsl:text>
                      <xsl:value-of select="$href"/>
                      <xsl:text disable-output-escaping="yes"><![CDATA["</a>]]></xsl:text>
-                     
                      <xsl:call-template name="apostrophe"><xsl:with-param name="string">
                           <xsl:value-of select="."/>
                      </xsl:with-param></xsl:call-template>
-                     
                      </xsl:variable>
 
 		     <xsl:call-template name="brand"><xsl:with-param name="string">
                           <xsl:value-of select="$here1"/>
                      </xsl:with-param></xsl:call-template>
-                     
                      <xsl:text disable-output-escaping="yes"><![CDATA[</li>\]]>&#xA;</xsl:text>
            </xsl:for-each>
       </xsl:for-each>
