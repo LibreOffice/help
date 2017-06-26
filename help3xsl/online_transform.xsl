@@ -117,14 +117,31 @@
         <!--<base href="file:///home/tdf/git/core/helpcontent2/source/html/"/> -->
         <base href="/"/>
         <title><xsl:call-template name="brand"><xsl:with-param name="string">
-                    <xsl:value-of select="$title"/>
-                    </xsl:with-param></xsl:call-template>
+               <xsl:value-of select="$title"/>
+               </xsl:with-param></xsl:call-template>
         </title>
         <link href="{$productversion}/default.css" rel="Stylesheet" type="text/css" />
         <link href="{$productversion}/tabs.css" rel="Stylesheet" type="text/css" />
         <link href="{$productversion}/tree.css" rel="Stylesheet" type="text/css" />
         <script type="text/javascript" src="{$productversion}/jquery-3.1.1.min.js"></script>
-        <script type="text/javascript" src="{$productversion}/help.js"></script>
+        <script type="text/javascript" src="{$productversion}/help.js"></script>        
+        <!-- Piwik -->
+        <script type="text/javascript">
+            <![CDATA[
+            var _paq = _paq || [];
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+            var u="//piwik.documentfoundation.org/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', '68']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+            })();
+            ]]>
+        </script>
+        <!-- End Piwik Code -->
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
 </head>
 <body lang="{$lang}">
@@ -147,7 +164,7 @@
                         <ul id="bookmarkIMPRESS" hidden="true"></ul>
                         <ul id="bookmarkMATH" hidden="true"></ul>
                         <ul id="bookmarkBASE" hidden="true"></ul>
-                        <ul id="bookmarkSHARED" hidden="true"></ul>
+                        <ul id="bookmarkSHARED"></ul>
                         <ul id="bookmarkBASIC" hidden="true"></ul>
                     </div>
                 </div>
@@ -235,7 +252,7 @@
                 <li><a href="{$productversion}/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC">Basic</a></li>
                 <li><a href="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH">Math</a></li>
                 <li><a href="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE">Base</a></li>
-                <li><a href="{$productversion}/{$lang}/text/shared/guide/main.html?DbPAR=SHARED">Guide</a></li>
+                <!--<li><a href="{$productversion}/{$lang}/text/shared/guide/main.html?DbPAR=SHARED">Guide</a></li>-->
             </ul>
         </nav>
     </div>

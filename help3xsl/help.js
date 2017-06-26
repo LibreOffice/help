@@ -9,7 +9,7 @@
 
 // Used to set Apllication in caseinlie=APP
 function setModule(module){
-    if (module == null){module="SHARED"}
+    if (module == null){module="WRITER"}
     document.getElementById("bookmark"+module).hidden=false;
     var itemspan = document.getElementsByTagName("span");
     var n = itemspan.length;
@@ -35,7 +35,7 @@ function setSystem(system){
 function fixURL(module, system){
     var itemlink = document.getElementById("DisplayArea").getElementsByTagName("a");
     var pSystem = (system == null) ? "WIN" : system;
-    var pAppl = (module == null) ? "SHARED" : module;
+    var pAppl = (module == null) ? "WRITER" : module;
     var n = itemlink.length;
     var item;
     for (var i = 0; i<n; i++) {setURLParam(itemlink[i], pSystem, pAppl)
@@ -60,7 +60,7 @@ function setURLParam (itemlink, pSystem, pAppl) {
 }
 // Set System change buttons
 function setSystemURLButton (module) {
-    if (module == null){module="SHARED"}
+    if (module == null){module="WRITER"}
     var button = document.getElementById("lin").getElementsByTagName("a");
     setURLParam(button[0],'UNIX', module);
     button = document.getElementById("win").getElementsByTagName("a");
