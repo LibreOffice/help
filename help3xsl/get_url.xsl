@@ -46,15 +46,15 @@ xsltproc get_bookmark.xsl <file.xhp>
 
 <!-- Extract the bookmarks branches x filename-->
 <xsl:template match="/">
-      <xsl:variable name="href" select="concat(substring-before($filename,'xhp'),'html')"/>   
-      <xsl:for-each select="//bookmark[@branch!='index']">
-            <xsl:if test="not(contains(@branch,'/.uno'))">
-               <xsl:text>'</xsl:text>
-               <xsl:value-of select="substring-after(@branch,'hid/')"/>
-               <xsl:text>':'</xsl:text>
-               <xsl:value-of select="$href" /><xsl:text>',&#xA;</xsl:text>
-            </xsl:if>
-      </xsl:for-each>
+    <xsl:variable name="href" select="concat(substring-before($filename,'xhp'),'html')"/>
+    <xsl:for-each select="//bookmark[@branch!='index']">
+        <xsl:if test="not(contains(@branch,'/.uno'))">
+            <xsl:text>'</xsl:text>
+            <xsl:value-of select="substring-after(@branch,'hid/')"/>
+            <xsl:text>':'</xsl:text>
+            <xsl:value-of select="$href" /><xsl:text>',&#xA;</xsl:text>
+        </xsl:if>
+    </xsl:for-each>
 </xsl:template>
 
 
