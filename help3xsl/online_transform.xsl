@@ -35,9 +35,6 @@
 <xsl:variable name="sl" select="'/'"/>
 <xsl:variable name="qt" select="'&quot;'"/>
 
-<!-- generic Icon alt text -->
-<xsl:variable name="alttext" select="'text/shared/00/icon_alt.xhp'"/>
-
 <!-- For calculating pixel sizes -->
 <xsl:variable name="dpi" select="'96'"/>
 <xsl:variable name="dpcm" select="'38'"/>
@@ -57,15 +54,15 @@
 <xsl:param name="Database" select="'swriter'"/>
 <xsl:variable name="module" select="$Database"/>
 <xsl:variable name="appl">
-	<xsl:choose>
-		<xsl:when test="$module = 'swriter'"><xsl:value-of select="'WRITER'"/></xsl:when>
-		<xsl:when test="$module = 'scalc'"><xsl:value-of select="'CALC'"/></xsl:when>
-		<xsl:when test="$module = 'sdraw'"><xsl:value-of select="'DRAW'"/></xsl:when>
-		<xsl:when test="$module = 'simpress'"><xsl:value-of select="'IMPRESS'"/></xsl:when>
-		<xsl:when test="$module = 'schart'"><xsl:value-of select="'CHART'"/></xsl:when>
-		<xsl:when test="$module = 'sbasic'"><xsl:value-of select="'BASIC'"/></xsl:when>
-		<xsl:when test="$module = 'smath'"><xsl:value-of select="'MATH'"/></xsl:when>
-	</xsl:choose>
+    <xsl:choose>
+        <xsl:when test="$module = 'swriter'"><xsl:value-of select="'WRITER'"/></xsl:when>
+        <xsl:when test="$module = 'scalc'"><xsl:value-of select="'CALC'"/></xsl:when>
+        <xsl:when test="$module = 'sdraw'"><xsl:value-of select="'DRAW'"/></xsl:when>
+        <xsl:when test="$module = 'simpress'"><xsl:value-of select="'IMPRESS'"/></xsl:when>
+        <xsl:when test="$module = 'schart'"><xsl:value-of select="'CHART'"/></xsl:when>
+        <xsl:when test="$module = 'sbasic'"><xsl:value-of select="'BASIC'"/></xsl:when>
+        <xsl:when test="$module = 'smath'"><xsl:value-of select="'MATH'"/></xsl:when>
+    </xsl:choose>
 </xsl:variable>
 
   <!-- the other parameters given by the help caller -->
@@ -80,7 +77,12 @@
 <xsl:param name="imgtheme" select="''"/>
 <xsl:param name="Id" />
 <xsl:param name="Language"/>
+<xsl:param name="root"/>
 <xsl:variable name="lang" select="$Language"/>
+<xsl:variable name="urlpre" select="$root"/>
+
+<!-- generic Icon alt text -->
+<xsl:variable name="alttext" select="concat($root,'text/shared/00/icon_alt.xhp')"/>
 
 <xsl:param name="ExtensionId" select="''"/>
 <xsl:param name="ExtensionPath" select="''"/>
@@ -93,7 +95,7 @@
 <xsl:variable name="img_url_internal" select="$productversion"/>
 <xsl:variable name="img_url_prefix" select="concat($productversion,'/media',$imgtheme,'/')"/>
 <xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no')"/>
-<xsl:variable name="urlpre" select="$help_url_prefix" />
+<!-- <xsl:variable name="urlpre" select="$help_url_prefix" /> -->
 <xsl:variable name="linkprefix" select="concat($productversion,'/',$lang,'/')"/>
 <!--<xsl:variable name="linkpostfix" select="$urlpost"/>-->
 <xsl:variable name="linkpostfix" select="''"/>
@@ -104,6 +106,12 @@
 <xsl:variable name="warning_img" select="concat($img_url_prefix,'helpimg/warning.png')"/>
 
 <!--
+########################
+# Schema.org variables #
+######################## 
+//-->
+
+<!--
 #############
 # Templates #
 #############
@@ -112,19 +120,19 @@
 <!-- Create the document skeleton -->
 <xsl:template match="/">
     <xsl:variable name="htmlpage"><xsl:call-template name="filehtml"><xsl:with-param name="file" select="$filename"/></xsl:call-template></xsl:variable>
-<html>
-<head>
+    <xsl:variable name="titleL10N">
+        <xsl:call-template name="brand"><xsl:with-param name="string"><xsl:value-of select="$title"/></xsl:with-param></xsl:call-template>
+    </xsl:variable>
+    <html>
+    <head>
         <!--<base href="file:///home/tdf/git/core/helpcontent2/source/html/"/> -->
         <base href="/"/>
-        <title><xsl:call-template name="brand"><xsl:with-param name="string">
-               <xsl:value-of select="$title"/>
-               </xsl:with-param></xsl:call-template>
-        </title>
-        <link href="{$productversion}/default.css" rel="Stylesheet" type="text/css" />
-        <link href="{$productversion}/tabs.css" rel="Stylesheet" type="text/css" />
-        <link href="{$productversion}/tree.css" rel="Stylesheet" type="text/css" />
+        <title><xsl:value-of select="$titleL10N"/></title>
+        <link href="{$productversion}/{$lang}/default.css" rel="Stylesheet" type="text/css" />
+        <link href="{$productversion}/{$lang}/tabs.css" rel="Stylesheet" type="text/css" />
+        <link href="{$productversion}/{$lang}/tree.css" rel="Stylesheet" type="text/css" />
         <script type="text/javascript" src="{$productversion}/jquery-3.1.1.min.js"></script>
-        <script type="text/javascript" src="{$productversion}/help.js"></script>        
+        <script type="text/javascript" src="{$productversion}/help.js"></script>
         <!-- Piwik -->
         <script type="text/javascript">
             <![CDATA[
@@ -143,144 +151,146 @@
         </script>
         <!-- End Piwik Code -->
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-</head>
-<body lang="{$lang}">
-    <div id="BottomLeft">
-        <div id="container"> <!-- Tabs -->
-            <input id="tab-1" type="radio" name="tab-group" checked="checked" />
-            <label for="tab-1">Index</label>
-            <input id="tab-2" type="radio" name="tab-group" />
-            <label for="tab-2">Contents</label>
-            <input id="tab-3" type="radio" name="tab-group" />
-            <label for="tab-3">Search</label>
-            <div id="content">
-                <div id="content-1">
-                    <div id="SearchBox"><p>&#32;&#x1f50e;&#32;<input type="text" id="search-bar"/></p></div>
-                    <div id="Bookmarks">
-                        <ul id="bookmarkCALC" hidden="true"></ul>
-                        <ul id="bookmarkCHART" hidden="true"></ul>
-                        <ul id="bookmarkWRITER" hidden="true"></ul>
-                        <ul id="bookmarkDRAW" hidden="true"></ul>
-                        <ul id="bookmarkIMPRESS" hidden="true"></ul>
-                        <ul id="bookmarkMATH" hidden="true"></ul>
-                        <ul id="bookmarkBASE" hidden="true"></ul>
-                        <ul id="bookmarkSHARED"></ul>
-                        <ul id="bookmarkBASIC" hidden="true"></ul>
+    </head>
+    <body lang="{$lang}">
+    <div itemscope="true" itemtype="http://schema.org/TechArticle">
+        <meta itemprop="version" content="{$productversion}"/>
+        <meta itemprop="inLanguage" content="{$lang}"/>
+        <meta itemprop="datePublished" content="2017"/>"
+        <div id="BottomLeft">
+            <div id="container"> <!-- Tabs -->
+                <input id="tab-1" type="radio" name="tab-group" checked="checked" />
+                <label for="tab-1">Index</label>
+                <input id="tab-2" type="radio" name="tab-group" />
+                <label for="tab-2">Contents</label>
+                <input id="tab-3" type="radio" name="tab-group" />
+                <label for="tab-3">Search</label>
+                <div id="content">
+                    <div id="content-1">
+                        <div id="SearchBox"><p>&#32;&#x1f50e;&#32;<input type="text" id="search-bar"/></p></div>
+                        <div id="Bookmarks">
+                            <ul id="bookmarkCALC" hidden="true"></ul>
+                            <ul id="bookmarkCHART" hidden="true"></ul>
+                            <ul id="bookmarkWRITER" hidden="true"></ul>
+                            <ul id="bookmarkDRAW" hidden="true"></ul>
+                            <ul id="bookmarkIMPRESS" hidden="true"></ul>
+                            <ul id="bookmarkMATH" hidden="true"></ul>
+                            <ul id="bookmarkBASE" hidden="true"></ul>
+                            <ul id="bookmarkSHARED"></ul>
+                            <ul id="bookmarkBASIC" hidden="true"></ul>
+                        </div>
                     </div>
-                </div>
-                <div id="content-2">
-                    <p>Lorem ipsum dolor sit amet</p>
-                </div>
-                <div id="content-3">
-                    <p>Lorem ipsum dolor sit amet</p>
+                    <div id="content-2">
+                        <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div id="content-3">
+                        <p>Lorem ipsum dolor sit amet</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="DisplayArea">
-        <xsl:apply-templates select="/helpdocument/body"/>
-        <div class="debug">
-            <h3 class="bug">Help content debug info:</h3>
-            <p>This page is: <xsl:value-of select="$filename"/></p>
-            <p>Title is: <xsl:value-of select="$title"/></p>
-            <p id="bm_module"></p>
-            <p id="bm_system"></p>
+        <div id="DisplayArea" itemprop="articleBody">
+            <xsl:apply-templates select="/helpdocument/body"/>
+            <div class="debug">
+                <h3 class="bug">Help content debug info:</h3>
+                <p>This page is: <xsl:value-of select="$filename"/></p>
+                <p>Title is: <xsl:value-of select="$title"/></p>
+                <p id="bm_module"></p>
+                <p id="bm_system"></p>
+            </div>
         </div>
-    </div>
-    <div id="TopLang">
-        <nav>
-            <ul>
-                <li><a href="{$productversion}/en-US{$htmlpage}">EN</a></li>
-                <li><a href="{$productversion}/ast{$htmlpage}">AST</a></li>
-                <li><a href="{$productversion}/bg{$htmlpage}">BG</a></li>
-                <li><a href="{$productversion}/bn{$htmlpage}">BN</a></li>
-                <li><a href="{$productversion}/bn-IN{$htmlpage}">BN-IN</a></li>
-                <li><a href="{$productversion}/ca{$htmlpage}">CA</a></li>
-                <li><a href="{$productversion}/cs{$htmlpage}">CS</a></li>
-                <li><a href="{$productversion}/da{$htmlpage}">DA</a></li>
-                <li><a href="{$productversion}/de{$htmlpage}">DE</a></li>
-                <li><a href="{$productversion}/el{$htmlpage}">EL</a></li>
-                <li><a href="{$productversion}/es{$htmlpage}">ES</a></li>
-                <li><a href="{$productversion}/eu{$htmlpage}">EU</a></li>
-                <li><a href="{$productversion}/fi{$htmlpage}">FI</a></li>
-                <li><a href="{$productversion}/fr{$htmlpage}">FR</a></li>
-                <li><a href="{$productversion}/hu{$htmlpage}">HU</a></li>
-                <li><a href="{$productversion}/it{$htmlpage}">IT</a></li>
-                <li><a href="{$productversion}/ja{$htmlpage}">JA</a></li>
-                <li><a href="{$productversion}/km{$htmlpage}">KM</a></li>
-                <li><a href="{$productversion}/ko{$htmlpage}">KO</a></li>
-                <li><a href="{$productversion}/nb{$htmlpage}">NB</a></li>
-                <li><a href="{$productversion}/nl{$htmlpage}">NL</a></li>
-                <li><a href="{$productversion}/om{$htmlpage}">OM</a></li>
-                <li><a href="{$productversion}/pl{$htmlpage}">PL</a></li>
-                <li><a href="{$productversion}/pt{$htmlpage}">PT</a></li>
-                <li><a href="{$productversion}/pt-BR{$htmlpage}">PT-BR</a></li>
-                <li><a href="{$productversion}/ru{$htmlpage}">RU</a></li>
-                <li><a href="{$productversion}/sl{$htmlpage}">SL</a></li>
-                <li><a href="{$productversion}/sv{$htmlpage}">SV</a></li>
-                <li><a href="{$productversion}/tr{$htmlpage}">TR</a></li>
-                <li><a href="{$productversion}/vi{$htmlpage}">VI</a></li>
-                <li><a href="{$productversion}/zh-CN{$htmlpage}">ZH-CN</a></li>
-                <li><a href="{$productversion}/zh-TW{$htmlpage}">ZH-TW</a></li>
-            </ul>
-        </nav>
-    </div>
-    <div id="TopRight">
+        <div id="TopLang">
+            <nav>
+                <ul>
+                    <li><a href="{$productversion}/en-US{$htmlpage}">EN</a></li>
+                    <li><a href="{$productversion}/ast{$htmlpage}">AST</a></li>
+                    <li><a href="{$productversion}/bg{$htmlpage}">BG</a></li>
+                    <li><a href="{$productversion}/bn{$htmlpage}">BN</a></li>
+                    <li><a href="{$productversion}/bn-IN{$htmlpage}">BN-IN</a></li>
+                    <li><a href="{$productversion}/ca{$htmlpage}">CA</a></li>
+                    <li><a href="{$productversion}/cs{$htmlpage}">CS</a></li>
+                    <li><a href="{$productversion}/da{$htmlpage}">DA</a></li>
+                    <li><a href="{$productversion}/de{$htmlpage}">DE</a></li>
+                    <li><a href="{$productversion}/el{$htmlpage}">EL</a></li>
+                    <li><a href="{$productversion}/es{$htmlpage}">ES</a></li>
+                    <li><a href="{$productversion}/eu{$htmlpage}">EU</a></li>
+                    <li><a href="{$productversion}/fi{$htmlpage}">FI</a></li>
+                    <li><a href="{$productversion}/fr{$htmlpage}">FR</a></li>
+                    <li><a href="{$productversion}/hu{$htmlpage}">HU</a></li>
+                    <li><a href="{$productversion}/it{$htmlpage}">IT</a></li>
+                    <li><a href="{$productversion}/ja{$htmlpage}">JA</a></li>
+                    <li><a href="{$productversion}/km{$htmlpage}">KM</a></li>
+                    <li><a href="{$productversion}/ko{$htmlpage}">KO</a></li>
+                    <li><a href="{$productversion}/nb{$htmlpage}">NB</a></li>
+                    <li><a href="{$productversion}/nl{$htmlpage}">NL</a></li>
+                    <li><a href="{$productversion}/om{$htmlpage}">OM</a></li>
+                    <li><a href="{$productversion}/pl{$htmlpage}">PL</a></li>
+                    <li><a href="{$productversion}/pt{$htmlpage}">PT</a></li>
+                    <li><a href="{$productversion}/pt-BR{$htmlpage}">PT-BR</a></li>
+                    <li><a href="{$productversion}/ru{$htmlpage}">RU</a></li>
+                    <li><a href="{$productversion}/sl{$htmlpage}">SL</a></li>
+                    <li><a href="{$productversion}/sv{$htmlpage}">SV</a></li>
+                    <li><a href="{$productversion}/tr{$htmlpage}">TR</a></li>
+                    <li><a href="{$productversion}/vi{$htmlpage}">VI</a></li>
+                    <li><a href="{$productversion}/zh-CN{$htmlpage}">ZH-CN</a></li>
+                    <li><a href="{$productversion}/zh-TW{$htmlpage}">ZH-TW</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div id="TopRight">
+            <script type="text/javascript">
+                <![CDATA[
+                (function() {
+                var cx = '010161382024564278136:oejldkqc20o';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+                })();
+                ]]>
+            </script>
+            <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
+        </div>
+        <div id="TopLeft">
+            <nav id="SelectModules">
+                <ul>
+                    <li><a href="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC">Calc</a></li>
+                    <li><a href="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER">Writer</a></li>
+                    <li><a href="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS">Impress</a></li>
+                    <li><a href="{$productversion}/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW">Draw</a></li>
+                    <li><a href="{$productversion}/{$lang}/text/schart/main0000.html?DbPAR=CHART">Chart</a></li>
+                    <li><a href="{$productversion}/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC">Basic</a></li>
+                    <li><a href="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH">Math</a></li>
+                    <li><a href="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE">Base</a></li>
+                    <!--<li><a href="{$productversion}/{$lang}/text/shared/guide/main.html?DbPAR=SHARED">Guide</a></li>-->
+                </ul>
+            </nav>
+        </div>
+        <div id="TopSystem">
+            <nav id="SelectSystem">
+                <ul>
+                    <li id="win"><a href="{$productversion}/{$lang}{$htmlpage}">Wndows</a></li>
+                    <li id="lin"><a href="{$productversion}/{$lang}{$htmlpage}">Linux</a></li>
+                    <li id="mac"><a href="{$productversion}/{$lang}{$htmlpage}">Mac</a></li>
+                </ul>
+            </nav>
+        </div>
         <script type="text/javascript">
             <![CDATA[
-            (function() {
-            var cx = '010161382024564278136:oejldkqc20o';
-            var gcse = document.createElement('script');
-            gcse.type = 'text/javascript';
-            gcse.async = true;
-            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(gcse, s);
-            })();
+            var module = getParameterByName("DbPAR");
+            setModule(module);
+            var system = getParameterByName("System");
+            setSystem(system);
+            fixURL(module,system);
+            setSystemURLButton(module);
+            document.getElementById("bm_module").innerHTML ="Module is: "+module;
+            document.getElementById("bm_system").innerHTML ="System is: "+system;
             ]]>
         </script>
-        <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
+        <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
     </div>
-    <div id="TopLeft">
-        <nav id="SelectModules">
-            <ul>
-                <li><a href="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC">Calc</a></li>
-                <li><a href="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER">Writer</a></li>
-                <li><a href="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS">Impress</a></li>
-                <li><a href="{$productversion}/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW">Draw</a></li>
-                <li><a href="{$productversion}/{$lang}/text/schart/main0000.html?DbPAR=CHART">Chart</a></li>
-                <li><a href="{$productversion}/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC">Basic</a></li>
-                <li><a href="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH">Math</a></li>
-                <li><a href="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE">Base</a></li>
-                <!--<li><a href="{$productversion}/{$lang}/text/shared/guide/main.html?DbPAR=SHARED">Guide</a></li>-->
-            </ul>
-        </nav>
-    </div>
-    <div id="TopSystem">
-        <nav id="SelectSystem">
-            <ul>
-                <li id="win"><a href="{$productversion}/{$lang}{$htmlpage}">Wndows</a></li>
-                <li id="lin"><a href="{$productversion}/{$lang}{$htmlpage}">Linux</a></li>
-                <li id="mac"><a href="{$productversion}/{$lang}{$htmlpage}">Mac</a></li>
-            </ul>
-        </nav>
-    </div>
-    <script type="text/javascript">
-        <![CDATA[
-        //if (window.location.href.indexOf('?') == -1) {
-        //window.open('text/shared/main0108.html?System=DEFSYS&DbPAR=WRITER&System=WIN','_self');
-        //}
-        var module = getParameterByName("DbPAR");
-        setModule(module);
-        var system = getParameterByName("System");
-        setSystem(system);
-        fixURL(module,system);
-        setSystemURLButton(module);
-        document.getElementById("bm_module").innerHTML ="Module is: "+module;
-        document.getElementById("bm_system").innerHTML ="System is: "+system;
-        ]]>
-    </script>
-    <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
 </body>
 </html>
 </xsl:template>
@@ -309,7 +319,12 @@
 <xsl:template match="bookmark" mode="embedded" />
 
 <!-- BOOKMARK_VALUE -->
-<xsl:template match="bookmark_value" />
+<xsl:template match="bookmark_value">
+    <xsl:element name="meta">
+        <xsl:attribute name="itemprop">keywords</xsl:attribute>
+        <xsl:attribute name="content"><xsl:value-of select="translate(.,';',',')"/></xsl:attribute>
+    </xsl:element>
+</xsl:template>
 
 <!-- BR -->
 <xsl:template match="br"><br /></xsl:template>
@@ -737,9 +752,6 @@
 						<xsl:apply-templates/>
 					</xsl:when>
 					<xsl:otherwise> <!-- old style -->
-						<xsl:variable name="archive1"><xsl:value-of select="concat(substring-before(substring-after($linkhref,'text/'),'/'),'/')"/></xsl:variable>
-						<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,$archive1,substring-before($linkhref,'#'),$urlpost)"/></xsl:variable>-->
-						<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before($linkhref,'#'),$urlpost)"/></xsl:variable>-->
 						<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before($linkhref,'#'))"/></xsl:variable>
 						<xsl:variable name="anc"><xsl:value-of select="substring-after($linkhref,'#')"/></xsl:variable>
 						<xsl:variable name="docum" select="document($href)"/>
@@ -807,18 +819,24 @@
 
 <!-- Insert a heading -->
 <xsl:template name="insertheading">
-	<xsl:param name="level" />
-	<xsl:param name="embedded" />
+        <xsl:param name="level" />
+        <xsl:param name="embedded" />
         <xsl:element name="{concat('h',$level)}">
-        <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
-		<xsl:choose>
-			<xsl:when test="$embedded = 'yes'">
-				<xsl:apply-templates mode="embedded"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:apply-templates />
-			</xsl:otherwise>
-		</xsl:choose>
+                <xsl:choose>
+                    <xsl:when test="$level = '1'">
+                        <xsl:attribute name="itemprop"><xsl:text>headline</xsl:text></xsl:attribute>
+                    </xsl:when>
+                    <xsl:otherwise></xsl:otherwise>
+                </xsl:choose>
+                <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+                <xsl:choose>
+                    <xsl:when test="$embedded = 'yes'">
+                        <xsl:apply-templates mode="embedded"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:apply-templates />
+                    </xsl:otherwise>
+                </xsl:choose>
         </xsl:element>
 </xsl:template>
 
@@ -931,29 +949,32 @@
 <xsl:template name="insertimage">
   <xsl:variable name="src">
     <xsl:choose>
-     <xsl:when test="starts-with(@src,'media/')">
-          <xsl:value-of select="concat($img_url_internal,'/',@src)"/>
-     </xsl:when>
-     <xsl:when test="not(starts-with(@src,'media/'))">
-         <xsl:value-of select="concat($img_url_internal,'/media/icon-themes/',@src)"/>
-     </xsl:when>
-    <xsl:when test="not($ExtensionId='') and starts-with(@src,$ExtensionId)">
-        <xsl:value-of select="concat($ExtensionPath,'/',@src)"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:choose>
-          <xsl:when test="@localize='true'">
-            <xsl:value-of select="concat($img_url_prefix,@src,'?lang=',$lang)"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="concat($img_url_prefix,@src)"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:otherwise>
+         <xsl:when test="starts-with(@src,'media/screenshots/')">
+            <xsl:choose>
+                <xsl:when test="@localize='true'">
+                    <xsl:variable name="tmp0" select="substring-before(@src, '/ui')"/>
+                    <xsl:variable name="tmp1" select="substring-after(@src, '/ui/')"/>
+                    <xsl:variable name="tmp2" select="substring-before($tmp1,'/')"/>
+                    <xsl:variable name="tmp3" select="substring-after($tmp1,'/')"/>
+                    <xsl:value-of select="concat('/',$productversion,'/', $tmp0,'/ui/', $tmp2, '/',$lang,'/',$tmp3)"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="concat('/',$productversion,'/',@src)"/>
+                </xsl:otherwise>
+            </xsl:choose>
+         </xsl:when>
+         <xsl:when test="starts-with(@src,'media/')">
+             <xsl:value-of select="concat('/',$productversion,'/',@src)"/>
+         </xsl:when>
+         <xsl:when test="not(starts-with(@src,'media/'))">
+             <xsl:value-of select="concat('/',$productversion,'/media/icon-themes/',@src)"/>
+         </xsl:when>
+         <xsl:otherwise>
+             <xsl:value-of select="concat('/',$productversion,@src)"/>
+         </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-<!--  <p class="debug">Image: <xsl:value-of select="$src"/></p>-->
-	<!--<xsl:variable name="src"><xsl:value-of select="concat($img_url_prefix,@src)"/></xsl:variable>-->
+<!-- <p class="debug">Image: <xsl:value-of select="$src"/></p>-->
   <xsl:variable name="alt"><xsl:value-of select="./alt"/></xsl:variable>
   <xsl:variable name="width">
         <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@width"/></xsl:call-template>
@@ -1012,8 +1033,8 @@
                      <xsl:value-of select="$value"/>
                 </xsl:when>
                 <xsl:otherwise>
-                     <xsl:message>measure_conversion.xsl: Find no conversion for <xsl:value-of select="$value"/> to 'px'!</xsl:message>
-                     <xsl:value-of select="$value"/>
+<!--                      <xsl:message>measure_conversion.xsl: Find no conversion for <xsl:value-of select="$value"/> to 'px'!</xsl:message> -->
+                     <xsl:value-of select="concat($value, 'px')"/>
                 </xsl:otherwise>
        </xsl:choose>
 </xsl:template>
@@ -1060,8 +1081,6 @@
 
 <xsl:template name="resolveembed">
 	<div class="embedded">
-		<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
-		<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="$archive"/></xsl:call-template></xsl:variable>
 		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'))"/></xsl:variable>
 		<xsl:variable name="anc"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
 		<xsl:variable name="docum" select="document($href)"/>

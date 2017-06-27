@@ -66,7 +66,7 @@ langDirSource=`pwd`
 
 # iterate existing languages
 for lang in `ls $langDirSource`
-# for lang in en-US
+# for lang in en-US pt-BR
 do
         echo $lang
         cd $langDirSource/$lang/helpcontent2/source
