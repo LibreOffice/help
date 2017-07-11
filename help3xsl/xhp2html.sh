@@ -22,7 +22,7 @@ function convert2HTML() {
 #outDirHTML =2
 
 xsltparm='--stringparam Language '$lang' --stringparam productversion '$productversion' --stringparam root '$outDirLang'/'
-echo 'Converting to HTMLi started'
+echo 'Converting to HTML started'
 for filep in `find $1/text -name "*.xhp"`
 do
 DIR=${filep##*text/}
@@ -136,7 +136,6 @@ do
     outDir=$outDirLang'/text/'$stub
     mkdir -p $outDir
     ls $hlpFileDir/*.xhp >$xhpfiles
-    ${LO_TRACE} "${exedir}/helpex" -l $lang -mi $xhpfiles -m $potemp -o $outDir
     "${exedir}/helpex" -l $lang -mi $xhpfiles -m $potemp -o $outDir
     rm $potemp
 done
@@ -144,7 +143,7 @@ fi
 
 #extracting bookmarks
 echo 'Extracting bookmarks'
-./get_bookmark.sh $lang $productversion
+./get_bookmark.sh $lang $productversion &
 
 convert2HTML $outDirLang $outDirHTML &
 

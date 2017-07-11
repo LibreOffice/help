@@ -155,6 +155,7 @@
     <meta itemprop="version" content="{$productversion}"/>
     <meta itemprop="inLanguage" content="{$lang}"/>
     <meta itemprop="datePublished" content="2017"/>
+    <meta itemprop="headline" content="$titleL10N"/>
     <header>
         <nav>
             <select name="modules">
@@ -173,35 +174,67 @@
                 <option id="S_MAC" value="{$productversion}/{$lang}{$htmlpage}?System=MAC">Mac</option>
             </select>
             <select name="language">
-                <option value="{$productversion}/en-US{$htmlpage}">EN</option>
+                <option value="{$productversion}/en-US{$htmlpage}">EN-US</option>
+                <option value="{$productversion}/am{$htmlpage}">AM</option>
+                <option value="{$productversion}/ar{$htmlpage}">AR</option>
                 <option value="{$productversion}/ast{$htmlpage}">AST</option>
                 <option value="{$productversion}/bg{$htmlpage}">BG</option>
                 <option value="{$productversion}/bn{$htmlpage}">BN</option>
                 <option value="{$productversion}/bn-IN{$htmlpage}">BN-IN</option>
+                <option value="{$productversion}/bo{$htmlpage}">BO</option>
+                <option value="{$productversion}/bs{$htmlpage}">BS</option>
                 <option value="{$productversion}/ca{$htmlpage}">CA</option>
+                <option value="{$productversion}/ca-valencia{$htmlpage}">CA-Valencia</option>
                 <option value="{$productversion}/cs{$htmlpage}">CS</option>
                 <option value="{$productversion}/da{$htmlpage}">DA</option>
                 <option value="{$productversion}/de{$htmlpage}">DE</option>
+                <option value="{$productversion}/dz{$htmlpage}">DZ</option>
                 <option value="{$productversion}/el{$htmlpage}">EL</option>
+                <option value="{$productversion}/en-GB{$htmlpage}">EN-GB</option>
+                <option value="{$productversion}/en-ZA{$htmlpage}">EN-ZA</option>
+                <option value="{$productversion}/eo{$htmlpage}">EO</option>
                 <option value="{$productversion}/es{$htmlpage}">ES</option>
+                <option value="{$productversion}/et{$htmlpage}">ET</option>
                 <option value="{$productversion}/eu{$htmlpage}">EU</option>
                 <option value="{$productversion}/fi{$htmlpage}">FI</option>
                 <option value="{$productversion}/fr{$htmlpage}">FR</option>
+                <option value="{$productversion}/gl{$htmlpage}">GL</option>
+                <option value="{$productversion}/gu{$htmlpage}">GU</option>
+                <option value="{$productversion}/he{$htmlpage}">HE</option>
+                <option value="{$productversion}/hi{$htmlpage}">HI</option>
+                <option value="{$productversion}/hr{$htmlpage}">HR</option>
                 <option value="{$productversion}/hu{$htmlpage}">HU</option>
+                <option value="{$productversion}/id{$htmlpage}">ID</option>
+                <option value="{$productversion}/is{$htmlpage}">IS</option>
                 <option value="{$productversion}/it{$htmlpage}">IT</option>
                 <option value="{$productversion}/ja{$htmlpage}">JA</option>
+                <option value="{$productversion}/ka{$htmlpage}">KA</option>
                 <option value="{$productversion}/km{$htmlpage}">KM</option>
                 <option value="{$productversion}/ko{$htmlpage}">KO</option>
+                <option value="{$productversion}/lo{$htmlpage}">LO</option>
+                <option value="{$productversion}/lt{$htmlpage}">LT</option>
+                <option value="{$productversion}/lv{$htmlpage}">LV</option>
+                <option value="{$productversion}/mk{$htmlpage}">MK</option>
                 <option value="{$productversion}/nb{$htmlpage}">NB</option>
+                <option value="{$productversion}/ne{$htmlpage}">NE</option>
                 <option value="{$productversion}/nl{$htmlpage}">NL</option>
+                <option value="{$productversion}/nn{$htmlpage}">NN</option>
                 <option value="{$productversion}/om{$htmlpage}">OM</option>
                 <option value="{$productversion}/pl{$htmlpage}">PL</option>
                 <option value="{$productversion}/pt{$htmlpage}">PT</option>
                 <option value="{$productversion}/pt-BR{$htmlpage}">PT-BR</option>
+                <option value="{$productversion}/ro{$htmlpage}">RO</option>
                 <option value="{$productversion}/ru{$htmlpage}">RU</option>
+                <option value="{$productversion}/sid{$htmlpage}">SID</option>
+                <option value="{$productversion}/sk{$htmlpage}">SK</option>
                 <option value="{$productversion}/sl{$htmlpage}">SL</option>
+                <option value="{$productversion}/sq{$htmlpage}">SQ</option>
                 <option value="{$productversion}/sv{$htmlpage}">SV</option>
+                <option value="{$productversion}/ta{$htmlpage}">TA</option>
+                <option value="{$productversion}/tg{$htmlpage}">TG</option>
                 <option value="{$productversion}/tr{$htmlpage}">TR</option>
+                <option value="{$productversion}/ug{$htmlpage}">UG</option>
+                <option value="{$productversion}/uk{$htmlpage}">UK</option>
                 <option value="{$productversion}/vi{$htmlpage}">VI</option>
                 <option value="{$productversion}/zh-CN{$htmlpage}">ZH-CN</option>
                 <option value="{$productversion}/zh-TW{$htmlpage}">ZH-TW</option>
@@ -236,7 +269,7 @@
         <h1>LibreOffice <xsl:value-of select="$productversion"/><br/>Help Online</h1>
     </header>
     <section id="tabs">
-        <article itemprop= "headline" data-title="{$titleL10N}">
+        <article data-title="{$titleL10N}">
             <div id="DisplayArea" itemprop="articleBody">
                 <xsl:apply-templates select="/helpdocument/body"/>
             </div>
@@ -843,12 +876,9 @@
         <xsl:param name="level" />
         <xsl:param name="embedded" />
         <xsl:element name="{concat('h',$level)}">
-                <xsl:choose>
-                    <xsl:when test="$level = '1'">
+                <xsl:if test="$level = '1' or $level='2'">
                         <xsl:attribute name="itemprop"><xsl:text>articleSection</xsl:text></xsl:attribute>
-                    </xsl:when>
-                    <xsl:otherwise></xsl:otherwise>
-                </xsl:choose>
+                </xsl:if>
                 <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
                 <xsl:choose>
                     <xsl:when test="$embedded = 'yes'">
