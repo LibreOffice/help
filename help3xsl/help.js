@@ -18,6 +18,7 @@ function setModule(module){
             itemspan[i].removeAttribute("hidden");
         }
     }
+    document.getElementById("M_"+module).selected="true";
 }
 
 // Used to set system in caseinline=SYSTEM
@@ -30,6 +31,7 @@ function setSystem(system){
             itemspan[i].removeAttribute("hidden");
         }
     }
+    document.getElementById("S_"+system).selected="true";
 }
 /* add &DbPAR= and &System= to the links in DisplayArea div */
 function fixURL(module, system){
@@ -53,20 +55,10 @@ function setURLParam (itemlink, pSystem, pAppl) {
                 var pref = href.substring(0, href.lastIndexOf('#'));
                 itemlink.setAttribute("href", pref + "?" + '&DbPAR=' + pAppl + '&System=' + pSystem + postf);
             }else{
-                itemlink.setAttribute("href", href + "?"+ '&DbPAR=' + pAppl + '&System=' + pSystem);
+                itemlink.setAttribute("href", href + "?" + '&DbPAR=' + pAppl + '&System=' + pSystem);
             }
         }
     }
-}
-// Set System change buttons
-function setSystemURLButton (module) {
-    if (module == null){module="WRITER"}
-    var button = document.getElementById("lin").getElementsByTagName("a");
-    setURLParam(button[0],'UNIX', module);
-    button = document.getElementById("win").getElementsByTagName("a");
-    setURLParam(button[0],'WIN', module);
-    button = document.getElementById("mac").getElementsByTagName("a");
-    setURLParam(button[0],'MAC', module);
 }
 
 function getParameterByName(name, url) {
@@ -97,14 +89,13 @@ $(document).ready(function() {
         }
         debouncer = setTimeout(function(){
             if ($('#search-bar').val()) {
-                $("#BottomLeft ul a:not(:contains('" + $('#search-bar').val() + "'))" ).parent().hide();
-                $("#BottomLeft ul a:contains('" + $('#search-bar').val() + "')" ).parent().show();
+                $("#Index ul a:not(:contains('" + $('#search-bar').val() + "'))" ).parent().hide();
+                $("#Index ul a:contains('" + $('#search-bar').val() + "')" ).parent().show();
             }
             else {
-                $("#BottomLeft ul li" ).show();
+                $("#Index ul li" ).show();
             }
         }, 200);
     });
 });
-
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */

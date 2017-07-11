@@ -128,9 +128,7 @@
         <!--<base href="file:///home/tdf/git/core/helpcontent2/source/html/"/> -->
         <base href="/"/>
         <title><xsl:value-of select="$titleL10N"/></title>
-        <link href="{$productversion}/{$lang}/default.css" rel="Stylesheet" type="text/css" />
-        <link href="{$productversion}/{$lang}/tabs.css" rel="Stylesheet" type="text/css" />
-        <link href="{$productversion}/{$lang}/tree.css" rel="Stylesheet" type="text/css" />
+        <link href="{$productversion}/default.css" rel="Stylesheet" type="text/css" />
         <script type="text/javascript" src="{$productversion}/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="{$productversion}/help.js"></script>
         <!-- Piwik -->
@@ -151,146 +149,169 @@
         </script>
         <!-- End Piwik Code -->
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
-    <body lang="{$lang}">
-    <div itemscope="true" itemtype="http://schema.org/TechArticle">
-        <meta itemprop="version" content="{$productversion}"/>
-        <meta itemprop="inLanguage" content="{$lang}"/>
-        <meta itemprop="datePublished" content="2017"/>"
-        <div id="BottomLeft">
-            <div id="container"> <!-- Tabs -->
-                <input id="tab-1" type="radio" name="tab-group" checked="checked" />
-                <label for="tab-1">Index</label>
-                <input id="tab-2" type="radio" name="tab-group" />
-                <label for="tab-2">Contents</label>
-                <input id="tab-3" type="radio" name="tab-group" />
-                <label for="tab-3">Search</label>
-                <div id="content">
-                    <div id="content-1">
-                        <div id="SearchBox"><p>&#32;&#x1f50e;&#32;<input type="text" id="search-bar"/></p></div>
-                        <div id="Bookmarks">
-                            <ul id="bookmarkCALC" hidden="true"></ul>
-                            <ul id="bookmarkCHART" hidden="true"></ul>
-                            <ul id="bookmarkWRITER" hidden="true"></ul>
-                            <ul id="bookmarkDRAW" hidden="true"></ul>
-                            <ul id="bookmarkIMPRESS" hidden="true"></ul>
-                            <ul id="bookmarkMATH" hidden="true"></ul>
-                            <ul id="bookmarkBASE" hidden="true"></ul>
-                            <ul id="bookmarkSHARED"></ul>
-                            <ul id="bookmarkBASIC" hidden="true"></ul>
-                        </div>
-                    </div>
-                    <div id="content-2">
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                    <div id="content-3">
-                        <p>Lorem ipsum dolor sit amet</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="DisplayArea" itemprop="articleBody">
-            <xsl:apply-templates select="/helpdocument/body"/>
-            <div class="debug">
-                <h3 class="bug">Help content debug info:</h3>
-                <p>This page is: <xsl:value-of select="$filename"/></p>
-                <p>Title is: <xsl:value-of select="$title"/></p>
-                <p id="bm_module"></p>
-                <p id="bm_system"></p>
-            </div>
-        </div>
-        <div id="TopLang">
-            <nav>
-                <ul>
-                    <li><a href="{$productversion}/en-US{$htmlpage}">EN</a></li>
-                    <li><a href="{$productversion}/ast{$htmlpage}">AST</a></li>
-                    <li><a href="{$productversion}/bg{$htmlpage}">BG</a></li>
-                    <li><a href="{$productversion}/bn{$htmlpage}">BN</a></li>
-                    <li><a href="{$productversion}/bn-IN{$htmlpage}">BN-IN</a></li>
-                    <li><a href="{$productversion}/ca{$htmlpage}">CA</a></li>
-                    <li><a href="{$productversion}/cs{$htmlpage}">CS</a></li>
-                    <li><a href="{$productversion}/da{$htmlpage}">DA</a></li>
-                    <li><a href="{$productversion}/de{$htmlpage}">DE</a></li>
-                    <li><a href="{$productversion}/el{$htmlpage}">EL</a></li>
-                    <li><a href="{$productversion}/es{$htmlpage}">ES</a></li>
-                    <li><a href="{$productversion}/eu{$htmlpage}">EU</a></li>
-                    <li><a href="{$productversion}/fi{$htmlpage}">FI</a></li>
-                    <li><a href="{$productversion}/fr{$htmlpage}">FR</a></li>
-                    <li><a href="{$productversion}/hu{$htmlpage}">HU</a></li>
-                    <li><a href="{$productversion}/it{$htmlpage}">IT</a></li>
-                    <li><a href="{$productversion}/ja{$htmlpage}">JA</a></li>
-                    <li><a href="{$productversion}/km{$htmlpage}">KM</a></li>
-                    <li><a href="{$productversion}/ko{$htmlpage}">KO</a></li>
-                    <li><a href="{$productversion}/nb{$htmlpage}">NB</a></li>
-                    <li><a href="{$productversion}/nl{$htmlpage}">NL</a></li>
-                    <li><a href="{$productversion}/om{$htmlpage}">OM</a></li>
-                    <li><a href="{$productversion}/pl{$htmlpage}">PL</a></li>
-                    <li><a href="{$productversion}/pt{$htmlpage}">PT</a></li>
-                    <li><a href="{$productversion}/pt-BR{$htmlpage}">PT-BR</a></li>
-                    <li><a href="{$productversion}/ru{$htmlpage}">RU</a></li>
-                    <li><a href="{$productversion}/sl{$htmlpage}">SL</a></li>
-                    <li><a href="{$productversion}/sv{$htmlpage}">SV</a></li>
-                    <li><a href="{$productversion}/tr{$htmlpage}">TR</a></li>
-                    <li><a href="{$productversion}/vi{$htmlpage}">VI</a></li>
-                    <li><a href="{$productversion}/zh-CN{$htmlpage}">ZH-CN</a></li>
-                    <li><a href="{$productversion}/zh-TW{$htmlpage}">ZH-TW</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div id="TopRight">
+    <body lang="{$lang}" itemscope="true" itemtype="http://schema.org/TechArticle">
+    <meta itemprop="version" content="{$productversion}"/>
+    <meta itemprop="inLanguage" content="{$lang}"/>
+    <meta itemprop="datePublished" content="2017"/>
+    <header>
+        <nav>
+            <select name="modules">
+                <option id="M_CALC" value="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC">Calc</option>
+                <option id="M_WRITER" value="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER">Writer</option>
+                <option id="M_IMPRESS" value="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS">Impress</option>
+                <option id="M_DRAW" value="{$productversion}/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW">Draw</option>
+                <option id="M_CHART" value="{$productversion}/{$lang}/text/schart/main0000.html?DbPAR=CHART">Chart</option>
+                <option id="M_BASIC" value="{$productversion}/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC">Basic</option>
+                <option id="M_MATH" value="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH">Math</option>
+                <option id="M_BASE" value="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE">Base</option>
+            </select>
+            <select name="system">
+                <option id="S_WIN" value="{$productversion}/{$lang}{$htmlpage}?System=WIN">Windows</option>
+                <option id="S_UNIX" value="{$productversion}/{$lang}{$htmlpage}?System=UNIX">Linux</option>
+                <option id="S_MAC" value="{$productversion}/{$lang}{$htmlpage}?System=MAC">Mac</option>
+            </select>
+            <select name="language">
+                <option value="{$productversion}/en-US{$htmlpage}">EN</option>
+                <option value="{$productversion}/ast{$htmlpage}">AST</option>
+                <option value="{$productversion}/bg{$htmlpage}">BG</option>
+                <option value="{$productversion}/bn{$htmlpage}">BN</option>
+                <option value="{$productversion}/bn-IN{$htmlpage}">BN-IN</option>
+                <option value="{$productversion}/ca{$htmlpage}">CA</option>
+                <option value="{$productversion}/cs{$htmlpage}">CS</option>
+                <option value="{$productversion}/da{$htmlpage}">DA</option>
+                <option value="{$productversion}/de{$htmlpage}">DE</option>
+                <option value="{$productversion}/el{$htmlpage}">EL</option>
+                <option value="{$productversion}/es{$htmlpage}">ES</option>
+                <option value="{$productversion}/eu{$htmlpage}">EU</option>
+                <option value="{$productversion}/fi{$htmlpage}">FI</option>
+                <option value="{$productversion}/fr{$htmlpage}">FR</option>
+                <option value="{$productversion}/hu{$htmlpage}">HU</option>
+                <option value="{$productversion}/it{$htmlpage}">IT</option>
+                <option value="{$productversion}/ja{$htmlpage}">JA</option>
+                <option value="{$productversion}/km{$htmlpage}">KM</option>
+                <option value="{$productversion}/ko{$htmlpage}">KO</option>
+                <option value="{$productversion}/nb{$htmlpage}">NB</option>
+                <option value="{$productversion}/nl{$htmlpage}">NL</option>
+                <option value="{$productversion}/om{$htmlpage}">OM</option>
+                <option value="{$productversion}/pl{$htmlpage}">PL</option>
+                <option value="{$productversion}/pt{$htmlpage}">PT</option>
+                <option value="{$productversion}/pt-BR{$htmlpage}">PT-BR</option>
+                <option value="{$productversion}/ru{$htmlpage}">RU</option>
+                <option value="{$productversion}/sl{$htmlpage}">SL</option>
+                <option value="{$productversion}/sv{$htmlpage}">SV</option>
+                <option value="{$productversion}/tr{$htmlpage}">TR</option>
+                <option value="{$productversion}/vi{$htmlpage}">VI</option>
+                <option value="{$productversion}/zh-CN{$htmlpage}">ZH-CN</option>
+                <option value="{$productversion}/zh-TW{$htmlpage}">ZH-TW</option>
+            </select>
             <script type="text/javascript">
                 <![CDATA[
-                (function() {
-                var cx = '010161382024564278136:oejldkqc20o';
-                var gcse = document.createElement('script');
-                gcse.type = 'text/javascript';
-                gcse.async = true;
-                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(gcse, s);
-                })();
+                document.addEventListener('DOMContentLoaded',function() {
+                document.querySelector('select[name="modules"]').onchange=changeModuleHandler;
+                document.querySelector('select[name="system"]').onchange=changeSystemHandler;
+                document.querySelector('select[name="language"]').onchange=changeLangHandler;
+                },false);
+
+                function changeModuleHandler(event) {
+                // You can use “this” to refer to the selected element.
+                var system = getParameterByName("System");
+                window.open('/'+event.target.value + '&System=' + system,'_self');
+                }
+                function changeSystemHandler(event) {
+                // You can use “this” to refer to the selected element.
+                var module = getParameterByName("DbPAR");
+                window.open('/'+event.target.value + '&DbPAR=' + module,'_self');
+                }
+                function changeLangHandler(event) {
+                // You can use “this” to refer to the selected element.
+                var system = getParameterByName("System");
+                var module = getParameterByName("DbPAR");
+                window.open('/' + event.target.value  + '?DbPAR=' + module + '&System=' + system ,'_self');
+                }
                 ]]>
             </script>
-            <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
+        </nav>
+        <h1>LibreOffice <xsl:value-of select="$productversion"/><br/>Help Online</h1>
+    </header>
+    <section id="tabs">
+        <article itemprop= "headline" data-title="{$titleL10N}">
+            <div id="DisplayArea" itemprop="articleBody">
+                <xsl:apply-templates select="/helpdocument/body"/>
+            </div>
+        </article>
+        <article id="Index" data-title="Index">
+            <div id="SearchBox"><p>&#32;&#x1f50e;&#32;<input type="text" id="search-bar"/></p></div>
+            <div id="Bookmarks">
+                <ul id="bookmarkCALC" hidden="true"></ul>
+                <ul id="bookmarkCHART" hidden="true"></ul>
+                <ul id="bookmarkWRITER" hidden="true"></ul>
+                <ul id="bookmarkDRAW" hidden="true"></ul>
+                <ul id="bookmarkIMPRESS" hidden="true"></ul>
+                <ul id="bookmarkMATH" hidden="true"></ul>
+                <ul id="bookmarkBASE" hidden="true"></ul>
+                <ul id="bookmarkSHARED"></ul>
+                <ul id="bookmarkBASIC" hidden="true"></ul>
+            </div>
+        </article>
+        <article data-title="Search">
+            <div id="TopRight">
+                <script type="text/javascript">
+                    <![CDATA[
+                    (function() {
+                    var cx = '010161382024564278136:oejldkqc20o';
+                    var gcse = document.createElement('script');
+                    gcse.type = 'text/javascript';
+                    gcse.async = true;
+                    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(gcse, s);
+                    })();
+                    ]]>
+                </script>
+                <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
+            </div>
+            <a href="#" onClick="myTabs.next(); return false">Come back to first tab</a>
+        </article>
+        <article data-title="Contents">
+            <h2>Tree</h2>
+            <p>TBD</p>
+            <a href="#" onClick="myTabs.next(); return false">Finished ? Go to the next tab</a>
+        </article>
+    </section>
+    <footer>
+        <p><a href="http://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="http://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="http://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="http://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Creative Commons Attribution-Share Alike 3.0 License</a>. This does not include the source code of LibreOffice, which is licensed under the <a href="http://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="http://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
+    </footer>
+    <footer>
+        <div class="debug">
+            <h3 class="bug">Help content debug info:</h3>
+            <p>This page is: <xsl:value-of select="$filename"/></p>
+            <p>Title is: <xsl:value-of select="$title"/></p>
+            <p id="bm_module"></p>
+            <p id="bm_system"></p>
         </div>
-        <div id="TopLeft">
-            <nav id="SelectModules">
-                <ul>
-                    <li><a href="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC">Calc</a></li>
-                    <li><a href="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER">Writer</a></li>
-                    <li><a href="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS">Impress</a></li>
-                    <li><a href="{$productversion}/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW">Draw</a></li>
-                    <li><a href="{$productversion}/{$lang}/text/schart/main0000.html?DbPAR=CHART">Chart</a></li>
-                    <li><a href="{$productversion}/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC">Basic</a></li>
-                    <li><a href="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH">Math</a></li>
-                    <li><a href="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE">Base</a></li>
-                    <!--<li><a href="{$productversion}/{$lang}/text/shared/guide/main.html?DbPAR=SHARED">Guide</a></li>-->
-                </ul>
-            </nav>
-        </div>
-        <div id="TopSystem">
-            <nav id="SelectSystem">
-                <ul>
-                    <li id="win"><a href="{$productversion}/{$lang}{$htmlpage}">Wndows</a></li>
-                    <li id="lin"><a href="{$productversion}/{$lang}{$htmlpage}">Linux</a></li>
-                    <li id="mac"><a href="{$productversion}/{$lang}{$htmlpage}">Mac</a></li>
-                </ul>
-            </nav>
-        </div>
-        <script type="text/javascript">
-            <![CDATA[
-            var module = getParameterByName("DbPAR");
-            setModule(module);
-            var system = getParameterByName("System");
-            setSystem(system);
-            fixURL(module,system);
-            setSystemURLButton(module);
-            document.getElementById("bm_module").innerHTML ="Module is: "+module;
-            document.getElementById("bm_system").innerHTML ="System is: "+system;
-            ]]>
-        </script>
-        <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
-    </div>
+    </footer>
+    <script type="text/javascript">
+        <![CDATA[
+        var module = getParameterByName("DbPAR");
+        setModule(module);
+        var system = getParameterByName("System");
+        setSystem(system);
+        fixURL(module,system);
+        document.getElementById("bm_module").innerHTML ="Module is: "+module;
+        document.getElementById("bm_system").innerHTML ="System is: "+system;
+        ]]>
+    </script>
+    <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
+    <script type="text/javascript" src="{$productversion}/tabs.js"></script>
+    <script>
+        var myTabs = new tabs(document.getElementById("tabs"), "article", "h2").responsive("myTabs", {
+        prev: "Previous",
+        next: "Next"
+        });
+    </script>
+
 </body>
 </html>
 </xsl:template>
@@ -563,10 +584,10 @@
 					<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp')"/></xsl:variable>
 					<xsl:variable name="anchor"><xsl:value-of select="'related'"/></xsl:variable>
 					<xsl:variable name="doc" select="document($href)"/>
-					<p class="related">
+                                        <p class="related" itemprop="mentions">
 						<xsl:apply-templates select="$doc//variable[@id=$anchor]"/>
 					</p>
-					<div class="relatedbody">
+					<div class="relatedbody" itemprop="mentions">
 						<xsl:apply-templates />
 					</div>
 				</div>
@@ -727,7 +748,7 @@
 
 <!-- Insert Basic code snippet  -->
 <xsl:template name="insertbascode">
-	<pre><xsl:apply-templates /></pre>
+	<pre itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><xsl:apply-templates /></pre>
 </xsl:template>
 
 <!-- Insert Logo code snippet  -->
@@ -824,7 +845,7 @@
         <xsl:element name="{concat('h',$level)}">
                 <xsl:choose>
                     <xsl:when test="$level = '1'">
-                        <xsl:attribute name="itemprop"><xsl:text>headline</xsl:text></xsl:attribute>
+                        <xsl:attribute name="itemprop"><xsl:text>articleSection</xsl:text></xsl:attribute>
                     </xsl:when>
                     <xsl:otherwise></xsl:otherwise>
                 </xsl:choose>
