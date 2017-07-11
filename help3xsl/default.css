@@ -25,6 +25,77 @@
 
 */
 
+/* Structure */
+html{
+    background: #FFFFFF;
+}
+body {
+    padding: 0px;
+    background: #fff;
+    color: #333;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+header {
+    background: #00a500;
+    padding: .5em 2em;
+    color: #fff;
+    line-height: 1;
+}
+
+header h1{
+    margin-bottom: 0;
+    color:white;
+}
+
+header nav{
+    float: right;
+/*    display:inline-block;*/
+}
+
+header nav select{
+    font-size: .8em;
+}
+
+
+header nav div{
+    font-size: .8em;
+}
+
+header nav div a {
+    font-weight: 300;
+    padding: .3em .5em
+}
+header nav a{
+    color: #fff;
+    display: inline-block;
+    padding: .3em .8em
+}
+
+header nav a:hover, header nav a:focus{
+    color: rgba(255,255,255,.6)
+}
+
+
+[role=main]{
+    padding:1.5em 3em;
+}
+article{
+    padding: 1em 0;
+}
+footer{
+    background: #00a500;
+    color: #fff;
+    padding: .1em 3em;
+    text-align: center;
+}
+
+footer a{
+    color:#c2f6ba;
+}
+
+
 body, p, h1, h2, h3, h4, h5, h6, .listitem, .listitemintable, .tablecontent, .tablecontentintable {
   font-family: "Segoe UI", Ubuntu, Cantarell, "Noto Sans", "DejaVu Sans", "Lucida Sans Unicode", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
 }
@@ -133,6 +204,8 @@ h4, h5, h6 {
   border: 1px solid black;
   padding: 3px;
   display: show;
+  background-color:black;
+  text-align: left;
 }
 
 /* Basic code syntax highlight */
@@ -173,36 +246,85 @@ h4, h5, h6 {
   border: solid 1px #18A303;
 }
 
-#DisplayArea {
-  position: fixed;
-  bottom: 1px;
-  right: 1px;
-  left: 30%;
-  top: 79px;
-  overflow: auto;
-  border: solid 1px;
-  padding: 10px;
+a:hover, a:focus{
+    color: #000;
+}
+a:active{
+    position: relative;
+    top:1px;
 }
 
-#BottomLeft {
-  position: fixed;
-  bottom: 1px;
-  left: 1px;
+/* Tabs */
+
+.js-on #tabs article
+{
+    display:none
+}
+
+#tabs, #tabs nav a.active{
+background: #f8f8f8;
+color: #111;
+}
+
+#tabs nav
+{
+    position: relative;
+    overflow: hidden;
+    display: table;
+    background: #bbb;
+}
+
+#tabs nav a
+{
+    width:200px;
+    display:table-cell;
+    padding:1em;
+    text-align:center;
+    color: #333;
+}
+
+#tabs nav a:hover,#tabs nav a:focus
+{
+    background:#eee
+}
+
+#tabs article
+{
+    padding:2em;
+}
+
+.js-on #tabs article.active
+{
+    display:block;
+}
+#tabs #mobiles{
+display:none;
+border-radius: 0;
+}
+#tabs #mobiles a, #tabs #mobiles a:first-child, #tabs #mobiles a:last-child{
+width:300px;
+border-radius: 0;
+}
+
+#DisplayArea {
+}
+
+#Index {
   overflow: auto;
-  right: 70%;
-  top: 79px;
-  border-top: solid 1px;
-  border-left: solid 1px;
-  border-bottom: solid 1px;
-  padding: 10px;
+}
+
+#Index ul{
   list-style-type: none;
 }
 
+#SearchBox{
+background-color:#c2f6ba;
+border-color:green;
+border:solid 1px;
+
+}
+
 #TopRight {
-  position: fixed;
-  right: 1px;
-  top: 1px;
-  left: 70%;
 }
 
 #TopLeft {
@@ -216,12 +338,6 @@ h4, h5, h6 {
   position: fixed;
   top: 1px;
   right:30%
-}
-
-#TopSystem {
-top: 35px;
-left: 600px;
-position: fixed;
 }
 
 .mediabutton {
@@ -241,92 +357,49 @@ position: fixed;
 
 .embedded {
 }
-// Top menu navidation
-#TopLeft nav {
-    background-color: #333;
-    margin: 0;
-    overflow: hidden;
-}
-#TopLeft nav ul{
-    margin: 0;
-    padding: 0;
-}
-#TopLeft nav ul li {
-    /* This allow us to arrange list items in a row, without using float */
-    display: inline-block;
-    list-style-type: none;
+
+/* Media queries */
+@media screen and (min-width:900px)
+{
+    body{font-size: 1.1em;}
 }
 
-/* Create a style for the first level items */
-#TopLeft nav > ul > li > a {
-    color: #FFFFFF;
-    background-color:#18A303;
-    display: block;
-    line-height: 1.5em;
-    padding: 0.5em 0.5em;
-    text-decoration: none;
-    font-weight: bold;
-    border:1px solid;
-    border-color:#333333;
-    font-size: 11pt;
+@media screen and (max-width:600px)
+{
+    #tabs nav{
+    display: none;
+    position: relative;
+    }
+    #tabs #mobiles{
+    display:block;
+    }
+    #tabs article {
+    display:block;
+    }
 }
+@media screen and (max-width:480px)
+{
+    blockquote{
+        float: none;
+    }
 
-// Top menu languages
-#TopLang nav {
-    background-color: #333;
-    margin: 0;
-    overflow: hidden;
-}
-#TopLang nav ul{
-    margin: 0;
-    padding: 0;
-}
-#TopLang nav ul li {
-    /* This allow us to arrange list items in a row, without using float */
-    display: inline-block;
-    list-style-type: none;
-}
-
-/* Create a style for the first level items */
-#TopLang nav > ul > li > a {
-    color: #333333;
-    background-color:#EEEEEE;
-    display: block;
-    line-height: 1.5em;
-    padding: 0.2em 0.4em;
-    text-decoration: none;
-    font-weight: bold;
-    border:1px solid;
-    border-color:#333333;
-    font-size: 10pt;
-}
-
-// Top menu System
-#TopSystem nav {
-    background-color: #333;
-    margin: 0;
-    overflow: hidden;
-}
-#TopSystem nav ul{
-    margin: 0;
-    padding: 0;
-}
-#TopSystem nav ul li {
-    /* This allow us to arrange list items in a row, without using float */
-    display: inline-block;
-    list-style-type: none;
-}
-
-/* Create a style for the first level items */
-#TopSystem nav > ul > li > a {
-    color: #FFFFFF;
-    background-color:blue;
-    display: block;
-    line-height: 1.5em;
-    padding: 0.5em 0.5em;
-    text-decoration: none;
-    font-weight: bold;
-    border:1px solid;
-    border-color:#333333;
-    font-size: 11pt;
+    header nav a{
+        padding:.7em .8em
+    }
+    header nav{
+        float: none;
+        margin: -.5em -3em 0;
+        background: #000;
+        overflow: hidden;
+        text-align: left
+    }
+    header nav a{
+        border-right: 1px solid #222
+    }
+    [role=main]{
+        padding:1.5em 2em;
+    }
+    header nav div{
+        display: none;
+    }
 }
