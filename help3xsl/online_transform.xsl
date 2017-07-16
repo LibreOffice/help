@@ -21,6 +21,7 @@
 
 <xsl:output indent="yes" method="html" doctype-system= "about:legacy-compat"/>
 
+
 <!--
 ############################
 # Variables and Parameters #
@@ -127,8 +128,9 @@
     <head>
         <!--<base href="file:///home/tdf/git/core/helpcontent2/source/html/"/> -->
         <base href="/"/>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
         <title><xsl:value-of select="$titleL10N"/></title>
-        <link href="{$productversion}/default.css" rel="Stylesheet" type="text/css" />
+        <link  type="text/css" href="{$productversion}/default.css" rel="Stylesheet" />
         <script type="text/javascript" src="{$productversion}/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="{$productversion}/help.js"></script>
         <!-- Piwik -->
@@ -148,7 +150,6 @@
             ]]>
         </script>
         <!-- End Piwik Code -->
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
     <body lang="{$lang}" itemscope="true" itemtype="http://schema.org/TechArticle">
@@ -250,18 +251,18 @@
                 function changeModuleHandler(event) {
                 // You can use “this” to refer to the selected element.
                 var system = getParameterByName("System");
-                window.open('/'+event.target.value + '&System=' + system,'_self');
+                window.open('/'+event.target.value + '&System=' + system,'_top');
                 }
                 function changeSystemHandler(event) {
                 // You can use “this” to refer to the selected element.
                 var module = getParameterByName("DbPAR");
-                window.open('/'+event.target.value + '&DbPAR=' + module,'_self');
+                window.open('/'+event.target.value + '&DbPAR=' + module,'_top');
                 }
                 function changeLangHandler(event) {
                 // You can use “this” to refer to the selected element.
                 var system = getParameterByName("System");
                 var module = getParameterByName("DbPAR");
-                window.open('/' + event.target.value  + '?DbPAR=' + module + '&System=' + system ,'_self');
+                window.open('/' + event.target.value  + '?DbPAR=' + module + '&System=' + system ,'_top');
                 }
                 ]]>
             </script>
@@ -305,12 +306,9 @@
                 </script>
                 <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
             </div>
-            <a href="#" onClick="myTabs.next(); return false">Come back to first tab</a>
         </article>
         <article data-title="Contents">
-            <h2>Tree</h2>
-            <p>TBD</p>
-            <a href="#" onClick="myTabs.next(); return false">Finished ? Go to the next tab</a>
+            <div id="Contents" class="contents-treeview"></div>
         </article>
     </section>
     <footer>
@@ -334,6 +332,7 @@
         fixURL(module,system);
         document.getElementById("bm_module").innerHTML ="Module is: "+module;
         document.getElementById("bm_system").innerHTML ="System is: "+system;
+        $("#Contents").load(']]><xsl:value-of select="concat('/',$productversion,'/',$lang)"/><![CDATA[/contents.html');
         ]]>
     </script>
     <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
@@ -791,84 +790,83 @@
 
 <!-- Insert "How to get Link" -->
 <xsl:template name="insert_howtoget">
-	<xsl:param name="linkhref" />
-	<xsl:variable name="archive" select="'shared'"/>
-	<!--<xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>-->
-	<xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp')"/></xsl:variable>
-	<xsl:variable name="tmp_doc" select="document($tmp_href)"/>
-	<table class="howtoget" width="100%" border="1" cellpadding="3" cellspacing="0">
-		<tr>
-			<td>
-				<p class="howtogetheader"><xsl:apply-templates select="$tmp_doc//variable[@id='wie']"/></p>
-				<div class="howtogetbody">
-				<xsl:choose>
-					<xsl:when test="$linkhref = ''"> <!-- new style -->
-						<xsl:apply-templates/>
-					</xsl:when>
-					<xsl:otherwise> <!-- old style -->
-						<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before($linkhref,'#'))"/></xsl:variable>
-						<xsl:variable name="anc"><xsl:value-of select="substring-after($linkhref,'#')"/></xsl:variable>
-						<xsl:variable name="docum" select="document($href)"/>
+    <xsl:param name="linkhref" />
+    <xsl:variable name="archive" select="'shared'"/>
+    <!--<xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>-->
+    <xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp')"/></xsl:variable>
+    <xsl:variable name="tmp_doc" select="document($tmp_href)"/>
+    <table class="howtoget" width="100%" border="1" cellpadding="3" cellspacing="0">
+        <tr>
+            <td>
+                <p class="howtogetheader"><xsl:apply-templates select="$tmp_doc//variable[@id='wie']"/></p>
+                <div class="howtogetbody">
+                    <xsl:choose>
+                        <xsl:when test="$linkhref = ''"> <!-- new style -->
+                            <xsl:apply-templates/>
+                        </xsl:when>
+                        <xsl:otherwise> <!-- old style -->
+                            <xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before($linkhref,'#'))"/></xsl:variable>
+                            <xsl:variable name="anc"><xsl:value-of select="substring-after($linkhref,'#')"/></xsl:variable>
+                            <xsl:variable name="docum" select="document($href)"/>
 
-						<xsl:call-template name="insertembed">
-							<xsl:with-param name="doc" select="$docum" />
-							<xsl:with-param name="anchor" select="$anc" />
-						</xsl:call-template>
-
-					</xsl:otherwise>
-				</xsl:choose>
-				</div>
-			</td>
-		</tr>
-	</table>
-	<br/>
+                            <xsl:call-template name="insertembed">
+                                <xsl:with-param name="doc" select="$docum" />
+                                <xsl:with-param name="anchor" select="$anc" />
+                            </xsl:call-template>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <br/>
 </xsl:template>
 
 <!-- Create a link -->
 <xsl:template name="createlink">
-	<xsl:choose>
-		<xsl:when test="starts-with(@href,'http://') or starts-with(@href,'https://')">  <!-- web links -->
-			<a href="{@href}"><xsl:apply-templates /></a>
-		</xsl:when>
-		<xsl:when test="contains(@href,'#')"> <!-- internal links with bookmark -->
-			<xsl:variable name="anchor"><xsl:value-of select="concat('#',substring-after(@href,'#'))"/></xsl:variable>
-			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,substring-before(@href, 'xhp'),'html',$anchor,$linkpostfix)"/></xsl:variable>
-			<a href="{$href}"><xsl:apply-templates /></a>
-		</xsl:when>
-		<xsl:otherwise>			
-			<xsl:variable name="href"><xsl:value-of select="concat($linkprefix,substring-before(@href, 'xhp'),'html',$linkpostfix)"/></xsl:variable>
-			<a href="{$href}"><xsl:apply-templates /></a>
-		</xsl:otherwise>
-	</xsl:choose>
+    <xsl:choose>
+        <xsl:when test="starts-with(@href,'http://') or starts-with(@href,'https://')">  <!-- web links -->
+            <a target ="_blank" href="{@href}"><xsl:apply-templates /></a>
+        </xsl:when>
+        <xsl:when test="contains(@href,'#')"> <!-- internal links with bookmark -->
+            <xsl:variable name="anchor"><xsl:value-of select="concat('#',substring-after(@href,'#'))"/></xsl:variable>
+            <xsl:variable name="href"><xsl:value-of select="concat($linkprefix,substring-before(@href, 'xhp'),'html',$anchor,$linkpostfix)"/></xsl:variable>
+            <a target ="_top" href="{$href}"><xsl:apply-templates /></a>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:variable name="href"><xsl:value-of select="concat($linkprefix,substring-before(@href, 'xhp'),'html',$linkpostfix)"/></xsl:variable>
+            <a target ="_top" href="{$href}"><xsl:apply-templates /></a>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <!-- Insert Note, Warning, or Tip -->
 <xsl:template name="insertnote">
-	<xsl:param name="type" /> <!-- note, tip, or warning -->
-	<xsl:variable name="imgsrc">
-		<xsl:choose>
-			<xsl:when test="$type='note'"><xsl:value-of select="$note_img"/></xsl:when>
-			<xsl:when test="$type='tip'"><xsl:value-of select="$tip_img"/></xsl:when>
-			<xsl:when test="$type='warning'"><xsl:value-of select="$warning_img"/></xsl:when>
-		</xsl:choose>
-	</xsl:variable>
-	<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="'shared'"/></xsl:call-template></xsl:variable>
-	<xsl:variable name="alt">
-		<xsl:variable name="href"><xsl:value-of select="$alttext"/></xsl:variable>
-		<xsl:variable name="anchor"><xsl:value-of select="concat('alt_',$type)"/></xsl:variable>
-		<xsl:variable name="doc" select="document($href)"/>
-		<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
-	</xsl:variable>
-<!-- 	<p class="debug">image source: <xsl:value-of select="$imgsrc"/></p> -->
-	<div class="{$type}">
-		<table border="0" class="{$type}" cellspacing="0" cellpadding="5">
-			<tr>
-				<td><img src="{$imgsrc}" alt="{$alt}" title="{$alt}"/></td>
-				<td><xsl:apply-templates /></td>
-			</tr>
-		</table>
-	</div>
-	<br/>
+    <xsl:param name="type" /> <!-- note, tip, or warning -->
+    <xsl:variable name="imgsrc">
+        <xsl:choose>
+            <xsl:when test="$type='note'"><xsl:value-of select="$note_img"/></xsl:when>
+            <xsl:when test="$type='tip'"><xsl:value-of select="$tip_img"/></xsl:when>
+            <xsl:when test="$type='warning'"><xsl:value-of select="$warning_img"/></xsl:when>
+        </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="'shared'"/></xsl:call-template></xsl:variable>
+    <xsl:variable name="alt">
+        <xsl:variable name="href"><xsl:value-of select="$alttext"/></xsl:variable>
+        <xsl:variable name="anchor"><xsl:value-of select="concat('alt_',$type)"/></xsl:variable>
+        <xsl:variable name="doc" select="document($href)"/>
+        <xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
+    </xsl:variable>
+    <!-- 	<p class="debug">image source: <xsl:value-of select="$imgsrc"/></p> -->
+    <div class="{$type}">
+        <table border="0" class="{$type}" cellspacing="0" cellpadding="5">
+            <tr>
+                <td><img src="{$imgsrc}" alt="{$alt}" title="{$alt}"/></td>
+                <td><xsl:apply-templates /></td>
+            </tr>
+        </table>
+    </div>
+    <br/>
 </xsl:template>
 
 <!-- Insert a heading -->
@@ -973,27 +971,27 @@
 
 <!-- evaluate embeds -->
 <xsl:template name="insertembed">
-	<xsl:param name="doc" />
-	<xsl:param name="anchor" />
-	<!-- different embed targets (also falsely used embed instead embedvar) -->
-	<xsl:choose>
-		<xsl:when test="$doc//section[@id=$anchor]"> <!-- first test for a section of that name -->
-			<xsl:apply-templates select="$doc//section[@id=$anchor]" mode="embedded"/>
-		</xsl:when>
-		<xsl:when test="$doc//paragraph[@id=$anchor]"> <!-- then test for a para of that name -->
-			<p class="embedded">
-				<xsl:apply-templates select="$doc//paragraph[@id=$anchor]" mode="embedded"/>
-			</p>
-		</xsl:when>
-		<xsl:when test="$doc//variable[@id=$anchor]"> <!-- then test for a variable of that name -->
-			<p class="embedded">
-				<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
-			</p>
-		</xsl:when>
-		<xsl:otherwise> <!-- then give up -->
-			<p class="bug">D'oh! You found a bug (<xsl:value-of select="@href"/> not found).</p>
-		</xsl:otherwise>
-	</xsl:choose>
+    <xsl:param name="doc" />
+    <xsl:param name="anchor" />
+    <!-- different embed targets (also falsely used embed instead embedvar) -->
+    <xsl:choose>
+        <xsl:when test="$doc//section[@id=$anchor]"> <!-- first test for a section of that name -->
+            <xsl:apply-templates select="$doc//section[@id=$anchor]" mode="embedded"/>
+        </xsl:when>
+        <xsl:when test="$doc//paragraph[@id=$anchor]"> <!-- then test for a para of that name -->
+            <p class="embedded">
+                <xsl:apply-templates select="$doc//paragraph[@id=$anchor]" mode="embedded"/>
+            </p>
+        </xsl:when>
+        <xsl:when test="$doc//variable[@id=$anchor]"> <!-- then test for a variable of that name -->
+            <p class="embedded">
+                <xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
+            </p>
+        </xsl:when>
+        <xsl:otherwise> <!-- then give up -->
+            <p class="bug">D'oh! You found a bug (<xsl:value-of select="@href"/> not found).</p>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <!-- Insert an image -->
