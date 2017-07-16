@@ -95,7 +95,126 @@ footer a{
     color:#c2f6ba;
 }
 
+/* tree view */
 
+.contents-treeview ul,
+.contents-treeview li
+{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.contents-treeview input
+{
+    position: absolute;
+    opacity: 0;
+}
+
+.contents-treeview
+{
+/*    font: normal 11px "Segoe UI", Arial, Sans-serif;*/
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.contents-treeview a
+{
+/*     color: #00f; */
+    text-decoration: none;
+}
+
+.contents-treeview a:hover
+{
+    text-decoration: underline;
+}
+
+.contents-treeview input + label + ul
+{
+    margin: 0 0 0 22px;
+}
+
+.contents-treeview input ~ ul
+{
+    display: none;
+}
+
+.contents-treeview label,
+.contents-treeview label::before
+{
+    cursor: pointer;
+}
+
+.contents-treeview input:disabled + label
+{
+    cursor: default;
+    opacity: .6;
+}
+
+.contents-treeview input:checked:not(:disabled) ~ ul
+{
+    display: block;
+}
+
+.contents-treeview label,
+.contents-treeview label::before
+{
+    background: url("media/icon-themes/res/folderop.png") no-repeat;
+}
+
+.contents-treeview label,
+.contents-treeview a,
+.contents-treeview label::before
+{
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    vertical-align: middle;
+}
+
+.contents-treeview label
+{
+    background-position: 18px 0;
+}
+
+.contents-treeview label::before
+{
+    content: "";
+    width: 16px;
+    margin: 0 22px 0 0;
+    vertical-align: middle;
+    background-position: 0 -32px;
+}
+
+.contents-treeview input:checked + label::before
+{
+    background-position: 0 -16px;
+}
+
+/* webkit adjacent element selector bugfix */
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{
+    .contents-treeview
+    {
+        -webkit-animation: webkit-adjacent-element-selector-bugfix infinite 1s;
+    }
+
+    @-webkit-keyframes webkit-adjacent-element-selector-bugfix
+    {
+        from
+        {
+            padding: 0;
+        }
+        to
+        {
+            padding: 0;
+        }
+    }
+}
+
+
+/* default from old LibreOffice help system */
 body, p, h1, h2, h3, h4, h5, h6, .listitem, .listitemintable, .tablecontent, .tablecontentintable {
   font-family: "Segoe UI", Ubuntu, Cantarell, "Noto Sans", "DejaVu Sans", "Lucida Sans Unicode", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
 }

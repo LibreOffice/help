@@ -20,9 +20,11 @@
 function convert2HTML() {
 #outDirLang =1
 #outDirHTML =2
+#lang =3
+#productversion =4
 
-xsltparm='--stringparam Language '$lang' --stringparam productversion '$productversion' --stringparam root '$outDirLang'/'
-echo 'Converting to HTML started'
+xsltparm='--stringparam Language '$3' --stringparam productversion '$4' --stringparam root '$1'/'
+echo 'Conversion to HTML started for '$3
 for filep in `find $1/text -name "*.xhp"`
 do
 DIR=${filep##*text/}
@@ -30,9 +32,42 @@ name=${DIR:0:-3}
 outFile=$2'/text/'$name'html'
 xsltproc $xsltparm -o $outFile online_transform.xsl $filep
 done
-echo 'Conversion to HTML finished'
+
+# Process tree files
+
+treePOFile=`mktemp`
+echo $root/translations/source/$3/helpcontent2/source/auxiliary.po > $treePOFile
+
+ALL_TREE='sbasic.tree  scalc.tree  schart.tree  shared.tree  simpress.tree  smath.tree  swriter.tree'
+
+xhpFiles=$here/l10n/$productversion/$3/text
+
+treeFileHTML=$outDirHTML/contents.html
+rm -f $treeFileHTML
+touch $treeFileHTML
+
+xsltparm='--stringparam lang '$3' --stringparam productversion '$4
+for tree in $ALL_TREE
+do
+treeSourceFile=$root'/helpcontent2/source/auxiliary/'$tree
+treeTemp1=`mktemp`
+treeTemp2=`mktemp`
+
+"${exedir}/treex" -l $3 -i $treeSourceFile -m $treePOFile -o $treeTemp1 -r $xhpFiles
+
+xsltproc $xsltparm -o $treeTemp2 get_tree.xsl $treeTemp1
+
+cat $treeTemp2>>$treeFileHTML
+
+rm -f $treeTemp1 $treeTemp2
+done
+
+rm -f $treePOFile
+
+echo 'Conversion to HTML finished for '$3
 }
 
+# Change root of git core
 productversion='6.0'
 rootHelpex=/home/tdf/git/core
 
@@ -41,15 +76,11 @@ ALL_LANGS='en-US am ar ast bg bn bn-IN bo bs ca ca-valencia cs da de dz el en-GB
 here=`pwd`
 root=$(realpath "$here/../..")
 
-
 rm -rf $here/l10n
 rm -rf $here/html
 
 helpfiles=$root/helpcontent2/source/text
 
-pofiles=/tmp/pofiles.txt
-xhpfiles=/tmp/xhpfiles.txt
-# mkdir -p $here/html
 mkdir -p $here'/html/'$productversion
 
 echo 'copy global service files'
@@ -95,36 +126,35 @@ echo $stub1 >> $ffile
 awk 'NF' $ffile2 >> $ffile
 echo $stub2 >> $ffile
 
-# ALL_LANGS="en-US fr"
 for lang in $ALL_LANGS
 do
 
-echo 'lang = '$lang
+echo 'Processing Language '$lang
 
-echo 'LIB -> '${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}
-
-mkdir -p $here'/l10n/'$productversion'/'$lang
 outDirLang=$here'/l10n/'$productversion'/'$lang
+mkdir -p $outDirLang
 
-mkdir -p $here'/html/'$productversion'/'$lang
 outDirHTML=$here'/html/'$productversion'/'$lang
+mkdir -p $outDirHTML
 
-xsltparm='--stringparam Language '$lang' --stringparam productversion '$productversion' --stringparam root '$outDirLang'/'
+# Special case of en-US, tehre is no translation to do
 
 if [ "$lang" == en-US ];
 then
+
 cp -rap $helpfiles $outDirLang
+
 else
 # Create first all translations of xhp
 translations=$root/translations/source/$lang/helpcontent2/source/text/
 
-rm -f $pofiles
-touch $pofiles
-rm -f $xhpfiles
-touch $xhpfiles
+pofiles=`mktemp`
+xhpfiles=`mktemp`
 
+# gather all po files of dir
 find $translations -type f >$pofiles
 
+# For each po file
 for ff in `cat $pofiles`
 do
     echo 'Processing po file: '$ff
@@ -137,7 +167,7 @@ do
     mkdir -p $outDir
     ls $hlpFileDir/*.xhp >$xhpfiles
     "${exedir}/helpex" -l $lang -mi $xhpfiles -m $potemp -o $outDir
-    rm $potemp
+    rm -f $potemp
 done
 fi
 
@@ -145,12 +175,9 @@ fi
 echo 'Extracting bookmarks'
 ./get_bookmark.sh $lang $productversion &
 
-convert2HTML $outDirLang $outDirHTML &
+# converting to HTML
+convert2HTML $outDirLang $outDirHTML $lang $productversion &
 
+rm -f $pofiles $xhpfiles
 done
 exit
-
-
-
-
-
