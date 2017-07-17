@@ -57,16 +57,15 @@ xsltproc get_bookmark.xsl <file.xhp>
         <xsl:for-each select="bookmark_value">
             <xsl:variable name="here1">
                 <xsl:text disable-output-escaping="yes"><![CDATA[<li><a target="_top" href="]]></xsl:text>
-                        <xsl:value-of select="$href"/>
-                        <xsl:text disable-output-escaping="yes"><![CDATA["</a>]]></xsl:text>
-                    <xsl:call-template name="apostrophe"><xsl:with-param name="string">
-                            <xsl:value-of select="."/>
-                            </xsl:with-param></xsl:call-template>
-                </xsl:variable>
-
+                <xsl:value-of select="$href"/>
+                <xsl:text disable-output-escaping="yes"><![CDATA["</a>]]></xsl:text>
+                <xsl:call-template name="apostrophe"><xsl:with-param name="string">
+                    <xsl:value-of select="."/>
+                </xsl:with-param></xsl:call-template>
+            </xsl:variable>
                 <xsl:call-template name="brand"><xsl:with-param name="string">
-                        <xsl:value-of select="$here1"/>
-                        </xsl:with-param></xsl:call-template>
+                    <xsl:value-of select="$here1"/>
+                </xsl:with-param></xsl:call-template>
                 <xsl:text disable-output-escaping="yes"><![CDATA[</li>\]]>&#xA;</xsl:text>
         </xsl:for-each>
     </xsl:for-each>
