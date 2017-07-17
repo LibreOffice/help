@@ -13,14 +13,11 @@ Usage:
 xsltproc get_tree.xsl <file.tree>
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
 <xsl:param name="app"/>
 <xsl:param name="lang"/>
 <xsl:param name="productname" select="'LibreOffice'"/>
 <xsl:param name="productversion"/>
-
-<xsl:output indent="yes" method="html"/>
-
+<xsl:output indent="no" method="text"/>
 <!--
 ############################
 # Variables and Parameters #
@@ -36,39 +33,41 @@ xsltproc get_tree.xsl <file.tree>
 # Templates #
 #############
 //-->
-
 <!-- Extract the tree and generate a nested UL-->
 <xsl:template match="/">
     <xsl:apply-templates/>
 </xsl:template>
-
 <xsl:template match="help_section">
-    <ul>
-        <li><input type="checkbox" id="{@id}"/>
-            <label for="{@id}">
-                <xsl:call-template name="brand"><xsl:with-param name="string"><xsl:value-of select="@title"/></xsl:with-param></xsl:call-template>
-            </label>
-            <ul><xsl:apply-templates/></ul>
-        </li>
-    </ul>
+<![CDATA[<ul><li><input type="checkbox" id="]]><xsl:value-of select="@id"/><![CDATA["><label for="]]><xsl:value-of select="@id"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="@title"/></xsl:with-param></xsl:call-template><![CDATA[</label><ul>\]]>
+<xsl:apply-templates/><![CDATA[</ul></li></ul>\]]>
 </xsl:template>
 
 <xsl:template match="node">
-    <li><input type="checkbox" id="{@id}"/>
-        <label for="{@id}">
-            <xsl:call-template name="brand"><xsl:with-param name="string"><xsl:value-of select="@title"/></xsl:with-param></xsl:call-template>
-        </label>
-        <ul><xsl:apply-templates/></ul>
-    </li>
+<![CDATA[<li><input type="checkbox" id="]]><xsl:value-of select="@id"/><![CDATA["><label for="]]><xsl:value-of select="@id"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="@title"/></xsl:with-param></xsl:call-template><![CDATA[</label><ul>\]]>
+<xsl:apply-templates/><![CDATA[</ul></li>\]]>
 </xsl:template>
 
 <xsl:template match="topic">
-    <xsl:variable name="htmlpage"><xsl:call-template name="filehtml">
+    <xsl:variable name="htmlpage">
+        <xsl:call-template name="filehtml">
             <xsl:with-param name="file" select="concat('/',$productversion,'/',$lang,'/',substring-after(@id,'/'))"/>
-    </xsl:call-template></xsl:variable>
-    <li><a target="_top" href="{$htmlpage}"><xsl:call-template name="brand"><xsl:with-param name="string"><xsl:value-of select="."/></xsl:with-param></xsl:call-template></a></li>
+        </xsl:call-template>
+    </xsl:variable>
+<![CDATA[<li><a target="_top" href="]]><xsl:value-of select="$htmlpage"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="."/></xsl:with-param></xsl:call-template><![CDATA[</a></li>\]]>
 </xsl:template>
 
+<xsl:template name="replace">
+    <xsl:param name="text"/>
+    <xsl:call-template name="brand">
+        <xsl:with-param name="string">
+            <xsl:call-template name="apostrophe">
+                <xsl:with-param name="string">
+                    <xsl:value-of select="$text"/>
+                </xsl:with-param>
+            </xsl:call-template>
+        </xsl:with-param>
+    </xsl:call-template>
+</xsl:template>
 <!-- weird characters inside bookmarks, replace by HTML entities-->
 <xsl:template name="apostrophe">
     <xsl:param name="string"/>
@@ -77,7 +76,7 @@ xsltproc get_tree.xsl <file.tree>
         <xsl:when test="contains($string,$apost)">
             <xsl:variable name="newstr">
                 <xsl:value-of select="substring-before($string,$apost)"/>
-                <xsl:text disable-output-escaping="yes"><![CDATA[&]]>#39;</xsl:text>
+                <xsl:text disable-output-escaping="yes"><![CDATA[&#39;]]></xsl:text>
                 <xsl:value-of select="substring-after($string,$apost)"/>
             </xsl:variable>
             <xsl:call-template name="apostrophe">
@@ -89,18 +88,6 @@ xsltproc get_tree.xsl <file.tree>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
-
-<!-- Branding -->
-<xsl:template match="text()">
-    <xsl:call-template name="brand">
-        <xsl:with-param name="string"><xsl:value-of select="."/></xsl:with-param>
-    </xsl:call-template>
-    <xsl:call-template name="apostrophe">
-        <xsl:with-param name="string"><xsl:value-of select="."/></xsl:with-param>
-    </xsl:call-template>
-</xsl:template>
-
-
 <xsl:template name="brand" >
     <xsl:param name="string"/>
 
@@ -154,8 +141,8 @@ xsltproc get_tree.xsl <file.tree>
             <xsl:value-of select="$string"/>
         </xsl:otherwise>
     </xsl:choose>
-
 </xsl:template>
+
 <xsl:template name="filehtml">
    <xsl:param name="file"/>
    <xsl:value-of select="substring-after(concat(substring-before($file,'.xhp'),'.html'),'/')"/>

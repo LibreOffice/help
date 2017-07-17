@@ -42,9 +42,10 @@ ALL_TREE='sbasic.tree  scalc.tree  schart.tree  shared.tree  simpress.tree  smat
 
 xhpFiles=$here/l10n/$productversion/$3/text
 
-treeFileHTML=$outDirHTML/contents.html
+treeFileHTML=$outDirHTML/contents.js
 rm -f $treeFileHTML
 touch $treeFileHTML
+echo 'document.getElementById("Contents").innerHTML='$'\047''\'>$treeFileHTML
 
 xsltparm='--stringparam lang '$3' --stringparam productversion '$4
 for tree in $ALL_TREE
@@ -57,10 +58,11 @@ treeTemp2=`mktemp`
 
 xsltproc $xsltparm -o $treeTemp2 get_tree.xsl $treeTemp1
 
-cat $treeTemp2>>$treeFileHTML
+awk 'NF' $treeTemp2>>$treeFileHTML
 
 rm -f $treeTemp1 $treeTemp2
 done
+echo $'\047'';'>>$treeFileHTML
 
 rm -f $treePOFile
 

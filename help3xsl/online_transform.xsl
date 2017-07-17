@@ -332,10 +332,10 @@
         fixURL(module,system);
         document.getElementById("bm_module").innerHTML ="Module is: "+module;
         document.getElementById("bm_system").innerHTML ="System is: "+system;
-        $("#Contents").load(']]><xsl:value-of select="concat('/',$productversion,'/',$lang)"/><![CDATA[/contents.html');
         ]]>
     </script>
     <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
+    <script type="text/javascript" src="{$productversion}/{$lang}/contents.js"/>
     <script type="text/javascript" src="{$productversion}/tabs.js"></script>
     <script>
         var myTabs = new tabs(document.getElementById("tabs"), "article", "h2").responsive("myTabs", {
@@ -343,7 +343,6 @@
         next: "Next"
         });
     </script>
-
 </body>
 </html>
 </xsl:template>
