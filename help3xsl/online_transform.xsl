@@ -129,7 +129,7 @@
         <!--<base href="file:///home/tdf/git/core/helpcontent2/source/html/"/> -->
         <base href="/"/>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-        <title><xsl:value-of select="$titleL10N"/></title>
+	<title><xsl:value-of select="{$titleL10N}"/></title>
         <link  type="text/css" href="{$productversion}/default.css" rel="Stylesheet" />
         <script type="text/javascript" src="{$productversion}/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="{$productversion}/help.js"></script>
