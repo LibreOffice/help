@@ -129,7 +129,7 @@
         <!--<base href="file:///home/tdf/git/core/helpcontent2/source/html/"/> -->
         <base href="/"/>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-	<title><xsl:value-of select="{$titleL10N}"/></title>
+	<title><xsl:value-of select="$titleL10N"/></title>
         <link  type="text/css" href="{$productversion}/default.css" rel="Stylesheet" />
         <script type="text/javascript" src="{$productversion}/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="{$productversion}/help.js"></script>
@@ -156,7 +156,7 @@
     <meta itemprop="version" content="{$productversion}"/>
     <meta itemprop="inLanguage" content="{$lang}"/>
     <meta itemprop="datePublished" content="2017"/>
-    <meta itemprop="headline" content="$titleL10N"/>
+    <meta itemprop="headline" content="{$titleL10N}"/>
     <header>
         <nav>
             <select name="modules">
@@ -791,7 +791,6 @@
 <xsl:template name="insert_howtoget">
     <xsl:param name="linkhref" />
     <xsl:variable name="archive" select="'shared'"/>
-    <!--<xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>-->
     <xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp')"/></xsl:variable>
     <xsl:variable name="tmp_doc" select="document($tmp_href)"/>
     <table class="howtoget" width="100%" border="1" cellpadding="3" cellspacing="0">
@@ -849,7 +848,6 @@
             <xsl:when test="$type='warning'"><xsl:value-of select="$warning_img"/></xsl:when>
         </xsl:choose>
     </xsl:variable>
-    <xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="'shared'"/></xsl:call-template></xsl:variable>
     <xsl:variable name="alt">
         <xsl:variable name="href"><xsl:value-of select="$alttext"/></xsl:variable>
         <xsl:variable name="anchor"><xsl:value-of select="concat('alt_',$type)"/></xsl:variable>
@@ -1142,46 +1140,35 @@
 </xsl:template>
 
 <xsl:template name="resolveembedvar">
-	<xsl:if test="not(@href='text/shared/00/00000004.xhp#wie')"> <!-- special treatment if howtoget links -->
-		<xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
-		<xsl:variable name="dbpostfix"><xsl:call-template name="createDBpostfix"><xsl:with-param name="archive" select="$archive"/></xsl:call-template></xsl:variable>
-		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'))"/></xsl:variable>
-		<xsl:variable name="anchor"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
-		<xsl:variable name="doc" select="document($href)"/>
-		<xsl:choose>
-			<xsl:when test="$doc//variable[@id=$anchor]"> <!-- test for a variable of that name -->
-				<xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
-			</xsl:when>
-			<xsl:otherwise> <!-- or give up -->
-				<span class="bug">[<xsl:value-of select="@href"/> not found].</span>
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:if>
+    <xsl:if test="not(@href='text/shared/00/00000004.xhp#wie')"> <!-- special treatment if howtoget links -->
+        <xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
+        <xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'))"/></xsl:variable>
+        <xsl:variable name="anchor"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
+        <xsl:variable name="doc" select="document($href)"/>
+        <xsl:choose>
+            <xsl:when test="$doc//variable[@id=$anchor]"> <!-- test for a variable of that name -->
+                <xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
+            </xsl:when>
+            <xsl:otherwise> <!-- or give up -->
+                <span class="bug">[<xsl:value-of select="@href"/> not found].</span>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:if>
 </xsl:template>
 
 <!-- Apply -->
 <xsl:template name="apply">
-	<xsl:param name="embedded" />
-	<xsl:choose>
-		<xsl:when test="$embedded = 'yes'">
-			<xsl:apply-templates mode="embedded"/>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:apply-templates />
-		</xsl:otherwise>
-	</xsl:choose>
+    <xsl:param name="embedded" />
+    <xsl:choose>
+        <xsl:when test="$embedded = 'yes'">
+            <xsl:apply-templates mode="embedded"/>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:apply-templates />
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
-<xsl:template name="createDBpostfix">
-	<xsl:param name="archive"/>
-	<xsl:variable name="newDB">
-		<xsl:choose>
-			<xsl:when test="(substring($archive,1,6) = 'shared')"><xsl:value-of select="$Database"/></xsl:when>
-			<xsl:otherwise><xsl:value-of select="substring-before($archive,'/')"/></xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
-	<xsl:value-of select="concat($am,'DbPAR=',$newDB)"/>
-</xsl:template>
 
 <xsl:template name="filehtml">
    <xsl:param name="file"/>
