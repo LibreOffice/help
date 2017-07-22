@@ -129,27 +129,10 @@
         <!--<base href="file:///home/tdf/git/core/helpcontent2/source/html/"/> -->
         <base href="/"/>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-	<title><xsl:value-of select="$titleL10N"/></title>
+        <title><xsl:value-of select="$titleL10N"/></title>
         <link  type="text/css" href="{$productversion}/default.css" rel="Stylesheet" />
         <script type="text/javascript" src="{$productversion}/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="{$productversion}/help.js"></script>
-        <!-- Piwik -->
-        <script type="text/javascript">
-            <![CDATA[
-            var _paq = _paq || [];
-            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-            (function() {
-            var u="//piwik.documentfoundation.org/";
-            _paq.push(['setTrackerUrl', u+'piwik.php']);
-            _paq.push(['setSiteId', '68']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-            })();
-            ]]>
-        </script>
-        <!-- End Piwik Code -->
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
     <body lang="{$lang}" itemscope="true" itemtype="http://schema.org/TechArticle">
@@ -158,125 +141,120 @@
     <meta itemprop="datePublished" content="2017"/>
     <meta itemprop="headline" content="{$titleL10N}"/>
     <header>
-        <nav>
-            <select name="modules">
-                <option id="M_CALC" value="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC">Calc</option>
-                <option id="M_WRITER" value="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER">Writer</option>
-                <option id="M_IMPRESS" value="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS">Impress</option>
-                <option id="M_DRAW" value="{$productversion}/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW">Draw</option>
-                <option id="M_CHART" value="{$productversion}/{$lang}/text/schart/main0000.html?DbPAR=CHART">Chart</option>
-                <option id="M_BASIC" value="{$productversion}/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC">Basic</option>
-                <option id="M_MATH" value="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH">Math</option>
-                <option id="M_BASE" value="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE">Base</option>
-            </select>
-            <select name="system">
-                <option id="S_WIN" value="{$productversion}/{$lang}{$htmlpage}?System=WIN">Windows</option>
-                <option id="S_UNIX" value="{$productversion}/{$lang}{$htmlpage}?System=UNIX">Linux</option>
-                <option id="S_MAC" value="{$productversion}/{$lang}{$htmlpage}?System=MAC">Mac</option>
-            </select>
-            <select name="language">
-                <option value="{$productversion}/en-US{$htmlpage}">EN-US</option>
-                <option value="{$productversion}/am{$htmlpage}">AM</option>
-                <option value="{$productversion}/ar{$htmlpage}">AR</option>
-                <option value="{$productversion}/ast{$htmlpage}">AST</option>
-                <option value="{$productversion}/bg{$htmlpage}">BG</option>
-                <option value="{$productversion}/bn{$htmlpage}">BN</option>
-                <option value="{$productversion}/bn-IN{$htmlpage}">BN-IN</option>
-                <option value="{$productversion}/bo{$htmlpage}">BO</option>
-                <option value="{$productversion}/bs{$htmlpage}">BS</option>
-                <option value="{$productversion}/ca{$htmlpage}">CA</option>
-                <option value="{$productversion}/ca-valencia{$htmlpage}">CA-Valencia</option>
-                <option value="{$productversion}/cs{$htmlpage}">CS</option>
-                <option value="{$productversion}/da{$htmlpage}">DA</option>
-                <option value="{$productversion}/de{$htmlpage}">DE</option>
-                <option value="{$productversion}/dz{$htmlpage}">DZ</option>
-                <option value="{$productversion}/el{$htmlpage}">EL</option>
-                <option value="{$productversion}/en-GB{$htmlpage}">EN-GB</option>
-                <option value="{$productversion}/en-ZA{$htmlpage}">EN-ZA</option>
-                <option value="{$productversion}/eo{$htmlpage}">EO</option>
-                <option value="{$productversion}/es{$htmlpage}">ES</option>
-                <option value="{$productversion}/et{$htmlpage}">ET</option>
-                <option value="{$productversion}/eu{$htmlpage}">EU</option>
-                <option value="{$productversion}/fi{$htmlpage}">FI</option>
-                <option value="{$productversion}/fr{$htmlpage}">FR</option>
-                <option value="{$productversion}/gl{$htmlpage}">GL</option>
-                <option value="{$productversion}/gu{$htmlpage}">GU</option>
-                <option value="{$productversion}/he{$htmlpage}">HE</option>
-                <option value="{$productversion}/hi{$htmlpage}">HI</option>
-                <option value="{$productversion}/hr{$htmlpage}">HR</option>
-                <option value="{$productversion}/hu{$htmlpage}">HU</option>
-                <option value="{$productversion}/id{$htmlpage}">ID</option>
-                <option value="{$productversion}/is{$htmlpage}">IS</option>
-                <option value="{$productversion}/it{$htmlpage}">IT</option>
-                <option value="{$productversion}/ja{$htmlpage}">JA</option>
-                <option value="{$productversion}/ka{$htmlpage}">KA</option>
-                <option value="{$productversion}/km{$htmlpage}">KM</option>
-                <option value="{$productversion}/ko{$htmlpage}">KO</option>
-                <option value="{$productversion}/lo{$htmlpage}">LO</option>
-                <option value="{$productversion}/lt{$htmlpage}">LT</option>
-                <option value="{$productversion}/lv{$htmlpage}">LV</option>
-                <option value="{$productversion}/mk{$htmlpage}">MK</option>
-                <option value="{$productversion}/nb{$htmlpage}">NB</option>
-                <option value="{$productversion}/ne{$htmlpage}">NE</option>
-                <option value="{$productversion}/nl{$htmlpage}">NL</option>
-                <option value="{$productversion}/nn{$htmlpage}">NN</option>
-                <option value="{$productversion}/om{$htmlpage}">OM</option>
-                <option value="{$productversion}/pl{$htmlpage}">PL</option>
-                <option value="{$productversion}/pt{$htmlpage}">PT</option>
-                <option value="{$productversion}/pt-BR{$htmlpage}">PT-BR</option>
-                <option value="{$productversion}/ro{$htmlpage}">RO</option>
-                <option value="{$productversion}/ru{$htmlpage}">RU</option>
-                <option value="{$productversion}/sid{$htmlpage}">SID</option>
-                <option value="{$productversion}/sk{$htmlpage}">SK</option>
-                <option value="{$productversion}/sl{$htmlpage}">SL</option>
-                <option value="{$productversion}/sq{$htmlpage}">SQ</option>
-                <option value="{$productversion}/sv{$htmlpage}">SV</option>
-                <option value="{$productversion}/ta{$htmlpage}">TA</option>
-                <option value="{$productversion}/tg{$htmlpage}">TG</option>
-                <option value="{$productversion}/tr{$htmlpage}">TR</option>
-                <option value="{$productversion}/ug{$htmlpage}">UG</option>
-                <option value="{$productversion}/uk{$htmlpage}">UK</option>
-                <option value="{$productversion}/vi{$htmlpage}">VI</option>
-                <option value="{$productversion}/zh-CN{$htmlpage}">ZH-CN</option>
-                <option value="{$productversion}/zh-TW{$htmlpage}">ZH-TW</option>
-            </select>
+        <a class="logo" href="https://helponline.libreoffice.org/">
+            <div class="symbol"></div>
+            <p>LibreOffice <xsl:value-of select="$productversion"/> Help</p>
+        </a>
+        <input id="langs" name="language-menu" type="checkbox"/>
+        <label for="langs" role="button">Language ▼</label>
+        <ul>
+            <li><a href="{$productversion}/en-US{$htmlpage}">EN-US</a></li>
+            <li><a href="{$productversion}/am{$htmlpage}">AM</a></li>
+            <li><a href="{$productversion}/ar{$htmlpage}">AR</a></li>
+            <li><a href="{$productversion}/ast{$htmlpage}">AST</a></li>
+            <li><a href="{$productversion}/bg{$htmlpage}">BG</a></li>
+            <li><a href="{$productversion}/bn{$htmlpage}">BN</a></li>
+            <li><a href="{$productversion}/bn-IN{$htmlpage}">BN-IN</a></li>
+            <li><a href="{$productversion}/bo{$htmlpage}">BO</a></li>
+            <li><a href="{$productversion}/bs{$htmlpage}">BS</a></li>
+            <li><a href="{$productversion}/ca{$htmlpage}">CA</a></li>
+            <li><a href="{$productversion}/ca-valencia{$htmlpage}">CA-Valencia</a></li>
+            <li><a href="{$productversion}/cs{$htmlpage}">CS</a></li>
+            <li><a href="{$productversion}/da{$htmlpage}">DA</a></li>
+            <li><a href="{$productversion}/de{$htmlpage}">DE</a></li>
+            <li><a href="{$productversion}/dz{$htmlpage}">DZ</a></li>
+            <li><a href="{$productversion}/el{$htmlpage}">EL</a></li>
+            <li><a href="{$productversion}/en-GB{$htmlpage}">EN-GB</a></li>
+            <li><a href="{$productversion}/en-ZA{$htmlpage}">EN-ZA</a></li>
+            <li><a href="{$productversion}/eo{$htmlpage}">EO</a></li>
+            <li><a href="{$productversion}/es{$htmlpage}">ES</a></li>
+            <li><a href="{$productversion}/et{$htmlpage}">ET</a></li>
+            <li><a href="{$productversion}/eu{$htmlpage}">EU</a></li>
+            <li><a href="{$productversion}/fi{$htmlpage}">FI</a></li>
+            <li><a href="{$productversion}/fr{$htmlpage}">FR</a></li>
+            <li><a href="{$productversion}/gl{$htmlpage}">GL</a></li>
+            <li><a href="{$productversion}/gu{$htmlpage}">GU</a></li>
+            <li><a href="{$productversion}/he{$htmlpage}">HE</a></li>
+            <li><a href="{$productversion}/hi{$htmlpage}">HI</a></li>
+            <li><a href="{$productversion}/hr{$htmlpage}">HR</a></li>
+            <li><a href="{$productversion}/hu{$htmlpage}">HU</a></li>
+            <li><a href="{$productversion}/id{$htmlpage}">ID</a></li>
+            <li><a href="{$productversion}/is{$htmlpage}">IS</a></li>
+            <li><a href="{$productversion}/it{$htmlpage}">IT</a></li>
+            <li><a href="{$productversion}/ja{$htmlpage}">JA</a></li>
+            <li><a href="{$productversion}/ka{$htmlpage}">KA</a></li>
+            <li><a href="{$productversion}/km{$htmlpage}">KM</a></li>
+            <li><a href="{$productversion}/ko{$htmlpage}">KO</a></li>
+            <li><a href="{$productversion}/lo{$htmlpage}">LO</a></li>
+            <li><a href="{$productversion}/lt{$htmlpage}">LT</a></li>
+            <li><a href="{$productversion}/lv{$htmlpage}">LV</a></li>
+            <li><a href="{$productversion}/mk{$htmlpage}">MK</a></li>
+            <li><a href="{$productversion}/nb{$htmlpage}">NB</a></li>
+            <li><a href="{$productversion}/ne{$htmlpage}">NE</a></li>
+            <li><a href="{$productversion}/nl{$htmlpage}">NL</a></li>
+            <li><a href="{$productversion}/nn{$htmlpage}">NN</a></li>
+            <li><a href="{$productversion}/om{$htmlpage}">OM</a></li>
+            <li><a href="{$productversion}/pl{$htmlpage}">PL</a></li>
+            <li><a href="{$productversion}/pt{$htmlpage}">PT</a></li>
+            <li><a href="{$productversion}/pt-BR{$htmlpage}">PT-BR</a></li>
+            <li><a href="{$productversion}/ro{$htmlpage}">RO</a></li>
+            <li><a href="{$productversion}/ru{$htmlpage}">RU</a></li>
+            <li><a href="{$productversion}/sid{$htmlpage}">SID</a></li>
+            <li><a href="{$productversion}/sk{$htmlpage}">SK</a></li>
+            <li><a href="{$productversion}/sl{$htmlpage}">SL</a></li>
+            <li><a href="{$productversion}/sq{$htmlpage}">SQ</a></li>
+            <li><a href="{$productversion}/sv{$htmlpage}">SV</a></li>
+            <li><a href="{$productversion}/ta{$htmlpage}">TA</a></li>
+            <li><a href="{$productversion}/tg{$htmlpage}">TG</a></li>
+            <li><a href="{$productversion}/tr{$htmlpage}">TR</a></li>
+            <li><a href="{$productversion}/ug{$htmlpage}">UG</a></li>
+            <li><a href="{$productversion}/uk{$htmlpage}">UK</a></li>
+            <li><a href="{$productversion}/vi{$htmlpage}">VI</a></li>
+            <li><a href="{$productversion}/zh-CN{$htmlpage}">ZH-CN</a></li>
+            <li><a href="{$productversion}/zh-TW{$htmlpage}">ZH-TW</a></li>
+        </ul>
+    </header>
+    <nav class="modules">
+        <ul>
+            <li><a href="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC"><div class="calc"></div>Calc</a></li>
+            <li><a href="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer"></div>Writer</a></li>
+            <li><a href="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS"><div class="impress"></div>Impress</a></li>
+            <li><a href="{$productversion}/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW"><div class="draw"></div>Draw</a></li>
+            <li><a href="{$productversion}/{$lang}/text/schart/main0000.html?DbPAR=CHART"><div class="chart"></div>Chart</a></li>
+            <li><a href="{$productversion}/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC"><div class="basic"></div>Basic</a></li>
+            <li><a href="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH"><div class="math"></div>Math</a></li>
+            <li><a href="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE"><div class="base"></div>Base</a></li>
+        </ul>
+    </nav>
+
+    <div class="accordion">
+        <input id="accordion-1" name="accordion-menu" type="checkbox"/>
+        <label for="accordion-1" role="button">Contents</label>
+        <div id="Contents" class="contents-treeview"></div>
+        <input id="accordion-2" name="accordion-menu" type="checkbox"/>
+        <label for="accordion-2" role="button">Search</label>
+        <div id="content-2">
             <script type="text/javascript">
                 <![CDATA[
-                document.addEventListener('DOMContentLoaded',function() {
-                document.querySelector('select[name="modules"]').onchange=changeModuleHandler;
-                document.querySelector('select[name="system"]').onchange=changeSystemHandler;
-                document.querySelector('select[name="language"]').onchange=changeLangHandler;
-                },false);
-
-                function changeModuleHandler(event) {
-                // You can use “this” to refer to the selected element.
-                var system = getParameterByName("System");
-                window.open('/'+event.target.value + '&System=' + system,'_top');
-                }
-                function changeSystemHandler(event) {
-                // You can use “this” to refer to the selected element.
-                var module = getParameterByName("DbPAR");
-                window.open('/'+event.target.value + '&DbPAR=' + module,'_top');
-                }
-                function changeLangHandler(event) {
-                // You can use “this” to refer to the selected element.
-                var system = getParameterByName("System");
-                var module = getParameterByName("DbPAR");
-                window.open('/' + event.target.value  + '?DbPAR=' + module + '&System=' + system ,'_top');
-                }
+                (function() {
+                var cx = '010161382024564278136:oejldkqc20o';
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+                })();
                 ]]>
             </script>
-        </nav>
-        <h1>LibreOffice <xsl:value-of select="$productversion"/><br/>Help Online</h1>
-    </header>
-    <section id="tabs">
-        <article data-title="{$titleL10N}">
-            <div id="DisplayArea" itemprop="articleBody">
-                <xsl:apply-templates select="/helpdocument/body"/>
+            <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
+        </div>
+        <input id="accordion-3" name="accordion-menu" type="checkbox"/>
+        <label for="accordion-3" role="button">Index</label>
+        <div id="content-3">
+            <div id="SearchBox">
+                <p> &#32;&#x1f50e;&#32; <input id="search-bar" type="text"/></p>
             </div>
-        </article>
-        <article id="Index" data-title="Index">
-            <div id="SearchBox"><p>&#32;&#x1f50e;&#32;<input type="text" id="search-bar"/></p></div>
             <div id="Bookmarks">
                 <ul id="bookmarkCALC" hidden="true"></ul>
                 <ul id="bookmarkCHART" hidden="true"></ul>
@@ -288,33 +266,13 @@
                 <ul id="bookmarkSHARED"></ul>
                 <ul id="bookmarkBASIC" hidden="true"></ul>
             </div>
-        </article>
-        <article data-title="Search">
-            <div id="TopRight">
-                <script type="text/javascript">
-                    <![CDATA[
-                    (function() {
-                    var cx = '010161382024564278136:oejldkqc20o';
-                    var gcse = document.createElement('script');
-                    gcse.type = 'text/javascript';
-                    gcse.async = true;
-                    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-                    var s = document.getElementsByTagName('script')[0];
-                    s.parentNode.insertBefore(gcse, s);
-                    })();
-                    ]]>
-                </script>
-                <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
-            </div>
-        </article>
-        <article data-title="Contents">
-            <div id="Contents" class="contents-treeview"></div>
-        </article>
-    </section>
+        </div>
+    </div>
+    <div id="DisplayArea" itemprop="articleBody">
+        <xsl:apply-templates select="/helpdocument/body"/>
+    </div>
     <footer>
         <p><a href="http://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="http://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="http://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="http://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Creative Commons Attribution-Share Alike 3.0 License</a>. This does not include the source code of LibreOffice, which is licensed under the <a href="http://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="http://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
-    </footer>
-    <footer>
         <div class="debug">
             <h3 class="bug">Help content debug info:</h3>
             <p>This page is: <xsl:value-of select="$filename"/></p>
@@ -323,6 +281,8 @@
             <p id="bm_system"></p>
         </div>
     </footer>
+    <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
+    <script type="text/javascript" src="{$productversion}/{$lang}/contents.js"/>
     <script type="text/javascript">
         <![CDATA[
         var module = getParameterByName("DbPAR");
@@ -334,15 +294,23 @@
         document.getElementById("bm_system").innerHTML ="System is: "+system;
         ]]>
     </script>
-    <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
-    <script type="text/javascript" src="{$productversion}/{$lang}/contents.js"/>
-    <script type="text/javascript" src="{$productversion}/tabs.js"></script>
-    <script>
-        var myTabs = new tabs(document.getElementById("tabs"), "article", "h2").responsive("myTabs", {
-        prev: "Previous",
-        next: "Next"
-        });
+    <!-- Piwik -->
+    <script type="text/javascript">
+        <![CDATA[
+        var _paq = _paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+        var u="//piwik.documentfoundation.org/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', '68']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+        ]]>
     </script>
+    <!-- End Piwik Code -->
 </body>
 </html>
 </xsl:template>
