@@ -274,7 +274,7 @@
     </div>
     <footer>
         <p><a href="http://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="http://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="http://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="http://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Creative Commons Attribution-Share Alike 3.0 License</a>. This does not include the source code of LibreOffice, which is licensed under the <a href="http://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="http://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
-        <div class="debug">
+        <div id="DEBUG" class="debug">
             <h3 class="bug">Help content debug info:</h3>
             <p>This page is: <xsl:value-of select="$filename"/></p>
             <p>Title is: <xsl:value-of select="$title"/></p>
@@ -291,6 +291,8 @@
         var system = getParameterByName("System");
         setSystem(system);
         fixURL(module,system);
+        var dbg = getParameterByName("Debug");
+        document.getElementById("DEBUG").style.display = (dbg ==0) ? "none":"block";
         document.getElementById("bm_module").innerHTML ="Module is: "+module;
         document.getElementById("bm_system").innerHTML ="System is: "+system;
         ]]>

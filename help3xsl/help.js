@@ -18,7 +18,6 @@ function setModule(module){
             itemspan[i].removeAttribute("hidden");
         }
     }
-    document.getElementById("M_"+module).selected="true";
 }
 
 // Used to set system in caseinline=SYSTEM
@@ -31,7 +30,6 @@ function setSystem(system){
             itemspan[i].removeAttribute("hidden");
         }
     }
-    document.getElementById("S_"+system).selected="true";
 }
 /* add &DbPAR= and &System= to the links in DisplayArea div */
 function fixURL(module, system){
