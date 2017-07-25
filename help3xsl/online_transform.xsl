@@ -124,7 +124,7 @@
     <xsl:variable name="titleL10N">
         <xsl:call-template name="brand"><xsl:with-param name="string"><xsl:value-of select="$title"/></xsl:with-param></xsl:call-template>
     </xsl:variable>
-    <html>
+<html>
     <head>
         <!--<base href="file:///home/tdf/git/core/helpcontent2/source/html/"/> -->
         <base href="/"/>
@@ -321,7 +321,7 @@
         ]]>
     </script>
     <!-- End Piwik Code -->
-</body>
+    </body>
 </html>
 </xsl:template>
 
