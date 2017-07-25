@@ -131,6 +131,7 @@
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
         <title><xsl:value-of select="$titleL10N"/></title>
         <link rel="shortcut icon" href="{$productversion}/media/navigation/favicon.ico" />
+        <link  type="text/css" href="{$productversion}/normalize.css" rel="Stylesheet" />
         <link  type="text/css" href="{$productversion}/default.css" rel="Stylesheet" />
         <script type="text/javascript" src="{$productversion}/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="{$productversion}/help.js"></script>
@@ -227,45 +228,50 @@
             <li><a href="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE"><div class="base"></div>Base</a></li>
         </ul>
     </nav>
-
     <div class="accordion">
-        <input id="accordion-1" name="accordion-menu" type="checkbox"/>
-        <label for="accordion-1" role="button">Contents</label>
-        <div id="Contents" class="contents-treeview"></div>
-        <input id="accordion-2" name="accordion-menu" type="checkbox"/>
-        <label for="accordion-2" role="button">Search</label>
-        <div id="content-2">
-            <script type="text/javascript">
-                <![CDATA[
-                (function() {
-                var cx = '010161382024564278136:oejldkqc20o';
-                var gcse = document.createElement('script');
-                gcse.type = 'text/javascript';
-                gcse.async = true;
-                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(gcse, s);
-                })();
-                ]]>
-            </script>
-            <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
+        <div class="acc-panel">
+            <input id="accordion-1" name="accordion-menu" type="checkbox"/>
+            <label for="accordion-1" role="button">Contents</label>
+            <div id="Contents" class="contents-treeview"></div>
         </div>
-        <input id="accordion-3" name="accordion-menu" type="checkbox"/>
-        <label for="accordion-3" role="button">Index</label>
-        <div id="Index">
-            <div id="SearchBox">
-                <p> &#32;&#x1f50e;&#32; <input id="search-bar" type="text"/></p>
+        <div class="acc-panel">
+            <input id="accordion-2" name="accordion-menu" type="checkbox"/>
+            <label for="accordion-2" role="button">Search</label>
+            <div id="content-2">
+                <script type="text/javascript">
+                    <![CDATA[
+                    (function() {
+                    var cx = '010161382024564278136:oejldkqc20o';
+                    var gcse = document.createElement('script');
+                    gcse.type = 'text/javascript';
+                    gcse.async = true;
+                    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(gcse, s);
+                    })();
+                    ]]>
+                </script>
+                <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
             </div>
-            <div id="Bookmarks">
-                <ul id="bookmarkCALC" hidden="true"></ul>
-                <ul id="bookmarkCHART" hidden="true"></ul>
-                <ul id="bookmarkWRITER" hidden="true"></ul>
-                <ul id="bookmarkDRAW" hidden="true"></ul>
-                <ul id="bookmarkIMPRESS" hidden="true"></ul>
-                <ul id="bookmarkMATH" hidden="true"></ul>
-                <ul id="bookmarkBASE" hidden="true"></ul>
-                <ul id="bookmarkSHARED"></ul>
-                <ul id="bookmarkBASIC" hidden="true"></ul>
+        </div>
+        <div class="acc-panel">
+            <input id="accordion-3" name="accordion-menu" type="checkbox"/>
+            <label for="accordion-3" role="button">Index</label>
+            <div id="Index">
+                <div id="SearchBox">
+                    <p> &#32;&#x1f50e;&#32; <input id="search-bar" type="text"/></p>
+                </div>
+                <div id="Bookmarks">
+                    <ul id="bookmarkCALC" hidden="true"></ul>
+                    <ul id="bookmarkCHART" hidden="true"></ul>
+                    <ul id="bookmarkWRITER" hidden="true"></ul>
+                    <ul id="bookmarkDRAW" hidden="true"></ul>
+                    <ul id="bookmarkIMPRESS" hidden="true"></ul>
+                    <ul id="bookmarkMATH" hidden="true"></ul>
+                    <ul id="bookmarkBASE" hidden="true"></ul>
+                    <ul id="bookmarkSHARED"></ul>
+                    <ul id="bookmarkBASIC" hidden="true"></ul>
+                </div>
             </div>
         </div>
     </div>
@@ -292,7 +298,8 @@
         setSystem(system);
         fixURL(module,system);
         var dbg = getParameterByName("Debug");
-        document.getElementById("DEBUG").style.display = (dbg ==0) ? "none":"block";
+        if (dbg == null){dbg=0}
+        document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
         document.getElementById("bm_module").innerHTML ="Module is: "+module;
         document.getElementById("bm_system").innerHTML ="System is: "+system;
         ]]>
