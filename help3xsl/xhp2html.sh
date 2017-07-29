@@ -89,7 +89,7 @@ echo 'copy global service files'
 cp index.html $here'/html/'
 cp help.js $here'/html/'$productversion'/'
 cp jquery-3.1.1.min.js $here'/html/'$productversion'/'
-cp normalize.js $here'/html/'$productversion'/'
+cp normalize.css $here'/html/'$productversion'/'
 cp default.css $here'/html/'$productversion'/'
 
 cp -rap ../source/media $here'/html/'$productversion'/'
