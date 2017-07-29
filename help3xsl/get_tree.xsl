@@ -8,7 +8,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
 -->
 <!--
-Stylesheet to extract tree context and generate a neste list
+Stylesheet to extract tree context and generate a nested list
 Usage:
 xsltproc get_tree.xsl <file.tree>
 -->
