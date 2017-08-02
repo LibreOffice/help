@@ -29,7 +29,14 @@
 //-->
 
 <xsl:param name="productversion"/>
-
+<xsl:param name="local" />
+<xsl:param name="fileTree"/>
+<xsl:param name="productname" select="'LibreOffice'"/>
+<xsl:param name="System" select="'WIN'"/>
+<xsl:param name="imgtheme" select="''"/>
+<xsl:param name="Id" />
+<xsl:param name="Language"/>
+<xsl:param name="root"/>
 
 <!-- General Usage -->
 <xsl:variable name="am" select="'&amp;'"/>
@@ -47,6 +54,10 @@
 <xsl:variable name="brand3" select="'%PRODUCTNAME'"/>
 <xsl:variable name="brand4" select="'%PRODUCTVERSION'"/>
 
+<!-- Installation -->
+<xsl:variable name="online" select="$local!='yes'"/>
+<xsl:variable name="install" select="concat('file://',$fileTree)"/>
+
 <!-- meta data variables from the help file -->
 <xsl:variable name="filename" select="/helpdocument/meta/topic/filename"/>
 <xsl:variable name="title" select="/helpdocument/meta/topic/title"/>
@@ -54,40 +65,21 @@
 <!-- Module and the corresponding switching values-->
 <xsl:param name="Database" select="'swriter'"/>
 <xsl:variable name="module" select="$Database"/>
-<xsl:variable name="appl">
-    <xsl:choose>
-        <xsl:when test="$module = 'swriter'"><xsl:value-of select="'WRITER'"/></xsl:when>
-        <xsl:when test="$module = 'scalc'"><xsl:value-of select="'CALC'"/></xsl:when>
-        <xsl:when test="$module = 'sdraw'"><xsl:value-of select="'DRAW'"/></xsl:when>
-        <xsl:when test="$module = 'simpress'"><xsl:value-of select="'IMPRESS'"/></xsl:when>
-        <xsl:when test="$module = 'schart'"><xsl:value-of select="'CHART'"/></xsl:when>
-        <xsl:when test="$module = 'sbasic'"><xsl:value-of select="'BASIC'"/></xsl:when>
-        <xsl:when test="$module = 'smath'"><xsl:value-of select="'MATH'"/></xsl:when>
-    </xsl:choose>
-</xsl:variable>
+<xsl:variable name="appl"/>
 
-  <!-- the other parameters given by the help caller -->
-<xsl:param name="System" select="'WIN'"/>
-<xsl:param name="productname" select="'LibreOffice'"/>
+<!-- the other parameters given by the help caller -->
+
 
 <xsl:variable name="pversion">
 	<xsl:value-of select="translate($productversion,' ','')"/>
 </xsl:variable>
 <!-- this is were the images are -->
 
-<xsl:param name="imgtheme" select="''"/>
-<xsl:param name="Id" />
-<xsl:param name="Language"/>
-<xsl:param name="root"/>
 <xsl:variable name="lang" select="$Language"/>
 <xsl:variable name="urlpre" select="$root"/>
 
 <!-- generic Icon alt text -->
 <xsl:variable name="alttext" select="concat($root,'text/shared/00/icon_alt.xhp')"/>
-
-<xsl:param name="ExtensionId" select="''"/>
-<xsl:param name="ExtensionPath" select="''"/>
-
 
   <!-- parts of help and image urls -->
 <!--<xsl:variable name="help_url_prefix" select="'vnd.sun.star.help://'"/>-->
@@ -107,12 +99,6 @@
 <xsl:variable name="warning_img" select="concat($img_url_prefix,'helpimg/warning.png')"/>
 
 <!--
-########################
-# Schema.org variables #
-######################## 
-//-->
-
-<!--
 #############
 # Templates #
 #############
@@ -126,8 +112,14 @@
     </xsl:variable>
 <html>
     <head>
-        <!--<base href="file:///home/tdf/git/core/helpcontent2/source/html/"/> -->
-        <base href="/"/>
+        <xsl:choose>
+            <xsl:when test="$online">
+                <base href="/"/>
+            </xsl:when>
+            <xsl:otherwise>
+                 <base href="{$install}"/>
+             </xsl:otherwise>
+        </xsl:choose>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
         <title><xsl:value-of select="$titleL10N"/></title>
         <link rel="shortcut icon" href="{$productversion}/media/navigation/favicon.ico" />
@@ -138,85 +130,89 @@
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
     <body lang="{$lang}" itemscope="true" itemtype="http://schema.org/TechArticle">
-    <meta itemprop="version" content="{$productversion}"/>
-    <meta itemprop="inLanguage" content="{$lang}"/>
-    <meta itemprop="datePublished" content="2017"/>
-    <meta itemprop="headline" content="{$titleL10N}"/>
+    <xsl:if test="$online">
+        <meta itemprop="version" content="{$productversion}"/>
+        <meta itemprop="inLanguage" content="{$lang}"/>
+        <meta itemprop="datePublished" content="2017"/>
+        <meta itemprop="headline" content="{$titleL10N}"/>
+    </xsl:if>
     <header>
         <a class="logo" href="https://helponline.libreoffice.org/">
             <div class="symbol"></div>
             <p>LibreOffice <xsl:value-of select="$productversion"/> Help</p>
         </a>
-        <input id="langs" name="language-menu" type="checkbox"/>
-        <label for="langs" role="button">Language ▼</label>
-        <ul>
-            <li><a href="{$productversion}/en-US{$htmlpage}">EN-US</a></li>
-            <li><a href="{$productversion}/am{$htmlpage}">AM</a></li>
-            <li><a href="{$productversion}/ar{$htmlpage}">AR</a></li>
-            <li><a href="{$productversion}/ast{$htmlpage}">AST</a></li>
-            <li><a href="{$productversion}/bg{$htmlpage}">BG</a></li>
-            <li><a href="{$productversion}/bn{$htmlpage}">BN</a></li>
-            <li><a href="{$productversion}/bn-IN{$htmlpage}">BN-IN</a></li>
-            <li><a href="{$productversion}/bo{$htmlpage}">BO</a></li>
-            <li><a href="{$productversion}/bs{$htmlpage}">BS</a></li>
-            <li><a href="{$productversion}/ca{$htmlpage}">CA</a></li>
-            <li><a href="{$productversion}/ca-valencia{$htmlpage}">CA-Valencia</a></li>
-            <li><a href="{$productversion}/cs{$htmlpage}">CS</a></li>
-            <li><a href="{$productversion}/da{$htmlpage}">DA</a></li>
-            <li><a href="{$productversion}/de{$htmlpage}">DE</a></li>
-            <li><a href="{$productversion}/dz{$htmlpage}">DZ</a></li>
-            <li><a href="{$productversion}/el{$htmlpage}">EL</a></li>
-            <li><a href="{$productversion}/en-GB{$htmlpage}">EN-GB</a></li>
-            <li><a href="{$productversion}/en-ZA{$htmlpage}">EN-ZA</a></li>
-            <li><a href="{$productversion}/eo{$htmlpage}">EO</a></li>
-            <li><a href="{$productversion}/es{$htmlpage}">ES</a></li>
-            <li><a href="{$productversion}/et{$htmlpage}">ET</a></li>
-            <li><a href="{$productversion}/eu{$htmlpage}">EU</a></li>
-            <li><a href="{$productversion}/fi{$htmlpage}">FI</a></li>
-            <li><a href="{$productversion}/fr{$htmlpage}">FR</a></li>
-            <li><a href="{$productversion}/gl{$htmlpage}">GL</a></li>
-            <li><a href="{$productversion}/gu{$htmlpage}">GU</a></li>
-            <li><a href="{$productversion}/he{$htmlpage}">HE</a></li>
-            <li><a href="{$productversion}/hi{$htmlpage}">HI</a></li>
-            <li><a href="{$productversion}/hr{$htmlpage}">HR</a></li>
-            <li><a href="{$productversion}/hu{$htmlpage}">HU</a></li>
-            <li><a href="{$productversion}/id{$htmlpage}">ID</a></li>
-            <li><a href="{$productversion}/is{$htmlpage}">IS</a></li>
-            <li><a href="{$productversion}/it{$htmlpage}">IT</a></li>
-            <li><a href="{$productversion}/ja{$htmlpage}">JA</a></li>
-            <li><a href="{$productversion}/ka{$htmlpage}">KA</a></li>
-            <li><a href="{$productversion}/km{$htmlpage}">KM</a></li>
-            <li><a href="{$productversion}/ko{$htmlpage}">KO</a></li>
-            <li><a href="{$productversion}/lo{$htmlpage}">LO</a></li>
-            <li><a href="{$productversion}/lt{$htmlpage}">LT</a></li>
-            <li><a href="{$productversion}/lv{$htmlpage}">LV</a></li>
-            <li><a href="{$productversion}/mk{$htmlpage}">MK</a></li>
-            <li><a href="{$productversion}/nb{$htmlpage}">NB</a></li>
-            <li><a href="{$productversion}/ne{$htmlpage}">NE</a></li>
-            <li><a href="{$productversion}/nl{$htmlpage}">NL</a></li>
-            <li><a href="{$productversion}/nn{$htmlpage}">NN</a></li>
-            <li><a href="{$productversion}/om{$htmlpage}">OM</a></li>
-            <li><a href="{$productversion}/pl{$htmlpage}">PL</a></li>
-            <li><a href="{$productversion}/pt{$htmlpage}">PT</a></li>
-            <li><a href="{$productversion}/pt-BR{$htmlpage}">PT-BR</a></li>
-            <li><a href="{$productversion}/ro{$htmlpage}">RO</a></li>
-            <li><a href="{$productversion}/ru{$htmlpage}">RU</a></li>
-            <li><a href="{$productversion}/sid{$htmlpage}">SID</a></li>
-            <li><a href="{$productversion}/sk{$htmlpage}">SK</a></li>
-            <li><a href="{$productversion}/sl{$htmlpage}">SL</a></li>
-            <li><a href="{$productversion}/sq{$htmlpage}">SQ</a></li>
-            <li><a href="{$productversion}/sv{$htmlpage}">SV</a></li>
-            <li><a href="{$productversion}/ta{$htmlpage}">TA</a></li>
-            <li><a href="{$productversion}/tg{$htmlpage}">TG</a></li>
-            <li><a href="{$productversion}/tr{$htmlpage}">TR</a></li>
-            <li><a href="{$productversion}/ug{$htmlpage}">UG</a></li>
-            <li><a href="{$productversion}/uk{$htmlpage}">UK</a></li>
-            <li><a href="{$productversion}/vi{$htmlpage}">VI</a></li>
-            <li><a href="{$productversion}/zh-CN{$htmlpage}">ZH-CN</a></li>
-            <li><a href="{$productversion}/zh-TW{$htmlpage}">ZH-TW</a></li>
-        </ul>
+        <xsl:if test="$online">
+            <input id="langs" name="language-menu" type="checkbox"/>
+            <label for="langs" role="button">Language ▼</label>
+            <ul>
+                <li><a href="{$productversion}/en-US{$htmlpage}">EN-US</a></li>
+                <li><a href="{$productversion}/am{$htmlpage}">AM</a></li>
+                <li><a href="{$productversion}/ar{$htmlpage}">AR</a></li>
+                <li><a href="{$productversion}/ast{$htmlpage}">AST</a></li>
+                <li><a href="{$productversion}/bg{$htmlpage}">BG</a></li>
+                <li><a href="{$productversion}/bn{$htmlpage}">BN</a></li>
+                <li><a href="{$productversion}/bn-IN{$htmlpage}">BN-IN</a></li>
+                <li><a href="{$productversion}/bo{$htmlpage}">BO</a></li>
+                <li><a href="{$productversion}/bs{$htmlpage}">BS</a></li>
+                <li><a href="{$productversion}/ca{$htmlpage}">CA</a></li>
+                <li><a href="{$productversion}/ca-valencia{$htmlpage}">CA-Valencia</a></li>
+                <li><a href="{$productversion}/cs{$htmlpage}">CS</a></li>
+                <li><a href="{$productversion}/da{$htmlpage}">DA</a></li>
+                <li><a href="{$productversion}/de{$htmlpage}">DE</a></li>
+                <li><a href="{$productversion}/dz{$htmlpage}">DZ</a></li>
+                <li><a href="{$productversion}/el{$htmlpage}">EL</a></li>
+                <li><a href="{$productversion}/en-GB{$htmlpage}">EN-GB</a></li>
+                <li><a href="{$productversion}/en-ZA{$htmlpage}">EN-ZA</a></li>
+                <li><a href="{$productversion}/eo{$htmlpage}">EO</a></li>
+                <li><a href="{$productversion}/es{$htmlpage}">ES</a></li>
+                <li><a href="{$productversion}/et{$htmlpage}">ET</a></li>
+                <li><a href="{$productversion}/eu{$htmlpage}">EU</a></li>
+                <li><a href="{$productversion}/fi{$htmlpage}">FI</a></li>
+                <li><a href="{$productversion}/fr{$htmlpage}">FR</a></li>
+                <li><a href="{$productversion}/gl{$htmlpage}">GL</a></li>
+                <li><a href="{$productversion}/gu{$htmlpage}">GU</a></li>
+                <li><a href="{$productversion}/he{$htmlpage}">HE</a></li>
+                <li><a href="{$productversion}/hi{$htmlpage}">HI</a></li>
+                <li><a href="{$productversion}/hr{$htmlpage}">HR</a></li>
+                <li><a href="{$productversion}/hu{$htmlpage}">HU</a></li>
+                <li><a href="{$productversion}/id{$htmlpage}">ID</a></li>
+                <li><a href="{$productversion}/is{$htmlpage}">IS</a></li>
+                <li><a href="{$productversion}/it{$htmlpage}">IT</a></li>
+                <li><a href="{$productversion}/ja{$htmlpage}">JA</a></li>
+                <li><a href="{$productversion}/ka{$htmlpage}">KA</a></li>
+                <li><a href="{$productversion}/km{$htmlpage}">KM</a></li>
+                <li><a href="{$productversion}/ko{$htmlpage}">KO</a></li>
+                <li><a href="{$productversion}/lo{$htmlpage}">LO</a></li>
+                <li><a href="{$productversion}/lt{$htmlpage}">LT</a></li>
+                <li><a href="{$productversion}/lv{$htmlpage}">LV</a></li>
+                <li><a href="{$productversion}/mk{$htmlpage}">MK</a></li>
+                <li><a href="{$productversion}/nb{$htmlpage}">NB</a></li>
+                <li><a href="{$productversion}/ne{$htmlpage}">NE</a></li>
+                <li><a href="{$productversion}/nl{$htmlpage}">NL</a></li>
+                <li><a href="{$productversion}/nn{$htmlpage}">NN</a></li>
+                <li><a href="{$productversion}/om{$htmlpage}">OM</a></li>
+                <li><a href="{$productversion}/pl{$htmlpage}">PL</a></li>
+                <li><a href="{$productversion}/pt{$htmlpage}">PT</a></li>
+                <li><a href="{$productversion}/pt-BR{$htmlpage}">PT-BR</a></li>
+                <li><a href="{$productversion}/ro{$htmlpage}">RO</a></li>
+                <li><a href="{$productversion}/ru{$htmlpage}">RU</a></li>
+                <li><a href="{$productversion}/sid{$htmlpage}">SID</a></li>
+                <li><a href="{$productversion}/sk{$htmlpage}">SK</a></li>
+                <li><a href="{$productversion}/sl{$htmlpage}">SL</a></li>
+                <li><a href="{$productversion}/sq{$htmlpage}">SQ</a></li>
+                <li><a href="{$productversion}/sv{$htmlpage}">SV</a></li>
+                <li><a href="{$productversion}/ta{$htmlpage}">TA</a></li>
+                <li><a href="{$productversion}/tg{$htmlpage}">TG</a></li>
+                <li><a href="{$productversion}/tr{$htmlpage}">TR</a></li>
+                <li><a href="{$productversion}/ug{$htmlpage}">UG</a></li>
+                <li><a href="{$productversion}/uk{$htmlpage}">UK</a></li>
+                <li><a href="{$productversion}/vi{$htmlpage}">VI</a></li>
+                <li><a href="{$productversion}/zh-CN{$htmlpage}">ZH-CN</a></li>
+                <li><a href="{$productversion}/zh-TW{$htmlpage}">ZH-TW</a></li>
+            </ul>
+        </xsl:if>
     </header>
-    <nav class="modules">
+    <nav id="Modules" class="modules">
         <ul>
             <li><a href="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC"><div class="calc"></div>Calc</a></li>
             <li><a href="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer"></div>Writer</a></li>
@@ -234,26 +230,28 @@
             <label for="accordion-1" role="button">Contents</label>
             <div id="Contents" class="contents-treeview"></div>
         </div>
-        <div class="acc-panel">
-            <input id="accordion-2" name="accordion-menu" type="checkbox"/>
-            <label for="accordion-2" role="button">Search</label>
-            <div id="content-2">
-                <script type="text/javascript">
-                    <![CDATA[
-                    (function() {
-                    var cx = '010161382024564278136:oejldkqc20o';
-                    var gcse = document.createElement('script');
-                    gcse.type = 'text/javascript';
-                    gcse.async = true;
-                    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-                    var s = document.getElementsByTagName('script')[0];
-                    s.parentNode.insertBefore(gcse, s);
-                    })();
-                    ]]>
-                </script>
-                <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
+        <xsl:if test="$online">
+            <div class="acc-panel">
+                <input id="accordion-2" name="accordion-menu" type="checkbox"/>
+                <label for="accordion-2" role="button">Search</label>
+                <div id="content-2">
+                    <script type="text/javascript">
+                        <![CDATA[
+                        (function() {
+                        var cx = '010161382024564278136:oejldkqc20o';
+                        var gcse = document.createElement('script');
+                        gcse.type = 'text/javascript';
+                        gcse.async = true;
+                        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(gcse, s);
+                        })();
+                        ]]>
+                    </script>
+                    <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
+                </div>
             </div>
-        </div>
+        </xsl:if>
         <div class="acc-panel">
             <input id="accordion-3" name="accordion-menu" type="checkbox"/>
             <label for="accordion-3" role="button">Index</label>
@@ -290,37 +288,59 @@
     </footer>
     <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
     <script type="text/javascript" src="{$productversion}/{$lang}/contents.js"/>
-    <script type="text/javascript">
-        <![CDATA[
-        var module = getParameterByName("DbPAR");
-        setModule(module);
-        var system = getParameterByName("System");
-        setSystem(system);
-        fixURL(module,system);
-        var dbg = getParameterByName("Debug");
-        if (dbg == null){dbg=0}
-        document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
-        document.getElementById("bm_module").innerHTML ="Module is: "+module;
-        document.getElementById("bm_system").innerHTML ="System is: "+system;
-        ]]>
-    </script>
-    <!-- Piwik -->
-    <script type="text/javascript">
-        <![CDATA[
-        var _paq = _paq || [];
-        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-        var u="//piwik.documentfoundation.org/";
-        _paq.push(['setTrackerUrl', u+'piwik.php']);
-        _paq.push(['setSiteId', '68']);
-        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-        })();
-        ]]>
-    </script>
-    <!-- End Piwik Code -->
+    <xsl:choose>
+        <xsl:when test="$online">
+            <script type="text/javascript">
+                <![CDATA[
+                var module = getParameterByName("DbPAR");
+                setModule(module);
+                var system = getParameterByName("System");
+                setSystem(system);
+                fixURL(module,system);
+                var dbg = getParameterByName("Debug");
+                if (dbg == null){dbg=0}
+                document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
+                document.getElementById("bm_module").innerHTML ="Module is: "+module;
+                document.getElementById("bm_system").innerHTML ="System is: "+system;
+                ]]>
+            </script>
+        </xsl:when>
+        <xsl:otherwise>
+            <script type="text/javascript">
+                <![CDATA[
+                var module = getParameterByName("DbPAR");
+                setModule(module);
+                var system = getSystem();
+                setSystem(system);
+                fixURL(module,system);
+                var dbg = getParameterByName("Debug");
+                if (dbg == null){dbg=0}
+                document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
+                document.getElementById("bm_module").innerHTML ="Module is: "+module;
+                document.getElementById("bm_system").innerHTML ="System is: "+system;
+                ]]>
+            </script>
+        </xsl:otherwise>
+    </xsl:choose>
+    <xsl:if test="$online">
+        <!-- Piwik -->
+        <script type="text/javascript">
+            <![CDATA[
+            var _paq = _paq || [];
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+            var u="//piwik.documentfoundation.org/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', '68']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+            })();
+            ]]>
+        </script>
+        <!-- End Piwik Code -->
+    </xsl:if>
     </body>
 </html>
 </xsl:template>
@@ -449,20 +469,19 @@
 
 <!-- LINK -->
 <xsl:template match="link">
-	<xsl:choose> <!-- don't insert the heading link to itself -->
-		<xsl:when test="(concat('/',@href) = /helpdocument/meta/topic/filename) or (@href = /helpdocument/meta/topic/filename)">
-			<xsl:apply-templates />
-		</xsl:when>
-		<xsl:when test="contains(child::embedvar/@href,'/00/00000004.xhp#wie')"> <!-- special treatment of howtoget links -->
-
-			<xsl:call-template name="insert_howtoget">
-				<xsl:with-param name="linkhref" select="@href"/>
-			</xsl:call-template>
-		</xsl:when>
-		<xsl:otherwise>
-			<xsl:call-template name="createlink" />
-		</xsl:otherwise>
-	</xsl:choose>
+    <xsl:choose> <!-- don't insert the heading link to itself -->
+        <xsl:when test="(concat('/',@href) = /helpdocument/meta/topic/filename) or (@href = /helpdocument/meta/topic/filename)">
+            <xsl:apply-templates />
+        </xsl:when>
+        <xsl:when test="contains(child::embedvar/@href,'/00/00000004.xhp#wie')"> <!-- special treatment of howtoget links -->
+            <xsl:call-template name="insert_howtoget">
+                <xsl:with-param name="linkhref" select="@href"/>
+            </xsl:call-template>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:call-template name="createlink" />
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 <xsl:template match="link" mode="embedded">
 	<xsl:call-template name="createlink"/>
@@ -503,11 +522,11 @@
 
 <!-- LISTITEM -->
 <xsl:template match="listitem">
-	<li><xsl:apply-templates /></li>
+    <li><xsl:apply-templates /></li>
 </xsl:template>
 
 <xsl:template match="listitem" mode="embedded">
-	<li><xsl:apply-templates mode="embedded"/></li>
+    <li><xsl:apply-templates mode="embedded"/></li>
 </xsl:template>
 
 <!-- META, SEE HEADER -->
@@ -866,82 +885,82 @@
 
 <!-- Evaluate a case or caseinline switch -->
 <xsl:template name="insertcase">
-	<xsl:param name="embedded" />
-	<xsl:choose>
-		<xsl:when test="parent::switch[@select='sys'] or parent::switchinline[@select='sys']">
-				<xsl:choose>
-					<xsl:when test="$embedded = 'yes'">
-						<span hidden="true" itemprop="system" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
-					</xsl:when>
-					<xsl:otherwise>
-						<span  hidden="true" itemprop="system" value="{@select}"><xsl:apply-templates /></span>
-					</xsl:otherwise>
-				</xsl:choose>
-		</xsl:when>
-		<xsl:when test="parent::switch[@select='appl'] or parent::switchinline[@select='appl']">
-				<xsl:choose>
-					<xsl:when test="$embedded = 'yes'">
-						<span  hidden="true" itemprop="appl" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
-					</xsl:when>
-					<xsl:otherwise>
-						<span  hidden="true" itemprop="appl" value="{@select}"><xsl:apply-templates /></span>
-					</xsl:otherwise>
-				</xsl:choose>
-		</xsl:when>
-		<xsl:when test="parent::switch[@select='distrib'] or parent::switchinline[@select='distrib']">
-				<xsl:choose>
-					<xsl:when test="$embedded = 'yes'">
-						<span  hidden="true" itemprop="distrib" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
-					</xsl:when>
-					<xsl:otherwise>
-						<span  hidden="true" itemprop="distrib" value="{@select}"><xsl:apply-templates /></span>
-					</xsl:otherwise>
-				</xsl:choose>
-		</xsl:when>
-	</xsl:choose>
+    <xsl:param name="embedded" />
+    <xsl:choose>
+        <xsl:when test="parent::switch[@select='sys'] or parent::switchinline[@select='sys']">
+            <xsl:choose>
+                <xsl:when test="$embedded = 'yes'">
+                    <span hidden="true" itemprop="system" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
+                </xsl:when>
+                <xsl:otherwise>
+                    <span  hidden="true" itemprop="system" value="{@select}"><xsl:apply-templates /></span>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:when>
+        <xsl:when test="parent::switch[@select='appl'] or parent::switchinline[@select='appl']">
+            <xsl:choose>
+                <xsl:when test="$embedded = 'yes'">
+                    <span  hidden="true" itemprop="appl" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
+                </xsl:when>
+                <xsl:otherwise>
+                    <span  hidden="true" itemprop="appl" value="{@select}"><xsl:apply-templates /></span>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:when>
+        <xsl:when test="parent::switch[@select='distrib'] or parent::switchinline[@select='distrib']">
+            <xsl:choose>
+                <xsl:when test="$embedded = 'yes'">
+                    <span  hidden="true" itemprop="distrib" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
+                </xsl:when>
+                <xsl:otherwise>
+                    <span  hidden="true" itemprop="distrib" value="{@select}"><xsl:apply-templates /></span>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:when>
+    </xsl:choose>
 </xsl:template>
 
 <!-- Evaluate a default or defaultinline switch -->
 <xsl:template name="insertdefault">
-	<xsl:param name="embedded" />
-	<xsl:choose>
-		<xsl:when test="parent::switch[@select='sys'] or parent::switchinline[@select='sys']">
-			<xsl:if test="not(../child::case[@select=$System]) and not(../child::caseinline[@select=$System])">
-				<xsl:choose>
-					<xsl:when test="$embedded = 'yes'">
-						<span hidden="true" itemprop="system" value="WIN"><xsl:apply-templates mode="embedded"/></span>
-					</xsl:when>
-					<xsl:otherwise>
-						<span hidden="true" itemprop="system" value="WIN"><xsl:apply-templates /></span>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:if>
-		</xsl:when>
-		<xsl:when test="parent::switch[@select='appl'] or parent::switchinline[@select='appl']">
-			<xsl:if test="not(../child::case[@select=$appl]) and not(../child::caseinline[@select=$appl])">
-				<xsl:choose>
-					<xsl:when test="$embedded = 'yes'">
-						<span hidden="true" itemprop="appl" value="SHARED"><xsl:apply-templates mode="embedded"/></span>
-					</xsl:when>
-					<xsl:otherwise>
-						<span hidden="true" itemprop="appl" value="SHARED"><xsl:apply-templates /></span>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:if>
-		</xsl:when>
-		<xsl:when test="parent::switch[@select='distrib'] or parent::switchinline[@select='distrib']">
-			<xsl:if test="not(../child::case[@select=$distrib]) and not(../child::caseinline[@select=$distrib])">
-				<xsl:choose>
-					<xsl:when test="$embedded = 'yes'">
-						<span hidden="true" itemprop="distrib" value="DEFDIST"><xsl:apply-templates mode="embedded"/></span>
-					</xsl:when>
-					<xsl:otherwise>
-						<span hidden="true" itemprop="distrib" value="DEFDIST"><xsl:apply-templates /></span>
-					</xsl:otherwise>
-				</xsl:choose>
-			</xsl:if>
-		</xsl:when>
-	</xsl:choose>
+    <xsl:param name="embedded" />
+    <xsl:choose>
+        <xsl:when test="parent::switch[@select='sys'] or parent::switchinline[@select='sys']">
+            <xsl:if test="not(../child::case[@select=$System]) and not(../child::caseinline[@select=$System])">
+                <xsl:choose>
+                    <xsl:when test="$embedded = 'yes'">
+                        <span hidden="true" itemprop="system" value="WIN"><xsl:apply-templates mode="embedded"/></span>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <span hidden="true" itemprop="system" value="WIN"><xsl:apply-templates /></span>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:if>
+        </xsl:when>
+        <xsl:when test="parent::switch[@select='appl'] or parent::switchinline[@select='appl']">
+            <xsl:if test="not(../child::case[@select=$appl]) and not(../child::caseinline[@select=$appl])">
+                <xsl:choose>
+                    <xsl:when test="$embedded = 'yes'">
+                        <span hidden="true" itemprop="appl" value="SHARED"><xsl:apply-templates mode="embedded"/></span>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <span hidden="true" itemprop="appl" value="SHARED"><xsl:apply-templates /></span>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:if>
+        </xsl:when>
+        <xsl:when test="parent::switch[@select='distrib'] or parent::switchinline[@select='distrib']">
+            <xsl:if test="not(../child::case[@select=$distrib]) and not(../child::caseinline[@select=$distrib])">
+                <xsl:choose>
+                    <xsl:when test="$embedded = 'yes'">
+                        <span hidden="true" itemprop="distrib" value="DEFDIST"><xsl:apply-templates mode="embedded"/></span>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <span hidden="true" itemprop="distrib" value="DEFDIST"><xsl:apply-templates /></span>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:if>
+        </xsl:when>
+    </xsl:choose>
 </xsl:template>
 
 <!-- evaluate embeds -->
@@ -980,21 +999,21 @@
                     <xsl:variable name="tmp1" select="substring-after(@src, '/ui/')"/>
                     <xsl:variable name="tmp2" select="substring-before($tmp1,'/')"/>
                     <xsl:variable name="tmp3" select="substring-after($tmp1,'/')"/>
-                    <xsl:value-of select="concat('/',$productversion,'/', $tmp0,'/ui/', $tmp2, '/',$lang,'/',$tmp3)"/>
+                    <xsl:value-of select="concat($productversion,'/', $tmp0,'/ui/', $tmp2, '/',$lang,'/',$tmp3)"/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select="concat('/',$productversion,'/',@src)"/>
+                    <xsl:value-of select="concat($productversion,'/',@src)"/>
                 </xsl:otherwise>
             </xsl:choose>
          </xsl:when>
          <xsl:when test="starts-with(@src,'media/')">
-             <xsl:value-of select="concat('/',$productversion,'/',@src)"/>
+             <xsl:value-of select="concat($productversion,'/',@src)"/>
          </xsl:when>
          <xsl:when test="not(starts-with(@src,'media/'))">
-             <xsl:value-of select="concat('/',$productversion,'/media/icon-themes/',@src)"/>
+             <xsl:value-of select="concat($productversion,'/media/icon-themes/',@src)"/>
          </xsl:when>
          <xsl:otherwise>
-             <xsl:value-of select="concat('/',$productversion,@src)"/>
+             <xsl:value-of select="concat($productversion,@src)"/>
          </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -1042,25 +1061,25 @@
 
 <!-- changing measure to pixel -->
 <xsl:template name="convert2px">
-        <xsl:param name="value"/>
-        <xsl:choose>
-                <xsl:when test="contains($value, 'cm')">
-                     <xsl:value-of select="concat(round(number(substring-before($value, 'cm')) * $dpcm),'px')"/>
-                </xsl:when>
-                <xsl:when test="contains($value, 'mm')">
-                     <xsl:value-of select="concat(round(number(substring-before($value, 'mm')) * $dpmm),'px')"/>
-                </xsl:when>
-                <xsl:when test="contains($value, 'in')">
-                     <xsl:value-of select="concat(round(number(substring-before($value, 'in')) * $dpi),'px')"/>
-                </xsl:when>
-                <xsl:when test="contains($value, 'px')">
-                     <xsl:value-of select="$value"/>
-                </xsl:when>
-                <xsl:otherwise>
+    <xsl:param name="value"/>
+    <xsl:choose>
+        <xsl:when test="contains($value, 'cm')">
+            <xsl:value-of select="concat(round(number(substring-before($value, 'cm')) * $dpcm),'px')"/>
+        </xsl:when>
+        <xsl:when test="contains($value, 'mm')">
+            <xsl:value-of select="concat(round(number(substring-before($value, 'mm')) * $dpmm),'px')"/>
+        </xsl:when>
+        <xsl:when test="contains($value, 'in')">
+            <xsl:value-of select="concat(round(number(substring-before($value, 'in')) * $dpi),'px')"/>
+        </xsl:when>
+        <xsl:when test="contains($value, 'px')">
+            <xsl:value-of select="$value"/>
+        </xsl:when>
+        <xsl:otherwise>
 <!--                      <xsl:message>measure_conversion.xsl: Find no conversion for <xsl:value-of select="$value"/> to 'px'!</xsl:message> -->
-                     <xsl:value-of select="concat($value, 'px')"/>
-                </xsl:otherwise>
-       </xsl:choose>
+            <xsl:value-of select="concat($value, 'px')"/>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <!-- Insert a Table -->

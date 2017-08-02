@@ -16,14 +16,24 @@
 #
 # Note: change rootHelpex variable to your local git build
 #
+# convert2HTML $outDirLang $outDirHTML $lang $productversion $online $fileTree &
 
 function convert2HTML() {
 #outDirLang =1
 #outDirHTML =2
 #lang =3
 #productversion =4
+#online=5
+#filetree=6
 
-xsltparm='--stringparam Language '$3' --stringparam productversion '$4' --stringparam root '$1'/'
+###########################################
+#
+# Process translated XHP files
+#
+###########################################
+
+xsltparm='--stringparam fileTree '$6' --stringparam local '$5' --stringparam Language '$3' --stringparam productversion '$4' --stringparam root '$1'/'
+
 echo 'Conversion to HTML started for '$3
 for filep in `find $1/text -name "*.xhp"`
 do
@@ -33,7 +43,11 @@ outFile=$2'/text/'$name'html'
 xsltproc $xsltparm -o $outFile online_transform.xsl $filep
 done
 
+###########################################
+#
 # Process tree files
+#
+###########################################
 
 treePOFile=`mktemp`
 echo $root/translations/source/$3/helpcontent2/source/auxiliary.po > $treePOFile
@@ -69,8 +83,17 @@ rm -f $treePOFile
 echo 'Conversion to HTML finished for '$3
 }
 
+###########################################
+#
+# Start Main Process
+#
+###########################################
+
 # Change root of git core
 productversion='6.0'
+local='no'
+fileTree='/home/tdf/git/core/helpcontent2/help3xsl/html/'
+
 rootHelpex=/home/tdf/git/core
 
 ALL_LANGS='en-US am ar ast bg bn bn-IN bo bs ca ca-valencia cs da de dz el en-GB en-ZA eo es et eu fi fr gl gu he hi hr hu id is it ja ka km ko lo lt lv mk nb ne nl nn om pl pt-BR pt ro ru sid si sk sl sq sv ta tg tr ug uk vi zh-CN zh-TW'
@@ -87,9 +110,11 @@ mkdir -p $here'/html/'$productversion
 
 echo 'copy global service files'
 cp index.html $here'/html/'
+cp LOHelp.html $here'/html/'
+cp index2.html $here'/html/'$productversion'/index.html'
 cp help.js $here'/html/'$productversion'/'
 cp jquery-3.1.1.min.js $here'/html/'$productversion'/'
-cp normalize.js $here'/html/'$productversion'/'
+cp normalize.css $here'/html/'$productversion'/'
 cp default.css $here'/html/'$productversion'/'
 
 cp -rap ../source/media $here'/html/'$productversion'/'
@@ -117,16 +142,26 @@ echo "setting URE_BOOTSTRAP to: ${URE_BOOTSTRAP}"
 echo "setting search path to: ${LD_LIBRARY_PATH}"
 echo "execing: ${exedir}/helpex"
 
+###########################################
+#
 # Create the bookmark2file map
+#
+###########################################
 stub1='var map={'
 stub2='};'
-ffile='html/bookmark2file.js'
+ffile='html/'$productversion'/bookmark2file.js'
 ffile2=/tmp/tmpbkm.txt
 rm -f $ffile2 $ffile
 find $helpfiles -type f -name "*.xhp" -exec xsltproc get_url.xsl {} + > $ffile2
 echo $stub1 >> $ffile
 awk 'NF' $ffile2 >> $ffile
 echo $stub2 >> $ffile
+
+###########################################
+#
+# Process languages
+#
+###########################################
 
 for lang in $ALL_LANGS
 do
@@ -178,7 +213,7 @@ echo 'Extracting bookmarks'
 ./get_bookmark.sh $lang $productversion &
 
 # converting to HTML
-convert2HTML $outDirLang $outDirHTML $lang $productversion &
+convert2HTML $outDirLang $outDirHTML $lang $productversion $local $fileTree &
 
 rm -f $pofiles $xhpfiles
 done
