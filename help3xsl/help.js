@@ -37,9 +37,11 @@ function fixURL(module, system){
     var pSystem = (system == null) ? "WIN" : system;
     var pAppl = (module == null) ? "WRITER" : module;
     var n = itemlink.length;
-    var item;
-    for (var i = 0; i<n; i++) {setURLParam(itemlink[i], pSystem, pAppl)
+
+    for (var i = 0; i<n; i++) {
+        setURLParam(itemlink[i], pSystem, pAppl)
     }
+
 }
 //Set the params inside URL
 function setURLParam (itemlink, pSystem, pAppl) {
@@ -58,6 +60,16 @@ function setURLParam (itemlink, pSystem, pAppl) {
         }
     }
 }
+
+function getSystem (){
+    var system="Unknown OS";
+    if (navigator.appVersion.indexOf("Win")!=-1) system="WIN";
+    if (navigator.appVersion.indexOf("Mac")!=-1) system="MAC";
+    if (navigator.appVersion.indexOf("X11")!=-1) system="UNIX";
+    if (navigator.appVersion.indexOf("Linux")!=-1) system="UNIX";
+    return system;
+}
+
 
 function getParameterByName(name, url) {
     if (!url) {

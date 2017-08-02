@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+* This file is part of the LibreOffice project.
+*
+* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+<html>
+<head>
+    <script type="text/javascript" src="latest/help.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    var url = window.location.href;
+    var n = url.indexOf('LOHelp.html?');
+    if (n != -1){
+    // the URL came from LibreOffice help (F1)
+    var version = getParameterByName("Version",url);
+    var rest = url.substr(n+12,url.lenght);
+    var newURL = version+'/index.html?'+rest;
+    window.open(newURL,'_self');
+    }else{
+    // URL came from elsewhere, direct access to webroot, we redirect to main Help page
+    window.open('latest/en-US/text/shared/main0108.html?&DbPAR=WRITER&System=WIN','_self');
+    }
+</script>
+</body>
+</html>
+
