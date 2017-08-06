@@ -110,7 +110,7 @@ mkdir -p $here'/html/'$productversion
 
 echo 'copy global service files'
 cp index.html $here'/html/'
-cp LOHelp.html $here'/html/'
+cp help.html $here'/html/'
 cp index2.html $here'/html/'$productversion'/index.html'
 cp help.js $here'/html/'$productversion'/'
 cp jquery-3.1.1.min.js $here'/html/'$productversion'/'
