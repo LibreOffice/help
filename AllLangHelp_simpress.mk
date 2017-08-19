@@ -172,6 +172,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/guide/gluepoints \
     helpcontent2/source/text/simpress/guide/html_export \
     helpcontent2/source/text/simpress/guide/html_import \
+    helpcontent2/source/text/simpress/guide/impress_remote \
     helpcontent2/source/text/simpress/guide/individual \
     helpcontent2/source/text/simpress/guide/keyboard \
     helpcontent2/source/text/simpress/guide/layer_move \
