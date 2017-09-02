@@ -21,7 +21,7 @@
 
 <xsl:output indent="yes" method="html" doctype-system= "about:legacy-compat"/>
 
-
+<xsl:include href="localized.xsl"/>
 <!--
 ############################
 # Variables and Parameters #
@@ -143,7 +143,7 @@
         </a>
         <xsl:if test="$online">
             <input id="langs" name="language-menu" type="checkbox"/>
-            <label for="langs" role="button">Language ▼</label>
+            <label for="langs"><xsl:call-template name="getLanguage"><xsl:with-param name="lang" select="$lang"/></xsl:call-template> ▼</label>
             <ul>
                 <li><a href="{$productversion}/en-US{$htmlpage}">EN-US</a></li>
                 <li><a href="{$productversion}/am{$htmlpage}">AM</a></li>
@@ -227,13 +227,13 @@
     <div class="accordion">
         <div class="acc-panel">
             <input id="accordion-1" name="accordion-menu" type="checkbox"/>
-            <label for="accordion-1">Contents</label>
+            <label for="accordion-1"><xsl:call-template name="getContents"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
             <div id="Contents" class="contents-treeview"></div>
         </div>
         <xsl:if test="$online">
             <div class="acc-panel">
                 <input id="accordion-2" name="accordion-menu" type="checkbox"/>
-                <label for="accordion-2">Search</label>
+                <label for="accordion-2"><xsl:call-template name="getSearch"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
                 <div id="content-2">
                     <script type="text/javascript">
                         <![CDATA[
@@ -254,21 +254,30 @@
         </xsl:if>
         <div class="acc-panel">
             <input id="accordion-3" name="accordion-menu" type="checkbox"/>
-            <label for="accordion-3">Index</label>
+            <label for="accordion-3"><xsl:call-template name="getIndex"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
             <div id="Index">
                 <div id="SearchBox">
                     <p> &#32;&#x1f50e;&#32; <input id="search-bar" type="text"/></p>
                 </div>
                 <div id="Bookmarks">
-                    <ul id="bookmarkCALC" hidden="true"></ul>
-                    <ul id="bookmarkCHART" hidden="true"></ul>
-                    <ul id="bookmarkWRITER" hidden="true"></ul>
-                    <ul id="bookmarkDRAW" hidden="true"></ul>
-                    <ul id="bookmarkIMPRESS" hidden="true"></ul>
-                    <ul id="bookmarkMATH" hidden="true"></ul>
-                    <ul id="bookmarkBASE" hidden="true"></ul>
+		    <p>CALC</p>	
+		    <ul id="bookmarkCALC"></ul>
+		    <p>CHART</p>	
+                    <ul id="bookmarkCHART"></ul>
+		    <p>WRITER</p>	
+                    <ul id="bookmarkWRITER"></ul>
+		    <p>DRAW</p>	
+                    <ul id="bookmarkDRAW" ></ul>
+		    <p>IMPRESS</p>	
+                    <ul id="bookmarkIMPRESS"></ul>
+		    <p>MATH</p>	
+                    <ul id="bookmarkMATH"></ul>
+		    <p>BASE</p>	
+                    <ul id="bookmarkBASE"></ul>
+		    <p>BASIC</p>	
+                    <ul id="bookmarkBASIC"></ul>
+		    <p>GLOBAL</p>	
                     <ul id="bookmarkSHARED"></ul>
-                    <ul id="bookmarkBASIC" hidden="true"></ul>
                 </div>
             </div>
         </div>
@@ -292,14 +301,15 @@
         <xsl:when test="$online">
             <script type="text/javascript">
                 <![CDATA[
+		var userLang = navigator.language || navigator.userLanguage; 
                 var module = getParameterByName("DbPAR");
                 setModule(module);
                 var system = getParameterByName("System");
                 setSystem(system);
                 fixURL(module,system);
                 var dbg = getParameterByName("Debug");
-                //if (dbg == null){dbg=1}
-                dbg=1
+                if (dbg == null){dbg=1}
+                //dbg=1
                 document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
                 document.getElementById("bm_module").innerHTML ="Module is: "+module;
                 document.getElementById("bm_system").innerHTML ="System is: "+system;
