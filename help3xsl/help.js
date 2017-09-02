@@ -10,7 +10,6 @@
 // Used to set Apllication in caseinlie=APP
 function setModule(module){
     if (module == null){module="WRITER"}
-    document.getElementById("bookmark"+module).hidden=false;
     var itemspan = document.getElementsByTagName("span");
     var n = itemspan.length;
     for (var i = 0; i < n; i++){
