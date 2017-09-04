@@ -15,10 +15,11 @@ Stylesheet map language-dependent parameters and translation
 <xsl:template name="getContents">
     <xsl:param name="lang"/>
     <xsl:choose>
+        <xsl:when test="$lang='ast'"><xsl:text>Conteníu</xsl:text></xsl:when>
         <xsl:when test="$lang='en-US'"><xsl:text>Contents</xsl:text></xsl:when>
         <xsl:when test="$lang='en-GB'"><xsl:text>Contents</xsl:text></xsl:when>
+        <xsl:when test="$lang='es'"><xsl:text>Contenido</xsl:text></xsl:when>
         <xsl:when test="$lang='en-ZA'"><xsl:text>Contents</xsl:text></xsl:when>
-        <xsl:when test="$lang='pt-BR'"><xsl:text>Conteúdo</xsl:text></xsl:when>
         <xsl:when test="$lang='pt'"><xsl:text>Conteúdo</xsl:text></xsl:when>
         <xsl:otherwise><xsl:text>Contents</xsl:text></xsl:otherwise>
 </xsl:choose>
@@ -27,9 +28,11 @@ Stylesheet map language-dependent parameters and translation
 <xsl:template name="getIndex">
     <xsl:param name="lang"/>
     <xsl:choose>
+        <xsl:when test="$lang='ast'"><xsl:text>Índiz</xsl:text></xsl:when>
         <xsl:when test="$lang='en-US'"><xsl:text>Index</xsl:text></xsl:when>
         <xsl:when test="$lang='en-GB'"><xsl:text>Index</xsl:text></xsl:when>
         <xsl:when test="$lang='en-ZA'"><xsl:text>Index</xsl:text></xsl:when>
+        <xsl:when test="$lang='es'"><xsl:text>Índice</xsl:text></xsl:when>
         <xsl:when test="$lang='pt-BR'"><xsl:text>Índice</xsl:text></xsl:when>
         <xsl:when test="$lang='pt'"><xsl:text>Índice</xsl:text></xsl:when>
         <xsl:otherwise><xsl:text>Index</xsl:text></xsl:otherwise>
@@ -39,9 +42,11 @@ Stylesheet map language-dependent parameters and translation
 <xsl:template name="getSearch">
     <xsl:param name="lang"/>
     <xsl:choose>
+        <xsl:when test="$lang='ast'"><xsl:text>Alcontrar</xsl:text></xsl:when>
         <xsl:when test="$lang='en-US'"><xsl:text>Find</xsl:text></xsl:when>
         <xsl:when test="$lang='en-GB'"><xsl:text>Find</xsl:text></xsl:when>
         <xsl:when test="$lang='en-ZA'"><xsl:text>Find</xsl:text></xsl:when>
+        <xsl:when test="$lang='es'"><xsl:text>Buscar</xsl:text></xsl:when>
         <xsl:when test="$lang='pt-BR'"><xsl:text>Pesquisar</xsl:text></xsl:when>
         <xsl:when test="$lang='pt'"><xsl:text>Pesquisar</xsl:text></xsl:when>
         <xsl:otherwise><xsl:text>Find</xsl:text></xsl:otherwise>
@@ -51,9 +56,11 @@ Stylesheet map language-dependent parameters and translation
 <xsl:template name="getLanguage">
     <xsl:param name="lang"/>
     <xsl:choose>
+        <xsl:when test="$lang='ast'"><xsl:text>Llingua</xsl:text></xsl:when>
         <xsl:when test="$lang='en-US'"><xsl:text>Language</xsl:text></xsl:when>
         <xsl:when test="$lang='en-GB'"><xsl:text>Language</xsl:text></xsl:when>
         <xsl:when test="$lang='en-ZA'"><xsl:text>Language</xsl:text></xsl:when>
+        <xsl:when test="$lang='es'"><xsl:text>Idioma</xsl:text></xsl:when>
         <xsl:when test="$lang='pt-BR'"><xsl:text>Idioma</xsl:text></xsl:when>
         <xsl:when test="$lang='pt'"><xsl:text>Idioma</xsl:text></xsl:when>
         <xsl:otherwise><xsl:text>Language</xsl:text></xsl:otherwise>
