@@ -207,7 +207,7 @@
                 <li><a href="{$productversion}/tr{$htmlpage}">Türkçe</a></li>
                 <li><a href="{$productversion}/ug{$htmlpage}">ئۇيغۇرچە</a></li>
                 <li><a href="{$productversion}/uk{$htmlpage}">Українська</a></li>
-                <li><a href="{$productversion}/vi{$htmlpage}">Việtnam</a></li>
+                <li><a href="{$productversion}/vi{$htmlpage}">Tiếng Việt</a></li>
                 <li><a href="{$productversion}/zh-CN{$htmlpage}">中文</a></li>
                 <li><a href="{$productversion}/zh-TW{$htmlpage}">中文(台灣)</a></li>
             </ul>
