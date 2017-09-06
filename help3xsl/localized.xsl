@@ -18,6 +18,8 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='ast'"><xsl:text>Conteníu</xsl:text></xsl:when>
         <xsl:when test="$lang='be'"><xsl:text>Змест</xsl:text></xsl:when>
         <xsl:when test="$lang='bg'"><xsl:text>Съдържание</xsl:text></xsl:when>
+        <xsl:when test="$lang='cs'"><xsl:text>Obsah</xsl:text></xsl:when>
+        <xsl:when test="$lang='da'"><xsl:text>Indhold</xsl:text></xsl:when>
         <xsl:when test="$lang='de'"><xsl:text>Inhalte</xsl:text></xsl:when>
         <xsl:when test="$lang='el'"><xsl:text>Περιεχόμενα</xsl:text></xsl:when>
         <xsl:when test="$lang='en-US'"><xsl:text>Contents</xsl:text></xsl:when>
@@ -51,6 +53,8 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='ast'"><xsl:text>Índiz</xsl:text></xsl:when>
         <xsl:when test="$lang='be'"><xsl:text>Індэкс</xsl:text></xsl:when>
         <xsl:when test="$lang='bg'"><xsl:text>Индекс</xsl:text></xsl:when>
+        <xsl:when test="$lang='cs'"><xsl:text>Rejstřík</xsl:text></xsl:when>
+        <xsl:when test="$lang='da'"><xsl:text>Indeks</xsl:text></xsl:when>
         <xsl:when test="$lang='de'"><xsl:text>Stichworte</xsl:text></xsl:when>
         <xsl:when test="$lang='el'"><xsl:text>Ευρετήριο</xsl:text></xsl:when>
         <xsl:when test="$lang='en-US'"><xsl:text>Index</xsl:text></xsl:when>
@@ -84,6 +88,8 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='ast'"><xsl:text>Alcontrar</xsl:text></xsl:when>
         <xsl:when test="$lang='be'"><xsl:text>Пошук</xsl:text></xsl:when>
         <xsl:when test="$lang='bg'"><xsl:text>Търсене</xsl:text></xsl:when>
+        <xsl:when test="$lang='cs'"><xsl:text>Najít</xsl:text></xsl:when>
+        <xsl:when test="$lang='da'"><xsl:text>Find</xsl:text></xsl:when>
         <xsl:when test="$lang='de'"><xsl:text>Suchen</xsl:text></xsl:when>
         <xsl:when test="$lang='el'"><xsl:text>Εύρεση</xsl:text></xsl:when>
         <xsl:when test="$lang='en-US'"><xsl:text>Find</xsl:text></xsl:when>
@@ -117,6 +123,8 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='ast'"><xsl:text>Llingua</xsl:text></xsl:when>
         <xsl:when test="$lang='be'"><xsl:text>Мова</xsl:text></xsl:when>
         <xsl:when test="$lang='bg'"><xsl:text>Език</xsl:text></xsl:when>
+        <xsl:when test="$lang='cs'"><xsl:text>Jazyk</xsl:text></xsl:when>
+        <xsl:when test="$lang='da'"><xsl:text>Sprog</xsl:text></xsl:when>
         <xsl:when test="$lang='de'"><xsl:text>Sprache</xsl:text></xsl:when>
         <xsl:when test="$lang='el'"><xsl:text>Γλώσσα</xsl:text></xsl:when>
         <xsl:when test="$lang='en-US'"><xsl:text>Language</xsl:text></xsl:when>
