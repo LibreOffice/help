@@ -208,8 +208,8 @@
                 <li><a href="{$productversion}/ug{$htmlpage}">ئۇيغۇرچە</a></li>
                 <li><a href="{$productversion}/uk{$htmlpage}">Українська</a></li>
                 <li><a href="{$productversion}/vi{$htmlpage}">Tiếng Việt</a></li>
-                <li><a href="{$productversion}/zh-CN{$htmlpage}">中文</a></li>
-                <li><a href="{$productversion}/zh-TW{$htmlpage}">中文(台灣)</a></li>
+                <li><a href="{$productversion}/zh-CN{$htmlpage}">中文 (简体字)</a></li>
+                <li><a href="{$productversion}/zh-TW{$htmlpage}">中文 (正體字)‬</a></li>
             </ul>
         </xsl:if>
     </header>
