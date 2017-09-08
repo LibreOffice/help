@@ -786,9 +786,13 @@
 	<p id="{@id}" class="{$role}"><xsl:apply-templates /></p>
 </xsl:template>
 
+<xsl:template match="bascode">
+    <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><xsl:apply-templates /></div>
+</xsl:template>
+
 <!-- Insert Basic code snippet  -->
 <xsl:template name="insertbascode">
-	<pre itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><xsl:apply-templates /></pre>
+	<pre><xsl:apply-templates /></pre>
 </xsl:template>
 
 <!-- Insert Logo code snippet  -->
