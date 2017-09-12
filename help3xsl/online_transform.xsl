@@ -238,8 +238,9 @@
                 <div id="content-2">
                     <script type="text/javascript">
                         <![CDATA[
-                        (function() {
-                        var cx = '010161382024564278136:oejldkqc20o';
+                        (function() {]]>
+                        <xsl:call-template name="getToken"><xsl:with-param name="lang" select="$lang"/></xsl:call-template>
+                        <![CDATA[
                         var gcse = document.createElement('script');
                         gcse.type = 'text/javascript';
                         gcse.async = true;
@@ -611,40 +612,32 @@
 	</xsl:choose>
 </xsl:template>
 
-
 <!-- SECTION -->
 <xsl:template match="section">
-	<a name="{@id}"></a>
-
-		<xsl:choose>
-
-			<xsl:when test="@id='relatedtopics'">
-				<div class="relatedtopics">
-					<!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>-->
-					<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp')"/></xsl:variable>
-					<xsl:variable name="anchor"><xsl:value-of select="'related'"/></xsl:variable>
-					<xsl:variable name="doc" select="document($href)"/>
-                                        <p class="related" itemprop="mentions">
-						<xsl:apply-templates select="$doc//variable[@id=$anchor]"/>
-					</p>
-					<div class="relatedbody" itemprop="mentions">
-						<xsl:apply-templates />
-					</div>
-				</div>
-			</xsl:when>
-
-			<xsl:when test="@id='howtoget'">
-				<xsl:call-template name="insert_howtoget" />
-			</xsl:when>
-
-			<xsl:otherwise>
-						<xsl:apply-templates/>
-			</xsl:otherwise>
-
-		</xsl:choose>
-
+    <a name="{@id}"></a>
+    <xsl:choose>
+        <xsl:when test="@id='relatedtopics'">
+            <div class="relatedtopics">
+                <!--<xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp',$urlpost)"/></xsl:variable>-->
+                <xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp')"/></xsl:variable>
+                <xsl:variable name="anchor"><xsl:value-of select="'related'"/></xsl:variable>
+                <xsl:variable name="doc" select="document($href)"/>
+                <p class="related" itemprop="mentions">
+                    <xsl:apply-templates select="$doc//variable[@id=$anchor]"/>
+                </p>
+                <div class="relatedbody" itemprop="mentions">
+                    <xsl:apply-templates />
+                </div>
+            </div>
+        </xsl:when>
+        <xsl:when test="@id='howtoget'">
+            <xsl:call-template name="insert_howtoget" />
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:apply-templates/>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
-
 
 <!-- SECTION -->
 <xsl:template match="section" mode="embedded">

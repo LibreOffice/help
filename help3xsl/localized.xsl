@@ -159,10 +159,14 @@ Stylesheet map language-dependent parameters and translation
 <xsl:template name="getToken">
     <xsl:param name="lang"/>
     <xsl:choose>
-        <xsl:when test="$lang='en-US'"><xsl:text>123456</xsl:text></xsl:when>
-        <xsl:when test="$lang='fr'"><xsl:text>123456</xsl:text></xsl:when>
-        <xsl:when test="$lang='pt-BR'"><xsl:text>123456</xsl:text></xsl:when>
-        <xsl:otherwise><xsl:text>1234567890</xsl:text></xsl:otherwise>
+        <xsl:when test="$lang='en-US'"><xsl:text>var cx = '010161382024564278136:stzujqtpnve';</xsl:text></xsl:when>
+        <xsl:when test="$lang='es'"><xsl:text>var cx = '010161382024564278136:cdcn_oz4txg';</xsl:text></xsl:when>
+        <xsl:when test="$lang='fr'"><xsl:text>var cx = '010161382024564278136:mimp7dbi-eq';</xsl:text></xsl:when>
+        <xsl:when test="$lang='it'"><xsl:text>var cx = '010161382024564278136:xdxa9y906g0';</xsl:text></xsl:when>
+        <xsl:when test="$lang='ja'"><xsl:text>var cx = '010161382024564278136:7wxg-zakzmu';</xsl:text></xsl:when>
+        <xsl:when test="$lang='pt'"><xsl:text>var cx = '010161382024564278136:1x2uk8j-rbw';</xsl:text></xsl:when>
+        <xsl:when test="$lang='pt-BR'"><xsl:text>var cx = '010161382024564278136:1x2uk8j-rbw';</xsl:text></xsl:when>
+        <xsl:otherwise><xsl:text>var cx = '010161382024564278136:stzujqtpnve';</xsl:text></xsl:otherwise>
 </xsl:choose>
 </xsl:template>
 
