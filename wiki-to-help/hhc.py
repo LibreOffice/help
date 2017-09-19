@@ -40,7 +40,7 @@ class Wine(object):
     def __init__(self,workingDir,driveletter,args={}):
         """ 
         Setup the wine environment. Granting access so that wine is able 
-        @workingDir will be accessable via @driveletter
+        @workingDir will be accessible via @driveletter
         @args Arguments for Executor as dict (**args)
         E.g. Wine("/tmp/dir","j:") 
         """

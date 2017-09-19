@@ -7,7 +7,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-// Used to set Apllication in caseinlie=APP
+// Used to set Application in caseinline=APP
 function setModule(module){
     if (module == null){module="WRITER"}
     var itemspan = document.getElementsByTagName("span");

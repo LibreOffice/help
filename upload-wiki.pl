@@ -22,7 +22,7 @@ upload-wiki.pl [...] - Uploads the wiki/ subdir to a real wiki installation.
   -p - Don't upload the pages themselves
   -r - Upload also the redirects
 
-You need a wikisetup.txt in this directory, to be able to authentificate you.
+You need a wikisetup.txt in this directory, to be able to authenticate you.
 The content should be:
 
 wiki=<url of the api.php on the wiki>
@@ -191,7 +191,7 @@ if ( $upload_images ) {
             iiprop => 'sha1',
             titles => 'File:'.$imagename } );        
         my $mwimagesha1 = "";
-        #FIXME: bad style, this foreach should konsist only ONE imageid --> do that nicelier
+        #FIXME: bad style, this foreach should consist only ONE imageid --> do that nicelier
         foreach my $imageid (keys $mwquery->{'query'}{'pages'}) {
             $mwimagesha1 = $mwquery->{'query'}{'pages'}{$imageid}{'imageinfo'}->[0]->{'sha1'};
         }
@@ -205,7 +205,7 @@ if ( $upload_images ) {
             $imageuploadmsg = 'Initial upload.';
             upload_file_to_mw();
         } else {
-            print "Skipping image '$imagename', sha1 identially to already uploaded image.\n";
+            print "Skipping image '$imagename', sha1 identically to already uploaded image.\n";
         }
     }
 }

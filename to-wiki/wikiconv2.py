@@ -211,7 +211,7 @@ def xopen(path, mode, encoding):
     else:
         return open(path, mode)
 
-# used by ecape_help_text
+# used by escape_help_text
 helptagre = re.compile('''<[/]??[a-z_\-]+?(?:| +[a-zA-Z]+?=[\\\\]??".*?") *[/]??>''')
 
 def escape_help_text(text):
