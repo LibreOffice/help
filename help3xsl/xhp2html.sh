@@ -6,7 +6,7 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
-# This script builds translated XHP file with helpex excutable
+# This script builds translated XHP file with helpex executable
 # and thes transform it to html pages
 # 1) generates redirection from LibreOffice Help URL to right html page
 #    in index.html with bookmark2file.js
@@ -186,7 +186,7 @@ mkdir -p $here'/html/'$productversion'/media/icon-themes'
 cp -a ../../icon-themes/galaxy/* $here'/html/'$productversion'/media/icon-themes/'
 ln -s $productversion html/latest
 
-# Set helpex utilty and environment
+# Set helpex utility and environment
 
 while test ! -d "${rootHelpex}/instdir/program" ; do
 if test "${dir}" = "/"; then
@@ -238,7 +238,7 @@ mkdir -p $outDirLang
 outDirHTML=$here'/html/'$productversion'/'$lang
 mkdir -p $outDirHTML
 
-# Special case of en-US, tehre is no translation to do
+# Special case of en-US, there is no translation to do
 
 if [ "$lang" == en-US ];
 then

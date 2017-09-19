@@ -35,7 +35,7 @@ Example of a docbook table:
   <entry>b2</entry>
   <entry>b3</entry>
   <entry>b4</entry>
-  <entry morerows='1' valign='middle'><para>  <!-- Pernicous Mixed Content -->
+  <entry morerows='1' valign='middle'><para>  <!-- Pernicious Mixed Content -->
   Vertical Span</para></entry>
 </row>
 <row>

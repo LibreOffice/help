@@ -1,7 +1,7 @@
 #!/bin/bash -e
 # -e  Exit immediately if a command exits with a non-zero status.
 
-# This installs Microsofts HHC (HTML Help Compiler)
+# This installs Microsoft HHC (HTML Help Compiler)
 # Copyright 2011 Timo Richter and others.
 # Licensed under GNU GPLv3
 # Depends on: wine, wget, cabextract
@@ -36,7 +36,7 @@ cd "$HHDIR"
 # Install HTML Help Workshop
 wget -O htmlhelp.exe 'http://go.microsoft.com/fwlink/?LinkId=14188'
 
-# unneccessary
+# unnecessary
 #wine htmlhelp.exe
 
 cabextract -F hhc.exe htmlhelp.exe
