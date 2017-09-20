@@ -35,7 +35,7 @@ function convert2HTML() {
 xsltparm='--stringparam fileTree '$6' --stringparam local '$5' --stringparam Language '$3' --stringparam productversion '$4' --stringparam root '$1'/'
 
 echo 'Conversion to HTML started for '$3
-for filep in `find $1/text -name "*.xhp"`
+for filep in $(find $1/text -name "*.xhp")
 do
 DIR=${filep##*text/}
 name=${DIR:0:-3}
@@ -49,7 +49,7 @@ done
 #
 ###########################################
 
-treePOFile=`mktemp`
+treePOFile=$(mktemp)
 echo $root/translations/source/$3/helpcontent2/source/auxiliary.po > $treePOFile
 
 ALL_TREE='sbasic.tree  scalc.tree  schart.tree  shared.tree  simpress.tree  smath.tree  swriter.tree'
@@ -65,8 +65,8 @@ xsltparm='--stringparam lang '$3' --stringparam productversion '$4
 for tree in $ALL_TREE
 do
 treeSourceFile=$root'/helpcontent2/source/auxiliary/'$tree
-treeTemp1=`mktemp`
-treeTemp2=`mktemp`
+treeTemp1=$(mktemp)
+treeTemp2=$(mktemp)
 
 "${exedir}/treex" -l $3 -i $treeSourceFile -m $treePOFile -o $treeTemp1 -r $xhpFiles
 
@@ -97,8 +97,7 @@ fileTree='/home/tdf/git/core/helpcontent2/help3xsl/html/'
 rootHelpex=/home/tdf/git/core
 
 ALL_LANGS='en-US am ar ast bg bn bn-IN bo bs ca ca-valencia cs da de dz el en-GB en-ZA eo es et eu fi fr gl gu he hi hr hu id is it ja ka km ko lo lt lv mk nb ne nl nn om pl pt-BR pt ro ru sid si sk sl sq sv ta tg tr ug uk vi zh-CN zh-TW'
-
-here=`pwd`
+here=$(pwd)
 root=$(realpath "$here/../..")
 
 rm -rf $here/l10n
@@ -192,7 +191,7 @@ xhpfiles=`mktemp`
 find $translations -type f >$pofiles
 
 # For each po file
-for ff in `cat $pofiles`
+for ff in $(cat $pofiles)
 do
     echo 'Processing po file: '$ff
     potemp=`mktemp`
