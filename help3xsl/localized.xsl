@@ -31,6 +31,7 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='fr'"><xsl:text>Contenu</xsl:text></xsl:when>
         <xsl:when test="$lang='gl'"><xsl:text>Contido</xsl:text></xsl:when>
         <xsl:when test="$lang='hr'"><xsl:text>Sadržaj</xsl:text></xsl:when>
+        <xsl:when test="$lang='hu'"><xsl:text>Tartalom</xsl:text></xsl:when>
         <xsl:when test="$lang='is'"><xsl:text>Efni</xsl:text></xsl:when>
         <xsl:when test="$lang='it'"><xsl:text>Argomenti</xsl:text></xsl:when>
         <xsl:when test="$lang='ja'"><xsl:text>目次</xsl:text></xsl:when>
@@ -69,6 +70,7 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='fr'"><xsl:text>Índex</xsl:text></xsl:when>
         <xsl:when test="$lang='gl'"><xsl:text>Índice</xsl:text></xsl:when>
         <xsl:when test="$lang='hr'"><xsl:text>Indeks</xsl:text></xsl:when>
+        <xsl:when test="$lang='hu'"><xsl:text>Tárgymutató</xsl:text></xsl:when>
         <xsl:when test="$lang='is'"><xsl:text>Atriðaskrá</xsl:text></xsl:when>
         <xsl:when test="$lang='it'"><xsl:text>Indice</xsl:text></xsl:when>
         <xsl:when test="$lang='ja'"><xsl:text>索引</xsl:text></xsl:when>
@@ -107,6 +109,7 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='fr'"><xsl:text>Recherche</xsl:text></xsl:when>
         <xsl:when test="$lang='gl'"><xsl:text>Buscar</xsl:text></xsl:when>
         <xsl:when test="$lang='hr'"><xsl:text>Pronađi</xsl:text></xsl:when>
+        <xsl:when test="$lang='hu'"><xsl:text>Keresés</xsl:text></xsl:when>
         <xsl:when test="$lang='is'"><xsl:text>Leita</xsl:text></xsl:when>
         <xsl:when test="$lang='it'"><xsl:text>Cerca</xsl:text></xsl:when>
         <xsl:when test="$lang='ja'"><xsl:text>検索</xsl:text></xsl:when>
@@ -145,6 +148,7 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='fr'"><xsl:text>Langue</xsl:text></xsl:when>
         <xsl:when test="$lang='gl'"><xsl:text>Idioma</xsl:text></xsl:when>
         <xsl:when test="$lang='hr'"><xsl:text>Jezik</xsl:text></xsl:when>
+        <xsl:when test="$lang='hu'"><xsl:text>Nyelv</xsl:text></xsl:when>
         <xsl:when test="$lang='is'"><xsl:text>Tungumál</xsl:text></xsl:when>
         <xsl:when test="$lang='it'"><xsl:text>Lingua</xsl:text></xsl:when>
         <xsl:when test="$lang='ja'"><xsl:text>言語</xsl:text></xsl:when>
@@ -175,6 +179,7 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='es'"><xsl:text>var cx = '010161382024564278136:cdcn_oz4txg';</xsl:text></xsl:when>
         <xsl:when test="$lang='fi'"><xsl:text>var cx = '010161382024564278136:op1o8h6jnu8';</xsl:text></xsl:when>
         <xsl:when test="$lang='fr'"><xsl:text>var cx = '010161382024564278136:mimp7dbi-eq';</xsl:text></xsl:when>
+        <xsl:when test="$lang='hu'"><xsl:text>var cx = '010161382024564278136:imtiawlmhnk';</xsl:text></xsl:when>
         <xsl:when test="$lang='it'"><xsl:text>var cx = '010161382024564278136:xdxa9y906g0';</xsl:text></xsl:when>
         <xsl:when test="$lang='ja'"><xsl:text>var cx = '010161382024564278136:7wxg-zakzmu';</xsl:text></xsl:when>
         <xsl:when test="$lang='ko'"><xsl:text>var cx = '010161382024564278136:czaiuh5qxzu';</xsl:text></xsl:when>
