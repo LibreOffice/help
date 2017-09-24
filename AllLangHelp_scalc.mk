@@ -248,6 +248,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/stat_data \
     helpcontent2/source/text/scalc/01/ODFF \
     helpcontent2/source/text/scalc/01/text2columns \
+    helpcontent2/source/text/scalc/01/xml_source \
     helpcontent2/source/text/scalc/02/02130000 \
     helpcontent2/source/text/scalc/02/02140000 \
     helpcontent2/source/text/scalc/02/02150000 \
