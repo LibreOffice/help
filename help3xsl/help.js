@@ -98,8 +98,11 @@ $(document).ready(function() {
         }
         debouncer = setTimeout(function(){
             if ($('#search-bar').val()) {
-                $("#Index ul a:not(:contains('" + $('#search-bar').val() + "'))" ).parent().hide();
-                $("#Index ul a:contains('" + $('#search-bar').val() + "')" ).parent().show();
+                var toShow = $('#Index ul a').filter(function(){
+                    return $(this).text().toLowerCase().indexOf($('#search-bar').val().toLowerCase()) > -1;
+                });
+                toShow.parent().show();
+                $("#Index ul a").not(toShow).parent().hide();
             }
             else {
                 $("#Index ul li" ).show();
