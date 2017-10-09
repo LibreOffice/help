@@ -18,6 +18,8 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='ast'"><xsl:text>Conteníu</xsl:text></xsl:when>
         <xsl:when test="$lang='be'"><xsl:text>Змест</xsl:text></xsl:when>
         <xsl:when test="$lang='bg'"><xsl:text>Съдържание</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca'"><xsl:text>Contingut</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca-valencia'"><xsl:text>Contingut</xsl:text></xsl:when>
         <xsl:when test="$lang='cs'"><xsl:text>Obsah</xsl:text></xsl:when>
         <xsl:when test="$lang='da'"><xsl:text>Indhold</xsl:text></xsl:when>
         <xsl:when test="$lang='de'"><xsl:text>Inhalte</xsl:text></xsl:when>
@@ -57,6 +59,8 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='ast'"><xsl:text>Índiz</xsl:text></xsl:when>
         <xsl:when test="$lang='be'"><xsl:text>Індэкс</xsl:text></xsl:when>
         <xsl:when test="$lang='bg'"><xsl:text>Индекс</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca'"><xsl:text>Índex</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca-valencia'"><xsl:text>Índex</xsl:text></xsl:when>
         <xsl:when test="$lang='cs'"><xsl:text>Rejstřík</xsl:text></xsl:when>
         <xsl:when test="$lang='da'"><xsl:text>Indeks</xsl:text></xsl:when>
         <xsl:when test="$lang='de'"><xsl:text>Stichworte</xsl:text></xsl:when>
@@ -67,7 +71,7 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='eo'"><xsl:text>Indekso</xsl:text></xsl:when>
         <xsl:when test="$lang='es'"><xsl:text>Índice</xsl:text></xsl:when>
         <xsl:when test="$lang='fi'"><xsl:text>Hakemisto</xsl:text></xsl:when>
-        <xsl:when test="$lang='fr'"><xsl:text>Índex</xsl:text></xsl:when>
+        <xsl:when test="$lang='fr'"><xsl:text>Index</xsl:text></xsl:when>
         <xsl:when test="$lang='gl'"><xsl:text>Índice</xsl:text></xsl:when>
         <xsl:when test="$lang='hr'"><xsl:text>Indeks</xsl:text></xsl:when>
         <xsl:when test="$lang='hu'"><xsl:text>Tárgymutató</xsl:text></xsl:when>
@@ -96,6 +100,8 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='ast'"><xsl:text>Alcontrar</xsl:text></xsl:when>
         <xsl:when test="$lang='be'"><xsl:text>Пошук</xsl:text></xsl:when>
         <xsl:when test="$lang='bg'"><xsl:text>Търсене</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca'"><xsl:text>Cerca</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca-valencia'"><xsl:text>Cerca</xsl:text></xsl:when>
         <xsl:when test="$lang='cs'"><xsl:text>Najít</xsl:text></xsl:when>
         <xsl:when test="$lang='da'"><xsl:text>Find</xsl:text></xsl:when>
         <xsl:when test="$lang='de'"><xsl:text>Suchen</xsl:text></xsl:when>
@@ -135,6 +141,8 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='ast'"><xsl:text>Llingua</xsl:text></xsl:when>
         <xsl:when test="$lang='be'"><xsl:text>Мова</xsl:text></xsl:when>
         <xsl:when test="$lang='bg'"><xsl:text>Език</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca'"><xsl:text>Llengua</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca-valencia'"><xsl:text>Llengua</xsl:text></xsl:when>
         <xsl:when test="$lang='cs'"><xsl:text>Jazyk</xsl:text></xsl:when>
         <xsl:when test="$lang='da'"><xsl:text>Sprog</xsl:text></xsl:when>
         <xsl:when test="$lang='de'"><xsl:text>Sprache</xsl:text></xsl:when>
@@ -172,6 +180,8 @@ Stylesheet map language-dependent parameters and translation
     <xsl:param name="lang"/>
     <xsl:choose>
         <xsl:when test="$lang='en-US'"><xsl:text>var cx = '010161382024564278136:stzujqtpnve';</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca'"><xsl:text>var cx = '010161382024564278136:lcrnyzte-bs';</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca-valencia'"><xsl:text>var cx = '010161382024564278136:lcrnyzte-bs';</xsl:text></xsl:when>
         <xsl:when test="$lang='cs'"><xsl:text>var cx = '010161382024564278136:ruz0pcebqyi';</xsl:text></xsl:when>
         <xsl:when test="$lang='da'"><xsl:text>var cx = '010161382024564278136:icywq-zn8hi';</xsl:text></xsl:when>
         <xsl:when test="$lang='de'"><xsl:text>var cx = '010161382024564278136:5xb_5bltsto';</xsl:text></xsl:when>
