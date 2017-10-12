@@ -231,14 +231,16 @@ header {
     float: left;
     margin-right: .5em;
 }
-header ul {
+header nav {
     margin-top: .7em;
     padding: 0;
     display: none;
+    border: 1px solid;
+    position: relative;
 }
 /* Create a style for the first level items */
 
-header > ul > li > a {
+header nav a {
     color: #333333;
     background-color: #EEEEEE;
     display: block;
@@ -246,17 +248,19 @@ header > ul > li > a {
     padding: 0.2em 0.4em;
     text-decoration: none;
     font-weight: bold;
-    border: 1px solid;
+    border-width: 0 1px 0 0;
+    border-style: solid;
     border-color: #333333;
     font-size: 1.5em;
-}
-header ul li {
-    /* make sure the width is honored */
-    
     flex-shrink: 0;
-    list-style-type: none;
     z-index: 100;
+    white-space: nowrap;
 }
+
+header nav a:last-child {
+    border-right-width: 0;
+}
+
 header label {
     cursor: pointer;
     font-size: 1.2em;
@@ -264,7 +268,7 @@ header label {
     top: 2em;
     float: right;
 }
-header input[type="checkbox"]:checked ~ ul {
+header input[type="checkbox"]:checked ~ nav {
     background: #f1f1f1;
     color: #444;
     z-index: 100;
@@ -275,6 +279,7 @@ header input[type="checkbox"]:checked ~ ul {
     /* allow for scrolling */
     
     overflow-x: auto;
+    overflow-y: hidden;
     /* make it smooth on iOS */
     
     -webkit-overflow-scrolling: touch;
@@ -559,12 +564,17 @@ header input[type=checkbox],
         max-width: 1024px;
         margin: auto;
     }
-    header > ul > li > a {
+    header nav a {
         font-size: 1em;
+        white-space: normal;
+        border-width: 0 0 1px 0;
+    }
+    header nav a:last-child {
+        border-bottom-width: 0;
     }
     /* change the language menu direction to stacked */
     
-    header input[type="checkbox"]:checked ~ ul {
+    header input[type="checkbox"]:checked ~ nav {
         flex-direction: column;
         max-width: 7.5em;
         float: right;
