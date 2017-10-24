@@ -29,7 +29,7 @@
 
 function getBookmark() {
 ###########################################
-# Extract <bookmarks_value> from each XHP files and build a <ul> list
+# Extract <bookmarks_value> from each XHP file and build a <ul> list
 # in a javascript file
 #
 # Function called by main routine
@@ -39,12 +39,12 @@ function getBookmark() {
 # $3 is the tarname folder
 ###########################################
 
-local outdir=`pwd`'/html/'$2'/'$1
+local outdir=$(pwd)'/html/'$2'/'$1
 
 local sourcedir=$3/HelpTranslatePartTarget/$1/helpcontent2/source
 local ffile=$outdir/bookmarks.js
 rm -f $ffile
-local ffile2=`mktemp`
+local ffile2=$(mktemp)
 local stub2=\'
 local xslfile=get_bookmark.xsl
 
@@ -56,7 +56,7 @@ local param1=' --stringparam Language '$1' --stringparam productversion '$2
 for i in CALC CHART WRITER DRAW IMPRESS MATH BASIC
 do
 local stub1='document.getElementById("bookmark'$i'").innerHTML='\'\\
-sfind=$sourcedir'/'`echo 'text/s'$i | tr '[:upper:]' '[:lower:]'`
+sfind=$sourcedir'/'$(echo 'text/s'$i | tr '[:upper:]' '[:lower:]')
 param=$param1' --stringparam app '$i
 rm -f $ffile2
 find $sfind -type f -name "*.xhp" -exec xsltproc $param $xslfile {} + >> $ffile2
@@ -100,7 +100,7 @@ tarname=$1
 productversion=$2
 source=$3
 
-sourceDir=`pwd`
+sourceDir=$(pwd)
 
 ###########################################
 # Un-tar localized XHP and TREE files
@@ -113,7 +113,7 @@ cp -r /var/tmp/$tarname .
 # Un-tar source en-US XHP and TREE files
 ###########################################
 
-sourceName=`tar -tf $source | head -1 | cut -f1 -d"/"`
+sourceName=$(tar -tf $source | head -1 | cut -f1 -d"/")
 rm -rf $sourceName
 tar -xf $source
 
@@ -173,7 +173,7 @@ stub1='var map={'
 stub2='};'
 sfind=$langDirSource'en-US/helpcontent2/source/text/'
 ffile=$outDir/bookmark2file.js
-ffile2=`mktemp`
+ffile2=$(mktemp)
 rm -f $ffile2 $ffile
 find $sfind -type f -name "*.xhp" -exec xsltproc get_url.xsl {} + > $ffile2
 echo $stub1 >> $ffile
@@ -181,7 +181,7 @@ awk 'NF' $ffile2 >> $ffile
 echo $stub2 >> $ffile
 rm -f $ffile2
 
-for lang in `ls $langDirSource`
+for lang in $(ls $langDirSource)
 #for lang in pt-BR fr
 do
         echo 'Processing language '$lang
@@ -193,7 +193,7 @@ do
 
         # iterate all xhp files
 
-        for filep in `find $pPath -name *.xhp`
+        for filep in $(find $pPath -name *.xhp)
         do
 #         echo $filep
                DIR=${filep##*/source}
@@ -217,7 +217,7 @@ xsltparm='--stringparam lang '$lang' --stringparam productversion '$productversi
 for tree in $ALL_TREE
 do
 treeSourceFile=$tarname/HelpTreeTarget/$tree/$lang.tree
-treeTemp2=`mktemp`
+treeTemp2=$(mktemp)
 
 xsltproc $xsltparm -o $treeTemp2 get_tree.xsl $treeSourceFile
 
@@ -234,8 +234,8 @@ done
 ###########################################
 url='https://help.libreoffice.org'
 
-ALL_LANGS=`ls $outDir | sed 's/media//'`
-ALL_LANGS=`echo $ALL_LANGS | sed 's/bookmark2file.js//'`
+ALL_LANGS=$(ls $outDir | sed 's/media//')
+ALL_LANGS=$(echo $ALL_LANGS | sed 's/bookmark2file.js//')
 echo $ALL_LANGS
 sitemap=$outDir/sitemap.xml
 
@@ -249,7 +249,7 @@ for lang1 in $ALL_LANGS
 do
 echo '<sitemap>' >>$sitemap
 echo '<loc>'$url'/'$productversion'/sitemap-'$lang1'.xml</loc>' >>$sitemap
-echo '<lastmod>'`date -I`'</lastmod>'>>$sitemap
+echo '<lastmod>'$(date -I)'</lastmod>'>>$sitemap
 echo '</sitemap>'>>$sitemap
 
 ###########################################
@@ -268,7 +268,7 @@ echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> $f
 
 dd=./html/$productversion/$lang1
 
-for ff in `find $dd -name "*.html"`
+for ff in $(find $dd -name "*.html")
 do
 echo '<url><loc>'$url'/'${ff:7}'</loc></url>' >>$f
 done
