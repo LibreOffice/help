@@ -5,56 +5,75 @@
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
+#
+###########################################
+#
+#   Create the file bookmarks.js containing the links between the
+#   keywords found in <bookmark_value> and the html help page.
+#   The file is used in the Index tab of the html help page
+#
+###########################################
+#
 # $1 is Language
 # $2 is productversion
+# $3 is location of $(WORKDIR)
 
-outdir=`pwd`'/html/'$2'/'$1
+lang=$1
+productversion=$2
+workDir=$(realpath $3)
 
-# mkdir -p $outdir
-sourcedir=`pwd`'/l10n/'$2'/'$1
-ffile=$outdir'/bookmarks.js'
-rm -f $ffile
-ffile2=/tmp/temp.html
+outDir=$(realpath $workDir/HelpTargetHTML/$productversion/$lang)
+sourceDir=$(realpath $workDir/HelpTranslatePartTarget/$lang/helpcontent2/source)
+
+bookmarkFile=$outDir/bookmarks.js
+mkdir -p $outDir
+
+rm -f $bookmarkFile
+touch $bookmarkFile
+
 stub2=\'
+
 xslfile=get_bookmark.xsl
 
-param1=' --stringparam Language '$1' --stringparam productversion '$2
+param1=' --stringparam Language '$lang' --stringparam productversion '$productversion
 
 # bookmarks for modules
 
 for i in CALC CHART WRITER DRAW IMPRESS MATH BASIC
 do
 stub1='document.getElementById("bookmark'$i'").innerHTML='\'\\
-sfind=$sourcedir'/'`echo 'text/s'$i | tr '[:upper:]' '[:lower:]'`
+sfind=$sourceDir'/'$(echo 'text/s'$i | tr '[:upper:]' '[:lower:]')
 param=$param1' --stringparam app '$i
-rm -f $ffile2
-find $sfind -type f -name "*.xhp" -exec xsltproc $param $xslfile {} + >> $ffile2
-echo $stub1 >> $ffile
-sort -k3b -t\> -s -o $ffile2 $ffile2
-awk 'NF' $ffile2 >> $ffile
-echo $stub2 >> $ffile
+tempFile=$(mktemp)
+find $sfind -type f -name "*.xhp" -exec xsltproc $param $xslfile {} + >> $tempFile
+echo $stub1 >> $bookmarkFile
+sort -k3b -t\> -s -o $tempFile $tempFile
+awk 'NF' $tempFile >> $bookmarkFile
+echo $stub2 >> $bookmarkFile
+rm -f $tempFile
 done
 
 # Case of SHARED
 
 stub1='document.getElementById("bookmarkSHARED").innerHTML='\'\\
-rm -f $ffile2
+tempFile=$(mktemp)
 param=$param1' --stringparam app SHARED'
-find $sourcedir'/text/shared' -type f -name "*.xhp" -exec xsltproc $param $xslfile {} + >> $ffile2
-echo $stub1 >> $ffile
-sort -k3b -t\> -s -o $ffile2 $ffile2
-awk 'NF' $ffile2 >> $ffile
-echo $stub2 >> $ffile
+find $sourceDir'/text/shared' -type f -name "*.xhp" -exec xsltproc $param $xslfile {} + >> $tempFile
+echo $stub1 >> $bookmarkFile
+sort -k3b -t\> -s -o $tempFile $tempFile
+awk 'NF' $tempFile >> $bookmarkFile
+echo $stub2 >> $bookmarkFile
+rm -f $tempFile
 
 # Case of Explorer (BASE)
 
 stub1='document.getElementById("bookmarkBASE").innerHTML='\'\\
-rm -f $ffile2
+tempFile=$(mktemp)
 param=$param1' --stringparam app BASE'
-find $sourcedir'/text/shared/explorer/database' -type f -name "*.xhp" -exec xsltproc $param $xslfile {} + >> $ffile2
-echo $stub1 >> $ffile
-sort -k3b -t\> -s -o $ffile2 $ffile2
-awk 'NF' $ffile2 >> $ffile
-echo $stub2 >> $ffile
-rm -f $ffile2
+find $sourceDir'/text/shared/explorer/database' -type f -name "*.xhp" -exec xsltproc $param $xslfile {} + >> $tempFile
+echo $stub1 >> $bookmarkFile
+sort -k3b -t\> -s -o $tempFile $tempFile
+awk 'NF' $tempFile >> $bookmarkFile
+echo $stub2 >> $bookmarkFile
+rm -f $tempFile
+exit
