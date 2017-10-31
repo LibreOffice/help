@@ -31,12 +31,15 @@
 <xsl:param name="productversion"/>
 <xsl:param name="local" />
 <xsl:param name="fileTree"/>
+<xsl:param name="root"/>
+<xsl:param name="Language"/>
+
 <xsl:param name="productname" select="'LibreOffice'"/>
 <xsl:param name="System" select="'WIN'"/>
 <xsl:param name="imgtheme" select="''"/>
 <xsl:param name="Id" />
-<xsl:param name="Language"/>
-<xsl:param name="root"/>
+
+
 
 <!-- General Usage -->
 <xsl:variable name="am" select="'&amp;'"/>
@@ -56,7 +59,7 @@
 
 <!-- Installation -->
 <xsl:variable name="online" select="$local!='yes'"/>
-<xsl:variable name="install" select="concat('file://',$fileTree)"/>
+<xsl:variable name="install" select="$fileTree"/>
 
 <!-- meta data variables from the help file -->
 <xsl:variable name="filename" select="/helpdocument/meta/topic/filename"/>
@@ -112,14 +115,7 @@
     </xsl:variable>
 <html  lang="{$lang}">
     <head>
-        <xsl:choose>
-            <xsl:when test="$online">
-                <base href="/"/>
-            </xsl:when>
-            <xsl:otherwise>
-                 <base href="{$install}"/>
-             </xsl:otherwise>
-        </xsl:choose>
+        <base href="{$install}"/>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
         <title><xsl:value-of select="$titleL10N"/></title>
         <link rel="shortcut icon" href="{$productversion}/media/navigation/favicon.ico" />
