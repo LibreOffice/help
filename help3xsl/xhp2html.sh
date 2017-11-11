@@ -18,6 +18,70 @@
 #
 # convert2HTML $outDirLang $outDirHTML $lang $productversion $online $fileTree &
 
+function get_bookmark(){
+lang=$1
+productversion=$2
+#workDir=$(realpath $3)
+workDir=$(pwd)
+
+outDir=$(realpath $workDir/html/$productversion/$lang)
+#sourceDir=$(realpath $workDir/l10n/$lang/helpcontent2/source)
+sourceDir=$(realpath $workDir/l10n/$productversion/$lang)
+
+bookmarkFile=$outDir/bookmarks.js
+mkdir -p $outDir
+
+rm -f $bookmarkFile
+touch $bookmarkFile
+
+stub2=\'
+
+xslfile=get_bookmark.xsl
+
+param1=' --stringparam Language '$lang' --stringparam productversion '$productversion
+
+# bookmarks for modules
+
+for i in CALC CHART WRITER DRAW IMPRESS MATH BASIC
+do
+stub1='document.getElementById("bookmark'$i'").innerHTML='\'\\
+sfind=$sourceDir'/'$(echo 'text/s'$i | tr '[:upper:]' '[:lower:]')
+param=$param1' --stringparam app '$i
+tempFile=$(mktemp)
+find $sfind -type f -name "*.xhp" -exec xsltproc $param $xslfile {} + >> $tempFile
+echo $stub1 >> $bookmarkFile
+sort -k3b -t\> -s -o $tempFile $tempFile
+awk 'NF' $tempFile >> $bookmarkFile
+echo $stub2 >> $bookmarkFile
+rm -f $tempFile
+done
+
+# Case of SHARED
+
+stub1='document.getElementById("bookmarkSHARED").innerHTML='\'\\
+tempFile=$(mktemp)
+param=$param1' --stringparam app SHARED'
+find $sourceDir'/text/shared' -type f -name "*.xhp" -exec xsltproc $param $xslfile {} + >> $tempFile
+echo $stub1 >> $bookmarkFile
+sort -k3b -t\> -s -o $tempFile $tempFile
+awk 'NF' $tempFile >> $bookmarkFile
+echo $stub2 >> $bookmarkFile
+rm -f $tempFile
+
+# Case of Explorer (BASE)
+
+stub1='document.getElementById("bookmarkBASE").innerHTML='\'\\
+tempFile=$(mktemp)
+param=$param1' --stringparam app BASE'
+find $sourceDir'/text/shared/explorer/database' -type f -name "*.xhp" -exec xsltproc $param $xslfile {} + >> $tempFile
+echo $stub1 >> $bookmarkFile
+sort -k3b -t\> -s -o $tempFile $tempFile
+awk 'NF' $tempFile >> $bookmarkFile
+echo $stub2 >> $bookmarkFile
+rm -f $tempFile
+}
+
+
 function convert2HTML() {
 #outDirLang =1
 #outDirHTML =2
@@ -92,11 +156,12 @@ echo 'Conversion to HTML finished for '$3
 # Change root of git core
 productversion='6.0'
 local='no'
-fileTree='/home/tdf/git/core/helpcontent2/help3xsl/html/'
+fileTree='/'
 
 rootHelpex=/home/tdf/git/core
 
 ALL_LANGS='en-US am ar ast bg bn bn-IN bo bs ca ca-valencia cs da de dz el en-GB en-ZA eo es et eu fi fr gl gu he hi hr hu id is it ja ka km ko lo lt lv mk nb ne nl nn om pl pt-BR pt ro ru sid si sk sl sq sv ta tg tr ug uk vi zh-CN zh-TW'
+
 here=$(pwd)
 root=$(realpath "$here/../..")
 
@@ -209,7 +274,7 @@ fi
 
 #extracting bookmarks
 echo 'Extracting bookmarks'
-./get_bookmark.sh $lang $productversion &
+get_bookmark $lang $productversion $(pwd)/html &
 
 # converting to HTML
 convert2HTML $outDirLang $outDirHTML $lang $productversion $local $fileTree &
