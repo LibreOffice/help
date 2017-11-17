@@ -109,5 +109,22 @@ $(document).ready(function() {
             }
         }, 200);
     });
+
+    //maintain only one panel open
+    $('input[name="accordion-menu"]').on('change', function(){
+        $('input[name="accordion-menu"]').not(this).prop('checked', false);
+    });
+    //focus Google Search input clicking on Find panel
+    $('#accordion-2').on('change', function(){
+        if($(this).is(':checked')){
+            $('#gsc-i-id1').focus();
+        }
+    });
+    //focus index search input clicking on Index panel
+    $('#accordion-3').on('change', function(){
+        if($(this).is(':checked')){
+            $('#search-bar').focus();
+        }
+    });
 });
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
