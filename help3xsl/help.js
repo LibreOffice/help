@@ -109,5 +109,10 @@ $(document).ready(function() {
             }
         }, 200);
     });
+
+    $('input[name=accordion-menu]').on('change', function(){
+    	$('input[name=accordion-menu]').not(this).prop('checked', false);
+    	$(this).siblings('div').find('input[type=text]').first().focus();
+    });
 });
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
