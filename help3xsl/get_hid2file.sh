@@ -17,7 +17,7 @@
 #
 ###########################################
 
-workDir=$(realpath $2)
+workDir=$2
 productversion=$1
 
 helpFiles=$(realpath $workDir/../helpcontent2/source/text)
@@ -37,4 +37,3 @@ echo 'var map={' >> $bookmarkFile
 awk 'NF' $tempFile >> $bookmarkFile
 echo '};' >> $bookmarkFile
 rm -f $tempFile
-exit

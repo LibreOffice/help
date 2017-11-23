@@ -14,6 +14,16 @@ $(eval $(call gb_Module_add_targets,helpcontent2,\
 	Package_helpimages \
 ))
 
+ifeq ($(ENABLE_HTMLHELP),TRUE)
+$(eval $(call gb_Module_add_targets,helpcontent2,\
+	CustomTarget_html \
+	GeneratedPackage_html_media \
+	GeneratedPackage_html \
+	Package_html_static \
+	Package_html \
+))
+endif
+
 $(eval $(call gb_Module_add_l10n_targets,helpcontent2,\
 	AllLangHelp_sbasic \
 	AllLangHelp_scalc \
