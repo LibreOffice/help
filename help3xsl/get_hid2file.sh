@@ -22,8 +22,8 @@ productversion=$1
 
 helpFiles=$(realpath $workDir/../helpcontent2/source/text)
 
+mkdir -p $workDir/HelpTargetHTML/$productversion
 outDir=$(realpath $workDir/HelpTargetHTML/$productversion)
-mkdir -p $outDir
 
 bookmarkFile=$outDir'/hid2file.js'
 
