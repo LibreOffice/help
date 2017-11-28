@@ -208,12 +208,12 @@ echo "execing: ${exedir}/helpex"
 
 ###########################################
 #
-# Create the bookmark2file map
+# Create the hid2file map
 #
 ###########################################
 stub1='var map={'
 stub2='};'
-ffile='html/'$productversion'/bookmark2file.js'
+ffile='html/'$productversion'/hid2file.js'
 ffile2=/tmp/tmpbkm.txt
 rm -f $ffile2 $ffile
 find $helpfiles -type f -name "*.xhp" -exec xsltproc get_url.xsl {} + > $ffile2
