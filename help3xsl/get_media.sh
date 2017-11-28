@@ -36,7 +36,7 @@ cp jquery-3.1.1.min.js $outDir'/'$productVersion'/'
 cp normalize.css $outDir'/'$productVersion'/'
 cp default.css $outDir'/'$productVersion'/'
 
-cp -rap ../source/media $outDir'/'$productVersion'/'
+cp -a ../source/media $outDir'/'$productVersion'/'
 
 galaxy=$(realpath $workDir'/../icon-themes/galaxy')
-cp -rap $galaxy $outDir'/'$productVersion'/media/icon-themes'
+cp -a $galaxy $outDir'/'$productVersion'/media/icon-themes'
