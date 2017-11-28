@@ -41,9 +41,9 @@ mkdir -p html/$productversion
 #copy some service files
 cp index.html html/
 cp default.css help.js jquery-3.1.1.min.js tabs.css tree.css $outDir
-cp -rap ../source/media $outDir
+cp -a ../source/media $outDir
 mkdir -p $outDir'media/icon-themes'
-cp -rap ../../icon-themes/galaxy/* $outDir/media/icon-themes/
+cp -a ../../icon-themes/galaxy/* $outDir/media/icon-themes/
 ln -s $productversion html/latest
 
 # Create the bookmark2file map
@@ -95,5 +95,5 @@ done
 
 # Should copy core/icon-themes/galaxy/ to the media folder as icon-theme/
         #mkdir $outDir'media/icon-theme'
-        # cp -rap ../../../../../icon-themes/galaxy/* $outDir/media/icon-theme/
+        # cp -a ../../../../../icon-themes/galaxy/* $outDir/media/icon-theme/
 exit

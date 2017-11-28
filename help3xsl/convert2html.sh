@@ -287,7 +287,7 @@ echo '</sitemapindex>'>>$sitemap
 cp normalize.css default.css help.js jquery-3.1.1.min.js $outDir
 cp -r $enSource/source/media $outDir
 mkdir -p $outDir/media/icon-themes
-#cp -rap ../../icon-themes/galaxy/* $outDir/media/icon-themes/
+#cp -a ../../icon-themes/galaxy/* $outDir/media/icon-themes/
 #ln -s $productversion html/latest
 
 exit

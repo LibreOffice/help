@@ -181,9 +181,9 @@ cp jquery-3.1.1.min.js $here'/html/'$productversion'/'
 cp normalize.css $here'/html/'$productversion'/'
 cp default.css $here'/html/'$productversion'/'
 
-cp -rap ../source/media $here'/html/'$productversion'/'
+cp -a ../source/media $here'/html/'$productversion'/'
 mkdir -p $here'/html/'$productversion'/media/icon-themes'
-cp -rap ../../icon-themes/galaxy/* $here'/html/'$productversion'/media/icon-themes/'
+cp -a ../../icon-themes/galaxy/* $here'/html/'$productversion'/media/icon-themes/'
 ln -s $productversion html/latest
 
 # Set helpex utilty and environment
@@ -243,7 +243,7 @@ mkdir -p $outDirHTML
 if [ "$lang" == en-US ];
 then
 
-cp -rap $helpfiles $outDirLang
+cp -a $helpfiles $outDirLang
 
 else
 # Create first all translations of xhp
