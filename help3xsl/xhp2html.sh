@@ -193,7 +193,7 @@ if test "${dir}" = "/"; then
 echo "error: cannot find \"program\" dir from \"$(pwd)\""
 exit 1
 fi
-rootHelpex=$(readlink -f "${rootHelpex}/..")
+rootHelpex=$(realpath "${rootHelpex}/..")
 done
 
 exedir="${rootHelpex}"/workdir/LinkTarget/Executable
