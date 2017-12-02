@@ -214,6 +214,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03090410 \
     helpcontent2/source/text/sbasic/shared/03090411 \
     helpcontent2/source/text/sbasic/shared/03090412 \
+    helpcontent2/source/text/sbasic/shared/03090413 \
     helpcontent2/source/text/sbasic/shared/03100000 \
     helpcontent2/source/text/sbasic/shared/03100050 \
     helpcontent2/source/text/sbasic/shared/03100060 \
@@ -337,6 +338,10 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03140010 \
     helpcontent2/source/text/sbasic/shared/03140011 \
     helpcontent2/source/text/sbasic/shared/03140012 \
+    helpcontent2/source/text/sbasic/shared/03150000 \
+    helpcontent2/source/text/sbasic/shared/03150001 \
+    helpcontent2/source/text/sbasic/shared/03160000 \
+    helpcontent2/source/text/sbasic/shared/03170000 \
     helpcontent2/source/text/sbasic/shared/05060700 \
     helpcontent2/source/text/sbasic/shared/code-stubs \
     helpcontent2/source/text/sbasic/shared/keys \
