@@ -50,38 +50,6 @@ done
 echo $'\047'';'>>$treeFileHTML
 exit
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ALL_LANGS='en-US am ar ast bg bn bn-IN bo bs ca ca-valencia cs da de dz el en-GB en-ZA eo es et eu fi fr gl gu he hi hr hu id is it ja ka km ko lo lt lv mk nb ne nl nn om pl pt-BR pt ro ru sid si sk sl sq sv ta tg tr ug uk vi zh-CN zh-TW'
 
 here=$(pwd)
@@ -94,9 +62,6 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}"${rootTreex}"/instd
 
 # rm -rf $here/l10n
 rm -rf $here/html
-
-
-#
 
 
 ALL_LANGS='fr pt-BR'
