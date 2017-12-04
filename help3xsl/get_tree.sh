@@ -96,9 +96,6 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}"${rootTreex}"/instd
 rm -rf $here/html
 
 
-#
-
-
 ALL_LANGS='fr pt-BR'
 ALL_TREE='sbasic.tree  scalc.tree  schart.tree  shared.tree  simpress.tree  smath.tree  swriter.tree'
 for lang in $ALL_LANGS
