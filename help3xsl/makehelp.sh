@@ -10,15 +10,27 @@
 
 # $1 build local or webroot help [default=yes]
 # values: yes no
+# $2 build english help [default=no]
+# values: yes no
 
 productVersion=6.0
 workDir=$(realpath '../../workdir')
 langDirSource=$workDir'/HelpTranslatePartTarget'
-offline=$1
+offline="yes"
 
-if [ -z $offline ]
+if [ $1 == "no" ]
 then
-offline=yes
+offline="no"
+fi
+
+if [ $2 == "yes" ]
+then
+mkdir -p $langDirSource/en-US/helpcontent2/source
+cp -r ../source/text $langDirSource/en-US/helpcontent2/source/
+for i in sbasic  scalc  schart  shared  simpress  smath  swriter
+do
+cp "../source/auxiliary/$i.tree" "$workDir/HelpTreeTarget/$i/en-US.tree"
+done
 fi
 
 ./get_hid2file.sh $productVersion $workDir
