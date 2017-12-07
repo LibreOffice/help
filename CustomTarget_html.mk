@@ -101,7 +101,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 			$(call gb_ExternalExecutable_get_command,xsltproc) \
 				--stringparam fileTree '/' \
 				--stringparam Language $* \
-				--stringparam local 'yes' \
+				--stringparam local $(if $(HELP_ONLINE),'no','yes') \
 				--stringparam root `pwd`/ \
 				--stringparam productversion $(PRODUCTVERSION) \
 				-o $(dir $@)$${xhp%.xhp}.html \
