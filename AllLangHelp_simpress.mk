@@ -160,6 +160,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/02/13180000 \
     helpcontent2/source/text/simpress/02/13190000 \
     helpcontent2/source/text/simpress/04/01020000 \
+    helpcontent2/source/text/simpress/04/presenter \
     helpcontent2/source/text/simpress/guide/3d_create \
     helpcontent2/source/text/simpress/guide/animated_gif_create \
     helpcontent2/source/text/simpress/guide/animated_gif_save \
@@ -189,6 +190,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/guide/page_copy \
     helpcontent2/source/text/simpress/guide/palette_files \
     helpcontent2/source/text/simpress/guide/photo_album \
+    helpcontent2/source/text/simpress/guide/presenter_console \
     helpcontent2/source/text/simpress/guide/print_tofit \
     helpcontent2/source/text/simpress/guide/printing \
     helpcontent2/source/text/simpress/guide/rehearse_timings \
@@ -221,7 +223,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/main0213 \
     helpcontent2/source/text/simpress/main0214 \
     helpcontent2/source/text/simpress/main0503 \
-    helpcontent2/source/text/simpress/presenter \
 ))
 
 # vim: set noet sw=4 ts=4:
