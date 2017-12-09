@@ -97,15 +97,25 @@ $(document).ready(function() {
             clearTimeout(debouncer);
         }
         debouncer = setTimeout(function(){
-            if ($('#search-bar').val()) {
+            if ($('#search-bar').val().length > 2) {
                 var toShow = $('#Index ul a').filter(function(){
                     return $(this).text().toLowerCase().indexOf($('#search-bar').val().toLowerCase()) > -1;
                 });
                 toShow.parent().show();
                 $("#Index ul a").not(toShow).parent().hide();
+                $("#Bookmarks").show();
+
+                var listToShow = $('');
+                $('#Index ul li').filter(':visible').each(function(){
+                    //add all module labels that have results in search
+                    listToShow = listToShow.add($(this).parent().prev());
+                });
+                $(listToShow).show();
+                //hide all labels with 0 results
+                $('#Bookmarks > p').not(listToShow).hide();
             }
             else {
-                $("#Index ul li" ).show();
+                $("#Bookmarks").hide();
             }
         }, 200);
     });
@@ -124,6 +134,8 @@ $(document).ready(function() {
     $('#accordion-3').on('change', function(){
         if($(this).is(':checked')){
             $('#search-bar').focus();
+            //prevent all results to be shown
+            $("#Bookmarks").toggle($('#search-bar').val().length > 2);
         }
     });
 });
