@@ -802,7 +802,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/main0227 \
     helpcontent2/source/text/shared/main0400 \
     helpcontent2/source/text/shared/main0500 \
-    helpcontent2/source/text/shared/main0600 \
     helpcontent2/source/text/shared/main0650 \
     helpcontent2/source/text/shared/main0800 \
     helpcontent2/source/text/shared/menu/insert_chart \
