@@ -18,12 +18,12 @@ workDir=$(realpath '../../workdir')
 langDirSource=$workDir'/HelpTranslatePartTarget'
 offline="yes"
 
-if [ $1 == "no" ]
+if [ "$1" == "no" ]
 then
 offline="no"
 fi
 
-if [ $2 == "yes" ]
+if [ "$2" == "yes" ]
 then
 mkdir -p $langDirSource/en-US/helpcontent2/source
 cp -r ../source/text $langDirSource/en-US/helpcontent2/source/
