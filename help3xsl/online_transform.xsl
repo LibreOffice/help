@@ -30,7 +30,6 @@
 
 <xsl:param name="productversion"/>
 <xsl:param name="local" />
-<xsl:param name="fileTree"/>
 <xsl:param name="root"/>
 <xsl:param name="Language"/>
 
@@ -59,7 +58,6 @@
 
 <!-- Installation -->
 <xsl:variable name="online" select="$local!='yes'"/>
-<xsl:variable name="install" select="$fileTree"/>
 
 <!-- meta data variables from the help file -->
 <xsl:variable name="filename" select="/helpdocument/meta/topic/filename"/>
@@ -112,6 +110,11 @@
     <xsl:variable name="htmlpage"><xsl:call-template name="filehtml"><xsl:with-param name="file" select="$filename"/></xsl:call-template></xsl:variable>
     <xsl:variable name="titleL10N">
         <xsl:call-template name="brand"><xsl:with-param name="string"><xsl:value-of select="$title"/></xsl:with-param></xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="install">
+        <xsl:call-template name="tokenize">
+            <xsl:with-param name="str" select="$filename"/>
+        </xsl:call-template>
     </xsl:variable>
 <html  lang="{$lang}">
     <head>
@@ -290,15 +293,14 @@
         <xsl:when test="$online">
             <script type="text/javascript">
                 <![CDATA[
-		var userLang = navigator.language || navigator.userLanguage;
+                var userLang = navigator.language || navigator.userLanguage;
                 var module = getParameterByName("DbPAR");
                 setModule(module);
                 var system = getParameterByName("System");
                 setSystem(system);
                 fixURL(module,system);
                 var dbg = getParameterByName("Debug");
-                if (dbg == null){dbg=1}
-                //dbg=1
+                if (dbg == null){dbg=0}
                 document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
                 document.getElementById("bm_module").innerHTML ="Module is: "+module;
                 document.getElementById("bm_system").innerHTML ="System is: "+system;
@@ -1080,56 +1082,56 @@
 
 <!-- Insert a Table -->
 <xsl:template name="inserttable">
-	<xsl:variable name="imgsrc">	<!-- see if we are in an image table -->
-		<xsl:value-of select="tablerow/tablecell[1]/paragraph[1]/image/@src"/>
-	</xsl:variable>
+    <xsl:variable name="imgsrc">	<!-- see if we are in an image table -->
+        <xsl:value-of select="tablerow/tablecell[1]/paragraph[1]/image/@src"/>
+    </xsl:variable>
 
-	<xsl:choose>
-		<xsl:when test="count(descendant::tablecell)=1">
-			<table border="0" class="onecell" cellpadding="0" cellspacing="0">
-				<xsl:apply-templates />
-		 </table>
-		</xsl:when>
+    <xsl:choose>
+        <xsl:when test="count(descendant::tablecell)=1">
+            <table border="0" class="onecell" cellpadding="0" cellspacing="0">
+                <xsl:apply-templates />
+            </table>
+        </xsl:when>
 
-		<xsl:when test="descendant::tablecell[1]/descendant::image">
-                    <table border="0" class="icontable" cellpadding="5" cellspacing="0">
-				<xsl:apply-templates mode="icontable"/>
-		    </table>
-		</xsl:when>
+        <xsl:when test="descendant::tablecell[1]/descendant::image">
+            <table border="0" class="icontable" cellpadding="5" cellspacing="0">
+                <xsl:apply-templates mode="icontable"/>
+            </table>
+        </xsl:when>
 
-		<xsl:when test="@class='wide'">
-			<table border="1" class="{@class}" cellpadding="0" cellspacing="0" width="100%" >
-				<xsl:apply-templates />
-		        </table>
-		</xsl:when>
+        <xsl:when test="@class='wide'">
+            <table border="1" class="{@class}" cellpadding="0" cellspacing="0" width="100%" >
+                <xsl:apply-templates />
+            </table>
+        </xsl:when>
 
-		<xsl:when test="not(@class='')">
-			<table border="1" class="{@class}" cellpadding="0" cellspacing="0" >
-				<xsl:apply-templates />
-		        </table>
-		</xsl:when>
+        <xsl:when test="not(@class='')">
+            <table border="1" class="{@class}" cellpadding="0" cellspacing="0" >
+                <xsl:apply-templates />
+            </table>
+        </xsl:when>
 
-		<xsl:otherwise>
-			<table border="1" class="border" cellpadding="0" cellspacing="0" >
-				<xsl:apply-templates />
-		        </table>
-		</xsl:otherwise>
-	</xsl:choose>
-	<br/>
+        <xsl:otherwise>
+            <table border="1" class="border" cellpadding="0" cellspacing="0" >
+                <xsl:apply-templates />
+            </table>
+        </xsl:otherwise>
+    </xsl:choose>
+    <br/>
 </xsl:template>
 
 <xsl:template name="resolveembed">
-	<div class="embedded">
-		<xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'))"/></xsl:variable>
-		<xsl:variable name="anc"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
-		<xsl:variable name="docum" select="document($href)"/>
+    <div class="embedded">
+        <xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'))"/></xsl:variable>
+        <xsl:variable name="anc"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
+        <xsl:variable name="docum" select="document($href)"/>
 
-		<xsl:call-template name="insertembed">
-			<xsl:with-param name="doc" select="$docum" />
-			<xsl:with-param name="anchor" select="$anc" />
-		</xsl:call-template>
+        <xsl:call-template name="insertembed">
+            <xsl:with-param name="doc" select="$docum" />
+            <xsl:with-param name="anchor" select="$anc" />
+        </xsl:call-template>
 
-	</div>
+    </div>
 </xsl:template>
 
 <xsl:template name="resolveembedvar">
@@ -1168,4 +1170,20 @@
    <xsl:value-of select="concat(substring-before($file,'.xhp'),'.html')"/>
 </xsl:template>
 
+<!-- recursive named template -->
+<xsl:template name="tokenize">
+    <xsl:param name="str" />
+    <xsl:param name="result" select="''" />
+    <xsl:choose>
+        <xsl:when test="substring-after($str,'/')">
+            <xsl:call-template name="tokenize">
+                <xsl:with-param name="str" select="substring-after($str,'/')" />
+                <xsl:with-param name="result" select="concat($result,'../')" />
+            </xsl:call-template>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="concat('../',$result)" />
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
 </xsl:stylesheet>
