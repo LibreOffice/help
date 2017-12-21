@@ -59,7 +59,7 @@
 
 <!-- Installation -->
 <xsl:variable name="online" select="$local!='yes'"/>
-<xsl:variable name="install" select="$fileTree"/>
+<!-- <xsl:variable name="install" select="$fileTree"/> -->
 
 <!-- meta data variables from the help file -->
 <xsl:variable name="filename" select="/helpdocument/meta/topic/filename"/>
@@ -112,6 +112,11 @@
     <xsl:variable name="htmlpage"><xsl:call-template name="filehtml"><xsl:with-param name="file" select="$filename"/></xsl:call-template></xsl:variable>
     <xsl:variable name="titleL10N">
         <xsl:call-template name="brand"><xsl:with-param name="string"><xsl:value-of select="$title"/></xsl:with-param></xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="install">
+        <xsl:call-template name="tokenize">
+            <xsl:with-param name="str" select="$filename"/>
+        </xsl:call-template>
     </xsl:variable>
 <html  lang="{$lang}">
     <head>
@@ -1177,4 +1182,20 @@
    <xsl:value-of select="concat(substring-before($file,'.xhp'),'.html')"/>
 </xsl:template>
 
+<!-- recursive named template -->
+<xsl:template name="tokenize">
+    <xsl:param name="str" />
+    <xsl:param name="result" select="''" />
+    <xsl:choose>
+        <xsl:when test="substring-after($str,'/')">
+            <xsl:call-template name="tokenize">
+                <xsl:with-param name="str" select="substring-after($str,'/')" />
+                <xsl:with-param name="result" select="concat($result,'../')" />
+            </xsl:call-template>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="concat('../',$result)" />
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
 </xsl:stylesheet>
