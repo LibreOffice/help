@@ -99,7 +99,6 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 		&& find text -name "*.xhp" \
 		| while read xhp; do \
 			$(call gb_ExternalExecutable_get_command,xsltproc) \
-				--stringparam fileTree '/' \
 				--stringparam Language $* \
 				--stringparam local $(if $(HELP_ONLINE),'no','yes') \
 				--stringparam root `pwd`/ \
