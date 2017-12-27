@@ -212,8 +212,8 @@
     <nav id="Modules" class="modules">
         <ul>
             <li><a href="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer"></div>Writer</a></li>
-	    <li><a href="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC"><div class="calc"></div>Calc</a></li>
-	    <li><a href="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS"><div class="impress"></div>Impress</a></li>
+            <li><a href="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC"><div class="calc"></div>Calc</a></li>
+            <li><a href="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS"><div class="impress"></div>Impress</a></li>
             <li><a href="{$productversion}/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW"><div class="draw"></div>Draw</a></li>
             <li><a href="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE"><div class="base"></div>Base</a></li>
             <li><a href="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH"><div class="math"></div>Math</a></li>
@@ -258,24 +258,15 @@
                     <p> &#32;&#x1f50e;&#32; <input id="search-bar" type="text"/></p>
                 </div>
                 <div id="Bookmarks">
-		    <p>CALC</p>
-		    <ul id="bookmarkCALC"></ul>
-		    <p>CHART</p>
-                    <ul id="bookmarkCHART"></ul>
-		    <p>WRITER</p>
-                    <ul id="bookmarkWRITER"></ul>
-		    <p>DRAW</p>
-                    <ul id="bookmarkDRAW" ></ul>
-		    <p>IMPRESS</p>
-                    <ul id="bookmarkIMPRESS"></ul>
-		    <p>MATH</p>
-                    <ul id="bookmarkMATH"></ul>
-		    <p>BASE</p>
-                    <ul id="bookmarkBASE"></ul>
-		    <p>BASIC</p>
-                    <ul id="bookmarkBASIC"></ul>
-		    <p>GLOBAL</p>
-                    <ul id="bookmarkSHARED"></ul>
+                    <p>WRITER</p><ul id="bookmarkWRITER"></ul>
+                    <p>CALC</p><ul id="bookmarkCALC"></ul>
+                    <p>IMPRESS</p><ul id="bookmarkIMPRESS"></ul>
+                    <p>DRAW</p><ul id="bookmarkDRAW" ></ul>
+                    <p>BASE</p><ul id="bookmarkBASE"></ul>
+                    <p>MATH</p><ul id="bookmarkMATH"></ul>
+                    <p>CHART</p><ul id="bookmarkCHART"></ul>
+                    <p>BASIC</p><ul id="bookmarkBASIC"></ul>
+                    <p>GLOBAL</p><ul id="bookmarkSHARED"></ul>
                 </div>
             </div>
         </div>
