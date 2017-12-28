@@ -94,47 +94,6 @@ Stylesheet map language-dependent parameters and translation
 </xsl:choose>
 </xsl:template>
 
-<xsl:template name="getSearch">
-    <xsl:param name="lang"/>
-    <xsl:choose>
-        <xsl:when test="$lang='ast'"><xsl:text>Alcontrar</xsl:text></xsl:when>
-        <xsl:when test="$lang='be'"><xsl:text>Пошук</xsl:text></xsl:when>
-        <xsl:when test="$lang='bg'"><xsl:text>Търсене</xsl:text></xsl:when>
-        <xsl:when test="$lang='ca'"><xsl:text>Cerca</xsl:text></xsl:when>
-        <xsl:when test="$lang='ca-valencia'"><xsl:text>Cerca</xsl:text></xsl:when>
-        <xsl:when test="$lang='cs'"><xsl:text>Najít</xsl:text></xsl:when>
-        <xsl:when test="$lang='da'"><xsl:text>Find</xsl:text></xsl:when>
-        <xsl:when test="$lang='de'"><xsl:text>Suchen</xsl:text></xsl:when>
-        <xsl:when test="$lang='el'"><xsl:text>Εύρεση</xsl:text></xsl:when>
-        <xsl:when test="$lang='en-US'"><xsl:text>Find</xsl:text></xsl:when>
-        <xsl:when test="$lang='en-GB'"><xsl:text>Find</xsl:text></xsl:when>
-        <xsl:when test="$lang='en-ZA'"><xsl:text>Find</xsl:text></xsl:when>
-        <xsl:when test="$lang='eo'"><xsl:text>Serĉi</xsl:text></xsl:when>
-        <xsl:when test="$lang='es'"><xsl:text>Buscar</xsl:text></xsl:when>
-        <xsl:when test="$lang='fi'"><xsl:text>Etsi</xsl:text></xsl:when>
-        <xsl:when test="$lang='fr'"><xsl:text>Recherche</xsl:text></xsl:when>
-        <xsl:when test="$lang='gl'"><xsl:text>Buscar</xsl:text></xsl:when>
-        <xsl:when test="$lang='hr'"><xsl:text>Pronađi</xsl:text></xsl:when>
-        <xsl:when test="$lang='hu'"><xsl:text>Keresés</xsl:text></xsl:when>
-        <xsl:when test="$lang='is'"><xsl:text>Leita</xsl:text></xsl:when>
-        <xsl:when test="$lang='it'"><xsl:text>Cerca</xsl:text></xsl:when>
-        <xsl:when test="$lang='ja'"><xsl:text>検索</xsl:text></xsl:when>
-        <xsl:when test="$lang='lt'"><xsl:text>Paieška</xsl:text></xsl:when>
-        <xsl:when test="$lang='nb'"><xsl:text>Finn</xsl:text></xsl:when>
-        <xsl:when test="$lang='nl'"><xsl:text>Zoeken</xsl:text></xsl:when>
-        <xsl:when test="$lang='nn'"><xsl:text>Finn</xsl:text></xsl:when>
-        <xsl:when test="$lang='pt-BR'"><xsl:text>Pesquisar</xsl:text></xsl:when>
-        <xsl:when test="$lang='pt'"><xsl:text>Localizar</xsl:text></xsl:when>
-        <xsl:when test="$lang='ru'"><xsl:text>Искать</xsl:text></xsl:when>
-        <xsl:when test="$lang='sl'"><xsl:text>Najdi</xsl:text></xsl:when>
-        <xsl:when test="$lang='sq'"><xsl:text>Gjej</xsl:text></xsl:when>
-        <xsl:when test="$lang='tr'"><xsl:text>Bul</xsl:text></xsl:when>
-        <xsl:when test="$lang='zh-CN'"><xsl:text>搜索</xsl:text></xsl:when>
-        <xsl:when test="$lang='zh-TW'"><xsl:text>尋找</xsl:text></xsl:when>
-        <xsl:otherwise><xsl:text>Find</xsl:text></xsl:otherwise>
-</xsl:choose>
-</xsl:template>
-
 <xsl:template name="getLanguage">
     <xsl:param name="lang"/>
     <xsl:choose>
