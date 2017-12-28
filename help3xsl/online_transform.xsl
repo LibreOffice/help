@@ -136,155 +136,226 @@
         <meta itemprop="headline" content="{$titleL10N}"/>
     </xsl:if>
     <header>
-        <a class="logo" href="https://helponline.libreoffice.org/">
-            <div class="symbol"></div>
-            <p>LibreOffice <xsl:value-of select="$productversion"/> Help</p>
-        </a>
-        <xsl:if test="$online">
+        <div class="headerfooter-center">
             <input id="langs" name="language-menu" type="checkbox"/>
-            <label for="langs"><xsl:call-template name="getLanguage"><xsl:with-param name="lang" select="$lang"/></xsl:call-template> ▼</label>
-            <nav>
-                <a href="{$productversion}/en-US{$htmlpage}">English (USA)</a>
-                <a href="{$productversion}/am{$htmlpage}">አማርኛ</a>
-                <a href="{$productversion}/ar{$htmlpage}">العربية</a>
-                <a href="{$productversion}/ast{$htmlpage}">Asturianu</a>
-                <a href="{$productversion}/bg{$htmlpage}">Български</a>
-                <a href="{$productversion}/bn{$htmlpage}">বাংলা</a>
-                <a href="{$productversion}/bn-IN{$htmlpage}">বাংলা</a>
-                <a href="{$productversion}/bo{$htmlpage}">བོད་ཡིག / Bod skad</a>
-                <a href="{$productversion}/bs{$htmlpage}">Bosanski</a>
-                <a href="{$productversion}/ca{$htmlpage}">Català</a>
-                <a href="{$productversion}/ca-valencia{$htmlpage}">Català-Valencia</a>
-                <a href="{$productversion}/cs{$htmlpage}">Česky</a>
-                <a href="{$productversion}/da{$htmlpage}">Dansk</a>
-                <a href="{$productversion}/de{$htmlpage}">Deutsch</a>
-                <a href="{$productversion}/dz{$htmlpage}"> ཇོང་ཁ</a>
-                <a href="{$productversion}/el{$htmlpage}">Ελληνικά</a>
-                <a href="{$productversion}/en-GB{$htmlpage}">English (GB)</a>
-                <a href="{$productversion}/en-ZA{$htmlpage}">English (ZA)</a>
-                <a href="{$productversion}/eo{$htmlpage}">Esperanto</a>
-                <a href="{$productversion}/es{$htmlpage}">Español</a>
-                <a href="{$productversion}/et{$htmlpage}">Eesti</a>
-                <a href="{$productversion}/eu{$htmlpage}">Euskara</a>
-                <a href="{$productversion}/fi{$htmlpage}">Suomi</a>
-                <a href="{$productversion}/fr{$htmlpage}">Français</a>
-                <a href="{$productversion}/gl{$htmlpage}">Galego</a>
-                <a href="{$productversion}/gu{$htmlpage}">ગુજરાતી</a>
-                <a href="{$productversion}/he{$htmlpage}">עברית</a>
-                <a href="{$productversion}/hi{$htmlpage}">हिन्दी</a>
-                <a href="{$productversion}/hr{$htmlpage}">Hrvatski</a>
-                <a href="{$productversion}/hu{$htmlpage}">Magyar</a>
-                <a href="{$productversion}/id{$htmlpage}">Bahasa Indonesia</a>
-                <a href="{$productversion}/is{$htmlpage}">Íslenska</a>
-                <a href="{$productversion}/it{$htmlpage}">Italiano</a>
-                <a href="{$productversion}/ja{$htmlpage}">日本語</a>
-                <a href="{$productversion}/ka{$htmlpage}">ქართული</a>
-                <a href="{$productversion}/km{$htmlpage}">ភាសាខ្មែរ</a>
-                <a href="{$productversion}/ko{$htmlpage}">한국어</a>
-                <a href="{$productversion}/lo{$htmlpage}">ລາວ</a>
-                <a href="{$productversion}/lt{$htmlpage}">Lietuvių</a>
-                <a href="{$productversion}/lv{$htmlpage}">Latviešu</a>
-                <a href="{$productversion}/mk{$htmlpage}">Македонски</a>
-                <a href="{$productversion}/nb{$htmlpage}">Norsk (bokmål / riksmål)</a>
-                <a href="{$productversion}/ne{$htmlpage}">नेपाली</a>
-                <a href="{$productversion}/nl{$htmlpage}">Nederlands</a>
-                <a href="{$productversion}/nn{$htmlpage}">Norsk (nynorsk)</a>
-                <a href="{$productversion}/om{$htmlpage}">Oromoo</a>
-                <a href="{$productversion}/pl{$htmlpage}">Polski</a>
-                <a href="{$productversion}/pt{$htmlpage}">Português</a>
-                <a href="{$productversion}/pt-BR{$htmlpage}">Português do Brasil</a>
-                <a href="{$productversion}/ro{$htmlpage}">Română</a>
-                <a href="{$productversion}/ru{$htmlpage}">Русский</a>
-                <a href="{$productversion}/si{$htmlpage}">සිංහල</a>
-                <a href="{$productversion}/sid{$htmlpage}">Sidámo 'Afó</a>
-                <a href="{$productversion}/sk{$htmlpage}">Slovenčina</a>
-                <a href="{$productversion}/sl{$htmlpage}">Slovenščina</a>
-                <a href="{$productversion}/sq{$htmlpage}">Shqip</a>
-                <a href="{$productversion}/sv{$htmlpage}">Svenska</a>
-                <a href="{$productversion}/ta{$htmlpage}">தமிழ்</a>
-                <a href="{$productversion}/tg{$htmlpage}">Тоҷикӣ</a>
-                <a href="{$productversion}/tr{$htmlpage}">Türkçe</a>
-                <a href="{$productversion}/ug{$htmlpage}">ئۇيغۇرچە</a>
-                <a href="{$productversion}/uk{$htmlpage}">Українська</a>
-                <a href="{$productversion}/vi{$htmlpage}">Tiếng Việt</a>
-                <a href="{$productversion}/zh-CN{$htmlpage}">中文 (简体字)</a>
-                <a href="{$productversion}/zh-TW{$htmlpage}">中文 (正體字)‬</a>
-            </nav>
-        </xsl:if>
-    </header>
-    <nav id="Modules" class="modules">
-        <ul>
-            <li><a href="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer"></div>Writer</a></li>
-            <li><a href="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC"><div class="calc"></div>Calc</a></li>
-            <li><a href="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS"><div class="impress"></div>Impress</a></li>
-            <li><a href="{$productversion}/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW"><div class="draw"></div>Draw</a></li>
-            <li><a href="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE"><div class="base"></div>Base</a></li>
-            <li><a href="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH"><div class="math"></div>Math</a></li>
-            <li><a href="{$productversion}/{$lang}/text/schart/main0000.html?DbPAR=CHART"><div class="chart"></div>Chart</a></li>
-            <li><a href="{$productversion}/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC"><div class="basic"></div>Basic</a></li>
-        </ul>
-    </nav>
-    <div class="accordion">
-        <div class="acc-panel">
-            <input id="accordion-1" name="accordion-menu" type="checkbox"/>
-            <label for="accordion-1"><xsl:call-template name="getContents"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
-            <div id="Contents" class="contents-treeview"></div>
+            <div class="logo-menu-container">
+                <a class="logo" href="https://helponline.libreoffice.org/">
+                    <div class="symbol"></div>
+                    <p>LibreOffice <xsl:value-of select="$productversion"/> Help</p>
+                </a>
+                <xsl:if test="$online">
+                    <label for="langs"><xsl:call-template name="getLanguage"><xsl:with-param name="lang" select="$lang"/></xsl:call-template> ▼</label>
+                </xsl:if>
+            </div>
+                <xsl:if test="$online">
+                <nav>
+                    <a href="{$productversion}/en-US{$htmlpage}">English (USA)</a>
+                    <a href="{$productversion}/am{$htmlpage}">አማርኛ</a>
+                    <a href="{$productversion}/ar{$htmlpage}">العربية</a>
+                    <a href="{$productversion}/ast{$htmlpage}">Asturianu</a>
+                    <a href="{$productversion}/bg{$htmlpage}">Български</a>
+                    <a href="{$productversion}/bn{$htmlpage}">বাংলা</a>
+                    <a href="{$productversion}/bn-IN{$htmlpage}">বাংলা</a>
+                    <a href="{$productversion}/bo{$htmlpage}">བོད་ཡིག / Bod skad</a>
+                    <a href="{$productversion}/bs{$htmlpage}">Bosanski</a>
+                    <a href="{$productversion}/ca{$htmlpage}">Català</a>
+                    <a href="{$productversion}/ca-valencia{$htmlpage}">Català-Valencia</a>
+                    <a href="{$productversion}/cs{$htmlpage}">Česky</a>
+                    <a href="{$productversion}/da{$htmlpage}">Dansk</a>
+                    <a href="{$productversion}/de{$htmlpage}">Deutsch</a>
+                    <a href="{$productversion}/dz{$htmlpage}"> ཇོང་ཁ</a>
+                    <a href="{$productversion}/el{$htmlpage}">Ελληνικά</a>
+                    <a href="{$productversion}/en-GB{$htmlpage}">English (GB)</a>
+                    <a href="{$productversion}/en-ZA{$htmlpage}">English (ZA)</a>
+                    <a href="{$productversion}/eo{$htmlpage}">Esperanto</a>
+                    <a href="{$productversion}/es{$htmlpage}">Español</a>
+                    <a href="{$productversion}/et{$htmlpage}">Eesti</a>
+                    <a href="{$productversion}/eu{$htmlpage}">Euskara</a>
+                    <a href="{$productversion}/fi{$htmlpage}">Suomi</a>
+                    <a href="{$productversion}/fr{$htmlpage}">Français</a>
+                    <a href="{$productversion}/gl{$htmlpage}">Galego</a>
+                    <a href="{$productversion}/gu{$htmlpage}">ગુજરાતી</a>
+                    <a href="{$productversion}/he{$htmlpage}">עברית</a>
+                    <a href="{$productversion}/hi{$htmlpage}">हिन्दी</a>
+                    <a href="{$productversion}/hr{$htmlpage}">Hrvatski</a>
+                    <a href="{$productversion}/hu{$htmlpage}">Magyar</a>
+                    <a href="{$productversion}/id{$htmlpage}">Bahasa Indonesia</a>
+                    <a href="{$productversion}/is{$htmlpage}">Íslenska</a>
+                    <a href="{$productversion}/it{$htmlpage}">Italiano</a>
+                    <a href="{$productversion}/ja{$htmlpage}">日本語</a>
+                    <a href="{$productversion}/ka{$htmlpage}">ქართული</a>
+                    <a href="{$productversion}/km{$htmlpage}">ភាសាខ្មែរ</a>
+                    <a href="{$productversion}/ko{$htmlpage}">한국어</a>
+                    <a href="{$productversion}/lo{$htmlpage}">ລາວ</a>
+                    <a href="{$productversion}/lt{$htmlpage}">Lietuvių</a>
+                    <a href="{$productversion}/lv{$htmlpage}">Latviešu</a>
+                    <a href="{$productversion}/mk{$htmlpage}">Македонски</a>
+                    <a href="{$productversion}/nb{$htmlpage}">Norsk (bokmål / riksmål)</a>
+                    <a href="{$productversion}/ne{$htmlpage}">नेपाली</a>
+                    <a href="{$productversion}/nl{$htmlpage}">Nederlands</a>
+                    <a href="{$productversion}/nn{$htmlpage}">Norsk (nynorsk)</a>
+                    <a href="{$productversion}/om{$htmlpage}">Oromoo</a>
+                    <a href="{$productversion}/pl{$htmlpage}">Polski</a>
+                    <a href="{$productversion}/pt{$htmlpage}">Português</a>
+                    <a href="{$productversion}/pt-BR{$htmlpage}">Português do Brasil</a>
+                    <a href="{$productversion}/ro{$htmlpage}">Română</a>
+                    <a href="{$productversion}/ru{$htmlpage}">Русский</a>
+                    <a href="{$productversion}/si{$htmlpage}">සිංහල</a>
+                    <a href="{$productversion}/sid{$htmlpage}">Sidámo 'Afó</a>
+                    <a href="{$productversion}/sk{$htmlpage}">Slovenčina</a>
+                    <a href="{$productversion}/sl{$htmlpage}">Slovenščina</a>
+                    <a href="{$productversion}/sq{$htmlpage}">Shqip</a>
+                    <a href="{$productversion}/sv{$htmlpage}">Svenska</a>
+                    <a href="{$productversion}/ta{$htmlpage}">தமிழ்</a>
+                    <a href="{$productversion}/tg{$htmlpage}">Тоҷикӣ</a>
+                    <a href="{$productversion}/tr{$htmlpage}">Türkçe</a>
+                    <a href="{$productversion}/ug{$htmlpage}">ئۇيغۇرچە</a>
+                    <a href="{$productversion}/uk{$htmlpage}">Українська</a>
+                    <a href="{$productversion}/vi{$htmlpage}">Tiếng Việt</a>
+                    <a href="{$productversion}/zh-CN{$htmlpage}">中文 (简体字)</a>
+                    <a href="{$productversion}/zh-TW{$htmlpage}">中文 (正體字)‬</a>
+                </nav>
+            </xsl:if>
         </div>
+    </header>
+    <div class="content-center">
         <xsl:if test="$online">
+        <nav class="mobile-lang">
+            <a href="{$productversion}/en-US{$htmlpage}">English (USA)</a>
+            <a href="{$productversion}/am{$htmlpage}">አማርኛ</a>
+            <a href="{$productversion}/ar{$htmlpage}">العربية</a>
+            <a href="{$productversion}/ast{$htmlpage}">Asturianu</a>
+            <a href="{$productversion}/bg{$htmlpage}">Български</a>
+            <a href="{$productversion}/bn{$htmlpage}">বাংলা</a>
+            <a href="{$productversion}/bn-IN{$htmlpage}">বাংলা</a>
+            <a href="{$productversion}/bo{$htmlpage}">བོད་ཡིག / Bod skad</a>
+            <a href="{$productversion}/bs{$htmlpage}">Bosanski</a>
+            <a href="{$productversion}/ca{$htmlpage}">Català</a>
+            <a href="{$productversion}/ca-valencia{$htmlpage}">Català-Valencia</a>
+            <a href="{$productversion}/cs{$htmlpage}">Česky</a>
+            <a href="{$productversion}/da{$htmlpage}">Dansk</a>
+            <a href="{$productversion}/de{$htmlpage}">Deutsch</a>
+            <a href="{$productversion}/dz{$htmlpage}"> ཇོང་ཁ</a>
+            <a href="{$productversion}/el{$htmlpage}">Ελληνικά</a>
+            <a href="{$productversion}/en-GB{$htmlpage}">English (GB)</a>
+            <a href="{$productversion}/en-ZA{$htmlpage}">English (ZA)</a>
+            <a href="{$productversion}/eo{$htmlpage}">Esperanto</a>
+            <a href="{$productversion}/es{$htmlpage}">Español</a>
+            <a href="{$productversion}/et{$htmlpage}">Eesti</a>
+            <a href="{$productversion}/eu{$htmlpage}">Euskara</a>
+            <a href="{$productversion}/fi{$htmlpage}">Suomi</a>
+            <a href="{$productversion}/fr{$htmlpage}">Français</a>
+            <a href="{$productversion}/gl{$htmlpage}">Galego</a>
+            <a href="{$productversion}/gu{$htmlpage}">ગુજરાતી</a>
+            <a href="{$productversion}/he{$htmlpage}">עברית</a>
+            <a href="{$productversion}/hi{$htmlpage}">हिन्दी</a>
+            <a href="{$productversion}/hr{$htmlpage}">Hrvatski</a>
+            <a href="{$productversion}/hu{$htmlpage}">Magyar</a>
+            <a href="{$productversion}/id{$htmlpage}">Bahasa Indonesia</a>
+            <a href="{$productversion}/is{$htmlpage}">Íslenska</a>
+            <a href="{$productversion}/it{$htmlpage}">Italiano</a>
+            <a href="{$productversion}/ja{$htmlpage}">日本語</a>
+            <a href="{$productversion}/ka{$htmlpage}">ქართული</a>
+            <a href="{$productversion}/km{$htmlpage}">ភាសាខ្មែរ</a>
+            <a href="{$productversion}/ko{$htmlpage}">한국어</a>
+            <a href="{$productversion}/lo{$htmlpage}">ລາວ</a>
+            <a href="{$productversion}/lt{$htmlpage}">Lietuvių</a>
+            <a href="{$productversion}/lv{$htmlpage}">Latviešu</a>
+            <a href="{$productversion}/mk{$htmlpage}">Македонски</a>
+            <a href="{$productversion}/nb{$htmlpage}">Norsk (bokmål / riksmål)</a>
+            <a href="{$productversion}/ne{$htmlpage}">नेपाली</a>
+            <a href="{$productversion}/nl{$htmlpage}">Nederlands</a>
+            <a href="{$productversion}/nn{$htmlpage}">Norsk (nynorsk)</a>
+            <a href="{$productversion}/om{$htmlpage}">Oromoo</a>
+            <a href="{$productversion}/pl{$htmlpage}">Polski</a>
+            <a href="{$productversion}/pt{$htmlpage}">Português</a>
+            <a href="{$productversion}/pt-BR{$htmlpage}">Português do Brasil</a>
+            <a href="{$productversion}/ro{$htmlpage}">Română</a>
+            <a href="{$productversion}/ru{$htmlpage}">Русский</a>
+            <a href="{$productversion}/si{$htmlpage}">සිංහල</a>
+            <a href="{$productversion}/sid{$htmlpage}">Sidámo 'Afó</a>
+            <a href="{$productversion}/sk{$htmlpage}">Slovenčina</a>
+            <a href="{$productversion}/sl{$htmlpage}">Slovenščina</a>
+            <a href="{$productversion}/sq{$htmlpage}">Shqip</a>
+            <a href="{$productversion}/sv{$htmlpage}">Svenska</a>
+            <a href="{$productversion}/ta{$htmlpage}">தமிழ்</a>
+            <a href="{$productversion}/tg{$htmlpage}">Тоҷикӣ</a>
+            <a href="{$productversion}/tr{$htmlpage}">Türkçe</a>
+            <a href="{$productversion}/ug{$htmlpage}">ئۇيغۇرچە</a>
+            <a href="{$productversion}/uk{$htmlpage}">Українська</a>
+            <a href="{$productversion}/vi{$htmlpage}">Tiếng Việt</a>
+            <a href="{$productversion}/zh-CN{$htmlpage}">中文 (简体字)</a>
+            <a href="{$productversion}/zh-TW{$htmlpage}">中文 (正體字)‬</a>
+        </nav>
+        </xsl:if>
+        <nav id="Modules" class="modules">
+            <ul>
+                <li><a href="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer"></div>Writer</a></li>
+                <li><a href="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC"><div class="calc"></div>Calc</a></li>
+                <li><a href="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS"><div class="impress"></div>Impress</a></li>
+                <li><a href="{$productversion}/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW"><div class="draw"></div>Draw</a></li>
+                <li><a href="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE"><div class="base"></div>Base</a></li>
+                <li><a href="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH"><div class="math"></div>Math</a></li>
+                <li><a href="{$productversion}/{$lang}/text/schart/main0000.html?DbPAR=CHART"><div class="chart"></div>Chart</a></li>
+                <li><a href="{$productversion}/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC"><div class="basic"></div>Basic</a></li>
+            </ul>
+        </nav>
+        <div class="accordion">
+            <script type="text/javascript">
+                <![CDATA[
+                (function() {]]>
+                <xsl:call-template name="getToken"><xsl:with-param name="lang" select="$lang"/></xsl:call-template>
+                <![CDATA[
+                var gcse = document.createElement('script');
+                gcse.type = 'text/javascript';
+                gcse.async = true;
+                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(gcse, s);
+                })();
+                ]]>
+            </script>
+            <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
+            <div class="acc-panel">
+                <input id="accordion-1" name="accordion-menu" type="checkbox"/>
+                <label for="accordion-1"><xsl:call-template name="getContents"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
+                <div id="Contents" class="contents-treeview"></div>
+            </div>
             <div class="acc-panel">
                 <input id="accordion-2" name="accordion-menu" type="checkbox"/>
-                <label for="accordion-2"><xsl:call-template name="getSearch"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
-                <div id="content-2">
-                    <script type="text/javascript">
-                        <![CDATA[
-                        (function() {]]>
-                        <xsl:call-template name="getToken"><xsl:with-param name="lang" select="$lang"/></xsl:call-template>
-                        <![CDATA[
-                        var gcse = document.createElement('script');
-                        gcse.type = 'text/javascript';
-                        gcse.async = true;
-                        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-                        var s = document.getElementsByTagName('script')[0];
-                        s.parentNode.insertBefore(gcse, s);
-                        })();
-                        ]]>
-                    </script>
-                    <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
-                </div>
-            </div>
-        </xsl:if>
-        <div class="acc-panel">
-            <input id="accordion-3" name="accordion-menu" type="checkbox"/>
-            <label for="accordion-3"><xsl:call-template name="getIndex"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
-            <div id="Index">
-                <div id="SearchBox">
-                    <p> &#32;&#x1f50e;&#32; <input id="search-bar" type="text"/></p>
-                </div>
-                <div id="Bookmarks">
-                    <p>WRITER</p><ul id="bookmarkWRITER"></ul>
-                    <p>CALC</p><ul id="bookmarkCALC"></ul>
-                    <p>IMPRESS</p><ul id="bookmarkIMPRESS"></ul>
-                    <p>DRAW</p><ul id="bookmarkDRAW" ></ul>
-                    <p>BASE</p><ul id="bookmarkBASE"></ul>
-                    <p>MATH</p><ul id="bookmarkMATH"></ul>
-                    <p>CHART</p><ul id="bookmarkCHART"></ul>
-                    <p>BASIC</p><ul id="bookmarkBASIC"></ul>
-                    <p>GLOBAL</p><ul id="bookmarkSHARED"></ul>
+                <label for="accordion-2"><xsl:call-template name="getIndex"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
+                <div id="Index">
+                    <div id="SearchBox">
+                        <p> &#32;&#x1f50e;&#32; <input id="search-bar" type="text"/></p>
+                    </div>
+                    <div id="Bookmarks">
+                        <p>WRITER</p><ul id="bookmarkWRITER"></ul>
+                        <p>CALC</p><ul id="bookmarkCALC"></ul>
+                        <p>IMPRESS</p><ul id="bookmarkIMPRESS"></ul>
+                        <p>DRAW</p><ul id="bookmarkDRAW" ></ul>
+                        <p>BASE</p><ul id="bookmarkBASE"></ul>
+                        <p>MATH</p><ul id="bookmarkMATH"></ul>
+                        <p>CHART</p><ul id="bookmarkCHART"></ul>
+                        <p>BASIC</p><ul id="bookmarkBASIC"></ul>
+                        <p>GLOBAL</p><ul id="bookmarkSHARED"></ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="DisplayArea" itemprop="articleBody">
-        <xsl:apply-templates select="/helpdocument/body"/>
+        <div id="DisplayArea" itemprop="articleBody">
+            <xsl:apply-templates select="/helpdocument/body"/>
+        </div>
     </div>
     <footer>
-        <p><a href="http://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="http://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="http://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="http://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="http://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="http://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
-        <div id="DEBUG" class="debug">
-            <h3 class="bug">Help content debug info:</h3>
-            <p>This page is: <a href="https://opengrok.libreoffice.org/xref/help/source{$filename}" target="_blank"><xsl:value-of select="$filename"/></a></p>
-            <p>Title is: <xsl:value-of select="$title"/></p>
-            <p id="bm_module"></p>
-            <p id="bm_system"></p>
+        <div class="headerfooter-center">
+            <p><a href="http://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="http://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="http://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="http://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="http://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="http://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
+            <div id="DEBUG" class="debug">
+                <h3 class="bug">Help content debug info:</h3>
+                <p>This page is: <a href="https://opengrok.libreoffice.org/xref/help/source{$filename}" target="_blank"><xsl:value-of select="$filename"/></a></p>
+                <p>Title is: <xsl:value-of select="$title"/></p>
+                <p id="bm_module"></p>
+                <p id="bm_system"></p>
+            </div>
         </div>
     </footer>
     <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
