@@ -74,19 +74,19 @@ function getParameterByName(name, url) {
     if (!url) {
         url = window.location.href;
     }
-    
+
     name = name.replace(/[\[\]]/g, "\\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
     var results = regex.exec(url);
-    
+
     if (!results) {
         return null;
     }
-    
+
     if (!results[2]) {
         return '';
     }
-    
+
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
@@ -124,14 +124,8 @@ $(document).ready(function() {
     $('input[name="accordion-menu"]').on('change', function(){
         $('input[name="accordion-menu"]').not(this).prop('checked', false);
     });
-    //focus Google Search input clicking on Find panel
-    $('#accordion-2').on('change', function(){
-        if($(this).is(':checked')){
-            $('#gsc-i-id1').focus();
-        }
-    });
     //focus index search input clicking on Index panel
-    $('#accordion-3').on('change', function(){
+    $('#accordion-2').on('change', function(){
         if($(this).is(':checked')){
             $('#search-bar').focus();
             //prevent all results to be shown

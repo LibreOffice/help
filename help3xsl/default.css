@@ -92,7 +92,7 @@ h6 {
 }
 p,
 td {
-    font-size: 11pt;
+    font-size: 14pt;
     margin: 2px 2px 2px 2px;
 }
 h1 {
@@ -102,15 +102,15 @@ h1 {
     padding-bottom: 6px;
 }
 h2 {
-    font-size: 14pt;
+    font-size: 18pt;
 }
 h3 {
-    font-size: 12pt;
+    font-size: 16pt;
 }
 h4,
 h5,
 h6 {
-    font-size: 11pt;
+    font-size: 14pt;
 }
 .avis {
     /*    background-color: #EEEEEE;*/
@@ -191,6 +191,7 @@ h6 {
     overflow: auto;
     padding: 10px;
     grid-area: main;
+    margin-bottom: 50px;
 }
 .mediabutton {
     background-color: cyan;
@@ -211,21 +212,20 @@ header {
     color: #fff;
     height: 4em;
     padding: .5em .5em .5em 1em;
-    flex-wrap: wrap;
-    justify-content: space-between;
     grid-area: header;
 }
+.logo-menu-container {
+    display: flex;
+    justify-content: space-between;
+}
 .logo {
-    flex-shrink: 0;
     color: #fff;
     text-decoration: none;
-    float: left;
-    width: 190px;
+    display: flex;
+    align-items: flex-end;
 }
 .logo p {
     font-size: 1.5em;
-    width: 130px;
-    float: left;
 }
 .logo .symbol {
     background-image: url(media/navigation/libo-symbol-white.svg);
@@ -233,20 +233,19 @@ header {
     background-size: contain;
     width: 3em;
     height: 3.7em;
-    float: left;
     margin-right: .5em;
 }
 header nav {
     margin-top: .7em;
     padding: 0;
     display: none;
-    border: 1px solid;
+    border: 1px solid #333;
     position: relative;
 }
 /* Create a style for the first level items */
 
-header nav a {
-    color: #333333;
+header nav a, .mobile-lang a {
+    color: #333;
     background-color: #EEEEEE;
     display: block;
     line-height: 1.5em;
@@ -255,14 +254,14 @@ header nav a {
     font-weight: bold;
     border-width: 0 1px 0 0;
     border-style: solid;
-    border-color: #333333;
+    border-color: #333;
     font-size: 1.5em;
     flex-shrink: 0;
     z-index: 100;
     white-space: nowrap;
 }
 
-header nav a:last-child {
+header nav a:last-child, .mobile-lang a:last-child {
     border-right-width: 0;
 }
 
@@ -272,21 +271,34 @@ header label {
     position: relative;
     top: 2em;
     float: right;
+    display: none;
 }
 header input[type="checkbox"]:checked ~ nav {
     background: #f1f1f1;
-    color: #444;
+    color: #333;
     z-index: 100;
-    /* line them up horizontally */
-
-    display: flex;
-    flex-direction: row;
+    display: none;
     /* allow for scrolling */
 
     overflow-x: auto;
-    overflow-y: hidden;
     /* make it smooth on iOS */
 
+    -webkit-overflow-scrolling: touch;
+    clear: both;
+    text-align: center;
+}
+.mobile-lang {
+    background: #f1f1f1;
+    color: #333;
+    border: 1px solid #333;
+    z-index: 100;
+    /* line them up horizontally */
+    display: flex;
+    flex-direction: row;
+    /* allow for scrolling */
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* make it smooth on iOS */
     -webkit-overflow-scrolling: touch;
     clear: both;
     text-align: center;
@@ -297,6 +309,9 @@ footer {
     padding: .1em 3em;
     text-align: center;
     grid-area: footer;
+}
+footer .headerfooter-center {
+    margin-top: 20px;
 }
 footer a {
     color: #c2f6ba;
@@ -343,8 +358,16 @@ footer a {
     list-style-type: none;
     grid-area: accordion;
 }
+.acc-panel {
+    z-index: 10;
+}
 .acc-panel > div {
     display: none;
+}
+.gsc-control-cse {
+    border-color: transparent !important;
+    background-color: transparent !important;
+    padding: 3px 0 0 0 !important;
 }
 header input[type=checkbox],
 .contents-treeview input[type=checkbox] {
@@ -355,7 +378,7 @@ header input[type=checkbox],
     display: none;
 }
 .acc-panel > label {
-    color: #666;
+    color: #333;
     cursor: pointer;
     display: block;
     font-size: 1em;
@@ -364,32 +387,27 @@ header input[type=checkbox],
     padding: 0 1.5em;
     text-align: center;
 }
-.acc-panel:nth-of-type(1) > label {
-    background: #E7FDE4;
-}
 .acc-panel:nth-of-type(2) > label {
-    background: #F7FEE5;
+    background: #F0FDD2;
 }
 .acc-panel:nth-of-type(3) > label {
-    background: #E2FBF8;
+    background: #CAF4F0;
 }
 .acc-panel > label:hover {
     color: #222;
 }
-.acc-panel:nth-of-type(1) > label:hover {
-    background: #D5FACF;
-}
 .acc-panel:nth-of-type(2) > label:hover {
-    background: #F0FDD2;
+    background: #D4F489;
 }
 .acc-panel:nth-of-type(3) > label:hover {
-    background: #CAF4F0;
+    background: #6ABFB6;
 }
 .accordion input[type=checkbox]:checked + label + div {
     background: #f1f1f1;
-    color: #444;
+    color: #333;
     z-index: 6;
     display: block;
+    padding: 15px 0;
 }
 #Index div#SearchBox {
     background-color: #c2f6ba;
@@ -405,7 +423,7 @@ header input[type=checkbox],
 }
 #Index ul li {
     list-style-type: none;
-    font-size: 11pt;
+    font-size: 14pt;
 }
 #Index p {
     font-size: 16pt;
@@ -440,7 +458,7 @@ header input[type=checkbox],
     padding: 0.5em 0.5em;
     text-decoration: none;
     font-weight: bold;
-    font-size: 11pt;
+    font-size: 14pt;
     float: left;
 }
 .modules div {
@@ -459,7 +477,6 @@ header input[type=checkbox],
     width: 21.5px;
     height: 26px;
     position: relative;
-    top: -8px;
     margin-right: 5px;
 }
 .calc {
@@ -493,18 +510,14 @@ header input[type=checkbox],
     padding: 0;
     margin: 0;
     list-style: none;
-    font-size: 11pt;
+    font-size: 14pt;
 }
 .contents-treeview {
-    /*    font: normal 11px "Segoe UI", Arial, Sans-serif;*/
-
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
 }
 .contents-treeview a {
-    /*     color: #00f; */
-
     text-decoration: none;
 }
 .contents-treeview a:hover {
@@ -565,9 +578,17 @@ header input[type=checkbox],
     }
 }
 @media screen and (min-width: 960px) {
-    body {
+    .content-center {
         max-width: 1024px;
-        margin: auto;
+        margin: 0 auto;
+        grid-area: content-center;
+    }
+    .mobile-lang {
+        display: none;
+    }
+    .headerfooter-center {
+        max-width: 1024px;
+        margin: 0 auto;
     }
     header nav a {
         font-size: 1em;
@@ -577,9 +598,18 @@ header input[type=checkbox],
     header nav a:last-child {
         border-bottom-width: 0;
     }
+    header label {
+        cursor: pointer;
+        font-size: 1.2em;
+        position: relative;
+        top: 2em;
+        float: right;
+        display: block;
+    }
     /* change the language menu direction to stacked */
 
     header input[type="checkbox"]:checked ~ nav {
+        display: flex;
         flex-direction: column;
         max-width: 7.5em;
         float: right;
@@ -589,15 +619,22 @@ header input[type=checkbox],
     .accordion {
         display: flex;
         width: 960px;
+        max-height: 50px;
     }
-    .acc-panel {
+    .accordion > div {
         flex-basis: 320px;
+    }
+    .acc-panel:nth-of-type(2) > label, #Contents {
+        margin-left: .25em;
     }
     .acc-panel > label {
         margin-right: .25em;
     }
     .accordion input[type=checkbox]:checked + label + div {
         max-width: 316px;
+    }
+    #DisplayArea {
+        padding: 10px 150px;
     }
     #search-bar {
         max-width: 290px;
@@ -610,10 +647,16 @@ header input[type=checkbox],
             grid-template-columns: 320px 1fr;
             grid-template-rows: 1fr minmax(1em, auto);
             grid-template-areas: "header header"
-                                 "modules modules"
+                                 "content-center content-center"
+                                 "footer footer"
+        }
+        content-center {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            grid-template-rows: 1fr minmax(1em, auto);
+            grid-template-areas: "modules modules"
                                  "accordion accordion"
                                  "main main"
-                                 "footer footer";
         }
     }
 }
