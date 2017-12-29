@@ -887,7 +887,7 @@
 <paragraph id="hd_id3144646" role="heading" level="3" xml-lang="en-US">Syntax</paragraph>
 <paragraph id="par_id3144659" role="code" xml-lang="en-US">QUOTIENT(Numerator; Denominator)</paragraph>
 <paragraph id="par_id9038972" role="paragraph" xml-lang="en-US">Returns the integer part of <emph>Numerator</emph> divided by <emph>Denominator</emph>.</paragraph>
-<paragraph id="par_id7985168" role="paragraph" xml-lang="en-US">QUOTIENT is equivalent to <item type="literal">INT(numerator/denominator)</item>, except that it may report errors with different error codes.</paragraph>
+<paragraph id="par_id7985168" role="paragraph" xml-lang="en-US">QUOTIENT is equivalent to <item type="literal">INT(numerator/denominator)</item> for same-sign numerator and denominator, except that it may report errors with different error codes. More generally, it's equivalent to <item type="literal">INT(numerator/denominator/SIGN(numerator/denominator))*SIGN(numerator/denominator)</item>.</paragraph>
 
 <paragraph id="hd_id3144674" role="heading" level="3" xml-lang="en-US">Example</paragraph>
 <paragraph id="par_id3144687" role="paragraph" xml-lang="en-US"><item type="input">=QUOTIENT(11;3)</item> returns 3. The remainder of 2 is lost.</paragraph><comment>see also MOD, INT</comment>
