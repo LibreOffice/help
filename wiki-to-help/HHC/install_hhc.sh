@@ -9,7 +9,7 @@
 # Usage of HHC: wine c:\\htmlhelp\\hhc.exe c:\\test\\htmlhelp.hhp
 #
 # Changes:  Set installation directory to c:\htmlhelp
-#           Copy also itcc.dll, this is neccessary
+#           Copy also itcc.dll, this is necessary
 #           No execution of htmlhelp.exe installer needed
 #           Abortion of install if anything fails, e.g. the download of HHC.
 #

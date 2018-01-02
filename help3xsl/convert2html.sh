@@ -16,7 +16,7 @@
 # a set of html pages.
 #
 # Conversion is done by listing the available languages in the tarball and
-# execting the XSLT transformations on each XHP and tree files.
+# executing the XSLT transformations on each XHP and tree files.
 #
 # Note: tarball, source and productversion must match.
 #

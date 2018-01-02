@@ -42,7 +42,7 @@ class Metabook(object):
 
     def getClone(self):
         m = Metabook()
-        m.template = self.template # No copy() neccessary here
+        m.template = self.template # No copy() necessary here
         m.ArticleClass = self.ArticleClass
         m.artTags = self.artTags
         #m.m = self.m.copy()
