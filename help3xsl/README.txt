@@ -45,7 +45,7 @@ This javascript file:
 New ‘Object’ tag
 -----------------------------------------------------------------
 
-The filter online_transform.xsl now support the <object> tag defined for XHP files to allow a generic object in the browser. The <object> tag now maps to the folowing HTML5 tags:
+The filter online_transform.xsl now support the <object> tag defined for XHP files to allow a generic object in the browser. The <object> tag now maps to the following HTML5 tags:
 Maps to HTML5 <video> tag:
 
 <section id="video">
