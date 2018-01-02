@@ -7,7 +7,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 # This script builds translated XHP file with helpex executable
-# and thes transform it to html pages
+# and this transform it to html pages
 # 1) generates redirection from LibreOffice Help URL to right html page
 #    in index.html with bookmark2file.js
 # 2) generates bookmark_<APP>.js for index search
