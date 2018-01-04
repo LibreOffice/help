@@ -94,6 +94,16 @@ Stylesheet map language-dependent parameters and translation
 </xsl:choose>
 </xsl:template>
 
+<xsl:template name="getModules">
+    <xsl:param name="lang"/>
+    <xsl:choose>
+        <xsl:when test="$lang='en-US'"><xsl:text>Module</xsl:text></xsl:when>
+        <xsl:when test="$lang='en-GB'"><xsl:text>Module</xsl:text></xsl:when>
+        <xsl:when test="$lang='en-ZA'"><xsl:text>Module</xsl:text></xsl:when>
+        <xsl:otherwise><xsl:text>Module</xsl:text></xsl:otherwise>
+</xsl:choose>
+</xsl:template>
+
 <xsl:template name="getLanguage">
     <xsl:param name="lang"/>
     <xsl:choose>

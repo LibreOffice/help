@@ -22,6 +22,11 @@
 +                           WESTERN LANGUAGES                       +
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+We use px as the unit for navigation elements and fonts because we do
+not want them to scale with browser-set font size.
+We use rem as the unit for article and footer contents because they
+do not break anything related to layout by scaling.
+
 */
 
 body,
@@ -42,6 +47,9 @@ body {
     margin: 0;
     line-height: normal;
 }
+a {
+    color: #18A303;
+}
 pre,
 .code,
 .codeintable,
@@ -52,15 +60,14 @@ pre,
 .path,
 .pathintable {
     font-family: Menlo, Consolas, "DejaVu Sans Mono", "Nimbus Mono L", "Lucida Sans Typewriter", "Courier New", Courier, Monaco, monospace;
-    margin-top: 1pt;
-    margin-bottom: 1pt;
+    margin: 0.08rem 0;
 }
 .acronym {
     font-weight: bold;
 }
 .related {
     font-weight: bold;
-    margin-top: 20pt;
+    margin-top: 1.67rem;
     border-top: 1px solid black;
 }
 .emph,
@@ -87,30 +94,30 @@ h3,
 h4,
 h5,
 h6 {
-    margin-bottom: 8pt;
+    margin-bottom: 0.67rem;
     color: #18A303;
 }
 p,
 td {
-    font-size: 14pt;
+    font-size: 1.17rem;
     margin: 2px 2px 2px 2px;
 }
 h1 {
-    font-size: 22pt;
+    font-size: 1.83rem;
     font-weight: 300;
     border-bottom: 3px solid #18A303;
     padding-bottom: 6px;
 }
 h2 {
-    font-size: 18pt;
+    font-size: 1.5rem;
 }
 h3 {
-    font-size: 16pt;
+    font-size: 1.33rem;
 }
 h4,
 h5,
 h6 {
-    font-size: 14pt;
+    font-size: 1.17rem;
 }
 .avis {
     /*    background-color: #EEEEEE;*/
@@ -178,11 +185,11 @@ h6 {
 }
 .infopage {
     color: green;
-    font-size: 16pt;
+    font-size: 1.33rem;
     font-weight: bold;
 }
 .topmenu {
-    font-size: 12pt;
+    font-size: 1rem;
     font-weight: bold;
     padding: 1px;
     border: solid 1px #18A303;
@@ -201,20 +208,22 @@ h6 {
     background-color: green;
     font-family: Arial;
     font-weight: bold;
-    font-size: 24pt;
+    font-size: 2rem;
     border: 1px solid black;
     padding-bottom: 6px;
     margin-bottom: 6px;
 }
 .embedded {}
+.header-extrawurst {
+    grid-area: header;
+}
 header {
     background-color: #18A303;
     color: #fff;
-    height: 4em;
-    padding: .5em .5em .5em 1em;
-    grid-area: header;
+    height: 64px;
+    padding: 8px 8px 8px 16px;
 }
-.logo-menu-container {
+.logo-container {
     display: flex;
     justify-content: space-between;
 }
@@ -222,75 +231,19 @@ header {
     color: #fff;
     text-decoration: none;
     display: flex;
-    align-items: flex-end;
 }
 .logo p {
-    font-size: 1.5em;
+    font-size: 24px;
 }
 .logo .symbol {
     background-image: url(media/navigation/libo-symbol-white.svg);
     background-repeat: no-repeat;
     background-size: contain;
-    width: 3em;
-    height: 3.7em;
-    margin-right: .5em;
+    width: 52px;
+    height: 60px;
+    margin-right: 10px;
 }
-header nav {
-    margin-top: .7em;
-    padding: 0;
-    display: none;
-    border: 1px solid #333;
-    position: relative;
-}
-/* Create a style for the first level items */
-
-header nav a, .mobile-lang a {
-    color: #333;
-    background-color: #EEEEEE;
-    display: block;
-    line-height: 1.5em;
-    padding: 0.2em 0.4em;
-    text-decoration: none;
-    font-weight: bold;
-    border-width: 0 1px 0 0;
-    border-style: solid;
-    border-color: #333;
-    font-size: 1.5em;
-    flex-shrink: 0;
-    z-index: 100;
-    white-space: nowrap;
-}
-
-header nav a:last-child, .mobile-lang a:last-child {
-    border-right-width: 0;
-}
-
-header label {
-    cursor: pointer;
-    font-size: 1.2em;
-    position: relative;
-    top: 2em;
-    float: right;
-    display: none;
-}
-header input[type="checkbox"]:checked ~ nav {
-    background: #f1f1f1;
-    color: #333;
-    z-index: 100;
-    display: none;
-    /* allow for scrolling */
-
-    overflow-x: auto;
-    /* make it smooth on iOS */
-
-    -webkit-overflow-scrolling: touch;
-    clear: both;
-    text-align: center;
-}
-.mobile-lang {
-    background: #f1f1f1;
-    color: #333;
-    border: 1px solid #333;
+.lang nav, .modules nav {
     z-index: 100;
     /* line them up horizontally */
     display: flex;
@@ -300,21 +253,28 @@ header input[type="checkbox"]:checked ~ nav {
     overflow-y: hidden;
     /* make it smooth on iOS */
     -webkit-overflow-scrolling: touch;
-    clear: both;
     text-align: center;
+}
+.lang nav a, .modules nav a {
+    color: #fff;
+    background-color: #31363A;
+    display: block;
+    line-height: 1.5;
+    padding: 3px 6px;
+    text-decoration: none;
+    font-size: 24px;
+    flex-shrink: 0;
+    z-index: 100;
+    white-space: nowrap;
 }
 footer {
-    background: #18A303;
-    color: #fff;
-    padding: .1em 3em;
-    text-align: center;
-    grid-area: footer;
+    color: #333;
+    border-top: 1px solid #18A303;
+    padding: 20px 0 0 0;
+    margin: 20px 0 0 0;
 }
-footer .headerfooter-center {
-    margin-top: 20px;
-}
-footer a {
-    color: #c2f6ba;
+footer p {
+    font-size: 1rem;
 }
 .breadcrumbs ul {
     list-style-type: none;
@@ -325,7 +285,7 @@ footer a {
 .breadcrumbs li {
     display: inline-block;
     position: relative;
-    padding-right: 2em;
+    padding-right: 24px;
     margin: 0;
 }
 .breadcrumbs li:after {
@@ -333,7 +293,7 @@ footer a {
     position: absolute;
     display: inline-block;
     right: 0;
-    width: 2em;
+    width: 24px;
     text-align: center;
 }
 .breadcrumbs li:last-child {
@@ -351,120 +311,93 @@ footer a {
 .breadcrumbs a:hover {
     text-decoration: underline;
 }
-.accordion {
-    margin: 0 auto;
-    width: 100%;
-    height: 100%;
-    list-style-type: none;
-    grid-area: accordion;
-}
-.acc-panel {
-    z-index: 10;
-}
-.acc-panel > div {
-    display: none;
-}
 .gsc-control-cse {
     border-color: transparent !important;
     background-color: transparent !important;
     padding: 3px 0 0 0 !important;
 }
-header input[type=checkbox],
-.contents-treeview input[type=checkbox] {
+.modules input[type=checkbox], .lang input[type=checkbox],
+.contents-treeview input[type=checkbox], aside input[type=checkbox] {
     position: absolute;
     opacity: 0;
 }
-.accordion input[type=checkbox] {
-    display: none;
-}
-.acc-panel > label {
-    color: #333;
+label[for=accordion-1] {
+    text-decoration: underline;
+    color: #18A303;
     cursor: pointer;
     display: block;
-    font-size: 1em;
-    height: 2.5em;
-    line-height: 2.5em;
-    padding: 0 1.5em;
-    text-align: center;
+    padding: 10px 0 10px 20px;
+    font-size: 29px;
+    line-height: .6;
 }
-.acc-panel:nth-of-type(2) > label {
-    background: #F0FDD2;
+label[for=accordion-1]:after {
+    font-size: 44px;
+    content:"⌄";
 }
-.acc-panel:nth-of-type(3) > label {
-    background: #CAF4F0;
+aside input[type=checkbox] ~ .contents-treeview {
+    display: none;
 }
-.acc-panel > label:hover {
-    color: #222;
-}
-.acc-panel:nth-of-type(2) > label:hover {
-    background: #D4F489;
-}
-.acc-panel:nth-of-type(3) > label:hover {
-    background: #6ABFB6;
-}
-.accordion input[type=checkbox]:checked + label + div {
-    background: #f1f1f1;
+aside input[type=checkbox]:checked ~ .contents-treeview {
     color: #333;
     z-index: 6;
     display: block;
-    padding: 15px 0;
+    padding: 0 0 0 20px;
 }
-#Index div#SearchBox {
-    background-color: #c2f6ba;
-    line-height: 2em;
-    border: 1px solid #18A303;
-    vertical-align: center;
-    text-align: center;
-    top: 2px;
-    left: 2px;
+.index-label {
+    float: left;
+    font-size: 29px;
+    color: #18A303;
+    margin-right: 10px;
+}
+#SearchBox {
+    padding-left: 20px;
+    margin: 20px 0 20px 0;
+}
+#SearchBox p {
+    font-size: 29px;
+}
+#Index {
+    margin-top: 10px;
 }
 #Index ul {
-    padding-left:15px;
+    padding-left: 15px;
 }
 #Index ul li {
     list-style-type: none;
-    font-size: 14pt;
+    font-size: 16px;
+    margin-bottom: 5px;
 }
-#Index p {
-    font-size: 16pt;
+#Bookmarks p {
+    font-size: 22px;
     font-weight: bold;
+    color: #18A303;
 }
 #search-bar {
-    max-width: 90%;
+    margin-top: 10px;
+}
+#Bookmarks {
+    padding: 0 20px;
+}
+.google-search {
+    max-width: 300px;
+    margin: 0 auto;
 }
 .modules {
-    margin: 0;
-    padding: 1em;
-    overflow: hidden;
-    grid-area: modules;
+    border-bottom: 2px solid #f3f3f3;
 }
-.modules ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.modules label:after, .lang label:after {
+    font-size: 30px;
+    color: #fff;
+    content:"⌄";
 }
-.modules ul li {
-    float: left;
-    list-style-type: none;
+.lang label, .modules label {
+    display: none;
 }
-/* Create a style for the first level items */
-
-.modules > ul > li > a {
-    color: #000;
-    display: block;
-    line-height: 1.5em;
-    padding: 0.5em 0.5em;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 14pt;
-    float: left;
-}
-.modules div {
+.modules nav div {
     background-repeat: no-repeat;
     background-size: contain;
     float: left;
+    display: none;
 }
 .calc,
 .chart,
@@ -510,7 +443,7 @@ header input[type=checkbox],
     padding: 0;
     margin: 0;
     list-style: none;
-    font-size: 14pt;
+    font-size: 16px;
 }
 .contents-treeview {
     -moz-user-select: none;
@@ -530,9 +463,8 @@ header input[type=checkbox],
     display: none;
 }
 .contents-treeview label,
-.contents-treeview label::before {
+.contents-treeview label:before {
     cursor: pointer;
-    background: url("media/icon-themes/res/folderop.png") no-repeat;
     color: #111;
 }
 .contents-treeview input:disabled + label {
@@ -552,10 +484,11 @@ header input[type=checkbox],
 .contents-treeview label {
     background-position: 18px 0;
 }
-.contents-treeview label::before {
-    content: "";
+.contents-treeview label:before {
+    content: "🖿";
+    color: #18A303;
     width: 16px;
-    margin: 0 22px 0 0;
+    margin: 0 5px 0 0;
     background-position: 0 -32px;
     display: inline-block;
 }
@@ -578,63 +511,89 @@ header input[type=checkbox],
     }
 }
 @media screen and (min-width: 960px) {
-    .content-center {
-        max-width: 1024px;
-        margin: 0 auto;
-        grid-area: content-center;
-    }
-    .mobile-lang {
+    .lang nav {
         display: none;
     }
-    .headerfooter-center {
-        max-width: 1024px;
-        margin: 0 auto;
-    }
-    header nav a {
-        font-size: 1em;
+    .lang nav a {
+        font-size: 19px;
         white-space: normal;
-        border-width: 0 0 1px 0;
     }
-    header nav a:last-child {
-        border-bottom-width: 0;
-    }
-    header label {
+    .lang label, .modules label {
         cursor: pointer;
-        font-size: 1.2em;
+        color: #fff;
+        font-size: 19px;
         position: relative;
-        top: 2em;
-        float: right;
+        top: 40px;
         display: block;
     }
-    /* change the language menu direction to stacked */
+    /* change the menu direction to stacked */
 
-    header input[type="checkbox"]:checked ~ nav {
+    .lang input[type="checkbox"]:checked ~ nav, .modules input[type="checkbox"]:checked ~ nav {
         display: flex;
         flex-direction: column;
-        max-width: 7.5em;
-        float: right;
+        max-width: 120px;
         overflow-y: auto;
-        max-height: 30em;
+        overflow-x: hidden;
+        max-height: 480px;
+        position: absolute;
+        top: 80px;
     }
-    .accordion {
-        display: flex;
-        width: 960px;
-        max-height: 50px;
+    .modules input[type="checkbox"]:checked ~ nav {
+        background-color: #31363A;
+        text-align: left;
     }
-    .accordion > div {
-        flex-basis: 320px;
+    .modules nav {
+        display: none;
     }
-    .acc-panel:nth-of-type(2) > label, #Contents {
-        margin-left: .25em;
+    .modules nav div {
+        display: block;
     }
-    .acc-panel > label {
-        margin-right: .25em;
+    .modules nav a {
+        font-size: 19px;
     }
-    .accordion input[type=checkbox]:checked + label + div {
-        max-width: 316px;
+    aside {
+        border-right: 5px solid #19A303;
+        float: left;
+        width: 320px;
+        grid-area: sidebar;
+    }
+    .google-search {
+        margin: 0;
+        position: absolute;
+        top: 19px;
+        left: 860px;
+    }
+    .lang {
+        position: absolute;
+        top: 0;
+        left: 200px;
+    }
+    .modules {
+        width: 120px;
+        position: absolute;
+        top: 0;
+        left: 80px;
+        border: none;
+    }
+    label[for=accordion-1] {
+        background-color: transparent;
+        text-decoration: none;
+    }
+     label[for=accordion-1]:hover {
+        background-color: transparent;
+    }
+     label[for=accordion-1]:after {
+        content: "";
     }
     #DisplayArea {
-        padding: 10px 150px;
+        padding: 10px 50px;
+        width: 800px;
+    }
+    #Contents {
+        color: #333;
+        z-index: 6;
+        display: block;
+        padding: 0 0 0 20px;
     }
     #search-bar {
         max-width: 290px;
@@ -647,16 +606,7 @@ header input[type=checkbox],
             grid-template-columns: 320px 1fr;
             grid-template-rows: 1fr minmax(1em, auto);
             grid-template-areas: "header header"
-                                 "content-center content-center"
-                                 "footer footer"
-        }
-        content-center {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            grid-template-rows: 1fr minmax(1em, auto);
-            grid-template-areas: "modules modules"
-                                 "accordion accordion"
-                                 "main main"
+                                 "sidebar main"
         }
     }
 }

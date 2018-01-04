@@ -120,17 +120,7 @@ $(document).ready(function() {
         }, 200);
     });
 
-    //maintain only one panel open
-    $('input[name="accordion-menu"]').on('change', function(){
-        $('input[name="accordion-menu"]').not(this).prop('checked', false);
-    });
-    //focus index search input clicking on Index panel
-    $('#accordion-2').on('change', function(){
-        if($(this).is(':checked')){
-            $('#search-bar').focus();
-            //prevent all results to be shown
-            $("#Bookmarks").toggle($('#search-bar').val().length > 2);
-        }
-    });
+    //prevent all results to be shown
+    $("#Bookmarks").toggle($('#search-bar').val().length > 2);
 });
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
