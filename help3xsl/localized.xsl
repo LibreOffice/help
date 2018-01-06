@@ -97,9 +97,53 @@ Stylesheet map language-dependent parameters and translation
 <xsl:template name="getModules">
     <xsl:param name="lang"/>
     <xsl:choose>
-        <xsl:when test="$lang='en-US'"><xsl:text>Module</xsl:text></xsl:when>
-        <xsl:when test="$lang='en-GB'"><xsl:text>Module</xsl:text></xsl:when>
-        <xsl:when test="$lang='en-ZA'"><xsl:text>Module</xsl:text></xsl:when>
+        <xsl:when test="$lang='am'"><xsl:text>ክፍል</xsl:text></xsl:when>
+        <xsl:when test="$lang='ast'"><xsl:text>Módulu</xsl:text></xsl:when>
+        <xsl:when test="$lang='bg'"><xsl:text>Модул</xsl:text></xsl:when>
+        <xsl:when test="$lang='bn'"><xsl:text>মডিউল</xsl:text></xsl:when>
+        <xsl:when test="$lang='bs'"><xsl:text>Modul</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca'"><xsl:text>Mòdul</xsl:text></xsl:when>
+        <xsl:when test="$lang='cs'"><xsl:text>Modul</xsl:text></xsl:when>
+        <xsl:when test="$lang='da'"><xsl:text>Modul</xsl:text></xsl:when>
+        <xsl:when test="$lang='de'"><xsl:text>Modul</xsl:text></xsl:when>
+        <xsl:when test="$lang='el'"><xsl:text>Άρθρωμα</xsl:text></xsl:when>
+        <xsl:when test="$lang='es'"><xsl:text>Módulo</xsl:text></xsl:when>
+        <xsl:when test="$lang='eo'"><xsl:text>Moduloj</xsl:text></xsl:when>
+        <xsl:when test="$lang='et'"><xsl:text>Moodul</xsl:text></xsl:when>
+        <xsl:when test="$lang='eu'"><xsl:text>Modulua</xsl:text></xsl:when>
+        <xsl:when test="$lang='fi'"><xsl:text>Moduuli</xsl:text></xsl:when>
+        <xsl:when test="$lang='gl'"><xsl:text>Módulo</xsl:text></xsl:when>
+        <xsl:when test="$lang='gu'"><xsl:text>મોડ્યુલ</xsl:text></xsl:when>
+        <xsl:when test="$lang='hi'"><xsl:text>मॉडयूल</xsl:text></xsl:when>
+        <xsl:when test="$lang='hr'"><xsl:text>Modul</xsl:text></xsl:when>
+        <xsl:when test="$lang='hu'"><xsl:text>Modul</xsl:text></xsl:when>
+        <xsl:when test="$lang='id'"><xsl:text>Modul</xsl:text></xsl:when>
+        <xsl:when test="$lang='is'"><xsl:text>Eining</xsl:text></xsl:when>
+        <xsl:when test="$lang='it'"><xsl:text>Modulo</xsl:text></xsl:when>
+        <xsl:when test="$lang='ja'"><xsl:text>モジュール</xsl:text></xsl:when>
+        <xsl:when test="$lang='km'"><xsl:text>ម៉ូឌុល</xsl:text></xsl:when>
+        <xsl:when test="$lang='ko'"><xsl:text>모듈</xsl:text></xsl:when>
+        <xsl:when test="$lang='lv'"><xsl:text>Modulis</xsl:text></xsl:when>
+        <xsl:when test="$lang='mk'"><xsl:text>Модул</xsl:text></xsl:when>
+        <xsl:when test="$lang='ne'"><xsl:text>मोड्युल</xsl:text></xsl:when>
+        <xsl:when test="$lang='nn'"><xsl:text>Modular</xsl:text></xsl:when>
+        <xsl:when test="$lang='om'"><xsl:text>Mojuulii</xsl:text></xsl:when>
+        <xsl:when test="$lang='pl'"><xsl:text>Moduł</xsl:text></xsl:when>
+        <xsl:when test="$lang='pt-BR'"><xsl:text>Módulo</xsl:text></xsl:when>
+        <xsl:when test="$lang='pt'"><xsl:text>Módulo</xsl:text></xsl:when>
+        <xsl:when test="$lang='ru'"><xsl:text>Модуль</xsl:text></xsl:when>
+        <xsl:when test="$lang='sid'"><xsl:text>Mojule</xsl:text></xsl:when>
+        <xsl:when test="$lang='sk'"><xsl:text>Modul</xsl:text></xsl:when>
+        <xsl:when test="$lang='sl'"><xsl:text>Modul</xsl:text></xsl:when>
+        <xsl:when test="$lang='sq'"><xsl:text>Modula</xsl:text></xsl:when>
+        <xsl:when test="$lang='ta'"><xsl:text>நிரல்கூறு</xsl:text></xsl:when>
+        <xsl:when test="$lang='tg'"><xsl:text>Модул</xsl:text></xsl:when>
+        <xsl:when test="$lang='tr'"><xsl:text>Modül</xsl:text></xsl:when>
+        <xsl:when test="$lang='ug'"><xsl:text>بۆلەك</xsl:text></xsl:when>
+        <xsl:when test="$lang='uk'"><xsl:text>Модуль</xsl:text></xsl:when>
+        <xsl:when test="$lang='vi'"><xsl:text>Mô-đun</xsl:text></xsl:when>
+        <xsl:when test="$lang='zh-CN'"><xsl:text>模块</xsl:text></xsl:when>
+        <xsl:when test="$lang='zh-TW'"><xsl:text>模組</xsl:text></xsl:when>
         <xsl:otherwise><xsl:text>Module</xsl:text></xsl:otherwise>
 </xsl:choose>
 </xsl:template>
