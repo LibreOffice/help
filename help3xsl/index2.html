@@ -7,46 +7,47 @@
 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
 -->
 <html>
-	<head>
-	<script type="text/javascript" src="help.js"></script>
-	<script type="text/javascript" src="hid2file.js"></script>
-	</head>
-	<body>
-        <script type="text/javascript">
-        var url = window.location.href;
-        var n = url.indexOf('index.html?');
-        if (n != -1){
-        // the URL came from LibreOffice help (F1)
-            var version = getParameterByName("Version",url);
-            var lang = getParameterByName("Language",url);
-            var system  = getParameterByName("System",url);
-            var rest= url.substr(n+11,url.lenght);
-            var module;
-            var defaultFile;
-            var smodule = rest.substr(0, rest.indexOf('/'));
-            switch (smodule) {
-            case "swriter":   {defaultFile='text/swriter/main0000.html';module="WRITER";break;}
-            case "scalc":     {defaultFile='text/scalc/main0000.html';module="CALC";break;}
-            case "simpress":  {defaultFile='text/simpress/main0000.html';module="IMPRESS";break;}
-            case "sdraw":     {defaultFile='text/sdraw/main0000.html';module="DRAW";break;}
-            case "smath":     {defaultFile='text/smath/main0000.html';module="MATH";break;}
-            case "sdatabase": {defaultFile='text/shared/explorer/database/main.html';module="BASE";break;}
-            case "sbasic":    {defaultFile='text/sbasic/shared/main0601.html';module="BASIC";break;}
-            default:          {defaultFile='text/shared/main0000.html';module="WRITER";break;}
-            }
-            var bookmark = rest.slice(rest.indexOf('/')+1, rest.indexOf('?'));
-            var file = map[bookmark];
-            // rebuild URL
-            if (file=='undefined'){
-                file = defaultFile;
-            }
-            var newURL = lang+'/'+file+'?System='+system+'&DbPAR='+module;
-            window.open(newURL,'_self');
-        }else{
-        // URL came from elsewhere, direct access to webroot, we redirect to main Help page
-            window.open('en-US/text/shared/main0108.html?&DbPAR=WRITER&System=WIN','_self');
-        }
-    </script>
-	</body>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org *.google.com *.googleapis.com"/>
+    <script type="text/javascript" src="help.js"></script>
+    <script type="text/javascript" src="hid2file.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    var url = window.location.href;
+    var n = url.indexOf('index.html?');
+    if (n != -1){
+    // the URL came from LibreOffice help (F1)
+    var version = getParameterByName("Version",url);
+    var lang = getParameterByName("Language",url);
+    var system  = getParameterByName("System",url);
+    var rest= url.substr(n+11,url.lenght);
+    var module;
+    var defaultFile;
+    var smodule = rest.substr(0, rest.indexOf('/'));
+    switch (smodule) {
+    case "swriter":   {defaultFile='text/swriter/main0000.html';module="WRITER";break;}
+    case "scalc":     {defaultFile='text/scalc/main0000.html';module="CALC";break;}
+    case "simpress":  {defaultFile='text/simpress/main0000.html';module="IMPRESS";break;}
+    case "sdraw":     {defaultFile='text/sdraw/main0000.html';module="DRAW";break;}
+    case "smath":     {defaultFile='text/smath/main0000.html';module="MATH";break;}
+    case "sdatabase": {defaultFile='text/shared/explorer/database/main.html';module="BASE";break;}
+    case "sbasic":    {defaultFile='text/sbasic/shared/main0601.html';module="BASIC";break;}
+    default:          {defaultFile='text/shared/main0000.html';module="WRITER";break;}
+    }
+    var bookmark = rest.slice(rest.indexOf('/')+1, rest.indexOf('?'));
+    var file = map[bookmark];
+    // rebuild URL
+    if (file=='undefined'){
+    file = defaultFile;
+    }
+    var newURL = lang+'/'+file+'?System='+system+'&DbPAR='+module;
+    window.open(newURL,'_self');
+    }else{
+    // URL came from elsewhere, direct access to webroot, we redirect to main Help page
+    window.open('en-US/text/shared/main0108.html?&DbPAR=WRITER&System=WIN','_self');
+    }
+</script>
+</body>
 </html>
 
