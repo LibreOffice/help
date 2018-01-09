@@ -120,6 +120,7 @@
     <head>
         <base href="{$install}"/>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org *.google.com *.googleapis.com"/>
         <title><xsl:value-of select="$titleL10N"/></title>
         <link rel="shortcut icon" href="{$productversion}/media/navigation/favicon.ico" />
         <link  type="text/css" href="{$productversion}/normalize.css" rel="Stylesheet" />
