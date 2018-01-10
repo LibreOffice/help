@@ -120,7 +120,9 @@
     <head>
         <base href="{$install}"/>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
-        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org *.google.com *.googleapis.com"/>
+        <xsl:if test="$online">
+            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org *.google.com *.googleapis.com"/>
+        </xsl:if>
         <title><xsl:value-of select="$titleL10N"/></title>
         <link rel="shortcut icon" href="{$productversion}/media/navigation/favicon.ico" />
         <link  type="text/css" href="{$productversion}/normalize.css" rel="Stylesheet" />
@@ -141,7 +143,9 @@
             <div class="logo-container">
                 <a class="logo" href="https://helponline.libreoffice.org/">
                     <div class="symbol"></div>
-                    <p>LibreOffice <xsl:value-of select="$productversion"/> Help</p>
+                    <p><xsl:call-template name="brand"><xsl:with-param name="string">
+                        <xsl:call-template name="getLogo"><xsl:with-param name="lang" select="$lang"/><xsl:with-param name="version" select="$productversion"/></xsl:call-template>
+                    </xsl:with-param></xsl:call-template></p>
                 </a>
             </div>
         </header>
