@@ -94,6 +94,31 @@ Stylesheet map language-dependent parameters and translation
 </xsl:choose>
 </xsl:template>
 
+<xsl:template name="getLogo">
+    <xsl:param name="lang"/>
+    <xsl:param name="version"/>
+    <xsl:choose>
+        <xsl:when test="$lang='ast'"><xsl:text>Ayuda de %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='bg'"><xsl:text>Помощ за %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='ca'"><xsl:text>Ayuda del %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='ca-valencia'"><xsl:text>Ayuda del %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='da'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text>Hjælp</xsl:text></xsl:when>
+        <xsl:when test="$lang='de'"><xsl:text>Hilfe für %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='eo'"><xsl:text>Helpo de %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='es'"><xsl:text>Ayuda de %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='et'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>abi</xsl:text></xsl:when>
+        <xsl:when test="$lang='fr'"><xsl:text>Aide %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='hu'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>Súgó</xsl:text></xsl:when>
+        <xsl:when test="$lang='is'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text>Hjálp</xsl:text></xsl:when>
+        <xsl:when test="$lang='pt'"><xsl:text>Ajuda do %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='pt-BR'"><xsl:text>Ajuda do %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='ru'"><xsl:text>Справка %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='sl'"><xsl:text>Pomoč %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='sq'"><xsl:text>Ndihma për %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='zh-CN'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text> 帮助</xsl:text></xsl:when>
+        <xsl:otherwise><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text> Help</xsl:text></xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
 <xsl:template name="getModules">
     <xsl:param name="lang"/>
     <xsl:choose>
@@ -103,12 +128,13 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='bn'"><xsl:text>মডিউল</xsl:text></xsl:when>
         <xsl:when test="$lang='bs'"><xsl:text>Modul</xsl:text></xsl:when>
         <xsl:when test="$lang='ca'"><xsl:text>Mòdul</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca-valencia'"><xsl:text>Mòdul</xsl:text></xsl:when>
         <xsl:when test="$lang='cs'"><xsl:text>Modul</xsl:text></xsl:when>
         <xsl:when test="$lang='da'"><xsl:text>Modul</xsl:text></xsl:when>
         <xsl:when test="$lang='de'"><xsl:text>Modul</xsl:text></xsl:when>
         <xsl:when test="$lang='el'"><xsl:text>Άρθρωμα</xsl:text></xsl:when>
         <xsl:when test="$lang='es'"><xsl:text>Módulo</xsl:text></xsl:when>
-        <xsl:when test="$lang='eo'"><xsl:text>Moduloj</xsl:text></xsl:when>
+        <xsl:when test="$lang='eo'"><xsl:text>Modjulo</xsl:text></xsl:when>
         <xsl:when test="$lang='et'"><xsl:text>Moodul</xsl:text></xsl:when>
         <xsl:when test="$lang='eu'"><xsl:text>Modulua</xsl:text></xsl:when>
         <xsl:when test="$lang='fi'"><xsl:text>Moduuli</xsl:text></xsl:when>
@@ -135,14 +161,14 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='sid'"><xsl:text>Mojule</xsl:text></xsl:when>
         <xsl:when test="$lang='sk'"><xsl:text>Modul</xsl:text></xsl:when>
         <xsl:when test="$lang='sl'"><xsl:text>Modul</xsl:text></xsl:when>
-        <xsl:when test="$lang='sq'"><xsl:text>Modula</xsl:text></xsl:when>
+        <xsl:when test="$lang='sq'"><xsl:text>Moduli</xsl:text></xsl:when>
         <xsl:when test="$lang='ta'"><xsl:text>நிரல்கூறு</xsl:text></xsl:when>
         <xsl:when test="$lang='tg'"><xsl:text>Модул</xsl:text></xsl:when>
         <xsl:when test="$lang='tr'"><xsl:text>Modül</xsl:text></xsl:when>
         <xsl:when test="$lang='ug'"><xsl:text>بۆلەك</xsl:text></xsl:when>
         <xsl:when test="$lang='uk'"><xsl:text>Модуль</xsl:text></xsl:when>
         <xsl:when test="$lang='vi'"><xsl:text>Mô-đun</xsl:text></xsl:when>
-        <xsl:when test="$lang='zh-CN'"><xsl:text>模块</xsl:text></xsl:when>
+        <xsl:when test="$lang='zh-CN'"><xsl:text>组件</xsl:text></xsl:when>
         <xsl:when test="$lang='zh-TW'"><xsl:text>模組</xsl:text></xsl:when>
         <xsl:otherwise><xsl:text>Module</xsl:text></xsl:otherwise>
 </xsl:choose>
