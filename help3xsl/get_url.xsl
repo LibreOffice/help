@@ -45,17 +45,19 @@ xsltproc get_bookmark.xsl <file.xhp>
 //-->
 
 <!-- Extract the bookmarks branches x filename-->
+<!--Special case for questions marks chars, that interferes in passing
+parameters in URLS-->
 <xsl:template match="/">
     <xsl:variable name="href" select="concat(substring-before($filename,'xhp'),'html')"/>
     <xsl:for-each select="//bookmark[@branch!='index']">
-        <xsl:if test="not(contains(@branch,'/.uno'))">
-            <xsl:text>'</xsl:text>
-            <xsl:value-of select="substring-after(@branch,'hid/')"/>
-            <xsl:text>':'</xsl:text>
-            <xsl:value-of select="$href" /><xsl:text>',&#xA;</xsl:text>
-        </xsl:if>
+        <xsl:variable name="aux" select="substring-after(@branch,'hid/')"/>
+        <xsl:text>'</xsl:text>
+        <xsl:choose>
+            <xsl:when test="not(contains($aux,'?'))"><xsl:value-of select="$aux"/></xsl:when>
+            <xsl:otherwise><xsl:value-of select="concat(substring-before($aux,'?'),'%3F',substring-after($aux,'?'))"/></xsl:otherwise>
+        </xsl:choose>
+        <xsl:text>':'</xsl:text>
+        <xsl:value-of select="$href"/><xsl:text>',&#xA;</xsl:text>
     </xsl:for-each>
 </xsl:template>
-
-
 </xsl:stylesheet>
