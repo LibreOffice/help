@@ -204,7 +204,7 @@ class Converter(object):
         """
         Private.
         Copies @startpage to our tmp dir so that it will be used as the start page.
-        @return False if @startpage doesnt exist, otherwise True.
+        @return False if @startpage doesn't exist, otherwise True.
         """
         if startpage is None: return True
         filename="index.html"
