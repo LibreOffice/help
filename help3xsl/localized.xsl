@@ -98,24 +98,71 @@ Stylesheet map language-dependent parameters and translation
     <xsl:param name="lang"/>
     <xsl:param name="version"/>
     <xsl:choose>
+        <xsl:when test="$lang='am'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>እርዳታ</xsl:text></xsl:when>
+        <xsl:when test="$lang='ar'"><xsl:text>مساعدة %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='as'"><xsl:text>%PRODUCTNAME</xsl:text> <xsl:value-of select="$version"/> <xsl:text>সহায়</xsl:text></xsl:when>
         <xsl:when test="$lang='ast'"><xsl:text>Ayuda de %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='be'"><xsl:text>Даведка %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='bg'"><xsl:text>Помощ за %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='bn'"><xsl:text>%PRODUCTNAME</xsl:text> <xsl:value-of select="$version"/> <xsl:text>সহায়িকা </xsl:text></xsl:when>
+        <xsl:when test="$lang='bn-IN'"><xsl:text>%PRODUCTNAME</xsl:text> <xsl:value-of select="$version"/> <xsl:text>সহায়িকা </xsl:text></xsl:when>
+        <xsl:when test="$lang='bo'"><xsl:text>%PRODUCTNAME</xsl:text> <xsl:value-of select="$version"/> <xsl:text>རོགས་རམ་སྒེའུ་ཁུང་ </xsl:text></xsl:when>
+        <xsl:when test="$lang='br'"><xsl:text>Skoazell %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='brx'"><xsl:text>%PRODUCTNAME</xsl:text> <xsl:value-of select="$version"/> <xsl:text>मदत</xsl:text></xsl:when>
+        <xsl:when test="$lang='bs'"><xsl:text>Pomoć za %PRODUCTNAME</xsl:text> <xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='ca'"><xsl:text>Ayuda del %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='ca-valencia'"><xsl:text>Ayuda del %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='cs'"><xsl:text>Nápověda %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='cy'"><xsl:text>Cymorth %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='da'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text>Hjælp</xsl:text></xsl:when>
         <xsl:when test="$lang='de'"><xsl:text>Hilfe für %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='dz'"><xsl:text>%PRODUCTNAME</xsl:text> <xsl:value-of select="$version"/> <xsl:text>རོགས་རམ། </xsl:text></xsl:when>
+        <xsl:when test="$lang='el'"><xsl:text>Βοήθεια του %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='eo'"><xsl:text>Helpo de %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='es'"><xsl:text>Ayuda de %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='et'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>abi</xsl:text></xsl:when>
+        <xsl:when test="$lang='eu'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>Laguntza</xsl:text></xsl:when>
+        <xsl:when test="$lang='fi'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>Ohje</xsl:text></xsl:when>
         <xsl:when test="$lang='fr'"><xsl:text>Aide %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='gl'"><xsl:text>Axuda do %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='gu'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>મદદ</xsl:text></xsl:when>
+        <xsl:when test="$lang='hi'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>मदद</xsl:text></xsl:when>
+        <xsl:when test="$lang='hr'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>pomoć</xsl:text></xsl:when>
         <xsl:when test="$lang='hu'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>Súgó</xsl:text></xsl:when>
-        <xsl:when test="$lang='is'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text>Hjálp</xsl:text></xsl:when>
+        <xsl:when test="$lang='id'"><xsl:text>Bantuan %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='is'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>Hjálp</xsl:text></xsl:when>
+        <xsl:when test="$lang='it'"><xsl:text>Guida di %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='ja'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>ヘルプ</xsl:text></xsl:when>
+        <xsl:when test="$lang='ka'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>დახმარება</xsl:text></xsl:when>
+        <xsl:when test="$lang='km'"><xsl:text>ជំនួយ %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='ko'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>도움말</xsl:text></xsl:when>
+        <xsl:when test="$lang='lt'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>žinynas</xsl:text></xsl:when>
+        <xsl:when test="$lang='lv'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>Palīdzība</xsl:text></xsl:when>
+        <xsl:when test="$lang='mk'"><xsl:text>Помош за %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='nb'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>Hjelp</xsl:text></xsl:when>
+        <xsl:when test="$lang='ne'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>मद्दत</xsl:text></xsl:when>
+        <xsl:when test="$lang='nl'"><xsl:text>Help voor %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='nn'"><xsl:text>Hjelp for %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='om'"><xsl:text>Gargaarsa %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='pl'"><xsl:text>Pomoc %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='pt'"><xsl:text>Ajuda do %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='pt-BR'"><xsl:text>Ajuda do %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='ro'"><xsl:text>Manualul %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='ru'"><xsl:text>Справка %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='si'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text> උදව්</xsl:text></xsl:when>
+        <xsl:when test="$lang='sid'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/> <xsl:text>Kaa'lo</xsl:text></xsl:when>
+        <xsl:when test="$lang='sk'"><xsl:text>Pomocník %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='sl'"><xsl:text>Pomoč %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='sq'"><xsl:text>Ndihma për %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='sv'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text>-hjälp</xsl:text></xsl:when>
+        <xsl:when test="$lang='ta'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text>உதவி</xsl:text></xsl:when>
+        <xsl:when test="$lang='tg'"><xsl:text>Кӯмаки %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='tr'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text>Yardım</xsl:text></xsl:when>
+        <xsl:when test="$lang='ug'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text> ياردەم كۆزنىكى</xsl:text></xsl:when>
+        <xsl:when test="$lang='uk'"><xsl:text>Довідка %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='vi'"><xsl:text>Trợ giúp %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='zh-CN'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text> 帮助</xsl:text></xsl:when>
+        <xsl:when test="$lang='zh-TW'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text> 說明</xsl:text></xsl:when>
         <xsl:otherwise><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text> Help</xsl:text></xsl:otherwise>
     </xsl:choose>
 </xsl:template>
