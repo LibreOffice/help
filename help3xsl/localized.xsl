@@ -110,8 +110,8 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='br'"><xsl:text>Skoazell %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='brx'"><xsl:text>%PRODUCTNAME</xsl:text> <xsl:value-of select="$version"/> <xsl:text>मदत</xsl:text></xsl:when>
         <xsl:when test="$lang='bs'"><xsl:text>Pomoć za %PRODUCTNAME</xsl:text> <xsl:value-of select="$version"/></xsl:when>
-        <xsl:when test="$lang='ca'"><xsl:text>Ayuda del %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
-        <xsl:when test="$lang='ca-valencia'"><xsl:text>Ayuda del %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='ca'"><xsl:text>Ajuda del %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
+        <xsl:when test="$lang='ca-valencia'"><xsl:text>Ajuda del %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='cs'"><xsl:text>Nápověda %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='cy'"><xsl:text>Cymorth %PRODUCTNAME </xsl:text><xsl:value-of select="$version"/></xsl:when>
         <xsl:when test="$lang='da'"><xsl:text>%PRODUCTNAME </xsl:text><xsl:value-of select="$version"/><xsl:text>Hjælp</xsl:text></xsl:when>
