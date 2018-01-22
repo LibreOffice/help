@@ -90,37 +90,4 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-var debouncer = null;
-$(document).ready(function() {
-    $('#search-bar').keyup(function() {
-        if (debouncer) {
-            clearTimeout(debouncer);
-        }
-        debouncer = setTimeout(function(){
-            if ($('#search-bar').val().length > 2) {
-                var toShow = $('#Index ul a').filter(function(){
-                    return $(this).text().toLowerCase().indexOf($('#search-bar').val().toLowerCase()) > -1;
-                });
-                toShow.parent().show();
-                $("#Index ul a").not(toShow).parent().hide();
-                $("#Bookmarks").show();
-
-                var listToShow = $('');
-                $('#Index ul li').filter(':visible').each(function(){
-                    //add all module labels that have results in search
-                    listToShow = listToShow.add($(this).parent().prev());
-                });
-                $(listToShow).show();
-                //hide all labels with 0 results
-                $('#Bookmarks > p').not(listToShow).hide();
-            }
-            else {
-                $("#Bookmarks").hide();
-            }
-        }, 200);
-    });
-
-    //prevent all results to be shown
-    $("#Bookmarks").toggle($('#search-bar').val().length > 2);
-});
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */

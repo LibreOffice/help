@@ -129,6 +129,7 @@
         <link  type="text/css" href="{$productversion}/default.css" rel="Stylesheet" />
         <script type="text/javascript" src="{$productversion}/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="{$productversion}/help.js"></script>
+        <script type="text/javascript" src="{$productversion}/list.min.js"></script>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
     <body itemscope="true" itemtype="http://schema.org/TechArticle">
@@ -153,14 +154,14 @@
             <input id="modules" name="modules" type="checkbox"/>
             <label for="modules"><xsl:call-template name="getModules"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
             <nav>
-                <a href="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer"></div>Writer</a>
-                <a href="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC"><div class="calc"></div>Calc</a>
-                <a href="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS"><div class="impress"></div>Impress</a>
-                <a href="{$productversion}/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW"><div class="draw"></div>Draw</a>
-                <a href="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE"><div class="base"></div>Base</a>
-                <a href="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH"><div class="math"></div>Math</a>
-                <a href="{$productversion}/{$lang}/text/schart/main0000.html?DbPAR=CHART"><div class="chart"></div>Chart</a>
-                <a href="{$productversion}/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC"><div class="basic"></div>Basic</a>
+                <a href="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer-icon"></div>Writer</a>
+                <a href="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC"><div class="calc-icon"></div>Calc</a>
+                <a href="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS"><div class="impress-icon"></div>Impress</a>
+                <a href="{$productversion}/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW"><div class="draw-icon"></div>Draw</a>
+                <a href="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE"><div class="base-icon"></div>Base</a>
+                <a href="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH"><div class="math-icon"></div>Math</a>
+                <a href="{$productversion}/{$lang}/text/schart/main0000.html?DbPAR=CHART"><div class="chart-icon"></div>Chart</a>
+                <a href="{$productversion}/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC"><div class="basic-icon"></div>Basic</a>
             </nav>
         </div>
         <xsl:if test="$online">
@@ -242,21 +243,11 @@
         <label for="accordion-1"><xsl:call-template name="getContents"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
         <div id="Contents" class="contents-treeview"></div>
         <div id="Index">
-            <div id="SearchBox">
-                <div class="index-label"><xsl:call-template name="getIndex"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></div>
-                <p> &#32;&#x1f50e;&#32; </p>
-                <input id="search-bar" type="text"/>
-            </div>
+            <div class="index-label"><xsl:call-template name="getIndex"><xsl:with-param name="lang" select="$lang"/></xsl:call-template> &#32;&#x1f50e;&#32;</div>
             <div id="Bookmarks">
-                <p>WRITER</p><ul id="bookmarkWRITER"></ul>
-                <p>CALC</p><ul id="bookmarkCALC"></ul>
-                <p>IMPRESS</p><ul id="bookmarkIMPRESS"></ul>
-                <p>DRAW</p><ul id="bookmarkDRAW" ></ul>
-                <p>BASE</p><ul id="bookmarkBASE"></ul>
-                <p>MATH</p><ul id="bookmarkMATH"></ul>
-                <p>CHART</p><ul id="bookmarkCHART"></ul>
-                <p>BASIC</p><ul id="bookmarkBASIC"></ul>
-                <p>GLOBAL</p><ul id="bookmarkSHARED"></ul>
+                <input id="search-bar" type="text" class="search" />
+                <ul class="list"></ul>
+                <ul class="pagination"></ul>
             </div>
         </div>
     </aside>
@@ -294,6 +285,79 @@
     </div>
     <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
     <script type="text/javascript" src="{$productversion}/{$lang}/contents.js"/>
+    <!-- for list.js -->
+    <script type="text/javascript">
+        <![CDATA[
+        // Polyfill for https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
+        if (!Array.prototype.findIndex) {
+        Object.defineProperty(Array.prototype, 'findIndex', {
+            value: function(predicate) {
+            // 1. Let O be ? ToObject(this value).
+            if (this == null) {
+                throw new TypeError('"this" is null or not defined');
+            }
+
+            var o = Object(this);
+
+            // 2. Let len be ? ToLength(? Get(O, "length")).
+            var len = o.length >>> 0;
+
+            // 3. If IsCallable(predicate) is false, throw a TypeError exception.
+            if (typeof predicate !== 'function') {
+                throw new TypeError('predicate must be a function');
+            }
+
+            // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
+            var thisArg = arguments[1];
+
+            // 5. Let k be 0.
+            var k = 0;
+
+            // 6. Repeat, while k < len
+            while (k < len) {
+                // a. Let Pk be ! ToString(k).
+                // b. Let kValue be ? Get(O, Pk).
+                // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
+                // d. If testResult is true, return k.
+                var kValue = o[k];
+                if (predicate.call(thisArg, kValue, k, o)) {
+                return k;
+                }
+                // e. Increase k by 1.
+                k++;
+            }
+
+            // 7. Return -1.
+            return -1;
+            }
+        });
+        }
+        var modules = [ 'calc', 'writer', 'impress', 'draw', 'base', 'math', 'chart', 'basic', 'shared' ];
+        // options for List.js http://listjs.com/
+        var options = {
+            valueNames: modules,
+            page: 10,
+            pagination: true,
+            indexAsync: true
+        };
+        var bookmarkList = new List('Bookmarks', options);
+        // the module ids have CSS rules to create ::before elements containing their names
+        function addIds() {
+            var visibleArray = bookmarkList.visibleItems;
+            visibleArray.forEach(function(element) {
+                element.elm.removeAttribute("id");
+            });
+            modules.forEach(function(module) {
+                function matchClass(element) {
+                    return element.elm.childNodes[0].className === module;
+                }
+                var index = visibleArray.findIndex(matchClass);
+                if(typeof visibleArray[index] !== 'undefined') { visibleArray[index].elm.setAttribute("id", module); };
+            });
+        }
+        bookmarkList.on('updated', addIds);
+        ]]>
+    </script>
     <xsl:choose>
         <xsl:when test="$online">
             <script type="text/javascript">

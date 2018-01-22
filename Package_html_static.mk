@@ -19,6 +19,7 @@ $(eval $(call gb_Package_add_file,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOL
 $(eval $(call gb_Package_add_files,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOLDER)/$(PRODUCTVERSION),\
 	help.js \
 	jquery-3.1.1.min.js \
+	list.min.js \
 	normalize.css \
 	default.css \
 ))

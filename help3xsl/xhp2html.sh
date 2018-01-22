@@ -178,6 +178,7 @@ cp help.html $here'/html/'
 cp index2.html $here'/html/'$productversion'/index.html'
 cp help.js $here'/html/'$productversion'/'
 cp jquery-3.1.1.min.js $here'/html/'$productversion'/'
+cp list.min.js $here'/html/'$productversion'/'
 cp normalize.css $here'/html/'$productversion'/'
 cp default.css $here'/html/'$productversion'/'
 

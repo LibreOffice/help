@@ -12,7 +12,7 @@ $(eval $(call gb_CustomTarget_CustomTarget,helpcontent2/help3xsl))
 # HACK!!
 html_TREE_MODULES := sbasic scalc schart shared simpress smath swriter
 html_TEXT_MODULES := $(html_TREE_MODULES) sdatabase sdraw
-html_BMARK_MODULES := scalc:CALC schart:CHART swriter:WRITER sdraw:DRAW simpress:IMPRESS smath:MATH sbasic:BASIC shared:SHARED shared/explorer/database:BASE
+html_BMARK_MODULES := swriter:writer scalc:calc simpress:impress sdraw:draw shared/explorer/database:base smath:math schart:chart sbasic:basic shared:shared
 
 $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 	hid2file.js \
@@ -113,7 +113,11 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.js :
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),CAT,2)
 	$(call gb_Helper_abbreviate_dirs,\
-		cat $(filter %.part,$^) > $@ \
+		( \
+			echo 'document.getElementById("Bookmarks").getElementsByClassName( "list" )[0].innerHTML='"'"'\' \
+			&& cat $(filter %.part,$^) \
+			&& echo "'" \
+		) > $@ \
 	)
 
 define html__gen_bookmarks_lang_dep
@@ -150,11 +154,10 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	$(call gb_Helper_abbreviate_dirs,\
 		( \
-			echo "document.getElementById(\"bookmark$(APP)\").innerHTML='\\" \
-			&& find $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/helpcontent2/source/text/$(APPDIR) -name "*.xhp" \
-			| while read xhp; do \
-				$(call gb_ExternalExecutable_get_command,xsltproc) \
-					--stringparam app $(APP) \
+			find $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/helpcontent2/source/text/$(APPDIR) -name "*.xhp" \
+ 			| while read xhp; do \
+ 				$(call gb_ExternalExecutable_get_command,xsltproc) \
+ 					--stringparam app $(APP) \
 					--stringparam Language $(HELP_LANG) \
 					--stringparam productversion $(PRODUCTVERSION) \
 					$(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
@@ -162,8 +165,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 			; done \
 			| sort -k3b -t\> -s \
 			| awk 'NF' \
-			&& echo "'" \
 		) > $@ \
-	)
+	)	
 
 # vim: set noet sw=4 ts=4:
