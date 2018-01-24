@@ -332,7 +332,7 @@
             }
         });
         }
-        var modules = [ 'calc', 'writer', 'impress', 'draw', 'base', 'math', 'chart', 'basic', 'shared' ];
+        var modules = [ 'CALC', 'WRITER', 'IMPRESS', 'DRAW', 'BASE', 'MATH', 'CHART', 'BASIC', 'SHARED' ];
         // options for List.js http://listjs.com/
         var options = {
             valueNames: modules,
