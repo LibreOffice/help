@@ -35,6 +35,8 @@ rm -f $bookmarkFile
 touch $bookmarkFile
 
 stub2=\'
+stub1='document.getElementById("Bookmarks").getElementsByClassName( "list" )[0].innerHTML='\'\\
+echo $stub1 >> $bookmarkFile
 
 xslfile=get_bookmark.xsl
 
@@ -42,43 +44,35 @@ param1=' --stringparam Language '$lang' --stringparam productversion '$productve
 
 # bookmarks for modules
 
-for i in CALC CHART WRITER DRAW IMPRESS MATH BASIC
+for i in WRITER CALC DRAW IMPRESS CHART MATH BASIC
 do
-stub1='document.getElementById("bookmark'$i'").innerHTML='\'\\
 sfind=$sourceDir'/'$(echo 'text/s'$i | tr '[:upper:]' '[:lower:]')
 param=$param1' --stringparam app '$i
 tempFile=$(mktemp)
 find $sfind -type f -name "*.xhp" -exec xsltproc $param $xslfile {} + >> $tempFile
-echo $stub1 >> $bookmarkFile
 sort -k3b -t\> -s -o $tempFile $tempFile
 awk 'NF' $tempFile >> $bookmarkFile
-echo $stub2 >> $bookmarkFile
 rm -f $tempFile
 done
 
 # Case of SHARED
 
-stub1='document.getElementById("bookmarkSHARED").innerHTML='\'\\
 tempFile=$(mktemp)
 param=$param1' --stringparam app SHARED'
 find $sourceDir'/text/shared' -type f -name "*.xhp" -exec xsltproc $param $xslfile {} + >> $tempFile
-echo $stub1 >> $bookmarkFile
 sort -k3b -t\> -s -o $tempFile $tempFile
 awk 'NF' $tempFile >> $bookmarkFile
-echo $stub2 >> $bookmarkFile
 rm -f $tempFile
 
 # Case of Explorer (BASE)
 
-stub1='document.getElementById("bookmarkBASE").innerHTML='\'\\
 tempFile=$(mktemp)
 param=$param1' --stringparam app BASE'
 find $sourceDir'/text/shared/explorer/database' -type f -name "*.xhp" -exec xsltproc $param $xslfile {} + >> $tempFile
-echo $stub1 >> $bookmarkFile
 sort -k3b -t\> -s -o $tempFile $tempFile
 awk 'NF' $tempFile >> $bookmarkFile
-echo $stub2 >> $bookmarkFile
 rm -f $tempFile
+echo $stub2 >> $bookmarkFile
 }
 
 
