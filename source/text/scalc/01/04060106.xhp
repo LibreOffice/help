@@ -604,7 +604,7 @@
 <paragraph id="par_id3148511" role="code" xml-lang="en-US">TRUNC(Number; Count)</paragraph>
 <paragraph id="par_id3150796" role="paragraph" xml-lang="en-US">Returns <emph>Number</emph> with at most <emph>Count</emph> decimal places. Excess decimal places are simply removed, irrespective of sign.</paragraph>
 <paragraph id="par_id3150816" role="paragraph" xml-lang="en-US"><item type="literal">TRUNC(Number; 0)</item> behaves as <item type="literal">INT(Number)</item> for positive numbers, but effectively rounds towards zero for negative numbers.</paragraph>
-<paragraph id="par_id3148548" role="warning" xml-lang="en-US">The <emph>visible</emph> decimal places of the result are specified in <switchinline select="sys"><caseinline select="MAC">%PRODUCTNAME - Preferences 
+<paragraph id="par_id3148548" role="warning" xml-lang="en-US">The <emph>visible</emph> decimal places of the result are specified in <switchinline select="sys"><caseinline select="MAC">%PRODUCTNAME - Preferences
 </caseinline><defaultinline>Tools - Options</defaultinline></switchinline> - <link href="text/shared/optionen/01060500.xhp">%PRODUCTNAME Calc - Calculate</link>.</paragraph>
 
 <paragraph id="hd_id3152555" role="heading" level="3" xml-lang="en-US">Example</paragraph>
@@ -716,6 +716,41 @@
 <paragraph id="par_id2945710" role="paragraph" xml-lang="en-US"><item type="input">=CEILING.PRECISE(-11;-2)</item> returns -10</paragraph><comment>see also FLOOR, EVEN, ODD, MROUND, INT, TRUNC, ROUND, ROUNDDOWN, ROUNDUP</comment>
 </section>
 
+<section id="Section 31.3">
+    <bookmark xml-lang="en-US" branch="index" id="bm_id911516997198644">
+        <bookmark_value>CEILING.MATH function</bookmark_value>
+    </bookmark>
+    <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_CEIL_MATH" id="bm_id511516997249645" localize="false"/>
+    <paragraph role="heading" id="hd_id91516997330445" level="2" xml-lang="en-US">CEILING.MATH</paragraph>
+    <paragraph role="paragraph" id="par_id81516997342088" xml-lang="en-US"><ahelp hid="HID_FUNC_CEIL_MATH">Rounds a number up to the nearest multiple of Significance.</ahelp></paragraph>
+    <paragraph role="heading" id="hd_id971516997377435" level="3" xml-lang="en-US">Syntax</paragraph>
+    <paragraph role="code" id="par_id841516997669932" xml-lang="en-US">CEILING.MATH(Number; Significance; Mode)</paragraph>
+    <paragraph role="paragraph" id="par_id651516997706287" xml-lang="en-US"><emph>Number</emph> is the number that is to be rounded up.</paragraph>
+    <paragraph role="paragraph" id="par_id491516997725772" xml-lang="en-US"><emph>Significance</emph> is the number to whose multiple the value is to be rounded up.</paragraph>
+    <paragraph role="paragraph" id="par_id451516997742909" xml-lang="en-US"><emph>Mode</emph> is an optional value. If the Mode value is given and not equal to zero, and if Number and Significance are negative, then rounding is done based on the absolute value of Number, i.e. negative numbers are rounded away from zero. If the Mode value is equal to zero or is not given, negative numbers are rounded towards zero.</paragraph>
+    <paragraph xml-lang="en-US" id="par_id291516998575663" role="warning">This function exists for interoperability with Microsoft Excel 2013 or newer.</paragraph>
+    <paragraph role="heading" id="hd_id561516997761868" level="3" xml-lang="en-US">Example</paragraph>
+    <paragraph role="paragraph" id="par_id111516997803684" xml-lang="en-US"><item type="input">=CEILING.MATH(-10;-3)</item>  returns -9</paragraph>
+    <paragraph role="paragraph" id="par_id1001516997821483" xml-lang="en-US"><item type="input">=CEILING.MATH(-10;-3;0)</item>  returns -9</paragraph>
+    <paragraph role="paragraph" id="par_id641516997837754" xml-lang="en-US"><item type="item_type">=CEILING.MATH(-10;-3;1)</item>  returns -12</paragraph>
+</section>
+<section id="Section 31.4">
+    <bookmark xml-lang="en-US" branch="index" id="bm_id921516998608939">
+        <bookmark_value>CEILING.XCL function</bookmark_value>
+    </bookmark>
+    <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_CEIL_MS" id="bm_id221516998652517" localize="false"/>
+    <paragraph role="heading" id="hd_id411516998838823" level="2" xml-lang="en-US">CEILING.XCL</paragraph>
+    <paragraph role="paragraph" id="par_id811516998845826" xml-lang="en-US"><ahelp hid="HID_FUNC_CEIL_MS">Rounds a number away from zero to the nearest multiple of Significance.</ahelp></paragraph>
+    <paragraph role="heading" id="hd_id361516998851918" level="3" xml-lang="en-US">Syntax</paragraph>
+    <paragraph role="code" id="par_id251516998856873" xml-lang="en-US">CEILING.XCL(Number; Significance)</paragraph>
+    <paragraph role="paragraph" id="par_id671516998874263" xml-lang="en-US"><emph>Number</emph> is the number that is to be rounded.</paragraph>
+    <paragraph role="paragraph" id="par_id151516998882622" xml-lang="en-US"><emph>Significance</emph> is the number to whose multiple the value is to be rounded.</paragraph>
+    <paragraph xml-lang="en-US" id="par_id341516998889754" role="warning">This function exists for interoperability with Microsoft Excel 2007 or older versions.</paragraph>
+    <paragraph role="heading" id="hd_id81516998896303" level="3" xml-lang="en-US">Example</paragraph>
+    <paragraph role="paragraph" id="par_id91516998917254" xml-lang="en-US"><item type="input">=CEILING.XCL(1;3)</item>  returns 3</paragraph>
+    <paragraph role="paragraph" id="par_id761516998929693" xml-lang="en-US"><item type="input">=CEILING.XCL(7;4)</item>  returns 8</paragraph>
+    <paragraph role="paragraph" id="par_id671516998958873" xml-lang="en-US"><item type="item_type">=CEILING.XCL(-10;-3)</item>  returns -12</paragraph>
+</section>
 <section id="Section31.2">
 <bookmark xml-lang="en-US" branch="index" id="bm_id8952518">
   <bookmark_value>ISO.CEILING function</bookmark_value>
@@ -1082,7 +1117,7 @@
 <paragraph id="par_id3151774" role="paragraph" xml-lang="en-US">Example assumption: You have entered invoices into a table. Column A contains the date value of the invoice, column B the amounts. You want to find a formula that you can use to return the total of all amounts only for a specific month, e.g. only the amount for the period &gt;=2008-01-01 to &lt;2008-02-01. The range with the date values covers A1:A40, the range containing the amounts to be totaled is B1:B40. C1 contains the start date, 2008<item type="input">-01-01</item>, of the invoices to be included and C2 the date, 2008<item type="input">-02-01</item>, that is no longer included.</paragraph>
 <paragraph id="par_id3151799" role="paragraph" xml-lang="en-US">Enter the following formula as an array formula:</paragraph>
 <paragraph id="par_id3151813" role="paragraph" xml-lang="en-US"><item type="input">=SUM((A1:A40&gt;=C1)*(A1:A40&lt;C2)*B1:B40)</item></paragraph>
-<paragraph id="par_id3151828" role="paragraph" xml-lang="en-US">In order to enter this as an array formula, you must press the Shift<switchinline select="sys"><caseinline select="MAC">+Command 
+<paragraph id="par_id3151828" role="paragraph" xml-lang="en-US">In order to enter this as an array formula, you must press the Shift<switchinline select="sys"><caseinline select="MAC">+Command
 </caseinline><defaultinline>+ Ctrl</defaultinline></switchinline>+ Enter keys instead of simply pressing the Enter key to close the formula. The formula will then be shown in the <emph>Formula</emph> bar enclosed in braces.</paragraph>
 <paragraph id="par_id3151869" role="paragraph" xml-lang="en-US">{=SUM((A1:A40&gt;=C1)*(A1:A40&lt;C2)*B1:B40)}</paragraph>
 <paragraph id="par_id3151884" role="paragraph" xml-lang="en-US">The formula is based on the fact that the result of a comparison is 1 if the criterion is met and 0 if it is not met. The individual comparison results will be treated as an array and used in matrix multiplication, and at the end the individual values will be totaled to give the result matrix.</paragraph>
@@ -1610,7 +1645,7 @@
 <paragraph id="hd_id3164745" role="heading" level="3" xml-lang="en-US">Syntax</paragraph>
 <paragraph id="par_id3164758" role="code" xml-lang="en-US">RANDBETWEEN(Bottom; Top)</paragraph>
 <paragraph id="par_id7112338" role="paragraph" xml-lang="en-US">Returns an integer random number between integers <emph>Bottom</emph> and <emph>Top</emph> (both inclusive).</paragraph>
-<paragraph id="par_id2855616" role="paragraph" xml-lang="en-US">This function produces a new random number each time Calc recalculates. To force Calc to recalculate manually press Shift+<switchinline select="sys"><caseinline select="MAC">Command 
+<paragraph id="par_id2855616" role="paragraph" xml-lang="en-US">This function produces a new random number each time Calc recalculates. To force Calc to recalculate manually press Shift+<switchinline select="sys"><caseinline select="MAC">Command
 </caseinline><defaultinline>Ctrl</defaultinline></switchinline>+F9.</paragraph>
 <paragraph id="par_id2091433" role="paragraph" xml-lang="en-US">To generate random numbers which never recalculate, copy cells containing this function, and use <item type="menuitem">Edit - Paste Special</item> (with <item type="menuitem">Paste All</item> and <item type="menuitem">Formulas</item> not marked and <item type="menuitem">Numbers</item> marked).</paragraph>
 
