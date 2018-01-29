@@ -116,7 +116,13 @@
             <xsl:with-param name="str" select="$filename"/>
         </xsl:call-template>
     </xsl:variable>
-<html  lang="{$lang}">
+    <xsl:variable name="logoprodversion">
+        <xsl:choose>
+            <xsl:when test="$productversion='latest'"><xsl:value-of select="''"/></xsl:when>
+            <xsl:otherwise><xsl:value-of select="$productversion"/></xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+<html lang="{$lang}">
     <head>
         <base href="{$install}"/>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
@@ -144,9 +150,14 @@
             <div class="logo-container">
                 <a class="logo" href="https://helponline.libreoffice.org/">
                     <div class="symbol"></div>
-                    <p><xsl:call-template name="brand"><xsl:with-param name="string">
-                        <xsl:call-template name="getLogo"><xsl:with-param name="lang" select="$lang"/><xsl:with-param name="version" select="$productversion"/></xsl:call-template>
-                    </xsl:with-param></xsl:call-template></p>
+                    <p><xsl:call-template name="brand">
+                        <xsl:with-param name="string">
+                            <xsl:call-template name="getLogo">
+                                <xsl:with-param name="lang" select="$lang"/>
+                                <xsl:with-param name="version" select="$logoprodversion"/>
+                            </xsl:call-template>
+                        </xsl:with-param>
+                    </xsl:call-template></p>
                 </a>
             </div>
         </header>
