@@ -133,9 +133,9 @@
         <link rel="shortcut icon" href="{$productversion}/media/navigation/favicon.ico" />
         <link  type="text/css" href="{$productversion}/normalize.css" rel="Stylesheet" />
         <link  type="text/css" href="{$productversion}/default.css" rel="Stylesheet" />
-        <script type="text/javascript" src="{$productversion}/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="{$productversion}/help.js"></script>
-        <script type="text/javascript" src="{$productversion}/list.min.js"></script>
+        <script type="text/javascript" src="{$productversion}/fuse.js"></script>
+        <script type="text/javascript" src="{$productversion}/paginathing.js"></script>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
     <body itemscope="true" itemtype="http://schema.org/TechArticle">
@@ -258,7 +258,6 @@
             <div id="Bookmarks">
                 <input id="search-bar" type="text" class="search" />
                 <ul class="list"></ul>
-                <ul class="pagination"></ul>
             </div>
         </div>
     </aside>
@@ -296,77 +295,65 @@
     </div>
     <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
     <script type="text/javascript" src="{$productversion}/{$lang}/contents.js"/>
-    <!-- for list.js -->
+    <!-- for fuse.js and paginathing.js -->
     <script type="text/javascript">
         <![CDATA[
-        // Polyfill for https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
-        if (!Array.prototype.findIndex) {
-        Object.defineProperty(Array.prototype, 'findIndex', {
-            value: function(predicate) {
-            // 1. Let O be ? ToObject(this value).
-            if (this == null) {
-                throw new TypeError('"this" is null or not defined');
-            }
-
-            var o = Object(this);
-
-            // 2. Let len be ? ToLength(? Get(O, "length")).
-            var len = o.length >>> 0;
-
-            // 3. If IsCallable(predicate) is false, throw a TypeError exception.
-            if (typeof predicate !== 'function') {
-                throw new TypeError('predicate must be a function');
-            }
-
-            // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
-            var thisArg = arguments[1];
-
-            // 5. Let k be 0.
-            var k = 0;
-
-            // 6. Repeat, while k < len
-            while (k < len) {
-                // a. Let Pk be ! ToString(k).
-                // b. Let kValue be ? Get(O, Pk).
-                // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
-                // d. If testResult is true, return k.
-                var kValue = o[k];
-                if (predicate.call(thisArg, kValue, k, o)) {
-                return k;
-                }
-                // e. Increase k by 1.
-                k++;
-            }
-
-            // 7. Return -1.
-            return -1;
-            }
-        });
-        }
-        var modules = [ 'CALC', 'WRITER', 'IMPRESS', 'DRAW', 'BASE', 'MATH', 'CHART', 'BASIC', 'SHARED' ];
-        // options for List.js http://listjs.com/
-        var options = {
-            valueNames: modules,
-            page: 10,
-            pagination: true,
-            indexAsync: true
+        var liElements = Array.prototype.slice.call(document.getElementsByClassName("list")[0].getElementsByTagName("li")).map(function(elm) {
+        var item = elm;
+        var linktext = item.childNodes[0].textContent;
+        return {
+            item, linktext
         };
-        var bookmarkList = new List('Bookmarks', options);
-        // the module ids have CSS rules to create ::before elements containing their names
-        function addIds() {
-            var visibleArray = bookmarkList.visibleItems;
-            visibleArray.forEach(function(element) {
-                element.elm.removeAttribute("id");
+        });
+
+        var fuse = new Fuse(liElements, {
+        keys: ["linktext"],
+        distance: 80,
+        location: 0,
+        threshold: 0.4,
+        tokenize: true,
+        matchAllTokens: true,
+        maxPatternLength: 24,
+        minMatchCharLength: 2
+        });
+
+        var search = document.getElementById('search-bar');
+        var filter = function() {
+        var target = search.value.trim();
+        if (target.length < 1) {
+            liElements.forEach(function(obj) {
+                obj.item.classList.add('fuseshown');
+                obj.item.classList.remove('fusehidden');
             });
-            modules.forEach(function(module) {
-                function matchClass(element) {
-                    return element.elm.childNodes[0].className === module;
-                }
-                var index = visibleArray.findIndex(matchClass);
-                if(typeof visibleArray[index] !== 'undefined') { visibleArray[index].elm.setAttribute("id", module); };
-            });
+            Paginator(document.getElementsByClassName("list")[0]);
+            return;
         }
-        bookmarkList.on('updated', addIds);
+        var results = fuse.search(target);
+
+        liElements.forEach(function(obj) {
+            obj.item.classList.add('fusehidden');
+            obj.item.classList.remove('fuseshown');
+        });
+        results.forEach(function(obj) {
+            obj.item.classList.add('fuseshown');
+            obj.item.classList.remove('fusehidden');
+        });
+
+        Paginator(document.getElementsByClassName("list")[0]);
+        };
+
+        function debounce(fn, wait) {
+        var timeout;
+        return function () {
+            clearTimeout(timeout);
+            timeout = setTimeout(function () {
+            fn.apply(this, arguments)
+            }, (wait || 150));
+        }
+        };
+
+        Paginator(document.getElementsByClassName("list")[0]);
+        search.addEventListener('keyup', debounce(filter, 200));
         ]]>
     </script>
     <xsl:choose>
