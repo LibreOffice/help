@@ -32,8 +32,8 @@ cp index.html $outDir
 cp help.html $outDir
 cp index2.html $outDir'/'$productVersion'/index.html'
 cp help.js $outDir'/'$productVersion'/'
-cp jquery-3.1.1.min.js $outDir'/'$productVersion'/'
-cp list.min.js $outDir'/'$productVersion'/'
+cp fuse.js $outDir'/'$productVersion'/'
+cp paginathing.js $outDir'/'$productVersion'/'
 cp normalize.css $outDir'/'$productVersion'/'
 cp default.css $outDir'/'$productVersion'/'
 

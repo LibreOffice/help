@@ -284,7 +284,7 @@ echo '</sitemapindex>'>>$sitemap
 ###########################################
 
 #cp help.html index.html html/
-cp normalize.css default.css help.js jquery-3.1.1.min.js $outDir
+cp normalize.css default.css help.js fuse.js paginathing.js $outDir
 cp -r $enSource/source/media $outDir
 mkdir -p $outDir/media/icon-themes
 #cp -a ../../icon-themes/galaxy/* $outDir/media/icon-themes/
