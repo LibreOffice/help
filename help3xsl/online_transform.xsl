@@ -148,7 +148,7 @@
     <div class="header-extrawurst">
         <header>
             <div class="logo-container">
-                <a class="logo" href="https://helponline.libreoffice.org/">
+                <a class="logo" href="{$productversion}/{$lang}/text/shared/main0108.html">
                     <div class="symbol"></div>
                     <p><xsl:call-template name="brand">
                         <xsl:with-param name="string">
@@ -281,6 +281,11 @@
                         ]]>
                     </script>
                     <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
+                </div>
+            </xsl:if>
+            <xsl:if test="$online">
+                <div class="donation">
+                    <p>If this page has been helpful, <a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">you can support us!</a></p>
                 </div>
             </xsl:if>
             <p><a href="http://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="http://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="http://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="http://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="http://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="http://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
