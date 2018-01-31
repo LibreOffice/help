@@ -1,26 +1,26 @@
 /**
  * Paginathing
  * Paginate Everything
- * 
+ *
  * Original @author Alfred Crosby <https://github.com/alfredcrosby>
  * Inspired from http://esimakin.github.io/twbs-pagination/
  * Modified to pure JavaScript and specialised to LibreOffice Help by
  * Ilmari Lauhakangas
- * 
+ *
  * MIT License (Expat)
- * 
+ *
  * Copyright (c) 2018 Alfred Crosby
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,6 +29,31 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+// Polyfill for .after()
+(function (arr) {
+  arr.forEach(function (item) {
+    if (item.hasOwnProperty('after')) {
+      return;
+    }
+    Object.defineProperty(item, 'after', {
+      configurable: true,
+      enumerable: true,
+      writable: true,
+      value: function after() {
+        var argArr = Array.prototype.slice.call(arguments),
+          docFrag = document.createDocumentFragment();
+
+        argArr.forEach(function (argItem) {
+          var isNode = argItem instanceof Node;
+          docFrag.appendChild(isNode ? argItem : document.createTextNode(String(argItem)));
+        });
+
+        this.parentNode.insertBefore(docFrag, this.nextSibling);
+      }
+    });
+  });
+})([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
+
 var options = {
     perPage: 10,
     limitPagination: 6,
@@ -174,7 +199,7 @@ var Paginator = function(element) {
             }
         }
 
-        // Manage active state        
+        // Manage active state
         var ulKids = ul.getElementsByTagName("li");
 
         for (var i = 0, len = ulKids.length; i < len; i++) {
@@ -183,7 +208,7 @@ var Paginator = function(element) {
 
             switch (type) {
                 case 'number':
-                    if (parseInt(_li.getAttribute('data-page')) === page) {
+                    if (parseInt(_li.getAttribute('data-page'), 10) === page) {
                         _li.classList.add(options.activeClass);
                     }
                     break;
@@ -214,10 +239,10 @@ var Paginator = function(element) {
         for (var i = 0, len = pagLi.length; i < len; i++) {
             (function() {
                 var item = pagLi[i];
-                
+
                 item.addEventListener('click', function(e) {
                     e.preventDefault();
-                    var page = parseInt(item.getAttribute('data-page'));
+                    var page = parseInt(item.getAttribute('data-page'), 10);
                     currentPage = page;
                     // let's prevent the pagination from flowing to two rows
                     if (currentPage >= 98) {

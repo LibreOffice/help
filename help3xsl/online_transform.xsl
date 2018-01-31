@@ -306,16 +306,15 @@
         var liElements = Array.prototype.slice.call(document.getElementsByClassName("list")[0].getElementsByTagName("li")).map(function(elm) {
         var item = elm;
         var linktext = item.childNodes[0].textContent;
-        return {
-            item, linktext
-        };
+        var fuseObject = { item: item, linktext: linktext };
+        return fuseObject;
         });
 
         var fuse = new Fuse(liElements, {
         keys: ["linktext"],
-        distance: 80,
+        distance: 60,
         location: 0,
-        threshold: 0.4,
+        threshold: 0.2,
         tokenize: true,
         matchAllTokens: true,
         maxPatternLength: 24,
@@ -352,13 +351,13 @@
         return function () {
             clearTimeout(timeout);
             timeout = setTimeout(function () {
-            fn.apply(this, arguments)
+            fn.apply(this, arguments);
             }, (wait || 150));
-        }
         };
+        }
 
         Paginator(document.getElementsByClassName("list")[0]);
-        search.addEventListener('keyup', debounce(filter, 200));
+        search.addEventListener('keyup', debounce(filter, 300));
         ]]>
     </script>
     <xsl:choose>
