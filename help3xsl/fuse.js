@@ -752,7 +752,7 @@ var Fuse = function () {
           _ref3$results = _ref3.results,
           results = _ref3$results === undefined ? [] : _ref3$results;
 
-      // Check if the texvaluet can be searched
+      // Check if the text value can be searched
       if (value === undefined || value === null) {
         return;
       }
