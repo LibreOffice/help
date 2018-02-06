@@ -57,7 +57,7 @@ parameters in URLS-->
             <xsl:otherwise><xsl:value-of select="concat(substring-before($aux,'?'),'%3F',substring-after($aux,'?'))"/></xsl:otherwise>
         </xsl:choose>
         <xsl:text>':'</xsl:text>
-        <xsl:value-of select="$href"/><xsl:text>',&#xA;</xsl:text>
+	<xsl:value-of select="concat($href,'#',@id)"/><xsl:text>',&#xA;</xsl:text>
     </xsl:for-each>
 </xsl:template>
 </xsl:stylesheet>
