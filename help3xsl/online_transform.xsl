@@ -133,7 +133,6 @@
         <link rel="shortcut icon" href="{$productversion}/media/navigation/favicon.ico" />
         <link  type="text/css" href="{$productversion}/normalize.css" rel="Stylesheet" />
         <link  type="text/css" href="{$productversion}/default.css" rel="Stylesheet" />
-        <script type="text/javascript" src="{$productversion}/help.js"></script>
         <script type="text/javascript" src="{$productversion}/fuse.js"></script>
         <script type="text/javascript" src="{$productversion}/paginathing.js"></script>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -257,7 +256,7 @@
             <div class="index-label"><xsl:call-template name="getIndex"><xsl:with-param name="lang" select="$lang"/></xsl:call-template> &#32;&#x1f50e;&#32;</div>
             <div id="Bookmarks">
                 <input id="search-bar" type="text" class="search" />
-                <ul class="list"></ul>
+                <nav class="index"></nav>
             </div>
         </div>
     </aside>
@@ -300,66 +299,7 @@
     </div>
     <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
     <script type="text/javascript" src="{$productversion}/{$lang}/contents.js"/>
-    <!-- for fuse.js and paginathing.js -->
-    <script type="text/javascript">
-        <![CDATA[
-        var liElements = Array.prototype.slice.call(document.getElementsByClassName("list")[0].getElementsByTagName("li")).map(function(elm) {
-        var item = elm;
-        var linktext = item.childNodes[0].textContent;
-        var fuseObject = { item: item, linktext: linktext };
-        return fuseObject;
-        });
-
-        var fuse = new Fuse(liElements, {
-        keys: ["linktext"],
-        distance: 60,
-        location: 0,
-        threshold: 0.2,
-        tokenize: true,
-        matchAllTokens: true,
-        maxPatternLength: 24,
-        minMatchCharLength: 2
-        });
-
-        var search = document.getElementById('search-bar');
-        var filter = function() {
-        var target = search.value.trim();
-        if (target.length < 1) {
-            liElements.forEach(function(obj) {
-                obj.item.classList.add('fuseshown');
-                obj.item.classList.remove('fusehidden');
-            });
-            Paginator(document.getElementsByClassName("list")[0]);
-            return;
-        }
-        var results = fuse.search(target);
-
-        liElements.forEach(function(obj) {
-            obj.item.classList.add('fusehidden');
-            obj.item.classList.remove('fuseshown');
-        });
-        results.forEach(function(obj) {
-            obj.item.classList.add('fuseshown');
-            obj.item.classList.remove('fusehidden');
-        });
-
-        Paginator(document.getElementsByClassName("list")[0]);
-        };
-
-        function debounce(fn, wait) {
-        var timeout;
-        return function () {
-            clearTimeout(timeout);
-            timeout = setTimeout(function () {
-            fn.apply(this, arguments);
-            }, (wait || 150));
-        };
-        }
-
-        Paginator(document.getElementsByClassName("list")[0]);
-        search.addEventListener('keyup', debounce(filter, 300));
-        ]]>
-    </script>
+    <script type="text/javascript" src="{$productversion}/help.js"></script>
     <xsl:choose>
         <xsl:when test="$online">
             <script type="text/javascript">
@@ -537,8 +477,27 @@
 <xsl:template match="image" mode="embedded"><xsl:call-template name="insertimage"/></xsl:template>
 
 <!-- ITEM -->
-<xsl:template match="item"><span class="{@type}"><xsl:apply-templates /></span></xsl:template>
-<xsl:template match="item" mode="embedded"><span class="{@type}"><xsl:apply-templates /></span></xsl:template>
+<xsl:template match="item">
+    <span class="{@type}">
+<!-- Insert tooltip only to input classes and only if the content is longer than 3 characters -->
+        <xsl:if test="@type='input' and string-length(.)>3">
+            <xsl:call-template name="getTooltip">
+                <xsl:with-param name="lang" select="$lang"/>
+            </xsl:call-template>
+        </xsl:if>
+        <xsl:apply-templates />
+    </span>
+</xsl:template>
+<xsl:template match="item" mode="embedded">
+    <span class="{@type}">
+        <xsl:if test="@type='input' and string-length(.)>3">
+            <xsl:call-template name="getTooltip">
+                <xsl:with-param name="lang" select="$lang"/>
+            </xsl:call-template>
+        </xsl:if>
+        <xsl:apply-templates />
+    </span>
+</xsl:template>
 
 <!-- LINK -->
 <xsl:template match="link">
