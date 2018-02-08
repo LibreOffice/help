@@ -290,5 +290,13 @@ Stylesheet map language-dependent parameters and translation
 </xsl:choose>
 </xsl:template>
 
+<xsl:template name="getTooltip">
+    <xsl:param name="lang"/>
+    <xsl:choose>
+        <xsl:when test="$lang='fi'"><xsl:attribute name="data-tooltip">Klikkaa kopioidaksesi leikepöydälle</xsl:attribute></xsl:when>
+        <xsl:otherwise><xsl:attribute name="data-tooltip">Click on text to copy to clipboard</xsl:attribute></xsl:otherwise>
+</xsl:choose>
+</xsl:template>
+
 </xsl:stylesheet>
 

@@ -40,8 +40,48 @@ h6,
 .listitem,
 .listitemintable,
 .tablecontent,
-.tablecontentintable {
+.input {
     font-family: "Segoe UI", Ubuntu, Cantarell, "Noto Sans", "DejaVu Sans", "Lucida Sans Unicode", "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+}
+.input {
+    transition-property: background-color;
+    transition-duration: 150ms;
+}
+[data-tooltip]{
+  position:relative;
+}
+[data-tooltip]::before {
+    content: "";
+    position: absolute;
+    top:-6px;
+    left:50%;
+    transform: translateX(-50%);
+    border-width: 4px 6px 0 6px;
+    border-style: solid;
+    border-color: rgba(0,0,0,0.7) transparent transparent transparent;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+}
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left:50%;
+    top:-6px;
+    transform: translateX(-50%)   translateY(-100%);
+    background: rgba(0,0,0,0.7);
+    text-align: center;
+    color: #fff;
+    padding:4px 2px;
+    font-size: 12px;
+    min-width: 80px;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+}
+[data-tooltip]:hover:before, [data-tooltip]:hover:after {
+    opacity: 1;
+    pointer-events: auto;
 }
 body {
     margin: 0;
@@ -107,6 +147,9 @@ h1 {
     font-weight: 300;
     border-bottom: 3px solid #18A303;
     padding-bottom: 6px;
+}
+h1 a {
+    text-decoration: none;
 }
 h2 {
     font-size: 1.5rem;
@@ -282,41 +325,6 @@ footer {
 footer p {
     font-size: 1rem;
 }
-.breadcrumbs ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
-.breadcrumbs li {
-    display: inline-block;
-    position: relative;
-    padding-right: 24px;
-    margin: 0;
-}
-.breadcrumbs li:after {
-    content: '>';
-    position: absolute;
-    display: inline-block;
-    right: 0;
-    width: 24px;
-    text-align: center;
-}
-.breadcrumbs li:last-child {
-    font-weight: bold;
-}
-.breadcrumbs li:last-child:after {
-    content: '';
-}
-.breadcrumbs a {
-    text-decoration: none;
-    display: inline-block;
-    color: #333;
-    white-space: nowrap;
-}
-.breadcrumbs a:hover {
-    text-decoration: underline;
-}
 .gsc-control-cse {
     border-color: transparent !important;
     background-color: transparent !important;
@@ -356,14 +364,13 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
     padding-left: 20px;
     margin: 20px 0 0 0;
 }
-#Index {
+#Index, .index {
     margin-top: 10px;
 }
-.list {
+.index {
     padding-left: 15px;
 }
-.list li {
-    list-style: none;
+.index a {
     font-size: 16px;
     margin-bottom: 5px;
 }
@@ -375,63 +382,63 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
     font-weight: bold;
     color: #18A303;
 }
-#writer::before {
+#WRITER::before {
     content: "WRITER";
     display: block;
     font-size: 22px;
     font-weight: bold;
     color: #18A303;
 }
-#calc::before {
+#CALC::before {
     content: "CALC";
     display: block;
     font-size: 22px;
     font-weight: bold;
     color: #18A303;
 }
-#impress::before {
+#IMPRESS::before {
     content: "IMPRESS";
     display: block;
     font-size: 22px;
     font-weight: bold;
     color: #18A303;
 }
-#draw::before {
+#DRAW::before {
     content: "DRAW";
     display: block;
     font-size: 22px;
     font-weight: bold;
     color: #18A303;
 }
-#base::before {
+#BASE::before {
     content: "BASE";
     display: block;
     font-size: 22px;
     font-weight: bold;
     color: #18A303;
 }
-#math::before {
+#MATH::before {
     content: "MATH";
     display: block;
     font-size: 22px;
     font-weight: bold;
     color: #18A303;
 }
-#chart::before {
+#CHART::before {
     content: "CHART";
     display: block;
     font-size: 22px;
     font-weight: bold;
     color: #18A303;
 }
-#basic::before {
+#BASIC::before {
     content: "BASIC";
     display: block;
     font-size: 22px;
     font-weight: bold;
     color: #18A303;
 }
-#shared::before {
+#GLOBAL::before {
     content: "GLOBAL";
     display: block;
     font-size: 22px;
@@ -541,10 +548,10 @@ li.disabled a {
     -webkit-user-select: none;
     user-select: none;
 }
-.contents-treeview a, .list a {
+.contents-treeview a, .index a {
     text-decoration: none;
 }
-.contents-treeview a:hover, .list a:hover {
+.contents-treeview a:hover, .index a:hover {
     text-decoration: underline;
 }
 .contents-treeview input + label + ul {
