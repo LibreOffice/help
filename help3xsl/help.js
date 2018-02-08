@@ -9,7 +9,7 @@
 
 // Used to set Apllication in caseinlie=APP
 function setModule(module){
-    if (module == null){module="WRITER"}
+    if (module === null){module="WRITER";}
     var itemspan = document.getElementsByTagName("span");
     var n = itemspan.length;
     for (var i = 0; i < n; i++){
@@ -22,7 +22,7 @@ function setModule(module){
 // Used to set system in caseinline=SYSTEM
 function setSystem(system){
     var itemspan = document.getElementsByTagName("span");
-    if (system == null){system="WIN"}
+    if (system=== null){system="WIN";}
     var n = itemspan.length;
     for (var i = 0; i < n; i++){
         if (itemspan[i].getAttribute("value") == system){
@@ -33,19 +33,19 @@ function setSystem(system){
 /* add &DbPAR= and &System= to the links in DisplayArea div */
 function fixURL(module, system){
     var itemlink = document.getElementById("DisplayArea").getElementsByTagName("a");
-    var pSystem = (system == null) ? "WIN" : system;
-    var pAppl = (module == null) ? "WRITER" : module;
+    var pSystem = (system=== null) ? "WIN" : system;
+    var pAppl = (module=== null) ? "WRITER" : module;
     var n = itemlink.length;
 
     for (var i = 0; i<n; i++) {
-        setURLParam(itemlink[i], pSystem, pAppl)
+        setURLParam(itemlink[i], pSystem, pAppl);
     }
 
 }
 //Set the params inside URL
 function setURLParam (itemlink, pSystem, pAppl) {
     var href = itemlink.getAttribute("href");
-    if (href != null){
+    if (href !== null){
         // skip external links
         if (!href.startsWith("http")) {
             // handle bookmark.
@@ -88,6 +88,138 @@ function getParameterByName(name, url) {
     }
 
     return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+// Pagination and fuzzy search
+var fuseshown = document.getElementsByClassName("fuseshown");
+var indexkids = document.getElementsByClassName("index")[0].children;
+var liElements = Array.prototype.slice.call(fuseshown).map(function(elm) {
+  var item = elm;
+  var linktext = item.textContent;
+  var fuseObject = { item: item, linktext: linktext };
+  return fuseObject;
+});
+
+var fuse = new Fuse(liElements, {
+  keys: ["linktext"],
+  distance: 60,
+  location: 0,
+  threshold: 0.2,
+  tokenize: true,
+  matchAllTokens: true,
+  maxPatternLength: 24,
+  minMatchCharLength: 2
+});
+
+var modules = [ 'CALC', 'WRITER', 'IMPRESS', 'DRAW', 'BASE', 'MATH', 'CHART', 'BASIC', 'SHARED' ];
+function addIds() {    
+  for (var i = 0, len = indexkids.length; i < len; i++) {
+    indexkids[i].removeAttribute("id");
+  }
+  modules.forEach(function(module) {
+    var fuseshownModule = document.getElementsByClassName("fuseshown " + module)[0];
+    if(typeof fuseshownModule !== 'undefined') { fuseshownModule.setAttribute("id", module); }
+  });
+}
+
+var search = document.getElementById('search-bar');
+var filter = function() {
+  var target = search.value.trim();
+  if (target.length < 1) {
+    liElements.forEach(function(obj) {
+        obj.item.classList.add('fuseshown');
+        obj.item.classList.remove('fusehidden');
+    });
+    Paginator(document.getElementsByClassName("index")[0]);
+    addIds();
+    return;
+  }
+  var results = fuse.search(target);
+
+  liElements.forEach(function(obj) {
+    obj.item.classList.add('fusehidden');
+    obj.item.classList.remove('fuseshown');
+  });
+  results.forEach(function(obj) {
+    obj.item.classList.add('fuseshown');
+    obj.item.classList.remove('fusehidden');
+  });
+
+  Paginator(document.getElementsByClassName("index")[0]);
+  addIds();
+};
+
+function debounce(fn, wait) {
+  var timeout;
+  return function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+      fn.apply(this, arguments);
+    }, (wait || 150));
+  };
+}
+
+Paginator(document.getElementsByClassName("index")[0]);
+search.addEventListener('keyup', debounce(filter, 300));
+addIds();
+
+// copy useful content to clipboard on mouse click
+var copyable = document.getElementsByClassName("input");
+
+for (var i = 0, len = copyable.length; i < len; i++) {
+    (function() {
+        var item = copyable[i];
+        function changeColor(item, color, colorToChangeBackTo) {
+        item.style.backgroundColor = color;
+        setTimeout(function() { item.style.backgroundColor = colorToChangeBackTo; }, 150);
+        }
+
+        item.onclick = function() {
+            document.execCommand("copy");
+            changeColor(item, "#18A303", "transparent");
+        };
+
+        item.addEventListener("copy", function(event) {
+            event.preventDefault();
+            if (event.clipboardData) {
+                event.clipboardData.setData("text/plain", item.textContent);
+            }
+        });
+    }());
+}
+
+// auto-expand contents per subitem
+var pathname = window.location.pathname;
+var mainRegex = /main[0-9]*\.html$/;
+var pathRegex = /text\/.*\.html$/;
+var linkIndex = 0;
+
+if(mainRegex.test(pathname) === false) {
+    var contentMatch = pathname.match(pathRegex);
+    if(contentMatch !== null) {
+        var linkMatch = new RegExp(contentMatch);
+        var links = document.getElementById("Contents").getElementsByTagName("a");
+        for (var i = 0, len = links.length; i < len; i++) {
+            if(links[i].href.match(linkMatch)) {
+                var linkIndex = i;
+            }
+        }
+
+        var cItem = document.getElementById("Contents").getElementsByTagName("a")[linkIndex].parentElement;
+        var parents = [];
+
+        while (cItem.parentElement && !cItem.parentElement.matches("#Contents") && parents.indexOf(cItem.parentElement) == -1) {
+                parents.push(cItem = cItem.parentElement);
+        }
+        var liParents = [].filter.call(parents, function(item) {
+            return item.matches("li");
+        });
+
+        for (var i = 0, len = liParents.length; i < len; i++) {
+            var input = liParents[i].querySelectorAll(':scope > input');
+            document.getElementById(input[0].id).checked = true;
+        }
+    }
 }
 
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */

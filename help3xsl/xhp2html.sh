@@ -35,7 +35,7 @@ rm -f $bookmarkFile
 touch $bookmarkFile
 
 stub2=\'
-stub1='document.getElementsByClassName( "list" )[0].innerHTML='\'\\
+stub1='document.getElementsByClassName( "index" )[0].innerHTML='\'\\
 echo $stub1 >> $bookmarkFile
 
 xslfile=get_bookmark.xsl

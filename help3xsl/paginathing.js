@@ -2,7 +2,7 @@
  * Paginathing
  * Paginate Everything
  *
- * Original @author Alfred Crosby <https://github.com/alfredcrosby>
+ * Original author Alfred Crosby <https://github.com/alfredcrosby>
  * Inspired from http://esimakin.github.io/twbs-pagination/
  * Modified to pure JavaScript and specialised to LibreOffice Help by
  * Ilmari Lauhakangas
@@ -55,7 +55,7 @@
 })([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
 
 var options = {
-    perPage: 10,
+    perPage: 20,
     limitPagination: 6,
     prevNext: true,
     firstLast: true,
@@ -71,11 +71,11 @@ var options = {
 };
 
 var Paginator = function(element) {
-    el = element;
-    startPage = 1;
-    currentPage = 1;
-    pageDivision = 0;
-    totalItems = el.getElementsByClassName('fuseshown').length;
+    var el = element;
+    var startPage = 1;
+    var currentPage = 1;
+    var pageDivision = 0;
+    var totalItems = el.getElementsByClassName('fuseshown').length;
     var limitPagination = options.limitPagination;
     pageDivision = Math.ceil(totalItems / options.perPage);
     // let's not display pagination leading nowhere
@@ -87,15 +87,15 @@ var Paginator = function(element) {
         }
         return limitPagination;
     }
-    totalPages = Math.max(pageDivision, pagLimit());
-    existingContainer = document.getElementsByClassName('pagination-container')[0];
+    var totalPages = Math.max(pageDivision, pagLimit());
+    var existingContainer = document.getElementsByClassName('pagination-container')[0];
     if (existingContainer) {
         parent = existingContainer.parentNode;
         parent.removeChild(existingContainer);
     }
-    container = document.createElement('nav');
+    var container = document.createElement('nav');
     container.setAttribute('class', options.containerClass);
-    ul = document.createElement('ul');
+    var ul = document.createElement('ul');
     ul.setAttribute('class', options.ulClass);
 
     function paginationFunc(type, page) {

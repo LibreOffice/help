@@ -55,13 +55,13 @@ xsltproc get_bookmark.xsl <file.xhp>
         <xsl:variable name="hrefhtml" select="substring-before($filename,'xhp')"/>
         <xsl:variable name="href" select="concat($productversion,'/',$Language,'/',$hrefhtml,'html?DbPAR=',$app,'#',@id)"/>
         <xsl:for-each select="bookmark_value">
-        <xsl:text disable-output-escaping="yes"><![CDATA[<li class="fuseshown"><a target="_top" href="]]></xsl:text>
+        <xsl:text disable-output-escaping="yes"><![CDATA[<a target="_top" href="]]></xsl:text>
         <xsl:value-of select="$href"/>
-        <xsl:text disable-output-escaping="yes"><![CDATA[" class="]]></xsl:text>
+        <xsl:text disable-output-escaping="yes"><![CDATA[" class="fuseshown ]]></xsl:text>
         <xsl:value-of select="$app"/>
         <xsl:text disable-output-escaping="yes"><![CDATA[">]]></xsl:text>
             <xsl:call-template name="replace"><xsl:with-param name="text" select="."/></xsl:call-template>
-            <xsl:text disable-output-escaping="yes"><![CDATA[</a></li>\]]>&#xA;</xsl:text>
+            <xsl:text disable-output-escaping="yes"><![CDATA[</a>\]]>&#xA;</xsl:text>
         </xsl:for-each>
     </xsl:for-each>
 </xsl:template>
