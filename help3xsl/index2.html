@@ -39,12 +39,13 @@
     var file = map[bookmark];
     // rebuild URL
     if (file === undefined){
-    file = defaultFile;
-    }
+    var newURL = lang + '/' + defaultFile + '?System=' + system + '&DbPAR=' + module;
+    }else{
     var indx = file.indexOf('#');
     var bm = file.substr(indx,file.length);
     file = file.substr(0,indx);
     var newURL = lang + '/' + file + '?System=' + system + '&DbPAR=' + module + bm;
+    }
     window.open(newURL,'_self');
     }else{
     // URL came from elsewhere, direct access to webroot, we redirect to main Help page
