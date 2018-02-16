@@ -283,6 +283,7 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='pt'"><xsl:text>var cx = '010161382024564278136:1x2uk8j-rbw';</xsl:text></xsl:when>
         <xsl:when test="$lang='pt-BR'"><xsl:text>var cx = '010161382024564278136:1x2uk8j-rbw';</xsl:text></xsl:when>
         <xsl:when test="$lang='ru'"><xsl:text>var cx = '010161382024564278136:syzgysikzms';</xsl:text></xsl:when>
+        <xsl:when test="$lang='sl'"><xsl:text>var cx = '010161382024564278136:5varjpouixi';</xsl:text></xsl:when>
         <xsl:when test="$lang='tr'"><xsl:text>var cx = '010161382024564278136:gzcz3ueyhkw';</xsl:text></xsl:when>
         <xsl:when test="$lang='zh-CN'"><xsl:text>var cx = '010161382024564278136:vkf9curztm8';</xsl:text></xsl:when>
         <xsl:when test="$lang='zh-TW'"><xsl:text>var cx = '010161382024564278136:_goysgr6ptm';</xsl:text></xsl:when>
@@ -292,10 +293,25 @@ Stylesheet map language-dependent parameters and translation
 
 <xsl:template name="getTooltip">
     <xsl:param name="lang"/>
+    <xsl:attribute name="data-tooltip">
+        <xsl:choose>
+            <xsl:when test="$lang='fi'">Klikkaa kopioidaksesi leikepöydälle</xsl:when>
+            <xsl:when test="$lang='pt'">Clique no texto para copiar para a área de transferência</xsl:when>
+            <xsl:when test="$lang='pt-BR'">Clique no texto para copiar para a área de transferência</xsl:when>
+            <xsl:otherwise>Click on text to copy to clipboard</xsl:otherwise>
+        </xsl:choose>
+    </xsl:attribute>
+</xsl:template>
+
+<xsl:template name="getDonation">
+    <xsl:param name="lang"/>
     <xsl:choose>
-        <xsl:when test="$lang='fi'"><xsl:attribute name="data-tooltip">Klikkaa kopioidaksesi leikepöydälle</xsl:attribute></xsl:when>
-        <xsl:otherwise><xsl:attribute name="data-tooltip">Click on text to copy to clipboard</xsl:attribute></xsl:otherwise>
-</xsl:choose>
+        <xsl:when test="$lang='nb'"><xsl:text>Hvis du har funnet denne siden nyttig kan du bidra.</xsl:text></xsl:when>
+        <xsl:when test="$lang='pt'"><xsl:text>Se esta página lhe foi útil, dê-nos seu apoio!</xsl:text></xsl:when>
+        <xsl:when test="$lang='pt-BR'"><xsl:text>Se esta página lhe foi útil, dê-nos seu apoio!</xsl:text></xsl:when>
+        <xsl:when test="$lang='sl'"><xsl:text>Če vam je stran v pomoč, nam lahko pomagate!</xsl:text></xsl:when>
+        <xsl:otherwise><xsl:text>If this page has been helpful, you can support us!</xsl:text></xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 </xsl:stylesheet>
