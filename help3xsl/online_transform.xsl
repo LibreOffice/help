@@ -610,11 +610,18 @@
 
 		<xsl:when test="@role='heading'">	<!-- increase the level of headings that are embedded -->
 <!-- 			 <xsl:variable name="level"><xsl:value-of select="number(@level)+1"/></xsl:variable> -->
-			<xsl:call-template name="insertheading">
+            <xsl:variable name="newlevel">
+                <xsl:choose>
+                    <xsl:when test="@level='1'"><xsl:value-of select="'2'"/></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="@level"/></xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
+
+            <xsl:call-template name="insertheading">
+                <xsl:with-param name="level" select="$newlevel"/>
                 <xsl:with-param name="embedded" select="'yes'"/>
-                <xsl:with-param name="level" select="@level"/>
-			</xsl:call-template>
-		</xsl:when>
+            </xsl:call-template>
+        </xsl:when>
 
 		<xsl:when test="contains(' note warning tip ',@role)">
 			<xsl:call-template name="insertnote">
