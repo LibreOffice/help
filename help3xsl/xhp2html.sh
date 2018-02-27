@@ -148,14 +148,13 @@ echo 'Conversion to HTML finished for '$3
 ###########################################
 
 # Change root of git core
-productversion='6.0'
+productversion='6.1'
 local='no'
 fileTree='/'
 
 rootHelpex=/home/tdf/git/core
 
 ALL_LANGS='en-US am ar ast bg bn bn-IN bo bs ca ca-valencia cs da de dz el en-GB en-ZA eo es et eu fi fr gl gu he hi hr hu id is it ja ka km ko lo lt lv mk nb ne nl nn om pl pt-BR pt ro ru sid si sk sl sq sv ta tg tr ug uk vi zh-CN zh-TW'
-
 here=$(pwd)
 root=$(realpath "$here/../..")
 
