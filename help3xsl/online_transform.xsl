@@ -400,9 +400,9 @@
 <!-- CASE -->
 <xsl:template match="case"><xsl:call-template name="insertcase" /></xsl:template>
 <xsl:template match="case" mode="embedded">
-	<xsl:call-template name="insertcase">
-		<xsl:with-param name="embedded" select="'yes'"/>
-	</xsl:call-template>
+        <xsl:call-template name="insertcase">
+            <xsl:with-param name="embedded" select="'yes'"/>
+        </xsl:call-template>
 </xsl:template>
 
 <!-- CASEINLINE -->
@@ -667,16 +667,16 @@
 
 <!-- SECTION -->
 <xsl:template match="section" mode="embedded">
-	<a name="{@id}"></a>
-	<xsl:apply-templates mode="embedded"/>
+    <a name="{@id}"></a>
+    <xsl:apply-templates mode="embedded"/>
 </xsl:template>
 
 <!-- SORT -->
 <xsl:template match="sort" >
-	<xsl:apply-templates><xsl:sort select="descendant::paragraph"/></xsl:apply-templates>
+    <xsl:apply-templates><xsl:sort select="descendant::paragraph"/></xsl:apply-templates>
 </xsl:template>
 <xsl:template match="sort" mode="embedded">
-	<xsl:apply-templates><xsl:sort select="descendant::paragraph"/></xsl:apply-templates>
+    <xsl:apply-templates><xsl:sort select="descendant::paragraph"/></xsl:apply-templates>
 </xsl:template>
 
 <!-- SWITCH -->
@@ -712,15 +712,15 @@
 <xsl:template match="variable" mode="embedded"><a name="{@id}"></a><xsl:apply-templates mode="embedded"/></xsl:template>
 
 <xsl:template match="text()">
-	<xsl:call-template name="brand">
-		<xsl:with-param name="string"><xsl:value-of select="."/></xsl:with-param>
-	</xsl:call-template>
+    <xsl:call-template name="brand">
+        <xsl:with-param name="string"><xsl:value-of select="."/></xsl:with-param>
+    </xsl:call-template>
 </xsl:template>
 
 <xsl:template match="text()" mode="embedded">
-	<xsl:call-template name="brand">
-		<xsl:with-param name="string"><xsl:value-of select="."/></xsl:with-param>
-	</xsl:call-template>
+    <xsl:call-template name="brand">
+        <xsl:with-param name="string"><xsl:value-of select="."/></xsl:with-param>
+    </xsl:call-template>
 </xsl:template>
 
 <!-- In case of missing help files -->
@@ -963,10 +963,10 @@
             <xsl:if test="not(../child::case[@select=$System]) and not(../child::caseinline[@select=$System])">
                 <xsl:choose>
                     <xsl:when test="$embedded = 'yes'">
-                        <span hidden="true" itemprop="system" value="WIN"><xsl:apply-templates mode="embedded"/></span>
+                        <span itemprop="system" value="DEFAULTSYS"><xsl:apply-templates mode="embedded"/></span>
                     </xsl:when>
                     <xsl:otherwise>
-                        <span hidden="true" itemprop="system" value="WIN"><xsl:apply-templates /></span>
+                        <span itemprop="system" value="DEFAULTSYS"><xsl:apply-templates /></span>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:if>
