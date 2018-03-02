@@ -20,16 +20,31 @@ function setModule(module) {
         }
     }
 }
-// Used to set system in caseinline=SYSTEM
+// Used to set system in case, caseinline=SYSTEM
 function setSystem(system) {
-    var itemspan = document.getElementsByTagName("span");
+    var hasSystem;
+    // if no System in URL, get browser system
     if (system === null) {
-        system = "WIN";
+        system = getSystem();
     }
+    // on loading page, DEFAULTSYS visible, sys is hidden
+    // when hasSystem, show sys, hide DEFAULTSYS
+    var itemspan = document.getElementsByTagName("span");
     var n = itemspan.length;
+    //Show  when system is found in page
+    hasSystem = false;
     for (var i = 0; i < n; i++) {
         if (itemspan[i].getAttribute("value") == system) {
             itemspan[i].removeAttribute("hidden");
+            hasSystem = true;
+        }
+    }
+    //it hasSystem, then hide all DEFAULTSYS
+    if (hasSystem){
+        for (var i = 0; i < n; i++) {
+            if (itemspan[i].getAttribute("value") == "DEFAULTSYS") {
+                itemspan[i].setAttribute("hidden",true);
+            }
         }
     }
 }
