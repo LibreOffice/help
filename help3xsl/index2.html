@@ -49,7 +49,10 @@
     window.open(newURL,'_self');
     }else{
     // URL came from elsewhere, direct access to webroot, we redirect to main Help page
-    var userLang = navigator.language || navigator.userLanguage;
+    var userLang = navigator.language;
+    if(userLang === undefined ){
+    userlang="en-US";
+    }
     window.open(userLang + '/text/shared/main0108.html?&DbPAR=WRITER&System=WIN','_self');
     }
 </script>
