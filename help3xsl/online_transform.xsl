@@ -58,6 +58,12 @@
 
 <!-- Installation -->
 <xsl:variable name="online" select="$local!='yes'"/>
+<xsl:variable name="target">
+    <xsl:choose>
+        <xsl:when test="$online"><xsl:value-of select="concat($productversion,'/')"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="''"/></xsl:otherwise>
+    </xsl:choose>
+</xsl:variable>
 
 <!-- meta data variables from the help file -->
 <xsl:variable name="filename" select="/helpdocument/meta/topic/filename"/>
@@ -70,7 +76,6 @@
 
 <!-- the other parameters given by the help caller -->
 
-
 <xsl:variable name="pversion">
 	<xsl:value-of select="translate($productversion,' ','')"/>
 </xsl:variable>
@@ -79,18 +84,18 @@
 <xsl:variable name="lang" select="$Language"/>
 <xsl:variable name="urlpre" select="$root"/>
 
+
 <!-- generic Icon alt text -->
 <xsl:variable name="alttext" select="concat($root,'text/shared/00/icon_alt.xhp')"/>
 
   <!-- parts of help and image urls -->
-<!--<xsl:variable name="help_url_prefix" select="'vnd.sun.star.help://'"/>-->
-<xsl:variable name="help_url_prefix" select="''"/>
 
-<xsl:variable name="img_url_internal" select="$productversion"/>
-<xsl:variable name="img_url_prefix" select="concat($productversion,'/media',$imgtheme,'/')"/>
+<xsl:variable name="img_url_prefix" select="concat($target,'media',$imgtheme,'/')"/>
+
 <xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no')"/>
-<!-- <xsl:variable name="urlpre" select="$help_url_prefix" /> -->
-<xsl:variable name="linkprefix" select="concat($productversion,'/',$lang,'/')"/>
+
+<xsl:variable name="linkprefix" select="concat($target,$lang,'/')"/>
+
 <!--<xsl:variable name="linkpostfix" select="$urlpost"/>-->
 <xsl:variable name="linkpostfix" select="''"/>
 
@@ -107,7 +112,7 @@
 
 <!-- Create the document skeleton -->
 <xsl:template match="/">
-    <xsl:variable name="htmlpage"><xsl:call-template name="filehtml"><xsl:with-param name="file" select="$filename"/></xsl:call-template></xsl:variable>
+    <xsl:variable name="htmlpage"><xsl:value-of select="concat(substring-before($filename,'.xhp'),'.html')"/></xsl:variable>
     <xsl:variable name="titleL10N">
         <xsl:call-template name="brand"><xsl:with-param name="string"><xsl:value-of select="$title"/></xsl:with-param></xsl:call-template>
     </xsl:variable>
@@ -130,11 +135,11 @@
             <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org *.google.com *.googleapis.com"/>
         </xsl:if>
         <title><xsl:value-of select="$titleL10N"/></title>
-        <link rel="shortcut icon" href="{$productversion}/media/navigation/favicon.ico" />
-        <link  type="text/css" href="{$productversion}/normalize.css" rel="Stylesheet" />
-        <link  type="text/css" href="{$productversion}/default.css" rel="Stylesheet" />
-        <script type="text/javascript" src="{$productversion}/fuse.js"></script>
-        <script type="text/javascript" src="{$productversion}/paginathing.js"></script>
+        <link rel="shortcut icon" href="{$target}media/navigation/favicon.ico" />
+        <link  type="text/css" href="{$target}normalize.css" rel="Stylesheet" />
+        <link  type="text/css" href="{$target}default.css" rel="Stylesheet" />
+        <script type="text/javascript" src="{$target}fuse.js"></script>
+        <script type="text/javascript" src="{$target}paginathing.js"></script>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
     <body itemscope="true" itemtype="http://schema.org/TechArticle">
@@ -147,7 +152,7 @@
     <div class="header-extrawurst">
         <header>
             <div class="logo-container">
-                <a class="logo" href="{$productversion}/{$lang}/text/shared/main0108.html">
+                <a class="logo" href="{$target}{$lang}/text/shared/main0108.html">
                     <div class="symbol"></div>
                     <p><xsl:call-template name="brand">
                         <xsl:with-param name="string">
@@ -164,14 +169,14 @@
             <input id="modules" name="modules" type="checkbox"/>
             <label for="modules"><xsl:call-template name="getModules"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
             <nav>
-                <a href="{$productversion}/{$lang}/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer-icon"></div>Writer</a>
-                <a href="{$productversion}/{$lang}/text/scalc/main0000.html?DbPAR=CALC"><div class="calc-icon"></div>Calc</a>
-                <a href="{$productversion}/{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS"><div class="impress-icon"></div>Impress</a>
-                <a href="{$productversion}/{$lang}/text/sdraw/main0000.html?DbPAR=DRAW"><div class="draw-icon"></div>Draw</a>
-                <a href="{$productversion}/{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE"><div class="base-icon"></div>Base</a>
-                <a href="{$productversion}/{$lang}/text/smath/main0000.html?DbPAR=MATH"><div class="math-icon"></div>Math</a>
-                <a href="{$productversion}/{$lang}/text/schart/main0000.html?DbPAR=CHART"><div class="chart-icon"></div>Chart</a>
-                <a href="{$productversion}/{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC"><div class="basic-icon"></div>Basic</a>
+                <a href="{$target}{$lang}/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer-icon"></div>Writer</a>
+                <a href="{$target}{$lang}/text/scalc/main0000.html?DbPAR=CALC"><div class="calc-icon"></div>Calc</a>
+                <a href="{$target}{$lang}/text/simpress/main0000.html?DbPAR=IMPRESS"><div class="impress-icon"></div>Impress</a>
+                <a href="{$target}{$lang}/text/sdraw/main0000.html?DbPAR=DRAW"><div class="draw-icon"></div>Draw</a>
+                <a href="{$target}{$lang}/text/shared/explorer/database/main.html?DbPAR=BASE"><div class="base-icon"></div>Base</a>
+                <a href="{$target}{$lang}/text/smath/main0000.html?DbPAR=MATH"><div class="math-icon"></div>Math</a>
+                <a href="{$target}{$lang}/text/schart/main0000.html?DbPAR=CHART"><div class="chart-icon"></div>Chart</a>
+                <a href="{$target}{$lang}/text/sbasic/shared/main0601.html?DbPAR=BASIC"><div class="basic-icon"></div>Basic</a>
             </nav>
         </div>
         <xsl:if test="$online">
@@ -179,71 +184,71 @@
                 <input id="langs" name="language-menu" type="checkbox"/>
                 <label for="langs"><xsl:call-template name="getLanguage"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
                 <nav>
-                    <a href="{$productversion}/en-US{$htmlpage}">English (USA)</a>
-                    <a href="{$productversion}/am{$htmlpage}">አማርኛ</a>
-                    <a href="{$productversion}/ar{$htmlpage}">العربية</a>
-                    <a href="{$productversion}/ast{$htmlpage}">Asturianu</a>
-                    <a href="{$productversion}/bg{$htmlpage}">Български</a>
-                    <a href="{$productversion}/bn{$htmlpage}">বাংলা</a>
-                    <a href="{$productversion}/bn-IN{$htmlpage}">বাংলা</a>
-                    <a href="{$productversion}/bo{$htmlpage}">བོད་ཡིག / Bod skad</a>
-                    <a href="{$productversion}/bs{$htmlpage}">Bosanski</a>
-                    <a href="{$productversion}/ca{$htmlpage}">Català</a>
-                    <a href="{$productversion}/ca-valencia{$htmlpage}">Català-Valencia</a>
-                    <a href="{$productversion}/cs{$htmlpage}">Česky</a>
-                    <a href="{$productversion}/da{$htmlpage}">Dansk</a>
-                    <a href="{$productversion}/de{$htmlpage}">Deutsch</a>
-                    <a href="{$productversion}/dz{$htmlpage}"> ཇོང་ཁ</a>
-                    <a href="{$productversion}/el{$htmlpage}">Ελληνικά</a>
-                    <a href="{$productversion}/en-GB{$htmlpage}">English (GB)</a>
-                    <a href="{$productversion}/en-ZA{$htmlpage}">English (ZA)</a>
-                    <a href="{$productversion}/eo{$htmlpage}">Esperanto</a>
-                    <a href="{$productversion}/es{$htmlpage}">Español</a>
-                    <a href="{$productversion}/et{$htmlpage}">Eesti</a>
-                    <a href="{$productversion}/eu{$htmlpage}">Euskara</a>
-                    <a href="{$productversion}/fi{$htmlpage}">Suomi</a>
-                    <a href="{$productversion}/fr{$htmlpage}">Français</a>
-                    <a href="{$productversion}/gl{$htmlpage}">Galego</a>
-                    <a href="{$productversion}/gu{$htmlpage}">ગુજરાતી</a>
-                    <a href="{$productversion}/he{$htmlpage}">עברית</a>
-                    <a href="{$productversion}/hi{$htmlpage}">हिन्दी</a>
-                    <a href="{$productversion}/hr{$htmlpage}">Hrvatski</a>
-                    <a href="{$productversion}/hu{$htmlpage}">Magyar</a>
-                    <a href="{$productversion}/id{$htmlpage}">Bahasa Indonesia</a>
-                    <a href="{$productversion}/is{$htmlpage}">Íslenska</a>
-                    <a href="{$productversion}/it{$htmlpage}">Italiano</a>
-                    <a href="{$productversion}/ja{$htmlpage}">日本語</a>
-                    <a href="{$productversion}/ka{$htmlpage}">ქართული</a>
-                    <a href="{$productversion}/km{$htmlpage}">ភាសាខ្មែរ</a>
-                    <a href="{$productversion}/ko{$htmlpage}">한국어</a>
-                    <a href="{$productversion}/lo{$htmlpage}">ລາວ</a>
-                    <a href="{$productversion}/lt{$htmlpage}">Lietuvių</a>
-                    <a href="{$productversion}/lv{$htmlpage}">Latviešu</a>
-                    <a href="{$productversion}/mk{$htmlpage}">Македонски</a>
-                    <a href="{$productversion}/nb{$htmlpage}">Norsk (bokmål / riksmål)</a>
-                    <a href="{$productversion}/ne{$htmlpage}">नेपाली</a>
-                    <a href="{$productversion}/nl{$htmlpage}">Nederlands</a>
-                    <a href="{$productversion}/nn{$htmlpage}">Norsk (nynorsk)</a>
-                    <a href="{$productversion}/om{$htmlpage}">Oromoo</a>
-                    <a href="{$productversion}/pl{$htmlpage}">Polski</a>
-                    <a href="{$productversion}/pt{$htmlpage}">Português</a>
-                    <a href="{$productversion}/pt-BR{$htmlpage}">Português do Brasil</a>
-                    <a href="{$productversion}/ro{$htmlpage}">Română</a>
-                    <a href="{$productversion}/ru{$htmlpage}">Русский</a>
-                    <a href="{$productversion}/si{$htmlpage}">සිංහල</a>
-                    <a href="{$productversion}/sid{$htmlpage}">Sidámo 'Afó</a>
-                    <a href="{$productversion}/sk{$htmlpage}">Slovenčina</a>
-                    <a href="{$productversion}/sl{$htmlpage}">Slovenščina</a>
-                    <a href="{$productversion}/sq{$htmlpage}">Shqip</a>
-                    <a href="{$productversion}/sv{$htmlpage}">Svenska</a>
-                    <a href="{$productversion}/ta{$htmlpage}">தமிழ்</a>
-                    <a href="{$productversion}/tg{$htmlpage}">Тоҷикӣ</a>
-                    <a href="{$productversion}/tr{$htmlpage}">Türkçe</a>
-                    <a href="{$productversion}/ug{$htmlpage}">ئۇيغۇرچە</a>
-                    <a href="{$productversion}/uk{$htmlpage}">Українська</a>
-                    <a href="{$productversion}/vi{$htmlpage}">Tiếng Việt</a>
-                    <a href="{$productversion}/zh-CN{$htmlpage}">中文 (简体字)</a>
-                    <a href="{$productversion}/zh-TW{$htmlpage}">中文 (正體字)‬</a>
+                    <a href="{$target}en-US{$htmlpage}">English (USA)</a>
+                    <a href="{$target}am{$htmlpage}">አማርኛ</a>
+                    <a href="{$target}ar{$htmlpage}">العربية</a>
+                    <a href="{$target}ast{$htmlpage}">Asturianu</a>
+                    <a href="{$target}bg{$htmlpage}">Български</a>
+                    <a href="{$target}bn{$htmlpage}">বাংলা</a>
+                    <a href="{$target}bn-IN{$htmlpage}">বাংলা</a>
+                    <a href="{$target}bo{$htmlpage}">བོད་ཡིག / Bod skad</a>
+                    <a href="{$target}bs{$htmlpage}">Bosanski</a>
+                    <a href="{$target}ca{$htmlpage}">Català</a>
+                    <a href="{$target}ca-valencia{$htmlpage}">Català-Valencia</a>
+                    <a href="{$target}cs{$htmlpage}">Česky</a>
+                    <a href="{$target}da{$htmlpage}">Dansk</a>
+                    <a href="{$target}de{$htmlpage}">Deutsch</a>
+                    <a href="{$target}dz{$htmlpage}"> ཇོང་ཁ</a>
+                    <a href="{$target}el{$htmlpage}">Ελληνικά</a>
+                    <a href="{$target}en-GB{$htmlpage}">English (GB)</a>
+                    <a href="{$target}en-ZA{$htmlpage}">English (ZA)</a>
+                    <a href="{$target}eo{$htmlpage}">Esperanto</a>
+                    <a href="{$target}es{$htmlpage}">Español</a>
+                    <a href="{$target}et{$htmlpage}">Eesti</a>
+                    <a href="{$target}eu{$htmlpage}">Euskara</a>
+                    <a href="{$target}fi{$htmlpage}">Suomi</a>
+                    <a href="{$target}fr{$htmlpage}">Français</a>
+                    <a href="{$target}gl{$htmlpage}">Galego</a>
+                    <a href="{$target}gu{$htmlpage}">ગુજરાતી</a>
+                    <a href="{$target}he{$htmlpage}">עברית</a>
+                    <a href="{$target}hi{$htmlpage}">हिन्दी</a>
+                    <a href="{$target}hr{$htmlpage}">Hrvatski</a>
+                    <a href="{$target}hu{$htmlpage}">Magyar</a>
+                    <a href="{$target}id{$htmlpage}">Bahasa Indonesia</a>
+                    <a href="{$target}is{$htmlpage}">Íslenska</a>
+                    <a href="{$target}it{$htmlpage}">Italiano</a>
+                    <a href="{$target}ja{$htmlpage}">日本語</a>
+                    <a href="{$target}ka{$htmlpage}">ქართული</a>
+                    <a href="{$target}km{$htmlpage}">ភាសាខ្មែរ</a>
+                    <a href="{$target}ko{$htmlpage}">한국어</a>
+                    <a href="{$target}lo{$htmlpage}">ລາວ</a>
+                    <a href="{$target}lt{$htmlpage}">Lietuvių</a>
+                    <a href="{$target}lv{$htmlpage}">Latviešu</a>
+                    <a href="{$target}mk{$htmlpage}">Македонски</a>
+                    <a href="{$target}nb{$htmlpage}">Norsk (bokmål / riksmål)</a>
+                    <a href="{$target}ne{$htmlpage}">नेपाली</a>
+                    <a href="{$target}nl{$htmlpage}">Nederlands</a>
+                    <a href="{$target}nn{$htmlpage}">Norsk (nynorsk)</a>
+                    <a href="{$target}om{$htmlpage}">Oromoo</a>
+                    <a href="{$target}pl{$htmlpage}">Polski</a>
+                    <a href="{$target}pt{$htmlpage}">Português</a>
+                    <a href="{$target}pt-BR{$htmlpage}">Português do Brasil</a>
+                    <a href="{$target}ro{$htmlpage}">Română</a>
+                    <a href="{$target}ru{$htmlpage}">Русский</a>
+                    <a href="{$target}si{$htmlpage}">සිංහල</a>
+                    <a href="{$target}sid{$htmlpage}">Sidámo 'Afó</a>
+                    <a href="{$target}sk{$htmlpage}">Slovenčina</a>
+                    <a href="{$target}sl{$htmlpage}">Slovenščina</a>
+                    <a href="{$target}sq{$htmlpage}">Shqip</a>
+                    <a href="{$target}sv{$htmlpage}">Svenska</a>
+                    <a href="{$target}ta{$htmlpage}">தமிழ்</a>
+                    <a href="{$target}tg{$htmlpage}">Тоҷикӣ</a>
+                    <a href="{$target}tr{$htmlpage}">Türkçe</a>
+                    <a href="{$target}ug{$htmlpage}">ئۇيغۇرچە</a>
+                    <a href="{$target}uk{$htmlpage}">Українська</a>
+                    <a href="{$target}vi{$htmlpage}">Tiếng Việt</a>
+                    <a href="{$target}zh-CN{$htmlpage}">中文 (简体字)</a>
+                    <a href="{$target}zh-TW{$htmlpage}">中文 (正體字)‬</a>
                 </nav>
             </div>
         </xsl:if>
@@ -299,9 +304,9 @@
             </div>
         </footer>
     </div>
-    <script type="text/javascript" src="{$productversion}/{$lang}/bookmarks.js"/>
-    <script type="text/javascript" src="{$productversion}/{$lang}/contents.js"/>
-    <script type="text/javascript" src="{$productversion}/help.js"></script>
+    <script type="text/javascript" src="{$target}{$lang}/bookmarks.js"/>
+    <script type="text/javascript" src="{$target}{$lang}/contents.js"/>
+    <script type="text/javascript" src="{$target}help.js"></script>
     <xsl:choose>
         <xsl:when test="$online">
             <script type="text/javascript">
@@ -1034,21 +1039,21 @@
                     <xsl:variable name="tmp1" select="substring-after(@src, '/ui/')"/>
                     <xsl:variable name="tmp2" select="substring-before($tmp1,'/')"/>
                     <xsl:variable name="tmp3" select="substring-after($tmp1,'/')"/>
-                    <xsl:value-of select="concat($productversion,'/', $tmp0,'/ui/', $tmp2, '/',$lang,'/',$tmp3)"/>
+                    <xsl:value-of select="concat($target,$tmp0,'/ui/', $tmp2, '/',$lang,'/',$tmp3)"/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select="concat($productversion,'/',@src)"/>
+                    <xsl:value-of select="concat($target,'/',@src)"/>
                 </xsl:otherwise>
             </xsl:choose>
          </xsl:when>
          <xsl:when test="starts-with(@src,'media/')">
-             <xsl:value-of select="concat($productversion,'/',@src)"/>
+             <xsl:value-of select="concat($target,@src)"/>
          </xsl:when>
          <xsl:when test="not(starts-with(@src,'media/'))">
-             <xsl:value-of select="concat($productversion,'/media/icon-themes/',@src)"/>
+             <xsl:value-of select="concat($target,'media/icon-themes/',@src)"/>
          </xsl:when>
          <xsl:otherwise>
-             <xsl:value-of select="concat($productversion,@src)"/>
+             <xsl:value-of select="concat($target,@src)"/>
          </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -1201,7 +1206,6 @@
     </xsl:choose>
 </xsl:template>
 
-
 <xsl:template name="filehtml">
    <xsl:param name="file"/>
    <xsl:value-of select="concat(substring-before($file,'.xhp'),'.html')"/>
@@ -1219,7 +1223,10 @@
             </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>
-            <xsl:value-of select="concat('../',$result)" />
+            <xsl:choose>
+                <xsl:when test="$online"><xsl:value-of select="concat('../',$result)" /></xsl:when>
+                <xsl:otherwise><xsl:value-of select="$result" /></xsl:otherwise>
+            </xsl:choose>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
