@@ -13,10 +13,10 @@ Usage:
 xsltproc get_tree.xsl <file.tree>
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:param name="app"/>
 <xsl:param name="lang"/>
-<xsl:param name="productname" select="'LibreOffice'"/>
+<xsl:param name="local"/>
 <xsl:param name="productversion"/>
+<xsl:param name="productname" select="'LibreOffice'"/>
 <xsl:output indent="no" method="text"/>
 <!--
 ############################
@@ -28,6 +28,15 @@ xsltproc get_tree.xsl <file.tree>
 <xsl:variable name="brand2" select="'$[officeversion]'"/>
 <xsl:variable name="brand3" select="'%PRODUCTNAME'"/>
 <xsl:variable name="brand4" select="'%PRODUCTVERSION'"/>
+
+<xsl:variable name="online" select="$local!='yes'"/>
+<xsl:variable name="target">
+    <xsl:choose>
+        <xsl:when test="$online"><xsl:value-of select="concat($productversion,'/')"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="''"/></xsl:otherwise>
+    </xsl:choose>
+</xsl:variable>
+
 <!--
 #############
 # Templates #
@@ -38,22 +47,18 @@ xsltproc get_tree.xsl <file.tree>
     <xsl:apply-templates/>
 </xsl:template>
 <xsl:template match="help_section">
-<![CDATA[<ul><li><input type="checkbox" id="]]><xsl:value-of select="@id"/><![CDATA["><label for="]]><xsl:value-of select="@id"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="@title"/></xsl:with-param></xsl:call-template><![CDATA[</label><ul>\]]>
-<xsl:apply-templates/><![CDATA[</ul></li></ul>\]]>
+    <![CDATA[<ul><li><input type="checkbox" id="]]><xsl:value-of select="@id"/><![CDATA["><label for="]]><xsl:value-of select="@id"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="@title"/></xsl:with-param></xsl:call-template><![CDATA[</label><ul>\]]><xsl:apply-templates/><![CDATA[</ul></li></ul>\]]>
 </xsl:template>
 
 <xsl:template match="node">
-<![CDATA[<li><input type="checkbox" id="]]><xsl:value-of select="@id"/><![CDATA["><label for="]]><xsl:value-of select="@id"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="@title"/></xsl:with-param></xsl:call-template><![CDATA[</label><ul>\]]>
-<xsl:apply-templates/><![CDATA[</ul></li>\]]>
+    <![CDATA[<li><input type="checkbox" id="]]><xsl:value-of select="@id"/><![CDATA["><label for="]]><xsl:value-of select="@id"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="@title"/></xsl:with-param></xsl:call-template><![CDATA[</label><ul>\]]><xsl:apply-templates/><![CDATA[</ul></li>\]]>
 </xsl:template>
 
 <xsl:template match="topic">
     <xsl:variable name="htmlpage">
-        <xsl:call-template name="filehtml">
-            <xsl:with-param name="file" select="concat('/',$productversion,'/',$lang,'/',substring-after(@id,'/'))"/>
-        </xsl:call-template>
+        <xsl:value-of select="concat($target,$lang,'/',substring-before(substring-after(@id,'/'),'.xhp'),'.html')" />
     </xsl:variable>
-<![CDATA[<li><a target="_top" href="]]><xsl:value-of select="$htmlpage"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="."/></xsl:with-param></xsl:call-template><![CDATA[</a></li>\]]>
+    <![CDATA[<li><a target="_top" href="]]><xsl:value-of select="$htmlpage"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="."/></xsl:with-param></xsl:call-template><![CDATA[</a></li>\]]>
 </xsl:template>
 
 <xsl:template name="replace">
@@ -68,6 +73,7 @@ xsltproc get_tree.xsl <file.tree>
         </xsl:with-param>
     </xsl:call-template>
 </xsl:template>
+
 <!-- weird characters inside bookmarks, replace by HTML entities-->
 <xsl:template name="apostrophe">
     <xsl:param name="string"/>
@@ -88,9 +94,9 @@ xsltproc get_tree.xsl <file.tree>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
+
 <xsl:template name="brand" >
     <xsl:param name="string"/>
-
     <xsl:choose>
 
         <xsl:when test="contains($string,$brand1)">
@@ -141,10 +147,5 @@ xsltproc get_tree.xsl <file.tree>
             <xsl:value-of select="$string"/>
         </xsl:otherwise>
     </xsl:choose>
-</xsl:template>
-
-<xsl:template name="filehtml">
-   <xsl:param name="file"/>
-   <xsl:value-of select="substring-after(concat(substring-before($file,'.xhp'),'.html'),'/')"/>
 </xsl:template>
 </xsl:stylesheet>

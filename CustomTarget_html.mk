@@ -75,6 +75,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 	$(call gb_Helper_abbreviate_dirs,\
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
 			--stringparam lang $(LANG) \
+			--stringparam local $(if $(HELP_ONLINE),'no','yes') \
 			--stringparam productversion $(PRODUCTVERSION) \
 			-o $@ \
 			$(SRCDIR)/helpcontent2/help3xsl/get_tree.xsl \
@@ -159,6 +160,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
  				$(call gb_ExternalExecutable_get_command,xsltproc) \
  					--stringparam app $(APP) \
 					--stringparam Language $(HELP_LANG) \
+					--stringparam local $(if $(HELP_ONLINE),'no','yes') \
 					--stringparam productversion $(PRODUCTVERSION) \
 					$(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
 					$$xhp \

@@ -16,11 +16,19 @@ xsltproc get_bookmark.xsl <file.xhp>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
 <xsl:param name="app"/>
+<xsl:param name="local"/>
 <xsl:param name="Language"/>
 <xsl:param name="productname" select="'LibreOffice'"/>
 <xsl:param name="productversion"/>
 
 <xsl:output indent="yes" method="text"/>
+<xsl:variable name="online" select="$local!='yes'"/>
+<xsl:variable name="target">
+    <xsl:choose>
+        <xsl:when test="$online"><xsl:value-of select="concat($productversion,'/')"/></xsl:when>
+        <xsl:otherwise><xsl:value-of select="''"/></xsl:otherwise>
+    </xsl:choose>
+</xsl:variable>
 
 <!--
 ############################
@@ -53,7 +61,7 @@ xsltproc get_bookmark.xsl <file.xhp>
 <xsl:template match="/">
     <xsl:for-each select="//bookmark[@branch='index']">
         <xsl:variable name="hrefhtml" select="substring-before($filename,'xhp')"/>
-        <xsl:variable name="href" select="concat($productversion,'/',$Language,'/',$hrefhtml,'html?DbPAR=',$app,'#',@id)"/>
+        <xsl:variable name="href" select="concat($target,$Language,'/',$hrefhtml,'html?DbPAR=',$app,'#',@id)"/>
         <xsl:for-each select="bookmark_value">
         <xsl:text disable-output-escaping="yes"><![CDATA[<a target="_top" href="]]></xsl:text>
         <xsl:value-of select="$href"/>
