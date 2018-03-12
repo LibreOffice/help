@@ -11,11 +11,11 @@ $(eval $(call gb_Package_Package,helpcontent2_html,$(call gb_CustomTarget_get_wo
 
 $(eval $(call gb_Package_use_customtarget,helpcontent2_html,helpcontent2/help3xsl))
 
-$(eval $(call gb_Package_add_files,helpcontent2_html,$(LIBO_SHARE_HELP_FOLDER)/$(PRODUCTVERSION),\
+$(eval $(call gb_Package_add_files,helpcontent2_html,$(LIBO_SHARE_HELP_FOLDER)/$(if $(HELP_ONLINE),$(PRODUCTVERSION),),\
 	hid2file.js \
 ))
 
-$(eval $(call gb_Package_add_files_with_dir,helpcontent2_html,$(LIBO_SHARE_HELP_FOLDER)/$(PRODUCTVERSION),\
+$(eval $(call gb_Package_add_files_with_dir,helpcontent2_html,$(LIBO_SHARE_HELP_FOLDER)/$(if $(HELP_ONLINE),$(PRODUCTVERSION),),\
 	$(foreach lang,$(gb_HELP_LANGS),\
 		$(lang)/bookmarks.js \
 		$(lang)/contents.js \
