@@ -12,7 +12,7 @@ $(eval $(call gb_GeneratedPackage_GeneratedPackage,helpcontent2_html,$(call gb_C
 $(eval $(call gb_GeneratedPackage_use_customtarget,helpcontent2_html,helpcontent2/help3xsl))
 
 $(eval $(foreach lang,$(gb_HELP_LANGS),\
-	$(call gb_GeneratedPackage_add_dir,helpcontent2_html,$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)/$(PRODUCTVERSION)/$(lang)/text,$(lang)/text) \
+$(call gb_GeneratedPackage_add_dir,helpcontent2_html,$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)/$(if $(HELP_ONLINE),$(PRODUCTVERSION),)/$(lang)/text,$(lang)/text) \
 ))
 
 # vim: set noet sw=4 ts=4:
