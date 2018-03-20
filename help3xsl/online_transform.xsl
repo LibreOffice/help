@@ -1042,7 +1042,7 @@
                     <xsl:value-of select="concat($target,$tmp0,'/ui/', $tmp2, '/',$lang,'/',$tmp3)"/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select="concat($target,'/',@src)"/>
+                    <xsl:value-of select="concat($target,@src)"/>
                 </xsl:otherwise>
             </xsl:choose>
          </xsl:when>
