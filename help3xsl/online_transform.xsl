@@ -571,7 +571,7 @@
 <!-- META, SEE HEADER -->
 <xsl:template match="meta" />
 
-<!-- OBJECT (UNUSED) -->
+<!-- OBJECT -->
 <xsl:template match="object"><xsl:call-template name="insertobject"/></xsl:template>
 <xsl:template match="object" mode="embedded"><xsl:call-template name="insertobject"/></xsl:template>
 
@@ -1071,32 +1071,38 @@
 
 <!-- Insert an object -->
 <xsl:template name="insertobject">
-  <xsl:variable name="data">
-       <xsl:value-of select="concat($img_url_prefix,@data)"/>
-  </xsl:variable>
-  <p class="debug">Object: <xsl:value-of select="$data"/></p>
-  <xsl:variable name="type"><xsl:value-of select="@type"/></xsl:variable>
-  <xsl:variable name="width">
+    <xsl:variable name="data">
+        <xsl:value-of select="concat($img_url_prefix,@data)"/>
+    </xsl:variable>
+    <xsl:variable name="type"><xsl:value-of select="@type"/></xsl:variable>
+    <xsl:variable name="width">
         <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@width"/></xsl:call-template>
-  </xsl:variable>
-  <xsl:variable name="height">
+    </xsl:variable>
+    <xsl:variable name="height">
         <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
-  </xsl:variable>
-  <xsl:choose>
-        <xsl:when test="starts-with($type,'video')">
-          <div id="mediadiv">
-            <video src="{$data}" type="{$type}" width="{$width}" height="{$height}" controls="'1'"></video>
-          </div>
+    </xsl:variable>
+    <xsl:choose>
+        <xsl:when test="starts-with(@type,'video/youtube')">
+            <xsl:if test="$online">
+                <div id="mediadiv">
+                    <iframe id="{@id}" src="{@data}" width="{$width}" height="{$height}" frameborder="0" allowfullscreen="true"></iframe>
+                </div>
+            </xsl:if>
         </xsl:when>
-        <xsl:when test="starts-with($type,'audio')">
-          <div id="mediadiv">
-            <audio src="{$data}" type="{$type}" controls="'1'"></audio>
-          </div>
+        <xsl:when test="not(starts-with(@type,'video/youtube')) and starts-with(@type,'video')">
+            <div id="mediadiv">
+                <video src="{$data}" type="{@type}" width="{$width}" height="{$height}" controls="'1'"></video>
+            </div>
+        </xsl:when>
+        <xsl:when test="starts-with(@type,'audio')">
+            <div id="mediadiv">
+                <audio src="{$data}" type="{@type}" controls="'1'"></audio>
+            </div>
         </xsl:when>
         <xsl:otherwise>
-           <object width="{$width}" height="{$height}" data="{$data}" type="{$type}"></object>
+            <object width="{$width}" height="{$height}" data="{$data}" type="{@type}"></object>
         </xsl:otherwise>
-  </xsl:choose>
+    </xsl:choose>
 </xsl:template>
 
 <!-- changing measure to pixel -->

@@ -513,6 +513,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/05/00000150 \
     helpcontent2/source/text/shared/05/00000160 \
     helpcontent2/source/text/shared/05/err_html \
+    helpcontent2/source/text/shared/06/youtubevideos \
     helpcontent2/source/text/shared/07/09000000 \
     helpcontent2/source/text/shared/3dsettings_toolbar \
     helpcontent2/source/text/shared/autokorr/01000000 \
