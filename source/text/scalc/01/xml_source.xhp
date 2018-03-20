@@ -1,52 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <helpdocument version="1.0">
-<!--
- * This file is part of the LibreOffice project.
- *
- * This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- *
- * This file incorporates work covered by the following license notice:
- *
- *   Licensed to the Apache Software Foundation (ASF) under one or more
- *   contributor license agreements. See the NOTICE file distributed
- *   with this work for additional information regarding copyright
- *   ownership. The ASF licenses this file to you under the Apache
- *   License, Version 2.0 (the "License"); you may not use this file
- *   except in compliance with the License. You may obtain a copy of
- *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
--->
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    * This file incorporates work covered by the following license notice:
+    *
+    *   Licensed to the Apache Software Foundation (ASF) under one or more
+    *   contributor license agreements. See the NOTICE file distributed
+    *   with this work for additional information regarding copyright
+    *   ownership. The ASF licenses this file to you under the Apache
+    *   License, Version 2.0 (the "License"); you may not use this file
+    *   except in compliance with the License. You may obtain a copy of
+    *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+    -->
 
-<meta>
-  <topic id="textscalc01xml_sourcexml">
-    <title id="tit" xml-lang="en-US">Live Data Stream</title>
-    <filename>/text/scalc/01/xml_source.xhp</filename>
-  </topic>
-</meta>
+    <meta>
+        <topic id="textscalc01xml_sourcexml">
+            <title id="tit" xml-lang="en-US">XML Data</title>
+            <filename>/text/scalc/01/xml_source.xhp</filename>
+        </topic>
+    </meta>
 
-<body>
+    <body>
+    <section id="xml_source">
+        <bookmark xml-lang="en-US" branch="hid/modules/scalc/ui/xmlsourcedialog/XMLSourceDialog" id="bm_id240920171033409926" localize="false"/>
+        <bookmark xml-lang="en-US" branch="index" id="bm_id240920171018528200">
+            <bookmark_value>XML Source;load XML data in spreadsheets</bookmark_value>
+        </bookmark>
+        <paragraph id="hd_id240920171003006302" role="heading" level="1" xml-lang="en-US"><link href="text/scalc/01/xml_source.xhp">XML Source</link></paragraph>
+        <paragraph id="par_id240920171003293400" role="paragraph" xml-lang="en-US"><ahelp hid=".">Import XML data in a spreadsheet.</ahelp></paragraph>
+    </section>
+    <paragraph role="paragraph" id="par_id861521496523519" xml-lang="en-US">The XML Source feature allows to import data from arbitrarily structured XML content into cells in an existing spreadsheet document. It allows XML content to be imported either partially or in full, depending on the structure of the XML content and the map definitions that the user defines. The user can specify multiple non-overlapping sub-structures to be mapped to different cell positions within the same document. The user can import either element contents, attribute values or both.</paragraph>
 
+    <section id="howtoget">
+        <paragraph id="par_id240920171007389295" role="paragraph" xml-lang="en-US">Menu <item type="menuitem">Data – XML Source...</item></paragraph>
+    </section>
+    <paragraph role="heading" id="hd_id801521494731764" level="2" xml-lang="en-US">XML Source Dialog</paragraph>
+    <paragraph id="par_id2521" role="paragraph"><image id="img_id35279" src="media/screenshots/modules/scalc/ui/xmlsourcedialog/XMLSourceDialog.png" width="16cm"  height="13cm"><alt id="alt_id55711">XML Source Dialog</alt></image></paragraph>
 
-<section id="xml_source">
-    <bookmark xml-lang="en-US" branch="hid/modules/scalc/ui/xmlsourcedialog/XMLSourceDialog" id="bm_id240920171033409926" localize="false"/>
-<bookmark xml-lang="en-US" branch="index" id="bm_id240920171018528200">
-  <bookmark_value>XML Source;load XML data in spreadsheets</bookmark_value>
-</bookmark>
+    <paragraph role="paragraph" id="par_id291521494762812" xml-lang="en-US">The dialog consists of four parts.</paragraph>
 
+    <paragraph role="heading" id="hd_id601521494755603" level="3" xml-lang="en-US">Source file</paragraph>
+    <paragraph role="paragraph" id="par_id161521494769832" xml-lang="en-US">This lets you specify the path to the XML file that you wish to import into your document.</paragraph>
 
-<paragraph id="hd_id240920171003006302" role="heading" level="1" xml-lang="en-US"><link href="text/scalc/01/xml_source.xhp">XML Source</link></paragraph>
-<paragraph id="par_id240920171003293400" role="paragraph" xml-lang="en-US"><ahelp hid=".">Live data stream for spreadsheets</ahelp></paragraph>
-</section>
+    <paragraph role="heading" id="hd_id491521494788029" level="3" xml-lang="en-US">Map to Document</paragraph>
+    <paragraph role="paragraph" id="par_id211521494776007" xml-lang="en-US">This pane shows the structure of the source XML content as a tree. This is initially empty, and gets populated when you specify the source file.</paragraph>
 
-<section id="howtoget">
-<paragraph id="par_id240920171007389295" role="paragraph" xml-lang="en-US">Menu <item type="menuitem">Data – XML Source...</item></paragraph>
-</section>
-<embed href="text/shared/need_help.xhp#needhelp"/>
+    <paragraph role="paragraph" id="par_id161521494796604" xml-lang="en-US">Each element in the tree can be one of three types:</paragraph>
+    <list type="unordered">
+        <listitem>
+            <paragraph id="par_id931521494810426"  role="listitem" xml-lang="en-US">attribute, represented by the symbol <emph>@</emph></paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id521521494825665"  role="listitem" xml-lang="en-US">single non-recurring element, represented by the symbol <emph>&lt;/&gt;</emph>, and</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id691521494844848"  role="listitem" xml-lang="en-US">recurring element, represented by the symbol <emph>&lt;//&gt;</emph>.</paragraph>
+        </listitem>
+    </list>
 
-<section id="relatedtopics">
-<paragraph id="par_id240920171007419799" role="paragraph" xml-lang="en-US">XML Source</paragraph>
-</section>
+    <paragraph role="paragraph" id="par_id451521494864514" xml-lang="en-US">A non-recurring element is an element that can only occur once under the same parent. It is mapped to a single cell in the document.</paragraph>
+
+    <paragraph role="paragraph" id="par_id361521494872103" xml-lang="en-US">A recurring element is an element that can appear multiple times under the same parent. It serves as an enclosing parent of a single record entry of multiple record entries. These entries are imported into a range those height equals the number of entries plus one additional header row.</paragraph>
+
+    <paragraph role="heading" id="hd_id581521494885433" level="3" xml-lang="en-US">Mapped cell</paragraph>
+    <paragraph role="paragraph" id="par_id661521494897796" xml-lang="en-US">This field specifies the position of a cell in the document that an element or an attribute is linked to.  If it's a non-recurring element or an attribute, it simply points to the cell where the value of the linked element/attribute will get imported.  If it's a recurring element, it points to the top-left cell of the range where the whole record entries plus header will get imported.</paragraph>
+
+    <paragraph role="heading" id="hd_id151521553082338" level="3" xml-lang="en-US">Import</paragraph>
+    <paragraph role="paragraph" id="par_id131521553077261" xml-lang="en-US">Pressing the Import button starts the import process based on the link definitions that the user has provided. Once the import finishes, the dialog will close.</paragraph>
+    <section id="relatedtopics">
+        <paragraph id="par_id240920171007419799" role="paragraph" xml-lang="en-US"><link href="https://wiki.documentfoundation.org/Development/Calc/XMLSource" target="_blank" name="Wiki page on XML Source">Wiki page on XML Source</link></paragraph>
+    </section>
 </body>
 
 </helpdocument>
