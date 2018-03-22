@@ -49,13 +49,16 @@ function setSystem(system) {
     }
 }
 /* add &DbPAR= and &System= to the links in DisplayArea div */
+/* skip for object files */
 function fixURL(module, system) {
     var itemlink = document.getElementById("DisplayArea").getElementsByTagName("a");
-    var pSystem = (system === null) ? "WIN" : system;
+    var pSystem = (system === null) ? getSystem() : system;
     var pAppl = (module === null) ? "WRITER" : module;
     var n = itemlink.length;
     for (var i = 0; i < n; i++) {
+        if (itemlink[i].getAttribute("class") != "objectfiles"){
         setURLParam(itemlink[i], pSystem, pAppl);
+        };
     }
 }
 //Set the params inside URL

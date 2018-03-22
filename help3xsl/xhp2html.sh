@@ -40,7 +40,7 @@ echo $stub1 >> $bookmarkFile
 
 xslfile=get_bookmark.xsl
 
-param1=' --stringparam Language '$lang' --stringparam productversion '$productversion
+param1=' --stringparam Language '$lang' --stringparam productversion '$productversion' --stringparam local no'
 
 # bookmarks for modules
 
@@ -90,9 +90,10 @@ function convert2HTML() {
 #
 ###########################################
 
-xsltparm='--stringparam fileTree '$6' --stringparam local '$5' --stringparam Language '$3' --stringparam productversion '$4' --stringparam root '$1'/'
+xsltparm='--stringparam fileTree '$6' --stringparam local no --stringparam Language '$3' --stringparam productversion '$4' --stringparam root '$1'/'
 
 echo 'Conversion to HTML started for '$3
+
 for filep in $(find $1/text -name "*.xhp")
 do
 DIR=${filep##*text/}
@@ -115,11 +116,13 @@ ALL_TREE='sbasic.tree  scalc.tree  schart.tree  shared.tree  simpress.tree  smat
 xhpFiles=$here/l10n/$productversion/$3/text
 
 treeFileHTML=$outDirHTML/contents.js
+
 rm -f $treeFileHTML
 touch $treeFileHTML
+
 echo 'document.getElementById("Contents").innerHTML='$'\047''\'>$treeFileHTML
 
-xsltparm='--stringparam lang '$3' --stringparam productversion '$4
+xsltparm='--stringparam lang '$3' --stringparam productversion '$4' --stringparam local no'
 for tree in $ALL_TREE
 do
 treeSourceFile=$root'/helpcontent2/source/auxiliary/'$tree
@@ -155,6 +158,7 @@ fileTree='/'
 rootHelpex=/home/tdf/git/core
 
 ALL_LANGS='en-US am ar ast bg bn bn-IN bo bs ca ca-valencia cs da de dz el en-GB en-ZA eo es et eu fi fr gl gu he hi hr hu id is it ja ka km ko lo lt lv mk nb ne nl nn om pl pt-BR pt ro ru sid si sk sl sq sv ta tg tr ug uk vi zh-CN zh-TW'
+
 here=$(pwd)
 root=$(realpath "$here/../..")
 
