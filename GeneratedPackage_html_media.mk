@@ -14,5 +14,6 @@ $(eval $(call gb_GeneratedPackage_add_dir,helpcontent2_html_media,$(INSTROOT)/$(
 $(eval $(call gb_GeneratedPackage_add_dir,helpcontent2_html_media,$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)/$(if $(HELP_ONLINE),$(PRODUCTVERSION),)/media/helpimg,helpcontent2/source/media/helpimg))
 $(eval $(call gb_GeneratedPackage_add_dir,helpcontent2_html_media,$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)/$(if $(HELP_ONLINE),$(PRODUCTVERSION),)/media/navigation,helpcontent2/source/media/navigation))
 $(eval $(call gb_GeneratedPackage_add_dir,helpcontent2_html_media,$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)/$(if $(HELP_ONLINE),$(PRODUCTVERSION),)/media/screenshots,helpcontent2/source/media/screenshots))
+$(eval $(call gb_GeneratedPackage_add_dir,helpcontent2_html_media,$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)/$(if $(HELP_ONLINE),$(PRODUCTVERSION),)/media/files,helpcontent2/source/media/files))
 
 # vim: set noet sw=4 ts=4:
