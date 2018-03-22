@@ -1099,6 +1099,24 @@
                 <audio src="{$data}" type="{@type}" controls="'1'"></audio>
             </div>
         </xsl:when>
+        <xsl:when test="@type='application/vnd.oasis.opendocument.spreadsheet'">
+            <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-calc.svg')}" width="25px" height="30px"></img></a>
+        </xsl:when>
+        <xsl:when test="@type='application/vnd.oasis.opendocument.text'">
+            <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-writer.svg')}" width="25px" height="30px"></img></a>
+        </xsl:when>
+        <xsl:when test="@type='application/vnd.oasis.opendocument.presentation'">
+            <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-impress.svg')}" width="25px" height="30px"></img></a>
+        </xsl:when>
+        <xsl:when test="@type='application/vnd.oasis.opendocument.drawing'">
+            <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-draw.svg')}" width="25px" height="30px"></img></a>
+        </xsl:when>
+        <xsl:when test="@type='application/vnd.oasis.opendocument.formula'">
+            <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-math.svg')}" width="25px" height="30px"></img></a>
+        </xsl:when>
+        <xsl:when test="@type='application/vnd.oasis.opendocument.database'">
+            <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-base.svg')}" width="25px" height="30px"></img></a>
+        </xsl:when>
         <xsl:otherwise>
             <object width="{$width}" height="{$height}" data="{$data}" type="{@type}"></object>
         </xsl:otherwise>
