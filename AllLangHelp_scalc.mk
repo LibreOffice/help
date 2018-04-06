@@ -15,7 +15,7 @@ $(eval $(call gb_AllLangHelp_use_linked_modules,scalc,\
 	schart \
 	shared \
 ))
-
+ 
 $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/00/00000004 \
     helpcontent2/source/text/scalc/00/00000402 \
