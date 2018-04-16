@@ -138,6 +138,7 @@
         <link rel="shortcut icon" href="{$target}media/navigation/favicon.ico" />
         <link  type="text/css" href="{$target}normalize.css" rel="Stylesheet" />
         <link  type="text/css" href="{$target}default.css" rel="Stylesheet" />
+        <script type="text/javascript" src="{$target}help.js"></script>
         <script type="text/javascript" src="{$target}fuse.js"></script>
         <script type="text/javascript" src="{$target}paginathing.js"></script>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -306,16 +307,12 @@
     </div>
     <script type="text/javascript" src="{$target}{$lang}/bookmarks.js"/>
     <script type="text/javascript" src="{$target}{$lang}/contents.js"/>
-    <script type="text/javascript" src="{$target}help.js"></script>
     <xsl:choose>
         <xsl:when test="$online">
             <script type="text/javascript">
                 <![CDATA[
-                var userLang = navigator.language || navigator.userLanguage;
                 var module = getParameterByName("DbPAR");
-                setModule(module);
                 var system = getParameterByName("System");
-                setSystem(system);
                 fixURL(module,system);
                 var dbg = getParameterByName("Debug");
                 if (dbg == null){dbg=0}
@@ -329,9 +326,7 @@
             <script type="text/javascript">
                 <![CDATA[
                 var module = getParameterByName("DbPAR");
-                setModule(module);
                 var system = getSystem();
-                setSystem(system);
                 fixURL(module,system);
                 var dbg = getParameterByName("Debug");
                 if (dbg == null){dbg=0}
@@ -685,12 +680,96 @@
 </xsl:template>
 
 <!-- SWITCH -->
-<xsl:template match="switch"><xsl:apply-templates /></xsl:template>
-<xsl:template match="switch" mode="embedded"><xsl:apply-templates /></xsl:template>
+<xsl:template match="switch">
+    <xsl:variable name="idsw" select="concat('swln',generate-id())"/>
+    <span id="{$idsw}" class="switch">
+        <xsl:choose>
+            <xsl:when test ="@select = 'sys'">
+                <xsl:apply-templates />
+                <script type="text/javascript">
+                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
+                </script>
+            </xsl:when>
+            <xsl:when test ="@select = 'appl'">
+                <xsl:apply-templates />
+                <script type="text/javascript">
+                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
+                </script>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates />
+            </xsl:otherwise>
+        </xsl:choose>
+    </span>
+</xsl:template>
+<xsl:template match="switch" mode="embedded">
+    <xsl:variable name="idsw" select="concat('swln',generate-id())"/>
+    <span id="{$idsw}" class="switch">
+        <xsl:choose>
+            <xsl:when test ="@select = 'sys'">
+                <xsl:apply-templates mode="embedded"/>
+                <script type="text/javascript">
+                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
+                </script>
+            </xsl:when>
+            <xsl:when test ="@select = 'appl'">
+                <xsl:apply-templates />
+                <script type="text/javascript">
+                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
+                </script>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates />
+            </xsl:otherwise>
+        </xsl:choose>
+    </span>
+</xsl:template>
 
 <!-- SWITCHINLINE -->
-<xsl:template match="switchinline"><xsl:apply-templates /></xsl:template>
-<xsl:template match="switchinline" mode="embedded"><xsl:apply-templates mode="embedded"/></xsl:template>
+<xsl:template match="switchinline">
+    <xsl:variable name="idsw" select="concat('swln',generate-id())"/>
+    <span id="{$idsw}" class="switchinline">
+        <xsl:choose>
+            <xsl:when test ="@select = 'sys'">
+                <xsl:apply-templates />
+                <script type="text/javascript">
+                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
+                </script>
+            </xsl:when>
+            <xsl:when test ="@select = 'appl'">
+                <xsl:apply-templates />
+                <script type="text/javascript">
+                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
+                </script>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:apply-templates />
+            </xsl:otherwise>
+        </xsl:choose>
+    </span>
+</xsl:template>
+<xsl:template match="switchinline" mode="embedded">
+    <xsl:variable name="idsw" select="concat('swln',generate-id())"/>
+    <span id="{$idsw}" class="switchinline">
+        <xsl:choose>
+            <xsl:when test ="@select = 'sys'">
+                <xsl:apply-templates />
+                <script type="text/javascript">
+                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
+                </script>
+            </xsl:when>
+            <xsl:when test ="@select = 'appl'">
+                <xsl:apply-templates />
+                <script type="text/javascript">
+                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
+                </script>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates />
+            </xsl:otherwise>
+        </xsl:choose>
+    </span>
+</xsl:template>
 
 <!-- TABLE -->
 <xsl:template match="table"><xsl:call-template name="inserttable"/></xsl:template>
@@ -739,75 +818,75 @@
 
 <!-- Branding -->
 <xsl:template name="brand" >
-	<xsl:param name="string"/>
+    <xsl:param name="string"/>
 
     <xsl:choose>
 
         <xsl:when test="contains($string,$brand1)">
-           <xsl:variable name="newstr">
+            <xsl:variable name="newstr">
                 <xsl:value-of select="substring-before($string,$brand1)"/>
                 <xsl:value-of select="$productname"/>
                 <xsl:value-of select="substring-after($string,$brand1)"/>
-           </xsl:variable>
-			<xsl:call-template name="brand">
-				<xsl:with-param name="string" select="$newstr"/>
-			</xsl:call-template>
-		</xsl:when>
+            </xsl:variable>
+            <xsl:call-template name="brand">
+                <xsl:with-param name="string" select="$newstr"/>
+            </xsl:call-template>
+        </xsl:when>
 
-		<xsl:when test="contains($string,$brand2)">
-		    <xsl:variable name="newstr">
+        <xsl:when test="contains($string,$brand2)">
+            <xsl:variable name="newstr">
                 <xsl:value-of select="substring-before($string,$brand2)"/>
                 <xsl:value-of select="$pversion"/>
                 <xsl:value-of select="substring-after($string,$brand2)"/>
-           </xsl:variable>
-			<xsl:call-template name="brand">
-				<xsl:with-param name="string" select="$newstr"/>
-			</xsl:call-template>
-		</xsl:when>
+            </xsl:variable>
+            <xsl:call-template name="brand">
+                <xsl:with-param name="string" select="$newstr"/>
+            </xsl:call-template>
+        </xsl:when>
 
-		<xsl:when test="contains($string,$brand3)">
-			<xsl:variable name="newstr">
+        <xsl:when test="contains($string,$brand3)">
+            <xsl:variable name="newstr">
                 <xsl:value-of select="substring-before($string,$brand3)"/>
                 <xsl:value-of select="$productname"/>
                 <xsl:value-of select="substring-after($string,$brand3)"/>
-           </xsl:variable>
-			<xsl:call-template name="brand">
-				<xsl:with-param name="string" select="$newstr"/>
-			</xsl:call-template>
-		</xsl:when>
+            </xsl:variable>
+            <xsl:call-template name="brand">
+                <xsl:with-param name="string" select="$newstr"/>
+            </xsl:call-template>
+        </xsl:when>
 
         <xsl:when test="contains($string,$brand4)">
-			    <xsl:variable name="newstr">
+            <xsl:variable name="newstr">
                 <xsl:value-of select="substring-before($string,$brand4)"/>
                 <xsl:value-of select="$pversion"/>
                 <xsl:value-of select="substring-after($string,$brand4)"/>
-           </xsl:variable>
-			<xsl:call-template name="brand">
-				<xsl:with-param name="string" select="$newstr"/>
-			</xsl:call-template>
-		</xsl:when>
+            </xsl:variable>
+            <xsl:call-template name="brand">
+                <xsl:with-param name="string" select="$newstr"/>
+            </xsl:call-template>
+        </xsl:when>
 
         <xsl:otherwise>
-			<xsl:value-of select="$string"/>
-		</xsl:otherwise>
-	</xsl:choose>
+            <xsl:value-of select="$string"/>
+        </xsl:otherwise>
+    </xsl:choose>
 
 </xsl:template>
 
 
 <!-- Insert Paragraph -->
 <xsl:template name="insertpara">
-	<xsl:variable name="role">
-		<xsl:choose>
-			<xsl:when test="ancestor::table">
-				<xsl:value-of select="concat(@role,'intable')"/>
-			</xsl:when>
-			<xsl:otherwise>
-				<xsl:value-of select="@role"/>
-			</xsl:otherwise>
-		</xsl:choose>
-	</xsl:variable>
-	<p id="{@id}" class="{$role}"><xsl:apply-templates /></p>
+    <xsl:variable name="role">
+        <xsl:choose>
+            <xsl:when test="ancestor::table">
+                <xsl:value-of select="concat(@role,'intable')"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="@role"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+    <p id="{@id}" class="{$role}"><xsl:apply-templates /></p>
 </xsl:template>
 
 <xsl:template match="bascode">
@@ -816,12 +895,12 @@
 
 <!-- Insert Basic code snippet  -->
 <xsl:template name="insertbascode">
-	<pre><xsl:apply-templates /></pre>
+    <pre><code><xsl:apply-templates /></code></pre>
 </xsl:template>
 
 <!-- Insert Logo code snippet  -->
 <xsl:template name="insertlogocode">
-	<pre><xsl:apply-templates /></pre>
+    <pre><xsl:apply-templates /></pre>
 </xsl:template>
 
 <!-- Insert "How to get Link" -->
@@ -926,37 +1005,14 @@
 <!-- Evaluate a case or caseinline switch -->
 <xsl:template name="insertcase">
     <xsl:param name="embedded" />
+    <xsl:variable name="auxID" select="concat(@select,generate-id())"/>
     <xsl:choose>
-        <xsl:when test="parent::switch[@select='sys'] or parent::switchinline[@select='sys']">
-            <xsl:choose>
-                <xsl:when test="$embedded = 'yes'">
-                    <span hidden="true" itemprop="system" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
-                </xsl:when>
-                <xsl:otherwise>
-                    <span  hidden="true" itemprop="system" value="{@select}"><xsl:apply-templates /></span>
-                </xsl:otherwise>
-            </xsl:choose>
+        <xsl:when test="$embedded = 'yes'">
+            <span hidden="true" id="{$auxID}"><xsl:apply-templates mode="embedded"/></span>
         </xsl:when>
-        <xsl:when test="parent::switch[@select='appl'] or parent::switchinline[@select='appl']">
-            <xsl:choose>
-                <xsl:when test="$embedded = 'yes'">
-                    <span  hidden="true" itemprop="appl" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
-                </xsl:when>
-                <xsl:otherwise>
-                    <span  hidden="true" itemprop="appl" value="{@select}"><xsl:apply-templates /></span>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:when>
-        <xsl:when test="parent::switch[@select='distrib'] or parent::switchinline[@select='distrib']">
-            <xsl:choose>
-                <xsl:when test="$embedded = 'yes'">
-                    <span  hidden="true" itemprop="distrib" value="{@select}"><xsl:apply-templates mode="embedded"/></span>
-                </xsl:when>
-                <xsl:otherwise>
-                    <span  hidden="true" itemprop="distrib" value="{@select}"><xsl:apply-templates /></span>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:when>
+        <xsl:otherwise>
+            <span hidden="true" id="{$auxID}"><xsl:apply-templates/></span>
+        </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
 
@@ -966,24 +1022,26 @@
     <xsl:choose>
         <xsl:when test="parent::switch[@select='sys'] or parent::switchinline[@select='sys']">
             <xsl:if test="not(../child::case[@select=$System]) and not(../child::caseinline[@select=$System])">
+                <xsl:variable name="auxID" select="concat('default',generate-id())"/>
                 <xsl:choose>
                     <xsl:when test="$embedded = 'yes'">
-                        <span itemprop="system" value="DEFAULTSYS"><xsl:apply-templates mode="embedded"/></span>
+                        <span hidden="true" id="{$auxID}"><xsl:apply-templates mode="embedded"/></span>
                     </xsl:when>
                     <xsl:otherwise>
-                        <span itemprop="system" value="DEFAULTSYS"><xsl:apply-templates /></span>
+                        <span hidden="true" id="{$auxID}"><xsl:apply-templates /></span>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:if>
         </xsl:when>
         <xsl:when test="parent::switch[@select='appl'] or parent::switchinline[@select='appl']">
             <xsl:if test="not(../child::case[@select=$appl]) and not(../child::caseinline[@select=$appl])">
+                <xsl:variable name="auxID" select="concat('default',generate-id())"/>
                 <xsl:choose>
                     <xsl:when test="$embedded = 'yes'">
-                        <span hidden="true" itemprop="appl" value="SHARED"><xsl:apply-templates mode="embedded"/></span>
+                        <span hidden="true" id="{$auxID}"><xsl:apply-templates mode="embedded"/></span>
                     </xsl:when>
                     <xsl:otherwise>
-                        <span hidden="true" itemprop="appl" value="SHARED"><xsl:apply-templates /></span>
+                        <span hidden="true" id="{$auxID}"><xsl:apply-templates /></span>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:if>
@@ -1191,12 +1249,10 @@
         <xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'))"/></xsl:variable>
         <xsl:variable name="anc"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
         <xsl:variable name="docum" select="document($href)"/>
-
         <xsl:call-template name="insertembed">
             <xsl:with-param name="doc" select="$docum" />
             <xsl:with-param name="anchor" select="$anc" />
         </xsl:call-template>
-
     </div>
 </xsl:template>
 

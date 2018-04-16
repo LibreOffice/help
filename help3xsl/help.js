@@ -8,42 +8,60 @@
  */
 
 // Used to set Application in caseinline=APP
-function setModule(module) {
+function setApplSpan(SpanID) {
+    var module = getParameterByName("DbPAR");
     if (module === null) {
         module = "WRITER";
     }
-    var itemspan = document.getElementsByTagName("span");
-    var n = itemspan.length;
-    for (var i = 0; i < n; i++) {
-        if (itemspan[i].getAttribute("value") == module) {
-            itemspan[i].removeAttribute("hidden");
+    var y = document.getElementById(SpanID).getElementsByTagName("SPAN");
+    var n = y.length;
+    var foundSystem = false;
+    for (i = 0; i < n; i++) {
+        if (y[i].getAttribute("id") === null){
+            continue;
+        }
+        else if( y[i].getAttribute("id").startsWith(module)){
+            y[i].removeAttribute("hidden");
+            foundSystem=true;
+        }
+    }
+    for (i = 0; i < n; i++) {
+        if (y[i].getAttribute("id") === null){
+            continue;
+        }
+        else if( y[i].getAttribute("id").startsWith("default")){
+            if(!foundSystem){
+                y[i].removeAttribute("hidden");
+            }
         }
     }
 }
 // Used to set system in case, caseinline=SYSTEM
-function setSystem(system) {
-    var hasSystem;
+function setSystemSpan(spanID) {
+    var system = getParameterByName("System");
     // if no System in URL, get browser system
     if (system === null) {
         system = getSystem();
     }
-    // on loading page, DEFAULTSYS visible, sys is hidden
-    // when hasSystem, show sys, hide DEFAULTSYS
-    var itemspan = document.getElementsByTagName("span");
-    var n = itemspan.length;
-    //Show  when system is found in page
-    hasSystem = false;
-    for (var i = 0; i < n; i++) {
-        if (itemspan[i].getAttribute("value") == system) {
-            itemspan[i].removeAttribute("hidden");
-            hasSystem = true;
+    var y = document.getElementById(spanID).getElementsByTagName("SPAN");
+    var n = y.length;
+    var foundSystem = false;
+    for (i = 0; i < n; i++) {
+        if (y[i].getAttribute("id") === null){
+            continue;
+        }
+        else if( y[i].getAttribute("id").startsWith(system)){
+            y[i].removeAttribute("hidden");
+            foundSystem=true;
         }
     }
-    //it hasSystem, then hide all DEFAULTSYS
-    if (hasSystem){
-        for (var i = 0; i < n; i++) {
-            if (itemspan[i].getAttribute("value") == "DEFAULTSYS") {
-                itemspan[i].setAttribute("hidden",true);
+    for (i = 0; i < n; i++) {
+        if (y[i].getAttribute("id") === null){
+            continue;
+        }
+        else if( y[i].getAttribute("id").startsWith("default")){
+            if(!foundSystem){
+                y[i].removeAttribute("hidden");
             }
         }
     }
@@ -230,5 +248,4 @@ if (typeof linkIndex !== "undefined") {
     }
     current.classList.add('contents-current');
 }
-
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
