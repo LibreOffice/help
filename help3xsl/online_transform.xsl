@@ -138,7 +138,7 @@
         <link rel="shortcut icon" href="{$target}media/navigation/favicon.ico" />
         <link  type="text/css" href="{$target}normalize.css" rel="Stylesheet" />
         <link  type="text/css" href="{$target}default.css" rel="Stylesheet" />
-        <script type="text/javascript" src="{$target}help.js"></script>
+       <script type="text/javascript" src="{$target}help2.js"></script>
         <script type="text/javascript" src="{$target}fuse.js"></script>
         <script type="text/javascript" src="{$target}paginathing.js"></script>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -307,6 +307,7 @@
     </div>
     <script type="text/javascript" src="{$target}{$lang}/bookmarks.js"/>
     <script type="text/javascript" src="{$target}{$lang}/contents.js"/>
+    <script type="text/javascript" src="{$target}help.js"/>
     <xsl:choose>
         <xsl:when test="$online">
             <script type="text/javascript">
