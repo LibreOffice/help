@@ -777,9 +777,27 @@
 <xsl:template match="table" mode="embedded"><xsl:call-template name="inserttable"/></xsl:template>
 
 <!-- TABLECELL -->
-<xsl:template match="tablecell"><td valign="top"><xsl:apply-templates /></td></xsl:template>
+<xsl:template match="tablecell">
+    <xsl:choose>
+        <xsl:when test="paragraph[@role='tablehead']">
+            <td class='tableheadcell'><xsl:apply-templates /></td>
+        </xsl:when>
+        <xsl:otherwise>
+            <td><xsl:apply-templates /></td>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
 <xsl:template match="tablecell" mode="icontable"><td valign="top"><xsl:apply-templates/></td></xsl:template>
-<xsl:template match="tablecell" mode="embedded"><td valign="top"><xsl:apply-templates mode="embedded"/></td></xsl:template>
+<xsl:template match="tablecell" mode="embedded">
+    <xsl:choose>
+        <xsl:when test="paragraph[@role='tablehead']">
+            <td class='tableheadcell'><xsl:apply-templates mode="embedded"/></td>
+        </xsl:when>
+        <xsl:otherwise>
+            <td><xsl:apply-templates mode="embedded"/></td>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
 
 <!-- TABLEROW -->
 <xsl:template match="tablerow"><tr><xsl:apply-templates /></tr></xsl:template>
