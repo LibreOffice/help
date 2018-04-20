@@ -10,19 +10,19 @@
 $(eval $(call gb_Package_Package,helpcontent2_html_static,$(SRCDIR)/helpcontent2/help3xsl))
 
 $(eval $(call gb_Package_add_files,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOLDER),\
-	index.html \
 	help.html \
+	$(if $(HELP_ONLINE),index.html) \
 )) 
 
-$(eval $(call gb_Package_add_file,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOLDER)/$(if $(HELP_ONLINE),$(PRODUCTVERSION),'')/index.html,index2.html))
+$(eval $(call gb_Package_add_file,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/index.html,index2.html))
 
-$(eval $(call gb_Package_add_files,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOLDER)/$(if $(HELP_ONLINE),$(PRODUCTVERSION),''),\
+$(eval $(call gb_Package_add_files,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOLDER)/$(if $(HELP_ONLINE),/$(PRODUCTVERSION)),\
+	default.css \
+	fuse.js \
 	help.js \
 	help2.js \
-	fuse.js \
-	paginathing.js \
 	normalize.css \
-	default.css \
+	paginathing.js \
 ))
 
 # vim: set noet sw=4 ts=4:
