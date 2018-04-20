@@ -18,7 +18,7 @@ ifeq ($(ENABLE_HTMLHELP),TRUE)
 $(eval $(call gb_Module_add_targets,helpcontent2,\
 	CustomTarget_html \
 	GeneratedPackage_html_media \
-	GeneratedPackage_html \
+	GeneratedPackage_html_generated \
 	Package_html_static \
 	Package_html \
 ))
