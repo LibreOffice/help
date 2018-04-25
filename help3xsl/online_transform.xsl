@@ -986,14 +986,9 @@
         <xsl:variable name="doc" select="document($href)"/>
         <xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
     </xsl:variable>
-    <!-- 	<p class="debug">image source: <xsl:value-of select="$imgsrc"/></p> -->
     <div class="{$type}">
-        <table border="0" class="{$type}" cellspacing="0" cellpadding="5">
-            <tr>
-                <td><img src="{$imgsrc}" alt="{$alt}" title="{$alt}"/></td>
-                <td><xsl:apply-templates /></td>
-            </tr>
-        </table>
+        <div class="noteicon"><img src="{$imgsrc}" alt="{$alt}" title="{$alt}"/></div>
+        <div class="notetext"><p><xsl:apply-templates /></p></div>
     </div>
     <br/>
 </xsl:template>
