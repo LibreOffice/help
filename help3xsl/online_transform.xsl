@@ -787,6 +787,7 @@
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
+<xsl:template match="tablecell" mode="onecell"><xsl:apply-templates/></xsl:template>
 <xsl:template match="tablecell" mode="icontable"><td valign="top"><xsl:apply-templates/></td></xsl:template>
 <xsl:template match="tablecell" mode="embedded">
     <xsl:choose>
@@ -801,6 +802,7 @@
 
 <!-- TABLEROW -->
 <xsl:template match="tablerow"><tr><xsl:apply-templates /></tr></xsl:template>
+<xsl:template match="tablerow" mode="onecell"><xsl:apply-templates mode="onecell"/></xsl:template>
 <xsl:template match="tablerow" mode="icontable"><tr><xsl:apply-templates mode="icontable"/></tr></xsl:template>
 <xsl:template match="tablerow" mode="embedded"><tr><xsl:apply-templates mode="embedded"/></tr></xsl:template>
 
@@ -1223,9 +1225,7 @@
 
     <xsl:choose>
         <xsl:when test="count(descendant::tablecell)=1">
-            <table border="0" class="onecell" cellpadding="0" cellspacing="0">
-                <xsl:apply-templates />
-            </table>
+            <div class="onecell"><xsl:apply-templates mode="onecell"/></div>
         </xsl:when>
 
         <xsl:when test="descendant::tablecell[1]/descendant::image">
