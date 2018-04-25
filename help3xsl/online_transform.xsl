@@ -928,30 +928,27 @@
     <xsl:variable name="archive" select="'shared'"/>
     <xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp')"/></xsl:variable>
     <xsl:variable name="tmp_doc" select="document($tmp_href)"/>
-    <table class="howtoget" width="100%" border="1" cellpadding="3" cellspacing="0">
-        <tr>
-            <td>
-                <p class="howtogetheader"><xsl:apply-templates select="$tmp_doc//variable[@id='wie']"/></p>
-                <div class="howtogetbody">
-                    <xsl:choose>
-                        <xsl:when test="$linkhref = ''"> <!-- new style -->
-                            <xsl:apply-templates/>
-                        </xsl:when>
-                        <xsl:otherwise> <!-- old style -->
-                            <xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before($linkhref,'#'))"/></xsl:variable>
-                            <xsl:variable name="anc"><xsl:value-of select="substring-after($linkhref,'#')"/></xsl:variable>
-                            <xsl:variable name="docum" select="document($href)"/>
-
-                            <xsl:call-template name="insertembed">
-                                <xsl:with-param name="doc" select="$docum" />
-                                <xsl:with-param name="anchor" select="$anc" />
-                            </xsl:call-template>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </div>
-            </td>
-        </tr>
-    </table>
+    <div class="howtoget">
+        <div>
+            <p class="howtogetheader"><xsl:apply-templates select="$tmp_doc//variable[@id='wie']"/></p>
+        </div>
+        <div class="howtogetbody">
+            <xsl:choose>
+                <xsl:when test="$linkhref = ''"> <!-- new style -->
+                    <xsl:apply-templates/>
+                </xsl:when>
+                <xsl:otherwise> <!-- old style -->
+                    <xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before($linkhref,'#'))"/></xsl:variable>
+                    <xsl:variable name="anc"><xsl:value-of select="substring-after($linkhref,'#')"/></xsl:variable>
+                    <xsl:variable name="docum" select="document($href)"/>
+                    <xsl:call-template name="insertembed">
+                        <xsl:with-param name="doc" select="$docum" />
+                        <xsl:with-param name="anchor" select="$anc" />
+                    </xsl:call-template>
+                </xsl:otherwise>
+            </xsl:choose>
+        </div>
+    </div>
     <br/>
 </xsl:template>
 
@@ -1246,21 +1243,23 @@
             <table border="1" class="{@class}" cellpadding="0" cellspacing="0" width="100%" >
                 <xsl:apply-templates />
             </table>
+            <br/>
         </xsl:when>
 
         <xsl:when test="not(@class='')">
             <table border="1" class="{@class}" cellpadding="0" cellspacing="0" >
                 <xsl:apply-templates />
             </table>
+            <br/>
         </xsl:when>
 
         <xsl:otherwise>
             <table border="1" class="border" cellpadding="0" cellspacing="0" >
                 <xsl:apply-templates />
             </table>
+            <br/>
         </xsl:otherwise>
     </xsl:choose>
-    <br/>
 </xsl:template>
 
 <xsl:template name="resolveembed">
