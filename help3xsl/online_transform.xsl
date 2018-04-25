@@ -788,7 +788,7 @@
     </xsl:choose>
 </xsl:template>
 <xsl:template match="tablecell" mode="onecell"><xsl:apply-templates/></xsl:template>
-<xsl:template match="tablecell" mode="icontable"><td valign="top"><xsl:apply-templates/></td></xsl:template>
+<xsl:template match="tablecell" mode="icontable"><div class="iconcell"><xsl:apply-templates/></div></xsl:template>
 <xsl:template match="tablecell" mode="embedded">
     <xsl:choose>
         <xsl:when test="paragraph[@role='tablehead']">
@@ -803,7 +803,7 @@
 <!-- TABLEROW -->
 <xsl:template match="tablerow"><tr><xsl:apply-templates /></tr></xsl:template>
 <xsl:template match="tablerow" mode="onecell"><xsl:apply-templates mode="onecell"/></xsl:template>
-<xsl:template match="tablerow" mode="icontable"><tr><xsl:apply-templates mode="icontable"/></tr></xsl:template>
+<xsl:template match="tablerow" mode="icontable"><div class="icontable"><xsl:apply-templates mode="icontable"/></div><br/></xsl:template>
 <xsl:template match="tablerow" mode="embedded"><tr><xsl:apply-templates mode="embedded"/></tr></xsl:template>
 
 <!-- TITLE -->
@@ -1229,9 +1229,7 @@
         </xsl:when>
 
         <xsl:when test="descendant::tablecell[1]/descendant::image">
-            <table border="0" class="icontable" cellpadding="5" cellspacing="0">
-                <xsl:apply-templates mode="icontable"/>
-            </table>
+            <xsl:apply-templates mode="icontable"/>
         </xsl:when>
 
         <xsl:when test="@class='wide'">
