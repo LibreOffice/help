@@ -337,6 +337,12 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/guide/multitables \
     helpcontent2/source/text/scalc/guide/note_insert \
     helpcontent2/source/text/scalc/guide/numbers_text \
+    helpcontent2/source/text/scalc/guide/pivotchart \
+    helpcontent2/source/text/scalc/guide/pivotchart_create \
+    helpcontent2/source/text/scalc/guide/pivotchart_edit \
+    helpcontent2/source/text/scalc/guide/pivotchart_update \
+    helpcontent2/source/text/scalc/guide/pivotchart_filter \
+    helpcontent2/source/text/scalc/guide/pivotchart_delete \
     helpcontent2/source/text/scalc/guide/print_details \
     helpcontent2/source/text/scalc/guide/print_exact \
     helpcontent2/source/text/scalc/guide/print_landscape \
