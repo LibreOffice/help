@@ -803,7 +803,7 @@
 <!-- TABLEROW -->
 <xsl:template match="tablerow"><tr><xsl:apply-templates /></tr></xsl:template>
 <xsl:template match="tablerow" mode="onecell"><xsl:apply-templates mode="onecell"/></xsl:template>
-<xsl:template match="tablerow" mode="icontable"><div class="icontable"><xsl:apply-templates mode="icontable"/></div><br/></xsl:template>
+<xsl:template match="tablerow" mode="icontable"><div class="icontable"><xsl:apply-templates mode="icontable"/></div></xsl:template>
 <xsl:template match="tablerow" mode="embedded"><tr><xsl:apply-templates mode="embedded"/></tr></xsl:template>
 
 <!-- TITLE -->
