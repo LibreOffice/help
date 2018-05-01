@@ -170,22 +170,22 @@ Stylesheet map language-dependent parameters and translation
     <xsl:param name="lang"/>
     <xsl:choose>
         <xsl:when test="$lang='am'"><xsl:text>ክፍል</xsl:text></xsl:when>
-        <xsl:when test="$lang='ast'"><xsl:text>Módulu</xsl:text></xsl:when>
+        <xsl:when test="$lang='ast'"><xsl:text>Aplicación</xsl:text></xsl:when>
         <xsl:when test="$lang='bg'"><xsl:text>Модул</xsl:text></xsl:when>
         <xsl:when test="$lang='bn'"><xsl:text>মডিউল</xsl:text></xsl:when>
         <xsl:when test="$lang='bs'"><xsl:text>Modul</xsl:text></xsl:when>
-        <xsl:when test="$lang='ca'"><xsl:text>Mòdul</xsl:text></xsl:when>
-        <xsl:when test="$lang='ca-valencia'"><xsl:text>Mòdul</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca'"><xsl:text>Aplicació</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca-valencia'"><xsl:text>Aplicació</xsl:text></xsl:when>
         <xsl:when test="$lang='cs'"><xsl:text>Modul</xsl:text></xsl:when>
         <xsl:when test="$lang='da'"><xsl:text>Modul</xsl:text></xsl:when>
         <xsl:when test="$lang='de'"><xsl:text>Modul</xsl:text></xsl:when>
         <xsl:when test="$lang='el'"><xsl:text>Άρθρωμα</xsl:text></xsl:when>
-        <xsl:when test="$lang='es'"><xsl:text>Módulo</xsl:text></xsl:when>
-        <xsl:when test="$lang='eo'"><xsl:text>Modjulo</xsl:text></xsl:when>
+        <xsl:when test="$lang='eo'"><xsl:text>Aplikaĵo</xsl:text></xsl:when>
+        <xsl:when test="$lang='es'"><xsl:text>Aplicación</xsl:text></xsl:when>
         <xsl:when test="$lang='et'"><xsl:text>Moodul</xsl:text></xsl:when>
         <xsl:when test="$lang='eu'"><xsl:text>Modulua</xsl:text></xsl:when>
         <xsl:when test="$lang='fi'"><xsl:text>Moduuli</xsl:text></xsl:when>
-        <xsl:when test="$lang='gl'"><xsl:text>Módulo</xsl:text></xsl:when>
+        <xsl:when test="$lang='gl'"><xsl:text>Aplicación</xsl:text></xsl:when>
         <xsl:when test="$lang='gu'"><xsl:text>મોડ્યુલ</xsl:text></xsl:when>
         <xsl:when test="$lang='hi'"><xsl:text>मॉडयूल</xsl:text></xsl:when>
         <xsl:when test="$lang='hr'"><xsl:text>Modul</xsl:text></xsl:when>
@@ -214,7 +214,7 @@ Stylesheet map language-dependent parameters and translation
         <xsl:when test="$lang='tr'"><xsl:text>Modül</xsl:text></xsl:when>
         <xsl:when test="$lang='ug'"><xsl:text>بۆلەك</xsl:text></xsl:when>
         <xsl:when test="$lang='uk'"><xsl:text>Модуль</xsl:text></xsl:when>
-        <xsl:when test="$lang='vi'"><xsl:text>Mô-đun</xsl:text></xsl:when>
+        <xsl:when test="$lang='vi'"><xsl:text>Mô đun</xsl:text></xsl:when>
         <xsl:when test="$lang='zh-CN'"><xsl:text>组件</xsl:text></xsl:when>
         <xsl:when test="$lang='zh-TW'"><xsl:text>模組</xsl:text></xsl:when>
         <xsl:otherwise><xsl:text>Module</xsl:text></xsl:otherwise>
@@ -295,7 +295,13 @@ Stylesheet map language-dependent parameters and translation
     <xsl:param name="lang"/>
     <xsl:attribute name="data-tooltip">
         <xsl:choose>
+            <xsl:when test="$lang='ast'">Faiga clic nel testu para copialo nel cartafueyu</xsl:when>
+            <xsl:when test="$lang='ca'">Feu clic al text per a copiar-lo al porta-retalls</xsl:when>
+            <xsl:when test="$lang='ca-valencia'">Feu clic al text per a copiar-lo al porta-retalls</xsl:when>
+            <xsl:when test="$lang='eo'">Alklaku la tekston por kopii ĝin al la tondejo</xsl:when>
+            <xsl:when test="$lang='es'">Pulse en el texto para copiarlo en el portapapeles</xsl:when>
             <xsl:when test="$lang='fi'">Klikkaa kopioidaksesi leikepöydälle</xsl:when>
+            <xsl:when test="$lang='gl'">Prema no texto para copialo no portarretallos</xsl:when>
             <xsl:when test="$lang='pt'">Clique no texto para copiar para a área de transferência</xsl:when>
             <xsl:when test="$lang='pt-BR'">Clique no texto para copiar para a área de transferência</xsl:when>
             <xsl:otherwise>Click on text to copy to clipboard</xsl:otherwise>
@@ -306,10 +312,17 @@ Stylesheet map language-dependent parameters and translation
 <xsl:template name="getDonation">
     <xsl:param name="lang"/>
     <xsl:choose>
+        <xsl:when test="$lang='ast'"><xsl:text>Si esta páxina resultó-y útil, puede sofitanos con una donación.</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca'"><xsl:text>Si aquesta pàgina us ha sigut útil, podeu col·laborar-hi amb una donació.</xsl:text></xsl:when>
+        <xsl:when test="$lang='ca-valencia'"><xsl:text>Si esta pàgina us ha sigut útil, podeu col·laborar-hi amb una donació.</xsl:text></xsl:when>
+        <xsl:when test="$lang='eo'"><xsl:text>Se ĉi tiu paĝo estis utila por vi, vi povas subteni nin.</xsl:text></xsl:when>
+        <xsl:when test="$lang='es'"><xsl:text>Si esta página le ha sido útil, puede apoyarnos con una donación.</xsl:text></xsl:when>
+        <xsl:when test="$lang='gl'"><xsl:text>Si esta páxina resultoulle útil, pode apoiarnos cunha doazón.</xsl:text></xsl:when>
         <xsl:when test="$lang='nb'"><xsl:text>Hvis du har funnet denne siden nyttig kan du bidra.</xsl:text></xsl:when>
         <xsl:when test="$lang='pt'"><xsl:text>Se esta página lhe foi útil, dê-nos seu apoio!</xsl:text></xsl:when>
         <xsl:when test="$lang='pt-BR'"><xsl:text>Se esta página lhe foi útil, dê-nos seu apoio!</xsl:text></xsl:when>
         <xsl:when test="$lang='sl'"><xsl:text>Če vam je stran v pomoč, nam lahko pomagate!</xsl:text></xsl:when>
+        <xsl:when test="$lang='zh-CN'"><xsl:text>如果这个页面对您有帮助，请支持我们！</xsl:text></xsl:when>
         <xsl:otherwise><xsl:text>If this page has been helpful, you can support us!</xsl:text></xsl:otherwise>
     </xsl:choose>
 </xsl:template>
