@@ -99,14 +99,15 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 		&& rm -rf $(dir $@)text \
 		&& find text -name "*.xhp" \
 		| while read xhp; do \
+			mkdir -p $$(dirname $(dir $@)$$xhp) && \
 			$(call gb_ExternalExecutable_get_command,xsltproc) \
 				--stringparam Language $* \
 				--stringparam local $(if $(HELP_ONLINE),'no','yes') \
-				--stringparam root `pwd`/ \
+				--stringparam root $(if $(filter WNT,$(OS)),$$(cygpath -m `pwd`),`pwd`)/ \
 				--stringparam productversion $(PRODUCTVERSION) \
 				-o $(dir $@)$${xhp%.xhp}.html \
 				$(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl \
-				`pwd`/$$xhp \
+				$(if $(filter WNT,$(OS)),$$(cygpath -m `pwd`),`pwd`)/$$xhp \
 		; done \
 		&& touch $@ \
 	)
