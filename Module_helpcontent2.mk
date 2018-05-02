@@ -16,11 +16,11 @@ $(eval $(call gb_Module_add_targets,helpcontent2,\
 
 ifeq ($(ENABLE_HTMLHELP),TRUE)
 $(eval $(call gb_Module_add_targets,helpcontent2,\
+	AllLangPackage_html_lang \
 	CustomTarget_html \
 	GeneratedPackage_html_lang_generated \
 	GeneratedPackage_html_media \
 	Package_html_dynamic \
-	Package_html_lang \
 	Package_html_static \
 ))
 endif
