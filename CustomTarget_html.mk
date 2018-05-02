@@ -22,6 +22,7 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 		$(lang)/html.text \
 		$(foreach module,$(html_TREE_MODULES),$(module)/$(lang)/contents.part) \
 		$(foreach module,$(html_BMARK_MODULES),$(firstword $(subst :, ,$(module)))/$(lang)/bookmarks.part) \
+		$(foreach module,$(html_TEXT_MODULES),filelists/html-help/$(module)/$(lang).filelist) \
 	) \
 ))
 
@@ -170,5 +171,25 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 			| awk 'NF' \
 		) > $@ \
 	)	
+
+# The various gid_File_Help_*_Zip in scp2 that use EXTRA_ALL_GOOD_HELP_LOCALIZATIONS_LANG expect
+# $(module)/$(lang).filelist files containing lists of files (in instdir) for the corresponding
+# module/lang parts of help data.  As a hack, generate those from the existing HelpTarget file
+# lists, which specify the original .xhp files (in SRCDIR for en-US, translated for all other
+# langs).  For the shared module, also include the per-lang non .xhp/.html files from AllLangPackage
+# helpcontent2_html_lang:
+
+# html__filelist,lang,module
+define html__filelist
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/filelists/html-help/$(2)/$(1).filelist: \
+        $(call gb_HelpTarget_get_filelist,$(2)/$(1)) \
+        $(if $(filter $(2),shared),$(call gb_Package_get_target,helpcontent2_html_lang_$(1)))
+	mkdir -p $$$$(dirname $$@)
+	sed -e 's|$(if $(filter $(1),en-US),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(1)))/helpcontent2/source/|$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)/$(1)/|g' -e 's|.xhp|.html|g' $(call gb_HelpTarget_get_filelist,$(2)/$(1)) > $$@
+	$(if $(filter $(2),shared),cat $(call gb_Package_get_target,helpcontent2_html_lang_$(1)) >> $$@,:)
+
+endef
+
+$(eval $(foreach lang,$(gb_HELP_LANGS),$(foreach module,$(html_TEXT_MODULES),$(call html__filelist,$(lang),$(module)))))
 
 # vim: set noet sw=4 ts=4:
