@@ -287,7 +287,7 @@ echo '</sitemapindex>'>>$sitemap
 cp normalize.css default.css help.js fuse.js paginathing.js $outDir
 cp -r $enSource/source/media $outDir
 mkdir -p $outDir/media/icon-themes
-#cp -a ../../icon-themes/galaxy/* $outDir/media/icon-themes/
+#cp -a ../../icon-themes/colibre/* $outDir/media/icon-themes/
 #ln -s $productversion html/latest
 
 exit

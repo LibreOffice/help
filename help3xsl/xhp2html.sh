@@ -181,7 +181,7 @@ cp default.css $here'/html/'$productversion'/'
 
 cp -a ../source/media $here'/html/'$productversion'/'
 mkdir -p $here'/html/'$productversion'/media/icon-themes'
-cp -a ../../icon-themes/galaxy/* $here'/html/'$productversion'/media/icon-themes/'
+cp -a ../../icon-themes/colibre/* $here'/html/'$productversion'/media/icon-themes/'
 ln -s $productversion html/latest
 
 # Set helpex utilty and environment

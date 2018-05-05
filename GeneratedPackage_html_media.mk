@@ -9,7 +9,7 @@
 #
 $(eval $(call gb_GeneratedPackage_GeneratedPackage,helpcontent2_html_media,$(SRCDIR)))
 
-$(eval $(call gb_GeneratedPackage_add_dir,helpcontent2_html_media,$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media/icon-themes,icon-themes/galaxy))
+$(eval $(call gb_GeneratedPackage_add_dir,helpcontent2_html_media,$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media/icon-themes,icon-themes/colibre))
 
 $(eval $(call gb_GeneratedPackage_add_dir,helpcontent2_html_media,$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media/helpimg,helpcontent2/source/media/helpimg))
 $(eval $(call gb_GeneratedPackage_add_dir,helpcontent2_html_media,$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media/navigation,helpcontent2/source/media/navigation))
