@@ -6,7 +6,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 # This script looks up <image ...> tags in helpcontent, checks whether the
-# referenced file exist in the galaxy theme or in source/ and prints a warning if it does not.
+# referenced file exist in the colibre theme or in source/ and prints a warning if it does not.
 # Execute from the root directory of the helpcontent2 repository.
 # No parameters are used.
 
@@ -22,11 +22,11 @@ while read nextline ; do
     img3=${img2%%\"*};
 
     # Check the images existence
-    if [ ! -f "../icon-themes/galaxy/$img3" ] ; then
-        # Not present in galaxy, but it may be under source/
+    if [ ! -f "../icon-themes/colibre/$img3" ] ; then
+        # Not present in colibre, but it may be under source/
         if [ ! -f "source/$img3" ] ; then
             # Not even there, we have an error!
-            echo "$img3 included in file $sourcefile is not found in the galaxy theme or the help media!";
+            echo "$img3 included in file $sourcefile is not found in the colibre theme or the help media!";
         fi
      fi
 done <<< "$images"

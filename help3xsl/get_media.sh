@@ -39,5 +39,5 @@ cp default.css $outDir'/'$productVersion'/'
 
 cp -a ../source/media $outDir'/'$productVersion'/'
 
-galaxy=$(realpath $workDir'/../icon-themes/galaxy')
-cp -a $galaxy $outDir'/'$productVersion'/media/icon-themes'
+colibre=$(realpath $workDir'/../icon-themes/colibre')
+cp -a $colibre $outDir'/'$productVersion'/media/icon-themes'
