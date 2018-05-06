@@ -100,9 +100,9 @@
 <xsl:variable name="linkpostfix" select="''"/>
 
 <!-- images for notes, tips and warnings -->
-<xsl:variable name="note_img" select="concat($img_url_prefix,'helpimg/note.png')"/>
-<xsl:variable name="tip_img" select="concat($img_url_prefix,'helpimg/tip.png')"/>
-<xsl:variable name="warning_img" select="concat($img_url_prefix,'helpimg/warning.png')"/>
+<xsl:variable name="note_img" select="concat($img_url_prefix,'icon-themes/help/note.png')"/>
+<xsl:variable name="tip_img" select="concat($img_url_prefix,'icon-themes/help/tip.png')"/>
+<xsl:variable name="warning_img" select="concat($img_url_prefix,'icon-themes/help/warning.png')"/>
 
 <!--
 #############
@@ -1105,8 +1105,8 @@
     <xsl:choose>
          <xsl:when test="starts-with(@src,'media/screenshots/')">
             <xsl:choose>
-                <xsl:when test="@localize='true'">
-                    <xsl:variable name="tmp0" select="substring-before(@src, '/ui')"/>
+                <xsl:when test="@localize='true' and not($lang='en-US')">
+                    <xsl:variable name="tmp0" select="substring-before(@src, '/ui/')"/>
                     <xsl:variable name="tmp1" select="substring-after(@src, '/ui/')"/>
                     <xsl:variable name="tmp2" select="substring-before($tmp1,'/')"/>
                     <xsl:variable name="tmp3" select="substring-after($tmp1,'/')"/>
