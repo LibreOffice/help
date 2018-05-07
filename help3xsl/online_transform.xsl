@@ -259,7 +259,7 @@
         <label for="accordion-1"><xsl:call-template name="getContents"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
         <div id="Contents" class="contents-treeview"></div>
         <div id="Index">
-            <div class="index-label"><xsl:call-template name="getIndex"><xsl:with-param name="lang" select="$lang"/></xsl:call-template> &#32;&#x1f50e;&#32;</div>
+            <div class="index-label"><xsl:call-template name="getIndex"><xsl:with-param name="lang" select="$lang"/></xsl:call-template> &#32;&#x1f50e;&#xfe0e;&#32;</div>
             <div id="Bookmarks">
                 <input id="search-bar" type="text" class="search" />
                 <nav class="index"></nav>
