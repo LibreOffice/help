@@ -568,8 +568,16 @@
 <xsl:template match="meta" />
 
 <!-- OBJECT -->
-<xsl:template match="object"><xsl:call-template name="insertobject"/></xsl:template>
-<xsl:template match="object" mode="embedded"><xsl:call-template name="insertobject"/></xsl:template>
+<xsl:template match="object">
+    <xsl:if test="$online">
+	    <xsl:call-template name="insertobject"/>
+    </xsl:if>
+</xsl:template>
+<xsl:template match="object" mode="embedded">
+    <xsl:if test="$online">
+	    <xsl:call-template name="insertobject"/>
+    </xsl:if>
+</xsl:template>
 
 <!-- PARAGRAPH -->
 <xsl:template match="paragraph">
@@ -1154,11 +1162,9 @@
     </xsl:variable>
     <xsl:choose>
         <xsl:when test="starts-with(@type,'video/youtube')">
-            <xsl:if test="$online">
                 <div id="mediadiv">
                     <iframe id="{@id}" src="{@data}" width="{$width}" height="{$height}" frameborder="0" allowfullscreen="true"></iframe>
                 </div>
-            </xsl:if>
         </xsl:when>
         <xsl:when test="not(starts-with(@type,'video/youtube')) and starts-with(@type,'video')">
             <div id="mediadiv">
