@@ -568,8 +568,16 @@
 <xsl:template match="meta" />
 
 <!-- OBJECT -->
-<xsl:template match="object"><xsl:call-template name="insertobject"/></xsl:template>
-<xsl:template match="object" mode="embedded"><xsl:call-template name="insertobject"/></xsl:template>
+<xsl:template match="object">
+    <xsl:if test="$online">
+	    <xsl:call-template name="insertobject"/>
+    </xsl:if>
+</xsl:template>
+<xsl:template match="object" mode="embedded">
+    <xsl:if test="$online">
+	    <xsl:call-template name="insertobject"/>
+    </xsl:if>
+</xsl:template>
 
 <!-- PARAGRAPH -->
 <xsl:template match="paragraph">
@@ -1142,6 +1150,8 @@
 
 <!-- Insert an object -->
 <xsl:template name="insertobject">
+    <xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp')"/></xsl:variable>
+    <xsl:variable name="tmp_doc" select="document($tmp_href)"/>
     <xsl:variable name="data">
         <xsl:value-of select="concat($img_url_prefix,@data)"/>
     </xsl:variable>
@@ -1154,11 +1164,9 @@
     </xsl:variable>
     <xsl:choose>
         <xsl:when test="starts-with(@type,'video/youtube')">
-            <xsl:if test="$online">
                 <div id="mediadiv">
                     <iframe id="{@id}" src="{@data}" width="{$width}" height="{$height}" frameborder="0" allowfullscreen="true"></iframe>
                 </div>
-            </xsl:if>
         </xsl:when>
         <xsl:when test="not(starts-with(@type,'video/youtube')) and starts-with(@type,'video')">
             <div id="mediadiv">
@@ -1171,22 +1179,40 @@
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.spreadsheet'">
+            <div class="samplefilesection">
+            <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-calc.svg')}" width="25px" height="30px"></img></a>
+            </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.text'">
+            <div class="samplefilesection">
+            <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-writer.svg')}" width="25px" height="30px"></img></a>
+            </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.presentation'">
+            <div class="samplefilesection">
+            <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-impress.svg')}" width="25px" height="30px"></img></a>
-        </xsl:when>
+            </div>
+            </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.drawing'">
+            <div class="samplefilesection">
+            <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-draw.svg')}" width="25px" height="30px"></img></a>
+            </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.formula'">
+            <div class="samplefilesection">
+            <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-math.svg')}" width="25px" height="30px"></img></a>
+            </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.database'">
+            <div class="samplefilesection">
+            <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-base.svg')}" width="25px" height="30px"></img></a>
+            </div>
         </xsl:when>
         <xsl:otherwise>
             <object width="{$width}" height="{$height}" data="{$data}" type="{@type}"></object>
