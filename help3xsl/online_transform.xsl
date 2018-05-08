@@ -104,6 +104,19 @@
 <xsl:variable name="tip_img" select="concat($img_url_prefix,'icon-themes/help/tip.png')"/>
 <xsl:variable name="warning_img" select="concat($img_url_prefix,'icon-themes/help/warning.png')"/>
 
+<!-- Strings for the help UI page -->
+<xsl:variable name="tmp_href_ui"><xsl:value-of select="concat($urlpre,'text/shared/help/browserhelp.xhp')"/></xsl:variable>
+<xsl:variable name="tmp_doc_ui" select="document($tmp_href_ui)"/>
+<xsl:variable name ="ui_contents"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='contents']"/></xsl:variable>
+<xsl:variable name ="ui_index"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='index']"/></xsl:variable>
+<xsl:variable name ="ui_module"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='module']"/></xsl:variable>
+<xsl:variable name ="ui_language"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='language']"/></xsl:variable>
+<xsl:variable name ="ui_donate"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='donate']"/></xsl:variable>
+<xsl:variable name ="ui_logo"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='LibreOfficeHelp']"/></xsl:variable>
+<xsl:variable name ="ui_selectmodule"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='selectmodule']"/></xsl:variable>
+<xsl:variable name ="ui_selectlang"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='selectlanguage']"/></xsl:variable>
+<xsl:variable name ="ui_search"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='searchhelpcontents']"/></xsl:variable>
+<xsl:variable name ="ui_copyclip"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='copyclip']"/></xsl:variable>
 <!--
 #############
 # Templates #
@@ -155,20 +168,13 @@
             <div class="logo-container">
                 <a class="logo" href="{$target}{$lang}/text/shared/main0108.html">
                     <div class="symbol"></div>
-                    <p><xsl:call-template name="brand">
-                        <xsl:with-param name="string">
-                            <xsl:call-template name="getLogo">
-                                <xsl:with-param name="lang" select="$lang"/>
-                                <xsl:with-param name="version" select="$logoprodversion"/>
-                            </xsl:call-template>
-                        </xsl:with-param>
-                    </xsl:call-template></p>
+                    <p><xsl:value-of select="$ui_logo"/></p>
                 </a>
             </div>
         </header>
         <div class="modules">
             <input id="modules" name="modules" type="checkbox"/>
-            <label for="modules"><xsl:call-template name="getModules"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
+            <label for="modules"><xsl:value-of select="$ui_module"/></label>
             <nav>
                 <a href="{$target}{$lang}/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer-icon"></div>Writer</a>
                 <a href="{$target}{$lang}/text/scalc/main0000.html?DbPAR=CALC"><div class="calc-icon"></div>Calc</a>
@@ -183,83 +189,23 @@
         <xsl:if test="$online">
             <div class="lang">
                 <input id="langs" name="language-menu" type="checkbox"/>
-                <label for="langs"><xsl:call-template name="getLanguage"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
+                <label for="langs"><xsl:value-of select="$ui_language"/></label>
                 <nav>
-                    <a href="{$target}en-US{$htmlpage}">English (USA)</a>
-                    <a href="{$target}am{$htmlpage}">አማርኛ</a>
-                    <a href="{$target}ar{$htmlpage}">العربية</a>
-                    <a href="{$target}ast{$htmlpage}">Asturianu</a>
-                    <a href="{$target}bg{$htmlpage}">Български</a>
-                    <a href="{$target}bn{$htmlpage}">বাংলা</a>
-                    <a href="{$target}bn-IN{$htmlpage}">বাংলা</a>
-                    <a href="{$target}bo{$htmlpage}">བོད་ཡིག / Bod skad</a>
-                    <a href="{$target}bs{$htmlpage}">Bosanski</a>
-                    <a href="{$target}ca{$htmlpage}">Català</a>
-                    <a href="{$target}ca-valencia{$htmlpage}">Català-Valencia</a>
-                    <a href="{$target}cs{$htmlpage}">Česky</a>
-                    <a href="{$target}da{$htmlpage}">Dansk</a>
-                    <a href="{$target}de{$htmlpage}">Deutsch</a>
-                    <a href="{$target}dz{$htmlpage}"> ཇོང་ཁ</a>
-                    <a href="{$target}el{$htmlpage}">Ελληνικά</a>
-                    <a href="{$target}en-GB{$htmlpage}">English (GB)</a>
-                    <a href="{$target}en-ZA{$htmlpage}">English (ZA)</a>
-                    <a href="{$target}eo{$htmlpage}">Esperanto</a>
-                    <a href="{$target}es{$htmlpage}">Español</a>
-                    <a href="{$target}et{$htmlpage}">Eesti</a>
-                    <a href="{$target}eu{$htmlpage}">Euskara</a>
-                    <a href="{$target}fi{$htmlpage}">Suomi</a>
-                    <a href="{$target}fr{$htmlpage}">Français</a>
-                    <a href="{$target}gl{$htmlpage}">Galego</a>
-                    <a href="{$target}gu{$htmlpage}">ગુજરાતી</a>
-                    <a href="{$target}he{$htmlpage}">עברית</a>
-                    <a href="{$target}hi{$htmlpage}">हिन्दी</a>
-                    <a href="{$target}hr{$htmlpage}">Hrvatski</a>
-                    <a href="{$target}hu{$htmlpage}">Magyar</a>
-                    <a href="{$target}id{$htmlpage}">Bahasa Indonesia</a>
-                    <a href="{$target}is{$htmlpage}">Íslenska</a>
-                    <a href="{$target}it{$htmlpage}">Italiano</a>
-                    <a href="{$target}ja{$htmlpage}">日本語</a>
-                    <a href="{$target}ka{$htmlpage}">ქართული</a>
-                    <a href="{$target}km{$htmlpage}">ភាសាខ្មែរ</a>
-                    <a href="{$target}ko{$htmlpage}">한국어</a>
-                    <a href="{$target}lo{$htmlpage}">ລາວ</a>
-                    <a href="{$target}lt{$htmlpage}">Lietuvių</a>
-                    <a href="{$target}lv{$htmlpage}">Latviešu</a>
-                    <a href="{$target}mk{$htmlpage}">Македонски</a>
-                    <a href="{$target}nb{$htmlpage}">Norsk (bokmål / riksmål)</a>
-                    <a href="{$target}ne{$htmlpage}">नेपाली</a>
-                    <a href="{$target}nl{$htmlpage}">Nederlands</a>
-                    <a href="{$target}nn{$htmlpage}">Norsk (nynorsk)</a>
-                    <a href="{$target}om{$htmlpage}">Oromoo</a>
-                    <a href="{$target}pl{$htmlpage}">Polski</a>
-                    <a href="{$target}pt{$htmlpage}">Português</a>
-                    <a href="{$target}pt-BR{$htmlpage}">Português do Brasil</a>
-                    <a href="{$target}ro{$htmlpage}">Română</a>
-                    <a href="{$target}ru{$htmlpage}">Русский</a>
-                    <a href="{$target}si{$htmlpage}">සිංහල</a>
-                    <a href="{$target}sid{$htmlpage}">Sidámo 'Afó</a>
-                    <a href="{$target}sk{$htmlpage}">Slovenčina</a>
-                    <a href="{$target}sl{$htmlpage}">Slovenščina</a>
-                    <a href="{$target}sq{$htmlpage}">Shqip</a>
-                    <a href="{$target}sv{$htmlpage}">Svenska</a>
-                    <a href="{$target}ta{$htmlpage}">தமிழ்</a>
-                    <a href="{$target}tg{$htmlpage}">Тоҷикӣ</a>
-                    <a href="{$target}tr{$htmlpage}">Türkçe</a>
-                    <a href="{$target}ug{$htmlpage}">ئۇيغۇرچە</a>
-                    <a href="{$target}uk{$htmlpage}">Українська</a>
-                    <a href="{$target}vi{$htmlpage}">Tiếng Việt</a>
-                    <a href="{$target}zh-CN{$htmlpage}">中文 (简体字)</a>
-                    <a href="{$target}zh-TW{$htmlpage}">中文 (正體字)‬</a>
+                    <xsl:for-each select="$tmp_doc_ui//list//variable">
+                        <xsl:variable name ="ui_l1" select="@id"/>
+                        <xsl:variable name ="ui_l2" select="."/>
+                        <a href="{$target}{$ui_l1}{$htmlpage}"><xsl:value-of select="$ui_l2"/></a>
+                    </xsl:for-each>
                 </nav>
             </div>
         </xsl:if>
     </div>
     <aside>
         <input id="accordion-1" name="accordion-menu" type="checkbox"/>
-        <label for="accordion-1"><xsl:call-template name="getContents"><xsl:with-param name="lang" select="$lang"/></xsl:call-template></label>
+        <label for="accordion-1"><xsl:value-of select="$ui_contents"/></label>
         <div id="Contents" class="contents-treeview"></div>
         <div id="Index">
-            <div class="index-label"><xsl:call-template name="getIndex"><xsl:with-param name="lang" select="$lang"/></xsl:call-template> &#32;&#x1f50e;&#xfe0e;&#32;</div>
+        <div class="index-label"><xsl:value-of select="$ui_index"/> &#32;&#x1f50e;&#xfe0e;&#32;</div>
             <div id="Bookmarks">
                 <input id="search-bar" type="text" class="search" />
                 <nav class="index"></nav>
@@ -291,7 +237,7 @@
             <xsl:if test="$online">
                 <div class="donation">
                     <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">
-                    <xsl:call-template name="getDonation"><xsl:with-param name="lang" select="$lang"/></xsl:call-template>
+                        <xsl:value-of select="$ui_donate"/>
                     </a></p>
                 </div>
             </xsl:if>
@@ -484,9 +430,9 @@
     <span class="{@type}">
 <!-- Insert tooltip only to input classes and only if the content is longer than 3 characters -->
         <xsl:if test="@type='input' and string-length(.)>3">
-            <xsl:call-template name="getTooltip">
-                <xsl:with-param name="lang" select="$lang"/>
-            </xsl:call-template>
+            <xsl:attribute name="data-tooltip">
+                <xsl:value-of select="$ui_copyclip"/>
+            </xsl:attribute>
         </xsl:if>
         <xsl:apply-templates />
     </span>
@@ -494,9 +440,9 @@
 <xsl:template match="item" mode="embedded">
     <span class="{@type}">
         <xsl:if test="@type='input' and string-length(.)>3">
-            <xsl:call-template name="getTooltip">
-                <xsl:with-param name="lang" select="$lang"/>
-            </xsl:call-template>
+            <xsl:attribute name="data-tooltip">
+                <xsl:value-of select="$ui_copyclip"/>
+            </xsl:attribute>
         </xsl:if>
         <xsl:apply-templates />
     </span>
