@@ -668,6 +668,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/explorer/database/tablewizard04 \
     helpcontent2/source/text/shared/explorer/database/toolbars \
     helpcontent2/source/text/shared/fontwork_toolbar \
+    helpcontent2/source/text/shared/help/browserhelp \
     helpcontent2/source/text/shared/guide/aaa_start \
     helpcontent2/source/text/shared/guide/accessibility \
     helpcontent2/source/text/shared/guide/active_help_on_off \
