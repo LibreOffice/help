@@ -329,6 +329,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/07080000 \
     helpcontent2/source/text/shared/01/about_meta_tags \
     helpcontent2/source/text/shared/01/digitalsignatures \
+    helpcontent2/source/text/shared/01/digitalsignaturespdf \
     helpcontent2/source/text/shared/01/extensionupdate \
     helpcontent2/source/text/shared/01/formatting_mark \
     helpcontent2/source/text/shared/01/gallery \
@@ -350,6 +351,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/ref_epub_export \
     helpcontent2/source/text/shared/01/ref_pdf_export \
     helpcontent2/source/text/shared/01/ref_pdf_send_as \
+    helpcontent2/source/text/shared/01/signexistingpdf \
     helpcontent2/source/text/shared/01/securitywarning \
     helpcontent2/source/text/shared/01/selectcertificate \
     helpcontent2/source/text/shared/01/webhtml \
