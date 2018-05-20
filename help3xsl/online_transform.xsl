@@ -1125,39 +1125,69 @@
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.spreadsheet'">
+            <xsl:variable name="src">
+                <xsl:call-template name="addlang2path">
+                    <xsl:with-param name="string" select="@data"/>
+                </xsl:call-template>
+            </xsl:variable>
             <div class="samplefilesection">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-calc.svg')}" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-calc.svg')}" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.text'">
+            <xsl:variable name="src">
+                <xsl:call-template name="addlang2path">
+                    <xsl:with-param name="string" select="@data"/>
+                </xsl:call-template>
+            </xsl:variable>
             <div class="samplefilesection">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-writer.svg')}" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-writer.svg')}" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.presentation'">
+            <xsl:variable name="src">
+                <xsl:call-template name="addlang2path">
+                    <xsl:with-param name="string" select="@data"/>
+                </xsl:call-template>
+            </xsl:variable>
             <div class="samplefilesection">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-impress.svg')}" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-impress.svg')}" width="25px" height="30px"></img></a>
             </div>
             </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.drawing'">
+            <xsl:variable name="src">
+                <xsl:call-template name="addlang2path">
+                    <xsl:with-param name="string" select="@data"/>
+                </xsl:call-template>
+            </xsl:variable>
             <div class="samplefilesection">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-draw.svg')}" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-draw.svg')}" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.formula'">
+            <xsl:variable name="src">
+                <xsl:call-template name="addlang2path">
+                    <xsl:with-param name="string" select="@data"/>
+                </xsl:call-template>
+            </xsl:variable>
             <div class="samplefilesection">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-math.svg')}" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-math.svg')}" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.database'">
+            <xsl:variable name="src">
+                <xsl:call-template name="addlang2path">
+                    <xsl:with-param name="string" select="@data"/>
+                </xsl:call-template>
+            </xsl:variable>
             <div class="samplefilesection">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{concat($target,@data)}"><img src="{concat($target,'media/navigation/libo-base.svg')}" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-base.svg')}" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:otherwise>
@@ -1290,6 +1320,40 @@
                 <xsl:when test="$online"><xsl:value-of select="concat('../',$result)" /></xsl:when>
                 <xsl:otherwise><xsl:value-of select="$result" /></xsl:otherwise>
             </xsl:choose>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+<!--Add language to path for file -->
+<xsl:template name="addlang2path">
+    <xsl:param name="string"/>
+    <xsl:choose>
+        <xsl:when test="not($lang='en-US')">
+            <xsl:variable name="tmpfn">
+                <xsl:call-template name="substring-after-last">
+                    <xsl:with-param name="string" select="$string"/>
+                    <xsl:with-param name="char" select="'/'"/>
+                </xsl:call-template>
+            </xsl:variable>
+            <xsl:value-of select="concat(substring-before($string, $tmpfn),$lang,'/',$tmpfn)"/>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="concat($target,$string)"/>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+<xsl:template name="substring-after-last">
+    <xsl:param name="string"/>
+    <xsl:param name="char"/>
+    <xsl:choose>
+        <xsl:when test="contains($string, $char)">
+            <xsl:call-template name="substring-after-last">
+                <xsl:with-param name="string" select="substring-after($string, $char)"/>
+                <xsl:with-param name="char" select="$char"/>
+            </xsl:call-template>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="$string"/>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
