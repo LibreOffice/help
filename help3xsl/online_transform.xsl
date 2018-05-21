@@ -1337,7 +1337,7 @@
             <xsl:value-of select="concat(substring-before($string, $tmpfn),$lang,'/',$tmpfn)"/>
         </xsl:when>
         <xsl:otherwise>
-            <xsl:value-of select="concat($target,$string)"/>
+            <xsl:value-of select="$string"/>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
