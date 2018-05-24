@@ -18,11 +18,18 @@ ifeq ($(ENABLE_HTMLHELP),TRUE)
 $(eval $(call gb_Module_add_targets,helpcontent2,\
 	AllLangPackage_html_lang \
 	CustomTarget_html \
+	GeneratedPackage_html_icon-themes \
 	GeneratedPackage_html_lang_generated \
-	GeneratedPackage_html_media \
 	Package_html_dynamic \
+	Package_html_media \
 	Package_html_static \
 ))
+
+$(eval $(call gb_Module_add_l10n_targets,helpcontent2,\
+	AllLangPackage_html_lang \
+	AllLangPackage_html_media_lang \
+))
+
 endif
 
 $(eval $(call gb_Module_add_l10n_targets,helpcontent2,\
