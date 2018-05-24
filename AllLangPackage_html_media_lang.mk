@@ -10,7 +10,7 @@
 # Language-specific parts of the help/media/ sub-tree.  All language-specific content from
 # $(SRCDIR)/helpcontent2/source/media/ must be listed here.  Content that is present in $(SRCDIR)
 # for all languages in some set of languages can be handled with a foreach (like the screenshots
-# present for all languages in $(completelangiso) below).  More irregular conent that is present in
+# present for all languages in $(completelangiso) below).  More irregular content that is present in
 # $(SRCDIR) only for some languages is handled with the individual per-language blocks.
 
 $(eval $(call gb_AllLangPackage_AllLangPackage,helpcontent2_html_media_lang,$(SRCDIR)/helpcontent2/source/media))
