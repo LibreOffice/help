@@ -989,32 +989,28 @@
     <xsl:param name="embedded" />
     <xsl:choose>
         <xsl:when test="parent::switch[@select='sys'] or parent::switchinline[@select='sys']">
-            <xsl:if test="not(../child::case[@select=$System]) and not(../child::caseinline[@select=$System])">
-                <xsl:variable name="auxID" select="concat('default',generate-id())"/>
-                <xsl:choose>
-                    <xsl:when test="$embedded = 'yes'">
-                        <span hidden="true" id="{$auxID}"><xsl:apply-templates mode="embedded"/></span>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <span hidden="true" id="{$auxID}"><xsl:apply-templates /></span>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:if>
+            <xsl:variable name="auxID" select="concat('default',generate-id())"/>
+            <xsl:choose>
+                <xsl:when test="$embedded = 'yes'">
+                    <span hidden="true" id="{$auxID}"><xsl:apply-templates mode="embedded"/></span>
+                </xsl:when>
+                <xsl:otherwise>
+                    <span hidden="true" id="{$auxID}"><xsl:apply-templates /></span>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:when>
         <xsl:when test="parent::switch[@select='appl'] or parent::switchinline[@select='appl']">
-            <xsl:if test="not(../child::case[@select=$appl]) and not(../child::caseinline[@select=$appl])">
-                <xsl:variable name="auxID" select="concat('default',generate-id())"/>
-                <xsl:choose>
-                    <xsl:when test="$embedded = 'yes'">
-                        <span hidden="true" id="{$auxID}"><xsl:apply-templates mode="embedded"/></span>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <span hidden="true" id="{$auxID}"><xsl:apply-templates /></span>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:if>
+            <xsl:variable name="auxID" select="concat('default',generate-id())"/>
+            <xsl:choose>
+                <xsl:when test="$embedded = 'yes'">
+                    <span hidden="true" id="{$auxID}"><xsl:apply-templates mode="embedded"/></span>
+                </xsl:when>
+                <xsl:otherwise>
+                    <span hidden="true" id="{$auxID}"><xsl:apply-templates /></span>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:when>
-        <xsl:when test="parent::switch[@select='distrib'] or parent::switchinline[@select='distrib']">
+        <xsl:when test="parent::switch[@select='distrib'] or parent::switchinline[@select='distrib']"><!--TODO: fix this distrib case if relevant-->
             <xsl:if test="not(../child::case[@select=$distrib]) and not(../child::caseinline[@select=$distrib])">
                 <xsl:choose>
                     <xsl:when test="$embedded = 'yes'">
