@@ -219,6 +219,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_imsinh \
     helpcontent2/source/text/scalc/01/func_imtan \
     helpcontent2/source/text/scalc/01/func_isoweeknum \
+    helpcontent2/source/text/scalc/01/func_maxifs \
+    helpcontent2/source/text/scalc/01/func_minifs \
     helpcontent2/source/text/scalc/01/func_minute \
     helpcontent2/source/text/scalc/01/func_month \
     helpcontent2/source/text/scalc/01/common_func_workdaysintl \
