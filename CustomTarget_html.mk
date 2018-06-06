@@ -169,9 +169,9 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 		RESPONSEFILE=$(call var2file,$(shell $(gb_MKTEMP)),100,$(addprefix $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/,$(gb_AllLangHelp_$(APPDIR)_HELPFILES))) \
 		&& ( \
 			<"$$RESPONSEFILE" $(if $(filter WNT,$(OS)),tr -d '\r' | env -i PATH="$$PATH") xargs -n 1 printf '%s\n' \
- 			| while read xhp; do \
- 				$(call gb_ExternalExecutable_get_command,xsltproc) \
- 					--stringparam app $(APP) \
+			| while read xhp; do \
+				$(call gb_ExternalExecutable_get_command,xsltproc) \
+					--stringparam app $(APP) \
 					--stringparam Language $(HELP_LANG) \
 					--stringparam local $(if $(HELP_ONLINE),'no','yes') \
 					--stringparam productversion $(PRODUCTVERSION) \
