@@ -28,16 +28,19 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 		$(SRCDIR)/helpcontent2/help3xsl/get_url.xsl \
-		$(call gb_ExternalExecutable_get_dependencies,xsltproc)
+		$(call gb_ExternalExecutable_get_dependencies,xsltproc) \
+		$(foreach module,$(html_TEXT_MODULES),$(call gb_AllLangHelp_get_helpfiles_target,$(module)))
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	$(call gb_Helper_abbreviate_dirs,\
 		( \
 			echo 'var map={' \
-			&& find $(SRCDIR)/helpcontent2/source/text -type f -name '*.xhp' \
+			&& RESPONSEFILE=$(call var2file,$(shell $(gb_MKTEMP)),100,$(foreach module,$(html_TEXT_MODULES),$(addprefix $(SRCDIR)/,$(gb_AllLangHelp_$(module)_HELPFILES)))) \
+			&& <"$$RESPONSEFILE" $(if $(filter WNT,$(OS)),tr -d '\r' | env -i PATH="$$PATH") xargs -n 1 printf '%s\n' \
 			| while read xhp; do \
 				$(call gb_ExternalExecutable_get_command,xsltproc) $< $$xhp \
 				| $(gb_AWK) 'NF' \
 			; done \
+			&& rm "$$RESPONSEFILE" \
 			&& echo '};' \
 		) > $@ \
 	)
@@ -85,11 +88,14 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 
 define html_gen_html_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/html.text : \
-	$(foreach module,$(html_TEXT_MODULES),$(call gb_HelpTranslateTarget_get_target,$(module)/$(1)))
+	$(foreach module,$(html_TEXT_MODULES), \
+		$(if $(filter en-US,$(1)), \
+			$(call gb_AllLangHelp_get_helpfiles_target,$(module)), \
+			$(call gb_HelpTranslateTarget_get_target,$(module)/$(1))))
 
 endef
 
-$(eval $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(call html_gen_html_dep,$(lang))))
+$(eval $(foreach lang,$(gb_HELP_LANGS),$(call html_gen_html_dep,$(lang))))
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 		$(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl \
@@ -98,7 +104,8 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 	$(call gb_Helper_abbreviate_dirs,\
 		cd $(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*))/helpcontent2/source \
 		&& rm -rf $(dir $@)text \
-		&& find text -name "*.xhp" \
+		&& RESPONSEFILE=$(call var2file,$(shell $(gb_MKTEMP)),100,$(foreach module,$(html_TEXT_MODULES),$(patsubst helpcontent2/source/%,%,$(gb_AllLangHelp_$(module)_HELPFILES)))) \
+		&& <"$$RESPONSEFILE" $(if $(filter WNT,$(OS)),tr -d '\r' | env -i PATH="$$PATH") xargs -n 1 printf '%s\n' \
 		| while read xhp; do \
 			mkdir -p $$(dirname $(dir $@)$$xhp) && \
 			$(call gb_ExternalExecutable_get_command,xsltproc) \
@@ -110,6 +117,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 				$(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl \
 				$(if $(filter WNT,$(OS)),$$(cygpath -m `pwd`),`pwd`)/$$xhp \
 		; done \
+		&& rm "$$RESPONSEFILE" \
 		&& touch $@ \
 	)
 
@@ -125,14 +133,16 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.js :
 
 define html__gen_bookmarks_lang_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(2)/$(1)/bookmarks.part : \
-	$(call gb_HelpTranslateTarget_get_target,$(firstword $(subst /, ,$(2)))/$(1))
+    $(if $(filter en-US,$(1)), \
+        $(call gb_AllLangHelp_get_helpfiles_target,$(firstword $(subst /, ,$(2)))), \
+        $(call gb_HelpTranslateTarget_get_target,$(firstword $(subst /, ,$(2)))/$(1)))
 
 endef
 
 define html__gen_bookmarks_lang_deps
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/bookmarks.js : \
 	$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(2)/$(1)/bookmarks.part
-$(if $(filter-out en-US,$(1)),$(call html__gen_bookmarks_lang_dep,$(1),$(2)))
+$(call html__gen_bookmarks_lang_dep,$(1),$(2))
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(2)/$(1)/bookmarks.part : HELP_LANG := $(1)
 
 endef
@@ -156,8 +166,9 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 		$(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	$(call gb_Helper_abbreviate_dirs,\
-		( \
-			find $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/helpcontent2/source/text/$(APPDIR) -name "*.xhp" \
+		RESPONSEFILE=$(call var2file,$(shell $(gb_MKTEMP)),100,$(addprefix $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/,$(gb_AllLangHelp_$(APPDIR)_HELPFILES))) \
+		&& ( \
+			<"$$RESPONSEFILE" $(if $(filter WNT,$(OS)),tr -d '\r' | env -i PATH="$$PATH") xargs -n 1 printf '%s\n' \
  			| while read xhp; do \
  				$(call gb_ExternalExecutable_get_command,xsltproc) \
  					--stringparam app $(APP) \
@@ -170,6 +181,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 			| sort -k3b -t\> -s \
 			| awk 'NF' \
 		) > $@ \
+		&& rm "$$RESPONSEFILE" \
 	)	
 
 # The various gid_File_Help_*_Zip in scp2 that use EXTRA_ALL_GOOD_HELP_LOCALIZATIONS_LANG expect
