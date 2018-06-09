@@ -161,7 +161,6 @@ $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,
 ))
 
 $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,pt-BR,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media, \
-    files/scalc/pt-BR/pivot.ods \
     helpimg/pt-BR/feldalle.png \
     helpimg/pt-BR/feldbrei.png \
     helpimg/pt-BR/feldcolo.png \
@@ -246,5 +245,10 @@ $(foreach lang,$(filter-out en-US fy,$(completelangiso)),$(eval $(call gb_AllLan
     screenshots/modules/smath/ui/spacingdialog/$(lang)/SpacingDialog.png \
     screenshots/modules/smath/ui/symdefinedialog/$(lang)/EditSymbols.png \
 )))
-
+$(foreach lang,$(filter-out en-US fy,$(completelangiso)),$(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,$(lang),$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media, \
+    files/scalc/$(lang)/imtrigon.ods \
+    files/scalc/$(lang)/trigon.ods \
+    files/scalc/$(lang)/pivot.ods \
+    files/scalc/$(lang)/functions_ifs.ods \
+)))
 # vim: set noet sw=4 ts=4:

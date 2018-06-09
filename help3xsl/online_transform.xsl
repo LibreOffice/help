@@ -1105,6 +1105,7 @@
     <xsl:variable name="height">
         <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
     </xsl:variable>
+    <xsl:variable name="auxID" select="concat('obj',generate-id())"/>
     <xsl:choose>
         <xsl:when test="starts-with(@type,'video/youtube')">
                 <div id="mediadiv">
@@ -1127,7 +1128,7 @@
                     <xsl:with-param name="string" select="@data"/>
                 </xsl:call-template>
             </xsl:variable>
-            <div class="samplefilesection">
+            <div class="samplefilesection" id="{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-calc.svg')}" width="25px" height="30px"></img></a>
             </div>
@@ -1138,7 +1139,7 @@
                     <xsl:with-param name="string" select="@data"/>
                 </xsl:call-template>
             </xsl:variable>
-            <div class="samplefilesection">
+            <div class="samplefilesection" id="{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-writer.svg')}" width="25px" height="30px"></img></a>
             </div>
@@ -1149,7 +1150,7 @@
                     <xsl:with-param name="string" select="@data"/>
                 </xsl:call-template>
             </xsl:variable>
-            <div class="samplefilesection">
+            <div class="samplefilesection" id="{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-impress.svg')}" width="25px" height="30px"></img></a>
             </div>
@@ -1160,7 +1161,7 @@
                     <xsl:with-param name="string" select="@data"/>
                 </xsl:call-template>
             </xsl:variable>
-            <div class="samplefilesection">
+            <div class="samplefilesection" id="{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-draw.svg')}" width="25px" height="30px"></img></a>
             </div>
@@ -1171,7 +1172,7 @@
                     <xsl:with-param name="string" select="@data"/>
                 </xsl:call-template>
             </xsl:variable>
-            <div class="samplefilesection">
+            <div class="samplefilesection" id="{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-math.svg')}" width="25px" height="30px"></img></a>
             </div>
@@ -1182,7 +1183,7 @@
                     <xsl:with-param name="string" select="@data"/>
                 </xsl:call-template>
             </xsl:variable>
-            <div class="samplefilesection">
+            <div class="samplefilesection" id="{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-base.svg')}" width="25px" height="30px"></img></a>
             </div>
