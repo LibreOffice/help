@@ -871,7 +871,7 @@
 
 <!-- Insert Basic code snippet  -->
 <xsl:template name="insertbascode">
-    <pre><code><xsl:apply-templates /></code></pre>
+    <pre class="bascodepar"><xsl:apply-templates /></pre><br/>
 </xsl:template>
 
 <!-- Insert Logo code snippet  -->
