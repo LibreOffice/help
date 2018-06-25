@@ -24,6 +24,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/00/00000404 \
     helpcontent2/source/text/swriter/00/00000405 \
     helpcontent2/source/text/swriter/00/00000406 \
+    helpcontent2/source/text/swriter/00/stylesmenu \
     helpcontent2/source/text/swriter/01/01120000 \
     helpcontent2/source/text/swriter/01/01150000 \
     helpcontent2/source/text/swriter/01/01160100 \
