@@ -868,6 +868,9 @@
 <xsl:template match="bascode">
     <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><xsl:apply-templates /></div>
 </xsl:template>
+<xsl:template match="bascode" mode="embedded">
+    <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><xsl:apply-templates /></div>
+</xsl:template>
 
 <!-- Insert Basic code snippet  -->
 <xsl:template name="insertbascode">
