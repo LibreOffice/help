@@ -988,6 +988,7 @@
 
 <paragraph id="hd_id231020161309289931" role="heading" level="2" xml-lang="en-US">NatNum modifiers</paragraph>
 <paragraph id="par_id3149998" role="paragraph" xml-lang="en-US">To display numbers using native number characters, use a [NatNum1], [NatNum2], ..., [NatNum11] modifier at the beginning of a number format codes.</paragraph><comment>this will be extended with the libnumbertext work</comment>
+<paragraph id="par_id3158313" role="paragraph" xml-lang="en-US">To spell out numbers in various number, currency and date formats, use a [NatNum12] modifier with the chosen arguments at the beginning of a number format code. See <link href="text/shared/01/05020301.xhp#NatNum12">NatNum12</link> section below.</paragraph>
 <paragraph id="par_id3154600" role="paragraph" xml-lang="en-US">The [NatNum1] modifier always uses a one to one character mapping to convert numbers to a string that matches the native number format code of the corresponding locale. The other modifiers produce different results if they are used with different locales. A locale can be the language and the territory for which the format code is defined, or a modifier such as [$-yyy] that follows the native number modifier. In this case, yyy is the hexadecimal MS-LCID that is also used in currency format codes. For example, to display a number using Japanese short Kanji characters in an English US locale, use the following number format code:</paragraph>
 <paragraph id="par_id3152546" role="example" localize="false" xml-lang="en-US">[NatNum1][$-411]0</paragraph>
 <paragraph id="par_id3147269" role="paragraph" xml-lang="en-US">In the following list, the Microsoft Excel [DBNumX] modifier that corresponds to <item type="productname">%PRODUCTNAME</item> [NatNum] modifier is shown. If you want, you can use a [DBNumX] modifier instead of [NatNum] modifier for your locale. Whenever possible, <item type="productname">%PRODUCTNAME</item> internally maps [DBNumX] modifiers to [NatNumN] modifiers.</paragraph>
@@ -2455,6 +2456,101 @@
     </tablecell>
   </tablerow>
 </table>
+</section>
+
+<section id="NatNum12">
+
+<paragraph id="hd_id231201610928993199" role="heading" level="2" xml-lang="en-US">NatNum12 modifier</paragraph>
+
+<paragraph id="par_id3158314" role="paragraph" xml-lang="en-US">To spell out numbers in various number, currency and date formats, use a [NatNum12] modifier with the chosen arguments at the beginning of a number format code.</paragraph>
+
+<paragraph id="par_id130820161735318343" role="paragraph" xml-lang="en-US">Common NatNum12 formatting examples</paragraph>
+
+<table id="Tabela101">
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id130820131011365891" role="tablehead" xml-lang="en-US">Formatting code</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id13082016201136632" role="tablehead" xml-lang="en-US">Explanation</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id130820161733145583" role="tablecontent" xml-lang="en-US">[NatNum12]</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id130820161733112114" role="tablecontent" xml-lang="en-US">Spell out as cardinal number: 1 → one</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id1308201617533145585" role="tablecontent" xml-lang="en-US">[NatNum12 ordinal]</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id13082016107533112116" role="tablecontent" xml-lang="en-US">Spell out as ordinal number: 1 → first</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id1308201616533145587" role="tablecontent" xml-lang="en-US">[NatNum12 ordinal-number]</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id13082016107533112118" role="tablecontent" xml-lang="en-US">Spell out as ordinal indicator: 1 → 1st</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id1308201796533145589" role="tablecontent" xml-lang="en-US">[NatNum12 capitalize]</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id130820161715331121110" role="tablecontent" xml-lang="en-US">Spell out with capitalization, as cardinal number: 1 → One</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id1308201617965331455812" role="tablecontent" xml-lang="en-US">[NatNum12 upper ordinal]</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id130826171075331121112" role="tablecontent" xml-lang="en-US">Spell out in upper case, as ordinal number: 1 → FIRST</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id1308201617965331455813" role="tablecontent" xml-lang="en-US">[NatNum12 title]</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id13082016075331121114" role="tablecontent" xml-lang="en-US">Spell out in title case, as cardinal number: 101 → Hundred One</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id1308201617965331455814" role="tablecontent" xml-lang="en-US">[NatNum12 USD]</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id13082016075331121115" role="tablecontent" xml-lang="en-US">Spell out as a money amount of a given currency specified by 3-letter ISO code: 1 → one U.S. dollar</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id1308201617965331455816" role="tablecontent" xml-lang="en-US">[NatNum12 D=ordinal-number]D" of "MMMM</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id13082016075331121117" role="tablecontent" xml-lang="en-US">Spell out as a date in format "1st of May"</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id1308201617965331455818" role="tablecontent" xml-lang="en-US">[NatNum12 YYYY=title year,D=capitalize ordinal]D" of "MMMM, YYYY</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id13082016075331121119" role="tablecontent" xml-lang="en-US">Spell out as a date in format "First of May, Nineteen Ninety-nine"</paragraph>
+    </tablecell>
+  </tablerow>
+</table>
+
+<paragraph id="par_id3158316" role="paragraph" xml-lang="en-US">Other possible arguments: "money" before 3-letter currency codes, for example [NatNum12 capitalize money USD]0.00 will format number "1.99" as "One and 99/100 U.S. Dollars".</paragraph>
+
 </section>
 </body>
 </helpdocument>
