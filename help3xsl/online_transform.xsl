@@ -200,10 +200,12 @@
             </div>
         </xsl:if>
     </div>
-    <aside>
+    <aside class="rightside">
         <input id="accordion-1" name="accordion-menu" type="checkbox"/>
         <label for="accordion-1"><xsl:value-of select="$ui_contents"/></label>
         <div id="Contents" class="contents-treeview"></div>
+    </aside>
+    <aside class="leftside">
         <div id="Index">
         <div class="index-label"><xsl:value-of select="$ui_index"/> &#32;&#x1f50e;&#xfe0e;&#32;</div>
             <div id="Bookmarks">
