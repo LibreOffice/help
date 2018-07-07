@@ -457,7 +457,6 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
     padding: 0 0 0 20px;
 }
 .index-label {
-    float: left;
     font-size: 22px;
     color: #148603;
     padding-left: 20px;
@@ -756,8 +755,13 @@ li.disabled a {
         background-color: #F4F7F7;
         border-right: 1px solid rgba(0,0,0,0.04);
         float: left;
-        width: 320px;
-        grid-area: sidebar;
+        width: 320px;        
+    }
+    .leftside {
+        grid-area: leftside;
+    }
+    .rightside {
+        grid-area: rightside;
     }
     .google-search {
         margin: 0;
@@ -777,6 +781,21 @@ li.disabled a {
         left: 80px;
         border: none;
     }
+    #DisplayArea {
+        padding: 10px 50px;
+        width: 800px;
+    }
+    #search-bar {
+        max-width: 290px;
+    }
+}
+@media screen and (min-width: 1440px) {
+    #Contents {
+        color: #333;
+        z-index: 6;
+        display: block;
+        padding: 0 0 0 20px;
+    }
     label[for=accordion-1] {
         background-color: transparent;
         text-decoration: none;
@@ -787,28 +806,30 @@ li.disabled a {
      label[for=accordion-1]:after {
         content: "";
     }
-    #DisplayArea {
-        padding: 10px 50px;
-        width: 800px;
-    }
-    #Contents {
-        color: #333;
-        z-index: 6;
-        display: block;
-        padding: 0 0 0 20px;
-    }
-    #search-bar {
-        max-width: 290px;
-    }
 }
 @supports (grid-area: auto) {
     @media screen and (min-width: 960px) {
         body {
             display: grid;
             grid-template-columns: 320px 1fr;
-            grid-template-rows: 1fr minmax(1em, auto);
+            grid-template-rows: minmax(1em, auto) minmax(1em, auto) 1fr;
             grid-template-areas: "header header"
-                                 "sidebar main"
+                                 "rightside main"
+                                 "leftside main"
+        }
+    }
+    @media screen and (min-width: 1440px) {
+        body {
+            display: grid;
+            grid-template-columns: 320px 900px 1fr;
+            grid-template-rows: 1fr minmax(1em, auto);
+            grid-template-areas: "header header header"
+                                 "leftside main rightside"
+        }
+        .rightside {
+            width: auto;
+            border-right: none;
+            border-left: 1px solid rgba(0,0,0,0.04);
         }
     }
 }
