@@ -11,7 +11,7 @@ $(eval $(call gb_Package_Package,helpcontent2_html_dynamic,$(call gb_CustomTarge
 
 $(eval $(call gb_Package_use_customtarget,helpcontent2_html_dynamic,helpcontent2/help3xsl))
 
-$(eval $(call gb_Package_add_files,helpcontent2_html_dynamic,$(LIBO_SHARE_HELP_FOLDER)/$(if $(HELP_ONLINE),/$(PRODUCTVERSION)), \
+$(eval $(call gb_Package_add_files,helpcontent2_html_dynamic,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION)), \
     hid2file.js \
 ))
 
