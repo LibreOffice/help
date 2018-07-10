@@ -142,7 +142,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/02250000 \
     helpcontent2/source/text/shared/01/03010000 \
     helpcontent2/source/text/shared/01/03020000 \
-    helpcontent2/source/text/shared/01/03040000 \
     helpcontent2/source/text/shared/01/03050000 \
     helpcontent2/source/text/shared/01/03060000 \
     helpcontent2/source/text/shared/01/03110000 \
