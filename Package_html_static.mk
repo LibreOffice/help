@@ -16,7 +16,7 @@ $(eval $(call gb_Package_add_files,helpcontent2_html_static,$(LIBO_SHARE_HELP_FO
 
 $(eval $(call gb_Package_add_file,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/index.html,index2.html))
 
-$(eval $(call gb_Package_add_files,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOLDER)/$(if $(HELP_ONLINE),/$(PRODUCTVERSION)),\
+$(eval $(call gb_Package_add_files,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION)),\
 	default.css \
 	fuse.js \
 	help.js \
