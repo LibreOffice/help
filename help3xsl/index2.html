@@ -37,6 +37,11 @@
     }
     var bookmark = rest.slice(rest.indexOf('/')+1, rest.indexOf('?'));
     var file = map[bookmark];
+    // check first if a root bookmark @@nowidget@@ can be used
+    if (file === undefined){
+    var b2 = bookmark.substring(0, bookmark.lastIndexOf("/")) + '/@@nowidget@@';
+    file = map[b2];
+    }
     // rebuild URL
     if (file === undefined){
     var newURL = lang + '/' + defaultFile + '?System=' + system + '&DbPAR=' + module;
@@ -58,4 +63,3 @@
 </script>
 </body>
 </html>
-
