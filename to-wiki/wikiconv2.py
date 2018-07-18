@@ -1071,8 +1071,6 @@ class Item(ElementBase):
                 sys.stderr.write('Unhandled item type. Possibly type has been localized.\n')
             finally:
                 raise UnhandledItemType
-        return replace_text(self.text)
-
 
 class Paragraph(ElementBase):
     def __init__(self, attrs, parent):
