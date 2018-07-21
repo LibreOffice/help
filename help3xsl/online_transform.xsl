@@ -22,6 +22,7 @@
 <xsl:output indent="yes" method="html" doctype-system= "about:legacy-compat"/>
 
 <xsl:include href="localized.xsl"/>
+<xsl:include href="link.txt.xsl"/>
 <!--
 ############################
 # Variables and Parameters #
@@ -1073,11 +1074,16 @@
                 </xsl:otherwise>
             </xsl:choose>
          </xsl:when>
+         <!-- generic media file -->
          <xsl:when test="starts-with(@src,'media/')">
              <xsl:value-of select="concat($target,@src)"/>
          </xsl:when>
+         <!-- handle icons -->
          <xsl:when test="not(starts-with(@src,'media/'))">
-             <xsl:value-of select="concat($target,'media/icon-themes/',@src)"/>
+            <xsl:variable name="linklist">
+                 <xsl:call-template name="linktxt"><xsl:with-param name="src1" select="@src"/></xsl:call-template>
+            </xsl:variable>
+            <xsl:value-of select="concat($target,'media/icon-themes/',$linklist)"/>
          </xsl:when>
          <xsl:otherwise>
              <xsl:value-of select="concat($target,@src)"/>
