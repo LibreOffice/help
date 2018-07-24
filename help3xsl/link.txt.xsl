@@ -1717,7 +1717,7 @@ Stylesheet map Colibre icon images from link.txt
 <xsl:when test="$src1='cmd/sc_cellprotection.png'"><xsl:text>cmd/sc_protect.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_cellprotection.png'"><xsl:text>cmd/lc_protect.png</xsl:text></xsl:when>
 
-<xsl:otherwise><xsl:text select="$src1"/></xsl:otherwise>
+<xsl:otherwise><xsl:value-of select="$src1"/></xsl:otherwise>
 
 </xsl:choose>
 </xsl:template>
