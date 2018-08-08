@@ -15,9 +15,6 @@
 $(eval $(call gb_Package_Package,helpcontent2_html_media,$(SRCDIR)/helpcontent2/source/media))
 
 $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media, \
-    files/scalc/imtrigon.ods \
-    files/scalc/pivot.ods \
-    files/scalc/trigon.ods \
     helpimg/area1.png \
     helpimg/area2.png \
     helpimg/border_ca_1.png \

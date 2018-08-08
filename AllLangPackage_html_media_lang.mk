@@ -74,7 +74,6 @@ $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,
 ))
 
 $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,fr,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media, \
-    files/scalc/fr/pivot.ods \
     helpimg/fr/feldalle.png \
     helpimg/fr/feldbrei.png \
     helpimg/fr/feldcolo.png \
@@ -155,7 +154,6 @@ $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,
 ))
 
 $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,pt-BR,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media, \
-    files/scalc/pt-BR/pivot.ods \
     helpimg/pt-BR/feldalle.png \
     helpimg/pt-BR/feldbrei.png \
     helpimg/pt-BR/feldcolo.png \
