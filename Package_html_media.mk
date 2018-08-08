@@ -315,18 +315,8 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/cui/ui/optionsdialog/impressoptionsgeneraldialog.png \
     screenshots/cui/ui/pageformatpage/PageFormatPage.png \
     screenshots/modules/scalc/ui/deletecells/DeleteCellsDialog.png \
-    screenshots/modules/scalc/ui/xmlsourcedialog/XMLSourceDialog.png \
     screenshots/modules/sdraw/ui/dlgsnap/SnapObjectDialog.png \
     screenshots/modules/simpress/ui/headerfooterdialog/HeaderFooterDialog.png \
-    screenshots/modules/smath/ui/alignmentdialog/AlignmentDialog.png \
-    screenshots/modules/smath/ui/catalogdialog/CatalogDialog.png \
-    screenshots/modules/smath/ui/fontdialog/FontDialog.png \
-    screenshots/modules/smath/ui/fontsizedialog/FontSizeDialog.png \
-    screenshots/modules/smath/ui/fonttypedialog/FontsDialog.png \
-    screenshots/modules/smath/ui/savedefaultsdialog/SaveDefaultsDialog.png \
-    screenshots/modules/smath/ui/spacingdialog/SpacingDialog.png \
-    screenshots/modules/smath/ui/symdefinedialog/EditSymbols.png \
-    screenshots/modules/swriter/ui/watermarkdialog/WatermarkDialog.png \
 ))
 
 # vim: set noet sw=4 ts=4:

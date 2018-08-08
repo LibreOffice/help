@@ -54,12 +54,6 @@ $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,
     helpimg/de/zellvor.png \
 ))
 
-#TODO: Content for en-US is probably an error here; it should likely be part of the language-
-# independent helpcontent2/Package_html_media.mk instead:
-$(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,en-US,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media, \
-    screenshots/modules/swriter/ui/exportepub/en-US/EPubDialog.png \
-))
-
 $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,es,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media, \
     helpimg/es/feldalle.png \
     helpimg/es/feldcolo.png \
@@ -169,7 +163,6 @@ $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,
     helpimg/pt-BR/sheettabs.png \
     helpimg/pt-BR/swh00117.png \
     helpimg/pt-BR/zellvor.png \
-    screenshots/modules/swriter/ui/exportepub/pt-BR/EPubDialog.png \
 ))
 
 $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,sk,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media, \
@@ -233,18 +226,5 @@ $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,
     helpimg/zh-TW/swh00117.png \
     helpimg/zh-TW/zellvor.png \
 ))
-
-#TODO: fy is filtered out for now, as $(SRCDIR)/helpcontent2/source/media/ doesn't contain the
-# corresponding screenshots yet:
-$(foreach lang,$(filter-out en-US fy,$(completelangiso)),$(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,$(lang),$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media, \
-    screenshots/modules/smath/ui/alignmentdialog/$(lang)/AlignmentDialog.png \
-    screenshots/modules/smath/ui/catalogdialog/$(lang)/CatalogDialog.png \
-    screenshots/modules/smath/ui/fontdialog/$(lang)/FontDialog.png \
-    screenshots/modules/smath/ui/fontsizedialog/$(lang)/FontSizeDialog.png \
-    screenshots/modules/smath/ui/fonttypedialog/$(lang)/FontsDialog.png \
-    screenshots/modules/smath/ui/savedefaultsdialog/$(lang)/SaveDefaultsDialog.png \
-    screenshots/modules/smath/ui/spacingdialog/$(lang)/SpacingDialog.png \
-    screenshots/modules/smath/ui/symdefinedialog/$(lang)/EditSymbols.png \
-)))
 
 # vim: set noet sw=4 ts=4:
