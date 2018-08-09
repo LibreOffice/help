@@ -16,7 +16,7 @@ xsltproc get_tree.xsl <file.tree>
 <xsl:param name="lang"/>
 <xsl:param name="local"/>
 <xsl:param name="productversion"/>
-<xsl:param name="productname" select="'LibreOffice'"/>
+<xsl:param name="productname"/>
 <xsl:output indent="no" method="text"/>
 <!--
 ############################

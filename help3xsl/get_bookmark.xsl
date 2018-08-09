@@ -18,7 +18,7 @@ xsltproc get_bookmark.xsl <file.xhp>
 <xsl:param name="app"/>
 <xsl:param name="local"/>
 <xsl:param name="Language"/>
-<xsl:param name="productname" select="'LibreOffice'"/>
+<xsl:param name="productname"/>
 <xsl:param name="productversion"/>
 
 <xsl:output indent="yes" method="text"/>
