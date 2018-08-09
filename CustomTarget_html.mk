@@ -80,7 +80,8 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
 			--stringparam lang $(LANG) \
 			--stringparam local $(if $(HELP_ONLINE),'no','yes') \
-			--stringparam productversion $(PRODUCTVERSION) \
+			--stringparam productname "$(PRODUCTNAME)" \
+			--stringparam productversion "$(PRODUCTVERSION)" \
 			-o $@ \
 			$(SRCDIR)/helpcontent2/help3xsl/get_tree.xsl \
 			$(TREE_FILE) \
@@ -112,7 +113,8 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 				--stringparam Language $* \
 				--stringparam local $(if $(HELP_ONLINE),'no','yes') \
 				--stringparam root $(if $(filter WNT,$(OS)),$$(cygpath -m `pwd`),`pwd`)/ \
-				--stringparam productversion $(PRODUCTVERSION) \
+				--stringparam productname "$(PRODUCTNAME)" \
+				--stringparam productversion "$(PRODUCTVERSION)" \
 				-o $(dir $@)$${xhp%.xhp}.html \
 				$(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl \
 				$(if $(filter WNT,$(OS)),$$(cygpath -m `pwd`),`pwd`)/$$xhp \
@@ -174,7 +176,8 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 					--stringparam app $(APP) \
 					--stringparam Language $(HELP_LANG) \
 					--stringparam local $(if $(HELP_ONLINE),'no','yes') \
-					--stringparam productversion $(PRODUCTVERSION) \
+					--stringparam productname "$(PRODUCTNAME)" \
+					--stringparam productversion "$(PRODUCTVERSION)" \
 					$(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
 					$$xhp \
 			; done \
