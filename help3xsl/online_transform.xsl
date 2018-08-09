@@ -236,11 +236,6 @@
                 </script>
                 <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
             </div>
-            <div class="donation">
-                <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">
-                    <xsl:value-of select="$ui_donate"/>
-                </a></p>
-            </div>
         </xsl:if>
     </div>
     <footer>
