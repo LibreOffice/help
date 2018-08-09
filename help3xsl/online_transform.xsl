@@ -29,17 +29,15 @@
 ############################
 //-->
 
-<xsl:param name="productversion"/>
 <xsl:param name="local" />
 <xsl:param name="root"/>
 <xsl:param name="Language"/>
+<xsl:param name="productname"/>
+<xsl:param name="productversion"/>
 
-<xsl:param name="productname" select="'LibreOffice'"/>
 <xsl:param name="System" select="'WIN'"/>
 <xsl:param name="imgtheme" select="''"/>
 <xsl:param name="Id" />
-
-
 
 <!-- General Usage -->
 <xsl:variable name="am" select="'&amp;'"/>
