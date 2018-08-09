@@ -243,7 +243,7 @@
             <meta itemprop="datePublished" content="2020"/>
             <meta itemprop="headline" content="{$titleL10N}"/>
             <meta itemprop="license" content="https://www.libreoffice.org/download/license/"/>
-            <meta itemprop="image" content="media/navigation/libo-symbol-white.svg"/>
+            <meta itemprop="image" content="media/navigation/collabora-online-logo.svg"/>
         </xsl:if>
         <xsl:apply-templates select="/helpdocument/body"/>
     </div>
