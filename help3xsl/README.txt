@@ -1,49 +1,58 @@
-﻿----------------------------------------------------------------- 
-Helpcontent displayed in a browser directly from XML 
------------------------------------------------------------------ 
+﻿Helpcontent displayed in a browser
+==================================
 
-This README shows how to display Helpcontent2 XML pages (XHP) directly rendered in a modern browser. 
+This directory contains files needed to convert the XHP files to html, and
+also the html and css files needed for the actual rendering in the web
+browser.
 
------------------------------------------------------------------ 
-Background 
------------------------------------------------------------------ 
+Building and translation of the XHP files is now integrated into the
+LibreOffice build process based on gbuild.  If you want to use it, configure
+LibreOffice with one of the:
 
-The XML files must be transformed into HTML files with the help of a style sheet file (XSL).
+  --with-help=html   (for the local html files)
+  --with-help=online (for the html files that can be uploaded to a webserver)
 
-In the current helpcontent2, the processing is done in xmlhelp/ module, an ancient XSLT processor developed circa 2005 (OpenOffice.org 1.5)
+Using the online version
+------------------------
 
-Modern browsers such as Firefox, Chrome and Rekonq are capable to execute the transformation direcly in the client, by getting an URL that returns a XML file that contains the reference of the necessary XSL style sheet.
+When you have configured with --with-help=online, the result of the build is
+in
 
-How to display Helpcontent2 in a browser
+  instdir/help
 
-1. Open the browser
-2. Open the file index.html in source/ folder
-3. Navigate in pages
+You want to upload to your webserver like:
 
------------------------------------------------------------------ 
+  rsync -avz instdir/help/ username@webserver:/srv/www/htdocs/
+
+Then you also need to setup a link 'latest' on the server, like
+
+  ln -s 6.1 latest
+
+and make sure that symlinks are allowed in the webserver configuration.
+
 File descriptions
------------------------------------------------------------------ 
+-----------------
 
-default.css: 
--------------
-the cascading style sheet for HTML formatting.
+* default.css:
 
-online_transform.xsl:
---------------------
-the XSL transform file. Transform XHP files into HTML files.
+  the cascading style sheet for HTML formatting.
 
-This file is a modification of xmlhelper/util/main_transform.xsl, which was designed for xmlhelp XSL processor.
+* online_transform.xsl:
 
-help.js
--------
-This javascript file: 
-1. modifies href attributes in <a> of #DisplayArea to handle &DbPAR and &System params
-2. picks the bookmarks file and displays in #BottomLeft <div> area.
-3. Reads URL params.
+  the XSL transform file. Transform XHP files into HTML files.
 
------------------------------------------------------------------
+  This file is a modification of xmlhelper/util/main_transform.xsl, which was designed for xmlhelp XSL processor.
+
+* help.js
+
+  This javascript file:
+
+  1. modifies href attributes in <a> of #DisplayArea to handle &DbPAR and &System params
+  2. picks the bookmarks file and displays in #BottomLeft <div> area.
+  3. Reads URL params.
+
 New ‘Object’ tag
------------------------------------------------------------------
+----------------
 
 The filter online_transform.xsl now support the <object> tag defined for XHP files to allow a generic object in the browser. The <object> tag now maps to the following HTML5 tags:
 Maps to HTML5 <video> tag:
@@ -60,15 +69,3 @@ Maps to HTML5 <audio> tag:
 Maps to HTML5 <object> tag:
 
   <object id="1232312" type ="{mimetype}" data="object/testobject.swf" height="" width=""/>
-
------------------------------------------------------------------ 
-How to build the LibreOffice Browser help 
------------------------------------------------------------------ 
-
-1) run help-to-html.sh in helpcontent2/help3xsl/ folder. A previous language build must exist in workdir/HelpTranslatePartHelp/ . 
-The script will build all existing languages available in this folder. See help-to-html.sh script and adjust path.
-
-
-2) copy folder html/ to your root web server.
-
-
