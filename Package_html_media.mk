@@ -306,6 +306,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/warning_small.png \
     helpimg/what-if.png \
     helpimg/zellvor.png \
+    navigation/collabora-online-logo.svg \
     navigation/favicon.ico \
     navigation/libo-base.svg \
     navigation/libo-basic.svg \
@@ -314,7 +315,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     navigation/libo-draw.svg \
     navigation/libo-impress.svg \
     navigation/libo-math.svg \
-    navigation/libo-symbol-white.svg \
     navigation/libo-writer.svg \
     screenshots/cui/ui/charnamepage/CharNamePage.png \
     screenshots/cui/ui/colorpickerdialog/ColorPicker.png \
