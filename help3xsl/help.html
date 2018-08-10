@@ -14,17 +14,17 @@
 <body>
 <script type="text/javascript">
     var url = window.location.href;
-    var n = url.indexOf('help.html?');
-    if (n != -1){
-    // the URL came from LibreOffice help (F1)
-    var version = getParameterByName("Version",url);
-    var rest = url.substr(n+12,url.length);
-    var newURL = version+'/index.html?'+rest;
-    window.open(newURL,'_self');
-    }else{
-    // URL came from elsewhere, direct access to webroot, we redirect to main Help page
-    var userLang = navigator.language || navigator.userLanguage;
-    window.open('latest/'+userLang+'/text/shared/main0108.html?&DbPAR=WRITER&System=WIN','_self');
+    var n = url.indexOf('?');
+    if (n != -1) {
+        // the URL came from LibreOffice help (F1)
+        var version = getParameterByName("Version", url);
+        var query = url.substr(n + 1, url.length);
+        var newURL = version + '/index.html?' + query;
+        window.location.href = newURL;
+    } else {
+        // URL came from elsewhere, direct access to webroot, we redirect to main Help page
+        var userLang = navigator.language || navigator.userLanguage;
+        window.location.href = 'latest/' + userLang + '/text/shared/main0108.html?&DbPAR=WRITER&System=WIN';
     }
 </script>
 </body>
