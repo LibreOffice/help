@@ -27,13 +27,14 @@
         }
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
+
     var url = window.location.href;
-    var n = url.indexOf('help.html?');
+    var n = url.indexOf('?');
     if (n != -1) {
         // the URL came from LibreOffice help (F1)
         var version = getParameterByName("Version", url);
-        var rest = url.substr(n + 12, url.length);
-        var newURL = version + '/index.html?' + rest;
+        var query = url.substr(n + 1, url.length);
+        var newURL = version + '/index.html?' + query;
         window.open(newURL, '_self');
     } else {
         // URL came from elsewhere, direct access to webroot, we redirect to main Help page
