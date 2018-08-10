@@ -16,49 +16,49 @@
 <script type="text/javascript">
     var url = window.location.href;
     var n = url.indexOf('index.html?');
-    if (n != -1){
-    // the URL came from LibreOffice help (F1)
-    var target = getParameterByName("Target",url);
-    var version = getParameterByName("Version",url);
-    var lang = getParameterByName("Language",url);
-    var system  = getParameterByName("System",url);
-    var module;
-    var defaultFile;
-    var smodule = target.substr(0, target.indexOf('/'));
-    switch (smodule) {
-    case "swriter":   {defaultFile='text/swriter/main0000.html';module="WRITER";break;}
-    case "scalc":     {defaultFile='text/scalc/main0000.html';module="CALC";break;}
-    case "simpress":  {defaultFile='text/simpress/main0000.html';module="IMPRESS";break;}
-    case "sdraw":     {defaultFile='text/sdraw/main0000.html';module="DRAW";break;}
-    case "smath":     {defaultFile='text/smath/main0000.html';module="MATH";break;}
-    case "sdatabase": {defaultFile='text/shared/explorer/database/main.html';module="BASE";break;}
-    case "sbasic":    {defaultFile='text/sbasic/shared/main0601.html';module="BASIC";break;}
-    default:          {defaultFile='text/shared/main0000.html';module="WRITER";break;}
-    }
-    var bookmark = target.slice(target.indexOf('/') + 1, target.length);
-    var file = map[bookmark];
-    // check first if a root bookmark @@nowidget@@ can be used
-    if (file === undefined){
-    var b2 = bookmark.substring(0, bookmark.lastIndexOf("/")) + '/@@nowidget@@';
-    file = map[b2];
-    }
-    // rebuild URL
-    if (file === undefined){
-    var newURL = lang + '/' + defaultFile + '?System=' + system + '&DbPAR=' + module;
-    }else{
-    var indx = file.indexOf('#');
-    var bm = file.substr(indx,file.length);
-    file = file.substr(0,indx);
-    var newURL = lang + '/' + file + '?System=' + system + '&DbPAR=' + module + bm;
-    }
-    window.open(newURL,'_self');
-    }else{
-    // URL came from elsewhere, direct access to webroot, we redirect to main Help page
-    var userLang = navigator.language;
-    if(userLang === undefined ){
-    userlang="en-US";
-    }
-    window.open(userLang + '/text/shared/main0108.html?&DbPAR=WRITER&System=WIN','_self');
+    if (n != -1) {
+        // the URL came from LibreOffice help (F1)
+        var target = getParameterByName("Target",url);
+        var version = getParameterByName("Version",url);
+        var lang = getParameterByName("Language",url);
+        var system  = getParameterByName("System",url);
+        var module;
+        var defaultFile;
+        var smodule = target.substr(0, target.indexOf('/'));
+        switch (smodule) {
+            case "swriter":   {defaultFile='text/swriter/main0000.html';module="WRITER";break;}
+            case "scalc":     {defaultFile='text/scalc/main0000.html';module="CALC";break;}
+            case "simpress":  {defaultFile='text/simpress/main0000.html';module="IMPRESS";break;}
+            case "sdraw":     {defaultFile='text/sdraw/main0000.html';module="DRAW";break;}
+            case "smath":     {defaultFile='text/smath/main0000.html';module="MATH";break;}
+            case "sdatabase": {defaultFile='text/shared/explorer/database/main.html';module="BASE";break;}
+            case "sbasic":    {defaultFile='text/sbasic/shared/main0601.html';module="BASIC";break;}
+            default:          {defaultFile='text/shared/main0000.html';module="WRITER";break;}
+        }
+        var bookmark = target.slice(target.indexOf('/') + 1, target.length);
+        var file = map[bookmark];
+        // check first if a root bookmark @@nowidget@@ can be used
+        if (file === undefined) {
+            var b2 = bookmark.substring(0, bookmark.lastIndexOf("/")) + '/@@nowidget@@';
+            file = map[b2];
+        }
+        // rebuild URL
+        if (file === undefined) {
+            var newURL = lang + '/' + defaultFile + '?System=' + system + '&DbPAR=' + module;
+        } else {
+            var indx = file.indexOf('#');
+            var bm = file.substr(indx,file.length);
+            file = file.substr(0,indx);
+            var newURL = lang + '/' + file + '?System=' + system + '&DbPAR=' + module + bm;
+        }
+        window.open(newURL,'_self');
+    } else {
+        // URL came from elsewhere, direct access to webroot, we redirect to main Help page
+        var userLang = navigator.language;
+        if (userLang === undefined) {
+            userlang="en-US";
+        }
+        window.open(userLang + '/text/shared/main0108.html?&DbPAR=WRITER&System=WIN','_self');
     }
 </script>
 </body>
