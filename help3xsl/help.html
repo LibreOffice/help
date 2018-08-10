@@ -8,23 +8,37 @@
 -->
 <html>
 <head>
-    <script type="text/javascript" src="latest/help.js"></script>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org *.google.com *.googleapis.com"/>
 </head>
 <body>
 <script type="text/javascript">
+    function getParameterByName(name, url) {
+        if (!url) {
+            url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)");
+        var results = regex.exec(url);
+        if (!results) {
+            return null;
+        }
+        if (!results[2]) {
+            return '';
+        }
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
     var url = window.location.href;
     var n = url.indexOf('help.html?');
-    if (n != -1){
-    // the URL came from LibreOffice help (F1)
-    var version = getParameterByName("Version",url);
-    var rest = url.substr(n+12,url.length);
-    var newURL = version+'/index.html?'+rest;
-    window.open(newURL,'_self');
-    }else{
-    // URL came from elsewhere, direct access to webroot, we redirect to main Help page
-    var userLang = navigator.language || navigator.userLanguage;
-    window.open('latest/'+userLang+'/text/shared/main0108.html?&DbPAR=WRITER&System=WIN','_self');
+    if (n != -1) {
+        // the URL came from LibreOffice help (F1)
+        var version = getParameterByName("Version", url);
+        var rest = url.substr(n + 12, url.length);
+        var newURL = version + '/index.html?' + rest;
+        window.open(newURL, '_self');
+    } else {
+        // URL came from elsewhere, direct access to webroot, we redirect to main Help page
+        var userLang = navigator.language || navigator.userLanguage;
+        window.open('latest/' + userLang + '/text/shared/main0108.html?&DbPAR=WRITER&System=WIN', '_self');
     }
 </script>
 </body>
