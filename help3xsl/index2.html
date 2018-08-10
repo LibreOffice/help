@@ -18,13 +18,13 @@
     var n = url.indexOf('index.html?');
     if (n != -1){
     // the URL came from LibreOffice help (F1)
+    var target = getParameterByName("Target",url);
     var version = getParameterByName("Version",url);
     var lang = getParameterByName("Language",url);
     var system  = getParameterByName("System",url);
-    var rest= url.substr(n+11,url.length);
     var module;
     var defaultFile;
-    var smodule = rest.substr(0, rest.indexOf('/'));
+    var smodule = target.substr(0, target.indexOf('/'));
     switch (smodule) {
     case "swriter":   {defaultFile='text/swriter/main0000.html';module="WRITER";break;}
     case "scalc":     {defaultFile='text/scalc/main0000.html';module="CALC";break;}
@@ -35,7 +35,7 @@
     case "sbasic":    {defaultFile='text/sbasic/shared/main0601.html';module="BASIC";break;}
     default:          {defaultFile='text/shared/main0000.html';module="WRITER";break;}
     }
-    var bookmark = rest.slice(rest.indexOf('/')+1, rest.indexOf('?'));
+    var bookmark = target.slice(target.indexOf('/') + 1, target.length);
     var file = map[bookmark];
     // check first if a root bookmark @@nowidget@@ can be used
     if (file === undefined){
