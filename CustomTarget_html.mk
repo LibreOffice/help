@@ -29,11 +29,12 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 		$(SRCDIR)/helpcontent2/help3xsl/generate_hid2file.xsl \
 		$(call gb_ExternalExecutable_get_dependencies,xsltproc) \
-		$(foreach module,$(html_TEXT_MODULES),$(call gb_AllLangHelp_get_helpfiles_target,$(module)))
+		$(foreach module,$(html_TEXT_MODULES),$(call gb_AllLangHelp_get_helpfiles_target,$(module))) \
+		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	$(call gb_Helper_abbreviate_dirs,\
 		( \
-			echo 'var map={' \
+			echo 'var hid2fileMap = {' \
 			&& RESPONSEFILE=$(call var2file,$(shell $(gb_MKTEMP)),100,$(foreach module,$(html_TEXT_MODULES),$(addprefix $(SRCDIR)/,$(gb_AllLangHelp_$(module)_HELPFILES)))) \
 			&& <"$$RESPONSEFILE" $(if $(filter WNT,$(OS)),tr -d '\r' | env -i PATH="$$PATH") xargs -n 1 printf '%s\n' \
 			| while read xhp; do \
