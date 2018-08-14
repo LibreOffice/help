@@ -27,7 +27,7 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 ))
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
-		$(SRCDIR)/helpcontent2/help3xsl/get_url.xsl \
+		$(SRCDIR)/helpcontent2/help3xsl/generate_hid2file.xsl \
 		$(call gb_ExternalExecutable_get_dependencies,xsltproc) \
 		$(foreach module,$(html_TEXT_MODULES),$(call gb_AllLangHelp_get_helpfiles_target,$(module)))
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
