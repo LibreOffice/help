@@ -11,6 +11,7 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org *.google.com *.googleapis.com"/>
     <script type="text/javascript" src="help2.js"></script>
     <script type="text/javascript" src="hid2file.js"></script>
+    <script type="text/javascript" src="languages.js"></script>
 </head>
 <body>
 <script type="text/javascript">
@@ -20,7 +21,7 @@
         // the URL came from LibreOffice help (F1)
         var target = getParameterByName("Target",url);
         var version = getParameterByName("Version",url);
-        var lang = getParameterByName("Language",url);
+        var lang = existingLang(getParameterByName("Language", url));
         var system  = getParameterByName("System",url);
         var module;
         var defaultFile;
@@ -54,11 +55,7 @@
         window.location.href = newURL;
     } else {
         // URL came from elsewhere, direct access to webroot, we redirect to main Help page
-        var userLang = navigator.language;
-        if (userLang === undefined) {
-            userlang="en-US";
-        }
-        window.location.href = userLang + '/text/shared/main0108.html?&DbPAR=WRITER&System=WIN';
+        window.location.href = existingLang(navigator.language) + '/text/shared/main0108.html?&DbPAR=WRITER&System=WIN';
     }
 </script>
 </body>

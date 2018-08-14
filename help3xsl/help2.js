@@ -120,4 +120,21 @@ function getParameterByName(name, url) {
     }
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
+
+function existingLang(lang) {
+    if (lang === undefined) {
+        return 'en-US';
+    }
+
+    if (languagesSet.has(lang)) {
+        return lang;
+    }
+
+    lang = lang.replace(/[-_].*/, '');
+    if (languagesSet.has(lang)) {
+        return lang;
+    }
+
+    return 'en-US';
+}
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
