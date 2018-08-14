@@ -16,6 +16,7 @@ html_BMARK_MODULES := swriter:WRITER scalc:CALC simpress:IMPRESS sdraw:DRAW shar
 
 $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 	hid2file.js \
+	languages.js \
 	$(foreach lang,$(gb_HELP_LANGS),\
 		$(lang)/bookmarks.js \
 		$(lang)/contents.js \
@@ -45,6 +46,14 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 			&& echo '};' \
 		) > $@ \
 	)
+
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/languages.js : \
+		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
+	( \
+		echo -n 'var languagesSet = new Set([' ; \
+		for lang in $(gb_HELP_LANGS) ; do echo -n "'$$lang', " ; done | sed 's/, $$//' ; \
+		echo ']);' \
+	) > $@
 
 define html_gen_contents_html_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/contents.part : $(call gb_HelpTarget__get_treefile,$(1),$(3))

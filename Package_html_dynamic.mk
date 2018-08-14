@@ -13,6 +13,7 @@ $(eval $(call gb_Package_use_customtarget,helpcontent2_html_dynamic,helpcontent2
 
 $(eval $(call gb_Package_add_files,helpcontent2_html_dynamic,$(LIBO_SHARE_HELP_FOLDER)/$(if $(HELP_ONLINE),/$(PRODUCTVERSION)), \
     hid2file.js \
+    languages.js \
 ))
 
 # vim: set noet sw=4 ts=4:
