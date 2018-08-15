@@ -15,6 +15,7 @@ $(eval $(call gb_AllLangPackage_add_files,helpcontent2_html_lang,$(LIBO_SHARE_HE
 	$(foreach lang,$(gb_HELP_LANGS),\
 		$(lang)/bookmarks.js \
 		$(lang)/contents.js \
+		$(lang)/langnames.js \
 	) \
 ))
 
