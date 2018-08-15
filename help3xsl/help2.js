@@ -137,4 +137,16 @@ function existingLang(lang) {
 
     return 'en-US';
 }
+
+function setupLanguages(target, page) {
+    var langNav = document.getElementById('langs-nav');
+    if (!langNav.classList.contains('loaded')) {
+        var html = '';
+        languagesSet.forEach(lang => {
+            html += '<a href="' + target + lang + page + '">' + lang + '</a>';
+        });
+        langNav.innerHTML = html;
+        langNav.classList.add('loaded');
+    }
+}
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
