@@ -21,6 +21,7 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 		$(lang)/bookmarks.js \
 		$(lang)/contents.js \
 		$(lang)/html.text \
+		$(lang)/langnames.js \
 		$(foreach module,$(html_TREE_MODULES),$(module)/$(lang)/contents.part) \
 		$(foreach module,$(html_BMARK_MODULES),$(firstword $(subst :, ,$(module)))/$(lang)/bookmarks.part) \
 		$(foreach module,$(html_TEXT_MODULES),filelists/html-help/$(module)/$(lang).filelist) \
@@ -47,12 +48,31 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 		) > $@ \
 	)
 
+# set of installed languages - has to be language independent
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/languages.js : \
 		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
 	( \
 		echo -n 'var languagesSet = new Set([' ; \
 		for lang in $(gb_HELP_LANGS) ; do echo -n "'$$lang', " ; done | sed 's/, $$//' ; \
 		echo ']);' \
+	) > $@
+
+define html_gen_langnames_js_dep
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/langnames.js : \
+	$(if $(filter en-US,$(1)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(1)))/helpcontent2/source/text/shared/help/browserhelp.xhp
+
+endef
+
+$(eval $(foreach lang,$(gb_HELP_LANGS),$(call html_gen_langnames_js_dep,$(lang))))
+
+# names of the languages - has to be translated, ie. per language
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/langnames.js : \
+		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
+	( \
+		echo 'var languageNames = {' ; \
+		grep '<paragraph[^>]*id="lang_' $(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*))/helpcontent2/source/text/shared/help/browserhelp.xhp | \
+			sed -e 's/^.*<variable id="\([^"]*\)"[^>]*>\([^<]*\)<.*$$/"\1": "\2",/' ; \
+		echo '};' \
 	) > $@
 
 define html_gen_contents_html_dep

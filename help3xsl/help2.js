@@ -143,7 +143,7 @@ function setupLanguages(target, page) {
     if (!langNav.classList.contains('loaded')) {
         var html = '';
         languagesSet.forEach(lang => {
-            html += '<a href="' + target + lang + page + '">' + lang + '</a>';
+            html += '<a href="' + target + lang + page + '">' + ((lang in languageNames)? languageNames[lang]: lang) + '</a>';
         });
         langNav.innerHTML = html;
         langNav.classList.add('loaded');
