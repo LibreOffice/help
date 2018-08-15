@@ -142,7 +142,7 @@
 <html lang="{$lang}">
     <head>
         <base href="{$install}"/>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <xsl:if test="$online">
             <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org *.google.com *.googleapis.com"/>
         </xsl:if>
