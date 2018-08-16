@@ -152,6 +152,7 @@
         <link  type="text/css" href="{$target}default.css" rel="Stylesheet" />
         <script type="text/javascript" src="{$target}help2.js"></script>
         <script type="text/javascript" src="{$target}languages.js"></script>
+        <script type="text/javascript" src="{$target}{$lang}/langnames.js"></script>
         <script type="text/javascript" src="{$target}fuse.js"></script>
         <script type="text/javascript" src="{$target}paginathing.js"></script>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -190,13 +191,7 @@
             <div class="lang">
                 <input id="langs" name="language-menu" type="checkbox" onchange="setupLanguages('{$target}', '{$htmlpage}');"/>
                 <label for="langs"><xsl:value-of select="$ui_language"/></label>
-                <nav id="langs-nav">
-                    <!--xsl:for-each select="$tmp_doc_ui//list//variable">
-                        <xsl:variable name ="ui_l1" select="@id"/>
-                        <xsl:variable name ="ui_l2" select="."/>
-                        <a href="{$target}{$ui_l1}{$htmlpage}"><xsl:value-of select="$ui_l2"/></a>
-                    </xsl:for-each-->
-                </nav>
+                <nav id="langs-nav"/><!-- is filled in via setupLanguages() on demand -->
             </div>
         </xsl:if>
     </div>
