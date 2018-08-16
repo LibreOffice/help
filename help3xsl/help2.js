@@ -138,6 +138,23 @@ function existingLang(lang) {
     return 'en-US';
 }
 
+function setupModules(target, lang) {
+    var modulesNav = document.getElementById('modules-nav');
+    if (!modulesNav.classList.contains('loaded')) {
+        var html =
+            '<a href="' + target + lang + '/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer-icon"></div>Writer</a>' +
+            '<a href="' + target + lang + '/text/scalc/main0000.html?DbPAR=CALC"><div class="calc-icon"></div>Calc</a>' +
+            '<a href="' + target + lang + '/text/simpress/main0000.html?DbPAR=IMPRESS"><div class="impress-icon"></div>Impress</a>' +
+            '<a href="' + target + lang + '/text/sdraw/main0000.html?DbPAR=DRAW"><div class="draw-icon"></div>Draw</a>' +
+            '<a href="' + target + lang + '/text/shared/explorer/database/main.html?DbPAR=BASE"><div class="base-icon"></div>Base</a>' +
+            '<a href="' + target + lang + '/text/smath/main0000.html?DbPAR=MATH"><div class="math-icon"></div>Math</a>' +
+            '<a href="' + target + lang + '/text/schart/main0000.html?DbPAR=CHART"><div class="chart-icon"></div>Chart</a>' +
+            '<a href="' + target + lang + '/text/sbasic/shared/main0601.html?DbPAR=BASIC"><div class="basic-icon"></div>Basic</a>';
+        modulesNav.innerHTML = html;
+        modulesNav.classList.add('loaded');
+    }
+}
+
 function setupLanguages(target, page) {
     var langNav = document.getElementById('langs-nav');
     if (!langNav.classList.contains('loaded')) {
