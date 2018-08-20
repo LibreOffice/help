@@ -1043,48 +1043,52 @@
 
 <!-- Insert an image -->
 <xsl:template name="insertimage">
-  <xsl:variable name="src">
-    <xsl:choose>
-         <xsl:when test="starts-with(@src,'media/screenshots/')">
-            <xsl:choose>
-                <xsl:when test="@localize='true' and not($lang='en-US')">
-                    <xsl:variable name="tmp0" select="substring-before(@src, '/ui/')"/>
-                    <xsl:variable name="tmp1" select="substring-after(@src, '/ui/')"/>
-                    <xsl:variable name="tmp2" select="substring-before($tmp1,'/')"/>
-                    <xsl:variable name="tmp3" select="substring-after($tmp1,'/')"/>
-                    <xsl:value-of select="concat($target,$tmp0,'/ui/', $tmp2, '/',$lang,'/',$tmp3)"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="concat($target,@src)"/>
-                </xsl:otherwise>
-            </xsl:choose>
-         </xsl:when>
-         <!-- generic media file -->
-         <xsl:when test="starts-with(@src,'media/')">
-             <xsl:value-of select="concat($target,@src)"/>
-         </xsl:when>
-         <!-- handle icons -->
-         <xsl:when test="not(starts-with(@src,'media/'))">
-            <xsl:variable name="linklist">
-                 <xsl:call-template name="linktxt"><xsl:with-param name="src1" select="@src"/></xsl:call-template>
-            </xsl:variable>
-            <xsl:value-of select="concat($target,'media/icon-themes/',$linklist)"/>
-         </xsl:when>
-         <xsl:otherwise>
-             <xsl:value-of select="concat($target,@src)"/>
-         </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-<!-- <p class="debug">Image: <xsl:value-of select="$src"/></p>-->
-  <xsl:variable name="alt"><xsl:value-of select="./alt"/></xsl:variable>
-  <xsl:variable name="width">
-        <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@width"/></xsl:call-template>
-  </xsl:variable>
-  <xsl:variable name="height">
-        <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
-  </xsl:variable>
-  <xsl:variable name="istyle"><xsl:value-of select="concat('width:',$width,';','height:',$height,';')"/></xsl:variable>
-  <img src="{$src}" alt="{$alt}" title="{$alt}" style="{$istyle}"></img>
+    <xsl:variable name="src2">
+        <xsl:choose>
+            <xsl:when test="starts-with(@src,'media/screenshots/')">
+                <xsl:choose>
+                    <xsl:when test="not(@localize=false) and not($lang='en-US')">
+                        <xsl:variable name="tmp0" select="substring-before(@src, '/ui/')"/>
+                        <xsl:variable name="tmp1" select="substring-after(@src, '/ui/')"/>
+                        <xsl:variable name="tmp2" select="substring-before($tmp1,'/')"/>
+                        <xsl:variable name="tmp3" select="substring-after($tmp1,'/')"/>
+                        <xsl:value-of select="concat($target,$tmp0,'/ui/', $tmp2, '/',$lang,'/',$tmp3)"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="concat($target,@src)"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:when>
+            <!-- generic media file -->
+            <xsl:when test="starts-with(@src,'media/')">
+                <xsl:value-of select="concat($target,@src)"/>
+            </xsl:when>
+            <!-- handle icons -->
+            <xsl:when test="not(starts-with(@src,'media/'))">
+                <xsl:variable name="linklist">
+                    <xsl:call-template name="linktxt"><xsl:with-param name="src1" select="@src"/></xsl:call-template>
+                </xsl:variable>
+                <xsl:value-of select="concat($target,'media/icon-themes/',$linklist)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="concat($target,@src)"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="alt"><xsl:value-of select="./alt"/></xsl:variable>
+    <xsl:variable name="width">
+        <xsl:if test="string-length(@width)!=0">
+            <xsl:value-of select="'width:'"/>
+            <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@width"/></xsl:call-template>
+        </xsl:if>
+    </xsl:variable>
+    <xsl:variable name="height">
+        <xsl:if test="string-length(@height)!=0">
+            <xsl:value-of select="'height:'"/>
+            <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
+        </xsl:if>
+    </xsl:variable>
+    <img src="{$src2}" alt="{$alt}" title="{$alt}"><xsl:attribute name="style"><xsl:value-of select="$width"/><xsl:value-of select="$height"/></xsl:attribute></img>
 </xsl:template>
 
 <!-- Insert an object -->
@@ -1195,20 +1199,20 @@
     <xsl:param name="value"/>
     <xsl:choose>
         <xsl:when test="contains($value, 'cm')">
-            <xsl:value-of select="concat(round(number(substring-before($value, 'cm')) * $dpcm),'px')"/>
+            <xsl:value-of select="concat(round(number(substring-before($value, 'cm')) * $dpcm),'px;')"/>
         </xsl:when>
         <xsl:when test="contains($value, 'mm')">
-            <xsl:value-of select="concat(round(number(substring-before($value, 'mm')) * $dpmm),'px')"/>
+            <xsl:value-of select="concat(round(number(substring-before($value, 'mm')) * $dpmm),'px;')"/>
         </xsl:when>
         <xsl:when test="contains($value, 'in')">
-            <xsl:value-of select="concat(round(number(substring-before($value, 'in')) * $dpi),'px')"/>
+            <xsl:value-of select="concat(round(number(substring-before($value, 'in')) * $dpi),'px;')"/>
         </xsl:when>
         <xsl:when test="contains($value, 'px')">
             <xsl:value-of select="$value"/>
         </xsl:when>
         <xsl:otherwise>
 <!--                      <xsl:message>measure_conversion.xsl: Find no conversion for <xsl:value-of select="$value"/> to 'px'!</xsl:message> -->
-            <xsl:value-of select="concat($value, 'px')"/>
+            <xsl:value-of select="concat($value, 'px;')"/>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
