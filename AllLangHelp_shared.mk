@@ -336,6 +336,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/grid \
     helpcontent2/source/text/shared/01/grid_and_helplines \
     helpcontent2/source/text/shared/01/guides \
+    helpcontent2/source/text/shared/01/image_compression \
     helpcontent2/source/text/shared/01/mediaplayer \
     helpcontent2/source/text/shared/01/menu_edit_find \
     helpcontent2/source/text/shared/01/menu_view_sidebar \
@@ -515,6 +516,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/05/00000160 \
     helpcontent2/source/text/shared/05/err_html \
     helpcontent2/source/text/shared/06/youtubevideos \
+    helpcontent2/source/text/shared/06/svx_screenshots \
     helpcontent2/source/text/shared/07/09000000 \
     helpcontent2/source/text/shared/3dsettings_toolbar \
     helpcontent2/source/text/shared/autokorr/01000000 \
