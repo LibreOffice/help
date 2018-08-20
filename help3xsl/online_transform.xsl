@@ -1043,11 +1043,11 @@
 
 <!-- Insert an image -->
 <xsl:template name="insertimage">
-  <xsl:variable name="src">
+  <xsl:variable name="src2">
     <xsl:choose>
          <xsl:when test="starts-with(@src,'media/screenshots/')">
             <xsl:choose>
-                <xsl:when test="@localize='true' and not($lang='en-US')">
+                <xsl:when test="not(@localize=false) and not($lang='en-US')">
                     <xsl:variable name="tmp0" select="substring-before(@src, '/ui/')"/>
                     <xsl:variable name="tmp1" select="substring-after(@src, '/ui/')"/>
                     <xsl:variable name="tmp2" select="substring-before($tmp1,'/')"/>
@@ -1075,7 +1075,6 @@
          </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-<!-- <p class="debug">Image: <xsl:value-of select="$src"/></p>-->
   <xsl:variable name="alt"><xsl:value-of select="./alt"/></xsl:variable>
   <xsl:variable name="width">
         <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@width"/></xsl:call-template>
@@ -1084,7 +1083,7 @@
         <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
   </xsl:variable>
   <xsl:variable name="istyle"><xsl:value-of select="concat('width:',$width,';','height:',$height,';')"/></xsl:variable>
-  <img src="{$src}" alt="{$alt}" title="{$alt}" style="{$istyle}"></img>
+  <img src="{$src2}" alt="{$alt}" title="{$alt}" style="{$istyle}"></img>
 </xsl:template>
 
 <!-- Insert an object -->
