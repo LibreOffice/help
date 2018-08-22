@@ -167,7 +167,7 @@
     <div class="header-extrawurst">
         <header>
             <div class="logo-container">
-                <a class="logo" href="{$target}{$lang}/text/shared/main0108.html">
+		    <a class="logo" href="{$target}{$lang}/text/shared/05/new_help.html">
                     <div class="symbol"></div>
                     <p><xsl:value-of select="$ui_logo"/></p>
                 </a>
