@@ -723,10 +723,10 @@
 <xsl:template match="tablecell">
     <xsl:choose>
         <xsl:when test="paragraph[@role='tablehead']">
-            <td class='tableheadcell'><xsl:apply-templates /></td>
+            <td rowspan="{@rowspan}" colspan="{@colspan}" class='tableheadcell'><xsl:apply-templates /></td>
         </xsl:when>
         <xsl:otherwise>
-            <td><xsl:apply-templates /></td>
+            <td rowspan="{@rowspan}" colspan="{@colspan}"><xsl:apply-templates /></td>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -735,10 +735,10 @@
 <xsl:template match="tablecell" mode="embedded">
     <xsl:choose>
         <xsl:when test="paragraph[@role='tablehead']">
-            <td class='tableheadcell'><xsl:apply-templates mode="embedded"/></td>
+            <td rowspan="{@rowspan}" colspan="{@colspan}" class='tableheadcell'><xsl:apply-templates mode="embedded"/></td>
         </xsl:when>
         <xsl:otherwise>
-            <td><xsl:apply-templates mode="embedded"/></td>
+            <td rowspan="{@rowspan}" colspan="{@colspan}"><xsl:apply-templates mode="embedded"/></td>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
