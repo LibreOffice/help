@@ -276,7 +276,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/05/02140000 \
     helpcontent2/source/text/scalc/06/calcsamplefiles \
     helpcontent2/source/text/scalc/05/empty_cells \
-    helpcontent2/source/text/scalc/05/OpenCL_options \
     helpcontent2/source/text/scalc/guide/address_auto \
     helpcontent2/source/text/scalc/guide/auto_off \
     helpcontent2/source/text/scalc/guide/autofilter \
