@@ -113,7 +113,6 @@
 <xsl:variable name="ytaccept"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytaccept']"/></xsl:variable>
 <xsl:variable name="ytpromovideoH2"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='externalvideo']"/></xsl:variable>
 <xsl:variable name="ytprivacy"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytprivacy']"/></xsl:variable>
-<xsl:variable name="ui_books"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='books']"/></xsl:variable>
 <!--
 #############
 # Templates #
@@ -152,7 +151,7 @@
         <base href="{$install}"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <xsl:if test="$online">
-            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org"/>
+            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
         </xsl:if>
         <title><xsl:value-of disable-output-escaping="yes" select="$titleL10N"/></title>
         <link rel="shortcut icon" href="media/navigation/favicon.ico"/>
@@ -165,9 +164,6 @@
         <script type="text/javascript" src="flexsearch.debug.js"></script>
         <script type="text/javascript" src="prism.js"></script>
         <script type="text/javascript" src="help2.js" defer=""></script>
-        <xsl:if test="$online">
-            <script type="text/javascript" src="tdf_matomo.js" defer=""></script>
-        </xsl:if>
         <script type="text/javascript" src="a11y-toggle.js" defer=""></script>
         <script type="text/javascript" src="paginathing.js" defer=""></script>
         <script type="text/javascript" src="{$lang}/bookmarks.js" defer=""></script>
@@ -239,7 +235,10 @@
         <xsl:if test="$online">
             <xsl:if test="$xapian='yes'">
                 <div class="xapian-omega-search">
-                    <form name="P" method="get" action="/{$productversion}/{$lang}/search" target="_top">
+                    <form name="P" method="get" action="/cgi-bin/omega/omega" target="_top">
+                        <input type="hidden" name="DB" value="{$lang}2504"/>
+                        <input type="hidden" name="FMT" value="25.04/{$lang}/xap_tpl"/>
+                        <input type="hidden" name="DEFAULTOP" value="and"/>
                         <input id="omega-autofocus" type="search" name="P" placeholder="{$ui_pholderfullsearch}" dir="auto"/>
                         <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
                     </form>
@@ -257,7 +256,7 @@
             <meta itemprop="datePublished" content="2020"/>
             <meta itemprop="headline" content="{$titleL10N}"/>
             <meta itemprop="license" content="https://www.libreoffice.org/download/license/"/>
-            <meta itemprop="image" content="media/navigation/libo-symbol-white.svg"/>
+            <meta itemprop="image" content="media/navigation/collabora-online-logo.svg"/>
         </xsl:if>
         <xsl:apply-templates select="/helpdocument/body"/>
     </div>
@@ -269,23 +268,8 @@
         </xsl:if>
     </div>
     <footer>
-        <h2 style="text-align: center;"><a href="https://books.libreoffice.org" target="_blank"><xsl:value-of select="$ui_books"/></a></h2>
-        <div class="noteicon" dir="auto" style="display:flex;justify-content:center;flex-wrap:wrap;row-gap:15px;">
-            <img src="media/navigation/libo-writer.svg" alt="Writer Icon" style="width:60px;height:60px;"></img>
-            <img src="media/navigation/libo-calc.svg" alt="Calc Icon" style="width:60px;height:60px;"></img>
-            <img src="media/navigation/libo-impress.svg" alt="Impress Icon" style="width:60px;height:60px;"></img>
-            <img src="media/navigation/libo-draw.svg" alt="Draw Icon" style="width:60px;height:60px;"></img>
-            <img src="media/navigation/libo-base.svg" alt="Base Icon" style="width:60px;height:60px;"></img>
-            <img src="media/navigation/libo-math.svg" alt="Math Icon" style="width:60px;height:60px;"></img>
-            <img src="media/navigation/libo-symbol-black.svg" alt="Getting Started Icon" style="width:60px;height:60px;"></img>
-        </div>
         <xsl:if test="$online">
-            <p itemscope="true" itemtype="http://schema.org/Organization" dir="auto">
-            <meta itemprop="name" content="The Document Foundation"/>
-            <meta itemprop="legalName" content="The Document Foundation"/>
-            <meta itemprop="alternateName" content="TDF"/>
-            <meta itemprop="publishingPrinciples" content="https://www.libreoffice.org/imprint"/>
-            <a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
+            <p><a href="https://www.collaboraoffice.com/about-us/" target="_blank">About Us</a> | <a href="https://www.collaboraoffice.com/privacy-policy/" target="_blank">Privacy Policy</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in TDF's <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. Collabora Office is derived from LibreOffice which was based on OpenOffice.org.</p>
         </xsl:if>
         <div id="DEBUG" class="debug">
             <h3 class="bug">Help content debug info:</h3>
