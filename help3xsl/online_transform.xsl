@@ -152,7 +152,7 @@
         <noscript><meta http-equiv="refresh" content="0; URL={$install}{$lang}/noscript.html"/></noscript>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <xsl:if test="$online">
-            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org"/>
+            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
         </xsl:if>
         <title><xsl:value-of disable-output-escaping="yes" select="$titleL10N"/></title>
         <link rel="shortcut icon" href="media/navigation/favicon.ico"/>
@@ -165,9 +165,6 @@
         <script type="text/javascript" src="flexsearch.debug.js"></script>
         <script type="text/javascript" src="prism.js"></script>
         <script type="text/javascript" src="help2.js" defer=""></script>
-        <xsl:if test="$online">
-            <script type="text/javascript" src="tdf_matomo.js" defer=""></script>
-        </xsl:if>
         <script type="text/javascript" src="a11y-toggle.js" defer=""></script>
         <script type="text/javascript" src="paginathing.js" defer=""></script>
         <script type="text/javascript" src="{$lang}/bookmarks.js" defer=""></script>
