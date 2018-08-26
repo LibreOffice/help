@@ -144,7 +144,7 @@
         <base href="{$install}"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <xsl:if test="$online">
-            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org *.google.com *.googleapis.com"/>
+            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' *.google.com *.googleapis.com"/>
         </xsl:if>
         <title><xsl:value-of select="$titleL10N"/></title>
         <link rel="shortcut icon" href="{$target}media/navigation/favicon.ico" />
@@ -267,26 +267,6 @@
             </script>
         </xsl:otherwise>
     </xsl:choose>
-    <xsl:if test="$online">
-        <!-- Piwik -->
-        <script type="text/javascript">
-            <![CDATA[
-            var _paq = _paq || [];
-            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-            _paq.push(['disableCookies']);
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-            (function() {
-            var u="//piwik.documentfoundation.org/";
-            _paq.push(['setTrackerUrl', u+'piwik.php']);
-            _paq.push(['setSiteId', '68']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-            })();
-            ]]>
-        </script>
-        <!-- End Piwik Code -->
-    </xsl:if>
     </body>
 </html>
 </xsl:template>
