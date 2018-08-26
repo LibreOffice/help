@@ -142,7 +142,7 @@
         <base href="{$install}"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <xsl:if test="$online">
-            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org *.google.com *.googleapis.com"/>
+            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' *.google.com *.googleapis.com"/>
         </xsl:if>
         <title><xsl:value-of select="$titleL10N"/></title>
         <link rel="shortcut icon" href="{$target}media/navigation/favicon.ico"/>
