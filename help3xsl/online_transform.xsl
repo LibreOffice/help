@@ -137,7 +137,7 @@
         <noscript><meta http-equiv="refresh" content="0; URL={$install}{$lang}/noscript.html"/></noscript>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <xsl:if test="$online">
-            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org"/>
+            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
         </xsl:if>
         <title><xsl:value-of select="$titleL10N"/></title>
         <link rel="shortcut icon" href="media/navigation/favicon.ico"/>
