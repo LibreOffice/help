@@ -27,7 +27,6 @@ xsltproc xap_template_query.xsl <file.xhp>
     <xsl:variable name ="ui_logo"><xsl:apply-templates select="//variable[@id='LibreOfficeHelp']"/></xsl:variable>
     <xsl:variable name ="ui_selectmodule"><xsl:apply-templates select="//variable[@id='selectmodule']"/></xsl:variable>
     <xsl:variable name ="ui_search"><xsl:apply-templates select="//variable[@id='searchhelpcontents']"/></xsl:variable>
-    <xsl:variable name="ui_books"><xsl:apply-templates select="//variable[@id='books']"/></xsl:variable>
     <xsl:variable name="brand3" select="'%PRODUCTNAME'"/>
     <xsl:variable name="brand4" select="'%PRODUCTVERSION'"/>
 
@@ -125,7 +124,9 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
     </div>
 </div>
 <div id="DisplayArea">
-    <form name="P" method="get" action="]]><xsl:value-of select="$lang"/><![CDATA[/search" target="_top">
+    <form name="P" method="get" action="/cgi-bin/omega/omega" target="_top">
+        <input type="hidden" name="DB" value="]]><xsl:value-of select="$lang"/><![CDATA[2504"/>
+        <input type="hidden" name="FMT" value="25.04/]]><xsl:value-of select="$lang"/><![CDATA[/xap_tpl"/>
 <center>
 <input id="omega-autofocus" type=search name=P placeholder="]]><xsl:value-of select="$ui_pholderfullsearch"/>"<![CDATA[ value="$html{$query}" size=40 autofocus>
 <script>
@@ -223,19 +224,8 @@ ${Preserve any B filters used - this needs modifying if you modify this template
   to have B on radio buttons, SELECT, etc}
 $map{$cgilist{B},<input type=hidden name=B value="$html{$_}">}
 </form>
-<hr><div align=right><i><small><a href="https://xapian.org/">$html{$version}</a></small></i></div>
     <footer>
-        <h2 style="text-align: center;" dir="auto"><a href="https://books.libreoffice.org" target="_blank">]]><xsl:value-of select="$ui_books"/><![CDATA[</a></h2>
-        <div class="noteicon" dir="auto" style="display:flex;justify-content:center;flex-wrap:wrap;row-gap:15px;">
-            <img src="media/navigation/libo-writer.svg" alt="Writer Icon" style="width:60px;height:60px;"></img>
-            <img src="media/navigation/libo-calc.svg" alt="Calc Icon" style="width:60px;height:60px;"></img>
-            <img src="media/navigation/libo-impress.svg" alt="Impress Icon" style="width:60px;height:60px;"></img>
-            <img src="media/navigation/libo-draw.svg" alt="Draw Icon" style="width:60px;height:60px;"></img>
-            <img src="media/navigation/libo-base.svg" alt="Base Icon" style="width:60px;height:60px;"></img>
-            <img src="media/navigation/libo-math.svg" alt="Math Icon" style="width:60px;height:60px;"></img>
-            <img src="media/navigation/libo-symbol-black.svg" alt="Getting Started Icon" style="width:60px;height:60px;"></img>
-        </div>
-        <p dir="auto"><a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
+        <p><a href="https://www.collaboraonline.com/about-us/" target="_blank">About Us</a> | <a href="https://www.collaboraonline.com/privacy-policy/" target="_blank">Privacy Policy</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in TDF's <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. Collabora Office is derived from LibreOffice which was based on OpenOffice.org.</p>
     </footer>
 </body>
 </html>

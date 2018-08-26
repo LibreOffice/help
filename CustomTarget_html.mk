@@ -27,7 +27,6 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 	languages.js \
 	default.css \
 	help2.js \
-	$(if $(HELP_ONLINE),tdf_matomo.js) \
 	$(foreach lang,$(gb_HELP_LANGS),\
 		$(lang)/bookmarks.js \
 		$(lang)/contents.js \
@@ -65,6 +64,13 @@ $(gb_HelpTranslatePartTarget_workdir)/en-US/helpcontent2/source/text/shared/help
 # Xapian localized templates
 ifeq ($(HELP_OMINDEX_PAGE),TRUE)
 
+define html_gen_xaptpl_dep
+$(gb_CustomTarget_workdir)/helpcontent2/help3xsl/$(1)/xap_tpl : \
+	$(if $(filter en-US,$(1)),$(SRCDIR),$(gb_HelpTranslatePartTarget_workdir)/$(1))/helpcontent2/source/text/shared/help/browserhelp.xhp
+
+endef
+
+$(eval $(foreach lang,$(gb_HELP_LANGS),$(call html_gen_xaptpl_dep,$(lang))))
 $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/%/xap_tpl : \
         $(gb_HelpTranslatePartTarget_workdir)/%/helpcontent2/source/text/shared/help/browserhelp.xhp \
         $(SRCDIR)/helpcontent2/help3xsl/xap_templ_query.xsl \
@@ -289,10 +295,5 @@ $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/help2.js : \
                 $(SRCDIR)/helpcontent2/help3xsl/help2.js \
                 $(BUILDDIR)/config_host.mk
 	sed -e "s/%PRODUCTNAME/$(gb_PRODUCTNAME_JS)/g" $< > $@
-
-$(gb_CustomTarget_workdir)/helpcontent2/help3xsl/tdf_matomo.js : \
-                $(SRCDIR)/helpcontent2/help3xsl/tdf_matomo.js 
-	mkdir -p $(dir $@)
-	cp $(SRCDIR)/helpcontent2/help3xsl/tdf_matomo.js $@
 
 # vim: set noet sw=4 ts=4:
