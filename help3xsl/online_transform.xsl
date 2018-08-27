@@ -142,7 +142,7 @@
         <base href="{$install}"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <xsl:if test="$online">
-            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' *.google.com *.googleapis.com"/>
+            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval'"/>
         </xsl:if>
         <title><xsl:value-of select="$titleL10N"/></title>
         <link rel="shortcut icon" href="{$target}media/navigation/favicon.ico"/>
@@ -219,23 +219,14 @@
     </div>
     <div class="google-donation">
         <xsl:if test="$online">
-            <div class="google-search">
-                <script type="text/javascript">
-                    <![CDATA[
-                    (function() {]]>
-                    <xsl:call-template name="getToken"><xsl:with-param name="lang" select="$lang"/></xsl:call-template>
-                    <![CDATA[
-                    var gcse = document.createElement('script');
-                    gcse.type = 'text/javascript';
-                    gcse.async = true;
-                    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-                    var s = document.getElementsByTagName('script')[0];
-                    s.parentNode.insertBefore(gcse, s);
-                    })();
-                    ]]>
-                </script>
-                <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
-            </div>
+                <div class="xapian-omega-search">
+                    <form name="P" method="get" action="/cgi-bin/omega/omega" target="_top">
+                        <input type="hidden" name="DB" value="{$lang}"/>
+                        <input type="hidden" name="DEFAULTOP" value="and"/>
+                        <input id="omega-autofocus" type="search" name="P" size="65"/>
+                        <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
+                    </form>
+                </div>
         </xsl:if>
     </div>
     <footer>
