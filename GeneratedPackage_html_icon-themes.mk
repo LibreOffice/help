@@ -11,6 +11,6 @@
 
 $(eval $(call gb_GeneratedPackage_GeneratedPackage,helpcontent2_html_icon-themes,$(SRCDIR)/icon-themes))
 
-$(eval $(call gb_GeneratedPackage_add_dir,helpcontent2_html_icon-themes,$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media/icon-themes,colibre))
+$(eval $(call gb_GeneratedPackage_add_dir,helpcontent2_html_icon-themes,$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media/icon-themes,colibre_svg))
 
 # vim: set noet sw=4 ts=4:
