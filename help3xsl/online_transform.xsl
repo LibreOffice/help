@@ -99,9 +99,9 @@
 <xsl:variable name="linkpostfix" select="''"/>
 
 <!-- images for notes, tips and warnings -->
-<xsl:variable name="note_img" select="concat($img_url_prefix,'icon-themes/help/note.png')"/>
-<xsl:variable name="tip_img" select="concat($img_url_prefix,'icon-themes/help/tip.png')"/>
-<xsl:variable name="warning_img" select="concat($img_url_prefix,'icon-themes/help/warning.png')"/>
+<xsl:variable name="note_img" select="concat($img_url_prefix,'icon-themes/help/note.svg')"/>
+<xsl:variable name="tip_img" select="concat($img_url_prefix,'icon-themes/help/tip.svg')"/>
+<xsl:variable name="warning_img" select="concat($img_url_prefix,'icon-themes/help/warning.svg')"/>
 
 <!-- Strings for the help UI page -->
 <xsl:variable name="tmp_href_ui"><xsl:value-of select="concat($urlpre,'text/shared/help/browserhelp.xhp')"/></xsl:variable>
@@ -1092,6 +1092,7 @@
         <xsl:attribute name="style"><xsl:value-of select="$width"/><xsl:value-of select="$height"/></xsl:attribute>
         <xsl:if test="ancestor::tablecell">
             <xsl:attribute name="class"><xsl:value-of select="'imageicon'"/></xsl:attribute>
+            <xsl:attribute name="src"><xsl:value-of select="concat(substring-before($src2,'.png'),'.svg')"/></xsl:attribute>
         </xsl:if>
     </img>
 </xsl:template>
