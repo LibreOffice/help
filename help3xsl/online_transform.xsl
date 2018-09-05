@@ -1088,7 +1088,12 @@
             <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
         </xsl:if>
     </xsl:variable>
-    <img src="{$src2}" alt="{$alt}" title="{$alt}"><xsl:attribute name="style"><xsl:value-of select="$width"/><xsl:value-of select="$height"/></xsl:attribute></img>
+    <img src="{$src2}" alt="{$alt}" title="{$alt}">
+        <xsl:attribute name="style"><xsl:value-of select="$width"/><xsl:value-of select="$height"/></xsl:attribute>
+        <xsl:if test="ancestor::tablecell">
+            <xsl:attribute name="class"><xsl:value-of select="'imageicon'"/></xsl:attribute>
+        </xsl:if>
+    </img>
 </xsl:template>
 
 <!-- Insert an object -->
