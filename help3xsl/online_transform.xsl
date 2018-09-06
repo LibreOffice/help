@@ -1089,7 +1089,7 @@
         </xsl:if>
     </xsl:variable>
     <img src="{$src2}" alt="{$alt}" title="{$alt}">
-        <xsl:attribute name="style"><xsl:value-of select="$width"/><xsl:value-of select="$height"/></xsl:attribute>
+        <xsl:attribute name="style"><xsl:value-of select="concat($width,'; ')"/><xsl:value-of select="concat($height,';')"/></xsl:attribute>
         <xsl:if test="ancestor::tablecell">
             <xsl:attribute name="class"><xsl:value-of select="'imageicon'"/></xsl:attribute>
             <xsl:attribute name="src"><xsl:value-of select="concat(substring-before($src2,'.png'),'.svg')"/></xsl:attribute>
