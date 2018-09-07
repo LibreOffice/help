@@ -1089,7 +1089,17 @@
     <img src="{$src2}" alt="{$alt}" title="{$alt}" height="{$height}" width="{$width}">
         <xsl:if test="ancestor::tablecell">
             <xsl:attribute name="class"><xsl:value-of select="'imageicon'"/></xsl:attribute>
-            <xsl:attribute name="src"><xsl:value-of select="concat(substring-before($src2,'.png'),'.svg')"/></xsl:attribute>
+            <xsl:attribute name="src">
+                <!--Check if icon is already svg-->
+                <xsl:choose>
+                <xsl:when test="substring($src2,string-length($src2) - 3, 4)='.png'">
+                    <xsl:value-of select="concat(substring-before($src2,'.png'),'.svg')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$src2"/>
+                </xsl:otherwise>
+            </xsl:choose>
+            </xsl:attribute>
         </xsl:if>
     </img>
 </xsl:template>
