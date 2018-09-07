@@ -1078,18 +1078,15 @@
     <xsl:variable name="alt"><xsl:value-of select="./alt"/></xsl:variable>
     <xsl:variable name="width">
         <xsl:if test="string-length(@width)!=0">
-            <xsl:value-of select="'width:'"/>
             <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@width"/></xsl:call-template>
         </xsl:if>
     </xsl:variable>
     <xsl:variable name="height">
         <xsl:if test="string-length(@height)!=0">
-            <xsl:value-of select="'height:'"/>
             <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
         </xsl:if>
     </xsl:variable>
-    <img src="{$src2}" alt="{$alt}" title="{$alt}">
-        <xsl:attribute name="style"><xsl:value-of select="concat($width,'; ')"/><xsl:value-of select="concat($height,';')"/></xsl:attribute>
+    <img src="{$src2}" alt="{$alt}" title="{$alt}" height="{$height}" width="{$width}">
         <xsl:if test="ancestor::tablecell">
             <xsl:attribute name="class"><xsl:value-of select="'imageicon'"/></xsl:attribute>
             <xsl:attribute name="src"><xsl:value-of select="concat(substring-before($src2,'.png'),'.svg')"/></xsl:attribute>
@@ -1205,13 +1202,13 @@
     <xsl:param name="value"/>
     <xsl:choose>
         <xsl:when test="contains($value, 'cm')">
-            <xsl:value-of select="concat(round(number(substring-before($value, 'cm')) * $dpcm),'px;')"/>
+            <xsl:value-of select="concat(round(number(substring-before($value, 'cm')) * $dpcm),'px')"/>
         </xsl:when>
         <xsl:when test="contains($value, 'mm')">
-            <xsl:value-of select="concat(round(number(substring-before($value, 'mm')) * $dpmm),'px;')"/>
+            <xsl:value-of select="concat(round(number(substring-before($value, 'mm')) * $dpmm),'px')"/>
         </xsl:when>
         <xsl:when test="contains($value, 'in')">
-            <xsl:value-of select="concat(round(number(substring-before($value, 'in')) * $dpi),'px;')"/>
+            <xsl:value-of select="concat(round(number(substring-before($value, 'in')) * $dpi),'px')"/>
         </xsl:when>
         <xsl:when test="contains($value, 'px')">
             <xsl:value-of select="$value"/>
