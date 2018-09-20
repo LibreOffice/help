@@ -236,6 +236,7 @@
                 <p>Title is: <xsl:value-of select="$title"/></p>
                 <p id="bm_module"></p>
                 <p id="bm_system"></p>
+                <p id="bm_HID"></p>
             </div>
         </footer>
     </div>
@@ -248,12 +249,14 @@
                 <![CDATA[
                 var module = getParameterByName("DbPAR");
                 var system = getParameterByName("System");
+                var helpID = getParameterByName("HID");
                 fixURL(module,system);
                 var dbg = getParameterByName("Debug");
                 if (dbg == null){dbg=0}
                 document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
                 document.getElementById("bm_module").innerHTML ="Module is: "+module;
                 document.getElementById("bm_system").innerHTML ="System is: "+system;
+                document.getElementById("bm_HID").innerHTML ="HID is: "+helpID;
                 ]]>
             </script>
         </xsl:when>
@@ -261,6 +264,7 @@
             <script type="text/javascript">
                 <![CDATA[
                 var module = getParameterByName("DbPAR");
+                var helpID = getParameterByName("HID");
                 var system = getSystem();
                 fixURL(module,system);
                 var dbg = getParameterByName("Debug");
@@ -268,6 +272,7 @@
                 document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
                 document.getElementById("bm_module").innerHTML ="Module is: "+module;
                 document.getElementById("bm_system").innerHTML ="System is: "+system;
+                document.getElementById("bm_HID").innerHTML ="HID is: "+helpID;
                 ]]>
             </script>
         </xsl:otherwise>
