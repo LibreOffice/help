@@ -826,7 +826,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/optionen/01010301 \
     helpcontent2/source/text/shared/optionen/01010400 \
     helpcontent2/source/text/shared/optionen/01010401 \
-    helpcontent2/source/text/shared/optionen/01010500 \
     helpcontent2/source/text/shared/optionen/01010501 \
     helpcontent2/source/text/shared/optionen/01010600 \
     helpcontent2/source/text/shared/optionen/01010700 \
