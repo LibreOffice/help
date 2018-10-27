@@ -660,6 +660,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/explorer/database/querywizard07 \
     helpcontent2/source/text/shared/explorer/database/querywizard08 \
     helpcontent2/source/text/shared/explorer/database/rep_datetime \
+    helpcontent2/source/text/shared/explorer/database/rep_insertfield \
     helpcontent2/source/text/shared/explorer/database/rep_main \
     helpcontent2/source/text/shared/explorer/database/rep_navigator \
     helpcontent2/source/text/shared/explorer/database/rep_pagenumbers \
