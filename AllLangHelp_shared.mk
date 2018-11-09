@@ -331,6 +331,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/digitalsignaturespdf \
     helpcontent2/source/text/shared/01/extensionupdate \
     helpcontent2/source/text/shared/01/formatting_mark \
+    helpcontent2/source/text/shared/01/font_features \
     helpcontent2/source/text/shared/01/gallery \
     helpcontent2/source/text/shared/01/gallery_files \
     helpcontent2/source/text/shared/01/grid \
