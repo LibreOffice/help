@@ -157,9 +157,9 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.js :
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),CAT,2)
 	$(call gb_Helper_abbreviate_dirs,\
 		( \
-			echo 'document.getElementsByClassName( "index" )[0].innerHTML='"'"'\' \
+			echo 'var bookmarks = [' \
 			&& cat $(filter %.part,$^) \
-			&& echo "'" \
+			&& echo '];' \
 		) > $@ \
 	)
 

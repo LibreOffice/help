@@ -75,7 +75,7 @@ var Paginator = function(element) {
     var startPage = 1;
     var currentPage = 1;
     var pageDivision = 0;
-    var totalItems = el.getElementsByClassName('fuseshown').length;
+    var totalItems = el.children.length;
     var limitPagination = options.limitPagination;
     pageDivision = Math.ceil(totalItems / options.perPage);
     // let's not display pagination leading nowhere
@@ -187,7 +187,7 @@ var Paginator = function(element) {
         var startAt = page === 1 ? 0 : (page - 1) * options.perPage;
         var endAt = page * options.perPage;
 
-        var domLi = el.getElementsByClassName("fuseshown");
+        var domLi = el.children;
 
         for (var i = 0, len = domLi.length; i < len; i++) {
             var item = domLi[i];

@@ -18,7 +18,7 @@ $(eval $(call gb_Package_add_file,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOL
 
 $(eval $(call gb_Package_add_files,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION)),\
 	default.css \
-	fuse.js \
+	fuzzysort.js \
 	help.js \
 	help2.js \
 	normalize.css \

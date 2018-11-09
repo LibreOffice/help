@@ -63,13 +63,13 @@ xsltproc get_bookmark.xsl <file.xhp>
         <xsl:variable name="hrefhtml" select="substring-before($filename,'xhp')"/>
         <xsl:variable name="href" select="concat($target,$Language,'/',$hrefhtml,'html?DbPAR=',$app,'#',@id)"/>
         <xsl:for-each select="bookmark_value">
-        <xsl:text disable-output-escaping="yes"><![CDATA[<a target="_top" href="]]></xsl:text>
+        <xsl:text disable-output-escaping="yes"><![CDATA[{url:"]]></xsl:text>
         <xsl:value-of select="$href"/>
-        <xsl:text disable-output-escaping="yes"><![CDATA[" class="fuseshown ]]></xsl:text>
+        <xsl:text disable-output-escaping="yes"><![CDATA[", app:"]]></xsl:text>
         <xsl:value-of select="$app"/>
-        <xsl:text disable-output-escaping="yes"><![CDATA[">]]></xsl:text>
+        <xsl:text disable-output-escaping="yes"><![CDATA[", text:"]]></xsl:text>
             <xsl:call-template name="replace"><xsl:with-param name="text" select="."/></xsl:call-template>
-            <xsl:text disable-output-escaping="yes"><![CDATA[</a>\]]>&#xA;</xsl:text>
+            <xsl:text disable-output-escaping="yes"><![CDATA["},]]>&#xA;</xsl:text>
         </xsl:for-each>
     </xsl:for-each>
 </xsl:template>
@@ -80,16 +80,20 @@ xsltproc get_bookmark.xsl <file.xhp>
         <xsl:with-param name="string">
             <xsl:call-template name="apostrophe">
                 <xsl:with-param name="string">
-                    <xsl:choose>
-                        <xsl:when test="contains($text,';')">
-                            <xsl:value-of select="substring-before($text,';')"/>
-                            <xsl:text disable-output-escaping="yes"><![CDATA[ -- ]]></xsl:text>
-                            <xsl:value-of select="substring-after($text,';')"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:value-of select="$text"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
+                    <xsl:call-template name="doublequote">
+                        <xsl:with-param name="string">
+                            <xsl:choose>
+                                <xsl:when test="contains($text,';')">
+                                    <xsl:value-of select="substring-before($text,';')"/>
+                                    <xsl:text disable-output-escaping="yes"><![CDATA[ -- ]]></xsl:text>
+                                    <xsl:value-of select="substring-after($text,';')"/>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:value-of select="$text"/>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:with-param>
+                    </xsl:call-template>
                 </xsl:with-param>
             </xsl:call-template>
         </xsl:with-param>
@@ -108,6 +112,26 @@ xsltproc get_bookmark.xsl <file.xhp>
                 <xsl:value-of select="substring-after($string,$apost)"/>
             </xsl:variable>
             <xsl:call-template name="apostrophe">
+                <xsl:with-param name="string" select="$newstr"/>
+            </xsl:call-template>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:value-of select="$string"/>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+<xsl:template name="doublequote">
+    <xsl:param name="string"/>
+    <xsl:variable name="dq">&quot;</xsl:variable><!-- double quote -->
+    <xsl:choose>
+        <xsl:when test="contains($string,$dq)">
+            <xsl:variable name="newstr">
+                <xsl:value-of select="substring-before($string,$dq)"/>
+                <xsl:text disable-output-escaping="yes"><![CDATA[&]]>#34;</xsl:text>
+                <xsl:value-of select="substring-after($string,$dq)"/>
+            </xsl:variable>
+            <xsl:call-template name="doublequote">
                 <xsl:with-param name="string" select="$newstr"/>
             </xsl:call-template>
         </xsl:when>
