@@ -605,4 +605,4 @@ return fuzzysortNew()
 
 // TODO: (like sublime) backslash === forwardslash
 
-// TODO: (performance) i have no idea how well optizmied the allowing typos algorithm is
+// TODO: (performance) i have no idea how well optimized the allowing typos algorithm is
