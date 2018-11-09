@@ -153,7 +153,7 @@
         <script type="text/javascript" src="{$target}help2.js"></script>
         <script type="text/javascript" src="{$target}languages.js"></script>
         <script type="text/javascript" src="{$target}{$lang}/langnames.js"></script>
-        <script type="text/javascript" src="{$target}fuse.js"></script>
+        <script type="text/javascript" src="{$target}fuzzysort.js"></script>
         <script type="text/javascript" src="{$target}paginathing.js"></script>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>

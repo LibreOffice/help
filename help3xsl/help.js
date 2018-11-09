@@ -8,65 +8,62 @@
  */
 
 // Pagination and fuzzy search
-var fuseshown = document.getElementsByClassName("fuseshown");
-var indexkids = document.getElementsByClassName("index")[0].children;
-var liElements = Array.prototype.slice.call(fuseshown).map(function(elm) {
-    var item = elm;
-    var linktext = item.textContent;
-    var fuseObject = {
-        item: item,
-        linktext: linktext
-    };
-    return fuseObject;
-});
-var fuse = new Fuse(liElements, {
-    keys: ["linktext"],
-    distance: 60,
-    location: 0,
-    threshold: 0.2,
-    tokenize: true,
-    matchAllTokens: true,
-    maxPatternLength: 24,
-    minMatchCharLength: 2
-});
+var url = document.URL;
+var moduleRegex = new RegExp('text\\/(\\w+)\\/');
+var regexArray = moduleRegex.exec(url);
+// get the module name from the URL and remove the first character
+var currentModule = regexArray[1].toUpperCase().substring(1);
+var results = null;
+var fullLinkified = '';
 var modules = ['CALC', 'WRITER', 'IMPRESS', 'DRAW', 'BASE', 'MATH', 'CHART', 'BASIC', 'SHARED'];
-
+var indexkids = function() { document.getElementsByClassName("index")[0].children; };
+// if user is not on a shared category page, limit the index to the current module + shared
+if(currentModule !== 'HARED') {
+    bookmarks = bookmarks.filter(function(obj) {
+            return obj['app'] === currentModule || obj['app'] === 'SHARED';
+        });
+}
+bookmarks.forEach(function(obj) {
+            fullLinkified += '<a href="' + obj['url'] + '" class="' + obj['app'] + '">' + obj['text'] + '</a>';
+        });
+function fullList() {
+    document.getElementsByClassName("index")[0].innerHTML = fullLinkified;
+    Paginator(document.getElementsByClassName("index")[0]);
+    addIds();
+}
+// add id to the first items of each category in the index. CSS ::before rule adds the heading text
 function addIds() {
     for (var i = 0, len = indexkids.length; i < len; i++) {
         indexkids[i].removeAttribute("id");
     }
     modules.forEach(function(module) {
-        var fuseshownModule = document.getElementsByClassName("fuseshown " + module)[0];
-        if (typeof fuseshownModule !== 'undefined') {
-            fuseshownModule.setAttribute("id", module);
+        var hoduleHeader = document.getElementsByClassName(module)[0];
+        if (typeof moduleHeader !== 'undefined') {
+            hoduleHeader.setAttribute("id", module);
         }
     });
 }
+// render the unfiltered index list on page load
+fullList();
+Paginator(document.getElementsByClassName("index")[0]);
+addIds();
+// filter the index list based on search field input
 var search = document.getElementById('search-bar');
 var filter = function() {
     var target = search.value.trim();
     if (target.length < 1) {
-        liElements.forEach(function(obj) {
-            obj.item.classList.add('fuseshown');
-            obj.item.classList.remove('fusehidden');
-        });
-        Paginator(document.getElementsByClassName("index")[0]);
-        addIds();
+        fullList();
         return;
     }
-    var results = fuse.search(target);
-    liElements.forEach(function(obj) {
-        obj.item.classList.add('fusehidden');
-        obj.item.classList.remove('fuseshown');
+    results = fuzzysort.go(target, bookmarks, {threshold: -15000, key:'text'});
+    var filtered = '';
+    results.forEach(function(result) {
+        filtered += '<a href="' + result.obj['url'] + '" class="' + result.obj['app'] + '">' + result.obj['text'] + '</a>';
     });
-    results.forEach(function(obj) {
-        obj.item.classList.add('fuseshown');
-        obj.item.classList.remove('fusehidden');
-    });
+    document.getElementsByClassName("index")[0].innerHTML = filtered;
     Paginator(document.getElementsByClassName("index")[0]);
     addIds();
 };
-
 function debounce(fn, wait) {
     var timeout;
     return function() {
@@ -76,9 +73,7 @@ function debounce(fn, wait) {
         }, (wait || 150));
     };
 }
-Paginator(document.getElementsByClassName("index")[0]);
-search.addEventListener('keyup', debounce(filter, 300));
-addIds();
+search.addEventListener('keyup', debounce(filter, 100));
 // copy useful content to clipboard on mouse click
 var copyable = document.getElementsByClassName("input");
 for (var i = 0, len = copyable.length; i < len; i++) {
