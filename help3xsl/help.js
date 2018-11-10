@@ -37,16 +37,14 @@ function addIds() {
         indexkids[i].removeAttribute("id");
     }
     modules.forEach(function(module) {
-        var hoduleHeader = document.getElementsByClassName(module)[0];
+        var moduleHeader = document.getElementsByClassName(module)[0];
         if (typeof moduleHeader !== 'undefined') {
-            hoduleHeader.setAttribute("id", module);
+            moduleHeader.setAttribute("id", module);
         }
     });
 }
 // render the unfiltered index list on page load
 fullList();
-Paginator(document.getElementsByClassName("index")[0]);
-addIds();
 // filter the index list based on search field input
 var search = document.getElementById('search-bar');
 var filter = function() {
@@ -58,7 +56,7 @@ var filter = function() {
     results = fuzzysort.go(target, bookmarks, {threshold: -15000, key:'text'});
     var filtered = '';
     results.forEach(function(result) {
-        filtered += '<a href="' + result.obj['url'] + '" class="' + result.obj['app'] + '">' + result.obj['text'] + '</a>';
+        filtered += '<a href="' + result.obj['url'] + '" class="' + result.obj['app'] + '">' + fuzzysort.highlight(result) + '</a>';
     });
     document.getElementsByClassName("index")[0].innerHTML = filtered;
     Paginator(document.getElementsByClassName("index")[0]);
