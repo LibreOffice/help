@@ -22,7 +22,7 @@
 <xsl:output indent="yes" method="html" doctype-system= "about:legacy-compat"/>
 
 <xsl:include href="localized.xsl"/>
-<xsl:include href="link.txt.xsl"/>
+<xsl:include href="links.txt.xsl"/>
 <!--
 ############################
 # Variables and Parameters #
@@ -1073,7 +1073,17 @@
                 <xsl:variable name="linklist">
                     <xsl:call-template name="linktxt"><xsl:with-param name="src1" select="@src"/></xsl:call-template>
                 </xsl:variable>
-                <xsl:value-of select="concat($target,'media/icon-themes/',$linklist)"/>
+                <xsl:variable name="aux00">
+                    <xsl:choose>
+                        <xsl:when test="substring($linklist,string-length($linklist) - 3, 4)='.png'">
+                            <xsl:value-of select="concat(substring-before($linklist,'.png'),'.svg')"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="$linklist"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
+                <xsl:value-of select="concat($target,'media/icon-themes/',$aux00)"/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:value-of select="concat($target,@src)"/>
@@ -1094,17 +1104,6 @@
     <img src="{$src2}" alt="{$alt}" title="{$alt}" height="{$height}" width="{$width}">
         <xsl:if test="ancestor::tablecell">
             <xsl:attribute name="class"><xsl:value-of select="'imageicon'"/></xsl:attribute>
-            <xsl:attribute name="src">
-                <!--Check if icon is already svg-->
-                <xsl:choose>
-                <xsl:when test="substring($src2,string-length($src2) - 3, 4)='.png'">
-                    <xsl:value-of select="concat(substring-before($src2,'.png'),'.svg')"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:value-of select="$src2"/>
-                </xsl:otherwise>
-            </xsl:choose>
-            </xsl:attribute>
         </xsl:if>
     </img>
 </xsl:template>
