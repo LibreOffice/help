@@ -622,10 +622,22 @@
 
 <!-- SORT -->
 <xsl:template match="sort" >
-    <xsl:apply-templates><xsl:sort select="descendant::paragraph"/></xsl:apply-templates>
+	<xsl:variable name="order1">
+		<xsl:choose>
+			<xsl:when test="string-length(@order) = 0"><xsl:value-of  select="'ascending'"/></xsl:when>
+			<xsl:otherwise><xsl:value-of select="concat(@order,'ending')"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	<xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::paragraph"/></xsl:apply-templates>
 </xsl:template>
 <xsl:template match="sort" mode="embedded">
-    <xsl:apply-templates><xsl:sort select="descendant::paragraph"/></xsl:apply-templates>
+	<xsl:variable name="order1">
+		<xsl:choose>
+			<xsl:when test="string-length(@order) = 0"><xsl:value-of  select="'ascending'"/></xsl:when>
+			<xsl:otherwise><xsl:value-of select="concat(@order,'ending')"/></xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	<xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::paragraph"/></xsl:apply-templates>
 </xsl:template>
 
 <!-- SWITCH -->
