@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+    <meta>
+        <topic id="calcfuncregex" indexer="include" status="PUBLISH">
+            <title id="tit" xml-lang="en-US">REGEX Function</title>
+            <filename>/text/scalc/01/func_regex.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+    <section id="func_regex">
+        <bookmark id="bm_id61542230672099" xml-lang="en-US" branch="hid/SC_HID_FUNC_REGEX" localize="false"/>
+        <bookmark xml-lang="en-US" branch="index" id="bm_id831542233029549">
+            <bookmark_value>REGEX function</bookmark_value>
+            <bookmark_value>regular expressions;extracting in spreadsheets</bookmark_value>
+            <bookmark_value>regular expressions;REGEX function</bookmark_value>
+        </bookmark>
+        <paragraph id="hd_id961542230672100" role="heading" level="1" xml-lang="en-US"><link href="text/scalc/01/func_regex.xhp" name="function REGEX">REGEX</link></paragraph>
+        <paragraph id="par_id541542230672101" role="paragraph" xml-lang="en-US"><variable id="func_regex_desc"><ahelp hid=".">Matches and extracts or optionally replaces text using regular expressions.</ahelp></variable></paragraph>
+    </section>
+    <embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
+    <paragraph role="code" id="par_id701542231253817" xml-lang="en-US">REGEX( Text ; Expression [ ; [ Replacement ] [ ; Flags ] ] )</paragraph>
+    <paragraph role="paragraph" id="par_id621542232197446" xml-lang="en-US"><emph>Text</emph>: A text or reference to a cell where the regular expression is to be applied.</paragraph>
+    <paragraph role="paragraph" id="par_id211542232209275" xml-lang="en-US"><emph>Expression</emph>: A text representing the regular expression, using <link href="https://userguide.icu-project.org/strings/regexp" name="ICU REGEXP">ICU regular expressions</link>. If there is no match, #N/A is returned.</paragraph>
+    <paragraph role="paragraph" id="par_id581542232755604" xml-lang="en-US"><emph>Replacement</emph>: Optional. The replacement text and references to capture groups. If there is no match, <emph>Text</emph> is returned unmodified.</paragraph>
+    <paragraph role="paragraph" id="par_id421542232246840" xml-lang="en-US"><emph>Flags</emph>: Optional. "g" replaces all matches of <emph>Expression</emph> in <emph>Text</emph>, not extracted. If there is no match, <emph>Text</emph> is returned unmodified.</paragraph>
+    <embed href="text/scalc/01/ful_func.xhp#func_head_example"/>
+    <paragraph role="paragraph" id="par_id371542291684176" xml-lang="en-US"><item type="input">=REGEX("123456ABCDEF";"[:digit:]";"Z")</item>  returns "Z23456ABCDEF", where the first match of a digit is replaced by "Z".</paragraph>
+    <paragraph role="paragraph" id="par_id891542291697194" xml-lang="en-US"><item type="input">=REGEX("123456ABCDEF";"[:digit:]";"Z";"g")</item>  returns "ZZZZZZABCDEF", where all digits were replaced by "Z".</paragraph>
+    <paragraph role="paragraph" id="par_id21542291705695" xml-lang="en-US"><item type="input">=REGEX("123456ABCDEF";"[1|2|6]";"";"g")</item>  returns "345ABCDEF", where any occurrence of "1", "2" or "6" is replaced by the empty string, thus deleted. </paragraph>
+    <section id="relatedtopics">
+        <paragraph role="paragraph" id="par_id711542233602553" xml-lang="en-US"><link href="text/shared/01/02100001.xhp" name="regex lists">List of regular expressions</link></paragraph>
+        <paragraph role="paragraph" id="par_id431542233650614" xml-lang="en-US"><link href="https://userguide.icu-project.org/strings/regexp" name="ICU REGEXP">ICU regular expressions</link></paragraph>
+    </section>
+</body>
+</helpdocument>
