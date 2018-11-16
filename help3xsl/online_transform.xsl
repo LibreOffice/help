@@ -800,6 +800,65 @@
     </xsl:call-template>
 </xsl:template>
 
+<!-- XHP extensions (2018) -->
+<!-- H1-H6 -->
+<xsl:template match="h1 | h2 | h3 | h4 | h5 | h6">
+    <xsl:element name="{local-name()}">
+        <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute><xsl:apply-templates />
+    </xsl:element>
+</xsl:template>
+<xsl:template match="h1 | h2 | h3 | h4 | h5 | h6" mode="embedded">
+    <xsl:element name="{concat('h',substring-after(local-name(),'h') + 1)}">
+        <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute><xsl:apply-templates mode="embedded"/>
+    </xsl:element>
+</xsl:template>
+
+<!-- INPUT -->
+<xsl:template match="input">
+    <span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span>
+</xsl:template>
+<xsl:template match="input" mode="embedded">
+    <span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates mode="embedded"/></span>
+</xsl:template>
+
+<!--MENUITEM, KEYCODE, LITERAL, WIDGET-->
+<xsl:template match="menuitem | keycode | literal | widget">
+    <span class="{local-name()}"><xsl:apply-templates /></span>
+</xsl:template>
+<xsl:template match="menuitem | input | keycode | literal" mode="embedded">
+    <span class="{local-name()}"><xsl:apply-templates mode="embedded"/></span>
+</xsl:template>
+
+<!--NOTE TIP AND WARNING-->
+<xsl:template match="tip | note | warning">
+    <xsl:variable name="imgsrc">
+        <xsl:choose>
+            <xsl:when test="local-name()='note'"><xsl:value-of select="$note_img"/></xsl:when>
+            <xsl:when test="local-name()='tip'"><xsl:value-of select="$tip_img"/></xsl:when>
+            <xsl:when test="local-name()='warning'"><xsl:value-of select="$warning_img"/></xsl:when>
+        </xsl:choose>
+    </xsl:variable>
+    <div class="{local-name()}">
+        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" title="{local-name()}"/></div>
+        <div class="notetext"><p id="{@id}"><xsl:apply-templates /></p></div>
+    </div>
+    <br/>
+</xsl:template>
+<xsl:template match="tip | note | warning" mode="embedded">
+    <xsl:variable name="imgsrc">
+        <xsl:choose>
+            <xsl:when test="local-name()='note'"><xsl:value-of select="$note_img"/></xsl:when>
+            <xsl:when test="local-name()='tip'"><xsl:value-of select="$tip_img"/></xsl:when>
+            <xsl:when test="local-name()='warning'"><xsl:value-of select="$warning_img"/></xsl:when>
+        </xsl:choose>
+    </xsl:variable>
+    <div class="{local-name()}">
+        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" title="{local-name()}"/></div>
+        <div class="notetext"><p id="{@id}"><xsl:apply-templates mode="embedded"/></p></div>
+    </div>
+    <br/>
+</xsl:template>
+
 <!-- In case of missing help files -->
 <xsl:template match="help-id-missing"><xsl:value-of select="$Id"/></xsl:template>
 
