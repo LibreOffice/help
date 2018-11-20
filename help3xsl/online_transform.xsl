@@ -108,6 +108,8 @@
 <xsl:variable name="tmp_doc_ui" select="document($tmp_href_ui)"/>
 <xsl:variable name ="ui_contents"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='contents']"/></xsl:variable>
 <xsl:variable name ="ui_index"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='index']"/></xsl:variable>
+<xsl:variable name ="ui_pholderall"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='pholderall']"/></xsl:variable>
+<xsl:variable name ="ui_pholderchosen"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='pholderchosen']"/></xsl:variable>
 <xsl:variable name ="ui_module"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='module']"/></xsl:variable>
 <xsl:variable name ="ui_language"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='language']"/></xsl:variable>
 <xsl:variable name ="ui_donate"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='donate']"/></xsl:variable>
@@ -195,7 +197,17 @@
         <div id="Index">
         <div class="index-label"><xsl:value-of select="$ui_index"/> &#32;&#x1f50e;&#xfe0e;&#32;</div>
             <div id="Bookmarks">
-                <input id="search-bar" type="text" class="search" />
+                <xsl:variable name="pholder">
+                    <xsl:choose>
+                        <xsl:when test="not(contains($htmlpage, '/text/shared/explorer/database/')) and contains($htmlpage, '/text/shared/')">
+                            <xsl:value-of select="$ui_pholderall"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="$ui_pholderchosen"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
+                <input id="search-bar" type="text" class="search" placeholder="{$pholder}"/>
                 <nav class="index"></nav>
             </div>
         </div>
