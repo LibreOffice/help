@@ -11,8 +11,14 @@
 var url = document.URL;
 var moduleRegex = new RegExp('text\\/(\\w+)\\/');
 var regexArray = moduleRegex.exec(url);
-// get the module name from the URL and remove the first character
-var currentModule = regexArray[1].toUpperCase().substring(1);
+var currentModule = null;
+// get the module name from the URL and remove the first character,
+// but first deal with snowflake Base
+if(url.indexOf('explorer/database/') !== -1) {
+    currentModule = 'BASE';
+} else {
+    currentModule = regexArray[1].toUpperCase().substring(1);
+}
 var results = null;
 var fullLinkified = '';
 var modules = ['CALC', 'WRITER', 'IMPRESS', 'DRAW', 'BASE', 'MATH', 'CHART', 'BASIC', 'SHARED'];
