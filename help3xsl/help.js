@@ -34,8 +34,8 @@ bookmarks.forEach(function(obj) {
         });
 function fullList() {
     document.getElementsByClassName("index")[0].innerHTML = fullLinkified;
-    Paginator(document.getElementsByClassName("index")[0]);
     addIds();
+    Paginator(document.getElementsByClassName("index")[0]);
 }
 // add id to the first items of each category in the index. CSS ::before rule adds the heading text
 function addIds() {
@@ -45,7 +45,8 @@ function addIds() {
     modules.forEach(function(module) {
         var moduleHeader = document.getElementsByClassName(module)[0];
         if (typeof moduleHeader !== 'undefined') {
-            moduleHeader.setAttribute("id", module);
+            // let's wrap the header in a span, so the ::before element will not become a link
+            moduleHeader.outerHTML = '<span id="' + module + '" class="' + module + '">' + moduleHeader.outerHTML + '</span>';
         }
     });
 }
@@ -65,8 +66,8 @@ var filter = function() {
         filtered += '<a href="' + result.obj['url'] + '" class="' + result.obj['app'] + '">' + fuzzysort.highlight(result) + '</a>';
     });
     document.getElementsByClassName("index")[0].innerHTML = filtered;
-    Paginator(document.getElementsByClassName("index")[0]);
     addIds();
+    Paginator(document.getElementsByClassName("index")[0]);
 };
 function debounce(fn, wait) {
     var timeout;
