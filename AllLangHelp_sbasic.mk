@@ -360,6 +360,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/main0601 \
     helpcontent2/source/text/sbasic/shared/special_vba_func \
     helpcontent2/source/text/sbasic/shared/vbasupport \
+    helpcontent2/source/text/sbasic/python/main0000 \
+    helpcontent2/source/text/sbasic/python/python_ide \
+    helpcontent2/source/text/sbasic/python/python_locations \
 ))
 
 # vim: set noet sw=4 ts=4:
