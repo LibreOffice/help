@@ -152,11 +152,13 @@
         <link rel="shortcut icon" href="{$target}media/navigation/favicon.ico" />
         <link  type="text/css" href="{$target}normalize.css" rel="Stylesheet" />
         <link  type="text/css" href="{$target}default.css" rel="Stylesheet" />
+        <link  type="text/css" href="{$target}prism.css" rel="Stylesheet" />
         <script type="text/javascript" src="{$target}help2.js"></script>
         <script type="text/javascript" src="{$target}languages.js"></script>
         <script type="text/javascript" src="{$target}{$lang}/langnames.js"></script>
         <script type="text/javascript" src="{$target}fuzzysort.js"></script>
         <script type="text/javascript" src="{$target}paginathing.js"></script>
+        <script type="text/javascript" src="{$target}prism.js"></script>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
     <body itemscope="true" itemtype="http://schema.org/TechArticle">
@@ -552,7 +554,7 @@
         </xsl:when>
 
         <xsl:when test="@role='bascode'">
-            <xsl:call-template name="insertbascode" />
+            <xsl:value-of select="." />
         </xsl:when>
 
         <xsl:when test="@role='logocode'">
@@ -925,7 +927,6 @@
 
 </xsl:template>
 
-
 <!-- Insert Paragraph -->
 <xsl:template name="insertpara">
     <xsl:variable name="role">
@@ -942,15 +943,10 @@
 </xsl:template>
 
 <xsl:template match="bascode">
-    <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><xsl:apply-templates /></div>
+    <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><pre><code class="language-visual-basic line-numbers"><xsl:apply-templates /></code></pre></div>
 </xsl:template>
 <xsl:template match="bascode" mode="embedded">
-    <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><xsl:apply-templates /></div>
-</xsl:template>
-
-<!-- Insert Basic code snippet  -->
-<xsl:template name="insertbascode">
-    <pre class="bascodepar"><xsl:apply-templates /></pre><br/>
+    <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><pre><code class="language-visual-basic line-numbers"><xsl:apply-templates mode="embedded" /></code></pre></div>
 </xsl:template>
 
 <!-- Insert Logo code snippet  -->
