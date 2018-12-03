@@ -689,6 +689,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/navigator_setcursor \
     helpcontent2/source/text/shared/guide/navpane_on \
     helpcontent2/source/text/shared/guide/numbering_stop \
+    helpcontent2/source/text/shared/guide/openpgp \
     helpcontent2/source/text/shared/guide/pageformat_max \
     helpcontent2/source/text/shared/guide/paintbrush \
     helpcontent2/source/text/shared/guide/pasting \
