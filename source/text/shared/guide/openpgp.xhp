@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+    <meta>
+        <topic id="encryptopenpgp" indexer="include" status="PUBLISH">
+            <title id="tit" xml-lang="en-US">OpenPGP</title>
+            <filename>/text/shared/guide/openpgp.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id361543701916002">
+        <bookmark_value>OpenPGP;document encryption</bookmark_value>
+        <bookmark_value>file encryption;OpenPGP</bookmark_value>
+        <bookmark_value>public key;file encryption</bookmark_value>
+        <bookmark_value>private key;file encryption</bookmark_value>
+        <bookmark_value>file encryption;symmetric keys</bookmark_value>
+    </bookmark>
+    <section id="openpgphead">
+        <h1 id="hd_id131543693200115"><link href="text/shared/guide/openpgp.xhp" name="openpgp">Encrypting Documents with OpenPGP</link></h1>
+        <paragraph id="par_id531543693200117" role="paragraph" xml-lang="en-US"><ahelp hid=".">%PRODUCTNAME can encrypt documents using OpenPGP public key cryptography. The document is encrypted using a symmetric encryption algorithm.</ahelp></paragraph>
+    </section>
+    <section id="howtoget">
+        <paragraph role="paragraph" id="par_id551543694091730" xml-lang="en-US">Choose menu <menuitem>File - Save as</menuitem>, select <widget>Encrypt with GPG key</widget>, Press <widget>Save</widget>.</paragraph>
+    </section>
+    <paragraph role="paragraph" id="par_id421543694016897">%PRODUCTNAME can encrypt documents confidentially using OpenPGP. The document is encrypted using a symmetric encryption algorithm, which requires a symmetric key. Each symmetric key is used only once and is also called a session key. The document and its session key are sent to the recipient. The session key must be sent to the recipients so they know how to decrypt the document, but to protect it during transmission it is encrypted with the recipient's public key. Only the private key belonging to the recipient can decrypt the session key.</paragraph>
+
+    <paragraph role="paragraph" id="par_id931543694032072">%PRODUCTNAME uses the OpenPGP software installed in your computer. If no OpenPGP software is available you must download and install one suitable for your operating system, likely from your application store or software distribution channel.</paragraph>
+    <paragraph role="paragraph" id="par_id131543846940809">Here are some external GPG applications known to work with %PRODUCTNAME:</paragraph>
+    <list type="unordered">
+        <listitem>
+            <paragraph id="par_id831543846877587"  role="listitem"><emph>gpg4win</emph> on Windows</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id191543846891252"  role="listitem"><emph>GPGTools</emph> on MacOS</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id791543846905735"  role="listitem">On Linux, usually already installed:</paragraph>
+            <list type="unordered">
+                <listitem>
+                    <paragraph id="par_id411544099245722"  role="listitem"><emph>gnupg</emph> - a command line utility for signing, encrypting and key management.</paragraph>
+                </listitem>
+                <listitem>
+                    <paragraph id="par_id811544099299847"  role="listitem">Graphical applications for gnupg such as <emph>Seahorse</emph> (gnome), <emph>Kleopatra</emph> and <emph>KGpg</emph> (KDE).</paragraph>
+                    <listitem>
+                        <paragraph id="par_id631544099446081"  role="listitem"><emph>gpgme</emph> - an application program interface (API) to develop applications with GPG.</paragraph>
+                    </listitem>
+                </listitem>
+            </list>
+        </listitem>
+    </list>
+    <paragraph role="paragraph" id="par_id461543694043196">You must define a personal pair of cryptography keys with the OpenPGP application. Refer to the OpenPGP software installed on how to create a pair of keys, it is usually the first step to execute after the software installation.</paragraph>
+    <h2 id="hd_id881543694319935">%PRODUCTNAME Encryption Setup</h2>
+    <embed href="text/shared/optionen/01010100.xhp#cryptointro"/>
+    <paragraph role="paragraph" id="par_id611543699681558">Choose menu <menuitem>Tools – Options – User Data</menuitem>. In the <emph>Cryptography</emph> area:</paragraph>
+    <embed href="text/shared/optionen/01010100.xhp#opengpg"/>
+    <h2 id="hd_id251543694437685">Encrypting documents</h2>
+    <paragraph role="paragraph" id="par_id121543694447798">OpenPGP encryption requires the use of the public key of the recipient and this key must be available in the OpenPGP key chain stored in your computer. To encrypt a document:</paragraph>
+    <list type="ordered">
+        <listitem>
+            <paragraph id="par_id501543694474227"  role="listitem" xml-lang="en-US">Choose <menuitem>File – Save As</menuitem>,</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id641543694535615"  role="listitem">Enter a name for the file.</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id621543694550648"  role="listitem">Mark the <widget>Encrypt with GPG key</widget> checkbox.</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id91543694595310"  role="listitem">Press <widget>Save</widget>. %PRODUCTNAME opens the OpenPGP public key selection dialog.</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id31543694619204"  role="listitem">Choose the public key of the recipient. You can select multiple keys at the time.</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id811543694660297"  role="listitem">Press <widget>OK</widget> to close the dialog and save the file.</paragraph>
+        </listitem>
+    </list>
+    <paragraph role="paragraph" id="par_id981543694776604">The file is saved encrypted with the selected public keys.</paragraph>
+    <warning id="par_id851543694185733">Only the private key belonging to the recipient can decrypt the document, unless you also encrypt for yourself.</warning>
+    <h2 id="hd_id81543694812238">Decrypting documents</h2>
+    <paragraph role="paragraph" id="par_id731543694835151">You can only decrypt documents that have been encrypted with your public key. To decrypt a document:</paragraph>
+    <list type="ordered">
+        <listitem>
+            <paragraph id="par_id801543694880414"  role="listitem">Open the document. An Enter password prompt shows.</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id891543694892170"  role="listitem">Enter the password of the OpenPGP private key. The document is decrypted and the contents is available.</paragraph>
+        </listitem>
+    </list>
+    <h2 id="hd_id811543694928568">Difference between document encryption with OpenPGP and Save with password</h2>
+
+    <paragraph role="paragraph" id="par_id391543694940352">Both commands address confidentiality, but in different ways.</paragraph>
+
+    <paragraph role="paragraph" id="par_id331543694947279">When you save a document with a password, you must remember the password inserted to open the document later. Anyone else that needs to open the document must also know the password used at save time. Therefore, the Save password must be transmitted to be known by other users.</paragraph>
+
+    <paragraph role="paragraph" id="par_id351543694955038">Files encrypted with the save password cannot be decrypted unless the save password is supplied.</paragraph>
+
+    <paragraph role="paragraph" id="par_id681543694965846">With document OpenPGP encryption, you define the set of users that can decrypt the document and you don’t need to send passwords through channels which security is unknown. Besides, the OpenPGP application manages the key chain of public keys more efficiently.</paragraph>
+    <section id="relatedtopics">
+        <paragraph role="paragraph" id="par_id681543699425744" localize="false"><embedvar href="text/shared/guide/digital_signatures.xhp#digital_signatures" markup="ignore"/></paragraph>
+        <paragraph role="paragraph" id="par_id51543697316590"><link href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy#OpenPGP" name="Wikipedia on OpenPGP">Wikipedia on OpenPGP</link></paragraph>
+    </section>
+</body>
+</helpdocument>
