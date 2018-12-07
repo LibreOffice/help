@@ -11,19 +11,49 @@
 
     <meta>
         <topic id="pythonlocations" indexer="include" status="PUBLISH">
-            <title id="tit" xml-lang="en-US">Location of Python Scripts</title>
+            <title id="tit" xml-lang="en-US">Python Scripts Organization</title>
             <filename>/text/sbasic/python/python_locations.xhp</filename>
         </topic>
     </meta>
     <body>
     <section id="pythonlocation">
-        <paragraph id="hd_id391543358231021" role="heading" level="1" xml-lang="en-US"><variable id="pythonlocations1"><link href="text/sbasic/python/python_locations.xhp" name="command_name">Location of Python scripts</link></variable></paragraph>
-        <paragraph id="par_id771543358231022" role="paragraph" xml-lang="en-US">The Python script files are simply stored within the file system.</paragraph>
-
+        <paragraph id="hd_id391543358231021" role="heading" level="1" xml-lang="en-US"><variable id="pythonlocations1"><link href="text/sbasic/python/python_locations.xhp" name="command_name">Python scripts Organization and Location</link></variable></paragraph>
+        <paragraph id="par_id771543358231022" role="paragraph" xml-lang="en-US">The Python script files are stored in the file system, in folders controlled by %PRODUCTNAME. The macros can be stared at installation, user or file level.</paragraph>
     </section>
     <embed href="text/shared/need_help.xhp#needhelp"/>
-    <paragraph role="heading" level="2" id="par_id591543360063141" xml-lang="en-US">%PRODUCTNAME installation share</paragraph>
-    <paragraph role="heading" level="2" id="par_id251543360075956" xml-lang="en-US">%PRODUCTNAME user profile</paragraph>
-    <paragraph role="heading" level="2" id="par_id671543360098182" xml-lang="en-US">Embedded in the document</paragraph>
+    <h2 id="hd_id911544049584458">Python Script Locations</h2>
+    <h3 id="hd_id591544049572647">%PRODUCTNAME Macros container</h3>
+    <paragraph role="paragraph" id="par_id261544049064421">Existing macros in this location (container) were copied by the installation program and are available to every computer user, and any open document can access macros stored the container. You need administrative rights to store or edit macros here.</paragraph>
+
+    <paragraph role="paragraph" id="par_id861544210028670">The LibreOfficeDev Macros container location in the file system depends on the operating system:</paragraph>
+    <list type="unordered">
+        <listitem>
+            <paragraph id="par_id191544210072242"  role="listitem">For Windows, <literal>C:\Program Files (x86)\LibreOffice\Basis\share\Scripts\python</literal>.</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id61544210078654"  role="listitem">For Linux and macOS, in <literal>$(Installation)/share/Scripts/python</literal>.</paragraph>
+        </listitem>
+    </list>
+    <h3 id="hd_id861544049692222">My Macros</h3>
+    <paragraph role="paragraph" id="par_id981544049055996">This container is accessible only by the %PRODUCTNAME user. Any open document can access macros stored the container. Macros in this location are stored in the %PRODUCTNAME user profile.</paragraph>
+    <paragraph role="paragraph" id="par_id341544210187846">The My Macros container location is in the user space and depends on the operating system:</paragraph>
+    <list type="unordered">
+        <listitem>
+            <paragraph id="par_id381544210213190"  role="listitem">For <emph>Windows</emph>, in <literal>C:\Users\current-user\AppData\Roaming\libreoffice\4\user\Scripts\python</literal>.</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id691544210219850"  role="listitem">For <emph>Linux</emph> and <emph>macOS</emph>, in <literal>$(HOME)/.config/libreoffice/4/user/Scripts/python</literal>.</paragraph>
+        </listitem>
+    </list>
+    <h3 id="hd_id101544049707712">Document macros</h3>
+    <paragraph role="paragraph" id="par_id31544049046497">Document macros are embedded in the document and are accessible only when the document is open.</paragraph>
+    <h2 id="hd_id171544049715310">Libraries, Modules and Macros</h2>
+    <paragraph role="paragraph" id="par_id181544209916707">Like BASIC macros, Python macros can organized in libraries, modules and macros. Note that a module may not be part of a library.</paragraph>
+    <h3 id="hd_id21544209865082">Creating a Python Library</h3>
+    <paragraph role="paragraph" id="par_id191544209928221">Libraries are folders in the container tree. To create a library, add a folder in the target container. The library name is the folder name.</paragraph>
+    <h3 id="hd_id31544209872869">Creating a Python Module.</h3>
+    <paragraph role="paragraph" id="par_id161544209936743">A module is a python file in the library or the container. Create a module adding a file in the container.</paragraph>
+    <h3 id="hd_id151544209895574">Python macros</h3>
+    <paragraph role="paragraph" id="par_id61544209944591">A macro is a python object in the module.</paragraph>
 </body>
 </helpdocument>
