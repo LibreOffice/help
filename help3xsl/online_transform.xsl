@@ -553,7 +553,7 @@
             <xsl:apply-templates />
         </xsl:when>
 
-        <xsl:when test="@role='bascode'">
+        <xsl:when test="@role='bascode' or @role='pycode'">
             <xsl:value-of select="." />
         </xsl:when>
 
@@ -947,6 +947,13 @@
 </xsl:template>
 <xsl:template match="bascode" mode="embedded">
     <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><pre><code class="language-visual-basic line-numbers"><xsl:apply-templates mode="embedded" /></code></pre></div>
+</xsl:template>
+
+<xsl:template match="pycode">
+    <div class="pycode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><pre><code class="language-python line-numbers"><xsl:apply-templates /></code></pre></div>
+</xsl:template>
+<xsl:template match="pycode" mode="embedded">
+    <div class="pycode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><pre><code class="language-python line-numbers"><xsl:apply-templates mode="embedded" /></code></pre></div>
 </xsl:template>
 
 <!-- Insert Logo code snippet  -->
