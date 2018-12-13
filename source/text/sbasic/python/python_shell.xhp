@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+    <meta>
+        <topic id="python_shell" indexer="include" status="PUBLISH">
+            <title id="tit" xml-lang="en-US">Python Interactive Shell</title>
+            <filename>/text/sbasic/python/python_shell.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+    <bookmark branch="index" id="N0117">
+        <bookmark_value>Python console</bookmark_value>
+        <bookmark_value>Python Interactive Shell</bookmark_value>
+    </bookmark>
+    <section id="pythonshell1">
+        <paragraph role="heading" level="1" id="N0118"><link href="text/sbasic/python/python_shell.xhp" name="python shell">Running Python Interactive Console</link></paragraph>
+    </section>
+    <paragraph role="paragraph" id="N0119">The Python interactive console, also known as Python interpreter or Python shell, provide programmers with a quick way to execute commands and try out and test code without creating a file. %PRODUCTNAME Python modules documentation can obtained from the terminal.</paragraph>
+    <paragraph role="paragraph" id="N0120"></paragraph>
+    <paragraph role="heading" level="2" id="N0121">Using a Basic macro:</paragraph>
+    <bascode>
+        <paragraph role="bascode" id="N0122">Sub interpreter_console</paragraph>
+        <paragraph role="bascode" id="N0123">    ps = CreateUnoService(&quot;com.sun.star.util.PathSettings&quot;)</paragraph>
+        <paragraph role="bascode" id="N0124">    install_path = ConvertFromURL(ps.Module)</paragraph>
+        <paragraph role="bascode" id="N0125">    Shell( install_path + GetPathSeparator() + &quot;python&quot; )</paragraph>
+        <paragraph role="bascode" id="N0126">End Sub</paragraph>
+    </bascode>
+    <paragraph role="heading" level="2" id="N0127">Using a Python macro:</paragraph>
+    <pycode>
+        <paragraph role="pycode" id="N0128"># -*- coding: utf-8 -*-</paragraph>
+        <paragraph role="pycode" id="N0129">from __future__ import unicode_literals</paragraph>
+        <paragraph role="pycode" id="N0130"></paragraph>
+        <paragraph role="pycode" id="N0131">import uno, os, subprocess</paragraph>
+        <paragraph role="pycode" id="N0132"></paragraph>
+        <paragraph role="pycode" id="N0133">def interpreter_console():</paragraph>
+        <paragraph role="pycode" id="N0134">    ctx = XSCRIPTCONTEXT.getComponentContext()</paragraph>
+        <paragraph role="pycode" id="N0135">    smgr = ctx.getServiceManager()</paragraph>
+        <paragraph role="pycode" id="N0136">    ps = smgr.createInstanceWithContext(&quot;com.sun.star.util.PathSettings&quot;, ctx)</paragraph>
+        <paragraph role="pycode" id="N0137">    install_path = uno.fileUrlToSystemPath(ps.Module)</paragraph>
+        <paragraph role="pycode" id="N0138">    pgm = install_path + os.sep + &quot;python&quot;  # Python shell/console path</paragraph>
+        <paragraph role="pycode" id="N0139">    subprocess.Popen(pgm)  # Start Python interactive Shell</paragraph>
+        <paragraph role="pycode" id="N0140"></paragraph>
+    </pycode>
+    <paragraph role="heading" level="2" id="N0141">Usage:</paragraph>
+    <paragraph role="heading" level="2" id="N0142">
+        <image src="/../../../Images/Help/PythonShell.png" id="N0143"><alt id="N0144">Python Interactive Console</alt></image>
+    </paragraph>
+</body>
+</helpdocument>
