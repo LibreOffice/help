@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+     -->
     <meta>
         <topic id="org.LibreOffice.Help.Enum">
             <title id="tit" xml-lang="en-US">Enum Statement</title>
@@ -28,24 +36,33 @@
 
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="N0008">Option VBASupport 1<br/></paragraph>
-        <paragraph role="bascode" localize="false" id="N0018">Private Enum  _WindowManager</paragraph>
-        <paragraph role="bascode" localize="false" id="N0019">    W1ND0WS = 1 &apos; Windows</paragraph>
-        <paragraph role="bascode" localize="false" id="N0020">    OS2PM = 2 &apos; OS/2 Presentation Manager</paragraph>
-        <paragraph role="bascode" localize="false" id="N0021">    MACINTOSH = 3 &apos; Macintosh</paragraph>
-        <paragraph role="bascode" localize="false" id="N0022">    MOTIF = 4 &apos; Motif Window Manager / Unix-like</paragraph>
-        <paragraph role="bascode" localize="false" id="N0023">    OPENLOOK = 5 &apos; Open Look / Unix-like</paragraph>
-        <paragraph role="bascode" localize="false" id="N0024">End Enum</paragraph>
+       <paragraph role="bascode" id="N0008">Option VBASupport 1<br/></paragraph>
+       <paragraph role="bascode" id="N0018">Private Enum _WindowManager</paragraph>
+       <paragraph role="bascode" id="N0019">    W1ND0WS = 1 &apos; Windows</paragraph>
+       <paragraph role="bascode" id="N0020">    OS2PM = 2 &apos; OS/2 Presentation Manager</paragraph>
+       <paragraph role="bascode" id="N0021">    MACINTOSH = 3 &apos; Macintosh</paragraph>
+       <paragraph role="bascode" id="N0022">    MOTIF = 4 &apos; Motif Window Manager / Unix-like</paragraph>
+       <paragraph role="bascode" id="N0023">    OPENLOOK = 5 &apos; Open Look / Unix-like</paragraph>
+       <paragraph role="bascode" id="N0024">End Enum</paragraph>
+       <paragraph role="bascode" id="N0027">Public Function WindowManager() As Object</paragraph>
+       <paragraph role="bascode" id="N0028">    WindowManager = _WindowManager</paragraph>
+       <paragraph role="bascode" id="N0029">End Function &apos; &lt;library&gt;.&lt;module&gt;.WindowManager.XXX</paragraph>
     </bascode>
-    <note  id="N0025">Enumerated values are rendered to <emph>Long</emph> datatype. Basic functions are public accessors to enumerations. Enumeration names and value names must be unique within a library and across modules.</note>
+    <note  id="N0030">Enumerated values are rendered to <emph>Long</emph> datatype. Basic functions are public accessors to enumerations. Enumeration names and value names must be unique within a library and across modules.</note>
+
+    <h2 id="N0036">usage:</h2>
+    <paragraph role="paragraph" xml-lang="en" id="N0037">Display WindowManager grouped constant values:</paragraph>
+    <bascode>
+       <paragraph role="bascode" id="N0038">Dim winMgr As Object : winMgr = &lt;library&gt;.&lt;module&gt;.WindowManager</paragraph>
+       <paragraph role="bascode" id="N0039">With winMgr</paragraph>
+       <paragraph role="bascode" id="N0040">    Print .MACINTOSH, .MOTIF, .OPENLOOK, .OS2PM, .W1ND0WS</paragraph>
+       <paragraph role="bascode" id="N0041">End With</paragraph>
+    </bascode>
 
     <section id="relatedtopics" >
-        <paragraph role="paragraph"  id="N0051">
-            <link href="text/sbasic/shared/03100700.xhp" name ="const">Const</link> statement, <link href="text/sbasic/shared/01020100.xhp" name ="external">constants</link>
-        </paragraph>
-        <paragraph role="paragraph"  id="N0053">
-            <link href="text/sbasic/shared/03103350.xhp" name ="external">Option VBASupport</link> statement
-        </paragraph>
+        <paragraph role="paragraph" id="N0051"><link href="text/sbasic/shared/03100700.xhp" name ="const">Const</link> statement, <link href="text/sbasic/shared/01020100.xhp" name ="external">constants</link></paragraph>
+        <paragraph role="paragraph" id="N0053"><link href="text/sbasic/shared/03103350.xhp" name ="external">Option VBASupport</link> statement</paragraph>
+        <paragraph role="paragraph" id="N0061"><link href="text/sbasic/shared/03090411.xhp" name ="external">With</link> statement</paragraph>
     </section>
 </body>
 </helpdocument>
