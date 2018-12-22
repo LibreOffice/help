@@ -68,11 +68,6 @@
 <xsl:variable name="filename" select="/helpdocument/meta/topic/filename"/>
 <xsl:variable name="title" select="/helpdocument/meta/topic/title"/>
 
-<!-- Module and the corresponding switching values-->
-<xsl:param name="Database" select="'swriter'"/>
-<xsl:variable name="module" select="$Database"/>
-<xsl:variable name="appl"/>
-
 <!-- the other parameters given by the help caller -->
 
 <xsl:variable name="pversion">
