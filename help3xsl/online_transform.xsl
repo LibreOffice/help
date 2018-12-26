@@ -538,7 +538,7 @@
             </xsl:call-template>
         </xsl:when>
 
-        <xsl:when test="contains(' note warning tip ',@role)">
+        <xsl:when test="@role='note' or @role='tip' or @role='warning'">
             <xsl:call-template name="insertnote">
                 <xsl:with-param name="type" select="@role" />
             </xsl:call-template>
@@ -550,6 +550,10 @@
 
         <xsl:when test="@role='bascode' or @role='pycode'">
             <xsl:value-of select="." />
+        </xsl:when>
+
+        <xsl:when test="@role='smathcode'">
+            <p id="{@id}" class="smathcode"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
         </xsl:when>
 
         <xsl:when test="@role='logocode'">
@@ -579,7 +583,7 @@
             </xsl:call-template>
         </xsl:when>
 
-        <xsl:when test="contains(' note warning tip ',@role)">
+        <xsl:when test="@role='note' or @role='tip' or @role='warning'">
             <xsl:call-template name="insertnote">
                 <xsl:with-param name="type" select="@role" />
             </xsl:call-template>
@@ -589,6 +593,17 @@
             <xsl:apply-templates />
         </xsl:when>
 
+        <xsl:when test="@role='bascode' or @role='pycode'">
+            <xsl:value-of select="." />
+        </xsl:when>
+
+        <xsl:when test="@role='smathcode'">
+            <p id="{@id}" class="smathcode"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
+        </xsl:when>
+
+        <xsl:when test="@role='logocode'">
+            <xsl:call-template name="insertlogocode" />
+        </xsl:when>
         <xsl:otherwise>
             <xsl:call-template name="insertpara" />
         </xsl:otherwise>
