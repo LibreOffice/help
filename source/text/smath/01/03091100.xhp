@@ -46,16 +46,16 @@
 <paragraph role="paragraph" id="par_id3153002" xml-lang="en-US">Since "left" and "right" ensure unique assignment of the brackets, every single bracket can be used as an argument for these two commands, even placing right brackets on the left side, or left brackets on the right. Instead of a bracket you can use the "none" qualifier, which means that there is no bracket shown and that there is no space reserved for a bracket. Using this, you can create the following expressions:</paragraph>
 <list type="unordered">
 <listitem>
-<paragraph role="code" id="par_id3150014" xml-lang="en-US">left lbrace x right none</paragraph>
+<paragraph role="code" id="par_id3150014" xml-lang="en-US" localize="false">left lbrace x right none</paragraph>
 </listitem>
 <listitem>
-<paragraph role="code" id="par_id3149877" xml-lang="en-US">left [ x right )</paragraph>
+    <paragraph role="code" id="par_id3149877" xml-lang="en-US" localize="false">left [ x right )</paragraph>
 </listitem>
 <listitem>
-<paragraph role="code" id="par_id3145241" xml-lang="en-US">left ] x right [</paragraph>
+    <paragraph role="code" id="par_id3145241" xml-lang="en-US" localize="false">left ] x right [</paragraph>
 </listitem>
 <listitem>
-<paragraph role="code" id="par_id3156060" xml-lang="en-US">left rangle x right lfloor</paragraph>
+    <paragraph role="code" id="par_id3156060" xml-lang="en-US" localize="false">left rangle x right lfloor</paragraph>
 </listitem>
 </list>
 <paragraph role="paragraph" id="par_id3150935" xml-lang="en-US">The same rules apply to "left" and "right" as to the other brackets: they also work as group builders and may enclose empty expressions.</paragraph>
@@ -74,37 +74,29 @@
 </list>
 <list type="unordered">
 <listitem>
-<paragraph role="code" id="par_id3150756" xml-lang="en-US">\(, \)</paragraph>
+    <paragraph role="code" id="par_id3150756" xml-lang="en-US" localize="false">\(, \)</paragraph>
 </listitem>
 </list>
 <list type="unordered">
 <listitem>
-<paragraph role="code" id="par_id3145207" xml-lang="en-US">\[, \]</paragraph>
+    <paragraph role="code" id="par_id3145207" xml-lang="en-US" localize="false">\[, \]</paragraph>
 </listitem>
 </list>
 <list type="unordered">
 <listitem>
-<paragraph role="code" id="par_id3153153" xml-lang="en-US">\langle, \rangle</paragraph>
+    <paragraph role="code" id="par_id3153153" xml-lang="en-US" localize="false">\langle, \rangle</paragraph>
 </listitem>
-</list>
-<list type="unordered">
 <listitem>
-<paragraph role="code" id="par_id3150263" xml-lang="en-US">\lceil, \rceil</paragraph>
+    <paragraph role="code" id="par_id3150263" xml-lang="en-US" localize="false">\lceil, \rceil</paragraph>
 </listitem>
-</list>
-<list type="unordered">
 <listitem>
-<paragraph role="code" id="par_id3147252" xml-lang="en-US">\lfloor, \rfloor</paragraph>
+    <paragraph role="code" id="par_id3147252" xml-lang="en-US" localize="false">\lfloor, \rfloor</paragraph>
 </listitem>
-</list>
-<list type="unordered">
 <listitem>
-<paragraph role="code" id="par_id3154690" xml-lang="en-US">\lline, \rline</paragraph>
+    <paragraph role="code" id="par_id3154690" xml-lang="en-US" localize="false">\lline, \rline</paragraph>
 </listitem>
-</list>
-<list type="unordered">
 <listitem>
-<paragraph role="code" id="par_id3145414" xml-lang="en-US">\ldline, \rdline</paragraph>
+    <paragraph role="code" id="par_id3145414" xml-lang="en-US" localize="false">\ldline, \rdline</paragraph>
 </listitem>
 </list>
 <paragraph role="paragraph" id="par_id3147514" xml-lang="en-US">In this way, intervals like the one above can be built in <emph>$[officename] Math</emph> without any problems: \[2", "3\) or "\]2", "3\[ (Attention: These quotation marks are part of the entry.)</paragraph>
@@ -113,37 +105,35 @@
 <paragraph role="paragraph" id="par_id3147526" xml-lang="en-US">This differs slightly for competing or mutually influencing attributes. This is often the case with font attributes. For example, which color does the b have in "color yellow color red (a + color green b)", or which size does it have in "size *4 (a + size /2 b)"? Given a base size of 12, does it have the size 48, 6 or even 24 (which could be seen as a combination)? The following are basic resolution rules, which will be followed consistently in the future. In general, the rules apply to all group operations. This only has a visible effect on the font attributes, like "bold", "ital", "phantom", "size", "color" and "font":</paragraph>
 <list type="unordered">
 <listitem>
-<paragraph role="listitem" id="par_id3152952" xml-lang="en-US">Group operations in sequence are treated as if every single operation is enclosed by braces. They are nested, and in every level there can be no more than one operation. Here is an example of a formula with many group operations: "size 12 color red font sans size -5 (a + size 8 b)" like "{size 12{color red{font sans{size -5 (a + {size 8 b})}}}}".</paragraph>
+    <paragraph role="listitem" id="par_id3152952" xml-lang="en-US">Group operations in sequence are treated as if every single operation is enclosed by braces. They are nested, and in every level there can be no more than one operation. Here is an example of a formula with many group operations:</paragraph>
+    <paragraph role="code" id="par_id541545830604094" localize="false">"size 12 color red font sans size -5 (a + size 8 b)" like "{size 12{color red{font sans{size -5 (a + {size 8 b})}}}}".</paragraph>
 </listitem>
-</list>
-<list type="unordered">
 <listitem>
 <paragraph role="listitem" id="par_id3158441" xml-lang="en-US">This example formula is then interpreted from left to right. The operations only affect its corresponding group (or expression). Operations further to the right "replace" or "combine themselves with" their predecessors.</paragraph>
 </listitem>
-</list>
-<list type="unordered">
 <listitem>
-<paragraph role="listitem" id="par_id3150994" xml-lang="en-US">A group operation does not have any effect on higher-level operations but rather affects only lower-level groups and expressions, including their brackets and super-/subscripts. For example, "a + size *2 (b * size -8 c_1)^2"</paragraph>
+    <paragraph role="listitem" id="par_id3150994" xml-lang="en-US">A group operation does not have any effect on higher-level operations but rather affects only lower-level groups and expressions, including their brackets and super-/subscripts. For example,</paragraph>
+    <paragraph role="code" id="par_id501545831523103" localize="false">a + size *2 (b * size -8 c_1)^2</paragraph>
 </listitem>
 </list>
 <paragraph role="note" id="par_id3154196" xml-lang="en-US">"color ..." and "font ..." as well as "size n" (n is a decimal) replace any preceding operations of the same type</paragraph>
 <paragraph role="note" id="par_id3154136" xml-lang="en-US">for "size +n", "size -n", "size *n", and "size /n" the effects of the operations are combined,</paragraph>
 <paragraph role="note" id="par_id3146934" xml-lang="en-US">"size *2 size -5 a" would be double the starting size minus 5</paragraph>
 <paragraph role="note" id="par_id3149297" xml-lang="en-US">"font sans ( a + font serif b)"</paragraph>
-<paragraph role="note" id="par_id3155174" xml-lang="en-US">"size *2 ( a + size /2 b )"</paragraph><comment>UFI: no more StarSymbol font. Removed the following paras</comment><comment>id="par_id3151327" For the StarSymbol Unicode font there are 2 exceptions to these rules:
-id="par_id3148998" It ignores "font" commands. Otherwise, there would often be different characters from the ones desired, for example, "font sans (a oplus b)" would then neither have brackets nor an "oplus".
-id="par_id3143281" The "ital" command is ignored, for example, "ital (a + b)". This happens because italicized mathematical symbols are uncommon, even in combination with text in italics.</comment><paragraph role="tip" id="par_id3154906" xml-lang="en-US">To change the size of a formula, use "size +" or -,*,/. Do not use "size n". These can easily be used in any context. This enables you to copy to other areas by using Copy and Paste, and the result remains the same. Furthermore, such expressions survive a change of base size in the menu better than when using "size n". If you use only "size *" and "size /" (for example, "size *1.24 a or size /0.86 a") the proportions remain intact.</paragraph>
+<paragraph role="note" id="par_id3155174" xml-lang="en-US">"size *2 ( a + size /2 b )"</paragraph>
+<paragraph role="tip" id="par_id3154906" xml-lang="en-US">To change the size of a formula, use "size +" or -,*,/. Do not use "size n". These can easily be used in any context. This enables you to copy to other areas by using Copy and Paste, and the result remains the same. Furthermore, such expressions survive a change of base size in the menu better than when using "size n". If you use only "size *" and "size /" (for example, "size *1.24 a or size /0.86 a") the proportions remain intact.</paragraph>
 <paragraph role="tip" id="par_id3147587" xml-lang="en-US">Examples (with a base size of 12 and 50% for indexes):</paragraph>
 <paragraph role="tip" id="par_id3148734" xml-lang="en-US">Exactly identical proportions with "size 18 a_n" and "size *1.5 a_n".</paragraph>
+
 <paragraph role="tip" id="par_id3152766" xml-lang="en-US">This differs in different contexts: "x^{size 18 a_n}" and "x^{size *1.5 a_n}"</paragraph>
 <paragraph role="tip" id="par_id3157986" xml-lang="en-US">Examples with size +n for a comparison. They look identical:</paragraph>
-<paragraph role="codeintip" id="par_id3158001" xml-lang="en-US">a_{size 8 n}</paragraph>
-<paragraph role="codeintip" id="par_id3147332" xml-lang="en-US">a_{size +2 n}</paragraph>
-<paragraph role="codeintip" id="par_id3155143" xml-lang="en-US">a_{size *1.333 n}</paragraph>
+<paragraph role="codeintip" id="par_id3158001" xml-lang="en-US" localize="false">a_{size 8 n}</paragraph>
+<paragraph role="codeintip" id="par_id3147332" xml-lang="en-US" localize="false">a_{size +2 n}</paragraph>
+<paragraph role="codeintip" id="par_id3155143" xml-lang="en-US" localize="false">a_{size *1.333 n}</paragraph>
 <paragraph role="tip" id="par_id3147129" xml-lang="en-US">The following examples, however, do not look identical:</paragraph>
-<paragraph role="codeintip" id="par_id3147073" xml-lang="en-US">x^{a_{size 8 n}}</paragraph>
-<paragraph role="codeintip" id="par_id3147086" xml-lang="en-US">x^{a_{size +2 n}}</paragraph>
-<paragraph role="codeintip" id="par_id3154386" xml-lang="en-US">x^{a_{size *1.333 n}}</paragraph>
+<paragraph role="codeintip" id="par_id3147073" xml-lang="en-US" localize="false">x^{a_{size 8 n}}</paragraph>
+<paragraph role="codeintip" id="par_id3147086" xml-lang="en-US" localize="false">x^{a_{size +2 n}}</paragraph>
+<paragraph role="codeintip" id="par_id3154386" xml-lang="en-US" localize="false">x^{a_{size *1.333 n}}</paragraph>
 <paragraph role="tip" id="par_id3153354" xml-lang="en-US">Note that all n here have different sizes. The size 1.333 results from 8/6, the desired size divided by the default index size 6. (Index size 50% with a base size of 12)</paragraph>
 </body>
 </helpdocument>
