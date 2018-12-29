@@ -473,35 +473,35 @@
 
 <!-- LIST -->
 <xsl:template match="list">
-	<xsl:choose>
-		<xsl:when test="@type='ordered'">
-			<ol>
-				<xsl:if test="@startwith">
-					<xsl:attribute name="start"><xsl:value-of select="@startwith"/></xsl:attribute>
-				</xsl:if>
-				<xsl:apply-templates />
-			</ol>
-		</xsl:when>
-		<xsl:otherwise>
-			<ul><xsl:apply-templates /></ul>
-		</xsl:otherwise>
-	</xsl:choose>
+    <xsl:choose>
+        <xsl:when test="@type='ordered'">
+            <ol>
+                <xsl:if test="@startwith">
+                    <xsl:attribute name="start"><xsl:value-of select="@startwith"/></xsl:attribute>
+                </xsl:if>
+                <xsl:apply-templates />
+            </ol>
+        </xsl:when>
+        <xsl:otherwise>
+            <ul><xsl:apply-templates /></ul>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <xsl:template match="list" mode="embedded">
-	<xsl:choose>
-		<xsl:when test="@type='ordered'">
-			<ol>
-				<xsl:if test="@startwith">
-					<xsl:attribute name="start"><xsl:value-of select="@startwith"/></xsl:attribute>
-				</xsl:if>
-				<xsl:apply-templates mode="embedded"/>
-			</ol>
-		</xsl:when>
-		<xsl:otherwise>
-			<ul><xsl:apply-templates mode="embedded"/></ul>
-		</xsl:otherwise>
-	</xsl:choose>
+    <xsl:choose>
+        <xsl:when test="@type='ordered'">
+            <ol>
+                <xsl:if test="@startwith">
+                    <xsl:attribute name="start"><xsl:value-of select="@startwith"/></xsl:attribute>
+                </xsl:if>
+                <xsl:apply-templates mode="embedded"/>
+            </ol>
+        </xsl:when>
+        <xsl:otherwise>
+            <ul><xsl:apply-templates mode="embedded"/></ul>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <!-- LISTITEM -->
@@ -519,12 +519,12 @@
 <!-- OBJECT -->
 <xsl:template match="object">
     <xsl:if test="$online">
-	    <xsl:call-template name="insertobject"/>
+        <xsl:call-template name="insertobject"/>
     </xsl:if>
 </xsl:template>
 <xsl:template match="object" mode="embedded">
     <xsl:if test="$online">
-	    <xsl:call-template name="insertobject"/>
+        <xsl:call-template name="insertobject"/>
     </xsl:if>
 </xsl:template>
 

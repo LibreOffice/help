@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+* This file is part of the LibreOffice project.
+*
+* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*
+-->
+
+<helpdocument version="1.0">
+    <meta>
+        <topic id="textsbasicshared03130610xml" indexer="include" status="PUBLISH">
+            <title id="tit" xml-lang="en-US">WaitUntil Statement</title>
+            <filename>/text/sbasic/shared/03130610.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+    <section id="waituntil">
+        <bookmark xml-lang="en-US" branch="index" id="bm_id3154136">
+            <bookmark_value>WaitUntil statement</bookmark_value>
+        </bookmark>
+        <h1 id="hd_id3154136"><link href="text/sbasic/shared/03130610.xhp" name="WaitUntil Statement">WaitUntil Statement</link></h1>
+        <paragraph role="paragraph" id="par_id3149236">Interrupts the program execution until the time specified.</paragraph>
+    </section>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="code" id="par_id3150669">WaitUntil Time</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id3154924">
+        <emph>Time</emph>: A Date and Time expression that contains the date and time to wait before the program is executed.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
+    <embed href="text/sbasic/shared/00000003.xhp#err5"/>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+
+    <bascode>
+        <paragraph role="bascode" id="par_id161546104675066">REM Wait until 6:00 PM then call MyMacro.</paragraph>
+        <paragraph role="bascode" id="par_id1001546104650052">REM If after 6:00 PM, exit.</paragraph>
+        <paragraph role="bascode" id="par_id3154138" localize="false">Sub ExampleWaitUntil</paragraph>
+        <paragraph role="bascode" id="par_id3154367" localize="false">Dim vTimeschedule As Long</paragraph>
+        <paragraph role="bascode" id="par_id3154909" localize="false">    vTimeSchedule = Date() + TimeValue("18:00:00")</paragraph>
+        <paragraph role="bascode" id="par_id3151042" localize="false">    If vTimeSchedule &lt; Now() Then Exit Sub</paragraph>
+        <paragraph role="bascode" id="par_id3154217" localize="false">    WaitUntil vTimeSchedule</paragraph>
+        <paragraph role="bascode" id="par_id3156214" localize="false">    Call MyMacro</paragraph>
+        <paragraph role="bascode" id="par_id3148922" localize="false">End Sub</paragraph>
+    </bascode>
+    <section id="relatedtopics">
+        <paragraph role="paragraph" id="par_id251546102545124"><link href="text/sbasic/shared/03130600.xhp" name="Wait statement">Wait statement</link></paragraph>
+    </section>
+</body>
+</helpdocument>
