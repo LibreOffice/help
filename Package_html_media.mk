@@ -268,22 +268,22 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/starmath/op21421.png \
     helpimg/starmath/op22001.png \
     helpimg/starmath/op22002.png \
-    helpimg/starmath/un21201.png \
-    helpimg/starmath/un21202.png \
-    helpimg/starmath/un21203.png \
-    helpimg/starmath/un21204.png \
-    helpimg/starmath/un21205.png \
-    helpimg/starmath/un21206.png \
-    helpimg/starmath/un21207.png \
-    helpimg/starmath/un21208.png \
-    helpimg/starmath/un21209.png \
-    helpimg/starmath/un21210.png \
-    helpimg/starmath/un21211.png \
-    helpimg/starmath/un21212.png \
-    helpimg/starmath/un21213.png \
-    helpimg/starmath/un21214.png \
-    helpimg/starmath/un21215.png \
-    helpimg/starmath/un21221.png \
+    helpimg/starmath/un21201.svg \
+    helpimg/starmath/un21202.svg \
+    helpimg/starmath/un21203.svg \
+    helpimg/starmath/un21204.svg \
+    helpimg/starmath/un21205.svg \
+    helpimg/starmath/un21206.svg \
+    helpimg/starmath/un21207.svg \
+    helpimg/starmath/un21208.svg \
+    helpimg/starmath/un21209.svg \
+    helpimg/starmath/un21210.svg \
+    helpimg/starmath/un21211.svg \
+    helpimg/starmath/un21212.svg \
+    helpimg/starmath/un21213.svg \
+    helpimg/starmath/un21214.svg \
+    helpimg/starmath/un21215.svg \
+    helpimg/starmath/un21221.svg \
     helpimg/python/python_shell.png \
     helpimg/sw_paste_range.png \
     helpimg/sw_signatureline01.png \
