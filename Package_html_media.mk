@@ -187,19 +187,19 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/starmath/co21916.png \
     helpimg/starmath/co21917.png \
     helpimg/starmath/co21918.png \
-    helpimg/starmath/fo21601.png \
-    helpimg/starmath/fo21602.png \
-    helpimg/starmath/fo21603.png \
-    helpimg/starmath/fo21604.png \
-    helpimg/starmath/fo21605.png \
-    helpimg/starmath/fo21606.png \
-    helpimg/starmath/fo21607.png \
-    helpimg/starmath/fo21609.png \
-    helpimg/starmath/fo21610.png \
-    helpimg/starmath/fo21611.png \
-    helpimg/starmath/fo21613.png \
-    helpimg/starmath/fo21614.png \
-    helpimg/starmath/fo21615.png \
+    helpimg/starmath/fo21601.svg \
+    helpimg/starmath/fo21602.svg \
+    helpimg/starmath/fo21603.svg \
+    helpimg/starmath/fo21604.svg \
+    helpimg/starmath/fo21605.svg \
+    helpimg/starmath/fo21606.svg \
+    helpimg/starmath/fo21607.svg \
+    helpimg/starmath/fo21609.svg \
+    helpimg/starmath/fo21610.svg \
+    helpimg/starmath/fo21611.svg \
+    helpimg/starmath/fo21613.svg \
+    helpimg/starmath/fo21614.svg \
+    helpimg/starmath/fo21615.svg \
     helpimg/starmath/fu21501.png \
     helpimg/starmath/fu21502.png \
     helpimg/starmath/fu21503.png \
