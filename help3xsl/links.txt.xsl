@@ -381,16 +381,12 @@
 <xsl:when test="$src1='cmd/sc_renamemasterpage.png'"><xsl:text>cmd/sc_slidemasterpage.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_quickedit.png'"><xsl:text>cmd/sc_editdoc.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_dsbeditdoc.png'"><xsl:text>cmd/sc_editdoc.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/lc_closemasterview.png'"><xsl:text>cmd/lc_quit.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/lc_closewin.png'"><xsl:text>cmd/lc_quit.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_closemasterview.png'"><xsl:text>cmd/sc_quit.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_closewin.png'"><xsl:text>cmd/sc_quit.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_closewin.png'"><xsl:text>cmd/lc_closepreview.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_closewin.png'"><xsl:text>cmd/sc_closepreview.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_closedocs.png'"><xsl:text>cmd/lc_closedoc.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_exitsearch.png'"><xsl:text>cmd/lc_closedoc.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/lc_closepreview.png'"><xsl:text>cmd/lc_closedoc.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_closedocs.png'"><xsl:text>cmd/sc_closedoc.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_exitsearch.png'"><xsl:text>cmd/sc_closedoc.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_closepreview.png'"><xsl:text>cmd/sc_closedoc.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_no.png'"><xsl:text>cmd/lc_cancel.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_no.png'"><xsl:text>cmd/sc_cancel.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_removetableof.png'"><xsl:text>cmd/sc_cancel.png</xsl:text></xsl:when>
@@ -720,6 +716,8 @@
 <xsl:when test="$src1='cmd/sc_browsebackward'"><xsl:text>cmd/lc_prevrecord.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_browseforward.png'"><xsl:text>cmd/sc_nextrecord.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_macrosmenu.png'"><xsl:text>res/im30821.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_macrodialog.png'"><xsl:text>cmd/sc_scriptorganizer.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_macrodialog.png'"><xsl:text>cmd/lc_scriptorganizer.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_about.png'"><xsl:text>res/mainapp_16.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_questionanswers.png'"><xsl:text>res/sx03139.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_symbolcatalogue.png'"><xsl:text>cmd/lc_insertsymbol.png</xsl:text></xsl:when>
