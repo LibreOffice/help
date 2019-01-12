@@ -26,27 +26,27 @@
     <paragraph role="paragraph" id="N0120"></paragraph>
     <paragraph role="heading" level="2" id="N0121">Using a Basic macro:</paragraph>
     <bascode>
-        <paragraph role="bascode" id="N0122">Sub interpreter_console</paragraph>
-        <paragraph role="bascode" id="N0123">    ps = CreateUnoService(&quot;com.sun.star.util.PathSettings&quot;)</paragraph>
-        <paragraph role="bascode" id="N0124">    install_path = ConvertFromURL(ps.Module)</paragraph>
-        <paragraph role="bascode" id="N0125">    Shell( install_path + GetPathSeparator() + &quot;python&quot; )</paragraph>
-        <paragraph role="bascode" id="N0126">End Sub</paragraph>
+        <paragraph role="bascode" id="N0122" localize="false">Sub interpreter_console</paragraph>
+        <paragraph role="bascode" id="N0123" localize="false">    ps = CreateUnoService(&quot;com.sun.star.util.PathSettings&quot;)</paragraph>
+        <paragraph role="bascode" id="N0124" localize="false">    install_path = ConvertFromURL(ps.Module)</paragraph>
+        <paragraph role="bascode" id="N0125" localize="false">    Shell( install_path + GetPathSeparator() + &quot;python&quot; )</paragraph>
+        <paragraph role="bascode" id="N0126" localize="false">End Sub</paragraph>
     </bascode>
     <paragraph role="heading" level="2" id="N0127">Using a Python macro:</paragraph>
     <pycode>
-        <paragraph role="pycode" id="N0128"># -*- coding: utf-8 -*-</paragraph>
-        <paragraph role="pycode" id="N0129">from __future__ import unicode_literals</paragraph>
-        <paragraph role="pycode" id="N0130"></paragraph>
-        <paragraph role="pycode" id="N0131">import uno, os, subprocess</paragraph>
-        <paragraph role="pycode" id="N0132"></paragraph>
-        <paragraph role="pycode" id="N0133">def interpreter_console():</paragraph>
-        <paragraph role="pycode" id="N0134">    ctx = XSCRIPTCONTEXT.getComponentContext()</paragraph>
-        <paragraph role="pycode" id="N0135">    smgr = ctx.getServiceManager()</paragraph>
-        <paragraph role="pycode" id="N0136">    ps = smgr.createInstanceWithContext(&quot;com.sun.star.util.PathSettings&quot;, ctx)</paragraph>
-        <paragraph role="pycode" id="N0137">    install_path = uno.fileUrlToSystemPath(ps.Module)</paragraph>
-        <paragraph role="pycode" id="N0138">    pgm = install_path + os.sep + &quot;python&quot;  # Python shell/console path</paragraph>
-        <paragraph role="pycode" id="N0139">    subprocess.Popen(pgm)  # Start Python interactive Shell</paragraph>
-        <paragraph role="pycode" id="N0140"></paragraph>
+        <paragraph role="pycode" id="N0128" localize="false"># -*- coding: utf-8 -*-</paragraph>
+        <paragraph role="pycode" id="N0129" localize="false">from __future__ import unicode_literals</paragraph>
+        <paragraph role="pycode" id="N0130" localize="false">   </paragraph>
+        <paragraph role="pycode" id="N0131" localize="false">import uno, os, subprocess</paragraph>
+        <paragraph role="pycode" id="N0132" localize="false">    </paragraph>
+        <paragraph role="pycode" id="N0133" localize="false">def interpreter_console():</paragraph>
+        <paragraph role="pycode" id="N0134" localize="false">    ctx = XSCRIPTCONTEXT.getComponentContext()</paragraph>
+        <paragraph role="pycode" id="N0135" localize="false">    smgr = ctx.getServiceManager()</paragraph>
+        <paragraph role="pycode" id="N0136" localize="false">    ps = smgr.createInstanceWithContext(&quot;com.sun.star.util.PathSettings&quot;, ctx)</paragraph>
+        <paragraph role="pycode" id="N0137" localize="false">    install_path = uno.fileUrlToSystemPath(ps.Module)</paragraph>
+        <paragraph role="pycode" id="N0138" localize="false">    pgm = install_path + os.sep + &quot;python&quot;  # Python shell/console path</paragraph>
+        <paragraph role="pycode" id="N0139" localize="false">    subprocess.Popen(pgm)  # Start Python interactive Shell</paragraph>
+        <paragraph role="pycode" id="N0140" localize="false">    </paragraph>
     </pycode>
     <paragraph role="heading" level="2" id="N0141">Usage:</paragraph>
     <paragraph role="paragraph" id="N0142">
