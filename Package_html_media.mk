@@ -226,26 +226,26 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/starmath/fu21524.svg \
     helpimg/starmath/fu21908.svg \
     helpimg/starmath/im21106.png \
-    helpimg/starmath/mi21608.png \
-    helpimg/starmath/mi21612.png \
-    helpimg/starmath/mi21618.png \
-    helpimg/starmath/mi22003.png \
-    helpimg/starmath/mi22004.png \
-    helpimg/starmath/mi22005.png \
-    helpimg/starmath/mi22006.png \
-    helpimg/starmath/mi22007.png \
-    helpimg/starmath/mi22008.png \
-    helpimg/starmath/mi22009.png \
-    helpimg/starmath/mi22010.png \
-    helpimg/starmath/mi22011.png \
-    helpimg/starmath/mi22012.png \
-    helpimg/starmath/mi22013.png \
-    helpimg/starmath/mi22014.png \
-    helpimg/starmath/mi22015.png \
-    helpimg/starmath/mi22016.png \
-    helpimg/starmath/mi22017.png \
-    helpimg/starmath/mi22018.png \
-    helpimg/starmath/mi22019.png \
+    helpimg/starmath/mi21608.svg \
+    helpimg/starmath/mi21612.svg \
+    helpimg/starmath/mi21618.svg \
+    helpimg/starmath/mi22003.svg \
+    helpimg/starmath/mi22004.svg \
+    helpimg/starmath/mi22005.svg \
+    helpimg/starmath/mi22006.svg \
+    helpimg/starmath/mi22007.svg \
+    helpimg/starmath/mi22008.svg \
+    helpimg/starmath/mi22009.svg \
+    helpimg/starmath/mi22010.svg \
+    helpimg/starmath/mi22011.svg \
+    helpimg/starmath/mi22012.svg \
+    helpimg/starmath/mi22013.svg \
+    helpimg/starmath/mi22014.svg \
+    helpimg/starmath/mi22015.svg \
+    helpimg/starmath/mi22016.svg \
+    helpimg/starmath/mi22017.svg \
+    helpimg/starmath/mi22018.svg \
+    helpimg/starmath/mi22019.svg \
     helpimg/starmath/op21401.png \
     helpimg/starmath/op21402.png \
     helpimg/starmath/op21403.png \
