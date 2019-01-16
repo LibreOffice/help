@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+    <meta>
+        <topic id="text/sbasic/python/python_screen">
+            <title id="tit">Python : Screen Input/Output</title>
+            <filename>/text/sbasic/python/python_screen.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+    <bookmark branch="index" xml-lang="en-US" id="N0433">
+        <bookmark_value>Python;InputBox</bookmark_value>
+        <bookmark_value>Python;MsgBox</bookmark_value>
+        <bookmark_value>Python;Print</bookmark_value>
+    </bookmark>
+    <h1 id="N0434"><variable id="ioscreen"><link href="text/sbasic/python/python_screen.xhp" name="IO to screen">Input/Output to Screen</link></variable></h1>
+    <paragraph role="paragraph" id="N0435">Python standard output file is not available when running Python macros from <menuitem>Tools – Macros - Run Macro</menuitem>... menu. Presenting the output of a module requires the Python interactive console. Features such as <literal>input()</literal>, <literal>print()</literal>, <literal>repr()</literal> and <literal>str()</literal> are available from the Python shell.</paragraph>
+    <paragraph role="tip" id="N0436">The <link href="https://extensions.libreoffice.org/extensions/apso-alternative-script-organizer-for-python" name ="apso">Alternative Python Script Organizer</link> (APSO) extension offers a msgbox() function out of its <literal>apso_utils</literal> module.</paragraph>
+    <paragraph role="paragraph" id="N0437">%PRODUCTNAME Basic proposes <literal>InputBox()</literal>, <literal>Msgbox()</literal> and <literal>Print()</literal> screen I/O functions. Python alternatives exist relying either on %PRODUCTNAME API Abstract Windowing Toolkit, either on Python to Basic function calls. The latter proposes a syntax that is intentionally close to that of Basic, and uses a Python module next to a Basic module. The API Scripting Framework is used to perform Basic, Beanshell, JavaScript and Python inter-languages function calls.</paragraph>
+    <h2 id="N0438">Python syntax:</h2>
+    <paragraph role="code" id="N0439" localize="false">MsgBox(txt, buttons=0, title=None)<br/></paragraph>
+    <paragraph role="code" id="N0440" localize="false">InputBox(txt, title=None, default=None)<br/></paragraph>
+    <paragraph role="code" id="N0441" localize="false">Print(txt)</paragraph>
+    <h2 id="N0442">Examples:</h2>
+    <shell>
+        <paragraph role="paragraph" localize="false" id="N0443">&gt;&gt;&gt; import screen_io as ui</paragraph>
+        <paragraph role="paragraph" localize="false" id="N0445">&gt;&gt;&gt; reply = ui.InputBox(&apos;Please enter a phrase&apos;, title=&apos;Dear user&apos;, default=&quot;here..&quot;)</paragraph>
+        <paragraph role="paragraph" localize="false" id="N0446">&gt;&gt;&gt; rc = ui.MsgBox(reply, title=&quot;Confirmation of phrase&quot;)</paragraph>
+        <paragraph role="paragraph" localize="false" id="N0447">&gt;&gt;&gt; age = ui.InputBox(&apos;How old are you?&apos;, title=&quot;Hi&quot;)</paragraph>
+        <paragraph role="paragraph" localize="false" id="N0448">&gt;&gt;&gt; ui.Print(age)</paragraph>
+    </shell>
+    <h2 id="N0449">Installation:</h2>
+    <list type="unordered">
+        <listitem>
+            <paragraph role="listitem" id="N0450">Copy <literal>screen_io</literal> Python module in <link href="text/sbasic/python/python_locations.xhp">My macros</link> within &lt;UserProfile&gt;/Scripts/python/pythonpath,</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph role="listitem" id="N0451">Copy <literal>uiScripts</literal> Basic module in <link href="text/sbasic/python/python_locations.xhp">My macros</link> Standard Basic library,</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph role="listitem" id="N0452">Restart %PRODUCTNAME.</paragraph>
+        </listitem>
+    </list>
+    <h3 id="N0453"><literal>screen_io</literal> Python module</h3>
+    <pycode>
+        <paragraph role="pycode" localize="false" id="N0454"># -*- coding: utf-8 -*-</paragraph>
+        <paragraph role="pycode" localize="false" id="N0455">from __future__ import unicode_literals</paragraph>
+        <paragraph role="pycode" localize="false" id="N0456"></paragraph>
+        <paragraph role="pycode" localize="false" id="N0466">def MsgBox(prompt: str, buttons=0, title=&apos;LibreOffice&apos;) -&gt; int:</paragraph>
+        <paragraph role="pycode" id="N0467">    &quot;&quot;&quot; Displays a dialogue box containing a message and returns a value.&quot;&quot;&quot;</paragraph>
+        <paragraph role="pycode" localize="false" id="N0468">    xScript = _getScript(&quot;_MsgBox&quot;)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0469">    res = xScript.invoke((prompt,buttons,title), (), ())</paragraph>
+        <paragraph role="pycode" localize="false" id="N0470">    return res[0]</paragraph>
+        <paragraph role="pycode" localize="false" id="N0471"></paragraph>
+        <paragraph role="pycode" localize="false" id="N0472">def InputBox(prompt: str, title=&apos;LibreOffice&apos;, defaultValue=&apos;&apos;) -&gt; str:</paragraph>
+        <paragraph role="pycode" id="N0473">    &quot;&quot;&quot; Displays a prompt in a dialogue box at which the user can enter text.&quot;&quot;&quot;</paragraph>
+        <paragraph role="pycode" localize="false" id="N0474">    xScript = _getScript(&quot;_InputBox&quot;)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0475">    res = xScript.invoke((prompt,title,defaultValue), (), ())</paragraph>
+        <paragraph role="pycode" localize="false" id="N0476">    return res[0]</paragraph>
+        <paragraph role="pycode" localize="false" id="N0477"></paragraph>
+        <paragraph role="pycode" localize="false" id="N0478">def Print(message: str):</paragraph>
+        <paragraph role="pycode" id="N0479">    &quot;&quot;&quot;Outputs the specified strings or numeric expressions in a dialogue box.&quot;&quot;&quot;</paragraph>
+        <paragraph role="pycode" localize="false" id="N0480">    xScript = _getScript(&quot;_Print&quot;)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0481">    xScript.invoke((message,), (), ())</paragraph>
+        <paragraph role="pycode" localize="false" id="N0482"></paragraph>
+        <paragraph role="pycode" localize="false" id="N0483">import uno</paragraph>
+        <paragraph role="pycode" localize="false" id="N0484">from com.sun.star.script.provider import XScript</paragraph>
+        <paragraph role="pycode" localize="false" id="N0485">def _getScript(script: str, library=&apos;Standard&apos;, module=&apos;uiScripts&apos;) -&gt; XScript:</paragraph>
+        <paragraph role="pycode" localize="false" id="N0486">    sm = uno.getComponentContext().ServiceManager</paragraph>
+        <paragraph role="pycode" localize="false" id="N0487">    mspf = sm.createInstanceWithContext(&quot;com.sun.star.script.provider.MasterScriptProviderFactory&quot;, uno.getComponentContext())</paragraph>
+        <paragraph role="pycode" localize="false" id="N0488">    scriptPro = mspf.createScriptProvider(&quot;&quot;)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0489">    scriptName = &quot;vnd.sun.star.script:&quot;+library+&quot;.&quot;+module+&quot;.&quot;+script+&quot;?language=Basic&amp;location=application&quot;</paragraph>
+        <paragraph role="pycode" localize="false" id="N0490">    xScript = scriptPro.getScript(scriptName)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0491">    return xScript</paragraph>
+    </pycode>
+    <h3 id="N0492"><literal>uiScripts</literal> Basic module</h3>
+    <bascode>
+        <paragraph role="bascode" localize="false" id="N0493">Option Explicit</paragraph>
+        <paragraph role="bascode" localize="false" id="N0494">Private Function _MsgBox( prompt As String, Optional buttons As Integer, _</paragraph>
+        <paragraph role="bascode" localize="false" id="N0495">        Optional title As String ) As Integer</paragraph>
+        <paragraph role="bascode" localize="false" id="N0496">    _MsgBox = MsgBox( prompt, buttons, title )</paragraph>
+        <paragraph role="bascode" localize="false" id="N0497">End Function</paragraph>
+        <paragraph role="bascode" localize="false" id="N0498">Private Function _InputBox( prompt As String, Optional title As String, _</paragraph>
+        <paragraph role="bascode" localize="false" id="N0499">        Optional default As String) As String</paragraph>
+        <paragraph role="bascode" localize="false" id="N0500">    _InputBox = InputBox( prompt, title, default )</paragraph>
+        <paragraph role="bascode" localize="false" id="N0501">End Function</paragraph>
+        <paragraph role="bascode" localize="false" id="N0502">Private Sub _Print( msg As String )</paragraph>
+        <paragraph role="bascode" localize="false" id="N0503">    Print msg</paragraph>
+        <paragraph role="bascode" localize="false" id="N0504">End Sub</paragraph>
+    </bascode>
+    <section id="relatedTopics">
+        <paragraph role="paragraph" id="N0505">
+            <link href="text/sbasic/python/python_2_basic.xhp">Calling Basic macros from Python</link>
+        </paragraph>
+        <embed href="text/sbasic/shared/03010000.xhp#BasicScreenIO"/>
+        <embed href="text/sbasic/python/python_examples.xhp#pythonexamples2"/>
+    </section>
+</body>
+</helpdocument>
