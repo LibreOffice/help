@@ -143,35 +143,35 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/starmath/at21722.png \
     helpimg/starmath/at21723.png \
     helpimg/starmath/at21724.png \
-    helpimg/starmath/bi21301.png \
-    helpimg/starmath/bi21302.png \
-    helpimg/starmath/bi21303.png \
-    helpimg/starmath/bi21304.png \
-    helpimg/starmath/bi21305.png \
-    helpimg/starmath/bi21306.png \
-    helpimg/starmath/bi21307.png \
-    helpimg/starmath/bi21308.png \
-    helpimg/starmath/bi21309.png \
-    helpimg/starmath/bi21310.png \
-    helpimg/starmath/bi21311.png \
-    helpimg/starmath/bi21312.png \
-    helpimg/starmath/bi21313.png \
-    helpimg/starmath/bi21314.png \
-    helpimg/starmath/bi21315.png \
-    helpimg/starmath/bi21316.png \
-    helpimg/starmath/bi21322.png \
-    helpimg/starmath/bi21323.png \
-    helpimg/starmath/bi21324.png \
-    helpimg/starmath/bi21325.png \
-    helpimg/starmath/bi21326.png \
-    helpimg/starmath/bi21327.png \
-    helpimg/starmath/bi21328.png \
-    helpimg/starmath/bi21329.png \
-    helpimg/starmath/bi21330.png \
-    helpimg/starmath/bi21331.png \
-    helpimg/starmath/bi21332.png \
-    helpimg/starmath/bi21333.png \
-    helpimg/starmath/bi21334.png \
+    helpimg/starmath/bi21301.svg \
+    helpimg/starmath/bi21302.svg \
+    helpimg/starmath/bi21303.svg \
+    helpimg/starmath/bi21304.svg \
+    helpimg/starmath/bi21305.svg \
+    helpimg/starmath/bi21306.svg \
+    helpimg/starmath/bi21307.svg \
+    helpimg/starmath/bi21308.svg \
+    helpimg/starmath/bi21309.svg \
+    helpimg/starmath/bi21310.svg \
+    helpimg/starmath/bi21311.svg \
+    helpimg/starmath/bi21312.svg \
+    helpimg/starmath/bi21313.svg \
+    helpimg/starmath/bi21314.svg \
+    helpimg/starmath/bi21315.svg \
+    helpimg/starmath/bi21316.svg \
+    helpimg/starmath/bi21322.svg \
+    helpimg/starmath/bi21323.svg \
+    helpimg/starmath/bi21324.svg \
+    helpimg/starmath/bi21325.svg \
+    helpimg/starmath/bi21326.svg \
+    helpimg/starmath/bi21327.svg \
+    helpimg/starmath/bi21328.svg \
+    helpimg/starmath/bi21329.svg \
+    helpimg/starmath/bi21330.svg \
+    helpimg/starmath/bi21331.svg \
+    helpimg/starmath/bi21332.svg \
+    helpimg/starmath/bi21333.svg \
+    helpimg/starmath/bi21334.svg \
     helpimg/starmath/co21901.png \
     helpimg/starmath/co21902.png \
     helpimg/starmath/co21903.png \
@@ -246,28 +246,28 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/starmath/mi22017.svg \
     helpimg/starmath/mi22018.svg \
     helpimg/starmath/mi22019.svg \
-    helpimg/starmath/op21401.png \
-    helpimg/starmath/op21402.png \
-    helpimg/starmath/op21403.png \
-    helpimg/starmath/op21405.png \
-    helpimg/starmath/op21406.png \
-    helpimg/starmath/op21407.png \
-    helpimg/starmath/op21408.png \
-    helpimg/starmath/op21409.png \
-    helpimg/starmath/op21410.png \
-    helpimg/starmath/op21411.png \
-    helpimg/starmath/op21412.png \
-    helpimg/starmath/op21413.png \
-    helpimg/starmath/op21414.png \
-    helpimg/starmath/op21415.png \
-    helpimg/starmath/op21416.png \
-    helpimg/starmath/op21417.png \
-    helpimg/starmath/op21418.png \
-    helpimg/starmath/op21419.png \
-    helpimg/starmath/op21420.png \
-    helpimg/starmath/op21421.png \
-    helpimg/starmath/op22001.png \
-    helpimg/starmath/op22002.png \
+    helpimg/starmath/op21401.svg \
+    helpimg/starmath/op21402.svg \
+    helpimg/starmath/op21403.svg \
+    helpimg/starmath/op21405.svg \
+    helpimg/starmath/op21406.svg \
+    helpimg/starmath/op21407.svg \
+    helpimg/starmath/op21408.svg \
+    helpimg/starmath/op21409.svg \
+    helpimg/starmath/op21410.svg \
+    helpimg/starmath/op21411.svg \
+    helpimg/starmath/op21412.svg \
+    helpimg/starmath/op21413.svg \
+    helpimg/starmath/op21414.svg \
+    helpimg/starmath/op21415.svg \
+    helpimg/starmath/op21416.svg \
+    helpimg/starmath/op21417.svg \
+    helpimg/starmath/op21418.svg \
+    helpimg/starmath/op21419.svg \
+    helpimg/starmath/op21420.svg \
+    helpimg/starmath/op21421.svg \
+    helpimg/starmath/op22001.svg \
+    helpimg/starmath/op22002.svg \
     helpimg/starmath/un21201.svg \
     helpimg/starmath/un21202.svg \
     helpimg/starmath/un21203.svg \
