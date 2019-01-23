@@ -29,17 +29,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-// Polyfill for .after()
+// Polyfill for .before()
+// from: https://github.com/jserz/js_piece/blob/master/DOM/ChildNode/before()/before().md
 (function (arr) {
   arr.forEach(function (item) {
-    if (item.hasOwnProperty('after')) {
+    if (item.hasOwnProperty('before')) {
       return;
     }
-    Object.defineProperty(item, 'after', {
+    Object.defineProperty(item, 'before', {
       configurable: true,
       enumerable: true,
       writable: true,
-      value: function after() {
+      value: function before() {
         var argArr = Array.prototype.slice.call(arguments),
           docFrag = document.createDocumentFragment();
 
@@ -48,7 +49,7 @@
           docFrag.appendChild(isNode ? argItem : document.createTextNode(String(argItem)));
         });
 
-        this.parentNode.insertBefore(docFrag, this.nextSibling);
+        this.parentNode.insertBefore(docFrag, this);
       }
     });
   });
@@ -229,7 +230,7 @@ var Paginator = function(element) {
             }
         }
 
-        el.after(container);
+        el.before(container);
         container.appendChild(ul);
     }
 
