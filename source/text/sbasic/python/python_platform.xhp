@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+    <meta>
+        <topic id="text/sbasic/python/Python_Platform">
+            <title id="tit" xml-lang="en-US">Python : Platform class</title>
+            <filename>/text/sbasic/python/python_platform.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+    <bookmark branch="index" id="N0508">
+        <bookmark_value>Platform;isLinux</bookmark_value>
+        <bookmark_value>Platform;isMacOsX</bookmark_value>
+        <bookmark_value>Platform;isWindows</bookmark_value>
+        <bookmark_value>Platform;ComputerName</bookmark_value>
+        <bookmark_value>Platform;OSName</bookmark_value>
+    </bookmark>
+    <h1 id="N0509"><variable id="pythonplatform"><link href="text/sbasic/python/python_platform.xhp" name="platform01">Identifying the operating system</link></variable></h1>
+    <paragraph role="paragraph" id="N0510">Identifying the operating system can be performed with Python or Basic language.</paragraph>
+    <tip id="N0511">%PRODUCTNAME Basic lacks Mac OS X native recognition while ComputerName property is solely available for Windows. Basic calls to Python macros help overcome such limitations.</tip>
+    <h2 id="N0512">Using a Python class:</h2>
+    <pycode>
+        <paragraph role="pycode" localize="false" id="N0513">import os, platform</paragraph>
+        <paragraph role="pycode" localize="false" id="N0514">class Platform():</paragraph>
+        <paragraph role="pycode" localize="false" id="N0515">    @property</paragraph>
+        <paragraph role="pycode" localize="false" id="N0516">    def ComputerName(self): return platform.node()</paragraph>
+        <paragraph role="pycode" localize="false" id="N0517">    @property</paragraph>
+        <paragraph role="pycode" localize="false" id="N0518">    def DirSeparator(self): return os.sep</paragraph>
+        <paragraph role="pycode" localize="false" id="N0519">    @property</paragraph>
+        <paragraph role="pycode" localize="false" id="N0520">    def isLinux(self): return (self.OSName==&apos;Linux&apos;)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0521">    @property</paragraph>
+        <paragraph role="pycode" localize="false" id="N0522">    def isMacOSX(self): return (self.OSName==&apos;Darwin&apos;)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0523">    @property</paragraph>
+        <paragraph role="pycode" localize="false" id="N0524">    def isWindows(self): return (self.OSName==&apos;Windows&apos;)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0525">    @property</paragraph>
+        <paragraph role="pycode" localize="false" id="N0526">    def OSName(self): return platform.system()</paragraph>
+        <paragraph role="pycode" localize="false" id="N0527">    @property</paragraph>
+        <paragraph role="pycode" localize="false" id="N0528">    def PathDelimiter(self): return os.pathsep</paragraph>
+    </pycode>
+    <h2 id="N0529">Using a Basic classmodule:</h2>
+    <bascode>
+        <paragraph role="bascode" localize="false" id="N0530">Option Compatible</paragraph>
+        <paragraph role="bascode" localize="false" id="N0531">Option ClassModule</paragraph>
+        <paragraph role="bascode" localize="false" id="N0532">Option Explicit</paragraph>
+        <paragraph role="bascode" localize="false" id="N0533"></paragraph>
+        <paragraph role="bascode" localize="false" id="N0534">Public Property Get ComputerName As String</paragraph>
+        <paragraph role="bascode" localize="false" id="N0535">    If isWindows Then ComputerName = Environ(&quot;ComputerName&quot;)</paragraph>
+        <paragraph role="bascode" localize="false" id="N0536">End Property &apos; Platform.ComputerName</paragraph>
+        <paragraph role="bascode" localize="false" id="N0537"></paragraph>
+        <paragraph role="bascode" localize="false" id="N0538">Public Property Get DirSeparator As String</paragraph>
+        <paragraph role="bascode" localize="false" id="N0539">    DirSeparator = GetPathSeparator()</paragraph>
+        <paragraph role="bascode" localize="false" id="N0540">End Property &apos; Platform.DirSeparator</paragraph>
+        <paragraph role="bascode" localize="false" id="N0541"></paragraph>
+        <paragraph role="bascode" localize="false" id="N0542">Public Property Get IsLinux As Boolean</paragraph>
+        <paragraph role="bascode" localize="false" id="N0543">    isLinux = ( GetGUIType()=4 ) &apos; Applies to Mac OS X as well </paragraph>
+        <paragraph role="bascode" localize="false" id="N0544">End Property &apos; Platform.isLinux</paragraph>
+        <paragraph role="bascode" localize="false" id="N0545"></paragraph>
+        <paragraph role="bascode" localize="false" id="N0546">Public Property Get IsWindows As Boolean</paragraph>
+        <paragraph role="bascode" localize="false" id="N0547">    isWindows = ( GetGUIType()=1 )</paragraph>
+        <paragraph role="bascode" localize="false" id="N0548">End Property &apos; Platform.isWindows</paragraph>
+        <paragraph role="bascode" localize="false" id="N0549"></paragraph>
+        <paragraph role="bascode" localize="false" id="N0550">Public Property Get OSName As String</paragraph>
+        <paragraph role="bascode" localize="false" id="N0551">    Select Case GetGUIType()</paragraph>
+        <paragraph role="bascode" localize="false" id="N0552">        Case 1 : OSName = &quot;Windows&quot;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0553">        Case 4 : OSName = &quot;Linux&quot;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0554">     End Select</paragraph>
+        <paragraph role="bascode" localize="false" id="N0555">End Property &apos; Platform.OSName</paragraph>
+        <paragraph role="bascode" localize="false" id="N0556"></paragraph>
+        <paragraph role="bascode" localize="false" id="N0557">Public Property Get PathDelimiter As String</paragraph>
+        <paragraph role="bascode" localize="false" id="N0559">    Select Case OSName</paragraph>
+        <paragraph role="bascode" localize="false" id="N0560">        Case &quot;Linux&quot; : PathDelimiter = &quot;:&quot;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0561">        Case &quot;Windows&quot; : PathDelimiter = &quot;;&quot;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0562">     End Select</paragraph>
+        <paragraph role="bascode" localize="false" id="N0563">End Property &apos; Platform.PathDelimiter</paragraph>
+    </bascode>
+    <h2 id="N0564">Examples:</h2>
+    <paragraph role="paragraph" id="N0565">With Python</paragraph>
+    <paragraph role="paragraph" localize="false" id="N0566"><literal>&gt;&gt;&gt; from &lt;the_module&gt; import Platform</literal></paragraph>
+    <paragraph role="paragraph" xml-lang="en-US" id="N0567"><literal>&gt;&gt;&gt; print(Platform().isMacOSX)  # object property</literal></paragraph>
+    <paragraph role="paragraph" localize="false" id="N0568"><literal>True</literal></paragraph>
+    <paragraph role="paragraph" xml-lang="en-US" id="N0569"><literal>&gt;&gt;&gt; input(Platform().OSName)  # object property</literal></paragraph>
+    <paragraph role="paragraph" localize="false" id="N0570"><literal>Darwin</literal></paragraph>
+    <paragraph role="paragraph" id="N0571">
+        From <menuitem>Tools – Macros - Run Macro...</menuitem> menu.</paragraph>
+    <pycode>
+        <paragraph role="pycode" localize="false" id="N0572">from &lt;the_module&gt; import Platform</paragraph>
+        <paragraph role="pycode" localize="false" id="N0573">import screen_io as ui</paragraph>
+        <paragraph role="pycode" localize="false" id="N0574">p = Platform()</paragraph>
+        <paragraph role="pycode" localize="false" id="N0575">ui.MsgBox(&apos;&apos;.join([&apos;isMacOS: &apos;,str(p.isMacOSX)]),0,p.OSName)</paragraph>
+    </pycode>
+    <paragraph role="paragraph" id="N0576">With %PRODUCTNAME Basic</paragraph>
+    <bascode>
+        <paragraph role="bascode" localize="false" id="N0577">Sub Platform_example()</paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0578">    Dim p As New Platform &apos; instance of Platform class</paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0579">    MsgBox p.isLinux &apos; object property</paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0580">    Print p.isWindows, p.OSName &apos; object properties</paragraph>
+        <paragraph role="bascode" localize="false" id="N0581">End Sub &apos; Platform_example</paragraph>
+    </bascode>
+    <section id="relatedTopics">
+        <embed href="text/sbasic/python/python_screen.xhp#ioscreen"/>
+        <embed href="text/sbasic/shared/03132100.xhp#getguitype2"/>
+        <embed href="text/sbasic/shared/GetPathSeparator.xhp#getpathseparator01"/>
+<!--
+        <paragraph role="paragraph" id="N0585">
+            <link href="text/sbasic/python/python_from_basic.xhp">Basic to Python function calls</link>
+        </paragraph>-->
+        <embed href="text/sbasic/python/python_examples.xhp#pythonexamples2"/>
+    </section>
+</body>
+</helpdocument>
