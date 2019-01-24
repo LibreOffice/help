@@ -220,6 +220,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/starmath/fu21523.svg \
     helpimg/starmath/fu21524.svg \
     helpimg/starmath/fu21908.svg \
+	helpimg/starmath/im21106.svg \
     helpimg/starmath/mi21608.svg \
     helpimg/starmath/mi21612.svg \
     helpimg/starmath/mi21618.svg \
