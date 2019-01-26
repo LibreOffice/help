@@ -192,21 +192,12 @@
         </tablerow>
         <tablerow>
             <tablecell>
-                <paragraph role="tablecontent" localize="false" id="N0277">ctx = ..getComponentContext()</paragraph>
+                <paragraph role="tablecontent" localize="false" id="N0277">ctx = uno.getComponentContext()</paragraph>
                 <paragraph role="tablecontent" localize="false" id="N0278">smgr = ctx.getServiceManager()</paragraph>
                 <paragraph role="tablecontent" localize="false" id="N0279">obj = smgr.createInstanceWithContext( .. , ctx)</paragraph>
             </tablecell>
             <tablecell>
                 <paragraph role="tablecontent" localize="false" id="N0280">CreateUnoService()</paragraph>
-            </tablecell>
-        </tablerow>
-        <tablerow>
-            <tablecell>
-                <paragraph role="tablecontent" localize="false" id="N0281">ctx = ..getComponentContext()</paragraph>
-                <paragraph role="tablecontent" localize="false" id="N0282">smgr = ctx.getServiceManager()</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph role="tablecontent" localize="false" id="N0283">GetProcessServiceManager()</paragraph>
             </tablecell>
         </tablerow>
         <tablerow>
@@ -243,6 +234,15 @@
         </tablerow>
         <tablerow>
             <tablecell>
+                <paragraph role="tablecontent" localize="false" id="N0281">ctx = uno.getComponentContext()</paragraph>
+                <paragraph role="tablecontent" localize="false" id="N0282">smgr = ctx.getServiceManager()</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" localize="false" id="N0283">GetProcessServiceManager()</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
             </tablecell>
             <tablecell>
                 <paragraph role="tablecontent" localize="false" id="N0294">HasUnoInterfaces()</paragraph>
@@ -253,6 +253,17 @@
             </tablecell>
             <tablecell>
                 <paragraph role="tablecontent" localize="false" id="N0296">IsUnoStruct()</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablecontent" localize="false" id="N0297">ctx = uno.getComponentContext()</paragraph>
+                <paragraph role="tablecontent" localize="false" id="N0298">smgr = ctx.getServiceManager()</paragraph>
+                <paragraph role="tablecontent" localize="false" id="N0299">DESK = 'com.sun.star.frame.Desktop'</paragraph>
+                <paragraph role="tablecontent" localize="false" id="N0300">obj = smgr.createInstanceWithContext(DESK , ctx)</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" localize="false" id="N0301">StarDesktop</paragraph>
             </tablecell>
         </tablerow>
     </table>
@@ -269,10 +280,10 @@
             <paragraph role="pycode" id="N0305">    Adapted from &apos;Bibliothèque de fonctions&apos; by Hubert Lambert</paragraph>
             <paragraph role="pycode" id="N0306">    at https://forum.openoffice.org/fr/forum/viewtopic.php?p=286213&quot;&quot;&quot;</paragraph>
             <paragraph role="pycode" id="N0307">    doc = XSCRIPTCONTEXT.getDocument()  # current document</paragraph>
-            <paragraph role="pycode" localize="false" id="N0308">    url = uno.fileUrlToSystemPath(&apos;{}/{}/{}&apos;, \</paragraph>
-            <paragraph role="pycode" localize="false" id="N0309">        format(doc.URL, &apos;Scripts/python&apos;, library_name)  # ConvertToURL()</paragraph>
+            <paragraph role="pycode" localize="false" id="N0308">    url = uno.fileUrlToSystemPath( \</paragraph>
+            <paragraph role="pycode" localize="false" id="N0309">        &apos;{}/{}&apos;.format(doc.URL, &apos;Scripts/python&apos;+library_name))  # ConvertToURL()</paragraph>
             <paragraph role="pycode" id="N0310">    if not url in sys.path:  # add path if necessary</paragraph>
-            <paragraph role="pycode" id="N0311">        sys.path.insert(0, url)  # doc takes precedence</paragraph>
+            <paragraph role="pycode" id="N0311">        sys.path.insert(0, url)  # doclib takes precedence</paragraph>
             <paragraph role="pycode" id="N0312">    if module_name:  # import if requested</paragraph>
             <paragraph role="pycode" localize="false" id="N0313">        return zipimport.zipimporter(url).load_module(module_name)</paragraph>
             <paragraph role="pycode" localize="false" id="N0314"></paragraph>
