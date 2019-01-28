@@ -94,9 +94,9 @@
 <xsl:variable name="linkpostfix" select="''"/>
 
 <!-- images for notes, tips and warnings -->
-<xsl:variable name="note_img" select="concat($img_url_prefix,'icon-themes/help/note.svg')"/>
-<xsl:variable name="tip_img" select="concat($img_url_prefix,'icon-themes/help/tip.svg')"/>
-<xsl:variable name="warning_img" select="concat($img_url_prefix,'icon-themes/help/warning.svg')"/>
+<xsl:variable name="note_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/note.svg')"/>
+<xsl:variable name="tip_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/tip.svg')"/>
+<xsl:variable name="warning_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/warning.svg')"/>
 
 <!-- Strings for the help UI page -->
 <xsl:variable name="tmp_href_ui"><xsl:value-of select="concat($urlpre,'text/shared/help/browserhelp.xhp')"/></xsl:variable>
