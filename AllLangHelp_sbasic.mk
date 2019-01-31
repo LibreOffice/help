@@ -375,6 +375,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/python/python_platform \
     helpcontent2/source/text/sbasic/python/python_programming \
     helpcontent2/source/text/sbasic/python/python_screen \
+    helpcontent2/source/text/sbasic/python/python_session \
     helpcontent2/source/text/sbasic/python/python_shell \
 ))
 

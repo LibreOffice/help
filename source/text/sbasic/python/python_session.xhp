@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+    <meta>
+        <topic id="text/sbasic/python/python_session">
+            <title id="tit" xml-lang="en-US">Python_Session : Session class</title>
+            <filename>/text/sbasic/python/python_session.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+    <bookmark branch="index" id="N0339">
+        <bookmark_value>Session;ComputerName</bookmark_value>
+        <bookmark_value>Session;SharedScripts</bookmark_value>
+        <bookmark_value>Session;SharedPythonScripts</bookmark_value>
+        <bookmark_value>Session;UserProfile</bookmark_value>
+        <bookmark_value>Session;UserScripts</bookmark_value>
+        <bookmark_value>Session;UserPythonScripts</bookmark_value>
+    </bookmark>
+    <h1 id="N0340">Getting session information</h1>
+    <paragraph role="paragraph" id="N0341">To compute %PRODUCTNAME user profile and shared modules system file paths can be performed with Python and with Basic language. BeanShell, Java, JavaScript and Python scripts locations can be derived from this information.</paragraph>
+    <h2 id="N0343">Examples:</h2>
+    <paragraph role="paragraph" id="N0344">With Python shell.</paragraph>
+    <paragraph role="paragraph" localize="false" id="N0345"><literal>&gt;&gt;&gt; from &lt;the_module&gt; import Session</literal></paragraph>
+    <paragraph role="paragraph" xml-lang="en-US" id="N0346"><literal>&gt;&gt;&gt; print(Session.SharedPythonScripts())  # class method</literal></paragraph>
+    <paragraph role="paragraph" xml-lang="en-US" id="N0347"><literal>&gt;&gt;&gt; print(Session().UserName)  # object property</literal></paragraph>
+    <paragraph role="paragraph" xml-lang="en-US" id="N0348"><literal>&gt;&gt;&gt; input(Session().UserProfile)  # object property</literal></paragraph>
+    <h3 id="N0349">From <menuitem>Tools – Macros - Run Macro</menuitem>... menu.</h3>
+    <pycode>
+        <paragraph role="pycode" localize="false" id="N0350">from &lt;the_module&gt; import Session</paragraph>
+        <paragraph role="pycode" localize="false" id="N0351">    </paragraph>
+        <paragraph role="pycode" localize="false" id="N0352">def demo_session():</paragraph>
+        <paragraph role="pycode" localize="false" id="N0353">    import screen_io as ui</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0354">    ui.MsgBox(Session.Share(),title=&apos;Installation Share&apos;)  # class method</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0355">    ui.Print(Session.SharedPythonScripts())  # class method</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0356">    s = Session()  # instance creation</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0357">    ui.MsgBox(s.UserName,title=&apos;Hello&apos;)  # object property</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0358">    ui.Print(s.UserPythonScripts)  # object property</paragraph>
+        <paragraph role="pycode" localize="false" id="N0359">    </paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0360">g_exportedScripts = demo_session,  # public macros</paragraph>
+    </pycode>
+    <h3 id="N0361">With %PRODUCTNAME Basic.</h3>
+    <bascode>
+        <paragraph role="bascode" xml-lang="en-US" id="N0362">Sub Session_example()</paragraph>
+        <paragraph role="bascode" localize="false" id="N0363">    Dim s As New Session &apos; instance of Platform class</paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0364">    Print &quot;Shared scripts location:&quot;, s.SharedScripts</paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0365">    MsgBox s.UserName,,&quot;Hello&quot;</paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0366">    Print s.UserScripts, Chr(13), s.UserPythonScripts</paragraph>
+        <paragraph role="bascode" localize="false" id="N0367">End Sub &apos; Session_example</paragraph>
+    </bascode>
+    <h3 id="N0368">Using COM/OLE and Visual Basic Scripting language.</h3>
+    <bascode>
+        <paragraph role="bascode" xml-lang="en-US" id="N0369">&apos; The service manager is always the entry point</paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0370">&apos; If there is no office running then an office is started up</paragraph>
+        <paragraph role="bascode" localize="false" id="N0371">Set sm = WScript.CreateObject(&quot;com.sun.star.ServiceManager&quot;)</paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0372">&apos; PathSubstitution service exhibits information to infer</paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0373">&apos; &lt;UserProfile|Share&gt;/Scripts/python locations from</paragraph>
+        <paragraph role="bascode" localize="false" id="N0374">Set obj = sm.createInstance(&quot;com.sun.star.util.PathSubstitution&quot;)</paragraph>
+        <paragraph role="bascode" localize="false" id="N0375">    </paragraph>
+        <paragraph role="bascode" localize="false" id="N0376">MsgBox CreateObject(&quot;WScript.Network&quot;).UserName,, &quot;Hello&quot;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0377">user = obj.getSubstituteVariableValue(&quot;$(user)&quot;)</paragraph>
+        <paragraph role="bascode" localize="false" id="N0378">MsgBox user &amp; &quot;/Scripts&quot;,, &quot;User scripts location&quot;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0379">libO = Replace(obj.getSubstituteVariableValue(&quot;$(inst)&quot;), &quot;program/..&quot;, &quot;Share&quot;)</paragraph>
+        <paragraph role="bascode" localize="false" id="N0380">MsgBox libO &amp; &quot;/Scripts&quot;,, &quot;Shared scripts location&quot;</paragraph>
+    </bascode>
+    <h2 id="N0381">Python Session class:</h2>
+    <pycode>
+        <paragraph role="pycode" localize="false" id="N0382">import getpass, os, os.path, uno</paragraph>
+        <paragraph role="pycode" localize="false" id="N0383">    </paragraph>
+        <paragraph role="pycode" localize="false" id="N0384">class Session():</paragraph>
+        <paragraph role="pycode" localize="false" id="N0385">    @staticmethod</paragraph>
+        <paragraph role="pycode" localize="false" id="N0386">    def substitute(var_name):</paragraph>
+        <paragraph role="pycode" localize="false" id="N0387">    ctx = uno.getComponentContext()</paragraph>
+        <paragraph role="pycode" localize="false" id="N0388">    ps = ctx.getServiceManager().createInstanceWithContext(</paragraph>
+        <paragraph role="pycode" localize="false" id="N0389">    &apos;com.sun.star.util.PathSubstitution&apos;, ctx)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0390">    return ps.getSubstituteVariableValue(var_name)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0391">    @staticmethod</paragraph>
+        <paragraph role="pycode" localize="false" id="N0392">    def Share():</paragraph>
+        <paragraph role="pycode" localize="false" id="N0393">    inst = uno.fileUrlToSystemPath(Session.substitute(&quot;$(prog)&quot;))</paragraph>
+        <paragraph role="pycode" localize="false" id="N0394">    return os.path.normpath(inst.replace(&apos;program&apos;, &quot;Share&quot;))</paragraph>
+        <paragraph role="pycode" localize="false" id="N0395">    @staticmethod</paragraph>
+        <paragraph role="pycode" localize="false" id="N0396">    def SharedScripts():</paragraph>
+        <paragraph role="pycode" localize="false" id="N0397">    return &apos;&apos;.join([Session.Share(), os.sep, &quot;Scripts&quot;])</paragraph>
+        <paragraph role="pycode" localize="false" id="N0398">    @staticmethod</paragraph>
+        <paragraph role="pycode" localize="false" id="N0399">    def SharedPythonScripts():</paragraph>
+        <paragraph role="pycode" localize="false" id="N0400">    return &apos;&apos;.join([Session.SharedScripts(), os.sep, &apos;python&apos;])</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0401">    @property  # alternative to &apos;$(username)&apos; variable</paragraph>
+        <paragraph role="pycode" localize="false" id="N0402">    def UserName(self): return getpass.getuser()</paragraph>
+        <paragraph role="pycode" localize="false" id="N0403">    @property</paragraph>
+        <paragraph role="pycode" localize="false" id="N0404">    def UserProfile(self):</paragraph>
+        <paragraph role="pycode" localize="false" id="N0405">    return uno.fileUrlToSystemPath(Session.substitute(&quot;$(user)&quot;))</paragraph>
+        <paragraph role="pycode" localize="false" id="N0406">    @property</paragraph>
+        <paragraph role="pycode" localize="false" id="N0407">    def UserScripts(self):</paragraph>
+        <paragraph role="pycode" localize="false" id="N0408">    return &apos;&apos;.join([self.UserProfile, os.sep, &apos;Scripts&apos;])</paragraph>
+        <paragraph role="pycode" localize="false" id="N0409">    @property</paragraph>
+        <paragraph role="pycode" localize="false" id="N0410">    def UserPythonScripts(self):</paragraph>
+        <paragraph role="pycode" localize="false" id="N0411">    return &apos;&apos;.join([self.UserScripts, os.sep, &quot;python&quot;])</paragraph>
+    </pycode>
+    <note id="N0342">Unlike Basic, pathname normalization is performed with Python inside Session class.</note>
+    <h2 id="N0412">%PRODUCTNAME Basic Session class:</h2>
+    <bascode>
+        <paragraph role="bascode" localize="false" id="N0413">Option Explicit</paragraph>
+        <paragraph role="bascode" localize="false" id="N0414">Option Compatible</paragraph>
+        <paragraph role="bascode" localize="false" id="N0415">Option ClassModule</paragraph>
+        <paragraph role="bascode" localize="false" id="N0416">    </paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0417">Private _ps As Object &apos; Private member</paragraph>
+        <paragraph role="bascode" localize="false" id="N0418">    </paragraph>
+        <paragraph role="bascode" localize="false" id="N0419">Private Sub Class_Initialize()</paragraph>
+        <paragraph role="bascode" localize="false" id="N0420">    GlobalScope.BasicLibraries.LoadLibrary(&quot;Tools&quot;)</paragraph>
+        <paragraph role="bascode" localize="false" id="N0421">    Set _ps = CreateUnoService(&quot;com.sun.star.util.PathSubstitution&quot;)</paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0422">End Sub &apos; Constructor</paragraph>
+        <paragraph role="bascode" localize="false" id="N0423">    </paragraph>
+        <paragraph role="bascode" localize="false" id="N0424">Private Sub Class_Terminate()</paragraph>
+        <paragraph role="bascode" localize="false" id="N0425">    _ps = Nothing</paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0426">End Sub &apos; Destructor</paragraph>
+        <paragraph role="bascode" localize="false" id="N0427">    </paragraph>
+        <paragraph role="bascode" localize="false" id="N0428">Public Property Get SharedScripts() As String</paragraph>
+        <paragraph role="bascode" localize="false" id="N0429">    Dim inst As String, shr As String</paragraph>
+        <paragraph role="bascode" localize="false" id="N0430">    inst = ConvertFromURL(_ps.getSubstituteVariableValue(&quot;$(prog)&quot;))</paragraph>
+        <paragraph role="bascode" localize="false" id="N0431">    shr = Tools.Strings.ReplaceString(inst,&quot;Share&quot;,&quot;program&quot;)</paragraph>
+        <paragraph role="bascode" localize="false" id="N0432">    SharedScripts = shr &amp; GetPathSeparator() &amp;&quot;Scripts&quot;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0433">End Property &apos; Session.sharedScripts</paragraph>
+        <paragraph role="bascode" localize="false" id="N0434">    </paragraph>
+        <paragraph role="bascode" localize="false" id="N0435">Public Property Get SharedPythonScripts() As String</paragraph>
+        <paragraph role="bascode" localize="false" id="N0436">    sharedPythonScripts = sharedScripts() &amp; GetPathSeparator() &amp;&quot;python&quot;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0437">End Property &apos; Session.sharedPythonScripts</paragraph>
+        <paragraph role="bascode" localize="false" id="N0438">    </paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0439">Public Property Get UserName() As String &apos; User account name </paragraph>
+        <paragraph role="bascode" localize="false" id="N0440">    userName = _ps.getSubstituteVariableValue(&quot;$(username)&quot;)</paragraph>
+        <paragraph role="bascode" localize="false" id="N0441">End Property &apos; Session.userName</paragraph>
+        <paragraph role="bascode" localize="false" id="N0442">    </paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0443">Public Property Get UserProfile() As String &apos; User profile system path</paragraph>
+        <paragraph role="bascode" localize="false" id="N0444">    userProfile = ConvertFromURL(_ps.getSubstituteVariableValue(&quot;$(user)&quot;))</paragraph>
+        <paragraph role="bascode" localize="false" id="N0445">End Property &apos; Session.userProfile</paragraph>
+        <paragraph role="bascode" localize="false" id="N0446">    </paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0447">Public Property Get UserScripts() As String &apos; User scripts system path</paragraph>
+        <paragraph role="bascode" localize="false" id="N0448">    userScripts = userProfile() &amp; GetPathSeparator() &amp;&quot;Scripts&quot;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0449">End Property &apos; Session.userScripts</paragraph>
+        <paragraph role="bascode" localize="false" id="N0450">    </paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0451">Public Property Get UserPythonScripts() As String &apos; User Python scripts system path</paragraph>
+        <paragraph role="bascode" localize="false" id="N0452">    userPythonScripts = userScripts() &amp; GetPathSeparator() &amp;&quot;python&quot;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0453">End Property &apos; Session.userPythonScripts</paragraph>
+    </bascode>
+    <section id="relatedtopics">
+        <paragraph role="paragraph" id="N0454">
+            <link href="text/sbasic/python/python_import.xhp">Importing Python modules</link>
+        </paragraph>
+        <paragraph role="paragraph" id="N0455">
+            <link href="text/sbasic/python/python_screen.xhp">Input/Output to Screen</link>
+        </paragraph>
+        <embed href="text/sbasic/python/python_examples.xhp#pythonexamples2"/>
+    </section>
+</body>
+</helpdocument>
