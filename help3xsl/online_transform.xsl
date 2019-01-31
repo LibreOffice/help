@@ -94,6 +94,7 @@
 <xsl:variable name="linkpostfix" select="''"/>
 
 <!-- images for notes, tips and warnings -->
+<xsl:variable name="iconsizestyle" select="'width:40px;height=40px;'"/>
 <xsl:variable name="note_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/note.svg')"/>
 <xsl:variable name="tip_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/tip.svg')"/>
 <xsl:variable name="warning_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/warning.svg')"/>
@@ -851,7 +852,7 @@
         </xsl:choose>
     </xsl:variable>
     <div class="{local-name()}">
-        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" title="{local-name()}"/></div>
+        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" title="{local-name()}" style="{$iconsizestyle}"/></div>
         <div class="notetext"><p id="{@id}"><xsl:apply-templates /></p></div>
     </div>
     <br/>
@@ -865,7 +866,7 @@
         </xsl:choose>
     </xsl:variable>
     <div class="{local-name()}">
-        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" title="{local-name()}"/></div>
+        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" title="{local-name()}" style="{$iconsizestyle}"/></div>
         <div class="notetext"><p id="{@id}"><xsl:apply-templates mode="embedded"/></p></div>
     </div>
     <br/>
@@ -1036,7 +1037,7 @@
         <xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
     </xsl:variable>
     <div class="{$type}">
-        <div class="noteicon"><img src="{$imgsrc}" alt="{$alt}" title="{$alt}"/></div>
+        <div class="noteicon"><img src="{$imgsrc}" alt="{$alt}" title="{$alt}" style="{$iconsizestyle}"/></div>
         <div class="notetext"><p><xsl:apply-templates /></p></div>
     </div>
     <br/>
@@ -1197,9 +1198,7 @@
             <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
         </xsl:if>
     </xsl:variable>
-    <img src="{$src2}" alt="{$alt}" title="{$alt}">
-        <xsl:attribute name="style"><xsl:value-of select="$width"/><xsl:value-of select="$height"/></xsl:attribute>
-    </img>
+    <img src="{$src2}" alt="{$alt}" title="{$alt}" style="{concat('width:',$width,';height:',$height)}"/>
 </xsl:template>
 
 <!-- Insert an object -->
