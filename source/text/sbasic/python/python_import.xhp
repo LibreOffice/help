@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+    <meta>
+        <topic id="text/sbasic/python/python_import">
+            <title id="tit" xml-lang="en-US">Python : Importing Modules</title>
+            <filename>/text/sbasic/python/python_import.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+    <bookmark branch="index" id="N0461">
+        <bookmark_value>Python;import</bookmark_value>
+        <bookmark_value>Python;Modules</bookmark_value>
+        <bookmark_value>Python;pythonpath</bookmark_value>
+        <bookmark_value>PythonLibraries</bookmark_value>
+    </bookmark>
+    <h1 id="N0462"><variable id="pythonimporth1"><link href="text/sbasic/python/python_import.xhp" name="python imports">Importing Python Modules</link></variable></h1>
+    <paragraph role="paragraph" id="N0463">LibreOffice Python scripts come in three distinct flavors, they can be personal, shared or embedded in documents. They are stored in varying places described in <link href="text/sbasic/python/python_locations.xhp">Python Scripts Organization and Location</link>. In order to import Python modules, their locations must be known from Python at run time.</paragraph>
+    <paragraph role="paragraph" id="N0464">This mechanism is illustrated for file system based modules and document based modules. Exception handling is omitted for clarity. The terms library or directory, scripts or modules are used interchangeably. A Python macro refers to a function inside a module.</paragraph>
+    <warning id="N0465">Note that <literal>&lt;User Profile&gt;/Scripts/python/pythonpath</literal> local directory is always explored when running a Python macro from <literal>&lt;User Profile&gt;/Scripts/python</literal>.</warning>
+    <h2 id="N0466">File System module import</h2>
+    <embed href="text/sbasic/python/python_programming.xhp#PythonFileSystemImport"/>
+    <h3 id="N0467">User or Shared Modules</h3>
+    <paragraph role="paragraph" id="N0468">Personal &amp; shared Python scripts can be imported once their directories are included in Python run time path. Refer to <link href="text/sbasic/python/python_session.xhp">Getting session information</link> page for more details regarding omitted Session Class.</paragraph>
+    <pycode>
+        <paragraph role="pycode" localize="false" id="N0469"># -*- coding: utf-8 -*-</paragraph>
+        <paragraph role="pycode" localize="false" id="N0470">from __future__ import unicode_literals</paragraph>
+        <paragraph role="pycode" localize="false" id="N0471">import sys</paragraph>
+        <paragraph role="pycode" localize="false" id="N0472">    </paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0473">user_lib = Session().UserPythonScripts  # User scripts location</paragraph>
+        <paragraph role="pycode" localize="false" id="N0474">if not user_lib in sys.path:</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0475">    sys.path.insert(0, user_lib)  # Add to search path</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0476">import screen_io as ui  # &apos;screen_io.py&apos; module resides in user_lib directory</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0477"># Your code follows here</paragraph>
+    </pycode>
+    <paragraph role="paragraph" id="N0478">This Python example exposes a local XSCRIPTCONTEXT variable to an imported module:</paragraph>
+    <pycode>
+        <paragraph role="pycode" localize="false" id="N0479"># -*- coding: utf-8 -*-</paragraph>
+        <paragraph role="pycode" localize="false" id="N0480">from __future__ import unicode_literals</paragraph>
+        <paragraph role="pycode" localize="false" id="N0481">import uno, sys</paragraph>
+        <paragraph role="pycode" localize="false" id="N0482">    </paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0483">share_lib = Session.SharedPythonScripts()  # Shared scripts location</paragraph>
+        <paragraph role="pycode" localize="false" id="N0484">if not share_lib in sys.path:</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0485">    sys.path.insert(0, share_lib)  # Add to search path</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0486">from IDE_utils import ScriptContext  # &apos;IDE_utils.py&apos; sits with shared Python scripts.</paragraph>
+        <paragraph role="pycode" localize="false" id="N0487">XSCRIPTCONTEXT = ScriptContext(uno.getComponentContext)</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0488"># Your code follows here</paragraph>
+    </pycode>
+    <h3 id="N0489">Installation Modules for Applications</h3>
+    <paragraph role="paragraph" id="N0490">Unlike personal and shared scripts, %PRODUCTNAME installation scripts can be imported any time. Next to <literal>uno</literal> &amp; <literal>unohelper</literal> %PRODUCTNAME Python modules, other scripts present in <literal>&lt;installation_path&gt;/program</literal> directory can be imported directly, such as the <literal>msgbox</literal> module.</paragraph>
+    <paragraph role="paragraph" id="N0491">With Python shell:</paragraph>
+    <paragraph role="paragraph" localize="false" id="N0492"><literal>&gt;&gt;&gt; import msgbox, uno</literal></paragraph>
+    <paragraph role="paragraph" localize="false" id="N0494"><literal>&gt;&gt;&gt; myBox = msgbox.MsgBox(uno.getComponentContext())</literal></paragraph>
+    <paragraph role="paragraph" localize="false" id="N0495"><literal>&gt;&gt;&gt; myBox.addButton(&quot;okay&quot;)</literal></paragraph>
+    <paragraph role="paragraph" localize="false" id="N0496"><literal>&gt;&gt;&gt; myBox.renderFromButtonSize()</literal></paragraph>
+    <paragraph role="paragraph" localize="false" id="N0497"><literal>&gt;&gt;&gt; myBox.numberOflines = 2</literal></paragraph>
+    <paragraph role="paragraph" localize="false" id="N0499"><literal>&gt;&gt;&gt; print(myBox.show(&quot;A small message&quot;,0,&quot;Dialog title&quot;))</literal></paragraph>
+    <h2 id="N0534">Document Module Import</h2>
+    <paragraph role="paragraph" id="N0535">Importing a Python document embedded module is illustrated below. Error handling is not detailed. Python run time path is updated when document has been opened and before closure. Refer to <link href="text/sbasic/shared/01040000.xhp">Event-Driven Macros</link> to learn how to associate Python macros to document events.</paragraph>
+    <pycode>
+        <paragraph role="pycode" localize="false" id="N0536"># -*- coding: utf-8 -*-</paragraph>
+        <paragraph role="pycode" localize="false" id="N0536">from __future__ import unicode_literals</paragraph>
+        <paragraph role="pycode" localize="false" id="N0537">    </paragraph>
+        <paragraph role="pycode" localize="false" id="N0538">import sys, uno</paragraph>
+        <paragraph role="pycode" localize="false" id="N0539">    </paragraph>
+        <paragraph role="pycode" localize="false" id="N0540">def OnDocPostOpenLoadPython():</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0541">    &quot;&quot;&quot; Prepare Python modules import when doc. loaded &quot;&quot;&quot;</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0542">    PythonLibraries.loadLibrary(&apos;lib/subdir&apos;)  # Add directory to search path </paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0543">    PythonLibraries.loadLibrary(&apos;my_gui&apos;, &apos;screen_io&apos;)  # Add dir. &amp; import screen_io</paragraph>
+        <paragraph role="pycode" localize="false" id="N0544">    </paragraph>
+        <paragraph role="pycode" localize="false" id="N0545">def OnDocQueryCloseUnloadPython():</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0546">    &quot;&quot;&quot; Cleanup PYTHON_PATH when doc. Gets closed &quot;&quot;&quot; </paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0547">    PythonLibraries.unloadLibrary(&apos;my_gui&apos;)  # Python runtime path cleanup</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0548">    # Note: imported modules remain loaded in this example..</paragraph>
+        <paragraph role="pycode" localize="false" id="N0549">    </paragraph>
+        <paragraph role="pycode" localize="false" id="N0552">class PythonLibraries():</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0553">    &quot;&quot;&quot; Python library loader and module importer</paragraph>
+        <paragraph role="pycode" localize="false" id="N0554">    </paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0555">    adapted from &apos;Bibliothèque de fonctions&apos; by Hubert Lambert</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0556">    at https://forum.openoffice.org/fr/forum/viewtopic.php?p=286213 &quot;&quot;&quot;</paragraph>
+        <paragraph role="pycode" localize="false" id="N0557">def isImportedModule(module_name: str) -&gt; bool:</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0558">    &quot;&quot;&quot; Check run time module list &quot;&quot;&quot;</paragraph>
+        <paragraph role="pycode" localize="false" id="N0559">    return (module_name in sys.modules.keys())</paragraph>
+        <paragraph role="pycode" localize="false" id="N0560">def isLoadedLibrary(lib_name: str) -&gt; bool:</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0561">    &quot;&quot;&quot; Check PYTHON_PATH content &quot;&quot;&quot;</paragraph>
+        <paragraph role="pycode" localize="false" id="N0562">    return (lib_name in sys.path)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0563">def loadLibrary(lib_name: str, module_name=None):</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0564">    &quot;&quot;&quot; add directory to PYTHON_PATH, import named module &quot;&quot;&quot;</paragraph>
+        <paragraph role="pycode" localize="false" id="N0565">    doc = XSCRIPTCONTEXT.getDocument()</paragraph>
+        <paragraph role="pycode" localize="false" id="N0566">    url = uno.fileUrlToSystemPath(</paragraph>
+        <paragraph role="pycode" localize="false" id="N0567">        &apos;{}/{}&apos;.format(doc.URL,&apos;Scripts/python/&apos;+lib_name)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0568">    if not url in sys.path:</paragraph>
+        <paragraph role="pycode" localize="false" id="N0569">        sys.path.insert(0, url)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0570">    if module_name and not module_name in sys.modules.keys():</paragraph>
+        <paragraph role="pycode" localize="false" id="N0571">        return zipimport.zipimporter(url).load_module(module_name)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0572">def unloadLibrary(lib_name: str):</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0573">    &quot;&quot;&quot; remove directory from PYTHON_PATH &quot;&quot;&quot;</paragraph>
+        <paragraph role="pycode" localize="false" id="N0574">    sys.path.remove(lib_name)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0575">    </paragraph>
+        <paragraph role="pycode" localize="false" id="N0576">g_exportedScripts = (OnDocPostOpenLoadPython, OnDocQueryCloseUnloadPython)</paragraph>
+    </pycode>
+    <section id="relatedtopics" >
+        <embed href="text/sbasic/python/python_session.xhp#pythonsession"/>
+        <embed href="text/sbasic/python/python_programming.xhp#pythonprogrammingheading"/>
+        <embed href="text/sbasic/python/python_locations.xhp#pythonlocations1"/>
+        <paragraph role="paragraph" id="N0580">
+            Refer to <link href="text/sbasic/python/python_listener.xhp">Creating a Python Listener</link> for examples of event-driven macros.
+        </paragraph>
+    </section>
+</body>
+</helpdocument>

@@ -371,6 +371,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/python/main0000 \
     helpcontent2/source/text/sbasic/python/python_examples \
     helpcontent2/source/text/sbasic/python/python_ide \
+    helpcontent2/source/text/sbasic/python/python_import \
     helpcontent2/source/text/sbasic/python/python_locations \
     helpcontent2/source/text/sbasic/python/python_platform \
     helpcontent2/source/text/sbasic/python/python_programming \
