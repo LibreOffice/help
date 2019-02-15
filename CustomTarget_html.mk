@@ -52,9 +52,9 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/languages.js : \
 		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
 	( \
-		echo -n 'var languagesSet = new Set([' ; \
-		for lang in $(gb_HELP_LANGS) ; do echo -n "'$$lang', " ; done | sed 's/, $$//' ; \
-		echo ']);' \
+		printf 'var languagesSet = new Set([' ; \
+		for lang in $(gb_HELP_LANGS) ; do printf '%s' "'$$lang', " ; done | sed 's/, $$//' ; \
+		printf ']);\n' \
 	) > $@
 
 define html_gen_langnames_js_dep
