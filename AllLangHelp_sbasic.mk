@@ -369,6 +369,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/special_vba_func \
     helpcontent2/source/text/sbasic/shared/vbasupport \
     helpcontent2/source/text/sbasic/python/main0000 \
+    helpcontent2/source/text/sbasic/python/python_dialogs \
     helpcontent2/source/text/sbasic/python/python_examples \
     helpcontent2/source/text/sbasic/python/python_ide \
     helpcontent2/source/text/sbasic/python/python_import \
