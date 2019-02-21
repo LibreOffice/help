@@ -28,7 +28,7 @@
     <h2 id="N0343">Examples:</h2>
     <paragraph role="paragraph" id="N0344">With Python shell.</paragraph>
     <paragraph role="paragraph" localize="false" id="N0345"><literal>&gt;&gt;&gt; from &lt;the_module&gt; import Session</literal></paragraph>
-    <paragraph role="paragraph" xml-lang="en-US" id="N0346"><literal>&gt;&gt;&gt; print(Session.SharedPythonScripts())  # class method</literal></paragraph>
+    <paragraph role="paragraph" xml-lang="en-US" id="N0346"><literal>&gt;&gt;&gt; print(Session.SharedPythonScripts())  # static method</literal></paragraph>
     <paragraph role="paragraph" xml-lang="en-US" id="N0347"><literal>&gt;&gt;&gt; print(Session().UserName)  # object property</literal></paragraph>
     <paragraph role="paragraph" xml-lang="en-US" id="N0348"><literal>&gt;&gt;&gt; input(Session().UserProfile)  # object property</literal></paragraph>
     <h3 id="N0349">From <menuitem>Tools – Macros - Run Macro</menuitem>... menu.</h3>
@@ -37,8 +37,8 @@
         <paragraph role="pycode" localize="false" id="N0351">    </paragraph>
         <paragraph role="pycode" localize="false" id="N0352">def demo_session():</paragraph>
         <paragraph role="pycode" localize="false" id="N0353">    import screen_io as ui</paragraph>
-        <paragraph role="pycode" xml-lang="en-US" id="N0354">    ui.MsgBox(Session.Share(),title=&apos;Installation Share&apos;)  # class method</paragraph>
-        <paragraph role="pycode" xml-lang="en-US" id="N0355">    ui.Print(Session.SharedPythonScripts())  # class method</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0354">    ui.MsgBox(Session.Share(),title=&apos;Installation Share&apos;)  # static method</paragraph>
+        <paragraph role="pycode" xml-lang="en-US" id="N0355">    ui.Print(Session.SharedPythonScripts())  # static method</paragraph>
         <paragraph role="pycode" xml-lang="en-US" id="N0356">    s = Session()  # instance creation</paragraph>
         <paragraph role="pycode" xml-lang="en-US" id="N0357">    ui.MsgBox(s.UserName,title=&apos;Hello&apos;)  # object property</paragraph>
         <paragraph role="pycode" xml-lang="en-US" id="N0358">    ui.Print(s.UserPythonScripts)  # object property</paragraph>
@@ -76,31 +76,31 @@
         <paragraph role="pycode" localize="false" id="N0384">class Session():</paragraph>
         <paragraph role="pycode" localize="false" id="N0385">    @staticmethod</paragraph>
         <paragraph role="pycode" localize="false" id="N0386">    def substitute(var_name):</paragraph>
-        <paragraph role="pycode" localize="false" id="N0387">    ctx = uno.getComponentContext()</paragraph>
-        <paragraph role="pycode" localize="false" id="N0388">    ps = ctx.getServiceManager().createInstanceWithContext(</paragraph>
-        <paragraph role="pycode" localize="false" id="N0389">    &apos;com.sun.star.util.PathSubstitution&apos;, ctx)</paragraph>
-        <paragraph role="pycode" localize="false" id="N0390">    return ps.getSubstituteVariableValue(var_name)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0387">        ctx = uno.getComponentContext()</paragraph>
+        <paragraph role="pycode" localize="false" id="N0388">        ps = ctx.getServiceManager().createInstanceWithContext(</paragraph>
+        <paragraph role="pycode" localize="false" id="N0389">            &apos;com.sun.star.util.PathSubstitution&apos;, ctx)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0390">        return ps.getSubstituteVariableValue(var_name)</paragraph>
         <paragraph role="pycode" localize="false" id="N0391">    @staticmethod</paragraph>
         <paragraph role="pycode" localize="false" id="N0392">    def Share():</paragraph>
-        <paragraph role="pycode" localize="false" id="N0393">    inst = uno.fileUrlToSystemPath(Session.substitute(&quot;$(prog)&quot;))</paragraph>
-        <paragraph role="pycode" localize="false" id="N0394">    return os.path.normpath(inst.replace(&apos;program&apos;, &quot;Share&quot;))</paragraph>
+        <paragraph role="pycode" localize="false" id="N0393">        inst = uno.fileUrlToSystemPath(Session.substitute(&quot;$(prog)&quot;))</paragraph>
+        <paragraph role="pycode" localize="false" id="N0394">        return os.path.normpath(inst.replace(&apos;program&apos;, &quot;Share&quot;))</paragraph>
         <paragraph role="pycode" localize="false" id="N0395">    @staticmethod</paragraph>
         <paragraph role="pycode" localize="false" id="N0396">    def SharedScripts():</paragraph>
-        <paragraph role="pycode" localize="false" id="N0397">    return &apos;&apos;.join([Session.Share(), os.sep, &quot;Scripts&quot;])</paragraph>
+        <paragraph role="pycode" localize="false" id="N0397">        return &apos;&apos;.join([Session.Share(), os.sep, &quot;Scripts&quot;])</paragraph>
         <paragraph role="pycode" localize="false" id="N0398">    @staticmethod</paragraph>
         <paragraph role="pycode" localize="false" id="N0399">    def SharedPythonScripts():</paragraph>
-        <paragraph role="pycode" localize="false" id="N0400">    return &apos;&apos;.join([Session.SharedScripts(), os.sep, &apos;python&apos;])</paragraph>
+        <paragraph role="pycode" localize="false" id="N0400">        return &apos;&apos;.join([Session.SharedScripts(), os.sep, &apos;python&apos;])</paragraph>
         <paragraph role="pycode" xml-lang="en-US" id="N0401">    @property  # alternative to &apos;$(username)&apos; variable</paragraph>
         <paragraph role="pycode" localize="false" id="N0402">    def UserName(self): return getpass.getuser()</paragraph>
         <paragraph role="pycode" localize="false" id="N0403">    @property</paragraph>
         <paragraph role="pycode" localize="false" id="N0404">    def UserProfile(self):</paragraph>
-        <paragraph role="pycode" localize="false" id="N0405">    return uno.fileUrlToSystemPath(Session.substitute(&quot;$(user)&quot;))</paragraph>
+        <paragraph role="pycode" localize="false" id="N0405">        return uno.fileUrlToSystemPath(Session.substitute(&quot;$(user)&quot;))</paragraph>
         <paragraph role="pycode" localize="false" id="N0406">    @property</paragraph>
         <paragraph role="pycode" localize="false" id="N0407">    def UserScripts(self):</paragraph>
-        <paragraph role="pycode" localize="false" id="N0408">    return &apos;&apos;.join([self.UserProfile, os.sep, &apos;Scripts&apos;])</paragraph>
+        <paragraph role="pycode" localize="false" id="N0408">        return &apos;&apos;.join([self.UserProfile, os.sep, &apos;Scripts&apos;])</paragraph>
         <paragraph role="pycode" localize="false" id="N0409">    @property</paragraph>
         <paragraph role="pycode" localize="false" id="N0410">    def UserPythonScripts(self):</paragraph>
-        <paragraph role="pycode" localize="false" id="N0411">    return &apos;&apos;.join([self.UserScripts, os.sep, &quot;python&quot;])</paragraph>
+        <paragraph role="pycode" localize="false" id="N0411">        return &apos;&apos;.join([self.UserScripts, os.sep, &quot;python&quot;])</paragraph>
     </pycode>
     <note id="N0342">Unlike Basic, pathname normalization is performed with Python inside Session class.</note>
     <h2 id="N0412">%PRODUCTNAME Basic Session class:</h2>
@@ -148,12 +148,8 @@
         <paragraph role="bascode" localize="false" id="N0453">End Property &apos; Session.userPythonScripts</paragraph>
     </bascode>
     <section id="relatedtopics">
-        <paragraph role="paragraph" id="N0454">
-            <link href="text/sbasic/python/python_import.xhp">Importing Python modules</link>
-        </paragraph>
-        <paragraph role="paragraph" id="N0455">
-            <link href="text/sbasic/python/python_screen.xhp">Input/Output to Screen</link>
-        </paragraph>
+        <embed href="text/sbasic/python/python_import.xhp#pythonimporth1"/>
+        <embed href="text/sbasic/python/python_screen.xhp#ioscreen"/>
         <embed href="text/sbasic/python/python_examples.xhp#pythonexamples2"/>
     </section>
 </body>
