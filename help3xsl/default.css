@@ -95,11 +95,11 @@ body {
 }
 a {
     text-decoration: none;
-    color: #0369AE;
+    color: #0379BC;
 }
 a:hover {
     text-decoration: underline;
-    color: #1C99E0;
+    color: #0499EE;
 }
 pre,
 .code,
@@ -191,9 +191,11 @@ pre,
 }
 
 table {
-    box-shadow: rgba(0,0,0,0.1) 0px 1px 3px 0px;
+    background: #FEFEFE;
+    box-shadow: rgba(0,0,0,0.08) 0 1px 5px 0;
     border-collapse: collapse;
-    background: #fefefe;
+    margin-left: auto;
+    margin-right: auto;
 }
 table, th, td {
     border-top: 0;
@@ -232,8 +234,7 @@ h1 {
     font-size: 1.83rem;
     font-weight: 300;
     border-bottom: 2px solid #148603;
-    margin-bottom: 20px;
-    padding-bottom: 6px;
+    margin-bottom: 1.67rem;
 }
 h1 a {
     text-decoration: none;
@@ -251,11 +252,6 @@ h6 {
 }
 .relatedtopics {
     font-weight: normal;
-}
-.relatedbody {
-    margin-top: 2px;
-    margin-bottom: 2px;
-    margin-left: 5px;
 }
 .howtoget {
     background: #EBE7E9;
@@ -392,7 +388,6 @@ header {
     overflow-y: hidden;
     /* make it smooth on iOS */
     -webkit-overflow-scrolling: touch;
-    text-align: center;
 }
 .lang nav a, .modules nav a {
     color: #fff;
@@ -530,9 +525,9 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
     font-weight: bold;
     color: #148603;
 }
-.pagination {
-    border-bottom: 1px dashed rgba(0,0,0,0.1);
-    padding-bottom: 1em;
+.pagination-container {
+    text-align: center;
+    margin-left: -40px; /* The normalizer fails to account for this */
 }
 .pagination li {
     display: inline-block;
@@ -548,18 +543,28 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
     display: none;
 }
 li.active {
-    background-color: #0369A3;
+    background-color: #0379BC;
 }
 li.active a {
     color: #fff;
 }
 li.disabled a {
-    color: #90C0E6;
+    opacity: 0.4;
+    pointer-events: none;
 }
 #search-bar {
+    border: 1px solid #CCC;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    line-height: 1.5em;
     margin-top: 10px;
+    outline: none;
+    padding: 0 .25em;
+    transition: all 0.30s ease-in-out;
     width: 100%;
-    caret-color: #148603;
+}
+#search-bar:focus {
+    border: 1px solid #0EA5FB;
 }
 #search-bar::placeholder {
     font-style: italic;
@@ -681,7 +686,7 @@ li.disabled a {
 }
 .contents-current {
     background: rgba(0,0,0,0.05);
-    border-left: 2px solid #0369a3;
+    border-left: 2px solid #0379BC;
     font-weight: 600;
     margin-left: -12px;
     padding-left: 10px;
