@@ -343,8 +343,6 @@
 <xsl:when test="$src1='cmd/sc_removefilter.png'"><xsl:text>cmd/sc_removefiltersort.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_bulletliststyle.png'"><xsl:text>cmd/lc_defaultbullet.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_bulletliststyle.png'"><xsl:text>cmd/sc_defaultbullet.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/lc_romanliststyle.png'"><xsl:text>cmd/lc_defaultnumbering.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_romanliststyle.png'"><xsl:text>cmd/sc_defaultnumbering.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_defaultparastyle.png'"><xsl:text>cmd/lc_controlcodes.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_defaultparastyle.png'"><xsl:text>cmd/sc_controlcodes.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_leaveallgroups.png'"><xsl:text>cmd/lc_leavegroup.png</xsl:text></xsl:when>
@@ -455,6 +453,8 @@
 <xsl:when test="$src1='cmd/sc_characterbackgroundpattern.png'"><xsl:text>cmd/sc_backcolor.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_characterbackgroundpattern.png'"><xsl:text>cmd/lc_backcolor.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_backgroundpatterncontroller.png'"><xsl:text>cmd/lc_backgroundcolor.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_tablecellbackgroundcolor.png'"><xsl:text>cmd/sc_backgroundcolor.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_tablecellbackgroundcolor.png'"><xsl:text>cmd/lc_backgroundcolor.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_leftpara.png'"><xsl:text>cmd/lc_alignleft.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_centerpara.png'"><xsl:text>cmd/lc_alignhorizontalcenter.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_fontworkalignmentfloater.png'"><xsl:text>cmd/lc_alignhorizontalcenter.png</xsl:text></xsl:when>
@@ -849,8 +849,8 @@
 <xsl:when test="$src1='desktop/res/info_16.png'"><xsl:text>cmd/sc_helpindex.png</xsl:text></xsl:when>
 <xsl:when test="$src1='desktop/res/lock_16.png'"><xsl:text>cmd/sc_protect.png</xsl:text></xsl:when>
 <xsl:when test="$src1='extensions/res/arrow.png'"><xsl:text>cmd/sc_nextrecord.png</xsl:text></xsl:when>
-<xsl:when test="$src1='extensions/res/buttonminus.png'"><xsl:text>extensions/source/scanner/minus.png</xsl:text></xsl:when>
-<xsl:when test="$src1='extensions/res/buttonplus.png'"><xsl:text>extensions/source/scanner/plus.png</xsl:text></xsl:when>
+<xsl:when test="$src1='extensions/res/buttonminus.png'"><xsl:text>extensions/res/scanner/minus.png</xsl:text></xsl:when>
+<xsl:when test="$src1='extensions/res/buttonplus.png'"><xsl:text>extensions/res/scanner/plus.png</xsl:text></xsl:when>
 <xsl:when test="$src1='formula/res/fapclose.png'"><xsl:text>cmd/sc_open.png</xsl:text></xsl:when>
 <xsl:when test="$src1='formula/res/faperror.png'"><xsl:text>cmd/sc_cancel.png</xsl:text></xsl:when>
 <xsl:when test="$src1='formula/res/fapok.png'"><xsl:text>cmd/sc_ok.png</xsl:text></xsl:when>
@@ -1419,6 +1419,8 @@
 <xsl:when test="$src1='cmd/lc_basicideappear.png'"><xsl:text>cmd/lc_toolsmacroedit.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_macrosmenu.png'"><xsl:text>cmd/sc_choosemacro.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_basicideappear.png'"><xsl:text>cmd/sc_toolsmacroedit.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_donation.png'"><xsl:text>cmd/lc_currencyfield.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_donation.png'"><xsl:text>cmd/sc_currencyfield.png</xsl:text></xsl:when>
 <xsl:otherwise><xsl:value-of select="$src1"/></xsl:otherwise>
 </xsl:choose>
 </xsl:template>
