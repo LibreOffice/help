@@ -28,6 +28,9 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 	) \
 ))
 
+# In the below recipe, the file $@.good is used to communicate failure of xsltproc in the pipeline
+# (similar to Bash's `set -o pipefail`; the final `rm $@.good` will fail, and fail the whole
+# command, if the xsltproc invocation failed):
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 		$(SRCDIR)/helpcontent2/help3xsl/generate_hid2file.xsl \
 		$(call gb_ExternalExecutable_get_dependencies,xsltproc) \
@@ -40,8 +43,10 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 			&& RESPONSEFILE=$(call var2file,$(shell $(gb_MKTEMP)),100,$(foreach module,$(html_TEXT_MODULES),$(addprefix $(SRCDIR)/,$(gb_AllLangHelp_$(module)_HELPFILES)))) \
 			&& <"$$RESPONSEFILE" $(if $(filter WNT,$(OS)),tr -d '\r' | env -i PATH="$$PATH") xargs -n 1 printf '%s\n' \
 			| while read xhp; do \
-				$(call gb_ExternalExecutable_get_command,xsltproc) $< $$xhp \
+				rm -f $@.good && \
+				{ $(call gb_ExternalExecutable_get_command,xsltproc) $< $$xhp && touch $@.good; } \
 				| $(gb_AWK) 'NF' \
+				&& rm $@.good \
 			; done \
 			&& rm "$$RESPONSEFILE" \
 			&& echo '};' \
@@ -193,6 +198,9 @@ endef
 
 $(eval $(foreach module,$(html_BMARK_MODULES),$(call html_gen_bookmarks_deps,$(subst :, ,$(module)))))
 
+# In the below recipe, the file $@.good is used to communicate failure of xsltproc in the pipeline
+# (similar to Bash's `set -o pipefail`; the final `rm $@.good` will fail, and fail the whole
+# command, if any xsltproc invocation failed):
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 		$(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
 		$(call gb_ExternalExecutable_get_dependencies,xsltproc)
@@ -201,7 +209,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 		RESPONSEFILE=$(call var2file,$(shell $(gb_MKTEMP)),100,$(addprefix $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/,$(gb_AllLangHelp_$(APPDIR)_BOOKMARK_HELPFILES))) \
 		&& ( \
 			<"$$RESPONSEFILE" $(if $(filter WNT,$(OS)),tr -d '\r' | env -i PATH="$$PATH") xargs -n 1 printf '%s\n' \
-			| while read xhp; do \
+			| { rm -f $@.good && while read xhp; do \
 				$(call gb_ExternalExecutable_get_command,xsltproc) \
 					--stringparam app $(APP) \
 					--stringparam Language $(HELP_LANG) \
@@ -210,9 +218,10 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 					--stringparam productversion "$(PRODUCTVERSION)" \
 					$(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
 					$$xhp \
-			; done \
+			; done && touch $@.good; } \
 			| sort -k3b -t\> -s \
 			| awk 'NF' \
+			&& rm $@.good \
 		) > $@ \
 		&& rm "$$RESPONSEFILE" \
 	)	
