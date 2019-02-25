@@ -46,7 +46,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 				rm -f $@.good && \
 				{ $(call gb_ExternalExecutable_get_command,xsltproc) $< $$xhp && touch $@.good; } \
 				| $(gb_AWK) 'NF' \
-				&& rm $@.good \
+				&& rm $@.good || exit \
 			; done \
 			&& rm "$$RESPONSEFILE" \
 			&& echo '};' \
@@ -153,6 +153,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 				-o $(dir $@)$${xhp%.xhp}.html \
 				$(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl \
 				$(if $(filter WNT,$(OS)),$$(cygpath -m `pwd`),`pwd`)/$$xhp \
+			|| exit \
 		; done \
 		&& rm "$$RESPONSEFILE" \
 		&& touch $@ \
@@ -218,6 +219,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 					--stringparam productversion "$(PRODUCTVERSION)" \
 					$(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
 					$$xhp \
+				|| exit \
 			; done && touch $@.good; } \
 			| sort -k3b -t\> -s \
 			| awk 'NF' \
