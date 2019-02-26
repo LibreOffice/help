@@ -320,7 +320,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/sdraw/ui/dlgsnap/SnapObjectDialog.png \
     screenshots/modules/simpress/ui/headerfooterdialog/HeaderFooterDialog.png \
     screenshots/modules/smath/ui/alignmentdialog/AlignmentDialog.png \
-    screenshots/modules/smath/ui/catalogdialog/CatalogDialog.png \
     screenshots/modules/smath/ui/fontdialog/FontDialog.png \
     screenshots/modules/smath/ui/fontsizedialog/FontSizeDialog.png \
     screenshots/modules/smath/ui/fonttypedialog/FontsDialog.png \

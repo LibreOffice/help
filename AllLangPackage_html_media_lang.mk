@@ -236,7 +236,6 @@ $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,
 
 $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,$(lang),$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media, \
     screenshots/modules/smath/ui/alignmentdialog/$(lang)/AlignmentDialog.png \
-    screenshots/modules/smath/ui/catalogdialog/$(lang)/CatalogDialog.png \
     screenshots/modules/smath/ui/fontdialog/$(lang)/FontDialog.png \
     screenshots/modules/smath/ui/fontsizedialog/$(lang)/FontSizeDialog.png \
     screenshots/modules/smath/ui/fonttypedialog/$(lang)/FontsDialog.png \
