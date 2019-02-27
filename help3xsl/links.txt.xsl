@@ -1421,6 +1421,12 @@
 <xsl:when test="$src1='cmd/sc_basicideappear.png'"><xsl:text>cmd/sc_toolsmacroedit.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_donation.png'"><xsl:text>cmd/lc_currencyfield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_donation.png'"><xsl:text>cmd/sc_currencyfield.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_redactedexportblack.png'"><xsl:text>cmd/lc_exportdirecttopdf.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_redactedexportblack.png'"><xsl:text>cmd/sc_exportdirecttopdf.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/32/redactedexportblack.png'"><xsl:text>cmd/32/exportdirecttopdf.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_redactedexportwhite.png'"><xsl:text>cmd/lc_exportdirecttopdf.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_redactedexportwhite.png'"><xsl:text>cmd/sc_exportdirecttopdf.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/32/redactedexportwhite.png'"><xsl:text>cmd/32/exportdirecttopdf.png</xsl:text></xsl:when>
 <xsl:otherwise><xsl:value-of select="$src1"/></xsl:otherwise>
 </xsl:choose>
 </xsl:template>
