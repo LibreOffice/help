@@ -167,7 +167,7 @@
     <div class="header-extrawurst">
         <header>
             <div class="logo-container">
-		    <a class="logo" href="{$target}{$lang}/text/shared/05/new_help.html">
+                <a class="logo" href="{$target}{$lang}/text/shared/05/new_help.html">
                     <div class="symbol"></div>
                     <p><xsl:value-of select="$ui_logo"/></p>
                 </a>
@@ -231,8 +231,6 @@
                     </script>
                     <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
                 </div>
-            </xsl:if>
-            <xsl:if test="$online">
                 <div class="donation">
                     <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">
                         <xsl:value-of select="$ui_donate"/>
@@ -253,40 +251,25 @@
     <script type="text/javascript" src="{$target}{$lang}/bookmarks.js"/>
     <script type="text/javascript" src="{$target}{$lang}/contents.js"/>
     <script type="text/javascript" src="{$target}help.js"/>
-    <xsl:choose>
-        <xsl:when test="$online">
-            <script type="text/javascript">
-                <![CDATA[
-                var module = getParameterByName("DbPAR");
-                var system = getParameterByName("System");
-                var helpID = getParameterByName("HID");
-                fixURL(module,system);
-                var dbg = getParameterByName("Debug");
-                if (dbg == null){dbg=0}
-                document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
-                document.getElementById("bm_module").innerHTML ="Module is: "+module;
-                document.getElementById("bm_system").innerHTML ="System is: "+system;
-                document.getElementById("bm_HID").innerHTML ="HID is: "+helpID;
-                ]]>
-            </script>
-        </xsl:when>
-        <xsl:otherwise>
-            <script type="text/javascript">
-                <![CDATA[
-                var module = getParameterByName("DbPAR");
-                var helpID = getParameterByName("HID");
-                var system = getSystem();
-                fixURL(module,system);
-                var dbg = getParameterByName("Debug");
-                if (dbg == null){dbg=0}
-                document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
-                document.getElementById("bm_module").innerHTML ="Module is: "+module;
-                document.getElementById("bm_system").innerHTML ="System is: "+system;
-                document.getElementById("bm_HID").innerHTML ="HID is: "+helpID;
-                ]]>
-            </script>
-        </xsl:otherwise>
-    </xsl:choose>
+    <script type="text/javascript">
+        <![CDATA[
+        var module = getParameterByName("DbPAR");
+        var helpID = getParameterByName("HID");
+        ]]>
+        <xsl:choose>
+            <xsl:when test="$online"><![CDATA[var system = getParameterByName("System");]]></xsl:when>
+            <xsl:otherwise><![CDATA[var system = getSystem();]]></xsl:otherwise>
+        </xsl:choose>
+        <![CDATA[
+        fixURL(module,system);
+        var dbg = getParameterByName("Debug");
+        if (dbg == null){dbg=0}
+        document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
+        document.getElementById("bm_module").innerHTML ="Module is: "+module;
+        document.getElementById("bm_system").innerHTML ="System is: "+system;
+        document.getElementById("bm_HID").innerHTML ="HID is: "+helpID;
+        ]]>
+    </script>
     <xsl:if test="$online">
         <!-- Piwik -->
         <script type="text/javascript">
