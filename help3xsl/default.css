@@ -293,14 +293,7 @@ h6 {
     color: red;
     text-align: left;
 }
-.donation {
-    padding: 0 0 10px 0;
-    margin-bottom: 1em;
-    border-bottom: 1px dashed rgba(0,0,0,0.1);
-}
-.donation p{
-    font-size:1.2rem;
-}
+
 .bascode {
     margin-top:15px;
     margin-bottom: 15px;
@@ -320,7 +313,7 @@ h6 {
 #DisplayArea {
     background-color: #FCFCFC;
     overflow: auto;
-    padding: 10px;
+    padding: 10px 10px 40px 10px;
     grid-area: main;
 }
 #DisplayArea > p {
@@ -351,6 +344,8 @@ h6 {
 .embedded {}
 .header-extrawurst {
     grid-area: header;
+    position: sticky;
+    top: 0px;
 }
 header {
     background-color: #18A303;
@@ -402,9 +397,9 @@ header {
     white-space: nowrap;
 }
 footer {
-    border-top: 2px solid #148603;
-    padding: 15px 10px 0 10px;
-    margin: 40px 0;
+    padding: 40px 10px 40px 10px;
+    background-color: #FCFCFC;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,.05);
 }
 footer p {
     font-size: 0.98rem;
@@ -569,9 +564,39 @@ li.disabled a {
 #search-bar::placeholder {
     font-style: italic;
 }
+.google-donation {
+    border-top: 2px solid #148603;
+    background-color: #FCFCFC;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,.05);
+}
+.donation {
+    background: #0379BC;
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    border-radius: 8px;
+    padding: 5px 10px 5px 10px;
+    margin: 20px auto 0 auto;
+    max-width: 200px;
+    color: #ffffff;
+    text-decoration: none;
+}
+.donation a {
+    color: white;
+}
+.donation a:hover {
+    color: white;
+    text-decoration: none;
+}
+.donation:hover{
+    background: #0379BC;
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+}
+.donation p {
+    font-size:1.2rem;
+    text-align: center;
+}
 .google-search {
     max-width: 300px;
-    margin: 0 auto;
+    margin: 40px auto 0 auto;
 }
 .modules {
     border-bottom: 2px solid #f3f3f3;
@@ -757,11 +782,15 @@ li.disabled a {
     .rightside {
         grid-area: rightside;
     }
-    .google-search {
-        margin: 0;
-        position: absolute;
-        top: 19px;
-        left: 860px;
+    .google-donation {
+        grid-area: google;
+        position: sticky;
+        top: 0px;
+        background-color: #FCFCFC;
+        box-shadow: none;
+    }
+    footer {
+        grid-area: footer;
     }
     .lang {
         position: absolute;
@@ -776,10 +805,8 @@ li.disabled a {
         border: none;
     }
     #DisplayArea {
-        background-color: #FCFCFC;
         box-shadow: 0 2px 8px 0 rgba(0,0,0,.05);
-        padding: 10px 50px;
-        width: 800px;
+        padding: 10px 50px 40px 50px;
     }
 }
 @media screen and (min-width: 1440px) {
@@ -800,24 +827,43 @@ li.disabled a {
         content: "";
     }
 }
+/* Use @supports to sneak these rules past IE */
 @supports (grid-area: auto) {
     @media screen and (min-width: 960px) {
+        .google-donation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #18A303;
+            border-top: none;
+        }
+        .google-search {
+            margin: 0;
+        }
+        .donation {
+            margin: 0 auto;
+        }
+        footer {
+            border-top: 2px solid #148603;
+        }
         body {
             display: grid;
-            grid-template-columns: 320px 1fr;
-            grid-template-rows: minmax(1em, auto) minmax(1em, auto) 1fr;
-            grid-template-areas: "header header"
-                                 "rightside main"
-                                 "leftside main"
+            grid-template-columns: 320px 80px 1fr;
+            grid-template-rows: minmax(1em, auto) minmax(1em, auto) 1fr minmax(1em, auto);
+            grid-template-areas: "header header google"
+                                 "rightside main main"
+                                 "leftside main main"
+                                 ". footer footer"
         }
     }
     @media screen and (min-width: 1440px) {
         body {
             display: grid;
-            grid-template-columns: 320px 900px 1fr;
-            grid-template-rows: 1fr minmax(1em, auto);
-            grid-template-areas: "header header header"
-                                 "leftside main rightside"
+            grid-template-columns: 320px 450px 450px 1fr;
+            grid-template-rows: 1fr minmax(1em, auto) minmax(1em, auto);
+            grid-template-areas: "header header google google"
+                                 "leftside main main rightside"
+                                 ". footer footer ."
         }
         .rightside {
             width: auto;
