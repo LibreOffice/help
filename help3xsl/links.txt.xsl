@@ -589,6 +589,8 @@
 <xsl:when test="$src1='cmd/lc_gridvisible.png'"><xsl:text>cmd/lc_grid.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_gridvisible.png'"><xsl:text>cmd/sc_grid.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_gridmenu.png'"><xsl:text>cmd/sc_grid.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_insertgridcontrol.png'"><xsl:text>cmd/sc_grid.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_insertgridcontrol.png'"><xsl:text>cmd/lc_grid.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_grafattrcrop.png'"><xsl:text>cmd/lc_crop.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_grafattrcrop.png'"><xsl:text>cmd/sc_crop.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_rulerrowsvertical.png'"><xsl:text>cmd/lc_extrusiontiltright.png</xsl:text></xsl:when>
