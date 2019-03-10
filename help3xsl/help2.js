@@ -75,7 +75,7 @@ function fixURL(module, system) {
     for (var i = 0; i < n; i++) {
         if (itemlink[i].getAttribute("class") != "objectfiles"){
         setURLParam(itemlink[i], pSystem, pAppl);
-        };
+        }
     }
 }
 //Set the params inside URL
@@ -159,11 +159,49 @@ function setupLanguages(target, page) {
     var langNav = document.getElementById('langs-nav');
     if (!langNav.classList.contains('loaded')) {
         var html = '';
-        languagesSet.forEach(lang => {
+        languagesSet.forEach(function(lang) {
             html += '<a href="' + target + lang + page + '">' + ((lang in languageNames)? languageNames[lang]: lang) + '</a>';
         });
         langNav.innerHTML = html;
         langNav.classList.add('loaded');
     }
+}
+
+// Test, if we are online
+if (document.body.getElementsByTagName('meta')[0].getAttribute('itemprop') === 'version') {
+    var _paq = _paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['disableCookies']);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+    var u="//piwik.documentfoundation.org/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '68']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+    var system = getParameterByName("System");
+} else {
+    var system = getSystem();
+}
+
+var module = getParameterByName("DbPAR");
+var helpID = getParameterByName("HID");
+fixURL(module,system);
+var dbg = getParameterByName("Debug");
+if (dbg == null) { dbg=0; }
+document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
+document.getElementById("bm_module").innerHTML ="Module is: "+module;
+document.getElementById("bm_system").innerHTML ="System is: "+system;
+document.getElementById("bm_HID").innerHTML ="HID is: "+helpID;
+
+// Mobile devices need the modules and langs on page load
+if (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) < 960) {
+    var e = new Event('change');
+    var modules = document.getElementById('modules');
+    var langs = document.getElementById('langs');
+    modules.dispatchEvent(e);
+    langs.dispatchEvent(e);
 }
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */

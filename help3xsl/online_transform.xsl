@@ -145,21 +145,24 @@
             <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org *.google.com *.googleapis.com"/>
         </xsl:if>
         <title><xsl:value-of select="$titleL10N"/></title>
-        <link rel="shortcut icon" href="{$target}media/navigation/favicon.ico" />
-        <link  type="text/css" href="{$target}normalize.css" rel="Stylesheet" />
-        <link  type="text/css" href="{$target}default.css" rel="Stylesheet" />
-        <link  type="text/css" href="{$target}prism.css" rel="Stylesheet" />
-        <script type="text/javascript" src="{$target}help2.js"></script>
-        <script type="text/javascript" src="{$target}languages.js"></script>
-        <script type="text/javascript" src="{$target}{$lang}/langnames.js"></script>
-        <script type="text/javascript" src="{$target}fuzzysort.js"></script>
-        <script type="text/javascript" src="{$target}paginathing.js"></script>
-        <script type="text/javascript" src="{$target}prism.js"></script>
+        <link rel="shortcut icon" href="{$target}media/navigation/favicon.ico"/>
+        <link  type="text/css" href="{$target}normalize.css" rel="Stylesheet"/>
+        <link  type="text/css" href="{$target}default.css" rel="Stylesheet"/>
+        <link  type="text/css" href="{$target}prism.css" rel="Stylesheet"/>
+        <script type="text/javascript" src="{$target}help2.js" defer=""/>
+        <script type="text/javascript" src="{$target}languages.js" defer=""/>
+        <script type="text/javascript" src="{$target}{$lang}/langnames.js" defer=""/>
+        <script type="text/javascript" src="{$target}fuzzysort.js" defer=""/>
+        <script type="text/javascript" src="{$target}paginathing.js" defer=""/>
+        <script type="text/javascript" src="{$target}prism.js" defer=""/>
+        <script type="text/javascript" src="{$target}{$lang}/bookmarks.js" defer=""/>
+        <script type="text/javascript" src="{$target}{$lang}/contents.js" defer=""/>
+        <script type="text/javascript" src="{$target}help.js" defer=""/>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
     <body itemscope="true" itemtype="http://schema.org/TechArticle">
     <xsl:if test="$online">
-        <meta itemprop="version" content="{$productversion}"/>
+        <meta itemprop="version" content="{$productversion}"/><!-- This is used by help2.js to test, if we are online -->
         <meta itemprop="inLanguage" content="{$lang}"/>
         <meta itemprop="datePublished" content="2017"/>
         <meta itemprop="headline" content="{$titleL10N}"/>
@@ -252,48 +255,6 @@
             <p id="bm_HID"></p>
         </div>
     </footer>
-    <script type="text/javascript" src="{$target}{$lang}/bookmarks.js"/>
-    <script type="text/javascript" src="{$target}{$lang}/contents.js"/>
-    <script type="text/javascript" src="{$target}help.js"/>
-    <script type="text/javascript">
-        <![CDATA[
-        var module = getParameterByName("DbPAR");
-        var helpID = getParameterByName("HID");
-        ]]>
-        <xsl:choose>
-            <xsl:when test="$online"><![CDATA[var system = getParameterByName("System");]]></xsl:when>
-            <xsl:otherwise><![CDATA[var system = getSystem();]]></xsl:otherwise>
-        </xsl:choose>
-        <![CDATA[
-        fixURL(module,system);
-        var dbg = getParameterByName("Debug");
-        if (dbg == null){dbg=0}
-        document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
-        document.getElementById("bm_module").innerHTML ="Module is: "+module;
-        document.getElementById("bm_system").innerHTML ="System is: "+system;
-        document.getElementById("bm_HID").innerHTML ="HID is: "+helpID;
-        ]]>
-    </script>
-    <xsl:if test="$online">
-        <!-- Piwik -->
-        <script type="text/javascript">
-            <![CDATA[
-            var _paq = _paq || [];
-            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-            _paq.push(['disableCookies']);
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-            (function() {
-            var u="//piwik.documentfoundation.org/";
-            _paq.push(['setTrackerUrl', u+'piwik.php']);
-            _paq.push(['setSiteId', '68']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-            })();
-            ]]>
-        </script>
-        <!-- End Piwik Code -->
-    </xsl:if>
     </body>
 </html>
 </xsl:template>
