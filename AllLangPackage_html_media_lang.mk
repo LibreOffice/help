@@ -241,7 +241,6 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     screenshots/modules/smath/ui/fonttypedialog/$(lang)/FontsDialog.png \
     screenshots/modules/smath/ui/savedefaultsdialog/$(lang)/SaveDefaultsDialog.png \
     screenshots/modules/smath/ui/spacingdialog/$(lang)/SpacingDialog.png \
-    screenshots/modules/smath/ui/symdefinedialog/$(lang)/EditSymbols.png \
     screenshots/svx/ui/compressgraphicdialog/$(lang)/CompressGraphicDialog.png \
 )))
 #TODO: Find a clever way to pick en-US files (default) when localized files are missing
