@@ -620,15 +620,9 @@
         <xsl:choose>
             <xsl:when test ="@select = 'sys'">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
             </xsl:when>
             <xsl:when test ="@select = 'appl'">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates />
@@ -642,15 +636,9 @@
         <xsl:choose>
             <xsl:when test ="@select = 'sys'">
                 <xsl:apply-templates mode="embedded"/>
-                <script type="text/javascript">
-                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
             </xsl:when>
             <xsl:when test ="@select = 'appl'">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates />
@@ -666,15 +654,9 @@
         <xsl:choose>
             <xsl:when test ="@select = 'sys'">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
             </xsl:when>
             <xsl:when test ="@select = 'appl'">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
             </xsl:when>
             <xsl:otherwise>
                <xsl:apply-templates />
@@ -688,15 +670,9 @@
         <xsl:choose>
             <xsl:when test ="@select = 'sys'">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
             </xsl:when>
             <xsl:when test ="@select = 'appl'">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:apply-templates />

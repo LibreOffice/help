@@ -65,6 +65,20 @@ function setSystemSpan(spanID) {
         }
     }
 }
+// Find spans that need the switch treatment and give it to them
+var spans = document.querySelectorAll("[class^=switch]");
+var n = spans.length;
+for (z = 0; z < n; z++) {
+    var id = spans[z].getAttribute("id");
+    if (id === null) {
+        continue;
+    }
+    else if (spans[z].getElementsByTagName("span")[0].getAttribute("id").startsWith("MAC")) {
+        setSystemSpan(id);
+    } else {
+        setApplSpan(id);
+    }
+}
 /* add &DbPAR= and &System= to the links in DisplayArea div */
 /* skip for object files */
 function fixURL(module, system) {
