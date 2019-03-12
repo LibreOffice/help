@@ -162,7 +162,8 @@
     </head>
     <body itemscope="true" itemtype="http://schema.org/TechArticle">
     <xsl:if test="$online">
-        <meta itemprop="version" content="{$productversion}"/><!-- This is used by help2.js to test, if we are online -->
+        <!-- help2.js checks, if meta elements exist in the body -->
+        <meta itemprop="version" content="{$productversion}"/>
         <meta itemprop="inLanguage" content="{$lang}"/>
         <meta itemprop="datePublished" content="2017"/>
         <meta itemprop="headline" content="{$titleL10N}"/>
@@ -615,94 +616,82 @@
 
 <!-- SWITCH -->
 <xsl:template match="switch">
-    <xsl:variable name="idsw" select="concat('swln',generate-id())"/>
-    <span id="{$idsw}" class="switch">
-        <xsl:choose>
-            <xsl:when test ="@select = 'sys'">
+    <xsl:choose>
+        <xsl:when test ="@select = 'sys'">
+            <xsl:variable name="idsw" select="concat('swlnsys',generate-id())"/>
+            <span id="{$idsw}" class="switch">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:when test ="@select = 'appl'">
+            </span>
+        </xsl:when>
+        <xsl:when test ="@select = 'appl'">
+            <xsl:variable name="idsw" select="concat('swlnappl',generate-id())"/>
+            <span id="{$idsw}" class="switch">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:apply-templates />
-            </xsl:otherwise>
-        </xsl:choose>
-    </span>
+            </span>
+        </xsl:when>
+        <xsl:otherwise>
+            <p class="debug">Unsupported switch condition.</p>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 <xsl:template match="switch" mode="embedded">
-    <xsl:variable name="idsw" select="concat('swln',generate-id())"/>
-    <span id="{$idsw}" class="switch">
-        <xsl:choose>
-            <xsl:when test ="@select = 'sys'">
+    <xsl:choose>
+        <xsl:when test ="@select = 'sys'">
+            <xsl:variable name="idsw" select="concat('swlnsys',generate-id())"/>
+            <span id="{$idsw}" class="switch">
                 <xsl:apply-templates mode="embedded"/>
-                <script type="text/javascript">
-                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:when test ="@select = 'appl'">
-                <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:apply-templates />
-            </xsl:otherwise>
-        </xsl:choose>
-    </span>
+            </span>
+        </xsl:when>
+        <xsl:when test ="@select = 'appl'">
+            <xsl:variable name="idsw" select="concat('swlnappl',generate-id())"/>
+            <span id="{$idsw}" class="switch">
+                <xsl:apply-templates mode="embedded"/>
+            </span>
+        </xsl:when>
+        <xsl:otherwise>
+            <p class="debug">Unsupported switch condition.</p>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <!-- SWITCHINLINE -->
 <xsl:template match="switchinline">
-    <xsl:variable name="idsw" select="concat('swln',generate-id())"/>
-    <span id="{$idsw}" class="switchinline">
-        <xsl:choose>
-            <xsl:when test ="@select = 'sys'">
+    <xsl:choose>
+        <xsl:when test ="@select = 'sys'">
+            <xsl:variable name="idsw" select="concat('swlnsys',generate-id())"/>
+            <span id="{$idsw}" class="switchinline">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:when test ="@select = 'appl'">
+            </span>
+        </xsl:when>
+        <xsl:when test ="@select = 'appl'">
+            <xsl:variable name="idsw" select="concat('swlnappl',generate-id())"/>
+            <span id="{$idsw}" class="switchinline">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:otherwise>
-               <xsl:apply-templates />
-            </xsl:otherwise>
-        </xsl:choose>
-    </span>
+            </span>
+        </xsl:when>
+        <xsl:otherwise>
+            <p class="debug">Unsupported switch condition.</p>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 <xsl:template match="switchinline" mode="embedded">
-    <xsl:variable name="idsw" select="concat('swln',generate-id())"/>
-    <span id="{$idsw}" class="switchinline">
-        <xsl:choose>
-            <xsl:when test ="@select = 'sys'">
-                <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:when test ="@select = 'appl'">
-                <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:apply-templates />
-            </xsl:otherwise>
-        </xsl:choose>
-    </span>
+    <xsl:choose>
+        <xsl:when test ="@select = 'sys'">
+            <xsl:variable name="idsw" select="concat('swlnsys',generate-id())"/>
+            <span id="{$idsw}" class="switchinline">
+                <xsl:apply-templates mode="embedded"/>
+            </span>
+        </xsl:when>
+        <xsl:when test ="@select = 'appl'">
+            <xsl:variable name="idsw" select="concat('swlnappl',generate-id())"/>
+            <span id="{$idsw}" class="switchinline">
+                <xsl:apply-templates mode="embedded"/>
+            </span>
+        </xsl:when>
+        <xsl:otherwise>
+            <p class="debug">Unsupported switch condition.</p>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <!-- TABLE -->
@@ -1017,10 +1006,10 @@
     <xsl:variable name="auxID" select="concat(@select,generate-id())"/>
     <xsl:choose>
         <xsl:when test="$embedded = 'yes'">
-            <span hidden="true" id="{$auxID}"><xsl:apply-templates mode="embedded"/></span>
+            <span hidden="true" id="{$auxID}" class="{@select}"><xsl:apply-templates mode="embedded"/></span>
         </xsl:when>
         <xsl:otherwise>
-            <span hidden="true" id="{$auxID}"><xsl:apply-templates/></span>
+            <span hidden="true" id="{$auxID}" class="{@select}"><xsl:apply-templates/></span>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>

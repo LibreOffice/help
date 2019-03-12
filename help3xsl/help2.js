@@ -65,6 +65,20 @@ function setSystemSpan(spanID) {
         }
     }
 }
+// Find spans that need the switch treatment and give it to them
+var spans = document.querySelectorAll("[class^=switch]");
+var n = spans.length;
+for (z = 0; z < n; z++) {
+    var id = spans[z].getAttribute("id");
+    if (id === null) {
+        continue;
+    }
+    else if (id.startsWith("swlnsys")) {
+        setSystemSpan(id);
+    } else {
+        setApplSpan(id);
+    }
+}
 /* add &DbPAR= and &System= to the links in DisplayArea div */
 /* skip for object files */
 function fixURL(module, system) {
@@ -168,7 +182,7 @@ function setupLanguages(target, page) {
 }
 
 // Test, if we are online
-if (document.body.getElementsByTagName('meta')[0].getAttribute('itemprop') === 'version') {
+if (document.body.getElementsByTagName('meta')) {
     var _paq = _paq || [];
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
     _paq.push(['disableCookies']);
