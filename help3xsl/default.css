@@ -39,14 +39,15 @@ h5,
 h6,
 .listitem,
 .listitemintable,
-.tablecontent,
-.input {
+.tablecontent {
     font-family: -apple-system, system-ui, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "DejaVu Sans", "Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif, FreeSerif, NanumGothic, "Noto Sans Tibetan", Taprom;
 }
 .input {
+    background-color: rgba(0,0,0,0.04);
     transition-property: background-color;
     transition-duration: 150ms;
     border-bottom: 1px dashed rgba(0,0,0,0.1);
+    font-family: Menlo, Consolas, "DejaVu Sans Mono", "Nimbus Mono L", "Lucida Sans Typewriter", "Courier New", Courier, Monaco, monospace;
 }
 [data-tooltip]{
   position:relative;
@@ -85,7 +86,7 @@ h6,
     pointer-events: auto;
 }
 body {
-    background-color: #F4F7F7;
+    background-color: #F7F8F7;
     margin: 0;
     line-height: normal;
 }
@@ -94,11 +95,11 @@ body {
 }
 a {
     text-decoration: none;
-    color: #0369AE;
+    color: #0379BC;
 }
 a:hover {
     text-decoration: underline;
-    color: #1C99E0;
+    color: #0499EE;
 }
 pre,
 .code,
@@ -115,6 +116,11 @@ pre,
     padding: 1px 3px;
     font-family: Menlo, Consolas, "DejaVu Sans Mono", "Nimbus Mono L", "Lucida Sans Typewriter", "Courier New", Courier, Monaco, monospace;
 }
+.smathcode {
+    border-radius: 2px;
+    padding: 1px 3px;
+    font-family: Menlo, Consolas, "DejaVu Sans Mono", "Nimbus Mono L", "Lucida Sans Typewriter", "Courier New", Courier, Monaco, monospace;
+}
 .acronym {
     font-weight: bold;
 }
@@ -124,9 +130,22 @@ pre,
     border-top: 1px solid black;
 }
 .emph,
-.menuitem,
-.keycode {
+.menuitem {
     font-weight: bold;
+}
+.keycode {
+    /*font-weight: bold;*/
+    font-family: Menlo, Consolas, "DejaVu Sans Mono", "Nimbus Mono L", "Lucida Sans Typewriter", "Courier New", Courier, Monaco, monospace;
+}
+.widget{
+    padding: 1px 10px;
+    background: #f0f0f0;
+    background: linear-gradient(to bottom,#f0f0f0,#fcfcfc);
+    border-radius: 3px;
+    color: #303030;
+    border: 1px solid #a0a0a0;
+    border-bottom-width: 2px;
+    white-space: nowrap;
 }
 /* div's for warning, tip and note */
 .note,
@@ -140,25 +159,18 @@ pre,
     margin-top: 15px;
 }
 .note {
-    border-left: 4px solid #FFDE09;
-    background-color: #FFF4D0;
+    border-left: 4px solid #61897C;
+    background-color: #D9E7E2;
 }
 .tip {
-    border-left: 4px solid #38618C;
-    background-color: #DAE2EA;
+    border-left: 4px solid #4866AD;
+    background-color: #CDD5E8;
 }
 .warning {
-    border-left: 4px solid #FF5964;
-    background-color: #FFE0E2;
+    border-left: 4px solid #D5B177;
+    background-color: #F9EEDC;
 }
-.noteicon {
-    padding:0.3em;
-    transition: transform .2s; /* Animation */
-}
-.noteicon:hover {
-    transform: scale(2.0); /* (200% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
-.notetext {
+.noteicon, .notetext {
     padding:0.3em;
 }
 
@@ -177,17 +189,13 @@ pre,
 .iconcell {
     padding:0.3em;
 }
-.imageicon {
-    transition: transform .2s; /* Animation */
-}
-.imageicon:hover{
-    transform: scale(2.0); /* (200% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
 
 table {
-    box-shadow: rgba(0,0,0,0.1) 0px 1px 3px 0px;
+    background: #FEFEFE;
+    box-shadow: rgba(0,0,0,0.08) 0 1px 5px 0;
     border-collapse: collapse;
-    background: #fefefe;
+    margin-left: auto;
+    margin-right: auto;
 }
 table, th, td {
     border-top: 0;
@@ -220,13 +228,13 @@ p,
 ol,
 td {
     font-size: 1.17rem;
-    margin: 2px 2px 2px 2px;
+    margin: 2px 0 2px 0;
 }
 h1 {
     font-size: 1.83rem;
     font-weight: 300;
     border-bottom: 2px solid #148603;
-    padding-bottom: 6px;
+    margin-bottom: 1.67rem;
 }
 h1 a {
     text-decoration: none;
@@ -242,20 +250,12 @@ h5,
 h6 {
     font-size: 1.17rem;
 }
-.avis {
-    /*    background-color: #EEEEEE;*/
-}
 .relatedtopics {
     font-weight: normal;
 }
-.relatedbody {
-    margin-top: 2px;
-    margin-bottom: 2px;
-    margin-left: 5px;
-}
 .howtoget {
-    background: #CCF4C6;
-    border-left: 4px solid #148603;
+    background: #EBE7E9;
+    border-left: 4px solid #4E4B55;
     border-radius: 0 4px 4px 0;
     box-shadow: 0 2px 2px -2px rgba(0,0,0,0.2);
     padding: 0.3em;
@@ -268,9 +268,10 @@ h6 {
     box-shadow: 0 2px 2px -2px rgba(0,0,0,0.2);
     display: inline-block;
     font-weight: bold;
-    padding: 0.3em;
+    padding: 0.1em 0.3em;
 }
 .howtogetbody {
+    padding: 0 0.3em;
 }
 .samplefilesection{
 }
@@ -292,46 +293,12 @@ h6 {
     color: red;
     text-align: left;
 }
-.donation {
-    padding: 0 0 10px 0;
-    margin-bottom: 1em;
-    border-bottom: 1px dashed rgba(0,0,0,0.1);
-}
-.donation p{
-    font-size:1.2rem;
-}
+
 .bascode {
-    background-color: #fafafa;
-    margin-left: 30px;
-    margin-right: 30px;
-}
-.bascodepar {
-    font-family: monospace;
+    margin-top:15px;
+    margin-bottom: 15px;
 }
 
-/* Basic code syntax highlight */
-
-.identifier,
-.unknown {
-    color: green;
-}
-.keyword {
-    color: blue;
-}
-.comment {
-    color: gray;
-}
-.number,
-.string {
-    color: red;
-}
-.operator,
-.parameter {
-    color: black;
-}
-.hotlink {
-    color: blue;
-}
 .infopage {
     color: green;
     font-size: 1.33rem;
@@ -346,7 +313,7 @@ h6 {
 #DisplayArea {
     background-color: #FCFCFC;
     overflow: auto;
-    padding: 10px;
+    padding: 10px 10px 40px 10px;
     grid-area: main;
 }
 #DisplayArea > p {
@@ -377,9 +344,12 @@ h6 {
 .embedded {}
 .header-extrawurst {
     grid-area: header;
-}
-header {
+    position: sticky;
+    top: 0px;
     background-color: #18A303;
+    z-index: 1000;
+}
+header {    
     color: #fff;
     height: 64px;
     padding: 8px 8px 8px 16px;
@@ -414,7 +384,6 @@ header {
     overflow-y: hidden;
     /* make it smooth on iOS */
     -webkit-overflow-scrolling: touch;
-    text-align: center;
 }
 .lang nav a, .modules nav a {
     color: #fff;
@@ -429,9 +398,9 @@ header {
     white-space: nowrap;
 }
 footer {
-    border-top: 2px solid #148603;
-    padding: 15px 10px 0 10px;
-    margin: 40px 0;
+    padding: 40px 10px 40px 10px;
+    background-color: #FCFCFC;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,.05);
 }
 footer p {
     font-size: 0.98rem;
@@ -480,7 +449,6 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
 }
 .index a {
     font-size: 16px;
-    margin-bottom: 5px;
 }
 #Bookmarks {
     padding: 0 20px;
@@ -553,12 +521,13 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
     font-weight: bold;
     color: #148603;
 }
-.pagination {
-    padding: 0;
+.pagination-container {
+    text-align: center;
+    margin-left: -40px; /* The normalizer fails to account for this */
 }
 .pagination li {
     display: inline-block;
-    padding: 4px;
+    padding: 0 5px;
 }
 .pagination a {
     text-decoration: none;
@@ -570,33 +539,77 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
     display: none;
 }
 li.active {
-    background-color: #0369A3;
+    background-color: #0379BC;
 }
 li.active a {
     color: #fff;
 }
 li.disabled a {
-    color: #90C0E6;
+    opacity: 0.4;
+    pointer-events: none;
 }
 #search-bar {
+    border: 1px solid #CCC;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    line-height: 1.5em;
     margin-top: 10px;
+    outline: none;
+    padding: 0 .25em;
+    transition: all 0.30s ease-in-out;
     width: 100%;
-    caret-color: #148603;
+}
+#search-bar:focus {
+    border: 1px solid #0EA5FB;
 }
 #search-bar::placeholder {
     font-style: italic;
 }
+.google-donation {
+    border-top: 2px solid #148603;
+    background-color: #FCFCFC;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,.05);
+}
+.donation {
+    background: #0379BC;
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    border-radius: 8px;
+    padding: 5px 10px 5px 10px;
+    margin: 20px auto 0 auto;
+    max-width: 200px;
+    color: #ffffff;
+    text-decoration: none;
+}
+.donation a {
+    color: white;
+}
+.donation a:hover {
+    color: white;
+    text-decoration: none;
+}
+.donation:hover{
+    background: #0379BC;
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+}
+.donation p {
+    font-size:1.2rem;
+    text-align: center;
+}
 .google-search {
     max-width: 300px;
-    margin: 0 auto;
+    margin: 40px auto 0 auto;
 }
 .modules {
     border-bottom: 2px solid #f3f3f3;
+    background-color: #233336;
 }
 .modules label:after, .lang label:after {
     font-size: 30px;
     color: #fff;
     content:"⌄";
+}
+.lang {
+    background-color: #233336;
 }
 .lang label, .modules label {
     display: none;
@@ -660,9 +673,12 @@ li.disabled a {
 }
 .contents-treeview a, .index a {
     text-decoration: none;
+    line-height: 1.4;
 }
 .contents-treeview a:hover, .index a:hover {
-    text-decoration: underline;
+    border-left: 2px solid rgba(0,0,0,0.05);
+    margin-left: -12px;
+    padding-left: 10px;
 }
 .contents-treeview input + label + ul {
     margin: 0 0 0 22px;
@@ -685,8 +701,7 @@ li.disabled a {
 .contents-treeview label,
 .contents-treeview a,
 .contents-treeview label::before {
-    height: 16px;
-    line-height: 16px;
+    display: block;
     vertical-align: middle;
 }
 .contents-treeview label:before {
@@ -700,12 +715,11 @@ li.disabled a {
     content: "⊟";
 }
 .contents-current {
-    background-color: #0369A3;
-    color: #FFF;
-    padding-right: 1px;
-}
-.contents-current:hover {
-    color: #FFF;
+    background: rgba(0,0,0,0.05);
+    border-left: 2px solid #0379BC;
+    font-weight: 600;
+    margin-left: -12px;
+    padding-left: 10px;
 }
 /* webkit adjacent element selector bugfix */
 
@@ -764,7 +778,6 @@ li.disabled a {
         font-size: 19px;
     }
     aside {
-        background-color: #F4F7F7;
         float: left;
         width: 320px;
     }
@@ -774,16 +787,24 @@ li.disabled a {
     .rightside {
         grid-area: rightside;
     }
-    .google-search {
-        margin: 0;
-        position: absolute;
-        top: 19px;
-        left: 860px;
+    .google-donation {
+        grid-area: google;
+        position: sticky;
+        top: 0px;
+        background-color: #FCFCFC;
+        box-shadow: none;
+    }
+    .donation {
+        max-width: 400px;
+    }
+    footer {
+        grid-area: footer;
     }
     .lang {
         position: absolute;
         top: 0;
         left: 200px;
+        background-color: transparent;
     }
     .modules {
         width: 120px;
@@ -791,12 +812,11 @@ li.disabled a {
         top: 0;
         left: 80px;
         border: none;
+        background-color: transparent;
     }
     #DisplayArea {
-        background-color: #FCFCFC;
         box-shadow: 0 2px 8px 0 rgba(0,0,0,.05);
-        padding: 10px 50px;
-        width: 800px;
+        padding: 10px 50px 40px 50px;
     }
 }
 @media screen and (min-width: 1440px) {
@@ -817,24 +837,43 @@ li.disabled a {
         content: "";
     }
 }
+/* Use @supports to sneak these rules past IE */
 @supports (grid-area: auto) {
     @media screen and (min-width: 960px) {
+        .google-donation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #18A303;
+            border-top: none;
+        }
+        .google-search {
+            margin: 0;
+        }
+        .donation {
+            margin: 0 auto;
+        }
+        footer {
+            border-top: 2px solid #148603;
+        }
         body {
             display: grid;
-            grid-template-columns: 320px 1fr;
-            grid-template-rows: minmax(1em, auto) minmax(1em, auto) 1fr;
-            grid-template-areas: "header header"
-                                 "rightside main"
-                                 "leftside main"
+            grid-template-columns: 320px 80px 1fr;
+            grid-template-rows: minmax(1em, auto) minmax(1em, auto) 1fr minmax(1em, auto);
+            grid-template-areas: "header header google"
+                                 "rightside main main"
+                                 "leftside main main"
+                                 ". footer footer"
         }
     }
     @media screen and (min-width: 1440px) {
         body {
             display: grid;
-            grid-template-columns: 320px 900px 1fr;
-            grid-template-rows: 1fr minmax(1em, auto);
-            grid-template-areas: "header header header"
-                                 "leftside main rightside"
+            grid-template-columns: 320px 450px 450px 1fr;
+            grid-template-rows: 1fr minmax(1em, auto) minmax(1em, auto);
+            grid-template-areas: "header header google google"
+                                 "leftside main main rightside"
+                                 ". footer footer ."
         }
         .rightside {
             width: auto;

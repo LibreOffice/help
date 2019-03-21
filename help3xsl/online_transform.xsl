@@ -68,11 +68,6 @@
 <xsl:variable name="filename" select="/helpdocument/meta/topic/filename"/>
 <xsl:variable name="title" select="/helpdocument/meta/topic/title"/>
 
-<!-- Module and the corresponding switching values-->
-<xsl:param name="Database" select="'swriter'"/>
-<xsl:variable name="module" select="$Database"/>
-<xsl:variable name="appl"/>
-
 <!-- the other parameters given by the help caller -->
 
 <xsl:variable name="pversion">
@@ -99,9 +94,10 @@
 <xsl:variable name="linkpostfix" select="''"/>
 
 <!-- images for notes, tips and warnings -->
-<xsl:variable name="note_img" select="concat($img_url_prefix,'icon-themes/help/note.svg')"/>
-<xsl:variable name="tip_img" select="concat($img_url_prefix,'icon-themes/help/tip.svg')"/>
-<xsl:variable name="warning_img" select="concat($img_url_prefix,'icon-themes/help/warning.svg')"/>
+<xsl:variable name="iconsizestyle" select="'width:40px;height=40px;'"/>
+<xsl:variable name="note_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/note.svg')"/>
+<xsl:variable name="tip_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/tip.svg')"/>
+<xsl:variable name="warning_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/warning.svg')"/>
 
 <!-- Strings for the help UI page -->
 <xsl:variable name="tmp_href_ui"><xsl:value-of select="concat($urlpre,'text/shared/help/browserhelp.xhp')"/></xsl:variable>
@@ -149,18 +145,24 @@
             <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org *.google.com *.googleapis.com"/>
         </xsl:if>
         <title><xsl:value-of select="$titleL10N"/></title>
-        <link rel="shortcut icon" href="{$target}media/navigation/favicon.ico" />
-        <link  type="text/css" href="{$target}normalize.css" rel="Stylesheet" />
-        <link  type="text/css" href="{$target}default.css" rel="Stylesheet" />
-        <script type="text/javascript" src="{$target}help2.js"></script>
-        <script type="text/javascript" src="{$target}languages.js"></script>
-        <script type="text/javascript" src="{$target}{$lang}/langnames.js"></script>
-        <script type="text/javascript" src="{$target}fuzzysort.js"></script>
-        <script type="text/javascript" src="{$target}paginathing.js"></script>
+        <link rel="shortcut icon" href="{$target}media/navigation/favicon.ico"/>
+        <link  type="text/css" href="{$target}normalize.css" rel="Stylesheet"/>
+        <link  type="text/css" href="{$target}default.css" rel="Stylesheet"/>
+        <link  type="text/css" href="{$target}prism.css" rel="Stylesheet"/>
+        <script type="text/javascript" src="{$target}help2.js" defer=""/>
+        <script type="text/javascript" src="{$target}languages.js" defer=""/>
+        <script type="text/javascript" src="{$target}{$lang}/langnames.js" defer=""/>
+        <script type="text/javascript" src="{$target}fuzzysort.js" defer=""/>
+        <script type="text/javascript" src="{$target}paginathing.js" defer=""/>
+        <script type="text/javascript" src="{$target}prism.js" defer=""/>
+        <script type="text/javascript" src="{$target}{$lang}/bookmarks.js" defer=""/>
+        <script type="text/javascript" src="{$target}{$lang}/contents.js" defer=""/>
+        <script type="text/javascript" src="{$target}help.js" defer=""/>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
     <body itemscope="true" itemtype="http://schema.org/TechArticle">
     <xsl:if test="$online">
+        <!-- help2.js checks, if meta elements exist in the body -->
         <meta itemprop="version" content="{$productversion}"/>
         <meta itemprop="inLanguage" content="{$lang}"/>
         <meta itemprop="datePublished" content="2017"/>
@@ -169,7 +171,7 @@
     <div class="header-extrawurst">
         <header>
             <div class="logo-container">
-		    <a class="logo" href="{$target}{$lang}/text/shared/05/new_help.html">
+                <a class="logo" href="{$target}{$lang}/text/shared/05/new_help.html">
                     <div class="symbol"></div>
                     <p><xsl:value-of select="$ui_logo"/></p>
                 </a>
@@ -214,101 +216,46 @@
     </aside>
     <div id="DisplayArea" itemprop="articleBody">
         <xsl:apply-templates select="/helpdocument/body"/>
-        <footer>
-            <xsl:if test="$online">
-                <div class="google-search">
-                    <script type="text/javascript">
-                        <![CDATA[
-                        (function() {]]>
-                        <xsl:call-template name="getToken"><xsl:with-param name="lang" select="$lang"/></xsl:call-template>
-                        <![CDATA[
-                        var gcse = document.createElement('script');
-                        gcse.type = 'text/javascript';
-                        gcse.async = true;
-                        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-                        var s = document.getElementsByTagName('script')[0];
-                        s.parentNode.insertBefore(gcse, s);
-                        })();
-                        ]]>
-                    </script>
-                    <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
-                </div>
-            </xsl:if>
-            <xsl:if test="$online">
-                <div class="donation">
-                    <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">
-                        <xsl:value-of select="$ui_donate"/>
-                    </a></p>
-                </div>
-                <p><a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
-            </xsl:if>
-            <div id="DEBUG" class="debug">
-                <h3 class="bug">Help content debug info:</h3>
-                <p>This page is: <a href="https://opengrok.libreoffice.org/xref/help/source{$filename}" target="_blank"><xsl:value-of select="$filename"/></a></p>
-                <p>Title is: <xsl:value-of select="$title"/></p>
-                <p id="bm_module"></p>
-                <p id="bm_system"></p>
-                <p id="bm_HID"></p>
-            </div>
-        </footer>
     </div>
-    <script type="text/javascript" src="{$target}{$lang}/bookmarks.js"/>
-    <script type="text/javascript" src="{$target}{$lang}/contents.js"/>
-    <script type="text/javascript" src="{$target}help.js"/>
-    <xsl:choose>
-        <xsl:when test="$online">
-            <script type="text/javascript">
-                <![CDATA[
-                var module = getParameterByName("DbPAR");
-                var system = getParameterByName("System");
-                var helpID = getParameterByName("HID");
-                fixURL(module,system);
-                var dbg = getParameterByName("Debug");
-                if (dbg == null){dbg=0}
-                document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
-                document.getElementById("bm_module").innerHTML ="Module is: "+module;
-                document.getElementById("bm_system").innerHTML ="System is: "+system;
-                document.getElementById("bm_HID").innerHTML ="HID is: "+helpID;
-                ]]>
-            </script>
-        </xsl:when>
-        <xsl:otherwise>
-            <script type="text/javascript">
-                <![CDATA[
-                var module = getParameterByName("DbPAR");
-                var helpID = getParameterByName("HID");
-                var system = getSystem();
-                fixURL(module,system);
-                var dbg = getParameterByName("Debug");
-                if (dbg == null){dbg=0}
-                document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
-                document.getElementById("bm_module").innerHTML ="Module is: "+module;
-                document.getElementById("bm_system").innerHTML ="System is: "+system;
-                document.getElementById("bm_HID").innerHTML ="HID is: "+helpID;
-                ]]>
-            </script>
-        </xsl:otherwise>
-    </xsl:choose>
-    <xsl:if test="$online">
-        <!-- Piwik -->
-        <script type="text/javascript">
-            <![CDATA[
-            var _paq = _paq || [];
-            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-            _paq.push(['disableCookies']);
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-            (function() {
-            var u="//piwik.documentfoundation.org/";
-            _paq.push(['setTrackerUrl', u+'piwik.php']);
-            _paq.push(['setSiteId', '68']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-            })();
-            ]]>
-        </script>
-        <!-- End Piwik Code -->
-    </xsl:if>
+    <div class="google-donation">
+        <xsl:if test="$online">
+            <div class="google-search">
+                <script type="text/javascript">
+                    <![CDATA[
+                    (function() {]]>
+                    <xsl:call-template name="getToken"><xsl:with-param name="lang" select="$lang"/></xsl:call-template>
+                    <![CDATA[
+                    var gcse = document.createElement('script');
+                    gcse.type = 'text/javascript';
+                    gcse.async = true;
+                    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(gcse, s);
+                    })();
+                    ]]>
+                </script>
+                <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
+            </div>
+            <div class="donation">
+                <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">
+                    <xsl:value-of select="$ui_donate"/>
+                </a></p>
+            </div>
+        </xsl:if>
+    </div>
+    <footer>
+        <xsl:if test="$online">
+            <p><a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
+        </xsl:if>
+        <div id="DEBUG" class="debug">
+            <h3 class="bug">Help content debug info:</h3>
+            <p>This page is: <a href="https://opengrok.libreoffice.org/xref/help/source{$filename}" target="_blank"><xsl:value-of select="$filename"/></a></p>
+            <p>Title is: <xsl:value-of select="$title"/></p>
+            <p id="bm_module"></p>
+            <p id="bm_system"></p>
+            <p id="bm_HID"></p>
+        </div>
+    </footer>
     </body>
 </html>
 </xsl:template>
@@ -476,35 +423,35 @@
 
 <!-- LIST -->
 <xsl:template match="list">
-	<xsl:choose>
-		<xsl:when test="@type='ordered'">
-			<ol>
-				<xsl:if test="@startwith">
-					<xsl:attribute name="start"><xsl:value-of select="@startwith"/></xsl:attribute>
-				</xsl:if>
-				<xsl:apply-templates />
-			</ol>
-		</xsl:when>
-		<xsl:otherwise>
-			<ul><xsl:apply-templates /></ul>
-		</xsl:otherwise>
-	</xsl:choose>
+    <xsl:choose>
+        <xsl:when test="@type='ordered'">
+            <ol>
+                <xsl:if test="@startwith">
+                    <xsl:attribute name="start"><xsl:value-of select="@startwith"/></xsl:attribute>
+                </xsl:if>
+                <xsl:apply-templates />
+            </ol>
+        </xsl:when>
+        <xsl:otherwise>
+            <ul><xsl:apply-templates /></ul>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <xsl:template match="list" mode="embedded">
-	<xsl:choose>
-		<xsl:when test="@type='ordered'">
-			<ol>
-				<xsl:if test="@startwith">
-					<xsl:attribute name="start"><xsl:value-of select="@startwith"/></xsl:attribute>
-				</xsl:if>
-				<xsl:apply-templates mode="embedded"/>
-			</ol>
-		</xsl:when>
-		<xsl:otherwise>
-			<ul><xsl:apply-templates mode="embedded"/></ul>
-		</xsl:otherwise>
-	</xsl:choose>
+    <xsl:choose>
+        <xsl:when test="@type='ordered'">
+            <ol>
+                <xsl:if test="@startwith">
+                    <xsl:attribute name="start"><xsl:value-of select="@startwith"/></xsl:attribute>
+                </xsl:if>
+                <xsl:apply-templates mode="embedded"/>
+            </ol>
+        </xsl:when>
+        <xsl:otherwise>
+            <ul><xsl:apply-templates mode="embedded"/></ul>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <!-- LISTITEM -->
@@ -522,12 +469,12 @@
 <!-- OBJECT -->
 <xsl:template match="object">
     <xsl:if test="$online">
-	    <xsl:call-template name="insertobject"/>
+        <xsl:call-template name="insertobject"/>
     </xsl:if>
 </xsl:template>
 <xsl:template match="object" mode="embedded">
     <xsl:if test="$online">
-	    <xsl:call-template name="insertobject"/>
+        <xsl:call-template name="insertobject"/>
     </xsl:if>
 </xsl:template>
 
@@ -541,7 +488,7 @@
             </xsl:call-template>
         </xsl:when>
 
-        <xsl:when test="contains(' note warning tip ',@role)">
+        <xsl:when test="@role='note' or @role='tip' or @role='warning'">
             <xsl:call-template name="insertnote">
                 <xsl:with-param name="type" select="@role" />
             </xsl:call-template>
@@ -551,8 +498,12 @@
             <xsl:apply-templates />
         </xsl:when>
 
-        <xsl:when test="@role='bascode'">
-            <xsl:call-template name="insertbascode" />
+        <xsl:when test="@role='bascode' or @role='pycode'">
+            <xsl:value-of select="." />
+        </xsl:when>
+
+        <xsl:when test="@role='smathcode'">
+            <p id="{@id}" class="smathcode"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
         </xsl:when>
 
         <xsl:when test="@role='logocode'">
@@ -582,7 +533,7 @@
             </xsl:call-template>
         </xsl:when>
 
-        <xsl:when test="contains(' note warning tip ',@role)">
+        <xsl:when test="@role='note' or @role='tip' or @role='warning'">
             <xsl:call-template name="insertnote">
                 <xsl:with-param name="type" select="@role" />
             </xsl:call-template>
@@ -592,6 +543,17 @@
             <xsl:apply-templates />
         </xsl:when>
 
+        <xsl:when test="@role='bascode' or @role='pycode'">
+            <xsl:value-of select="." />
+        </xsl:when>
+
+        <xsl:when test="@role='smathcode'">
+            <p id="{@id}" class="smathcode"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
+        </xsl:when>
+
+        <xsl:when test="@role='logocode'">
+            <xsl:call-template name="insertlogocode" />
+        </xsl:when>
         <xsl:otherwise>
             <xsl:call-template name="insertpara" />
         </xsl:otherwise>
@@ -654,94 +616,82 @@
 
 <!-- SWITCH -->
 <xsl:template match="switch">
-    <xsl:variable name="idsw" select="concat('swln',generate-id())"/>
-    <span id="{$idsw}" class="switch">
-        <xsl:choose>
-            <xsl:when test ="@select = 'sys'">
+    <xsl:choose>
+        <xsl:when test ="@select = 'sys'">
+            <xsl:variable name="idsw" select="concat('swlnsys',generate-id())"/>
+            <span id="{$idsw}" class="switch">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:when test ="@select = 'appl'">
+            </span>
+        </xsl:when>
+        <xsl:when test ="@select = 'appl'">
+            <xsl:variable name="idsw" select="concat('swlnappl',generate-id())"/>
+            <span id="{$idsw}" class="switch">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:apply-templates />
-            </xsl:otherwise>
-        </xsl:choose>
-    </span>
+            </span>
+        </xsl:when>
+        <xsl:otherwise>
+            <p class="debug">Unsupported switch condition.</p>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 <xsl:template match="switch" mode="embedded">
-    <xsl:variable name="idsw" select="concat('swln',generate-id())"/>
-    <span id="{$idsw}" class="switch">
-        <xsl:choose>
-            <xsl:when test ="@select = 'sys'">
+    <xsl:choose>
+        <xsl:when test ="@select = 'sys'">
+            <xsl:variable name="idsw" select="concat('swlnsys',generate-id())"/>
+            <span id="{$idsw}" class="switch">
                 <xsl:apply-templates mode="embedded"/>
-                <script type="text/javascript">
-                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:when test ="@select = 'appl'">
-                <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:apply-templates />
-            </xsl:otherwise>
-        </xsl:choose>
-    </span>
+            </span>
+        </xsl:when>
+        <xsl:when test ="@select = 'appl'">
+            <xsl:variable name="idsw" select="concat('swlnappl',generate-id())"/>
+            <span id="{$idsw}" class="switch">
+                <xsl:apply-templates mode="embedded"/>
+            </span>
+        </xsl:when>
+        <xsl:otherwise>
+            <p class="debug">Unsupported switch condition.</p>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <!-- SWITCHINLINE -->
 <xsl:template match="switchinline">
-    <xsl:variable name="idsw" select="concat('swln',generate-id())"/>
-    <span id="{$idsw}" class="switchinline">
-        <xsl:choose>
-            <xsl:when test ="@select = 'sys'">
+    <xsl:choose>
+        <xsl:when test ="@select = 'sys'">
+            <xsl:variable name="idsw" select="concat('swlnsys',generate-id())"/>
+            <span id="{$idsw}" class="switchinline">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:when test ="@select = 'appl'">
+            </span>
+        </xsl:when>
+        <xsl:when test ="@select = 'appl'">
+            <xsl:variable name="idsw" select="concat('swlnappl',generate-id())"/>
+            <span id="{$idsw}" class="switchinline">
                 <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:otherwise>
-               <xsl:apply-templates />
-            </xsl:otherwise>
-        </xsl:choose>
-    </span>
+            </span>
+        </xsl:when>
+        <xsl:otherwise>
+            <p class="debug">Unsupported switch condition.</p>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 <xsl:template match="switchinline" mode="embedded">
-    <xsl:variable name="idsw" select="concat('swln',generate-id())"/>
-    <span id="{$idsw}" class="switchinline">
-        <xsl:choose>
-            <xsl:when test ="@select = 'sys'">
-                <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setSystemSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:when test ="@select = 'appl'">
-                <xsl:apply-templates />
-                <script type="text/javascript">
-                    <![CDATA[setApplSpan("]]><xsl:value-of select="$idsw"/><![CDATA[");]]>
-                </script>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:apply-templates />
-            </xsl:otherwise>
-        </xsl:choose>
-    </span>
+    <xsl:choose>
+        <xsl:when test ="@select = 'sys'">
+            <xsl:variable name="idsw" select="concat('swlnsys',generate-id())"/>
+            <span id="{$idsw}" class="switchinline">
+                <xsl:apply-templates mode="embedded"/>
+            </span>
+        </xsl:when>
+        <xsl:when test ="@select = 'appl'">
+            <xsl:variable name="idsw" select="concat('swlnappl',generate-id())"/>
+            <span id="{$idsw}" class="switchinline">
+                <xsl:apply-templates mode="embedded"/>
+            </span>
+        </xsl:when>
+        <xsl:otherwise>
+            <p class="debug">Unsupported switch condition.</p>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <!-- TABLE -->
@@ -798,6 +748,65 @@
     <xsl:call-template name="brand">
         <xsl:with-param name="string"><xsl:value-of select="."/></xsl:with-param>
     </xsl:call-template>
+</xsl:template>
+
+<!-- XHP extensions (2018) -->
+<!-- H1-H6 -->
+<xsl:template match="h1 | h2 | h3 | h4 | h5 | h6">
+    <xsl:element name="{local-name()}">
+        <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute><xsl:apply-templates />
+    </xsl:element>
+</xsl:template>
+<xsl:template match="h1 | h2 | h3 | h4 | h5 | h6" mode="embedded">
+    <xsl:element name="{concat('h',substring-after(local-name(),'h') + 1)}">
+        <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute><xsl:apply-templates mode="embedded"/>
+    </xsl:element>
+</xsl:template>
+
+<!-- INPUT -->
+<xsl:template match="input">
+    <span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span>
+</xsl:template>
+<xsl:template match="input" mode="embedded">
+    <span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates mode="embedded"/></span>
+</xsl:template>
+
+<!--MENUITEM, KEYCODE, LITERAL, WIDGET-->
+<xsl:template match="menuitem | keycode | literal | widget">
+    <span class="{local-name()}"><xsl:apply-templates /></span>
+</xsl:template>
+<xsl:template match="menuitem | input | keycode | literal" mode="embedded">
+    <span class="{local-name()}"><xsl:apply-templates mode="embedded"/></span>
+</xsl:template>
+
+<!--NOTE TIP AND WARNING-->
+<xsl:template match="tip | note | warning">
+    <xsl:variable name="imgsrc">
+        <xsl:choose>
+            <xsl:when test="local-name()='note'"><xsl:value-of select="$note_img"/></xsl:when>
+            <xsl:when test="local-name()='tip'"><xsl:value-of select="$tip_img"/></xsl:when>
+            <xsl:when test="local-name()='warning'"><xsl:value-of select="$warning_img"/></xsl:when>
+        </xsl:choose>
+    </xsl:variable>
+    <div class="{local-name()}">
+        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" title="{local-name()}" style="{$iconsizestyle}"/></div>
+        <div class="notetext"><p id="{@id}"><xsl:apply-templates /></p></div>
+    </div>
+    <br/>
+</xsl:template>
+<xsl:template match="tip | note | warning" mode="embedded">
+    <xsl:variable name="imgsrc">
+        <xsl:choose>
+            <xsl:when test="local-name()='note'"><xsl:value-of select="$note_img"/></xsl:when>
+            <xsl:when test="local-name()='tip'"><xsl:value-of select="$tip_img"/></xsl:when>
+            <xsl:when test="local-name()='warning'"><xsl:value-of select="$warning_img"/></xsl:when>
+        </xsl:choose>
+    </xsl:variable>
+    <div class="{local-name()}">
+        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" title="{local-name()}" style="{$iconsizestyle}"/></div>
+        <div class="notetext"><p id="{@id}"><xsl:apply-templates mode="embedded"/></p></div>
+    </div>
+    <br/>
 </xsl:template>
 
 <!-- In case of missing help files -->
@@ -866,7 +875,6 @@
 
 </xsl:template>
 
-
 <!-- Insert Paragraph -->
 <xsl:template name="insertpara">
     <xsl:variable name="role">
@@ -883,15 +891,17 @@
 </xsl:template>
 
 <xsl:template match="bascode">
-    <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><xsl:apply-templates /></div>
+    <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><pre><code class="language-visual-basic line-numbers"><xsl:apply-templates /></code></pre></div>
 </xsl:template>
 <xsl:template match="bascode" mode="embedded">
-    <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><xsl:apply-templates /></div>
+    <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><pre><code class="language-visual-basic line-numbers"><xsl:apply-templates mode="embedded" /></code></pre></div>
 </xsl:template>
 
-<!-- Insert Basic code snippet  -->
-<xsl:template name="insertbascode">
-    <pre class="bascodepar"><xsl:apply-templates /></pre><br/>
+<xsl:template match="pycode">
+    <div class="pycode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><pre><code class="language-python line-numbers"><xsl:apply-templates /></code></pre></div>
+</xsl:template>
+<xsl:template match="pycode" mode="embedded">
+    <div class="pycode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet"><pre><code class="language-python line-numbers"><xsl:apply-templates mode="embedded" /></code></pre></div>
 </xsl:template>
 
 <!-- Insert Logo code snippet  -->
@@ -964,7 +974,7 @@
         <xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
     </xsl:variable>
     <div class="{$type}">
-        <div class="noteicon"><img src="{$imgsrc}" alt="{$alt}" title="{$alt}"/></div>
+        <div class="noteicon"><img src="{$imgsrc}" alt="{$alt}" title="{$alt}" style="{$iconsizestyle}"/></div>
         <div class="notetext"><p><xsl:apply-templates /></p></div>
     </div>
     <br/>
@@ -996,10 +1006,10 @@
     <xsl:variable name="auxID" select="concat(@select,generate-id())"/>
     <xsl:choose>
         <xsl:when test="$embedded = 'yes'">
-            <span hidden="true" id="{$auxID}"><xsl:apply-templates mode="embedded"/></span>
+            <span hidden="true" id="{$auxID}" class="{@select}"><xsl:apply-templates mode="embedded"/></span>
         </xsl:when>
         <xsl:otherwise>
-            <span hidden="true" id="{$auxID}"><xsl:apply-templates/></span>
+            <span hidden="true" id="{$auxID}" class="{@select}"><xsl:apply-templates/></span>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -1125,11 +1135,7 @@
             <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
         </xsl:if>
     </xsl:variable>
-    <img src="{$src2}" alt="{$alt}" title="{$alt}" height="{$height}" width="{$width}">
-        <xsl:if test="ancestor::tablecell">
-            <xsl:attribute name="class"><xsl:value-of select="'imageicon'"/></xsl:attribute>
-        </xsl:if>
-    </img>
+    <img src="{$src2}" alt="{$alt}" title="{$alt}" style="{concat('width:',$width,';height:',$height)}"/>
 </xsl:template>
 
 <!-- Insert an object -->
