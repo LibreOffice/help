@@ -8,7 +8,7 @@
  */
 
 // Pagination and fuzzy search
-var url = document.URL;
+var url = window.location.pathname;
 var moduleRegex = new RegExp('text\\/(\\w+)\\/');
 var regexArray = moduleRegex.exec(url);
 var currentModule = null;
