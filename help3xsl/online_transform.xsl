@@ -149,15 +149,16 @@
         <link  type="text/css" href="{$target}normalize.css" rel="Stylesheet"/>
         <link  type="text/css" href="{$target}default.css" rel="Stylesheet"/>
         <link  type="text/css" href="{$target}prism.css" rel="Stylesheet"/>
-        <script type="text/javascript" src="{$target}help2.js" defer=""/>
-        <script type="text/javascript" src="{$target}languages.js" defer=""/>
-        <script type="text/javascript" src="{$target}{$lang}/langnames.js" defer=""/>
-        <script type="text/javascript" src="{$target}fuzzysort.js" defer=""/>
-        <script type="text/javascript" src="{$target}paginathing.js" defer=""/>
-        <script type="text/javascript" src="{$target}prism.js" defer=""/>
-        <script type="text/javascript" src="{$target}{$lang}/bookmarks.js" defer=""/>
-        <script type="text/javascript" src="{$target}{$lang}/contents.js" defer=""/>
-        <script type="text/javascript" src="{$target}help.js" defer=""/>
+        <script type="text/javascript" src="{$target}polyfills.js"></script>
+        <script type="text/javascript" src="{$target}languages.js"></script>
+        <script type="text/javascript" src="{$target}fuzzysort.js"></script>
+        <script type="text/javascript" src="{$target}prism.js"></script>
+        <script type="text/javascript" src="{$target}help2.js" defer=""></script>
+        <script type="text/javascript" src="{$target}{$lang}/langnames.js" defer=""></script>
+        <script type="text/javascript" src="{$target}paginathing.js" defer=""></script>
+        <script type="text/javascript" src="{$target}{$lang}/bookmarks.js" defer=""></script>
+        <script type="text/javascript" src="{$target}{$lang}/contents.js" defer=""></script>
+        <script type="text/javascript" src="{$target}help.js" defer=""></script>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
     <body itemscope="true" itemtype="http://schema.org/TechArticle">
