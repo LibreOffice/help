@@ -82,7 +82,8 @@ for (z = 0; z < n; z++) {
 /* add &DbPAR= and &System= to the links in DisplayArea div */
 /* skip for object files */
 function fixURL(module, system) {
-    var itemlink = document.getElementById("DisplayArea").getElementsByTagName("a");
+    if ((DisplayArea = document.getElementById("DisplayArea")) === null) return;
+    var itemlink = DisplayArea.getElementsByTagName("a");
     var pSystem = (system === null) ? getSystem() : system;
     var pAppl = (module === null) ? "WRITER" : module;
     var n = itemlink.length;
@@ -203,12 +204,16 @@ if (document.body.getElementsByTagName('meta')) {
 var module = getParameterByName("DbPAR");
 var helpID = getParameterByName("HID");
 fixURL(module,system);
-var dbg = getParameterByName("Debug");
-if (dbg == null) { dbg=0; }
-document.getElementById("DEBUG").style.display = (dbg == 0) ? "none":"block";
-document.getElementById("bm_module").innerHTML ="Module is: "+module;
-document.getElementById("bm_system").innerHTML ="System is: "+system;
-document.getElementById("bm_HID").innerHTML ="HID is: "+helpID;
+
+function debugInfo(dbg) {
+    if (dbg == null) return;
+    document.getElementById("DEBUG").style.display = "block";
+    document.getElementById("bm_module").innerHTML = "Module is: "+module;
+    document.getElementById("bm_system").innerHTML = "System is: "+system;
+    document.getElementById("bm_HID").innerHTML = "HID is: "+helpID;
+}
+
+debugInfo(getParameterByName("Debug"));
 
 // Mobile devices need the modules and langs on page load
 if (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) < 960) {
