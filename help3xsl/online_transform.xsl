@@ -149,12 +149,13 @@
         <link  type="text/css" href="{$target}normalize.css" rel="Stylesheet"/>
         <link  type="text/css" href="{$target}default.css" rel="Stylesheet"/>
         <link  type="text/css" href="{$target}prism.css" rel="Stylesheet"/>
+        <script type="text/javascript" src="{$target}polyfills.js"/>
+        <script type="text/javascript" src="{$target}languages.js"/>
+        <script type="text/javascript" src="{$target}fuzzysort.js"/>
+        <script type="text/javascript" src="{$target}prism.js"/>
         <script type="text/javascript" src="{$target}help2.js" defer=""/>
-        <script type="text/javascript" src="{$target}languages.js" defer=""/>
         <script type="text/javascript" src="{$target}{$lang}/langnames.js" defer=""/>
-        <script type="text/javascript" src="{$target}fuzzysort.js" defer=""/>
         <script type="text/javascript" src="{$target}paginathing.js" defer=""/>
-        <script type="text/javascript" src="{$target}prism.js" defer=""/>
         <script type="text/javascript" src="{$target}{$lang}/bookmarks.js" defer=""/>
         <script type="text/javascript" src="{$target}{$lang}/contents.js" defer=""/>
         <script type="text/javascript" src="{$target}help.js" defer=""/>
