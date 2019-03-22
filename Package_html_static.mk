@@ -23,6 +23,7 @@ $(eval $(call gb_Package_add_files,helpcontent2_html_static,$(LIBO_SHARE_HELP_FO
 	help2.js \
 	normalize.css \
 	paginathing.js \
+	polyfills.js \
 	prism.js \
         prism.css \
 ))
