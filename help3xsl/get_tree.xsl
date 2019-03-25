@@ -17,6 +17,7 @@ xsltproc get_tree.xsl <file.tree>
 <xsl:param name="local"/>
 <xsl:param name="productversion"/>
 <xsl:param name="productname"/>
+<xsl:param name="module"/>
 <xsl:output indent="no" method="text"/>
 <!--
 ############################
@@ -56,7 +57,7 @@ xsltproc get_tree.xsl <file.tree>
 
 <xsl:template match="topic">
     <xsl:variable name="htmlpage">
-        <xsl:value-of select="concat($target,$lang,'/',substring-before(substring-after(@id,'/'),'.xhp'),'.html')" />
+        <xsl:value-of select="concat($target,$lang,'/',substring-before(substring-after(@id,'/'),'.xhp'),'.html','?DbPAR=',$module)" />
     </xsl:variable>
     <![CDATA[<li><a target="_top" href="]]><xsl:value-of select="$htmlpage"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="."/></xsl:with-param></xsl:call-template><![CDATA[</a></li>\]]>
 </xsl:template>

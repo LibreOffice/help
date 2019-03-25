@@ -84,6 +84,7 @@ define html_gen_contents_html_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/contents.part : $(call gb_HelpTarget__get_treefile,$(1),$(3))
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/contents.part : TREE_FILE := $(call gb_HelpTarget__get_treefile,$(1),$(3))
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/contents.part : LANG := $(2)
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/contents.part : MODULE := $(lastword $(subst :, ,$(filter $(module):%, $(html_BMARK_MODULES))))
 
 endef
 
@@ -115,6 +116,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
 			--stringparam lang $(LANG) \
 			--stringparam local $(if $(HELP_ONLINE),'no','yes') \
+			--stringparam module $(MODULE) \
 			--stringparam productname "$(PRODUCTNAME)" \
 			--stringparam productversion "$(PRODUCTVERSION)" \
 			-o $@ \
