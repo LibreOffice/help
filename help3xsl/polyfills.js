@@ -46,7 +46,7 @@ if (!Element.prototype.matches) {
 // Polyfill for iterable Set (IE11)
 // from: https://stackoverflow.com/a/45686452/3057764
 if (new Set([0]).size === 0) {
-    //constructor doesnt take an iterable as an argument - thanks IE
+    //constructor doesn't take an iterable as an argument - thanks IE
     const BuiltinSet = Set;
     Set = function Set(iterable) {
         const set = new BuiltinSet();
