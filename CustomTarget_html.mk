@@ -13,6 +13,7 @@ $(eval $(call gb_CustomTarget_CustomTarget,helpcontent2/help3xsl))
 html_TREE_MODULES := sbasic scalc schart shared simpress smath swriter
 html_TEXT_MODULES := $(html_TREE_MODULES) sdatabase sdraw
 html_BMARK_MODULES := swriter:WRITER scalc:CALC simpress:IMPRESS sdraw:DRAW shared/explorer/database:BASE smath:MATH schart:CHART sbasic:BASIC shared:SHARED
+ICON_FILE := $(SRCDIR)/icon-themes/colibre/links.txt
 
 $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 	hid2file.js \
@@ -108,6 +109,22 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.js :
 		) > $@ \
 	)
 
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/links.txt.xsl :
+# 	$(call xsl_links_txt_dep,)
+	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),ICO,2)
+	$(call gb_Helper_abbreviate_dirs,\
+		( \
+			echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" \
+			&& echo "<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\">" \
+			&& echo "<xsl:template name=\"linktxt\">" \
+			&& echo "<xsl:param name=\"src1\"/>" \
+			&& echo "<xsl:choose>" \
+			&& while read line ; do XXXXXXX; done < $(ICON_FILE) \
+			&& echo "<xsl:otherwise><xsl:value-of select=\"$src1\"/></xsl:otherwise>" \
+			&& echo "</xsl:choose>\n</xsl:template>\n</xsl:stylesheet>" \
+		) > $@ \
+	)
+
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 		$(SRCDIR)/helpcontent2/help3xsl/get_tree.xsl \
 		$(call gb_ExternalExecutable_get_dependencies,xsltproc)
@@ -126,6 +143,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 
 define html_gen_html_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/html.text : \
+	$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/links.txt.xsl \
 	$(foreach module,$(html_TEXT_MODULES), \
 		$(if $(filter en-US,$(1)), \
 			$(call gb_AllLangHelp_get_helpfiles_target,$(module)), \
