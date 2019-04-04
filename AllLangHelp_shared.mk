@@ -615,6 +615,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/cmis-remote-files-setup \
     helpcontent2/source/text/shared/guide/collab \
     helpcontent2/source/text/shared/guide/configure_overview \
+    helpcontent2/source/text/shared/guide/convertfilters \
     helpcontent2/source/text/shared/guide/contextmenu \
     helpcontent2/source/text/shared/guide/copy_drawfunctions \
     helpcontent2/source/text/shared/guide/copytable2application \
