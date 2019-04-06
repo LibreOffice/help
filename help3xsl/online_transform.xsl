@@ -21,9 +21,8 @@
 
 <xsl:output indent="yes" method="html" doctype-system= "about:legacy-compat"/>
 
-<xsl:include href="../../workdir/CustomTarget/helpcontent2/help3xsl/links.txt.xsl"/>
 <xsl:include href="localized.xsl"/>
-
+<xsl:include href="links.txt.xsl"/>
 <!--
 ############################
 # Variables and Parameters #
