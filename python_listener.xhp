@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+   <meta>
+      <topic id="text/sbasic/python/Python_Listener">
+         <title id="tit" xml-lang="en-US">Python Listeners : Creating Event Listeners</title>
+         <filename>/text/sbasic/python/Python_Listener.xhp</filename>
+      </topic>
+   </meta>
+   <body>
+      <bookmark branch="index" id="N0385">
+         <bookmark_value>Python;Event Listener</bookmark_value>
+         <bookmark_value>Python;createUnoListener</bookmark_value>
+         <bookmark_value>Basic;Event Listener</bookmark_value>
+      </bookmark>
+      <h1 id="N0386">Creating Event Listeners</h1>
+      <paragraph role="paragraph" id="N0387">Events raised by dialogs, documents, forms or graphical controls can be linked to macros, which is referred to as event-driven programming. The most common method to relate events to macros are the <literal>Events</literal> tab in <menuitem>Tools – Customize</menuitem> menu and the <link href="text/sbasic/guide/create_dialog.xhp" name ="Create dialog">Dialog Editor</link> Control properties pane from <menuitem>Tools - Macros – Organise Dialogs...</menuitem> menu.</paragraph>
+      <paragraph role="paragraph" id="N0388">Graphical artifacts, keyboard inputs, mouse moves and other man/machine interactions can be controlled using UNO listeners that watch for the user’s behaviour. Listeners are dynamic program code alternatives to macro assignments. One may create as many UNO listeners as events to watch for. A single listener can also handle multiple user interface controls.</paragraph>
+      <h2 id="N0389">Creating an event listener</h2>
+      <paragraph role="paragraph" id="N0390">Listeners get attached to controls held in dialogs, as well as to document or form events. Listeners are also used when creating runtime dialogs or when adding controls to a dialog on the fly.</paragraph>
+      <paragraph role="paragraph" id="N0391">This example creates a listener for <literal>Button1</literal> control of <literal>Dialog1</literal> dialog in <literal>Standard</literal> library.</paragraph>
+      <h3 id="N0392">With Python</h3>
+      <pycode>
+         <paragraph role="pycode" localize="false" id="N0393"># -*- coding: utf-8 -*-</paragraph>
+         <paragraph role="pycode" localize="false" id="N0394">from __future__ import unicode_literals</paragraph>
+         <paragraph role="pycode" localize="false" id="N0395">    </paragraph>
+         <paragraph role="pycode" localize="false" id="N0396">import uno, unohelper</paragraph>
+         <paragraph role="pycode" localize="false" id="N0397">from com.sun.star.awt import XActionListener</paragraph>
+         <paragraph role="pycode" localize="false" id="N0398">from com.sun.star.awt import ActionEvent</paragraph>
+         <paragraph role="pycode" localize="false" id="N0399">from com.sun.star.lang import EventObject</paragraph>
+         <paragraph role="pycode" localize="false" id="N0400">from com.sun.star.ui.dialogs.ExecutableDialogResults \</paragraph>
+         <paragraph role="pycode" localize="false" id="N0401">    import OK, CANCEL</paragraph>
+         <paragraph role="pycode" localize="false" id="N0402">import msgbox as util</paragraph>
+         <paragraph role="pycode" localize="false" id="N0403">    </paragraph>
+         <paragraph role="pycode" localize="false" id="N0404">_MY_BUTTON =  &quot;Button1&quot;</paragraph>
+         <paragraph role="pycode" xml-lang="en-US" id="N0405">_MY_LABEL = &apos;Python listens..&apos;</paragraph>
+         <paragraph role="pycode" localize="false" id="N0406">_DLG_PROVIDER = &quot;com.sun.star.awt.DialogProvider&quot;</paragraph>
+         <paragraph role="pycode" localize="false" id="N0407">    </paragraph>
+         <paragraph role="pycode" localize="false" id="N0408">def Main(*args):</paragraph>
+         <paragraph role="pycode" localize="false" id="N0409">    ui = createUnoDialog(&quot;Standard.Dialog1&quot;, embedded=True)</paragraph>
+         <paragraph role="pycode" localize="false" id="N0410">    ui.Title = &quot;Python X[any]Listener&quot;</paragraph>
+         <paragraph role="pycode" localize="false" id="N0411">    ctl = ui.getControl(_MY_BUTTON)</paragraph>
+         <paragraph role="pycode" localize="false" id="N0412">    ctl.Model.Label = _MY_LABEL</paragraph>
+         <paragraph role="pycode" localize="false" id="N0413">    act = ActionListener()</paragraph>
+         <paragraph role="pycode" localize="false" id="N0414">    ctl.addActionListener(act)</paragraph>
+         <paragraph role="pycode" localize="false" id="N0415">    rc = ui.execute()</paragraph>
+         <paragraph role="pycode" localize="false" id="N0416">    if rc == OK:</paragraph>
+         <paragraph role="pycode" xml-lang="en-US" id="N0417">        MsgBox(&quot;The user acknowledged the dialog.&quot;)</paragraph>
+         <paragraph role="pycode" localize="false" id="N0418">    elif rc == CANCEL:</paragraph>
+         <paragraph role="pycode" xml-lang="en-US" id="N0419">        MsgBox(&quot;The user canceled the dialog.&quot;)</paragraph>
+         <paragraph role="pycode" localize="false" id="N0420">    ui.dispose()  # ui.endExecute</paragraph>
+         <paragraph role="pycode" localize="false" id="N0421">    ctl.removeActionListener(act)</paragraph>
+         <paragraph role="pycode" localize="false" id="N0422">    </paragraph>
+         <paragraph role="pycode" localize="false" id="N0423">def createUnoDialog(libr_dlg: str, embedded=False):</paragraph>
+         <paragraph role="pycode" xml-lang="en-US" id="N0424">    &quot;&quot;&quot; Create a Dialog from its location &quot;&quot;&quot;</paragraph>
+         <paragraph role="pycode" localize="false" id="N0425">    smgr = XSCRIPTCONTEXT.getComponentContext().ServiceManager</paragraph>
+         <paragraph role="pycode" localize="false" id="N0426">    if embedded:</paragraph>
+         <paragraph role="pycode" localize="false" id="N0427">        model = XSCRIPTCONTEXT.getDocument()</paragraph>
+         <paragraph role="pycode" localize="false" id="N0428">        dp = smgr.createInstanceWithArguments(_DLG_PROVIDER, (model,))</paragraph>
+         <paragraph role="pycode" localize="false" id="N0429">        location = &quot;?location=document&quot;</paragraph>
+         <paragraph role="pycode" localize="false" id="N0430">    else:</paragraph>
+         <paragraph role="pycode" localize="false" id="N0431">        dp = smgr.createInstanceWithContext(_DLG_PROVIDER, ctx)</paragraph>
+         <paragraph role="pycode" localize="false" id="N0432">        location = &quot;?location=application&quot;</paragraph>
+         <paragraph role="pycode" localize="false" id="N0433">    dlg = dp.createDialog(&quot;vnd.sun.star.script:&quot;+libr_dlg+location)</paragraph>
+         <paragraph role="pycode" localize="false" id="N0434">    return dlg</paragraph>
+         <paragraph role="pycode" localize="false" id="N0435">    </paragraph>
+         <paragraph role="pycode" localize="false" id="N0436">class ActionListener(unohelper.Base, XActionListener):</paragraph>
+         <paragraph role="pycode" xml-lang="en-US" id="N0437">    &quot;&quot;&quot; Listen to &amp; count button clicks &quot;&quot;&quot;</paragraph>
+         <paragraph role="pycode" localize="false" id="N0438">    def __init__(self):</paragraph>
+         <paragraph role="pycode" localize="false" id="N0439">        self.count = 0</paragraph>
+         <paragraph role="pycode" localize="false" id="N0440">    </paragraph>
+         <paragraph role="pycode" localize="false" id="N0441">    def actionPerformed(self, evt: ActionEvent):</paragraph>
+         <paragraph role="pycode" localize="false" id="N0442">        self.count = self.count + 1</paragraph>
+         <paragraph role="pycode" localize="false" id="N0443">        #mri(evt)</paragraph>
+         <paragraph role="pycode" localize="false" id="N0444">        if evt.Source.Model.Name == _MY_BUTTON:</paragraph>
+         <paragraph role="pycode" localize="false" id="N0445">            evt.Source.Model.Label = _MY_LABEL+ str( self.count )</paragraph>
+         <paragraph role="pycode" localize="false" id="N0446">    return</paragraph>
+         <paragraph role="pycode" localize="false" id="N0447">    </paragraph>
+         <paragraph role="pycode" xml-lang="en-US" id="N0448">    def disposing(self, evt: EventObject):  # mandatory routine</paragraph>
+         <paragraph role="pycode" localize="false" id="N0449">        pass</paragraph>
+         <paragraph role="pycode" localize="false" id="N0450">    </paragraph>
+         <paragraph role="pycode" localize="false" id="N0451">def MsgBox(txt: str):</paragraph>
+         <paragraph role="pycode" localize="false" id="N0452">    mb = util.MsgBox(uno.getComponentContext())</paragraph>
+         <paragraph role="pycode" localize="false" id="N0453">    mb.addButton(&quot;Ok&quot;)</paragraph>
+         <paragraph role="pycode" localize="false" id="N0454">    mb.show(txt, 0, &quot;Python&quot;)</paragraph>
+         <paragraph role="pycode" localize="false" id="N0455">    </paragraph>
+         <paragraph role="pycode" localize="false" id="N0456">g_exportedScripts = (Main,)</paragraph>
+      </pycode>
+      <paragraph role="paragraph" id="N0457">
+         <emph>msgbox.py</emph> in <emph>{installation}/program/</emph> directory has some examples of button listeners.
+      </paragraph>
+      <h3 id="N0458">With %PRODUCTNAME Basic</h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="N0459a">Option Explicit</paragraph>
+         <paragraph role="bascode" localize="false" id="N0459b">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0459c">Const MY_LIBRARY = "Standard", MY_DIALOG = "Dialog1", MY_BUTTON = "Button1"</paragraph>
+         <paragraph role="bascode" xml-lang="en-US" id="N0459d">Const MY_LABEL = "Basic listens.."</paragraph>
+         <paragraph role="bascode" localize="false" id="N0459e">Dim count As Integer</paragraph>
+         <paragraph role="bascode" localize="false" id="N0459f">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0459">Sub Main</paragraph>
+         <paragraph role="bascode" localize="false" id="N0460">    Dim libr As Object &apos; com.sun.star.script.XLibraryContainer</paragraph>
+         <paragraph role="bascode" localize="false" id="N0461">    Dim dlg As Object</paragraph>
+         <paragraph role="bascode" localize="false" id="N0462">    Dim ui As Object  &apos; stardiv.Toolkit.UnoDialogControl</paragraph>
+         <paragraph role="bascode" localize="false" id="N0463">    Dim ctl As Object &apos; stardiv.Toolkit.UnoButtonControl</paragraph>
+         <paragraph role="bascode" localize="false" id="N0464">    Dim act As Object &apos; com.sun.star.awt.XActionListener</paragraph>
+         <paragraph role="bascode" localize="false" id="N0465">    Dim rc As Object : rc = com.sun.star.ui.dialogs.ExecutableDialogResults</paragraph>
+         <paragraph role="bascode" localize="false" id="N0466">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0467">    BasicLibraries.LoadLibrary(MY_LIBRARY)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0468">    libr = DialogLibraries.GetByName(MY_LIBRARY)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0469">    dlg = libr.GetByName(MY_DIALOG)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0470">    ui = CreateUnoDialog(dlg)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0471">    ui.Title = &quot;Basic X[any]Listener example&quot;</paragraph>
+         <paragraph role="bascode" localize="false" id="N0472">    count = 0</paragraph>
+         <paragraph role="bascode" localize="false" id="N0473">    ctl = ui.GetControl(MY_BUTTON)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0474">    ctl.Model.Label = MY_LABEL</paragraph>
+         <paragraph role="bascode" localize="false" id="N0475">    act = CreateUnoListener(&quot;awt_&quot;, &quot;com.sun.star.awt.XActionListener&quot;)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0476">    ctl.addActionListener(act)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0477">    Select Case ui.Execute</paragraph>
+         <paragraph role="bascode" xml-lang="en-US" id="N0478">        Case rc.OK : MsgBox &quot;The user acknowledged the dialog.&quot;,, &quot;Basic&quot;</paragraph>
+         <paragraph role="bascode" xml-lang="en-US" id="N0479">        Case rc.CANCEL : MsgBox &quot;The user canceled the dialog.&quot;,, &quot;Basic&quot;</paragraph>
+         <paragraph role="bascode" localize="false" id="N0480">    End Select</paragraph>
+         <paragraph role="bascode" localize="false" id="N0481">    ui.dispose &apos; ui.endExecute()</paragraph>
+         <paragraph role="bascode" localize="false" id="N0482">    ctl.removeActionListener(act)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0483">End Sub</paragraph>
+         <paragraph role="bascode" localize="false" id="N0484">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0485">Private Sub awt_actionPerformed(evt As com.sun.star.awt.ActionEvent)</paragraph>
+         <paragraph role="bascode" xml-lang="en-US" id="N0486">    &apos;&apos;&apos; Listen to &amp; count button clicks &apos;&apos;&apos;</paragraph>
+         <paragraph role="bascode" localize="false" id="N0487">    With evt.Source.Model</paragraph>
+         <paragraph role="bascode" localize="false" id="N0488">        If .Name = MY_BUTTON Then</paragraph>
+         <paragraph role="bascode" localize="false" id="N0489">            count = count + 1</paragraph>
+         <paragraph role="bascode" localize="false" id="N0490">            .Label = MY_LABEL+Cstr(count)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0491">        End If</paragraph>
+         <paragraph role="bascode" localize="false" id="N0492">    End With</paragraph>
+         <paragraph role="bascode" localize="false" id="N0493">End Sub &apos; awt_actionPerformed</paragraph>
+         <paragraph role="bascode" localize="false" id="N0494">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0495">Private Sub awt_disposing(evt As com.sun.star.lang.EventObject) &apos; mandatory Sub</paragraph>
+         <paragraph role="bascode" xml-lang="en-US" id="N0496">    &apos; your code goes here</paragraph>
+         <paragraph role="bascode" localize="false" id="N0497">End Sub &apos; awt_disposing</paragraph>
+      </bascode>
+      <h2 id="N0498">Other Event Listeners</h2>
+      <paragraph role="paragraph" id="N0499">Listeners are usually coded along with <link href="text/sbasic/python/python_dialog.xhp" name ="dialog opening">dialog opening</link>. Numerous listener approaches are possible such as event handlers for dialogs or event monitors for documents or forms.</paragraph>
+      <section id="relatedtopics" >
+         <embed href="text/sbasic/guide/sample_code.xhp#sample_code"/>
+         <paragraph role="paragraph" id="N0505"><link href="text/sbasic/shared/03132000.xhp" name ="CreateUnoListener Function">CreateUnoListener Function</link></paragraph>
+         <paragraph role="paragraph" id="N0506"><link href="text/swriter/01/05060700.xhp" name ="Events mapping to objects">Events mapping to objects</link></paragraph>
+         <paragraph role="paragraph" id="N0509">See also <link href="text/sbasic/shared/01040000.xhp" name ="Document events">Document events</link>, <link href="text/shared/02/01170202.xhp" name ="Form events">Form events</link>.</paragraph>
+         <!-- WIP
+         <paragraph role="paragraph" id="N0510">Creating a Dialog Handler, opening a Dialog</paragraph>
+         <paragraph role="paragraph" id="N0511">Monitoring Document Events</paragraph>
+         -->
+         <embed href="text/sbasic/python/python_examples.xhp#pythonexamples2"/>
+      </section>
+   </body>
+</helpdocument>
