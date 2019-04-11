@@ -357,7 +357,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/guide/stylist_update \
     helpcontent2/source/text/swriter/guide/subscript \
     helpcontent2/source/text/swriter/guide/table_cellmerge \
-    helpcontent2/source/text/swriter/guide/table_cells \
     helpcontent2/source/text/swriter/guide/table_delete \
     helpcontent2/source/text/swriter/guide/table_insert \
     helpcontent2/source/text/swriter/guide/table_repeat_multiple_headers \
