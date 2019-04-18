@@ -83,7 +83,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/langnames.js : \
 define html_gen_contents_html_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/contents.part : $(call gb_HelpTarget__get_treefile,$(1),$(3))
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/contents.part : TREE_FILE := $(call gb_HelpTarget__get_treefile,$(1),$(3))
-$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/contents.part : LANG := $(2)
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/contents.part : LANGUAGE := $(2)
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/contents.part : MODULE := $(lastword $(subst :, ,$(filter $(module):%, $(html_BMARK_MODULES))))
 
 endef
