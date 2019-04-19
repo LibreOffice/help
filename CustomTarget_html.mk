@@ -114,7 +114,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	$(call gb_Helper_abbreviate_dirs,\
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
-			--stringparam lang $(LANG) \
+			--stringparam lang $(LANGUAGE) \
 			--stringparam local $(if $(HELP_ONLINE),'no','yes') \
 			--stringparam module $(MODULE) \
 			--stringparam productname "$(PRODUCTNAME)" \
