@@ -10,7 +10,7 @@
 $(eval $(call gb_CustomTarget_CustomTarget,helpcontent2/help3xsl))
 
 # HACK!!
-html_TREE_MODULES := sbasic scalc schart shared simpress smath swriter
+html_TREE_MODULES := shared swriter scalc schart simpress smath sbasic
 html_TEXT_MODULES := $(html_TREE_MODULES) sdatabase sdraw
 html_BMARK_MODULES := swriter:WRITER scalc:CALC simpress:IMPRESS sdraw:DRAW shared/explorer/database:BASE smath:MATH schart:CHART sbasic:BASIC shared:SHARED
 
