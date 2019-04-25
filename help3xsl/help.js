@@ -79,6 +79,41 @@ function debounce(fn, wait) {
     };
 }
 search.addEventListener('keyup', debounce(filter, 100));
+
+// copy pycode and bascode to clipboard on mouse click
+// Show border when copy is done
+divcopyable(document.getElementsByClassName("bascode"));
+divcopyable(document.getElementsByClassName("pycode"));
+
+function divcopyable(itemcopyable){
+for (var i = 0, len = itemcopyable.length; i < len; i++) {
+    (function() {
+        var item = itemcopyable[i];
+
+        function changeBorder(item, color, colorToChangeBackTo) {
+            var saveBorder  = item.style.border;
+            item.style.border = "solid 5px";
+            item.style.borderColor = color;
+
+            setTimeout(function() {
+                item.style.border = saveBorder;
+                item.style.borderColor = colorToChangeBackTo;
+            }, 150);
+        }
+        item.onclick = function() {
+            document.execCommand("copy");
+            changeBorder(item, "#18A303", "transparent");
+        };
+        item.addEventListener("copy", function(event) {
+            event.preventDefault();
+            if (event.clipboardData) {
+                event.clipboardData.setData("text/plain", item.textContent);
+            }
+        });
+    }());
+}
+}
+
 // copy useful content to clipboard on mouse click
 var copyable = document.getElementsByClassName("input");
 for (var i = 0, len = copyable.length; i < len; i++) {
