@@ -190,6 +190,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_averageifs \
     helpcontent2/source/text/scalc/01/func_countifs \
     helpcontent2/source/text/scalc/01/func_color \
+    helpcontent2/source/text/scalc/01/func_concat \
     helpcontent2/source/text/scalc/01/func_date \
     helpcontent2/source/text/scalc/01/func_datedif \
     helpcontent2/source/text/scalc/01/func_datevalue \
@@ -209,6 +210,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_forecastetsseason \
     helpcontent2/source/text/scalc/01/exponsmooth_embd \
     helpcontent2/source/text/scalc/01/func_hour \
+    helpcontent2/source/text/scalc/01/func_ifs \
     helpcontent2/source/text/scalc/01/func_imcot \
     helpcontent2/source/text/scalc/01/func_imcos \
     helpcontent2/source/text/scalc/01/func_imcosh \
@@ -237,6 +239,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_second \
     helpcontent2/source/text/scalc/01/func_skewp \
     helpcontent2/source/text/scalc/01/func_sumifs \
+    helpcontent2/source/text/scalc/01/func_switch \
+    helpcontent2/source/text/scalc/01/func_textjoin \
     helpcontent2/source/text/scalc/01/func_time \
     helpcontent2/source/text/scalc/01/func_timevalue \
     helpcontent2/source/text/scalc/01/func_today \
