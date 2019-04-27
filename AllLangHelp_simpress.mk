@@ -29,7 +29,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/00/00000413 \
     helpcontent2/source/text/simpress/00/slide_menu \
     helpcontent2/source/text/simpress/01/01170000 \
-    helpcontent2/source/text/simpress/01/01180000 \
+    helpcontent2/source/text/simpress/01/slide_properties \
     helpcontent2/source/text/simpress/01/01180001 \
     helpcontent2/source/text/simpress/01/01180002 \
     helpcontent2/source/text/simpress/01/02110000 \
@@ -202,15 +202,15 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/main0000 \
     helpcontent2/source/text/simpress/main0100 \
     helpcontent2/source/text/simpress/main0101 \
-    helpcontent2/source/text/simpress/main0102 \
+    helpcontent2/source/text/simpress/main_edit \
     helpcontent2/source/text/simpress/main0103 \
     helpcontent2/source/text/simpress/main0104 \
-    helpcontent2/source/text/simpress/main0105 \
-    helpcontent2/source/text/simpress/main0106 \
+    helpcontent2/source/text/simpress/main_format \
+    helpcontent2/source/text/simpress/main_tools \
     helpcontent2/source/text/simpress/main0107 \
     helpcontent2/source/text/simpress/main0113 \
     helpcontent2/source/text/simpress/main0114 \
-    helpcontent2/source/text/simpress/main0117 \
+    helpcontent2/source/text/simpress/main_slide \
     helpcontent2/source/text/simpress/main0200 \
     helpcontent2/source/text/simpress/main0202 \
     helpcontent2/source/text/simpress/main0203 \

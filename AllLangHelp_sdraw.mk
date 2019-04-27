@@ -38,11 +38,11 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdraw,\
     helpcontent2/source/text/sdraw/main0000 \
     helpcontent2/source/text/sdraw/main0100 \
     helpcontent2/source/text/sdraw/main0101 \
-    helpcontent2/source/text/sdraw/main0102 \
+    helpcontent2/source/text/sdraw/main_edit \
     helpcontent2/source/text/sdraw/main0103 \
     helpcontent2/source/text/sdraw/main0104 \
-    helpcontent2/source/text/sdraw/main0105 \
-    helpcontent2/source/text/sdraw/main0106 \
+    helpcontent2/source/text/sdraw/main_format \
+    helpcontent2/source/text/sdraw/main_tools \
     helpcontent2/source/text/sdraw/main0200 \
     helpcontent2/source/text/sdraw/main0202 \
     helpcontent2/source/text/sdraw/main0210 \
