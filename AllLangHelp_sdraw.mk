@@ -16,8 +16,11 @@ $(eval $(call gb_AllLangHelp_use_linked_modules,sdraw,\
 ))
 
 $(eval $(call gb_AllLangHelp_add_helpfiles,sdraw,\
+    helpcontent2/source/text/sdraw/main_page \
     helpcontent2/source/text/sdraw/00/00000004 \
-    helpcontent2/source/text/sdraw/01/04010000 \
+    helpcontent2/source/text/sdraw/00/page_menu \
+    helpcontent2/source/text/sdraw/01/new_page \
+    helpcontent2/source/text/sdraw/01/page_properties \
     helpcontent2/source/text/sdraw/04/01020000 \
     helpcontent2/source/text/sdraw/guide/align_arrange \
     helpcontent2/source/text/sdraw/guide/color_define \
@@ -40,7 +43,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdraw,\
     helpcontent2/source/text/sdraw/main0101 \
     helpcontent2/source/text/sdraw/main_edit \
     helpcontent2/source/text/sdraw/main0103 \
-    helpcontent2/source/text/sdraw/main0104 \
+    helpcontent2/source/text/sdraw/main_insert \
     helpcontent2/source/text/sdraw/main_format \
     helpcontent2/source/text/sdraw/main_tools \
     helpcontent2/source/text/sdraw/main0200 \
