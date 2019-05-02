@@ -81,6 +81,13 @@ function debounce(fn, wait) {
 }
 search.addEventListener('keyup', debounce(filter, 100));
 
+// Preserve search input value during the session
+search.value = sessionStorage.getItem('searchsave');
+
+window.addEventListener('unload', function(event) {
+    sessionStorage.setItem('searchsave', search.value);
+});
+
 // copy pycode and bascode to clipboard on mouse click
 // Show border when copy is done
 divcopyable(document.getElementsByClassName("bascode"));
