@@ -375,7 +375,11 @@ header {
     height: 60px;
     margin-right: 10px;
 }
-.lang nav, .modules nav {
+[aria-hidden='true'],
+[data-a11y-toggle]:not([aria-controls]) {
+  display: none;
+}
+#langs-nav:not([aria-hidden='true']), #modules-nav:not([aria-hidden='true']) {
     z-index: 100;
     /* line them up horizontally */
     display: flex;
@@ -386,7 +390,7 @@ header {
     /* make it smooth on iOS */
     -webkit-overflow-scrolling: touch;
 }
-.lang nav a, .modules nav a {
+#langs-nav a, #modules-nav a {
     color: #fff;
     background-color: #233336;
     display: block;
@@ -411,7 +415,6 @@ footer p {
     background-color: transparent !important;
     padding: 3px 0 0 0 !important;
 }
-.modules input[type=checkbox], .lang input[type=checkbox],
 .contents-treeview input[type=checkbox], aside input[type=checkbox] {
     position: absolute;
     opacity: 0;
@@ -604,7 +607,7 @@ li.disabled a {
     border-bottom: 2px solid #f3f3f3;
     background-color: #233336;
 }
-.modules label:after, .lang label:after {
+#modules:after, #langs:after {
     font-size: 30px;
     color: #fff;
     content:"⌄";
@@ -612,10 +615,10 @@ li.disabled a {
 .lang {
     background-color: #233336;
 }
-.lang label, .modules label {
+#langs, #modules {
     display: none;
 }
-.modules nav div {
+#modules-nav div {
     background-repeat: no-repeat;
     background-size: contain;
     float: left;
@@ -739,24 +742,30 @@ li.disabled a {
     }
 }
 @media screen and (min-width: 960px) {
-    .lang nav {
+    #langs-nav {
         display: none;
     }
-    .lang nav a {
+    #langs-nav a {
         font-size: 19px;
         white-space: normal;
     }
-    .lang label, .modules label {
+    /* these are buttons, so also reset some default stylings */
+    #langs, #modules {
         cursor: pointer;
         color: #fff;
         font-size: 19px;
         position: relative;
         top: 40px;
         display: block;
+        background: transparent;
+        border: none;
+        text-transform: none;
+        padding:0;
+        line-height: normal;
     }
-    /* change the menu direction to stacked */
 
-    .lang input[type="checkbox"]:checked ~ nav, .modules input[type="checkbox"]:checked ~ nav {
+    /* change the menu direction to stacked */
+    #langs-nav:not([aria-hidden='true']), #modules-nav:not([aria-hidden='true']) {
         display: flex;
         flex-direction: column;
         max-width: 120px;
@@ -766,17 +775,14 @@ li.disabled a {
         position: absolute;
         top: 80px;
     }
-    .modules input[type="checkbox"]:checked ~ nav {
+    #modules-nav {
         background-color: #101820;
         text-align: left;
     }
-    .modules nav {
-        display: none;
-    }
-    .modules nav div {
+    #modules-nav div {
         display: block;
     }
-    .modules nav a {
+    #modules-nav a {
         font-size: 19px;
     }
     aside {
