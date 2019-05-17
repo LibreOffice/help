@@ -217,10 +217,16 @@ debugInfo(getParameterByName("Debug"));
 
 // Mobile devices need the modules and langs on page load
 if (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) < 960) {
-    var e = new Event('change');
-    var modules = document.getElementById('modules');
-    var langs = document.getElementById('langs');
-    modules.dispatchEvent(e);
-    langs.dispatchEvent(e);
+    var e = new Event('click');
+    var modulesBtn = document.getElementById('modules');
+    var langsBtn = document.getElementById('langs');
+    var modules = document.getElementById('modules-nav');
+    var langs = document.getElementById('langs-nav');
+    modules.setAttribute('data-a11y-toggle-open', '');
+    modulesBtn.dispatchEvent(e);
+    if (langs) {
+        langs.setAttribute('data-a11y-toggle-open', '');
+        langsBtn.dispatchEvent(e);
+    }
 }
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
