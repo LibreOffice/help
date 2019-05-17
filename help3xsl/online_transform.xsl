@@ -154,6 +154,7 @@
         <script type="text/javascript" src="{$target}fuzzysort.js"></script>
         <script type="text/javascript" src="{$target}prism.js"></script>
         <script type="text/javascript" src="{$target}help2.js" defer=""></script>
+        <script type="text/javascript" src="{$target}a11y-toggle.js" defer=""></script>
         <script type="text/javascript" src="{$target}{$lang}/langnames.js" defer=""></script>
         <script type="text/javascript" src="{$target}paginathing.js" defer=""></script>
         <script type="text/javascript" src="{$target}{$lang}/bookmarks.js" defer=""></script>
@@ -179,14 +180,16 @@
             </div>
         </header>
         <div class="modules">
-            <input id="modules" name="modules" type="checkbox" onchange="setupModules('{$target}', '{$lang}');"/>
-            <label for="modules"><xsl:value-of select="$ui_module"/></label>
+            <button type="button" data-a11y-toggle="modules-nav" id="modules" onclick="setupModules('{$target}', '{$htmlpage}');">
+                <xsl:value-of select="$ui_module"/>
+            </button>
 	    <nav id="modules-nav"/><!-- is filled in via setupModules() on demand -->
         </div>
         <xsl:if test="$online">
             <div class="lang">
-                <input id="langs" name="language-menu" type="checkbox" onchange="setupLanguages('{$target}', '{$htmlpage}');"/>
-                <label for="langs"><xsl:value-of select="$ui_language"/></label>
+                <button type="button" data-a11y-toggle="langs-nav" id="langs" onclick="setupLanguages('{$target}', '{$htmlpage}');">
+                    <xsl:value-of select="$ui_language"/>
+                </button>
                 <nav id="langs-nav"/><!-- is filled in via setupLanguages() on demand -->
             </div>
         </xsl:if>
