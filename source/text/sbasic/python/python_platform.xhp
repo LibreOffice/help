@@ -21,10 +21,12 @@
         <bookmark_value>Platform;isWindows</bookmark_value>
         <bookmark_value>Platform;ComputerName</bookmark_value>
         <bookmark_value>Platform;OSName</bookmark_value>
+        <bookmark_value>API;ConfigurationAccess</bookmark_value>
+        <bookmark_value>Tools;GetRegistryContent</bookmark_value>
     </bookmark>
     <h1 id="N0509"><variable id="pythonplatform"><link href="text/sbasic/python/python_platform.xhp" name="platform01">Identifying the operating system</link></variable></h1>
     <paragraph role="paragraph" id="N0510">Identifying the operating system can be performed with Python or Basic language.</paragraph>
-    <tip id="N0511">%PRODUCTNAME Basic lacks Mac OS X native recognition while ComputerName property is solely available for Windows. Basic calls to Python macros help overcome such limitations.</tip>
+    <note id="N0511">ComputerName property is solely available for Windows. Basic calls to Python macros help overcome %PRODUCTNAME Basic limitations.</note>
     <h2 id="N0512">Using a Python class:</h2>
     <pycode>
         <paragraph role="pycode" localize="false" id="N0513">import os, platform</paragraph>
@@ -45,7 +47,8 @@
         <paragraph role="pycode" localize="false" id="N0528">    def PathDelimiter(self): return os.pathsep</paragraph>
     </pycode>
     <h2 id="N0529">Using a Basic classmodule:</h2>
-    <bascode>
+    <tip id="NO529b">%PRODUCTNAME Basic lacks MacOS X native recognition. Platform identification is possible using %PRODUCTNAME Application Programming Interface (API).</tip>
+      <bascode>
         <paragraph role="bascode" localize="false" id="N0530">Option Compatible</paragraph>
         <paragraph role="bascode" localize="false" id="N0531">Option ClassModule</paragraph>
         <paragraph role="bascode" localize="false" id="N0532">Option Explicit</paragraph>
@@ -59,24 +62,33 @@
         <paragraph role="bascode" localize="false" id="N0540">End Property &apos; Platform.DirSeparator</paragraph>
         <paragraph role="bascode" localize="false" id="N0541"></paragraph>
         <paragraph role="bascode" localize="false" id="N0542">Public Property Get IsLinux As Boolean</paragraph>
-        <paragraph role="bascode" localize="false" id="N0543">    isLinux = ( GetGUIType()=4 ) &apos; Applies to Mac OS X as well </paragraph>
+        <paragraph role="bascode" localize="false" id="N0543">    isLinux = ( GetGUIType()=4 ) &apos; Applies to MacOS X as well </paragraph>
         <paragraph role="bascode" localize="false" id="N0544">End Property &apos; Platform.isLinux</paragraph>
         <paragraph role="bascode" localize="false" id="N0545"></paragraph>
+        <paragraph role="bascode" localize="false" id="M0542">Public Property Get IsMacOSX As Boolean</paragraph>
+        <paragraph role="bascode" localize="false" id="M0543">    isMacOSX = ( OSName=&quot;MAC&quot; )</paragraph>
+        <paragraph role="bascode" localize="false" id="M0544">End Property &apos; Platform.isMacOSX</paragraph>
+        <paragraph role="bascode" localize="false" id="M0545"></paragraph>
         <paragraph role="bascode" localize="false" id="N0546">Public Property Get IsWindows As Boolean</paragraph>
         <paragraph role="bascode" localize="false" id="N0547">    isWindows = ( GetGUIType()=1 )</paragraph>
         <paragraph role="bascode" localize="false" id="N0548">End Property &apos; Platform.isWindows</paragraph>
         <paragraph role="bascode" localize="false" id="N0549"></paragraph>
         <paragraph role="bascode" localize="false" id="N0550">Public Property Get OSName As String</paragraph>
-        <paragraph role="bascode" localize="false" id="N0551">    Select Case GetGUIType()</paragraph>
-        <paragraph role="bascode" localize="false" id="N0552">        Case 1 : OSName = &quot;Windows&quot;</paragraph>
-        <paragraph role="bascode" localize="false" id="N0553">        Case 4 : OSName = &quot;Linux&quot;</paragraph>
-        <paragraph role="bascode" localize="false" id="N0554">     End Select</paragraph>
+        <paragraph role="bascode" localize="false" id="N0551">    &apos; Return platform name as &quot;MAC&quot;, &quot;UNIX&quot;, &quot;WIN&quot;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0551">    &apos; Inferred from &quot;Tools.UCB.ShowHelperDialog&quot; function</paragraph>
+        <!-- <paragraph role="bascode" localize="false" id="N0552">    With GlobalScope.Basiclibraries</paragraph>-->
+        <paragraph role="bascode" localize="false" id="N0552">    With Basiclibraries</paragraph> <!-- to replace with line above -->
+        <paragraph role="bascode" localize="false" id="M0552">        If Not .IsLibraryLoaded(&quot;Tools&quot;) Then .LoadLibrary(&quot;Tools&quot;)</paragraph>
+        <paragraph role="bascode" localize="false" id="O0552">    End With</paragraph>
+        <paragraph role="bascode" localize="false" id="N0553">    Dim keyNode As Object &apos;com.sun.star.configuration.ConfigurationAccess</paragraph>
+        <paragraph role="bascode" localize="false" id="M0553">    keyNode = Tools.Misc.GetRegistryKeyContent(&quot;org.openoffice.Office.Common/Help&quot;)</paragraph>
+        <paragraph role="bascode" localize="false" id="N0554">    OSName = keyNode.GetByName(&quot;System&quot;)</paragraph>
         <paragraph role="bascode" localize="false" id="N0555">End Property &apos; Platform.OSName</paragraph>
         <paragraph role="bascode" localize="false" id="N0556"></paragraph>
         <paragraph role="bascode" localize="false" id="N0557">Public Property Get PathDelimiter As String</paragraph>
         <paragraph role="bascode" localize="false" id="N0559">    Select Case OSName</paragraph>
-        <paragraph role="bascode" localize="false" id="N0560">        Case &quot;Linux&quot; : PathDelimiter = &quot;:&quot;</paragraph>
-        <paragraph role="bascode" localize="false" id="N0561">        Case &quot;Windows&quot; : PathDelimiter = &quot;;&quot;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0560">        Case &quot;MAC&quot;, &quot;UNIX&quot; : PathDelimiter = &quot;:&quot;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0561">        Case &quot;WIN&quot; : PathDelimiter = &quot;;&quot;</paragraph>
         <paragraph role="bascode" localize="false" id="N0562">     End Select</paragraph>
         <paragraph role="bascode" localize="false" id="N0563">End Property &apos; Platform.PathDelimiter</paragraph>
     </bascode>
@@ -107,7 +119,7 @@
         <embed href="text/sbasic/python/python_screen.xhp#ioscreen"/>
         <embed href="text/sbasic/shared/03132100.xhp#getguitype2"/>
         <embed href="text/sbasic/shared/GetPathSeparator.xhp#getpathseparator01"/>
-<!--
+<!--WIP
         <paragraph role="paragraph" id="N0585">
             <link href="text/sbasic/python/python_from_basic.xhp">Basic to Python function calls</link>
         </paragraph>-->
