@@ -9,6 +9,8 @@
 
 $(eval $(call gb_AllLangHelp_AllLangHelp,sdraw))
 
+$(eval $(call gb_AllLangHelp_set_treefile,sdraw,helpcontent2/source/auxiliary/sdraw))
+
 $(eval $(call gb_AllLangHelp_use_linked_modules,sdraw,\
 	schart \
 	shared \
