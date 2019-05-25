@@ -27,6 +27,17 @@
 <xsl:when test="$src1='chart2/res/dataeditor_icon08.png'"><xsl:text>cmd/sc_insertcolumns.png</xsl:text></xsl:when>
 <xsl:when test="$src1='chart2/res/dataeditor_icon09.png'"><xsl:text>cmd/sc_insertrowsbefore.png</xsl:text></xsl:when>
 <xsl:when test="$src1='chart2/res/selectrange.png'"><xsl:text>formula/res/refinp1.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_insertmenulegend.png'"><xsl:text>cmd/sc_legend.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_insertmenuaxes.png'"><xsl:text>cmd/sc_diagramaxis.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_insertmenugrids.png'"><xsl:text>cmd/sc_togglegridhorizontal.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_diagramaxisall.png'"><xsl:text>cmd/sc_diagramaxisxyz.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_insertmenulegend.png'"><xsl:text>cmd/lc_togglelegend.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_insertmenuaxes.png'"><xsl:text>cmd/lc_diagramaxis.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_insertmenugrids.png'"><xsl:text>cmd/lc_togglegridhorizontal.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_diagramaxisall.png'"><xsl:text>cmd/lc_diagramaxisxyz.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_charttitlemenu.png'"><xsl:text>cmd/sc_toggletitle.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_diagramaxismenu.png'"><xsl:text>cmd/sc_diagramaxis.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_diagramgridmenu.png'"><xsl:text>cmd/sc_togglegridhorizontal.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_adddatefield.png'"><xsl:text>cmd/lc_datefield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_addons.png'"><xsl:text>cmd/lc_insertplugin.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_addprintarea.png'"><xsl:text>cmd/lc_inserttable.png</xsl:text></xsl:when>
@@ -58,6 +69,7 @@
 <xsl:when test="$src1='cmd/lc_insertformvscroll.png'"><xsl:text>cmd/lc_scrollbar.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_insertframeinteract.png'"><xsl:text>cmd/lc_insertframe.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_insertframeinteractnocolumns.png'"><xsl:text>cmd/lc_insertframe.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_insertimagecontrol.png'"><xsl:text>cmd/lc_insertgraphic.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_insertobjectchart.png'"><xsl:text>cmd/lc_drawchart.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_insertnumericfield.png'"><xsl:text>cmd/lc_numberformatstandard.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_numericfield.png'"><xsl:text>cmd/lc_numberformatstandard.png</xsl:text></xsl:when>
@@ -76,6 +88,7 @@
 <xsl:when test="$src1='cmd/sc_insertdatefield.png'"><xsl:text>cmd/sc_datefield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertauthorfield.png'"><xsl:text>cmd/sc_dbviewaliases.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertedit.png'"><xsl:text>cmd/sc_text.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_edit.png'"><xsl:text>cmd/sc_text.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertfield.png'"><xsl:text>cmd/sc_addfield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertctrl.png'"><xsl:text>cmd/sc_inserttable.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertfilecontrol.png'"><xsl:text>cmd/sc_open.png</xsl:text></xsl:when>
@@ -87,11 +100,9 @@
 <xsl:when test="$src1='cmd/sc_insertformspin.png'"><xsl:text>cmd/sc_spinbutton.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertformula.png'"><xsl:text>cmd/sc_dbviewfunctions.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertformvscroll.png'"><xsl:text>cmd/sc_scrollbar.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_scrollbarmenu.png'"><xsl:text>cmd/sc_scrollbar.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertframeinteract.png'"><xsl:text>cmd/sc_insertframe.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_insertframemenu.png'"><xsl:text>cmd/sc_insertframe.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertframeinteractnocolumns.png'"><xsl:text>cmd/sc_insertframe.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_insertimagecontrol.png'"><xsl:text>cmd/sc_drawchart.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_insertimagecontrol.png'"><xsl:text>cmd/sc_insertgraphic.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertobjectchart.png'"><xsl:text>cmd/sc_drawchart.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertnumericfield.png'"><xsl:text>cmd/sc_numberformatstandard.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_numericfield.png'"><xsl:text>cmd/sc_numberformatstandard.png</xsl:text></xsl:when>
@@ -105,10 +116,11 @@
 <xsl:when test="$src1='cmd/sc_insertspreadsheet.png'"><xsl:text>cmd/sc_togglesheetgrid.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_inserttimefield.png'"><xsl:text>cmd/sc_timefield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_showtrackedchanges.png'"><xsl:text>cmd/sc_addwatch.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_viewtrackchanges.png'"><xsl:text>cmd/sc_addwatch.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_changesmenu.png'"><xsl:text>cmd/sc_trackchanges.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_showtrackedchanges.png'"><xsl:text>cmd/lc_addwatch.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_tracechangemode.png'"><xsl:text>cmd/sc_trackchanges.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_tracechangemode.png'"><xsl:text>cmd/lc_trackchanges.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_shapesmenu.png'"><xsl:text>cmd/sc_basicshapes.round-quadrat.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_charactermenu.png'"><xsl:text>cmd/sc_fontdialog.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_paragraphmenu.png'"><xsl:text>cmd/sc_paragraphdialog.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_numberingmenu.png'"><xsl:text>cmd/sc_outlinebullet.png</xsl:text></xsl:when>
@@ -143,7 +155,6 @@
 <xsl:when test="$src1='cmd/sc_textfittosizetool.png'"><xsl:text>cmd/sc_text_marquee.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_texttoolbox.png'"><xsl:text>cmd/sc_text.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_drawtext.png'"><xsl:text>cmd/sc_text.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_edit.png'"><xsl:text>cmd/sc_text.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_doubleclicktextedit.png'"><xsl:text>cmd/sc_pickthrough.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_fontworkcharacterspacingfloater.png'"><xsl:text>cmd/sc_spacing.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_fontheight.png'"><xsl:text>cmd/sc_scaletext.png</xsl:text></xsl:when>
@@ -167,7 +178,7 @@
 <xsl:when test="$src1='cmd/sc_textalign.png'"><xsl:text>cmd/sc_alignblock.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_formatbulletsmenu.png'"><xsl:text>cmd/sc_defaultbullet.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_formatimagemenu.png'"><xsl:text>cmd/sc_gallery.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_formatframemenu.png'"><xsl:text>cmd/sc_framedialog.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_formatframemenu.png'"><xsl:text>cmd/sc_formatline.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_webhtml.png'"><xsl:text>cmd/lc_browseview.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_openurl.png'"><xsl:text>cmd/lc_browseview.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_webhtml.png'"><xsl:text>cmd/sc_browseview.png</xsl:text></xsl:when>
@@ -189,7 +200,6 @@
 <xsl:when test="$src1='cmd/sc_deleteallnotes.png'"><xsl:text>cmd/sc_deleteallannotation.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_deleteallnotes.png'"><xsl:text>cmd/lc_deleteallannotation.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_formatallnotes.png'"><xsl:text>cmd/sc_editannotation.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_templatemenu.png'"><xsl:text>cmd/sc_adddirect.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_customanimation.png'"><xsl:text>cmd/lc_animationobjects.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_customanimation.png'"><xsl:text>cmd/sc_animationobjects.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_datastreamsplay.png'"><xsl:text>cmd/lc_runbasic.png</xsl:text></xsl:when>
@@ -291,7 +301,6 @@
 <xsl:when test="$src1='cmd/lc_dbquerydelete.png'"><xsl:text>cmd/lc_delete.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_dbformdelete.png'"><xsl:text>cmd/lc_delete.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_dbclearquery.png'"><xsl:text>cmd/lc_delete.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/lc_deletecell.png'"><xsl:text>cmd/lc_delete.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_deleteprintarea.png'"><xsl:text>cmd/sc_delete.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_deleterecord.png'"><xsl:text>cmd/sc_delete.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_dbtabledelete.png'"><xsl:text>cmd/sc_delete.png</xsl:text></xsl:when>
@@ -299,7 +308,6 @@
 <xsl:when test="$src1='cmd/sc_dbquerydelete.png'"><xsl:text>cmd/sc_delete.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_dbformdelete.png'"><xsl:text>cmd/sc_delete.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_dbclearquery.png'"><xsl:text>cmd/sc_delete.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_deletecell.png'"><xsl:text>cmd/sc_delete.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_dbtableopen.png'"><xsl:text>cmd/lc_open.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_dbreportopen.png'"><xsl:text>cmd/lc_open.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_dbqueryopen.png'"><xsl:text>cmd/lc_open.png</xsl:text></xsl:when>
@@ -479,12 +487,18 @@
 <xsl:when test="$src1='cmd/lc_commonaligntop.png'"><xsl:text>cmd/lc_aligntop.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_commonalignverticalcenter.png'"><xsl:text>cmd/lc_alignverticalcenter.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_commonalignbottom.png'"><xsl:text>cmd/lc_alignbottom.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_commonalignleft.png'"><xsl:text>cmd/sc_alignleft.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_commonalignhorizontalcenter.png'"><xsl:text>cmd/sc_alignhorizontalcenter.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_commonalignright.png'"><xsl:text>cmd/sc_alignright.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_commonalignjustified.png'"><xsl:text>cmd/sc_alignblock.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_commonalignleft.png'"><xsl:text>cmd/lc_alignleft.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_commonalignhorizontalcenter.png'"><xsl:text>cmd/lc_alignhorizontalcenter.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_commonalignright.png'"><xsl:text>cmd/lc_alignright.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_commonalignjustified.png'"><xsl:text>cmd/lc_alignblock.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_linespacing.png'"><xsl:text>cmd/lc_spacepara15.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_linespacing.png'"><xsl:text>cmd/sc_spacepara15.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_functionbox.png'"><xsl:text>cmd/lc_dbviewfunctions.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_datapilotmenu.png'"><xsl:text>cmd/sc_datadatapilotrun.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_insertrowsmenu.png'"><xsl:text>cmd/sc_insertrows.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_insertcolumnsmenu.png'"><xsl:text>cmd/sc_insertcolumns.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_functiondialog.png'"><xsl:text>cmd/sc_dbviewfunctions.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_functiondialog.png'"><xsl:text>cmd/lc_dbviewfunctions.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_functionbox.png'"><xsl:text>cmd/sc_dbviewfunctions.png</xsl:text></xsl:when>
@@ -519,7 +533,6 @@
 <xsl:when test="$src1='cmd/sc_fillcolor.png'"><xsl:text>cmd/sc_formatarea.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_headerandfooter.png'"><xsl:text>cmd/lc_editheaderandfooter.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_headerandfooter.png'"><xsl:text>cmd/sc_editheaderandfooter.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_insertheaderfootermenu.png'"><xsl:text>cmd/sc_editheaderandfooter.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_recalcpivottable.png'"><xsl:text>cmd/lc_calculate.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_recalcpivottable.png'"><xsl:text>cmd/sc_calculate.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_dataproviderrefresh.png'"><xsl:text>cmd/lc_calculate.png</xsl:text></xsl:when>
@@ -588,11 +601,8 @@
 <xsl:when test="$src1='cmd/sc_toggleaxisdescr.png'"><xsl:text>cmd/sc_helplinesvisible.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_gridvisible.png'"><xsl:text>cmd/lc_grid.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_gridvisible.png'"><xsl:text>cmd/sc_grid.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_gridmenu.png'"><xsl:text>cmd/sc_grid.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertgridcontrol.png'"><xsl:text>cmd/sc_grid.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_insertgridcontrol.png'"><xsl:text>cmd/lc_grid.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/lc_grafattrcrop.png'"><xsl:text>cmd/lc_crop.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_grafattrcrop.png'"><xsl:text>cmd/sc_crop.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_rulerrowsvertical.png'"><xsl:text>cmd/lc_extrusiontiltright.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_rulerrows.png'"><xsl:text>cmd/lc_extrusiontiltleft.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_rulerrowsvertical.png'"><xsl:text>cmd/sc_extrusiontiltright.png</xsl:text></xsl:when>
@@ -634,8 +644,6 @@
 <xsl:when test="$src1='cmd/sc_outlineright.png'"><xsl:text>cmd/sc_decrementlevel.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_outlineleft.png'"><xsl:text>cmd/sc_decrementindent.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_incrementlevel.png'"><xsl:text>cmd/sc_decrementindent.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_indexesmenu.png'"><xsl:text>cmd/sc_insertindexesentry.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_insertfootnotesmenu.png'"><xsl:text>cmd/sc_insertfootnote.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_fliphorizontal.png'"><xsl:text>cmd/lc_mirror.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_fliphorizontal.png'"><xsl:text>cmd/sc_mirror.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_flipvertical.png'"><xsl:text>cmd/lc_mirrorvert.png</xsl:text></xsl:when>
@@ -665,12 +673,10 @@
 <xsl:when test="$src1='cmd/sc_arrangeframemenu.png'"><xsl:text>cmd/sc_bringtofront.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_setobjecttobackground.png'"><xsl:text>cmd/lc_sendtoback.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_setobjecttobackground.png'"><xsl:text>cmd/sc_sendtoback.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_fieldmenu.png'"><xsl:text>cmd/sc_insertfieldctrl.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_numberformatmenu.png'"><xsl:text>cmd/sc_numberformatstandard.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_mergecellsmenu.png'"><xsl:text>cmd/sc_togglemergecells.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_printrangesmenu.png'"><xsl:text>cmd/sc_defineprintarea.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertcell.png'"><xsl:text>cmd/sc_insertcellsright.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_insertrowsmenu.png'"><xsl:text>cmd/sc_insertrows.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_refresh.png'"><xsl:text>cmd/lc_reload.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_refreshformcontrol.png'"><xsl:text>cmd/lc_reload.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_draw.png'"><xsl:text>cmd/lc_reload.png</xsl:text></xsl:when>
@@ -680,7 +686,6 @@
 <xsl:when test="$src1='cmd/sc_refreshformcontrol.png'"><xsl:text>cmd/sc_reload.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_styleupdatebyexample.png'"><xsl:text>cmd/sc_reload.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_draw.png'"><xsl:text>cmd/sc_reload.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_updatemenu.png'"><xsl:text>cmd/sc_reload.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_updateall.png'"><xsl:text>cmd/sc_reload.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_repaginate.png'"><xsl:text>cmd/sc_insertpagenumberfield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_updatefields.png'"><xsl:text>cmd/sc_addfield.png</xsl:text></xsl:when>
@@ -728,6 +733,7 @@
 <xsl:when test="$src1='cmd/sc_setoptimalcolumnwidthdirect.png'"><xsl:text>cmd/sc_setoptimalcolumnwidth.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_starchartdialog.png'"><xsl:text>cmd/lc_insertobjectdialog.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_starchartdialog.png'"><xsl:text>cmd/sc_insertobjectdialog.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_tablemenu.png'"><xsl:text>cmd/sc_inserttable.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_absoluterecord.png'"><xsl:text>cmd/lc_helpindex.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_absoluterecord.png'"><xsl:text>cmd/sc_helpindex.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_charbackcolor.png'"><xsl:text>cmd/sc_backcolor.png</xsl:text></xsl:when>
@@ -796,6 +802,7 @@
 <xsl:when test="$src1='cmd/lc_previousslide.png'"><xsl:text>cmd/lc_prevrecord.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_nextslide.png'"><xsl:text>cmd/lc_nextrecord.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_slidesetup.png'"><xsl:text>cmd/lc_pagesetup.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_insertpagefield.png'"><xsl:text>cmd/lc_insertpagenumberfield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertslide.png'"><xsl:text>cmd/sc_insertpage.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_duplicateslide.png'"><xsl:text>cmd/sc_duplicatepage.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_deleteslide.png'"><xsl:text>cmd/sc_deletepage.png</xsl:text></xsl:when>
@@ -812,11 +819,14 @@
 <xsl:when test="$src1='cmd/sc_insertslidefield.png'"><xsl:text>cmd/sc_insertpagenumberfield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertslidesfield.png'"><xsl:text>cmd/sc_insertpagecountfield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertslidetitlefield.png'"><xsl:text>cmd/sc_inserttitlefield.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_insertpagetitlefield.png'"><xsl:text>cmd/sc_inserttitlefield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertfilefield.png'"><xsl:text>cmd/sc_open.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertdatefieldfix.png'"><xsl:text>cmd/sc_datefield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_insertdatefieldvar.png'"><xsl:text>cmd/sc_datefield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_inserttimefieldfix.png'"><xsl:text>cmd/sc_timefield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_inserttimefieldvar.png'"><xsl:text>cmd/sc_timefield.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_insertpagefield.png'"><xsl:text>cmd/sc_insertpagenumberfield.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_insertpagesfield.png'"><xsl:text>cmd/sc_insertpagenumberfield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='dbaccess/res/linked_text_table.png'"><xsl:text>cmd/sc_dataimport.png</xsl:text></xsl:when>
 <xsl:when test="$src1='dbaccess/res/all_left.png'"><xsl:text>cmd/sc_firstrecord.png</xsl:text></xsl:when>
 <xsl:when test="$src1='dbaccess/res/all_right.png'"><xsl:text>cmd/sc_lastrecord.png</xsl:text></xsl:when>
@@ -844,8 +854,8 @@
 <xsl:when test="$src1='dbaccess/res/sc038.png'"><xsl:text>cmd/sc_editdoc.png</xsl:text></xsl:when>
 <xsl:when test="$src1='dbaccess/res/sc039.png'"><xsl:text>cmd/sc_save.png</xsl:text></xsl:when>
 <xsl:when test="$src1='dbaccess/res/sc040.png'"><xsl:text>cmd/sc_reload.png</xsl:text></xsl:when>
-<xsl:when test="$src1='dbaccess/res/sortdown.png'"><xsl:text>cmd/sc_sortascending.png</xsl:text></xsl:when>
-<xsl:when test="$src1='dbaccess/res/sortup.png'"><xsl:text>cmd/sc_sortdescending.png</xsl:text></xsl:when>
+<xsl:when test="$src1='dbaccess/res/sortdown.png'"><xsl:text>cmd/sc_downsearch.png</xsl:text></xsl:when>
+<xsl:when test="$src1='dbaccess/res/sortup.png'"><xsl:text>cmd/sc_upsearch.png</xsl:text></xsl:when>
 <xsl:when test="$src1='res/tables_32.png'"><xsl:text>dbaccess/res/tables_32.png</xsl:text></xsl:when>
 <xsl:when test="$src1='desktop/res/caution_16.png'"><xsl:text>dbaccess/res/exwarning.png</xsl:text></xsl:when>
 <xsl:when test="$src1='desktop/res/info_16.png'"><xsl:text>cmd/sc_helpindex.png</xsl:text></xsl:when>
@@ -1070,6 +1080,7 @@
 <xsl:when test="$src1='sc/res/sidebar/sc_alignright.png'"><xsl:text>cmd/sc_alignright.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sc/res/sidebar/sc_aligntop.png'"><xsl:text>cmd/sc_aligntop.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sc/res/droplink.png'"><xsl:text>cmd/sc_insertbookmark.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_insertanchor.png'"><xsl:text>cmd/sc_insertbookmark.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sd/res/nv02.png'"><xsl:text>cmd/sc_freeline_unfilled.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sd/res/nv03.png'"><xsl:text>cmd/sc_firstrecord.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sd/res/nv04.png'"><xsl:text>cmd/sc_prevrecord.png</xsl:text></xsl:when>
@@ -1122,7 +1133,6 @@
 <xsl:when test="$src1='sfx2/res/search.png'"><xsl:text>cmd/sc_recsearch.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sfx2/res/select.png'"><xsl:text>cmd/sc_ok.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sfx2/res/signet.png'"><xsl:text>cmd/sc_signature.png</xsl:text></xsl:when>
-<xsl:when test="$src1='sfx2/res/symphony/open_more.png'"><xsl:text>cmd/lc_controlproperties.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sfx2/res/symphony/sidebar-3d-large.png'"><xsl:text>cmd/lc_cube.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sfx2/res/symphony/sidebar-3d-small.png'"><xsl:text>cmd/sc_cube.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sfx2/res/symphony/sidebar-animation-large.png'"><xsl:text>cmd/lc_animationobjects.png</xsl:text></xsl:when>
@@ -1274,7 +1284,6 @@
 <xsl:when test="$src1='svx/res/symphony/rotate_right.png'"><xsl:text>cmd/sc_rotateright.png</xsl:text></xsl:when>
 <xsl:when test="$src1='svx/res/symphony/sch_backgroundcolor.png'"><xsl:text>cmd/sc_backgroundcolor.png</xsl:text></xsl:when>
 <xsl:when test="$src1='svx/res/symphony/spacing3.png'"><xsl:text>cmd/sc_spacepara1.png</xsl:text></xsl:when>
-<xsl:when test="$src1='svx/res/symphony/last_custom_common_grey.png'"><xsl:text>cmd/last_custom_common_grey.png</xsl:text></xsl:when>
 <xsl:when test="$src1='svx/res/symphony/last_custom_common.png'"><xsl:text>cmd/last_custom_common.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/lc20556.png'"><xsl:text>cmd/lc_dbviewfunctions.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/lc20557.png'"><xsl:text>cmd/lc_cancel.png</xsl:text></xsl:when>
@@ -1399,7 +1408,6 @@
 <xsl:when test="$src1='cmd/sc_mirrormenu.png'"><xsl:text>cmd/sc_rotateleft.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_convertmenu.png'"><xsl:text>cmd/sc_bezierconvert.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_chartmenu.png'"><xsl:text>cmd/sc_drawchart.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_objectmenu.png'"><xsl:text>cmd/sc_insertframe.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_addtextbox.png'"><xsl:text>cmd/sc_insertfixedtext.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_addtextbox.png'"><xsl:text>cmd/lc_insertfixedtext.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_masterpage.png'"><xsl:text>cmd/sc_slidemasterpage.png</xsl:text></xsl:when>
@@ -1423,12 +1431,24 @@
 <xsl:when test="$src1='cmd/sc_basicideappear.png'"><xsl:text>cmd/sc_toolsmacroedit.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_donation.png'"><xsl:text>cmd/lc_currencyfield.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_donation.png'"><xsl:text>cmd/sc_currencyfield.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/lc_redactedexportblack.png'"><xsl:text>cmd/lc_exportdirecttopdf.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_redactedexportblack.png'"><xsl:text>cmd/sc_exportdirecttopdf.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/32/redactedexportblack.png'"><xsl:text>cmd/32/exportdirecttopdf.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/lc_redactedexportwhite.png'"><xsl:text>cmd/lc_exportdirecttopdf.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_redactedexportwhite.png'"><xsl:text>cmd/sc_exportdirecttopdf.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/32/redactedexportwhite.png'"><xsl:text>cmd/32/exportdirecttopdf.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_defaultcellstyles.png'"><xsl:text>cmd/lc_defaultcharstyle.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_defaultcellstyles.png'"><xsl:text>cmd/sc_defaultcharstyle.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_heading1cellstyles.png'"><xsl:text>cmd/lc_heading1parastyle.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_heading1cellstyles.png'"><xsl:text>cmd/sc_heading1parastyle.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_heading2cellstyles.png'"><xsl:text>cmd/lc_heading2parastyle.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_heading2cellstyles.png'"><xsl:text>cmd/sc_heading2parastyle.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_footnotecellstyles.png'"><xsl:text>cmd/lc_insertfootnote.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_footnotecellstyles.png'"><xsl:text>cmd/sc_insertfootnote.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_notecellstyles.png'"><xsl:text>cmd/lc_showannotations.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_notecellstyles.png'"><xsl:text>cmd/sc_showannotations.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_focustofindbar.png'"><xsl:text>cmd/sc_recsearch.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_macroorganizer%3ftabid%3ashort=1.png'"><xsl:text>cmd/sc_open.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_com.sun.star.deployment.ui.packagemanagerdialog.png'"><xsl:text>cmd/sc_insertplugin.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_formatobjectmenu.png'"><xsl:text>cmd/sc_text.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_textattributes.png'"><xsl:text>cmd/sc_text.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_badcellstyles.png'"><xsl:text>cmd/sc_badcellstyle.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_goodcellstyles.png'"><xsl:text>cmd/sc_goodcellstyle.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_neutralcellstyles.png'"><xsl:text>cmd/sc_neutralcellstyle.png</xsl:text></xsl:when>
 <xsl:otherwise><xsl:value-of select="$src1"/></xsl:otherwise>
 </xsl:choose>
 </xsl:template>
