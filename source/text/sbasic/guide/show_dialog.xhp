@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
-
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -19,27 +16,29 @@
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  -->
-
-
-		<helpdocument version="1.0">
+<helpdocument version="1.0">
 <meta>
 <topic id="textsbasicguideshow_dialogxml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">Opening a Dialog With Program Code</title>
+<title id="tit" xml-lang="en-US">Opening a Dialog With Basic</title>
 <filename>/text/sbasic/guide/show_dialog.xhp</filename>
 </topic>
 </meta>
 <body>
-<bookmark xml-lang="en-US" branch="index" id="bm_id3154140"><bookmark_value>module/dialog toggle</bookmark_value>
-<bookmark_value>dialogs;using program code to show (example)</bookmark_value>
-<bookmark_value>examples; showing a dialog using program code</bookmark_value>
+<bookmark xml-lang="en-US" branch="index" id="bm_id3154140">
+   <bookmark_value>module/dialog toggle</bookmark_value>
+   <bookmark_value>dialogs;using Basic to show (example)</bookmark_value>
+   <bookmark_value>examples; showing a dialog with Basic</bookmark_value>
+   <bookmark_value>Tools;LoadDialog</bookmark_value>
 </bookmark><paragraph role="heading" id="hd_id3154140" xml-lang="en-US" level="1"><variable id="show_dialog"><link href="text/sbasic/guide/show_dialog.xhp" name="Opening a Dialog With Program Code">Opening a Dialog With Program Code</link>
 </variable></paragraph>
 <paragraph role="paragraph" id="par_id3145171" xml-lang="en-US">In the <item type="productname">%PRODUCTNAME</item> BASIC window for a dialog that you created, leave the dialog editor by clicking the name tab of the Module that the dialog is assigned to. The name tab is at the bottom of the window.</paragraph>
 <paragraph role="paragraph" id="par_id3153968" xml-lang="en-US">Enter the following code for a subroutine called <emph>Dialog1Show</emph>. In this example, the name of the dialog that you created is "Dialog1":</paragraph>
 <bascode>
 <paragraph role="bascode" id="par_id3156443" xml-lang="en-US" localize="false">Sub Dialog1Show</paragraph>
-<paragraph role="bascode" id="par_id3148575" xml-lang="en-US" localize="false">    BasicLibraries.LoadLibrary("Tools")</paragraph>
-<paragraph role="bascode" id="par_id3152463" xml-lang="en-US" localize="false">    oDialog1 = LoadDialog("Standard", "Dialog1")</paragraph>
+<paragraph role="bascode" id="par_id6715587" xml-lang="en-US" localize="false">    With GlobalScope.Basiclibraries</paragraph>
+<paragraph role="bascode" id="par_id3148575" xml-lang="en-US" localize="false">       If Not .IsLibraryLoaded("Tools") Then .LoadLibrary("Tools")</paragraph>
+<paragraph role="bascode" id="par_id5815587" xml-lang="en-US" localize="false">    End With</paragraph>
+<paragraph role="bascode" id="par_id3152463" xml-lang="en-US" localize="false">    oDialog1 = Tools.ModuleControls.LoadDialog("Standard", "Dialog1")</paragraph>
 <paragraph role="bascode" id="par_id3148646" xml-lang="en-US" localize="false">    oDialog1.Execute()</paragraph>
 <paragraph role="bascode" id="par_id3147349" xml-lang="en-US" localize="false">End Sub</paragraph>
 </bascode>
@@ -56,6 +55,7 @@
 <embed href="text/sbasic/guide/control_properties.xhp#control_properties"/>
 <embed href="text/sbasic/guide/create_dialog.xhp#create_dialog"/>
 <embed href="text/sbasic/guide/insert_control.xhp#insert_control"/>
+<embed href="text/sbasic/python/python_dialogs.xhp#pythondialog"/>
 <embed href="text/sbasic/guide/sample_code.xhp#sample_code"/>
 </section>
 </body>
