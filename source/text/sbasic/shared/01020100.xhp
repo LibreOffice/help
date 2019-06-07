@@ -49,161 +49,27 @@
 <paragraph id="par_id3148797" role="paragraph" xml-lang="en-US">A variable name can consist of a maximum of 255 characters. The first character of a variable name <emph>must</emph> be a letter A-Z or a-z. Numbers can also be used in a variable name, but punctuation symbols and special characters are not permitted, with exception of the underscore character ("_"). In $[officename] Basic variable identifiers are not case-sensitive. Variable names may contain spaces but must be enclosed in square brackets if they do.</paragraph>
 <paragraph id="par_id3156422" role="paragraph" xml-lang="en-US">Examples for variable identifiers:</paragraph>
 
-<table id="tbl_id3154685">
-  <tablerow>
-    <tablecell>
 <bascode>
-      <paragraph id="par_idm1341272896" role="bascode" localize="false" xml-lang="en-US">MyNumber=5</paragraph>
+    <paragraph id="par_idm1341272896" role="bascode">MyNumber=5      'Correct'</paragraph>
+    <paragraph id="par_idm1341267456" role="bascode">MyNumber5=15    'Correct'</paragraph>
+    <paragraph id="par_idm1341262016" role="bascode">MyNumber_5=20   'Correct'</paragraph>
+    <paragraph id="par_idm1341256576" role="bascode">My Number=20    'Not valid, variable with space must be enclosed in square brackets'</paragraph>
+    <paragraph id="par_idm1341251088" role="bascode">[My Number]=12  'Correct'</paragraph>
+    <paragraph id="par_idm1341245648" role="bascode">DéjàVu=25       'Not valid, special characters are not allowed'</paragraph>
+    <paragraph id="par_idm1341240176" role="bascode">5MyNumber=12    'Not valid, variable may not begin with a number'</paragraph>
+    <paragraph id="par_idm1341234704" role="bascode">Number,Mine=12  'Not valid, punctuation marks are not allowed'</paragraph>
 </bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3156441" role="paragraph" xml-lang="en-US">Correct</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341267456" role="bascode" localize="false" xml-lang="en-US">MyNumber5=15</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3149664" role="paragraph" xml-lang="en-US">Correct</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341262016" role="bascode" localize="false" xml-lang="en-US">MyNumber_5=20</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3146119" role="paragraph" xml-lang="en-US">Correct</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341256576" role="bascode" localize="false" xml-lang="en-US">My Number=20</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3153876" role="paragraph" xml-lang="en-US">Not valid, variable with space must be enclosed in square brackets</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341251088" role="bascode" localize="false" xml-lang="en-US">[My Number]=12</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3154510" role="paragraph" xml-lang="en-US">Correct</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341245648" role="bascode" localize="false" xml-lang="en-US">DéjàVu=25</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3150330" role="paragraph" xml-lang="en-US">Not valid, special characters are not allowed</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341240176" role="bascode" localize="false" xml-lang="en-US">5MyNumber=12</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3154254" role="paragraph" xml-lang="en-US">Not valid, variable may not begin with a number</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341234704" role="bascode" localize="false" xml-lang="en-US">Number,Mine=12</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3149256" role="paragraph" xml-lang="en-US">Not valid, punctuation marks are not allowed</paragraph>
-    </tablecell>
-  </tablerow>
-</table>
-
 
 <paragraph id="hd_id3146317" role="heading" level="2" xml-lang="en-US">Declaring Variables</paragraph>
 <paragraph id="par_id3150299" role="paragraph" xml-lang="en-US">In $[officename] Basic you don't need to declare variables explicitly. A variable declaration can be performed with the <emph>Dim</emph> statement. You can declare more than one variable at a time by separating the names with a comma. To define the variable type, use either a type-declaration sign after the name, or the appropriate key word. </paragraph>
 <paragraph id="par_id3154118" role="paragraph" xml-lang="en-US">Examples for variable declarations:</paragraph>
 
-<table id="tbl_id3154658">
-  <tablerow>
-    <tablecell>
 <bascode>
-      <paragraph id="par_idm1341222320" role="bascode" localize="false" xml-lang="en-US">Dim a$</paragraph>
+    <paragraph id="par_idm1341222320" role="bascode">Dim a$               'Declares the variable "a" as a String'</paragraph>
+    <paragraph id="par_idm1341216864" role="bascode">Dim a As String      'Declares the variable "a" as a String'</paragraph>
+    <paragraph id="par_idm1341211408" role="bascode">Dim a$, b As Integer 'Declares one variable as a String and one as an Integer'</paragraph>
+    <paragraph id="par_idm1341205936" role="bascode">Dim c As Boolean     'Declares c as a Boolean variable that can be TRUE or FALSE'</paragraph>
 </bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3150982" role="paragraph" xml-lang="en-US">Declares the variable "a" as a String</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341216864" role="bascode" localize="false" xml-lang="en-US">Dim a As String</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3150343" role="paragraph" xml-lang="en-US">Declares the variable "a" as a String</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341211408" role="bascode" localize="false" xml-lang="en-US">Dim a$, b As Integer</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3155507" role="paragraph" xml-lang="en-US">Declares one variable as a String and one as an Integer</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341205936" role="bascode" localize="false" xml-lang="en-US">Dim c As Boolean</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_idN10859" role="paragraph" xml-lang="en-US">Declares c as a Boolean variable that can be TRUE or FALSE</paragraph>
-    </tablecell>
-  </tablerow>
-</table>
-
-<paragraph id="par_id3150519" role="paragraph" xml-lang="en-US">It is very important when declaring variables that you use the type-declaration character each time, even if it was used in the declaration instead of a keyword. Thus the following statements are invalid:</paragraph>
-
-<table id="tbl_id3155529">
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341198080" role="bascode" localize="false" xml-lang="en-US">Dim a$</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3154527" role="paragraph" xml-lang="en-US">Declares "a" as a String</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341192624" role="bascode" localize="false" xml-lang="en-US">a="TestString"</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3153064" role="paragraph" xml-lang="en-US">Type-declaration missing: "a$="</paragraph>
-    </tablecell>
-  </tablerow>
-</table>
 
 <paragraph id="par_id3144770" role="warning" xml-lang="en-US">Once you have declared a variable as a certain type, you cannot declare the variable under the same name again as a different type!</paragraph>
 
@@ -300,48 +166,12 @@
 <paragraph id="par_id3148736" role="paragraph" xml-lang="en-US">$[officename] Basic knows one- or multi-dimensional arrays, defined by a specified variable type. Arrays are suitable for editing lists and tables in programs. Individual elements of an array can be addressed through a numeric index.</paragraph>
 <paragraph id="par_id3149546" role="paragraph" xml-lang="en-US">Arrays <emph>must</emph> be declared with the <emph>Dim</emph> statement. There are several ways to define the index range of an array:</paragraph>
 
-<table id="tbl_id3155829">
-  <tablerow>
-    <tablecell>
 <bascode>
-      <paragraph id="par_idm1341065280" role="bascode" localize="false" xml-lang="en-US">Dim Text$(20)</paragraph>
+    <paragraph id="par_idm1341065280" role="bascode">Dim Text$(20)       '21 elements numbered from 0 to 20'</paragraph>
+    <paragraph id="par_idm1341059776" role="bascode">Dim Text$(5,4)      '30 elements (a matrix of 6 x 5 elements)'</paragraph>
+    <paragraph id="par_idm1341054256" role="bascode">Dim Text$(5 To 25)  '21 elements numbered from 5 to 25'</paragraph>
+    <paragraph id="par_idm1341048752" role="bascode">Dim Text$(-15 To 5) '21 elements (including 0), numbered from -15 to 5'</paragraph>
 </bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3154567" role="paragraph" xml-lang="en-US">21 elements numbered from 0 to 20</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341059776" role="bascode" localize="false" xml-lang="en-US">Dim Text$(5,4)</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3154397" role="paragraph" xml-lang="en-US">30 elements (a matrix of 6 x 5 elements)</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341054256" role="bascode" localize="false" xml-lang="en-US">Dim Text$(5 To 25)</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3149690" role="paragraph" xml-lang="en-US">21 elements numbered from 5 to 25</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-<bascode>
-      <paragraph id="par_idm1341048752" role="bascode" localize="false" xml-lang="en-US">Dim Text$(-15 To 5)</paragraph>
-</bascode>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3153113" role="paragraph" xml-lang="en-US">21 elements (including 0), numbered from -15 to 5</paragraph>
-    </tablecell>
-  </tablerow>
-</table>
 
 <paragraph id="par_id3153005" role="paragraph" xml-lang="en-US">The index range can include positive as well as negative numbers. <comment>i36558</comment></paragraph>
 
@@ -351,5 +181,4 @@
 <paragraph id="par_idm1341038256" role="bascode" localize="false" xml-lang="en-US">Const ConstName=Expression</paragraph>
 </bascode>
 </body>
-
 </helpdocument>
