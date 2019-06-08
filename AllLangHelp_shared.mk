@@ -499,7 +499,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/02/flowcharts \
     helpcontent2/source/text/shared/02/fontwork \
     helpcontent2/source/text/shared/02/limit \
-    helpcontent2/source/text/shared/02/more_controls \
     helpcontent2/source/text/shared/02/paintbrush \
     helpcontent2/source/text/shared/02/querypropdlg \
     helpcontent2/source/text/shared/02/stars \
