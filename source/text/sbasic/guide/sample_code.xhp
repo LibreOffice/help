@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -18,26 +16,26 @@
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  -->
-	
 <helpdocument version="1.0">
-<meta>
-<topic id="textsbasicguidesample_codexml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">Programming Examples for Controls in the Dialog Editor</title>
-<filename>/text/sbasic/guide/sample_code.xhp</filename>
-</topic>
-<history>
-<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-</history>
-</meta>
+  <meta>
+    <topic id="textsbasicguidesample_codexml" indexer="include" status="PUBLISH">
+      <title id="tit" xml-lang="en-US">Programming Examples for Controls in the Dialog Editor</title>
+      <filename>/text/sbasic/guide/sample_code.xhp</filename>
+    </topic>
+    <history>
+      <created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
+    </history>
+  </meta>
 <body>
-<bookmark xml-lang="en-US" branch="index" id="bm_id3155338"><bookmark_value>programming examples for controls</bookmark_value>
-<bookmark_value>dialogs;loading (example)</bookmark_value>
-<bookmark_value>dialogs;displaying (example)</bookmark_value>
-<bookmark_value>controls;reading or editing properties (example)</bookmark_value>
-<bookmark_value>list boxes;removing entries from (example)</bookmark_value>
-<bookmark_value>list boxes;adding entries to (example)</bookmark_value>
-<bookmark_value>examples; programming controls</bookmark_value>
-<bookmark_value>dialog editor;programming examples for controls</bookmark_value>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3155338"><bookmark_value>programming examples for controls</bookmark_value>
+  <bookmark_value>dialogs;loading (example)</bookmark_value>
+  <bookmark_value>dialogs;displaying (example)</bookmark_value>
+  <bookmark_value>controls;reading or editing properties (example)</bookmark_value>
+  <bookmark_value>list boxes;removing entries from (example)</bookmark_value>
+  <bookmark_value>list boxes;adding entries to (example)</bookmark_value>
+  <bookmark_value>examples; programming controls</bookmark_value>
+  <bookmark_value>dialog editor;programming examples for controls</bookmark_value>
+  <bookmark_value>Tools;LoadDialog</bookmark_value>
 </bookmark>
 <section id="samplecode">
    <paragraph role="heading" id="hd_id3155338" xml-lang="en-US" level="1"><variable id="sample_code"><link href="text/sbasic/guide/sample_code.xhp" name="Programming Examples for Controls in the Dialog Editor">Programming Examples for Controls in the Dialog Editor</link>
@@ -48,7 +46,7 @@
 <paragraph role="heading" id="hd_id3154909" xml-lang="en-US" level="3">Global Function for Loading Dialogs</paragraph>
 <bascode>
 <paragraph role="bascode" id="par_id3153193" xml-lang="en-US" localize="false">Function LoadDialog(Libname as String, DialogName as String, Optional oLibContainer)</paragraph>
-<paragraph role="bascode" id="par_id3145787" xml-lang="en-US" localize="false">Dim oLib as Object</paragraph>
+<paragraph role="bascode" id="par_id3145787" xml-lang="en-US" localize="false">Dim oLib as Object ' com.sun.star.script.XLibraryContainer</paragraph>
 <paragraph role="bascode" id="par_id3148576" xml-lang="en-US" localize="false">Dim oLibDialog as Object</paragraph>
 <paragraph role="bascode" id="par_id3153726" xml-lang="en-US" localize="false">Dim oRuntimeDialog as Object</paragraph>
 <paragraph role="bascode" id="par_id3149261" xml-lang="en-US" localize="false">    If IsMissing(oLibContainer) Then</paragraph>
@@ -61,21 +59,26 @@
 <paragraph role="bascode" id="par_id3153876" xml-lang="en-US" localize="false">    LoadDialog() = oRuntimeDialog</paragraph>
 <paragraph role="bascode" id="par_id3156286" xml-lang="en-US" localize="false">End Function</paragraph>
 </bascode>
+<paragraph role="paragraph" id="par_id3153032" xml-lang="en-US"><literal>LoadDialog</literal> function is stored in <literal>Tools.ModuleControls</literal> available from %PRODUCTNAME Macros and Dialogs.</paragraph>
 <paragraph role="heading" id="hd_id3149412" xml-lang="en-US" level="3">Displaying a Dialog</paragraph>
 <bascode>
 <paragraph role="bascode" id="par_id3145801" xml-lang="en-US">REM global definition of variables</paragraph>
 <paragraph role="bascode" id="par_id3150716" xml-lang="en-US" localize="false">Dim oDialog1 AS Object</paragraph>
 <paragraph role="bascode" id="par_id3154510" xml-lang="en-US" localize="false">Sub StartDialog1</paragraph>
-<paragraph role="bascode" id="par_id3146913" xml-lang="en-US" localize="false">    BasicLibraries.LoadLibrary("Tools")</paragraph>
-<paragraph role="bascode" id="par_id3150327" xml-lang="en-US" localize="false">    oDialog1 = LoadDialog("Standard", "Dialog1")</paragraph>
+<paragraph role="bascode" id="par_id6715587" xml-lang="en-US" localize="false">    With GlobalScope.BasicLibraries</paragraph>
+<paragraph role="bascode" id="par_id3148575" xml-lang="en-US" localize="false">       If Not .IsLibraryLoaded("Tools") Then .LoadLibrary("Tools")</paragraph>
+<paragraph role="bascode" id="par_id5815587" xml-lang="en-US" localize="false">    End With</paragraph>
+<paragraph role="bascode" id="par_id3150327" xml-lang="en-US" localize="false">    oDialog1 = Tools.ModuleControls.LoadDialog("Standard", "Dialog1")</paragraph>
 <paragraph role="bascode" id="par_id3155767" xml-lang="en-US" localize="false">    oDialog1.Execute()</paragraph>
 <paragraph role="bascode" id="par_id3149019" xml-lang="en-US" localize="false">End Sub</paragraph>
 </bascode>
 <paragraph role="heading" id="hd_id3150042" xml-lang="en-US" level="3">Read or Edit Properties of Controls in the Program</paragraph>
 <bascode>
 <paragraph role="bascode" id="par_id3159267" xml-lang="en-US" localize="false">Sub Sample1</paragraph>
-<paragraph role="bascode" id="par_id3155335" xml-lang="en-US" localize="false">    BasicLibraries.LoadLibrary("Tools")</paragraph>
-<paragraph role="bascode" id="par_id3163808" xml-lang="en-US" localize="false">    oDialog1 = LoadDialog("Standard", "Dialog1")</paragraph>
+<paragraph role="bascode" id="par_id6715588" xml-lang="en-US" localize="false">    With GlobalScope.Basiclibraries</paragraph>
+<paragraph role="bascode" id="par_id3148576" xml-lang="en-US" localize="false">       If Not .IsLibraryLoaded("Tools") Then .LoadLibrary("Tools")</paragraph>
+<paragraph role="bascode" id="par_id5815588" xml-lang="en-US" localize="false">    End With</paragraph>
+<paragraph role="bascode" id="par_id3163808" xml-lang="en-US" localize="false">    oDialog1 = Tools.LoadDialog("Standard", "Dialog1")</paragraph>
 <paragraph role="bascode" id="par_id3145232" xml-lang="en-US">    REM get dialog model</paragraph>
 <paragraph role="bascode" id="par_id3146316" xml-lang="en-US" localize="false">    oDialog1Model = oDialog1.Model</paragraph>
 <paragraph role="bascode" id="par_id3154021" xml-lang="en-US">    REM display text of Label1</paragraph>
@@ -101,8 +104,10 @@
 <paragraph role="heading" id="hd_id3145387" xml-lang="en-US" level="3">Add an Entry to a ListBox</paragraph>
 <bascode>
 <paragraph role="bascode" id="par_id3155088" xml-lang="en-US" localize="false">Sub AddEntry</paragraph>
-<paragraph role="bascode" id="par_id3154528" xml-lang="en-US" localize="false">    BasicLibraries.LoadLibrary("Tools")</paragraph>
-<paragraph role="bascode" id="par_id3159222" xml-lang="en-US" localize="false">    oDialog1 = LoadDialog("Standard", "Dialog1")</paragraph>
+<paragraph role="bascode" id="par_id6715589" xml-lang="en-US" localize="false">    With GlobalScope.Basiclibraries</paragraph>
+<paragraph role="bascode" id="par_id3148577" xml-lang="en-US" localize="false">       If Not .IsLibraryLoaded("Tools") Then .LoadLibrary("Tools")</paragraph>
+<paragraph role="bascode" id="par_id5815589" xml-lang="en-US" localize="false">    End With</paragraph>
+<paragraph role="bascode" id="par_id3159222" xml-lang="en-US" localize="false">    oDialog1 = ModuleControls.LoadDialog("Standard", "Dialog1")</paragraph>
 <paragraph role="bascode" id="par_id3148700" xml-lang="en-US">    REM adds a new entry to the ListBox</paragraph>
 <paragraph role="bascode" id="par_id3159173" xml-lang="en-US" localize="false">    oDialog1Model = oDialog1.Model</paragraph>
 <paragraph role="bascode" id="par_id3153305" xml-lang="en-US" localize="false">    oListBox = oDialog1.GetControl("ListBox1")</paragraph>
@@ -114,8 +119,10 @@
 <paragraph role="heading" id="hd_id3147071" xml-lang="en-US" level="3">Remove an Entry from a ListBox</paragraph>
 <bascode>
 <paragraph role="bascode" id="par_id3159095" xml-lang="en-US" localize="false">Sub RemoveEntry</paragraph>
-<paragraph role="bascode" id="par_id3154958" xml-lang="en-US" localize="false">    BasicLibraries.LoadLibrary("Tools")</paragraph>
-<paragraph role="bascode" id="par_id3149443" xml-lang="en-US" localize="false">    oDialog1 = LoadDialog("Standard", "Dialog1")</paragraph>
+<paragraph role="bascode" id="par_id6715590" xml-lang="en-US" localize="false">    With GlobalScope.Basiclibraries</paragraph>
+<paragraph role="bascode" id="par_id3148578" xml-lang="en-US" localize="false">       If Not .IsLibraryLoaded("Tools") Then .LoadLibrary("Tools")</paragraph>
+<paragraph role="bascode" id="par_id5815590" xml-lang="en-US" localize="false">    End With</paragraph>
+<paragraph role="bascode" id="par_id3149443" xml-lang="en-US" localize="false">    oDialog1 = Tools.ModuleControls.LoadDialogLoadDialog("Standard", "Dialog1")</paragraph>
 <paragraph role="bascode" id="par_id3153247" xml-lang="en-US">    REM remove the first entry from the ListBox</paragraph>
 <paragraph role="bascode" id="par_id3151302" xml-lang="en-US" localize="false">    oDialog1Model = oDialog1.Model</paragraph>
 <paragraph role="bascode" id="par_id3153976" xml-lang="en-US" localize="false">    oListBox = oDialog1.GetControl("ListBox1")</paragraph>
