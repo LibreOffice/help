@@ -101,6 +101,8 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/smzb8.png \
     helpimg/smzb9.png \
     helpimg/scalc/coordinates-to-polar-01.svg \
+    helpimg/starmath/harpoon.svg \
+    helpimg/starmath/wideharpoon.svg \
     helpimg/starmath/al21801.svg \
     helpimg/starmath/al21802.svg \
     helpimg/starmath/al21803.svg \
