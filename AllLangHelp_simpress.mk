@@ -176,10 +176,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/guide/impress_remote \
     helpcontent2/source/text/simpress/guide/individual \
     helpcontent2/source/text/simpress/guide/keyboard \
-    helpcontent2/source/text/simpress/guide/layer_move \
-    helpcontent2/source/text/simpress/guide/layer_new \
-    helpcontent2/source/text/simpress/guide/layer_tipps \
-    helpcontent2/source/text/simpress/guide/layers \
     helpcontent2/source/text/simpress/guide/line_arrow_styles \
     helpcontent2/source/text/simpress/guide/line_draw \
     helpcontent2/source/text/simpress/guide/line_edit \
