@@ -250,5 +250,6 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     files/scalc/$(lang)/trigon.ods \
     files/scalc/$(lang)/pivot.ods \
     files/scalc/$(lang)/functions_ifs.ods \
+    files/scalc/$(lang)/function_fourier.ods \
 )))
 # vim: set noet sw=4 ts=4:

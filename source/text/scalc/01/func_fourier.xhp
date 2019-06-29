@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+    <meta>
+        <topic id="functfourier" indexer="include" status="PUBLISH">
+            <title id="tit" xml-lang="en-US">FOURIER function</title>
+            <filename>/text/scalc/01/func_fourier.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+    <section id="fourier01">
+        <bookmark id="bm_id681556227727944" xml-lang="en-US" branch="hid/SC_HID_FUNC_FOURIER" localize="false"/>
+        <bookmark xml-lang="en-US" branch="index" id="bm_id581556228060864">
+<bookmark_value>FOURIER function</bookmark_value>
+        </bookmark>
+        <h2 id="hd_id551556227727946"><variable id="fourierfunct"><link href="text/scalc/01/func_fourier.xhp" name="fourierfunction">FOURIER</link></variable></h2>
+        <paragraph id="par_id121556227727948" role="paragraph"><variable id="textjoinfunction"><ahelp hid=".">Computes the  Discrete Fourier Transform [DFT] of an input array of complex numbers using a couple of Fast Fourier Transform (FFT) algorithms.</ahelp></variable> The  function is an <link href="text/scalc/01/04060107.xhp" name="array formula">array formula</link>.</paragraph>
+    </section>
+    <embed href="text/scalc/00/avail_release.xhp#6.3"/>
+    <embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
+
+    <paragraph role="code" id="par_id541556228253979">FOURIER(Array, GroupedByColumns, Inverse, Polar, MinimumMagnitude)</paragraph>
+    <paragraph role="paragraph" id="par_id741556228390897"><emph>Array</emph> is a 2 x N or N x 2 range representing an array of complex number to be transformed, where N is the length of the array. The array represents the real and imaginary parts of the data.</paragraph>
+
+    <paragraph role="paragraph" id="par_id621556228397269"><emph>GroupedByColumns</emph> is a logical (TRUE or FALSE, 1 or 0) argument. When TRUE the array is grouped by columns where the first column contains the real part of the complex number and the second columns contains the imaginary part of the complex number. When FALSE, the first row contains the real part of the complex number and the second row contains the imaginary part of the complex number. If there is only 1 column (row), the input sequence is treated as purely real.</paragraph>
+
+    <paragraph role="paragraph" id="par_id631556228516997"><emph>Inverse</emph> is an optional logical (TRUE or FALSE, 1 or 0) argument. When TRUE, calculates the inverse Discrete Fourier Transform. The default value is FALSE.</paragraph>
+
+    <paragraph role="paragraph" id="par_id811561732287508"><emph>Polar</emph>: is an optional logical (TRUE or FALSE, 1 or 0) argument. Indicates whether the final output is in polar coordinates (magnitude, phase). This argument is optional and the default value is FALSE.</paragraph>
+
+    <paragraph role="paragraph" id="par_id661561732521977"><emph>MinimumMagnitude</emph>: used only if Polar=TRUE. All frequency components with magnitude less than <emph>MinimumMagnitude</emph> will be suppressed with a zero magnitude-phase entry. This is very useful when looking at the magnitude-phase spectrum of a signal because there is always some very tiny amount of rounding error when doing FFT algorithms and results in incorrect non-zero phase for non-existent frequencies. By providing a suitable value to this parameter, these non-existent frequency components can be suppressed. By default the value of <emph>MinimumMagnitude</emph> is 0.0, and no suppression is done by default.</paragraph>
+    <embed href="text/scalc/01/ful_func.xhp#func_head_example"/>
+    <embed href="text/scalc/01/stat_data.xhp#fourierdata"/>
+    <embed href="text/scalc/06/calcsamplefiles.xhp#func_fourier"/>
+    <section id="relatedtopics">
+        <embed href="text/scalc/01/statistics_fourier.xhp#fourieranalysysh1"/>
+        <embed href="text/scalc/01/04060107.xhp#arrayfunctit"/>
+    </section>
+</body>
+</helpdocument>
