@@ -208,6 +208,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_forecastetspiadd \
     helpcontent2/source/text/scalc/01/func_forecastetspimult \
     helpcontent2/source/text/scalc/01/func_forecastetsseason \
+    helpcontent2/source/text/scalc/01/func_fourier \
     helpcontent2/source/text/scalc/01/exponsmooth_embd \
     helpcontent2/source/text/scalc/01/func_hour \
     helpcontent2/source/text/scalc/01/func_ifs \
@@ -256,6 +257,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/solver \
     helpcontent2/source/text/scalc/01/solver_options \
     helpcontent2/source/text/scalc/01/statistics \
+    helpcontent2/source/text/scalc/01/statistics_fourier \
     helpcontent2/source/text/scalc/01/statistics_regression \
     helpcontent2/source/text/scalc/01/stat_data \
     helpcontent2/source/text/scalc/01/ODFF \
