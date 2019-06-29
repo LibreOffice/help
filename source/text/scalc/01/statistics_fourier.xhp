@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+    <meta>
+        <topic id="ID" indexer="include" status="PUBLISH">
+            <title id="tit" xml-lang="en-US">Fourier Analysis</title>
+            <filename>/text/scalc/01/statistics_fourier.xhp</filename>
+        </topic>
+    </meta>
+
+    <body>
+    <bookmark xml-lang="en-US" branch="hid/modules/scalc/ui/fourieranalysisdialog/FourierAnalysisDialog" id="bm_id2345673" localize="false"/>
+    <bookmark xml-lang="en-US" branch="hid/modules/scalc/ui/regressiondialog/@@nowidget@@" id="bm_id2745673" localize="false"/>
+
+    <h1 id="hd_id431561808831965"><variable id="fourieranalysysh1"><link href="text/scalc/01/statistics_fourier.xhp" name="Fourier analysis">Fourier Analysis</link></variable></h1>
+    <paragraph id="par_id1001240" role="paragraph" xml-lang="en-US"><ahelp hid="modules/scalc/ui/regressiondialog/RegressionDialog">Produces the Fourier analysis of a data set by computing the  Discrete Fourier Transform (DFT) of an input array of complex numbers using a couple of Fast Fourier Transform (FFT) algorithms.</ahelp></paragraph>
+
+    <section id="fourieranalysis">
+        <bookmark xml-lang="en-US" branch="index" id="bm_id2764278">
+<bookmark_value>Analysis toolpack;Fourier analysis</bookmark_value>
+<bookmark_value>Fourier analysis;Analysis toolpack</bookmark_value>
+<bookmark_value>Data statistics;Fourier analysis</bookmark_value>
+        </bookmark>
+        <section id="howtoget">
+            <paragraph id="par_id1000040" role="paragraph" xml-lang="en-US"><variable id="sam01">Choose <emph>Data - Statistics - Fourier Analysis</emph></variable></paragraph>
+        </section>
+        <note id="par_id1001270">For more information on Fourier analysis, refer to the <link href="https://en.wikipedia.org/wiki/Fourier_analysis" name="English Wikipedia: Fourier analysis">corresponding Wikipedia article</link>.</note>
+
+        <embed href="text/scalc/01/stat_data.xhp#data"/>
+        <paragraph role="paragraph" id="par_id301561811172762"><emph>Input range has label</emph>: Mark when the first row or column of the input array is actually a label and not part of the data analysis.</paragraph>
+        <paragraph role="paragraph" id="par_id741556228390897">Input Range is a 2 x N or N x 2 range representing an array of complex number to be transformed, where N is the length of the array. The array represents the real and imaginary parts of the data.</paragraph>
+        <embed href="text/scalc/01/stat_data.xhp#grouped"/>
+
+        <h3 id="hd_id211561811324208">Options:</h3>
+        <paragraph role="paragraph" id="par_id631556228516997"><emph>Inverse</emph>: When checked, calculates the inverse Discrete Fourier Transform.</paragraph>
+        <paragraph role="paragraph" id="par_id811561732287508"><emph>Polar</emph>: When checked, the results are in polar coordinates (magnitude, phase).</paragraph>
+        <paragraph role="paragraph" id="par_id661561732521977"><emph>Minimum magnitude for polar form output (in dB)</emph>: used only when output is in polar form. All frequency components with magnitude less than this value in decibels will be suppressed with a zero magnitude-phase entry. This is very useful when looking at the magnitude-phase spectrum of a signal because there is always some very tiny amount of rounding error when doing FFT algorithms and results in incorrect non-zero phase for non-existent frequencies. By providing a suitable value to this parameter, these non-existent frequency components can be suppressed.</paragraph>
+
+        <embed href="text/scalc/06/calcsamplefiles.xhp#func_fourier"/>
+        <embed href="text/scalc/01/ful_func.xhp#func_head_example"/>
+        <paragraph role="paragraph" id="par_id731561827207828">The source data for this example is the same of the <link href="text/scalc/01/func_fourier.xhp" name="Fourier function">FOURIER function page</link>.</paragraph>
+        <table id="Tabela1">
+            <tablerow>
+                <tablecell colspan="2">
+                    <paragraph id="par_id290620191257279817" role="tablehead">Fourier Transform</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell colspan="2">
+                    <paragraph id="par_id29062019125727379" role="tablehead">Fourier Transform</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell colspan="2">
+                    <paragraph id="par_id290620191257276510" role="tablecontent"><emph>Input data range : $B$6:$C$40</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell colspan="2">
+                    <paragraph id="par_id290620191257273433" role="tablecontent"><emph>Input data range : $B$6:$C$40</emph></paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257273688" role="tablecontent"><emph>Real</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257276202" role="tablecontent"><emph>Imaginary</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id481561825547527" role="tablecontent"><emph>Magnitude</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id751561825556834" role="tablecontent"><emph>Phase</emph></paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id29062019125727529" role="tablecontent" localize="false">17.1775578743134</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257277650" role="tablecontent" localize="false">3.88635177703826E-15</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id711561825563346" role="tablecontent" localize="false">17.1775578743134</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id901561825568423" role="tablecontent" localize="false">2.26245884628906E-16</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257274698" role="tablecontent" localize="false">3.428868795359</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257276895" role="tablecontent" localize="false">2.37164790000189</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id201561825580585" role="tablecontent" localize="false">4.16915518748944</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id101561825584332" role="tablecontent" localize="false">0.605113892937279</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257278831" role="tablecontent" localize="false">-6.80271615433369</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257273532" role="tablecontent" localize="false">-15.1345439297576</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id711561825589842" role="tablecontent" localize="false">16.5931120359682</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id81561825619703" role="tablecontent" localize="false">-1.99322000923881</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257274709" role="tablecontent" localize="false">-1.605447356601</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257276525" role="tablecontent" localize="false">-5.08653060378972</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id991561825625022" role="tablecontent" localize="false">5.33387802617444</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id21561825629228" role="tablecontent" localize="false">-1.87652762269615</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257272245" role="tablecontent" localize="false">0.395847917447356</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257274310" role="tablecontent" localize="false">-2.41926785527625</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id701561825635119" role="tablecontent" localize="false">2.45143886917874</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id831561825638615" role="tablecontent" localize="false">-1.40861048708919</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id29062019125727326" role="tablecontent" localize="false">-1.49410383304833</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257275013" role="tablecontent" localize="false">-2.39148041275</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id241561825641911" role="tablecontent" localize="false">2.81984482347817</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id221561825645728" role="tablecontent" localize="false">-2.12922380028329</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257277775" role="tablecontent" localize="false">0.87223579298981</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257277856" role="tablecontent" localize="false">-1.14394086206797</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id671561825649808" role="tablecontent" localize="false">1.43853952829993</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id321561825657817" role="tablecontent" localize="false">-0.919353665468368</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257274532" role="tablecontent" localize="false">1.5332458505929</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257279129" role="tablecontent" localize="false">0.678159168870983</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id681561825661535" role="tablecontent" localize="false">1.6765269746366</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id671561825665344" role="tablecontent" localize="false">0.416434654153369</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257287695" role="tablecontent" localize="false">0.450563708411459</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257286376" role="tablecontent" localize="false">0.22911248792634</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id511561825670030" role="tablecontent" localize="false">0.505470263676592</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id761561825674325" role="tablecontent" localize="false">0.470425948779898</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257286648" role="tablecontent" localize="false">0.545106616940358</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257285951" role="tablecontent" localize="false">0.411028927740438</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id91561825686459" role="tablecontent" localize="false">0.682704916689207</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id561561825689880" role="tablecontent" localize="false">0.646077879418302</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257285124" role="tablecontent" localize="false">2.22685996425193</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257286584" role="tablecontent" localize="false">-2.43092236748302</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id151561825697930" role="tablecontent" localize="false">3.29670879167654</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id381561825701512" role="tablecontent" localize="false">-0.829181229907427</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257286986" role="tablecontent" localize="false">-1.61522859107175</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257281114" role="tablecontent" localize="false">-2.41682657284899</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id891561825705846" role="tablecontent" localize="false">2.90689079338124</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id11561825709464" role="tablecontent" localize="false">-2.15994697868441</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257283083" role="tablecontent" localize="false">1.30245078290168</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257287927" role="tablecontent" localize="false">1.45443785733126</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id611561825715444" role="tablecontent" localize="false">1.95237484175544</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id871561825718419" role="tablecontent" localize="false">0.840472341525344</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257281022" role="tablecontent" localize="false">1.57930628561185</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257288920" role="tablecontent" localize="false">-1.33862736591677</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id171561825722999" role="tablecontent" localize="false">2.07029745895472</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id381561825726528" role="tablecontent" localize="false">-0.70310180067089</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id29062019125728198" role="tablecontent" localize="false">-1.07572227365276</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257281880" role="tablecontent" localize="false">-0.921557968003809</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id621561825733235" role="tablecontent" localize="false">1.41649126309482</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id911561825736891" role="tablecontent" localize="false">-2.43322886402899</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257286891" role="tablecontent" localize="false">-0.055782417923803</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257285354" role="tablecontent" localize="false">-1.81336029451831</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id71561825745885" role="tablecontent" localize="false">1.81421807837012</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id341561825750480" role="tablecontent" localize="false">-1.60154853447151</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257283162" role="tablecontent" localize="false">-0.577666040004067</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257282542" role="tablecontent" localize="false">1.38887243891951</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id851561825755054" role="tablecontent" localize="false">1.50421564456836</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id141561825758670" role="tablecontent" localize="false">1.96495487990047</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257285160" role="tablecontent" localize="false">-0.826878282157686</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257287292" role="tablecontent" localize="false">-0.186591000796403</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id41561825766562" role="tablecontent" localize="false">0.847669685126376</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id721561825770334" role="tablecontent" localize="false">-2.91965280961949</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257285848" role="tablecontent" localize="false">-0.826878282157715</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257289336" role="tablecontent" localize="false">0.186591000796416</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id471561825776243" role="tablecontent" localize="false">0.847669685126408</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id991561825781290" role="tablecontent" localize="false">2.91965280961948</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257288490" role="tablecontent" localize="false">-0.577666040004051</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257284271" role="tablecontent" localize="false">-1.38887243891954</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id661561825788196" role="tablecontent" localize="false">1.50421564456838</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id321561825791887" role="tablecontent" localize="false">-1.96495487990045</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id29062019125728802" role="tablecontent" localize="false">-0.055782417923785</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257284034" role="tablecontent" localize="false">1.81336029451832</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id851561825796754" role="tablecontent" localize="false">1.81421807837012</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id691561825800702" role="tablecontent" localize="false">1.6015485344715</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257288282" role="tablecontent" localize="false">-1.07572227365276</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257283112" role="tablecontent" localize="false">0.921557968003802</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id171561825805651" role="tablecontent" localize="false">1.41649126309482</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id651561825809772" role="tablecontent" localize="false">2.433228864029</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257287702" role="tablecontent" localize="false">1.57930628561187</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257293964" role="tablecontent" localize="false">1.33862736591678</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id31561825813387" role="tablecontent" localize="false">2.07029745895474</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id261561825818319" role="tablecontent" localize="false">0.703101800670888</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257298813" role="tablecontent" localize="false">1.3024507829017</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257292229" role="tablecontent" localize="false">-1.45443785733125</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id811561825823956" role="tablecontent" localize="false">1.95237484175543</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id781561825828580" role="tablecontent" localize="false">-0.840472341525331</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id29062019125729581" role="tablecontent" localize="false">-1.61522859107176</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257299086" role="tablecontent" localize="false">2.416826572849</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id1001561825833977" role="tablecontent" localize="false">2.90689079338125</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id11561825837094" role="tablecontent" localize="false">2.15994697868441</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257296839" role="tablecontent" localize="false">2.22685996425191</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257292861" role="tablecontent" localize="false">2.43092236748304</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id791561825843164" role="tablecontent" localize="false">3.29670879167653</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id41561825846486" role="tablecontent" localize="false">0.829181229907435</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257291686" role="tablecontent" localize="false">0.545106616940365</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257299836" role="tablecontent" localize="false">-0.411028927740441</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id771561825852156" role="tablecontent" localize="false">0.682704916689214</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id941561825855686" role="tablecontent" localize="false">-0.646077879418299</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257292523" role="tablecontent" localize="false">0.450563708411458</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257295218" role="tablecontent" localize="false">-0.229112487926344</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id61561825860084" role="tablecontent" localize="false">0.505470263676594</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id741561825863994" role="tablecontent" localize="false">-0.470425948779905</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257297879" role="tablecontent" localize="false">1.53324585059292</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257293381" role="tablecontent" localize="false">-0.678159168870965</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id661561825873072" role="tablecontent" localize="false">1.6765269746366</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id81561825876773" role="tablecontent" localize="false">-0.416434654153355</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id29062019125729145" role="tablecontent" localize="false">0.872235792989797</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257299200" role="tablecontent" localize="false">1.14394086206799</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id221561825883285" role="tablecontent" localize="false">1.43853952829994</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id281561825886634" role="tablecontent" localize="false">0.919353665468386</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257298876" role="tablecontent" localize="false">-1.49410383304834</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257295073" role="tablecontent" localize="false">2.39148041275001</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id411561825892297" role="tablecontent" localize="false">2.81984482347818</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id631561825897202" role="tablecontent" localize="false">2.12922380028329</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257295843" role="tablecontent" localize="false">0.395847917447327</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257292406" role="tablecontent" localize="false">2.41926785527626</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id941561825902058" role="tablecontent" localize="false">2.45143886917875</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id101561825905350" role="tablecontent" localize="false">1.4086104870892</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257294283" role="tablecontent" localize="false">-1.60544735660102</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257293991" role="tablecontent" localize="false">5.08653060378972</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id811561825912635" role="tablecontent" localize="false">5.33387802617445</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id461561825916257" role="tablecontent" localize="false">1.87652762269616</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257291705" role="tablecontent" localize="false">-6.80271615433379</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257294294" role="tablecontent" localize="false">15.1345439297575</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id831561825920319" role="tablecontent" localize="false">16.5931120359682</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id441561825923790" role="tablecontent" localize="false">1.99322000923882</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id290620191257297686" role="tablecontent" localize="false">3.42886879535907</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id290620191257296150" role="tablecontent" localize="false">-2.37164790000194</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id151561825927729" role="tablecontent" localize="false">4.16915518748952</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id551561825934063" role="tablecontent" localize="false">-0.605113892937279</paragraph>
+                </tablecell>
+            </tablerow>
+        </table>
+
+        <section id="relatedtopics">
+            <embed href="text/scalc/01/func_fourier.xhp#fourierfunct"/>
+            <embed href="text/scalc/01/statistics_regression.xhp#regressionanalysish1"/>
+            <paragraph id="par_id14337286612130" role="paragraph" xml-lang="en-US"> <link href="text/scalc/01/statistics.xhp#datasampling">Sampling</link>, <link href="text/scalc/01/statistics.xhp#descriptivestatistics">Descriptive Statistics</link>, <link href="text/scalc/01/statistics.xhp#anova">Analysis of Variance (ANOVA)</link>, <link href="text/scalc/01/statistics.xhp#correlation">Correlation</link>, <link href="text/scalc/01/statistics.xhp#covariance">Covariance</link>, <link href="text/scalc/01/statistics.xhp#exponentialsmoothing">Exponential Smoothing</link>, <link href="text/scalc/01/statistics.xhp#movingaverage">Moving Average</link>, <link href="text/scalc/01/statistics.xhp#ttest">Paired t-test</link>, <link href="text/scalc/01/statistics.xhp#ftest">F-test</link>, <link href="text/scalc/01/statistics.xhp#ztest">Z-test</link>, <link href="text/scalc/01/statistics.xhp#chisqtest">Chi-square test</link>.</paragraph>
+        </section>
+    </section>
+</body>
+</helpdocument>
