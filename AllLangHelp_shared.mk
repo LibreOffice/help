@@ -696,6 +696,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/print_blackwhite \
     helpcontent2/source/text/shared/guide/print_faster \
     helpcontent2/source/text/shared/guide/protection \
+    helpcontent2/source/text/shared/guide/redaction \
     helpcontent2/source/text/shared/guide/redlining \
     helpcontent2/source/text/shared/guide/redlining_accept \
     helpcontent2/source/text/shared/guide/redlining_doccompare \
