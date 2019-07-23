@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+   <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+   <meta>
+      <topic id="text/sbasic/python/python_handler">
+         <title id="tit" xml-lang="en-US">Creating A Dialog Handler</title>
+         <filename>/text/sbasic/python/python_handler.xhp</filename>
+      </topic>
+   </meta>
+   <body>
+      <bookmark branch="index" id="N0664">
+         <bookmark_value>Basic;Dialog Handler</bookmark_value>
+         <bookmark_value>Python;Dialog Handler</bookmark_value>
+         <bookmark_value>Access2Base;dlgTrace</bookmark_value>
+         <bookmark_value>Access2Base;_DumpToFile</bookmark_value>
+         <bookmark_value>API;DialogProvider2</bookmark_value>
+         <bookmark_value>API;XDialogEventHandler</bookmark_value>
+      </bookmark>
+      <h1 id="N0665"><variable id="pythonhandler_h1"><link href="text/sbasic/python/python_handler.xhp" name="Creating a Dialog Handler">Creating a Dialog Handler</link></variable></h1>
+      <paragraph role="paragraph" id="N0666">Next to <link href="text/sbasic/shared/01040000.xhp" name ="Assigning macros to events">assigning macros to events</link> or <link href="text/sbasic/basic/python/python_listener" name ="creating event listeners">creating event listeners</link>, one can use dialog handlers, whose principle is to define UNO keywords, or methods, that are mapped to events to watch for. The event handler is responsible for executing methods using the <literal>vnd.sun.star.UNO:&lt;method_name&gt;</literal> protocol. Unlike listeners that require to define all supported methods, even if unused, dialog handlers require only two methods on top of intended control hook scripts.</paragraph>
+      <paragraph role="paragraph" id="N0667">The advantages of this approach are:</paragraph>
+      <list type="unordered">
+         <listitem><paragraph role="listitem" id="N0668">It packs the code that handles event-driven macros,</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0669">it decorrelates events from macros names which facilitates maintenance or updates, in particular when moving macros or modules.</paragraph></listitem>
+      </list>
+      <paragraph role="paragraph" id="N0670">This mechanism is illustrated herewith for Basic and Python languages using an imported copy of <literal>Access2Base</literal> <literal>dlgTrace</literal> dialog. Exception handling and localisation are omitted for clarity.</paragraph>
+      <h2 id="N0671">Assigning Dialog methods</h2>
+      <paragraph role="paragraph" id="N0672">Export <literal>Access2Base</literal> <literal>dlgTrace</literal> dialog and import it into <literal>MyLib</literal> application library.</paragraph>
+      <paragraph role="paragraph" id="N0673">Inside the control properties pane of the <link href="text/sbasic/guide/create_dialog.xhp" name ="Dialog Editor">Dialog Editor</link>, use the Events tab to replace macro assignments by component assignments, and type in the intended method names:</paragraph>
+      <list type="unordered">
+         <listitem><paragraph role="listitem" id="N0674">Set <literal>Dump to file</literal> dialog button component method name to <literal>_dump2File</literal></paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0675">Optionnally define <literal>txtTracelog</literal> key pressed and mouse button pressed events component method names as <literal>_openHelp</literal></paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0676">Optionnally define <literal>Ok</literal> button receiving focus event component method name as <literal>onOkHasfocus</literal></paragraph></listitem>
+      </list>
+      <paragraph role="paragraph" id="N0677">Events assigned actions should mention the <literal>vnd.sun.star.UNO:</literal> protocol.</paragraph>
+      <h2 id="N0678">Creating the handler</h2>
+      <paragraph role="paragraph" id="N0679"><literal>createDialogWithHandler</literal> method of <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1DialogProvider2.html" name ="com.sun.star.awt.DialogProvider2">com.sun.star.awt.DialogProvider2</link> service is used to set the dialog and its handler. The handler is responsible for implementing <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XDialogEventHandler.html" name ="com.sun.star.awt.XDialogEventHandler">com.sun.star.awt.XDialogEventHandler</link> interface.</paragraph>
+      <warning id="N0680">All component method names must be explicitly declared when using a dialog handler.</warning>
+      <h3 id="N0681">With Python</h3>
+      <paragraph role="paragraph" id="N0682">In this example the dialog is located on the computer.</paragraph>
+      <pycode>
+      <paragraph role="pycode" localize="false" id="N0683"># -*- coding: utf-8 -*-</paragraph>
+      <paragraph role="pycode" localize="false" id="N0684">from __future__ import unicode_literals</paragraph>
+      <paragraph role="pycode" localize="false" id="N0685">    </paragraph>
+      <paragraph role="pycode" localize="false" id="N0686">import uno, unohelper</paragraph>
+      <paragraph role="pycode" localize="false" id="N0687">from com.sun.star.awt import XDialogEventHandler</paragraph>
+      <paragraph role="pycode" localize="false" id="N0688">    </paragraph>
+      <paragraph role="pycode" localize="false" id="N0689">_DLG_PROVIDER = &quot;com.sun.star.awt.DialogProvider2&quot;</paragraph>
+      <paragraph role="pycode" localize="false" id="N0690">    </paragraph>
+      <paragraph role="pycode" localize="false" id="N0691">class Console(unohelper.Base, XDialogEventHandler):</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="N0692">    &quot;&quot;&quot; Access2Base Console Handler &quot;&quot;&quot;</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="N0693">    &apos;&apos;&apos; adapted from « Créer un dialogue avec gestionnaire d&apos;événements » by JM Zambon</paragraph>
+      <paragraph role="pycode" localize="false" id="N0694">    https://wiki.openoffice.org/wiki/FR/Documentation/Python/Creating_Dialog_with_Handler &apos;&apos;&apos;</paragraph>
+      <paragraph role="pycode" localize="false" id="N0695">    def show(self):</paragraph>
+      <paragraph role="pycode" localize="false" id="N0696">        dialog = self.getDialog(&quot;MyLib.dlgTrace&quot;, embedded=True)</paragraph>
+      <paragraph role="pycode" localize="false" id="N0697">        dialog.Title = &quot;Konsole&quot;</paragraph>
+      <paragraph role="pycode" localize="false" id="N0698">        dialog.execute()</paragraph>
+      <paragraph role="pycode" localize="false" id="N0699">    </paragraph>
+      <paragraph role="pycode" localize="false" id="N0700">    def callHandlerMethod(self, dialog, event, method):</paragraph>
+      <paragraph role="pycode" localize="false" id="N0701">        if method == &apos;_dump2File&apos;:</paragraph>
+      <paragraph role="pycode" localize="false" id="N0702">            event.Source.setLabel(&quot;dump requested&quot;)</paragraph>
+      <paragraph role="pycode" localize="false" id="N0703">            scr = getBasicScript(script=&quot;_DumpToFile&quot;, module=&quot;Trace&quot;,</paragraph>
+      <paragraph role="pycode" localize="false" id="N0704">                library=&apos;Access2Base&apos;)</paragraph>
+      <paragraph role="pycode" localize="false" id="N0705">            scr.invoke((event,), (), ())</paragraph>
+      <paragraph role="pycode" localize="false" id="N0706">        elif method == &apos;_openHelp&apos;:</paragraph>
+      <paragraph role="pycode" localize="false" id="N0707">            _msgbox(&apos;Not yet implemented&apos;)</paragraph>
+      <paragraph role="pycode" localize="false" id="N0708">            dialog.endDialog(1)</paragraph>
+      <paragraph role="pycode" localize="false" id="N0709">        else:</paragraph>
+      <paragraph role="pycode" localize="false" id="N0710">            return False</paragraph>
+      <paragraph role="pycode" localize="false" id="N0711">    </paragraph>
+      <paragraph role="pycode" localize="false" id="N0712">    def getSupportedMethodNames(self):</paragraph>
+      <paragraph role="pycode" localize="false" id="N0713">        return (&apos;_dump2File&apos;, &apos;_openHelp&apos;)</paragraph>
+      <paragraph role="pycode" localize="false" id="N0714">    </paragraph>
+      <paragraph role="pycode" localize="false" id="N0715">    def getDialog(self, libr_dlg: str, embedded=False):</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="N0716">        &quot;&quot;&quot; Create a Dialog from its location &quot;&quot;&quot;</paragraph>
+      <paragraph role="pycode" localize="false" id="N0717">        smgr = XSCRIPTCONTEXT.getComponentContext().ServiceManager</paragraph>
+      <paragraph role="pycode" localize="false" id="N0718">        if embedded:</paragraph>
+      <paragraph role="pycode" localize="false" id="N0719">            model = XSCRIPTCONTEXT.getDocument()</paragraph>
+      <paragraph role="pycode" localize="false" id="N0720">            dp = smgr.createInstanceWithArguments(_DLG_PROVIDER, (model,))</paragraph>
+      <paragraph role="pycode" localize="false" id="N0721">            location = &quot;?location=document&quot;</paragraph>
+      <paragraph role="pycode" localize="false" id="N0722">        else:</paragraph>
+      <paragraph role="pycode" localize="false" id="N0723">            dp = smgr.createInstanceWithContext(_DLG_PROVIDER, ctx)</paragraph>
+      <paragraph role="pycode" localize="false" id="N0724">            location = &quot;?location=application&quot;</paragraph>
+      <paragraph role="pycode" localize="false" id="N0725">        dlg = dp.createDialogWithHandler(&quot;vnd.sun.star.script:&quot;+libr_dlg+location, self)</paragraph>
+      <paragraph role="pycode" localize="false" id="N0726">        return dlg</paragraph>
+      <paragraph role="pycode" localize="false" id="N072A">    </paragraph>
+      <!-- WIP need extra work to embed code
+      <embed href="text/sbasic/python/Python_2_Basic.xhp#Python_getBasicScript" /> -->
+      <paragraph role="pycode" localize="false" id="N072A"># def getBasicScript()  # see note</paragraph>
+      <paragraph role="pycode" localize="false" id="N072&">     </paragraph>
+      <paragraph role="pycode" localize="false" id="N0728">def _msgbox(prompt=&apos;&apos;, title=&apos;&apos;):</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="N0729">    &apos;&apos;&apos; Ugly MsgBox &apos;&apos;&apos;</paragraph>
+      <paragraph role="pycode" localize="false" id="N0730">    import msgbox</paragraph>
+      <paragraph role="pycode" localize="false" id="N0731">    mb = msgbox.MsgBox(uno.getComponentContext())</paragraph>
+      <paragraph role="pycode" localize="false" id="N0732">    mb.addButton(&apos;Howdy&apos;)</paragraph>
+      <paragraph role="pycode" localize="false" id="N0733">    mb.show(prompt,0,title)</paragraph>
+      <paragraph role="pycode" localize="false" id="N0734">    </paragraph>
+      <paragraph role="pycode" localize="false" id="N0735">def ConsoleHandler():</paragraph>
+      <paragraph role="pycode" localize="false" id="N0736">    Console().show()</paragraph>
+      <paragraph role="pycode" localize="false" id="N0737">    </paragraph>
+      <paragraph role="pycode" localize="false" id="N0738">g_exportedScripts = (ConsoleHandler,)</paragraph>
+      <paragraph role="pycode" localize="false" id="N0739">    </paragraph>
+      </pycode>
+      <note id="N0740">As expected, <literal>onOkHasFocus</literal> missing method throws an exception.</note>
+      <tip id="N0741">Refer to <link href="text/sbasic/basic/python/python_2_Basic" name ="Python calls to %PRODUCTNAME Basic">Python calls to %PRODUCTNAME Basic</link> page for <literal>getBasicScript</literal> routine description and for details about cross-language scripting execution.</tip>
+      <h3 id="N0742">With %PRODUCTNAME Basic</h3>
+      <paragraph role="paragraph" id="N0743">In this example the dialog is embedded in a document, and can equally be located on the computer.</paragraph>
+      <bascode>
+      <paragraph role="bascode" localize="false" id="N0744">&apos; &lt;MyLib&gt;.&lt;Handler&gt; module</paragraph>
+      <paragraph role="bascode" localize="false" id="N0745">    </paragraph>
+      <paragraph role="bascode" localize="false" id="N0746">Public Sub Console_Show()</paragraph>
+      <paragraph role="bascode" localize="false" id="N0747">    Dim dp as Object &apos; com.sun.star.awt.DialogProvider2</paragraph>
+      <paragraph role="bascode" localize="false" id="N0748">    Dim dialog As Object &apos; com.sun.star.awt.XDialog, com.sun.star.awt.XDialogEventHandler</paragraph>
+      <paragraph role="bascode" localize="false" id="N0749">    Dim eventHandler As Object &apos; com.sun.star.awt.XDialogEventHandler</paragraph>
+      <paragraph role="bascode" localize="false" id="N0750">    dp = CreateUnoService(&quot;com.sun.star.awt.DialogProvider2&quot;)</paragraph>
+      <paragraph role="bascode" xml-lang="en-US" id="N0751">    dp.Initialize(Array(ThisComponent)) &apos; if doc-embedded dialog</paragraph>
+      <paragraph role="bascode" localize="false" id="N0752">    eventHandler = CreateUnoListener(&quot;Console_&quot;, &quot;com.sun.star.awt.XDialogEventHandler&quot;)</paragraph>
+      <paragraph role="bascode" localize="false" id="N0753">    dialog = dp.createDialogWithHandler(&quot;vnd.sun.star.script:MyLib.dlgTrace?location=document&quot;, eventHandler)</paragraph>
+      <paragraph role="bascode" localize="false" id="N0754">    dialog.Title = &quot;Konsole&quot;</paragraph>
+      <paragraph role="bascode" localize="false" id="N0755">    dialog.execute()</paragraph>
+      <paragraph role="bascode" localize="false" id="N0756">End Sub &apos; &lt;Handler&gt;.Console_Show()</paragraph>
+      <paragraph role="bascode" localize="false" id="N0757">    </paragraph>
+      <paragraph role="bascode" localize="false" id="N0758a">Private Function Console_callHandlerMethod(dialog as Object, _</paragraph>
+      <paragraph role="bascode" localize="false" id="N0758b">        event As com.sun.star.document.DocumentEvent, _</paragraph>
+      <paragraph role="bascode" xml-lang="en-US" id="N0958c">        method As String) As Boolean</paragraph>
+      <paragraph role="bascode" localize="false" id="N0759">    &apos;&apos;&apos; Intercept dialog events using .UNO protocol &apos;&apos;&apos;</paragraph>
+      <paragraph role="bascode" localize="false" id="N0760">    Console_callHandlerMethod = True</paragraph>
+      <paragraph role="bascode" localize="false" id="N0761">    Select Case method</paragraph>
+      <paragraph role="bascode" localize="false" id="N0762">        Case &quot;_dump2File&quot;</paragraph>
+      <paragraph role="bascode" localize="false" id="N0763">            event.Source.setLabel(&quot;dump requested&quot;)</paragraph>
+      <paragraph role="bascode" localize="false" id="N0764">            With GlobalScope.BasicLibraries</paragraph>
+      <paragraph role="bascode" localize="false" id="N0765">                If Not .IsLibraryLoaded(&quot;Access2Base&quot;) Then .LoadLibrary(&quot;Access2Base&quot;)</paragraph>
+      <paragraph role="bascode" localize="false" id="N0766">            End With</paragraph>
+      <paragraph role="bascode" localize="false" id="N0767">            Access2Base.Trace._DumpToFile</paragraph>
+      <paragraph role="bascode" localize="false" id="N0768">        Case &quot;_openHelp&quot; </paragraph>
+      <paragraph role="bascode" localize="false" id="N0769">            MsgBox &quot;Not yet implemented&quot;,0 , &quot;Howdy&quot;</paragraph>
+      <paragraph role="bascode" xml-lang="en-US" id="N0770">            &apos;dialog.endDialog(1) if computer-based dialog</paragraph>
+      <paragraph role="bascode" localize="false" id="N0771">        Case Else : Console_callHandlerMethod = False</paragraph>
+      <paragraph role="bascode" localize="false" id="N0772">    End Select</paragraph>
+      <paragraph role="bascode" localize="false" id="N0773">End Function &apos; &lt;Handler&gt;.Console_callHandlerMethod</paragraph>
+      <paragraph role="bascode" localize="false" id="N0774">    </paragraph>
+      <paragraph role="bascode" localize="false" id="N0775">Private Function Console_getSupportedMethodNames()</paragraph>
+      <paragraph role="bascode" localize="false" id="N0776">    Console_getSupportedMethodNames = Array(&quot;_dump2File&quot;, &quot;_openHelp&quot;)</paragraph>
+      <paragraph role="bascode" localize="false" id="N0777">End Function &apos; &lt;Handler&gt;.Console _getSupportedMethodNames</paragraph>
+      <paragraph role="bascode" localize="false" id="N0778">    </paragraph>
+      <paragraph role="bascode" xml-lang="en-US" id="N0779">&apos; adapted from « Créer un dialogue avec gestionnaire d&apos;événements » by JM Zambon</paragraph>
+      <paragraph role="bascode" localize="false" id="N0780">&apos; https://wiki.openoffice.org/wiki/FR/Documentation/Python/Creating_Dialog_with_Handler</paragraph>
+      </bascode>
+      <note id="N0781">As expected, <literal>onOkHasFocus</literal> missing method throws an exception.</note>
+      <section id="relatedtopics" >
+         <embed href="text/sbasic/python/python_2_basic#py2ba_h1"/>
+         <embed href="text/sbasic/guide/show_dialog.xhp#show_dialog"/>
+         <paragraph role="paragraph" id="N0505"><link href="text/sbasic/shared/03132000.xhp" name ="CreateUnoListener Function">CreateUnoListener Function</link></paragraph>
+         <embed href="text/sbasic/python/python_listener#pythonlistener"/>
+         <embed href="text/sbasic/python/python_dialogs#pythondialog"/>
+         <embed href="text/sbasic/python/python_document_events.xhp#pythonmonitor"/>
+         <embed href="text/sbasic/python/python_examples.xhp#pythonexamples2"/>
+         <embed href="text/sbasic/python/main0000.xhp#pythonscriptshelp"/>
+      </section>
+   </body>
+</helpdocument>
