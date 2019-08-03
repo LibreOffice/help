@@ -69,10 +69,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/linright.png \
     helpimg/movedata.png \
     helpimg/names_as_addressing.png \
-    helpimg/note.png \
-    helpimg/note_small.png \
     helpimg/rechenlt.png \
-    helpimg/refhand.png \
     helpimg/right.png \
     helpimg/right2.png \
     helpimg/rotieren.png \
@@ -293,11 +290,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/swh00178.png \
     helpimg/swh00179.png \
     helpimg/swh00180.png \
-    helpimg/tip.png \
-    helpimg/tip_small.png \
     helpimg/ueberblenden.png \
-    helpimg/warning.png \
-    helpimg/warning_small.png \
     helpimg/what-if.png \
     helpimg/zellvor.png \
     navigation/favicon.ico \
