@@ -19,7 +19,6 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/source/auxiliary,\
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/images_helpimg.zip : \
 		$(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/helpimg.ilst \
-		$(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/screenshotimg.ilst \
 		| $(call gb_ExternalExecutable_get_dependencies,python)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),PRL,1)
 	$(call gb_Helper_abbreviate_dirs, \
