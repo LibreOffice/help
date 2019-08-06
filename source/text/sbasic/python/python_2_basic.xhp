@@ -40,27 +40,27 @@
 			<bookmark_value>API;XScriptProvider: Retrieving Basic scripts</bookmark_value>
 		 </bookmark>
 		 <pycode>
-		 <paragraph role="pycode" id="N0342">import uno</paragraph>
-		 <paragraph role="pycode" id="N0343">from com.sun.star.script.provider import Xscript</paragraph>
-		 <paragraph role="pycode" id="N0344">    </paragraph>
-		 <paragraph role="pycode" id="N0345">def getBasicScript(macro=&apos;Main&apos;, module=&apos;Module1&apos;, library=&apos;Standard&apos;,</paragraph>
-		 <paragraph role="pycode" id="N0346">        isEmbedded=False) -&gt; XScript:</paragraph>
+		 <paragraph role="pycode" id="N0342" localize="false">import uno</paragraph>
+		 <paragraph role="pycode" id="N0343" localize="false">from com.sun.star.script.provider import Xscript</paragraph>
+		 <paragraph role="pycode" id="N0344" localize="false">    </paragraph>
+		 <paragraph role="pycode" id="N0345" localize="false">def getBasicScript(macro=&apos;Main&apos;, module=&apos;Module1&apos;, library=&apos;Standard&apos;,</paragraph>
+		 <paragraph role="pycode" id="N0346" localize="false">        isEmbedded=False) -&gt; XScript:</paragraph>
 		 <paragraph role="pycode" id="N0347">    &apos;&apos;&apos;Grab Basic script object before invocation.&apos;&apos;&apos;</paragraph>
-		 <paragraph role="pycode" id="N0348">    ctx = uno.getComponentContext()</paragraph>
-		 <paragraph role="pycode" id="N0349">    smgr = ctx.ServiceManager</paragraph>
-		 <paragraph role="pycode" id="N0350">    if isEmbedded:</paragraph>
-		 <paragraph role="pycode" id="N0351">        desktop = smgr.createInstanceWithContext(&apos;com.sun.star.frame.Desktop&apos;, ctx)</paragraph>
-		 <paragraph role="pycode" id="N0352">        scriptPro = desktop.CurrentComponent.getScriptProvider()</paragraph>
-		 <paragraph role="pycode" id="N0353">        location = &quot;document&quot;</paragraph>
-		 <paragraph role="pycode" id="N0354">    else:</paragraph>
-		 <paragraph role="pycode" id="N0355">        mspf = smgr.createInstanceWithContext(</paragraph>
-		 <paragraph role="pycode" id="N0356">            &quot;com.sun.star.script.provider.MasterScriptProviderFactory&quot;, ctx)</paragraph>
-		 <paragraph role="pycode" id="N0357">        scriptPro = mspf.createScriptProvider(&quot;&quot;)</paragraph>
-		 <paragraph role="pycode" id="N0358">        location = &quot;application&quot;</paragraph>
-		 <paragraph role="pycode" id="N0359">    scriptName = &quot;vnd.sun.star.script:&quot;+library+&quot;.&quot;+module+&quot;.&quot;+macro+ \</paragraph>
-		 <paragraph role="pycode" id="N0360">                 &quot;?language=Basic&amp;location=&quot;+location</paragraph>
-		 <paragraph role="pycode" id="N0361">    xScript = scriptPro.getScript(scriptName)</paragraph>
-		 <paragraph role="pycode" id="N0362">    return xScript</paragraph>
+		 <paragraph role="pycode" id="N0348" localize="false">    ctx = uno.getComponentContext()</paragraph>
+		 <paragraph role="pycode" id="N0349" localize="false">    smgr = ctx.ServiceManager</paragraph>
+		 <paragraph role="pycode" id="N0350" localize="false">    if isEmbedded:</paragraph>
+		 <paragraph role="pycode" id="N0351" localize="false">        desktop = smgr.createInstanceWithContext(&apos;com.sun.star.frame.Desktop&apos;, ctx)</paragraph>
+		 <paragraph role="pycode" id="N0352" localize="false">        scriptPro = desktop.CurrentComponent.getScriptProvider()</paragraph>
+		 <paragraph role="pycode" id="N0353" localize="false">        location = &quot;document&quot;</paragraph>
+		 <paragraph role="pycode" id="N0354" localize="false">    else:</paragraph>
+		 <paragraph role="pycode" id="N0355" localize="false">        mspf = smgr.createInstanceWithContext(</paragraph>
+		 <paragraph role="pycode" id="N0356" localize="false">            &quot;com.sun.star.script.provider.MasterScriptProviderFactory&quot;, ctx)</paragraph>
+		 <paragraph role="pycode" id="N0357" localize="false">        scriptPro = mspf.createScriptProvider(&quot;&quot;)</paragraph>
+		 <paragraph role="pycode" id="N0358" localize="false">        location = &quot;application&quot;</paragraph>
+		 <paragraph role="pycode" id="N0359" localize="false">    scriptName = &quot;vnd.sun.star.script:&quot;+library+&quot;.&quot;+module+&quot;.&quot;+macro+ \</paragraph>
+		 <paragraph role="pycode" id="N0360" localize="false">                 &quot;?language=Basic&amp;location=&quot;+location</paragraph>
+		 <paragraph role="pycode" id="N0361" localize="false">    xScript = scriptPro.getScript(scriptName)</paragraph>
+		 <paragraph role="pycode" id="N0362" localize="false">    return xScript</paragraph>
 		 </pycode>
 	  </section>
 	  <h2 id="N0363">Executing %PRODUCTNAME Basic Scripts</h2>
@@ -83,62 +83,62 @@
           <paragraph role="paragraph" id="N0373">Examples in <link href="text/sbasic/python/python_screen.xhp" name ="Input/Output to Screen">Input/Output to Screen</link> detail Python to Basic invocation calls. <link href="text/sbasic/python/python_document_events.xhp" name ="Monitoring Document Events">Monitoring Document Events</link> illustrates the usage of *args Python idiom to print a variable number of parameters to <literal>Access2Base</literal> logging console dialog.</paragraph>
 	  <tip id="N0374">At time of development you can interrupt Python script execution using <link href="https://berma.pagesperso-orange.fr/index2.html" name ="Xray extension">Xray extension</link> in order to inspect properties and methods of UNO objects. The ASPO extension debugger allows object introspection using either Xray either MRI extensions.</tip>
 	  <pycode>
-	  <paragraph role="pycode" id="N0375">def xray(myObject):</paragraph>
-	  <paragraph role="pycode" id="N0376">	  script = getBasicScript(library=&quot;XrayTool&quot;, module=&quot;_Main&quot;, macro=&quot;Xray&quot;)</paragraph>
-	  <paragraph role="pycode" id="N0377">	  script.invoke((myObject,), (), ())</paragraph>
+	  <paragraph role="pycode" id="N0375" localize="false">def xray(myObject):</paragraph>
+	  <paragraph role="pycode" id="N0376" localize="false">	  script = getBasicScript(library=&quot;XrayTool&quot;, module=&quot;_Main&quot;, macro=&quot;Xray&quot;)</paragraph>
+	  <paragraph role="pycode" id="N0377" localize="false">	  script.invoke((myObject,), (), ())</paragraph>
 	  </pycode>
 	  <h3 id="N0378">Examples of Embedded Scripts in Documents</h3>
 	  <paragraph role="paragraph" id="N0379"><literal>*args</literal>Python simplified syntax can be used in conjunction with %PRODUCTNAME Basic routines that accept a variable number of arguments. Below <literal>Print</literal> and <literal>SUM</literal> Python functions call their Basic <literal>Print</literal> and <literal>SUM</literal> counterparts, using aforementioned <literal>getBasicScript</literal> function. Exception handling is not detailed.</paragraph>
 	  <pycode>
-	  <paragraph role="pycode" id="N0380"># -*- coding: utf-8 -*-</paragraph>
-	  <paragraph role="pycode" id="N0381">from __future__ import unicode_literals</paragraph>
-	  <paragraph role="pycode" id="N0382">    </paragraph>
-	  <paragraph role="pycode" id="N0383">def Print(*args):</paragraph>
+	  <paragraph role="pycode" id="N0380" localize="false"># -*- coding: utf-8 -*-</paragraph>
+	  <paragraph role="pycode" id="N0381" localize="false">from __future__ import unicode_literals</paragraph>
+	  <paragraph role="pycode" id="N0382" localize="false">    </paragraph>
+	  <paragraph role="pycode" id="N0383" localize="false">def Print(*args):</paragraph>
 	  <paragraph role="pycode" id="N0384">    &quot;&quot;&quot;Outputs the specified strings or numeric expressions in a dialog box.&quot;&quot;&quot;</paragraph>
-	  <paragraph role="pycode" id="N0385">    xScript = getBasicScript(&quot;Print&quot;, &quot;Scripting&quot;, embedded=True)</paragraph>
-	  <paragraph role="pycode" id="N0386">    xScript.invoke((args), (), ())</paragraph>
-	  <paragraph role="pycode" id="N0387">    </paragraph>
-	  <paragraph role="pycode" id="N0388">def SUM(*args):</paragraph>
+	  <paragraph role="pycode" id="N0385" localize="false">    xScript = getBasicScript(&quot;Print&quot;, &quot;Scripting&quot;, embedded=True)</paragraph>
+	  <paragraph role="pycode" id="N0386" localize="false">    xScript.invoke((args), (), ())</paragraph>
+	  <paragraph role="pycode" id="N0387" localize="false">    </paragraph>
+	  <paragraph role="pycode" id="N0388" localize="false">def SUM(*args):</paragraph>
 	  <paragraph role="pycode" id="N0389">    &quot;&quot;&quot;SUM the specified number expression.&quot;&quot;&quot;</paragraph>
-	  <paragraph role="pycode" id="N0390">    xScript = getBasicScript(&quot;SUM&quot;, &quot;Scripting&quot;, embedded=True)</paragraph>
-	  <paragraph role="pycode" id="N0391">    res = xScript.invoke((args), (), ())</paragraph>
-	  <paragraph role="pycode" id="N0392">    return res[0]</paragraph>
-	  <paragraph role="pycode" id="N0393">    </paragraph>
-	  <paragraph role="pycode" id="N0394"># def getBasicScript()  # see above</paragraph>
-	  <paragraph role="pycode" id="N0395">    </paragraph>
-	  <paragraph role="pycode" id="N0396">def playWithArgs():</paragraph>
-	  <paragraph role="pycode" id="N0397">    Print(&quot;Fun with *args &quot;, -9.81, 297864.681974, 8762E-137)</paragraph>
-	  <paragraph role="pycode" id="N0398">    Print(SUM(45, -9.81, 297864.681974))</paragraph>
-	  <paragraph role="pycode" id="N0399">    Print(SUM(45, -9.81, 297864.681974, 8762E+137))</paragraph>
-	  <paragraph role="pycode" id="N0400">    </paragraph>
-	  <paragraph role="pycode" id="N0401">g_exportedScripts = (playWithArgs,)</paragraph>
+	  <paragraph role="pycode" id="N0390" localize="false">    xScript = getBasicScript(&quot;SUM&quot;, &quot;Scripting&quot;, embedded=True)</paragraph>
+	  <paragraph role="pycode" id="N0391" localize="false">    res = xScript.invoke((args), (), ())</paragraph>
+	  <paragraph role="pycode" id="N0392" localize="false">    return res[0]</paragraph>
+	  <paragraph role="pycode" id="N0393" localize="false">    </paragraph>
+	  <paragraph role="pycode" id="N0394" localize="false"># def getBasicScript()  # see above</paragraph>
+	  <paragraph role="pycode" id="N0395" localize="false">    </paragraph>
+	  <paragraph role="pycode" id="N0396" localize="false">def playWithArgs():</paragraph>
+	  <paragraph role="pycode" id="N0397" localize="false">    Print(&quot;Fun with *args &quot;, -9.81, 297864.681974, 8762E-137)</paragraph>
+	  <paragraph role="pycode" id="N0398" localize="false">    Print(SUM(45, -9.81, 297864.681974))</paragraph>
+	  <paragraph role="pycode" id="N0399" localize="false">    Print(SUM(45, -9.81, 297864.681974, 8762E+137))</paragraph>
+	  <paragraph role="pycode" id="N0400" localize="false">    </paragraph>
+	  <paragraph role="pycode" id="N0401" localize="false">g_exportedScripts = (playWithArgs,)</paragraph>
 	  </pycode>
 	  <paragraph role="paragraph" id="N0402">The %PRODUCTNAME Basic <literal>Print</literal> and <literal>SUM</literal> document-based routines accept a variable number of arguments. The <literal>Private</literal> or <literal>Public</literal> attributes have no effect. The arguments type checking is skipped for clarity.</paragraph>
 	  <bascode>
-	  <paragraph role="bascode" id="N0403">Option Compatible &apos; &quot;Standard.Scripting&quot; module</paragraph>
-	  <paragraph role="bascode" id="N0404">Option Explicit</paragraph>
-	  <paragraph role="bascode" id="N0405">    </paragraph>
-	  <paragraph role="bascode" id="N0406">Private Sub Print(ParamArray args() As Variant, Optional sep As String = &quot; &quot;)</paragraph>
+	  <paragraph role="bascode" id="N0403" localize="false">Option Compatible &apos; &quot;Standard.Scripting&quot; module</paragraph>
+	  <paragraph role="bascode" id="N0404" localize="false">Option Explicit</paragraph>
+	  <paragraph role="bascode" id="N0405" localize="false">    </paragraph>
+	  <paragraph role="bascode" id="N0406" localize="false">Private Sub Print(ParamArray args() As Variant, Optional sep As String = &quot; &quot;)</paragraph>
 	  <paragraph role="bascode" id="N0407">    &apos;&apos;&apos; Print item list of variable number &apos;&apos;&apos;</paragraph>
 	  <paragraph role="bascode" id="N0408">    &apos; all CStr() convertible args are accepted</paragraph>
-	  <paragraph role="bascode" id="N0409">    Dim str As String, i As Integer</paragraph>
-	  <paragraph role="bascode" id="N0410">    If UBound(args) &gt;= 0 Then</paragraph>
-	  <paragraph role="bascode" id="N0411">        For i = 0 To UBound(args)</paragraph>
-	  <paragraph role="bascode" id="N0412">            str = str + Cstr(args(i))+ sep </paragraph>
-	  <paragraph role="bascode" id="N0413">        Next i</paragraph>
-	  <paragraph role="bascode" id="N0414">    End If</paragraph>
-	  <paragraph role="bascode" id="N0415">    Print str</paragraph>
-	  <paragraph role="bascode" id="N0416">    End Sub &apos; Standard.Scripting.Print()</paragraph>
-	  <paragraph role="bascode" id="N0417">    </paragraph>
-	  <paragraph role="bascode" id="N0418">Public Function SUM(ParamArray args() As Variant) As Variant</paragraph>
+	  <paragraph role="bascode" id="N0409" localize="false">    Dim str As String, i As Integer</paragraph>
+	  <paragraph role="bascode" id="N0410" localize="false">    If UBound(args) &gt;= 0 Then</paragraph>
+	  <paragraph role="bascode" id="N0411" localize="false">        For i = 0 To UBound(args)</paragraph>
+	  <paragraph role="bascode" id="N0412" localize="false">            str = str + Cstr(args(i))+ sep </paragraph>
+	  <paragraph role="bascode" id="N0413" localize="false">        Next i</paragraph>
+	  <paragraph role="bascode" id="N0414" localize="false">    End If</paragraph>
+	  <paragraph role="bascode" id="N0415" localize="false">    Print str</paragraph>
+	  <paragraph role="bascode" id="N0416" localize="false">    End Sub &apos; Standard.Scripting.Print()</paragraph>
+	  <paragraph role="bascode" id="N0417" localize="false">    </paragraph>
+	  <paragraph role="bascode" id="N0418" localize="false">Public Function SUM(ParamArray args() As Variant) As Variant</paragraph>
 	  <paragraph role="bascode" id="N0419">    &apos;&apos;&apos; SUM a variable list of numbers &apos;&apos;&apos;</paragraph>
-	  <paragraph role="bascode" id="N0420">    Dim ndx As Integer</paragraph>
-	  <paragraph role="bascode" id="N0421">    If UBound(args) &gt;= 0 Then</paragraph>
-	  <paragraph role="bascode" id="N0422">        For ndx = 0 To UBound(args)</paragraph>
-	  <paragraph role="bascode" id="N0423">            SUM = SUM + args(ndx)</paragraph>
-	  <paragraph role="bascode" id="N0424">        Next ndx</paragraph>
-	  <paragraph role="bascode" id="N0425">    End If</paragraph>
-	  <paragraph role="bascode" id="N0426">End Function &apos; Standard.Scripting.SUM()</paragraph>
+	  <paragraph role="bascode" id="N0420" localize="false">    Dim ndx As Integer</paragraph>
+	  <paragraph role="bascode" id="N0421" localize="false">    If UBound(args) &gt;= 0 Then</paragraph>
+	  <paragraph role="bascode" id="N0422" localize="false">        For ndx = 0 To UBound(args)</paragraph>
+	  <paragraph role="bascode" id="N0423" localize="false">            SUM = SUM + args(ndx)</paragraph>
+	  <paragraph role="bascode" id="N0424" localize="false">        Next ndx</paragraph>
+	  <paragraph role="bascode" id="N0425" localize="false">    End If</paragraph>
+	  <paragraph role="bascode" id="N0426" localize="false">End Function &apos; Standard.Scripting.SUM()</paragraph>
 	  </bascode>
 	  <section id="relatedtopics" >
                  <!-- WIP
