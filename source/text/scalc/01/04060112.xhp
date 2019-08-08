@@ -18,7 +18,7 @@
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  -->
-	
+
 <helpdocument version="1.0">
 <meta>
 <topic id="textscalc0104060112xml" indexer="include" status="PUBLISH">
@@ -38,16 +38,16 @@
 </bookmark><comment>mw made "external..." a one level entry and deleted one "functions;..." entry</comment>
 <paragraph role="heading" id="hd_id3151076" xml-lang="en-US" level="1">Add-in for Programming in $[officename] Calc</paragraph>
 <paragraph role="warning" id="par_id3147001" xml-lang="en-US">The method of extending Calc by Add-Ins that is described in the following is outdated. The interfaces are still valid and supported, to ensure compatibility with existing Add-Ins, but for programming new Add-Ins you should use the new <link href="text/shared/guide/integratinguno.xhp" name="API functions">API functions</link>.</paragraph>
-<paragraph role="paragraph" id="par_id3150361" xml-lang="en-US">$[officename] Calc can be expanded by Add-Ins, which are external programming modules providing additional functions for working with spreadsheets. These are listed in the <emph>Function Wizard</emph> in the <emph>Add-In</emph> category. If you would like to program an Add-In yourself, you can learn here which functions must be exported by the <switchinline select="sys"><caseinline select="UNIX">shared library 
+<paragraph role="paragraph" id="par_id3150361" xml-lang="en-US">$[officename] Calc can be expanded by Add-Ins, which are external programming modules providing additional functions for working with spreadsheets. These are listed in the <emph>Function Wizard</emph> in the <emph>Add-In</emph> category. If you would like to program an Add-In yourself, you can learn here which functions must be exported by the <switchinline select="sys"><caseinline select="UNIX">shared library
 </caseinline><defaultinline>external DLL</defaultinline></switchinline> so that the Add-In can be successfully attached.</paragraph>
-<paragraph role="paragraph" id="par_id3149211" xml-lang="en-US">$[officename] searches the Add-in folder defined in the configuration for a suitable <switchinline select="sys"><caseinline select="UNIX">shared library 
-</caseinline><defaultinline>DLL</defaultinline></switchinline>. To be recognized by $[officename], the <switchinline select="sys"><caseinline select="UNIX">shared library 
+<paragraph role="paragraph" id="par_id3149211" xml-lang="en-US">$[officename] searches the Add-in folder defined in the configuration for a suitable <switchinline select="sys"><caseinline select="UNIX">shared library
+</caseinline><defaultinline>DLL</defaultinline></switchinline>. To be recognized by $[officename], the <switchinline select="sys"><caseinline select="UNIX">shared library
 </caseinline><defaultinline>DLL</defaultinline></switchinline> must have certain properties, as explained in the following. This information allows you to program your own Add-In for <emph>Function Wizard</emph> of $[officename] Calc.</paragraph>
 <section id="addinconcept">
 <paragraph role="heading" id="hd_id3146981" xml-lang="en-US" level="2">The Add-In Concept</paragraph>
 <paragraph role="paragraph" id="par_id3156292" xml-lang="en-US">Each Add-In library provides several functions. Some functions are used for administrative purposes. You can choose almost any name for your own functions. However, they must also follow certain rules regarding parameter passing. The exact naming and calling conventions vary for different platforms.</paragraph>
 </section>
-<paragraph role="heading" id="hd_id3152890" xml-lang="en-US" level="3">Functions of <switchinline select="sys"><caseinline select="UNIX">Shared Library 
+<paragraph role="heading" id="hd_id3152890" xml-lang="en-US" level="3">Functions of <switchinline select="sys"><caseinline select="UNIX">Shared Library
 </caseinline><defaultinline>AddIn DLL</defaultinline></switchinline></paragraph>
 <paragraph role="paragraph" id="par_id3148837" xml-lang="en-US">At a minimum, the administrative functions <link href="text/scalc/01/04060112.xhp" name="GetFunctionCount">GetFunctionCount</link> and <link href="text/scalc/01/04060112.xhp" name="GetFunctionData">GetFunctionData</link> must exist. Using these, the functions as well as parameter types and return values can be determined. As return values, the Double and String types are supported. As parameters, additionally the cell areas <link href="text/scalc/01/04060112.xhp" name="Double Array">Double Array</link>, <link href="text/scalc/01/04060112.xhp" name="String Array">String Array</link>, and <link href="text/scalc/01/04060112.xhp" name="Cell Array">Cell Array</link> are supported.</paragraph>
 <paragraph role="paragraph" id="par_id3148604" xml-lang="en-US">Parameters are passed using references. Therefore, a change of these values is basically possible. However, this is not supported in $[officename] Calc because it does not make sense within spreadsheets.</paragraph>
@@ -58,47 +58,47 @@
 <paragraph role="paragraph" id="par_id3149899" xml-lang="en-US">The data types are defined as follows:</paragraph>
 <table id="tbl_id3159203">
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3151302" xml-lang="en-US">
+<tablecell>
+<paragraph role="tablehead" id="par_id3151302" xml-lang="en-US">
 <emph>Data types</emph>
 </paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3143222" xml-lang="en-US">
+<tablecell>
+    <paragraph role="tablehead" id="par_id3143222" xml-lang="en-US">
 <emph>Definition</emph>
 </paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3149384" xml-lang="en-US">CALLTYPE</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3149384" xml-lang="en-US" localize="false">CALLTYPE</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3146963" xml-lang="en-US">Under Windows: FAR PASCAL (_far _pascal)</paragraph>
 <paragraph role="paragraph" id="par_id3153809" xml-lang="en-US">Other: default (operating system specific default)</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3154734" xml-lang="en-US">USHORT</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3154734" xml-lang="en-US" localize="false">USHORT</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3155760" xml-lang="en-US">2 Byte unsigned Integer</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3145320" xml-lang="en-US">DOUBLE</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3145320" xml-lang="en-US" localize="false">DOUBLE</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150956" xml-lang="en-US">8 byte platform-dependent format</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3146097" xml-lang="en-US">Paramtype</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3146097" xml-lang="en-US" localize="false">Paramtype</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150432" xml-lang="en-US">Platform-dependent like int</paragraph>
 <paragraph role="paragraph" id="par_id3153955" xml-lang="en-US">PTR_DOUBLE =0 pointer to a double</paragraph>
 <paragraph role="paragraph" id="par_id3159262" xml-lang="en-US">PTR_STRING =1 pointer to a zero-terminated string</paragraph>
@@ -110,64 +110,64 @@
 </tablerow>
 </table>
 
-<paragraph role="heading" id="hd_id3156396" xml-lang="en-US" level="2"><switchinline select="sys"><caseinline select="UNIX">Shared Library 
+<paragraph role="heading" id="hd_id3156396" xml-lang="en-US" level="2"><switchinline select="sys"><caseinline select="UNIX">Shared Library
 </caseinline><defaultinline>DLL</defaultinline></switchinline> functions</paragraph>
-<paragraph role="paragraph" id="par_id3153019" xml-lang="en-US">Following you will find a description of those functions, which are called at the <switchinline select="sys"><caseinline select="UNIX">Shared Library 
+<paragraph role="paragraph" id="par_id3153019" xml-lang="en-US">Following you will find a description of those functions, which are called at the <switchinline select="sys"><caseinline select="UNIX">Shared Library
 </caseinline><defaultinline>external DLL</defaultinline></switchinline>.</paragraph>
-<paragraph role="paragraph" id="par_id3150038" xml-lang="en-US">For all <switchinline select="sys"><caseinline select="UNIX">Shared Library 
+<paragraph role="paragraph" id="par_id3150038" xml-lang="en-US">For all <switchinline select="sys"><caseinline select="UNIX">Shared Library
 </caseinline><defaultinline>DLL</defaultinline></switchinline> functions, the following applies:</paragraph>
-<paragraph role="paragraph" id="par_id3157876" xml-lang="en-US">void CALLTYPE fn(out, in1, in2, ...)</paragraph>
-<paragraph role="paragraph" id="par_id3147616" xml-lang="en-US">Output: Resulting value</paragraph>
-<paragraph role="paragraph" id="par_id3159119" xml-lang="en-US">Input: Any number of types (double&amp;, char*, double*, char**, Cell area), where the <link href="text/scalc/01/04060112.xhp" name="Cell area">Cell area</link> is an array of types double array, string array, or cell array.</paragraph>
-<paragraph role="heading" id="hd_id3150653" xml-lang="en-US" level="3">GetFunctionCount()</paragraph>
+<paragraph role="paragraph" id="par_id3157876" xml-lang="en-US" localize="false"><literal>void CALLTYPE fn(out, in1, in2, ...)</literal></paragraph>
+<paragraph role="paragraph" id="par_id3147616" xml-lang="en-US"><emph>Output</emph>: Resulting value</paragraph>
+<paragraph role="paragraph" id="par_id3159119" xml-lang="en-US"><emph>Input</emph>: Any number of types (double&amp;, char*, double*, char**, Cell area), where the <link href="text/scalc/01/04060112.xhp" name="Cell area">Cell area</link> is an array of types double array, string array, or cell array.</paragraph>
+<paragraph role="heading" id="hd_id3150653" xml-lang="en-US" level="3" localize="false">GetFunctionCount()</paragraph>
 <paragraph role="paragraph" id="par_id3152981" xml-lang="en-US">Returns the number of functions without the management functions of the reference parameter. Each function has a unique number between 0 and nCount-1. This number will be needed for the <link href="text/scalc/01/04060112.xhp" name="GetFunctionData">GetFunctionData</link> and <link href="text/scalc/01/04060112.xhp" name="GetParameterDescription">GetParameterDescription</link> functions later.</paragraph>
 <paragraph role="paragraph" id="par_id3150742" xml-lang="en-US">
 <emph>Syntax</emph>
 </paragraph>
-<paragraph role="paragraph" id="par_id3148728" xml-lang="en-US">void CALLTYPE GetFunctionCount(USHORT&amp; nCount)</paragraph>
+<paragraph role="paragraph" id="par_id3148728" xml-lang="en-US" localize="false"><literal>void CALLTYPE GetFunctionCount(USHORT&amp; nCount)</literal></paragraph>
 <paragraph role="paragraph" id="par_id3154677" xml-lang="en-US">
 <emph>Parameter</emph>
 </paragraph>
-<paragraph role="paragraph" id="par_id3146940" xml-lang="en-US">USHORT &amp;nCount:</paragraph>
-<paragraph role="paragraph" id="par_id3149893" xml-lang="en-US">Output: Reference to a variable, which is supposed to contain the number of Add-In functions. For example: If the Add-In provides 5 functions for $[officename] Calc, then nCount=5.</paragraph>
-<paragraph role="heading" id="hd_id3147476" xml-lang="en-US" level="3">GetFunctionData()</paragraph>
+<paragraph role="paragraph" id="par_id3146940" xml-lang="en-US" localize="false"><literal>USHORT &amp;nCount</literal>:</paragraph>
+<paragraph role="paragraph" id="par_id3149893" xml-lang="en-US"><emph>Output</emph>: Reference to a variable, which is supposed to contain the number of Add-In functions. For example: If the Add-In provides 5 functions for $[officename] Calc, then nCount=5.</paragraph>
+<paragraph role="heading" id="hd_id3147476" xml-lang="en-US" level="3" localize="false">GetFunctionData()</paragraph>
 <paragraph role="paragraph" id="par_id3154841" xml-lang="en-US">Determines all the important information about an Add-In function.</paragraph>
 <paragraph role="paragraph" id="par_id3148888" xml-lang="en-US">
 <emph>Syntax</emph>
 </paragraph>
-<paragraph role="paragraph" id="par_id3148434" xml-lang="en-US">void CALLTYPE GetFunctionData(USHORT&amp; nNo, char* pFuncName, USHORT&amp; nParamCount, Paramtype* peType, char* pInternalName)</paragraph>
+<paragraph role="paragraph" id="par_id3148434" xml-lang="en-US" localize="false"><literal>void CALLTYPE GetFunctionData(USHORT&amp; nNo, char* pFuncName, USHORT&amp; nParamCount, Paramtype* peType, char* pInternalName)</literal></paragraph>
 <paragraph role="paragraph" id="par_id3149253" xml-lang="en-US">
 <emph>Parameter</emph>
 </paragraph>
-<paragraph role="paragraph" id="par_id3149686" xml-lang="en-US">USHORT&amp; nNo:</paragraph>
-<paragraph role="paragraph" id="par_id3149949" xml-lang="en-US">Input: Function number between 0 and nCount-1, inclusively.</paragraph>
-<paragraph role="paragraph" id="par_id3149546" xml-lang="en-US">char* pFuncName:</paragraph>
-<paragraph role="paragraph" id="par_id3148579" xml-lang="en-US">Output: Function name as seen by the programmer, as it is named in the <switchinline select="sys"><caseinline select="UNIX">Shared Library 
+<paragraph role="paragraph" id="par_id3149686" xml-lang="en-US" localize="false"><literal>USHORT&amp; nNo</literal>:</paragraph>
+<paragraph role="paragraph" id="par_id3149949" xml-lang="en-US"><emph>Input</emph>: Function number between 0 and nCount-1, inclusively.</paragraph>
+<paragraph role="paragraph" id="par_id3149546" xml-lang="en-US" localize="false"><literal>char* pFuncName</literal>:</paragraph>
+<paragraph role="paragraph" id="par_id3148579" xml-lang="en-US"><emph>Output</emph>: Function name as seen by the programmer, as it is named in the <switchinline select="sys"><caseinline select="UNIX">Shared Library
 </caseinline><defaultinline>DLL</defaultinline></switchinline>. This name does not determine the name used in the <emph>Function Wizard</emph>.</paragraph>
-<paragraph role="paragraph" id="par_id3153935" xml-lang="en-US">USHORT&amp; nParamCount:</paragraph>
-<paragraph role="paragraph" id="par_id3150142" xml-lang="en-US">Output: Number of parameters in AddIn function. This number must be greater than 0, because there is always a result value; the maximum value is 16.</paragraph>
-<paragraph role="paragraph" id="par_id3145143" xml-lang="en-US">Paramtype* peType:</paragraph>
-<paragraph role="paragraph" id="par_id3148750" xml-lang="en-US">Output: Pointer to an array of exactly 16 variables of type Paramtype. The first nParamCount entries are filled with the suitable type of parameter.</paragraph>
-<paragraph role="paragraph" id="par_id3153078" xml-lang="en-US">char* pInternalName:</paragraph>
-<paragraph role="paragraph" id="par_id3155261" xml-lang="en-US">Output: Function name as seen by the user, as it appears in the <emph>Function Wizard</emph>. May contain umlauts.</paragraph>
+<paragraph role="paragraph" id="par_id3153935" xml-lang="en-US" localize="false"><literal>USHORT&amp; nParamCount</literal>:</paragraph>
+<paragraph role="paragraph" id="par_id3150142" xml-lang="en-US"><emph>Output</emph>: Number of parameters in AddIn function. This number must be greater than 0, because there is always a result value; the maximum value is 16.</paragraph>
+<paragraph role="paragraph" id="par_id3145143" xml-lang="en-US" localize="false"><literal>Paramtype* peType</literal>:</paragraph>
+<paragraph role="paragraph" id="par_id3148750" xml-lang="en-US"><emph>Output</emph>: Pointer to an array of exactly 16 variables of type Paramtype. The first nParamCount entries are filled with the suitable type of parameter.</paragraph>
+<paragraph role="paragraph" id="par_id3153078" xml-lang="en-US" localize="false"><literal>char* pInternalName</literal>:</paragraph>
+<paragraph role="paragraph" id="par_id3155261" xml-lang="en-US"><emph>Output</emph>: Function name as seen by the user, as it appears in the <emph>Function Wizard</emph>. May contain umlauts.</paragraph>
 <paragraph role="paragraph" id="par_id3153327" xml-lang="en-US">The pFuncName and pInternalName parameters are char arrays, which are implemented with size 256 in $[officename] Calc.</paragraph>
-<paragraph role="heading" id="hd_id3148567" xml-lang="en-US" level="3">GetParameterDescription()</paragraph>
+<paragraph role="heading" id="hd_id3148567" xml-lang="en-US" level="3" localize="false">GetParameterDescription()</paragraph>
 <paragraph role="paragraph" id="par_id3153000" xml-lang="en-US">Provides a brief description of the Add-In function and its parameters. As an option, this function can be used to show a function and parameter description in the <emph>Function Wizard</emph>.</paragraph>
 <paragraph role="paragraph" id="par_id3154501" xml-lang="en-US">
 <emph>Syntax</emph>
 </paragraph>
-<paragraph role="paragraph" id="par_id3153564" xml-lang="en-US">void CALLTYPE GetParameterDescription(USHORT&amp; nNo, USHORT&amp; nParam, char* pName, char* pDesc)</paragraph>
+<paragraph role="paragraph" id="par_id3153564" xml-lang="en-US"><literal>void CALLTYPE GetParameterDescription(USHORT&amp; nNo, USHORT&amp; nParam, char* pName, char* pDesc)</literal></paragraph>
 <paragraph role="paragraph" id="par_id3157995" xml-lang="en-US">
 <emph>Parameter</emph>
 </paragraph>
-<paragraph role="paragraph" id="par_id3155925" xml-lang="en-US">USHORT&amp; nNo:</paragraph>
-<paragraph role="paragraph" id="par_id3149883" xml-lang="en-US">Input: Number of the function in the library; between 0 and nCount-1.</paragraph>
-<paragraph role="paragraph" id="par_id3154326" xml-lang="en-US">USHORT&amp; nParam:</paragraph>
-<paragraph role="paragraph" id="par_id3159139" xml-lang="en-US">Input: Indicates, for which parameter the description is provided; parameters start at 1. If nParam is 0, the description itself is supposed to be provided in pDesc; in this case, pName does not have any meaning.</paragraph>
-<paragraph role="paragraph" id="par_id3147374" xml-lang="en-US">char* pName:</paragraph>
-<paragraph role="paragraph" id="par_id3145245" xml-lang="en-US">Output: Takes up the parameter name or type, for example, the word "Number" or "String" or "Date", and so on. Implemented in $[officename] Calc as char[256].</paragraph>
-<paragraph role="paragraph" id="par_id3151020" xml-lang="en-US">char* pDesc:</paragraph>
-<paragraph role="paragraph" id="par_id3148389" xml-lang="en-US">Output: Takes up the description of the parameter, for example, "Value, at which the universe is to be calculated." Implemented in $[officename] Calc as char[256].</paragraph>
+<paragraph role="paragraph" id="par_id3155925" xml-lang="en-US" localize="false"><literal>USHORT&amp; nNo</literal>:</paragraph>
+<paragraph role="paragraph" id="par_id3149883" xml-lang="en-US"><emph>Input</emph>: Number of the function in the library; between 0 and nCount-1.</paragraph>
+<paragraph role="paragraph" id="par_id3154326" xml-lang="en-US" localize="false"><literal>USHORT&amp; nParam</literal>:</paragraph>
+<paragraph role="paragraph" id="par_id3159139" xml-lang="en-US"><emph>Input</emph>: Indicates, for which parameter the description is provided; parameters start at 1. If nParam is 0, the description itself is supposed to be provided in pDesc; in this case, pName does not have any meaning.</paragraph>
+<paragraph role="paragraph" id="par_id3147374" xml-lang="en-US" localize="false"><literal>char* pName</literal>:</paragraph>
+<paragraph role="paragraph" id="par_id3145245" xml-lang="en-US"><emph>Output</emph>: Takes up the parameter name or type, for example, the word "Number" or "String" or "Date", and so on. Implemented in $[officename] Calc as char[256].</paragraph>
+<paragraph role="paragraph" id="par_id3151020" xml-lang="en-US" localize="false"><literal>char* pDesc</literal>:</paragraph>
+<paragraph role="paragraph" id="par_id3148389" xml-lang="en-US"><emph>Output</emph>: Takes up the description of the parameter, for example, "Value, at which the universe is to be calculated." Implemented in $[officename] Calc as char[256].</paragraph>
 <paragraph role="paragraph" id="par_id3145303" xml-lang="en-US">pName and pDesc are char arrays; implemented in $[officename] Calc with size 256. Please note that the space available in the <emph>Function Wizard</emph> is limited and that the 256 characters cannot be fully used.</paragraph>
 <paragraph role="heading" id="hd_id3148874" xml-lang="en-US" level="2">Cell areas</paragraph>
 <paragraph role="paragraph" id="par_id3150265" xml-lang="en-US">The following tables contain information about which data structures must be provided by an external program module in order to pass cell areas. $[officename] Calc distinguishes between three different arrays, depending on the data type.</paragraph>
@@ -175,162 +175,156 @@
 <paragraph role="paragraph" id="par_id3149540" xml-lang="en-US">As a parameter, a cell area with values of the Number/Double type can be passed. A double array in $[officename] Calc is defined as follows:</paragraph>
 <table id="tbl_id3150665">
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3149388" xml-lang="en-US">
-<emph>Offset</emph>
-</paragraph>
+<tablecell>
+<paragraph role="tablehead" id="par_id3149388" xml-lang="en-US">Offset</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3154636" xml-lang="en-US">
-<emph>Name</emph>
-</paragraph>
+<tablecell>
+    <paragraph role="tablehead" id="par_id3154636" xml-lang="en-US">Name</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3153228" xml-lang="en-US">
-<emph>Description</emph>
-</paragraph>
+<tablecell>
+    <paragraph role="tablehead" id="par_id3153228" xml-lang="en-US">Description</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3150685" xml-lang="en-US">0</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3150685" xml-lang="en-US" localize="false">0</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3154869" xml-lang="en-US">Col1</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3147541" xml-lang="en-US">Column number in the upper-left corner of the cell area. Numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3149783" xml-lang="en-US">2</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3149783" xml-lang="en-US" localize="false">2</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3155986" xml-lang="en-US">Row1</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3147483" xml-lang="en-US">Row number in the upper-left corner of the cell area; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3153721" xml-lang="en-US">4</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3153721" xml-lang="en-US" localize="false">4</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3154317" xml-lang="en-US">Tab1</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3149820" xml-lang="en-US">Table number in the upper-left corner of the cell area; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3163820" xml-lang="en-US">6</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3163820" xml-lang="en-US" localize="false">6</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3149710" xml-lang="en-US">Col2</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3154819" xml-lang="en-US">Column number in the lower-right corner of the cell area. Numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3145083" xml-lang="en-US">8</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3145083" xml-lang="en-US" localize="false">8</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3156310" xml-lang="en-US">Row2</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150968" xml-lang="en-US">Row number in the lower-right corner of the cell area; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3156133" xml-lang="en-US">10</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3156133" xml-lang="en-US" localize="false">10</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3153218" xml-lang="en-US">Tab2</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3147086" xml-lang="en-US">Table number in the lower-right corner of the cell area; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3151270" xml-lang="en-US">12</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3151270" xml-lang="en-US" localize="false">12</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3152934" xml-lang="en-US">Count</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3145202" xml-lang="en-US">Number of the following elements. Empty cells are not counted or passed.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3150879" xml-lang="en-US">14</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3150879" xml-lang="en-US" localize="false">14</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3156002" xml-lang="en-US">Col</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3147276" xml-lang="en-US">Column number of the element. Numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3151295" xml-lang="en-US">16</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3151295" xml-lang="en-US" localize="false">16</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150261" xml-lang="en-US">Row</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3155851" xml-lang="en-US">Row number of the element; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3153150" xml-lang="en-US">18</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3153150" xml-lang="en-US" localize="false">18</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3153758" xml-lang="en-US">Tab</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150154" xml-lang="en-US">Table number of the element; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3149289" xml-lang="en-US">20</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3149289" xml-lang="en-US" localize="false">20</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3156010" xml-lang="en-US">Error</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3159181" xml-lang="en-US">Error number, where the value 0 is defined as "no error." If the element comes from a formula cell the error value is determined by the formula.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3147493" xml-lang="en-US">22</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3147493" xml-lang="en-US" localize="false">22</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3149200" xml-lang="en-US">Value</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3151174" xml-lang="en-US">8 byte IEEE variable of type double/floating point</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3154688" xml-lang="en-US">30</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3154688" xml-lang="en-US" localize="false">30</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3159337" xml-lang="en-US">...</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3159337" xml-lang="en-US" localize="false">...</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3155388" xml-lang="en-US">Next element</paragraph>
 </tablecell>
 </tablerow>
@@ -340,173 +334,167 @@
 <paragraph role="paragraph" id="par_id3153105" xml-lang="en-US">A cell area, which contains values of data type Text and is passed as a string array. A string array in $[officename] Calc is defined as follows:</paragraph>
 <table id="tbl_id3146992">
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3149908" xml-lang="en-US">
-<emph>Offset</emph>
-</paragraph>
+<tablecell>
+<paragraph role="tablehead" id="par_id3149908" xml-lang="en-US">Offset</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3159165" xml-lang="en-US">
-<emph>Name</emph>
-</paragraph>
+<tablecell>
+    <paragraph role="tablehead" id="par_id3159165" xml-lang="en-US">Name</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3159150" xml-lang="en-US">
-<emph>Description</emph>
-</paragraph>
+<tablecell>
+    <paragraph role="tablehead" id="par_id3159150" xml-lang="en-US">Description</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3149769" xml-lang="en-US">0</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3149769" xml-lang="en-US" localize="false">0</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150509" xml-lang="en-US">Col1</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3148447" xml-lang="en-US">Column number in the upper-left corner of the cell area. Numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3145418" xml-lang="en-US">2</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3145418" xml-lang="en-US" localize="false">2</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3147512" xml-lang="en-US">Row1</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3147235" xml-lang="en-US">Row number in the upper-left corner of the cell area; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3155362" xml-lang="en-US">4</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3155362" xml-lang="en-US" localize="false">4</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3151051" xml-lang="en-US">Tab1</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3151051" xml-lang="en-US">Tab1</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3148923" xml-lang="en-US">Table number in the upper-left corner of the cell area; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3149158" xml-lang="en-US">6</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3149158" xml-lang="en-US" localize="false">6</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3166437" xml-lang="en-US">Col2</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3149788" xml-lang="en-US">Column number in the lower-right corner of the cell area. Numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3166450" xml-lang="en-US">8</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3166450" xml-lang="en-US" localize="false">8</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3152877" xml-lang="en-US">Row2</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3152949" xml-lang="en-US">Row number in the lower-right corner of the cell area; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3159270" xml-lang="en-US">10</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3159270" xml-lang="en-US" localize="false">10</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3154107" xml-lang="en-US">Tab2</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3153747" xml-lang="en-US">Table number in the lower-right corner of the cell area; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3149924" xml-lang="en-US">12</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3149924" xml-lang="en-US" localize="false">12</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3154858" xml-lang="en-US">Count</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3148621" xml-lang="en-US">Number of the following elements. Empty cells are not counted or passed.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3148467" xml-lang="en-US">14</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3148467" xml-lang="en-US" localize="false">14</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3151126" xml-lang="en-US">Col</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3154334" xml-lang="en-US">Column number of the element. Numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3149416" xml-lang="en-US">16</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3149416" xml-lang="en-US" localize="false">16</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150631" xml-lang="en-US">Row</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150424" xml-lang="en-US">Row number of the element; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3154797" xml-lang="en-US">18</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3154797" xml-lang="en-US" localize="false">18</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3143274" xml-lang="en-US">Tab</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3149513" xml-lang="en-US">Table number of the element; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3145306" xml-lang="en-US">20</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3145306" xml-lang="en-US" localize="false">20</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3153948" xml-lang="en-US">Error</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3153534" xml-lang="en-US">Error number, where the value 0 is defined as "no error." If the element comes from a formula cell the error value is determined by the formula.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3153311" xml-lang="en-US">22</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3153311" xml-lang="en-US" localize="false">22</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3148695" xml-lang="en-US">Len</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3152769" xml-lang="en-US">Length of the following string, including closing zero byte. If the length including closing zero byte equals an odd value a second zero byte is added to the string so that an even value is achieved. Therefore, Len is calculated using ((StrLen+2)&amp;~1).</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3153772" xml-lang="en-US">24</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3153772" xml-lang="en-US" localize="false">24</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3153702" xml-lang="en-US">String</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3154474" xml-lang="en-US">String with closing zero byte</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3156269" xml-lang="en-US">24+Len</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3156269" xml-lang="en-US" localize="false">24+Len</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3154825" xml-lang="en-US">...</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3154825" xml-lang="en-US" localize="false">...</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3147097" xml-lang="en-US">Next element</paragraph>
 </tablecell>
 </tablerow>
@@ -516,189 +504,182 @@
 <paragraph role="paragraph" id="par_id3156140" xml-lang="en-US">Cell arrays are used to call cell areas containing text as well as numbers. A cell array in $[officename] Calc is defined as follows:</paragraph>
 <table id="tbl_id3150942">
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3154664" xml-lang="en-US">
-<emph>Offset</emph>
-</paragraph>
+<tablecell>
+<paragraph role="tablehead" id="par_id3154664" xml-lang="en-US">Offset</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3154566" xml-lang="en-US">
-<emph>Name</emph>
-</paragraph>
+<tablecell>
+<paragraph role="tablehead" id="par_id3154566" xml-lang="en-US">Name</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3146073" xml-lang="en-US">
-<emph>Description</emph>
-</paragraph>
+<tablecell>
+<paragraph role="tablehead" id="par_id3146073" xml-lang="en-US">Description</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3154117" xml-lang="en-US">0</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3154117" xml-lang="en-US" localize="false">0</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150988" xml-lang="en-US">Col1</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3146783" xml-lang="en-US">Column number in the upper-left corner of the cell area. Numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3153666" xml-lang="en-US">2</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3153666" xml-lang="en-US" localize="false">2</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3149560" xml-lang="en-US">Row1</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3156156" xml-lang="en-US">Row number in the upper-left corner of the cell area; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3150408" xml-lang="en-US">4</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3150408" xml-lang="en-US" localize="false">4</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150593" xml-lang="en-US">Tab1</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150357" xml-lang="en-US">Table number in the upper-left corner of the cell area; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3146912" xml-lang="en-US">6</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3146912" xml-lang="en-US" localize="false">6</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3153352" xml-lang="en-US">Col2</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3155893" xml-lang="en-US">Column number in the lower-right corner of the cell area. Numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3150827" xml-lang="en-US">8</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3150827" xml-lang="en-US" localize="false">8</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3148406" xml-lang="en-US">Row2</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150673" xml-lang="en-US">Row number in the lower-right corner of the cell area; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3155864" xml-lang="en-US">10</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3155864" xml-lang="en-US" localize="false">10</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3153197" xml-lang="en-US">Tab2</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3149329" xml-lang="en-US">Table number in the lower-right corner of the cell area; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3147360" xml-lang="en-US">12</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3147360" xml-lang="en-US" localize="false">12</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3154520" xml-lang="en-US">Count</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150647" xml-lang="en-US">Number of the following elements. Empty cells are not counted or passed.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3149747" xml-lang="en-US">14</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3149747" xml-lang="en-US" localize="false">14</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3147579" xml-lang="en-US">Col</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3154188" xml-lang="en-US">Column number of the element. Numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3159209" xml-lang="en-US">16</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3159209" xml-lang="en-US" localize="false">16</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3153265" xml-lang="en-US">Row</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3150095" xml-lang="en-US">Row number of the element; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3151276" xml-lang="en-US">18</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3151276" xml-lang="en-US" localize="false">18</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3149177" xml-lang="en-US">Tab</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3146925" xml-lang="en-US">Table number of the element; numbering starts at 0.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3150488" xml-lang="en-US">20</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3150488" xml-lang="en-US" localize="false">20</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3149441" xml-lang="en-US">Error</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3156048" xml-lang="en-US">Error number, where the value 0 is defined as "no error." If the element comes from a formula cell the error value is determined by the formula.</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3163813" xml-lang="en-US">22</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3163813" xml-lang="en-US" localize="false">22</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3159102" xml-lang="en-US">Type</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3149581" xml-lang="en-US">Type of cell content, 0 == Double, 1 == String</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
-<paragraph role="paragraph" id="par_id3155182" xml-lang="en-US">24</paragraph>
+<tablecell>
+    <paragraph role="paragraph" id="par_id3155182" xml-lang="en-US" localize="false">24</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3153291" xml-lang="en-US">Value or Len</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3148560" xml-lang="en-US">If type == 0: 8 byte IEEE variable of type double/floating point</paragraph>
 <paragraph role="paragraph" id="par_id3148901" xml-lang="en-US">If type == 1: Length of the following string, including closing zero byte. If the length including closing zero byte equals an odd value a second zero byte is added to the string so that an even value is achieved. Therefore, Len is calculated using ((StrLen+2)&amp;~1).</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3145215" xml-lang="en-US">26 if type==1</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3155143" xml-lang="en-US">String</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3149298" xml-lang="en-US">If type == 1: String with closing zero byte</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3151322" xml-lang="en-US">32 or 26+Len</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3163722" xml-lang="en-US">...</paragraph>
 </tablecell>
-<tablecell colspan="" rowspan="">
+<tablecell>
 <paragraph role="paragraph" id="par_id3151059" xml-lang="en-US">Next element</paragraph>
 </tablecell>
 </tablerow>
 </table>
-
 </body>
 </helpdocument>
