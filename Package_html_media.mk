@@ -78,16 +78,19 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/rotieren.png \
     helpimg/sc_PivotChartButtons.png \
     helpimg/sc_data_form01.png \
+    helpimg/sc_cell_with_comment_displayed.png \
     helpimg/sc_func_imcot.png \
     helpimg/sc_func_imcsc.png \
     helpimg/sc_func_imcsch.png \
     helpimg/sc_func_imsec.png \
     helpimg/sc_func_imsech.png \
     helpimg/sc_func_imtan.png \
+    helpimg/sd_drawing_with_comment.png \
     helpimg/sd_PresenterConsole01.png \
     helpimg/sd_PresenterConsole02.png \
     helpimg/sd_PresenterConsole03.png \
     helpimg/sd_PresenterConsole04.png \
+    helpimg/si_presentation_with_comment.png \
     helpimg/sheettabs.png \
     helpimg/sistop.png \
     helpimg/smzb1.png \
@@ -223,7 +226,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/starmath/fu21523.svg \
     helpimg/starmath/fu21524.svg \
     helpimg/starmath/fu21908.svg \
-	helpimg/starmath/im21106.svg \
+    helpimg/starmath/im21106.svg \
     helpimg/starmath/mi21608.svg \
     helpimg/starmath/mi21612.svg \
     helpimg/starmath/mi21618.svg \
@@ -286,6 +289,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sw_paste_range.png \
     helpimg/sw_signatureline01.png \
     helpimg/sw_signatureline02.png \
+    helpimg/sw_text_with_comment.png \
     helpimg/swh00055.png \
     helpimg/swh00056.png \
     helpimg/swh00117.png \
