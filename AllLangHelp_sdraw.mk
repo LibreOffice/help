@@ -21,8 +21,14 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdraw,\
     helpcontent2/source/text/sdraw/main_page \
     helpcontent2/source/text/sdraw/00/00000004 \
     helpcontent2/source/text/sdraw/00/page_menu \
+    helpcontent2/source/text/sdraw/01/delete_page \
+    helpcontent2/source/text/sdraw/01/duplicate_page \
+    helpcontent2/source/text/sdraw/01/insert_layer \
+    helpcontent2/source/text/sdraw/01/modify_layer \
     helpcontent2/source/text/sdraw/01/new_page \
+    helpcontent2/source/text/sdraw/01/navigate_page \
     helpcontent2/source/text/sdraw/01/page_properties \
+    helpcontent2/source/text/sdraw/01/rename_page \
     helpcontent2/source/text/sdraw/04/01020000 \
     helpcontent2/source/text/sdraw/guide/align_arrange \
     helpcontent2/source/text/sdraw/guide/color_define \
@@ -51,6 +57,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdraw,\
     helpcontent2/source/text/sdraw/main0103 \
     helpcontent2/source/text/sdraw/main_insert \
     helpcontent2/source/text/sdraw/main_format \
+    helpcontent2/source/text/sdraw/main_page \
+    helpcontent2/source/text/sdraw/main_shape \
     helpcontent2/source/text/sdraw/main_tools \
     helpcontent2/source/text/sdraw/main0200 \
     helpcontent2/source/text/sdraw/main0202 \
