@@ -56,7 +56,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/01/03152000 \
     helpcontent2/source/text/simpress/01/03180000 \
     helpcontent2/source/text/simpress/01/new_slide \
-    helpcontent2/source/text/simpress/01/04020000 \
     helpcontent2/source/text/simpress/01/04030000 \
     helpcontent2/source/text/simpress/01/04030000m \
     helpcontent2/source/text/simpress/01/04030100 \
@@ -83,7 +82,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/01/05120100 \
     helpcontent2/source/text/simpress/01/05120500m \
     helpcontent2/source/text/simpress/01/05130000 \
-    helpcontent2/source/text/simpress/01/05140000 \
     helpcontent2/source/text/simpress/01/05150000 \
     helpcontent2/source/text/simpress/01/05170000 \
     helpcontent2/source/text/simpress/01/05250000 \
