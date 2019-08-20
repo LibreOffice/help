@@ -71,6 +71,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/names_as_addressing.png \
     helpimg/note.png \
     helpimg/note_small.png \
+    helpimg/qrcode_example.svg \
     helpimg/rechenlt.png \
     helpimg/refhand.png \
     helpimg/right.png \
