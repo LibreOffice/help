@@ -20,6 +20,7 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 	$(foreach lang,$(gb_HELP_LANGS),\
 		$(lang)/bookmarks.js \
 		$(lang)/contents.js \
+		$(if $(HELP_OMINDEX_PAGE),$(lang)/xap_tpl) \
 		$(lang)/html.text \
 		$(lang)/langnames.js \
 		$(foreach module,$(html_TREE_MODULES),$(module)/$(lang)/contents.part) \
@@ -53,6 +54,24 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 		) > $@ \
 	)
 
+# Xapian localized templates
+ifeq ($(HELP_OMINDEX_PAGE),TRUE)
+
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/xap_tpl : \
+		$(SRCDIR)/helpcontent2/help3xsl/xap_templ_query.xsl \
+		$(call gb_ExternalExecutable_get_dependencies,xsltproc) \
+		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
+	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XAT,1)
+	$(call gb_Helper_abbreviate_dirs,\
+		$(call gb_ExternalExecutable_get_command,xsltproc) \
+		--stringparam lang $* \
+		-o $@ \
+		$(SRCDIR)/helpcontent2/help3xsl/xap_templ_query.xsl \
+		$(SRCDIR)/helpcontent2/source/text/shared/help/browserhelp.xhp \
+	)
+
+endif
+
 # set of installed languages - has to be language independent
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/languages.js : \
 		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
@@ -61,6 +80,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/languages.js : \
 		for lang in $(gb_HELP_LANGS) ; do printf '%s' "'$$lang', " ; done | sed 's/, $$//' ; \
 		printf ']);\n' \
 	) > $@
+
 
 define html_gen_langnames_js_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/langnames.js : \
@@ -152,6 +172,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 				--stringparam root $(if $(filter WNT,$(OS)),$$(cygpath -m `pwd`),`pwd`)/ \
 				--stringparam productname "$(PRODUCTNAME)" \
 				--stringparam productversion "$(PRODUCTVERSION)" \
+				--stringparam xapian $(if $(filter TRUE, $(HELP_OMINDEX_PAGE)),'yes','no') \
 				-o $(dir $@)$${xhp%.xhp}.html \
 				$(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl \
 				$(if $(filter WNT,$(OS)),$$(cygpath -m `pwd`),`pwd`)/$$xhp \
@@ -160,7 +181,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 		&& rm "$$RESPONSEFILE" \
 		&& touch $@ \
 	)
-
+	
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.js :
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),CAT,2)
 	$(call gb_Helper_abbreviate_dirs,\
