@@ -19,4 +19,14 @@ $(eval $(call gb_AllLangPackage_add_files,helpcontent2_html_lang,$(LIBO_SHARE_HE
 	) \
 ))
 
+ifeq ($(HELP_OMINDEX_PAGE),TRUE)
+
+$(eval $(call gb_AllLangPackage_add_files,helpcontent2_html_lang,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION)),\
+	$(foreach lang,$(gb_HELP_LANGS),\
+		$(lang)/xap_tpl \
+	) \
+))
+		
+endif
+
 # vim: set noet sw=4 ts=4:
