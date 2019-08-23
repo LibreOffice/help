@@ -21,7 +21,6 @@
 
 <xsl:output indent="yes" method="html" doctype-system= "about:legacy-compat"/>
 
-<xsl:include href="localized.xsl"/>
 <xsl:include href="links.txt.xsl"/>
 <!--
 ############################
@@ -34,6 +33,7 @@
 <xsl:param name="Language"/>
 <xsl:param name="productname"/>
 <xsl:param name="productversion"/>
+<xsl:param name="xapian"/>
 
 <xsl:param name="System" select="'WIN'"/>
 <xsl:param name="imgtheme" select="''"/>
@@ -142,7 +142,7 @@
         <base href="{$install}"/>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <xsl:if test="$online">
-            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org *.google.com *.googleapis.com"/>
+            <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org"/>
         </xsl:if>
         <title><xsl:value-of select="$titleL10N"/></title>
         <link rel="shortcut icon" href="{$target}media/navigation/favicon.ico"/>
@@ -221,32 +221,21 @@
     <div id="DisplayArea" itemprop="articleBody">
         <xsl:apply-templates select="/helpdocument/body"/>
     </div>
-    <div class="google-donation">
-        <xsl:if test="$online">
-            <div class="google-search">
-                <script type="text/javascript">
-                    <![CDATA[
-                    (function() {]]>
-                    <xsl:call-template name="getToken"><xsl:with-param name="lang" select="$lang"/></xsl:call-template>
-                    <![CDATA[
-                    var gcse = document.createElement('script');
-                    gcse.type = 'text/javascript';
-                    gcse.async = true;
-                    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-                    var s = document.getElementsByTagName('script')[0];
-                    s.parentNode.insertBefore(gcse, s);
-                    })();
-                    ]]>
-                </script>
-                <xsl:text disable-output-escaping="yes">&lt;gcse:search&gt;&lt;/gcse:search&gt;</xsl:text>
-            </div>
+    <xsl:if test="$online">
+        <div class="xapian-donation">
+            <xsl:if test="$xapian='yes'">
+                <div class="xapian-omega-search">
+                    <form name="P" method="get" action="/{$productversion}/{$lang}/search" target="_top">
+                        <input id="omega-autofocus" type="search" name="P" size="65"/>
+                        <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
+                    </form>
+                </div>
+            </xsl:if>
             <div class="donation">
-                <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">
-                    <xsl:value-of select="$ui_donate"/>
-                </a></p>
+                <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank"><xsl:value-of select="$ui_donate"/></a></p>
             </div>
-        </xsl:if>
-    </div>
+        </div>
+    </xsl:if>
     <footer>
         <xsl:if test="$online">
             <p><a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
