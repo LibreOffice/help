@@ -21,7 +21,6 @@
 
 <xsl:output indent="yes" method="html" doctype-system= "about:legacy-compat"/>
 
-<xsl:include href="localized.xsl"/>
 <xsl:include href="links.txt.xsl"/>
 <!--
 ############################
@@ -34,6 +33,7 @@
 <xsl:param name="Language"/>
 <xsl:param name="productname"/>
 <xsl:param name="productversion"/>
+<xsl:param name="xapian"/>
 
 <xsl:param name="System" select="'WIN'"/>
 <xsl:param name="imgtheme" select="''"/>
@@ -223,18 +223,20 @@
     </div>
     <xsl:if test="$online">
         <div class="xapian-donation">
-            <div class="xapian-omega-search">
-                <form name="P" method="get" action="/cgi-bin/omega/omega" target="_top">
-			<input type="hidden" name="DB" value="{$lang}"/>
-                    <input type="hidden" name="DEFAULTOP" value="and"/>
-                    <input id="omega-autofocus" type="search" name="P" size="65"/>
-                    <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
-                </form>
-            </div>
+            <xsl:if test="$xapian='yes'">
+                <xsl:variable name="xaptpllang" select="concat($lang,'/xap_tpl')"/>
+                <div class="xapian-omega-search">
+                    <form name="P" method="get" action="/cgi-bin/omega/omega" target="_top">
+                        <input type="hidden" name="DB" value="{$lang}"/>
+                        <input type="hidden" name="FMT" value="{$xaptpllang}"/>
+                        <input type="hidden" name="DEFAULTOP" value="and"/>
+                        <input id="omega-autofocus" type="search" name="P" size="65"/>
+                        <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
+                    </form>
+                </div>
+            </xsl:if>
             <div class="donation">
-                <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">
-                        <xsl:value-of select="$ui_donate"/>
-                </a></p>
+                <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank"><xsl:value-of select="$ui_donate"/></a></p>
             </div>
         </div>
     </xsl:if>
