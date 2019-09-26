@@ -216,9 +216,8 @@
     </aside>
     <div id="DisplayArea" itemprop="articleBody">
         <xsl:apply-templates select="/helpdocument/body"/>
-    </div>
-    <div class="google-donation">
-        <xsl:if test="$online">
+        <footer>
+            <xsl:if test="$online">
                 <div class="xapian-omega-search">
                     <form name="P" method="get" action="/cgi-bin/omega/omega" target="_top">
                         <input type="hidden" name="DB" value="{$lang}"/>
@@ -228,21 +227,20 @@
                         <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
                     </form>
                 </div>
-        </xsl:if>
+            </xsl:if>
+            <xsl:if test="$online">
+                <p><a href="https://www.collaboraoffice.com/about-us/" target="_blank">About Us</a> | <a href="https://www.collaboraoffice.com/privacy-policy/" target="_blank">Privacy Policy</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in TDF's <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. Collabora Office is derived from LibreOffice which was based on OpenOffice.org.</p>
+            </xsl:if>
+            <div id="DEBUG" class="debug">
+                <h3 class="bug">Help content debug info:</h3>
+                <p>This page is: <a href="https://opengrok.libreoffice.org/xref/help/source{$filename}" target="_blank"><xsl:value-of select="$filename"/></a></p>
+                <p>Title is: <xsl:value-of select="$title"/></p>
+                <p id="bm_module"></p>
+                <p id="bm_system"></p>
+            </div>
+        </footer>
+
     </div>
-    <footer>
-        <xsl:if test="$online">
-            <p><a href="https://www.collaboraoffice.com/about-us/" target="_blank">About Us</a> | <a href="https://www.collaboraoffice.com/privacy-policy/" target="_blank">Privacy Policy</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in TDF's <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. Collabora Office is derived from LibreOffice which was based on OpenOffice.org.</p>
-        </xsl:if>
-        <div id="DEBUG" class="debug">
-            <h3 class="bug">Help content debug info:</h3>
-            <p>This page is: <a href="https://opengrok.libreoffice.org/xref/help/source{$filename}" target="_blank"><xsl:value-of select="$filename"/></a></p>
-            <p>Title is: <xsl:value-of select="$title"/></p>
-            <p id="bm_module"></p>
-            <p id="bm_system"></p>
-            <p id="bm_HID"></p>
-        </div>
-    </footer>
     </body>
 </html>
 </xsl:template>
