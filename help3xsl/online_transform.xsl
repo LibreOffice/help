@@ -220,7 +220,7 @@
             <xsl:if test="$online">
                 <div class="xapian-omega-search">
                     <form name="P" method="get" action="/cgi-bin/omega/omega" target="_top">
-                        <input type="hidden" name="DB" value="{$lang}"/>
+                        <input type="hidden" name="DB" value="{$lang}62"/>
                         <input type="hidden" name="FMT" value="cp-query"/>
                         <input type="hidden" name="DEFAULTOP" value="and"/>
                         <input id="omega-autofocus" type="search" name="P" size="65"/>
