@@ -347,11 +347,11 @@ h6 {
     grid-area: header;
     position: sticky;
     top: 0px;
-    background-color: #18A303;
     z-index: 1000;
 }
 header {
     color: #fff;
+    background-color: #18A303;
     height: 64px;
     padding: 8px 8px 8px 16px;
 }
@@ -461,6 +461,10 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
 }
 .index a {
     font-size: 16px;
+    display: block;
+}
+.index .hidden {
+    display: none;
 }
 #Bookmarks {
     padding: 0 20px;
@@ -544,12 +548,6 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
 .pagination a {
     text-decoration: none;
 }
-.index a {
-    display: block;
-}
-.index .hidden {
-    display: none;
-}
 li.active {
     background-color: #0379BC;
 }
@@ -582,12 +580,15 @@ li.disabled a {
     background-color: #FCFCFC;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,.05);
 }
-.donation {
+.donation-frame {
+    background: #18A303;
+}
+.donation{
     background: #0379BC;
     background-image: linear-gradient(to bottom, #3498db, #2980b9);
     border-radius: 8px;
     padding: 5px 10px 5px 10px;
-    margin: 20px auto 0 auto;
+    margin: auto;
     max-width: 200px;
     color: #ffffff;
     text-decoration: none;
@@ -607,15 +608,11 @@ li.disabled a {
     font-size:1.2rem;
     text-align: center;
 }
-/*.xapian-omega-search {
-    max-width: 300px;
-    margin: 40px auto 0 auto;
-}*/
+.search-frame {
+    background: #18A303;
+}
 .xapian-omega-search {
-    margin: 0;
-    /*position: absolute;*/
-    top: 19px;
-    left: 360px;
+    margin: auto;
 }
 .modules {
     border-bottom: 2px solid #f3f3f3;
@@ -809,16 +806,11 @@ li.disabled a {
     .rightside {
         grid-area: rightside;
     }
-    .xapian-donation {
-        grid-area: google;
-        position: sticky;
-        top: 0px;
-        background-color: #FCFCFC;
-        box-shadow: none;
-        clear: left;
+    .donation-frame {
+        grid-area: donation;
     }
-    .donation {
-        max-width: 400px;
+    .search-frame {
+        grid-area: search;
     }
     footer {
         grid-area: footer;
@@ -863,27 +855,26 @@ li.disabled a {
 /* Use @supports to sneak these rules past IE */
 @supports (grid-area: auto) {
     @media screen and (min-width: 960px) {
-        .xapian-donation {
+        .search-frame {
+            grid-area: search;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #18A303;
-            border-top: none;
         }
-        .xapian-omega-search {
-            margin: 0;
-        }
-        .donation {
-            margin: 0 auto;
+        .donation-frame {
+            grid-area: donation;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         footer {
             border-top: 2px solid #148603;
         }
         body {
             display: grid;
-            grid-template-columns: 320px 80px 1fr;
+            grid-template-columns: 360px 80px 1fr;
             grid-template-rows: minmax(1em, auto) minmax(1em, auto) 1fr minmax(1em, auto);
-            grid-template-areas: "header header google"
+            grid-template-areas: "header search donation"
                                  "rightside main main"
                                  "leftside main main"
                                  ". footer footer"
@@ -892,11 +883,14 @@ li.disabled a {
     @media screen and (min-width: 1440px) {
         body {
             display: grid;
-            grid-template-columns: 320px 450px 450px 1fr;
+            grid-template-columns: 360px 450px 450px 1fr;
             grid-template-rows: 1fr minmax(1em, auto) minmax(1em, auto);
-            grid-template-areas: "header header google google"
+            grid-template-areas: "header search search donation"
                                  "leftside main main rightside"
                                  ". footer footer ."
+        }
+        .donation {
+            max-width: 300px;
         }
         .rightside {
             width: auto;
