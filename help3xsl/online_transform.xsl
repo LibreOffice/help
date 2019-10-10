@@ -222,19 +222,21 @@
         <xsl:apply-templates select="/helpdocument/body"/>
     </div>
     <xsl:if test="$online">
-        <div class="xapian-donation">
             <xsl:if test="$xapian='yes'">
+                <div class="search-frame">
                 <div class="xapian-omega-search">
                     <form name="P" method="get" action="/{$productversion}/{$lang}/search" target="_top">
-                        <input id="omega-autofocus" type="search" name="P" size="65"/>
+                        <input id="omega-autofocus" type="search" name="P" size="40"/>
                         <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
                     </form>
                 </div>
-            </xsl:if>
-            <div class="donation">
-                <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank"><xsl:value-of select="$ui_donate"/></a></p>
             </div>
-        </div>
+            </xsl:if>
+            <div class="donation-frame">
+                <div class="donation">
+                <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank"><xsl:value-of select="$ui_donate"/></a></p>
+                </div>
+            </div>
     </xsl:if>
     <footer>
         <xsl:if test="$online">
