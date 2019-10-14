@@ -15,9 +15,30 @@ xsltproc xap_template_query.xsl <file.xhp>
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:param name="lang"/>
+    <xsl:param name="productname"/>
+    <xsl:param name="productversion"/>
     <xsl:output indent="yes" method="text"/>
+    <xsl:variable name="target" select="concat('/',$productversion)"/>
+    <!-- Strings for the help UI page -->
+    <xsl:variable name ="ui_contents"><xsl:apply-templates select="//variable[@id='contents']"/></xsl:variable>
+    <xsl:variable name ="ui_index"><xsl:apply-templates select="//variable[@id='index']"/></xsl:variable>
+    <xsl:variable name ="ui_pholderall"><xsl:apply-templates select="//variable[@id='pholderall']"/></xsl:variable>
+    <xsl:variable name ="ui_pholderchosen"><xsl:apply-templates select="//variable[@id='pholderchosen']"/></xsl:variable>
+    <xsl:variable name ="ui_module"><xsl:apply-templates select="//variable[@id='module']"/></xsl:variable>
+    <xsl:variable name ="ui_language"><xsl:apply-templates select="//variable[@id='language']"/></xsl:variable>
+    <xsl:variable name ="ui_donate"><xsl:apply-templates select="//variable[@id='donate']"/></xsl:variable>
+    <xsl:variable name ="ui_logo"><xsl:apply-templates select="//variable[@id='LibreOfficeHelp']"/></xsl:variable>
+    <xsl:variable name ="ui_selectmodule"><xsl:apply-templates select="//variable[@id='selectmodule']"/></xsl:variable>
+    <xsl:variable name ="ui_selectlang"><xsl:apply-templates select="//variable[@id='selectlanguage']"/></xsl:variable>
+    <xsl:variable name ="ui_search"><xsl:apply-templates select="//variable[@id='searchhelpcontents']"/></xsl:variable>
+
+    <xsl:variable name="brand3" select="'%PRODUCTNAME'"/>
+    <xsl:variable name="brand4" select="'%PRODUCTVERSION'"/>
+
+
 <xsl:template match="/">
 <![CDATA[$httpheader{Content-Type,text/html; charset=utf-8}<!DOCTYPE html><html lang="]]><xsl:value-of select="$lang"/><![CDATA[">
+<base href="/"/>
 $set{flag_spelling,$ne{$cgi{SPELL},0}}
 $set{flag_spelling_correction,true}
 $set{thousand,$.}$set{decimal,.}
@@ -53,6 +74,22 @@ $def{SPAGE,<input type=submit name="[" value="$1" disabled=disabled>}
 <head>
 <title>$if{$query,Omega Search: $html{$query},Omega Search}</title>
 <!--$if{$opt{topterms},$include{inc/toptermsjs}}-->
+<link rel="shortcut icon" href="]]><xsl:value-of select="$target"/><![CDATA[/media/navigation/favicon.ico"/>
+<link  type="text/css" href="]]><xsl:value-of select="$target"/><![CDATA[/normalize.css" rel="Stylesheet"/>
+<link  type="text/css" href="]]><xsl:value-of select="$target"/><![CDATA[/default.css" rel="Stylesheet"/>
+<link  type="text/css" href="]]><xsl:value-of select="$target"/><![CDATA[/prism.css" rel="Stylesheet"/>
+<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/polyfills.js"></script>
+<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/languages.js"></script>
+<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/fuzzysort.js"></script>
+<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/prism.js"></script>
+<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/help2.js" defer=""></script>
+<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/a11y-toggle.js" defer=""></script>
+<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/paginathing.js" defer=""></script>
+<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/help.js" defer=""></script>
+<script type="text/javascript" src="]]><xsl:value-of select="concat($target,'/',$lang)"/><![CDATA[/langnames.js" defer=""></script>
+<script type="text/javascript" src="]]><xsl:value-of select="concat($target,'/',$lang)"/><![CDATA[/bookmarks.js" defer=""></script>
+<script type="text/javascript" src="]]><xsl:value-of select="concat($target,'/',$lang)"/><![CDATA[/contents.js" defer=""></script>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <style>
 input[type=image] {
   border: 0px;
@@ -68,16 +105,55 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
 }
 </script>
 </head>
-<body bgcolor="#ffffff">
-<form name=P method=get
-action="$html{$or{$env{SCRIPT_NAME},omega}}" target="_top">
+<body>
+<div class="header-extrawurst">
+    <header>
+        <div class="logo-container">
+            <a class="logo" href="]]><xsl:value-of select="concat($target,'/',$lang)"/><![CDATA[/text/shared/05/new_help.html">
+                <div class="symbol"></div>
+                <p>]]><xsl:value-of select="$ui_logo"/><![CDATA[</p>
+            </a>
+        </div>
+    </header>
+</div>
+<div class="modules">
+    <button type="button" data-a11y-toggle="modules-nav" id="modules" onclick="setupModules(']]><xsl:value-of select="substring-after($target,'/')"/><![CDATA[/', ']]><xsl:value-of select="$lang"/><![CDATA[');">
+        ]]><xsl:value-of select="$ui_module"/><![CDATA[
+    </button>
+    <nav id="modules-nav"/><!-- is filled in via setupModules() on demand -->
+</div>
+<aside class="rightside">
+    <input id="accordion-1" name="accordion-menu" type="checkbox"/>
+    <label for="accordion-1">]]><xsl:value-of select="$ui_contents"/><![CDATA[</label>
+    <div id="Contents" class="contents-treeview"></div>
+</aside>
+<aside class="leftside">
+    <div id="Index">
+        <div class="index-label">]]><xsl:value-of select="$ui_index"/><![CDATA[ &#32;&#x1f50e;&#xfe0e;&#32;</div>
+        <div id="Bookmarks">
+            <input id="search-bar" type="text" class="search" placeholder="]]><xsl:value-of select="$ui_pholderchosen"/><![CDATA["/>
+            <nav class="index"></nav>
+        </div>
+    </div>
+</aside>
+<div class="donation-frame">
+    <div class="donation">
+        <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">]]><xsl:value-of select="$ui_donate"/><![CDATA[</a></p>
+    </div>
+</div>
+<div class="search-frame">
+    <div class="xapian-omega-search">
+    </div>
+</div>
+<div id="DisplayArea">
+    <form name="P" method="get" action="]]><xsl:value-of select="concat($target,'/',$lang)"/><![CDATA[/search" target="_top">
 <center>
-<input id="omega-autofocus" type=search name=P value="$html{$query}" size=65 autofocus>
+<input id="omega-autofocus" type=search name=P value="$html{$query}" size=40 autofocus>
 <script>
 if (!("autofocus" in document.createElement("input")))
  document.getElementById("omega-autofocus").focus();
 </script>
-<input type=submit value="Search">
+<input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
 <hr>
 <input type=radio name=DEFAULTOP value=and $if{$eq{$defaultop,and},checked}>]]><xsl:apply-templates select="//variable[@id='xap_match_all']"/><![CDATA[
 <input type=radio name=DEFAULTOP value=or $if{$eq{$defaultop,or},checked}>]]><xsl:apply-templates select="//variable[@id='xap_match_any']"/><![CDATA[
@@ -103,6 +179,7 @@ $nice{$add{$topdoc,1}}-$nice{$last} ]]><xsl:apply-templates select="//variable[@
  $nice{$add{$topdoc,1}}$if{$ne{$add{$topdoc,1},$last},-$nice{$last}} ]]><xsl:apply-templates select="//variable[@id='xap_exactly']"/><![CDATA[}
 }
 <hr>
+
 </center>
 $if{$map{$queryterms,$set{U,$unstem{$_}}$set{F_$opt{U},$add{$opt{F_$opt{U}},$freq{$_}}}},$list{$unique{$map{$queryterms,$set{U,$unstem{$_}}$list{$html{$unique{$opt{U}}},<b>,</b>/<b>,</b>}:&nbsp;$nice{$opt{F_$opt{U}}}}},]]><xsl:apply-templates select="//variable[@id='xap_term_frequencies']"/><![CDATA[ ,$. ,}}
 <br><small>]]><xsl:apply-templates select="//variable[@id='xap_searchtimes']"/><![CDATA[</small>
@@ -117,11 +194,11 @@ $if{$and{$field{modtime},$ne{$field{modtime},-1}},
 <script type="text/javascript">write_date($add{$field{modtime}});</script>
 <noscript>
 <span title="$html{$date{$field{modtime},%Y-%m-%d %H:%M:%S}}">
-    ]]><xsl:apply-templates select="//variable[@id='xap_modified']"/><![CDATA[<br><b>$html{$date{$field{modtime},%Y-%m-%d}}</b></span>
+]]><xsl:apply-templates select="//variable[@id='xap_modified']"/><![CDATA[<br><b>$html{$date{$field{modtime},%Y-%m-%d}}</b></span>
 </noscript><br>
 }
-$if{$field{language},Language: <b>$html{$field{language}}</b><br>}
-$if{$field{size},<span title="$html{$field{size}} bytes">Size: <b>$html{$filesize{$field{size}}}</b></span><br>}
+$if{$field{language},]]><xsl:apply-templates select="//variable[@id='xap_lang']"/><![CDATA[<b>$html{$field{language}}</b><br>}
+$if{$field{size},<span title="$html{$field{size}} bytes">]]><xsl:apply-templates select="//variable[@id='xap_size']"/><![CDATA[<b>$html{$filesize{$field{size}}}</b></span><br>}
 <div title="]]><xsl:apply-templates select="//variable[@id='xap_relevant']"/><![CDATA[" style="float:left;background-color:#cfc;border:1px solid green;margin-top:2px;">
 <input type=checkbox name=R value=$id$if{$relevant, checked}>
 </div>
@@ -168,8 +245,51 @@ ${Preserve any B filters used - this needs modifying if you modify this template
 $map{$cgilist{B},<input type=hidden name=B value="$html{$_}">}
 </form>
 <hr><div align=right><i><small><a href="https://xapian.org/">$html{$version}</a></small></i></div>
+    <footer>
+        <p><a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
+    </footer>
 </body>
 </html>
-$log{query.log}]]>
+$log{query.log}
+</div>
+]]>
+</xsl:template>
+
+<xsl:template match="text()">
+    <xsl:call-template name="brand">
+        <xsl:with-param name="string"><xsl:value-of select="."/></xsl:with-param>
+    </xsl:call-template>
+</xsl:template>
+
+<!-- Branding -->
+<xsl:template name="brand" >
+    <xsl:param name="string"/>
+    <xsl:choose>
+        <xsl:when test="contains($string,$brand3)">
+            <xsl:variable name="newstr">
+                <xsl:value-of select="substring-before($string,$brand3)"/>
+                <xsl:value-of select="$productname"/>
+                <xsl:value-of select="substring-after($string,$brand3)"/>
+            </xsl:variable>
+            <xsl:call-template name="brand">
+                <xsl:with-param name="string" select="$newstr"/>
+            </xsl:call-template>
+        </xsl:when>
+
+        <xsl:when test="contains($string,$brand4)">
+            <xsl:variable name="newstr">
+                <xsl:value-of select="substring-before($string,$brand4)"/>
+                <xsl:value-of select="$productversion"/>
+                <xsl:value-of select="substring-after($string,$brand4)"/>
+            </xsl:variable>
+            <xsl:call-template name="brand">
+                <xsl:with-param name="string" select="$newstr"/>
+            </xsl:call-template>
+        </xsl:when>
+
+        <xsl:otherwise>
+            <xsl:value-of select="$string"/>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 </xsl:stylesheet>

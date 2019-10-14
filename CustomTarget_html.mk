@@ -65,6 +65,8 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/xap_tpl : \
 	$(call gb_Helper_abbreviate_dirs,\
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
 		--stringparam lang $* \
+		--stringparam productname "$(PRODUCTNAME)" \
+		--stringparam productversion "$(PRODUCTVERSION)" \
 		-o $@ \
 		$(SRCDIR)/helpcontent2/help3xsl/xap_templ_query.xsl \
 		$(SRCDIR)/helpcontent2/source/text/shared/help/browserhelp.xhp \
