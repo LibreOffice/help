@@ -17,7 +17,11 @@ var currentModule = null;
 if(url.indexOf('explorer/database/') !== -1) {
     currentModule = 'BASE';
 } else {
-    currentModule = regexArray[1].toUpperCase().substring(1);
+    if (null === regexArray){// comes from search or elsewhere, no defined module in URL
+        currentModule = 'HARED'
+    }else{
+        currentModule = regexArray[1].toUpperCase().substring(1);
+    }
 }
 var results = null;
 var fullLinkified = '';
