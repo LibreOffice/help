@@ -288,6 +288,7 @@
 
 <!-- BR -->
 <xsl:template match="br"><br /></xsl:template>
+<xsl:template match="br" mode="embedded"><br /></xsl:template>
 
 <!-- CAPTION -->
 <xsl:template match="caption" />
