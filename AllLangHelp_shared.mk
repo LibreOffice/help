@@ -302,8 +302,11 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/06130000 \
     helpcontent2/source/text/shared/01/06130001 \
     helpcontent2/source/text/shared/01/06130010 \
+    helpcontent2/source/text/shared/01/06130020 \
+    helpcontent2/source/text/shared/01/06130030 \
     helpcontent2/source/text/shared/01/06130100 \
     helpcontent2/source/text/shared/01/06130200 \
+    helpcontent2/source/text/shared/01/06130300 \
     helpcontent2/source/text/shared/01/06130500 \
     helpcontent2/source/text/shared/01/06140000 \
     helpcontent2/source/text/shared/01/06140100 \
