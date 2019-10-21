@@ -331,6 +331,10 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/smath/ui/spacingdialog/SpacingDialog.png \
     screenshots/modules/swriter/ui/watermarkdialog/WatermarkDialog.png \
     screenshots/svx/ui/compressgraphicdialog/CompressGraphicDialog.png \
+    screenshots/cui/ui/optviewpage/OptViewPage.png \
+    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
+		screenshots/cui/ui/optviewpage/$(lang)/OptViewPage.png \
+	) \
 ))
 
 # vim: set noet sw=4 ts=4:
