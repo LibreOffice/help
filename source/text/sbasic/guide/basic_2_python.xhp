@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+   <meta>
+      <topic id="text/sbasic/guide/basic_2_python">
+         <title id="tit" xml-lang="en-US">Basic to Python</title>
+         <filename>/text/sbasic/guide/basic_2_python.xhp</filename>
+      </topic>
+   </meta>
+   <body>
+      <bookmark branch="index" id="N0430">
+         <bookmark_value>Basic;Calling Python</bookmark_value>
+         <bookmark_value>API;SimpleFileAccess</bookmark_value>
+         <bookmark_value>API;PathSettings</bookmark_value>
+      </bookmark>
+      <h1 id="hd_id811571848401485"><variable id="basic2python"><link href="text/sbasic/guide/basic_2_python.xhp" name="Basic Programming Examples">Calling Python macros from Basic</link></variable></h1>
+      <paragraph role="paragraph" id="N0432">Calling Python scripts from %PRODUCTNAME Basic macros is possible, and valuable features can be obtained such as:</paragraph>
+      <list type="unordered">
+         <listitem><paragraph role="listitem" id="N0433"><literal>ComputerName</literal> identification or <literal>OSName</literal> detection are possible,</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0434">Basic <literal>FileLen()</literal> function and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1ucb_1_1SimpleFileAccess.html" name="ucb.SimpleFileAccess">com.sun.star.ucb.SimpleFileAccess.</link><literal>getSize()</literal> API function exhibit a 2 Gio file size upper limit that Python helps to overcome,</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0435"><link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1util_1_1PathSettings.html" name="util.PathSettings">com.sun.star.util.PathSettings</link> can be normalized,</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0436">and many more.</paragraph></listitem>
+      </list>
+      <tip id="N0437">A reasonable exposure to %PRODUCTNAME Basic and to <link href="https://api.libreoffice.org/" name="Application Programming Interface">Application Programming Interface (API)</link> features is recommended prior to perform inter-language calls from Basic to Python, to JavaScript or any other script engine.</tip>
+      <h2 id="N0438">Retrieving Python Scripts</h2>
+      <paragraph role="paragraph" id="N0439">Python scripts can be personal, shared, or embedded in documents. In order to execute them, %PRODUCTNAME Basic needs to be provided with Python script locations. Locating <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1script_1_1provider_1_1XScript.html" name="script.provider.XScript">com.sun.star.script.provider.XScript</link> interface compliant UNO objects allows the execution of Python scripts:</paragraph>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="N0440">Option Explicit</paragraph>
+         <paragraph role="bascode" localize="false" id="N0441">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0442">Public Function GetPythonScript(macro As String, _</paragraph>
+         <paragraph role="bascode" localize="false" id="N0443">        Optional location As String) As com.sun.star.script.provider.Xscript</paragraph>
+         <paragraph role="bascode" id="N0444">    &apos;&apos;&apos; Grab Python script object before execution</paragraph>
+         <paragraph role="bascode" id="N0445">    &apos; Arguments:</paragraph>
+         <paragraph role="bascode" id="N0446">    &apos;    macro   : as &quot;library/module.py$macro&quot; or &quot;module.py$macro&quot;</paragraph>
+         <paragraph role="bascode" id="N0447">    &apos;    location: as &quot;document&quot;, &quot;share&quot;, &quot;user&quot; or ENUM(eration)</paragraph>
+         <paragraph role="bascode" id="N0448">    &apos; Result:</paragraph>
+         <paragraph role="bascode" id="N0449">    &apos;    located com.sun.star.script.provider.XScript UNO service&apos;&apos;&apos;</paragraph>
+         <paragraph role="bascode" localize="false" id="N0450">    If IsMissing(location) Then location = &quot;user&quot;</paragraph>
+         <paragraph role="bascode" localize="false" id="N0451">    Dim mspf As Object &apos; com.sun.star.script.provider.MasterScriptProviderFactory</paragraph>
+         <paragraph role="bascode" id="N0452">    Dim sp As Object &apos; com.sun.star.script.provider.XScriptProvider compatible</paragraph>
+         <paragraph role="bascode" localize="false" id="N0453">    Dim uri As String</paragraph>
+         <paragraph role="bascode" localize="false" id="N0454">    If location=&quot;document&quot; Then</paragraph>
+         <paragraph role="bascode" localize="false" id="N0455">        sp = ThisComponent.getScriptProvider()</paragraph>
+         <paragraph role="bascode" localize="false" id="N0456">    Else</paragraph>
+         <paragraph role="bascode" localize="false" id="N0457">        mspf = CreateUNOService(&quot;com.sun.star.script.provider.MasterScriptProviderFactory&quot;)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0458">        sp = mspf.createScriptProvider(&quot;&quot;)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0459">    End If</paragraph>
+         <paragraph role="bascode" localize="false" id="N0460">    uri = &quot;vnd.sun.star.script:&quot;&amp; macro &amp;&quot;?language=Python&amp;location=&quot;&amp; location</paragraph>
+         <paragraph role="bascode" localize="false" id="N0461">    GetPythonScript = sp.getScript(uri)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0462">End Function &apos; GetPythonScript</paragraph>
+      </bascode>
+      <h2 id="N0463">Executing Python Scripts</h2>
+      <embed href="text.sbasic.python/python_2_basic.xhp#APIScriptingFramework" />
+      <h3 id="N0464">Syntax</h3>
+      <paragraph role="paragraph" id="N0465"><literal>workstation_name = script.invoke(Array(), Array(), Array())</literal></paragraph>
+      <paragraph role="paragraph" id="N0466"><literal>opSysName = script.invoke(Array(), in_outs, Array())</literal> &apos; in_out is an Array</paragraph>
+      <paragraph role="paragraph" id="N0467"><literal>file_len = script.invoke(Array(systemFilePath), Array(), Array())</literal></paragraph>
+      <paragraph role="paragraph" id="N0468"><literal>normalizedPath = script.invoke(Array(systemFilePath), Array(), Array())</literal></paragraph>
+      <h3 id="N0469">Embedded Scripts Examples</h3>
+      <paragraph role="paragraph" id="N0470">Below <literal>ComputerName</literal>, and <literal>GetFilelen</literal> routines are calling their Python counterparts, using aforementioned <literal>GetPythonScript</literal> function. Exception handling is not detailed.</paragraph>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="N0471">Option Explicit</paragraph>
+         <paragraph role="bascode" id="N0472">Option Compatible &apos; Properties are supported</paragraph>
+         <paragraph role="bascode" localize="false" id="N0473">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0474">Private scr As Object &apos; com.sun.star.script.provider.XScript</paragraph>
+         <paragraph role="bascode" localize="false" id="N0475">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0476">Private Property Get ComputerName As String</paragraph>
+         <paragraph role="bascode" id="N0477">    &apos;&apos;&apos;Workstation name&apos;&apos;&apos;</paragraph>
+         <paragraph role="bascode" localize="false" id="N0478">    scr = GetPythonScript(&quot;Platform.py$computer_name&quot;, &quot;document&quot;)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0479">    ComputerName = scr.invoke(Array(), Array(), Array())</paragraph>
+         <paragraph role="bascode" localize="false" id="N0480">End Property &apos; ComputerName</paragraph>
+         <paragraph role="bascode" localize="false" id="N0481">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0482">Private Function GetFilelen(systemFilePath As String) As Currency</paragraph>
+         <paragraph role="bascode" id="N0483">    &apos;&apos;&apos;File size in bytes&apos;&apos;&apos;</paragraph>
+         <paragraph role="bascode" localize="false" id="N0484">    scr = GetPythonScript(&quot;Os/Path.py$get_size&quot;, Script.ISEMBEDDED)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0485">    GetFilelen = scr.invoke(Array(systemFilePath), Array(), Array(),)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0486">End Function &apos; GetFilelen</paragraph>
+         <paragraph role="bascode" localize="false" id="N0487">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0488">Private Type _SCRIPT_LOCATION</paragraph>
+         <paragraph role="bascode" id="N0489">    ISEMBEDDED As String &apos; document script</paragraph>
+         <paragraph role="bascode" id="N0490">    ISPERSONAL As String &apos; user script</paragraph>
+         <paragraph role="bascode" id="N0491">    ISSHARED As String &apos; %PRODUCTNAME macro</paragraph>
+         <paragraph role="bascode" localize="false" id="N0492">End Type &apos; _SCRIPT_LOCATION</paragraph>
+         <paragraph role="bascode" localize="false" id="N0493">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0494">Public Function Script() As Object &apos; Text enumeration</paragraph>
+         <paragraph role="bascode" localize="false" id="N0495">    Static enums As _SCRIPT_LOCATION : With enums</paragraph>
+         <paragraph role="bascode" localize="false" id="N0496">    If .ISEMBEDDED = &quot;&quot; Then</paragraph>
+         <paragraph role="bascode" id="N0497">        .ISEMBEDDED = &quot;document&quot; &apos; document script</paragraph>
+         <paragraph role="bascode" id="N0498">        .ISPERSONAL = &quot;user&quot; &apos; user scripts</paragraph>
+         <paragraph role="bascode" id="N0499">        .ISSHARED = &quot;share&quot; &apos; %PRODUCTNAME macro</paragraph>
+         <paragraph role="bascode" localize="false" id="N0500">    End If : End With &apos; enums</paragraph>
+         <paragraph role="bascode" localize="false" id="N0501">    Script = enums</paragraph>
+         <paragraph role="bascode" localize="false" id="N0502">End Function &apos; Script</paragraph>
+      </bascode>
+      <paragraph role="paragraph" id="N0503">Two different Python modules are called. They can either be embedded in the current document, either be stored on the file system. Argument type checking is skipped for clarity:</paragraph>
+      <list type="unordered">
+         <listitem><paragraph role="paragraph" id="N0504">Platform.py</paragraph></listitem>
+      </list>
+      <pycode>
+         <paragraph role="pycode" localize="false" id="N0505"># -*- coding: utf-8 -*-</paragraph>
+         <paragraph role="pycode" localize="false" id="N0506">from __future__ import unicode_literals</paragraph>
+         <paragraph role="pycode" localize="false" id="N0507"> </paragraph>
+         <paragraph role="pycode" localize="false" id="N0508">import platform</paragraph>
+         <paragraph role="pycode" localize="false" id="N0509"> </paragraph>
+         <paragraph role="pycode" localize="false" id="N0510">def computer_name() -&gt; str:</paragraph>
+         <paragraph role="pycode" localize="false" id="N0511">    return platform.node()</paragraph>
+         <paragraph role="pycode" localize="false" id="N0512"> </paragraph>
+         <paragraph role="pycode" localize="false" id="N0513">def OSname():</paragraph>
+         <paragraph role="pycode" localize="false" id="N0514">    return platform.system()</paragraph>
+      </pycode>
+      <list type="unordered">
+         <listitem><paragraph role="paragraph" id="N0515">Os/Path.py</paragraph></listitem>
+      </list>
+      <pycode>
+         <paragraph role="pycode" localize="false" id="N0516"># -*- coding: utf-8 -*-</paragraph>
+         <paragraph role="pycode" localize="false" id="N0517">from __future__ import unicode_literals</paragraph>
+         <paragraph role="pycode" localize="false" id="N0518"> </paragraph>
+         <paragraph role="pycode" localize="false" id="N0519">import os.path</paragraph>
+         <paragraph role="pycode" localize="false" id="N0520"> </paragraph>
+         <paragraph role="pycode" localize="false" id="N0521">def get_size(systemFilePath: str) -&gt; str:</paragraph>
+         <paragraph role="pycode" localize="false" id="N0522">    return str(os.path.getsize(systemFilePath))</paragraph>
+         <paragraph role="pycode" localize="false" id="N0523"> </paragraph>
+         <paragraph role="pycode" localize="false" id="N0524">def normalyze(systemPath: str) -&gt; str:</paragraph>
+         <paragraph role="pycode" localize="false" id="N0525">    return os.path.normpath(systemPath)</paragraph>
+      </pycode>
+      <h3 id="N0526">Personal or Shared Scripts Examples</h3>
+      <paragraph role="paragraph" id="N0527">The calling mechanism for personal or shared Python scripts is identical to that of embedded scripts. Library names are mapped to folders. Computing %PRODUCTNAME user profile and shared modules system file paths can be performed as detailed in <link href="text/sbasic/python/python_session.xhp">Getting session information</link>. Below <literal>OSName</literal>, <literal>HelloWorld</literal> and <literal>NormalizePath</literal> routines are calling their Python counterparts, using aforementioned <literal>GetPythonScript</literal> function. Exception handling is not detailed.</paragraph>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="N0528">Option Explicit</paragraph>
+         <paragraph role="bascode" id="N0529">Option Compatible &apos; Properties are supported</paragraph>
+         <paragraph role="bascode" localize="false" id="N0530">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0531">Private scr As Object &apos; com.sun.star.script.provider.XScript</paragraph>
+         <paragraph role="bascode" localize="false" id="N0532">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0533">Private Property Get OSName As String</paragraph>
+         <paragraph role="bascode" id="N0534">    &apos;&apos;&apos;Platform name as &quot;Linux&quot;, &quot;Darwin&quot; or &quot;Windows&quot;&apos;&apos;&apos;</paragraph>
+         <paragraph role="bascode" localize="false" id="N0535">    scr = GetPythonScript(&quot;Platform.py$OSname&quot;, Script.ISPERSONAL)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0536">    OSName = scr.invoke(Array(), Array(), Array()) </paragraph>
+         <paragraph role="bascode" localize="false" id="N0537">End Property &apos; OSName</paragraph>
+         <paragraph role="bascode" localize="false" id="N0538">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0539">Private Sub HelloWorld()</paragraph>
+         <paragraph role="bascode" id="N0540">    &apos;&apos;&apos;LibreOffice Python shared sample&apos;&apos;&apos;</paragraph>
+         <paragraph role="bascode" localize="false" id="N0541">    scr = GetPythonScript(&quot;HelloWorld.py$HelloWorldPython&quot;, Script.ISSHARED)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0542">    scr.invoke(Array(), Array(), Array(),)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0543">End Sub &apos; HelloWorld</paragraph>
+         <paragraph role="bascode" localize="false" id="N0544">    </paragraph>
+         <paragraph role="bascode" localize="false" id="N0545">Public Function NormalizePath(systemFilePath As String) As String</paragraph>
+         <paragraph role="bascode" id="N0546">    &apos;&apos;&apos;Strip superfluous &apos;\..&apos; in path&apos;&apos;&apos;</paragraph>
+         <paragraph role="bascode" localize="false" id="N0547">    scr = GetPythonScript(&quot;Os/Path.py$normalyze&quot;, &quot;user&quot;)</paragraph>
+         <paragraph role="bascode" localize="false" id="N0548">    NormalizePath = scr.invoke(Array(systemFilePath), Array(), Array())</paragraph>
+         <paragraph role="bascode" localize="false" id="N0549">End Function &apos; NormalizePath</paragraph>
+      </bascode>
+      <h2 id="N0550">Python standard modules</h2>
+      <paragraph role="paragraph" id="N0551">%PRODUCTNAME embedded Python contains many standard libraries to benefit from. They bear a rich feature set, such as but not limited to:</paragraph>
+      <list type="unordered">
+         <listitem><paragraph role="listitem" id="N0552"><emph>argparse</emph> Parser for command-line options, arguments and sub-commands</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0553"><emph>cmath</emph> Mathematical functions for complex numbers</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0554"><emph>csv</emph> CSV files reading and writing</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0555"><emph>datetime</emph> Genuine date and time types</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0556"><emph>json</emph> JSON encoder and decoder</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0557"><emph>math</emph> Mathematical functions</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0558"><emph>re</emph> Regular expression operations</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0559"><emph>socket</emph> Low-level networking interface</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0560"><emph>sys</emph> System-specific parameters and functions</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0561"><emph>unittest</emph> and <emph>trace</emph> Unit testing framework and Track Python execution</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0562"><emph>xml.etree.ElementTree</emph> ElementTree XML API</paragraph></listitem>
+      </list>
+      <section id="relatedtopics" >
+         <embed href="text/sbasic/python/python_2_basic.xhp#py2bah1"/>
+         <embed href="text/sbasic/shared/main0601.xhp#mainsbasic"/>
+         <embed href="text/sbasic/python/main0000.xhp#pythonscriptshelp"/>
+      </section>
+   </body>
+</helpdocument>
