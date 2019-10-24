@@ -347,5 +347,9 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
 		screenshots/cui/ui/optaccessibilitypage/$(lang)/OptAccessibilityPage.png \
 	) \
+    screenshots/cui/ui/optsavepage/OptSavePage.png \
+    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
+		screenshots/cui/ui/optsavepage/$(lang)/OptSavePage.png \
+	) \
 ))
 # vim: set noet sw=4 ts=4:
