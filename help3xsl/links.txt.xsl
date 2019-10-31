@@ -380,9 +380,9 @@
 <xsl:when test="$src1='cmd/lc_closewin.png'"><xsl:text>cmd/lc_closepreview.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_closewin.png'"><xsl:text>cmd/sc_closepreview.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_closedocs.png'"><xsl:text>cmd/lc_closedoc.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/lc_exitsearch.png'"><xsl:text>cmd/lc_closedoc.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/lc_exitsearch.png'"><xsl:text>cmd/lc_closepreview.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_closedocs.png'"><xsl:text>cmd/sc_closedoc.png</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_exitsearch.png'"><xsl:text>cmd/sc_closedoc.png</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_exitsearch.png'"><xsl:text>cmd/sc_closepreview.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_no.png'"><xsl:text>cmd/lc_cancel.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_no.png'"><xsl:text>cmd/sc_cancel.png</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_removetableof.png'"><xsl:text>cmd/sc_cancel.png</xsl:text></xsl:when>
@@ -1045,7 +1045,7 @@
 <xsl:when test="$src1='sc/res/na010.png'"><xsl:text>sw/res/sc20234.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sc/res/na011.png'"><xsl:text>cmd/sc_ok.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sc/res/nc01.png'"><xsl:text>cmd/sc_dbviewtablenames.png</xsl:text></xsl:when>
-<xsl:when test="$src1='sc/res/nc02.png'"><xsl:text>cmd/sc_dataranges.png</xsl:text></xsl:when>
+<xsl:when test="$src1='sc/res/nc02.png'"><xsl:text>cmd/sc_label.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sc/res/nc03.png'"><xsl:text>cmd/sc_viewdatasourcebrowser.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sc/res/nc04.png'"><xsl:text>cmd/sc_insertgraphic.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sc/res/nc05.png'"><xsl:text>cmd/sc_insertobject.png</xsl:text></xsl:when>
@@ -1312,14 +1312,11 @@
 <xsl:when test="$src1='sw/res/sc20235.png'"><xsl:text>cmd/sc_inserthyperlinkcontrol.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sc20238.png'"><xsl:text>cmd/sc_insertbookmark.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sc20239.png'"><xsl:text>cmd/sc_copy.png</xsl:text></xsl:when>
-<xsl:when test="$src1='sw/res/sc20245.png'"><xsl:text>cmd/sc_insertdraw.png</xsl:text></xsl:when>
-<xsl:when test="$src1='sw/res/sc20246.png'"><xsl:text>cmd/sc_insertbookmark.png</xsl:text></xsl:when>
-<xsl:when test="$src1='sw/res/sc20248.png'"><xsl:text>cmd/sc_save.png</xsl:text></xsl:when>
+<xsl:when test="$src1='sw/res/sc20247.png'"><xsl:text>cmd/sc_dataimport.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sc20249.png'"><xsl:text>cmd/sc_navigator.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sc20556.png'"><xsl:text>cmd/sc_dbviewfunctions.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sc20557.png'"><xsl:text>cmd/sc_cancel.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sc20558.png'"><xsl:text>cmd/sc_ok.png</xsl:text></xsl:when>
-<xsl:when test="$src1='sw/res/sc20247.png'"><xsl:text>cmd/sc_dataimport.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sf01.png'"><xsl:text>cmd/sc_controlcodes.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sf02.png'"><xsl:text>cmd/sc_charfontname.png</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sf03.png'"><xsl:text>cmd/sc_insertframe.png</xsl:text></xsl:when>
