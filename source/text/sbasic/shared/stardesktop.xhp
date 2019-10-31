@@ -10,7 +10,7 @@
     -->
     <meta>
         <topic id="org.LibreOffice.Help.StarDesktop" indexer="include" status="PUBLISH">
-            <title id="tit" xml-lang="en-US">StarDesktop</title>
+            <title id="tit" xml-lang="en-US">StarDesktop object</title>
             <filename>/text/sbasic/shared/stardesktop.xhp</filename>
         </topic>
     </meta>
@@ -19,17 +19,19 @@
     <section id="stardesktop">
         <bookmark branch="index" xml-lang="en-US" id="N0089">
             <bookmark_value>StarDesktop</bookmark_value>
+            <bookmark_value>API; Desktop</bookmark_value>
         </bookmark>
         <bookmark id="bm_id341544551916349" xml-lang="en-US" branch="hid/zzzz" localize="false"/>
-        <h1 id="hd_id401544551916353"><link href="text/sbasic/shared/stardesktop.xhp" name="StarDesktop">StarDesktop</link></h1>
-        <paragraph role="paragraph" id="N0091">The StarDesktop object represents %PRODUCTNAME application. Some routines or user interface objects such as current window can be used via StarDesktop.</paragraph>
+        <h1 id="hd_id401544551916353"><link href="text/sbasic/shared/stardesktop.xhp" name="StarDesktop">StarDesktop object</link></h1>
+        <paragraph role="paragraph" id="N0091">The <literal>StarDesktop</literal> object represents %PRODUCTNAME application. Some routines or user interface objects such as current window can be used via <literal>StarDesktop</literal>.</paragraph>
     </section>
     <h2 id="N0092">Example:</h2>
     <bascode>
         <paragraph role="bascode" id="N0093" localize="false">Dim docURL As String</paragraph>
         <paragraph role="bascode" id="N0094" localize="false">Dim doc As Object, docProperties()</paragraph>
         <paragraph role="bascode" id="N0095" localize="false">docURL = ConvertToURL(&quot;C:\My Documents\example.odt&quot;)</paragraph>
-        <paragraph role="bascode" id="N0096" localize="false">doc = StarDesktop.LoadComponentFromURL(docURL, &quot;_blank&quot;, 0, docProperties)</paragraph>
+        <paragraph role="bascode" id="N0096" localize="false">Rem com.sun.star.frame.Desktop</paragraph>
+        <paragraph role="bascode" id="N0097" localize="false">doc = StarDesktop.LoadComponentFromURL(docURL, &quot;_blank&quot;, 0, docProperties)</paragraph>
     </bascode>
 </body>
 </helpdocument>
