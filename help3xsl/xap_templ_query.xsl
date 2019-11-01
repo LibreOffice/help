@@ -40,6 +40,7 @@ xsltproc xap_template_query.xsl <file.xhp>
 <![CDATA[$httpheader{Content-Type,text/html; charset=utf-8}<!DOCTYPE html><html lang="]]><xsl:value-of select="$lang"/><![CDATA[">
 <base href="/"/>
 $set{flag_spelling,$ne{$cgi{SPELL},0}}
+$set{stemmer,$if{$cgi{STEMMER},$cgi{STEMMER},none}}
 $set{flag_spelling_correction,true}
 $set{thousand,$.}$set{decimal,.}
 $setmap{prefix,,$split{ S B F},title,S,author,A,topic,B}
