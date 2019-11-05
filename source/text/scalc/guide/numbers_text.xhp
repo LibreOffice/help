@@ -32,8 +32,8 @@
       <bookmark_value>date formats;conversion</bookmark_value>
       <bookmark_value>converting;text, into numbers</bookmark_value>
 </bookmark><comment>mw changed "converting;" and added two index entries</comment>
-<paragraph xml-lang="en-US" id="hd_id0908200901265171" role="heading" level="1"><variable id="numbers_text"><link href="text/scalc/guide/numbers_text.xhp" name="Converting Text to Numbers">Converting Text to Numbers</link>
-</variable></paragraph>
+<h1 id="hd_id0908200901265171"><variable id="numbers_text"><link href="text/scalc/guide/numbers_text.xhp" name="Converting Text to Numbers">Converting Text to Numbers</link>
+</variable></h1>
       <section id="text">
          <paragraph xml-lang="en-US" id="par_id0908200901265127" role="paragraph">Defaults settings in Calc converts text inside cells to the respective numeric values if an unambiguous conversion is possible. If no conversion is possible, Calc returns a #VALUE! error.</paragraph>
          <paragraph xml-lang="en-US" id="par_id0908200901265196" role="paragraph"><emph>Only integer numbers including exponent are converted</emph>, and ISO 8601 dates and times in their extended formats with separators. Anything else, like fractional numbers with decimal separators or dates other than ISO 8601, is not converted, as the text string would be locale dependent. Leading and trailing blanks are ignored.</paragraph>
@@ -73,7 +73,8 @@
          <note id="par_id761567607207916">The conversion is done for single scalar values only, not within ranges.</note>
          <paragraph xml-lang="en-US" id="par_id0908200901265448" role="paragraph">The conversion is done for single scalar values, as in =A1+A2, or ="1E2"+1. Cell range arguments are not affected, so SUM(A1:A2) differs from A1+A2 if at least one of the two cells contain a convertible string.</paragraph>
          <paragraph xml-lang="en-US" id="par_id090820090126540" role="paragraph">Strings inside formulas are also converted, such as in ="1999-11-22"+42, which returns the date 42 days after November 22nd, 1999. Calculations involving localized dates as strings inside the formula return an error. For example, the localized date string "11/22/1999" or "22.11.1999" cannot be used for the automatic conversion.</paragraph>
-         <paragraph xml-lang="en-US" id="hd_id1005200903485368" role="heading" level="2">Example</paragraph>
+         <embed href="text/shared/00/00000001.xhp#regexnumex"/>
+         <h2 id="hd_id1005200903485368">Example</h2>
          <paragraph xml-lang="en-US" id="par_id1005200903485359" role="paragraph">In A1 enter the text <literal>'1e2</literal> (which is converted to the number 100 internally).</paragraph>
          <paragraph xml-lang="en-US" id="par_id1005200903485341" role="paragraph">In A2 enter <literal>=A1+1</literal> (which correctly results in 101).</paragraph>
          <paragraph role="paragraph" id="par_id891567607263849">The formula <literal>=SUM(A1:A2)</literal>, returns 101 instead of 201 because the conversion does not occur in a range, only for single scalar values. Here, '1e2 is treated as string which has value 0 for the SUM function.</paragraph>

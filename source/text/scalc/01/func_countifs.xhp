@@ -24,7 +24,7 @@
   <bookmark_value>counting row;satisfying criteria</bookmark_value>
   <bookmark_value>counting column;satisfying criteria</bookmark_value>
 </bookmark>
-<paragraph id="hd_id456845684568" role="heading" level="2" xml-lang="en-US"><variable id="countifs_head"><link href="text/scalc/01/func_countifs.xhp">COUNTIFS</link></variable> function</paragraph>
+<h2 id="hd_id456845684568"><variable id="countifs_head"><link href="text/scalc/01/func_countifs.xhp">COUNTIFS</link></variable> function</h2>
 <paragraph id="par_id462646264626" role="paragraph" xml-lang="en-US"><ahelp hid="."><variable id="countifs_des">Returns the count of cells that meet criteria in multiple ranges.</variable></ahelp></paragraph>
 </section>
 <embed href="text/scalc/00/avail_release.xhp#4.0"/>
@@ -32,24 +32,25 @@
 <paragraph id="par_id27421466710275" role="code" xml-lang="en-US">COUNTIFS(Range1; Criterion1 [; Range2; Criterion2 [; ...]])</paragraph>
 <paragraph id="par_id242131304318587" role="paragraph" xml-lang="en-US"><emph>Range1</emph> – required argument. It is a range of cells, a name of a named range or a label of a column or a row containing values for counting and finding the corresponding criterion.</paragraph>
 <embed href="text/scalc/01/ex_data_stat_func.xhp#par00"/>
-<paragraph id="par_id14734320631377" role="warning" xml-lang="en-US"><emph>Range1, Range2, ...</emph> and <emph>Criterion1, Criterion2, ...</emph> must have the same size, otherwise the function returns err:502 - Invalid argument.</paragraph>
+<embed href="text/shared/00/00000001.xhp#regulaer"/>
+<paragraph role="paragraph" id="par_id14734320631377"><emph>Range1, Range2, ...</emph> and <emph>Criterion1, Criterion2, ...</emph> must have the same size, otherwise the function returns err:502 - Invalid argument.</paragraph>
 <embed href="text/scalc/01/ex_data_stat_func.xhp#note01"/>
 <embed href="text/scalc/01/ex_data_stat_func.xhp#par01"/>
 <embed href="text/scalc/01/ODFF.xhp#odff"/>
 <embed href="text/scalc/01/ex_data_stat_func.xhp#ex_func_average"/>
-<paragraph id="hd_id3861259759512" role="heading" level="4" xml-lang="en-US">Simple usage</paragraph>
-<paragraph id="par_id15856592423333" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(B2:B6;">=20")</item></paragraph>
+<h4 id="hd_id3861259759512">Simple usage</h4>
+<paragraph id="par_id15856592423333" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(B2:B6;"&gt;=20")</item></paragraph>
 <paragraph id="par_id323511393121175" role="paragraph" xml-lang="en-US">Counts the amount of rows of the range B2:B6 with values greater than or equal to 20. Returns 3, because the fifth and the sixth rows do not meet the criterion.</paragraph>
-<paragraph id="par_id74301057922522" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(B2:B6;">=20";C2:C6;">70")</item></paragraph>
+<paragraph id="par_id74301057922522" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(B2:B6;"&gt;=20";C2:C6;"&gt;70")</item></paragraph>
 <paragraph id="par_id109622995127628" role="paragraph" xml-lang="en-US">Counts the amount of rows that contain simultaneously values greater than 70 in the C2:C6 range and values greater than or equal to 20 in the B2:B6 range. Returns 2, because the second, the fifth and the sixth rows do not meet at least one criterion.</paragraph>
-<paragraph id="hd_id298462825526166" role="heading" level="4" xml-lang="en-US">Using regular expressions and nested functions</paragraph>
+<h4 id="hd_id298462825526166">Using regular expressions and nested functions</h4>
 <paragraph id="par_id22736248573471" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(B2:B6;"[:alpha:]*")</item></paragraph>
 <paragraph id="par_id22137303324873" role="paragraph" xml-lang="en-US">Counts the amount of rows of the B2:B6 range that contain only alphabet symbols. Returns 1, because only sixth row meets the criterion.</paragraph>
-<paragraph id="par_id82271340221411" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(B2:B6;">"&amp;MIN(B2:B6);B2:B6;"&lt;"&amp;MAX(B2:B6))</item></paragraph>
+<paragraph id="par_id82271340221411" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(B2:B6;"&gt;"&amp;MIN(B2:B6);B2:B6;"&lt;"&amp;MAX(B2:B6))</item></paragraph>
 <paragraph id="par_id1105320769334" role="paragraph" xml-lang="en-US">Counts the amount of rows of the B2:B6 range excluding rows with minimum and maximum values of this range. Returns 2, because the third, the fifth and the sixth rows do not meet at least one criterion.</paragraph>
 <paragraph id="par_id267603146513224" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(A2:A6;"pen.*";B2:B6;"&lt;"&amp;MAX(B2:B6))</item></paragraph>
 <paragraph id="par_id111252614832220" role="paragraph" xml-lang="en-US">Counts the amount of rows that correspond to all cells of the A2:A6 range starting with "pen" and to all cells of the B2:B6 range with exception of its maximum. Returns 1, because only second row meets all criteria.</paragraph>
-<paragraph id="hd_id212582362610399" role="heading" level="4" xml-lang="en-US">Reference to a cell as a criterion</paragraph>
+<h4 id="hd_id212582362610399">Reference to a cell as a criterion</h4>
 <paragraph id="par_id3245551524846" role="paragraph" xml-lang="en-US">If you need to change a criterion easily, you may want to specify it in a separate cell and use a reference to this cell in the condition of the COUNTIFS function. For example, the above function can be rewritten as follows:</paragraph>
 <paragraph id="par_id109501907712434" role="paragraph" xml-lang="en-US"><item type="input">=COUNTIFS(A2:A6;E2&amp;".*";B2:B6;"&lt;"&amp;MAX(B2:B6))</item></paragraph>
 <paragraph id="par_id738533068520" role="paragraph" xml-lang="en-US">If E2 = pen, the function returns 1, because the link to the cell is substituted with its content and it works as a function above.</paragraph>
@@ -68,7 +69,7 @@
         <embedvar href="text/scalc/01/func_averageifs.xhp#averageifs_head"/>,
         <embedvar href="text/scalc/01/func_sumifs.xhp#sumifs_head"/>
     </paragraph>
-<paragraph id="par_id235992404316585" role="paragraph"  localize="false" xml-lang="en-US"><embedvar href="text/shared/01/02100001.xhp#02100001"/></paragraph>
+<paragraph id="par_id235992404316585" role="paragraph" localize="false" xml-lang="en-US"><embedvar href="text/shared/01/02100001.xhp#02100001"/></paragraph>
 </section>
 </body>
 </helpdocument>
