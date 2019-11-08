@@ -280,9 +280,14 @@
 
 <!-- BOOKMARK_VALUE -->
 <xsl:template match="bookmark_value">
+    <xsl:variable name="aux1">
+        <xsl:call-template name="brand">
+            <xsl:with-param name="string" select="."/>
+        </xsl:call-template>
+    </xsl:variable>
     <xsl:element name="meta">
         <xsl:attribute name="itemprop">keywords</xsl:attribute>
-        <xsl:attribute name="content"><xsl:value-of select="translate(.,';',',')"/></xsl:attribute>
+        <xsl:attribute name="content"><xsl:value-of select="translate($aux1,';',',')"/></xsl:attribute>
     </xsl:element>
 </xsl:template>
 
@@ -495,7 +500,9 @@
         </xsl:when>
 
         <xsl:when test="@role='bascode' or @role='pycode'">
-            <xsl:value-of select="." />
+            <xsl:call-template name="brand">
+                <xsl:with-param name="string" select="."/>
+            </xsl:call-template>
         </xsl:when>
 
         <xsl:when test="@role='smathcode'">
@@ -540,7 +547,9 @@
         </xsl:when>
 
         <xsl:when test="@role='bascode' or @role='pycode'">
-            <xsl:value-of select="." />
+            <xsl:call-template name="brand">
+                <xsl:with-param name="string" select="."/>
+            </xsl:call-template>
         </xsl:when>
 
         <xsl:when test="@role='smathcode'">
