@@ -7,21 +7,21 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 // Used to set Application in caseinline=APP
-function setApplSpan(SpanID) {
+function setApplSpan(spanZ) {
     var module = getParameterByName("DbPAR");
     if (module === null) {
         module = "WRITER";
     }
-    var y = document.getElementById(SpanID).getElementsByTagName("SPAN");
+    var y = spanZ.getElementsByTagName("SPAN");
     var n = y.length;
-    var foundSystem = false;
+    var foundAppl = false;
     for (i = 0; i < n; i++) {
         if (y[i].getAttribute("id") === null){
             continue;
         }
         else if( y[i].getAttribute("id").startsWith(module)){
             y[i].removeAttribute("hidden");
-            foundSystem=true;
+            foundAppl=true;
         }
     }
     for (i = 0; i < n; i++) {
@@ -29,20 +29,20 @@ function setApplSpan(SpanID) {
             continue;
         }
         else if( y[i].getAttribute("id").startsWith("default")){
-            if(!foundSystem){
+            if(!foundAppl){
                 y[i].removeAttribute("hidden");
             }
         }
     }
 }
 // Used to set system in case, caseinline=SYSTEM
-function setSystemSpan(spanID) {
-    var system = getParameterByName("System");
+function setSystemSpan(spanZ) {
     // if no System in URL, get browser system
+    var system = getParameterByName("System");
     if (system === null) {
         system = getSystem();
     }
-    var y = document.getElementById(spanID).getElementsByTagName("SPAN");
+    var y = spanZ.getElementsByTagName("SPAN");
     var n = y.length;
     var foundSystem = false;
     for (i = 0; i < n; i++) {
@@ -65,6 +65,7 @@ function setSystemSpan(spanID) {
         }
     }
 }
+
 // Find spans that need the switch treatment and give it to them
 var spans = document.querySelectorAll("[class^=switch]");
 var n = spans.length;
@@ -74,9 +75,9 @@ for (z = 0; z < n; z++) {
         continue;
     }
     else if (id.startsWith("swlnsys")) {
-        setSystemSpan(id);
+        setSystemSpan(spans[z]);
     } else {
-        setApplSpan(id);
+        setApplSpan(spans[z]);
     }
 }
 /* add &DbPAR= and &System= to the links in DisplayArea div */
