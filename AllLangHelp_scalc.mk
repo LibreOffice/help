@@ -201,6 +201,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_edate \
     helpcontent2/source/text/scalc/01/func_eomonth \
     helpcontent2/source/text/scalc/01/func_error_type \
+    helpcontent2/source/text/scalc/01/func_findb \
     helpcontent2/source/text/scalc/01/func_forecastetsadd \
     helpcontent2/source/text/scalc/01/func_forecastetsmult \
     helpcontent2/source/text/scalc/01/func_forecastetsstatadd \
@@ -236,9 +237,11 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_now \
     helpcontent2/source/text/scalc/01/func_rawsubtract \
     helpcontent2/source/text/scalc/01/func_regex \
+    helpcontent2/source/text/scalc/01/func_replaceb \
     helpcontent2/source/text/scalc/01/func_roundsig \
     helpcontent2/source/text/scalc/01/func_second \
     helpcontent2/source/text/scalc/01/func_skewp \
+    helpcontent2/source/text/scalc/01/func_searchb \
     helpcontent2/source/text/scalc/01/func_sumifs \
     helpcontent2/source/text/scalc/01/func_switch \
     helpcontent2/source/text/scalc/01/func_textjoin \
