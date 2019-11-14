@@ -69,7 +69,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/xap_tpl : \
 		--stringparam productversion "$(PRODUCTVERSION)" \
 		-o $@ \
 		$(SRCDIR)/helpcontent2/help3xsl/xap_templ_query.xsl \
-		$(SRCDIR)/helpcontent2/source/text/shared/help/browserhelp.xhp \
+		$(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*))/helpcontent2/source/text/shared/help/browserhelp.xhp \
 	)
 
 endif
