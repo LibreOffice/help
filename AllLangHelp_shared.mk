@@ -354,6 +354,12 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/profile_safe_mode \
     helpcontent2/source/text/shared/01/ref_epub_export \
     helpcontent2/source/text/shared/01/ref_pdf_export \
+    helpcontent2/source/text/shared/01/ref_pdf_export_digital_signature \
+    helpcontent2/source/text/shared/01/ref_pdf_export_general \
+    helpcontent2/source/text/shared/01/ref_pdf_export_initial_view \
+    helpcontent2/source/text/shared/01/ref_pdf_export_links \
+    helpcontent2/source/text/shared/01/ref_pdf_export_security \
+    helpcontent2/source/text/shared/01/ref_pdf_export_user_interface \
     helpcontent2/source/text/shared/01/ref_pdf_send_as \
     helpcontent2/source/text/shared/01/signexistingpdf \
     helpcontent2/source/text/shared/01/securitywarning \
