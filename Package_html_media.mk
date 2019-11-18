@@ -399,5 +399,9 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
 		screenshots/filter/ui/pdfgeneralpage/$(lang)/PdfGeneralPage.png \
 	) \
+    screenshots/filter/ui/pdflinkspage/PdfLinksPage.png \
+    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
+		screenshots/filter/ui/pdflinkspage/$(lang)/PdfLinksPage.png \
+	) \
 ))
 # vim: set noet sw=4 ts=4:
