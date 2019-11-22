@@ -221,23 +221,25 @@
     <div id="DisplayArea" itemprop="articleBody">
         <xsl:apply-templates select="/helpdocument/body"/>
     </div>
-    <xsl:if test="$online">
+    <div class="search-frame">
+        <xsl:if test="$online">
             <xsl:if test="$xapian='yes'">
-                <div class="search-frame">
                 <div class="xapian-omega-search">
                     <form name="P" method="get" action="/{$productversion}/{$lang}/search" target="_top">
                         <input id="omega-autofocus" type="search" name="P" size="40"/>
                         <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
                     </form>
                 </div>
-            </div>
             </xsl:if>
-            <div class="donation-frame">
-                <div class="donation">
+        </xsl:if>
+      </div>
+    <div class="donation-frame">
+        <xsl:if test="$online">
+            <div class="donation">
                 <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank"><xsl:value-of select="$ui_donate"/></a></p>
-                </div>
             </div>
-    </xsl:if>
+        </xsl:if>
+    </div>
     <footer>
         <xsl:if test="$online">
             <p><a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
