@@ -86,6 +86,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sc_func_imsec.png \
     helpimg/sc_func_imsech.png \
     helpimg/sc_func_imtan.png \
+    helpimg/sc_func_opt01.svg \
     helpimg/sd_drawing_with_comment.png \
     helpimg/sd_PresenterConsole01.png \
     helpimg/sd_PresenterConsole02.png \
