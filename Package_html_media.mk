@@ -80,12 +80,16 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sc_PivotChartButtons.png \
     helpimg/sc_data_form01.png \
     helpimg/sc_cell_with_comment_displayed.png \
-    helpimg/sc_func_imcot.png \
-    helpimg/sc_func_imcsc.png \
-    helpimg/sc_func_imcsch.png \
-    helpimg/sc_func_imsec.png \
-    helpimg/sc_func_imsech.png \
-    helpimg/sc_func_imtan.png \
+    helpimg/sc_func_imcos.svg \
+    helpimg/sc_func_imcosh.svg \
+    helpimg/sc_func_imcot.svg \
+    helpimg/sc_func_imsin.svg \
+    helpimg/sc_func_imsinh.svg \
+    helpimg/sc_func_imcsc.svg \
+    helpimg/sc_func_imcsch.svg \
+    helpimg/sc_func_imsec.svg \
+    helpimg/sc_func_imsech.svg \
+    helpimg/sc_func_imtan.svg \
     helpimg/sc_func_opt01.svg \
     helpimg/sd_drawing_with_comment.png \
     helpimg/sd_PresenterConsole01.png \
