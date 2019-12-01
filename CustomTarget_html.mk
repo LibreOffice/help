@@ -20,12 +20,12 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 	$(foreach lang,$(gb_HELP_LANGS),\
 		$(lang)/bookmarks.js \
 		$(lang)/contents.js \
-		$(if $(HELP_OMINDEX_PAGE),$(lang)/xap_tpl) \
 		$(lang)/html.text \
-		$(lang)/langnames.js \
 		$(foreach module,$(html_TREE_MODULES),$(module)/$(lang)/contents.part) \
 		$(foreach module,$(html_BMARK_MODULES),$(firstword $(subst :, ,$(module)))/$(lang)/bookmarks.part) \
 		$(foreach module,$(html_TEXT_MODULES),filelists/html-help/$(module)/$(lang).filelist) \
+		$(lang)/langnames.js \
+		$(if $(HELP_OMINDEX_PAGE),$(lang)/xap_tpl) \
 	) \
 ))
 
@@ -56,6 +56,14 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 
 # Xapian localized templates
 ifeq ($(HELP_OMINDEX_PAGE),TRUE)
+
+define html_gen_xaptpl_dep
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/xap_tpl : \
+	$(if $(filter en-US,$(1)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(1)))/helpcontent2/source/text/shared/help/browserhelp.xhp
+
+endef
+	
+$(eval $(foreach lang,$(gb_HELP_LANGS),$(call html_gen_xaptpl_dep,$(lang))))
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/xap_tpl : \
 		$(SRCDIR)/helpcontent2/help3xsl/xap_templ_query.xsl \
