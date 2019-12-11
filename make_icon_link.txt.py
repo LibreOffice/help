@@ -35,8 +35,8 @@ file_xsl.write('<xsl:choose>\n')
 for line in file_icon:
     if line[0] != "#" :
         if line.find('png',0, len(line)) <> -1 :
-            a = "\'" + line.split()[0] + "\'"
-            b = line.split()[1]
+            a = "\'" + line.split()[0] + "\'";
+            b = line.split()[1].replace(".png",".svg");
             file_xsl.write('<xsl:when test="$src1=' + a + '"><xsl:text>'+ b + '</xsl:text></xsl:when>\n');
 
 file_xsl.write('<xsl:otherwise><xsl:value-of select="$src1"/></xsl:otherwise>\n');
