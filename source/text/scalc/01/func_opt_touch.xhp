@@ -30,18 +30,18 @@
     <paragraph role="paragraph" id="par_id571575080642652">Further information about touch / no-touch options may be found on many financial websites.</paragraph>
     <embed href="text/scalc/00/avail_release.xhp#4.0"/>
     <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-    <paragraph role="code" id="par_id151575063296819">OPT_TOUCH(Spot; Volatility; Rate; Foreign Rate; Maturity; Lower Barrier; Upper Barrier; Domestic or Foreign; In or Out; Barrier Monitoring; Greek)</paragraph>
+    <paragraph role="code" id="par_id151575063296819">OPT_TOUCH(Spot; Volatility; Rate; ForeignRate; Maturity; LowerBarrier; UpperBarrier; ForeignDomestic; InOut; BarrierMonitoring; Greek)</paragraph>
 
     <paragraph role="paragraph" id="par_id321575066304659"><variable id="optspot"><emph>Spot</emph> is the price / value of the underlying asset and should be greater than 0.0.</variable></paragraph>
     <paragraph role="paragraph" id="par_id31575066315078"><variable id="optvolat"><emph>Volatility</emph> is the annual percentage volatility of the underlying asset expressed as a decimal (for example, enter 30% as 0.3). The value should be greater than 0.0.</variable></paragraph>
     <paragraph role="paragraph" id="par_id681575066324254"><variable id="optrate"><emph>Rate</emph> is the continuously compounded interest rate. This is a percentage expressed as a decimal (for example, enter 40% as 0.4).</variable></paragraph>
-    <paragraph role="paragraph" id="par_id71575066333773"><variable id="optfrate"><emph>Foreign Rate</emph> is the continuously compounded foreign interest rate. This is a percentage expressed as a decimal (for example, enter 50% as 0.5).</variable></paragraph>
+    <paragraph role="paragraph" id="par_id71575066333773"><variable id="optfrate"><emph>ForeignRate</emph> is the continuously compounded foreign interest rate. This is a percentage expressed as a decimal (for example, enter 50% as 0.5).</variable></paragraph>
     <paragraph role="paragraph" id="par_id21575066338734"><variable id="optmaturity"><emph>Maturity</emph> is the time to maturity of the option, in years, and should be non-negative.</variable></paragraph>
-    <paragraph role="paragraph" id="par_id671575066343182"><variable id="optlowbar"><emph>Lower Barrier</emph> is the predetermined lower barrier price; set to zero for no lower barrier.</variable></paragraph>
-    <paragraph role="paragraph" id="par_id301575066347357"><variable id="optupbar"><emph>Upper Barrier</emph> is the predetermined upper barrier price; set to zero for no upper barrier.</variable></paragraph>
-    <paragraph role="paragraph" id="par_id561575066355924"><variable id="optdomestic"><emph>Domestic or Foreign</emph> is a string that defines whether the option pays domestic (“d”) or foreign (“f”) currency.</variable></paragraph>
-    <paragraph role="paragraph" id="par_id251575066360596"><variable id="optinout"><emph>In or Out</emph> is a string that defines whether the option is knock-in (“i”) or knock-out (“o”).</variable></paragraph>
-    <paragraph role="paragraph" id="par_id861575066366861"><variable id="optbarmon"><emph>Barrier Monitoring</emph> is a string that defines whether the barrier is monitored continuously (“c”) or only at the end / maturity (“e”).</variable></paragraph>
+    <paragraph role="paragraph" id="par_id671575066343182"><variable id="optlowbar"><emph>LowerBarrier</emph> is the predetermined lower barrier price; set to zero for no lower barrier.</variable></paragraph>
+    <paragraph role="paragraph" id="par_id301575066347357"><variable id="optupbar"><emph>UpperBarrier</emph> is the predetermined upper barrier price; set to zero for no upper barrier.</variable></paragraph>
+    <paragraph role="paragraph" id="par_id561575066355924"><variable id="optdomestic"><emph>ForeignDomestic</emph> is a string that defines whether the option pays domestic (“d”) or foreign (“f”) currency.</variable></paragraph>
+    <paragraph role="paragraph" id="par_id251575066360596"><variable id="optinout"><emph>InOut</emph> is a string that defines whether the option is knock-in (“i”) or knock-out (“o”).</variable></paragraph>
+    <paragraph role="paragraph" id="par_id861575066366861"><variable id="optbarmon"><emph>BarrierMonitoring</emph> is a string that defines whether the barrier is monitored continuously (“c”) or only at the end / maturity (“e”).</variable></paragraph>
     <section id="optgreek">
         <paragraph role="paragraph" id="par_id721575066374340"><emph>Greek</emph> (optional) is a string argument. If omitted or set to “value”, “v”, “price”, or “p”, then the function simply returns the option price. If another valid string is entered, the function returns price sensitivities (Greeks) to one of the input parameters. The valid options in this case are as follows.</paragraph>
         <list type="unordered">
@@ -72,8 +72,8 @@
         </list>
     </section>
     <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-    <paragraph role="paragraph" id="par_id181575063666675"><input>=OPT_TOUCH(50,0.25,0.05,0,1,0,55,"d","i","c")</input>  returns the value 0.6876.</paragraph>
-    <paragraph role="paragraph" id="par_id811575063677250"><input>=OPT_TOUCH(80,0.2,0.05,0,0.5,60,0,"f","o","c","r")</input>  returns the value 15.5516.</paragraph>
+    <paragraph role="paragraph" id="par_id181575063666675"><input>=OPT_TOUCH(50;0.25;0.05;0;1;0;55;"d";"i";"c")</input>  returns the value 0.6876.</paragraph>
+    <paragraph role="paragraph" id="par_id811575063677250"><input>=OPT_TOUCH(80;0.2;0.05;0;0.5;60;0;"f";"o";"c";"r")</input>  returns the value 15.5516.</paragraph>
     <section id="relatedtopics">
         <embed href="text/scalc/01/func_opt_barrier.xhp#optbrarrierh1"/>
         <embed href="text/scalc/01/func_opt_touch.xhp#opttouchh1"/>
