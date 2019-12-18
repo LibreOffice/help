@@ -20,20 +20,20 @@
         <bookmark xml-lang="en-US" branch="index" id="bm_id961575065633373">
             <bookmark_value>OPT_PROB_INMONEY function</bookmark_value>
         </bookmark>
-        <bookmark id="bm_id971575063929082" xml-lang="en-US" branch="hid/SC_HID_FUNC_OPT_PRON_INMONEY" localize="false"/>
+        <bookmark id="bm_id971575063929082" xml-lang="en-US" branch="hid/SC_HID_FUNC_OPT_PROB_INMONEY" localize="false"/>
         <h2 id="hd_id941575063929082"><variable id="optprobinmoneyh1"><link href="text/scalc/01/func_opt_prob_inmoney.xhp" name="OPT_PROB_INMONEY">OPT_PROB_INMONEY</link></variable></h2>
         <paragraph id="par_id941575063929083" role="paragraph" xml-lang="en-US"><variable id="variable name"><ahelp hid=".">Returns the probability that an asset will end up between two barrier levels at maturity, assuming that the stock price can be modeled as a process S that follows the stochastic differential equation</ahelp></variable>, as follows.</paragraph>
         <paragraph role="paragraph" id="par_id21575078735992" xml-lang="en-US">
             <image src="media/helpimg/sc_func_opt01.svg" id="img_id211575078735993" width="4cm" height="1cm"><alt xml-lang="en-US" id="alt_id401575078735994">OPT_PROB_INMONEY equation</alt></image>
         </paragraph>
         <paragraph role="paragraph" id="par_id941575074893788"><literal>µ</literal> is the asset’s percentage drift, <literal>vol</literal> is the percentage volatility of the stock, and <literal>dW</literal> is a random sample drawn from a normal distribution with a zero mean. <literal>W</literal> is a Wiener process or Brownian motion.</paragraph>
-        <paragraph role="paragraph" id="par_id241575075282150">If the optional <emph>Strike</emph> and <emph>Put or Call</emph> arguments are included, then</paragraph>
+        <paragraph role="paragraph" id="par_id241575075282150">If the optional <emph>Strike</emph> and <emph>PutCall</emph> arguments are included, then</paragraph>
         <list type="unordered">
             <listitem>
-                <paragraph id="par_id931575075314553"  role="listitem">For a call option, the function returns the probability that the asset will end up between <emph>Strike</emph> and <emph>Upper Barrier</emph>.</paragraph>
+                <paragraph id="par_id931575075314553"  role="listitem">For a call option, the function returns the probability that the asset will end up between <emph>Strike</emph> and <emph>UpperBarrier</emph>.</paragraph>
             </listitem>
             <listitem>
-                <paragraph id="par_id531575075321659"  role="listitem">For a put option, the function returns the probability that the asset will end up between <emph>Lower Barrier</emph> and <emph>Strike</emph>.</paragraph>
+                <paragraph id="par_id531575075321659"  role="listitem">For a put option, the function returns the probability that the asset will end up between <emph>LowerBarrier</emph> and <emph>Strike</emph>.</paragraph>
             </listitem>
         </list>
         <paragraph role="paragraph" id="par_id191575075304900">The function ignores the possibility of knock-out before maturity.</paragraph>
@@ -41,7 +41,7 @@
     <embed href="text/scalc/01/func_opt_touch.xhp#opttip"/>
     <embed href="text/scalc/00/avail_release.xhp#4.0"/>
     <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-    <paragraph role="code" id="par_id761575075027094">OPT_PROB_INMONEY(Spot; Volatility; Drift; Maturity; Lower Barrier; Upper Barrier; Strike; Put or Call)</paragraph>
+    <paragraph role="code" id="par_id761575075027094">OPT_PROB_INMONEY(Spot; Volatility; Drift; Maturity; LowerBarrier; UpperBarrier; Strike; PutCall)</paragraph>
     <paragraph role="paragraph" id="par_id641575073609823" localize="false"><embedvar href="text/scalc/01/func_opt_touch.xhp#optspot" markup="keep"/></paragraph>
     <paragraph role="paragraph" id="par_id731575073617425" localize="false"><embedvar href="text/scalc/01/func_opt_touch.xhp#optvolat" markup="keep"/></paragraph>
     <paragraph role="paragraph" id="par_id281575079343439" localize="false"><embedvar href="text/scalc/01/func_opt_prob_hit.xhp#optdrift" markup="keep"/></paragraph>
@@ -49,8 +49,8 @@
     <paragraph role="paragraph" id="par_id851575079506442" localize="false"><embedvar href="text/scalc/01/func_opt_prob_hit.xhp#optstrike" markup="keep"/></paragraph>
     <paragraph role="paragraph" id="par_id861575082252126" localize="false"><embedvar href="text/scalc/01/func_opt_barrier.xhp#optputcall" markup="keep"/></paragraph>
     <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-    <paragraph role="paragraph" id="par_id601575074993334"><input>=OPT_PROB_INMONEY(30,0.2,0.1,1,0,50)</input>  returns the value 0.9844.</paragraph>
-    <paragraph role="paragraph" id="par_id261575074997216"><input>=OPT_PROB_INMONEY(70,0.3,0.15,1,60,0,80,"p")</input>  returns the value 0.3440.</paragraph>
+    <paragraph role="paragraph" id="par_id601575074993334"><input>=OPT_PROB_INMONEY(30;0.2;0.1;1;0;50)</input> returns the value 0.9844.</paragraph>
+    <paragraph role="paragraph" id="par_id261575074997216"><input>=OPT_PROB_INMONEY(70;0.3;0.15;1;60;0;80;"p")</input> returns the value 0.3440.</paragraph>
     <section id="relatedtopics">
         <embed href="text/scalc/01/func_opt_barrier.xhp#optbrarrierh1"/>
         <embed href="text/scalc/01/func_opt_touch.xhp#opttouchh1"/>
