@@ -27,7 +27,6 @@
 
 <body>
 
-
 <section id="variable">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3149346">
   <bookmark_value>names of variables</bookmark_value>
@@ -35,6 +34,13 @@
   <bookmark_value>types of variables</bookmark_value>
   <bookmark_value>declaring variables</bookmark_value>
   <bookmark_value>values;of variables</bookmark_value>
+  <bookmark_value>literals;integer</bookmark_value>
+  <bookmark_value>literals;hexadecimal</bookmark_value>
+  <bookmark_value>literals;integer</bookmark_value>
+  <bookmark_value>literals;octal</bookmark_value>
+  <bookmark_value>literals;&amp;h notation</bookmark_value>
+  <bookmark_value>literals;&amp;o notation</bookmark_value>
+  <bookmark_value>literals;floating-point</bookmark_value>
   <bookmark_value>constants</bookmark_value>
   <bookmark_value>arrays;declaring</bookmark_value>
   <bookmark_value>defining;constants</bookmark_value>
@@ -117,16 +123,16 @@
 <paragraph id="par_id1593676" role="paragraph" xml-lang="en-US">If a decimal number is assigned to an integer variable, %PRODUCTNAME Basic rounds the figure up or down.<comment>information from "Programming Guide for BASIC" about decimal variables</comment></paragraph>
 
 <paragraph id="hd_id3147500" role="heading" level="3" xml-lang="en-US">Single Variables</paragraph>
-<paragraph id="par_id3153070" role="paragraph" xml-lang="en-US">Single variables can take positive or negative values ranging from 3.402823 x 10E38 to 1.401298 x 10E-45. Single variables are floating-point variables, in which the decimal precision decreases as the non-decimal part of the number increases. Single variables are suitable for mathematical calculations of average precision. Calculations require more time than for Integer variables, but are faster than calculations with Double variables. A Single variable requires 4 bytes of memory. The type-declaration character is "!".</paragraph>
+<paragraph id="par_id3153070" role="paragraph" xml-lang="en-US">Single variables can take positive or negative values ranging from 3.402823 x 10E38 to 1.401298 x 10E-45. Single variables are floating-point variables, in which the decimal precision decreases as the non-decimal part of the number increases. Single variables are suitable for mathematical calculations of average precision. Calculations require more time than for Integer variables, but are faster than calculations with Double variables. A Single variable requires 4 bytes of memory. The type-declaration character is "!".</paragraph>
 <bascode>
 <paragraph id="par_idm1341137456" role="bascode" localize="false" xml-lang="en-US">Dim Variable!</paragraph>
 <paragraph id="par_idm1341136224" role="bascode" localize="false" xml-lang="en-US">Dim Variable As Single</paragraph>
 </bascode>
 
 <paragraph id="hd_id3155753" role="heading" level="3" xml-lang="en-US">Double Variables</paragraph>
-<paragraph id="par_id3150953" role="paragraph" xml-lang="en-US">Double variables can take positive or negative values ranging from 1.79769313486232 x 10E308 to 4.94065645841247 x 10E-324. Double variables are floating-point variables, in which the decimal precision decreases as the non-decimal part of the number increases. Double variables are suitable for precise calculations. Calculations require more time than for Single variables. A Double variable requires 8 bytes of memory. The type-declaration character is "#".</paragraph>
+<paragraph id="par_id3150953" role="paragraph" xml-lang="en-US">Double variables can take positive or negative values ranging from 1.79769313486232 x 10E308 to 4.94065645841247 x 10E-324. Double variables are floating-point variables, in which the decimal precision decreases as the non-decimal part of the number increases. Double variables are suitable for precise calculations. Calculations require more time than for Single variables. A Double variable requires 8 bytes of memory. The type-declaration character is "#".</paragraph>
 <bascode>
-<paragraph id="par_idm1341130144" role="bascode" localize="false" xml-lang="en-US">Dim Variable#</paragraph>
+<paragraph id="par_idm1341130144" role="bascode"  xml-lang="en-US">Dim Variable#</paragraph>
 <paragraph id="par_idm1341128912" role="bascode" localize="false" xml-lang="en-US">Dim Variable As Double</paragraph>
 </bascode>
 
@@ -135,6 +141,17 @@
 <bascode>
 <paragraph id="par_idm1341123216" role="bascode" localize="false" xml-lang="en-US">Dim Variable@</paragraph>
 <paragraph id="par_idm1341121984" role="bascode" localize="false" xml-lang="en-US">Dim Variable As Currency</paragraph>
+</bascode>
+
+<h3 id="hd_id301576839713868">Literals for integers</h3>
+<paragraph role="paragraph" id="par_id1001576839723156">Numbers can be encoded using octal and hexadecimal forms.</paragraph>
+<bascode>
+  <paragraph role="bascode" id="bas_id331576850637825" localize="false">xi = &amp;o13 &apos;    8 + 3</paragraph>
+  <paragraph role="bascode" id="bas_id761576850640144" localize="false">ci = &amp;h65 &apos; 6*16 + 5</paragraph>
+  <paragraph role="bascode" id="bas_id511576850640336" localize="false">MAX_Integer =  &amp;o77777 &apos;  32767 = &amp;h7FFF</paragraph>
+  <paragraph role="bascode" id="bas_id571576850640536" localize="false">MIN_Integer = &amp;o100000 &apos; -32768 = &amp;h8000</paragraph>
+  <paragraph role="bascode" id="bas_id541576850641922" localize="false">MAX_Long = &amp;h7fffffff &apos;  2147483647 = &amp;o17777777777</paragraph>
+  <paragraph role="bascode" id="bas_id481576850564801" localize="false">MIN_Long = &amp;h80000000 &apos; -2147483648 = &amp;o20000000000</paragraph>
 </bascode>
 
 <paragraph id="hd_id3148742" role="heading" level="3" xml-lang="en-US">String Variables</paragraph>
