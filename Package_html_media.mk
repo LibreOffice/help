@@ -58,8 +58,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/formvers.png \
     helpimg/hand01.png \
     helpimg/hsizebar.png \
-    helpimg/impress_remote01.png \
-    helpimg/impress_remote02.png \
     helpimg/impress_remote_icon.png \
     helpimg/kombi1.png \
     helpimg/left.png \
@@ -335,6 +333,14 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/smath/ui/spacingdialog/SpacingDialog.png \
     screenshots/modules/swriter/ui/watermarkdialog/WatermarkDialog.png \
     screenshots/svx/ui/compressgraphicdialog/CompressGraphicDialog.png \
+    screenshots/miscellaneous/impressremote/image01/impress_remote01.png \
+    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
+		screenshots/miscellaneous/impressremote/image01/$(lang)/impress_remote01.png \
+	) \
+    screenshots/miscellaneous/impressremote/image02/impress_remote02.png \
+    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
+		screenshots/miscellaneous/impressremote/image02/$(lang)/impress_remote02.png \
+	) \
     screenshots/modules/simpress/ui/optimpressgeneralpage/OptSavePage.png \
     $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
 		screenshots/modules/simpress/ui/optimpressgeneralpage/$(lang)/OptSavePage.png \
