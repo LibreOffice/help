@@ -318,7 +318,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     navigation/libo-writer.svg \
     screenshots/cui/ui/charnamepage/CharNamePage.png \
     screenshots/cui/ui/colorpickerdialog/ColorPicker.png \
-    screenshots/cui/ui/optionsdialog/impressoptionsgeneraldialog.png \
     screenshots/cui/ui/pageformatpage/PageFormatPage.png \
     screenshots/modules/scalc/ui/deletecells/DeleteCellsDialog.png \
     screenshots/modules/scalc/ui/xmlsourcedialog/XMLSourceDialog.png \
@@ -332,6 +331,10 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/smath/ui/spacingdialog/SpacingDialog.png \
     screenshots/modules/swriter/ui/watermarkdialog/WatermarkDialog.png \
     screenshots/svx/ui/compressgraphicdialog/CompressGraphicDialog.png \
+    screenshots/modules/simpress/ui/optimpressgeneralpage/OptSavePage.png \
+    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
+		screenshots/modules/simpress/ui/optimpressgeneralpage/$(lang)/OptSavePage.png \
+	) \
     screenshots/cui/ui/optviewpage/OptViewPage.png \
     $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
 		screenshots/cui/ui/optviewpage/$(lang)/OptViewPage.png \
