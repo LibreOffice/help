@@ -332,6 +332,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/about_meta_tags \
     helpcontent2/source/text/shared/01/digitalsignatures \
     helpcontent2/source/text/shared/01/digitalsignaturespdf \
+    helpcontent2/source/text/shared/01/addsignatureline \
+    helpcontent2/source/text/shared/01/signsignatureline \
     helpcontent2/source/text/shared/01/extensionupdate \
     helpcontent2/source/text/shared/01/formatting_mark \
     helpcontent2/source/text/shared/01/font_features \
