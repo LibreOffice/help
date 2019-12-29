@@ -357,6 +357,10 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
 		screenshots/modules/simpress/ui/photoalbum/$(lang)/PhotoAlbumCreatorDialog.png \
 	) \
+    screenshots/modules/simpress/ui/presentationdialog/PresentationDialog.png \
+    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
+		screenshots/modules/simpress/ui/presentationdialog/$(lang)/PresentationDialog.png \
+	) \
     screenshots/cui/ui/optviewpage/OptViewPage.png \
     $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
 		screenshots/cui/ui/optviewpage/$(lang)/OptViewPage.png \
