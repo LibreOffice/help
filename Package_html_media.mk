@@ -324,7 +324,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/scalc/ui/deletecells/DeleteCellsDialog.png \
     screenshots/modules/scalc/ui/xmlsourcedialog/XMLSourceDialog.png \
     screenshots/modules/sdraw/ui/dlgsnap/SnapObjectDialog.png \
-    screenshots/modules/simpress/ui/headerfooterdialog/HeaderFooterDialog.png \
     screenshots/modules/smath/ui/alignmentdialog/AlignmentDialog.png \
     screenshots/modules/smath/ui/fontdialog/FontDialog.png \
     screenshots/modules/smath/ui/fontsizedialog/FontSizeDialog.png \
@@ -364,6 +363,10 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/simpress/ui/slidedesigndialog/SlideDesignDialog.png \
         $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
 		screenshots/modules/simpress/ui/slidedesigndialog/$(lang)/SlideDesignDialog.png \
+	) \
+    screenshots/modules/simpress/ui/headerfooterdialog/HeaderFooterDialog.png \
+	$(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
+		screenshots/modules/simpress/ui/headerfooterdialog/$(lang)/HeaderFooterDialog.png \
 	) \
     screenshots/cui/ui/optviewpage/OptViewPage.png \
     $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
