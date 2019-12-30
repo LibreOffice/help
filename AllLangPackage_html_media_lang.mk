@@ -253,6 +253,7 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     screenshots/modules/simpress/ui/headerfooterdialog/$(lang)/HeaderFooterDialog.png \
     screenshots/modules/simpress/ui/masterlayoutdlg/$(lang)/MasterLayoutDialog.png \
     screenshots/modules/simpress/ui/customslideshows/$(lang)/CustomSlideShows.png \
+    screenshots/modules/simpress/ui/definecustomslideshow/$(lang)/DefineCustomSlideShow.png \
     screenshots/cui/ui/optviewpage/$(lang)/OptViewPage.png \
     screenshots/cui/ui/optfltrpage/$(lang)/OptFltrPage.png \
     screenshots/cui/ui/opthtmlpage/$(lang)/OptHtmlPage.png \
