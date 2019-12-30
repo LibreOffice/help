@@ -331,6 +331,11 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/smath/ui/spacingdialog/SpacingDialog.png \
     screenshots/modules/swriter/ui/watermarkdialog/WatermarkDialog.png \
     screenshots/svx/ui/compressgraphicdialog/CompressGraphicDialog.png \
+<<<<<<< HEAD   (b68fef Update Media submenu)
+=======
+    screenshots/miscellaneous/impressremote/ui/image01/impress_remote01.png \
+    screenshots/miscellaneous/impressremote/ui/image02/impress_remote02.png \
+>>>>>>> CHANGE (1d0961 Move screenshot at right place)
     screenshots/modules/simpress/ui/optimpressgeneralpage/OptSavePage.png \
     $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
 		screenshots/modules/simpress/ui/optimpressgeneralpage/$(lang)/OptSavePage.png \
