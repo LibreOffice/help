@@ -332,9 +332,19 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/swriter/ui/watermarkdialog/WatermarkDialog.png \
     screenshots/svx/ui/compressgraphicdialog/CompressGraphicDialog.png \
     screenshots/modules/simpress/ui/optimpressgeneralpage/OptSavePage.png \
+<<<<<<< HEAD   (b68fef Update Media submenu)
     $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
 		screenshots/modules/simpress/ui/optimpressgeneralpage/$(lang)/OptSavePage.png \
 	) \
+=======
+    screenshots/modules/simpress/ui/sdviewpage/SdViewPage.png \
+    screenshots/modules/simpress/ui/prntopts/prntopts.png \
+    screenshots/modules/simpress/ui/photoalbum/PhotoAlbumCreatorDialog.png \
+    screenshots/modules/simpress/ui/presentationdialog/PresentationDialog.png \
+    screenshots/modules/simpress/ui/slidedesigndialog/SlideDesignDialog.png \
+    screenshots/modules/simpress/ui/headerfooterdialog/HeaderFooterDialog.png \
+    screenshots/modules/simpress/ui/masterlayoutdlg/MasterLayoutDialog.png \
+>>>>>>> CHANGE (57e18a Add master layout dialog screenshot to help page)
     screenshots/cui/ui/optviewpage/OptViewPage.png \
     $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
 		screenshots/cui/ui/optviewpage/$(lang)/OptViewPage.png \
