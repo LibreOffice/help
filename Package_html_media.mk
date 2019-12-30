@@ -333,128 +333,35 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/swriter/ui/watermarkdialog/WatermarkDialog.png \
     screenshots/svx/ui/compressgraphicdialog/CompressGraphicDialog.png \
     screenshots/miscellaneous/impressremote/image01/impress_remote01.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/miscellaneous/impressremote/image01/$(lang)/impress_remote01.png \
-	) \
     screenshots/miscellaneous/impressremote/image02/impress_remote02.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/miscellaneous/impressremote/image02/$(lang)/impress_remote02.png \
-	) \
     screenshots/modules/simpress/ui/optimpressgeneralpage/OptSavePage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/modules/simpress/ui/optimpressgeneralpage/$(lang)/OptSavePage.png \
-	) \
     screenshots/modules/simpress/ui/sdviewpage/SdViewPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/modules/simpress/ui/sdviewpage/$(lang)/SdViewPage.png \
-	) \
     screenshots/modules/simpress/ui/prntopts/prntopts.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/modules/simpress/ui/prntopts/$(lang)/prntopts.png \
-	) \
     screenshots/modules/simpress/ui/photoalbum/PhotoAlbumCreatorDialog.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/modules/simpress/ui/photoalbum/$(lang)/PhotoAlbumCreatorDialog.png \
-	) \
     screenshots/modules/simpress/ui/presentationdialog/PresentationDialog.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/modules/simpress/ui/presentationdialog/$(lang)/PresentationDialog.png \
-	) \
     screenshots/modules/simpress/ui/slidedesigndialog/SlideDesignDialog.png \
-        $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/modules/simpress/ui/slidedesigndialog/$(lang)/SlideDesignDialog.png \
-	) \
     screenshots/modules/simpress/ui/headerfooterdialog/HeaderFooterDialog.png \
-	$(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/modules/simpress/ui/headerfooterdialog/$(lang)/HeaderFooterDialog.png \
-	) \
     screenshots/cui/ui/optviewpage/OptViewPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/optviewpage/$(lang)/OptViewPage.png \
-	) \
     screenshots/cui/ui/optfltrpage/OptFltrPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/optfltrpage/$(lang)/OptFltrPage.png \
-	) \
     screenshots/cui/ui/opthtmlpage/OptHtmlPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/opthtmlpage/$(lang)/OptHtmlPage.png \
-	) \
     screenshots/cui/ui/optaccessibilitypage/OptAccessibilityPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/optaccessibilitypage/$(lang)/OptAccessibilityPage.png \
-	) \
     screenshots/cui/ui/optsavepage/OptSavePage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/optsavepage/$(lang)/OptSavePage.png \
-	) \
     screenshots/cui/ui/optadvancedpage/OptAdvancedPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/optadvancedpage/$(lang)/OptAdvancedPage.png \
-	) \
     screenshots/cui/ui/optasianpage/OptAsianPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/optasianpage/$(lang)/OptAsianPage.png \
-	) \
     screenshots/cui/ui/optctlpage/OptCTLPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/optctlpage/$(lang)/OptCTLPage.png \
-	) \
     screenshots/cui/ui/optsecuritypage/OptSecurityPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/optsecuritypage/$(lang)/OptSecurityPage.png \
-	) \
     screenshots/cui/ui/effectspage/EffectsPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/effectspage/$(lang)/EffectsPage.png \
-	) \
     screenshots/cui/ui/hyperlinkdocpage/HyperlinkDocPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/hyperlinkdocpage/$(lang)/HyperlinkDocPage.png \
-	) \
     screenshots/cui/ui/hyperlinkinternetpage/HyperlinkInternetPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/hyperlinkinternetpage/$(lang)/HyperlinkInternetPage.png \
-	) \
     screenshots/cui/ui/hyperlinkmailpage/HyperlinkMailPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/hyperlinkmailpage/$(lang)/HyperlinkMailPage.png \
-	) \
     screenshots/cui/ui/hyperlinknewdocpage/HyperlinkNewDocPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/hyperlinknewdocpage/$(lang)/HyperlinkNewDocPage.png \
-	) \
     screenshots/cui/ui/optlanguagespage/OptLanguagesPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/optlanguagespage/$(lang)/OptLanguagesPage.png \
-	) \
     screenshots/cui/ui/optgeneralpage/OptGeneralPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/cui/ui/optgeneralpage/$(lang)/OptGeneralPage.png \
-	) \
     screenshots/filter/ui/pdfgeneralpage/PdfGeneralPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/filter/ui/pdfgeneralpage/$(lang)/PdfGeneralPage.png \
-	) \
     screenshots/filter/ui/pdflinkspage/PdfLinksPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/filter/ui/pdflinkspage/$(lang)/PdfLinksPage.png \
-	) \
     screenshots/filter/ui/pdfviewpage/PdfViewPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/filter/ui/pdfviewpage/$(lang)/PdfViewPage.png \
-	) \
     screenshots/filter/ui/pdfuserinterfacepage/PdfUserInterfacePage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/filter/ui/pdfuserinterfacepage/$(lang)/PdfUserInterfacePage.png \
-	) \
     screenshots/filter/ui/pdfsignpage/PdfSignPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/filter/ui/pdfsignpage/$(lang)/PdfSignPage.png \
-	) \
     screenshots/filter/ui/pdfsecuritypage/PdfSecurityPage.png \
-    $(foreach lang, $(filter-out en-US,$(gb_HELP_LANGS)),\
-		screenshots/filter/ui/pdfsecuritypage/$(lang)/PdfSecurityPage.png \
-	) \
 ))
 # vim: set noet sw=4 ts=4:
