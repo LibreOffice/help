@@ -341,6 +341,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/simpress/ui/presentationdialog/PresentationDialog.png \
     screenshots/modules/simpress/ui/slidedesigndialog/SlideDesignDialog.png \
     screenshots/modules/simpress/ui/headerfooterdialog/HeaderFooterDialog.png \
+    screenshots/modules/simpress/ui/masterlayoutdlg/MasterLayoutDialog.png \
     screenshots/cui/ui/optviewpage/OptViewPage.png \
     screenshots/cui/ui/optfltrpage/OptFltrPage.png \
     screenshots/cui/ui/opthtmlpage/OptHtmlPage.png \
