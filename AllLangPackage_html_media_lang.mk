@@ -241,6 +241,29 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     screenshots/modules/smath/ui/fonttypedialog/$(lang)/FontsDialog.png \
     screenshots/modules/smath/ui/savedefaultsdialog/$(lang)/SaveDefaultsDialog.png \
     screenshots/modules/smath/ui/spacingdialog/$(lang)/SpacingDialog.png \
+    screenshots/modules/simpress/ui/optimpressgeneralpage/$(lang)/OptSavePage.png \
+    screenshots/cui/ui/optviewpage/$(lang)/OptViewPage.png \
+    screenshots/cui/ui/optfltrpage/$(lang)/OptFltrPage.png \
+    screenshots/cui/ui/opthtmlpage/$(lang)/OptHtmlPage.png \
+    screenshots/cui/ui/optaccessibilitypage/$(lang)/OptAccessibilityPage.png \
+    screenshots/cui/ui/optsavepage/$(lang)/OptSavePage.png \
+    screenshots/cui/ui/optadvancedpage/$(lang)/OptAdvancedPage.png \
+    screenshots/cui/ui/optasianpage/$(lang)/OptAsianPage.png \
+    screenshots/cui/ui/optctlpage/$(lang)/OptCTLPage.png \
+    screenshots/cui/ui/optsecuritypage/$(lang)/OptSecurityPage.png \
+    screenshots/cui/ui/effectspage/$(lang)/EffectsPage.png \
+    screenshots/cui/ui/hyperlinkdocpage/$(lang)/HyperlinkDocPage.png \
+    screenshots/cui/ui/hyperlinkinternetpage/$(lang)/HyperlinkInternetPage.png \
+    screenshots/cui/ui/hyperlinkmailpage/$(lang)/HyperlinkMailPage.png \
+    screenshots/cui/ui/hyperlinknewdocpage/$(lang)/HyperlinkNewDocPage.png \
+    screenshots/cui/ui/optlanguagespage/$(lang)/OptLanguagesPage.png \
+    screenshots/cui/ui/optgeneralpage/$(lang)/OptGeneralPage.png \
+    screenshots/filter/ui/pdfgeneralpage/$(lang)/PdfGeneralPage.png \
+    screenshots/filter/ui/pdflinkspage/$(lang)/PdfLinksPage.png \
+    screenshots/filter/ui/pdfviewpage/$(lang)/PdfViewPage.png \
+    screenshots/filter/ui/pdfuserinterfacepage/$(lang)/PdfUserInterfacePage.png \
+    screenshots/filter/ui/pdfsignpage/$(lang)/PdfSignPage.png \
+    screenshots/filter/ui/pdfsecuritypage/$(lang)/PdfSecurityPage.png \
     screenshots/svx/ui/compressgraphicdialog/$(lang)/CompressGraphicDialog.png \
 )))
 #TODO: Find a clever way to pick en-US files (default) when localized files are missing
