@@ -26,6 +26,8 @@
 <xsl:when test="$src1='chart2/res/dataeditor_icon07.png'"><xsl:text>cmd/sc_insertcolumnsafter.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='chart2/res/dataeditor_icon08.png'"><xsl:text>cmd/sc_insertcolumns.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='chart2/res/dataeditor_icon09.png'"><xsl:text>cmd/sc_insertrowsbefore.svg</xsl:text></xsl:when>
+<xsl:when test="$src1='chart2/res/netlinepoint_52x60.png'"><xsl:text>chart2/res/net_52x60.svg</xsl:text></xsl:when>
+<xsl:when test="$src1='chart2/res/netlinepointstack_52x60.png'"><xsl:text>chart2/res/netstack_52x60.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='chart2/res/selectrange.png'"><xsl:text>formula/res/refinp1.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/32/charttitlemenu.png'"><xsl:text>cmd/32/toggletitle.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/32/diagramaxisall.png'"><xsl:text>cmd/32/diagramaxisxyz.svg</xsl:text></xsl:when>
@@ -1085,6 +1087,7 @@
 <xsl:when test="$src1='cmd/32/reportnavigator.png'"><xsl:text>cmd/32/navigator.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_reportnavigator.png'"><xsl:text>cmd/lc_navigator.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_reportnavigator.png'"><xsl:text>cmd/sc_navigator.svg</xsl:text></xsl:when>
+<xsl:when test="$src1='cmd/sc_setreminder.png'"><xsl:text>cmd/sc_timefield.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/32/dbdtableedit.png'"><xsl:text>cmd/32/dbtableedit.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/32/dbnewquerysql.png'"><xsl:text>cmd/32/sbanativesql.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/32/dbnewview.png'"><xsl:text>cmd/32/dbchangedesignmode.svg</xsl:text></xsl:when>
