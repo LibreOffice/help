@@ -106,19 +106,17 @@ for (var i = 0, len = itemcopyable.length; i < len; i++) {
     (function() {
         var item = itemcopyable[i];
 
-        function changeBorder(item, color, colorToChangeBackTo) {
-            var saveBorder  = item.style.border;
-            item.style.border = "solid 5px";
+        function changeBorder(item, color) {
+            var saveBorderColor = item.style.borderColor;
             item.style.borderColor = color;
 
             setTimeout(function() {
-                item.style.border = saveBorder;
-                item.style.borderColor = colorToChangeBackTo;
+                item.style.borderColor = saveBorderColor;
             }, 150);
         }
         item.onclick = function() {
             document.execCommand("copy");
-            changeBorder(item, "#18A303", "transparent");
+            changeBorder(item, "#18A303");
         };
         item.addEventListener("copy", function(event) {
             event.preventDefault();
