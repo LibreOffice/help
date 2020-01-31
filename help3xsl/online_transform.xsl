@@ -57,12 +57,6 @@
 
 <!-- Installation -->
 <xsl:variable name="online" select="$local!='yes'"/>
-<xsl:variable name="target">
-    <xsl:choose>
-        <xsl:when test="$online"><xsl:value-of select="concat($productversion,'/')"/></xsl:when>
-        <xsl:otherwise><xsl:value-of select="''"/></xsl:otherwise>
-    </xsl:choose>
-</xsl:variable>
 
 <!-- meta data variables from the help file -->
 <xsl:variable name="filename" select="/helpdocument/meta/topic/filename"/>
@@ -84,11 +78,11 @@
 
   <!-- parts of help and image urls -->
 
-<xsl:variable name="img_url_prefix" select="concat($target,'media',$imgtheme,'/')"/>
+<xsl:variable name="img_url_prefix" select="concat('media',$imgtheme,'/')"/>
 
 <xsl:variable name="urlpost" select="concat('?Language=',$lang,$am,'System=',$System,$am,'UseDB=no')"/>
 
-<xsl:variable name="linkprefix" select="concat($target,$lang,'/')"/>
+<xsl:variable name="linkprefix" select="concat($lang,'/')"/>
 
 <!--<xsl:variable name="linkpostfix" select="$urlpost"/>-->
 <xsl:variable name="linkpostfix" select="''"/>
@@ -145,21 +139,21 @@
             <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org"/>
         </xsl:if>
         <title><xsl:value-of select="$titleL10N"/></title>
-        <link rel="shortcut icon" href="{$target}media/navigation/favicon.ico"/>
-        <link  type="text/css" href="{$target}normalize.css" rel="Stylesheet"/>
-        <link  type="text/css" href="{$target}default.css" rel="Stylesheet"/>
-        <link  type="text/css" href="{$target}prism.css" rel="Stylesheet"/>
-        <script type="text/javascript" src="{$target}polyfills.js"></script>
-        <script type="text/javascript" src="{$target}languages.js"></script>
-        <script type="text/javascript" src="{$target}fuzzysort.js"></script>
-        <script type="text/javascript" src="{$target}prism.js"></script>
-        <script type="text/javascript" src="{$target}help2.js" defer=""></script>
-        <script type="text/javascript" src="{$target}a11y-toggle.js" defer=""></script>
-        <script type="text/javascript" src="{$target}{$lang}/langnames.js" defer=""></script>
-        <script type="text/javascript" src="{$target}paginathing.js" defer=""></script>
-        <script type="text/javascript" src="{$target}{$lang}/bookmarks.js" defer=""></script>
-        <script type="text/javascript" src="{$target}{$lang}/contents.js" defer=""></script>
-        <script type="text/javascript" src="{$target}help.js" defer=""></script>
+        <link rel="shortcut icon" href="media/navigation/favicon.ico"/>
+        <link  type="text/css" href="normalize.css" rel="Stylesheet"/>
+        <link  type="text/css" href="default.css" rel="Stylesheet"/>
+        <link  type="text/css" href="prism.css" rel="Stylesheet"/>
+        <script type="text/javascript" src="polyfills.js"></script>
+        <script type="text/javascript" src="languages.js"></script>
+        <script type="text/javascript" src="fuzzysort.js"></script>
+        <script type="text/javascript" src="prism.js"></script>
+        <script type="text/javascript" src="help2.js" defer=""></script>
+        <script type="text/javascript" src="a11y-toggle.js" defer=""></script>
+        <script type="text/javascript" src="{$lang}/langnames.js" defer=""></script>
+        <script type="text/javascript" src="paginathing.js" defer=""></script>
+        <script type="text/javascript" src="{$lang}/bookmarks.js" defer=""></script>
+        <script type="text/javascript" src="{$lang}/contents.js" defer=""></script>
+        <script type="text/javascript" src="help.js" defer=""></script>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
     <body itemscope="true" itemtype="http://schema.org/TechArticle">
@@ -173,21 +167,21 @@
     <div class="header-extrawurst">
         <header>
             <div class="logo-container">
-                <a class="logo" href="{$target}{$lang}/text/shared/05/new_help.html">
+                <a class="logo" href="{$lang}/text/shared/05/new_help.html">
                     <div class="symbol"></div>
                     <p><xsl:value-of select="$ui_logo"/></p>
                 </a>
             </div>
         </header>
         <div class="modules">
-            <button type="button" data-a11y-toggle="modules-nav" id="modules" onclick="setupModules('{$target}', '{$lang}');">
+            <button type="button" data-a11y-toggle="modules-nav" id="modules" onclick="setupModules('{$lang}');">
                 <xsl:value-of select="$ui_module"/>
             </button>
 	    <nav id="modules-nav"/><!-- is filled in via setupModules() on demand -->
         </div>
         <xsl:if test="$online">
             <div class="lang">
-                <button type="button" data-a11y-toggle="langs-nav" id="langs" onclick="setupLanguages('{$target}', '{$htmlpage}');">
+                <button type="button" data-a11y-toggle="langs-nav" id="langs" onclick="setupLanguages('{$htmlpage}');">
                     <xsl:value-of select="$ui_language"/>
                 </button>
                 <nav id="langs-nav"/><!-- is filled in via setupLanguages() on demand -->
@@ -1110,16 +1104,16 @@
                         <xsl:variable name="tmp1" select="substring-after(@src, '/ui/')"/>
                         <xsl:variable name="tmp2" select="substring-before($tmp1,'/')"/>
                         <xsl:variable name="tmp3" select="substring-after($tmp1,'/')"/>
-                        <xsl:value-of select="concat($target,$tmp0,'/ui/', $tmp2, '/',$lang,'/',$tmp3)"/>
+                        <xsl:value-of select="concat($tmp0,'/ui/', $tmp2, '/',$lang,'/',$tmp3)"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of select="concat($target,@src)"/>
+                        <xsl:value-of select="@src"/>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:when>
             <!-- generic media file -->
             <xsl:when test="starts-with(@src,'media/')">
-                <xsl:value-of select="concat($target,@src)"/>
+                <xsl:value-of select="@src"/>
             </xsl:when>
             <!-- handle icons -->
             <xsl:when test="not(starts-with(@src,'media/'))">
@@ -1136,10 +1130,10 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:variable>
-                <xsl:value-of select="concat($target,'media/icon-themes/',$aux00)"/>
+                <xsl:value-of select="concat('media/icon-themes/',$aux00)"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="concat($target,@src)"/>
+                <xsl:value-of select="@src"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
@@ -1212,7 +1206,7 @@
             </xsl:variable>
             <div class="samplefilesection" id="{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-calc.svg')}" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-calc.svg" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.text'">
@@ -1223,7 +1217,7 @@
             </xsl:variable>
             <div class="samplefilesection" id="{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-writer.svg')}" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-writer.svg" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.presentation'">
@@ -1234,7 +1228,7 @@
             </xsl:variable>
             <div class="samplefilesection" id="{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-impress.svg')}" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-impress.svg" width="25px" height="30px"></img></a>
             </div>
             </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.drawing'">
@@ -1245,7 +1239,7 @@
             </xsl:variable>
             <div class="samplefilesection" id="{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-draw.svg')}" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-draw.svg" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.formula'">
@@ -1256,7 +1250,7 @@
             </xsl:variable>
             <div class="samplefilesection" id="{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-math.svg')}" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-math.svg" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.database'">
@@ -1267,7 +1261,7 @@
             </xsl:variable>
             <div class="samplefilesection" id="{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{concat($target,$src)}"><img src="{concat($target,'media/navigation/libo-base.svg')}" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-base.svg" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:otherwise>
@@ -1396,10 +1390,7 @@
             </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>
-            <xsl:choose>
-                <xsl:when test="$online"><xsl:value-of select="concat('../',$result)" /></xsl:when>
-                <xsl:otherwise><xsl:value-of select="$result" /></xsl:otherwise>
-            </xsl:choose>
+            <xsl:value-of select="$result" />
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>

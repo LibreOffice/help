@@ -30,14 +30,6 @@ xsltproc get_tree.xsl <file.tree>
 <xsl:variable name="brand3" select="'%PRODUCTNAME'"/>
 <xsl:variable name="brand4" select="'%PRODUCTVERSION'"/>
 
-<xsl:variable name="online" select="$local!='yes'"/>
-<xsl:variable name="target">
-    <xsl:choose>
-        <xsl:when test="$online"><xsl:value-of select="concat($productversion,'/')"/></xsl:when>
-        <xsl:otherwise><xsl:value-of select="''"/></xsl:otherwise>
-    </xsl:choose>
-</xsl:variable>
-
 <!--
 #############
 # Templates #
@@ -57,7 +49,7 @@ xsltproc get_tree.xsl <file.tree>
 
 <xsl:template match="topic">
     <xsl:variable name="htmlpage">
-        <xsl:value-of select="concat($target,$lang,'/',substring-before(substring-after(@id,'/'),'.xhp'),'.html','?DbPAR=',$module)" />
+        <xsl:value-of select="concat($lang,'/',substring-before(substring-after(@id,'/'),'.xhp'),'.html','?DbPAR=',$module)" />
     </xsl:variable>
     <![CDATA[<li><a target="_top" href="]]><xsl:value-of select="$htmlpage"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="."/></xsl:with-param></xsl:call-template><![CDATA[</a></li>\]]>
 </xsl:template>
