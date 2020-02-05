@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This file incorporates work covered by the following license notice:
+ *
+ *   Licensed to the Apache Software Foundation (ASF) under one or more
+ *   contributor license agreements. See the NOTICE file distributed
+ *   with this work for additional information regarding copyright
+ *   ownership. The ASF licenses this file to you under the Apache
+ *   License, Version 2.0 (the "License"); you may not use this file
+ *   except in compliance with the License. You may obtain a copy of
+ *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+-->
+   <meta>
+      <topic id="text/sbasic/shared/Property">
+         <title id="Property Statement" xml-lang="en-US">Property Statement</title>
+         <filename>/text/sbasic/shared/Property.xhp</filename>
+      </topic>
+   </meta>
+   <body>
+      <bookmark branch="index" id="N0181">
+         <bookmark_value>Property statement</bookmark_value>
+      </bookmark>
+      <h1 id="N0182">Property Statement</h1>
+      <paragraph role="paragraph" id="N0183">A property, also called field or attribute, characterizes a given object or piece of information. Properties can be used to control access to data. It is common use to include instructions at setting or reading time of properties. Code can vary from simple assignment to complex context dependant routines. Using <emph>Get</emph>, <emph>Let</emph> or <emph>Set</emph> accessers enforces properties&apos; consistency when necessary.</paragraph>
+      <warning id="N0184">This statement requires <link href="text/sbasic/shared/compatible.xhp" name ="Option Compatible">Option Compatible</link> to be placed before the executable program code in a module. </warning>
+      <h2 id="N0185">Syntax</h2>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="N0186">[Global | Private | Public] Property [Get | Let | Set] propName[(value As VarType)] [As VarType]</paragraph>
+         <paragraph role="bascode" localize="false" id="N0187">End Property</paragraph>
+      </bascode>
+      <h2 id="N0188">Examples</h2>
+      <bascode>
+      <paragraph role="bascode" localize="false" id="N0189">Option Compatible</paragraph>
+      <paragraph role="bascode" localize="false" id="N0190">Sub Main</paragraph>
+      <paragraph role="bascode" localize="false" id="N0191">    ProductName = &quot;Office&quot;</paragraph>
+      <paragraph role="bascode" xml-lang="en-US" id="N0192">    Print ProductName &apos; displays &quot;LibreOffice&quot;</paragraph>
+      <paragraph role="bascode" localize="false" id="N0193">End Sub</paragraph>
+      <paragraph role="bascode" localize="false" id="N0194"></paragraph>
+      <paragraph role="bascode" localize="false" id="N0195">Private _office As String</paragraph>
+      <paragraph role="bascode" localize="false" id="N0196">Property Get ProductName As String</paragraph>
+      <paragraph role="bascode" localize="false" id="N0197">    ProductName = _office</paragraph>
+      <paragraph role="bascode" localize="false" id="N0198">End Property</paragraph>
+      <paragraph role="bascode" localize="false" id="N0199">Property Let ProductName(value As String)</paragraph>
+      <paragraph role="bascode" localize="false" id="N0200">    _office = &quot;Libre&quot;&amp; value</paragraph>
+      <paragraph role="bascode" localize="false" id="N0201">End Property</paragraph>
+      </bascode>
+      <tip id="N0202">In the absence of Property <emph>Let</emph> or Property <emph>Set</emph>, Property <emph>Get</emph> helps define protected information, which can not be accidently altered by a foreign module:</tip>
+      <bascode>
+      <paragraph role="bascode" localize="false" id="N0203">Option Compatible</paragraph>
+      <paragraph role="bascode" xml-lang="en-US" id="N0204">Public Property Get PathDelimiter As String &apos; Read-only variable</paragraph>
+      <paragraph role="bascode" localize="false" id="N0205">    Static this As String</paragraph>
+      <paragraph role="bascode" localize="false" id="N0206">    If this = &quot;&quot; Then : Select Case GetGuiType()</paragraph>
+      <paragraph role="bascode" localize="false" id="N0207">        Case 1 : this = &quot;;&quot; &apos; Windows</paragraph>
+      <paragraph role="bascode" xml-lang="en-US" id="N0208">        Case 4 : this = &quot;:&quot; &apos; Linux or MacOS X</paragraph>
+      <paragraph role="bascode" xml-lang="en-US" id="N0209">        Case Else : Error 423 &apos; Property or method not defined: PathDelimiter</paragraph>
+      <paragraph role="bascode" localize="false" id="N0210">    End Select : End If</paragraph>
+      <paragraph role="bascode" localize="false" id="N0211">    PathDelimiter = this</paragraph>
+      <paragraph role="bascode" xml-lang="en-US" id="N0212">End Property &apos; read-only PathDelimiter</paragraph>
+      <paragraph role="bascode" localize="false" id="N0213"></paragraph>
+      <paragraph role="bascode" localize="false" id="N0214">Sub Main</paragraph>
+      <paragraph role="bascode" xml-lang="en-US" id="N0215">    PathDelimiter = &quot;a sentence&quot; &apos; does nothing</paragraph>
+      <paragraph role="bascode" localize="false" id="N0216">End Sub</paragraph>
+      </bascode>
+      <note id="N0217">Use <emph>Let</emph> or <emph>Set</emph> when handling UNO services or class objects:</note>
+      <bascode>
+      <paragraph role="bascode" localize="false" id="N0218">Option Compatible</paragraph>
+      <paragraph role="bascode" localize="false" id="N0219">Sub Main</paragraph>
+      <paragraph role="bascode" localize="false" id="N0220">    &apos;Set anObject = CreateUnoService( &quot;com.sun.star.frame.Desktop&quot; )</paragraph>
+      <paragraph role="bascode" localize="false" id="N0221">    anObject = CreateUnoService( &quot;com.sun.star.frame.Desktop&quot; )</paragraph>
+      <paragraph role="bascode" localize="false" id="N0222">    Print anObject.SupportedServiceNames(0) &apos; displays &quot;com.sun.star.frame.Frame&quot;</paragraph>
+      <paragraph role="bascode" localize="false" id="N0223">End Sub</paragraph>
+      <paragraph role="bascode" localize="false" id="N0224"></paragraph>
+      <paragraph role="bascode" localize="false" id="N0225">Property Get anObject As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="N0226">    Set anObject = _obj</paragraph>
+      <paragraph role="bascode" localize="false" id="N0227">End Property</paragraph>
+      <paragraph role="bascode" localize="false" id="N0228"></paragraph>
+      <paragraph role="bascode" localize="false" id="N0229">Private _obj As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="N0230"></paragraph>
+      <paragraph role="bascode" localize="false" id="N0231">&apos;Property Set anObject(value As Object)</paragraph>
+      <paragraph role="bascode" localize="false" id="N0232">    &apos;Set _obj = value.CurrentFrame</paragraph>
+      <paragraph role="bascode" localize="false" id="N0233">&apos;End Property</paragraph>
+      <paragraph role="bascode" localize="false" id="N0234">Property Let anObject(value As Object)</paragraph>
+      <paragraph role="bascode" localize="false" id="N0235">    Set _obj = value.CurrentFrame</paragraph>
+      <paragraph role="bascode" localize="false" id="N0236">End Property</paragraph>
+      </bascode>
+      <section id="relatedtopics" >
+         <paragraph role="paragraph" id="N0237"><link href="text/sbasic/shared/03090404.xhp" name="End">End</link>, <link href="text/sbasic/shared/03090412.xhp" name="Exit">Exit</link> statements</paragraph>
+         <paragraph role="paragraph" id="N0238">
+            <link href="text/sbasic/shared/01020300.xhp" name ="Using Procedures and Fonctions">Using Procedures and Functions</link>
+         </paragraph>
+         <embed href="text/sbasic/shared/classmodule.xhp#classmodulestatement"/>
+         <embed href="text/sbasic/shared/compatible.xhp#compatiblestatement"/>
+      </section>
+   </body>
+</helpdocument>
