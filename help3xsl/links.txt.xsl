@@ -1087,7 +1087,6 @@
 <xsl:when test="$src1='cmd/32/reportnavigator.png'"><xsl:text>cmd/32/navigator.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/lc_reportnavigator.png'"><xsl:text>cmd/lc_navigator.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/sc_reportnavigator.png'"><xsl:text>cmd/sc_navigator.svg</xsl:text></xsl:when>
-<xsl:when test="$src1='cmd/sc_setreminder.png'"><xsl:text>cmd/sc_timefield.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/32/dbdtableedit.png'"><xsl:text>cmd/32/dbtableedit.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/32/dbnewquerysql.png'"><xsl:text>cmd/32/sbanativesql.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='cmd/32/dbnewview.png'"><xsl:text>cmd/32/dbchangedesignmode.svg</xsl:text></xsl:when>
@@ -1806,6 +1805,7 @@
 <xsl:when test="$src1='sw/res/sc20174.png'"><xsl:text>cmd/sc_upsearch.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sc20175.png'"><xsl:text>cmd/sc_nextrecord.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sc20182.png'"><xsl:text>cmd/sc_toggleanchortype.svg</xsl:text></xsl:when>
+<xsl:when test="$src1='sw/res/sc20183.png'"><xsl:text>cmd/sc_setreminder.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sc20186.png'"><xsl:text>cmd/sc_prevrecord.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sc20233.png'"><xsl:text>cmd/sc_ok.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sc20235.png'"><xsl:text>cmd/sc_inserthyperlinkcontrol.svg</xsl:text></xsl:when>
@@ -1837,7 +1837,7 @@
 <xsl:when test="$src1='sw/res/sr20010.png'"><xsl:text>cmd/sc_insertobject.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sr20011.png'"><xsl:text>sw/res/nc20000.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sr20013.png'"><xsl:text>cmd/sc_insertfootnote.svg</xsl:text></xsl:when>
-<xsl:when test="$src1='sw/res/sr20014.png'"><xsl:text>sw/res/sc20183.svg</xsl:text></xsl:when>
+<xsl:when test="$src1='sw/res/sr20014.png'"><xsl:text>cmd/sc_setreminder.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sr20015.png'"><xsl:text>cmd/sc_shownote.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sr20016.png'"><xsl:text>cmd/sc_recsearch.svg</xsl:text></xsl:when>
 <xsl:when test="$src1='sw/res/sr20017.png'"><xsl:text>cmd/sc_insertindexesentry.svg</xsl:text></xsl:when>
