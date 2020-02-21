@@ -137,12 +137,12 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
         </div>
     </div>
 </aside>
-<div class="donation-frame">
+<div id="DonationFrame">
     <div class="donation">
         <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">]]><xsl:value-of select="$ui_donate"/><![CDATA[</a></p>
     </div>
 </div>
-<div class="search-frame">
+<div id="SearchFrame">
     <div class="xapian-omega-search">
     </div>
 </div>
