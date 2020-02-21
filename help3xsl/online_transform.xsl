@@ -215,7 +215,7 @@
     <div id="DisplayArea" itemprop="articleBody">
         <xsl:apply-templates select="/helpdocument/body"/>
     </div>
-    <div class="search-frame">
+    <div id="SearchFrame">
         <xsl:if test="$online">
             <xsl:if test="$xapian='yes'">
                 <div class="xapian-omega-search">
@@ -227,7 +227,7 @@
             </xsl:if>
         </xsl:if>
       </div>
-    <div class="donation-frame">
+    <div id="DonationFrame">
         <xsl:if test="$online">
             <div class="donation">
                 <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank"><xsl:value-of select="$ui_donate"/></a></p>
