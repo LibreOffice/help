@@ -107,7 +107,7 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
 </script>
 </head>
 <body>
-<div class="header-extrawurst">
+<div id="TopLeftHeader">
     <header>
         <div class="logo-container">
             <a class="logo" href="]]><xsl:value-of select="concat($target,'/',$lang)"/><![CDATA[/text/shared/05/new_help.html">
