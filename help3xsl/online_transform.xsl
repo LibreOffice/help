@@ -164,7 +164,7 @@
         <meta itemprop="datePublished" content="2017"/>
         <meta itemprop="headline" content="{$titleL10N}"/>
     </xsl:if>
-    <div class="header-extrawurst">
+    <div id="TopLeftHeader">
         <header>
             <div class="logo-container">
                 <a class="logo" href="{$lang}/text/shared/05/new_help.html">
