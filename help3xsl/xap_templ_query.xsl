@@ -18,7 +18,7 @@ xsltproc xap_template_query.xsl <file.xhp>
     <xsl:param name="productname"/>
     <xsl:param name="productversion"/>
     <xsl:output indent="yes" method="text"/>
-    <xsl:variable name="target" select="concat('/',$productversion)"/>
+    <xsl:variable name="target" select="concat('/',$productversion,'/')"/>
     <!-- Strings for the help UI page -->
     <xsl:variable name ="ui_contents"><xsl:apply-templates select="//variable[@id='contents']"/></xsl:variable>
     <xsl:variable name ="ui_index"><xsl:apply-templates select="//variable[@id='index']"/></xsl:variable>
@@ -38,7 +38,7 @@ xsltproc xap_template_query.xsl <file.xhp>
 
 <xsl:template match="/">
 <![CDATA[$httpheader{Content-Type,text/html; charset=utf-8}<!DOCTYPE html><html lang="]]><xsl:value-of select="$lang"/><![CDATA[">
-<base href="/"/>
+<base href="]]><xsl:value-of select="$target"/><![CDATA["/>
 $set{flag_spelling,$ne{$cgi{SPELL},0}}
 $set{stemmer,$if{$cgi{STEMMER},$cgi{STEMMER},none}}
 $set{flag_spelling_correction,true}
@@ -75,21 +75,21 @@ $def{SPAGE,<input type=submit name="[" value="$1" disabled=disabled>}
 <head>
 <title>$if{$query,Omega Search: $html{$query},Omega Search}</title>
 <!--$if{$opt{topterms},$include{inc/toptermsjs}}-->
-<link rel="shortcut icon" href="]]><xsl:value-of select="$target"/><![CDATA[/media/navigation/favicon.ico"/>
-<link  type="text/css" href="]]><xsl:value-of select="$target"/><![CDATA[/normalize.css" rel="Stylesheet"/>
-<link  type="text/css" href="]]><xsl:value-of select="$target"/><![CDATA[/default.css" rel="Stylesheet"/>
-<link  type="text/css" href="]]><xsl:value-of select="$target"/><![CDATA[/prism.css" rel="Stylesheet"/>
-<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/polyfills.js"></script>
-<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/languages.js"></script>
-<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/fuzzysort.js"></script>
-<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/prism.js"></script>
-<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/help2.js" defer=""></script>
-<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/a11y-toggle.js" defer=""></script>
-<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/paginathing.js" defer=""></script>
-<script type="text/javascript" src="]]><xsl:value-of select="concat($target,'/',$lang)"/><![CDATA[/langnames.js" defer=""></script>
-<script type="text/javascript" src="]]><xsl:value-of select="concat($target,'/',$lang)"/><![CDATA[/bookmarks.js" defer=""></script>
-<script type="text/javascript" src="]]><xsl:value-of select="concat($target,'/',$lang)"/><![CDATA[/contents.js" defer=""></script>
-<script type="text/javascript" src="]]><xsl:value-of select="$target"/><![CDATA[/help.js" defer=""></script>
+<link rel="shortcut icon" href="media/navigation/favicon.ico"/>
+<link  type="text/css" href="normalize.css" rel="Stylesheet"/>
+<link  type="text/css" href="default.css" rel="Stylesheet"/>
+<link  type="text/css" href="prism.css" rel="Stylesheet"/>
+<script type="text/javascript" src="polyfills.js"></script>
+<script type="text/javascript" src="languages.js"></script>
+<script type="text/javascript" src="fuzzysort.js"></script>
+<script type="text/javascript" src="prism.js"></script>
+<script type="text/javascript" src="help2.js" defer=""></script>
+<script type="text/javascript" src="a11y-toggle.js" defer=""></script>
+<script type="text/javascript" src="paginathing.js" defer=""></script>
+<script type="text/javascript" src="]]><xsl:value-of select="$lang"/><![CDATA[/langnames.js" defer=""></script>
+<script type="text/javascript" src="]]><xsl:value-of select="$lang"/><![CDATA[/bookmarks.js" defer=""></script>
+<script type="text/javascript" src="]]><xsl:value-of select="$lang"/><![CDATA[/contents.js" defer=""></script>
+<script type="text/javascript" src="help.js" defer=""></script>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <style>
 input[type=image] {
@@ -110,7 +110,7 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
 <div id="TopLeftHeader">
     <header>
         <div class="logo-container">
-            <a class="logo" href="]]><xsl:value-of select="concat($target,'/',$lang)"/><![CDATA[/text/shared/05/new_help.html">
+            <a class="logo" href="]]><xsl:value-of select="$lang"/><![CDATA[/text/shared/05/new_help.html">
                 <div class="symbol"></div>
                 <p>]]><xsl:value-of select="$ui_logo"/><![CDATA[</p>
             </a>
@@ -118,8 +118,7 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
     </header>
 </div>
 <div class="modules">
-    <button type="button" data-a11y-toggle="modules-nav" id="modules" onclick="setupModules(']]><xsl:value-of select="substring-after($target,'/')"/><![CDATA[/', ']]><xsl:value-of select="$lang"/><![CDATA[');">
-        ]]><xsl:value-of select="$ui_module"/><![CDATA[
+    <button type="button" data-a11y-toggle="modules-nav" id="modules" onclick="setupModules(']]><xsl:value-of select="$lang"/><![CDATA[');">]]><xsl:value-of select="$ui_module"/><![CDATA[
     </button>
     <nav id="modules-nav"/><!-- is filled in via setupModules() on demand -->
 </div>
@@ -147,7 +146,7 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
     </div>
 </div>
 <div id="DisplayArea">
-    <form name="P" method="get" action="]]><xsl:value-of select="concat($target,'/',$lang)"/><![CDATA[/search" target="_top">
+    <form name="P" method="get" action="]]><xsl:value-of select="$lang"/><![CDATA[/search" target="_top">
 <center>
 <input id="omega-autofocus" type=search name=P value="$html{$query}" size=40 autofocus>
 <script>
