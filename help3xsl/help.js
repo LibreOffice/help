@@ -11,90 +11,92 @@
 var url = window.location.pathname;
 var moduleRegex = new RegExp('text\\/(\\w+)\\/');
 var regexArray = moduleRegex.exec(url);
-var currentModule = null;
-// get the module name from the URL and remove the first character,
-// but first deal with snowflake Base
-if(url.indexOf('explorer/database/') !== -1) {
-    currentModule = 'BASE';
-} else {
-    if (null === regexArray){// comes from search or elsewhere, no defined module in URL
-        currentModule = 'HARED'
-    }else{
-        currentModule = regexArray[1].toUpperCase().substring(1);
-    }
-}
-var results = null;
-var fullLinkified = '';
 var modules = ['CALC', 'WRITER', 'IMPRESS', 'DRAW', 'BASE', 'MATH', 'CHART', 'BASIC', 'SHARED'];
-var index = document.getElementsByClassName("index")[0];
-var indexkids = index.children;
-// if user is not on a shared category page, limit the index to the current module + shared
-if(currentModule !== 'HARED') {
-    bookmarks = bookmarks.filter(function(obj) {
+var indexEl = document.getElementsByClassName("index")[0];
+var fullLinks = fullLinkify(indexEl, bookmarks, modules, currentModule());
+var search = document.getElementById('search-bar');
+search.addEventListener('keyup', debounce(filter, 100, indexEl));
+// Preserve search input value during the session
+search.value = sessionStorage.getItem('searchsave');
+if (search.value !== undefined) {
+    filter(indexEl);
+}
+window.addEventListener('unload', function(event) {
+    sessionStorage.setItem('searchsave', search.value);
+});
+// render the unfiltered index list on page load
+fillIndex(indexEl, fullLinks, modules);
+
+function currentModule() {
+    var module = '';
+    // get the module name from the URL and remove the first character,
+    // but first deal with snowflake Base
+    if(url.indexOf('explorer/database/') !== -1) {
+        module = 'BASE';
+    } else {
+        if (null === regexArray){// comes from search or elsewhere, no defined module in URL
+            module = 'HARED'
+        } else {
+            module = regexArray[1].toUpperCase().substring(1);
+        }
+    }
+    return module;
+};
+function fullLinkify(indexEl, bookmarks, modules, currentModule) {
+    var fullLinkified = '';
+    // if user is not on a shared category page, limit the index to the current module + shared
+    if(currentModule !== 'HARED') {
+        bookmarks = bookmarks.filter(function(obj) {
             return obj['app'] === currentModule || obj['app'] === 'SHARED';
         });
+    }
+    bookmarks.forEach(function(obj) {
+        fullLinkified += '<a href="' + obj['url'] + '" class="' + obj['app'] + '">' + obj['text'] + '</a>';
+    });
+    return fullLinkified;
 }
-bookmarks.forEach(function(obj) {
-            fullLinkified += '<a href="' + obj['url'] + '" class="' + obj['app'] + '">' + obj['text'] + '</a>';
-        });
-function fullList() {
-    index.innerHTML = fullLinkified;
-    addIds();
-    Paginator(index);
-}
-// add id to the first items of each category in the index. CSS ::before rule adds the heading text
-function addIds() {
-    for (var i = 0, len = indexkids.length; i < len; i++) {
-        indexkids[i].removeAttribute("id");
+function fillIndex(indexEl, content, modules) {
+    indexEl.innerHTML = content;
+    var indexKids = indexEl.children;
+    for (var i = 0, len = indexKids.length; i < len; i++) {
+        indexKids[i].removeAttribute("id");
     }
     modules.forEach(function(module) {
-        var moduleHeader = index.getElementsByClassName(module)[0];
+        var moduleHeader = indexEl.getElementsByClassName(module)[0];
         if (typeof moduleHeader !== 'undefined') {
             // let's wrap the header in a span, so the ::before element will not become a link
             moduleHeader.outerHTML = '<span id="' + module + '" class="' + module + '">' + moduleHeader.outerHTML + '</span>';
         }
     });
+    Paginator(indexEl);
 }
-// render the unfiltered index list on page load
-fullList();
 // filter the index list based on search field input
-var search = document.getElementById('search-bar');
-var filter = function() {
+function filter(indexList) {
+    var results = null;
     var target = search.value.trim();
+    var filtered = '';
     if (target.length < 1) {
-        fullList();
+        fillIndex(indexEl, fullLinks, modules);
         return;
     }
     results = fuzzysort.go(target, bookmarks, {threshold: -15000, key:'text'});
-    var filtered = '';
+
     results.forEach(function(result) {
         filtered += '<a href="' + result.obj['url'] + '" class="' + result.obj['app'] + '">' + fuzzysort.highlight(result) + '</a>';
     });
-    index.innerHTML = filtered;
-    addIds();
-    Paginator(index);
+    fillIndex(indexList, filtered, modules);
+
 };
-function debounce(fn, wait) {
+// delay the rendering of the filtered results while user is typing
+function debounce(fn, wait, indexList) {
     var timeout;
     return function() {
         clearTimeout(timeout);
         timeout = setTimeout(function() {
-            fn.apply(this, arguments);
+            fn.call(this, indexList);
         }, (wait || 150));
     };
 }
-search.addEventListener('keyup', debounce(filter, 100));
-
-// Preserve search input value during the session
-search.value = sessionStorage.getItem('searchsave');
-
-if (search.value !== undefined) {
-    filter();
-}
-
-window.addEventListener('unload', function(event) {
-    sessionStorage.setItem('searchsave', search.value);
-});
 
 // copy pycode and bascode to clipboard on mouse click
 // Show border when copy is done
