@@ -70,6 +70,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,smath,\
     helpcontent2/source/text/smath/01/06010000 \
     helpcontent2/source/text/smath/01/06010100 \
     helpcontent2/source/text/smath/01/06020000 \
+    helpcontent2/source/text/smath/01/chemical \
     helpcontent2/source/text/smath/02/03010000 \
     helpcontent2/source/text/smath/04/01020000 \
     helpcontent2/source/text/smath/06/screenshots \
