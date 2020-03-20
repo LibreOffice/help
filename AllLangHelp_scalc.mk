@@ -265,8 +265,19 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/solver \
     helpcontent2/source/text/scalc/01/solver_options \
     helpcontent2/source/text/scalc/01/statistics \
+    helpcontent2/source/text/scalc/01/statistics_anova \
+    helpcontent2/source/text/scalc/01/statistics_correlation \
+    helpcontent2/source/text/scalc/01/statistics_covariance \
+    helpcontent2/source/text/scalc/01/statistics_descriptive \
+    helpcontent2/source/text/scalc/01/statistics_exposmooth \
     helpcontent2/source/text/scalc/01/statistics_fourier \
+    helpcontent2/source/text/scalc/01/statistics_movingavg \
     helpcontent2/source/text/scalc/01/statistics_regression \
+    helpcontent2/source/text/scalc/01/statistics_sampling \
+    helpcontent2/source/text/scalc/01/statistics_test_chisqr \
+    helpcontent2/source/text/scalc/01/statistics_test_f \
+    helpcontent2/source/text/scalc/01/statistics_test_t \
+    helpcontent2/source/text/scalc/01/statistics_test_z \
     helpcontent2/source/text/scalc/01/stat_data \
     helpcontent2/source/text/scalc/01/ODFF \
     helpcontent2/source/text/scalc/01/text2columns \
