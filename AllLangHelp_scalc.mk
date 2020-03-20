@@ -180,6 +180,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/12120100 \
     helpcontent2/source/text/scalc/01/12120200 \
     helpcontent2/source/text/scalc/01/12120300 \
+    helpcontent2/source/text/scalc/01/calculate \
     helpcontent2/source/text/scalc/01/data_form \
     helpcontent2/source/text/scalc/01/data_provider \
     helpcontent2/source/text/scalc/01/ex_data_stat_func \
