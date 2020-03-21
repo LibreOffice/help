@@ -353,6 +353,11 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/packagemanager \
     helpcontent2/source/text/shared/01/password_dlg \
     helpcontent2/source/text/shared/01/password_main \
+    helpcontent2/source/text/shared/01/pastespecialmenu \
+    helpcontent2/source/text/shared/01/pasteunformatted \
+    helpcontent2/source/text/shared/01/pastenestedtable \
+    helpcontent2/source/text/shared/01/pasterowabove \
+    helpcontent2/source/text/shared/01/pastecolumnleft \
     helpcontent2/source/text/shared/01/profile_safe_mode \
     helpcontent2/source/text/shared/01/ref_epub_export \
     helpcontent2/source/text/shared/01/ref_pdf_export \
