@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+   <!--
+   * This file is part of the LibreOffice project.
+   *
+   * This Source Code Form is subject to the terms of the Mozilla Public
+   * License, v. 2.0. If a copy of the MPL was not distributed with this
+   * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+   *
+   -->
+   <meta>
+      <topic id="text/sbasic/shared/ErrVBA">
+         <title id="tit" xml-lang="en-US">Err VBA Object</title>
+         <filename>/text/sbasic/shared/ErrVBA.xhp</filename>
+      </topic>
+   </meta>
+   <body>
+      <bookmark branch="index"  id="N0010">
+         <bookmark_value>Err object</bookmark_value>
+         <bookmark_value>Error;raising</bookmark_value>
+         <bookmark_value>Error;handling</bookmark_value>
+      </bookmark>
+     <h1 id="N0011"><variable id="ErrVBAh1"><link href="text/sbasic/shared/ErrVBA.xhp" name="Err object [VBA]">Err Object [VBA]</link></variable></h1>
+     <paragraph role="paragraph" id="N0012">Use VBA <literal>Err</literal> object to raise or handle runtime errors. <literal>Err</literal> is a VBA self-defined global object which permits:</paragraph>
+      <list type="unordered">
+         <listitem><paragraph role="listitem" id="N0013">to raise pre-defined Basic errors</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0014">to throw user-defined exceptions</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0015">to name the routine originating the error</paragraph></listitem>
+         <listitem><paragraph role="listitem" id="N0016">to describe the error and possible solutions</paragraph></listitem>
+      </list>
+      <paragraph role="paragraph" id="N0017">VBA <literal>Err</literal> object has the following properties and methods:</paragraph>
+      <h2 id="N0018">Properties</h2>
+      <bascode>
+         <paragraph role="code" id="N0019">Err.Description As String</paragraph>
+      </bascode>
+      <paragraph role="paragraph" id="N0020"><emph>Description</emph> property describes the nature of the error. It details the various reasons that may cause the error. Ideally it provides the multiple course of actions that help solve the issue and prevent its reoccurrence. Its alias is Basic <link href="text/sbasic/shared/03050300.xhp" name ="Error function">Error</link> function for %PRODUCTNAME pre-defined errors.</paragraph>
+      <bascode>
+         <paragraph role="code"  id="N0021">Err.Number As Long</paragraph>
+      </bascode>
+     <paragraph role="paragraph" id="N0022">This the error code associated with the error. <literal>Err</literal> object default property is <emph>Number</emph>. Its alias is %PRODUCTNAME Basic <link href="text/sbasic/shared/03050200.xhp" name ="Err">Err</link> function.</paragraph>
+      <bascode>
+         <paragraph role="code"  id="N0023">Err.Source As String</paragraph>
+      </bascode>
+      <paragraph role="paragraph" id="N0024"><emph>Source</emph> indicates the name of the routine that produces the error.</paragraph>
+      <h2 id="N0025">Methods</h2>
+      <bascode>
+         <paragraph role="code"  id="N0026">Err.Clear()</paragraph>
+      </bascode>
+      <paragraph role="paragraph" id="N0027">Resets description, <link href="text/sbasic/shared/03050100.xhp" name ="error line">Erl</link>, number and source properties of current error. Its alias is %PRODUCTNAME Basic <link href="text/sbasic/shared/03050500.xhp" name ="Resume statement">Resume</link> statement.</paragraph>
+      <bascode>
+         <paragraph role="paragraph" id="N0028">Err.Raise(Number As Long, Optional source As String, Optional description As String)</paragraph>
+      </bascode>
+      <paragraph role="paragraph" id="N0029">Throws user-defined errors or pre-defined errors. Its alias is %PRODUCTNAME Basic <link href="text/sbasic/shared/03050200.xhp" name ="Error statement">Error</link> statement.</paragraph>
+      <h3 id="N0030">Parameters</h3>
+      <paragraph role="paragraph" id="N0031"><emph>Number</emph> A user-defined or pre-defined error code to be raised.</paragraph>
+      <note id="N0032">Error code range 0-2000 is reserved for %PRODUCTNAME Basic. User-defined errors may start from higher values in order to prevent collision with %PRODUCTNAME Basic future developments.</note>
+      <paragraph role="paragraph" id="N0033"><emph>Source</emph> The name of the routine raising the error. A name in the form of &quot;myLibrary.myModule.myProc&quot; is recommended.</paragraph>
+     <paragraph role="paragraph" id="N0034"><emph>Description</emph> A description of the problem leading to stop the running process, accompanied with the various reasons that may cause it. A detailed list of the possible course of actions that may help solve the problem is recommended.</paragraph>
+      <h2 id="N0035">Example</h2>
+      <bascode>
+         <paragraph role="paragraph" id="N0036">Option VBASupport 1</paragraph>
+         <paragraph role="paragraph" id="N0037"> </paragraph>
+         <paragraph role="paragraph" id="N0038">Sub ThrowErrors</paragraph>
+         <paragraph role="paragraph" id="N0039">    On Local Error GoTo AlertAndExecNext</paragraph>
+         <paragraph role="paragraph" id="N0040">    Err.Raise(91, &quot;ThrowErrors&quot;, Error(91))</paragraph>
+         <paragraph role="paragraph" id="N0041">    Err.Raise 2020, Description:=&quot;This is an intented user-defined error …&quot;</paragraph>
+         <paragraph role="paragraph" id="N0042">    Err.Raise(4096, &quot;Standard.Module1.ThrowErrors&quot;, description)</paragraph>
+         <paragraph role="paragraph" id="N0043">    Exit Sub</paragraph>
+         <paragraph role="paragraph" id="N0044">AlertAndExecNext:</paragraph>
+         <paragraph role="paragraph" id="N0045">    errTitle = &quot;Error &quot;&amp; Err &amp;&quot; at line &quot;&amp; Erl &amp;&quot; in &quot;&amp; Err.Source</paragraph>
+         <paragraph role="paragraph" id="N0046">    MsgBox Err.Description, MB_ICONEXCLAMATION, errTitle</paragraph>
+         <paragraph role="paragraph" id="N0047">    Resume Next</paragraph>
+         <paragraph role="paragraph" id="N0048">End Sub</paragraph>
+      </bascode>
+      <tip id="N0049">A <link href="text/sbasic/shared/classmodule.xhp" name ="ClassModule option">ClassModule</link>, that wraps VBA <literal>Err</literal> object, can distribute <literal>Err</literal> properties and methods for standard %PRODUCTNAME Basic modules.</tip>
+      <h2 id="N0050">Exception ClassModule</h2>
+      <bascode>
+         <paragraph role="paragraph" id="N0051">Option ClassModule</paragraph>
+         <paragraph role="paragraph" id="N0052">Option VBASupport 1</paragraph>
+         <paragraph role="paragraph" id="N0053"> </paragraph>
+         <paragraph role="paragraph" id="N0054">Public Property Get Description As String</paragraph>
+         <paragraph role="paragraph" id="N0055">    Description = Err.Description</paragraph>
+         <paragraph role="paragraph" id="N0056">End Property</paragraph>
+         <paragraph role="paragraph" id="N0057">Public Property Get Number As Long</paragraph>
+         <paragraph role="paragraph" id="N0058">    Number = Err.Number</paragraph>
+         <paragraph role="paragraph" id="N0059">End Property</paragraph>
+         <paragraph role="paragraph" id="N0060">Public Property Get Source As String</paragraph>
+         <paragraph role="paragraph" id="N0061">    Source = Err.Source</paragraph>
+         <paragraph role="paragraph" id="N0062">End Property</paragraph>
+         <paragraph role="paragraph" id="N0063">Public Sub Clear</paragraph>
+         <paragraph role="paragraph" id="N0064">    Err.Clear</paragraph>
+         <paragraph role="paragraph" id="N0065">End Sub</paragraph>
+         <paragraph role="paragraph" id="N0066">Public Sub Raise( number As Long, Optional Source As String, Optional Description As String)</paragraph>
+         <paragraph role="paragraph" id="N0067">    Err.Raise number, Source, Description</paragraph>
+         <paragraph role="paragraph" id="N0068">End Sub</paragraph>
+      </bascode>
+      <h2 id="N0069">Example</h2>
+      <bascode>
+         <paragraph role="paragraph" id="N0070">Function Exc As Object</paragraph>
+         <paragraph role="paragraph" id="N0071">    Exc = New Exception</paragraph>
+         <paragraph role="paragraph" id="N0072">End Function</paragraph>
+         <paragraph role="paragraph" id="N0073"> </paragraph>
+         <paragraph role="paragraph" id="N0074">Sub aRoutine</paragraph>
+         <paragraph role="paragraph" id="N0075">try:</paragraph>
+         <paragraph role="paragraph" id="N0076">    On Local Error GoTo catch:</paragraph>
+         <paragraph role="paragraph" id="N0077">    Exc.Raise(4096, &quot;myLib.myModule.aRoutine&quot;, _</paragraph>
+         <paragraph role="paragraph" id="N0078">        &quot;Any multi-line description for this user-defined exception&quot;)</paragraph>
+         <paragraph role="paragraph" id="N0079">    &apos; your code goes here …</paragraph>
+         <paragraph role="paragraph" id="N0080">finally:</paragraph>
+         <paragraph role="paragraph" id="N0081">Exit Sub</paragraph>
+         <paragraph role="paragraph" id="N0082">catch:</paragraph>
+         <paragraph role="paragraph" id="N0083">    errTitle = &quot;Error &quot;&amp; Exc.Number &amp;&quot; at line &quot;&amp; Erl &amp;&quot; in &quot;&amp; Exc.Source</paragraph>
+         <paragraph role="paragraph" id="N0084">    MsgBox Exc.Description, MB_ICONSTOP, errTitle</paragraph>
+         <paragraph role="paragraph" id="N0085">    Resume finally</paragraph>
+         <paragraph role="paragraph" id="N0086">End Sub</paragraph>
+      </bascode>
+      <paragraph role="tip"  id="N0088">The <link href="text/sbasic/shared/03050300.xhp" name ="Error statement">Error</link> statement or an Exception-like class module can be used interchangeably, while the latter adds extra features.</paragraph>
+      <section id="relatedtopics" >
+         <embed href="text/sbasic/shared/03050100.xhp#Erlh1"/><!-- Erl -->
+         <embed href="text/sbasic/shared/03050200.xhp#Errh1"/><!-- Err -->
+         <embed href="text/sbasic/shared/03050300.xhp#Errorh1"/><!-- Error -->
+         <embed href="text/sbasic/shared/03050500.xhp#OnErrorh1"/><!-- On Error -->
+         <!--<embed href="text/sbasic/shared/Resume.xhp#Resumeh1"/> not available yet -->
+         <embed href="text/sbasic/shared/classmodule.xhp#classmodulestatement"/>
+         <embed href="text/sbasic/shared/03103350.xhp#vbasupportstatement"/>
+      </section>
+   </body>
+</helpdocument>
