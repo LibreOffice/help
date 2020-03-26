@@ -32,37 +32,42 @@
   <bookmark_value>Erl function</bookmark_value>
 </bookmark>
 
-<paragraph id="hd_id3157896" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03050100.xhp" name="Erl Function">Erl Function</link></paragraph>
+<h1 id="hd_id3157896"><variable id="Erlh1"><link href="text/sbasic/shared/03050100.xhp" name="Erl Function">Erl Function</link></variable></h1>
 <paragraph id="par_id3153394" role="paragraph" xml-lang="en-US">Returns the line number where an error occurred during program execution.</paragraph>
 </section>
 
-<paragraph id="hd_id3147574" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<h2 id="hd_id3147574">Syntax:</h2>
 <bascode>
-<paragraph id="par_id3146795" role="bascode" localize="false" xml-lang="en-US">Erl</paragraph>
+   <paragraph id="par_id3146795" role="bascode" localize="false" xml-lang="en-US">Erl</paragraph>
 </bascode>
 
-<paragraph id="hd_id3147265" role="heading" level="2" xml-lang="en-US">Return value:</paragraph>
+<h2 id="hd_id3147265">Return value:</h2>
 <paragraph id="par_id3154924" role="paragraph" xml-lang="en-US">Integer</paragraph>
 
-<paragraph id="hd_id3150792" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<h2 id="hd_id3150792">Parameters:</h2>
 <paragraph id="par_id3153771" role="note" xml-lang="en-US">The Erl function only returns a line number, and not a line label.</paragraph>
 
-<paragraph id="hd_id3146921" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
+<h2 id="hd_id3146921">Example:</h2>
 <bascode>
-<paragraph id="par_idm1340990976" role="bascode" localize="false" xml-lang="en-US">Sub ExampleError</paragraph>
+<paragraph id="par_idm1340990976" role="bascode" localize="false">Sub ExampleError</paragraph>
 <paragraph id="par_id3150010" role="bascode" xml-lang="en-US">On Error GoTo ErrorHandler ' Set up error handler</paragraph>
-<paragraph id="par_idm1340988000" role="bascode" localize="false" xml-lang="en-US">Dim iVar As Integer</paragraph>
-<paragraph id="par_idm1340986768" role="bascode" localize="false" xml-lang="en-US">Dim sVar As String</paragraph>
+<paragraph id="par_idm1340988000" role="bascode" localize="false">Dim iVar As Integer</paragraph>
+<paragraph id="par_idm1340986768" role="bascode" localize="false">Dim sVar As String</paragraph>
 <paragraph id="par_id3153188" role="bascode" xml-lang="en-US">' Error caused by non-existent file</paragraph>
-<paragraph id="par_idm1340983808" role="bascode" localize="false" xml-lang="en-US">    iVar = Freefile</paragraph>
-<paragraph id="par_idm1340982576" role="bascode" localize="false" xml-lang="en-US">    Open "\file9879.txt" For Input As #iVar</paragraph>
-<paragraph id="par_idm1340981312" role="bascode" localize="false" xml-lang="en-US">    Line Input #iVar, sVar</paragraph>
-<paragraph id="par_idm1340980064" role="bascode" localize="false" xml-lang="en-US">    Close #iVar</paragraph>
-<paragraph id="par_idm1340978832" role="bascode" localize="false" xml-lang="en-US">    Exit Sub</paragraph>
-<paragraph id="par_idm1340977600" role="bascode" localize="false" xml-lang="en-US">ErrorHandler:</paragraph>
+<paragraph id="par_idm1340983808" role="bascode" localize="false">    iVar = Freefile</paragraph>
+<paragraph id="par_idm1340982576" role="bascode" localize="false">    Open "\file9879.txt" For Input As #iVar</paragraph>
+<paragraph id="par_idm1340981312" role="bascode" localize="false">    Line Input #iVar, sVar</paragraph>
+<paragraph id="par_idm1340980064" role="bascode" localize="false">    Close #iVar</paragraph>
+<paragraph id="par_idm1340978832" role="bascode" localize="false">    Exit Sub</paragraph>
+<paragraph id="par_idm1340977600" role="bascode" localize="false">ErrorHandler:</paragraph>
 <paragraph id="par_id3155416" role="bascode" xml-lang="en-US">    MsgBox "Error " &amp; err &amp; ": " &amp; Error$ + chr(13) + "In Line : " + Erl + chr(13) + Now , 16 ,"An error occurred"</paragraph>
-<paragraph id="par_idm1340974432" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1340974432" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
+<section id="relatedtopics">
+   <embed href="text/sbasic/shared/03050200.xhp#Errh1"/><!-- Err -->
+   <embed href="text/sbasic/shared/03050300.xhp#Errorh1"/><!-- Error -->
+   <embed href="text/sbasic/shared/03050500.xhp#OnErrorh1"/><!-- On Error -->
+   <embed href="text/sbasic/shared/ErrVBA.xhp#ErrVBAh1"/><!-- ErrVBA -->
+</section>
 </body>
-
 </helpdocument>
