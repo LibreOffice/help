@@ -35,50 +35,57 @@
 </bookmark>
 
 
-<paragraph id="hd_id3146795" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03050500.xhp" name="On Error GoTo ... Resume Statement">On Error GoTo ... Resume Statement</link></paragraph>
+<h1 id="hd_id3146795"><variable id="OnErrorh1"><link href="text/sbasic/shared/03050500.xhp" name="On Error GoTo ... Resume Statement">On Error GoTo ... Resume Statement</link></variable></h1>
 <paragraph id="par_id3150358" role="paragraph" xml-lang="en-US">Enables an error-handling routine after an error occurs, or resumes program execution.</paragraph>
 </section>
 
-<paragraph id="hd_id3151212" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<h2 id="hd_id3151212" >Syntax:</h2>
 <bascode>
 <paragraph id="par_id3145173" role="bascode" xml-lang="en-US">On {[Local] Error GoTo Labelname | GoTo 0 | Resume Next}</paragraph>
 </bascode>
 
-<paragraph id="hd_id3154125" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<h2 id="hd_id3154125">Parameters:</h2>
 <paragraph id="par_id3150869" role="paragraph" xml-lang="en-US"><emph>GoTo Labelname:</emph> If an error occurs, enables the error-handling routine that starts at the line "Labelname".</paragraph>
 <paragraph id="par_id3150439" role="paragraph" xml-lang="en-US"><emph>Resume Next:</emph> If an error occurs, program execution continues with the statement that follows the statement in which the error occurred.</paragraph>
 <paragraph id="par_id3149482" role="paragraph" xml-lang="en-US"><emph>GoTo 0:</emph> Disables the error handler in the current procedure.</paragraph>
 <paragraph id="par_id3149483" role="paragraph" xml-lang="en-US"><emph>Local:</emph> "On error" is global in scope, and remains active until canceled by another "On error" statement. "On Local error" is local to the routine which invokes it. Local error handling overrides any previous global setting. When the invoking routine exits, the local error handling is canceled automatically, and any previous global setting is restored.</paragraph>
 <paragraph id="par_id3148619" role="paragraph" xml-lang="en-US">The On Error GoTo statement is used to react to errors that occur in a macro.<comment>see i112231: The statement must be inserted at the start of a procedure (in a local error-handling routine) or at the start of a module.</comment></paragraph>
 
-<paragraph id="hd_id3146985" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
+<h2 id="hd_id3146985">Example:</h2>
 <bascode>
-<paragraph id="par_idm1341127952" role="bascode" localize="false" xml-lang="en-US">Sub ExampleReset</paragraph>
-<paragraph id="par_idm1341126720" role="bascode" localize="false" xml-lang="en-US">On Error GoTo ErrorHandler</paragraph>
-<paragraph id="par_idm1341125472" role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
-<paragraph id="par_idm1341124240" role="bascode" localize="false" xml-lang="en-US">Dim iCount As Integer</paragraph>
-<paragraph id="par_idm1341123008" role="bascode" localize="false" xml-lang="en-US">Dim sLine As String</paragraph>
-<paragraph id="par_idm1341121776" role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
-<paragraph id="par_idm1341120544" role="bascode" localize="false" xml-lang="en-US">    aFile = "c:\data.txt"</paragraph>
-<paragraph id="par_idm1341119296" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1341118064" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Output As #iNumber</paragraph>
+<paragraph id="par_idm1341127952" role="bascode" localize="false">Sub ExampleReset</paragraph>
+<paragraph id="par_idm1341126720" role="bascode" localize="false">On Error GoTo ErrorHandler</paragraph>
+<paragraph id="par_idm1341125472" role="bascode" localize="false">Dim iNumber As Integer</paragraph>
+<paragraph id="par_idm1341124240" role="bascode" localize="false">Dim iCount As Integer</paragraph>
+<paragraph id="par_idm1341123008" role="bascode" localize="false">Dim sLine As String</paragraph>
+<paragraph id="par_idm1341121776" role="bascode" localize="false">Dim aFile As String</paragraph>
+<paragraph id="par_idm1341120544" role="bascode" localize="false">    aFile = "c:\data.txt"</paragraph>
+<paragraph id="par_idm1341119296" role="bascode" localize="false">    iNumber = Freefile</paragraph>
+<paragraph id="par_idm1341118064" role="bascode" localize="false">    Open aFile For Output As #iNumber</paragraph>
 <paragraph id="par_id3153876" role="bascode" xml-lang="en-US">    Print #iNumber, "This is a line of text"</paragraph>
-<paragraph id="par_idm1341115072" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1341113840" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1341112608" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Input As iNumber</paragraph>
-<paragraph id="par_idm1341111360" role="bascode" localize="false" xml-lang="en-US">    For iCount = 1 To 5</paragraph>
-<paragraph id="par_idm1341110128" role="bascode" localize="false" xml-lang="en-US">        Line Input #iNumber, sLine</paragraph>
-<paragraph id="par_idm1341108880" role="bascode" localize="false" xml-lang="en-US">        If sLine &lt;&gt;"" Then</paragraph>
-<paragraph id="par_idm1341107632" role="bascode" localize="false" xml-lang="en-US">            Rem</paragraph>
-<paragraph id="par_idm1341106400" role="bascode" localize="false" xml-lang="en-US">        End If</paragraph>
-<paragraph id="par_idm1341105168" role="bascode" localize="false" xml-lang="en-US">    Next iCount</paragraph>
-<paragraph id="par_idm1341103936" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1341102704" role="bascode" localize="false" xml-lang="en-US">    Exit Sub</paragraph>
-<paragraph id="par_idm1341101472" role="bascode" localize="false" xml-lang="en-US">ErrorHandler:</paragraph>
-<paragraph id="par_idm1341100240" role="bascode" localize="false" xml-lang="en-US">    Reset</paragraph>
-<paragraph id="par_id3146916" role="bascode" xml-lang="en-US">    MsgBox "All files will be closed",0,"Error"</paragraph>
-<paragraph id="par_idm1341097264" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1341115072" role="bascode" localize="false">    Close #iNumber</paragraph>
+<paragraph id="par_idm1341113840" role="bascode" localize="false">    iNumber = Freefile</paragraph>
+<paragraph id="par_idm1341112608" role="bascode" localize="false">    Open aFile For Input As iNumber</paragraph>
+<paragraph id="par_idm1341111360" role="bascode" localize="false">    For iCount = 1 To 5</paragraph>
+<paragraph id="par_idm1341110128" role="bascode" localize="false">        Line Input #iNumber, sLine</paragraph>
+<paragraph id="par_idm1341108880" role="bascode" localize="false">        If sLine &lt;&gt;"" Then</paragraph>
+<paragraph id="par_idm1341107632" role="bascode" localize="false">            Rem</paragraph>
+<paragraph id="par_idm1341106400" role="bascode" localize="false">        End If</paragraph>
+<paragraph id="par_idm1341105168" role="bascode" localize="false">    Next iCount</paragraph>
+<paragraph id="par_idm1341103936" role="bascode" localize="false">    Close #iNumber</paragraph>
+<paragraph id="par_idm1341102704" role="bascode" localize="false">    Exit Sub</paragraph>
+<paragraph id="par_idm1341101472" role="bascode" localize="false">ErrorHandler:</paragraph>
+<paragraph id="par_idm1341100240" role="bascode" localize="false">    Reset</paragraph>
+<paragraph id="par_id3146916" role="bascode" xml-lang="en-US">    MsgBox "All files will be closed",MB_ICONSTOP,"Error"</paragraph>
+<paragraph id="par_idm1341097264" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
 </body>
-
+<section id="relatedtopics">
+   <embed href="text/sbasic/shared/03050100.xhp#Erlh1"/><!-- Erl -->
+   <embed href="text/sbasic/shared/03050200.xhp#Errh1"/><!-- Err -->
+   <embed href="text/sbasic/shared/03050300.xhp#Errorh1"/><!-- Error -->
+   <!-- <embed href="text/sbasic/shared/03050500.xhp#OnErrorh1"/><!-- On Error -->
+   <!--<embed href="text/sbasic/shared/Resume.xhp#Resumeh1"/><!-- not available yet -->
+   <embed href="text/sbasic/shared/ErrVBA.xhp#ErrVBAh1"/><!-- ErrVBA -->
+</section>
 </helpdocument>
