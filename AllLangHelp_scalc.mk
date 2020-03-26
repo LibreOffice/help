@@ -384,6 +384,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/guide/scenario \
     helpcontent2/source/text/scalc/guide/sorted_list \
     helpcontent2/source/text/scalc/guide/specialfilter \
+    helpcontent2/source/text/scalc/guide/subtotaltool \
     helpcontent2/source/text/scalc/guide/super_subscript \
     helpcontent2/source/text/scalc/guide/table_cellmerge \
     helpcontent2/source/text/scalc/guide/table_rotate \
