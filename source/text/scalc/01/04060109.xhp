@@ -31,7 +31,7 @@
       <bookmark_value>Function Wizard; spreadsheets</bookmark_value>
       <bookmark_value>functions; spreadsheets</bookmark_value>
 </bookmark>
-<paragraph xml-lang="en-US" id="hd_id3148522" role="heading" level="1">Spreadsheet Functions</paragraph>
+<h1 id="hd_id3148522">Spreadsheet Functions</h1>
       <paragraph xml-lang="en-US" id="par_id3144508" role="paragraph"><variable id="tabelletext">This section contains descriptions of the <emph>Spreadsheet</emph> functions together with an example.</variable></paragraph>
       <section id="howtoget">
          <embed href="text/scalc/00/00000404.xhp#efefft"/>
@@ -41,7 +41,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3146968"><bookmark_value>ADDRESS function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_ADRESSE" id="bm_id3147546" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3146968" role="heading" level="2">ADDRESS</paragraph>
+<h2 id="hd_id3146968">ADDRESS</h2>
          <paragraph xml-lang="en-US" id="par_id3155762" role="paragraph"><ahelp hid="HID_FUNC_ADRESSE">Returns a cell address (reference) as text, according to the specified row and column numbers.</ahelp> You can determine whether the address is interpreted as an absolute address (for example, $A$1) or as a relative address (as A1) or in a mixed form (A$1 or $A1). You can also specify the name of the sheet.</paragraph>
          <section id="r1c1">
             <paragraph xml-lang="en-US" id="par_id1027200802301348" role="paragraph">For interoperability the ADDRESS and INDIRECT functions support an optional parameter to specify whether the R1C1 address notation instead of the usual A1 notation should be used.</paragraph>
@@ -51,8 +51,8 @@
             <paragraph xml-lang="en-US" id="par_id1027200802301556" role="paragraph">In case of R1C1 notation, ADDRESS returns address strings using the exclamation mark '!' as the sheet name separator, and INDIRECT expects the exclamation mark as sheet name separator. Both functions still use the dot '.' sheet name separator with A1 notation.</paragraph>
             <paragraph xml-lang="en-US" id="par_id1027200802301521" role="paragraph">When opening documents from ODF 1.0/1.1 format, the ADDRESS functions that show a sheet name as the fourth parameter will shift that sheet name to become the fifth parameter. A new fourth parameter with the value 1 will be inserted.</paragraph>
             <paragraph xml-lang="en-US" id="par_id1027200802301650" role="paragraph">When storing a document in ODF 1.0/1.1 format, if ADDRESS functions have a fourth parameter, that parameter will be removed.</paragraph>
-            <paragraph xml-lang="en-US" id="par_id102720080230162" role="note">Do not save a spreadsheet in the old ODF 1.0/1.1 format if the ADDRESS function's new fourth parameter was used with a value of 0.</paragraph>
-            <paragraph xml-lang="en-US" id="par_id1027200802301756" role="note">The INDIRECT function is saved without conversion to ODF 1.0/1.1 format. If the second parameter was present, an older version of Calc will return an error for that function.</paragraph>
+            <note id="par_id102720080230162">Do not save a spreadsheet in the old ODF 1.0/1.1 format if the ADDRESS function's new fourth parameter was used with a value of 0.</note>
+            <note id="par_id1027200802301756">The INDIRECT function is saved without conversion to ODF 1.0/1.1 format. If the second parameter was present, an older version of Calc will return an error for that function.</note>
          </section>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3154707" role="code">ADDRESS(Row; Column; Abs; A1; "Sheet")</paragraph>
@@ -70,7 +70,7 @@
             <emph>A1</emph> (optional) - if set to 0, the R1C1 notation is used. If this parameter is absent or set to another value than 0, the A1 notation is used.</paragraph>
          <paragraph xml-lang="en-US" id="par_id3153962" role="paragraph">
             <emph>Sheet</emph> represents the name of the sheet. It must be placed in double quotes.</paragraph>
-         <paragraph xml-lang="en-US" id="hd_id3147299" role="heading" level="3">Example:</paragraph>
+         <h3 id="hd_id3147299">Example:</h3>
          <paragraph xml-lang="en-US" id="par_id3148744" role="paragraph">
             <item type="input">=ADDRESS(1;1;2;;"Sheet2")</item> returns the following: Sheet2.A$1<comment>i 101187</comment></paragraph>
          <paragraph xml-lang="en-US" id="par_id3159260" role="paragraph">If the formula above is in cell B2 of current sheet, and the cell A1 in sheet 2 contains the value <item type="input">-6</item>, you can refer indirectly to the referenced cell using a function in B2 by entering <item type="input">=ABS(INDIRECT(B2))</item>. The result is the absolute value of the cell reference specified in B2, which in this case is 6.</paragraph>
@@ -79,7 +79,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3150372"><bookmark_value>AREAS function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_BEREICHE" id="bm_id3149721" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3150372" role="heading" level="2">AREAS</paragraph>
+<h2 id="hd_id3150372">AREAS</h2>
          <paragraph xml-lang="en-US" id="par_id3150036" role="paragraph"><ahelp hid="HID_FUNC_BEREICHE">Returns the number of individual ranges that belong to a multiple range.</ahelp> A range can consist of contiguous cells or a single cell.</paragraph>
          <paragraph xml-lang="en-US" id="par_id061020090307073" role="paragraph">The function expects a single argument. If you state multiple ranges, you must enclose them into additional parentheses. Multiple ranges can be entered using the semicolon (;) as divider, but this gets automatically converted to the tilde (~) operator. The tilde is used to join ranges.</paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
@@ -95,7 +95,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3148727"><bookmark_value>DDE function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DDE" id="bm_id3154680" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3148727" role="heading" level="2">DDE</paragraph>
+<h2 id="hd_id3148727">DDE</h2>
          <paragraph xml-lang="en-US" id="par_id3149434" role="paragraph"><ahelp hid="HID_FUNC_DDE">Returns the result of a DDE-based link.</ahelp> If the contents of the linked range or section changes, the returned value will also change. You must reload the spreadsheet or choose <emph>Edit - Links</emph> to see the updated links. Cross-platform links, for example from a <item type="productname">%PRODUCTNAME</item> installation running on a Windows machine to a document created on a Linux machine, are not allowed.</paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3148886" role="code">DDE("Server"; "File"; "Range"; Mode)</paragraph>
@@ -156,10 +156,10 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3153114"><bookmark_value>ERRORTYPE function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_FEHLERTYP" id="bm_id3153000" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3153114" role="heading" level="2">ERRORTYPE</paragraph>
+<h2 id="hd_id3153114">ERRORTYPE</h2>
          <paragraph xml-lang="en-US" id="par_id3148568" role="paragraph"><ahelp hid="HID_FUNC_FEHLERTYP">Returns the number corresponding to an <link href="text/scalc/05/02140000.xhp" name="error value">error value</link> occurring in a different cell.</ahelp> With the aid of this number, you can generate an error message text.</paragraph>
          <embed href="text/shared/00/00000001.xhp#wahr"/>
-         <paragraph xml-lang="en-US" id="par_id3149877" role="note">The Status Bar displays the predefined error code from <item type="productname">%PRODUCTNAME</item> if you click the cell containing the error.</paragraph>
+         <note id="par_id3149877">The Status Bar displays the predefined error code from <item type="productname">%PRODUCTNAME</item> if you click the cell containing the error.</note>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3151322" role="code">ERRORTYPE(Reference)</paragraph>
          <paragraph xml-lang="en-US" id="par_id3150132" role="paragraph">
@@ -168,14 +168,14 @@
          <paragraph xml-lang="en-US" id="par_id3146904" role="paragraph">If cell A1 displays Err:518, the function <item type="input">=ERRORTYPE(A1)</item> returns the number 518.</paragraph>
       </section>
 <section id="error_type">
-<paragraph id="hd_id275141466817507" role="heading" level="2" localize="false" xml-lang="en-US"><embedvar href="text/scalc/01/func_error_type.xhp#error_type_head"/></paragraph>
+<h2 id="hd_id275141466817507"><embedvar href="text/scalc/01/func_error_type.xhp#error_type_head"/></h2>
 <paragraph id="par_id164731033513430" role="paragraph" localize="false" xml-lang="en-US"><embedvar href="text/scalc/01/func_error_type.xhp#error_type_des"/></paragraph>
 </section>
       <section id="Section5">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3151221"><bookmark_value>INDEX function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_INDEX" id="bm_id3157989" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3151221" role="heading" level="2">INDEX</paragraph>
+<h2 id="hd_id3151221">INDEX</h2>
          <paragraph xml-lang="en-US" id="par_id3150268" role="paragraph"><ahelp hid="HID_FUNC_INDEX">INDEX returns a sub range, specified by row and column number, or an optional range index. Depending on context, INDEX returns a reference or content.</ahelp><comment>UFI: will change with i4904; see http://so-web.germany.sun.com/iBIS/servlet/edit.ControlPanel?tid=i57108</comment><comment>changed by i83070</comment></paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3149007" role="code">INDEX(Reference; Row; Column; Range)</paragraph>
@@ -207,7 +207,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3153181"><bookmark_value>INDIRECT function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_INDIREKT" id="bm_id3153922" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3153181" role="heading" level="2">INDIRECT</paragraph>
+<h2 id="hd_id3153181">INDIRECT</h2>
          <paragraph xml-lang="en-US" id="par_id3147169" role="paragraph"><ahelp hid="HID_FUNC_INDIREKT">Returns the <emph>reference</emph> specified by a text string.</ahelp> This function can also be used to return the area of a corresponding string.</paragraph>
          <embed href="text/scalc/01/04060109.xhp#r1c1"/>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
@@ -216,7 +216,7 @@
             <emph>Ref</emph> represents a reference to a cell or an area (in text form) for which to return the contents.</paragraph>
          <paragraph xml-lang="en-US" id="par_id1027200802470312" role="paragraph">
             <emph>A1</emph> (optional) - if set to 0, the R1C1 notation is used. If this parameter is absent or set to another value than 0, the A1 notation is used.</paragraph>
-         <paragraph xml-lang="en-US" id="par_idN10CAE" role="note">If you open an Excel spreadsheet that uses indirect addresses calculated from string functions, the sheet addresses will not be translated automatically. For example, the Excel address in INDIRECT("[filename]sheetname!"&amp;B1) is not converted into the Calc address in INDIRECT("filename#sheetname."&amp;B1).<comment>UFI: for #i34465#</comment></paragraph>
+         <note id="par_idN10CAE">If you open an Excel spreadsheet that uses indirect addresses calculated from string functions, the sheet addresses will not be translated automatically. For example, the Excel address in INDIRECT("[filename]sheetname!"&amp;B1) is not converted into the Calc address in INDIRECT("filename#sheetname."&amp;B1).<comment>UFI: for #i34465#</comment></note>
          <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
          <paragraph xml-lang="en-US" id="par_id3150608" role="paragraph">
             <item type="input">=INDIRECT(A1)</item> equals 100 if A1 contains C108 as a reference and cell C108 contains a value of <item type="input">100</item>.</paragraph>
@@ -227,7 +227,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3154818"><bookmark_value>COLUMN function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_SPALTE" id="bm_id3156378" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3154818" role="heading" level="2">COLUMN</paragraph>
+<h2 id="hd_id3154818">COLUMN</h2>
          <paragraph xml-lang="en-US" id="par_id3149711" role="paragraph"><ahelp hid="HID_FUNC_SPALTE">Returns the column number of a cell reference.</ahelp> If the reference is a cell the column number of the cell is returned; if the parameter is a cell area, the corresponding column numbers are returned in a single-row <link href="text/scalc/01/04060107.xhp#wasmatrix" name="array">array</link> if the formula is entered <link href="text/scalc/01/04060107.xhp#somatrixformel" name="as an array formula">as an array formula</link>. If the COLUMN function with an area reference parameter is not used for an array formula, only the column number of the first cell within the area is determined.</paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3149447" role="code">COLUMN(Reference)</paragraph>
@@ -252,7 +252,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3154643"><bookmark_value>COLUMNS function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_SPALTEN" id="bm_id3156134" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3154643" role="heading" level="2">COLUMNS</paragraph>
+<h2 id="hd_id3154643">COLUMNS</h2>
          <paragraph xml-lang="en-US" id="par_id3151182" role="paragraph"><ahelp hid="HID_FUNC_SPALTEN">Returns the number of columns in the given reference.</ahelp></paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3154047" role="code">COLUMNS(Array)</paragraph>
@@ -271,7 +271,7 @@
          <bookmark_value>VLOOKUP function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_SVERWEIS" id="bm_id3152809" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3153152" role="heading" level="2">VLOOKUP</paragraph>
+<h2 id="hd_id3153152">VLOOKUP</h2>
          <paragraph xml-lang="en-US" id="par_id3149984" role="paragraph"><ahelp hid="HID_FUNC_SVERWEIS">Vertical search with reference to adjacent cells to the right.</ahelp> This function checks if a specific value is contained in the first column of an array. The function then returns the value in the same row of the column named by <item type="literal">Index</item>. If the <item type="literal">Sorted</item> parameter is omitted or set to TRUE or one, it is assumed that the data is sorted in ascending order. In this case, if the exact <item type="literal">SearchCriterion</item> is not found, the last value that is smaller than the criterion will be returned. If <item type="literal">Sorted</item> is set to FALSE or zero, an exact match must be found, otherwise the error <emph>Error: Value Not Available</emph> will be the result. Thus with a value of zero the data does not need to be sorted in ascending order.</paragraph>
          <embed href="text/shared/00/00000001.xhp#regulaer"/>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
@@ -298,7 +298,7 @@
          <bookmark_value>SHEET function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_TABELLE" id="bm_id3154693" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3153905" role="heading" level="2">SHEET</paragraph>
+<h2 id="hd_id3153905">SHEET</h2>
          <paragraph xml-lang="en-US" id="par_id3150309" role="paragraph"><ahelp hid="HID_FUNC_TABELLE">Returns the sheet number of a reference or a string representing a sheet name.</ahelp> If you do not enter any parameters, the result is the sheet number of the spreadsheet containing the formula.</paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3153095" role="code">SHEET(Reference)</paragraph>
@@ -313,7 +313,7 @@
          <bookmark_value>SHEETS function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_TABELLEN" id="bm_id3150524" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3148829" role="heading" level="2">SHEETS</paragraph>
+<h2 id="hd_id3148829">SHEETS</h2>
          <paragraph xml-lang="en-US" id="par_id3148820" role="paragraph"><ahelp hid="HID_FUNC_TABELLEN">Determines the number of sheets in a reference.</ahelp> If you do not enter any parameters, it returns the number of sheets in the current document.</paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3150777" role="code">SHEETS(Reference)</paragraph>
@@ -327,7 +327,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3158407"><bookmark_value>MATCH function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_VERGLEICH" id="bm_id3154210" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3158407" role="heading" level="2">MATCH</paragraph>
+<h2 id="hd_id3158407">MATCH</h2>
          <paragraph xml-lang="en-US" id="par_id3154896" role="paragraph"><ahelp hid="HID_FUNC_VERGLEICH">Returns the relative position of an item in an array that matches a specified value.</ahelp> The function returns the position of the value found in the lookup_array as a number.</paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3159152" role="code">MATCH(SearchCriterion; LookupArray; Type)</paragraph>
@@ -348,7 +348,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3158430"><bookmark_value>OFFSET function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_VERSCHIEBUNG" id="bm_id3148926" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3158430" role="heading" level="2">OFFSET</paragraph>
+<h2 id="hd_id3158430">OFFSET</h2>
          <paragraph xml-lang="en-US" id="par_id3149167" role="paragraph"><ahelp hid="HID_FUNC_VERSCHIEBUNG">Returns the value of a cell offset by a certain number of rows and columns from a given reference point.</ahelp></paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3159194" role="code">OFFSET(Reference; Rows; Columns; Height; Width)</paragraph>
@@ -380,15 +380,15 @@
             <item type="input">=OFFSET(B2:C3;1;0;3;4)</item> returns a reference to B2:C3 moved down by one row resized to 3 rows and 4 columns (B3:E5).</paragraph>
          <paragraph xml-lang="en-US" id="par_id3153739" role="paragraph">
             <item type="input">=SUM(OFFSET(A1;2;2;5;6))</item> determines the total of the area that starts in cell C3 and has a height of 5 rows and a width of 6 columns (area=C3:H7).</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3153740" role="note">If the width or height is included, the OFFSET function returns a range and thus must be entered as an <link href="text/scalc/01/04060107.xhp">array formula</link>. If both the width and height are missing, a cell reference is returned.</paragraph>
+         <note id="par_id3153740">If the width or height is included, the OFFSET function returns a range and thus must be entered as an <link href="text/scalc/01/04060107.xhp">array formula</link>. If both the width and height are missing, a cell reference is returned.</note>
       </section>
       <section id="Section14">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3159273"><bookmark_value>LOOKUP function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_VERWEIS" id="bm_id3152877" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3159273" role="heading" level="2">LOOKUP</paragraph>
+<h2 id="hd_id3159273">LOOKUP</h2>
          <paragraph xml-lang="en-US" id="par_id3153389" role="paragraph"><ahelp hid="HID_FUNC_VERWEIS">Returns the contents of a cell either from a one-row or one-column range.</ahelp> Optionally, the assigned value (of the same index) is returned in a different column and row. As opposed to <link href="text/scalc/01/04060109.xhp#Section9" name="VLOOKUP">VLOOKUP</link> and <link href="text/scalc/01/04060109.xhp#Section17" name="HLOOKUP">HLOOKUP</link>, search and result vector may be at different positions; they do not have to be adjacent. Additionally, the search vector for the LOOKUP must be sorted ascending, otherwise the search will not return any usable results.</paragraph>
-         <paragraph xml-lang="en-US" id="par_id4484084" role="note">If LOOKUP cannot find the search criterion, it matches the largest value in the search vector that is less than or equal to the search criterion.</paragraph>
+         <note id="par_id4484084">If LOOKUP cannot find the search criterion, it matches the largest value in the search vector that is less than or equal to the search criterion.</note>
          <embed href="text/shared/00/00000001.xhp#regulaer"/>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3154104" role="code">LOOKUP(SearchCriterion; SearchVector; ResultVector)</paragraph>
@@ -407,7 +407,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3149425"><bookmark_value>STYLE function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_VORLAGE" id="bm_id3154342" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3149425" role="heading" level="2">STYLE</paragraph>
+<h2 id="hd_id3149425">STYLE</h2>
          <paragraph xml-lang="en-US" id="par_id3150826" role="paragraph"><ahelp hid="HID_FUNC_VORLAGE">Applies a style to the cell containing the formula.</ahelp> After a set amount of time, another style can be applied. This function always returns the value 0, allowing you to add it to another function without changing the value. Together with the CURRENT function you can apply a color to a cell depending on the value. For example: =...+STYLE(IF(CURRENT()&gt;3;"red";"green")) applies the style "red" to the cell if the value is greater than 3, otherwise the style "green" is applied. Both cell formats, "red" and "green" have to be defined beforehand.</paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3149302" role="code">STYLE("Style"; Time; "Style2")</paragraph>
@@ -433,7 +433,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3150430"><bookmark_value>CHOOSE function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_WAHL" id="bm_id3153947" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3150430" role="heading" level="2">CHOOSE</paragraph>
+<h2 id="hd_id3150430">CHOOSE</h2>
          <paragraph xml-lang="en-US" id="par_id3143270" role="paragraph"><ahelp hid="HID_FUNC_WAHL">Uses an index to return a value from a list of up to 30 values.</ahelp></paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3155425" role="code">CHOOSE(Index; Value1; ...; Value30)</paragraph>
@@ -449,7 +449,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3151001"><bookmark_value>HLOOKUP function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_WVERWEIS" id="bm_id3149481" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3151001" role="heading" level="2">HLOOKUP</paragraph>
+<h2 id="hd_id3151001">HLOOKUP</h2>
          <paragraph xml-lang="en-US" id="par_id3148688" role="paragraph"><ahelp hid="HID_FUNC_WVERWEIS">Searches for a value and reference to the cells below the selected area.</ahelp> This function verifies if the first row of an array contains a certain value. The function returns then the value in a row of the array, named in the <emph>Index</emph>, in the same column.</paragraph>
          <embed href="text/shared/00/00000001.xhp#regulaer"/>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
@@ -461,7 +461,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3147321"><bookmark_value>ROW function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_ZEILE" id="bm_id3147333" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3147321" role="heading" level="2">ROW</paragraph>
+<h2 id="hd_id3147321">ROW</h2>
          <paragraph xml-lang="en-US" id="par_id3154564" role="paragraph"><ahelp hid="HID_FUNC_ZEILE">Returns the row number of a cell reference.</ahelp> If the reference is a cell, it returns the row number of the cell. If the reference is a cell range, it returns the corresponding row numbers in a one-column <link href="text/scalc/01/04060107.xhp#wasmatrix" name="Array">Array</link> if the formula is entered <link href="text/scalc/01/04060107.xhp#somatrixformel" name="as an array formula">as an array formula</link>. If the ROW function with a range reference is not used in an array formula, only the row number of the first range cell will be returned.</paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3154916" role="code">ROW(Reference)</paragraph>
@@ -486,7 +486,7 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id3145772"><bookmark_value>ROWS function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_ZEILEN" id="bm_id3150667" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3145772" role="heading" level="2">ROWS</paragraph>
+<h2 id="hd_id3145772">ROWS</h2>
          <paragraph xml-lang="en-US" id="par_id3148971" role="paragraph"><ahelp hid="HID_FUNC_ZEILEN">Returns the number of rows in a reference or array.</ahelp></paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id3154357" role="code">ROWS(Array)</paragraph>
@@ -504,10 +504,10 @@
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_HYPERLINK" id="bm_id8036439" localize="false"/>
 <bookmark xml-lang="en-US" branch="index" id="bm_id9959410"><bookmark_value>HYPERLINK function</bookmark_value>
 </bookmark>
-<paragraph xml-lang="en-US" id="par_idN11798" role="heading" level="2">HYPERLINK</paragraph>
+<h2 id="par_idN11798">HYPERLINK</h2>
          <paragraph xml-lang="en-US" id="par_idN117F1" role="paragraph"><ahelp hid="HID_FUNC_HYPERLINK">When you click a cell that contains the HYPERLINK function, the hyperlink opens.</ahelp></paragraph>
          <paragraph xml-lang="en-US" id="par_idN11800" role="paragraph">If you use the optional <emph>CellText</emph> parameter, the formula locates the URL, and then displays the text or number.</paragraph>
-         <paragraph xml-lang="en-US" id="par_idN11803" role="tip">To open a hyperlinked cell with the keyboard, select the cell, press F2 to enter the Edit mode, move the cursor in front of the hyperlink, press Shift+F10, and then choose <emph>Open Hyperlink</emph>.</paragraph>
+         <tip id="par_idN11803">To open a hyperlinked cell with the keyboard, select the cell, press F2 to enter the Edit mode, move the cursor in front of the hyperlink, press Shift+F10, and then choose <emph>Open Hyperlink</emph>.</tip>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_idN1180E" role="code">HYPERLINK("URL") or HYPERLINK("URL"; "CellText")</paragraph>
          <paragraph xml-lang="en-US" id="par_idN11811" role="paragraph">
@@ -533,14 +533,15 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id7682424"><bookmark_value>GETPIVOTDATA function</bookmark_value>
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_GETPIVOTDATA" id="bm_id897854" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3747062" role="heading" level="2">GETPIVOTDATA</paragraph>
+<h2 id="hd_id3747062">GETPIVOTDATA</h2>
          <paragraph xml-lang="en-US" id="par_id3593859" role="paragraph"><ahelp hid=".">The GETPIVOTDATA function returns a result value from a pivot table. The value is addressed using field and item names, so it remains valid if the layout of the pivot table changes.</ahelp></paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph xml-lang="en-US" id="par_id909451" role="paragraph">Two different syntax definitions can be used:</paragraph>
-         <paragraph xml-lang="en-US" id="par_id1665089" role="code">GETPIVOTDATA(TargetField; pivot table; [ Field 1; Item 1; ... ])</paragraph>
-         <paragraph xml-lang="en-US" id="par_id4997100" role="code">GETPIVOTDATA(pivot table; Constraints)</paragraph>
+         <paragraph xml-lang="en-US" id="par_id1665089" role="code">GETPIVOTDATA(TargetField; pivot table[; Field 1; Item 1][; ... [Field 126; Item 126]])</paragraph>
+        <paragraph id="par_id661585662472832" role="paragraph" xml-lang="en-US">or</paragraph>
+        <paragraph xml-lang="en-US" id="par_id4997100" role="code">GETPIVOTDATA(pivot table; Constraints)</paragraph>
          <paragraph xml-lang="en-US" id="par_id1672109" role="paragraph">The second syntax is assumed if exactly two parameters are given, of which the first parameter is a cell or cell range reference. The first syntax is assumed in all other cases. The Function Wizard shows the first syntax.</paragraph>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+        <h3 id="hd_id431585688827982">First Syntax</h3>
          <paragraph xml-lang="en-US" id="par_id9302346" role="paragraph">
             <emph>TargetField</emph> is a string that selects one of the pivot table's data fields. The string can be the name of the source column, or the data field name as shown in the table (like "Sum - Sales").</paragraph>
          <paragraph xml-lang="en-US" id="par_id8296151" role="paragraph">
@@ -550,18 +551,16 @@
          <paragraph xml-lang="en-US" id="par_id79042" role="paragraph">If the source data contains entries that are hidden by settings of the pivot table, they are ignored. The order of the Field/Item pairs is not significant. Field and item names are not case-sensitive.</paragraph>
          <paragraph xml-lang="en-US" id="par_id7928708" role="paragraph">If no constraint for a page field is given, the field's selected value is implicitly used. If a constraint for a page field is given, it must match the field's selected value, or an error is returned. Page fields are the fields at the top left of a pivot table, populated using the "Page Fields" area of the pivot table layout dialog. From each page field, an item (value) can be selected, which means only that item is included in the calculation.</paragraph>
          <paragraph xml-lang="en-US" id="par_id3864253" role="paragraph">Subtotal values from the pivot table are only used if they use the function "auto" (except when specified in the constraint, see <item type="literal">Second Syntax</item> below).</paragraph>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id9937131" role="paragraph">
-            <emph>pivot table</emph> has the same meaning as in the first syntax.</paragraph>
-         <paragraph xml-lang="en-US" id="par_id5616626" role="paragraph">
-            <emph>Constraints</emph> is a space-separated list. Entries can be quoted (single quotes). The whole string must be enclosed in quotes (double quotes), unless you reference the string from another cell.</paragraph>
+         <h3 id="hd_id551585688835597">Second Syntax</h3>
+         <paragraph xml-lang="en-US" id="par_id9937131" role="paragraph"><emph>pivot table</emph> has the same meaning as in the first syntax.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id5616626" role="paragraph"><emph>Constraints</emph> is a space-separated list. Entries can be quoted (single quotes). The whole string must be enclosed in quotes (double quotes), unless you reference the string from another cell.</paragraph>
          <paragraph xml-lang="en-US" id="par_id4076357" role="paragraph">One of the entries can be the data field name. The data field name can be left out if the pivot table contains only one data field, otherwise it must be present.</paragraph>
          <paragraph xml-lang="en-US" id="par_id8231757" role="paragraph">Each of the other entries specifies a constraint in the form <item type="literal">Field[Item]</item> (with literal characters [ and ]), or only <item type="literal">Item</item> if the item name is unique within all fields that are used in the pivot table.<comment>i82342</comment></paragraph>
          <paragraph xml-lang="en-US" id="par_id3168736" role="paragraph">A function name can be added in the form <emph>Field[Item;Function]</emph>, which will cause the constraint to match only subtotal values which use that function. The possible function names are Sum, Count, Average, Max, Min, Product, Count (Numbers only), StDev (Sample), StDevP (Population), Var (Sample), and VarP (Population), case-insensitive.</paragraph><comment>UFI: Example from spec doc is quite difficult to localize. Try to find other one</comment>
 </section>
 </sort>
 <section id="relatedtopics">
-         <embed href="text/scalc/01/04060100.xhp#drking"/>
-      </section>
-   </body>
+    <embed href="text/scalc/01/04060100.xhp#drking"/>
+</section>
+</body>
 </helpdocument>
