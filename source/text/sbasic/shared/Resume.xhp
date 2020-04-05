@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+  <!--
+   * This file is part of the LibreOffice project.
+   *
+   * This Source Code Form is subject to the terms of the Mozilla Public
+   * License, v. 2.0. If a copy of the MPL was not distributed with this
+   * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+   *
+  -->
+  <meta>
+    <topic id="org.LibreOffice.sBasic.Resume.en" indexer="include" status="PUBLISH">
+      <title id="tit" xml-lang="en-US">Resume Statement</title>
+      <filename>/text/sbasic/shared/Resume.xhp</filename>
+    </topic>
+  </meta>
+  <body>
+    <bookmark branch="index" id="N0001">
+      <bookmark_value>Resume statement</bookmark_value>
+    </bookmark>
+    <section id="Resume">
+      <h1 id="N0002"><variable id="resumeh1"><link href="text/sbasic/shared/Resume.xhp" name="Resume statement">Resume Statement</link></variable></h1>
+      <paragraph role="paragraph" id="N0003">Resets error information and indicates what to execute next.</paragraph>
+   </section>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" id="par_id491585753339474"><image src="media/helpimg/sbasic/Resume_statement.svg" id="img_id4156296484514"><alt xml-lang="en-US" id="alt_id15152796484514">Resume Statement diagram</alt></image></paragraph>
+   <bascode>
+     <paragraph role="bascode" id="par_id3150984" localize="false">Resume [ [0] | label | Next ]</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id481586090298901"><emph>0: </emph>Resets error information and re-executes the instruction that caused the error. <emph>0</emph> is optional.</paragraph>
+    <paragraph role="paragraph" id="par_id331586090532804"><emph>label: </emph>Resets error information and executes the instruction at the given label.</paragraph>
+    <paragraph role="paragraph" id="par_id331586090432804"><emph>Next: </emph>Resets error information and executes the instruction following the one that caused the error.</paragraph>
+    <paragraph role="paragraph" id="par_id441586333320983">Error information is built with <literal>Erl</literal>, <literal>Err</literal> and <literal>Error$</literal> functions.</paragraph>
+    <list type="unordered">
+      <listitem><paragraph id="par_id741586333516110" role="listitem"><literal>Erl</literal>: Module line number where error occurs.</paragraph></listitem>
+      <listitem><paragraph id="par_id81586333580520" role="listitem"><literal>Err</literal>: Error number.</paragraph></listitem>
+      <listitem><paragraph id="par_id721586333586263" role="listitem"><literal>Error[$]</literal>: Error description.</paragraph></listitem>
+    </list>
+    <tip id="par_id941586091561618">Using <emph>Resume</emph> to reset error information prevents the propogation of the handled condition to calling routines.</tip>
+    <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
+    <embed href="text/sbasic/shared/00000003.xhp#err20"/>
+    <h2 id="hd_id441586092960246">Examples:</h2>
+    <paragraph role="paragraph" id="par_id961586248539108">Typical error handling routines are: alerting the user, fixing the error, logging error information or re-throwing custom errors that provide explanations with resolution instructions. Use <literal>Resume label</literal> when requiring such mechanisms.</paragraph>
+    <bascode>
+      <paragraph role="bascode" id="bas_id601586093064656" localize="false">Sub Error_Handling</paragraph>
+      <paragraph role="bascode" id="bas_id541586093121719" localize="false">try: On Error GoTo catch</paragraph>
+      <paragraph role="bascode" id="bas_id451586093122848" xml-lang="en-US">    ' routine code goes here</paragraph>
+      <paragraph role="bascode" id="bas_id515860931234846" xml-lang="en-US">    Error 91 ' example error</paragraph>
+      <paragraph role="bascode" id="bas_id781586093123832" localize="false">finally:</paragraph>
+      <paragraph role="bascode" id="bas_id361586093126654" xml-lang="en-US">    ' routine cleanup code goes here</paragraph>
+      <paragraph role="bascode" id="bas_id531586093128006" localize="false">    Exit Sub</paragraph>
+      <paragraph role="bascode" id="bas_id121586093128518" localize="false">catch:</paragraph>
+      <paragraph role="bascode" id="bas_id881586093129470" localize="false">    Print Erl, Err, Error$</paragraph>
+      <paragraph role="bascode" id="bas_id311586093129686" localize="false">    Resume finally</paragraph>
+      <paragraph role="bascode" id="bas_id231586093129886" localize="false">End Sub ' Error_Handling</paragraph>
+    </bascode>
+    <paragraph role="paragraph" id="par_id61586095819168">Use <literal>Resume Next</literal>, for example, when reporting anomalies encountered for an iterating process that must not be interrupted. In which case multiple handling routines may be required.</paragraph>
+    <bascode>
+      <paragraph role="bascode" id="bas_id841586096636182" localize="false">Sub Iteration</paragraph>
+      <paragraph role="bascode" id="bas_id271586096636925" localize="false">    planets = Array("☿","♀","♁","♂","♃","♄","⛢","♆")</paragraph>
+      <paragraph role="bascode" id="bas_id441586096638421" localize="false">try:</paragraph>
+      <paragraph role="bascode" id="bas_id715860966358904" localize="false">    On Error GoTo ReportAndProcessNext</paragraph>
+      <paragraph role="bascode" id="bas_id661586096642629" localize="false">    For ndx = -3 To 11 Step 1</paragraph>
+      <paragraph role="bascode" id="bas_id301586096643252" localize="false">        MsgBox planets(ndx)</paragraph>
+      <paragraph role="bascode" id="bas_id651586096643730" localize="false">    Next</paragraph>
+      <paragraph role="bascode" id="bas_id931586096643946" localize="false">    On Error GoTo 0 ' Stop error catching</paragraph>
+      <paragraph role="bascode" id="bas_id631586096644108" localize="false">finally:</paragraph>
+      <paragraph role="bascode" id="bas_id421586096644283" localize="false">    Exit Sub</paragraph>
+      <paragraph role="bascode" id="bas_id831586096644448" localize="false">ReportAndProcessNext:</paragraph>
+      <paragraph role="bascode" id="bas_id861586096644620" localize="false">    Print "Error "&amp; Err &amp;" at line "&amp; Erl &amp;" - "&amp; Error$</paragraph>
+      <paragraph role="bascode" id="bas_id721586096644854" localize="false">    Resume Next</paragraph>
+      <paragraph role="bascode" id="bas_id431586096645266" localize="false">End Sub ' Iteration</paragraph>
+    </bascode>
+    <warning id="par_id461586091018138">Using <literal>Resume</literal> without parameters to re-execute the faulty instruction can fit certain situations. However that may cause a never ending loop.</warning>
+  </body>
+</helpdocument>
