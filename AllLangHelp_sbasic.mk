@@ -372,6 +372,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/keys \
     helpcontent2/source/text/sbasic/shared/main0211 \
     helpcontent2/source/text/sbasic/shared/main0601 \
+    helpcontent2/source/text/sbasic/shared/Resume \
     helpcontent2/source/text/sbasic/shared/special_vba_func \
     helpcontent2/source/text/sbasic/shared/vbasupport \
     helpcontent2/source/text/sbasic/python/main0000 \
