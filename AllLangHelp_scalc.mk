@@ -189,6 +189,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_aggregate \
     helpcontent2/source/text/scalc/01/func_averageif \
     helpcontent2/source/text/scalc/01/func_averageifs \
+    helpcontent2/source/text/scalc/01/func_ceiling \
     helpcontent2/source/text/scalc/01/func_countifs \
     helpcontent2/source/text/scalc/01/func_color \
     helpcontent2/source/text/scalc/01/func_concat \
