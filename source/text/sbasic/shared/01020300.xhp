@@ -67,7 +67,7 @@
 </bascode>
 <paragraph id="par_id3153839" role="paragraph" xml-lang="en-US">The <literal>Function</literal> is called using the following syntax:</paragraph>
 <bascode>
-  <paragraph id="par_id3146914" role="bascode" xml-lang="en-US">Variable=FunctionName(Parameter1, Parameter2,...)</paragraph>
+  <paragraph id="par_id3146914" role="bascode" xml-lang="en-US" localize="false">Variable=FunctionName(Parameter1, Parameter2,...)</paragraph>
 </bascode>
 <paragraph role="paragraph" id="par_id981584288549909">Properties combine the syntax of procedures and functions. A property usually requires up to one parameter.</paragraph>
 <bascode>
@@ -91,36 +91,36 @@
 <paragraph id="par_id3155765" role="paragraph" xml-lang="en-US">Parameters can be passed to a procedure, a function or a property either by reference or by value. Unless otherwise specified, a parameter is always passed by reference. That means that a <literal>Sub</literal>, a <literal>Function</literal> or a <literal>Property</literal> gets the parameter and can read and modify its value.</paragraph>
 <paragraph id="par_id3145640" role="paragraph" xml-lang="en-US">If you want to pass a parameter by value insert the key word <literal>ByVal</literal> in front of the parameter when you call a <literal>Sub</literal>, a <literal>Function</literal> or a <literal>Property</literal>, for example:</paragraph>
 <bascode>
-  <paragraph id="par_id3150042" role="bascode" xml-lang="en-US">Function ReadOnlyParms(ByVal p2, ByVal p2)</paragraph>
+  <paragraph id="par_id3150042" role="bascode" localize="false">Function ReadOnlyParms(ByVal p2, ByVal p2)</paragraph>
   <paragraph role="bascode" id="bas_id81584367761978">    &apos; your code goes here</paragraph>
-  <paragraph role="bascode" id="bas_id131584367516784">End Function</paragraph>
-  <paragraph role="bascode" id="bas_id801584367475787">result = ReadOnlyParms(parm1, parm2)</paragraph>
+  <paragraph role="bascode" id="bas_id131584367516784" localize="false">End Function</paragraph>
+  <paragraph role="bascode" id="bas_id801584367475787" localize="false">result = ReadOnlyParms(parm1, parm2)</paragraph>
 </bascode>
 <paragraph id="par_id3149258" role="paragraph" xml-lang="en-US">In this case, the original content of the parameter will not be modified by the <literal>Function</literal> since it only gets the value and not the parameter itself.</paragraph>
 <h2 id="hd_id161584366585035">Defining Optional Parameters</h2>
 <paragraph role="paragraph" id="par_id31584367006971">Functions, procedures or properties can be defined with optional parameters, for example:</paragraph>
 <bascode>
-  <paragraph role="bascode" id="bas_id761584366669997">Sub Rounding(number, Optional decimals, Optional format)</paragraph>
+  <paragraph role="bascode" id="bas_id761584366669997" localize="false">Sub Rounding(number, Optional decimals, Optional format)</paragraph>
   <paragraph role="bascode" id="bas_id111584366809406">    &apos; your code goes here</paragraph>
-  <paragraph role="bascode" id="bas_id251584366745722">End Sub</paragraph>
+  <paragraph role="bascode" id="bas_id251584366745722" localize="false">End Sub</paragraph>
 </bascode>
 <h2 id="hd_id3150982">Scope of Variables</h2>
 <paragraph id="par_id3149814" role="paragraph" xml-lang="en-US">A variable defined within a <literal>Sub</literal>, a <literal>Function</literal> or a <literal>Property</literal>, only remains valid until the procedure is exited. This is known as a "local" variable. In many cases, you need a variable to be valid in all procedures, in every module of all libraries, or after a <literal>Sub</literal>, a <literal>Function</literal> or a <literal>Property</literal> is exited.</paragraph>
 <h3 id="hd_id3154186">Declaring Variables Outside a <literal>Sub</literal> a <literal>Function</literal> or a <literal>Property</literal></h3>
 <bascode>
-<paragraph id="par_id3150208" role="bascode" xml-lang="en-US">Global VarName As TYPENAME</paragraph>
+<paragraph id="par_id3150208" role="bascode" xml-lang="en-US" localize="false">Global VarName As TYPENAME</paragraph>
 </bascode>
 <paragraph id="par_id3145258" role="paragraph" xml-lang="en-US">The variable is valid as long as the %PRODUCTNAME session lasts.</paragraph>
 <bascode>
-<paragraph id="par_id3153198" role="bascode" xml-lang="en-US">Public VarName As TYPENAME</paragraph>
+<paragraph id="par_id3153198" role="bascode" xml-lang="en-US" localize="false">Public VarName As TYPENAME</paragraph>
 </bascode>
-<paragraph id="par_id3150088" role="paragraph" xml-lang="en-US">The variable is valid in all modules.</paragraph>
+<paragraph id="par_id3150088" role="paragraph" xml-lang="en-US" >The variable is valid in all modules.</paragraph>
 <bascode>
-<paragraph id="par_id3158212" role="bascode" xml-lang="en-US">Private VarName As TYPENAME</paragraph>
+<paragraph id="par_id3158212" role="bascode" xml-lang="en-US" localize="false">Private VarName As TYPENAME</paragraph>
 </bascode>
 <paragraph id="par_id3152994" role="paragraph" xml-lang="en-US">The variable is only valid in this module.</paragraph>
 <bascode>
-<paragraph id="par_id3150886" role="bascode" xml-lang="en-US">Dim VarName As TYPENAME</paragraph>
+<paragraph id="par_id3150886" role="bascode" xml-lang="en-US" localize="false">Dim VarName As TYPENAME</paragraph>
 </bascode>
 <paragraph id="par_id3150368" role="paragraph" xml-lang="en-US">The variable is only valid in this module.</paragraph>
 <h3 id="hd_id5097506">Example for private variables</h3>
@@ -145,7 +145,7 @@
 </bascode>
 <h3 id="hd_id3154368">Saving Variable Content after Exiting a <literal>Sub</literal> a <literal>Function</literal> or a <literal>Property</literal></h3>
 <bascode>
-  <paragraph id="par_id3156288" role="bascode" xml-lang="en-US">Static VarName As TYPENAME</paragraph>
+  <paragraph id="par_id3156288" role="bascode" xml-lang="en-US" localize="false">Static VarName As TYPENAME</paragraph>
 </bascode>
 <paragraph id="par_id3154486" role="paragraph" xml-lang="en-US">The variable retains its value until the next time the a <literal>Function</literal>, <literal>Sub</literal> or <literal>Property</literal> is entered. The declaration must exist inside a <literal>Sub</literal>, a <literal>Function</literal> or a <literal>Property</literal>.</paragraph>
 <h2 id="hd_id3155809">Specifying the Return Value Type of a <literal>Function</literal> or a <literal>Property</literal></h2>
