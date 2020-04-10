@@ -107,12 +107,17 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/smzb7.png \
     helpimg/smzb8.png \
     helpimg/smzb9.png \
+    helpimg/sbasic/argument_fragment.svg \
+    helpimg/sbasic/array_fragment.svg \
+    helpimg/sbasic/type-car_fragment.svg \
+    helpimg/sbasic/type-name_fragment.svg \
     helpimg/sbasic/Call_statement.svg \
     helpimg/sbasic/For-Each_statement.svg \
     helpimg/sbasic/For-Next_statement.svg \
     helpimg/sbasic/LetSet_statement.svg \
     helpimg/sbasic/On-Error_statement.svg \
     helpimg/sbasic/Resume_statement.svg \
+    helpimg/sbasic/Type_statement.svg \
     helpimg/scalc/coordinates-to-polar-01.svg \
     helpimg/starmath/harpoon.svg \
     helpimg/starmath/wideharpoon.svg \
