@@ -26,16 +26,17 @@
         <h2 id="hd_id3157404"><variable id="FLOORh1"><link href="text/scalc/01/func_floor.xhp#floor" name="FLOOR">FLOOR</link></variable></h2>
         <paragraph id="par_id3157432" role="paragraph" xml-lang="en-US"><ahelp hid="HID_FUNC_UNTERGRENZE">Rounds a number to the nearest multiple of a significance value.</ahelp></paragraph>
         <paragraph role="paragraph" id="par_id661586285977707">For a positive number and a positive significance value, the function rounds down (towards zero). For a negative number and a negative significance value, the direction of rounding is determined by the value of a mode parameter. The function returns an error if the number and significance values have opposite signs.</paragraph>
-        <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+        <section id="floor_warn">
+            <warning id="par_id3163894">If the spreadsheet is exported to Microsoft Excel, the FLOOR function is exported as the equivalent FLOOR.MATH function that has existed since Excel 2013. If you plan to use the spreadsheet with earlier Excel versions, use either FLOOR.PRECISE that has existed since Excel 2010, or FLOOR.XCL that is exported as the FLOOR function compatible with all Excel versions.</warning>
+        </section>
+
+      <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
         <paragraph id="par_id3157464" role="code" xml-lang="en-US">FLOOR(Number[; Significance[; Mode]])</paragraph>
         <section id="argnumber">
             <paragraph id="par_id3153467" role="paragraph" xml-lang="en-US"><emph>Number</emph> is the number that is to be rounded, or a reference to a cell containing the number.</paragraph>
         </section>
         <paragraph id="par_id3157497" role="paragraph" xml-lang="en-US"><emph>Significance</emph> (optional) is the value, or a reference to a cell containing the value, to whose multiple <emph>Number</emph> is to be rounded. It defaults to +1 or -1 depending on the sign of <emph>Number</emph>.</paragraph>
         <paragraph id="par_id3157517" role="paragraph" xml-lang="en-US"><emph>Mode</emph> (optional) is a number, or a reference to a cell containing a number. The function only uses <emph>Mode</emph> if both <emph>Number</emph> and <emph>Significance</emph> are negative. Then if <emph>Mode</emph> is given and not equal to zero, numbers are rounded up (towards zero); if <emph>Mode</emph> is equal to zero or not given, negative numbers are rounded down (away from zero).</paragraph>
-        <section id="floor_warn">
-            <warning id="par_id3163894">If the spreadsheet is exported to Microsoft Excel, the FLOOR function is exported as the equivalent FLOOR.MATH function that has existed since Excel 2013. If you plan to use the spreadsheet with earlier Excel versions, use either FLOOR.PRECISE that has existed since Excel 2010, or FLOOR.XCL that is exported as the FLOOR function compatible with all Excel versions.</warning>
-        </section>
         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
         <paragraph role="paragraph" id="par_id761586287595376"><input>=FLOOR(3.45)</input> returns 3.</paragraph>
         <paragraph role="paragraph" id="par_id311586287600048"><input>=FLOOR(3.45, 3)</input> returns 3.</paragraph>
@@ -81,11 +82,12 @@
         <paragraph id="par_id2957432" role="paragraph" xml-lang="en-US"><ahelp hid="HID_FUNC_FLOOR_MS">Rounds a number down to the nearest multiple of a significance value.</ahelp></paragraph>
         <paragraph role="paragraph" id="par_id261586641501175">For a positive number the function rounds down (towards zero). For a negative number, the function rounds down (away form zero). The sign of the significance value is ignored.</paragraph>
         <embed href="text/scalc/00/avail_release.xhp#4.3"/>
+      <embed href="text/scalc/01/func_floor.xhp#floor_warn"/>
         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
         <paragraph id="par_id2957464" role="code" xml-lang="en-US">FLOOR.PRECISE(Number[; Significance])</paragraph>
         <embed href="text/scalc/01/func_floor.xhp#argnumber"/>
         <paragraph id="par_id2957497" role="paragraph" xml-lang="en-US"><emph>Significance</emph> (optional) is the value, or a reference to a cell containing the value, to whose multiple <emph>Number</emph> is to be rounded. It defaults to 1.</paragraph>
-        <embed href="text/scalc/01/func_floor.xhp#floor_warn"/>
+        
         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
         <paragraph role="paragraph" id="par_id981586291388900"><input>=FLOOR.PRECISE(3.45)</input> returns 3.</paragraph>
         <paragraph role="paragraph" id="par_id831586291395477"><input>=FLOOR.PRECISE(-45.67,2)</input> returns -46.</paragraph>
