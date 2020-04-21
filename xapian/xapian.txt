@@ -1,0 +1,109 @@
+1. Install xapian-omega package
+	# apt install xapian-omega
+2. Enable CGI in Apache
+	# a2enmod cgi
+3. Enable /usr/lib/cgi-bin for the site
+	Either 'a2enconf serve-cgi-bin'
+	Or only for the site: 'Include conf-available/serve-cgi-bin.conf'
+
+4. Create indexes
+
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ar          --url=/6.0/ar/          /srv/help.collaboraoffice.com/www/6.0/ar/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ast         --url=/6.0/ast/         /srv/help.collaboraoffice.com/www/6.0/ast/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/bg          --url=/6.0/bg/          /srv/help.collaboraoffice.com/www/6.0/bg/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/bn-IN       --url=/6.0/bn-IN/       /srv/help.collaboraoffice.com/www/6.0/bn-IN/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ca          --url=/6.0/ca/          /srv/help.collaboraoffice.com/www/6.0/ca/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ca-valencia --url=/6.0/ca-valencia/ /srv/help.collaboraoffice.com/www/6.0/ca-valencia/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/cs          --url=/6.0/cs/          /srv/help.collaboraoffice.com/www/6.0/cs/
+omindex --stemmer=danish     --db=/var/lib/xapian-omega/data/da          --url=/6.0/da/          /srv/help.collaboraoffice.com/www/6.0/da/
+omindex --stemmer=german     --db=/var/lib/xapian-omega/data/de          --url=/6.0/de/          /srv/help.collaboraoffice.com/www/6.0/de/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/el          --url=/6.0/el/          /srv/help.collaboraoffice.com/www/6.0/el/
+omindex --stemmer=english    --db=/var/lib/xapian-omega/data/en-GB       --url=/6.0/en-GB/       /srv/help.collaboraoffice.com/www/6.0/en-GB/
+omindex --stemmer=english    --db=/var/lib/xapian-omega/data/en-US       --url=/6.0/en-US/       /srv/help.collaboraoffice.com/www/6.0/en-US/
+omindex --stemmer=spanish    --db=/var/lib/xapian-omega/data/es          --url=/6.0/es/          /srv/help.collaboraoffice.com/www/6.0/es/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/et          --url=/6.0/et/          /srv/help.collaboraoffice.com/www/6.0/et/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/eu          --url=/6.0/eu/          /srv/help.collaboraoffice.com/www/6.0/eu/
+omindex --stemmer=finnish    --db=/var/lib/xapian-omega/data/fi          --url=/6.0/fi/          /srv/help.collaboraoffice.com/www/6.0/fi/
+omindex --stemmer=french     --db=/var/lib/xapian-omega/data/fr          --url=/6.0/fr/          /srv/help.collaboraoffice.com/www/6.0/fr/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/gl          --url=/6.0/gl/          /srv/help.collaboraoffice.com/www/6.0/gl/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/gu          --url=/6.0/gu/          /srv/help.collaboraoffice.com/www/6.0/gu/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/he          --url=/6.0/he/          /srv/help.collaboraoffice.com/www/6.0/he/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/hi          --url=/6.0/hi/          /srv/help.collaboraoffice.com/www/6.0/hi/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/hr          --url=/6.0/hr/          /srv/help.collaboraoffice.com/www/6.0/hr/
+omindex --stemmer=hungarian  --db=/var/lib/xapian-omega/data/hu          --url=/6.0/hu/          /srv/help.collaboraoffice.com/www/6.0/hu/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/id          --url=/6.0/id/          /srv/help.collaboraoffice.com/www/6.0/id/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/is          --url=/6.0/is/          /srv/help.collaboraoffice.com/www/6.0/is/
+omindex --stemmer=italian    --db=/var/lib/xapian-omega/data/it          --url=/6.0/it/          /srv/help.collaboraoffice.com/www/6.0/it/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ja          --url=/6.0/ja/          /srv/help.collaboraoffice.com/www/6.0/ja/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/km          --url=/6.0/km/          /srv/help.collaboraoffice.com/www/6.0/km/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ko          --url=/6.0/ko/          /srv/help.collaboraoffice.com/www/6.0/ko/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/lt          --url=/6.0/lt/          /srv/help.collaboraoffice.com/www/6.0/lt/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/lv          --url=/6.0/lv/          /srv/help.collaboraoffice.com/www/6.0/lv/
+omindex --stemmer=norwegian  --db=/var/lib/xapian-omega/data/nb          --url=/6.0/nb/          /srv/help.collaboraoffice.com/www/6.0/nb/
+omindex --stemmer=dutch      --db=/var/lib/xapian-omega/data/nl          --url=/6.0/nl/          /srv/help.collaboraoffice.com/www/6.0/nl/
+omindex --stemmer=norwegian  --db=/var/lib/xapian-omega/data/nn          --url=/6.0/nn/          /srv/help.collaboraoffice.com/www/6.0/nn/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/pl          --url=/6.0/pl/          /srv/help.collaboraoffice.com/www/6.0/pl/
+omindex --stemmer=portuguese --db=/var/lib/xapian-omega/data/pt          --url=/6.0/pt/          /srv/help.collaboraoffice.com/www/6.0/pt/
+omindex --stemmer=portuguese --db=/var/lib/xapian-omega/data/pt-BR       --url=/6.0/pt-BR/       /srv/help.collaboraoffice.com/www/6.0/pt-BR/
+omindex --stemmer=romanian   --db=/var/lib/xapian-omega/data/ro          --url=/6.0/ro/          /srv/help.collaboraoffice.com/www/6.0/ro/
+omindex --stemmer=russian    --db=/var/lib/xapian-omega/data/ru          --url=/6.0/ru/          /srv/help.collaboraoffice.com/www/6.0/ru/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/sk          --url=/6.0/sk/          /srv/help.collaboraoffice.com/www/6.0/sk/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/sl          --url=/6.0/sl/          /srv/help.collaboraoffice.com/www/6.0/sl/
+omindex --stemmer=swedish    --db=/var/lib/xapian-omega/data/sv          --url=/6.0/sv/          /srv/help.collaboraoffice.com/www/6.0/sv/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ta          --url=/6.0/ta/          /srv/help.collaboraoffice.com/www/6.0/ta/
+omindex --stemmer=turkish    --db=/var/lib/xapian-omega/data/tr          --url=/6.0/tr/          /srv/help.collaboraoffice.com/www/6.0/tr/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/uk          --url=/6.0/uk/          /srv/help.collaboraoffice.com/www/6.0/uk/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/vi          --url=/6.0/vi/          /srv/help.collaboraoffice.com/www/6.0/vi/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/zh-CN       --url=/6.0/zh-CN/       /srv/help.collaboraoffice.com/www/6.0/zh-CN/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/zh-TW       --url=/6.0/zh-TW/       /srv/help.collaboraoffice.com/www/6.0/zh-TW/
+
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ar62          --url=/6.2/ar/          /srv/help.collaboraoffice.com/www/6.2/ar/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ast62         --url=/6.2/ast/         /srv/help.collaboraoffice.com/www/6.2/ast/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/bg62          --url=/6.2/bg/          /srv/help.collaboraoffice.com/www/6.2/bg/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/bn-IN62       --url=/6.2/bn-IN/       /srv/help.collaboraoffice.com/www/6.2/bn-IN/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ca62          --url=/6.2/ca/          /srv/help.collaboraoffice.com/www/6.2/ca/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ca-valencia62 --url=/6.2/ca-valencia/ /srv/help.collaboraoffice.com/www/6.2/ca-valencia/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/cs62          --url=/6.2/cs/          /srv/help.collaboraoffice.com/www/6.2/cs/
+omindex --stemmer=danish     --db=/var/lib/xapian-omega/data/da62          --url=/6.2/da/          /srv/help.collaboraoffice.com/www/6.2/da/
+omindex --stemmer=german     --db=/var/lib/xapian-omega/data/de62          --url=/6.2/de/          /srv/help.collaboraoffice.com/www/6.2/de/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/el62          --url=/6.2/el/          /srv/help.collaboraoffice.com/www/6.2/el/
+omindex --stemmer=english    --db=/var/lib/xapian-omega/data/en-GB62       --url=/6.2/en-GB/       /srv/help.collaboraoffice.com/www/6.2/en-GB/
+omindex --stemmer=english    --db=/var/lib/xapian-omega/data/en-US62       --url=/6.2/en-US/       /srv/help.collaboraoffice.com/www/6.2/en-US/
+omindex --stemmer=spanish    --db=/var/lib/xapian-omega/data/es62          --url=/6.2/es/          /srv/help.collaboraoffice.com/www/6.2/es/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/et62          --url=/6.2/et/          /srv/help.collaboraoffice.com/www/6.2/et/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/eu62          --url=/6.2/eu/          /srv/help.collaboraoffice.com/www/6.2/eu/
+omindex --stemmer=finnish    --db=/var/lib/xapian-omega/data/fi62          --url=/6.2/fi/          /srv/help.collaboraoffice.com/www/6.2/fi/
+omindex --stemmer=french     --db=/var/lib/xapian-omega/data/fr62          --url=/6.2/fr/          /srv/help.collaboraoffice.com/www/6.2/fr/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/gl62          --url=/6.2/gl/          /srv/help.collaboraoffice.com/www/6.2/gl/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/gu62          --url=/6.2/gu/          /srv/help.collaboraoffice.com/www/6.2/gu/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/he62          --url=/6.2/he/          /srv/help.collaboraoffice.com/www/6.2/he/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/hi62          --url=/6.2/hi/          /srv/help.collaboraoffice.com/www/6.2/hi/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/hr62          --url=/6.2/hr/          /srv/help.collaboraoffice.com/www/6.2/hr/
+omindex --stemmer=hungarian  --db=/var/lib/xapian-omega/data/hu62          --url=/6.2/hu/          /srv/help.collaboraoffice.com/www/6.2/hu/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/id62          --url=/6.2/id/          /srv/help.collaboraoffice.com/www/6.2/id/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/is62          --url=/6.2/is/          /srv/help.collaboraoffice.com/www/6.2/is/
+omindex --stemmer=italian    --db=/var/lib/xapian-omega/data/it62          --url=/6.2/it/          /srv/help.collaboraoffice.com/www/6.2/it/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ja62          --url=/6.2/ja/          /srv/help.collaboraoffice.com/www/6.2/ja/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/km62          --url=/6.2/km/          /srv/help.collaboraoffice.com/www/6.2/km/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ko62          --url=/6.2/ko/          /srv/help.collaboraoffice.com/www/6.2/ko/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/lt62          --url=/6.2/lt/          /srv/help.collaboraoffice.com/www/6.2/lt/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/lv62          --url=/6.2/lv/          /srv/help.collaboraoffice.com/www/6.2/lv/
+omindex --stemmer=norwegian  --db=/var/lib/xapian-omega/data/nb62          --url=/6.2/nb/          /srv/help.collaboraoffice.com/www/6.2/nb/
+omindex --stemmer=dutch      --db=/var/lib/xapian-omega/data/nl62          --url=/6.2/nl/          /srv/help.collaboraoffice.com/www/6.2/nl/
+omindex --stemmer=norwegian  --db=/var/lib/xapian-omega/data/nn62          --url=/6.2/nn/          /srv/help.collaboraoffice.com/www/6.2/nn/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/pl62          --url=/6.2/pl/          /srv/help.collaboraoffice.com/www/6.2/pl/
+omindex --stemmer=portuguese --db=/var/lib/xapian-omega/data/pt62          --url=/6.2/pt/          /srv/help.collaboraoffice.com/www/6.2/pt/
+omindex --stemmer=portuguese --db=/var/lib/xapian-omega/data/pt-BR62       --url=/6.2/pt-BR/       /srv/help.collaboraoffice.com/www/6.2/pt-BR/
+omindex --stemmer=romanian   --db=/var/lib/xapian-omega/data/ro62          --url=/6.2/ro/          /srv/help.collaboraoffice.com/www/6.2/ro/
+omindex --stemmer=russian    --db=/var/lib/xapian-omega/data/ru62          --url=/6.2/ru/          /srv/help.collaboraoffice.com/www/6.2/ru/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/sk62          --url=/6.2/sk/          /srv/help.collaboraoffice.com/www/6.2/sk/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/sl62          --url=/6.2/sl/          /srv/help.collaboraoffice.com/www/6.2/sl/
+omindex --stemmer=swedish    --db=/var/lib/xapian-omega/data/sv62          --url=/6.2/sv/          /srv/help.collaboraoffice.com/www/6.2/sv/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/ta62          --url=/6.2/ta/          /srv/help.collaboraoffice.com/www/6.2/ta/
+omindex --stemmer=turkish    --db=/var/lib/xapian-omega/data/tr62          --url=/6.2/tr/          /srv/help.collaboraoffice.com/www/6.2/tr/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/uk62          --url=/6.2/uk/          /srv/help.collaboraoffice.com/www/6.2/uk/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/vi62          --url=/6.2/vi/          /srv/help.collaboraoffice.com/www/6.2/vi/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/zh-CN62       --url=/6.2/zh-CN/       /srv/help.collaboraoffice.com/www/6.2/zh-CN/
+omindex --stemmer=none       --db=/var/lib/xapian-omega/data/zh-TW62       --url=/6.2/zh-TW/       /srv/help.collaboraoffice.com/www/6.2/zh-TW/
+
+5. We need /var/lib/xapian-omega/templates/cp-query
