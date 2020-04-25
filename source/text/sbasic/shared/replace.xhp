@@ -25,7 +25,7 @@
     </section>
 
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-    <paragraph role="code" id="par_id931552552227310">Replace (Text As String, SearchStr As String, ReplStr As String [, Start As Long [, Count as long [, Compare As Boolean]]]</paragraph>
+    <paragraph role="code" id="par_id931552552227310">Replace (Text As String, SearchStr As String, ReplStr As String [, Start As Long [, Count as Long [, Compare As Boolean]]]</paragraph>
 
     <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
     <paragraph role="paragraph" id="par_id911552552252024">String</paragraph>
@@ -34,7 +34,7 @@
     <paragraph role="paragraph" id="par_id721552552263062"><emph>Text:</emph> Any string expression that you want to modify.</paragraph>
     <paragraph role="paragraph" id="par_id901552552269836"><emph>SearchStr:</emph> Any string expression that shall be searched for.</paragraph>
     <paragraph role="paragraph" id="par_id791552552275383"><emph>ReplStr:</emph> Any string expression that shall replace the found search string.</paragraph>
-    <paragraph role="paragraph" id="par_id111552552283060"><emph>Start:</emph> Numeric expression that indicates the character position within the string where the search shall begin. The maximum allowed value is 65535.</paragraph>
+    <paragraph role="paragraph" id="par_id111552552283060"><emph>Start:</emph> Numeric expression that indicates the character position where the search starts and also the start of the substring to be returned.</paragraph>
     <paragraph role="paragraph" id="par_id921552552289833"><emph>Count:</emph> The maximal number of times the replace shall be performed.</paragraph>
     <paragraph role="paragraph" id="par_id891552552302894"><emph>Compare:</emph> Optional boolean expression that defines the type of comparison. The value of this parameter can be TRUE or FALSE. The default value of TRUE specifies a text comparison that is not case-sensitive. The value of FALSE specifies a binary comparison that is case-sensitive. You can as well use 0 instead of FALSE or 1 instead of TRUE.</paragraph>
 
@@ -47,6 +47,8 @@
         <paragraph role="bascode" id="par_id321552552440672" >REM meaning: "b" should be replaced, but</paragraph>
         <paragraph role="bascode" id="par_id571552552467647">REM * only when lowercase (parameter 6), hence second occurrence of "b"</paragraph>
         <paragraph role="bascode" id="par_id71552552474769">REM * only first (respecting case) occurrence (parameter 5)</paragraph>
+        <paragraph role="bascode" id="par_id501587778372566" xml-lang="en-US" localize="false">msgbox replace ("ABCDEFGHI", "E", "*", 4)</paragraph>
+        <paragraph role="bascode" id="par_id861587778446685" xml-lang="en-US">REM returns D*FGHI because the search starts at position 4, which is also the start of the returned string.</paragraph>
     </bascode>
 </body>
 </helpdocument>
