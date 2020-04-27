@@ -27,33 +27,44 @@
 
 <body>
 
-
 <section id="function">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3153346">
   <bookmark_value>Function statement</bookmark_value>
 </bookmark>
 
-
 <paragraph id="hd_id3153346" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03090406.xhp" name="Function Statement">Function Statement</link></paragraph>
 <paragraph id="par_id3159158" role="paragraph" xml-lang="en-US">Defines a subroutine that can be used as an expression to determine a return type.</paragraph>
 </section>
 
-<paragraph id="hd_id3145316" role="heading" level="2" xml-lang="en-US">Syntax</paragraph>
-<paragraph id="par_id3148944" role="paragraph" xml-lang="en-US">see Parameter</paragraph>
+<section id="TwinMethods">
+<note id="par_id661588586825434"><literal>Sub</literal> or <literal>Function</literal> statements are similar methods, without distinction. They receive parameters by reference allowing them to be modified. %PRODUCTNAME  Basic compiler accepts their respective syntax to be used interchangeably.</note>
+</section>
 
-<paragraph id="hd_id3154760" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
-<paragraph id="par_id3156344" role="paragraph" xml-lang="en-US">Syntax</paragraph>
-<paragraph id="par_id3149457" role="paragraph" xml-lang="en-US">Function Name[(VarName1 [As Type][, VarName2 [As Type][,...]]]) [As Type]</paragraph>
-<paragraph id="par_id3153360" role="paragraph" xml-lang="en-US">statement block</paragraph>
-<paragraph id="par_id3148797" role="paragraph" xml-lang="en-US">[Exit Function]</paragraph>
-<paragraph id="par_id3145419" role="paragraph" xml-lang="en-US">statement block</paragraph>
-<paragraph id="par_id3150449" role="paragraph" xml-lang="en-US">End Function</paragraph>
-<paragraph id="par_id3156281" role="paragraph" xml-lang="en-US">Parameter</paragraph>
-<paragraph id="par_id3153193" role="paragraph" xml-lang="en-US"> <emph>Name:</emph> Name of the subroutine to contain the value returned by the function.</paragraph>
-<paragraph id="par_id3147229" role="paragraph" xml-lang="en-US"> <emph>VarName:</emph> Parameter to be passed to the subroutine.</paragraph>
-<paragraph id="par_id3147287" role="paragraph" xml-lang="en-US"> <emph>Type:</emph> Type-declaration keyword.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+<paragraph role="paragraph" id="par_id971588473588701">
+  <image src="media/helpimg/sbasic/Function_statement.svg" id="img_id4156296484514"><alt xml-lang="en-US" id="alt_id15152796484514">Function Statement diagram</alt></image></paragraph>
+<bascode>
+  <paragraph role="bascode" id="bas_id151588427099190" localize="false">[Private | Public] Function Name[char] (argument1 [As Type][, argument2[char][,...]]) [As typename]</paragraph>
+  <paragraph role="bascode" id="bas_id541588427401158" xml-lang="en-US">        statements</paragraph>
+  <paragraph role="bascode" id="bas_id981588427406211" localize="false">    [Exit Function]</paragraph>
+  <paragraph role="bascode" id="bas_id631588427410583" xml-lang="en-US">        statements</paragraph>
+  <paragraph role="bascode" id="bas_id581588427417085" localize="false">End Function</paragraph>
+</bascode>
 
-<paragraph id="hd_id3163710" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<section id="RoutineScope">
+   <paragraph role="paragraph" id="par_id81588429476557"> <emph>scope:</emph> Function default scope is <literal>Public</literal>. A <literal>Private</literal> scope denotes a module internal routine, not intended to be used from other modules.</paragraph>
+</section>
+
+<paragraph id="par_id3153193" role="paragraph" xml-lang="en-US"> <emph>name:</emph> Name of the subroutine to contain the value returned by the function.</paragraph>
+<paragraph id="par_id3147229" role="paragraph" xml-lang="en-US"> <emph>arguments:</emph> Parameters to be passed to the subroutine.</paragraph>
+
+<embed href="text/sbasic/shared/fragments.xhp#argument"/>
+<embed href="text/sbasic/shared/fragments.xhp#typename"/>
+<embed href="text/sbasic/shared/fragments.xhp#char"/>
+
+<section id="BasicExamples">
+<h2 id="hd_id3163710" xml-lang="en-US">Examples:</h2>
 <bascode>
 <paragraph id="par_idm1340981728" role="bascode" localize="false" xml-lang="en-US">Sub ExampleExit</paragraph>
 <paragraph id="par_idm1340980496" role="bascode" localize="false" xml-lang="en-US">Dim sReturn As String</paragraph>
@@ -80,6 +91,8 @@
 <paragraph id="par_idm1340952352" role="bascode" localize="false" xml-lang="en-US">    LinSearch = iCount</paragraph>
 <paragraph id="par_idm1340951120" role="bascode" localize="false" xml-lang="en-US">End Function</paragraph>
 </bascode>
+</section>
+
 </body>
 
 </helpdocument>
