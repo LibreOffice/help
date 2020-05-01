@@ -831,6 +831,17 @@ li.disabled a {
         box-shadow: 0 2px 8px 0 rgba(0,0,0,.05);
         padding: 10px 50px 40px 50px;
     }
+    .xapian-omega-search {
+        width: 100%;
+    }
+    .xapian-omega-search form {
+        display: flex;
+        justify-content: center;
+    }
+    .omega-autofocus {
+        max-width: 200px;
+        width: 100%
+    }
 }
 @media screen and (min-width: 1440px) {
     #Contents {
@@ -848,6 +859,9 @@ li.disabled a {
     }
      label[for=accordion-1]:after {
         content: "";
+    }
+    .omega-autofocus {
+        max-width: 400px;
     }
 }
 /* Use @supports to sneak these rules past IE */
@@ -870,22 +884,22 @@ li.disabled a {
         }
         body {
             display: grid;
-            grid-template-columns: 360px 80px 1fr;
+            grid-template-columns: 360px 100px 300px 1fr;
             grid-template-rows: minmax(1em, auto) minmax(1em, auto) 1fr minmax(1em, auto);
-            grid-template-areas: "header search donation"
-                                 "rightside main main"
-                                 "leftside main main"
-                                 ". footer footer"
+            grid-template-areas: "header header search donation"
+                                 "rightside main main main"
+                                 "leftside main main main"
+                                 ". footer footer footer"
         }
     }
     @media screen and (min-width: 1440px) {
         body {
             display: grid;
-            grid-template-columns: 360px 450px 450px 1fr;
+            grid-template-columns: 360px 100px 400px 400px 1fr;
             grid-template-rows: 1fr minmax(1em, auto) minmax(1em, auto);
-            grid-template-areas: "header search search donation"
-                                 "leftside main main rightside"
-                                 ". footer footer ."
+            grid-template-areas: "header header search search donation"
+                                 "leftside main main main rightside"
+                                 ". footer footer footer ."
         }
         .donation {
             max-width: 300px;
