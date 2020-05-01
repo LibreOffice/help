@@ -220,7 +220,7 @@
             <xsl:if test="$xapian='yes'">
                 <div class="xapian-omega-search">
                     <form name="P" method="get" action="/{$productversion}/{$lang}/search" target="_top">
-                        <input id="omega-autofocus" type="search" name="P" size="40"/>
+                        <input id="omega-autofocus" type="search" name="P"/>
                         <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
                     </form>
                 </div>
