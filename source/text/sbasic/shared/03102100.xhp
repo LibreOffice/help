@@ -38,10 +38,10 @@
 <paragraph id="par_id3143271" role="paragraph">Declares variables or arrays.</paragraph>
 </section>
 
-<paragraph id="par_id3154686" role="paragraph" xml-lang="en-US">If the variables are separated by commas - for example <literal>Dim sPar1, sPar2, sPar3 As String</literal> - first ones get defined as Variant variables. A new line, or colon sign (<emph>:</emph>), help separate variable definitions.</paragraph>
+<paragraph id="par_id3154686" role="paragraph" xml-lang="en-US">If the variables are separated by commas - for example <literal>Dim v1, v2, v3 As String</literal> - first ones get defined as Variant variables. A new line, or colon sign (<emph>:</emph>), help separate variable definitions.</paragraph>
 <bascode>
-  <paragraph id="par_idm871116272" role="bascode" localize="false">Dim sPar1 As String</paragraph>
-  <paragraph id="par_idm871115040" role="bascode" localize="false">Dim sPar2 As String, SPar3 As String</paragraph>
+  <paragraph id="par_idm871116272" role="bascode" localize="false">Dim text As String</paragraph>
+  <paragraph id="par_idm871115040" role="bascode" localize="false">Dim pv As com.sun.star.beans.PropertyValue, d As Date</paragraph>
   <paragraph role="bascode" id="bas_id591587474364949" localize="false">Dim Units as Integer : Dim EULER As Double</paragraph>
 </bascode>
 <paragraph id="par_id3152576" role="paragraph" xml-lang="en-US"><literal>Dim</literal> declares local variables within subroutines. Global variables are declared with the <literal>Global</literal>, <literal>Public</literal> or the <literal>Private</literal> statement.</paragraph>
@@ -51,18 +51,16 @@
   <image src="media/helpimg/sbasic/Dim_statement.svg" id="img_id4156296484514"><alt xml-lang="en-US" id="alt_id15152796484514">Dim Statement diagram</alt></image>
 </paragraph>
 <bascode>
-<paragraph id="par_id3149412" role="bascode" xml-lang="en-US">Dim variable [(start To end)] [As type-name][, variable2[type-char] [(start To end)] [,...]]</paragraph>
+<paragraph id="par_id3149412" role="bascode" xml-lang="en-US">Dim variable [(start To end)] [As typename][, variable2[char] [(start To end)] [,...]]</paragraph>
 </bascode>
 
 <section id="DimCommons">
 <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
 <paragraph id="par_id3154730" role="paragraph" xml-lang="en-US"> <emph>variable:</emph> Any variable or array name.</paragraph>
-<paragraph id="par_id3147125" role="paragraph" xml-lang="en-US"> <emph>start, end:</emph> Numerical values or constants that define the number of elements (NumberElements=(end-start)+1) and the index range.<comment>see #i36558</comment></paragraph>
-<paragraph id="par_id3153877" role="paragraph" xml-lang="en-US"> <emph>start</emph> and <emph>end</emph> can be numerical expressions if <literal>ReDim</literal> is applied at the procedure level.</paragraph>
 
-<paragraph id="par_id3154510" role="paragraph" xml-lang="en-US"> <emph>type-name:</emph> Keyword that declares the data type of a variable.</paragraph>
+<paragraph id="par_id3154510" role="paragraph" xml-lang="en-US"> <emph>typename:</emph> Keyword that declares the data type of a variable.</paragraph>
 <paragraph role="paragraph" id="par_id971587473508701">
-  <image src="media/helpimg/sbasic/type-name_fragment.svg" id="img_id4156296484515"><alt xml-lang="en-US" id="alt_id15152796484515">primitive data types fragment</alt></image>
+  <image src="media/helpimg/sbasic/typename_fragment.svg" id="img_id4156296484515"><alt xml-lang="en-US" id="alt_id15152796484515">primitive data types fragment</alt></image>
 </paragraph>
 <paragraph role="paragraph" id="par_id21587557790810"> <emph>Byte:</emph> Byte variable (0-255)</paragraph>
 <paragraph id="par_id3153949" role="paragraph" xml-lang="en-US"> <emph>Boolean:</emph> Boolean variable (True, False)</paragraph>
@@ -75,14 +73,16 @@
 <paragraph id="par_id3155937" role="paragraph" xml-lang="en-US"> <emph>Single:</emph> Single-precision floating-point variable (3,402823 x 10E38 - 1,401298 x 10E-45).</paragraph>
 <paragraph id="par_id3151251" role="paragraph" xml-lang="en-US"> <emph>String:</emph> String variable consisting of a maximum of 64,000 ASCII characters.</paragraph>
 <paragraph id="par_id3154704" role="paragraph" xml-lang="en-US"> <emph>Variant:</emph> Variant variable type (contains all types, specified by definition). If a type name is not specified, variables are automatically defined as Variant Type, unless a statement from <literal>DefBool</literal> to <literal>DefVar</literal> is used.</paragraph>
-<paragraph id="par_id3153510" role="paragraph" xml-lang="en-US"><emph>type-char:</emph> Special character that declares the data type of a variable.</paragraph><paragraph role="paragraph" id="par_id971587473518701">
-  <image src="media/helpimg/sbasic/type-car_fragment.svg" id="img_id4156296484516"><alt xml-lang="en-US" id="alt_id15152796484516">Type declaration characters fragment</alt></image>
+<paragraph role="paragraph" id="par_id21587667790810"> <emph>object:</emph> Universal Network object (UNO) object or <link href="text/sbasic/shared/classmodule" name="Class module">ClassModule</link> object instance.</paragraph>
+
+<paragraph id="par_id3153510" role="paragraph" xml-lang="en-US"><emph>char:</emph> Special character that declares the data type of a variable.</paragraph><paragraph role="paragraph" id="par_id971587473518701">
+  <image src="media/helpimg/sbasic/char_fragment.svg" id="img_id4156296484516"><alt xml-lang="en-US" id="alt_id15152796484516">Type declaration characters fragment</alt></image>
 </paragraph>
 <paragraph id="par_id3146316" role="paragraph" xml-lang="en-US">In %PRODUCTNAME Basic, you do not need to declare variables explicitly. However, you need to declare arrays before you can use them. You can declare a variable with the <literal>Dim</literal> statement, using commas (<emph>,</emph>) to separate multiple declarations. To declare a variable type, enter a type-declaration character following the name or use a corresponding type keyword name.</paragraph>
 <table id="tab_id821587558178871">
   <tablerow>
-    <tablecell><paragraph id="par_id411587558178871" role="tablehead">Declaration character</paragraph></tablecell>
-    <tablecell><paragraph id="par_id851587558178871" role="tablehead">Variable type name</paragraph></tablecell>
+    <tablecell><paragraph id="par_id411587558178871" localize="false" role="tablehead">Declaration character</paragraph></tablecell>
+    <tablecell><paragraph id="par_id851587558178871" localize="false" role="tablehead">Variable type name</paragraph></tablecell>
   </tablerow>
   <tablerow>
     <tablecell><paragraph id="par_id211587558178871" localize="false" role="tablecontent">%</paragraph></tablecell>
@@ -104,12 +104,18 @@
     <tablecell><paragraph id="par_id251587558178871" localize="false" role="tablecontent">$</paragraph></tablecell>
     <tablecell><paragraph id="par_id46587558178871" localize="false" role="tablecontent">String</paragraph></tablecell>
   </tablerow>
+  <tablerow>
+    <tablecell><paragraph id="par_id251687558178871" localize="false" role="tablecontent">@</paragraph></tablecell>
+    <tablecell><paragraph id="par_id56587558178871" localize="false" role="tablecontent">Currency</paragraph></tablecell>
+  </tablerow>
 </table>
 
 <paragraph role="paragraph" id="par_id441587477911298"> <emph>array:</emph> Array declaration.</paragraph>
 <paragraph role="paragraph" id="par_id971587473519701">
   <image src="media/helpimg/sbasic/array_fragment.svg" id="img_id4156296485516"><alt xml-lang="en-US" id="alt_id15152796485516">array fragment</alt></image>
 </paragraph>
+<paragraph id="par_id3147125" role="paragraph" xml-lang="en-US"> <emph>start, end:</emph> Numerical values or constants that define the number of elements (NumberElements=(end-start)+1) and the index range.<comment>see #i36558</comment></paragraph>
+<paragraph id="par_id3153877" role="paragraph" xml-lang="en-US"> <emph>start</emph> and <emph>end</emph> can be numerical expressions if <literal>ReDim</literal> is applied at the procedure level.</paragraph>
 <paragraph id="par_id3149924" role="paragraph" xml-lang="en-US">$[officename] Basic supports single or multi-dimensional arrays that are defined by a specified variable type. Arrays are suitable if the program contains lists or tables that you want to edit. The advantage of arrays is that it is possible to address individual elements according to indexes, which can be formulated as numeric expressions or variables.</paragraph>
   <paragraph id="par_id3148488" role="paragraph" xml-lang="en-US">Arrays are declared with the <literal>Dim</literal> statement. There are multiple ways to define the index range:</paragraph>
 <bascode>
