@@ -119,11 +119,14 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/Function_statement.svg \
     helpimg/sbasic/LetSet_statement.svg \
     helpimg/sbasic/On-Error_statement.svg \
+    helpimg/sbasic/On-GoSub-GoTo_statement \
     helpimg/sbasic/Option_statement.svg \
+    helpimg/sbasic/Print_statement.svg \
     helpimg/sbasic/Property-Get_statement.svg \
     helpimg/sbasic/Property-Set_statement.svg \
     helpimg/sbasic/ReDim_statement.svg \
     helpimg/sbasic/Resume_statement.svg \
+    helpimg/sbasic/Select-Case_statement.svg \
     helpimg/sbasic/Sub_statement.svg \
     helpimg/sbasic/Type_statement.svg \
     helpimg/scalc/coordinates-to-polar-01.svg \
