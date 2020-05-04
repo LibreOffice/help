@@ -54,6 +54,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 		) > $@ \
 	)
 
+
 # Xapian localized templates
 ifeq ($(HELP_OMINDEX_PAGE),TRUE)
 
@@ -154,8 +155,14 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 			$(TREE_FILE) \
 	)
 
+# link txt file for icon replacement table
+$(SRCDIR)/helpcontent2/helpers/links.txt.xsl: \
+		$(SRCDIR)/icon-themes/colibre/links.txt 
+	$(SRCDIR)/helpcontent2/helpers/make_icon_link.txt.py $(SRCDIR)/icon-themes/colibre/links.txt $@
+
 define html_gen_html_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/html.text : \
+		$(SRCDIR)/helpcontent2/helpers/links.txt.xsl \
 	$(foreach module,$(html_TEXT_MODULES), \
 		$(if $(filter en-US,$(1)), \
 			$(call gb_AllLangHelp_get_helpfiles_target,$(module)), \

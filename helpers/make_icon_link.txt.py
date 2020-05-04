@@ -15,13 +15,15 @@ import sys
 
 try:
    # open file stream
-   file_icon = open("../icon-themes/colibre/links.txt", "r")
+   file_icon = open(sys.argv[1], "r")
+
 except IOError:
    print "There was an error reading", file_icon
    sys.exit()
 try:
    # open file stream
-   file_xsl = open("help3xsl/links.txt.xsl", "w+")
+   file_xsl = open(sys.argv[2], "w+")
+
 except IOError:
    print "There was an error writing", file_xsl
    sys.exit()
