@@ -114,9 +114,15 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/Call_statement.svg \
     helpimg/sbasic/Dim_statement.svg \
     helpimg/sbasic/DimArray_function.svg \
+    helpimg/sbasic/Do_statement.svg \
+    helpimg/sbasic/Do-Loop_statement.svg \
+    helpimg/sbasic/Else_fragment.svg \
+    helpimg/sbasic/ElseIf_fragment.svg \
+    helpimg/sbasic/Erase_statement.svg \
     helpimg/sbasic/For-Each_statement.svg \
     helpimg/sbasic/For-Next_statement.svg \
     helpimg/sbasic/Function_statement.svg \
+    helpimg/sbasic/If_statement.svg \
     helpimg/sbasic/LetSet_statement.svg \
     helpimg/sbasic/On-Error_statement.svg \
     helpimg/sbasic/On-GoSub-GoTo_statement.svg \
@@ -129,6 +135,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/Select-Case_statement.svg \
     helpimg/sbasic/Sub_statement.svg \
     helpimg/sbasic/Type_statement.svg \
+    helpimg/sbasic/While_statement.svg \
     helpimg/scalc/coordinates-to-polar-01.svg \
     helpimg/starmath/harpoon.svg \
     helpimg/starmath/wideharpoon.svg \
