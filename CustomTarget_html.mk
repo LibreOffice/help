@@ -157,8 +157,10 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 
 # link txt file for icon replacement table
 $(SRCDIR)/helpcontent2/helpers/links.txt.xsl: \
-		$(SRCDIR)/icon-themes/colibre/links.txt 
-	$(SRCDIR)/helpcontent2/helpers/make_icon_link.txt.py $(SRCDIR)/icon-themes/colibre/links.txt $@
+		$(SRCDIR)/icon-themes/colibre/links.txt \
+		$(SRCDIR)/helpcontent2/helpers/make_icon_link.txt.py \
+		$(call gb_ExternalExecutable_get_dependencies,python)
+	$(call gb_ExternalExecutable_get_command,python) $(SRCDIR)/helpcontent2/helpers/make_icon_link.txt.py $(SRCDIR)/icon-themes/colibre/links.txt $@
 
 define html_gen_html_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/html.text : \
