@@ -155,8 +155,14 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 			$(TREE_FILE) \
 	)
 
-# link txt file for icon replacement table
-$(SRCDIR)/helpcontent2/helpers/links.txt.xsl: \
+# link txt file for icon replacement table - tdf#128519
+# copy online_transform.xsl to workdir and build links.txt.xsl
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/online_transform.xsl) : \
+		$(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl
+	cp $(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl $@
+
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/links.txt.xsl) : \
+		$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/online_transform.xsl) \
 		$(SRCDIR)/icon-themes/colibre/links.txt \
 		$(SRCDIR)/helpcontent2/helpers/make_icon_link.txt.py \
 		$(call gb_ExternalExecutable_get_dependencies,python)
@@ -164,7 +170,7 @@ $(SRCDIR)/helpcontent2/helpers/links.txt.xsl: \
 
 define html_gen_html_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/html.text : \
-		$(SRCDIR)/helpcontent2/helpers/links.txt.xsl \
+		$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/links.txt.xsl) \
 	$(foreach module,$(html_TEXT_MODULES), \
 		$(if $(filter en-US,$(1)), \
 			$(call gb_AllLangHelp_get_helpfiles_target,$(module)), \
@@ -175,7 +181,7 @@ endef
 $(eval $(foreach lang,$(gb_HELP_LANGS),$(call html_gen_html_dep,$(lang))))
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
-		$(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl \
+		$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/links.txt.xsl) \
 		$(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	$(call gb_Helper_abbreviate_dirs,\
@@ -193,14 +199,14 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 				--stringparam productversion "$(PRODUCTVERSION)" \
 				--stringparam xapian $(if $(filter TRUE, $(HELP_OMINDEX_PAGE)),'yes','no') \
 				-o $(dir $@)$${xhp%.xhp}.html \
-				$(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl \
+				$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/online_transform.xsl) \
 				$(if $(filter WNT,$(OS)),$$(cygpath -m `pwd`),`pwd`)/$$xhp \
 			|| exit \
 		; done \
 		&& rm "$$RESPONSEFILE" \
 		&& touch $@ \
 	)
-	
+
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.js :
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),CAT,2)
 	$(call gb_Helper_abbreviate_dirs,\
