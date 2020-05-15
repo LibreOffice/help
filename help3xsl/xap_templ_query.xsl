@@ -83,10 +83,10 @@ $def{SPAGE,<input type=submit name="[" value="$1" disabled=disabled>}
 <script type="text/javascript" src="languages.js"></script>
 <script type="text/javascript" src="fuzzysort.js"></script>
 <script type="text/javascript" src="prism.js"></script>
+<script type="text/javascript" src="]]><xsl:value-of select="$lang"/><![CDATA[/langnames.js" defer=""></script>
 <script type="text/javascript" src="help2.js" defer=""></script>
 <script type="text/javascript" src="a11y-toggle.js" defer=""></script>
 <script type="text/javascript" src="paginathing.js" defer=""></script>
-<script type="text/javascript" src="]]><xsl:value-of select="$lang"/><![CDATA[/langnames.js" defer=""></script>
 <script type="text/javascript" src="]]><xsl:value-of select="$lang"/><![CDATA[/bookmarks.js" defer=""></script>
 <script type="text/javascript" src="]]><xsl:value-of select="$lang"/><![CDATA[/contents.js" defer=""></script>
 <script type="text/javascript" src="help.js" defer=""></script>
