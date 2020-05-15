@@ -145,11 +145,11 @@
         <link  type="text/css" href="prism.css" rel="Stylesheet"/>
         <script type="text/javascript" src="polyfills.js"></script>
         <script type="text/javascript" src="languages.js"></script>
+        <script type="text/javascript" src="{$lang}/langnames.js"></script>
         <script type="text/javascript" src="fuzzysort.js"></script>
         <script type="text/javascript" src="prism.js"></script>
         <script type="text/javascript" src="help2.js" defer=""></script>
         <script type="text/javascript" src="a11y-toggle.js" defer=""></script>
-        <script type="text/javascript" src="{$lang}/langnames.js" defer=""></script>
         <script type="text/javascript" src="paginathing.js" defer=""></script>
         <script type="text/javascript" src="{$lang}/bookmarks.js" defer=""></script>
         <script type="text/javascript" src="{$lang}/contents.js" defer=""></script>
