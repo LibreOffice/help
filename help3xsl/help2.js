@@ -188,7 +188,7 @@ function setupModules(lang) {
             '<a href="' + lang + '/text/scalc/main0000.html?DbPAR=CALC"><div class="calc-icon"></div>Calc</a>' +
             '<a href="' + lang + '/text/simpress/main0000.html?DbPAR=IMPRESS"><div class="impress-icon"></div>Impress</a>' +
             '<a href="' + lang + '/text/sdraw/main0000.html?DbPAR=DRAW"><div class="draw-icon"></div>Draw</a>' +
-            '<a href="' + lang + '/text/shared/explorer/database/main.html?DbPAR=BASE"><div class="base-icon"></div>Base</a>' +
+            '<a href="' + lang + '/text/sdatabase/main.html?DbPAR=BASE"><div class="base-icon"></div>Base</a>' +
             '<a href="' + lang + '/text/smath/main0000.html?DbPAR=MATH"><div class="math-icon"></div>Math</a>' +
             '<a href="' + lang + '/text/schart/main0000.html?DbPAR=CHART"><div class="chart-icon"></div>Chart</a>' +
             '<a href="' + lang + '/text/sbasic/shared/main0601.html?DbPAR=BASIC"><div class="basic-icon"></div>Basic</a>';
