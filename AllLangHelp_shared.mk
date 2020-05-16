@@ -904,7 +904,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/explorer/database/dabawiz02spreadsheet \
     helpcontent2/source/text/shared/explorer/database/dabawiz02text \
     helpcontent2/source/text/shared/explorer/database/dabawiz03auth \
-    helpcontent2/source/text/shared/explorer/database/main \
     helpcontent2/source/text/shared/explorer/database/menubar \
     helpcontent2/source/text/shared/explorer/database/menuedit \
     helpcontent2/source/text/shared/explorer/database/menufile \

@@ -9,8 +9,14 @@
 
 $(eval $(call gb_AllLangHelp_AllLangHelp,sdatabase))
 
+$(eval $(call gb_AllLangHelp_set_treefile,sdatabase,helpcontent2/source/auxiliary/sdatabase))
+
 $(eval $(call gb_AllLangHelp_use_linked_modules,sdatabase,\
 	shared \
+))
+
+$(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
+    helpcontent2/source/text/sdatabase/main \
 ))
 
 # vim: set noet sw=4 ts=4:
