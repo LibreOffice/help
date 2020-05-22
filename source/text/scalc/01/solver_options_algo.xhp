@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    * This file incorporates work covered by the following license notice:
+    *
+    *   Licensed to the Apache Software Foundation (ASF) under one or more
+    *   contributor license agreements. See the NOTICE file distributed
+    *   with this work for additional information regarding copyright
+    *   ownership. The ASF licenses this file to you under the Apache
+    *   License, Version 2.0 (the "License"); you may not use this file
+    *   except in compliance with the License. You may obtain a copy of
+    *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+    -->
+
+    <meta>
+        <topic id="nlpsolveroptions" indexer="include">
+            <title xml-lang="en-US" id="tit">Options</title>
+            <filename>/text/scalc/01/solver_options_algo.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id0503200917110375_scalc">
+    <bookmark_value>Solver for Nonlinear Problems;Options</bookmark_value>
+    <bookmark_value>solver for Calc; DEPS evolutionary algorithm</bookmark_value>
+    <bookmark_value>solver for Calc; SCO evolutionary algorithm</bookmark_value>
+    <bookmark_value>solver for Calc; linear solver</bookmark_value>
+    <bookmark_value>solver for Calc; CoinMP linear solver</bookmark_value>
+    <bookmark_value>solver for Calc; swarm non-linear solver</bookmark_value>
+    </bookmark>
+
+    <h1 id="hd_id0503200917103593"><variable id="SolverAlgorithmsOptionsh1"><link href="text/scalc/01/solver_options_algo.xhp#SolverAlgorithmsOptionsh1" name="Solver Algorithms Options">Solver Algorithms Options</link></variable></h1>
+
+    <h2 id="par_id651589925044267"><variable id="DEPSEvolutionaryalgorithmh2"><link href="text/scalc/01/solver_options_algo.xhp#DEPSEvolutionaryalgorithmh2" name="DEPS Evolutionary algorithm">DEPS Evolutionary Algorithm</link></variable></h2>
+    <paragraph role="paragraph" id="par_id931590164412542">DEPS consists of two independent algorithms: Differential Evolution and Particle Swarm Optimization. Both are especially suited for numerical problems, such as nonlinear optimization, and are complementary to each other in that they even out their others shortcomings. </paragraph>
+    <table id="id=tab_id971589978166858">
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id91559962440066" role="tablehead" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#settingshead"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id111584962440067" role="tablehead" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#descriptionhead"/></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0603200910394232" role="tablecontent" >Agent Switch Rate</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0603200910394248" role="tablecontent" >Specifies the probability for an individual to choose the Differential Evolution strategy.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id481559963120045" role="tablecontent" xml-lang="en-US"  localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#noneghead" markup="ignore"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id301589063120047" role="tablecontent" xml-lang="en-US" localize="false" ><embedvar href="text/scalc/01/solver_options_algo.xhp#nonegdesc" markup="ignore"/></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0603200910394277" role="tablecontent" >DE: Crossover Probability</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0603200910394280" role="tablecontent" >Defines the probability of the individual being combined with the globally best point. If crossover is not used, the point is assembled from the own memory of the individual.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0643200910394216" role="tablecontent" >DE: Scaling Factor</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id360320091039424" role="tablecontent" >During crossover, the scaling factor decides about the “speed” of movement.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0507200917103771" role="tablecontent" >Learning Cycles</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503210917103720" role="tablecontent" >Defines the number of iterations, the algorithm should take. In each iteration, all individuals make a guess on the best solution and share their knowledge.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id3603200910394222" role="tablecontent" >PS: Cognitive Constant</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id3603200915394212" role="tablecontent" >Sets the importance of the own memory (in particular the best reached point so far).</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id060324091037421" role="tablecontent" >PS: Constriction Coefficient</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0608200910394225" role="tablecontent" >Defines the speed at which the particles/individuals move towards each other.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id060320091039425" role="tablecontent" >PS: Mutation Probability</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0603200910394272" role="tablecontent" >Defines the probability, that instead of moving a component of the particle towards the best point, it randomly chooses a new value from the valid range for that variable.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0603200910394292" role="tablecontent" >PS: Social Constant</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0603200910394284" role="tablecontent" >Sets the importance of the global best point between all particles/individuals.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503200217103891" role="tablecontent" ><variable id="enhstatusheader">Show Enhanced Solver Status</variable></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0523200917103832" role="tablecontent" ><variable id="enhstatusdesc">If <emph>enabled</emph>, an additional dialog is shown during the solving process which gives information about the current progress, the level of stagnation, the currently best known solution as well as the possibility, to stop or resume the solver.</variable></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503200417103780" role="tablecontent" ><variable id="swarmheader">Size of Swarm</variable></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503100917103723" role="tablecontent" ><variable id="swarmdesc">Defines the number of individuals to participate in the learning process. Each individual finds its own solutions and contributes to the overall knowledge.</variable></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0504200917103794" role="tablecontent" ><variable id="stagnationheader">Stagnation Limit</variable></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id050320091710377" role="tablecontent" ><variable id="stagnationdesc">If this number of individuals found solutions within a close range, the iteration is stopped and the best of these values is chosen as optimal.</variable></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503200917103762" role="tablecontent" ><variable id="stagtolheader">Stagnation Tolerance</variable></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503200917103834" role="tablecontent" ><variable id="stagtoldesc">Defines in what range solutions are considered “similar”.</variable></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503200917103740" role="tablecontent" ><variable id="acrheader">Use ACR Comparator</variable></paragraph>
+            </tablecell>
+            <tablecell>
+                <section id="acrdesc">
+                    <paragraph xml-lang="en-US" id="par_id0503200917103766" role="tablecontent" >If <emph>disabled</emph> (default), the BCH Comparator is used. It compares two individuals by first looking at their constraint violations and only if those are equal, it measures their current solution.</paragraph>
+                    <paragraph xml-lang="en-US" id="par_id0503200917103744" role="tablecontent" >If <emph>enabled</emph>, the ACR Comparator is used. It compares two individuals dependent on the current iteration and measures their goodness with knowledge about the libraries worst known solutions (in regard to their constraint violations).</paragraph>
+                </section>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503200917103792" role="tablecontent" >Use Random Starting Point</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503200917103790" role="tablecontent" >If <emph>enabled</emph>, the library is simply filled up with randomly chosen points.</paragraph>
+                <paragraph xml-lang="en-US" id="par_id0503200917103765" role="tablecontent" >If <emph>disabled</emph>, the currently present values (as given by the user) are inserted in the library as reference point.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503200917103732" role="tablecontent" ><variable id="variableguessheader">Variable Bounds Guessing</variable></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id050320091710378" role="tablecontent" ><variable id="variableguessdesc">If enabled (default), the algorithm tries to find variable bounds by looking at the starting values.</variable></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503200917103794" role="tablecontent" ><variable id="variablethresheader">Variable Bounds Threshold</variable></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503200917103710" role="tablecontent" ><variable id="variablethresdesc">When guessing variable bounds, this threshold specifies, how the initial values are shifted to build the bounds. For an example how these values are calculated, please refer to the Manual in the Wiki.</variable></paragraph>
+            </tablecell>
+        </tablerow>
+    </table>
+
+    <h2 id="par_id391589925078747"><variable id="SCOEvolutionaryAlgorithmh2"><link href="text/scalc/01/solver_options_algo.xhp#SCOEvolutionaryAlgorithmh2" name="SCO Evolutionary Algorithm">SCO Evolutionary Algorithm</link></variable></h2>
+    <paragraph role="paragraph" id="par_id681590165847694">Social Cognitive Optimization takes into account the human behavior of learning and sharing information. Each individual has access to a common library with knowledge shared between all individuals. </paragraph>
+    <table id="tab_id911589978200895">
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id41589962440066" role="tablehead" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#settingshead"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id11158996249067" role="tablehead" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#descriptionhead"/></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id481552963120045" role="tablecontent" xml-lang="en-US"  localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#noneghead" markup="ignore"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id341589063120047" role="tablecontent" xml-lang="en-US" localize="false" ><embedvar href="text/scalc/01/solver_options_algo.xhp#nonegdesc" markup="ignore"/></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503200917103771" role="tablecontent" >Learning Cycles</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0503200917103720" role="tablecontent" >Defines the number of iterations, the algorithm should take. In each iteration, all individuals make a guess on the best solution and share their knowledge.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id961589978701649" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#enhstatusheader"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id591589978701651" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#enhstatusdesc"/></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id0603200910401382" role="tablecontent">Size of Library</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph xml-lang="en-US" id="par_id060320091040136" role="tablecontent"> Defines the amount of information to store in the public library. Each individual stores knowledge there and asks for information.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id201589979438102" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#swarmheader"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id51589979438103" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#swarmdesc"/></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id21589979541011" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#stagnationheader"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id381589979541012" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#stagnationdesc"/></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id371589979941538" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#stagtolheader"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id991589979941539" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#stagtoldesc"/></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id921589980257791" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#acrheader"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <embed href="text/scalc/01/solver_options_algo.xhp#acrdesc"/>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id941589980611077" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#variableguessheader"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id561589980611078" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#variableguessdesc"/></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id741589980722689" role="tablecontent" xml-lang="en-US" ><embedvar href="text/scalc/01/solver_options_algo.xhp#variablethresheader"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id901589980722691" role="tablecontent" xml-lang="en-US" ><embedvar href="text/scalc/01/solver_options_algo.xhp#variablethresdesc"/></paragraph>
+            </tablecell>
+        </tablerow>
+    </table>
+    <h2 id="par_id671589925148891"><variable id="LinearSolverh2"><link href="text/scalc/01/solver_options_algo.xhp#LinearSolverh2" name="%PRODUCTNAME Linear Solver">%PRODUCTNAME Linear Solver and CoinMP Linear solver</link></variable></h2>
+    <table id="tab_id251589925837980">
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id731589925837981" role="tablehead" xml-lang="en-US"><variable id="settingshead">Setting</variable></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id611589925837982" role="tablehead" xml-lang="en-US"><variable id="descriptionhead">Description</variable></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id511589925837984" role="paragraph" xml-lang="en-US"><variable id="integerhead">Assume variables as integers</variable></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id11589925837985" role="paragraph" xml-lang="en-US"><variable id="integerdesc">Mark to force variables to be integers only.</variable></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id221589961756407" role="tablecontent" xml-lang="en-US" ><variable id="noneghead">Assume variables as non negative</variable></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id861589961756408" role="tablecontent" xml-lang="en-US" ><variable id="nonegdesc">Mark to force variables to be positive only.</variable></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id971589961907787" role="tablecontent" xml-lang="en-US" >Epsilon level</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id421589961907788" role="tablecontent" xml-lang="en-US" >Epsilon level. Valid values are in range 0 (very tight) to 3 (very loose). Epsilon is the tolerance for rounding values to zero.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id71589961998523" role="tablecontent" xml-lang="en-US" >Limit branch-and-bound depth</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id331589961998525" role="tablecontent" xml-lang="en-US" > Specifies the maximum branch-and-bound depth. A positive value means that the depth is absolute. A negative value means a relative branch-and-bound depth limit.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id91589962070327" role="tablecontent" xml-lang="en-US" ><variable id="timelimithead">Solver time limit</variable></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id331589962070329" role="tablecontent" xml-lang="en-US" ><variable id="timelimitdesc">Sets the maximum time for the algorithm to converge to a solution.</variable></paragraph>
+            </tablecell>
+        </tablerow>
+    </table>
+    <h2 id="par_id711589925192067"><variable id="SwarmNonLinearSolverh2"><link href="text/scalc/01/solver_options_algo.xhp#SwarmNonLinearSolverh2" name="%PRODUCTNAME Swarm Non-Linear Solver (Experimental)">%PRODUCTNAME Swarm Non-Linear Solver (Experimental)</link></variable></h2>
+    <table id="tab_id471589962440065">
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id91589962440066" role="tablehead" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#settingshead"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id111589962440067" role="tablehead" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#descriptionhead"/></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id581589962440069" role="paragraph" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#integerhead" markup="ignore"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id161589962440070" role="paragraph" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#integerdesc" markup="ignore"/></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id481589963120045" role="tablecontent" xml-lang="en-US"  localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#noneghead" markup="ignore"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id301589963120047" role="tablecontent" xml-lang="en-US" localize="false" ><embedvar href="text/scalc/01/solver_options_algo.xhp#nonegdesc" markup="ignore"/></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id101589963304145" role="tablecontent" xml-lang="en-US" localize="false" ><embedvar href="text/scalc/01/solver_options_algo.xhp#timelimithead" markup="ignore"/></paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id461589963304146" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/01/solver_options_algo.xhp#timelimitdesc" markup="ignore"/></paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id971589963431459" role="tablecontent" xml-lang="en-US" >Swarm algorithm</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id71589963431460" role="tablecontent" xml-lang="en-US" >Set the swarm algorithm. 0 for differential evolution and 1 for particle swarm optimization. Default is 0.</paragraph>
+            </tablecell>
+        </tablerow>
+    </table>
+    <section id="relatedtopics">
+        <embed href="text/scalc/01/solver_options.xhp#solveroptionsh1"/>
+        <embed href="text/scalc/01/solver.xhp#solver"/>
+        <paragraph role="paragraph" id="par_id271589981559367"><link href="https://wiki.documentfoundation.org/NLPSolver" name="wikipage">Wiki page on non-linear solvers and theirs algorithms</link></paragraph>
+        <paragraph role="paragraph" id="par_id211590163660314"><link href="http://lpsolve.sourceforge.net/">lp_solve reference guide in sourceforge.net</link></paragraph>
+    </section>
+</body>
+</helpdocument>
