@@ -54,12 +54,6 @@ $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,
     helpimg/de/zellvor.png \
 ))
 
-#TODO: Content for en-US is probably an error here; it should likely be part of the language-
-# independent helpcontent2/Package_html_media.mk instead:
-$(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,en-US,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media, \
-    screenshots/modules/swriter/ui/exportepub/en-US/EPubDialog.png \
-))
-
 $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,es,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media, \
     helpimg/es/feldalle.png \
     helpimg/es/feldcolo.png \
@@ -168,7 +162,6 @@ $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,
     helpimg/pt-BR/sheettabs.png \
     helpimg/pt-BR/swh00117.png \
     helpimg/pt-BR/zellvor.png \
-    screenshots/modules/swriter/ui/exportepub/pt-BR/EPubDialog.png \
 ))
 
 $(eval $(call gb_AllLangPackage_add_files_for_lang,helpcontent2_html_media_lang,sk,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION))/media, \
@@ -257,6 +250,7 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     screenshots/modules/simpress/ui/customanimationeffecttab/$(lang)/EffectTab.png \
     screenshots/modules/simpress/ui/customanimationtexttab/$(lang)/TextAnimationTab.png \
     screenshots/modules/simpress/ui/customanimationtimingtab/$(lang)/TimingTab.png \
+    screenshots/modules/swriter/ui/exportepub/$(lang)/EPubDialog.png \
     screenshots/cui/ui/colorpickerdialog/$(lang)/ColorPicker.png \
     screenshots/cui/ui/colorpage/$(lang)/ColorPage.png \
     screenshots/cui/ui/optviewpage/$(lang)/OptViewPage.png \
