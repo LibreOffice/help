@@ -361,6 +361,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/smath/ui/savedefaultsdialog/SaveDefaultsDialog.png \
     screenshots/modules/smath/ui/spacingdialog/SpacingDialog.png \
     screenshots/modules/swriter/ui/watermarkdialog/WatermarkDialog.png \
+    screenshots/writerperfect/ui/exportepub/EpubDialog.png \
     screenshots/svx/ui/compressgraphicdialog/CompressGraphicDialog.png \
     screenshots/miscellaneous/impressremote/ui/image01/impress_remote01.png \
     screenshots/miscellaneous/impressremote/ui/image02/impress_remote02.png \
