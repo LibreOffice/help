@@ -269,7 +269,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 					$$xhp \
 				|| exit \
 			; done && touch $@.good; } \
-			| sort -k3b -t\> -s \
+			| sort -k3b -s \
 			| awk 'NF' \
 			&& rm $@.good \
 		) > $@ \
