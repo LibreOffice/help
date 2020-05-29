@@ -1,3 +1,7 @@
+Latest download version
+
+PrismJS 1.20.0
+
 Using prism.js for Basic code highlight
 
 http://prismjs.com
@@ -37,3 +41,13 @@ Add class 'language-visual-basic' and 'line-numbers' to <code> as in
     <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
    <pre><code class="language-visual-basic line-numbers"><xsl:apply-templates /></code></pre></div>
 </xsl:template>
+
+Interference with a11y-toggle.js
+
+[aria-hidden='true'] interferes with prism line-numbers plugin.
+
+Solution is to add to default.css the following
+
+.line-numbers [aria-hidden='true']{
+    display:block;
+}
