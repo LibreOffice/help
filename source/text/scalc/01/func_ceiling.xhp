@@ -28,7 +28,7 @@
         <paragraph role="paragraph" id="par_id601586207136514">For a positive number and a positive significance value, the function rounds up (away from zero). For a negative number and a negative significance value, the direction of rounding is determined by the value of a mode parameter. The function returns an error if the number and significance values have opposite signs.</paragraph>
         <warning id="par_id3163792">If the spreadsheet is exported to Microsoft Excel, the CEILING function is exported as the equivalent CEILING.MATH function that has existed since Excel 2013. If you plan to use the spreadsheet with earlier Excel versions, use either CEILING.PRECISE that has existed since Excel 2010, or CEILING.XCL that is exported as the CEILING function compatible with all Excel versions.</warning>
         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-        <paragraph id="par_id3153454" role="code" xml-lang="en-US">CEILING(Number[; Significance[; Mode]])</paragraph>
+        <paragraph id="par_id3153454" role="code" xml-lang="en-US">CEILING(Number [; Significance [; Mode]])</paragraph>
         <section id="argnumber">
             <paragraph id="par_id3153467" role="paragraph" xml-lang="en-US"><emph>Number</emph> is the number that is to be rounded, or a reference to a cell containing the number.</paragraph>
         </section>
@@ -36,10 +36,10 @@
         <paragraph id="par_id3155020" role="paragraph" xml-lang="en-US"><emph>Mode</emph> (optional) is a number, or a reference to a cell containing a number. The function only uses <emph>Mode</emph> if both <emph>Number</emph> and <emph>Significance</emph> are negative. Then if <emph>Mode</emph> is given and not equal to zero, numbers are rounded down (away from zero); if <emph>Mode</emph> is equal to zero or not given, negative numbers are rounded up (towards zero).</paragraph>
         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
         <paragraph role="paragraph" id="par_id281586208138400"><input>=CEILING(3.45)</input> returns 4.</paragraph>
-        <paragraph role="paragraph" id="par_id921586208142416"><input>=CEILING(3.45, 3)</input> returns 6.</paragraph>
+        <paragraph role="paragraph" id="par_id921586208142416"><input>=CEILING(3.45; 3)</input> returns 6.</paragraph>
         <paragraph role="paragraph" id="par_id921586208146984"><input>=CEILING(-1.234)</input> returns -1.</paragraph>
-        <paragraph role="paragraph" id="par_id491586208152183"><input>=CEILING(-45.67, -2, 0)</input> returns -44.</paragraph>
-        <paragraph role="paragraph" id="par_id291586208158119"><input>=CEILING(-45.67, -2, 1)</input> returns -46.</paragraph>
+        <paragraph role="paragraph" id="par_id491586208152183"><input>=CEILING(-45.67; -2; 0)</input> returns -44.</paragraph>
+        <paragraph role="paragraph" id="par_id291586208158119"><input>=CEILING(-45.67; -2; 1)</input> returns -46.</paragraph>
         <comment>see also FLOOR, EVEN, ODD, MROUND, INT, TRUNC, ROUND, ROUNDDOWN, ROUNDUP</comment>
     </section>
 
@@ -56,12 +56,12 @@
         <note id="par_id631586642933797">This function calculates identical results to the <link href="#Section312" name="isoceiling">ISO.CEILING</link> function.</note>
         <embed href="text/scalc/00/avail_release.xhp#4.3"/>
         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-        <paragraph id="par_id2953454" role="code" xml-lang="en-US">CEILING.PRECISE(Number[; Significance])</paragraph>
+        <paragraph id="par_id2953454" role="code" xml-lang="en-US">CEILING.PRECISE(Number [; Significance])</paragraph>
         <embed href="text/scalc/01/func_ceiling.xhp#argnumber"/>
         <paragraph id="par_id2955000" role="paragraph" xml-lang="en-US"><emph>Significance</emph> (optional) is the value, or a reference to a cell containing the value, to whose multiple <emph>Number</emph> is to be rounded. It defaults to 1.</paragraph>
         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
         <paragraph role="paragraph" id="par_id201586213398634"><input>=CEILING.PRECISE(3.45)</input> returns 4.</paragraph>
-        <paragraph role="paragraph" id="par_id651586213406243"><input>=CEILING.PRECISE(-45.67,2)</input> returns -44.</paragraph>
+        <paragraph role="paragraph" id="par_id651586213406243"><input>=CEILING.PRECISE(-45.67; 2)</input> returns -44.</paragraph>
         <comment>see also FLOOR, EVEN, ODD, MROUND, INT, TRUNC, ROUND, ROUNDDOWN, ROUNDUP</comment>
     </section>
 
@@ -74,18 +74,18 @@
         <paragraph role="paragraph" id="par_id81516997342088" xml-lang="en-US"><ahelp hid="HID_FUNC_CEIL_MATH">Rounds a number to the nearest multiple of a significance value.</ahelp></paragraph>
         <paragraph role="paragraph" id="par_id911586642319078">For a positive number the function rounds up (away from zero). For a negative number, the direction of rounding is determined by the value of a mode parameter. The sign of the significance value is ignored.</paragraph>
         <embed href="text/scalc/00/avail_release.xhp#5.0"/>
-      <warning id="par_id291516998575663">This function exists for interoperability with Microsoft Excel 2013 or newer.</warning>  
+      <warning id="par_id291516998575663">This function exists for interoperability with Microsoft Excel 2013 or newer.</warning>
       <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-        <paragraph role="code" id="par_id841516997669932" xml-lang="en-US">CEILING.MATH(Number[; Significance[; Mode]])</paragraph>
+        <paragraph role="code" id="par_id841516997669932" xml-lang="en-US">CEILING.MATH(Number [; Significance [; Mode]])</paragraph>
         <embed href="text/scalc/01/func_ceiling.xhp#argnumber"/>
         <paragraph role="paragraph" id="par_id491516997725772" xml-lang="en-US"><emph>Significance</emph> (optional) is the value, or a reference to a cell containing the value, to whose multiple <emph>Number</emph> is to be rounded. It defaults to 1.</paragraph>
         <paragraph role="paragraph" id="par_id451516997742909" xml-lang="en-US"><emph>Mode</emph> (optional) is a number, or a reference to a cell containing a number. If <emph>Mode</emph> is given and not equal to zero, a negative <emph>Number</emph> is rounded down (away from zero). If <emph>Mode</emph> is equal to zero or is not given, a negative <emph>Number</emph> is rounded up (towards zero).</paragraph>
         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
         <paragraph role="paragraph" id="par_id331586208590009"><input>=CEILING.MATH(3.45)</input> returns 4.</paragraph>
-        <paragraph role="paragraph" id="par_id481586208595809"><input>=CEILING.MATH(3.45,-3)</input> returns 6.</paragraph>
+        <paragraph role="paragraph" id="par_id481586208595809"><input>=CEILING.MATH(3.45; -3)</input> returns 6.</paragraph>
         <paragraph role="paragraph" id="par_id641586208600665"><input>=CEILING.MATH(-1.234)</input> returns -1.</paragraph>
-        <paragraph role="paragraph" id="par_id151586208604536"><input>=CEILING.MATH(-45.67,-2,0)</input> returns -44.</paragraph>
-        <paragraph role="paragraph" id="par_id971586208611345"><input>=CEILING.MATH(-45.67,+2, 1)</input> returns -46.</paragraph>
+        <paragraph role="paragraph" id="par_id151586208604536"><input>=CEILING.MATH(-45.67; -2; 0)</input> returns -44.</paragraph>
+        <paragraph role="paragraph" id="par_id971586208611345"><input>=CEILING.MATH(-45.67; +2; 1)</input> returns -46.</paragraph>
     </section>
     <section id="ceilingxcl">
 <bookmark xml-lang="en-US" branch="index" id="bm_id921516998608939">
@@ -103,8 +103,8 @@
         <paragraph role="paragraph" id="par_id151516998882622" xml-lang="en-US"><emph>Significance</emph> is the value, or a reference to a cell containing the value, to whose multiple <emph>Number</emph> is to be rounded.</paragraph>
         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
         <paragraph role="paragraph" id="par_id421586214128242"><input>=CEILING.XCL(3.45,2)</input> returns 4.</paragraph>
-        <paragraph role="paragraph" id="par_id651586214132234"><input>=CEILING.XCL(-45.67,2)</input> returns -44.</paragraph>
-        <paragraph role="paragraph" id="par_id811586214136666"><input>=CEILING.XCL(-45.67,-2)</input> returns -46.</paragraph>
+        <paragraph role="paragraph" id="par_id651586214132234"><input>=CEILING.XCL(-45.67; 2)</input> returns -44.</paragraph>
+        <paragraph role="paragraph" id="par_id811586214136666"><input>=CEILING.XCL(-45.67; -2)</input> returns -46.</paragraph>
     </section>
     <section id="isoceiling">
 <bookmark xml-lang="en-US" branch="index" id="bm_id8952518">
@@ -119,12 +119,12 @@
         <paragraph role="paragraph" id="par_id101586214229587">For a positive number the function rounds up (away from zero). For a negative number, the function rounds up (towards zero). The sign of the significance value is ignored.</paragraph>
         <note id="par_id821586214265060">This function calculates identical results to the <link href="#Section311" name="ceilingprecise">CEILING.PRECISE</link> function.</note>
         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-        <paragraph id="par_id8953454" role="code" xml-lang="en-US">ISO.CEILING(Number[; Significance])</paragraph>
+        <paragraph id="par_id8953454" role="code" xml-lang="en-US">ISO.CEILING(Number [; Significance])</paragraph>
         <embed href="text/scalc/01/func_ceiling.xhp#argnumber"/>
         <paragraph id="par_id8955000" role="paragraph" xml-lang="en-US"><emph>Significance</emph> (optional) is the value, or a reference to a cell containing the value, to whose multiple <emph>Number</emph> is to be rounded. It defaults to 1.</paragraph>
         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
         <paragraph role="paragraph" id="par_id801586214431463"><input>=ISO.CEILING(3.45)</input> returns 4.</paragraph>
-        <paragraph role="paragraph" id="par_id181586214438808"><input>=ISO.CEILING(-45.67,2)</input> returns -44.</paragraph>
+        <paragraph role="paragraph" id="par_id181586214438808"><input>=ISO.CEILING(-45.67; 2)</input> returns -44.</paragraph>
         <comment>see also FLOOR, EVEN, ODD, MROUND, INT, TRUNC, ROUND, ROUNDDOWN, ROUNDUP</comment>
     </section>
     <section id="relatedtopics">
