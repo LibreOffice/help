@@ -164,30 +164,30 @@
         <meta itemprop="datePublished" content="2017"/>
         <meta itemprop="headline" content="{$titleL10N}"/>
     </xsl:if>
-    <div id="TopLeftHeader">
-        <header>
-            <div class="logo-container">
-                <a class="logo" href="{$lang}/text/shared/05/new_help.html">
-                    <div class="symbol"></div>
-                    <p><xsl:value-of select="$ui_logo"/></p>
-                </a>
-            </div>
-        </header>
-        <div class="modules">
-            <button type="button" data-a11y-toggle="modules-nav" id="modules" onclick="setupModules('{$lang}');">
-                <xsl:value-of select="$ui_module"/>
-            </button>
-	    <nav id="modules-nav"/><!-- is filled in via setupModules() on demand -->
-        </div>
-        <xsl:if test="$online">
-            <div class="lang">
-                <button type="button" data-a11y-toggle="langs-nav" id="langs" onclick="setupLanguages('{$htmlpage}');">
-                    <xsl:value-of select="$ui_language"/>
+    <header id="TopLeftHeader">
+        <a class="symbol" href="{$lang}/text/shared/05/new_help.html">
+            <div></div>
+        </a>
+        <a class="logo" href="{$lang}/text/shared/05/new_help.html">
+            <p><xsl:value-of select="$ui_logo"/></p>
+        </a>
+        <div class="dropdowns">
+            <div class="modules">
+                <button type="button" data-a11y-toggle="modules-nav" id="modules" onclick="setupModules('{$lang}');">
+                    <xsl:value-of select="$ui_module"/>
                 </button>
-                <nav id="langs-nav"/><!-- is filled in via setupLanguages() on demand -->
+            <nav id="modules-nav"/><!-- is filled in via setupModules() on demand -->
             </div>
-        </xsl:if>
-    </div>
+            <xsl:if test="$online">
+                <div class="lang">
+                    <button type="button" data-a11y-toggle="langs-nav" id="langs" onclick="setupLanguages('{$htmlpage}');">
+                        <xsl:value-of select="$ui_language"/>
+                    </button>
+                    <nav id="langs-nav"/><!-- is filled in via setupLanguages() on demand -->
+                </div>
+            </xsl:if>
+        </div>
+    </header>
     <aside class="rightside">
         <input id="accordion-1" name="accordion-menu" type="checkbox"/>
         <label for="accordion-1"><xsl:value-of select="$ui_contents"/></label>
