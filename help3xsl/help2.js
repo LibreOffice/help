@@ -73,8 +73,8 @@ function moduleColor (module) {
         case "WRITER" : {color="#0369A3"; break;}
         case "CALC"   : {color="#43C330"; break;}
         case "CHART"  : {color="darkcyan"; break;}
-        case "DRAW"   : {color="#A33E03"; break;}
-        case "IMPRESS": {color="#C99C00"; break;}
+        case "IMPRESS": {color="#A33E03"; break;}
+        case "DRAW"   : {color="#C99C00"; break;}
         case "BASE"   : {color="#8E03A3"; break;}
         case "BASIC"  : {color="black"; break;}
         case "MATH"   : {color="darkslategray"; break;}
@@ -88,7 +88,10 @@ function moduleColor (module) {
     for(i = 0; i < cols.length; i++) {cols[i].style.backgroundColor = color;};
     for (j of [1,2,3,4,5,6]) {
         var hh = document.getElementsByTagName("H" + j);
-        for(i = 0; i < hh.length; i++) {hh[i].style.color = color;}
+        for(i = 0; i < hh.length; i++) {
+            hh[i].style.color = color;
+            hh[i].style.borderBottomColor = color;
+        }
     }
 }
 
