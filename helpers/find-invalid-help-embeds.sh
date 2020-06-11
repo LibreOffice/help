@@ -11,7 +11,7 @@
 # No parameters are used.
 
 # Example output of this git grep:
-# source/text/sbasic/shared/03010000.xhp:  <embed href="text/sbasic/shared/03010300.xhp#farbe"/>
+# source/text/sbasic/shared/03010000.xhp:  <embed href="text/sbasic/shared/03010300.xhp#color"/>
 lines=$(git grep "embed href=" source/);
 
 while read nextline ; do
