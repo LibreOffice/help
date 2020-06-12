@@ -26,6 +26,7 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 		$(foreach module,$(html_TEXT_MODULES),filelists/html-help/$(module)/$(lang).filelist) \
 		$(lang)/langnames.js \
 		$(if $(HELP_OMINDEX_PAGE),$(lang)/xap_tpl) \
+		$(lang)/noscript.html \
 	) \
 ))
 
@@ -82,6 +83,33 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/xap_tpl : \
 	)
 
 endif
+
+# Create noscript.html, when browser has no javascript enabled
+
+define html_gen_noscript_dep
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/noscript.html : \
+	$(if $(filter en-US,$(1)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(1)))/helpcontent2/source/text/shared/help/browserhelp.xhp
+
+endef
+
+$(eval $(foreach lang,$(gb_HELP_LANGS),$(call html_gen_noscript_dep,$(lang))))
+
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/noscript.html : \
+		$(SRCDIR)/helpcontent2/help3xsl/noscript.xsl \
+		$(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
+		$(call gb_ExternalExecutable_get_dependencies,xsltproc) \
+		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
+	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),NJS,1)
+	$(call gb_Helper_abbreviate_dirs,\
+		$(call gb_ExternalExecutable_get_command,xsltproc) \
+		--stringparam lang $* \
+		--stringparam productname "$(PRODUCTNAME)" \
+		--stringparam productversion "$(PRODUCTVERSION)" \
+		-o $@ \
+		$(SRCDIR)/helpcontent2/help3xsl/noscript.xsl \
+		$(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*))/helpcontent2/source/text/shared/help/browserhelp.xhp \
+	)
+
 
 # set of installed languages - has to be language independent
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/languages.js : \
@@ -141,6 +169,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.js :
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 		$(SRCDIR)/helpcontent2/help3xsl/get_tree.xsl \
+		$(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
 		$(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	$(call gb_Helper_abbreviate_dirs,\
@@ -252,6 +281,7 @@ $(eval $(foreach module,$(html_BMARK_MODULES),$(call html_gen_bookmarks_deps,$(s
 # command, if any xsltproc invocation failed):
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 		$(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
+		$(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
 		$(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	$(call gb_Helper_abbreviate_dirs,\
