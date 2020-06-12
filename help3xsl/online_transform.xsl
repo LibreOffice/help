@@ -134,6 +134,7 @@
 <html lang="{$lang}">
     <head>
         <base href="{$install}"/>
+        <noscript><meta http-equiv="refresh" content="0; URL={$install}{$lang}/noscript.html"/></noscript>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <xsl:if test="$online">
             <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org"/>
@@ -161,7 +162,7 @@
         <!-- help2.js checks, if meta elements exist in the body -->
         <meta itemprop="version" content="{$productversion}"/>
         <meta itemprop="inLanguage" content="{$lang}"/>
-        <meta itemprop="datePublished" content="2017"/>
+        <meta itemprop="datePublished" content="2020"/>
         <meta itemprop="headline" content="{$titleL10N}"/>
     </xsl:if>
     <header id="TopLeftHeader">

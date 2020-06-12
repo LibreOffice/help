@@ -13,22 +13,13 @@ Usage:
 xsltproc get_tree.xsl <file.tree>
 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:include href="brand.xsl"/>
 <xsl:param name="lang"/>
 <xsl:param name="local"/>
 <xsl:param name="productversion"/>
 <xsl:param name="productname"/>
 <xsl:param name="module"/>
 <xsl:output indent="no" method="text"/>
-<!--
-############################
-# Variables and Parameters #
-############################
-//-->
-<!-- Product brand variables used in the help files -->
-<xsl:variable name="brand1" select="'$[officename]'"/>
-<xsl:variable name="brand2" select="'$[officeversion]'"/>
-<xsl:variable name="brand3" select="'%PRODUCTNAME'"/>
-<xsl:variable name="brand4" select="'%PRODUCTVERSION'"/>
 
 <!--
 #############
@@ -82,60 +73,6 @@ xsltproc get_tree.xsl <file.tree>
                 <xsl:with-param name="string" select="$newstr"/>
             </xsl:call-template>
         </xsl:when>
-        <xsl:otherwise>
-            <xsl:value-of select="$string"/>
-        </xsl:otherwise>
-    </xsl:choose>
-</xsl:template>
-
-<xsl:template name="brand" >
-    <xsl:param name="string"/>
-    <xsl:choose>
-
-        <xsl:when test="contains($string,$brand1)">
-            <xsl:variable name="newstr">
-                <xsl:value-of select="substring-before($string,$brand1)"/>
-                <xsl:value-of select="$productname"/>
-                <xsl:value-of select="substring-after($string,$brand1)"/>
-            </xsl:variable>
-            <xsl:call-template name="brand">
-                <xsl:with-param name="string" select="$newstr"/>
-            </xsl:call-template>
-        </xsl:when>
-
-        <xsl:when test="contains($string,$brand2)">
-            <xsl:variable name="newstr">
-                <xsl:value-of select="substring-before($string,$brand2)"/>
-                <xsl:value-of select="$pversion"/>
-                <xsl:value-of select="substring-after($string,$brand2)"/>
-            </xsl:variable>
-            <xsl:call-template name="brand">
-                <xsl:with-param name="string" select="$newstr"/>
-            </xsl:call-template>
-        </xsl:when>
-
-        <xsl:when test="contains($string,$brand3)">
-            <xsl:variable name="newstr">
-                <xsl:value-of select="substring-before($string,$brand3)"/>
-                <xsl:value-of select="$productname"/>
-                <xsl:value-of select="substring-after($string,$brand3)"/>
-            </xsl:variable>
-            <xsl:call-template name="brand">
-                <xsl:with-param name="string" select="$newstr"/>
-            </xsl:call-template>
-        </xsl:when>
-
-        <xsl:when test="contains($string,$brand4)">
-            <xsl:variable name="newstr">
-                <xsl:value-of select="substring-before($string,$brand4)"/>
-                <xsl:value-of select="$pversion"/>
-                <xsl:value-of select="substring-after($string,$brand4)"/>
-            </xsl:variable>
-            <xsl:call-template name="brand">
-                <xsl:with-param name="string" select="$newstr"/>
-            </xsl:call-template>
-        </xsl:when>
-
         <xsl:otherwise>
             <xsl:value-of select="$string"/>
         </xsl:otherwise>
