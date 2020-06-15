@@ -232,9 +232,12 @@ if (document.body.getElementsByTagName('meta')) {
 }
 
 var module = getParameterByName("DbPAR");
-var helpID = getParameterByName("HID");
 fixURL(module,system);
 moduleColor(module);
+var helpID = getParameterByName("HID");
+// only used in xhp pages with <help-id-missing/> tags
+var missingElement = document.getElementById("bm_HID2");
+if(missingElement != null){missingElement.innerHTML = helpID;}
 
 function debugInfo(dbg) {
     if (dbg == null) return;
