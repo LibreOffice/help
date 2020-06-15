@@ -812,7 +812,9 @@
 </xsl:template>
 
 <!-- In case of missing help files -->
-<xsl:template match="help-id-missing"><xsl:value-of select="$Id"/></xsl:template>
+<xsl:template match="help-id-missing">
+<span id="bm_HID2"></span>
+</xsl:template>
 
 <!--
 ###################
