@@ -1,0 +1,865 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="callingcalcfunction" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Calling Calc Functions in Macros</title>
+    <filename>/text/sbasic/shared/calc_functions.xhp</filename>
+  </topic>
+</meta>
+<body>
+<bookmark xml-lang="en-US" branch="index" id="bm_id291592361063458">
+    <bookmark_value>calling Calc function;macros</bookmark_value>
+    <bookmark_value>macros;calling Calc function</bookmark_value>
+    <bookmark_value>createUNOservice function;calling Calc function</bookmark_value>
+    <bookmark_value>API;addin.Analysis</bookmark_value>
+</bookmark>
+<h1 id="hd_id91592352089011"><variable id="CallingCalcFunctionsh1"><link href="text/sbasic/shared/calc_functions.xhp" name="Calling Calc Functions">Calling Calc Functions</link></variable></h1>
+<paragraph role="paragraph" id="par_id1001592359117987">In addition to the native BASIC functions, you can call Calc functions in your macros and scripts.</paragraph>
+<h2 id="hd_id251592352174921">Calling Internal Calc functions in Basic</h2>
+  <paragraph role="paragraph" id="par_id731592352332694">Use the <literal>CreateUNOService</literal> function to access the <literal>com.sun.star.sheet.FunctionAccess</literal> service.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<embed href="text/sbasic/shared/03131600.xhp#calcinternalfunctions"/>
+<h2 id="hd_id561592352225441">Calling Add-In Calc Functions in BASIC</h2>
+<paragraph role="paragraph" id="par_id261592359338681">The Calc Add-In functions are in service <literal>com.sun.star.sheet.addin.Analysis</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<bascode>
+<paragraph role="bascode" id="bas_id421592358343633">REM Example calling Addin function SQRTPI</paragraph>
+<paragraph role="bascode" id="bas_id731592358351744">Function MySQRTPI(arg as double) as double</paragraph>
+<paragraph role="bascode" id="bas_id731592358361242">   Dim oService as Object</paragraph>
+<paragraph role="bascode" id="bas_id971592358368906">   oService = createUNOService("com.sun.star.sheet.addin.Analysis")</paragraph>
+<paragraph role="bascode" id="bas_id211592358377026">   MySQRTPI = oService.getSqrtPi(arg)</paragraph>
+<paragraph role="bascode" id="bas_id451592358385346">End Function</paragraph>
+</bascode>
+
+<table id="tab_id971592356505781">
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id511592356505781" role="tablehead" xml-lang="en-US" localize="false">Calc Function name</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id471592356505782" role="tablehead" xml-lang="en-US" localize="false">UNO service  name</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id721592355432992" role="tablecontent" xml-lang="en-US" >ACCRINT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id391592355432992" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getAccrint</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id311592355461144" role="tablecontent" xml-lang="en-US" >ACCRINTM</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id861592355461144" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getAccrintm</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id731592355465193" role="tablecontent" xml-lang="en-US" >AMORDEGRC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id261592355465193" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getAmordegrc</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id361592355471024" role="tablecontent" xml-lang="en-US" >AMORLINC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id211592355471024" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getAmorlinc</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id11592355475920" role="tablecontent" xml-lang="en-US" >BESSELI</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id461592355475920" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getBesseli</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id841592355481243" role="tablecontent" xml-lang="en-US" >BESSELJ</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id641592355481243" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getBesselj</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id781592355488489" role="tablecontent" xml-lang="en-US" >BESSELK</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id691592355488489" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getBesselk</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id751592355494321" role="tablecontent" xml-lang="en-US" >BESSELY</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id561592355494321" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getBessely</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id661592355500416" role="tablecontent" xml-lang="en-US" >BIN2DEC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id621592355500417" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getBin2Dec</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id331592355505769" role="tablecontent" xml-lang="en-US" >BIN2HEX</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id421592355505769" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getBin2Hex</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id691592355510409" role="tablecontent" xml-lang="en-US" >BIN2OCT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id401592355510409" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getBin2Oct</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id1001592355515562" role="tablecontent" xml-lang="en-US" >COMPLEX</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id821592355515562" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getComplex</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id661592355519833" role="tablecontent" xml-lang="en-US" >CONVERT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id421592355519833" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getConvert</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id501592355525049" role="tablecontent" xml-lang="en-US" >COUPDAYBS</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id771592355525049" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getCoupdaybs</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id251592355529338" role="tablecontent" xml-lang="en-US" >COUPDAYS</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id311592355529338" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getCoupdays</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id681592355545522" role="tablecontent" xml-lang="en-US" >COUPDAYSNC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id331592355545522" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getCoupdaysnc</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id151592355550475" role="tablecontent" xml-lang="en-US" >COUPNCD</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id351592355550475" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getCoupncd</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id291592355554258" role="tablecontent" xml-lang="en-US" >COUPNUM</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id151592355554258" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getCoupnum</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id361592355563155" role="tablecontent" xml-lang="en-US" >COUPPCD</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id1001592355563155" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getCouppcd</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id591592355570035" role="tablecontent" xml-lang="en-US" >CUMIPMT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id91592355570035" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getCumipmt</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id681592355573971" role="tablecontent" xml-lang="en-US" >CUMPRINC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id161592355573971" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getCumprinc</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id591592355577411" role="tablecontent" xml-lang="en-US" >DEC2BIN</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id781592355577411" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getDec2Bin</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id651592355580939" role="tablecontent" xml-lang="en-US" >DEC2HEX</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id231592355580939" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getDec2Hex</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id981592355585026" role="tablecontent" xml-lang="en-US" >DEC2OCT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id351592355585026" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getDec2Oct</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id911592355588619" role="tablecontent" xml-lang="en-US" >DELTA</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id771592355588619" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getDelta</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id931592355591947" role="tablecontent" xml-lang="en-US" >DISC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id921592355591947" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getDisc</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id281592355595627" role="tablecontent" xml-lang="en-US" >DOLLARDE</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id41592355595627" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getDollarde</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id731592355599218" role="tablecontent" xml-lang="en-US" >DOLLARFR</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id181592355599218" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getDollarfr</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id451592355602770" role="tablecontent" xml-lang="en-US" >DURATION</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id251592355602770" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getDuration</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id261592355606039" role="tablecontent" xml-lang="en-US" >EDATE</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id111592355606039" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getEdate</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id221592355620084" role="tablecontent" xml-lang="en-US" >EFFECT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id221592355620084" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getEffect</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id721592355623964" role="tablecontent" xml-lang="en-US" >EOMONTH</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id741592355623964" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getEomonth</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id581592355627044" role="tablecontent" xml-lang="en-US" >ERF</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id841592355627044" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getErf</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id451592355631036" role="tablecontent" xml-lang="en-US" >ERFC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id701592355631036" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getErfc</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id851592355634629" role="tablecontent" xml-lang="en-US" >FACTDOUBLE</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id451592355634629" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getFactdouble</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id731592355637900" role="tablecontent" xml-lang="en-US" >FVSCHEDULE</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id211592355637900" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getFvschedule</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id431592355641084" role="tablecontent" xml-lang="en-US" >GCD</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id601592355641084" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getGcd</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id461592355646844" role="tablecontent" xml-lang="en-US" >GESTEP</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id571592355646845" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getGestep</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id471592355650772" role="tablecontent" xml-lang="en-US" >HEX2BIN</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id171592355650772" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getHex2Bin</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id91592355654156" role="tablecontent" xml-lang="en-US" >HEX2DEC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id391592355654156" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getHex2Dec</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id401592355657388" role="tablecontent" xml-lang="en-US" >HEX2OCT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id771592355657388" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getHex2Oct</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id331592355660565" role="tablecontent" xml-lang="en-US" >IMABS</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id241592355660565" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImabs</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id401592355663828" role="tablecontent" xml-lang="en-US" >IMAGINARY</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id451592355663828" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImaginary</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id571592355667021" role="tablecontent" xml-lang="en-US" >IMARGUMENT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id61592355667021" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImargument</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id921592355670053" role="tablecontent" xml-lang="en-US" >IMCONJUGATE</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id141592355670053" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImconjugate</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id171592355673117" role="tablecontent" xml-lang="en-US" >IMCOS</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id21592355673117" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImcos</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id701592355676365" role="tablecontent" xml-lang="en-US" >IMCOSH</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id451592355676365" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImcosh</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id601592355679652" role="tablecontent" xml-lang="en-US" >IMCOT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id81592355679652" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImcot</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id41592355682724" role="tablecontent" xml-lang="en-US" >IMCSC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id601592355682724" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImcsc</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id61592355685899" role="tablecontent" xml-lang="en-US" >IMCSCH</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id201592355685899" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImcsch</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id51592355688940" role="tablecontent" xml-lang="en-US" >IMDIV</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id51592355688940" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImdiv</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id611592355692012" role="tablecontent" xml-lang="en-US" >IMEXP</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id891592355692012" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImexp</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id381592355695069" role="tablecontent" xml-lang="en-US" >IMLN</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id841592355695069" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImln</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id231592355698892" role="tablecontent" xml-lang="en-US" >IMLOG10</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id1001592355698892" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImlog10</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id581592355702180" role="tablecontent" xml-lang="en-US" >IMLOG2</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id711592355702180" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImlog2</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id341592355705773" role="tablecontent" xml-lang="en-US" >IMPOWER</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id101592355705773" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImpower</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id301592355708742" role="tablecontent" xml-lang="en-US" >IMPRODUCT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id781592355708742" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImproduct</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id621592355711845" role="tablecontent" xml-lang="en-US" >IMREAL</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id701592355711845" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImreal</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id821592355714852" role="tablecontent" xml-lang="en-US" >IMSEC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id111592355714853" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImsec</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id871592355718533" role="tablecontent" xml-lang="en-US" >IMSECH</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id311592355718534" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImsech</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id871592355721957" role="tablecontent" xml-lang="en-US" >Imsin</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id271592355721957" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImsin</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id681592355725045" role="tablecontent" xml-lang="en-US" >IMSINH</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id871592355725046" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImsinh</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id801592355728022" role="tablecontent" xml-lang="en-US" >IMSQRT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id381592355728022" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImsqrt</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id851592355731069" role="tablecontent" xml-lang="en-US" >IMSUB</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id21592355731069" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImsub</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id131592355734118" role="tablecontent" xml-lang="en-US" >IMSUM</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id741592355734118" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImsum</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id761592355737109" role="tablecontent" xml-lang="en-US" >IMTAN</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id591592355737109" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImtan</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id91592355740301" role="tablecontent" xml-lang="en-US" >INTRATE</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id41592355740301" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getIntrate</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id561592355743397" role="tablecontent" xml-lang="en-US" >ISEVEN</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id781592355743397" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getIseven</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id481592355746477" role="tablecontent" xml-lang="en-US" >ISODD</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id91592355746477" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getIsodd</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id621592355749526" role="tablecontent" xml-lang="en-US" >LCM</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id801592355749526" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getLcm</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id381592355752413" role="tablecontent" xml-lang="en-US" >MDURATION</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id431592355752413" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getMduration</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id161592355755349" role="tablecontent" xml-lang="en-US" >MROUND</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id841592355755349" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getMround</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id601592355758534" role="tablecontent" xml-lang="en-US" >MULTINOMIAL</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id851592355758534" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getMultinomial</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id241592355761822" role="tablecontent" xml-lang="en-US" >NETWORKDAYS</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id71592355761822" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getNetworkdays</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id121592355764950" role="tablecontent" xml-lang="en-US" >NOMINAL</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id681592355764950" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getNominal</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id161592355767958" role="tablecontent" xml-lang="en-US" >OCT2BIN</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id131592355767959" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getOct2Bin</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id401592355770926" role="tablecontent" xml-lang="en-US" >OCT2DEC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id591592355770926" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getOct2Dec</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id981592355773838" role="tablecontent" xml-lang="en-US" >OCT2HEX</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id131592355773838" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getOct2Hex</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id51592355776830" role="tablecontent" xml-lang="en-US" >ODDFPRICE</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id501592355776830" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getOddfprice</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id581592355779822" role="tablecontent" xml-lang="en-US" >ODDFYIELD</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id761592355779822" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getOddfyield</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id251592355782710" role="tablecontent" xml-lang="en-US" >ODDLPRICE</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id151592355782710" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getOddlprice</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id331592355785647" role="tablecontent" xml-lang="en-US" >ODDLYIELD</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id691592355785647" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getOddlyield</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id471592355788791" role="tablecontent" xml-lang="en-US" >PRICE</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id151592355788791" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getPrice</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id141592355791678" role="tablecontent" xml-lang="en-US" >PRICEDISC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id691592355791678" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getPricedisc</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id341592355794671" role="tablecontent" xml-lang="en-US" >PRICEMAT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id461592355794671" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getPricemat</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id681592355799718" role="tablecontent" xml-lang="en-US" >QUOTIENT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id411592355799718" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getQuotient</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id831592355803591" role="tablecontent" xml-lang="en-US" >RANDBETWEEN</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id661592355803591" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getRandbetween</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id701592355807287" role="tablecontent" xml-lang="en-US" >RECEIVED</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id721592355807287" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getReceived</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id231592355810343" role="tablecontent" xml-lang="en-US" >SERIESSUM</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id951592355810343" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getSeriessum</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id111592355816454" role="tablecontent" xml-lang="en-US" >SQRTPI</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id231592355816454" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getSqrtpi</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id521592355819614" role="tablecontent" xml-lang="en-US" >TBILLEQ</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id601592355819614" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getTbilleq</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id351592355822703" role="tablecontent" xml-lang="en-US" >TBILLPRICE</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id491592355822703" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getTbillprice</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id921592355825694" role="tablecontent" xml-lang="en-US" >TBILLYIELD</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id971592355825695" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getTbillyield</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id751592355828599" role="tablecontent" xml-lang="en-US" >WEEKNUM</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id201592355828599" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getWeeknum</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id851592355831471" role="tablecontent" xml-lang="en-US" >WORKDAY</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id451592355831472" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getWorkday</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id291592355834479" role="tablecontent" xml-lang="en-US" >XIRR</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id351592355834479" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getXirr</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id521592355837464" role="tablecontent" xml-lang="en-US" >XNPV</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id551592355837464" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getXnpv</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id201592355840359" role="tablecontent" xml-lang="en-US" >YEARFRAC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id101592355840359" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getYearfrac</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id281592355843559" role="tablecontent" xml-lang="en-US" >YIELD</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id741592355843559" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getYield</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id341592355846704" role="tablecontent" xml-lang="en-US" >YIELDDISC</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id651592355846704" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getYielddisc</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id181592355849664" role="tablecontent" xml-lang="en-US" >YIELDMAT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id151592355849664" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getYieldmat</paragraph>
+        </tablecell>
+    </tablerow>
+</table>
+  <section id="relatedtopics">
+      <embed href="text/sbasic/shared/03131600.xhp#createunoserviceh1"/>
+</section>
+</body>
+</helpdocument>
