@@ -362,6 +362,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/classmodule \
     helpcontent2/source/text/sbasic/shared/compatible \
     helpcontent2/source/text/sbasic/shared/compatibilitymode \
+    helpcontent2/source/text/sbasic/shared/Compiler_options \
     helpcontent2/source/text/sbasic/shared/enum \
     helpcontent2/source/text/sbasic/shared/ErrVBA \
     helpcontent2/source/text/sbasic/shared/fragments \
