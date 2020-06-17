@@ -33,7 +33,7 @@
 <bookmark_value>API;FunctionAccess</bookmark_value>
 </bookmark>
 
-<h1 id="hd_id3150682"><variable id="createunoserviceh1"><link href="text/sbasic/shared/03131600.xhp" name="CreateUnoService Function">CreateUnoService Function</link></variable></h1>
+<paragraph id="hd_id3150682" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03131600.xhp" name="CreateUnoService Function">CreateUnoService Function</link></paragraph>
 <paragraph id="par_id3152924" role="paragraph" xml-lang="en-US">Instantiates a Uno service with the ProcessServiceManager.</paragraph>
 </section>
 
@@ -45,11 +45,11 @@
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bookmark xml-lang="en-US" branch="index" id="bm_id731561653332192">
 <bookmark_value>Calc functions;API Service</bookmark_value>
+<bookmark_value>Calling Calc functions in Basic</bookmark_value>
+<bookmark_value>CreateUnoService function; Calling Calc functions</bookmark_value>
 </bookmark>
 <paragraph role="paragraph" id="par_id891561653344669">Calling Calc functions in Basic:</paragraph>
-<section id="calcinternalfunctions">
 <bascode>
-    <paragraph role="bascode" id="par_id741592351349391" xml-lang="en-US">REM The code below does not work for add-in functions, which have a different calling procedure.</paragraph>
     <paragraph role="bascode" id="par_id511561653511948" xml-lang="en-US" localize="false">Function MyVlook(item, InRange As Object, FromCol As Integer)</paragraph>
     <paragraph role="bascode" id="par_id771561653522280" xml-lang="en-US" localize="false">    Dim oService As Object</paragraph>
     <paragraph role="bascode" id="par_id791561653536896" xml-lang="en-US" localize="false">    oService = createUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
@@ -57,7 +57,7 @@
     <paragraph role="bascode" id="par_id391561653548274" xml-lang="en-US" localize="false">    MyVlook = oService.callFunction("VLOOKUP",Array(item, InRange, FromCol, True))</paragraph>
     <paragraph role="bascode" id="par_id951561653556383" xml-lang="en-US" localize="false">End Function</paragraph>
 </bascode>
-</section>
+
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <paragraph id="par_id3154046" role="paragraph" localize="false" xml-lang="en-US"><literal>oIntrospection = CreateUnoService( "com.sun.star.beans.Introspection" )</literal></paragraph>
 <bookmark xml-lang="en-US" branch="index" id="bm_id8334604">
@@ -74,12 +74,9 @@
 <paragraph id="par_idm1206770832" role="bascode" localize="false" xml-lang="en-US">    filepicker = createUnoService("com.sun.star.ui.dialogs.FilePicker")</paragraph>
 <paragraph id="par_idm1206769648" role="bascode" localize="false" xml-lang="en-US">    filepicker.Title = title</paragraph>
 <paragraph id="par_idm1206768496" role="bascode" localize="false" xml-lang="en-US">    filepicker.execute()</paragraph>
-<paragraph id="par_idm1206767344" role="bascode" localize="false" xml-lang="en-US">    files = filepicker.getFiles()</paragraph>
+<paragraph id="par_idm1206767344" role="bascode" localize="false" xml-lang="en-US">    files = filepicker.getSelectedFiles()</paragraph>
 <paragraph id="par_idm1206766192" role="bascode" localize="false" xml-lang="en-US">    FileOpenDialog=files(0)</paragraph>
 <paragraph id="par_idm1206765040" role="bascode" localize="false" xml-lang="en-US">End Function</paragraph>
 </bascode>
-<section id="relatedtopics">
-    <embed href="text/sbasic/shared/calc_functions.xhp#CallingCalcFunctionsh1"/>
-</section>
 </body>
 </helpdocument>
