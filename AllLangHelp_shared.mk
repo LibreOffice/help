@@ -539,7 +539,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/06/shared_cui_screenshots \
     helpcontent2/source/text/shared/06/simpress_screenshots \
     helpcontent2/source/text/shared/07/09000000 \
-    helpcontent2/source/text/shared/3dsettings_toolbar \
     helpcontent2/source/text/shared/autokorr/01000000 \
     helpcontent2/source/text/shared/autokorr/02000000 \
     helpcontent2/source/text/shared/autokorr/03000000 \
