@@ -135,7 +135,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/02/10100000 \
     helpcontent2/source/text/simpress/02/10110000 \
     helpcontent2/source/text/simpress/02/10120000 \
-    helpcontent2/source/text/simpress/02/10130000 \
     helpcontent2/source/text/simpress/02/11060000 \
     helpcontent2/source/text/simpress/02/11070000 \
     helpcontent2/source/text/simpress/02/11080000 \
