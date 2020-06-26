@@ -118,6 +118,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/Do-Loop_statement.svg \
     helpimg/sbasic/Else_fragment.svg \
     helpimg/sbasic/ElseIf_fragment.svg \
+    helpimg/sbasic/Enum_statement.svg \
     helpimg/sbasic/Erase_statement.svg \
     helpimg/sbasic/For-Each_statement.svg \
     helpimg/sbasic/For-Next_statement.svg \
