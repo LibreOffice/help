@@ -854,8 +854,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
 ))
 
 $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
-    helpcontent2/source/text/shared/explorer/database/02000000 \
-    helpcontent2/source/text/shared/explorer/database/02000002 \
     helpcontent2/source/text/shared/explorer/database/02010100 \
     helpcontent2/source/text/shared/explorer/database/02010101 \
     helpcontent2/source/text/shared/explorer/database/04000000 \
