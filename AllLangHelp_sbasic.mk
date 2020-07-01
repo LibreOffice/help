@@ -74,9 +74,11 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03/lib_depot \
     helpcontent2/source/text/sbasic/shared/03/lib_formwizard \
     helpcontent2/source/text/sbasic/shared/03/lib_gimmicks \
+    helpcontent2/source/text/sbasic/shared/03/lib_importwiz \
     helpcontent2/source/text/sbasic/shared/03/lib_script \
     helpcontent2/source/text/sbasic/shared/03/lib_schedule \
     helpcontent2/source/text/sbasic/shared/03/lib_template \
+    helpcontent2/source/text/sbasic/shared/03/lib_wikieditor \
     helpcontent2/source/text/sbasic/shared/03000000 \
     helpcontent2/source/text/sbasic/shared/03010000 \
     helpcontent2/source/text/sbasic/shared/03010100 \
