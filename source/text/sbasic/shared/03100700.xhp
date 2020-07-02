@@ -33,29 +33,43 @@
 </bookmark>
 
 <paragraph id="hd_id3146958" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03100700.xhp" name="Const Statement">Const Statement</link></paragraph>
-<paragraph id="par_id3154143" role="paragraph" xml-lang="en-US">Defines a string as a constant.</paragraph>
+<paragraph id="par_id3154143" role="paragraph" xml-lang="en-US">Defines one or more identifiers as constants.</paragraph>
+</section>
+<paragraph id="par_id3147264" role="paragraph" xml-lang="en-US">A constant is a variable that helps to improve the readability of a program. Constants are not defined as a specific type of variable, but rather are used as placeholders in the code. You can only define a constant once and it cannot be modified.</paragraph>
+
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+<paragraph role="image" id="par_id831588865616326">
+   <image src="media/helpimg/sbasic/Const_statement.svg" id="img_id651588865616326"><alt id="alt_id281588865616326">Const syntax</alt></image>
+</paragraph>
+<bascode>
+<paragraph id="par_id3150984" role="bascode" xml-lang="en-US">[Global|Private|Public] Const name = expression[, ...]</paragraph>
+</bascode>
+
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph id="par_id3153897" role="paragraph"> <emph>name:</emph> Any identifier that follows the standard variable naming conventions.</paragraph>
+<paragraph role="paragraph" id="par_id791593689338208"><emph>expression:</emph> Any literal expression. </paragraph>
+<paragraph id="par_id3150400" role="paragraph" xml-lang="en-US">The data type must be omitted. When a library gets loaded in memory, %PRODUCTNAME Basic converts the program code internally so that each time a constant is used, the defined expression replaces it.</paragraph>
+<h3 id="hd_id51593690561479">Scope</h3>
+<paragraph role="paragraph" id="par_id431593690612961">By default constants are defined as private in modules and routines. Constants can be made public or global in order to be used from all modules, from all Basic libraries.</paragraph>
+<paragraph role="paragraph" id="par_id241593693307830"><literal>Global</literal>, <literal>Private</literal> and <literal>Public</literal> specifiers can only be used for module constants.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<bascode>
+  <paragraph role="bascode" id="bas_id911593692598060" xml-lang="en-US">Const EARTH = "♁" &apos; module scope</paragraph>
+  <paragraph role="bascode" id="bas_id441593692601125" xml-lang="en-US">Private Const MOON = "☾" &apos; module scope</paragraph>
+  <paragraph role="bascode" id="bas_id161593692601597" xml-lang="en-US">Public Const VENUS="♀", MARS="♂" &apos; general scope</paragraph>
+  <paragraph role="bascode" id="bas_id581593692602046" xml-lang="en-US">Global Const SUN = "☉", STAR = "☆" &apos; general scope</paragraph>
+  <paragraph role="bascode" id="bas_id711593692602477" localize="false"></paragraph>
+  <paragraph id="par_idm1341161984" role="bascode" localize="false">Sub ExampleConst</paragraph>
+  <paragraph id="par_idm1341160752" role="bascode" xml-lang="en-US">    Const SUN = 3 * 1.456 / 56 &apos; SUN is local</paragraph>
+  <paragraph id="par_idm1341159520" role="bascode" xml-lang="en-US">    MsgBox SUN,, MOON &apos; SUN global constant is unchanged</paragraph>
+  <paragraph id="par_id3153969" role="bascode" localize="false">    Const Pgm = "Program", Var As Double = 1.00</paragraph>
+  <paragraph id="par_idm1341156544" role="bascode" localize="false">    MsgBox Pgm &amp; " " &amp; Var, , VENUS &amp;" and "&amp; MARS</paragraph>
+  <paragraph id="par_idm1341155296" role="bascode" localize="false">End Sub</paragraph>
+</bascode>
+<section id="relatedtopics">
+  <paragraph role="paragraph" id="par_id111593694878677"><link href="text/sbasic/shared/enum.xhp" name="Enum">Enum</link> statement</paragraph>
+  <paragraph role="paragraph" id="par_id111593694878677"><link href="text/sbasic/shared/03090413.xhp" name="Enum">Type</link> statement</paragraph>
 </section>
 
-<paragraph id="hd_id3150670" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
-<bascode>
-<paragraph id="par_id3150984" role="bascode" xml-lang="en-US">Const Text = Expression</paragraph>
-</bascode>
-
-<paragraph id="hd_id3147530" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
-<paragraph id="par_id3153897" role="paragraph" xml-lang="en-US"> <emph>Text:</emph> Any constant name that follows the standard variable naming conventions.</paragraph>
-<paragraph id="par_id3147264" role="paragraph" xml-lang="en-US">A constant is a variable that helps to improve the readability of a program. Constants are not defined as a specific type of variable, but rather are used as placeholders in the code. You can only define a constant once and it cannot be modified. Use the following statement to define a constant:</paragraph>
-<paragraph id="par_id3150542" role="paragraph" xml-lang="en-US">CONST ConstName=Expression</paragraph>
-<paragraph id="par_id3150400" role="paragraph" xml-lang="en-US">The type of expression is irrelevant. If a program is started, $[officename] Basic converts the program code internally so that each time a constant is used, the defined expression replaces it.</paragraph>
-
-<paragraph id="hd_id3154366" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
-<bascode>
-<paragraph id="par_idm1341161984" role="bascode" localize="false" xml-lang="en-US">Sub ExampleConst</paragraph>
-<paragraph id="par_idm1341160752" role="bascode" localize="false" xml-lang="en-US">    Const iVar = 1964</paragraph>
-<paragraph id="par_idm1341159520" role="bascode" localize="false" xml-lang="en-US">    MsgBox iVar</paragraph>
-<paragraph id="par_id3153969" role="bascode" xml-lang="en-US">    Const sVar = "Program", dVar As Double = 1.00</paragraph>
-<paragraph id="par_idm1341156544" role="bascode" localize="false" xml-lang="en-US">    MsgBox sVar &amp; " " &amp; dVar</paragraph>
-<paragraph id="par_idm1341155296" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-</bascode>
 </body>
-
 </helpdocument>
