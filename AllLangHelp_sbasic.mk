@@ -74,11 +74,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03/lib_depot \
     helpcontent2/source/text/sbasic/shared/03/lib_formwizard \
     helpcontent2/source/text/sbasic/shared/03/lib_gimmicks \
-    helpcontent2/source/text/sbasic/shared/03/lib_importwiz \
     helpcontent2/source/text/sbasic/shared/03/lib_script \
     helpcontent2/source/text/sbasic/shared/03/lib_schedule \
     helpcontent2/source/text/sbasic/shared/03/lib_template \
-    helpcontent2/source/text/sbasic/shared/03/lib_wikieditor \
     helpcontent2/source/text/sbasic/shared/03000000 \
     helpcontent2/source/text/sbasic/shared/03010000 \
     helpcontent2/source/text/sbasic/shared/03010100 \
@@ -360,11 +358,10 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03170010 \
     helpcontent2/source/text/sbasic/shared/05060700 \
     helpcontent2/source/text/sbasic/shared/code-stubs \
-    helpcontent2/source/text/sbasic/shared/calc_functions \
     helpcontent2/source/text/sbasic/shared/classmodule \
     helpcontent2/source/text/sbasic/shared/compatible \
     helpcontent2/source/text/sbasic/shared/compatibilitymode \
-    helpcontent2/source/text/sbasic/shared/Compiler_options \
+    helpcontent2/source/text/sbasic/shared/conventions \
     helpcontent2/source/text/sbasic/shared/enum \
     helpcontent2/source/text/sbasic/shared/ErrVBA \
     helpcontent2/source/text/sbasic/shared/fragments \
