@@ -107,19 +107,19 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/smzb7.png \
     helpimg/smzb8.png \
     helpimg/smzb9.png \
+    helpimg/sbasic/a_statement.svg \
     helpimg/sbasic/argument_fragment.svg \
     helpimg/sbasic/array_fragment.svg \
     helpimg/sbasic/char_fragment.svg \
+    helpimg/sbasic/comment_fragment.svg \
     helpimg/sbasic/typename_fragment.svg \
     helpimg/sbasic/Call_statement.svg \
-    helpimg/sbasic/Const_statement.svg \
     helpimg/sbasic/Dim_statement.svg \
     helpimg/sbasic/DimArray_function.svg \
     helpimg/sbasic/Do_statement.svg \
     helpimg/sbasic/Do-Loop_statement.svg \
     helpimg/sbasic/Else_fragment.svg \
     helpimg/sbasic/ElseIf_fragment.svg \
-    helpimg/sbasic/Enum_statement.svg \
     helpimg/sbasic/Erase_statement.svg \
     helpimg/sbasic/For-Each_statement.svg \
     helpimg/sbasic/For-Next_statement.svg \
