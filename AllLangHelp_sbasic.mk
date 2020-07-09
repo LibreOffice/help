@@ -359,12 +359,13 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03170000 \
     helpcontent2/source/text/sbasic/shared/03170010 \
     helpcontent2/source/text/sbasic/shared/05060700 \
-    helpcontent2/source/text/sbasic/shared/code-stubs \
     helpcontent2/source/text/sbasic/shared/calc_functions \
+    helpcontent2/source/text/sbasic/shared/code-stubs \
     helpcontent2/source/text/sbasic/shared/classmodule \
     helpcontent2/source/text/sbasic/shared/compatible \
     helpcontent2/source/text/sbasic/shared/compatibilitymode \
     helpcontent2/source/text/sbasic/shared/Compiler_options \
+    helpcontent2/source/text/sbasic/shared/conventions \
     helpcontent2/source/text/sbasic/shared/enum \
     helpcontent2/source/text/sbasic/shared/ErrVBA \
     helpcontent2/source/text/sbasic/shared/fragments \
