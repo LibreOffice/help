@@ -107,9 +107,11 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/smzb7.png \
     helpimg/smzb8.png \
     helpimg/smzb9.png \
+    helpimg/sbasic/a_statement.svg \
     helpimg/sbasic/argument_fragment.svg \
     helpimg/sbasic/array_fragment.svg \
     helpimg/sbasic/char_fragment.svg \
+    helpimg/sbasic/comment_fragment.svg \
     helpimg/sbasic/typename_fragment.svg \
     helpimg/sbasic/Call_statement.svg \
     helpimg/sbasic/Const_statement.svg \
