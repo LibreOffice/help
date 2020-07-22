@@ -932,7 +932,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/explorer/database/tablewizard02 \
     helpcontent2/source/text/shared/explorer/database/tablewizard03 \
     helpcontent2/source/text/shared/explorer/database/tablewizard04 \
-    helpcontent2/source/text/shared/explorer/database/toolbars \
 ,shared/explorer/database))
 
 # vim: set noet sw=4 ts=4:
