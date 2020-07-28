@@ -26,60 +26,40 @@
 </meta>
 
 <body>
-
-
 <section id="put">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3150360">
   <bookmark_value>Put statement</bookmark_value>
 </bookmark>
 
-
-<paragraph id="hd_id3150360" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03020204.xhp" name="Put Statement">Put Statement</link></paragraph>
+<h1 id="hd_id3150360"><variable id="Put_h1"><link href="text/sbasic/shared/03020204.xhp" name="Put Statement">Put Statement</link></variable></h1>
 <paragraph id="par_id3154909" role="paragraph" xml-lang="en-US">Writes a record to a relative file or a sequence of bytes to a binary file.</paragraph>
 </section>
 <paragraph id="par_id3156281" role="paragraph" xml-lang="en-US">See also: <link href="text/sbasic/shared/03020201.xhp" name="Get"><item type="literal">Get</item></link> statement</paragraph>
 
-<paragraph id="hd_id3125863" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+<paragraph role="paragraph" id="par_id971587473488701">
+  <image src="media/helpimg/sbasic/Put_statement.svg" id="img_id4156296484514"><alt xml-lang="en-US" id="alt_id15152796484514">Put Statement diagram</alt></image>
+</paragraph>
 <bascode>
-<paragraph id="par_id3155132" role="bascode" xml-lang="en-US">Put [#] FileNumber As Integer, [position], Variable</paragraph>
+<paragraph id="par_id3155132" role="bascode" xml-lang="en-US">Put [#]fileNum, [recordNum|filePos], variable</paragraph>
 </bascode>
 
-<paragraph id="hd_id3153190" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
-<paragraph id="par_id3146120" role="paragraph" xml-lang="en-US"> <emph>FileNumber:</emph> Any integer expression that defines the file that you want to write to.</paragraph>
-<paragraph id="par_id3155411" role="paragraph" xml-lang="en-US"> <emph>Position: </emph>For relative files (random access files), the number of the record that you want to write.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<paragraph id="par_id3146120" role="paragraph" xml-lang="en-US"> <emph>fileNum:</emph> Any integer expression that defines the file that you want to write to.</paragraph>
+<paragraph id="par_id3155411" role="paragraph" xml-lang="en-US"> <emph>recordNum, filePos: </emph>For relative files (random access files), the number of the record that you want to write.</paragraph>
 <paragraph id="par_id3148576" role="paragraph" xml-lang="en-US">For binary files (binary access), the position of the byte in the file where you want to start writing.</paragraph>
-<paragraph id="par_id3153729" role="paragraph" xml-lang="en-US"> <emph>Variable:</emph> Name of the variable that you want to write to the file.</paragraph>
+<paragraph id="par_id3153729" role="paragraph" xml-lang="en-US"> <emph>variable:</emph> Name of the variable that you want to write to the file.</paragraph>
 <paragraph id="par_id3146974" role="paragraph" xml-lang="en-US">Note for relative files: If the contents of this variable does not match the length of the record that is specified in the <emph>Len</emph> clause of the <emph>Open</emph> statement, the space between the end of the newly written record and the next record is padded with existing data from the file that you are writing to.</paragraph>
 <paragraph id="par_id3155855" role="paragraph" xml-lang="en-US">Note for binary files: The contents of the variables are written to the specified position, and the file pointer is inserted directly after the last byte. No space is left between the records.</paragraph>
 
-<paragraph id="hd_id3154491" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
-<bascode>
-<paragraph id="par_idm1341567184" role="bascode" localize="false" xml-lang="en-US">Sub ExampleRandomAccess</paragraph>
-<paragraph id="par_idm1341565952" role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
-<paragraph id="par_id3154729" role="bascode" xml-lang="en-US">Dim sText As Variant ' Must be a variant type</paragraph>
-<paragraph id="par_idm1341562976" role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
-<paragraph id="par_idm1341561744" role="bascode" localize="false" xml-lang="en-US">    aFile = "c:\data.txt"</paragraph>
-<paragraph id="par_idm1341560496" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1341559264" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Random As #iNumber Len=32</paragraph>
-<paragraph id="par_id3156278" role="bascode" xml-lang="en-US">    Seek #iNumber,1 ' Position To start writing</paragraph>
-<paragraph id="par_id3153711" role="bascode" xml-lang="en-US">    Put #iNumber,, "This is the first line of text" ' Fill line with text</paragraph>
-<paragraph id="par_id3155446" role="bascode" xml-lang="en-US">    Put #iNumber,, "This is the second line of text"</paragraph>
-<paragraph id="par_id3154255" role="bascode" xml-lang="en-US">    Put #iNumber,, "This is the third line of text"</paragraph>
-<paragraph id="par_idm1341550944" role="bascode" localize="false" xml-lang="en-US">    Seek #iNumber,2</paragraph>
-<paragraph id="par_idm1341549712" role="bascode" localize="false" xml-lang="en-US">    Get #iNumber,,sText</paragraph>
-<paragraph id="par_idm1341548480" role="bascode" localize="false" xml-lang="en-US">    Print sText</paragraph>
-<paragraph id="par_idm1341547248" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1341546016" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1341544784" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Random As #iNumber Len=32</paragraph>
-<paragraph id="par_idm1341543520" role="bascode" localize="false" xml-lang="en-US">    Get #iNumber,2,sText</paragraph>
-<paragraph id="par_id3150940" role="bascode" xml-lang="en-US">    Put #iNumber,,"This is new text"</paragraph>
-<paragraph id="par_idm1341540544" role="bascode" localize="false" xml-lang="en-US">    Get #iNumber,1,sText</paragraph>
-<paragraph id="par_idm1341539296" role="bascode" localize="false" xml-lang="en-US">    Get #iNumber,2,sText</paragraph>
-<paragraph id="par_id3159102" role="bascode" xml-lang="en-US">    Put #iNumber,20,"This is the text in record 20"</paragraph>
-<paragraph id="par_idm1341536304" role="bascode" localize="false" xml-lang="en-US">    Print Lof(#iNumber)</paragraph>
-<paragraph id="par_idm1341535072" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1341533840" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-</bascode>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<embed href="text/sbasic/shared/03020201.xhp#ExampleRandomAccess"/>
+  
+<section id="relatedtopics" >
+   <embed href="text/sbasic/shared/03020204.xhp#Close_h1"/>
+   <embed href="text/sbasic/shared/03020201.xhp#Get_h1"/>
+   <embed href="text/sbasic/shared/03020103.xhp#Open_h1"/>
+</section>
+  
 </body>
-
 </helpdocument>
