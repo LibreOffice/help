@@ -27,58 +27,67 @@
 
 <body>
 
-
 <section id="get">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3154927">
   <bookmark_value>Get statement</bookmark_value>
 </bookmark>
 
-
-<paragraph id="hd_id3154927" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03020201.xhp">Get Statement</link></paragraph>
+<h1 id="hd_id3154927"><variable id="Get_h1"><link href="text/sbasic/shared/03020201.xhp">Get Statement</link></variable></h1>
 <paragraph id="par_id3145069" role="paragraph" xml-lang="en-US">Reads a record from a relative file, or a sequence of bytes from a binary file, into a variable.</paragraph>
 </section>
 <paragraph id="par_id3154346" role="paragraph" xml-lang="en-US">See also: <link href="text/sbasic/shared/03020204.xhp" name="PUT"><item type="literal">PUT</item></link> Statement</paragraph>
 
-<paragraph id="hd_id3150358" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+<paragraph role="paragraph" id="par_id971587473488701">
+  <image src="media/helpimg/sbasic/Get_statement.svg" id="img_id4156296484514"><alt xml-lang="en-US" id="alt_id15152796484514">Get Statement diagram</alt></image>
+</paragraph>
 <bascode>
-<paragraph id="par_id3150792" role="bascode" xml-lang="en-US">Get [#] FileNumber As Integer, [Position], Variable</paragraph>
+<paragraph id="par_id3150792" role="bascode" xml-lang="en-US">Get [#]fileNum, [recordNum|filePos], variable</paragraph>
 </bascode>
 
-<paragraph id="hd_id3154138" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
-<paragraph id="par_id3150448" role="paragraph" xml-lang="en-US"> <emph>FileNumber:</emph> Any integer expression that determines the file number.</paragraph>
-<paragraph id="par_id3154684" role="paragraph" xml-lang="en-US"> <emph>Position:</emph> For files opened in Random mode, <emph>Position</emph> is the number of the record that you want to read.</paragraph>
-<paragraph id="par_id3153768" role="paragraph" xml-lang="en-US">For files opened in Binary mode, <emph>Position</emph> is the byte position in the file where the reading starts.</paragraph>
-<paragraph id="par_id3147319" role="paragraph" xml-lang="en-US">If <emph>Position</emph> is omitted, the current position or the current data record of the file is used.</paragraph>
-<paragraph id="par_id3149484" role="paragraph" xml-lang="en-US">Variable: Name of the variable to be read. With the exception of object variables, you can use any variable type.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<paragraph id="par_id3150448" role="paragraph" xml-lang="en-US"> <emph>fileNum:</emph> Any integer expression that determines the file number.</paragraph>
+<paragraph id="par_id3154684" role="paragraph" xml-lang="en-US"> <emph>recordNum:</emph> For files opened in Random mode, <emph>recordNum</emph> is the number of the record that you want to read.</paragraph>
+<paragraph id="par_id3153768" role="paragraph" xml-lang="en-US">For files opened in Binary mode, <emph>filePos</emph> is the byte position in the file where the reading starts.</paragraph>
+<paragraph id="par_id3147319" role="paragraph" xml-lang="en-US">If <emph>recordNum</emph> and <emph>filePos</emph> are omitted, the current position or the current data record of the file is used.</paragraph>
+  <paragraph id="par_id3149484" role="paragraph" xml-lang="en-US"><emph>variable:</emph> Name of the variable to be read. With the exception of object variables, you can use any variable type.</paragraph>
 
-<paragraph id="hd_id3153144" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
+<section id="ExampleRamdomAccess">
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
-<paragraph id="par_idm1340774864" role="bascode" localize="false" xml-lang="en-US">Sub ExampleRandomAccess</paragraph>
-<paragraph id="par_idm1340773632" role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
-<paragraph id="par_id3155307" role="bascode" xml-lang="en-US">Dim sText As Variant ' Must be a variant</paragraph>
-<paragraph id="par_idm1340770608" role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
-<paragraph id="par_idm1340769376" role="bascode" localize="false" xml-lang="en-US">    aFile = "c:\data.txt"</paragraph>
-<paragraph id="par_idm1340768128" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1340766896" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Random As #iNumber Len=32</paragraph>
+<paragraph id="par_idm1340774864" role="bascode" localize="false">Sub ExampleRandomAccess</paragraph>
+<paragraph id="par_idm1340773632" role="bascode" localize="false">    Dim iNumber As Integer</paragraph>
+<paragraph id="par_id3155307" role="bascode" xml-lang="en-US">    Dim sText As Variant ' Must be a variant</paragraph>
+<paragraph id="par_idm1340770608" role="bascode" localize="false">    Dim aFile As String</paragraph>
+<paragraph id="par_idm1340769376" role="bascode" localize="false">    aFile = "c:\data.txt"</paragraph>
+<paragraph id="par_idm1340768128" role="bascode" localize="false">    iNumber = Freefile</paragraph>
+<paragraph id="par_idm1340766896" role="bascode" localize="false">    Open aFile For Random As #iNumber Len=32</paragraph>
 <paragraph id="par_id3149411" role="bascode" xml-lang="en-US">    Seek #iNumber,1 ' Position at beginning</paragraph>
 <paragraph id="par_id3153158" role="bascode" xml-lang="en-US">    Put #iNumber,, "This is the first line of text" ' Fill line with text</paragraph>
 <paragraph id="par_id3148457" role="bascode" xml-lang="en-US">    Put #iNumber,, "This is the second line of text"</paragraph>
 <paragraph id="par_id3150715" role="bascode" xml-lang="en-US">    Put #iNumber,, "This is the third line of text"</paragraph>
-<paragraph id="par_idm1340758576" role="bascode" localize="false" xml-lang="en-US">    Seek #iNumber,2</paragraph>
-<paragraph id="par_idm1340757344" role="bascode" localize="false" xml-lang="en-US">    Get #iNumber,,sText</paragraph>
-<paragraph id="par_idm1340756112" role="bascode" localize="false" xml-lang="en-US">    Print sText</paragraph>
-<paragraph id="par_idm1340754880" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1340753648" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1340752416" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Random As #iNumber Len=32</paragraph>
-<paragraph id="par_idm1340751152" role="bascode" localize="false" xml-lang="en-US">    Get #iNumber,2,sText</paragraph>
+<paragraph id="par_idm1340758576" role="bascode" localize="false">    Seek #iNumber,2</paragraph>
+<paragraph id="par_idm1340757344" role="bascode" localize="false">    Get #iNumber,,sText</paragraph>
+<paragraph id="par_idm1340756112" role="bascode" localize="false">    Print sText</paragraph>
+<paragraph id="par_idm1340754880" role="bascode" localize="false">    Close #iNumber</paragraph>
+<paragraph id="par_idm1340753648" role="bascode" localize="false">    iNumber = Freefile</paragraph>
+<paragraph id="par_idm1340752416" role="bascode" localize="false">    Open aFile For Random As #iNumber Len=32</paragraph>
+<paragraph id="par_idm1340751152" role="bascode" localize="false">    Get #iNumber,2,sText</paragraph>
 <paragraph id="par_id3155938" role="bascode" xml-lang="en-US">    Put #iNumber,,"This is a new text"</paragraph>
-<paragraph id="par_idm1340748176" role="bascode" localize="false" xml-lang="en-US">    Get #iNumber,1,sText</paragraph>
-<paragraph id="par_idm1340746928" role="bascode" localize="false" xml-lang="en-US">    Get #iNumber,2,sText</paragraph>
+<paragraph id="par_idm1340748176" role="bascode" localize="false">    Get #iNumber,1,sText</paragraph>
+<paragraph id="par_idm1340746928" role="bascode" localize="false">    Get #iNumber,2,sText</paragraph>
 <paragraph id="par_id3146916" role="bascode" xml-lang="en-US">    Put #iNumber,20,"This is the text in record 20"</paragraph>
-<paragraph id="par_idm1340743936" role="bascode" localize="false" xml-lang="en-US">    Print Lof(#iNumber)</paragraph>
-<paragraph id="par_idm1340742704" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1340741472" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1340743936" role="bascode" localize="false">    Print Lof(#iNumber)</paragraph>
+<paragraph id="par_idm1340742704" role="bascode" localize="false">    Close #iNumber</paragraph>
+<paragraph id="par_idm1340741472" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
-</body>
+</section>
 
+<section id="relatedtopics" >
+   <embed href="text/sbasic/shared/03020103.xhp#Open_h1"/>
+   <embed href="text/sbasic/shared/03020204.xhp#Put_h1"/>
+   <embed href="text/sbasic/shared/03020204.xhp#Close_h1"/>
+</section>
+  
+</body>
 </helpdocument>

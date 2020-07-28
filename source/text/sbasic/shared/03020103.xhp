@@ -33,49 +33,60 @@
   <bookmark_value>Open statement</bookmark_value>
 </bookmark>
 
-
-<h1 id="hd_id3150791"><link href="text/sbasic/shared/03020103.xhp" name="Open Statement">Open Statement</link></h1>
+<h1 id="hd_id3150791"><variable id="Open_h1"><link href="text/sbasic/shared/03020103.xhp" name="Open Statement">Open Statement</link></variable></h1>
 <paragraph id="par_id3150769" role="paragraph" xml-lang="en-US">Opens a data channel.</paragraph>
 </section>
 
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+<paragraph role="paragraph" id="par_id971587473488701">
+  <image src="media/helpimg/sbasic/Open_statement.svg" id="img_id4156296484514"><alt xml-lang="en-US" id="alt_id15152796484514">Open Statement diagram</alt></image>
+</paragraph>
+<paragraph role="paragraph" id="par_id971587473488702">
+  <image src="media/helpimg/sbasic/access_fragment.svg" id="img_id4156296484515"><alt xml-lang="en-US" id="alt_id15152796484515">access fragment diagram</alt></image>
+</paragraph>
+<paragraph role="paragraph" id="par_id971587473488703">
+  <image src="media/helpimg/sbasic/locking_fragment.svg" id="img_id4156296484516"><alt xml-lang="en-US" id="alt_id15152796484516">locking fragment diagram</alt></image>
+</paragraph>
 <bascode>
-<paragraph id="par_id3154124" localize="false" role="bascode" xml-lang="en-US">Open FileName As String [For Mode] [Access IOMode] [Protected] As [#]FileNumber As Integer [Len = DatasetLength]<comment>i37502</comment></paragraph>
+<paragraph id="par_id3154124" localize="false" role="bascode">Open pathname For mode [Access io] [locking] As [#]filenum [Len=recLen]</paragraph>
 </bascode>
 
 <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-<paragraph id="par_id3155132" role="paragraph" xml-lang="en-US"> <emph>FileName: </emph>Name and path of the file to open. If you try to read a file that does not exist (Access = Read), an error message appears. If you try to write to a file that does not exist (Access = Write), a new file is created.</paragraph>
-<paragraph id="par_id3149262" role="paragraph" xml-lang="en-US"> <emph>Mode:</emph> Keyword that specifies the file mode. Valid values: Append (append to sequential file), Binary (data can be accessed by bytes using Get and Put), Input (opens data channel for reading), Output (opens data channel for writing), and Random (edits relative files).</paragraph>
-<paragraph id="par_id3154014" role="paragraph" xml-lang="en-US"> <emph>IOMode:</emph> Keyword that defines the access type. Valid values: Read (read-only), Write (write-only), Read Write (both).</paragraph>
-<paragraph id="par_id3150011" role="paragraph" xml-lang="en-US"> <emph>Protected:</emph> Keyword that defines the security status of a file after opening. Valid values: Shared (file may be opened by other applications), Lock Read (file is protected against reading), Lock Write (file is protected against writing), Lock Read Write (denies file access).</paragraph>
-<paragraph id="par_id3153190" role="paragraph" xml-lang="en-US"> <emph>FileNumber:</emph> Any integer expression from 0 to 511 to indicate the number of a free data channel. You can then pass commands through the data channel to access the file. The file number must be determined by the FreeFile function immediately before the Open statement.</paragraph>
-<paragraph id="par_id3151115" role="paragraph" xml-lang="en-US"> <emph>DatasetLength:</emph> For random access files, set the length of the records.<comment>#61736</comment></paragraph>
+<paragraph id="par_id3155132" role="paragraph" xml-lang="en-US"> <emph>pathname: </emph>Path and name of the file to open. If you try to read a file that does not exist (Access = Read), an error message appears. If you try to write to a file that does not exist (Access = Write), a new file is created.</paragraph>
+<paragraph id="par_id3149262" role="paragraph" xml-lang="en-US"> <emph>mode:</emph> Keyword that specifies the file mode. Valid values: <literal>Append</literal> (append to sequential file), <literal>Binary</literal> (data can be accessed by bytes using Get and Put), <literal>Input</literal> (opens data channel for reading), <literal>Output</literal> (opens data channel for writing), and <literal>Random</literal> (edits relative files).</paragraph>
+<paragraph id="par_id3154014" role="paragraph" xml-lang="en-US"> <emph>io:</emph> Keyword that defines the access type. Valid values: <literal>Read</literal> (read-only), <literal>Write</literal> (write-only), <literal>Read Write</literal> (both).</paragraph>
+<paragraph id="par_id3150011" role="paragraph" xml-lang="en-US"> <emph>locking:</emph> Keyword that defines the security status of a file after opening. Valid values: <literal>Shared</literal> (file may be opened by other applications), <literal>Lock Read</literal> (file is protected against reading), <literal>Lock Write</literal> (file is protected against writing), <literal>Lock Read Write</literal> (denies file access).</paragraph>
+<paragraph id="par_id3153190" role="paragraph" xml-lang="en-US"> <emph>filenum:</emph> Any integer expression from 0 to 511 to indicate the number of a free data channel. You can then pass commands through the data channel to access the file. The file number must be determined by the FreeFile function immediately before the Open statement.</paragraph>
+  <paragraph id="par_id3151115" role="paragraph" xml-lang="en-US"> <emph>recLen:</emph> For <literal>Random</literal> access files, set the length of the records.<comment>#61736</comment></paragraph>
 <note id="par_id3153418">You can only modify the contents of a file that was opened with the Open statement. If you try to open a file that is already open, an error message appears.</note>
 
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<section id="FileExample">
 <bascode>
-<paragraph id="par_idm1341597584" role="bascode" localize="false" xml-lang="en-US">Sub ExampleWorkWithAFile</paragraph>
-<paragraph id="par_idm1341596336" role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
-<paragraph id="par_idm1341595104" role="bascode" localize="false" xml-lang="en-US">Dim sLine As String</paragraph>
-<paragraph id="par_idm1341593872" role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
-<paragraph id="par_idm1341592640" role="bascode" localize="false" xml-lang="en-US">Dim sMsg As String</paragraph>
-<paragraph id="par_idm1341591408" role="bascode" localize="false" xml-lang="en-US">    aFile = "c:\data.txt"</paragraph>
-<paragraph id="par_idm1341590160" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1341588928" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Output As #iNumber</paragraph>
+<paragraph id="par_idm1341597584" role="bascode" localize="false">Sub ExampleWorkWithAFile</paragraph>
+<paragraph id="par_idm1341596336" role="bascode" localize="false">Dim iNumber As Integer</paragraph>
+<paragraph id="par_idm1341595104" role="bascode" localize="false">Dim sLine As String</paragraph>
+<paragraph id="par_idm1341593872" role="bascode" localize="false">Dim aFile As String</paragraph>
+<paragraph id="par_idm1341592640" role="bascode" localize="false">Dim sMsg As String</paragraph>
+<paragraph id="par_idm1341591408" role="bascode" localize="false">    aFile = "c:\data.txt"</paragraph>
+<paragraph id="par_idm1341590160" role="bascode" localize="false">    iNumber = Freefile</paragraph>
+<paragraph id="par_idm1341588928" role="bascode" localize="false">    Open aFile For Output As #iNumber</paragraph>
 <paragraph id="par_id3154705" role="bascode" xml-lang="en-US">    Print #iNumber, "This is a line of text"</paragraph>
 <paragraph id="par_id3146916" role="bascode" xml-lang="en-US">    Print #iNumber, "This is another line of text"</paragraph>
-<paragraph id="par_idm1341584144" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1341582912" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1341581680" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Input As iNumber</paragraph>
-<paragraph id="par_idm1341580432" role="bascode" localize="false" xml-lang="en-US">    While Not eof(iNumber)</paragraph>
-<paragraph id="par_idm1341579184" role="bascode" localize="false" xml-lang="en-US">        Line Input #iNumber, sLine</paragraph>
-<paragraph id="par_idm1341577936" role="bascode" localize="false" xml-lang="en-US">        If sLine &lt;&gt;"" Then</paragraph>
-<paragraph id="par_idm1341576688" role="bascode" localize="false" xml-lang="en-US">            sMsg = sMsg &amp; sLine &amp; chr(13)</paragraph>
-<paragraph id="par_idm1341575424" role="bascode" localize="false" xml-lang="en-US">        End If</paragraph>
-<paragraph id="par_idm1341574192" role="bascode" localize="false" xml-lang="en-US">    Wend</paragraph>
-<paragraph id="par_idm1341572960" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1341571728" role="bascode" localize="false" xml-lang="en-US">    MsgBox sMsg</paragraph>
-<paragraph id="par_idm1341570496" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1341584144" role="bascode" localize="false">    Close #iNumber</paragraph>
+<paragraph id="par_idm1341582912" role="bascode" localize="false">    iNumber = Freefile</paragraph>
+<paragraph id="par_idm1341581680" role="bascode" localize="false">    Open aFile For Input As iNumber</paragraph>
+<paragraph id="par_idm1341580432" role="bascode" localize="false">    While Not eof(iNumber)</paragraph>
+<paragraph id="par_idm1341579184" role="bascode" localize="false">        Line Input #iNumber, sLine</paragraph>
+<paragraph id="par_idm1341577936" role="bascode" localize="false">        If sLine &lt;&gt;"" Then</paragraph>
+<paragraph id="par_idm1341576688" role="bascode" localize="false">            sMsg = sMsg &amp; sLine &amp; chr(13)</paragraph>
+<paragraph id="par_idm1341575424" role="bascode" localize="false">        End If</paragraph>
+<paragraph id="par_idm1341574192" role="bascode" localize="false">    Wend</paragraph>
+<paragraph id="par_idm1341572960" role="bascode" localize="false">    Close #iNumber</paragraph>
+<paragraph id="par_idm1341571728" role="bascode" localize="false">    MsgBox sMsg</paragraph>
+<paragraph id="par_idm1341570496" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
+</section>
+
 </body>
 </helpdocument>

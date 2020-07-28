@@ -34,44 +34,23 @@
 </bookmark>
 
 
-<paragraph id="hd_id3157896" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03020101.xhp" name="Close Statement">Close Statement</link></paragraph>
+<h1 id="hd_id3157896"><variable id="Close_h1"><link href="text/sbasic/shared/03020101.xhp" name="Close Statement">Close Statement</link></variable></h1>
 <paragraph id="par_id3147573" role="paragraph" xml-lang="en-US">Closes a specified file that was opened with the Open statement.</paragraph>
 </section>
 
-<paragraph id="hd_id3156344" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+<paragraph role="paragraph" id="par_id971587473488701">
+  <image src="media/helpimg/sbasic/Close_statement.svg" id="img_id4156296484514"><alt xml-lang="en-US" id="alt_id15152796484514">Close Statement diagram</alt></image>
+</paragraph>
 <bascode>
-<paragraph id="par_id3147265" role="bascode" xml-lang="en-US">Close FileNumber As Integer[, FileNumber2 As Integer[,...]] </paragraph>
+<paragraph id="par_id3147265" role="bascode" xml-lang="en-US">Close [[#]fileNum [, [#]fileNum2 [,...]]]</paragraph>
 </bascode>
 
-<paragraph id="hd_id3153379" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
-<paragraph id="par_id3150791" role="paragraph" xml-lang="en-US"> <emph>FileNumber:</emph> Any integer expression that specifies the number of the data channel that was opened with the <emph>Open</emph> statement.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<paragraph id="par_id3150791" role="paragraph" xml-lang="en-US"> <emph>fileNum:</emph> Any integer expression that specifies the number of the data channel that was opened with the <emph>Open</emph> statement.</paragraph>
 
-<paragraph id="hd_id3153192" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
-<bascode>
-<paragraph id="par_idm1341290400" role="bascode" localize="false" xml-lang="en-US">Sub ExampleWorkWithAFile</paragraph>
-<paragraph id="par_idm1341289152" role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
-<paragraph id="par_idm1341287920" role="bascode" localize="false" xml-lang="en-US">Dim sLine As String</paragraph>
-<paragraph id="par_idm1341286688" role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
-<paragraph id="par_idm1341285456" role="bascode" localize="false" xml-lang="en-US">Dim sMsg As String</paragraph>
-<paragraph id="par_idm1341284224" role="bascode" localize="false" xml-lang="en-US">    aFile = "c:\data.txt"</paragraph>
-<paragraph id="par_idm1341282976" role="bascode" localize="false" xml-lang="en-US">    sMsg = ""</paragraph>
-<paragraph id="par_idm1341281744" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1341280512" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Output As #iNumber</paragraph>
-<paragraph id="par_id3153727" role="bascode" xml-lang="en-US">    Print #iNumber, "First line of text"</paragraph>
-<paragraph id="par_id3147350" role="bascode" xml-lang="en-US">    Print #iNumber, "Another line of text"</paragraph>
-<paragraph id="par_idm1340923792" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1340922560" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1340921328" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Input As iNumber</paragraph>
-<paragraph id="par_idm1340920080" role="bascode" localize="false" xml-lang="en-US">    While Not eof(iNumber)</paragraph>
-<paragraph id="par_idm1340918832" role="bascode" localize="false" xml-lang="en-US">        Line Input #iNumber, sLine</paragraph>
-<paragraph id="par_idm1340917584" role="bascode" localize="false" xml-lang="en-US">        If sLine &lt;&gt;"" Then</paragraph>
-<paragraph id="par_idm1340916336" role="bascode" localize="false" xml-lang="en-US">            sMsg = sMsg &amp; sLine &amp; chr(13)</paragraph>
-<paragraph id="par_idm1340915072" role="bascode" localize="false" xml-lang="en-US">        End If</paragraph>
-<paragraph id="par_idm1340913840" role="bascode" localize="false" xml-lang="en-US">    Wend</paragraph>
-<paragraph id="par_idm1340912608" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1340911376" role="bascode" localize="false" xml-lang="en-US">    MsgBox sMsg</paragraph>
-<paragraph id="par_idm1340910144" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-</bascode>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<embed href="text/sbasic/shared/03020103.xhp#FileExample"/>
+
 </body>
-
 </helpdocument>
