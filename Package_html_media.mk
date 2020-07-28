@@ -114,6 +114,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/comment_fragment.svg \
     helpimg/sbasic/typename_fragment.svg \
     helpimg/sbasic/Call_statement.svg \
+    helpimg/sbasic/Close_statement.svg \
     helpimg/sbasic/Const_statement.svg \
     helpimg/sbasic/Dim_statement.svg \
     helpimg/sbasic/DimArray_function.svg \
@@ -126,14 +127,19 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/For-Each_statement.svg \
     helpimg/sbasic/For-Next_statement.svg \
     helpimg/sbasic/Function_statement.svg \
+    helpimg/sbasic/Get_statement.svg \
     helpimg/sbasic/If_statement.svg \
     helpimg/sbasic/LetSet_statement.svg \
     helpimg/sbasic/On-Error_statement.svg \
     helpimg/sbasic/On-GoSub-GoTo_statement.svg \
     helpimg/sbasic/Option_statement.svg \
+    helpimg/sbasic/Open_statement.svg \
+    helpimg/sbasic/access_fragment.svg \
+    helpimg/sbasic/locking_fragment.svg \
     helpimg/sbasic/Print_statement.svg \
     helpimg/sbasic/Property-Get_statement.svg \
     helpimg/sbasic/Property-Set_statement.svg \
+    helpimg/sbasic/Put_statement.svg \
     helpimg/sbasic/ReDim_statement.svg \
     helpimg/sbasic/Resume_statement.svg \
     helpimg/sbasic/Select-Case_statement.svg \
