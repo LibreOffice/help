@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -18,11 +16,11 @@
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  -->
-	
+
 <helpdocument version="1.0">
 <meta>
 <topic id="textsbasicshared03020305xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">Seek Statement</title>
+<title id="tit" xml-lang="en-US">Seek# Statement</title>
 <filename>/text/sbasic/shared/03020305.xhp</filename>
 </topic>
 <history>
@@ -32,22 +30,32 @@
 <body>
 <bookmark xml-lang="en-US" branch="index" id="bm_id3159413"><bookmark_value>Seek statement</bookmark_value>
 </bookmark>
-<paragraph role="heading" id="hd_id3159413" xml-lang="en-US" level="1"><link href="text/sbasic/shared/03020305.xhp" name="Seek Statement">Seek Statement</link></paragraph>
-<paragraph role="paragraph" id="par_id3153381" xml-lang="en-US">Sets the position for the next writing or reading in a file that was opened with the Open statement.<comment>see #61751</comment></paragraph>
-<paragraph role="paragraph" id="par_id2100589" xml-lang="en-US">For random access files, the Seek statement sets the number of the next record to be accessed.</paragraph>
-<paragraph role="paragraph" id="par_id5444807" xml-lang="en-US">For all other files, the Seek statement sets the byte position at which the next operation is to occur.</paragraph>
-<paragraph role="paragraph" id="par_id3156280" xml-lang="en-US">See also: <link href="text/sbasic/shared/03020103.xhp" name="Open">Open</link>, <link href="text/sbasic/shared/03020304.xhp" name="Seek">Seek</link>.</paragraph>
-<paragraph role="heading" id="hd_id3145785" xml-lang="en-US" level="2">Syntax:</paragraph>
+<h1 id="hd_id3159413"><link href="text/sbasic/shared/03020305.xhp" name="Seek# Statement">Seek Statement</link></h1>
+<paragraph role="paragraph" id="par_id3153381">Sets the position for the next writing or reading in a file that was opened with the Open statement.<comment>see #61751</comment></paragraph>
+<paragraph role="paragraph" id="par_id2100589">For random access files, the Seek statement sets the number of the next record to be accessed.</paragraph>
+<paragraph role="paragraph" id="par_id5444807">For all other files, the Seek statement sets the byte position at which the next operation is to occur.</paragraph>
+
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+<paragraph role="paragraph" id="par_id971587473488701">
+  <image src="media/helpimg/sbasic/Seek_statement.svg" id="img_id4156296484514"><alt xml-lang="en-US" id="alt_id15152796484514">Seek Statement diagram</alt></image>
+</paragraph>
 <bascode>
-<paragraph role="bascode" id="par_id3145273" xml-lang="en-US">Seek[#FileNumber], Position (As Long)</paragraph>
+<paragraph role="bascode" id="par_id3145273" xml-lang="en-US">Seek [#]filePos, {filePos|recordNum}</paragraph>
 </bascode>
-<paragraph role="heading" id="hd_id3154321" xml-lang="en-US" level="2">Parameters:</paragraph>
+
+<paragraph id="hd_id3153379" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
 <paragraph role="paragraph" id="par_id3153952" xml-lang="en-US">
-<emph>FileNumber: </emph>The data channel number used in the Open statement.</paragraph>
+<emph>fileNum</emph>: The data channel number used in the Open statement.</paragraph>
 <paragraph role="paragraph" id="par_id3145366" xml-lang="en-US">
-<emph>Position: </emph>Position for the next writing or reading. Position can be a number between 1 and 2,147,483,647. According to the file type, the position indicates the number of the record (files in the Random mode) or the byte position (files in the Binary, Output, Append or Input mode). The first byte in a file is position 1, the second byte is position 2, and so on.</paragraph>
+<emph>filePos, recordNum</emph>: Position for the next writing or reading. Position can be a number between 1 and 2,147,483,647. According to the file type, the position indicates the number of the record (files in the Random mode) or the byte position (files in the Binary, Output, Append or Input mode). The first byte in a file is position 1, the second byte is position 2, and so on.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 <embed href="text/sbasic/shared/00000003.xhp#err52"/>
+
+<section id="relatedtopics" >
+   <embed href="text/sbasic/shared/03020103.xhp#Open_h1"/>
+   <paragraph role="paragraph" id="par_id491596468328575"><link href="text/sbasic/shared/03020304.xhp" name="Seek">Seek</link> function</paragraph>
+</section>
+
 </body>
 </helpdocument>
