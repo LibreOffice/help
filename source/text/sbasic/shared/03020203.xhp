@@ -27,52 +27,30 @@
 
 <body>
 
-
 <section id="lineinput">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3153361">
   <bookmark_value>Line Input statement</bookmark_value>
 </bookmark>
 
-
-<paragraph id="hd_id3153361" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03020203.xhp" name="Line Input # Statement">Line Input # Statement</link></paragraph>
-<paragraph id="par_id3156280" role="paragraph" xml-lang="en-US">Reads strings from a sequential file into a variable.</paragraph>
+<h1 id="hd_id3153361"><variable id="LineInput_h1"><link href="text/sbasic/shared/03020203.xhp" name="Line Input # Statement">Line Input # Statement</link></variable></h1>
+<paragraph id="par_id3156280" role="paragraph" xml-lang="en-US">Reads a line from a sequential file into a variable.</paragraph>
 </section>
 
-<paragraph id="hd_id3150447" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+<paragraph role="paragraph" id="par_id971587473488701">
+  <image src="media/helpimg/sbasic/Line-Input_statement.svg" id="img_id4156296484514"><alt xml-lang="en-US" id="alt_id15152796484514">Line Input Statement diagram</alt></image>
+</paragraph>
 <bascode>
-<paragraph id="par_id3147229" role="bascode" xml-lang="en-US">Line Input #FileNumber As Integer, Var As String </paragraph>
+<paragraph id="par_id3147229" role="bascode" localize="false">Line Input #fileNum, variable</paragraph>
 </bascode>
 
-<paragraph id="hd_id3145173" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
-<paragraph id="par_id3161832" role="paragraph" xml-lang="en-US"> <emph>FileNumber: </emph>Number of the file that contains the data that you want to read. The file must have been opened in advance with the Open statement using the key word INPUT.</paragraph>
-<paragraph id="par_id3151119" role="paragraph" xml-lang="en-US"> <emph>var:</emph> The name of the variable that stores the result.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<paragraph id="par_id3161832" role="paragraph" xml-lang="en-US"> <emph>fileNum</emph>: Number of the file that contains the data that you want to read. The file must have been opened in advance with the Open statement using the key word INPUT.</paragraph>
+<paragraph id="par_id3151119" role="paragraph" xml-lang="en-US"> <emph>variable</emph>: The name of the variable that stores the result.</paragraph>
 <paragraph id="par_id3150010" role="paragraph" xml-lang="en-US">With the <emph>Line Input#</emph> statement, you can read strings from an open file into a variable. String variables are read line-by-line up to the first carriage return (Asc=13) or linefeed (Asc=10). Line end marks are not included in the resulting string.</paragraph>
 
-<paragraph id="hd_id3163711" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
-<bascode>
-<paragraph id="par_idm1340596256" role="bascode" localize="false" xml-lang="en-US">Sub ExampleWorkWithAFile</paragraph>
-<paragraph id="par_idm1340595008" role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
-<paragraph id="par_idm1340593776" role="bascode" localize="false" xml-lang="en-US">Dim sLine As String</paragraph>
-<paragraph id="par_idm1340592544" role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
-<paragraph id="par_idm1340591312" role="bascode" localize="false" xml-lang="en-US">Dim sMsg As String</paragraph>
-<paragraph id="par_idm1340590080" role="bascode" localize="false" xml-lang="en-US">    aFile = "c:\data.txt"</paragraph>
-<paragraph id="par_idm1340588832" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1340587600" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Output As #iNumber</paragraph>
-<paragraph id="par_id3147124" role="bascode" xml-lang="en-US">    Print #iNumber, "This is a line of text"</paragraph>
-<paragraph id="par_id3153415" role="bascode" xml-lang="en-US">    Print #iNumber, "This is another line of text"</paragraph>
-<paragraph id="par_idm1340582816" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1340581584" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1340580352" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Input As iNumber</paragraph>
-<paragraph id="par_idm1340579104" role="bascode" localize="false" xml-lang="en-US">    While Not EOF(iNumber)</paragraph>
-<paragraph id="par_idm1340577856" role="bascode" localize="false" xml-lang="en-US">        Line Input #iNumber, sLine</paragraph>
-<paragraph id="par_idm1340576608" role="bascode" localize="false" xml-lang="en-US">        If sLine &lt;&gt;"" Then</paragraph>
-<paragraph id="par_idm1340575360" role="bascode" localize="false" xml-lang="en-US">            sMsg = sMsg &amp; sLine &amp; chr(13)</paragraph>
-<paragraph id="par_idm1340574096" role="bascode" localize="false" xml-lang="en-US">        End If</paragraph>
-<paragraph id="par_idm1340572864" role="bascode" localize="false" xml-lang="en-US">    Wend</paragraph>
-<paragraph id="par_idm1340571632" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1340570400" role="bascode" localize="false" xml-lang="en-US">    MsgBox sMsg</paragraph>
-<paragraph id="par_idm1340569168" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-</bascode>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<embed href="text/sbasic/shared/03020103.xhp#FileExample"/>
+ 
 </body>
-
 </helpdocument>
