@@ -108,6 +108,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/smzb8.png \
     helpimg/smzb9.png \
     helpimg/sbasic/a_statement.svg \
+    helpimg/sbasic/access_fragment.svg \
     helpimg/sbasic/argument_fragment.svg \
     helpimg/sbasic/array_fragment.svg \
     helpimg/sbasic/char_fragment.svg \
@@ -129,12 +130,13 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/Function_statement.svg \
     helpimg/sbasic/Get_statement.svg \
     helpimg/sbasic/If_statement.svg \
+    helpimg/sbasic/Input_statement.svg \
     helpimg/sbasic/LetSet_statement.svg \
+    helpimg/sbasic/Line-Input_statement.svg \
     helpimg/sbasic/On-Error_statement.svg \
     helpimg/sbasic/On-GoSub-GoTo_statement.svg \
     helpimg/sbasic/Option_statement.svg \
     helpimg/sbasic/Open_statement.svg \
-    helpimg/sbasic/access_fragment.svg \
     helpimg/sbasic/locking_fragment.svg \
     helpimg/sbasic/Print_statement.svg \
     helpimg/sbasic/Property-Get_statement.svg \
@@ -142,10 +144,13 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/Put_statement.svg \
     helpimg/sbasic/ReDim_statement.svg \
     helpimg/sbasic/Resume_statement.svg \
+    helpimg/sbasic/Reset_statement.svg \
+    helpimg/sbasic/Seek_statement.svg \
     helpimg/sbasic/Select-Case_statement.svg \
     helpimg/sbasic/Sub_statement.svg \
     helpimg/sbasic/Type_statement.svg \
     helpimg/sbasic/While_statement.svg \
+    helpimg/sbasic/Write_statement.svg \
     helpimg/scalc/coordinates-to-polar-01.svg \
     helpimg/starmath/harpoon.svg \
     helpimg/starmath/wideharpoon.svg \

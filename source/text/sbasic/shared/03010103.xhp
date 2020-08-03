@@ -20,13 +20,12 @@
 
 <meta>
   <topic id="textsbasicshared03010103xml" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">Print Statement</title>
+    <title id="tit" xml-lang="en-US">Print# Statement</title>
     <filename>/text/sbasic/shared/03010103.xhp</filename>
   </topic>
 </meta>
 
 <body>
-
 
 <section id="print">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3147230">
@@ -37,54 +36,62 @@
   <bookmark_value>Tab function; in Print statement</bookmark_value>
 </bookmark>
 
-
-<h1 id="hd_id3147230" xml-lang="en-US"><variable id="Print_h1"><link href="text/sbasic/shared/03010103.xhp" name="Print Statement">Print Statement</link></variable></h1>
-<paragraph id="par_id3156281" role="paragraph" xml-lang="en-US">Outputs the specified strings or numeric expressions to a dialog or to a file.</paragraph>
+<h1 id="hd_id3147230" xml-lang="en-US"><variable id="Print_h1"><link href="text/sbasic/shared/03010103.xhp" name="Print# Statement">Print# Statement</link></variable></h1>
+<paragraph id="par_id3156281" role="paragraph" xml-lang="en-US">Outputs the specified strings or numeric expressions to the screen or to a sequential file.</paragraph>
 </section>
+
+<tip id="par_id461596463969009">Use <link href="text/sbasic/shared/03020201.xhp">Put#</link> statement to write data to a binary or a random file. Use <link href="text/sbasic/shared/03020205.xhp">Write#</link> statement to write data to a sequential text file with delimiting characters.</tip>
 
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <paragraph role="image" id="par_id841588605629842"><image src="media/helpimg/sbasic/Print_statement.svg" id="img_id931588605629842"><alt id="alt_id931588605629842">Print syntax</alt></image></paragraph>
 <bascode>
-<paragraph id="par_id3153188" role="bascode" xml-lang="en-US">Print [#filenum,] expression1[{;|,} [Spc(number As Integer);] [Tab(pos As Integer);] [expression2[...]] </paragraph>
+<paragraph id="par_id3153188" role="bascode">Print [#filenum,] expression1[{;|,} [Spc(number As Integer);] [Tab(pos As Integer);] [expression2[...]] </paragraph>
 </bascode>
 
 <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph id="par_id2508621" role="paragraph" xml-lang="en-US"> <emph>filenum:</emph> Any numeric expression that contains the file number that was set by the <literal>Open</literal> statement for the respective file.<comment>see i61758</comment></paragraph>
-<paragraph id="par_id3163712" role="paragraph" xml-lang="en-US"> <emph>expression</emph>: Any numeric or string expression to be printed. Multiple expressions can be separated by a semicolon. If separated by a comma, the expressions are indented to the next tab stop. The tab stops cannot be adjusted.</paragraph>
-<paragraph id="par_id3153092" role="paragraph" xml-lang="en-US"> <emph>number</emph>: Number of spaces to be inserted by the <emph>Spc</emph> function.</paragraph>
-<paragraph id="par_id3145364" role="paragraph" xml-lang="en-US"> <emph>pos</emph>: Spaces are inserted until the specified position.</paragraph>
-<paragraph id="par_id3154319" role="paragraph" xml-lang="en-US">If a semicolon or comma appears after the last expression to be printed, $[officename] Basic stores the text in an internal buffer and continues program execution without printing. When another Print statement without a semicolon or comma at the end is encountered, all text to be printed is printed at once.</paragraph>
-<paragraph id="par_id3145272" role="paragraph" xml-lang="en-US">Positive numeric expressions are printed with a leading space. Negative expressions are printed with a leading minus sign. If a certain range is exceeded for floating-point values, the respective numeric expression is printed in exponential notation.</paragraph>
-<paragraph id="par_id3154011" role="paragraph" xml-lang="en-US">If the expression to be printed exceeds a certain length, the display will automatically wrap to the next line.</paragraph>
-<paragraph id="par_id3146969" role="note" xml-lang="en-US">You can insert the <emph>Tab</emph> function, enclosed by semicolons, between arguments to indent the output to a specific position, or you can use the <emph>Spc</emph> function to insert a specified number of spaces.</paragraph>
+<paragraph id="par_id2508621" role="paragraph"> <emph>filenum:</emph> Any numeric expression that contains the file number that was set by the <literal>Open</literal> statement for the respective file.<comment>see i61758</comment></paragraph>
+<paragraph id="par_id3163712" role="paragraph"> <emph>expression</emph>: Any numeric or string expression to be printed. Multiple expressions can be separated by a semicolon. If separated by a comma, the expressions are indented to the next tab stop. The tab stops cannot be adjusted.</paragraph>
+<paragraph id="par_id3153092" role="paragraph"> <emph>number</emph>: Number of spaces to be inserted by the <emph>Spc</emph> function.</paragraph>
+<paragraph id="par_id3145364" role="paragraph"> <emph>pos</emph>: Spaces are inserted until the specified position.</paragraph>
+<paragraph id="par_id3154319" role="paragraph">If a semicolon or comma appears after the last expression to be printed, $[officename] Basic stores the text in an internal buffer and continues program execution without printing. When another Print statement without a semicolon or comma at the end is encountered, all text to be printed is printed at once.</paragraph>
+<paragraph id="par_id3145272" role="paragraph">Positive numeric expressions are printed with a leading space. Negative expressions are printed with a leading minus sign. If a certain range is exceeded for floating-point values, the respective numeric expression is printed in exponential notation.</paragraph>
+<paragraph id="par_id3154011" role="paragraph">If the expression to be printed exceeds a certain length, the display will automatically wrap to the next line.</paragraph>
+<paragraph id="par_id3146969" role="note">You can insert the <emph>Tab</emph> function, enclosed by semicolons, between arguments to indent the output to a specific position, or you can use the <emph>Spc</emph> function to insert a specified number of spaces.</paragraph>
 
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <switch select="sys">
 <case select="WIN">
 <bascode>
-<paragraph id="par_idm1073161760" role="bascode" localize="false" xml-lang="en-US">Sub ExamplePrint</paragraph>
-<paragraph id="par_idm1073160528" role="bascode" localize="false" xml-lang="en-US">    Print "ABC"</paragraph>
-<paragraph id="par_idm1073159296" role="bascode" localize="false" xml-lang="en-US">    Print "ABC","123"</paragraph>
-<paragraph id="par_idm1073129856" role="bascode" localize="false" xml-lang="en-US">    i = FreeFile()</paragraph>
-<paragraph id="par_idm1073128624" role="bascode" localize="false" xml-lang="en-US">    Open "C:\Temp.txt" For Output As i</paragraph>
-<paragraph id="par_idm1073127376" role="bascode" localize="false" xml-lang="en-US">    Print #i, "ABC"</paragraph>
-<paragraph id="par_idm1073126144" role="bascode" localize="false" xml-lang="en-US">    Close #i</paragraph>
-<paragraph id="par_idm1073124912" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1073161760" role="bascode" localize="false">Sub ExamplePrint</paragraph>
+<paragraph id="par_idm1073160528" role="bascode" localize="false">    Print "ABC"</paragraph>
+<paragraph id="par_idm1073159296" role="bascode" localize="false">    Print "ABC","123"</paragraph>
+<paragraph id="par_idm1073129856" role="bascode" localize="false">    i = FreeFile()</paragraph>
+<paragraph id="par_idm1073128624" role="bascode" localize="false">    Open "C:\Temp.txt" For Output As i</paragraph>
+<paragraph id="par_idm1073127376" role="bascode" localize="false">    Print #i, "ABC"</paragraph>
+<paragraph id="par_idm1073126144" role="bascode" localize="false">    Close #i</paragraph>
+<paragraph id="par_idm1073124912" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
 </case>
 <default>
 <bascode>
-<paragraph id="par_idm1073122912" role="bascode" localize="false" xml-lang="en-US">Sub ExamplePrint</paragraph>
-<paragraph id="par_idm1073121680" role="bascode" localize="false" xml-lang="en-US">    Print "ABC"</paragraph>
-<paragraph id="par_idm1073120448" role="bascode" localize="false" xml-lang="en-US">    Print "ABC","123"</paragraph>
-<paragraph id="par_idm1073119216" role="bascode" localize="false" xml-lang="en-US">    i = FreeFile()</paragraph>
-<paragraph id="par_idm1073117984" role="bascode" localize="false" xml-lang="en-US">    Open "~/temp.txt" For Output As i</paragraph>
-<paragraph id="par_idm1073116736" role="bascode" localize="false" xml-lang="en-US">    Print #i, "ABC"</paragraph>
-<paragraph id="par_idm1073115504" role="bascode" localize="false" xml-lang="en-US">    Close #i</paragraph>
-<paragraph id="par_idm1073114272" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1073122912" role="bascode" localize="false">Sub ExamplePrint</paragraph>
+<paragraph id="par_idm1073121680" role="bascode" localize="false">    Print "ABC"</paragraph>
+<paragraph id="par_idm1073120448" role="bascode" localize="false">    Print "ABC","123"</paragraph>
+<paragraph id="par_idm1073119216" role="bascode" localize="false">    i = FreeFile()</paragraph>
+<paragraph id="par_idm1073117984" role="bascode" localize="false">    Open "~/temp.txt" For Output As i</paragraph>
+<paragraph id="par_idm1073116736" role="bascode" localize="false">    Print #i, "ABC"</paragraph>
+<paragraph id="par_idm1073115504" role="bascode" localize="false">    Close #i</paragraph>
+<paragraph id="par_idm1073114272" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
 </default>
 </switch>
-</body>
 
+<section id="relatedtopics" >
+   <embed href="text/sbasic/shared/03020101.xhp#Close_h1"/>
+   <embed href="text/sbasic/shared/03020204.xhp#Put_h1"/>
+   <embed href="text/sbasic/shared/03020103.xhp#Open_h1"/>
+   <embed href="text/sbasic/shared/03020205.xhp#Write_h1"/>
+</section>
+
+</body>
 </helpdocument>
