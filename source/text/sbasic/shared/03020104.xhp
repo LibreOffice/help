@@ -27,50 +27,56 @@
 
 <body>
 
-
 <section id="reset">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3154141">
   <bookmark_value>Reset statement</bookmark_value>
 </bookmark>
 
-
-<paragraph id="hd_id3154141" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03020104.xhp">Reset Statement</link></paragraph>
+<h1 id="hd_id3154141"><variable id="Reset_h1"><link href="text/sbasic/shared/03020104.xhp">Reset Statement</link></variable></h1>
 <paragraph id="par_id3156423" role="paragraph" xml-lang="en-US">Closes all open files and writes the contents of all file buffers to the harddisk.</paragraph>
 </section>
 
-<paragraph id="hd_id3154124" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+<paragraph role="paragraph" id="par_id971587473488701">
+  <image src="media/helpimg/sbasic/Reset_statement.svg" id="img_id4156296484514"><alt xml-lang="en-US" id="alt_id15152796484514">Reset Statement diagram</alt></image>
+</paragraph>
 <bascode>
-<paragraph id="par_idm1207263392" role="bascode" localize="false" xml-lang="en-US">Reset</paragraph>
+<paragraph id="par_idm1207263392" role="bascode" localize="false">Reset</paragraph>
 </bascode>
 
-<paragraph id="hd_id3161831" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
-<paragraph id="par_idm1207260032" role="bascode" localize="false" xml-lang="en-US">Sub ExampleReset</paragraph>
-<paragraph id="par_idm1207243568" role="bascode" localize="false" xml-lang="en-US">On Error GoTo ErrorHandler</paragraph>
-<paragraph id="par_idm1207242464" role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
-<paragraph id="par_idm1207241360" role="bascode" localize="false" xml-lang="en-US">Dim iCount As Integer</paragraph>
-<paragraph id="par_idm1207240256" role="bascode" localize="false" xml-lang="en-US">Dim sLine As String</paragraph>
-<paragraph id="par_idm1207239152" role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
-<paragraph id="par_idm1207238048" role="bascode" localize="false" xml-lang="en-US">    aFile = "c:\data.txt"</paragraph>
-<paragraph id="par_idm1207236896" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1207235792" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Output As #iNumber</paragraph>
+<paragraph id="par_idm1207260032" role="bascode" localize="false">Sub ExampleReset</paragraph>
+<paragraph id="par_idm1207243568" role="bascode" localize="false">On Error GoTo ErrorHandler</paragraph>
+<paragraph id="par_idm1207242464" role="bascode" localize="false">Dim iNumber As Integer</paragraph>
+<paragraph id="par_idm1207241360" role="bascode" localize="false">Dim iCount As Integer</paragraph>
+<paragraph id="par_idm1207240256" role="bascode" localize="false">Dim sLine As String</paragraph>
+<paragraph id="par_idm1207239152" role="bascode" localize="false">Dim aFile As String</paragraph>
+<paragraph id="par_idm1207238048" role="bascode" localize="false">    aFile = "c:\data.txt"</paragraph>
+<paragraph id="par_idm1207236896" role="bascode" localize="false">    iNumber = Freefile</paragraph>
+<paragraph id="par_idm1207235792" role="bascode" localize="false">    Open aFile For Output As #iNumber</paragraph>
 <paragraph id="par_id3148455" role="bascode" xml-lang="en-US">    Print #iNumber, "This is a new line of text"</paragraph>
-<paragraph id="par_idm1207232992" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1207231888" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
-<paragraph id="par_idm1207230784" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Input As iNumber</paragraph>
-<paragraph id="par_idm1207229632" role="bascode" localize="false" xml-lang="en-US">    For iCount = 1 To 5</paragraph>
-<paragraph id="par_idm1207228528" role="bascode" localize="false" xml-lang="en-US">        Line Input #iNumber, sLine</paragraph>
-<paragraph id="par_idm1207227376" role="bascode" localize="false" xml-lang="en-US">        If sLine &lt;&gt;"" Then</paragraph>
-<paragraph id="par_idm1207226224" role="bascode" localize="false" xml-lang="en-US">            Rem</paragraph>
-<paragraph id="par_idm1207225120" role="bascode" localize="false" xml-lang="en-US">        End If</paragraph>
-<paragraph id="par_idm1207224016" role="bascode" localize="false" xml-lang="en-US">    Next iCount</paragraph>
-<paragraph id="par_idm1207222912" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
-<paragraph id="par_idm1207221808" role="bascode" localize="false" xml-lang="en-US">    Exit Sub</paragraph>
-<paragraph id="par_idm1207220704" role="bascode" localize="false" xml-lang="en-US">ErrorHandler:</paragraph>
-<paragraph id="par_idm1207219600" role="bascode" localize="false" xml-lang="en-US">    Reset</paragraph>
+<paragraph id="par_idm1207232992" role="bascode" localize="false">    Close #iNumber</paragraph>
+<paragraph id="par_idm1207231888" role="bascode" localize="false">    iNumber = Freefile</paragraph>
+<paragraph id="par_idm1207230784" role="bascode" localize="false">    Open aFile For Input As iNumber</paragraph>
+<paragraph id="par_idm1207229632" role="bascode" localize="false">    For iCount = 1 To 5</paragraph>
+<paragraph id="par_idm1207228528" role="bascode" localize="false">        Line Input #iNumber, sLine</paragraph>
+<paragraph id="par_idm1207227376" role="bascode" localize="false">        If sLine &lt;&gt;"" Then</paragraph>
+<paragraph id="par_idm1207226224" role="bascode" localize="false">            Rem</paragraph>
+<paragraph id="par_idm1207225120" role="bascode" localize="false">        End If</paragraph>
+<paragraph id="par_idm1207224016" role="bascode" localize="false">    Next iCount</paragraph>
+<paragraph id="par_idm1207222912" role="bascode" localize="false">    Close #iNumber</paragraph>
+<paragraph id="par_idm1207221808" role="bascode" localize="false">    Exit Sub</paragraph>
+<paragraph id="par_idm1207220704" role="bascode" localize="false">ErrorHandler:</paragraph>
+<paragraph id="par_idm1207219600" role="bascode" localize="false">    Reset</paragraph>
 <paragraph id="par_id3163805" role="bascode" xml-lang="en-US">    MsgBox "All files will be closed",0,"Error"</paragraph>
-<paragraph id="par_idm1207216848" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1207216848" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
-</body>
 
+<section id="relatedtopics" >
+   <embed href="text/sbasic/shared/03020101.xhp#Close_h1"/>
+   <embed href="text/sbasic/shared/03020103.xhp#Open_h1"/>
+</section>  
+
+</body>
 </helpdocument>

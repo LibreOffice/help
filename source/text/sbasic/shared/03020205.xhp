@@ -27,47 +27,57 @@
 
 <body>
 
-
 <section id="write">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3147229">
   <bookmark_value>Write statement</bookmark_value>
 </bookmark>
 
-
-<paragraph id="hd_id3147229" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03020205.xhp" name="Write Statement">Write Statement</link></paragraph>
-<paragraph id="par_id3154685" role="paragraph" xml-lang="en-US">Writes data to a sequential file.</paragraph>
+<h1 id="hd_id3147229"><variable id="Write_h1"><link href="text/sbasic/shared/03020205.xhp" name="Write# Statement">Write# Statement</link></variable></h1>
+<paragraph id="par_id3154685" role="paragraph" xml-lang="en-US">Writes data to a sequential text file with delimiting characters.</paragraph>
 </section>
 
-<paragraph id="hd_id3150449" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<tip id="par_id461596463969009">Use <link href="text/sbasic/shared/03010103.xhp">Print#</link> statement to print data to a sequential text file. Use <link href="text/sbasic/shared/03020201.xhp">Put#</link> statement to write data  to a binary or a random file.</tip>
+
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+<paragraph role="paragraph" id="par_id971587473488701">
+  <image src="media/helpimg/sbasic/Write_statement.svg" id="img_id4156296484514"><alt xml-lang="en-US" id="alt_id15152796484514">Write Statement diagram</alt></image>
+</paragraph>
 <bascode>
-<paragraph id="par_id3145785" role="bascode" xml-lang="en-US">Write [#FileName], [Expressionlist]<comment>see i61248</comment></paragraph>
+<paragraph id="par_id3145785" role="bascode" localize="false">Write [#fileNum] {,|;} expression [, …]</paragraph>
 </bascode>
 
-<paragraph id="hd_id3151116" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
-<paragraph id="par_id3153728" role="paragraph" xml-lang="en-US"> <emph>FileName:</emph> Any numeric expression that contains the file number that was set by the Open statement for the respective file.</paragraph>
-<paragraph id="par_id3146120" role="paragraph" xml-lang="en-US"> <emph>Expressionlist:</emph> Variables or expressions that you want to enter in a file, separated by commas.</paragraph>
-<paragraph id="par_id3150010" role="paragraph" xml-lang="en-US">If the expression list is omitted, the <emph>Write</emph> statement appends an empty line to the file.</paragraph>
-<paragraph id="par_id3163713" role="paragraph" xml-lang="en-US">To add an expression list to a new or an existing file, the file must be opened in the <emph>Output</emph> or <emph>Append</emph> mode.</paragraph>
-<paragraph id="par_id3147428" role="paragraph" xml-lang="en-US">Strings that you write are enclosed by quotation marks and separated by commas. You do not need to enter these delimiters in the expression list.</paragraph>
-<paragraph id="par_id1002838" role="paragraph" xml-lang="en-US">Each <emph>Write</emph> statement outputs a line end symbol as last entry.</paragraph>
-<paragraph id="par_id6618854" role="paragraph" xml-lang="en-US">Numbers with decimal delimiters are converted according to the locale settings.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<paragraph id="par_id3153728" role="paragraph"> <emph>fileNum</emph>: Any numeric expression that contains the file number that was set by the Open statement for the respective file.</paragraph>
+<paragraph id="par_id3146120" role="paragraph"> <emph>expression</emph> list: Variables or expressions that you want to enter in a file, separated by commas.</paragraph>
+<paragraph id="par_id3150010" role="paragraph">If the expression list is omitted, the <emph>Write</emph> statement appends an empty line to the file.</paragraph>
+<paragraph id="par_id3163713" role="paragraph">To add an expression list to a new or an existing file, the file must be opened in the <emph>Output</emph> or <emph>Append</emph> mode.</paragraph>
+<paragraph id="par_id3147428" role="paragraph">Strings that you write are enclosed by quotation marks and separated by commas. You do not need to enter these delimiters in the expression list.</paragraph>
+<paragraph id="par_id1002838" role="paragraph">Each <emph>Write</emph> statement outputs a line end symbol as last entry.</paragraph>
+<paragraph id="par_id6618854" role="paragraph">Numbers with decimal delimiters are converted according to the locale settings.</paragraph>
 
-<paragraph id="hd_id3151073" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
-<paragraph id="par_idm1340911536" role="bascode" localize="false" xml-lang="en-US">Sub ExampleWrite</paragraph>
-<paragraph id="par_idm1340910304" role="bascode" localize="false" xml-lang="en-US">Dim iCount As Integer</paragraph>
-<paragraph id="par_idm1340909072" role="bascode" localize="false" xml-lang="en-US">Dim sValue As String</paragraph>
-<paragraph id="par_idm1340907840" role="bascode" localize="false" xml-lang="en-US">    iCount = Freefile</paragraph>
-<paragraph id="par_idm1340906608" role="bascode" localize="false" xml-lang="en-US">    Open "C:\data.txt" For Output As iCount</paragraph>
-<paragraph id="par_idm1340905344" role="bascode" localize="false" xml-lang="en-US">    sValue = "Hamburg"</paragraph>
-<paragraph id="par_idm1340904112" role="bascode" localize="false" xml-lang="en-US">    Write #iCount,sValue,200</paragraph>
-<paragraph id="par_idm1340902864" role="bascode" localize="false" xml-lang="en-US">    sValue = "New York"</paragraph>
-<paragraph id="par_idm1340901632" role="bascode" localize="false" xml-lang="en-US">    Write #iCount,sValue,300</paragraph>
-<paragraph id="par_idm1340900384" role="bascode" localize="false" xml-lang="en-US">    sValue = "Miami"</paragraph>
-<paragraph id="par_idm1340899152" role="bascode" localize="false" xml-lang="en-US">    Write #iCount,sValue,450</paragraph>
-<paragraph id="par_idm1340897904" role="bascode" localize="false" xml-lang="en-US">    Close #iCount</paragraph>
-<paragraph id="par_idm1340896672" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1340911536" role="bascode" localize="false">Sub ExampleWrite</paragraph>
+<paragraph id="par_idm1340910304" role="bascode" localize="false">    Dim iCount As Integer</paragraph>
+<paragraph id="par_idm1340909072" role="bascode" localize="false">    Dim sValue As String</paragraph>
+<paragraph id="par_idm1340907840" role="bascode" localize="false">    iCount = Freefile</paragraph>
+<paragraph id="par_idm1340906608" role="bascode" localize="false">    Open "C:\data.txt" For Output As iCount</paragraph>
+<paragraph id="par_idm1340905344" role="bascode" localize="false">    sValue = "Hamburg"</paragraph>
+<paragraph id="par_idm1340904112" role="bascode" localize="false">    Write #iCount,sValue,200</paragraph>
+<paragraph id="par_idm1340902864" role="bascode" localize="false">    sValue = "New York"</paragraph>
+<paragraph id="par_idm1340901632" role="bascode" localize="false">    Write #iCount,sValue,300</paragraph>
+<paragraph id="par_idm1340900384" role="bascode" localize="false">    sValue = "Miami"</paragraph>
+<paragraph id="par_idm1340899152" role="bascode" localize="false">    Write #iCount,sValue,450</paragraph>
+<paragraph id="par_idm1340897904" role="bascode" localize="false">    Close #iCount</paragraph>
+<paragraph id="par_idm1340896672" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
+
+<section id="relatedtopics" >
+   <embed href="text/sbasic/shared/03020103.xhp#Open_h1"/>
+   <embed href="text/sbasic/shared/03010103.xhp#Print_h1"/>
+   <embed href="text/sbasic/shared/03020204.xhp#Put_h1"/>
+   <embed href="text/sbasic/shared/03020101.xhp#Close_h1"/>
+</section>
+
 </body>
-
 </helpdocument>
