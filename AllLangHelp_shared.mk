@@ -372,6 +372,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/signexistingpdf \
     helpcontent2/source/text/shared/01/securitywarning \
     helpcontent2/source/text/shared/01/selectcertificate \
+    helpcontent2/source/text/shared/01/timestampauth \
     helpcontent2/source/text/shared/01/webhtml \
     helpcontent2/source/text/shared/01/xformsdata \
     helpcontent2/source/text/shared/01/xformsdataadd \
@@ -516,6 +517,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/02/flowcharts \
     helpcontent2/source/text/shared/02/fontwork \
     helpcontent2/source/text/shared/02/limit \
+    helpcontent2/source/text/shared/02/namedialog \
     helpcontent2/source/text/shared/02/paintbrush \
     helpcontent2/source/text/shared/02/querypropdlg \
     helpcontent2/source/text/shared/02/stars \
