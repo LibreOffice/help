@@ -157,14 +157,8 @@
         <script type="text/javascript" src="help.js" defer=""></script>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
     </head>
-    <body itemscope="true" itemtype="http://schema.org/TechArticle">
-    <xsl:if test="$online">
-        <!-- help2.js checks, if meta elements exist in the body -->
-        <meta itemprop="version" content="{$productversion}"/>
-        <meta itemprop="inLanguage" content="{$lang}"/>
-        <meta itemprop="datePublished" content="2020"/>
-        <meta itemprop="headline" content="{$titleL10N}"/>
-    </xsl:if>
+    <body>
+
     <header id="TopLeftHeader">
         <a class="symbol" href="{$lang}/text/shared/05/new_help.html">
             <div></div>
@@ -213,7 +207,22 @@
             </div>
         </div>
     </aside>
-    <div id="DisplayArea" itemprop="articleBody">
+    <div id="DisplayArea" itemprop="softwareHelp" itemscope="true" itemtype="http://schema.org/SoftwareApplication">
+        <xsl:if test="$online">
+            <!-- help2.js checks, if meta elements exist in the body -->
+            <meta itemprop="applicationCategory" content="BusinessApplication"/>
+            <meta itemprop="applicationSuite" content="LibreOffice"/>
+            <meta itemprop="name" content="LibreOffice"/>
+            <meta itemprop="operatingsystem" content="Windows, Linux, MacOS"/>
+            <meta itemprop="author.name" content="The LibreOffice Documentation Team"/>
+            <meta itemprop="publisher.name" content="The Document Foundation"/>
+            <meta itemprop="softwareVersion" content="{$productversion}"/>
+            <meta itemprop="inLanguage" content="{$lang}"/>
+            <meta itemprop="datePublished" content="2020"/>
+            <meta itemprop="headline" content="{$titleL10N}"/>
+            <meta itemprop="license" content="https://www.libreoffice.org/download/license/"/>
+            <meta itemprop="image" content="media/navigation/libo-symbol-white.svg"/>
+        </xsl:if>
         <xsl:apply-templates select="/helpdocument/body"/>
     </div>
     <div id="SearchFrame">
@@ -237,7 +246,12 @@
     </div>
     <footer>
         <xsl:if test="$online">
-            <p><a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
+            <p itemscope="true" itemtype="http://schema.org/Organization">
+            <meta itemprop="name" content="The Document Foundation"/>
+            <meta itemprop="legalName" content="The Document Foundation"/>
+            <meta itemprop="alternateName" content="TDF"/>
+            <meta itemprop="publishingPrinciples" content="https://www.libreoffice.org/imprint"/>
+            <a href="https://www.libreoffice.org/imprint" target="_blank">Impressum (Legal Info)</a> | <a href="https://www.libreoffice.org/privacy" target="_blank">Privacy Policy</a> | <a href="https://www.documentfoundation.org/statutes.pdf" target="_blank">Statutes (non-binding English translation)</a> - <a href="https://www.documentfoundation.org/satzung.pdf" target="_blank">Satzung (binding German version)</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.libreoffice.org/download/license/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in our <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. LibreOffice was based on OpenOffice.org.</p>
         </xsl:if>
         <div id="DEBUG" class="debug">
             <h3 class="bug">Help content debug info:</h3>
@@ -416,49 +430,24 @@
     </xsl:choose>
 </xsl:template>
 <xsl:template match="link" mode="embedded">
-	<xsl:call-template name="createlink"/>
+        <xsl:call-template name="createlink"/>
 </xsl:template>
 
 <!-- LIST -->
 <xsl:template match="list">
-    <xsl:choose>
-        <xsl:when test="@type='ordered'">
-            <ol>
-                <xsl:if test="@startwith">
-                    <xsl:attribute name="start"><xsl:value-of select="@startwith"/></xsl:attribute>
-                </xsl:if>
-                <xsl:apply-templates />
-            </ol>
-        </xsl:when>
-        <xsl:otherwise>
-            <ul><xsl:apply-templates /></ul>
-        </xsl:otherwise>
-    </xsl:choose>
+    <xsl:call-template name="insertlist"/>
 </xsl:template>
 
 <xsl:template match="list" mode="embedded">
-    <xsl:choose>
-        <xsl:when test="@type='ordered'">
-            <ol>
-                <xsl:if test="@startwith">
-                    <xsl:attribute name="start"><xsl:value-of select="@startwith"/></xsl:attribute>
-                </xsl:if>
-                <xsl:apply-templates mode="embedded"/>
-            </ol>
-        </xsl:when>
-        <xsl:otherwise>
-            <ul><xsl:apply-templates mode="embedded"/></ul>
-        </xsl:otherwise>
-    </xsl:choose>
+    <xsl:call-template name="insertlist"/>
 </xsl:template>
 
 <!-- LISTITEM -->
 <xsl:template match="listitem">
-    <li><xsl:apply-templates /></li>
+    <xsl:call-template name="insertlistitem"/>
 </xsl:template>
-
 <xsl:template match="listitem" mode="embedded">
-    <li><xsl:apply-templates mode="embedded"/></li>
+    <xsl:call-template name="insertlistitem"/>
 </xsl:template>
 
 <!-- META, SEE HEADER -->
@@ -756,12 +745,14 @@
 <!-- H1-H6 -->
 <xsl:template match="h1 | h2 | h3 | h4 | h5 | h6">
     <xsl:element name="{local-name()}">
-        <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute><xsl:apply-templates />
+        <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+        <xsl:apply-templates />
     </xsl:element>
 </xsl:template>
 <xsl:template match="h1 | h2 | h3 | h4 | h5 | h6" mode="embedded">
     <xsl:element name="{concat('h',substring-after(local-name(),'h') + 1)}">
-        <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute><xsl:apply-templates mode="embedded"/>
+        <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+        <xsl:apply-templates mode="embedded"/>
     </xsl:element>
 </xsl:template>
 
@@ -877,6 +868,41 @@
         </xsl:otherwise>
     </xsl:choose>
 
+</xsl:template>
+
+<!-- Insert list item -->
+<xsl:template name="insertlistitem">
+    <xsl:choose>
+       <xsl:when test="ancestor::list[@type='ordered']">
+        <li itemprop="itemListElement" itemscope="true" itemtype="http://schema.org/HowToStep">
+            <xsl:apply-templates />
+        </li>
+        </xsl:when>
+        <xsl:otherwise>
+        <li itemprop="itemListElement" itemscope="true" itemtype="http://schema.org/ItemListUnordered">
+            <xsl:apply-templates />
+        </li>
+        </xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+<!-- insert List -->
+<xsl:template name="insertlist">
+    <xsl:choose>
+        <xsl:when test="@type='ordered'">
+            <ol itemprop="HowTo" itemscope="true" itemtype="http://schema.org/HowToSection">
+                <xsl:if test="@startwith != ''">
+                    <xsl:attribute name="start"><xsl:value-of select="@startwith"/></xsl:attribute>
+                </xsl:if>
+                <xsl:apply-templates />
+            </ol>
+        </xsl:when>
+        <xsl:otherwise>
+            <ul itemprop="Unordered" itemscope="true" itemtype="http://schema.org/ItemList">
+                <xsl:apply-templates />
+            </ul>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <!-- Insert Paragraph -->
@@ -1001,9 +1027,6 @@
         <xsl:param name="level" />
         <xsl:param name="embedded" />
         <xsl:element name="{concat('h',$level)}">
-                <xsl:if test="$level = '1' or $level='2'">
-                        <xsl:attribute name="itemprop"><xsl:text>articleSection</xsl:text></xsl:attribute>
-                </xsl:if>
                 <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
                 <xsl:choose>
                     <xsl:when test="$embedded = 'yes'">
@@ -1156,6 +1179,22 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
+    <xsl:variable name="property">
+            <xsl:choose>
+            <xsl:when test="starts-with(@src,'media/screenshots/')">
+                <xsl:value-of select="'screenshot'"/>
+            </xsl:when>
+            <xsl:when test="starts-with(@src,'media/')">
+                <xsl:value-of select="'image'"/>
+            </xsl:when>
+            <xsl:when test="not(starts-with(@src,'media/'))">
+                <xsl:value-of select="'icon'"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="'image'"/>
+            </xsl:otherwise>
+            </xsl:choose>
+    </xsl:variable>
     <xsl:variable name="alt"><xsl:value-of select="./alt"/></xsl:variable>
     <xsl:variable name="width">
         <xsl:if test="string-length(@width)!=0">
@@ -1167,7 +1206,7 @@
             <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
         </xsl:if>
     </xsl:variable>
-    <img src="{$src2}" class="{$imagestyle}" alt="{$alt}" title="{$alt}" style="{concat('width:',$width,';height:',$height)}"/>
+    <img src="{$src2}" class="{$imagestyle}" alt="{$alt}" title="{$alt}" style="{concat('width:',$width,';height:',$height)}" itemprop="{$property}" itemscope="true" itemtype="http://schema.org/ImageObject"/>
 </xsl:template>
 
 <!-- Insert an object -->
