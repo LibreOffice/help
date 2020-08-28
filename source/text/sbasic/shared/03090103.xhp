@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -17,7 +16,6 @@
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  -->
-
 <helpdocument version="1.0">
 <meta>
 <topic id="textsbasicshared03090103xml" indexer="include" status="PUBLISH">
@@ -32,20 +30,33 @@
 <section id="iif">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3155420"><bookmark_value>IIf function</bookmark_value>
 </bookmark>
-<paragraph role="heading" id="hd_id3155420" xml-lang="en-US" level="1"><link href="text/sbasic/shared/03090103.xhp" name="IIf Function">IIf Function</link></paragraph>
+<h1 id="hd_id3155420"><link href="text/sbasic/shared/03090103.xhp" name="IIf Function">IIf Function</link></h1>
 <paragraph role="paragraph" id="par_id3145610" xml-lang="en-US">Returns one of two possible function results, depending on the logical value of the evaluated expression.</paragraph>
 </section>
-<paragraph role="heading" id="hd_id3159413" xml-lang="en-US" level="2">Syntax:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
 <paragraph role="bascode" id="par_id3147560" xml-lang="en-US">IIf (Expression, ExpressionTrue, ExpressionFalse)</paragraph>
 </bascode>
-<paragraph role="heading" id="hd_id3150541" xml-lang="en-US" level="2">Parameters:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
 <paragraph role="paragraph" id="par_id3153381" xml-lang="en-US">
 <emph>Expression:</emph> Any expression that you want to evaluate. If the expression evaluates to <emph>True</emph>, the function returns the result of ExpressionTrue, otherwise it returns the result of ExpressionFalse.</paragraph>
 <paragraph role="paragraph" id="par_id3150870" xml-lang="en-US">
 <emph>ExpressionTrue, ExpressionFalse:</emph> Any expression, one of which will be returned as the function result, depending on the logical evaluation.</paragraph>
+<note id="par_id541598638231139">IIf evaluates both <literal>ExpressionTrue</literal> and <literal>ExpressionFalse</literal> even if it returns only one of them. If one of the expressions results in error, the function returns the error. For example, do not use IIF to bypass a possible division by zero result.</note>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<bascode>
+<paragraph role="bascode" id="par_id1001598638460925" xml-lang="en-US">REM Returns the maximum of 3 values</paragraph>
+<paragraph role="bascode" id="par_id11598638500752" xml-lang="en-US" localize="false">Function Max (A As Double, B As Double, C, As Double) As Double</paragraph>
+<paragraph role="bascode" id="par_id271598638528057" xml-lang="en-US" localize="false">    Max = IIf( A >= B, A, B)</paragraph>
+<paragraph role="bascode" id="par_id281598638539101" xml-lang="en-US" localize="false">    Max = IIf( C >= Max, C, Max)</paragraph>
+<paragraph role="bascode" id="par_id521598638553550" xml-lang="en-US" localize="false">End Function</paragraph>
+<paragraph role="bascode" id="par_id161598638840133" xml-lang="en-US">REM Bad usage of function IIf</paragraph>
+<paragraph role="bascode" id="par_id571598638863628" xml-lang="en-US" localize="false">Function Inverse(A As Double) As Double</paragraph>
+<paragraph role="bascode" id="par_id171598638875498" xml-lang="en-US" localize="false">    Inverse = IIf( A = 0, 0, 1/A )</paragraph>
+<paragraph role="bascode" id="par_id451598638883642" xml-lang="en-US" localize="false">End Function</paragraph>
+</bascode>
 
 <section id="relatedtopics">
   <paragraph role="paragraph" id="par_id161588865796615"><link href="text/sbasic/shared/03090101.xhp" name="If...Then...Else statement">If</link> or <link href="text/sbasic/shared/03090102.xhp" name="Select Case statement">Select Case</link> statements</paragraph>
