@@ -47,11 +47,11 @@
 </bookmark>
 
 
-<paragraph id="hd_id3149346" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/01020100.xhp" name="Using Variables">Using Variables</link></paragraph>
+<h1 id="hd_id3149346"><link href="text/sbasic/shared/01020100.xhp" name="Using Variables">Using Variables</link></h1>
 <paragraph id="par_id3154346" role="paragraph" xml-lang="en-US">The following describes the basic use of variables in $[officename] Basic.</paragraph>
 </section>
 
-<paragraph id="hd_id3153361" role="heading" level="2" xml-lang="en-US">Naming Conventions for Variable Identifiers</paragraph>
+<h2 id="hd_id3153361">Naming Conventions for Variable Identifiers</h2>
 <paragraph id="par_id3148797" role="paragraph" xml-lang="en-US">A variable name can consist of a maximum of 255 characters. The first character of a variable name <emph>must</emph> be a letter A-Z or a-z. Numbers can also be used in a variable name, but punctuation symbols and special characters are not permitted, with exception of the underscore character ("_"). In $[officename] Basic variable identifiers are not case-sensitive. Variable names may contain spaces but must be enclosed in square brackets if they do.</paragraph>
 <paragraph id="par_id3156422" role="paragraph" xml-lang="en-US">Examples for variable identifiers:</paragraph>
 
@@ -66,7 +66,7 @@
     <paragraph id="par_idm1341234704" role="bascode">Number,Mine=12  'Not valid, punctuation marks are not allowed'</paragraph>
 </bascode>
 
-<paragraph id="hd_id3146317" role="heading" level="2" xml-lang="en-US">Declaring Variables</paragraph>
+<h2 id="hd_id3146317">Declaring Variables</h2>
 <paragraph id="par_id3150299" role="paragraph" xml-lang="en-US">In $[officename] Basic you don't need to declare variables explicitly. A variable declaration can be performed with the <emph>Dim</emph> statement. You can declare more than one variable at a time by separating the names with a comma. To define the variable type, use either a type-declaration sign after the name, or the appropriate key word. </paragraph>
 <paragraph id="par_id3154118" role="paragraph" xml-lang="en-US">Examples for variable declarations:</paragraph>
 
@@ -77,16 +77,16 @@
     <paragraph id="par_idm1341205936" role="bascode">Dim c As Boolean     'Declares c as a Boolean variable that can be TRUE or FALSE'</paragraph>
 </bascode>
 
-<paragraph id="par_id3144770" role="warning" xml-lang="en-US">Once you have declared a variable as a certain type, you cannot declare the variable under the same name again as a different type!</paragraph>
+<warning id="par_id3144770">Once you have declared a variable as a certain type, you cannot declare the variable under the same name again as a different type!</warning>
 
-<paragraph id="hd_id3149331" role="heading" level="3" xml-lang="en-US">Forcing Variable Declarations</paragraph>
+<h3 id="hd_id3149331">Forcing Variable Declarations</h3>
 <paragraph id="par_id3149443" role="paragraph" xml-lang="en-US">To force declaration of variables, use the following command:</paragraph>
 <bascode>
 <paragraph id="par_idm1341182432" role="bascode" localize="false" xml-lang="en-US">Option Explicit</paragraph>
 </bascode>
 <paragraph id="par_id3155072" role="paragraph" xml-lang="en-US">The <emph>Option Explicit</emph> statement has to be the first line in the module, before the first SUB. Generally, only arrays need to be declared explicitly. All other variables are declared according to the type-declaration character, or - if omitted - as the default type <emph>Single</emph>.</paragraph>
 
-<paragraph id="hd_id3154614" role="heading" level="2" xml-lang="en-US">Variable Types</paragraph>
+<h2 id="hd_id3154614">Variable Types</h2>
 <paragraph id="par_id3155383" role="paragraph" xml-lang="en-US">$[officename] Basic supports four variable classes:</paragraph>
 
 <list type="unordered">
@@ -103,40 +103,40 @@
     <paragraph id="par_id3154762" role="listitem" xml-lang="en-US"> <emph>Object</emph> variables can store objects of various types, like tables and documents within a document.</paragraph>
   </listitem></list>
 
-<paragraph id="hd_id3153805" role="heading" level="3" xml-lang="en-US">Integer Variables</paragraph>
+<h3 id="hd_id3153805">Integer Variables</h3>
 <paragraph id="par_id3146966" role="paragraph" xml-lang="en-US">Integer variables range from -32768 to 32767. If you assign a floating-point value to an integer variable, the decimal places are rounded to the next integer. Integer variables are rapidly calculated in procedures and are suitable for counter variables in loops. An integer variable only requires two bytes of memory. "%" is the type-declaration character.</paragraph>
 <bascode>
 <paragraph id="par_idm1341159200" role="bascode" localize="false" xml-lang="en-US">Dim Variable%</paragraph>
 <paragraph id="par_idm1341157968" role="bascode" localize="false" xml-lang="en-US">Dim Variable As Integer</paragraph>
 </bascode>
 
-<paragraph id="hd_id3147546" role="heading" level="3" xml-lang="en-US">Long Integer Variables</paragraph>
+<h3 id="hd_id3147546">Long Integer Variables</h3>
 <paragraph id="par_id3151193" role="paragraph" xml-lang="en-US">Long integer variables range from -2147483648 to 2147483647. If you assign a floating-point value to a long integer variable, the decimal places are rounded to the next integer. Long integer variables are rapidly calculated in procedures and are suitable for counter variables in loops for large values. A long integer variable requires four bytes of memory. "&amp;" is the type-declaration character.</paragraph>
 <bascode>
 <paragraph id="par_idm1341151984" role="bascode" localize="false" xml-lang="en-US">Dim Variable&amp;</paragraph>
 <paragraph id="par_idm1341150736" role="bascode" localize="false" xml-lang="en-US">Dim Variable As Long</paragraph>
 </bascode>
 
-<paragraph id="hd_id7596972" role="heading" level="3" xml-lang="en-US">Decimal Variables<comment>see i64349</comment></paragraph>
+<h3 id="hd_id7596972">Decimal Variables<comment>see i64349</comment></h3>
 <paragraph id="par_id2649311" role="paragraph" xml-lang="en-US">Decimal variables can take positive or negative numbers or zero. Accuracy is up to 29 digits.</paragraph><comment>i85284</comment>
 <paragraph id="par_id7617114" role="paragraph" xml-lang="en-US">You can use plus (+) or minus (-) signs as prefixes for decimal numbers (with or without spaces).</paragraph>
 <paragraph id="par_id1593676" role="paragraph" xml-lang="en-US">If a decimal number is assigned to an integer variable, %PRODUCTNAME Basic rounds the figure up or down.<comment>information from "Programming Guide for BASIC" about decimal variables</comment></paragraph>
 
-<paragraph id="hd_id3147500" role="heading" level="3" xml-lang="en-US">Single Variables</paragraph>
+<h3 id="hd_id3147500">Single Variables</h3>
 <paragraph id="par_id3153070" role="paragraph" xml-lang="en-US">Single variables can take positive or negative values ranging from 3.402823 x 10E38 to 1.401298 x 10E-45. Single variables are floating-point variables, in which the decimal precision decreases as the non-decimal part of the number increases. Single variables are suitable for mathematical calculations of average precision. Calculations require more time than for Integer variables, but are faster than calculations with Double variables. A Single variable requires 4 bytes of memory. The type-declaration character is "!".</paragraph>
 <bascode>
 <paragraph id="par_idm1341137456" role="bascode" localize="false" xml-lang="en-US">Dim Variable!</paragraph>
 <paragraph id="par_idm1341136224" role="bascode" localize="false" xml-lang="en-US">Dim Variable As Single</paragraph>
 </bascode>
 
-<paragraph id="hd_id3155753" role="heading" level="3" xml-lang="en-US">Double Variables</paragraph>
+<h3 id="hd_id3155753">Double Variables</h3>
 <paragraph id="par_id3150953" role="paragraph" xml-lang="en-US">Double variables can take positive or negative values ranging from 1.79769313486232 x 10E308 to 4.94065645841247 x 10E-324. Double variables are floating-point variables, in which the decimal precision decreases as the non-decimal part of the number increases. Double variables are suitable for precise calculations. Calculations require more time than for Single variables. A Double variable requires 8 bytes of memory. The type-declaration character is "#".</paragraph>
 <bascode>
-<paragraph id="par_idm1341130144" role="bascode"  xml-lang="en-US">Dim Variable#</paragraph>
+<paragraph id="par_idm1341130144" role="bascode" xml-lang="en-US">Dim Variable#</paragraph>
 <paragraph id="par_idm1341128912" role="bascode" localize="false" xml-lang="en-US">Dim Variable As Double</paragraph>
 </bascode>
 
-<paragraph id="hd_id3155747" role="heading" level="3" xml-lang="en-US">Currency Variables</paragraph>
+<h3 id="hd_id3155747">Currency Variables</h3>
 <paragraph id="par_id3153337" role="paragraph" xml-lang="en-US">Currency variables are internally stored as 64-bit numbers (8 Bytes) and displayed as a fixed-decimal number with 15 non-decimal and 4 decimal places. The values range from -922337203685477.5808 to +922337203685477.5807. Currency variables are used to calculate currency values with a high precision. The type-declaration character is "@".</paragraph>
 <bascode>
 <paragraph id="par_idm1341123216" role="bascode" localize="false" xml-lang="en-US">Dim Variable@</paragraph>
@@ -146,40 +146,41 @@
 <h3 id="hd_id301576839713868">Literals for integers</h3>
 <paragraph role="paragraph" id="par_id1001576839723156">Numbers can be encoded using octal and hexadecimal forms.</paragraph>
 <bascode>
-  <paragraph role="bascode" id="bas_id331576850637825" localize="false">xi = &amp;o13 &apos;    8 + 3</paragraph>
-  <paragraph role="bascode" id="bas_id761576850640144" localize="false">ci = &amp;h65 &apos; 6*16 + 5</paragraph>
-  <paragraph role="bascode" id="bas_id511576850640336" localize="false">MAX_Integer =  &amp;o77777 &apos;  32767 = &amp;h7FFF</paragraph>
-  <paragraph role="bascode" id="bas_id571576850640536" localize="false">MIN_Integer = &amp;o100000 &apos; -32768 = &amp;h8000</paragraph>
-  <paragraph role="bascode" id="bas_id541576850641922" localize="false">MAX_Long = &amp;h7fffffff &apos;  2147483647 = &amp;o17777777777</paragraph>
-  <paragraph role="bascode" id="bas_id481576850564801" localize="false">MIN_Long = &amp;h80000000 &apos; -2147483648 = &amp;o20000000000</paragraph>
+  <paragraph role="bascode" id="bas_id331576850637825" localize="false">xi = &amp;o13 '    8 + 3</paragraph>
+  <paragraph role="bascode" id="bas_id761576850640144" localize="false">ci = &amp;h65 ' 6*16 + 5</paragraph>
+  <paragraph role="bascode" id="bas_id511576850640336" localize="false">MAX_Integer =  &amp;o77777 '  32767 = &amp;h7FFF</paragraph>
+  <paragraph role="bascode" id="bas_id571576850640536" localize="false">MIN_Integer = &amp;o100000 ' -32768 = &amp;h8000</paragraph>
+  <paragraph role="bascode" id="bas_id541576850641922" localize="false">MAX_Long = &amp;h7fffffff '  2147483647 = &amp;o17777777777</paragraph>
+  <paragraph role="bascode" id="bas_id481576850564801" localize="false">MIN_Long = &amp;h80000000 ' -2147483648 = &amp;o20000000000</paragraph>
 </bascode>
 
-<paragraph id="hd_id3148742" role="heading" level="3" xml-lang="en-US">String Variables</paragraph>
-<paragraph id="par_id3151393" role="paragraph" xml-lang="en-US">String variables can hold character strings with up to 65,535 characters. Each character is stored as the corresponding Unicode value. String variables are suitable for word processing within programs and for temporary storage of any non-printable character up to a maximum length of 64 Kbytes. The memory required for storing string variables depends on the number of characters in the variable. The type-declaration character is "$".</paragraph>
+<h3 id="hd_id3148742">String Variables</h3>
+<paragraph id="par_id3151393" role="paragraph" xml-lang="en-US">String variables can hold character strings with up to 2,147,483,648 characters. Each character is stored as the corresponding Unicode value. String variables are suitable for word processing within programs and for temporary storage of any non-printable character up to a maximum length of 2 Gbytes. The memory required for storing string variables depends on the number of characters in the variable. The type-declaration character is "$".</paragraph>
+<tip id="par_id381599081637549">In BASIC String functions, the first character of the string has index 1.</tip>
 <bascode>
 <paragraph id="par_idm1341116176" role="bascode" localize="false" xml-lang="en-US">Dim Variable$</paragraph>
 <paragraph id="par_idm1341114944" role="bascode" localize="false" xml-lang="en-US">Dim Variable As String</paragraph>
 </bascode>
 
-<paragraph id="hd_id3150534" role="heading" level="3" xml-lang="en-US">Boolean Variables</paragraph>
+<h3 id="hd_id3150534">Boolean Variables</h3>
 <paragraph id="par_id3145632" role="paragraph" xml-lang="en-US">Boolean variables store only one of two values: TRUE or FALSE. A number 0 evaluates to FALSE, every other value evaluates to TRUE.</paragraph>
 <bascode>
 <paragraph id="par_idm1341109456" role="bascode" localize="false" xml-lang="en-US">Dim Variable As Boolean</paragraph>
 </bascode>
 
-<paragraph id="hd_id3149722" role="heading" level="3" xml-lang="en-US">Date Variables</paragraph>
+<h3 id="hd_id3149722">Date Variables</h3>
 <paragraph id="par_id3159116" role="paragraph" xml-lang="en-US">Date variables can only contain dates and time values stored in an internal format. Values assigned to Date variables with <link href="text/sbasic/shared/03030101.xhp" name="Dateserial"><emph>Dateserial</emph></link>, <link href="text/sbasic/shared/03030102.xhp" name="Datevalue"><emph>Datevalue</emph></link>, <link href="text/sbasic/shared/03030205.xhp" name="Timeserial"><emph>Timeserial</emph></link> or <link href="text/sbasic/shared/03030206.xhp" name="Timevalue"><emph>Timevalue</emph></link> are automatically converted to the internal format. Date-variables are converted to normal numbers by using the <link href="text/sbasic/shared/03030103.xhp" name="Day"><emph>Day</emph></link>, <link href="text/sbasic/shared/03030104.xhp" name="Month"><emph>Month</emph></link>, <link href="text/sbasic/shared/03030106.xhp" name="Year"><emph>Year</emph></link> or the <link href="text/sbasic/shared/03030201.xhp" name="Hour"><emph>Hour</emph></link>, <link href="text/sbasic/shared/03030202.xhp" name="Minute"><emph>Minute</emph></link>, <link href="text/sbasic/shared/03030204.xhp" name="Second"><emph>Second</emph></link> function. The internal format enables a comparison of date/time values by calculating the difference between two numbers. These variables can only be declared with the key word <emph>Date</emph>.</paragraph>
 <bascode>
 <paragraph id="par_idm1341092144" role="bascode" localize="false" xml-lang="en-US">Dim Variable As Date</paragraph>
 </bascode>
 
-<paragraph id="hd_id3148732" role="heading" level="2" xml-lang="en-US">Initial Variable Values</paragraph>
+<h2 id="hd_id3148732">Initial Variable Values</h2>
 <paragraph id="par_id3154549" role="paragraph" xml-lang="en-US">As soon as the variable has been declared, it is automatically set to the "Null" value. Note the following conventions:</paragraph>
 <paragraph id="par_id3143222" role="paragraph" xml-lang="en-US"> <emph>Numeric</emph> variables are automatically assigned the value "0" as soon as they are declared.</paragraph>
 <paragraph id="par_id3150693" role="paragraph" xml-lang="en-US"> <emph>Date variables</emph> are assigned the value 0 internally; equivalent to converting the value to "0" with the <link href="text/sbasic/shared/03030103.xhp" name="Day"><emph>Day</emph></link>, <link href="text/sbasic/shared/03030104.xhp" name="Month"><emph>Month</emph></link>, <link href="text/sbasic/shared/03030106.xhp" name="Year"><emph>Year</emph></link> or the <link href="text/sbasic/shared/03030201.xhp" name="Hour"><emph>Hour</emph></link>, <link href="text/sbasic/shared/03030202.xhp" name="Minute"><emph>Minute</emph></link>, <link href="text/sbasic/shared/03030204.xhp" name="Second"><emph>Second</emph></link> function.</paragraph>
 <paragraph id="par_id3154807" role="paragraph" xml-lang="en-US"> <emph>String variables</emph> are assigned an empty-string ("") when they are declared.</paragraph>
 
-<paragraph id="hd_id3153936" role="heading" level="2" xml-lang="en-US">Arrays</paragraph>
+<h2 id="hd_id3153936">Arrays</h2>
 <paragraph id="par_id3148736" role="paragraph" xml-lang="en-US">$[officename] Basic knows one- or multi-dimensional arrays, defined by a specified variable type. Arrays are suitable for editing lists and tables in programs. Individual elements of an array can be addressed through a numeric index.</paragraph>
 <paragraph id="par_id3149546" role="paragraph" xml-lang="en-US">Arrays <emph>must</emph> be declared with the <emph>Dim</emph> statement. There are several ways to define the index range of an array:</paragraph>
 
@@ -192,7 +193,7 @@
 
 <paragraph id="par_id3153005" role="paragraph" xml-lang="en-US">The index range can include positive as well as negative numbers. <comment>i36558</comment></paragraph>
 
-<paragraph id="hd_id3154507" role="heading" level="2" xml-lang="en-US">Constants</paragraph>
+<h2 id="hd_id3154507">Constants</h2>
 <paragraph id="par_id3156357" role="paragraph" xml-lang="en-US">Constants have a fixed value. They are only defined once in the program and cannot be redefined later:</paragraph>
 <bascode>
 <paragraph id="par_idm1341038256" role="bascode" localize="false" xml-lang="en-US">Const ConstName=Expression</paragraph>
