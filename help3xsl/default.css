@@ -91,15 +91,18 @@ body {
     line-height: normal;
 }
 ::selection {
-    background: #A0F3FF;
+    background: #FFEB9F;
 }
 a {
-    text-decoration-color: #D2D4DA;
-    color: #3CA2E2;
+    text-decoration-color: rgba(0,0,0,0.15);
+    color: #0461e0;
 }
 a:hover {
     text-decoration: underline;
-    color: #5FB3E7;
+    color: #023a86;
+}
+a:visited {
+    color: #633363;
 }
 pre,
 .code,
@@ -418,7 +421,7 @@ footer p {
     white-space: nowrap;
 }
 label[for=accordion-1] {
-    color: #148603;
+    color: #233336;
     display: block;
     padding: 10px 0 10px 20px;
     font-size: 22px;
@@ -439,7 +442,7 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
 }
 .index-label {
     font-size: 22px;
-    color: #148603;
+    color: #233336;
     padding-left: 20px;
     margin: 20px 0 0 0;
 }
@@ -469,63 +472,63 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
     display: block;
     font-size: 22px;
     font-weight: bold;
-    color: #148603;
+    color: #0369a3;
 }
 #CALC::before {
     content: "CALC";
     display: block;
     font-size: 22px;
     font-weight: bold;
-    color: #148603;
+    color: #43c330;
 }
 #IMPRESS::before {
     content: "IMPRESS";
     display: block;
     font-size: 22px;
     font-weight: bold;
-    color: #148603;
+    color: #a33e03;
 }
 #DRAW::before {
     content: "DRAW";
     display: block;
     font-size: 22px;
     font-weight: bold;
-    color: #148603;
+    color: #c99c00;
 }
 #BASE::before {
     content: "BASE";
     display: block;
     font-size: 22px;
     font-weight: bold;
-    color: #148603;
+    color: #8e03a3;
 }
 #MATH::before {
     content: "MATH";
     display: block;
     font-size: 22px;
     font-weight: bold;
-    color: #148603;
+    color: darkslategray;
 }
 #CHART::before {
     content: "CHART";
     display: block;
     font-size: 22px;
     font-weight: bold;
-    color: #148603;
+    color: darkcyan;
 }
 #BASIC::before {
     content: "BASIC";
     display: block;
     font-size: 22px;
     font-weight: bold;
-    color: #148603;
+    color: black;
 }
 #SHARED::before {
     content: "GLOBAL";
     display: block;
     font-size: 22px;
     font-weight: bold;
-    color: #148603;
+    color: gray;
 }
 .pagination-container {
     text-align: center;
@@ -539,7 +542,7 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
     text-decoration: none;
 }
 li.active {
-    background-color: #6E7487;
+    background-color: #023a86;
 }
 li.active a {
     color: #fff;
@@ -548,7 +551,7 @@ li.disabled a {
     opacity: 0.4;
     pointer-events: none;
 }
-#search-bar {
+#search-bar, input {
     border: 1px solid #CCC;
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
     box-sizing: border-box;
@@ -557,10 +560,12 @@ li.disabled a {
     outline: none;
     padding: 0 .25em;
     transition: all 0.30s ease-in-out;
-    width: 100%;
 }
-#search-bar:focus {
+#search-bar:focus, input:focus {
     border: 1px solid #0EA5FB;
+}
+#search-bar {
+    width: 100%;
 }
 #search-bar::placeholder {
     font-style: italic;
@@ -576,15 +581,19 @@ li.disabled a {
     top: 0px;
 }
 .donation{
-    background: #6E7487;
-    padding: 5px 10px 5px 10px;
+    background: linear-gradient(90deg, #4275b2 0%, #4eaa88 100%);
+    border-radius: 2px;
+    padding: 5px 10px;
     margin: auto;
     max-width: 200px;
     color: #ffffff;
-    text-decoration: none;
+}
+.donation:hover {
+    background: linear-gradient(90deg, #1c71d8 0%, #30c877 100%);
 }
 .donation a {
     color: white;
+    text-decoration: none;
 }
 .donation p {
     font-size:1.2rem;
@@ -707,7 +716,7 @@ li.disabled a {
 }
 .contents-treeview label:before {
     content: "⊞";
-    color: #148603;
+    color: #0461e0;
     width: 16px;
     margin: 0 5px 0 0;
     display: inline-block;
@@ -716,9 +725,8 @@ li.disabled a {
     content: "⊟";
 }
 .contents-current {
-    background: rgba(0,0,0,0.05);
+    background: rgba(0,0,0,0.1);
     border-left: 2px solid #6E7487;
-    font-weight: 600;
     margin-left: -12px;
     padding-left: 10px;
 }
@@ -871,7 +879,7 @@ li.disabled a {
         }
         body {
             display: grid;
-            grid-template-columns: 360px 100px 300px 1fr;
+            grid-template-columns: 320px 100px 300px 1fr;
             grid-template-rows: minmax(1em, auto) minmax(1em, auto) 1fr minmax(1em, auto);
             grid-template-areas: "header header search donation"
                                  "rightside main main main"
