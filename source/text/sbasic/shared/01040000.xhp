@@ -18,210 +18,236 @@
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  -->
- 
-	
+
 <meta>
       <topic id="textsbasicshared01040000xml" indexer="include" status="PUBLISH">
-         <title xml-lang="en-US" id="tit">Event-Driven Macros</title>
+         <title xml-lang="en-US" id="tit">Document Event-Driven Macros</title>
          <filename>/text/sbasic/shared/01040000.xhp</filename>
       </topic>
    </meta>
    <body>
       <section id="eventmacros">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3154581"><bookmark_value>deleting; macro assignments to events</bookmark_value>
+         <bookmark xml-lang="en-US" branch="index" id="bm_id3154581">
+         <bookmark_value>deleting; macro assignments to events</bookmark_value>
          <bookmark_value>macros; assigning to events</bookmark_value>
          <bookmark_value>assigning macros to events</bookmark_value>
+         <bookmark_value>documents; events</bookmark_value>
          <bookmark_value>events; assigning macros</bookmark_value>
-</bookmark>
-<paragraph xml-lang="en-US" id="hd_id3147348" role="heading" level="1"><link href="text/sbasic/shared/01040000.xhp" name="Event-Driven Macros">Event-Driven Macros</link></paragraph>
-         <paragraph xml-lang="en-US" id="par_id3146120" role="paragraph">This section describes how to assign Basic programs to program events.</paragraph>
+         </bookmark>
+      <h1 id="hd_id3147348"><link href="text/sbasic/shared/01040000.xhp" name="Event-Driven Macros">Document Event-Driven Macros</link></h1>
+         <paragraph id="par_id3146120" role="paragraph">This section describes how to assign scripts to application, document or form events.</paragraph>
       </section>
-      <paragraph xml-lang="en-US" id="par_id3149263" role="paragraph">You can automatically execute a macro when a specified software event occurs by assigning the desired macro to the event. The following table provides an overview of program events and at what point an assigned macro is executed.</paragraph>
+      <paragraph id="par_id3149263" role="paragraph">You can automatically execute a macro when a specified software event occurs by assigning the desired macro to the event. The following table provides an overview of document events and at what point an assigned macro is executed.</paragraph>
+
       <table id="tbl_id3148646">
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3148455" role="tablehead">Event</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3145799" role="tablehead">An assigned macro is executed...</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id3148455" role="tablehead">Event</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3145799" role="tablehead">An assigned macro is executed...</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3145809" role="tablehead">routine</paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3149379" role="tablecontent">Program Start</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150715" role="tablecontent">... after a $[officename] application is started.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id3149379" role="tablecontent">Start Application</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3150715" role="tablecontent">...after a $[officename] application is started.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id721599830885588" role="tablecontent" localize="false"><literal>OnStartApp</literal></paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3146914" role="tablecontent">Program End</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3153765" role="tablecontent">...before a $[officename] application is terminated.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id3146914" role="tablecontent">Close Application</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3153765" role="tablecontent">...before a $[officename] application is terminated.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id91599830927709" role="tablecontent" localize="false"><literal>OnCloseApp</literal></paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3145150" role="tablecontent">Create Document</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3163808" role="tablecontent">...after a new document is created with <emph>File - New</emph> or with the <emph>New</emph> icon.</paragraph>
-            </tablecell>
+           <tablecell><paragraph id="par_id151599831705811" role="tablecontent">Document created</paragraph></tablecell>
+           <tablecell><paragraph id="par_id501599831822339" role="tablecontent">...New document created with <emph>File - New</emph> or with the <emph>New</emph> icon. Note that this event also fires when Basic IDE opens.</paragraph></tablecell>
+           <tablecell><paragraph id="par_id361599832753891" role="tablecontent" localize="false"><literal>OnCreate</literal></paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3145790" role="tablecontent">Open Document</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3154572" role="tablecontent">...after a document is opened with <emph>File - Open</emph> or with the <emph>Open</emph> icon.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id3145150" role="tablecontent">New Document</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3163808" role="tablecontent">...after a new document is created with <emph>File - New</emph> or with the <emph>New</emph> icon.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id1001599831631397" role="tablecontent" localize="false">OnNew</paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3153266" role="tablecontent">Save Document As</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150208" role="tablecontent">...before a document is saved under a specified name (with <emph>File - Save As</emph>, or with <emph>File - Save</emph> or the <emph>Save</emph> icon, if a document name has not yet been specified).</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id161599836960401" role="tablecontent">Document loading finished</paragraph></tablecell>
+            <tablecell><paragraph id="par_id721599836993145" role="tablecontent">...before a document is opened with <emph>File - Open</emph> or with the <emph>Open</emph> icon.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id861599836995091" role="tablecontent" localize="false"><literal>OnLoadFinished</literal></paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3158215" role="tablecontent">Document has been saved as</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150980" role="tablecontent">... after a document was saved under a specified name (with <emph>File - Save As</emph>, or with <emph>File - Save</emph> or with the <emph>Save</emph> icon, if a document name has not yet been specified).</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id3145790" role="tablecontent">Open Document</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3154572" role="tablecontent">...after a document is opened with <emph>File - Open</emph> or with the <emph>Open</emph> icon.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id561599837106931" role="tablecontent" localize="false">OnLoad</paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150519" role="tablecontent">Save Document</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3155529" role="tablecontent">...before a document is saved with <emph>File - Save</emph> or the <emph>Save</emph> icon, provided that a document name has already been specified.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id3159171" role="tablecontent">Document is going to be closed</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3146868" role="tablecontent">...before a document is closed.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id991599837325474" role="tablecontent" localize="false">OnPrepareUnload</paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3149404" role="tablecontent">Document has been saved</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3151332" role="tablecontent">...after a document is saved with <emph>File - Save</emph> or the <emph>Save</emph> icon, provided that a document name has already been specified.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id3159097" role="tablecontent">Document closed</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3148606" role="tablecontent">...after a document was closed. Note that the "Save Document" event may also occur when the document is saved before closing.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id1001599837386243" role="tablecontent" localize="false">OnUnload</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+           <tablecell><paragraph id="par_id391600157320922" role="tablecontent">-no UI-</paragraph></tablecell>
+           <tablecell><paragraph id="par_id191600157322154" role="tablecontent"></paragraph></tablecell>
+           <tablecell><paragraph id="par_id81600157323361" role="tablecontent" localize="false">OnLayoutFinished</paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3159171" role="tablecontent">Document is closing<comment>i104852</comment></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3146868" role="tablecontent">...before a document is closed.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id981599837681979" role="tablecontent">View created</paragraph></tablecell>
+            <tablecell><paragraph id="par_id281599838210270" role="tablecontent">Document is displayed. Note that this event also happens when a document is duplicated.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id221599838211428" role="tablecontent" localize="false">OnViewCreated</paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3159097" role="tablecontent">Document closed</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3148606" role="tablecontent">...after a document was closed. Note that the "Save Document" event may also occur when the document is saved before closing.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id511599837683562" role="tablecontent">View is going to be closed</paragraph></tablecell>
+            <tablecell><paragraph id="par_id331599838046012" role="tablecontent">Document layout is getting removed.</paragraph></tablecell>
+            <tablecell><paragraph localize="false" id="par_id851599838047612" role="tablecontent">OnPrepareViewClosing</paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3144772" role="tablecontent">Activate Document</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3149442" role="tablecontent">...after a document is brought to the foreground.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id951599837684882" role="tablecontent">View closed</paragraph></tablecell>
+            <tablecell><paragraph id="par_id51599837816122" role="tablecontent">Document layout is cleared prior to the document closure.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id131599837818052" role="tablecontent" localize="false">OnViewClosed</paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150888" role="tablecontent">Deactivate Document</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3154060" role="tablecontent">...after another document is brought to the foreground.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id3144772" role="tablecontent">Activate Document</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3149442" role="tablecontent">...after a document is brought to the foreground.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id401599838521395" role="tablecontent" localize="false">OnFocus</paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3152384" role="tablecontent">Print Document</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3152873" role="tablecontent">...after the <emph>Print</emph> dialog is closed, but before the actual print process begins.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id3150888" role="tablecontent">Deactivate Document</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3154060" role="tablecontent">...after another document is brought to the foreground.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id311599838560117" role="tablecontent" localize="false">OnUnfocus</paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3159227" role="tablecontent">JavaScript run-time error</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3145362" role="tablecontent">...when a JavaScript run-time error occurs.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id3150519" role="tablecontent">Save Document</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3155529" role="tablecontent">...before a document is saved with <emph>File - Save</emph> or the <emph>Save</emph> icon, provided that a document name has already been specified.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id541599838897948" role="tablecontent" localize="false">OnSaveAs</paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3154767" role="tablecontent">Print Mail Merge</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3153555" role="tablecontent">...after the <emph>Print</emph> dialog is closed, but before the actual print process begins. This event occurs for each copy printed.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id3149404" role="tablecontent">Document has been saved</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3151332" role="tablecontent">...after a document is saved with <emph>File - Save</emph> or the <emph>Save</emph> icon, provided that a document name has already been specified.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id931599838938268" role="tablecontent" localize="false">OnSaveDone</paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3156366" role="tablecontent">Change of the page count</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3154627" role="tablecontent">...when the page count changes.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id161599838976700" role="tablecontent">Saving of document failed</paragraph></tablecell>
+            <tablecell><paragraph id="par_id391599838979652" role="tablecontent">Document could not be saved.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id21599838980580" role="tablecontent" localize="false">OnSaveFailed</paragraph></tablecell>
          </tablerow>
          <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3154737" role="tablecontent">Message received</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150952" role="tablecontent">...if a message was received.</paragraph>
-            </tablecell>
+            <tablecell><paragraph id="par_id3153266" role="tablecontent">Save Document As</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3150208" role="tablecontent">...before a document is saved under a specified name (with <emph>File - Save As</emph>, or with <emph>File - Save</emph> or the <emph>Save</emph> icon, if a document name has not yet been specified).</paragraph></tablecell>
+            <tablecell><paragraph id="par_id11599840125398" role="tablecontent" localize="false">OnSaveAs</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id3158215" role="tablecontent">Document has been saved as</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3150980" role="tablecontent">... after a document was saved under a specified name (with <emph>File - Save As</emph>, or with <emph>File - Save</emph> or with the <emph>Save</emph> icon, if a document name has not yet been specified).</paragraph></tablecell>
+            <tablecell><paragraph id="par_id811599840174261" role="tablecontent" localize="false">OnSaveAsDone</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id561599839702598" role="tablecontent">'Save As' has failed</paragraph></tablecell>
+            <tablecell><paragraph id="par_id951599840240048" role="tablecontent">Document could not be saved.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id131599840241061" role="tablecontent" localize="false">OnSaveAsFailed</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id851599839190548" role="tablecontent">-no UI-</paragraph></tablecell>
+            <tablecell><paragraph id="par_id961599839198859" role="tablecontent">When the document disk location has changed, for example after a <emph>File - Save As...</emph> action.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id651599839199901" role="tablecontent" localize="false">OnStorageChanged</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id501600150804809" role="tablecontent">Storing or exporting copy of document</paragraph></tablecell>
+            <tablecell><paragraph id="par_id471610080505705" role="tablecontent">...before a document is saved with <menuitem>File - Save a Copy</menuitem>, <menuitem>File - Export</menuitem>, <menuitem>File - Export as PDF</menuitem> or the <menuitem>Save</menuitem> icons.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id781617239899601" role="tablecontent" localize="false">OnCopyTo</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id502600180504809" role="tablecontent">Document copy has been created</paragraph></tablecell>
+            <tablecell><paragraph id="par_id471601180505705" role="tablecontent">...after a document is saved with <menuitem>File - Save a Copy</menuitem>, <menuitem>File - Export</menuitem>, <menuitem>File - Export as PDF</menuitem> or the <menuitem>Save</menuitem> icons.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id781614179899601" role="tablecontent" localize="false">OnCopyToDone</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id501006180504809" role="tablecontent">Creating of document copy failed</paragraph></tablecell>
+            <tablecell><paragraph id="par_id471600081505705" role="tablecontent">Document could not be copied or exported.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id781613179998601" role="tablecontent" localize="false">OnCopyToFailed</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id501600180504809" role="tablecontent">Print document</paragraph></tablecell>
+            <tablecell><paragraph id="par_id471600180505705" role="tablecontent">...after the Print dialog is closed, but before the actual print process begins. This event occurs for each copy printed.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id781613179899601" role="tablecontent" localize="false">OnPrint</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id371600180345993" role="tablecontent">-no UI-</paragraph></tablecell>
+            <tablecell><paragraph id="par_id851600180346872" role="tablecontent">...after document security settings have changed.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id785600179899601" role="tablecontent" localize="false">OnModeChanged</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id921600180238854" role="tablecontent">'Modified' status was changed</paragraph></tablecell>
+            <tablecell><paragraph id="par_id321600180239944" role="tablecontent">Modified state of a document has changed.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id781600179899601" role="tablecontent" localize="false">OnModifyChanged</paragraph></tablecell>
+        </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id741600180121445" role="tablecontent">Document title changed</paragraph></tablecell>
+            <tablecell><paragraph id="par_id801600180122852" role="tablecontent">When the document title gets updated.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id841600179842448" role="tablecontent" localize="false">OnTitleChanged</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id641600180121445" role="tablecontent">Loaded a sub component</paragraph></tablecell>
+            <tablecell><paragraph id="par_id701600180122852" role="tablecontent">...after a database form has been opened.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id741600179842448" role="tablecontent" localize="false"><literal>OnSubComponentOpened</literal></paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id641700180131445" role="tablecontent">Closed a sub component</paragraph></tablecell>
+            <tablecell><paragraph id="par_id701600290122852" role="tablecontent">...after a database form has been closed.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id751610179842448" role="tablecontent" localize="false"><literal>OnSubComponentCloseded</literal></paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id421600097736759" role="tablecontent">Printing of form letters started</paragraph></tablecell>
+            <tablecell><paragraph id="par_id411600097854273" role="tablecontent">...before printing form letters using <emph>File - Print</emph> or <emph>Tools - Mail Merge Wizard</emph> menus.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id421600097855346" role="tablecontent" localize="false">OnMailMerge</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id41600097737991" role="tablecontent">Printing of form letters finished</paragraph></tablecell>
+            <tablecell><paragraph id="par_id451600097862282" role="tablecontent">...after printing of form letters using <emph>File - Print</emph> or <emph>Tools - Mail Merge Wizard</emph> menus.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id231600097863331" role="tablecontent" localize="false">OnMailMergeFinished</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id641600160655602" role="tablecontent">Printing of form fields started</paragraph></tablecell>
+            <tablecell><paragraph id="par_id331600160656617" role="tablecontent">...before printing form fields.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id81600160657657" role="tablecontent" localize="false">OnFieldMerge</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id801600160725659" role="tablecontent">Printing of form fields finished</paragraph></tablecell>
+            <tablecell><paragraph id="par_id961600160726645" role="tablecontent">...after printing form fields.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id551600160727188" role="tablecontent" localize="false">OnFieldMergeFinished</paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell><paragraph id="par_id3156366" role="tablecontent">Change of the page count</paragraph></tablecell>
+            <tablecell><paragraph id="par_id3154627" role="tablecontent">When the page count changes.</paragraph></tablecell>
+            <tablecell><paragraph id="par_id931600098241318" role="tablecontent" localize="false">OnPageCountChanged</paragraph></tablecell>
          </tablerow>
       </table>
 
-      <paragraph xml-lang="en-US" id="hd_id3153299" role="heading" level="2">Assigning a Macro to an Event</paragraph>
+      <note id="par_id131600158369191">Most events relate to documents, except <literal>OnStartApp</literal>, <literal>OnCloseApp</literal>, <literal>OnCreate</literal> and <literal>OnLoadFinished</literal> that occur at application level. <literal>OnSubComponentOpened</literal>, and <literal>OnSubComponentClosed</literal> events are fired by database's forms.</note>
+
+     <tip id="par_id321600158566782">Writer documents are triggering those specific events: <literal>OnLayoutFinished</literal>, <literal>OnMailMerge</literal>, <literal>OnMailMergeFinished</literal>, <literal>OnFieldMerge</literal>, <literal>OnFieldMergeFinished</literal> and <literal>OnPageCountChanged</literal>.</tip>
+
+      <h2 id="hd_id3153299">Assigning a Macro to an Event</h2>
       <list type="ordered">
-         <listitem>
-            <paragraph xml-lang="en-US" id="par_id3147244" role="listitem">Choose <emph>Tools - Customize</emph> and click the <emph>Events</emph> tab.</paragraph>
-         </listitem>
-         <listitem>
-            <paragraph xml-lang="en-US" id="par_id3146098" role="listitem">Select whether you want the assignment to be globally valid or just valid in the current document in the <emph>Save In</emph> listbox.</paragraph>
-         </listitem>
-         <listitem>
-            <paragraph xml-lang="en-US" id="par_id3150431" role="listitem">Select the event from the <emph>Event</emph> list.</paragraph>
-         </listitem>
-         <listitem>
-            <paragraph xml-lang="en-US" id="par_id3148742" role="listitem">Click <emph>Macro</emph> and select the macro to be assigned to the selected event.</paragraph>
-         </listitem>
-         <listitem>
-            <paragraph xml-lang="en-US" id="par_id3146321" role="listitem">Click <emph>OK</emph> to assign the macro.</paragraph>
-         </listitem>
-         <listitem>
-            <paragraph xml-lang="en-US" id="par_id3147414" role="listitem">Click <emph>OK</emph> to close the dialog.</paragraph>
-         </listitem>
+         <listitem><paragraph id="par_id3147244" role="listitem">Choose <emph>Tools - Customize</emph> and click the <emph>Events</emph> tab.</paragraph></listitem>
+         <listitem><paragraph id="par_id3146098" role="listitem">Select whether you want the assignment to be globally valid or just valid in the current document in the <emph>Save In</emph> listbox.</paragraph></listitem>
+         <listitem><paragraph id="par_id3150431" role="listitem">Select the event from the <emph>Event</emph> list.</paragraph></listitem>
+         <listitem><paragraph id="par_id3148742" role="listitem">Click <emph>Macro</emph> and select the macro to be assigned to the selected event.</paragraph></listitem>
+         <listitem><paragraph id="par_id3146321" role="listitem">Click <emph>OK</emph> to assign the macro.</paragraph></listitem>
+         <listitem><paragraph id="par_id3147414" role="listitem">Click <emph>OK</emph> to close the dialog.</paragraph></listitem>
       </list>
-      <paragraph xml-lang="en-US" id="hd_id3154581" role="heading" level="2">Removing the Assignment of a Macro to an Event</paragraph>
+
+      <h2 id="hd_id3154581">Removing the Assignment of a Macro to an Event</h2>
       <list type="ordered">
-         <listitem>
-            <paragraph xml-lang="en-US" id="par_id3146883" role="listitem">Choose <emph>Tools - Customize</emph> and click the <emph>Events</emph> tab.</paragraph>
-         </listitem>
-         <listitem>
-            <paragraph xml-lang="en-US" id="par_id3155909" role="listitem">Select whether you want to remove a global assignment or an assignment that is just valid in the current document by selecting the option in the <emph>Save In</emph> listbox.</paragraph>
-         </listitem>
-         <listitem>
-            <paragraph xml-lang="en-US" id="par_id3159129" role="listitem">Select the event that contains the assignment to be removed from the <emph>Event</emph> list.</paragraph>
-         </listitem>
-         <listitem>
-            <paragraph xml-lang="en-US" id="par_id3149143" role="listitem">Click <emph>Remove</emph>.</paragraph>
-         </listitem>
-         <listitem>
-            <paragraph xml-lang="en-US" id="par_id3149351" role="listitem">Click <emph>OK</emph> to close the dialog.</paragraph>
-         </listitem>
+         <listitem><paragraph id="par_id3146883" role="listitem">Choose <emph>Tools - Customize</emph> and click the <emph>Events</emph> tab.</paragraph></listitem>
+         <listitem><paragraph id="par_id3155909" role="listitem">Select whether you want to remove a global assignment or an assignment that is just valid in the current document by selecting the option in the <emph>Save In</emph> listbox.</paragraph></listitem>
+         <listitem><paragraph id="par_id3159129" role="listitem">Select the event that contains the assignment to be removed from the <emph>Event</emph> list.</paragraph></listitem>
+         <listitem><paragraph id="par_id3149143" role="listitem">Click <emph>Remove</emph>.</paragraph></listitem>
+         <listitem><paragraph id="par_id3149351" role="listitem">Click <emph>OK</emph> to close the dialog.</paragraph></listitem>
       </list>
+
+      <section id="relatedtopics">
+         <paragraph role="paragraph" id="par_id341600162682135">In addition to assigning macros to events, one can <link href="text/sbasic/python/python_document_events.xhp" name="Monitor events">monitor events</link> triggered in %PRODUCTNAME documents.</paragraph>
+      </section>
+
    </body>
 </helpdocument>
