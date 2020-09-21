@@ -117,6 +117,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/Call_statement.svg \
     helpimg/sbasic/Close_statement.svg \
     helpimg/sbasic/Const_statement.svg \
+    helpimg/sbasic/Defxxx_statements.svg \
     helpimg/sbasic/Dim_statement.svg \
     helpimg/sbasic/DimArray_function.svg \
     helpimg/sbasic/Do_statement.svg \
