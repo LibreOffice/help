@@ -22,17 +22,18 @@
 	
 <meta>
       <topic id="textshared0201170202xml" indexer="include" status="PUBLISH">
-         <title xml-lang="en-US" id="tit">Events</title>
+         <title xml-lang="en-US" id="tit">Database Form Events</title>
          <filename>/text/shared/02/01170202.xhp</filename>
       </topic>
    </meta>
    <body>
       <section id="events">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3150499"><bookmark_value>forms; events</bookmark_value>
-         <bookmark_value>events;in forms</bookmark_value>
-</bookmark>
-<paragraph xml-lang="en-US" id="hd_id3150499" role="heading" level="1"><link href="text/shared/02/01170202.xhp" name="Events">Events</link></paragraph>
-         <paragraph xml-lang="en-US" id="par_id3147043" role="paragraph">The<emph> Events </emph>tab page, allows you to assign a macro to certain events which occur in a form.</paragraph>
+         <bookmark xml-lang="en-US" branch="index" id="bm_id3150499"><bookmark_value>forms; events</bookmark_value>
+            <bookmark_value>events;in database forms</bookmark_value>
+            <bookmark_value>forms;database events</bookmark_value>
+         </bookmark>
+         <paragraph xml-lang="en-US" id="hd_id3150499" role="heading" level="1"><link href="text/shared/02/01170202.xhp" name="Events">Database Form Events</link></paragraph>
+         <paragraph xml-lang="en-US" id="par_id3147043" role="paragraph">The<emph> Events </emph>tab page, allows you to assign a macro to certain events which occur in a database form.</paragraph>
       </section>
       <section id="howtoget">
          <embed href="text/shared/00/00040501.xhp#formulareigenschaftenereignisse"/>
@@ -54,99 +55,145 @@
          </listitem>
       </list>
       <paragraph xml-lang="en-US" id="par_id3153127" role="paragraph">For example, you can issue a "confirm deletion" request such as "Really delete customer xyz?" when deleting a data record.</paragraph>
-      <paragraph xml-lang="en-US" id="par_id0409200920562590" role="note">The events that are shown in the Events dialog cannot be edited directly. You can delete an event from the list by pressing the Del key.</paragraph>
-      <paragraph xml-lang="en-US" id="par_id3150986" role="paragraph">The following lists and describes all events in a form that can be linked to a macro:</paragraph>
+
+      <note id="par_id0409200920562590">The events that are shown in the Events dialog cannot be edited directly. You can remove an event from the list by pressing the Del key.</note>
+
+     <paragraph xml-lang="en-US" id="par_id3150986" role="paragraph">The following lists and describes all events in a form that can be linked to a macro:</paragraph>
+
 <sort order="asc">
+
 <section id="reset_update">
-<bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_BEFOREUPDATE" id="bm_id3154072" localize="false"/>
-         <paragraph xml-lang="en-US" id="hd_id3147559" role="heading" level="2">Before update</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3149669" role="paragraph"><ahelp hid=".">The <emph>Before update</emph> event occurs before the control content changed by the user is written into the data source.</ahelp> The linked macro can, for example, prevent this action by returning "FALSE".</paragraph>
-<bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_AFTERUPDATE" id="bm_id3154073" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3153779" role="heading" level="2">After update</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3153360" role="paragraph"><ahelp hid=".">The <emph>After update</emph> event occurs after the control content changed by the user has been written into the data source.</ahelp></paragraph>
-<bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_APPROVERESETTED" id="bm_id3154851" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3157909" role="heading" level="2">Prior to reset</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3155390" role="paragraph"><ahelp hid=".">The <emph>Prior to reset </emph>event occurs before a form is reset.</ahelp> The linked macro can, for example, prevent this action by returning "FALSE".</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3149236" role="paragraph">A form is reset if one of the following conditions is met:</paragraph>
-         <list type="ordered">
-            <listitem>
-               <paragraph xml-lang="en-US" id="par_id3149164" role="listitem">The user presses an (HTML) button that is defined as a reset button.</paragraph>
-            </listitem>
-            <listitem>
-               <paragraph xml-lang="en-US" id="par_id3153666" role="listitem">A new and empty record is created in a form that is linked to a data source. For example, in the last record, the <emph>Next Record</emph> button may be pressed.</paragraph>
-            </listitem>
-         </list>
-<bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_RESETTED" id="bm_id3152473" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3156119" role="heading" level="2">After resetting</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3148563" role="paragraph"><ahelp hid=".">The<emph> After resetting </emph>event occurs after a form has been reset.</ahelp></paragraph>
-      </section>
+   <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_BEFOREUPDATE" id="bm_id3154072" localize="false"/>
+   <bookmark xml-lang="en-US" branch="index" id="bm_id311600955182139">
+      <bookmark_value>API;XUpdateListener</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id3147559">Before update</h2>
+  <paragraph xml-lang="en-US" id="par_id3149669" role="paragraph"><ahelp hid=".">The <emph>Before update</emph> event occurs before the control content changed by the user is written into the data source.</ahelp> The linked macro can, for example, prevent this action by returning <literal>FALSE</literal>.</paragraph>
+   <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_AFTERUPDATE" id="bm_id3154073" localize="false"/>
+   <h2 id="hd_id3153779">After update</h2>
+      <paragraph xml-lang="en-US" id="par_id3153360" role="paragraph"><ahelp hid=".">The <emph>After update</emph> event occurs after the control content changed by the user has been written into the data source.</ahelp></paragraph>
+   <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_APPROVERESETTED" id="bm_id3154851" localize="false"/>
+   <bookmark xml-lang="en-US" branch="index" id="bm_id601600955240219">
+      <bookmark_value>API;XResetListener</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id3157909">Prior to reset</h2>
+   <paragraph xml-lang="en-US" id="par_id3155390" role="paragraph"><ahelp hid=".">The <emph>Prior to reset</emph> event occurs before a form is reset.</ahelp> Returning <literal>True</literal> approves the reset, returning <literal>False</literal> cancels the operation.</paragraph>
+   <paragraph xml-lang="en-US" id="par_id3149236" role="paragraph">A form is reset if one of the following conditions is met:</paragraph>
+   <list type="ordered">
+      <listitem>
+         <paragraph xml-lang="en-US" id="par_id3149164" role="listitem">The user presses an (HTML) button that is defined as a reset button.</paragraph>
+      </listitem>
+      <listitem>
+         <paragraph xml-lang="en-US" id="par_id3153666" role="listitem">A new and empty record is created in a form that is linked to a data source. For example, in the last record, the <emph>Next Record</emph> button may be pressed.</paragraph>
+      </listitem>
+   </list>
+   <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_RESETTED" id="bm_id3152473" localize="false"/>
+   <h2 id="hd_id3156119">After resetting</h2>
+   <paragraph xml-lang="en-US" id="par_id3148563" role="paragraph"><ahelp hid=".">The<emph> After resetting </emph>event occurs after a form has been reset.</ahelp></paragraph>
+</section>
+
       <section id="Section13">
 <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_SUBMITTED" id="bm_id3147084" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3150870" role="heading" level="2">Before submitting</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3159152" role="paragraph"><ahelp hid=".">The<emph> Before submitting </emph>event occurs before the form data is sent.</ahelp></paragraph>
+<bookmark xml-lang="en-US" branch="index" id="bm_id361600961200031">
+   <bookmark_value>API;XSubmitListener</bookmark_value>
+   <bookmark_value>API;XSubmissionVetoListener</bookmark_value>
+</bookmark>
+<h2 id="hd_id3150870">Before submitting</h2>
+        <paragraph xml-lang="en-US" id="par_id3159152" role="paragraph"><ahelp hid=".">The<emph> Before submitting</emph> event occurs before the form data is sent.</ahelp> Returning <literal>True</literal> approves the submission, <literal>False</literal> stops it.</paragraph>
       </section>
       <section id="Section12">
 <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_LOADED" id="bm_id3151383" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3149167" role="heading" level="2">When loading</paragraph>
+<bookmark xml-lang="en-US" branch="index" id="bm_id472600961200142">
+   <bookmark_value>API;XLoadListener</bookmark_value>
+</bookmark>
+<h2 id="hd_id3149167">When loading</h2>
          <paragraph xml-lang="en-US" id="par_id3156423" role="paragraph"><ahelp hid=".">The<emph> When loading </emph>event occurs directly after the form has been loaded.</ahelp></paragraph>
       </section>
       <section id="Section11">
 <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_RELOADING" id="bm_id3157320" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3148451" role="heading" level="2">Before reloading</paragraph>
+<h2 id="hd_id3148451">Before reloading</h2>
          <paragraph xml-lang="en-US" id="par_id3154218" role="paragraph"><ahelp hid=".">The<emph> Before reloading </emph>event occurs before the form is reloaded.</ahelp> The data content has not yet been refreshed.</paragraph>
       </section>
       <section id="Section10">
 <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_RELOADED" id="bm_id3154946" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3155102" role="heading" level="2">When reloading</paragraph>
+<h2 id="hd_id3155102">When reloading</h2>
          <paragraph xml-lang="en-US" id="par_id3157895" role="paragraph"><ahelp hid=".">The<emph> When reloading </emph>event occurs directly after the form has been reloaded.</ahelp> The data content has already been refreshed.</paragraph>
       </section>
       <section id="Section9">
 <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_UNLOADING" id="bm_id3151116" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3152792" role="heading" level="2">Before unloading</paragraph>
+<h2 id="hd_id3152792">Before unloading</h2>
          <paragraph xml-lang="en-US" id="par_id3152598" role="paragraph"><ahelp hid=".">The<emph> Before unloading </emph>event occurs before the form is unloaded; that is, separated from its data source.</ahelp></paragraph>
       </section>
       <section id="Section8">
 <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_UNLOADED" id="bm_id3152938" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3154145" role="heading" level="2">When unloading</paragraph>
+<h2 id="hd_id3154145">When unloading</h2>
          <paragraph xml-lang="en-US" id="par_id3154638" role="paragraph"><ahelp hid=".">The<emph> When unloading </emph>event occurs directly after the form has been unloaded; that is, separated from its data source.</ahelp></paragraph>
       </section>
       <section id="Section7">
 <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_CONFIRMDELETE" id="bm_id3154127" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3147426" role="heading" level="2">Confirm deletion</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3154988" role="paragraph"><ahelp hid=".">The<emph> Confirm deletion </emph>event occurs as soon as data has been deleted from the form.</ahelp> For example, the linked macro can request confirmation in a dialog.</paragraph>
+<bookmark xml-lang="en-US" branch="index" id="bm_id351600961291078">
+   <bookmark_value>API;XConfirmDeleteListener</bookmark_value>
+</bookmark>
+<h2 id="hd_id3147426">Confirm deletion</h2>
+        <paragraph xml-lang="en-US" id="par_id3154988" role="paragraph"><ahelp hid=".">The<emph> Confirm deletion </emph>event occurs as soon as data has been deleted from the form.</ahelp> Return <literal>True</literal> to allow row deletion, <literal>False</literal> otherwise. For example, the linked macro can request confirmation in a dialog.</paragraph>
       </section>
       <section id="Section6">
 <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_APPROVEROWCHANGE" id="bm_id3151351" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3149481" role="heading" level="2">Before record action</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3156007" role="paragraph"><ahelp hid=".">The<emph> Before record action </emph>event occurs before the current record is changed.</ahelp> For example, the linked macro can request confirmation in a dialog.</paragraph>
+<bookmark xml-lang="en-US" branch="index" id="bm_id411600961384949">
+   <bookmark_value>API;XRowSetApproveListener</bookmark_value>
+</bookmark>
+<h2 id="hd_id3149481">Before record action</h2>
+        <paragraph xml-lang="en-US" id="par_id3156007" role="paragraph"><ahelp hid=".">The<emph> Before record action </emph>event occurs before the current record or record set are changed.</ahelp> Return <literal>True</literal> when changing is allowed, otherwise <literal>False</literal>. For example, the linked macro can request confirmation in a dialog.</paragraph>
       </section>
       <section id="Section5">
 <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_ROWCHANGE" id="bm_id3150685" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3145749" role="heading" level="2">After record action</paragraph>
+<bookmark xml-lang="en-US" branch="index" id="bm_id361601071200031">
+   <bookmark_value>API;XRowSetListener</bookmark_value>
+</bookmark>
+<h2 id="hd_id3145749">After record action</h2>
          <paragraph xml-lang="en-US" id="par_id3146975" role="paragraph"><ahelp hid=".">The<emph> After record action </emph>event occurs directly after the current record has been changed.</ahelp></paragraph>
       </section>
       <section id="Section4">
 <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_POSITIONING" id="bm_id3155413" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3154012" role="heading" level="2">Before record change</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3149664" role="paragraph"><ahelp hid=".">The<emph> Before record change </emph>event occurs before the current record pointer is changed.</ahelp> For example, the linked macro can prevent this action by returning "FALSE".</paragraph>
+<h2 id="hd_id3154012">Before record change</h2>
+         <paragraph xml-lang="en-US" id="par_id3149664" role="paragraph"><ahelp hid=".">The<emph> Before record change </emph>event occurs before the current record pointer - SQL cursor - is changed.</ahelp> Return <literal>True</literal> when moving is allowed, otherwise <literal>False</literal>.</paragraph>
       </section>
       <section id="Section3">
 <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_POSITIONED" id="bm_id3150420" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3157975" role="heading" level="2">After record change</paragraph>
+<h2 id="hd_id3157975">After record change</h2>
          <paragraph xml-lang="en-US" id="par_id3154098" role="paragraph"><ahelp hid=".">The<emph> After record change </emph>event occurs directly after the current record pointer has been changed.</ahelp></paragraph>
       </section>
       <section id="Section2">
 <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_APPROVEPARAMETER" id="bm_id3149298" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3151076" role="heading" level="2">Fill parameters</paragraph>
+<bookmark xml-lang="en-US" branch="index" id="bm_id881600961491605">
+   <bookmark_value>API;XDatabaseParameterListener</bookmark_value>
+</bookmark>
+<h2 id="hd_id3151076">Fill parameters</h2>
          <paragraph xml-lang="en-US" id="par_id3147396" role="paragraph"><ahelp hid=".">The<emph> Fill parameters </emph>event occurs when the form to be loaded has parameters that must be filled out.</ahelp> For example, the data source of the form can be the following SQL command:</paragraph>
          <paragraph xml-lang="en-US" id="par_id3148773" role="paragraph"><literal>SELECT * FROM address WHERE name=:name</literal></paragraph>
-         <paragraph xml-lang="en-US" id="par_id3149581" role="paragraph">Here :name is a parameter that must be filled out when loading. The parameter is automatically filled out from the parent form if possible. If the parameter cannot be filled out, this event is called and a linked macro can fill out the parameter.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id3149581" role="paragraph">Here :name is a parameter that must be filled out when loading. The parameter is automatically filled out from the parent form if possible. If the parameter cannot be filled out, this event is called and a linked macro can fill out the parameter. Return <literal>True</literal> when the execution of the parametrized statement should continue, <literal>False</literal> otherwise. </paragraph>
       </section>
       <section id="Section1">
 <bookmark xml-lang="en-US" branch="hid/EXTENSIONS_HID_EVT_ERROROCCURRED" id="bm_id3148387" localize="false"/>
-<paragraph xml-lang="en-US" id="hd_id3146926" role="heading" level="2">Error occurred</paragraph>
+<bookmark xml-lang="en-US" branch="index" id="bm_id372700961200031">
+   <bookmark_value>API;XSQLErrorListener</bookmark_value>
+</bookmark>
+<h2 id="hd_id3146926">Error occurred</h2>
          <paragraph xml-lang="en-US" id="par_id3149485" role="paragraph"><ahelp hid=".">The<emph> Error occurred </emph>event is activated if an error occurs when accessing the data source.</ahelp> This applies to forms, list boxes and combo boxes.</paragraph>
       </section>
 </sort>
+
+     <h2 id="hd_id351601902633144">Vetoable events</h2>
+<tip id="par_id311600962806301">macros can interrupt event execution when they return a boolean value: <literal>True</literal> allows the execution of the event to continue and <literal>False</literal> stops the event execution.</tip>
+
+     <paragraph role="paragraph" id="par_id881601902428903">The following events are interruptable by returning <literal>False</literal>:</paragraph>
+     <list type="unordered">
+     <listitem><paragraph id="par_id441601902102235" role="listitem">Before record action</paragraph></listitem>
+     <listitem><paragraph id="par_id51601902106123" role="listitem">Before record change</paragraph></listitem>
+     <listitem><paragraph id="par_id451601902107636" role="listitem">Before submitting</paragraph></listitem>
+     <listitem><paragraph id="par_id821601902108413" role="listitem">Before update</paragraph></listitem>
+     <listitem><paragraph id="par_id81601902108958" role="listitem">Fill parameters</paragraph></listitem>
+     </list>
+
 </body>
 </helpdocument>
