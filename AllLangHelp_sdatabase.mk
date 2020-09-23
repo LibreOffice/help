@@ -20,6 +20,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
     helpcontent2/source/text/sdatabase/02000000 \
     helpcontent2/source/text/sdatabase/02000002 \
     helpcontent2/source/text/sdatabase/02010100 \
+    helpcontent2/source/text/sdatabase/02010101 \
     helpcontent2/source/text/sdatabase/toolbars \
 ))
 
