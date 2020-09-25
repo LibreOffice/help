@@ -254,6 +254,11 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     screenshots/writerperfect/ui/exportepub/$(lang)/EpubDialog.png \
     screenshots/cui/ui/colorpickerdialog/$(lang)/ColorPicker.png \
     screenshots/cui/ui/colorpage/$(lang)/ColorPage.png \
+    screenshots/cui/ui/effectspage/$(lang)/EffectsPage.png \
+    screenshots/cui/ui/hyperlinkdocpage/$(lang)/HyperlinkDocPage.png \
+    screenshots/cui/ui/hyperlinkinternetpage/$(lang)/HyperlinkInternetPage.png \
+    screenshots/cui/ui/hyperlinkmailpage/$(lang)/HyperlinkMailPage.png \
+    screenshots/cui/ui/hyperlinknewdocpage/$(lang)/HyperlinkNewDocPage.png \
     screenshots/cui/ui/optviewpage/$(lang)/OptViewPage.png \
     screenshots/cui/ui/optfltrpage/$(lang)/OptFltrPage.png \
     screenshots/cui/ui/opthtmlpage/$(lang)/OptHtmlPage.png \
@@ -263,14 +268,10 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     screenshots/cui/ui/optasianpage/$(lang)/OptAsianPage.png \
     screenshots/cui/ui/optctlpage/$(lang)/OptCTLPage.png \
     screenshots/cui/ui/optsecuritypage/$(lang)/OptSecurityPage.png \
-    screenshots/cui/ui/effectspage/$(lang)/EffectsPage.png \
-    screenshots/cui/ui/hyperlinkdocpage/$(lang)/HyperlinkDocPage.png \
-    screenshots/cui/ui/hyperlinkinternetpage/$(lang)/HyperlinkInternetPage.png \
-    screenshots/cui/ui/hyperlinkmailpage/$(lang)/HyperlinkMailPage.png \
-    screenshots/cui/ui/hyperlinknewdocpage/$(lang)/HyperlinkNewDocPage.png \
     screenshots/cui/ui/optlanguagespage/$(lang)/OptLanguagesPage.png \
     screenshots/cui/ui/optgeneralpage/$(lang)/OptGeneralPage.png \
     screenshots/cui/ui/pageformatpage/$(lang)/PageFormatPage.png \
+    screenshots/cui/ui/slantcornertabpage/$(lang)/SlantAndCornerRadius.png \
     screenshots/filter/ui/pdfgeneralpage/$(lang)/PdfGeneralPage.png \
     screenshots/filter/ui/pdflinkspage/$(lang)/PdfLinksPage.png \
     screenshots/filter/ui/pdfviewpage/$(lang)/PdfViewPage.png \
