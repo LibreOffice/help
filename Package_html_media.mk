@@ -152,6 +152,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/While_statement.svg \
     helpimg/sbasic/Write_statement.svg \
     helpimg/scalc/coordinates-to-polar-01.svg \
+    helpimg/sdraw/control_points.png \
     helpimg/starmath/harpoon.svg \
     helpimg/starmath/wideharpoon.svg \
     helpimg/starmath/al21801.svg \
@@ -362,10 +363,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     navigation/libo-math.svg \
     navigation/libo-symbol-white.svg \
     navigation/libo-writer.svg \
-    screenshots/cui/ui/charnamepage/CharNamePage.png \
-    screenshots/cui/ui/colorpickerdialog/ColorPicker.png \
-    screenshots/cui/ui/colorpage/ColorPage.png \
-    screenshots/cui/ui/pageformatpage/PageFormatPage.png \
     screenshots/modules/scalc/ui/deletecells/DeleteCellsDialog.png \
     screenshots/modules/scalc/ui/xmlsourcedialog/XMLSourceDialog.png \
     screenshots/modules/sdraw/ui/dlgsnap/SnapObjectDialog.png \
@@ -393,6 +390,14 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/simpress/ui/customanimationeffecttab/EffectTab.png \
     screenshots/modules/simpress/ui/customanimationtexttab/TextAnimationTab.png \
     screenshots/modules/simpress/ui/customanimationtimingtab/TimingTab.png \
+    screenshots/cui/ui/charnamepage/CharNamePage.png \
+    screenshots/cui/ui/colorpage/ColorPage.png \
+    screenshots/cui/ui/colorpickerdialog/ColorPicker.png \
+    screenshots/cui/ui/effectspage/EffectsPage.png \
+    screenshots/cui/ui/hyperlinkdocpage/HyperlinkDocPage.png \
+    screenshots/cui/ui/hyperlinkinternetpage/HyperlinkInternetPage.png \
+    screenshots/cui/ui/hyperlinkmailpage/HyperlinkMailPage.png \
+    screenshots/cui/ui/hyperlinknewdocpage/HyperlinkNewDocPage.png \
     screenshots/cui/ui/optviewpage/OptViewPage.png \
     screenshots/cui/ui/optfltrpage/OptFltrPage.png \
     screenshots/cui/ui/opthtmlpage/OptHtmlPage.png \
@@ -402,13 +407,10 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/cui/ui/optasianpage/OptAsianPage.png \
     screenshots/cui/ui/optctlpage/OptCTLPage.png \
     screenshots/cui/ui/optsecuritypage/OptSecurityPage.png \
-    screenshots/cui/ui/effectspage/EffectsPage.png \
-    screenshots/cui/ui/hyperlinkdocpage/HyperlinkDocPage.png \
-    screenshots/cui/ui/hyperlinkinternetpage/HyperlinkInternetPage.png \
-    screenshots/cui/ui/hyperlinkmailpage/HyperlinkMailPage.png \
-    screenshots/cui/ui/hyperlinknewdocpage/HyperlinkNewDocPage.png \
     screenshots/cui/ui/optlanguagespage/OptLanguagesPage.png \
     screenshots/cui/ui/optgeneralpage/OptGeneralPage.png \
+    screenshots/cui/ui/pageformatpage/PageFormatPage.png \
+    screenshots/cui/ui/slantcornertabpage/SlantAndCornerRadius.png \
     screenshots/filter/ui/pdfgeneralpage/PdfGeneralPage.png \
     screenshots/filter/ui/pdflinkspage/PdfLinksPage.png \
     screenshots/filter/ui/pdfviewpage/PdfViewPage.png \
