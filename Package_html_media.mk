@@ -154,6 +154,15 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/Write_statement.svg \
     helpimg/scalc/coordinates-to-polar-01.svg \
     helpimg/sdraw/control_points.png \
+    helpimg/sdraw/distribute-orig.svg \
+    helpimg/sdraw/distribute-HR.svg \
+    helpimg/sdraw/distribute-HL.svg \
+    helpimg/sdraw/distribute-HC.svg \
+    helpimg/sdraw/distribute-HS.svg \
+    helpimg/sdraw/distribute-VT.svg \
+    helpimg/sdraw/distribute-VB.svg \
+    helpimg/sdraw/distribute-VC.svg \
+    helpimg/sdraw/distribute-VS.svg \
     helpimg/starmath/harpoon.svg \
     helpimg/starmath/wideharpoon.svg \
     helpimg/starmath/al21801.svg \
