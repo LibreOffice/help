@@ -414,7 +414,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/menu/insert_header_footer \
     helpcontent2/source/text/swriter/menu/insert_footnote_endnote \
     helpcontent2/source/text/swriter/menu/insert_frame \
-    helpcontent2/source/text/swriter/menu/submenu_more_breaks.xhp \
+    helpcontent2/source/text/swriter/menu/submenu_more_breaks \
     helpcontent2/source/text/swriter/mailmergetoolbar \
 ))
 
