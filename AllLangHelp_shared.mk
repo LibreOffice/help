@@ -368,6 +368,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/ref_pdf_export_links \
     helpcontent2/source/text/shared/01/ref_pdf_export_security \
     helpcontent2/source/text/shared/01/ref_pdf_export_user_interface \
+    helpcontent2/source/text/shared/01/ref_pdf_export_universal_accessibility \
     helpcontent2/source/text/shared/01/ref_pdf_send_as \
     helpcontent2/source/text/shared/01/signexistingpdf \
     helpcontent2/source/text/shared/01/securitywarning \
