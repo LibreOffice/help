@@ -54,7 +54,7 @@
 
     <h2 id="par_idN10706">Images</h2>
     <paragraph id="par_idN1070A" role="paragraph" xml-lang="en-US">Sets the PDF export options for images inside your document.</paragraph>
-    <note id="par_idN1071B">EPS images with embedded previews are exported only as previews. EPS images without embedded previews are exported as empty placeholders.</note>
+
     <bookmark xml-lang="en-US" branch="hid/filter/ui/pdfgeneralpage/losslesscompress" id="bm_id8095950" localize="false"/>
 
     <h3 id="par_idN10715">Lossless compression</h3>
@@ -74,6 +74,8 @@
     <bookmark xml-lang="en-US" branch="hid/filter/ui/pdfgeneralpage/resolution" id="bm_id1751762" localize="false"/>
     <paragraph id="par_idN10782" role="paragraph" xml-lang="en-US"><ahelp hid=".">Select the target resolution for the images.</ahelp></paragraph>
 
+    <note id="par_idN1071B">EPS images with embedded previews are exported only as previews. EPS images without embedded previews are exported as empty placeholders.</note>
+
     <h2 id="hd_id141574104956415">Watermark</h2>
     <paragraph role="paragraph" id="par_id341574104961922">Add a centered, vertical, light green watermark text to the page background. The watermark is not part of the source document.</paragraph>
     <h3 id="hd_id381574104981670">Sign with watermark</h3>
@@ -89,8 +91,11 @@
     <paragraph id="par_id0804200803553767" role="paragraph" xml-lang="en-US"><ahelp hid=".">This setting enables you to export the document as a .pdf file containing two file formats: PDF and ODF.</ahelp> In PDF viewers it behaves like a normal .pdf file and it remains fully editable in %PRODUCTNAME.</paragraph>
     <bookmark xml-lang="en-US" branch="hid/filter/ui/pdfgeneralpage/pdfa" id="bm_id303964" localize="false"/>
 
-    <h3 id="hd_id2796411">Archive (PDF/A ISO 19005)</h3>
-    <paragraph id="par_id5016327" role="paragraph" xml-lang="en-US"><ahelp hid=".">Converts to the PDF/A-2b or PDF/A-1b format. This is defined as an electronic document file format for long term preservation. All fonts that were used in the source document will be embedded into the generated PDF file. PDF tags will be written.</ahelp></paragraph>
+    <h3 id="hd_id2796411">Archive (PDF/A, ISO 19005)</h3>
+    <paragraph id="par_id5016327" role="paragraph" xml-lang="en-US"><ahelp hid=".">Converts to the PDF/A-1b, PDF/A-2b, or PDF/A-3b format. All fonts used in the source document are embedded in the generated PDF file, and PDF tags are written. The primary purpose is to create an electronic document whose appearance is device and application independent, making it suitable for long term preservation.</ahelp></paragraph>
+    <note id="par_id301602634061241">PDF/A-2b is recommended for most users, because it allows for layers and transparency with shapes and images. It also compresses better (JPEG 2000) than PDF/A-1b, usually producing smaller files. PDF/A-3b is identical to PDF/A-2b, but also accepts embedding of other file formats.</note>
+
+    <embed href="text/shared/01/ref_pdf_export_universal_accessibility.xhp#PDA_UA_Head"/>
 
     <bookmark xml-lang="en-US" branch="hid/filter/ui/pdfgeneralpage/tagged" id="bm_id6884975" localize="false"/>
 
@@ -111,10 +116,11 @@
 
     <h3 id="hd_id1026200909535841">Allow duplicate field names</h3>
     <paragraph id="par_id102620090953596" role="paragraph" xml-lang="en-US"><ahelp hid=".">Allows you to use the same field name for multiple fields in the generated PDF file. If disabled, field names will be exported using generated unique names.</ahelp></paragraph>
-
+<h2 id="hd_id671602451425200">Structure</h2>
+<paragraph role="paragraph" id="par_id51602451783950">Sets options for diverse features such as bookmarks, comments, page layout.</paragraph>
     <bookmark xml-lang="en-US" branch="hid/filter/ui/pdfgeneralpage/bookmarks" id="bm_id8694112" localize="false"/>
     <h3 id="hd_id8257087">Export outlines</h3>
-    <paragraph id="par_id3479415" role="paragraph" xml-lang="en-US"><ahelp hid=".">Select to export bookmarks of Writer documents as PDF bookmarks. Bookmarks are created for all outline paragraphs (<item type="menuitem">Tools - Chapter Numbering</item>) and for all table of contents entries for which you did assign hyperlinks in the source document.</ahelp></paragraph>
+    <paragraph id="par_id3479415" role="paragraph" xml-lang="en-US"><ahelp hid=".">Select to export bookmarks of Writer documents as PDF bookmarks. Bookmarks are created for all outline paragraphs (<menuitem>Tools - Chapter Numbering</menuitem>) and for all table of contents entries for which you did assign hyperlinks in the source document.</ahelp></paragraph>
 
     <bookmark xml-lang="en-US" branch="hid/filter/ui/pdfgeneralpage/exportplaceholders" id="bm_id7971129" localize="false"/>
     <switch select="appl">
@@ -156,8 +162,8 @@
     <h3 id="hd_id3946959">Use reference XObjects</h3>
     <paragraph id="par_id8551897" role="paragraph" xml-lang="en-US"><ahelp hid=".">This option affects how PDF images are exported back to PDF. When this option is disabled, then the first page of the PDF data is included in the output. The PDF export merges the used images, fonts and other resources during export. This is a complex operation, but the result can be viewed in various viewers. When the option is enabled, then the reference XObject markup is used: this is a simple operation, but viewers have to support this markup to show vector images. Otherwise a fallback bitmap is shown in the viewer.</ahelp></paragraph>
     <section id="relatedtopics">
-    <embed href="text/shared/01/ref_pdf_export_digital_signature.xhp#relatedtopics"/>   
-</section>
+      <embed href="text/shared/01/ref_pdf_export_digital_signature.xhp#relatedtopics"/>
+    </section>
 
 </body>
 </helpdocument>
