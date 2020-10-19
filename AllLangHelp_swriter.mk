@@ -175,6 +175,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/06210000 \
     helpcontent2/source/text/swriter/01/06220000 \
     helpcontent2/source/text/swriter/01/06990000 \
+    helpcontent2/source/text/swriter/01/edit_reference_submenu \
     helpcontent2/source/text/swriter/01/format_object \
     helpcontent2/source/text/swriter/01/legacynumbering \
     helpcontent2/source/text/swriter/01/mailmerge00 \
