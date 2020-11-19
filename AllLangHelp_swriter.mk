@@ -334,6 +334,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/guide/pagestyles \
     helpcontent2/source/text/swriter/guide/print_brochure \
     helpcontent2/source/text/swriter/guide/print_preview \
+    helpcontent2/source/text/swriter/guide/print_selection \
     helpcontent2/source/text/swriter/guide/print_small \
     helpcontent2/source/text/swriter/guide/printer_tray \
     helpcontent2/source/text/swriter/guide/printing_order \
