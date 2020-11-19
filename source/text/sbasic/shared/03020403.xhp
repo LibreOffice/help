@@ -27,29 +27,28 @@
 
 <body>
 
-
 <section id="curdir">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3153126">
   <bookmark_value>CurDir function</bookmark_value>
 </bookmark>
 
-
-<paragraph id="hd_id3153126" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03020403.xhp">CurDir Function</link></paragraph>
-<paragraph id="par_id3156343" role="paragraph" xml-lang="en-US">Returns a variant string that represents the current path of the specified drive.</paragraph>
+<h1 id="hd_id3153126"><variable id="CurDir_h1"><link href="text/sbasic/shared/03020403.xhp">CurDir Function</link></variable></h1>
+<paragraph id="par_id3156343" role="paragraph" xml-lang="en-US">Returns a variant string that represents the current path <switchinline select="sys"><caseinline select="WIN">or that of the specified Windows drive</caseinline></switchinline>.</paragraph>
 </section>
-<embed href="text/sbasic/shared/03020401.xhp#i30692"/>
+<embed href="text/sbasic/shared/03020401.xhp#deprecated_inStarOffice7"/>
 
-<paragraph id="hd_id3149457" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
-<paragraph id="par_id3153381" role="bascode" xml-lang="en-US">CurDir [(Text As String)]</paragraph>
+<paragraph id="par_id3153381" role="bascode" localize="false">CurDir [(Text As String)]</paragraph>
 </bascode>
 
 <paragraph id="hd_id3154366" role="heading" level="2" xml-lang="en-US">Return value:</paragraph>
 <paragraph id="par_id3156281" role="paragraph" xml-lang="en-US">String</paragraph>
 
-<paragraph id="hd_id3156423" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
-<paragraph id="par_id3153193" role="paragraph" xml-lang="en-US"> <emph>Text:</emph> Any string expression that specifies an existing drive (for example, "C" for the first partition of the first hard drive).</paragraph>
-<paragraph id="par_id3155133" role="paragraph" xml-lang="en-US">If no drive is specified or if the drive is a zero-length string (""), CurDir returns the path for the current drive. $[officename] Basic reports an error if the syntax of the drive description is incorrect, the drive does not exist, or if the drive letter occurs after the letter defined in the CONFIG.SYS with the Lastdrive statement.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<paragraph id="par_id3153193" role="paragraph" xml-lang="en-US"> <emph>Text:</emph> Any string expression that specifies an existing drive, for example "C" for the first partition of the first hard drive. This parameter is used solely under Windows.</paragraph>
+<paragraph id="par_id3155133" role="paragraph" xml-lang="en-US">If no drive is specified or if the drive is a zero-length string (""), <literal>CurDir</literal> returns the path for the current drive. %PRODUCTNAME Basic reports an error if the syntax of the drive description is incorrect or if the drive does not exist.</paragraph>
+  
 <paragraph id="par_id3150010" role="paragraph" xml-lang="en-US">This function is not case-sensitive.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
@@ -57,17 +56,17 @@
 <embed href="text/sbasic/shared/00000003.xhp#err7"/>
 <embed href="text/sbasic/shared/00000003.xhp#err51"/>
 
-<paragraph id="hd_id3155411" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
-<paragraph id="par_idm1341570656" role="bascode" localize="false" xml-lang="en-US">Sub ExampleCurDir</paragraph>
-<paragraph id="par_idm1341569424" role="bascode" localize="false" xml-lang="en-US">Dim sDir1 As String , sDir2 As String</paragraph>
-<paragraph id="par_idm1341568176" role="bascode" localize="false" xml-lang="en-US">    sDir1 = "c:\Test"</paragraph>
-<paragraph id="par_idm1341566944" role="bascode" localize="false" xml-lang="en-US">    sDir2 = "d:\Private"</paragraph>
-<paragraph id="par_idm1341565696" role="bascode" localize="false" xml-lang="en-US">    ChDir( sDir1 )</paragraph>
-<paragraph id="par_idm1341564464" role="bascode" localize="false" xml-lang="en-US">    MsgBox CurDir</paragraph>
-<paragraph id="par_idm1341563232" role="bascode" localize="false" xml-lang="en-US">    ChDir( sDir2 )</paragraph>
-<paragraph id="par_idm1341562000" role="bascode" localize="false" xml-lang="en-US">    MsgBox CurDir</paragraph>
-<paragraph id="par_idm1341560768" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1341570656" role="bascode" localize="false">Sub ExampleCurDir</paragraph>
+<paragraph id="par_idm1341569424" role="bascode" localize="false">Dim sDir1 As String , sDir2 As String</paragraph>
+<paragraph id="par_idm1341568176" role="bascode" localize="false">    sDir1 = "c:\Test"</paragraph>
+<paragraph id="par_idm1341566944" role="bascode" localize="false">    sDir2 = "d:\Private"</paragraph>
+<paragraph id="par_idm1341565696" role="bascode" localize="false">    ChDir( sDir1 )</paragraph>
+<paragraph id="par_idm1341564464" role="bascode" localize="false">    MsgBox CurDir</paragraph>
+<paragraph id="par_idm1341563232" role="bascode" localize="false">    ChDir( sDir2 )</paragraph>
+<paragraph id="par_idm1341562000" role="bascode" localize="false">    MsgBox CurDir</paragraph>
+<paragraph id="par_idm1341560768" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
 </body>
 
