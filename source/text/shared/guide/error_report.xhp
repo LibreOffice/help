@@ -20,7 +20,7 @@
 
 <meta>
   <topic id="textsharedguideerror_reportxml" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">Error Report Tool</title>
+    <title id="tit" xml-lang="en-US">Crash Report Tool</title>
     <filename>/text/shared/guide/error_report.xhp</filename>
   </topic>
 </meta>
@@ -28,31 +28,31 @@
 <body>
 
 <bookmark xml-lang="en-US" branch="index" id="bm_id3150616">
-  <bookmark_value>Error Report Tool</bookmark_value>
-  <bookmark_value>reports;error reports</bookmark_value>
+ <bookmark_value>Crash Report Tool</bookmark_value>
+  <bookmark_value>reports;crash reports</bookmark_value>
   <bookmark_value>crash reports</bookmark_value>
-  <bookmark_value>activating;Error Report Tool</bookmark_value>
+  <bookmark_value>activating;Crash Report Tool</bookmark_value>
 </bookmark>
-<comment>MW changed "reporting..." to "reports;"</comment>
 
-<paragraph id="hd_id3150616" role="heading" level="1" xml-lang="en-US"><variable id="error_report"><link href="text/shared/guide/error_report.xhp" name="Error Report Tool">Error Report Tool</link></variable></paragraph>
-<paragraph id="par_id3153345" role="paragraph" xml-lang="en-US">The Error Report Tool starts automatically when a program crash occurs.<comment>removed sentene about manually - i96770</comment></paragraph>
-<paragraph id="par_id3147088" role="paragraph" xml-lang="en-US">The Error Report Tool gathers all necessary information that can help the program developers to improve the code, so that in later versions this error can possibly be avoided. Please help us to improve the software and send the generated error report.</paragraph>
+<h1 id="hd_id3150616" xml-lang="en-US"><variable id="error_report"><link href="text/shared/guide/error_report.xhp" name="Error Report Tool">Crash Report Tool</link></variable></h1>
+<paragraph id="par_id3153345" role="paragraph" xml-lang="en-US">The Crash Report Tool starts automatically after a program crash occurs.</paragraph>
+<paragraph id="par_id3147088" role="paragraph" xml-lang="en-US">The Crash Report Tool gathers necessary information that can help the program developers to improve the code, so that in later versions this error can possibly be avoided. Please help us to improve the software and send the generated crash report.</paragraph>
 
-<paragraph id="hd_id3148538" role="heading" level="2" xml-lang="en-US">Starting the Error Report Tool</paragraph>
-<paragraph id="par_id3149811" role="paragraph" xml-lang="en-US">With most program crashes the Error Report Tool will start automatically.</paragraph>
+<h2 id="hd_id3148538" xml-lang="en-US">Starting the Crash Report Tool</h2>
+<paragraph id="par_id3149811" role="paragraph" xml-lang="en-US">With most program crashes the Crash Report Tool will start automatically.</paragraph>
 
-<paragraph id="hd_id3154046" role="heading" level="2" xml-lang="en-US">Completing the Report</paragraph>
-<paragraph id="par_id3147335" role="paragraph" xml-lang="en-US">On the main Error Report Tool dialog, you can enter some additional information that may help the developers to localize the error. For example, if the error only appears after a change in your hardware or software environment, or if you clicked on a button, please include that information.</paragraph>
+<h2 id="hd_id3159399" xml-lang="en-US">Sending the Crash Report</h2>
+<paragraph role="paragraph" id="par_id711605615413339">Select the checkbox if you want to restart %PRODUCTNAME in safe mode. Then click the <widget>Send Crash Report</widget> button.</paragraph>
+<paragraph role="paragraph" id="par_id521605621252890">If a crash report is sent successfully, then a dialog box will provide a URL for the report. To see the report, copy the URL and paste into a webbrowser.</paragraph>
 
-<paragraph id="hd_id3159399" role="heading" level="2" xml-lang="en-US">Sending the Error Report</paragraph>
-<paragraph id="par_id3150504" role="paragraph" xml-lang="en-US">The Error Report Tool uses the HTTP PUT / SOAP protocol to send the report data. You may optionally enter some descriptive text that will help us to identify the context of the program crash. Then click the <emph>Send</emph> button.</paragraph>
-<paragraph id="par_id3149670" role="warning" xml-lang="en-US">You will not get an answer to your error report. If you need support, please visit the <link href="text/shared/main0108.xhp">support forum</link> on the Internet.</paragraph>
-<paragraph id="par_id3153526" role="paragraph" xml-lang="en-US">You may choose to respond to questions that the developers may have about the reported error. Mark the check box if you want to be contacted by email, should additional information be required. By default this box is not marked, so you will not get any email.</paragraph>
+<tip id="par_id3149670" xml-lang="en-US">You will not get an answer to your crash report. If you need support, please visit <link href="https://www.libreoffice.org/get-help/community-support/">Community Assistance</link> for an overview of different possibilities.</tip>
 
-<paragraph id="hd_id3150792" role="heading" level="2" xml-lang="en-US">What Data is Sent?</paragraph>
-<paragraph id="par_id3154366" role="paragraph" xml-lang="en-US">The error report consists of several files. The main file contains information about the error type, operating system name and version, memory usage, and the description that you entered. You can click the <emph>Show Report</emph> button on the main dialog of the Error Report Tool to view what will get sent in the main file.</paragraph>
-<paragraph id="par_id3151177" role="paragraph" xml-lang="en-US">In addition, relevant memory contents and stack traces are gathered by some system standard tools ("dbhhelp.dll" on Windows systems, "pstack" on UNIX systems). This information will be sent also.</paragraph>
+<h2 id="hd_id3150792" xml-lang="en-US">What Data are Sent?</h2>
+<paragraph id="par_id3154366" role="paragraph" xml-lang="en-US">The crash report sends information about the error type that caused the crash and the process memory contents at the time of the crash.  The memory contents include: a list of loaded libraries and their version number; a list of the current threads with the contents of their stack memory and processor register states. The memory trace is gathered locally by standard system tools: <literal>dbghelp.dll</literal> on Windows systems; <literal>clone()</literal>, <literal>ptrace()</literal> and <literal>/proc</literal> directory on Linux systems; Apple's Crash Reporter on Mac systems.</paragraph>
+
+<paragraph role="paragraph" id="par_id731607157836334">Information is also sent about the %PRODUCTNAME version, the operating system name and version, and the computing hardware (CPU identification; graphics device and driver).</paragraph>
+
+<paragraph id="par_id3150504" role="paragraph" xml-lang="en-US">The crash report is anonymous. No identification information is sent and no document content is sent. The report data are sent as a multipart HTTP POST request.</paragraph>
 </body>
 
 </helpdocument>
