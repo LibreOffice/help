@@ -42,7 +42,7 @@
             }
             //Special case of application F1 or menu  Help -> LibreOffice Help
             if (target.indexOf('.uno:HelpIndex') != -1) {
-            window.location.href = lang + '/' + defaultFile + '?System=' + system + '&DbPAR=' + module;
+                window.location.replace(lang + '/' + defaultFile + '?System=' + system + '&DbPAR=' + module);
             }
             var bookmark = target.slice(target.indexOf('/') + 1, target.length);
             var file = hid2fileMap[bookmark];
@@ -60,13 +60,13 @@
                 file = file.substr(0,indx);
                 var newURL = lang + '/' + file + '?System=' + system + '&DbPAR=' + module + '&HID=' + bookmark + bm;
             }
-            window.location.href = newURL;
+            window.location.replace(newURL);
         } else {
             // URL came from elsewhere, direct access to webroot, we redirect to main Help page
             var system = 'WIN';
             if (navigator.userAgent.indexOf("Mac") != -1) system = 'MAC';
             if (navigator.userAgent.indexOf("Linux") != -1) system = 'UNIX';
-            window.location.href = existingLang(navigator.language) + '/text/shared/05/new_help.html?&DbPAR=WRITER&System=' + system;
+            window.location.replace(existingLang(navigator.language) + '/text/shared/05/new_help.html?&DbPAR=WRITER&System=' + system);
         }
     });
 </script>
