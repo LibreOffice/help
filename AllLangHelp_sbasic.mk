@@ -77,6 +77,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03/lib_importwiz \
     helpcontent2/source/text/sbasic/shared/03/lib_script \
     helpcontent2/source/text/sbasic/shared/03/lib_ScriptForge \
+    helpcontent2/source/text/sbasic/shared/03/sf_array \
+    helpcontent2/source/text/sbasic/shared/03/sf_dictionary \
     helpcontent2/source/text/sbasic/shared/03/lib_schedule \
     helpcontent2/source/text/sbasic/shared/03/lib_template \
     helpcontent2/source/text/sbasic/shared/03/lib_wikieditor \
