@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c87483e5_d7062717",
+        "filename": "source/text/shared/optionen/01140000.xhp",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2020-11-25T06:13:09Z",
+      "side": 1,
+      "message": "I am not sure if this is an improvement.\n\nThe idea is that there is an implicitly defined acceptance pattern: Y-M-D. It is used by application in addition to whatever is entered here in the box. And then a specific formatting will be applied to the cell.\n\nYou use the phrase \"In addition ... you can use a Y-M-D pattern\", and it\u0027s more ambiguous: \"can\" is not decisive enough (it doesn\u0027t assure one that it is something that is *always* active: it *can* be, and maybe there are times when it can be *not*?); \"you\" means what? does that mean that it\u0027s something that user needs to do? (the aspect that it\u0027s something that *program* already does is lost); and the idea behind this is also not apparent from start (original text mentioned ISO 8601 before the Y-M-D pattern, so it was obvious why the pre-definition was created). Then you add something strange: \"text entered in the pattern YYYY-M-D (ISO 8601) will be converted to a date\". Now you use another \"pattern\" (YYYY-M-D), which is *not* a pattern discussed here, and confuses everyone.\n\nLet me elaborate. Two things are discussed in this section: acceptance patterns, and format strings. They are *different*, and they apply to different operations. Acceptance pattern is used at the time of parsing the user input in order to detect that the input represents a date, and convert the input string into corresponding date value. Acceptance pattern *always* uses *single* character to represent an arbitrary-length part: you only can use \"Y\", not \"YY\" or \"YYYY\" in acceptance pattern, and that single \"Y\" will match \"0\", \"20\", or \"2020\" in respective part of input string. So when you write \"text entered in pattern YYYY-M-D\", you create a confusion in user, making an impression that YYYY-M-D is a valid pattern, and it\u0027s logically different from Y-M-D.\n\nI feel that original wording was rather clear, starting with introductory mention of the ISO as the rationale; stating that it is recognized in *any* locale (always) *in addition* to what is defined there (no explicit configuration is needed), and then uses clear wording when talking about application of *format*. I disagree with the edit.",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 359
+      },
+      "revId": "90325fb4011bd625cc17755a9d12e36572582de9",
+      "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615",
+      "unresolved": true
+    }
+  ]
+}
