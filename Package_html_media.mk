@@ -114,6 +114,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/char_fragment.svg \
     helpimg/sbasic/comment_fragment.svg \
     helpimg/sbasic/typename_fragment.svg \
+    helpimg/sbasic/Beep_statement.svg \
     helpimg/sbasic/Call_statement.svg \
     helpimg/sbasic/Close_statement.svg \
     helpimg/sbasic/Const_statement.svg \
@@ -134,6 +135,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/Input_statement.svg \
     helpimg/sbasic/LetSet_statement.svg \
     helpimg/sbasic/Line-Input_statement.svg \
+    helpimg/sbasic/MkDir_statement.svg \
     helpimg/sbasic/On-Error_statement.svg \
     helpimg/sbasic/On-GoSub-GoTo_statement.svg \
     helpimg/sbasic/Option_statement.svg \
@@ -146,11 +148,14 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/ReDim_statement.svg \
     helpimg/sbasic/Resume_statement.svg \
     helpimg/sbasic/Reset_statement.svg \
+    helpimg/sbasic/RmDir_statement.svg \
     helpimg/sbasic/Seek_statement.svg \
     helpimg/sbasic/Select-Case_statement.svg \
+    helpimg/sbasic/Stop_statement.svg \
     helpimg/sbasic/Sub_statement.svg \
     helpimg/sbasic/Type_statement.svg \
     helpimg/sbasic/While_statement.svg \
+    helpimg/sbasic/With_statement.svg \
     helpimg/sbasic/Write_statement.svg \
     helpimg/scalc/coordinates-to-polar-01.svg \
     helpimg/sdraw/control_points.png \
