@@ -71,28 +71,29 @@
 <bookmark xml-lang="en-US" branch="hid/cui/ui/optlanguagespage/datepatterns" id="bm_id9471429" localize="false"/>
 <h3 id="hd_id31472109">Date acceptance patterns</h3>
       <paragraph xml-lang="en-US" id="par_id3145121" role="paragraph"><ahelp hid=".">Specifies the date acceptance patterns for the current locale. Calc spreadsheet and Writer table cell input needs to match locale dependent date acceptance patterns before it is recognized as a valid date.</ahelp></paragraph>
-      <paragraph role="paragraph" id="par_id381606257267459">If you type numbers and characters that correspond to the defined date acceptance patterns in a table cell, and then move the cursor outside of the cell, %PRODUCTNAME will automatically recognize and convert the input to a date, and format it according to the locale setting.</paragraph> 
-      <paragraph role="paragraph" id="par_id391606257292899">The initial pattern(s) in <emph>Date acceptance patterns</emph> are determined by the locale (set in <emph>Locale setting</emph>), but you can modify these default patterns, and add more patterns.  Use <keycode>;</keycode> to separate each pattern.</paragraph> 
+      <paragraph role="paragraph" id="par_id381606257267459">If you type numbers and characters that correspond to the defined date acceptance patterns in a table cell, and then move the cursor outside of the cell, %PRODUCTNAME will automatically recognize and convert the input to a date, and format it according to the locale setting.</paragraph>
+      <paragraph role="paragraph" id="par_id391606257292899">The initial pattern(s) in <emph>Date acceptance patterns</emph> are determined by the locale (set in <emph>Locale setting</emph>), but you can modify these default patterns, and add more patterns.  Use <keycode>;</keycode> to separate each pattern.</paragraph>
       <paragraph role="paragraph" id="par_id261606302453895">Patterns can be composed according to the following rules:</paragraph>
     <list type="unordered">
      <listitem>
-      <paragraph id="par_id941606302524110" role="listitem">A pattern must start with <emph>D</emph>, <emph>M</emph>, or <emph>Y</emph>, and include at least two items, with at least one separator between each one. </paragraph>
+      <paragraph id="par_id941606302524110" role="listitem">A pattern must start with <emph>D</emph>, <emph>M</emph>, or <emph>Y</emph>, and include at least two items, with at least one separator between each one.</paragraph>
       <paragraph id="par_id961606302527780" role="listitem">A pattern may also include all three, in any order.</paragraph>
      </listitem>
      <listitem>
       <paragraph xml-lang="en-US" id="par_id3157939" role="listitem"><emph>Y</emph> means year, <emph>M</emph> means month, and <emph>D</emph> means day, regardless of which locale is set. Each can only be used once in a pattern.</paragraph>
      </listitem>
      <listitem>
-      <paragraph id="par_id601606302514959" role="listitem"><keycode>.</keycode> <keycode>-</keycode> <keycode>:</keycode> <keycode>/</keycode> <keycode>,</keycode> can be used as separators between and after <emph>D</emph>, <emph>M</emph>, and <emph>Y</emph>.</paragraph>  
-      <paragraph id="par_id621606303306587" role="listitem">Any combination of separators can be used, and more than one separator can be used between <emph>D</emph>, <emph>M</emph>, and <emph>Y</emph>, but the input must match the separator pattern exactly for recognition.</paragraph> 
+      <paragraph id="par_id601606302514959" role="listitem"><keycode>.</keycode> <keycode>-</keycode> <keycode>:</keycode> <keycode>/</keycode> <keycode>,</keycode> can be used as separators between and after <emph>D</emph>, <emph>M</emph>, and <emph>Y</emph>.</paragraph>
+      <paragraph id="par_id621606303306587" role="listitem">Any combination of separators can be used, and more than one separator can be used between <emph>D</emph>, <emph>M</emph>, and <emph>Y</emph>, but the input must match the separator pattern exactly for recognition.</paragraph>
      </listitem>
      <listitem>
       <paragraph id="par_id621606303767851" role="listitem">Patterns can combine different separators, and may include a trailing separator.</paragraph>
-      <paragraph role="listitem" id="par_id151606303867002">Examples of valid patterns are: <literal>D,Y ; Y-M ; M.D.Y  ; D-M/Y ;  M.D.</literal> </paragraph>
+      <paragraph role="listitem" id="par_id151606303867002">Examples of valid patterns are: <literal>D,Y ; Y-M ; M.D.Y  ; D-M/Y ;  M.D.</literal></paragraph>
      </listitem>
     </list>
       <paragraph role="paragraph" id="par_id181606257326394">If you change the <emph>Locale setting</emph>, the date acceptance pattern will be reset to the new locale default, and any user-defined modifications or additions will be lost.</paragraph>
-      <paragraph role="paragraph" id="par_id821606257357323">In addition to the patterns defined in the edit box, input matching the <literal>Y-M-D</literal> pattern is also recognized and converted automatically to a date, and since %PRODUCTNAME 3.5 is formatted as <literal>YYYY-MM-DD</literal> (ISO 8601).</paragraph>
+      <paragraph role="paragraph" id="par_id821606257357323">In addition to the explicit patterns defined in the edit box, input matching the <literal>Y-M-D</literal> pattern is implicitly recognized and converted automatically to a date. Input that starts from 1 to 31 is not interpreted with this implicit Y-M-D pattern.  Since %PRODUCTNAME 3.5, this input is formatted as <literal>YYYY-MM-DD</literal> (ISO 8601).</paragraph>
+      <paragraph role="paragraph" id="par_id391606902516870">For all patterns, two-digit year input is interpreted according to the setting in <link href="text/shared/optionen/01010600.html#jahreszahlen" name="twodigityears">Tools - Options - General - Year (Two Digits)</link>.</paragraph>  
       <h2 id="hd_id3153127">Default languages for documents</h2>
       <paragraph id="par_id3149763" role="paragraph">Specifies the languages for spelling, thesaurus and hyphenation.</paragraph>
       <embed href="text/shared/guide/language_select.xhp#language_select"/>
