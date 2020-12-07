@@ -354,6 +354,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/guide/shortcut_writing \
     helpcontent2/source/text/swriter/guide/smarttags \
     helpcontent2/source/text/swriter/guide/spellcheck_dialog \
+    helpcontent2/source/text/swriter/guide/standard_template \
     helpcontent2/source/text/swriter/guide/stylist_fillformat \
     helpcontent2/source/text/swriter/guide/stylist_fromselect \
     helpcontent2/source/text/swriter/guide/stylist_update \
