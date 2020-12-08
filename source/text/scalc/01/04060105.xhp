@@ -108,7 +108,7 @@
 <h2 id="hd_id3150141">IF</h2>
          <paragraph xml-lang="en-US" id="par_id3148740" role="paragraph"><ahelp hid="HID_FUNC_WENN">Specifies a logical test to be performed.</ahelp></paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3154558" role="code">IF(Test [; ThenValue [; OtherwiseValue]])</paragraph>
+         <paragraph xml-lang="en-US" id="par_id3154558" role="code">IF(Test [; [ThenValue] [; [OtherwiseValue]]])</paragraph>
          <paragraph xml-lang="en-US" id="par_id3149727" role="paragraph">
             <emph>Test</emph> is any value or expression that can be TRUE or FALSE.</paragraph>
          <paragraph xml-lang="en-US" id="par_id3155828" role="paragraph">
@@ -120,7 +120,10 @@
          </paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
          <paragraph xml-lang="en-US" id="par_id3150867" role="paragraph">
-            <item type="input">=IF(A1&gt;5;100;"too small")</item> If the value in A1 is higher than 5, the value 100 is entered in the current cell; otherwise, the text “too small” (without quotes) is entered.</paragraph>
+            <input>=IF(A1&gt;5;100;"too small")</input> If the value in <literal>A1</literal> is higher than <literal>5</literal>, the value <literal>100</literal> is returned in the current cell; otherwise, the text <literal>too small</literal> is returned.</paragraph>
+         <paragraph role="paragraph" id="par_id71607569817532">
+            <input>=IF(A1&gt;5;;"too small")</input> If the value in <literal>A1</literal> is higher than <literal>5</literal>, the value <literal>0</literal> is returned in the current cell because empty parameters are considered to be <literal>0</literal>; otherwise, the text <literal>too small</literal> is returned.</paragraph>
+         <paragraph role="paragraph" id="par_id11607570458867"><input>=IF(A1&gt;5;100;)</input> If the value in <literal>A1</literal> is less than <literal>5</literal>, the value <literal>0</literal> is returned in the current cell because the empty <emph>OtherwiseValue</emph> is interpreted as <literal>0</literal>; otherwise <literal>100</literal> is returned.</paragraph>
       </section>
       <section id="Section3">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3155954"><bookmark_value>NOT function</bookmark_value>
