@@ -365,8 +365,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/guide/table_select \
     helpcontent2/source/text/swriter/guide/table_sizing \
     helpcontent2/source/text/swriter/guide/tablemode \
-    helpcontent2/source/text/swriter/guide/template_create \
-    helpcontent2/source/text/swriter/guide/template_default \
     helpcontent2/source/text/swriter/guide/templates_styles \
     helpcontent2/source/text/swriter/guide/text_animation \
     helpcontent2/source/text/swriter/guide/text_capital \
