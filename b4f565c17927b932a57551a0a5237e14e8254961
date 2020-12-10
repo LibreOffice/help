@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2a1193f6_645e460b",
+        "filename": "source/text/scalc/01/12120100.xhp",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2020-12-10T06:11:31Z",
+      "side": 1,
+      "message": "Contraposing \"strings\" to \"values\" is wrong. Cells may have different *types* of values; textual values (strings) and numerical values (numbers/dates/booleans) among them. You can write sometimes things like \"numbers or strings\" (not here), or even \"numbers or dates\" (which is intuitively correct, although dates in Calc are also numbers); but not \"values or strings\".\n\nHere simple \"values\" is OK.",
+      "range": {
+        "startLine": 125,
+        "startChar": 76,
+        "endLine": 125,
+        "endChar": 86
+      },
+      "revId": "b4f565c17927b932a57551a0a5237e14e8254961",
+      "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea9f5480_66a88293",
         "filename": "source/text/scalc/01/12120100.xhp",
         "patchSetId": 4
@@ -18,6 +41,29 @@
         "startChar": 58,
         "endLine": 126,
         "endChar": 296
+      },
+      "revId": "b4f565c17927b932a57551a0a5237e14e8254961",
+      "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3d06fb9_14051739",
+        "filename": "source/text/scalc/01/12120100.xhp",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2020-12-10T06:11:31Z",
+      "side": 1,
+      "message": "I like the existence of the example. It only needs fixing.\n\nThis example is wrong. The formula entered here follows the same \"absolute/relative\" referencing rules (https://help.libreoffice.org/latest/en-US/text/scalc/guide/relativ_absolut_ref.html) used everywhere, e.g. in conditional formats. (Note that in this case, scalar value \"by intersection\" is not applicable.) Specifically, when you select a *range*, the formula you enter corresponds to the *first* (top-left) cell of the selected range. In this case, formula \"ISODD(A1:A4)\" means \"When you enter data into *A1*, accept it if and only if ISODD(\u003cvector of four values starting with this\u003e)\" returns TRUE. But (1) you didn\u0027t want to check the other values (A2-A4) when testing A1, and (2) ISODD gives error when you pass an array to it.\n\nFor experiment, try your suggested formula. Then try entering *anything* into A1 to A4. Then check what you had entered, by selecting *A2* and opening Data-\u003eValidity (this is an important step to understand the concept).\n\nThe correct conditional formula for selection of A1:A4 is ISODD(A1).",
+      "range": {
+        "startLine": 126,
+        "startChar": 136,
+        "endLine": 126,
+        "endChar": 141
       },
       "revId": "b4f565c17927b932a57551a0a5237e14e8254961",
       "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615",
