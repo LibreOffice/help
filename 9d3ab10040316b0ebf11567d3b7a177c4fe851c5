@@ -22,6 +22,29 @@
       "revId": "9d3ab10040316b0ebf11567d3b7a177c4fe851c5",
       "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f624de2b_e8aece68",
+        "filename": "source/text/shared/optionen/01010300.xhp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000994
+      },
+      "writtenOn": "2020-12-11T16:38:03Z",
+      "side": 1,
+      "message": "The path is wrong.\n\n1. The text there now looks like this:\n\n\u003e in the {user} directory, which is located in the user\u0027s AppData/%PRODUCTNAME/4/user directory\n\nthen the text goes, that tells e.g.:\n\n\u003e AutoCorrect  {user}\\user\\autocorr\n\nSo the result looks like this:\n\n  AppData/%PRODUCTNAME/4/user/{user}\\user\\autocorr\n\nDo you see the problem? The {user} (or better, {profile}) is not *under* AppData/%PRODUCTNAME/4/user. The profile in fact is the \"4\" there, and \"user\" is just a subdirectory.\n\nAlso, AppData would tell nothing to an ordinary non-techy user. You need to add the \"Users\\\u003cusername\u003e\\\", and *also* the \"Roaming\" that you omitted, and system drive (or else use \"%appdata%, which expands to that - but still, how would ordinary user know what those percents mean?\")\n\nAnd also - you need to account for the fact that this is *by default*. You need to mention that.\n\nAnd in other places, *don\u0027t* mention where the profile is located, just call it \"profile\", and if needed, put a link here. Don\u0027t use the \"appdata/...\" etc in that other file.",
+      "range": {
+        "startLine": 49,
+        "startChar": 28,
+        "endLine": 49,
+        "endChar": 55
+      },
+      "revId": "9d3ab10040316b0ebf11567d3b7a177c4fe851c5",
+      "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615",
+      "unresolved": true
     }
   ]
 }
