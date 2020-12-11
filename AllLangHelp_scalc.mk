@@ -328,6 +328,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/guide/cellstyle_by_formula \
     helpcontent2/source/text/scalc/guide/cellstyle_conditional \
     helpcontent2/source/text/scalc/guide/cellstyle_minusvalue \
+    helpcontent2/source/text/scalc/guide/change_image_anchor \
     helpcontent2/source/text/scalc/guide/consolidate \
     helpcontent2/source/text/scalc/guide/csv_files \
     helpcontent2/source/text/scalc/guide/csv_formula \
