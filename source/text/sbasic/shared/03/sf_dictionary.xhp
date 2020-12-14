@@ -23,8 +23,8 @@
       <bookmark_value>API;PropertyValue</bookmark_value>
    </bookmark>
 
-  <h1 id="hd_id731582733781114" xml-lang="en-US"><literal>ScriptForge</literal>.<literal>Dictionary</literal> service</h1>
-
+  <h1 id="hd_id731582733781114" xml-lang="en-US"><link href="text/sbasic/shared/03/sf_dictionary.xhp" name="ScriptForge.Dictionary service"><literal>ScriptForge</literal>.<literal>Dictionary</literal> service</link></h1>
+  
   <paragraph role="paragraph" id="par_id891582884466217" xml-lang="en-US">A dictionary is a collection of key-item pairs</paragraph>
   <list type="unordered">
     <listitem><paragraph id="par_id861582884516571" role="listitem" xml-lang="en-US">The key is a case-insensitive string</paragraph></listitem>
@@ -49,10 +49,7 @@
      <paragraph role="bascode" localize="false" id="bas_id721582885621540">Set myDict = myDict.Dispose()</paragraph>
   </bascode>
 
-  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
-
   <h2 id="hd_id351582885195476" xml-lang="en-US">Properties</h2>
-  <section id="Item">
     <table id="tab_id971582885195582">
     <tablerow>
         <tablecell>
@@ -60,9 +57,6 @@
         </tablecell>
         <tablecell>
             <paragraph id="par_id31582885195372" role="tablehead" xml-lang="en-US">Readonly</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id501582885895609" role="tablehead" xml-lang="en-US">Argument</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id31582885195238" role="tablehead" xml-lang="en-US">Type</paragraph>
@@ -79,9 +73,6 @@
             <paragraph id="par_id221582885195686" role="tablecontent" xml-lang="en-US">Yes</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id851582885948589" role="tablecontent" localize="false"></paragraph>
-        </tablecell>
-        <tablecell>
             <paragraph id="par_id371582885195525" role="tablecontent" localize="false">Long</paragraph>
         </tablecell>
         <tablecell>
@@ -90,30 +81,10 @@
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id7715828856553" role="tablecontent" localize="false">Item</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id861582885655779" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id621582885990445" role="tablecontent" localize="false">Key As String</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id271582885655525" role="tablecontent" localize="false">Variant</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id581582885655885" role="tablecontent" xml-lang="en-US">The value of the item related to <literal>Key</literal><br /><literal>Empty</literal> if not found</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
             <paragraph id="par_id841582886030384" role="tablecontent" localize="false">Items</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id441582886030118" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id411582886030478" role="tablecontent" localize="false"></paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id131582886030297" role="tablecontent" xml-lang="en-US">Array of Variants</paragraph>
@@ -130,9 +101,6 @@
             <paragraph id="par_id971582886791838" role="tablecontent" xml-lang="en-US">Yes</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id721582886791467" role="tablecontent" localize="false"></paragraph>
-        </tablecell>
-        <tablecell>
             <paragraph id="par_id271582886791111" role="tablecontent" xml-lang="en-US">Array of Strings</paragraph>
         </tablecell>
         <tablecell>
@@ -140,7 +108,6 @@
         </tablecell>
     </tablerow>
     </table>
-  </section>
 
     <paragraph role="tip" id="par_id461582886731495" xml-lang="en-US">The Keys and Items properties return their respective contents, using an identical ordering.
     <br/>The order is unrelated to the creation sequence.</paragraph>
@@ -333,13 +300,32 @@
         </bascode>
     </section>
 
+    <section id="Item">
+    <comment> Item -------------------------------------------------------------------------------------------------------------------------- </comment>
+      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id741582980366762">
+        <bookmark_value>Dictionary service;Item</bookmark_value>
+      </bookmark>
+      <h2 id="hd_id301582098366573" localize="false">Item</h2>
+        <paragraph role="paragraph" id="par_id891582890366737">Retrieve an existing dictionary entry based on its key. Returns the value of the item if successful, otherwise <literal>Empty</literal>.</paragraph>
+        <h3 id="hd_id731582900366531" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+        <bascode>
+          <paragraph role="bascode" localize="false" id="bas_id71588290366664">myDict.Item(Key As String) As Variant</paragraph>
+        </bascode>
+        <h3 id="hd_id751782890366698" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+          <paragraph role="paragraph" id="par_id551582890399669"><emph>Key</emph> : Not case-sensitive. Must exist in the dictionary, otherwise a <literal>UNKNOWNKEYERROR</literal> error is generated.</paragraph>
+        <h3 id="hd_id81583890366375" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+        <bascode>
+          <paragraph role="bascode" localize="false" id="bas_id371528890366702">myDict.Item("Key")</paragraph>
+       </bascode>
+    </section>
+
     <section id="Remove">
     <comment> Remove -------------------------------------------------------------------------------------------------------------------------- </comment>
       <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id741582890366762">
         <bookmark_value>Dictionary service;Remove</bookmark_value>
       </bookmark>
       <h2 id="hd_id301582890366573" localize="false">Remove</h2>
-        <paragraph role="paragraph" id="par_id891582890366737">Remove an existing dictionary entry based on its key. Returns <literal>True</literal> if successful.</paragraph>
+        <paragraph role="paragraph" id="par_id891582890388737">Remove an existing dictionary entry based on its key. Returns <literal>True</literal> if successful.</paragraph>
         <h3 id="hd_id731582890366531" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
         <bascode>
           <paragraph role="bascode" localize="false" id="bas_id71582890366664">myDict.Remove(Key As String) As Boolean</paragraph>
@@ -405,6 +391,8 @@
           <paragraph role="bascode" localize="false" id="bas_id521582896597313"> myDict.ReplaceKey("OldKey", "NewKey")</paragraph>
        </bascode>
     </section>
+
+    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
 
 </body>
 </helpdocument>
