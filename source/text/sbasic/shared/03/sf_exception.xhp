@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+   <!--
+   * This file is part of the LibreOffice project.
+   *
+   * This Source Code Form is subject to the terms of the Mozilla Public
+   * License, v. 2.0. If a copy of the MPL was not distributed with this
+   * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+   *
+   -->
+
+   <meta>
+      <topic id="SF_Exception" indexer="include" status="PUBLISH">
+         <title id="tit" xml-lang="en-US">ScriptForge.Exception service (SF_Exception)</title>
+         <filename>/text/sbasic/shared/03/sf_exception.xhp</filename>
+      </topic>
+   </meta>
+   <body>
+   <section id="abstract">
+      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id381587139303941">
+         <bookmark_value>Exception service</bookmark_value>
+      </bookmark>
+   <h1 id="hd_id521580038927003" xml-lang="en-US"><variable id="ExceptionService"><link href="text/sbasic/shared/03/sf_exception.xhp" name="Exception service"><literal>ScriptForge</literal>.<literal>Exception</literal> service</link></variable></h1>
+   <paragraph role="paragraph" id="par_id181587139648008" xml-lang="en-US">The <literal>Exception</literal> service is a collection of methods for Basic code debugging and error handling.</paragraph>
+   <paragraph role="paragraph" id="par_id141587140927573" xml-lang="en-US">In the advent of a run-time error, the <literal>Exception</literal> service properties and methods help identify the error context and permit to handle it.</paragraph>
+   </section>
+
+   <paragraph role="paragraph" id="par_id461587140965192" xml-lang="en-US">The <literal>SF_Exception</literal> service is similar to the <link href="text/sbasic/shared/ErrVBA.xhp" name="VBA Err object">VBA <literal>Err</literal> object</link>.</paragraph>
+   <paragraph role="paragraph" id="par_id61587141015326" xml-lang="en-US">The <literal>Number</literal> property identifies the error.</paragraph>
+   <paragraph role="paragraph" id="par_id251608212974671" xml-lang="en-US">Use <literal>Raise()</literal> method to interrupt processing, use <literal>RaiseWarning()</literal> method to trap an anomaly and continue processing.</paragraph>
+
+   <tip id="par_id621587225732733" xml-lang="en-US">Errors or warnings raised with the <literal>Exception</literal> service are stored in memory and can be retrieved using its <literal>Console()</literal> method.</tip>
+
+      <paragraph role="paragraph" id="par_id411587141146677" xml-lang="en-US">The <literal>Exception</literal> service console stores events, variable values and information about errors. Use the console when Basic IDE is not accessible, for example in <link href="text/scalc/guide/userdefined_function.xhp" name="Calc user-defined function">Calc user defined functions (UDF)</link> or during events processing. Use <literal>DebugPrint()</literal> method to aggregate additional user data. Console entries can be dumped to a text file or visualized in a dialogue.</paragraph>
+      <paragraph role="paragraph" id="par_id111587141158495" xml-lang="en-US">When an error occurs, an application macro may:</paragraph>
+      <list type="ordered">
+         <listitem><paragraph role="paragraph" id="par_id451587141202844" xml-lang="en-US">Report the error in the <literal>Exception</literal> console</paragraph></listitem>
+         <listitem><paragraph role="paragraph" id="par_id751587141235313" xml-lang="en-US">Inform the user about the error using either a standard message either a customized message</paragraph></listitem>
+         <listitem><paragraph role="paragraph" id="par_id931587141260777" xml-lang="en-US">Optionally stop its execution</paragraph></listitem>
+      </list>
+
+      <h2 id="hd_id201586594659135" xml-lang="en-US">Service invocation</h2>
+      <paragraph role="paragraph" id="par_id571586594672714" xml-lang="en-US">Next code snippets are equivalent:</paragraph>
+      <bascode>
+         <paragraph role="bascode" id="bas_id731608211525532">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id181586594723543">SF_Exception.Raise(...)</paragraph>
+      </bascode>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id441586594733346">Dim exc    :    exc = SF_Exception</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id481586594739978">exc.Raise(...)</paragraph>
+      </bascode>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id431586594750461">Dim exc    :    exc = CreateScriptService("Exception")</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id471586594758689">exc.Raise(...)</paragraph>
+      </bascode>
+
+      <h2 id="hd_id651584978211886" xml-lang="en-US">Properties</h2>
+      <table id="tab_id761584978211275">
+         <tablerow>
+            <tablecell>
+               <paragraph id="par_id271584978211792" role="tablehead" xml-lang="en-US">Name</paragraph>
+            </tablecell>
+            <tablecell>
+               <paragraph id="par_id241584978211550" role="tablehead" xml-lang="en-US">ReadOnly</paragraph>
+            </tablecell>
+            <tablecell>
+               <paragraph id="par_id621584978211403" role="tablehead" xml-lang="en-US">Description</paragraph>
+            </tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell>
+               <paragraph id="par_id581584978715552" role="tablecontent" localize="false">Description</paragraph>
+            </tablecell>
+            <tablecell>
+               <paragraph id="par_id71584978715562" role="tablecontent" xml-lang="en-US">No</paragraph>
+            </tablecell>
+            <tablecell>
+               <paragraph id="par_id581584978715701" role="tablecontent" xml-lang="en-US">The error message text.<br />Default is "" or standard Basic run-time error message.</paragraph>
+            </tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell>
+               <paragraph id="par_id91584978211231" role="tablecontent" localize="false">Number</paragraph>
+            </tablecell>
+            <tablecell>
+               <paragraph id="par_id211584978211383" role="tablecontent" xml-lang="en-US">No</paragraph>
+            </tablecell>
+            <tablecell>
+               <paragraph id="par_id691584978211774" role="tablecontent" xml-lang="en-US">The code of the error. It can be a numeric value or text.<br />Default is 0 or standard Basic run-time error code.</paragraph>
+            </tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell>
+               <paragraph id="par_id1001584978666440" role="tablecontent" localize="false">Source</paragraph>
+            </tablecell>
+            <tablecell>
+               <paragraph id="par_id671584978666689" role="tablecontent" xml-lang="en-US">No</paragraph>
+            </tablecell>
+            <tablecell>
+               <paragraph id="par_id951584978666296" role="tablecontent" xml-lang="en-US">The location in the code where the error occurred. It can be a numeric value or text.<br />Default is 0 or the code line number for a standard Basic run-time error.</paragraph>
+            </tablecell>
+         </tablerow>
+      </table>
+      <tip id="par_id461584978880380" xml-lang="en-US">Raising or clearing an <literal>Exception</literal> resets its properties.</tip>
+      <embed href="text/sbasic/shared/ErrVBA.xhp#RestrictedErrorCodes"/>
+
+      <table id="tab_id441608131596153">
+         <tablerow>
+           <tablecell><paragraph id="par_id941608131596153" role="tablehead"></paragraph></tablecell>
+           <tablecell><paragraph id="par_id881608131596153" role="tablehead">Methods</paragraph></tablecell>
+           <tablecell><paragraph id="par_id751608131596153" role="tablehead"></paragraph></tablecell>
+         </tablerow>
+         <tablerow>
+            <tablecell>
+               <paragraph id="par_id461608131596153" role="tablecontent">
+                  <link href="text/sbasic/shared/03/sf_exception.xhp#Clear" name="Clear method">Clear</link><br/>
+                  <link href="text/sbasic/shared/03/sf_exception.xhp#Console" name="Console method">Console</link><br/>
+                  <link href="text/sbasic/shared/03/sf_exception.xhp#ConsoleClear" name="ConsoleClear method">ConsoleClear</link>
+              </paragraph>
+            </tablecell>
+            <tablecell>
+               <paragraph role="tablecontent" id="par_id871608132025242">
+                  <link href="text/sbasic/shared/03/sf_exception.xhp#ConsoleToFile" name="ConsoleToFile method">ConsoleToFile</link><br/><br/>
+                  <link href="text/sbasic/shared/03/sf_exception.xhp#DebugPrint" name="DebugPrint method">DebugPrint</link><br/>
+               </paragraph>
+            </tablecell>
+            <tablecell>
+               <paragraph role="tablecontent" id="par_id831608132069033">
+                  <br/><link href="text/sbasic/shared/03/sf_exception.xhp#Raise" name="Raise method">Raise</link><br/>
+                  <link href="text/sbasic/shared/03/sf_exception.xhp#RaiseWarning" name="RaiseWarning method">RaiseWarning</link>
+               </paragraph>
+            </tablecell>
+         </tablerow>
+     </table>
+
+     <section id="Clear">
+     <comment> Clear -------------------------------------------------------------------------------------------------------------------------- </comment>
+      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id121582203710297">
+         <bookmark_value>Exception service;Clear</bookmark_value>
+      </bookmark>
+      <h2 id="hd _id791579683635979" localize="false">Clear</h2>
+      <paragraph role="paragraph" id="par_id271579683706571">Reset the current error status and clear the <literal>SF_Exception</literal> properties.</paragraph>
+      <h3 id="hd_id381579687079872"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id531579684617249">SF_Exception.Clear()</paragraph>
+      </bascode>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id631579688532444">Sub Example_Clear()</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id721587215452594">Dim a, b, c</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id431587221926496">On Local Error GoTo Catch</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id541601735163562">Try:</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id441587215463149">    a = 10 : b = 0</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id531587215470406">    c = a / b</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id361587215477209">    '...</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id931587215483393">    Exit Sub</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id851587215489779">Catch:</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id771587215496761">    If SF_Exception.Number = 11 Then SF_Exception.Clear()</paragraph>
+         <paragraph role="bascode" id="bas_id51587215508130"  xml-lang="en-US">    '    If division by zero, ignore the error</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id801579688542131">End Sub</paragraph>
+      </bascode>
+      </section>
+
+      <section id="Console">
+      <comment> Console -------------------------------------------------------------------------------------------------------------------------- </comment>
+      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id9159871817936">
+         <bookmark_value>Exception service;Console</bookmark_value>
+      </bookmark>
+      <h2 id="hd _id971598718179751" localize="false">Console</h2>
+      <paragraph role="paragraph" id="par_id651598718179382">Display the console messages in a modal or non-modal dialog. In both modes, all the past messages issued by a <literal>DebugPrint()</literal> method or resulting from an exception are displayed. In non-modal mode, additionally, subsequent entries are added automatically.</paragraph>
+      <paragraph role="paragraph" id="par_id161598718286205" xml-lang="en-US">If the console is already open, when non-modal, it is brought to the front.</paragraph>
+      <paragraph role="paragraph" id="par_id801598718629151" xml-lang="en-US">A modal console is closed by the user. A non-modal console is closed by the user or at macro termination.</paragraph>
+      <h3 id="hd_id681598718179603"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id341598718179145">SF_Exception.Console([Modal As Boolean])</paragraph>
+      </bascode>
+      <h3 id="hd_id761598718179784"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+      <paragraph role="paragraph" id="par_id511598718179819"><emph>Modal</emph>: Default = <literal>True</literal>.</paragraph>
+      <h3 id="hd_id60159871817984"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id921598718179244">Sub Example_Console()</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id78159871817999">    SF_Exception.Console(Modal := True)</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id181598718179837">End Sub</paragraph>
+      </bascode>
+      </section>
+
+      <section id="ConsoleClear">
+      <comment> ConsoleClear -------------------------------------------------------------------------------------------------------------------------- </comment>
+      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id621587215098307">
+         <bookmark_value>Exception service;ConsoleClear</bookmark_value>
+      </bookmark>
+      <h2 id="hd _id671587215098845" localize="false">ConsoleClear</h2>
+      <paragraph role="paragraph" id="par_id641587215098903">Clear the console keeping an optional number of recent messages. If the console is activated in non-modal mode, it is refreshed.</paragraph>
+      <h3 id="hd_id491587215098807"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id231587215098874">SF_Exception.ConsoleClear([Keep As Long])</paragraph>
+      </bascode>
+      <h3 id="hd_id211587215098692"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+      <paragraph role="paragraph" id="par_id351587215098527"><emph>Keep</emph>: The number of recent messages to be kept, default is 0.</paragraph>
+      <h3 id="hd_id151587215098840"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id51158721509882">Sub Example_ConsoleClear()</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id981587215098452">    SF_Exception.ConsoleClear(10)</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id91587215098333">End Sub</paragraph>
+      </bascode>
+      </section>
+
+      <section id="ConsoleToFile">
+      <comment> ConsoleToFile -------------------------------------------------------------------------------------------------------------------------- </comment>
+      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id911587218077199">
+         <bookmark_value>Exception service;ConsoleToFile</bookmark_value>
+      </bookmark>
+      <h2 id="hd _id691587218077803" localize="false">ConsoleToFile</h2>
+      <paragraph role="paragraph" id="par_id281587218077400">Export the content of the console to a text file. If the file exists and the console is not empty, it is overwritten without warning. Returns <literal>True</literal> if successful.</paragraph>
+      <h3 id="hd_id231587218077969"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id31587218077825">SF_Exception.ConsoleToFile(FileName As String) As Boolean</paragraph>
+      </bascode>
+      <h3 id="hd_id471587218077526"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+      <paragraph role="paragraph" id="par_id851587218077862"><emph>FileName</emph>: The name of the text file the console should be dumped into. The name is expressed as given by the current <literal>FileNaming</literal> property of the <literal>SF_FileSystem</literal> service. Default is any where both the <link href="text/sbasic/shared/00000002.xhp" name="Url notation">URL notation</link> and the native operating system format are admitted.</paragraph>
+      <h3 id="hd_id361587218077347"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id431587218077131">Sub Example_ConsoleToFile()</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id941587218077971">    SF_Exception.ConsoleToFile("C:\myFile.txt")</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id941587218077843">End Sub</paragraph>
+      </bascode>
+      </section>
+
+      <section id="DebugPrint">
+     <comment> DebugPrint -------------------------------------------------------------------------------------------------------------------------- </comment>
+      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id591587218637462">
+         <bookmark_value>Exception service;DebugPrint</bookmark_value>
+      </bookmark>
+      <h2 id="hd _id981587218637683" localize="false">DebugPrint</h2>
+      <paragraph role="paragraph" id="par_id281587218637490">Assemble all the given arguments into a human-readable single string and add it as a new entry in the console.</paragraph>
+      <h3 id="hd_id341587218637198"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id65158721863738">SF_Exception.DebugPrint(Arg0[, Arg1, ...])</paragraph>
+      </bascode>
+      <h3 id="hd_id821587218637437"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+      <paragraph role="paragraph" id="par_id481587218637988"><emph>Arg0[, Arg1, ...]</emph>: Any number of arguments of any type.</paragraph>
+      <h3 id="hd_id501587218637514"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id871587218637476">Sub Example_DebugPrint()</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id58158721863732">    SF_Exception.DebugPrint(Null, Array(1, 2, 3), , SF_Exception, "line1" &amp; Chr(10) &amp; "Line2", DateSerial(2020, 04, 09))</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id331587218637452">End Sub</paragraph>
+      </bascode>
+      </section>
+
+      <section id="Raise">
+     <comment> Raise -------------------------------------------------------------------------------------------------------------------------- </comment>
+      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id301587219824932">
+         <bookmark_value>Exception service;Raise</bookmark_value>
+      </bookmark>
+      <h2 id="hd _id551587219824275" localize="false">Raise</h2>
+      <paragraph role="paragraph" id="par_id541587219824771">Generate a run-time error. An error message is displayed to the user and reported in the console. The execution is stopped. The <literal>Raise()</literal> method can be placed inside the normal script flow or in a dedicated error-handling routine.</paragraph>
+      <h3 id="hd_id10158721982478"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id29158721982455">SF_Exception.Raise([Number As Variant], [Source As Variant], [Description As String])</paragraph>
+      </bascode>
+      <paragraph role="paragraph" id="par_id921587220542454" xml-lang="en-US">Next code snippets are equivalent. Keyword arguments are allowed.<literal>Source</literal> and <literal>Description</literal> arguments behave identically:</paragraph>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id881587220508733">SF_Exception.Raise(11)</paragraph>
+      </bascode>
+      <bascode>
+         <paragraph role="bascode" id="bas_id491608216264445" localize="false">SF_Exception.Raise Number := 11</paragraph>
+      </bascode>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id361587220516558">SF_Exception.Number = 11</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id51587220525168">SF_Exception.Raise()</paragraph>
+      </bascode>
+      <h3 id="hd_id711587219824373"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+      <paragraph role="paragraph" id="par_id851587219824597"><emph>Number</emph>: The error code, as a number or as a string. Default value is that of <literal>Err</literal> Basic builtin function.</paragraph>
+      <paragraph role="paragraph" id="par_id461587220986452" xml-lang="en-US"><emph>Source</emph>: The location of the error, as a number or as a string. Default value is that of <literal>Erl</literal> Basic builtin function.</paragraph>
+      <paragraph role="paragraph" id="par_id721587221018162" xml-lang="en-US"><emph>Description</emph>: The message to display to the user and to report in the console. Default value is that of <literal>Error$</literal> Basic builtin function.</paragraph>
+      <h3 id="hd_id471587219824970"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id101587221964367">Sub Example_Raise()</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id681587221964375">Dim a, b, c</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id811587221964318">On Local Error GoTo Catch</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id511601735068745">Try:</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id831587221964580">    a = 10 : b = 0</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id4115872219641">    c = a / b</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id85158722196499">    '...</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id241587221964418">    Exit Sub</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id721587221964962">Catch:</paragraph>
+         <paragraph role="bascode" id="bas_id211587222852310" xml-lang="en-US">    '    Variants below ...</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id61587221964946">End Sub</paragraph>
+      </bascode>
+      <paragraph role="paragraph" id="par_id111587222580987" xml-lang="en-US">For a standard behaviour:</paragraph>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id341587222627299">Catch:</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id261587222635009">    SF_Exception.Raise()</paragraph>
+      </bascode>
+      <paragraph role="paragraph" id="par_id751587222598238" xml-lang="en-US">To simulate another error:</paragraph>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id421587222644102">Catch:</paragraph>
+         <paragraph role="bascode" localize="false" id="bas_id171587222653391">    SF_Exception.Raise(12)</paragraph>
+      </bascode>
+      <paragraph role="paragraph" id="par_id501587222607771" xml-lang="en-US">To replace the usual message:</paragraph>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id721587222663630">Catch:</paragraph>
+         <paragraph role="bascode" xml-lang="en-US" id="bas_id431587222670849">    SF_Exception.Raise(, , "It is not a good idea to divide by zero.")</paragraph>
+      </bascode>
+      <paragraph role="paragraph" id="par_id611587222617174" xml-lang="en-US">To raise an application error:</paragraph>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id441587222684053">Catch:</paragraph>
+         <paragraph role="bascode" xml-lang="en-US" id="bas_id71587222694657">    SF_Exception.Raise("MyAppError", "Example_Raise()", "Something wrong happened !")</paragraph>
+      </bascode>
+      </section>
+
+      <section id="RaiseWarning">
+     <comment> RaiseWarning -------------------------------------------------------------------------------------------------------------------------- </comment>
+      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id811587224839918">
+         <bookmark_value>Exception service;RaiseWarning</bookmark_value>
+      </bookmark>
+      <h2 id="hd _id391587224839449" localize="false">RaiseWarning</h2>
+      <paragraph role="paragraph" id="par_id1001587224839900" xml-lang="en-US">This method has exactly the same syntax, arguments and behaviour as the <literal>Raise()</literal> method.</paragraph>
+      <paragraph role="paragraph" id="par_id761587224839624" xml-lang="en-US">With the notable exception that <emph>the execution is not stopped</emph>.</paragraph>
+      <h3 id="hd_id10158729182478"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id25197821982455">SF_Exception.RaiseWarning[Number As Variant], [Source As Variant], [Description As String])</paragraph>
+      </bascode>
+      <h3 id="hd_id10158927182478"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+      <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id71587222649657">    SF_Exception.RaiseWarning(Source:="Example_Raise()", _</paragraph>
+        <paragraph role="bascode" id="bas_id841608217948025" xml-lang="en-US">             Description:="Something wrong happened !", _</paragraph>
+        <paragraph role="bascode" id="bas_id361608217956289" xml-lang="en-US">             Number:="MyAppError")</paragraph>
+      </bascode>
+      </section>
+
+   </body>
+</helpdocument>
