@@ -704,6 +704,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/linestyles \
     helpcontent2/source/text/shared/guide/macro_recording \
     helpcontent2/source/text/shared/guide/main \
+    helpcontent2/source/text/shared/guide/manage_templates \
     helpcontent2/source/text/shared/guide/measurement_units \
     helpcontent2/source/text/shared/guide/microsoft_terms \
     helpcontent2/source/text/shared/guide/ms_doctypes \
