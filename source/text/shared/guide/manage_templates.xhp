@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="extsharedguidemangetemplatesxml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Working with Templates in Template Manager</title>
+    <filename>/text/shared/guide/manage_templates.xhp</filename>
+  </topic>
+</meta>
+<body>
+<bookmark xml-lang="en-US" branch="index" id="bm_id101608800218434">
+<bookmark_value>paths;template files</bookmark_value>
+<bookmark_value>categories;in templates</bookmark_value>
+<bookmark_value>file extensions;in templates</bookmark_value>
+</bookmark>
+
+<h1 id="hd_id901607893176311"><variable id="manage_templates"><link href="text/shared/guide/manage_templates.xhp" name="Manage_Templates">Templates in the Template Manager</link></variable></h1>
+<paragraph role="paragraph" id="par_id411607893606359">The recommended method for working with templates is to use the <link href="text/shared/guide/template_manager.xhp" name="template_manager">Template Manager</link> and the commands in the <link href="text/shared/01/01110000.xhp" name="template_submenu"><menuitem>File – Template</menuitem> </link> submenu, <menuitem>Edit Template</menuitem> and <menuitem>Save as Template</menuitem>. These commands are sufficient for basic management of templates in %PRODUCTNAME.</paragraph>
+<paragraph role="paragraph" id="par_id911607894878048">This guide explains how the file system interacts with the Template Manager. This information is particularly useful if you want to manage directories directly, but still be coordinated with the Template Manager.</paragraph>
+
+<h2 id="hd_id101607896260383">Working with Template Files</h2>
+<paragraph role="paragraph" id="par_id451607988966808">The Template Manager recognizes template files by their file extension. The following extensions are recognized:</paragraph>
+<table id="tab_id431607989052104">
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id81607989758329" role="tablehead">Application</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id321607989052104" role="tablehead">Extensions</paragraph>
+       </tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id81607989052104" role="tablecontent">Writer</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id121607989052104" role="tablecontent">.ott .otm .oth .stw .dot .dotx</paragraph>
+       </tablecell>
+   </tablerow>
+      <tablerow>
+       <tablecell>
+           <paragraph id="par_id481607989491362" role="tablecontent">Calc</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id261607989510325" role="tablecontent">.ots .stc .xlt .xltm .xltx</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id111607989518257" role="tablecontent">Impress</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id671607989526665" role="tablecontent">.otp .pot .potm .potx .sti</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id881607989533638" role="tablecontent">Draw</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id341607989540975" role="tablecontent">.otg .std</paragraph>
+       </tablecell>
+    </tablerow>
+</table>
+<paragraph role="paragraph" id="par_id941607989961367">For information about the meaning of the extensions see <link href="text/shared/guide/convertfilters.xhp" name="File Extensions">Filter Conversion</link>.</paragraph>
+<h2 id="hd_id991607990069687">Working with Template Names</h2>
+<paragraph role="paragraph" id="par_id531607967664414">The Template Manager shows the Title field of a document as the Template Name. As long as the Title field is not empty, the filename has no consequences for the Template Name shown in the Template Manager. If the Title field is empty, the filename, without extension, is shown as the Template Name.</paragraph>
+<note id="par_id841607968899084">If two templates have the exact same entry in the Title field and belong to the same Category, then only one template appears in the Template Manager.</note>
+<paragraph role="paragraph" id="par_id241608074568977">Titles are case-sensitive. For example, if one template in category <emph>My Templates</emph> has the title <literal>a4</literal> and another has the title <literal>A4</literal>, then both templates appear in the Template Manager. If both templates have the title <literal>A4</literal>, then only one appears.</paragraph>
+<paragraph role="paragraph" id="par_id771608203314024">If templates have the same title, but belong to different categories, then all appear in the Template Manager. For example, if three templates have the title <literal>A4</literal>, and each template belongs to a different category, then all three templates appear with the Template Name <literal>A4</literal>.</paragraph>
+<paragraph role="paragraph" id="par_id411607896274563">You can edit the Title field by choosing <menuitem>Files – Properties – Description</menuitem>. If you change the Title field, then the new title also appears as the Template Name in the Template Manager. Alternatively, if you use the <menuitem>Rename</menuitem> command in the context menu for a template, then the Title field of the template is changed to the new Template Name.</paragraph>
+<paragraph role="paragraph" id="par_id181608073292539">If you use the <menuitem>File - Save as Template</menuitem> dialog, then the name entered in that dialog is used as the filename and entered into the Title field. If you change the filename later, the template will still appear in the Template Manager according to the entry in the Title field.</paragraph>
+
+<note id="par_id411608052261808">The Title field of a template is included in the Title field of new documents created from the template.</note>
+
+<h2 id="hd_id571607893586889">Controlling which Files Appear in the Template Manager</h2>
+<paragraph role="paragraph" id="par_id401607895018345">The Template Manager displays templates located in the directories defined in the <emph>Paths</emph> dialog for Templates. The dialog is found by choosing <switchinline select="sys"><caseinline select="MAC"><menuitem>%PRODUCTNAME - Preferences</menuitem></caseinline><defaultinline><menuitem>Tools - Options</menuitem></defaultinline></switchinline><menuitem> - %PRODUCTNAME - Paths</menuitem>, selecting <emph>Templates</emph>, and clicking <widget>Edit</widget>.
+</paragraph>
+
+<h3 id="hd_id591607916351907">Internal Paths</h3>
+<paragraph role="paragraph" id="par_id721607895307965"></paragraph>
+<paragraph role="paragraph" id="par_id621607704680080">The Internal Paths directories cannot be changed. They identify the location of the predefined templates. These templates are always shown in the Template Manager.</paragraph>
+
+<section id="template_user_paths">
+<h3 id="hd_id801607948690116">User Paths</h3>
+<paragraph role="paragraph" id="par_id741607769970240">The default setting for User Path is the <emph>template</emph> subdirectory in the user profile directory. The location of the user profile directory depends on the system installation. <embedvar href="text/shared/optionen/01010300.xhp#userprofile_location"/></paragraph>
+<paragraph role="paragraph" id="par_id851607959591934">Templates in the directories specified in User Path and its subdirectories are shown in the Template Manager. Subdirectories within subdirectories are not recognized.</paragraph>
+<paragraph role="paragraph" id="par_id71607961272593">You can add additional directories to the User Path. There has to be at least one directory in User Path, but there are no limits on where it is located.</paragraph>
+<note id="par_id501608118578046">It is not a good idea to add a root Document directory, or other high-level directory, to your template User Path. All subdirectories in a User Path directory appear in the Template Manager as Categories.</note>
+<paragraph role="paragraph" id="par_id551607771028134">If you have more than one directory in the User Path, then you must select which directory will be used to save a document as a template when the<menuitem> File - Save as Template</menuitem> command is used.</paragraph>
+<paragraph role="paragraph" id="par_id811608202662210">The <widget>Default</widget> button resets User Path to the initial setting when %PRODUCTNAME was installed.</paragraph><paragraph role="paragraph" id="par_id141608202664137"></paragraph>
+</section>
+
+<section id="template_categories">
+<h2 id="hd_id361607961401720">Working with Categories</h2>
+<paragraph role="paragraph" id="par_id711607961275200">The names of subdirectories in the user-defined directories appear as Category names in the Template Manager. If you rename a category, the subdirectory continues to be used, with the new category name stored in <literal>groupuinames.xml</literal> in the selected Default Path.</paragraph>
+<paragraph role="paragraph" id="par_id181607963416635">
+When a Category is selected, then all templates in that subdirectory are shown in the Template Manager, if <emph>All Applications</emph> is the <emph>Filter</emph> selection.</paragraph>
+<paragraph role="paragraph" id="par_id231607963570076"> A category can only show templates in its own subdirectory, with two exceptions.</paragraph>
+<list type="unordered">
+  <listitem>
+    <paragraph id="par_id471607963130068" role="listitem"><emph>All Categories</emph> shows all templates, relative to the <emph>Filter</emph> selection.</paragraph>
+  </listitem>
+  <listitem>
+    <paragraph id="par_id771607963149924" role="listitem"><emph>My Templates</emph> shows all templates in the directories specified in User Path, relative to the <emph>Filter</emph> selection.</paragraph>
+  </listitem>
+</list>
+<paragraph role="paragraph" id="par_id241607963343716">Categories within a Category are not possible, because subdirectories within subdirectories are not recognized.</paragraph>
+<paragraph role="paragraph" id="par_id831608207492365">You can only rename and delete categories in the Default Path selected in the <emph>Edit Paths</emph> dialog.</paragraph>
+<warning id="par_id381609772517385"> If you delete a Category whose subdirectory is in the selected Default Path, then the subdirectory associated with the Category name and any  files in the subdirectory are deleted.</warning>
+</section>
+
+<section id="relatedtopics">
+<embed href="text/shared/guide/template_manager.xhp#manage_templates"/>
+<embed href="text/shared/optionen/01010300.xhp#pathsh1"/>
+</section>
+</body>
+</helpdocument>
