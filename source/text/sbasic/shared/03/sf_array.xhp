@@ -18,16 +18,20 @@
 
 <section id="abstract">
 <h1 id="bm_id781582391760253" xml-lang="en-US"><link href="text/sbasic/shared/03/sf_array.xhp" name="ScriptForge.Array Service"><literal>ScriptForge</literal>.<literal>Array</literal> service</link></h1>
-   <paragraph role="paragraph" id="par_id991582454416549" xml-lang="en-US">A collection of methods manipulating and transforming arrays of one dimension (vectors) and arrays of two dimensions (matrices). This includes setting, sorting, importing and exporting to csv files and Calc sheets.
-      <br/>Arrays with more than two dimensions are rejected, with the exception of <literal>CountDims</literal> method that accepts more than two dimensions.</paragraph>
+   <paragraph role="paragraph" id="par_id991582454416549" xml-lang="en-US">Provides a collection of methods for manipulating and transforming arrays of one dimension (vectors) and arrays of two dimensions (matrices). This includes setting, sorting, importing and exporting to CSV files and Calc sheets.</paragraph>
+   <paragraph role="paragraph" id="par_id681609955015503">Arrays with more than two dimensions cannot be used with the methods in this service, the only exception being the <literal>CountDims</literal> method that accepts Arrays with any number of dimensions.</paragraph>
 </section>
 
    <paragraph role="paragraph" id="par_id651582454426538" xml-lang="en-US">Array items may contain any type of value, including (sub)arrays.</paragraph>
 
    <h2 id="hd_id981586595097630" xml-lang="en-US">Service invocation</h2>
-   <paragraph role="paragraph" id="par_id63158659509728" xml-lang="en-US">Next code snippets are equivalent (<literal>Append</literal> is used as example) :</paragraph>
-   <bascode>
+   <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>Array</literal> service the <literal>ScriptForge</literal> library needs to be loaded using:</paragraph>
+  <bascode>
       <paragraph role="bascode" localize="false" id="bas_id871608192694632">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
+   </bascode>
+   <paragraph role="paragraph" id="par_id461609955633383">Loading the library will create the <literal>SF_Array</literal> object that can be used to call the methods in the <literal>Array</literal> service.</paragraph>
+   <paragraph role="paragraph" id="par_id63158659509728" xml-lang="en-US">The following code snippets show the various ways to call methods in the <literal>Array</literal> service (the <literal>Append</literal> method is used as an example):</paragraph>
+   <bascode>
       <paragraph role="bascode" localize="false" id="bas_id311586595097510">SF_Array.Append(...)</paragraph>
    </bascode>
    <bascode>
@@ -38,7 +42,7 @@
       <paragraph role="bascode" localize="false" id="bas_id821586595097892">Dim arr    :    arr = CreateScriptService("Array")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id81586595097173">arr.Append(...)</paragraph>
    </bascode>
-
+   <note id="par_id571609956486468">The <literal>CreateScriptService</literal> method is only available after you have loaded the <literal>ScriptForge</literal> library.</note>
    <table id="tab_id221606235233835">
    <tablerow>
      <tablecell colspan="3"><paragraph id="par_id651606319520519" role="tablehead">Methods</paragraph></tablecell>
@@ -47,50 +51,50 @@
      <tablecell><paragraph id="par_id361606235233835" role="tablecontent" localize="false">
        <link href="text/sbasic/shared/03/sf_array.xhp#Append" name="Append method">Append</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#AppendColumn" name="AppendColumn method">AppendColumn</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#AppendRow" name="AppendRow method">AppendRow</link><br/><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#AppendRow" name="AppendRow method">AppendRow</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#Contains" name="Contains method">Contains</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#ConvertToDictionary" name="ConvertToDictionary method">ConvertToDictionary</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#CountDims" name="CountDims method">CountDims</link><br/><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#Difference" name="Difference method">Difference</link><br/><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#CountDims" name="CountDims method">CountDims</link><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#Difference" name="Difference method">Difference</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#ExportToTextFile" name="ExportToTextFile method">ExportToTextFile</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#ExtractColumn" name="ExtractColumn">ExtractColumn</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#ExtractRow" name="ExtractRow method">ExtractRow</link>
+       <link href="text/sbasic/shared/03/sf_array.xhp#ExtractRow" name="ExtractRow method">ExtractRow</link><br/>
      </paragraph></tablecell>
      <tablecell><paragraph id="par_id231606235233835" role="tablecontent" localize="false">
-       <link href="text/sbasic/shared/03/sf_array.xhp#Flatten" name="Flatten method">Flatten</link><br/><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#Flatten" name="Flatten method">Flatten</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#ImportFromCSVFile" name="ImportFromCSVFile method">ImportFromCSVFile</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#IndexOf" name="IndexOf method">IndexOf</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#Insert" name="Insert method">Insert</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#InsertSorted" name="InsertSorted method">InsertSorted</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#Intersection" name="Intersection">Intersection</link><br/><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#Join2D" name="Join2D method">Join2D</link><br/><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#Intersection" name="Intersection">Intersection</link><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#Join2D" name="Join2D method">Join2D</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#Prepend" name="Prepend method">Prepend</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#PrependColumn" name="PrependColumn method">PrependColumn</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#PrependRow" name="PrependRow method">PrependRow</link><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#PrependRow" name="PrependRow method">PrependRow</link><br/><br/>
      </paragraph></tablecell>
      <tablecell><paragraph id="par_id831606235233835" role="tablecontent" localize="false">
         <link href="text/sbasic/shared/03/sf_array.xhp#RangeInit" name="RangeInit method">RangeInit</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#Reverse" name="Reverse method">Reverse</link><br/><br/>
+        <link href="text/sbasic/shared/03/sf_array.xhp#Reverse" name="Reverse method">Reverse</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#Shuffle" name="Shuffle method">Shuffle</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#Slice" name="Slice method">Slice</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#Sort" name="Sort method">Sort</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#SortColumns" name="SortColumns method">SortColumns</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#SortRows" name="SortRows method">SortRows</link><br/><br/>
+        <link href="text/sbasic/shared/03/sf_array.xhp#SortRows" name="SortRows method">SortRows</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#Transpose" name="Transpose method">Transpose</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#TrimArray" name="TrimArray method">TrimArray</link><br/><br/>
+        <link href="text/sbasic/shared/03/sf_array.xhp#TrimArray" name="TrimArray method">TrimArray</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#Union" name="Union method">Union</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#Unique" name="Unique method">Unique</link><br/>
+        <link href="text/sbasic/shared/03/sf_array.xhp#Unique" name="Unique method">Unique</link>
      </paragraph></tablecell>
    </tablerow>
    </table>
-   <tip id="par_id191582454485250" xml-lang="en-US">The first argument of most methods is the array to consider. It is always passed by reference and left unchanged.</tip>
+   <tip id="par_id191582454485250" xml-lang="en-US">The first argument of most methods is the array object to be considered. It is always passed by reference and left unchanged. Methods such as Append, Prepend, etc return a new array object after their execution.</tip>
   <section id="Append">
   <comment> Append -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id251582548992953">
       <bookmark_value>Array service;Append</bookmark_value>
    </bookmark>
    <h2 id="hd_id151582548992953" localize="false">Append</h2>
-   <paragraph role="paragraph" id="par_id931582548992953">Append at the end of the input array the items listed as arguments.</paragraph>
+   <paragraph role="paragraph" id="par_id931582548992953">Appends the items listed as arguments to the end of the input array.</paragraph>
    <h3 id="hd_id71582548992953" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id681582548992953">SF_Array.Append(Array_1D As Variant, arg0 As Variant, [arg1 As Variant], ...) As Variant</paragraph>
@@ -113,21 +117,23 @@
       <bookmark_value>Array service;AppendColumn</bookmark_value>
    </bookmark>
    <h2 id="hd_id291582549679173" localize="false">AppendColumn</h2>
-   <paragraph role="paragraph" id="par_id241582549679173">Append to the right side of a two dimension array a new column. The resulting array has the same lower bounds as the initial two dimension array.</paragraph>
+   <paragraph role="paragraph" id="par_id241582549679173">Appends a new column to the right side of a two dimensional array. The resulting array has the same lower bounds as the initial two dimensional array.</paragraph>
    <h3 id="hd_id81582549679174" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id901582549679174">SF_Array.AppendColumn(Array_2D As Variant, Column As Variant) As Variant</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id901582549679174">SF_Array.AppendColumn(Array_2D As Variant, New_Column As Variant) As Variant</paragraph>
    </bascode>
    <h3 id="hd_id41582549679175" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id461582549679175"><emph>Array_2D</emph> : the pre-existing array, may be empty. If that array has 1 dimension, it is considered as the first column of the resulting 2 dimension array.</paragraph>
-     <paragraph role="paragraph" id="par_id991582549679175"><emph>Column</emph> : a 1 dimension array with as many items as there are rows in <literal>Array_2D</literal>.</paragraph>
+   <paragraph role="paragraph" id="par_id461582549679175"><emph>Array_2D</emph> : the pre-existing array, may be empty. If that array has only one dimension, it is considered as the first column of the resulting two-dimensional array.</paragraph>
+     <paragraph role="paragraph" id="par_id991582549679175"><emph>New_Column</emph> : a 1-dimensional array with as many items as there are rows in <literal>Array_2D</literal>.</paragraph>
    <h3 id="hd_id961582549679176" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id461582549679176">Sub Example_AppendColumn()</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id341582549679177">Dim a As Variant, b As variant</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id681582549679177">    a = SF_Array.AppendColumn(Array(1, 2, 3), Array(4, 5, 6))</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id151582549679177">        ' ((1, 4), (2, 5), (3, 6))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id961582550242823">    b = SF_Array.AppendColumn(Array(), Array(1, 2, 3))</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id991609959313410">    b = SF_Array.AppendColumn(a, Array(7, 8, 9))</paragraph>
+      <paragraph role="bascode" localize="false"id="bas_id681609959354695">        ' ((1, 4, 7), (2, 5, 8), (3, 6, 9))</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id961582550242823">    c = SF_Array.AppendColumn(Array(), Array(1, 2, 3))</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id381582550413514">        ' ∀ i ∈ {0 ≤ i ≤ 2} : b(0, i) ≡ i</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id141582549679178">End Sub</paragraph>
    </bascode>
@@ -191,7 +197,7 @@
       <bookmark_value>Array service;ConvertToDictionary</bookmark_value>
    </bookmark>
    <h2 id="hd_id541582557214489" localize="false">ConvertToDictionary</h2>
-     <paragraph role="paragraph" id="par_id71582557214489">Store the content of a 2-columns array into a <literal>ScriptForge</literal> <link href="text/text/sbasic/shared/03/sf_dictionary.xhp)" name="dictionary">Dictionary</link> object.
+     <paragraph role="paragraph" id="par_id71582557214489">Store the content of a 2-columns array into a <literal>ScriptForge</literal> <link href="text/sbasic/shared/03/sf_dictionary.xhp" name="dictionary">Dictionary</link> object.
       <br/>The key will be extracted from the first column, the item from the second.</paragraph>
    <h3 id="hd_id481582557214489" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
    <bascode>
@@ -281,7 +287,7 @@
       <paragraph role="bascode" localize="false" id="bas_id241586179707813">End Sub</paragraph>
    </bascode>
    </section>
-   <section id="ExtractToColumn">
+   <section id="ExtractColumn">
    <comment> ExtractColumn -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id891582560281081">
       <bookmark_value>Array service;ExtractColumn</bookmark_value>
@@ -298,9 +304,17 @@
    <paragraph role="paragraph" id="par_id421582560281084"><emph>ColumnIndex</emph> : The column number to extract - must be in the interval <literal>[LBound, UBound]</literal>.</paragraph>
    <h3 id="hd_id111582560281085" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id821582560281085">-                        |1, 2, 3|</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id831582560741676">- SF_Array.ExtractColumn(|4, 5, 6|, 2) ' (3, 6, 9)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id661582560281085">-                        |7, 8, 9|</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id821582560281085">Sub Example_ExtractColumn</paragraph>
+      <paragraph role="bascode" id="bas_id861609975902708">   'Creates a 3x3 matrix: |1, 2, 3|</paragraph>
+      <paragraph role="paragraph" id="par_id921609975924606">   '                      |4, 5, 6|</paragraph>
+      <paragraph role="bascode" id="bas_id891609975939001">   '                      |7, 8, 9|</paragraph>
+      <paragraph role="paragraph" id="par_id511609975955899">   Dim mat as Variant, col as Variant</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id831582560741676">   mat = SF_Array.AppendRow(Array(), Array(1, 2, 3))</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id661582560281085">   mat = SF_Array.AppendRow(mat, Array(4, 5, 6))</paragraph>
+      <paragraph role="bascode" id="bas_id941609976001528">   mat = SF_Array.AppendRow(mat, Array(7, 8, 9))</paragraph>
+      <paragraph role="bascode" id="bas_id431609976009994">   'Extracts the third column: |3, 6, 9|</paragraph>
+      <paragraph role="bascode" id="bas_id71609976022964">   col = SF_Array.ExtractColumn(mat, 2)</paragraph>
+      <paragraph role="bascode" id="bas_id471609976068079">End Sub</paragraph>
    </bascode>
    </section>
    <section id="ExtractRow">
@@ -320,9 +334,17 @@
    <paragraph role="paragraph" id="par_id441582561551202"><emph>RowIndex</emph> : The row number to extract - must be in the interval <literal>[LBound, UBound]</literal>.</paragraph>
    <h3 id="hd_id891582561576040" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id941582561596912">-                     |1, 2, 3|</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id301582561604167">- SF_Array.ExtractRow(|4, 5, 6|, 2) ' (7, 8, 9)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id100158256161206">-                     |7, 8, 9|</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id941582561596912">Sub Example_ExtractRow</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id301582561604167">   'Creates a 3x3 matrix: |1, 2, 3|</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id100158256161206">   '                      |4, 5, 6|</paragraph>
+      <paragraph role="bascode" id="bas_id91609976515742">   '                      |7, 8, 9|</paragraph>
+      <paragraph role="bascode" id="bas_id911609976539433">   Dim mat as Variant, row as Variant</paragraph>
+      <paragraph role="paragraph" id="par_id921609976603577">   mat = SF_Array.AppendRow(Array(), Array(1, 2, 3))</paragraph>
+      <paragraph role="paragraph" id="par_id281609976618980">   mat = SF_Array.AppendRow(mat, Array(4, 5, 6))</paragraph>
+      <paragraph role="paragraph" id="par_id591609976629882">   mat = SF_Array.AppendRow(mat, Array(7, 8, 9))</paragraph>
+      <paragraph role="bascode" id="bas_id431609976648017">   'Extracts the first row: |1, 2, 3|</paragraph>
+      <paragraph role="paragraph" id="par_id781609976663979">   row = SF_Array.ExtractRow(mat, 0)</paragraph>
+      <paragraph role="bascode" id="bas_id921609976680335">End Sub</paragraph>
    </bascode>
    </section>
    <section id="Flatten">
