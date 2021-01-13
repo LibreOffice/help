@@ -184,6 +184,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/cell_styles \
     helpcontent2/source/text/scalc/01/data_form \
     helpcontent2/source/text/scalc/01/data_provider \
+    helpcontent2/source/text/scalc/01/databar_more_options \
     helpcontent2/source/text/scalc/01/ex_data_stat_func \
     helpcontent2/source/text/scalc/01/format_graphic \
     helpcontent2/source/text/scalc/01/ful_func \
