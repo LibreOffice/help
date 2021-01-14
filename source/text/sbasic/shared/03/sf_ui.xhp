@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_UI" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">ScriptForge.UI service</title>
+    <filename>/text/sbasic/shared/03/sf_ui.xhp</filename>
+  </topic>
+</meta>
+<body>
+<section id="abstract">
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id151587913266190">
+      <bookmark_value>UI service</bookmark_value>
+   </bookmark>
+
+<h1 id="hd_id371587913266310" xml-lang="en-US"><link href="text/sbasic/shared/03/sf_ui.xhp" name="ScriptForge.UI service"><literal>ScriptForge</literal>.<literal>UI</literal> service</link></h1>
+
+<paragraph role="paragraph" xml-lang="en-US" id="par_id31587913266153">The UI (User Interface) service simplifies the identification and the manipulation of the different windows composing the whole LibreOffice application:</paragraph>
+<list type="unordered">
+   <listitem>
+      <paragraph role="listitem" id="par_id591587913266547" xml-lang="en-US">Windows selection</paragraph>
+   </listitem>
+   <listitem>
+      <paragraph role="listitem" id="par_id511587913266292" xml-lang="en-US">Windows moving and resizing</paragraph>
+   </listitem>
+   <listitem>
+      <paragraph role="listitem" id="par_id51587913266596" xml-lang="en-US">Statusbar settings</paragraph>
+   </listitem>
+   <listitem>
+      <paragraph id="par_id401599404339702"  role="listitem" xml-lang="en-US">Display of a floating progress bar</paragraph>
+   </listitem>
+   <listitem>
+      <paragraph role="listitem" id="par_id761587913266388" xml-lang="en-US">Creation of new windows</paragraph>
+   </listitem>
+   <listitem>
+      <paragraph role="listitem" id="par_id591587913266489" xml-lang="en-US">Access to the underlying "documents"</paragraph>
+   </listitem>
+</list>
+</section>
+  
+<paragraph role="tip" xml-lang="en-US" id="par_id421587913266819">The UI service is the starting point to open, create or access to the content of new or existing documents from a user script.
+</paragraph>
+
+<h2 id="hd_id881587913266307">Definitions</h2>
+
+  <h3 id="hd_id761587913266887">WindowName</h3>
+  <paragraph role="paragraph" id="par_id741587913266919">A window can be designated using various ways:</paragraph>
+  <list type="unordered">
+     <listitem>
+        <paragraph role="listitem" id="par_id291587913946648" xml-lang="en-US">a full path and file name</paragraph>
+     </listitem>
+     <listitem>
+        <paragraph role="listitem" id="par_id991587914045862" xml-lang="en-US">the last component of the full file name or even only the last component without its suffix</paragraph>
+     </listitem>
+     <listitem>
+        <paragraph role="listitem" id="par_id541587914079744" xml-lang="en-US">the title of the window</paragraph>
+     </listitem>
+     <listitem>
+        <paragraph role="listitem" id="par_id191587914134221" xml-lang="en-US">for new documents, something like "Untitled 1"</paragraph>
+     </listitem>
+     <listitem>
+        <paragraph role="listitem" id="par_id911587914185746" xml-lang="en-US">one of the special windows "<literal>BASICIDE</literal>" and "<literal>WELCOMESCREEN</literal>"</paragraph>
+     </listitem>
+  </list>
+  <paragraph role="paragraph" id="par_id181587914255236" xml-lang="en-US">The window name is case-sensitive.</paragraph>
+  <h3 id="hd_id541588520711430" xml-lang="en-US">Document object</h3>
+  <paragraph role="paragraph" id="par_id841588521238711" xml-lang="en-US">The methods <literal>CreateDocument</literal>, <literal>CreateBaseDocument</literal>, <literal>GetDocument</literal> and <literal>OpenDocument</literal>, described below, generate document objects. When a window contains a document, an instance of the <literal>Document</literal> class represents that document. A counterexample the Basic IDE is not a document but is a window in our terminology. Additionally a document has a type: <literal>Calc</literal>, <literal>Impress</literal>, <literal>Writer</literal>, ...</paragraph>
+  <paragraph role="paragraph" id="par_id331588521254916" xml-lang="en-US">The specific properties and methods applicable on documents are implemented in a document class.</paragraph>
+  <tip id="par_id971588521292976" xml-lang="en-US">The implementation of the document objects class is done in the <literal>SFDocuments</literal> associated library. See its "<literal>Document</literal>" service.</tip>
+  
+<h2 id="hd_id91587913266988" xml-lang="en-US">Service invocation</h2>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id391587913266269">Dim ui As Variant</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id851582897798335">    GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id1001587913266355">    Set ui = CreateScriptService("UI")</paragraph>
+   </bascode>
+
+<h2 id="hd_id841587913266618" xml-lang="en-US">Properties</h2>
+  <table id="tab_id291587913266435">
+     <tablerow>
+        <tablecell>
+           <paragraph id="par_id521587913266568" role="tablehead" xml-lang="en-US">Name</paragraph>
+        </tablecell>
+        <tablecell>
+           <paragraph id="par_id421587913266368" role="tablehead" xml-lang="en-US">ReadOnly</paragraph>
+        </tablecell>
+        <tablecell>
+           <paragraph id="par_id631587914939732" role="tablehead" xml-lang="en-US">Type</paragraph>
+           </tablecell>
+        <tablecell>
+           <paragraph id="par_id951587913266220" role="tablehead" xml-lang="en-US">Description</paragraph>
+        </tablecell>
+     </tablerow>
+     <tablerow>
+        <tablecell>
+           <paragraph id="par_id161587913266162" role="tablecontent" localize="false">ActiveWindow</paragraph>
+        </tablecell>
+        <tablecell>
+           <paragraph id="par_id651587913266754" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+           <paragraph id="par_id421587914989890" role="tablecontent" localize="false">String</paragraph>
+           </tablecell>
+        <tablecell>
+           <paragraph id="par_id351587913266349" role="tablecontent" xml-lang="en-US">a valid and unique <literal>WindowName</literal> for the currently active window. When the window cannot be identified, a zero-length string is returned.</paragraph>
+        </tablecell>
+     </tablerow>
+     <tablerow>
+        <tablecell>
+           <paragraph id="par_id161597813266162" role="tablecontent" localize="false">Documents</paragraph>
+        </tablecell>
+        <tablecell>
+           <paragraph id="par_id658517913266754" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+           <paragraph id="par_id421587994189890" role="tablecontent" localize="false">String array</paragraph>
+           </tablecell>
+        <tablecell>
+           <paragraph id="par_id153587913266349" role="tablecontent" xml-lang="en-US">The list of the currently open documents. Special windows are ignored. This list consists of a zero-based one dimensional array either of filenames (in SF_FileSystem.FileNaming notation) or of window titles for unsaved documents.</paragraph>
+        </tablecell>
+     </tablerow>
+   </table>  
+  
+   <h3 id="hd_id891587985839528"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id201587985861232">Dim vDocs As Variant, sDoc As String</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id261587985839734">    vDocs = ui.Documents()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id621587985950181">    For each sDoc In vDocs</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id11587985956383">        ' ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id341587985962974">    Next sDoc</paragraph>
+   </bascode>
+  
+    <table id="tab_id891606472825856">
+    <tablerow>
+       <tablecell><paragraph id="par_id581606472825856" role="tablehead" localize="false"></paragraph></tablecell>
+       <tablecell><paragraph id="par_id921606472825856" role="tablehead">Methods</paragraph></tablecell>
+       <tablecell><paragraph id="par_id781606472825856" role="tablehead"  localize="false"></paragraph></tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell><paragraph id="par_id381606472825856" role="tablecontent">
+           <link href="text/sbasic/shared/03/sf_ui.xhp#Activate" name="Activate method">Activate</link><br/>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#CreateBaseDocument" name="CreateBaseDocument method">CreateBaseDocument</link><br/>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#CreateDocument" name="CreateDocument method">CreateDocument</link> (*)<br/>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#GetDocument" name="GetDocument method">GetDocument</link>
+       </paragraph></tablecell>
+       <tablecell><paragraph id="par_id451606472825856" role="tablecontent">
+           <link href="text/sbasic/shared/03/sf_ui.xhp#Maximize" name="Maximize method">Maximize</link><br/>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#Minimize" name="Minimize method">Minimize</link><br/>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#OpenBaseDocument" name="OpenBaseDocument method">OpenBaseDocument</link><br/>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#OpenDocument" name="OpenDocument method">OpenDocument</link> (*)
+       </paragraph></tablecell>
+       <tablecell><paragraph id="par_id161606472825856" role="tablecontent">
+           <link href="text/sbasic/shared/03/sf_ui.xhp#Resize" name="Resize method">Resize</link><br/>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#SetStatusBar" name="SetStatusBar method">SetStatusBar</link> (*)<br/>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#ShowStatusBar" name="ShowStatusBar method">ShowStatusBar</link><br/>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#WindowExists" name="WindowExists method">WindowExists</link>
+       </paragraph></tablecell>
+    </tablerow>
+    </table>
+  
+  <paragraph xml-lang="en-US" id="par_id811596553490262" role="warning">Note, as an exception, that the methods marked <emph>(*)</emph> are <emph>not applicable to Base documents</emph>.</paragraph>
+
+  <section id="Activate">
+  <comment> Activate -------------------------------------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id991587913266189">
+       <bookmark_value>UI service;Activate</bookmark_value>
+    </bookmark>
+  <h2 id="hd_id76158791326673" localize="false">Activate</h2>
+  <paragraph role="paragraph" id="par_id201587913266596">Make the specified window active. The method returns <literal>True</literal> if the given window is found and can be activated. There is no change in the actual user interface if no window matches the selection.</paragraph>
+    <h3 id="hd_id591587913266515"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+     <bascode>
+       <paragraph role="bascode" localize="false" id="bas_id29158791326686">ui.Activate(WindowName As String) As Boolean</paragraph>
+     </bascode>
+   <h3 id="hd_id781587913266640"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+     <paragraph role="paragraph" id="par_id381587913266946"><emph>WindowName</emph>: see the definitions above.</paragraph>
+    <h3 id="hd_id14158791326646"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+     <bascode>
+       <paragraph role="bascode" localize="false" id="bas_id201587913266745">ui.Activate("C:\Me\My file.odt")</paragraph>
+    </bascode>
+   </section>
+
+   <section id="CreateBaseDocument">
+   <comment> CreateBaseDocument -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id871596554849122">
+      <bookmark_value>UI service;CreateBaseDocument</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id281596554849363" localize="false">CreateBaseDocument</h2>
+   <paragraph role="paragraph" id="par_id13159655484952">Create and store a new LibreOffice Base document embedding an empty database of the given type. The method returns a document object.</paragraph>
+   <h3 id="hd_id461596554849371"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id441596554849435">ui.CreateBaseDocument(FileName As String, [EmbeddedDatabase As String], [RegistrationName As String]) As Object</paragraph>
+   </bascode>
+   <h3 id="hd_id201596554849717"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id441596554849949"><emph>FileName</emph> : Identifies the file to create. It must follow the SF_FileSystem.FileNaming notation. If the file altready exists, it is overwritten without warning</paragraph>
+   <paragraph role="paragraph" id="par_id381596554849698" xml-lang="en-US"><emph>EmbeddedDatabase</emph> : Either "HSQLDB" (default) or "FIREBIRD".</paragraph>
+   <paragraph role="paragraph" id="par_id521596554849185" xml-lang="en-US"><emph>RegistrationName</emph> : The name used to store the new database in the databases register. When = "" (default), no registration takes place. If the name already exists it is overwritten without warning.</paragraph>
+   <h3 id="hd_id841596554849466"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id631596554849994">Dim myBase As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id921596554849612">    Set myBase = ui.CreateBaseDocument("C:\Databases\MyBaseFile.odb", "FIREBIRD")</paragraph>
+   </bascode>
+   </section>
+
+   <section id="CreateDocument">
+   <comment> CreateDocument -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id461588521753429">
+      <bookmark_value>UI service;CreateDocument</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id45158852175376" localize="false">CreateDocument (*)</h2>
+   <paragraph role="paragraph" id="par_id651588521753997">Create a new LibreOffice document of a given type or based on a given template. The method returns a document object.</paragraph>
+   <h3 id="hd_id541588521753959"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id121588521753450">ui.CreateDocument([DocumentType As String], [TemplateFile As STring], [Hidden As Boolean]) As Object</paragraph>
+   </bascode>
+   <h3 id="hd_id9215885217531000"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id51588521753302"><emph>DocumentType</emph> : "Calc", "Writer", etc. If absent, the <literal>TemplateFile</literal> argument must be present.</paragraph>
+   <paragraph role="paragraph" id="par_id401588522663325" xml-lang="en-US"><emph>TemplateFile</emph> : The full <literal>FileName</literal> of the template to build the new document on. If the file does not exist, the argument is ignored. The "FileSystem" service provides the <literal>TemplatesFolder</literal> and <literal>UserTemplatesFolder</literal> properties to help to build the argument.</paragraph>
+   <paragraph role="paragraph" id="par_id131588522824366" xml-lang="en-US"><emph>Hidden</emph>: if <literal>True</literal>, open the new document in the background (default = False). To use with caution: activation or closure afterwards can only happen programmatically.</paragraph>
+   <h3 id="hd_id421588521753716"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id201588522371030">Dim myDoc1 As Object, myDoc2 As Object, FSO As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id931588522377598">    Set myDoc1 = ui.CreateDocument("Calc")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id821588522387111">    Set FSO = CreateScriptService("FileSystem")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id661588522393007">    Set myDoc2 = ui.CreateDocument(, FSO.BuildPath(FSO.TemplatesFolder, "personal/CV.ott"))</paragraph>
+   </bascode>
+   </section>
+
+   <section id="GetDocument">
+   <comment> GetDocument -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id351588520551838">
+      <bookmark_value>UI service;GetDocument</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id171588520551515" localize="false">GetDocument</h2>
+   <paragraph role="paragraph" id="par_id201588520551463">Returns a document object referring to either the active window or the given window.</paragraph>
+   <h3 id="hd_id931588520551562"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id591588520551793">ui.GetDocument([WindowName As String]) As Object</paragraph>
+   </bascode>
+   <h3 id="hd_id1001588520551269"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id851588520551368"><emph>WindowName</emph>: see the definitions above.</paragraph>
+   <h3 id="hd_id421588520551206"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id191588522924110">Dim myDoc As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id591588520551682">    Set myDoc = ui.GetDocument("C:\Me\My file.odt")</paragraph>
+   </bascode>
+   </section>
+
+   <section id="Maximize">
+   <comment> Maximize -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id441587986441397">
+      <bookmark_value>UI service;Maximize</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id261587986441738" localize="false">Maximize</h2>
+   <paragraph role="paragraph" id="par_id24158798644169">Maximizes the active window or the given window.</paragraph>
+   <h3 id="hd_id921587986441522"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id141587986441257">ui.Maximize([WindowName As String])</paragraph>
+   </bascode>
+   <h3 id="hd_id621587986441611"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id951587986441954"><emph>WindowName</emph>: see the definitions above. If the argument is absent, the active window is maximized.</paragraph>
+   <h3 id="hd_id471587986441580"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id891587986441319">ui.Maximize("Untitled 1")</paragraph>
+   </bascode>
+   </section>
+
+   <section id="Minimize">
+   <comment> Minimize -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id2315879865929">
+      <bookmark_value>UI service;Minimize</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id21158798659210" localize="false">Minimize</h2>
+   <paragraph role="paragraph" id="par_id871587986592696">Minimizes the active window or the given window.</paragraph>
+   <h3 id="hd_id621587986592339"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id321587986592534">ui.Minimize([WindowName As String])</paragraph>
+   </bascode>
+   <h3 id="hd_id971587986592623"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id751587986592626"><emph>WindowName</emph>: see the definitions above. If the argument is absent, the active window is minimized.</paragraph>
+   <h3 id="hd_id381587986592563"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id671587986592107">ui.Minimize()</paragraph>
+   </bascode>
+   </section>
+
+   <section id="OpenBaseDocument">
+   <comment> OpenBaseDocument -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id291596555746452">
+      <bookmark_value>UI service;OpenBaseDocument</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id671596555746148" localize="false">OpenBaseDocument</h2>
+   <paragraph role="paragraph" id="par_id691596555746539">Open an existing LibreOffice Base document. The method returns a document object.</paragraph>
+   <h3 id="hd_id121596555746296"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id831596555746349">ui.OpenBaseDocument([FileName As String], [RegistrationName As String], [MacroExecution As Integer]) As Object</paragraph>
+   </bascode>
+   <h3 id="hd_id651596555746823"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id231596555746385"><emph>FileName</emph> : Identifies the file to open. It must follow the SF_FileSystem.FileNaming notation. If the file altready exists, it is overwritten without warning</paragraph>
+   <paragraph role="paragraph" id="par_id711596555746281" xml-lang="en-US"><emph>RegistrationName</emph> : The name to use to find the database in the databases register. It is ignored if <literal>FileName</literal> &lt;&gt; "".</paragraph>
+   <paragraph role="paragraph" id="id721596556313545" xml-lang="en-US"><emph>MacroExecution</emph>: 0 = behaviour is defined by the user configuration, 1 = macros are not executable, 2 = macros are executable.</paragraph>
+   <h3 id="hd_id601596555746980"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id761596555746795">Dim myBase As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id91596555746449">    Set myBase = ui.OpenBaseDocument("C:\Temp\myDB.odb", MacroExecution := 2)</paragraph>
+   </bascode>
+   </section>
+
+   <section id="OpenDocument">
+   <comment> OpenDocument -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141588523635836">
+      <bookmark_value>UI service;OpenDocument</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id451588523635719" localize="false">OpenDocument (*)</h2>
+   <paragraph role="paragraph" id="par_id541588523635283">Open an existing LibreOffice document with the given options. Returns a document object or one of its subclasses or <literal>Null</literal> if the opening failed, including when due to a user decision.</paragraph>
+   <h3 id="hd_id111588523635204"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id221588523635225">ui.OpenDocument(FileName As String, [Password As String], [ReadOnly As Boolean], _</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id391588524030857">[Hidden As Boolean], [MacroExecution As Integer], [FilterName As String], [FilterOptions As String]) As Object</paragraph>
+   </bascode>
+   <h3 id="hd_id421588523635830"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id481588523635890"><emph>FileName</emph>: Identifies the file to open. It must follow the <literal>FileNaming</literal> notation of the <literal>FileSystem</literal> service.</paragraph>
+   <paragraph role="paragraph" id="par_id451588523635507" xml-lang="en-US"><emph>Password</emph>: To use when the document is protected. If wrong or absent while the document is protected, the user will be prompted to enter a password.</paragraph>
+   <paragraph role="paragraph" id="par_id611588524329781" xml-lang="en-US"><emph>ReadOnly</emph>: Default = <literal>False</literal>.</paragraph>
+   <paragraph role="paragraph" id="par_id641588523635497" xml-lang="en-US"><emph>Hidden</emph>: if <literal>True</literal>, open the new document in the background (default = False). To use with caution: activation or closure afterwards can only happen programmatically.</paragraph>
+   <paragraph role="paragraph" id="par_id981588524474719" xml-lang="en-US"><emph>MacroExecution</emph>: 0 = behaviour is defined by the user configuration, 1 = macros are not executable, 2 = macros are executable.</paragraph>
+   <paragraph role="paragraph" id="par_id611588524584693" xml-lang="en-US"><emph>FilterName</emph>: The name of a filter that should be used for loading the document. If present, the filter must exist.</paragraph>
+   <paragraph role="paragraph" id="par_id191588524634348" xml-lang="en-US"><emph>FilterOptions</emph>: An optional string of options associated with the filter.</paragraph>
+   <h3 id="hd_id151588523635407"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id811588523635720">Dim myDoc As Object, FSO As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id391588523635826">    Set myDoc = ui.OpenDocument("C:\Temp\myFile.odt", MacroExecution := 1)</paragraph>
+   </bascode>
+   </section>
+
+   <section id="Resize">
+   <comment> Resize -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id951587986945259">
+      <bookmark_value>UI service;Resize</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id551587986945514" localize="false">Resize</h2>
+   <paragraph role="paragraph" id="par_id751587986945965">Resizes and/or moves the active window. Absent and negative arguments are ignored. If the window is minimized or maximized, calling <literal>Resize</literal> without arguments restores it.</paragraph>
+   <h3 id="hd_id861587986945481"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id9315879869453">ui.Resize([Left As Long], [Top As Long], [Width As Long], [Height As Long])</paragraph>
+   </bascode>
+   <h3 id="hd_id821587986945735"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id441587986945696"><emph>Left, Top</emph>: Distances of the top-left corner from top and left edges of the screen.</paragraph>
+   <paragraph role="paragraph" id="par_id601587987453825" xml-lang="en-US"><emph>Width, Height</emph>: New dimensions of the window.</paragraph>
+   <h3 id="hd_id251587986945699"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id171587986945392">ui.Resize(10,,500)</paragraph>
+      <paragraph role="bascode" id="bas_id801587987507028">    ' Top and Height are left unchanged</paragraph>
+   </bascode>
+   </section>
+
+   <section id="SetStatusBar">
+   <comment> SetStatusbar -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id25158799642119">
+      <bookmark_value>UI service;SetStatusbar</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id171587996421550" localize="false">SetStatusbar (*)</h2>
+   <paragraph role="paragraph" id="par_id281587996421580">Display a text and a progressbar in the status bar of the active window. Any subsequent calls in the same macro run refer to the same status bar of the same window, even if the window is not visible anymore. A call without arguments resets the status bar to its normal state.</paragraph>
+   <h3 id="hd_id61587996421735"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id561587996421155">ui.SetStatusbar([Text As String], [Percentage As Integer])</paragraph>
+   </bascode>
+   <h3 id="hd_id771587996421217"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id71587996421829"><emph>Text</emph>: An optional text to be displayed in front of the progress bar.</paragraph>
+   <paragraph role="paragraph" id="par_id881587996421777" xml-lang="en-US"><emph>Percentage</emph>: an optional degree of progress between 0 and 100.</paragraph>
+   <h3 id="hd_id841587996421626"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id61587996791867">Dim i As Integer</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id291587996799353">    For i = 0 To 100</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id331587996806267">        ui.SetStatusbar("Progress ...", i)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id491587996813628">        Wait 50</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id841587996820714">    Next i</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id141587996829242">    ui.SetStatusbar</paragraph>
+   </bascode>
+   </section>
+
+   <section id="ShowProgressBar">
+   <comment> ShowProgressBar -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id91159886425573">
+      <bookmark_value>UI service;ShowProgressBar</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id31598864255380" localize="false">ShowProgressBar</h2>
+   <paragraph role="paragraph" id="par_id571598864255776">Display a non-modal dialog box. Specify its title, an explicatory text and a percentage of progress represented on a progressbar. The box will remain visible until a call to the method without argument, or until the end of the currently running macro.</paragraph>
+   <h3 id="hd_id31598864255246"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id491598864255836">ui.ShowProgressBar([Title As String], [Text As String], [Percentage As Integer])</paragraph>
+   </bascode>
+   <h3 id="hd_id171598864255620"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id441598864535695" xml-lang="en-US"><emph>Title</emph> : The title appearing on top of the dialog box. Default = "ScriptForge".</paragraph>
+   <paragraph role="paragraph" id="par_id311598864255297"><emph>Text</emph>: An optional text to be displayed above the progress bar.</paragraph>
+   <paragraph role="paragraph" id="par_id881598864255424" xml-lang="en-US"><emph>Percentage</emph>: an optional degree of progress between 0 and 100.</paragraph>
+   <h3 id="hd_id49159886425584"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id931598864255666">Dim i As Integer</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id211598864255731">    For i = 0 To 100</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id341598864255351">        ui.ShowProgressBar(, "Progress ..." &amp; i &amp; "/100", i)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id34159886425576">        Wait 50</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id541598864255593">    Next i</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id21598864255428">    ui.ShowProgressBar</paragraph>
+   </bascode>
+   </section>
+
+   <section id="WindowExists">
+   <comment> WindowExists -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id431588587119136">
+      <bookmark_value>UI service;WindowExists</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id21588587119344" localize="false">WindowExists</h2>
+   <paragraph role="paragraph" id="par_id431588587119925">Returns <literal>True</literal> if the given window could be identified.</paragraph>
+   <h3 id="hd_id61588587119150"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id811588587119559">ui.WindowExists(WindowName As String) As Boolean</paragraph>
+   </bascode>
+   <h3 id="hd_id761588587119371"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id45158858711917"><emph>WindowName</emph>: see the definitions above.</paragraph>
+   <h3 id="hd_id651588587119757"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id941588587119772">If ui.WindowExists("C:\Me\My file.odt") Then</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id871588587295216">    ' ...</paragraph>
+   </bascode>
+   </section>
+
+</body>
+</helpdocument>
