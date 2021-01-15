@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_Timer" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">ScriptForge.Timer service</title>
+    <filename>/text/sbasic/shared/03/sf_timer.xhp</filename>
+  </topic>
+</meta>
+<body>
+
+<section id="ScriptForge-sf_timer">
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id261582733781987">
+     <bookmark_value>Timer service</bookmark_value>
+   </bookmark>
+</section>
+
+<section id="abstract">
+  <h1 id="hd_id731582733781114" xml-lang="en-US"><variable id="TimerService"><link href="text/sbasic/shared/03/sf_timer.xhp" name="ScriptForge.Timer service"><literal>ScriptForge</literal>.<literal>Timer</literal> service</link></variable></h1>
+  <paragraph role="paragraph" id="par_id961582733781662" xml-lang="en-US">The <literal>Timer</literal> service measures the amount of time it takes to run user scripts.</paragraph>
+  <paragraph role="paragraph" id="par_id181582733781323" xml-lang="en-US">A Timer measures <emph>durations</emph>. It can be:</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id711582733781252"  role="listitem" xml-lang="en-US">Started, to indicate when to start measuring time.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id631582733781431"  role="listitem" xml-lang="en-US">Suspended, to pause measuring running time.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id691582733781498"  role="listitem" xml-lang="en-US">Resumed, to continue tracking running time after the Timer has been supended.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id31582733781344"  role="listitem" xml-lang="en-US">Restarted, which will cancel previous measurements and start the Timer at zero.</paragraph>
+    </listitem>
+  </list>
+</section>
+  <paragraph role="tip" id="par_id991582733781280" xml-lang="en-US">Durations are expressed in seconds with a precision of 3 decimal digits (milliseconds). A duration value of 12.345 means 12 seconds and 345 milliseconds</paragraph>
+
+  <h2 id="hd_id201582733781265" xml-lang="en-US">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id141610734722352">Before using the <literal>Timer</literal> service the <literal>ScriptForge</literal> library needs to be loaded using:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id551610734764343">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id891610734806133">The example below creates a <literal>Timer</literal> object named <literal>myTimer</literal> and starts it immediately.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id11582733781672">Dim myTimer As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id31582733781292">myTimer = CreateScriptService("Timer", StartNow := True)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id681582733781715">'The timer starts immediately if StartNow = True, default = False</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id891582733781994" xml-lang="en-US">It is recommended to free resources after use:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id61582733781413">Set myTimer = myTimer.Dispose()</paragraph>
+  </bascode>
+  <h2 id="hd_id521582733781450" xml-lang="en-US">Properties</h2>
+    <table id="tab_id761582733781447">
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id71582733781260" role="tablehead" xml-lang="en-US">Name</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id711582733781103" role="tablehead" xml-lang="en-US">Readonly</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id76158273378122" role="tablehead" xml-lang="en-US">Type</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id751582733781926" role="tablehead" xml-lang="en-US" >Description</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id561582733781781" role="tablecontent" xml-lang="en-US" localize="false">Duration</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id621582733781588" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id521582733781943" role="tablecontent" xml-lang="en-US" localize="false">Double</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id731582733781476" role="tablecontents" xml-lang="en-US" >The actual running time elapsed since start or between start and stop (does not consider suspended time)</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id181582733781163" role="tablecontent" xml-lang="en-US" localize="false">IsStarted</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id301582733781498" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id591582733781696" role="tablecontent" xml-lang="en-US" localize="false">Boolean</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id401582733781608" role="tablecontents" xml-lang="en-US" ><literal>True</literal> when timer is started or suspended</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id371582733781716" role="tablecontent" xml-lang="en-US" localize="false">IsSuspended</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id181582733781551" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id411582733781116" role="tablecontent" xml-lang="en-US" localize="false">Boolean</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id161582733781328" role="tablecontents" xml-lang="en-US" ><literal>True</literal> when timer is started and suspended</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id691582733781260" role="tablecontent" xml-lang="en-US" localize="false">SuspendDuration</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id651582733781874" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id581582733781213" role="tablecontent" xml-lang="en-US" localize="false">Double</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id171582733781456" role="tablecontents" xml-lang="en-US" >The actual time elapsed while suspended since start or between start and stop</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id411582733781943" role="tablecontent" xml-lang="en-US" localize="false">TotalDuration</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id141582733781303" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id451582733781978" role="tablecontent" xml-lang="en-US" localize="false">Double</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id411582733781932" role="tablecontents" xml-lang="en-US" >The actual time elapsed since start or between start and stop (including suspensions and running time)</paragraph>
+        </tablecell>
+    </tablerow>
+    </table>
+    <paragraph role="tip" id="par_id9158273378151" xml-lang="en-US" localize="false">Note that the <literal>TotalDuration</literal> property is equivalent to summing the <literal>Duration</literal> and <literal>SuspendDuration</literal> properties.</paragraph>
+
+  <h2 id="hd_id141582734141895" xml-lang="en-US">Methods</h2>
+    <paragraph role="paragraph" id="par_id291582734377752" xml-lang="en-US">All methods do not require arguments and return a <literal>Boolean</literal> value.</paragraph>
+    <paragraph role="paragraph" id="par_id311582734894257" xml-lang="en-US">If the returned value is <literal>False</literal>, then nothing happened.</paragraph>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id911610740799006">
+    <bookmark_value>Timer service;Continue</bookmark_value>
+    <bookmark_value>Timer service;Restart</bookmark_value>
+    <bookmark_value>Timer service;Start</bookmark_value>
+    <bookmark_value>Timer service;Suspend</bookmark_value>
+    <bookmark_value>Timer service;Terminate</bookmark_value>
+  </bookmark>
+    <table id="tab_id231582734180676">
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id871582734180676" role="tablehead" xml-lang="en-US">Name</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id971582734180676" role="tablehead" xml-lang="en-US">Description</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id911582734180676" role="tablehead" xml-lang="en-US">Returned value</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id31582734180676" role="tablecontent" xml-lang="en-US">Continue</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id301582734180676" role="tablecontent" xml-lang="en-US">Resumes the Timer if it has been suspended</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id661582734180676" role="tablecontent" xml-lang="en-US"><literal>False</literal> if the timer is not suspended</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id881582734649304" role="tablecontent" xml-lang="en-US">Restart</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id821582734649305" role="tablecontent" xml-lang="en-US">Terminates the timer and discard its current property values, restarting as a new clean Timer</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id761582734649305" role="tablecontent" xml-lang="en-US"><literal>False</literal> if the timer is inactive</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id201582734802443" role="tablecontent" xml-lang="en-US">Start</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id641582734802443" role="tablecontent" xml-lang="en-US">Starts a new clean timer</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id921582734802443" role="tablecontent" xml-lang="en-US"><literal>False</literal> if the timer is already started</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id781582734905507" role="tablecontent" xml-lang="en-US">Suspend</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id81582734905507" role="tablecontent" xml-lang="en-US">Suspends a running timer</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id661582734905507" role="tablecontent" xml-lang="en-US"><literal>False</literal> if the timer is not started or already suspended</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id771582734996722" role="tablecontent" xml-lang="en-US">Terminate</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id861582734996722" role="tablecontent" xml-lang="en-US">Stops a running timer</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id381582734996722" role="tablecontent" xml-lang="en-US"><literal>False</literal> if the timer is neither started nor suspended</paragraph>
+        </tablecell>
+    </tablerow>
+    </table>
+
+  <h2 id="hd_id651582735695110" xml-lang="en-US"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h2>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id711582735902164">myTimer.Start()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id371582735909094">Wait 500</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id691582735916493">myTimer.Suspend()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id141582735926821">'The time elapsed while the Dialog box is open will be counted as suspended time</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id1001582735936992">MsgBox myTimer.Duration &amp; " " &amp; myTimer.SuspendDuration &amp; " " &amp; myTimer.TotalDuration</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id361582735943749">myTimer.Continue()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id71582735950518">Wait 500</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id901582735961725">'The time elapsed while the Dialog box is open will be counted as running time</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id621610739916646">MsgBox myTimer.Duration &amp; " " &amp; myTimer.SuspendDuration &amp; " " &amp; myTimer.TotalDuration</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id51610739919950">myTimer.Terminate()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id941610739926687">'Shows the final time measurements</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id291610739929200">MsgBox myTimer.Duration &amp; " " &amp; myTimer.SuspendDuration &amp; " " &amp; myTimer.TotalDuration</paragraph>
+    </bascode>
+
+  <note id="par_id281610740093006">If you call the <literal>Terminate</literal> method, subsequent calls for the <literal>Continue</literal> method will not resume time measurement. Similarly, after a Timer has been terminated, calling the <literal>Start</literal> method will restart it as if it were a clean new Timer.</note>
+
+  <h2 id="hd_id431610989623086">Working with Multiple Timers</h2>
+  <paragraph role="paragraph" id="par_id741610989639201">It is possible to instantiate multiple <literal>Timer</literal> services in paralell, which gives flexibility in measuring time in different parts of the code.</paragraph>
+  <paragraph role="paragraph" id="par_id921610989722908">The following example illustrates how to create two <literal>Timer</literal> objects and start them separately.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id771610989793244">Dim myTimerA as Variant, myTimerB as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id261610989825466">myTimerA = CreateScriptService("Timer")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id931610989829730">myTimerB = CreateScriptService("Timer")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id481610989853679">'Starts myTimerA</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id911610989839892">myTimerA.Start()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id871610989842236">Wait 1000 'Wait 1 second (1,000 milliseconds)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id571610989855742">MsgBox myTimerA.Duration &amp; " " &amp; myTimerB.Duration</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id331610989849501">'Starts myTimerB</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id341610989847112">myTimerB.Start()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id571610989851550">Wait 1000</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id51610989832354">MsgBox myTimerA.Duration &amp; " " &amp; myTimerB.Duration</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id931610989837747">'Terminate both timers</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id631610989844852">myTimerA.Terminate()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id411610989835115">myTimerB.Terminate()</paragraph>
+  </bascode>
+
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+
+  <section id="relatedtopics">
+     <paragraph role="paragraph" id="par_id531610970649205"><link href="text/sbasic/shared/03030203.xhp#now">Now function</link></paragraph>
+     <paragraph role="paragraph" id="par_id221610970653662"><link href="text/sbasic/shared/03030303.xhp#timer">Timer function</link></paragraph>
+   </section>
+</body>
+</helpdocument>
