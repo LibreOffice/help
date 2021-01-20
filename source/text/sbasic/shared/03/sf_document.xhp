@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_Document" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">SFDocuments.Document service</title>
+    <filename>/text/sbasic/shared/03/sf_document.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+<section id="SFDocuments-sf_document">
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id261582733781987">
+      <bookmark_value>Document service</bookmark_value>
+    </bookmark>
+</section>
+
+<section id="abstract">
+    <h1 id="hd_id731582733781114" xml-lang="en-US"><variable id="DocumentService"><link href="text/sbasic/shared/03/sf_document.xhp" name="Exception service"><literal>SFDocuments</literal>.<literal>Document</literal> service</link></variable></h1>
+  <paragraph role="paragraph" id="par_id381589189355849" xml-lang="en-US">The <literal>SFDocuments</literal> library provides methods and properties to facilitate the management and manipulation of LibreOffice documents.</paragraph>
+  <paragraph role="paragraph" id="par_id591589189364267" xml-lang="en-US">Methods that are applicable for all types of documents (Text Documents, Sheets, Presentations, etc) are provided by the <literal>SFDocuments.Document</literal> service. Some examples are:</paragraph>
+  <list type="unordered">
+  <listitem>
+    <paragraph id="par_id891589189452545"  role="listitem" xml-lang="en-US">Opening, closing and saving documents</paragraph>
+  </listitem>
+  <listitem>
+    <paragraph id="par_id811589189463041"  role="listitem" xml-lang="en-US">Accessing standard or custom properties of documents</paragraph>
+  </listitem>
+  </list>
+</section>
+
+  <warning id="par_id301611085807704">The properties, methods or arguments marked with <emph>(*)</emph> are <emph>NOT applicable to Base documents</emph>.</warning>
+
+  <paragraph role="paragraph" id="par_id241589189701274" xml-lang="en-US">Methods and properties that are specific to certain LibreOffice components are stored in separate services, such as <literal>SFDocuments.SF_Calc</literal> and <literal>SFDocuments.SF_Base</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id641611090052376">Although the Basic language does not offer inheritance between object classes, the latter services may be considered as subclasses of the <literal>SFDocuments.Document</literal> service. Such subclasses can invoke the properties and methods described below.</paragraph>
+
+  <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id141610734722352">Before using the <literal>Document</literal> service the <literal>ScriptForge</literal> library needs to be loaded using:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id551610734764343">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
+  </bascode>
+
+  <paragraph role="paragraph" id="par_id591589191059889" xml-lang="en-US">The <literal>Document</literal> service is closely related to the <literal>UI</literal> and <literal>FileSystem</literal> services of the <literal>ScriptForge</literal> library.</paragraph>
+  <paragraph role="paragraph" id="par_id581611090387382">Below are three variants of how the <literal>Document</literal> service can be invoked.</paragraph>
+
+  <bascode>
+    <paragraph role="bascode" id="bas_id571589191739218">'1) From the ScriptForge.UI service:</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371582885621964">Dim ui As Object, oDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id201582885621287">Set ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id561589191748697">Set oDoc = ui.GetDocument("Untitled 1")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id511589191758563">' or Set oDoc = ui.CreateDocument("Calc", ...)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id331589191766531">' or Set oDoc = ui.OpenDocument("C:\MyFile.odt")</paragraph>
+  </bascode>
+
+  <bascode>
+    <paragraph role="bascode" id="bas_id571589191774268">'2) Directly if the document is already open</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371589191782045">Dim oDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id711589191788959">Set oDoc = CreateScriptService("SFDocuments.Document", "Untitled 1") 'Default = ActiveWindow</paragraph>
+  </bascode>
+
+  <bascode>
+    <paragraph role="bascode" id="bas_id471598109329789">'3) From a macro triggered by a document event</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id61598109336361">Sub RunEvent(ByRef poEvent As Object)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id31598109342395">    Dim oDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id481598109349427">    Set oDoc = CreateScriptService("SFDocuments.DocumentEvent", poEvent)</paragraph>
+  </bascode>
+
+  <tip id="par_id71611090922315">The use of the prefix "<literal>SFDocuments.</literal>" while calling the service is optional.</tip>
+
+  <paragraph role="paragraph" id="par_id891582733781994" xml-lang="en-US">Except when the document was closed by program with the CloseDocument method (it is then superfluous), it is recommended to free resources after use:</paragraph>
+
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id61582733781413">Set oDoc = oDoc.Dispose()</paragraph>
+  </bascode>
+  
+  <bookmark xml-lang="en-US" branch="index" id="bm_id81611339709014">
+    <bookmark_value>API;Duration</bookmark_value>
+    <bookmark_value>API;XComponent</bookmark_value>
+    <bookmark_value>API;ODatabaseDocument</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id351582885195476" xml-lang="en-US">Properties</h2>
+    <table id="tab_id971582885195582">
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id41582885195836" role="tablehead" xml-lang="en-US">Name</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id31582885195372" role="tablehead" xml-lang="en-US">Readonly</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id31582885195238" role="tablehead" xml-lang="en-US">Type</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id931582885195131" role="tablehead" xml-lang="en-US" >Description</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id7715828856553" role="tablecontent" xml-lang="en-US" localize="false">CustomProperties (*)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id861582885655779" role="tablecontent" xml-lang="en-US">No</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id271582885655525" role="tablecontent" xml-lang="en-US" localize="false">Dictionary</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id581582885655885" role="tablecontent" xml-lang="en-US" >Returns a <literal>ScriptForge.Dictionary</literal> object. After update, can be passed again to the property for updating the document.<br />Individual items of the dictionary may be either strings, numbers, (Basic) dates or <link href="https://api.libreoffice.org/docs/idl/ref/structcom_1_1sun_1_1star_1_1util_1_1Duration.html" name="Duration API"><literal>com.sun.star.util.Duration</literal></link> items.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id841582886030384" role="tablecontent" xml-lang="en-US" localize="false">Description (*)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id441582886030118" role="tablecontent" xml-lang="en-US">No</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id131582886030297" role="tablecontent" xml-lang="en-US">String</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id471582886030489" role="tablecontent" xml-lang="en-US" >Gives access to the Description property of the document (also known as "Comments")</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id231582886791351" role="tablecontent" xml-lang="en-US" localize="false">DocumentProperties (*)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id971582886791838" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id271582886791111" role="tablecontent" xml-lang="en-US">Dictionary</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id16158288679167" role="tablecontent" xml-lang="en-US" >Returns a <literal>ScriptForge.Dictionary</literal> object containing all the entries. Document statistics are included. Note that they are specific to the type of document. As an example, a Calc document includes a "CellCount" entry. Other documents do not.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id881589194571813" role="tablecontent" xml-lang="en-US" localize="false">DocumentType</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id201589194571955" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id951589194571781" role="tablecontent" xml-lang="en-US">String</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id941589194571801" role="tablecontent" xml-lang="en-US" >String value with the document type ("Base", "Calc", "Writer", etc)</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id241589194633142" role="tablecontent" xml-lang="en-US" localize="false">IsBase<br />IsCalc<br />IsDraw<br />IsImpress<br />IsMath<br />IsWriter</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id761589194633950" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id741589194633956" role="tablecontent" xml-lang="en-US">Boolean</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id611589194633853" role="tablecontent" xml-lang="en-US" >Exactly one of these properties is <literal>True</literal> for a given document.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id311589194910727" role="tablecontent" xml-lang="en-US" localize="false">Keywords (*)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id231589194910179" role="tablecontent" xml-lang="en-US">No</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id421589194910942" role="tablecontent" xml-lang="en-US">String</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id311589194910190" role="tablecontent" xml-lang="en-US" >Gives access to the Keywords property of the document. Represented as a comma-separated list of keywords</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id911589638614922" role="tablecontent" xml-lang="en-US" localize="false">Readonly (*)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id921589638614972" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id501589638614132" role="tablecontent" xml-lang="en-US">Boolean</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id801589638614518" role="tablecontent" xml-lang="en-US" ><literal>True</literal> if the document is actually in read-only mode</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id921589195028191" role="tablecontent" xml-lang="en-US" localize="false">Subject (*)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id201589195028733" role="tablecontent" xml-lang="en-US">No</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id551589195028724" role="tablecontent" xml-lang="en-US">String</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id371589195028843" role="tablecontent" xml-lang="en-US" >Gives access to the Subject property of the document.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id521589195028736" role="tablecontent" xml-lang="en-US" localize="false">Title (*)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id451589195028910" role="tablecontent" xml-lang="en-US">No</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id31589195028773" role="tablecontent" xml-lang="en-US">String</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id771589195028748" role="tablecontent" xml-lang="en-US" >Gives access to the Title property of the document.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id97158288519551" role="tablecontent" xml-lang="en-US" localize="false">XComponent</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id221582885195686" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id371582885195525" role="tablecontent" xml-lang="en-US" localize="false">XComponent or ODatabaseDocument</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id881582885195976" role="tablecontent" xml-lang="en-US" >The UNO object <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1lang_1_1XComponent.html" name="XComponent API"><literal>com.sun.star.lang.XComponent</literal></link> or <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1sdb_1_1OfficeDatabaseDocument.html" name="ODatabaseDocument API"><literal>com.sun.star.comp.dba.ODatabaseDocument</literal></link> representing the document</paragraph>
+        </tablecell>
+    </tablerow>
+</table>
+
+  <h3 id="hd_id5158919969858"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <paragraph role="paragraph" id="par_id861611146581334">The example below prints all the properties of a document. Note that the <literal>oDoc</literal> object returned by the <literal>UI.OpenDocument</literal> method is a <literal>SFDocuments.Document</literal> object.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id391611146834072">Dim ui as Variant : Set ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id471611146957794">Dim oDoc as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id311611146962193"><switchinline select="sys"><caseinline select="WIN">Set oDoc = ui.OpenDocument("C:\Calc_Test.ods")</caseinline> <caseinline select="UNIX | MAC">Set oDoc = ui.OpenDocument("~/Documents/Calc_Test.ods")</caseinline> <defaultinline>Set oDoc = ui.OpenDocument("C:\Calc_Test.ods")</defaultinline></switchinline></paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id711611146962784">Dim propDict as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id391611146963409">Set propDict = oDoc.DocumentProperties</paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id621611146963920">Dim keys as Variant : propKeys = propDict.Keys</paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id21611146964465">Dim k as String, strProp as String</paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id681611146965001">For Each k In propKeys</paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id191611146965538">    strProp = strProp &amp; k &amp; ": " &amp; propDict.Item(k) &amp; CHR$(10)</paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id741611146966256">Next k</paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id911611146967874">MsgBox strProp</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id681611147290092">oDoc.CloseDocument()</paragraph>
+  </bascode>
+
+  <table id="tab_id901611086279902">
+   <tablerow>
+     <tablecell colspan="3"><paragraph id="par_id651606319520519" role="tablehead">Methods</paragraph></tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id761611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_document.xhp#Activate" name="Activate method">Activate</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#CloseDocument" name="CloseDocument method">CloseDocument</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#GetDatabase" name="GetDatabase method">GetDatabase</link>
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_document.xhp#RunCommand" name="RunCommand method">RunCommand</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#Save" name="Save method">Save</link><br/><br/>
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_document.xhp#SaveAs" name="SaveAs method">SaveAs</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#SaveCopyAs" name="SaveCopyAs">SaveCopyAs</link><br/><br/>
+           </paragraph>
+       </tablecell>
+   </tablerow>
+  </table>
+
+<section id="Activate">
+  <comment> Activate -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+    <bookmark_value>Document service;Activate</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id201589199698251" localize="false">Activate</h2>
+  <paragraph role="paragraph" id="par_id93158919969864">Returns <literal>True</literal> if the document could be activated. Otherwise, there is no change in the actual user interface. It is equivalent to the <literal>Activate</literal> method of the <literal>UI</literal> service.</paragraph>
+  <paragraph role="paragraph" id="par_id421611148353046">This method is useful when one needs to give focus for a document that is minimized or hidden.</paragraph>
+  <h3 id="hd_id921589199698523"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id411589199698823">oDoc.Activate() As Boolean</paragraph>
+  </bascode>
+  <h3 id="hd_id5158919969859"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <paragraph role="paragraph" id="par_id601611148017930">The example below considers that the file "My_File.ods" is already open but not active.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id41158919969836">Dim oDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id881611147617212">Set oDoc = CreateScriptService("Document", "My_File.ods")</paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id571611147618913">oDoc.Activate()</paragraph>
+  </bascode>
+  <tip id="par_id601611148080503">Keep in mind that you can invoke the <literal>Document</literal> service by passing to <literal>CreateScriptService</literal> either "Document" or "SFDocuments.Document"</tip>
+</section>
+
+<section id="CloseDocument">
+  <comment> CloseDocument -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721589200121249">
+    <bookmark_value>Document service;CloseDocument</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261589200121415" localize="false">CloseDocument</h2>
+  <paragraph role="paragraph" id="par_id651589200121138">Closes the document. If the document is already closed, regardless of how the document was closed, this method has no effect and returns <literal>False</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id341611149562894">The method will also return <literal>False</literal> if the user declines to close it.</paragraph>
+  <paragraph role="paragraph" id="par_id981611149616934">Returns <literal>True</literal> if the document was successfully closed.</paragraph>
+  <h3 id="hd_id671589200121173"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id60158920012171">oDoc.CloseDocument(SaveAsk As Boolean) As Boolean</paragraph>
+  </bascode>
+  <h3 id="hd_id77158920012192"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <paragraph role="paragraph" id="par_id361589200121646"><emph>SaveAsk</emph> : If <literal>True</literal> (default), the user is invited to confirm if the changes should be written on disk. This argument is ignored if the document was not modified.</paragraph>
+  <h3 id="hd_id251589200121838"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id891589200121516">If oDoc.CloseDocument(True) Then</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id51589200506125">    ' ...</paragraph>
+  </bascode>
+</section>
+
+<section id="GetDatabase">
+  <comment> GetDatabase -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id311599410266448">
+    <bookmark_value>Document service;GetDatabase</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id91599410266599" localize="false">GetDatabase</h2>
+  <paragraph role="paragraph" id="par_id901599410483300" xml-lang="en-US">This method is applicable <emph>only for Base documents</emph>.</paragraph>
+  <paragraph role="paragraph" id="par_id891599410524092" xml-lang="en-US">It returns a <literal>SFDatabases.Database</literal> service instance giving access to the execution of SQL commands on the database defined and/or embedded in the actual Base document.</paragraph>
+  <h3 id="hd_id861599410266539"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id461599410266771">oDoc.GetDatabase([User As String, [Password As String]])</paragraph>
+  </bascode>
+  <h3 id="hd_id861599410266584"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <paragraph role="paragraph" id="par_id721599410266911"><emph>User, Password</emph> : The login parameters. Both default to "".</paragraph>
+  <h3 id="hd_id30159941026663"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id891599410846998">Dim oDatabase As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621599410266932">Set oDatabase = oDoc.GetDatabase("root", "pwd")</paragraph>
+  </bascode>
+</section>
+
+<section id="RunCommand">
+  <comment> RunCommand -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id601589202413561">
+    <bookmark_value>Document service;RunCommand</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id611589202413141" localize="false">RunCommand</h2>
+  <paragraph role="paragraph" id="par_id991589202413257">Runs a command on a document. The command is executed without arguments.</paragraph>
+  <paragraph role="paragraph" id="par_id921611152932311">A few typical commands are: Save, SaveAs, ExportToPDF, SetDocumentProperties, Undo, Copy, Paste, etc.</paragraph>
+  <paragraph role="paragraph" id="par_id261589202778896" xml-lang="en-US">The document itself does not need to be active to be able to run commands.</paragraph>
+  <h3 id="hd_id69158920241331"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id261589202413791">oDoc.RunCommand(Command As String)</paragraph>
+  </bascode>
+  <h3 id="hd_id55158920241343"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <paragraph role="paragraph" id="par_id401589202413575"><emph>Command</emph> : Case-sensitive string containing the command in English. The command itself is not checked for correctness. If nothing happens after the command call, then the command is probably wrong.</paragraph>
+  <h3 id="hd_id911589202413592"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <paragraph role="paragraph" id="par_id721611153068137">The following example runs the "SelectData" command in a Calc sheet named "My_File.ods", which will result in the selection of the data area based on the currently selected cell.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id401611153339973">Set oDoc = CreateScriptService("Document", "My_File.ods")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id121589202413630">oDoc.RunCommand("SelectData")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id751611153375195">The example above actually runs the UNO command <literal>uno:SelectData</literal>. Hence, to use the <literal>RunCommand</literal> method it is necessary to remove the "uno:" substring.</paragraph>
+  <tip id="par_id191611153511038">Each LibreOffice component has its own set of commands available. One easy way to learn commands is going to <emph>Tools > Customize > Keyboard</emph>. When you position your mouse over a function in the <emph>Function</emph> list, a tooltip will appear with the corresponding UNO command.</tip>
+</section>
+
+<section id="Save">
+  <comment> Save -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id691589202925124">
+    <bookmark_value>Document service;Save</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id3615892029256" localize="false">Save</h2>
+  <paragraph role="paragraph" id="par_id81589202925519">Stores the document to the file location from which it was loaded. The method is ignored if the document was not modified.</paragraph>
+  <paragraph role="paragraph" id="par_id731611153918907">Returns <literal>False</literal> if the document could not be saved. An error is raised if the file is open as read-only, or if it is a new file that has not been saved yet.</paragraph>
+  <paragraph role="paragraph" id="par_id211589203690937" xml-lang="en-US">The document itself does not need to be active to run this method.</paragraph>
+  <h3 id="hd_id741589202925179"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id641589202925329">oDoc.Save() As Boolean</paragraph>
+  </bascode>
+  <h3 id="hd_id481589202925957"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id31589202925376">If Not oDoc.Save() Then</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id821589203188905">    ' ...</paragraph>
+  </bascode>
+</section>
+
+<section id="SaveAs">
+  <comment> SaveAs -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141589203370367">
+    <bookmark_value>Document service;SaveAs</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id161589203370594" localize="false">SaveAs</h2>
+  <paragraph role="paragraph" id="par_id121589203370778">Stores the document to the given file location. The new location becomes the new file name on which simple Save method calls will be applied.</paragraph>
+  <paragraph role="paragraph" id="par_id31611154475602">Returns <literal>False</literal> if the document could not be saved. An error is raised when overwriting the destination is rejected or when the destination has its read-only attribute set.</paragraph>
+  <paragraph role="paragraph" id="par_id391589203370902" xml-lang="en-US">The document itself does not need to be active to run this method.</paragraph>
+  <h3 id="hd_id851589203370467"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id691589203370257">oDoc.SaveAs(FileName, [Overwrite As Boolean], [Password As String], [FilterName As String], [FilterOptions As String])</paragraph>
+  </bascode>
+  <h3 id="hd_id221589203370830"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <paragraph role="paragraph" id="par_id331589203370950"><emph>FileName</emph> : A string containing the file name to be used. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
+  <paragraph role="paragraph" id="par_id631589204010142" xml-lang="en-US"><emph>Overwrite</emph> : If <literal>True</literal>, the destination file may be overwritten (default = <literal>False</literal>).</paragraph>
+  <paragraph role="paragraph" id="par_id811589204084107" xml-lang="en-US"><emph>Password</emph> (*) : A non-space string to protect the document.</paragraph>
+  <paragraph role="paragraph" id="par_id451589204163772" xml-lang="en-US"><emph>FilterName</emph> (*) : The name of a filter that should be used for saving the document. If this argument is passed, then the filter must exist.</paragraph>
+  <paragraph role="paragraph" id="par_id981589204207800" xml-lang="en-US"><emph>FilterOptions</emph> (*) : An optional string of options associated with the filter.</paragraph>
+  <h3 id="hd_id911589203370485"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id81589203370943"><switchinline select="sys"><caseinline select="WIN">oDoc.SaveAs("C:\NewCopy.odt", Overwrite := True)</caseinline> <caseinline select="UNIX | MAC">oDoc.SaveAs("~/Documents/NewCopy.odt", Overwrite := True)</caseinline> <defaultinline>oDoc.SaveAs("C:\NewCopy.odt", Overwrite := True)</defaultinline></switchinline></paragraph>
+  </bascode>
+</section>
+
+<section id="SaveCopyAs">
+  <comment> SaveCopyAs -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id71158920514765">
+    <bookmark_value>Document service;SaveCopyAs</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id811589205147824" localize="false">SaveCopyAs</h2>
+  <paragraph role="paragraph" id="par_id911589205147502">Stores a copy of or export the document to the given file location. The actual location is unchanged.</paragraph>
+  <paragraph role="paragraph" id="par_id381611154800685">Returns <literal>False</literal> if the document could not be saved. An error is raised when overwriting the destination is rejected or when the destination has its read-only attribute set.</paragraph>
+  <paragraph role="paragraph" id="par_id11589205147643" xml-lang="en-US">The document itself does not need to be active to run this method.</paragraph>
+  <h3 id="hd_id871589205147745"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id531589205147245">oDoc.SaveCopyAs(FileName, [Overwrite As Boolean], [Password As String], [FilterName As String], [FilterOptions As String])</paragraph>
+  </bascode>
+  <h3 id="hd_id121589205147540"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <paragraph role="paragraph" id="par_id301589205147697"><emph>FileName</emph> : A string containing the file name to be used. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
+  <paragraph role="paragraph" id="par_id851589205147348" xml-lang="en-US"><emph>Overwrite</emph> : If <literal>True</literal>, the destination file may be overwritten (default = <literal>False</literal>).</paragraph>
+  <paragraph role="paragraph" id="par_id821589205147330" xml-lang="en-US"><emph>Password</emph> (*) : A non-space string to protect the document.</paragraph>
+  <paragraph role="paragraph" id="par_id67158920514729" xml-lang="en-US"><emph>FilterName</emph> (*) : The name of a filter that should be used for saving the document. If this argument is passed, then the filter must exist.</paragraph>
+  <paragraph role="paragraph" id="par_id881589205147911" xml-lang="en-US"><emph>FilterOptions</emph> (*) : An optional string of options associated with the filter.</paragraph>
+  <h3 id="hd_id81589205147631"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id431589205147164">oDoc.SaveCopyAs("C:\Copy2.odt", Overwrite := True)</paragraph>
+  </bascode>
+</section>
+
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+
+  <section id="relatedtopics">
+      <embed href="text/sbasic/shared/03/sf_ui.xhp#UIService"/>
+      <embed href="text/sbasic/shared/03/sf_dictionary.xhp#SFDictionary"/>
+   </section>
+</body>
+</helpdocument>
