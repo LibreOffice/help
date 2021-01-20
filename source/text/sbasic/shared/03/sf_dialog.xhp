@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_Dialog" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">SFDialogs.Dialog service</title>
+    <filename>/text/sbasic/shared/03/sf_dialog.xhp</filename>
+  </topic>
+  </meta>
+
+<body>
+<section id="SFDocuments-sf_Dialog">
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41582391760252">
+      <bookmark_value>Dialog service</bookmark_value>
+   </bookmark>
+</section>
+
+<section id="abstract">
+  <h1 id="bm_id781582391760253" xml-lang="en-US"><variable id="dlg_h1"><link href="text/sbasic/shared/03/sf_dialog.xhp" name="SFDialogs.Dialog"><literal>SFDialogs</literal>.<literal>Dialog</literal> service</link></variable></h1>
+
+  <paragraph role="paragraph" id="par_id931583589764919" xml-lang="en-US">The <literal>Dialog</literal> service contributes to the management of dialogs created with the Basic <link href="text/sbasic/guide/create_dialog.xhp" name="Dialog Editor">Dialog Editor</link>. Each instance of the current class represents a single dialog box displayed to the user.</paragraph>
+</section>
+
+  <tip id="par_id831598110550771" xml-lang="en-US">A dialog box can be displayed in modal or in non-modal modes.</tip>
+  <paragraph role="paragraph" id="par_id221598110444025" xml-lang="en-US">In modal mode, the box is displayed and the execution of the macro process is suspended until one of the OK or Cancel buttons is pressed. In the meantime, other user actions executed on the box can trigger specific actions.</paragraph>
+  <paragraph role="paragraph" id="par_id981598110463521" xml-lang="en-US">In non-modal mode, the dialog box is "floating" on the user desktop and the execution of the macro process continues normally. Regardless of its status, the dialog closes when the macro that displayed it finishes running.</paragraph>
+  <paragraph role="paragraph" id="par_id721598110472337" xml-lang="en-US">A dialog box disappears from memory after its explicit termination.</paragraph>
+  <tip id="par_id891598188164936" xml-lang="en-US">The <literal>SFDialogs.Dialog</literal> service is closely related to the <literal>SFDialogs.DialogControl</literal> service.</tip>
+
+   <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation and usage</h2>
+   <paragraph role="paragraph" id="par_id361598174756160" xml-lang="en-US">The dialog service is invoked through the <literal>CreateScriptService</literal> method. It requires three arguments to specify the dialog box to activate:</paragraph>
+   <paragraph role="paragraph" id="par_id31612271944733"><emph>Container</emph>: "<link href="text/sbasic/shared/03131900.xhp" name="GlobalScope specifier"><literal>GlobalScope</literal></link>" for preinstalled libraries or a window name as defined by <link href="text/sbasic/shared/03/sf_ui.xhp" name="ScriptForge.UI"><literal>ScriptForge.UI</literal></link> service. Empty string "" default value stands for the current document.</paragraph>
+   <paragraph role="paragraph" id="par_id311612271947124"><emph>Library</emph>: The case-sensitive name of a library contained in the container. Default value is "Standard".</paragraph>
+   <paragraph role="paragraph" id="par_id821612271946316"><emph>DialogName</emph>: A case-sensitive string designating the dialog.</paragraph>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id471598171198389">Dim oDlg As Object, lButton As Long</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id611598171572062">Dim Container As String, Library As String, DialogName As String</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id571598171205739">Set oDlg = CreateScriptService("SFDialogs.Dialog", Container, Library, DialogName)</paragraph>
+      <paragraph role="bascode" id="bas_id321598171269873">'... controls initialization goes here...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id991598171277414">lButton = oDlg.Execute()</paragraph>
+      <paragraph role="bascode" id="bas_id471598176518738">'Default mode = Modal</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id271598171282891">If lButton = oDlg.OKBUTTON Then</paragraph>
+      <paragraph role="bascode" id="bas_id551598171288547">'... Process controls and do what is needed here</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id741598171294507">End If</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id591598171300285">oDlg.Terminate()</paragraph>
+   </bascode>
+   <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">Alternatively a dialog instance can be retrieved via the dialog event manager, providing the dialog was initiated with the <literal>SFDialog.Dialog</literal> service. Events often require to identify the dialog class instance that triggered the event.</paragraph>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id311598175259794">Sub SomeEvent(ByRef poEvent As Object)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id781598175253859">    Dim oDlg As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id921598175248581">    Set oDlg = CreateScriptService("SFDialogs.DialogEvent", poEvent)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id801598175242937">    ' oDlg represents now the instance of the Dialog class having triggered the current event</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id711598175146308">    ' ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id421598175139021">End Sub</paragraph>
+   </bascode>
+   <paragraph role="paragraph" id="par_id251598176312571" xml-lang="en-US">Note that in previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted.</paragraph>
+
+   <h2 id="hd_id651583668365757" xml-lang="en-US">Properties</h2>
+   <table id="tab_id381583668386455">
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id871583668386455" role="tablehead" xml-lang="en-US">Name</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id491583668386455" role="tablehead" xml-lang="en-US">ReadOnly</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id271583668474014" role="tablehead" xml-lang="en-US">Type</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id401583668386455" role="tablehead" xml-lang="en-US">Description</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id151583668386455" role="tablecontent" xml-lang="en-US" localize="false">OKBUTTON</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id371583668519172" role="tablecontent " xml-lang="en-US">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id271583668386455" role="tablecontent" xml-lang="en-US" localize="false">Integer</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id771583668386455" role="tablecontent" xml-lang="en-US">Value = 1. An OK button was pressed.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id951583839708571" role="tablecontent" xml-lang="en-US" localize="false">CANCELBUTTON</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id541583839708548" role="tablecontent " xml-lang="en-US">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id751583839708362" role="tablecontent" xml-lang="en-US" localize="false">Integer</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id731583839708412" role="tablecontent" xml-lang="en-US">Value = 0. A Cancel button was pressed.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id511584027709311" role="tablecontent" xml-lang="en-US" localize="false">Caption</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id761584027709516" role="tablecontent " xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id491584027709825" role="tablecontent" xml-lang="en-US" localize="false">String</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id971584027709752" role="tablecontent" xml-lang="en-US">Specify the title of the dialog.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id491583839767611" role="tablecontent" xml-lang="en-US" localize="false">Height</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id31583839767743" role="tablecontent " xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id741583839767926" role="tablecontent" xml-lang="en-US" localize="false">Long</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id111583839767195" role="tablecontent" xml-lang="en-US">Specify the height of the dialog box.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id83158383992056" role="tablecontent" xml-lang="en-US" localize="false">Modal</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id771583839920487" role="tablecontent " xml-lang="en-US">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id971583839920282" role="tablecontent" xml-lang="en-US" localize="false">Boolean</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id451583839920858" role="tablecontent" xml-lang="en-US">Specifies if the dialog box is currently in execution in modal mode.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id751588333908795" role="tablecontent" xml-lang="en-US" localize="false">Name</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id571588333908716" role="tablecontent " xml-lang="en-US">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id781588333908500" role="tablecontent" xml-lang="en-US" localize="false">String</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id721588333908708" role="tablecontent" xml-lang="en-US">The name of the dialog</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id251583774433989" role="tablecontent" xml-lang="en-US" localize="false">Page</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id501583774433513" role="tablecontent " xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id411583774433779" role="tablecontent" xml-lang="en-US" localize="false">Integer</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph role="paragraph" id="par_id151598177605296" xml-lang="en-US">A dialog may have several pages that can be traversed by the user step by step. The Page property of the Dialog object defines which page of the dialog is active.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id731588334016220" role="tablecontent" xml-lang="en-US" localize="false">Visible</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id271588334016191" role="tablecontent " xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id991588334016273" role="tablecontent" xml-lang="en-US" localize="false">Boolean</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id251588334016874" role="tablecontent" xml-lang="en-US">Specify if the dialog box is visible on the desktop. By default it is not visible until the Execute() method is run and visible afterwards.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id741598177924441" role="tablecontent" xml-lang="en-US" localize="false">XDialogModel</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id451598177924437" role="tablecontent " xml-lang="en-US">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953729">
+               <bookmark_value>API;UnoControlDialogModel</bookmark_value>
+            </bookmark>
+            <paragraph id="par_id94159817792441" role="tablecontent" xml-lang="en-US" localize="false">com.sun.star.awt.XControlModel<br /><link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialogModel-members.html" name="css.awt.UnoControlDialogModel">..awt.UnoControlDialogModel</link></paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id191598177924897" role="tablecontent" xml-lang="en-US">The UNO object representing the dialog model.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id801598178083859" role="tablecontent" xml-lang="en-US" localize="false">XDialogView</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id811598178083501" role="tablecontent " xml-lang="en-US">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953729">
+               <bookmark_value>API;UnoControlDialog</bookmark_value>
+            </bookmark>
+            <paragraph id="par_id981598178083938" role="tablecontent" xml-lang="en-US" localize="false">com.sun.star.awt.XControl<br /><link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialog-members.html" name="UnoControlDialog interface">..awt.UnoControlDialog</link></paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id731598178083442" role="tablecontent" xml-lang="en-US">The UNO object representing the dialog view.</paragraph>
+         </tablecell>
+      </tablerow>
+   </table>
+
+    <table id="tab_id891606472825856">
+    <tablerow>
+       <tablecell><paragraph id="par_id581606472825856" role="tablehead" localize="false"></paragraph></tablecell>
+       <tablecell><paragraph id="par_id921606472825856" role="tablehead">Methods</paragraph></tablecell>
+       <tablecell><paragraph id="par_id781606472825856" role="tablehead"  localize="false"></paragraph></tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell><paragraph id="par_id381606472825856" role="tablecontent" localize="false">
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#Activate" name="Activate method">Activate</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#Controls" name="Controls method">Controls</link><br/>
+       </paragraph></tablecell>
+       <tablecell><paragraph id="par_id451606472825856" role="tablecontent" localize="false">
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#EndExecute" name="EndExecute method">EndExecute</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#Execute" name="Execute method">Execute</link><br/>
+       </paragraph></tablecell>
+       <tablecell><paragraph id="par_id161606472825856" role="tablecontent" localize="false">
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#Terminate" name="Terminate method">Terminate</link><br/>
+       </paragraph></tablecell>
+    </tablerow>
+    </table>
+
+  <section id="Activate">
+  <comment> Activate -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721583933076548">
+      <bookmark_value>Dialog service;Activate</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id681583933076692" localize="false">Activate</h2>
+   <paragraph role="paragraph" id="par_id871583933076448">Set the focus on the current dialog instance. Return <literal>True</literal> if focusing was successful.</paragraph>
+   <paragraph role="paragraph" id="par_id151598178880227" xml-lang="en-US">This method is probably called from a dialog or control event, or even more likely, when a dialog is displayed in non-modal mode.</paragraph>
+   <h3 id="hd _id61583933076171"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id731583933076815">oDlg.Activate() As Boolean</paragraph>
+   </bascode>
+   <h3 id="hd _id26158393307687"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id221598179105596">Dim oDlg As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id171598179111121">Set oDlg = CreateScriptService(,, "myDialog")</paragraph>
+      <paragraph role="bascode" id="bas_id841598179117184">' Dialog stored in current document's standard library</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id681598179123436">oDlg.Execute(Modal := False)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id371598179128761">' ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id361598179135096">oDlg.Activate()</paragraph>
+   </bascode>
+   </section>
+
+   <section id="Controls">
+   <comment> Controls -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41584541257826">
+      <bookmark_value>Dialog service;Controls</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id95158454125767" localize="false">Controls</h2>
+   <paragraph role="paragraph" id="par_id161584541257982">Return either:</paragraph>
+   <list type="unordered">
+      <listitem>
+         <paragraph id="par_id421598179770993"  role="listitem" xml-lang="en-US">the list of the controls contained in the dialog</paragraph>
+      </listitem>
+      <listitem>
+         <paragraph id="par_id81598185229301"  role="listitem" xml-lang="en-US">a dialog control class instance based on its name</paragraph>
+      </listitem>
+   </list>
+   <h3 id="hd _id601584541257443"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id201584541257726">oDlg.Controls([ControlName As String]) As Variant</paragraph>
+   </bascode>
+   <h3 id="hd _id291584541257237"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id1001584541257789"><emph>ControlName</emph> : A valid control name as a case-sensitive string. If absent, the list of control names is returned as a zero-based array.</paragraph>
+   <h3 id="hd _id32158454125769"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id151598185478904">Dim myDialog As Object, myList As Variant, myControl As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id21598185484092">Set myDialog = CreateScriptService("SFDialogs.Dialog", , "Standard", "Dialog1")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id641598185489492">myList = myDialog.Controls()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id921598185495193">Set myControl = myDialog.Controls("myTextBox")</paragraph>
+   </bascode>
+   </section>
+
+   <section id="EndExecute">
+   <comment> EndExecute -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
+      <bookmark_value>Dialog service;EndExecute</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id491598185776436" localize="false">EndExecute</h2>
+   <paragraph role="paragraph" id="par_id381598185776500">Ends the display of a modal dialog and gives back the argument as return value for the current <literal>Execute()</literal> running action.</paragraph>
+   <paragraph role="paragraph" id="par_id551598185953362" xml-lang="en-US"><literal>EndExecute()</literal> is usually contained in the processing of a macro triggered by a dialog or control event.</paragraph>
+   <h3 id="hd _id16159818577649" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id811598185776225">oDlg.EndExecute(ReturnValue As Long)</paragraph>
+   </bascode>
+   <h3 id="hd _id721598185776413" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id451598185776957"><emph>ReturnValue</emph> : The value passed to the running <literal>Execute()</literal> method.</paragraph>
+   <h3 id="hd _id771598185776435" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id521598186134426">Sub OnEvent(poEvent As Variant)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id631598186139835">    Dim oDlg As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id251598186144483">    Set oDlg = CreateScriptService("SFDialogs.DialogEvent", poEvent)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id191598186150509">    oDlg.EndExecute(ReturnValue := 25)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id91598186155632">End Sub</paragraph>
+   </bascode>
+   </section>
+
+   <section id="Execute">
+   <comment> Execute -------------------------------------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id351598186461621">
+   <bookmark_value>Dialog service;Execute</bookmark_value></bookmark>
+   <h2 id="hd _id531598186461915" localize="false">Execute</h2>
+   <paragraph role="paragraph" id="par_id29159818646178">Display the dialog box and, when modal, wait for its termination by the user. The returned value is either:</paragraph>
+   <list type="unordered">
+      <listitem>
+         <paragraph id="par_id541598186676277"  role="listitem" xml-lang="en-US">0 : <literal>Cancel</literal> button pressed</paragraph>
+      </listitem>
+      <listitem>
+         <paragraph id="par_id821598186716345"  role="listitem" xml-lang="en-US">1 : <literal>OK</literal> button pressed</paragraph>
+      </listitem>
+      <listitem>
+         <paragraph id="par_id951598186738346"  role="listitem" xml-lang="en-US">Otherwise the dialog stopped with an <literal>EndExecute()</literal> statement issued by a dialog or control event</paragraph>
+      </listitem>
+   </list>
+   <paragraph role="paragraph" id="par_id741598187335869" xml-lang="en-US">For non-modal dialog boxes the method always returns 0 and the execution of the macro continues.</paragraph>
+   <h3 id="hd _id491598186461869" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id841598186461491">oDlg.Execute([Modal As Boolean]) As Long</paragraph>
+   </bascode>
+   <h3 id="hd _id331598186461152" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id11598186461227"><emph>Modal</emph> : <literal>False</literal> when non-modal dialog. Default = <literal>True</literal>.</paragraph>
+   <h3 id="hd _id28159818646198" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id591598186461923">Dim oDlg As Object, lReturn As Long</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id681598186461370">Set oDlg = CreateScriptService(("SFDialogs.Dialog", , , "myDialog")</paragraph>
+      <paragraph role="bascode" id="bas_id211598187104866">' Dialog stored in current document's standard library</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id281598186461514">lReturn = oDlg.Execute()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id291598186461410">Select Case lReturn</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id741598187182079">' ...</paragraph>
+      <paragraph role="bascode" id="bas_id781612273203518">End Select</paragraph>
+   </bascode>
+   </section>
+
+   <section id="Terminate">
+   <comment> Terminate -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953729">
+      <bookmark_value>Dialog service;Terminate</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id101598187953201" localize="false">Terminate</h2>
+   <paragraph role="paragraph" id="par_id21598187953679">Terminate the dialog service for the current instance. Return <literal>True</literal> if the termination was successful.</paragraph>
+   <h3 id="hd _id221598187953425" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id231598187953624">oDlg.Terminate() As Boolean</paragraph>
+   </bascode>
+   <h3 id="hd _id361598187953840" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id121598187953168">oDlg.Terminate()</paragraph>
+   </bascode>
+   </section>
+
+   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+
+   <section id="relatedtopics">
+      <embed href="text/sbasic/shared/03/sf_dialogcontrol.xhp#ctrls_h1"/>
+      <embed href="text/sbasic/shared/03/sf_ui.xhp#UIService"/>
+   </section>
+
+</body>
+</helpdocument>
