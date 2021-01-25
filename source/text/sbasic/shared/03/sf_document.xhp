@@ -56,8 +56,9 @@
     <paragraph role="bascode" localize="false" id="bas_id371582885621964">Dim ui As Object, oDoc As Object</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id201582885621287">Set ui = CreateScriptService("UI")</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id561589191748697">Set oDoc = ui.GetDocument("Untitled 1")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id511589191758563">' or Set oDoc = ui.CreateDocument("Calc", ...)</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id331589191766531">' or Set oDoc = ui.OpenDocument("C:\MyFile.odt")</paragraph>
+    <paragraph role="bascode" id="bas_id331589191766183">'Alternatively, using the CreateDocument or OpenDocument methods</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id511589191758563">' Set oDoc = ui.CreateDocument("Calc", ...)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id331589191766531">' Set oDoc = ui.OpenDocument("C:\MyFile.odt")</paragraph>
   </bascode>
 
   <bascode>
@@ -244,7 +245,7 @@
     </tablerow>
 </table>
 
-  <h3 id="hd_id5158919969858"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <h3 id="hd_id5158919969858" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
   <paragraph role="paragraph" id="par_id861611146581334">The example below prints all the properties of a document. Note that the <literal>oDoc</literal> object returned by the <literal>UI.OpenDocument</literal> method is a <literal>SFDocuments.Document</literal> object.</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id391611146834072">Dim ui as Variant : Set ui = CreateScriptService("UI")</paragraph>
@@ -263,7 +264,7 @@
 
   <table id="tab_id901611086279902">
    <tablerow>
-     <tablecell colspan="3"><paragraph id="par_id651606319520519" role="tablehead">Methods</paragraph></tablecell>
+     <tablecell colspan="3"><paragraph id="par_id651606319520519" role="tablehead">List of Methods in the Document Service</paragraph></tablecell>
    </tablerow>
    <tablerow>
        <tablecell>
@@ -296,11 +297,11 @@
   <h2 id="hd_id201589199698251" localize="false">Activate</h2>
   <paragraph role="paragraph" id="par_id93158919969864">Returns <literal>True</literal> if the document could be activated. Otherwise, there is no change in the actual user interface. It is equivalent to the <literal>Activate</literal> method of the <literal>UI</literal> service.</paragraph>
   <paragraph role="paragraph" id="par_id421611148353046">This method is useful when one needs to give focus for a document that is minimized or hidden.</paragraph>
-  <h3 id="hd_id921589199698523"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <h3 id="hd_id921589199698523" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id411589199698823">oDoc.Activate() As Boolean</paragraph>
   </bascode>
-  <h3 id="hd_id5158919969859"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <h3 id="hd_id5158919969859" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
   <paragraph role="paragraph" id="par_id601611148017930">The example below considers that the file "My_File.ods" is already open but not active.</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id41158919969836">Dim oDoc As Object</paragraph>
@@ -319,13 +320,13 @@
   <paragraph role="paragraph" id="par_id651589200121138">Closes the document. If the document is already closed, regardless of how the document was closed, this method has no effect and returns <literal>False</literal>.</paragraph>
   <paragraph role="paragraph" id="par_id341611149562894">The method will also return <literal>False</literal> if the user declines to close it.</paragraph>
   <paragraph role="paragraph" id="par_id981611149616934">Returns <literal>True</literal> if the document was successfully closed.</paragraph>
-  <h3 id="hd_id671589200121173"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <h3 id="hd_id671589200121173" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id60158920012171">oDoc.CloseDocument(SaveAsk As Boolean) As Boolean</paragraph>
   </bascode>
-  <h3 id="hd_id77158920012192"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <h3 id="hd_id77158920012192" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
   <paragraph role="paragraph" id="par_id361589200121646"><emph>SaveAsk</emph> : If <literal>True</literal> (default), the user is invited to confirm if the changes should be written on disk. This argument is ignored if the document was not modified.</paragraph>
-  <h3 id="hd_id251589200121838"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <h3 id="hd_id251589200121838" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id891589200121516">If oDoc.CloseDocument(True) Then</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id51589200506125">    ' ...</paragraph>
@@ -340,13 +341,13 @@
   <h2 id="hd_id91599410266599" localize="false">GetDatabase</h2>
   <paragraph role="paragraph" id="par_id901599410483300" xml-lang="en-US">This method is applicable <emph>only for Base documents</emph>.</paragraph>
   <paragraph role="paragraph" id="par_id891599410524092" xml-lang="en-US">It returns a <literal>SFDatabases.Database</literal> service instance giving access to the execution of SQL commands on the database defined and/or embedded in the actual Base document.</paragraph>
-  <h3 id="hd_id861599410266539"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <h3 id="hd_id861599410266539" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id461599410266771">oDoc.GetDatabase([User As String, [Password As String]])</paragraph>
   </bascode>
-  <h3 id="hd_id861599410266584"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <h3 id="hd_id861599410266584" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
   <paragraph role="paragraph" id="par_id721599410266911"><emph>User, Password</emph> : The login parameters. Both default to "".</paragraph>
-  <h3 id="hd_id30159941026663"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <h3 id="hd_id30159941026663" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id891599410846998">Dim oDatabase As Object</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id621599410266932">Set oDatabase = oDoc.GetDatabase("root", "pwd")</paragraph>
@@ -362,13 +363,13 @@
   <paragraph role="paragraph" id="par_id991589202413257">Runs a command on a document. The command is executed without arguments.</paragraph>
   <paragraph role="paragraph" id="par_id921611152932311">A few typical commands are: Save, SaveAs, ExportToPDF, SetDocumentProperties, Undo, Copy, Paste, etc.</paragraph>
   <paragraph role="paragraph" id="par_id261589202778896" xml-lang="en-US">The document itself does not need to be active to be able to run commands.</paragraph>
-  <h3 id="hd_id69158920241331"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <h3 id="hd_id69158920241331" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id261589202413791">oDoc.RunCommand(Command As String)</paragraph>
   </bascode>
-  <h3 id="hd_id55158920241343"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <h3 id="hd_id55158920241343" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
   <paragraph role="paragraph" id="par_id401589202413575"><emph>Command</emph> : Case-sensitive string containing the command in English. The command itself is not checked for correctness. If nothing happens after the command call, then the command is probably wrong.</paragraph>
-  <h3 id="hd_id911589202413592"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <h3 id="hd_id911589202413592" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
   <paragraph role="paragraph" id="par_id721611153068137">The following example runs the "SelectData" command in a Calc sheet named "My_File.ods", which will result in the selection of the data area based on the currently selected cell.</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id401611153339973">Set oDoc = CreateScriptService("Document", "My_File.ods")</paragraph>
@@ -387,11 +388,11 @@
   <paragraph role="paragraph" id="par_id81589202925519">Stores the document to the file location from which it was loaded. The method is ignored if the document was not modified.</paragraph>
   <paragraph role="paragraph" id="par_id731611153918907">Returns <literal>False</literal> if the document could not be saved. An error is raised if the file is open as read-only, or if it is a new file that has not been saved yet.</paragraph>
   <paragraph role="paragraph" id="par_id211589203690937" xml-lang="en-US">The document itself does not need to be active to run this method.</paragraph>
-  <h3 id="hd_id741589202925179"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <h3 id="hd_id741589202925179" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id641589202925329">oDoc.Save() As Boolean</paragraph>
   </bascode>
-  <h3 id="hd_id481589202925957"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <h3 id="hd_id481589202925957" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id31589202925376">If Not oDoc.Save() Then</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id821589203188905">    ' ...</paragraph>
@@ -407,17 +408,17 @@
   <paragraph role="paragraph" id="par_id121589203370778">Stores the document to the given file location. The new location becomes the new file name on which simple Save method calls will be applied.</paragraph>
   <paragraph role="paragraph" id="par_id31611154475602">Returns <literal>False</literal> if the document could not be saved. An error is raised when overwriting the destination is rejected or when the destination has its read-only attribute set.</paragraph>
   <paragraph role="paragraph" id="par_id391589203370902" xml-lang="en-US">The document itself does not need to be active to run this method.</paragraph>
-  <h3 id="hd_id851589203370467"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <h3 id="hd_id851589203370467" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id691589203370257">oDoc.SaveAs(FileName, [Overwrite As Boolean], [Password As String], [FilterName As String], [FilterOptions As String])</paragraph>
   </bascode>
-  <h3 id="hd_id221589203370830"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <h3 id="hd_id221589203370830" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
   <paragraph role="paragraph" id="par_id331589203370950"><emph>FileName</emph> : A string containing the file name to be used. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
   <paragraph role="paragraph" id="par_id631589204010142" xml-lang="en-US"><emph>Overwrite</emph> : If <literal>True</literal>, the destination file may be overwritten (default = <literal>False</literal>).</paragraph>
   <paragraph role="paragraph" id="par_id811589204084107" xml-lang="en-US"><emph>Password</emph> (*) : A non-space string to protect the document.</paragraph>
   <paragraph role="paragraph" id="par_id451589204163772" xml-lang="en-US"><emph>FilterName</emph> (*) : The name of a filter that should be used for saving the document. If this argument is passed, then the filter must exist.</paragraph>
   <paragraph role="paragraph" id="par_id981589204207800" xml-lang="en-US"><emph>FilterOptions</emph> (*) : An optional string of options associated with the filter.</paragraph>
-  <h3 id="hd_id911589203370485"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <h3 id="hd_id911589203370485" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id81589203370943"><switchinline select="sys"><caseinline select="WIN">oDoc.SaveAs("C:\NewCopy.odt", Overwrite := True)</caseinline> <caseinline select="UNIX | MAC">oDoc.SaveAs("~/Documents/NewCopy.odt", Overwrite := True)</caseinline> <defaultinline>oDoc.SaveAs("C:\NewCopy.odt", Overwrite := True)</defaultinline></switchinline></paragraph>
   </bascode>
@@ -432,17 +433,17 @@
   <paragraph role="paragraph" id="par_id911589205147502">Stores a copy of or export the document to the given file location. The actual location is unchanged.</paragraph>
   <paragraph role="paragraph" id="par_id381611154800685">Returns <literal>False</literal> if the document could not be saved. An error is raised when overwriting the destination is rejected or when the destination has its read-only attribute set.</paragraph>
   <paragraph role="paragraph" id="par_id11589205147643" xml-lang="en-US">The document itself does not need to be active to run this method.</paragraph>
-  <h3 id="hd_id871589205147745"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <h3 id="hd_id871589205147745" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id531589205147245">oDoc.SaveCopyAs(FileName, [Overwrite As Boolean], [Password As String], [FilterName As String], [FilterOptions As String])</paragraph>
   </bascode>
-  <h3 id="hd_id121589205147540"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <h3 id="hd_id121589205147540" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
   <paragraph role="paragraph" id="par_id301589205147697"><emph>FileName</emph> : A string containing the file name to be used. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
   <paragraph role="paragraph" id="par_id851589205147348" xml-lang="en-US"><emph>Overwrite</emph> : If <literal>True</literal>, the destination file may be overwritten (default = <literal>False</literal>).</paragraph>
   <paragraph role="paragraph" id="par_id821589205147330" xml-lang="en-US"><emph>Password</emph> (*) : A non-space string to protect the document.</paragraph>
   <paragraph role="paragraph" id="par_id67158920514729" xml-lang="en-US"><emph>FilterName</emph> (*) : The name of a filter that should be used for saving the document. If this argument is passed, then the filter must exist.</paragraph>
   <paragraph role="paragraph" id="par_id881589205147911" xml-lang="en-US"><emph>FilterOptions</emph> (*) : An optional string of options associated with the filter.</paragraph>
-  <h3 id="hd_id81589205147631"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <h3 id="hd_id81589205147631" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id431589205147164">oDoc.SaveCopyAs("C:\Copy2.odt", Overwrite := True)</paragraph>
   </bascode>
