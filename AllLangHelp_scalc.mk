@@ -138,6 +138,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/06130000 \
     helpcontent2/source/text/scalc/01/07080000 \
     helpcontent2/source/text/scalc/01/07090000 \
+    helpcontent2/source/text/scalc/01/07090100 \
     helpcontent2/source/text/scalc/01/12010000 \
     helpcontent2/source/text/scalc/01/12010100 \
     helpcontent2/source/text/scalc/01/12020000 \
