@@ -559,7 +559,14 @@
          <paragraph xml-lang="en-US" id="par_id4076357" role="paragraph">One of the entries can be the data field name. The data field name can be left out if the pivot table contains only one data field, otherwise it must be present.</paragraph>
          <paragraph xml-lang="en-US" id="par_id8231757" role="paragraph">Each of the other entries specifies a constraint in the form <item type="literal">Field[Item]</item> (with literal characters [ and ]), or only <item type="literal">Item</item> if the item name is unique within all fields that are used in the pivot table.<comment>i82342</comment></paragraph>
          <paragraph xml-lang="en-US" id="par_id3168736" role="paragraph">A function name can be added in the form <emph>Field[Item;Function]</emph>, which will cause the constraint to match only subtotal values which use that function. The possible function names are Sum, Count, Average, Max, Min, Product, Count (Numbers only), StDev (Sample), StDevP (Population), Var (Sample), and VarP (Population), case-insensitive.</paragraph><comment>UFI: Example from spec doc is quite difficult to localize. Try to find other one</comment>
-</section>
+         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+         <paragraph role="paragraph" id="par_id241612381345351">The examples presented in this section are based on data contained in the Calc file <emph>pivot.ods</emph> linked below.</paragraph>
+         <paragraph role="paragraph" id="par_id351612381333086">A dealer has branches in three cities, selling seven models of new and used vehicles. The status of the dealer’s vehicles is recorded in the spreadsheet table located in the cell range A2:E30, which has column headings “Branch”, “Car model”, “Show Room”, “Used”, and “Repair Shop”. The numbers in the “Show Room”, “Used”, and “Repair Shop” columns identify the number of vehicles in each of those categories for the given “Branch” and “Car model”. A pivot table has been created based on the data in A2:E30 and this summarizes the number of vehicles of each model that are currently in the “Show Room”, “Used”, and “Repair Shop” categories. The top left corner of the pivot table is at cell G6. </paragraph>
+         <paragraph role="paragraph" id="par_id261612381364751">To extract the number of Model 03 vehicles that are currently in the repair shop, enter either of the following formulas into an empty cell in the same sheet as the pivot table.</paragraph>
+         <paragraph role="paragraph" id="par_id211612381350445"><input>=GETPIVOTDATA("Repair Shop"; $G$6; "Car model"; "Model 03")</input> returns 50 using the function’s first syntax.</paragraph>
+         <paragraph role="paragraph" id="par_id831612381357502"><input>=GETPIVOTDATA($G$6;"Repair Shop Car model[Model 03]")</input> returns 50 using the function’s second syntax.</paragraph>
+         <embed href="text/scalc/06/calcsamplefiles.xhp#pivot"/>
+  </section>
 </sort>
 <section id="relatedtopics">
     <embed href="text/scalc/01/04060100.xhp#drking"/>
