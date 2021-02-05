@@ -47,7 +47,7 @@
       <paragraph role="bascode" xml-lang="en-US" id="bas_id961598453222539">' ... process the controls actual values</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id981598453230245">myDialog.Terminate()</paragraph>
    </bascode>
-   <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">Alternatively a control instance can be retrieved via the dialog event manager, providing the dialog was initiated with the <literal>SFDialog.Dialog</literal> service. Events often require to identify the control class instance that triggered the event.</paragraph>
+   <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">Alternatively a control instance can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, providing the dialog was initiated with the <literal>Dialog</literal> service. <literal>DialogEvent</literal> returns the <literal>SFDialogs.DialogControl</literal> class instance that triggered the event.</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id311598175259794">Sub SomeEvent(ByRef poEvent As Object)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id781598175253859">    Dim oControl As Object</paragraph>
@@ -57,7 +57,7 @@
       <paragraph role="bascode" localize="false" id="bas_id421598175139021">End Sub</paragraph>
    </bascode>
    <paragraph role="paragraph" id="par_id251598176312571" xml-lang="en-US">Note that in previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted.</paragraph>
-   
+
    <h2 id="hd_id71598455687512" xml-lang="en-US">Control types</h2>
    <paragraph role="paragraph" id="par_id851598455863395" xml-lang="en-US">The <literal>DialogControl</literal> service is available for these control types:</paragraph>
    <list type="unordered">
@@ -354,13 +354,13 @@
             <paragraph id="par_id161598458580581" role="tablecontent" xml-lang="en-US">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id921598458580608" role="tablecontent" localize="false">Object</paragraph>
+            <paragraph id="par_id921598458580608" role="tablecontent" xml-lang="en-US"><literal>Dialog</literal><br/>service</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id181598539807426" role="tablecontent" xml-lang="en-US">All</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id801598458580456" role="tablecontent" xml-lang="en-US">The parent dialog instance.</paragraph>
+            <paragraph id="par_id801598458580456" role="tablecontent" xml-lang="en-US">The parent <literal>SFDialogs.Dialog</literal> class object instance.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -490,13 +490,13 @@
             <paragraph id="par_id451598177924437" role="tablecontent" xml-lang="en-US">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id94159817792441" role="tablecontent" localize="false"><link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControlModel.html" name="awt.XControlModel">…awt.XControlModel</link><br /><link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialogModel.html)" name="awt.XControlDialogModel">…awt.UnoControlDialogModel</link></paragraph>
+            <paragraph id="par_id94159817792441" role="tablecontent" xml-lang="en-US">UNO<br/>object</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id311598540066789" role="tablecontent" xml-lang="en-US">All</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id191598177924897" role="tablecontent" xml-lang="en-US">The UNO object representing the control model.</paragraph>
+            <paragraph id="par_id191598177924897" role="tablecontent" xml-lang="en-US">The UNO object representing the control model. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControlModel.html" name="awt.XControlModel">XControlModel</link> and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialogModel.html)" name="awt.XControlDialogModel">UnoControlDialogModel</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -507,13 +507,13 @@
             <paragraph id="par_id811598178083501" role="tablecontent" xml-lang="en-US">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id981598178083938" role="tablecontent" localize="false"><link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControl.html" name="awt.XControl">…awt.XControl</link><br /><link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialog.html)" name="awt.UnoControlDialog">…awt.UnoControlDialog</link></paragraph>
+            <paragraph id="par_id981598178083938" role="tablecontent" xml-lang="en-US">UNO<br/>object</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id551598540079329" role="tablecontent" xml-lang="en-US">All</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id731598178083442" role="tablecontent" xml-lang="en-US">The UNO object representing the control view.</paragraph>
+            <paragraph id="par_id731598178083442" role="tablecontent" xml-lang="en-US">The UNO object representing the control view. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControl.html" name="awt.XControl">XControl</link> and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialog.html)" name="awt.UnoControlDialog">UnoControlDialog</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
          </tablecell>
       </tablerow>
    </table>

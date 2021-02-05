@@ -8,33 +8,27 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  *
 -->
-
 <meta>
   <topic id="SF_Dialog" indexer="include" status="PUBLISH">
     <title id="tit" xml-lang="en-US">SFDialogs.Dialog service</title>
     <filename>/text/sbasic/shared/03/sf_dialog.xhp</filename>
   </topic>
   </meta>
-
 <body>
 <section id="SFDocuments-sf_Dialog">
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41582391760252">
       <bookmark_value>Dialog service</bookmark_value>
    </bookmark>
 </section>
-
 <section id="abstract">
   <h1 id="bm_id781582391760253" xml-lang="en-US"><variable id="dlg_h1"><link href="text/sbasic/shared/03/sf_dialog.xhp" name="SFDialogs.Dialog"><literal>SFDialogs</literal>.<literal>Dialog</literal> service</link></variable></h1>
-
   <paragraph role="paragraph" id="par_id931583589764919" xml-lang="en-US">The <literal>Dialog</literal> service contributes to the management of dialogs created with the Basic <link href="text/sbasic/guide/create_dialog.xhp" name="Dialog Editor">Dialog Editor</link>. Each instance of the current class represents a single dialog box displayed to the user.</paragraph>
 </section>
-
   <tip id="par_id831598110550771" xml-lang="en-US">A dialog box can be displayed in modal or in non-modal modes.</tip>
-  <paragraph role="paragraph" id="par_id221598110444025" xml-lang="en-US">In modal mode, the box is displayed and the execution of the macro process is suspended until one of the OK or Cancel buttons is pressed. In the meantime, other user actions executed on the box can trigger specific actions.</paragraph>
+  <paragraph role="paragraph" id="par_id221598110444025" xml-lang="en-US">In modal mode, the box is displayed and the execution of the macro process is suspended until one of the OK or Cancel buttons is pressed. In the meantime, user actions executed on the box can trigger specific actions.</paragraph>
   <paragraph role="paragraph" id="par_id981598110463521" xml-lang="en-US">In non-modal mode, the dialog box is "floating" on the user desktop and the execution of the macro process continues normally. Regardless of its status, the dialog closes when the macro that displayed it finishes running.</paragraph>
   <paragraph role="paragraph" id="par_id721598110472337" xml-lang="en-US">A dialog box disappears from memory after its explicit termination.</paragraph>
   <tip id="par_id891598188164936" xml-lang="en-US">The <literal>SFDialogs.Dialog</literal> service is closely related to the <literal>SFDialogs.DialogControl</literal> service.</tip>
-
    <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation and usage</h2>
    <paragraph role="paragraph" id="par_id361598174756160" xml-lang="en-US">The dialog service is invoked through the <literal>CreateScriptService</literal> method. It requires three arguments to specify the dialog box to activate:</paragraph>
    <paragraph role="paragraph" id="par_id31612271944733"><emph>Container</emph>: "<link href="text/sbasic/shared/03131900.xhp" name="GlobalScope specifier"><literal>GlobalScope</literal></link>" for preinstalled libraries or a window name as defined by <link href="text/sbasic/shared/03/sf_ui.xhp" name="ScriptForge.UI"><literal>ScriptForge.UI</literal></link> service. Empty string "" default value stands for the current document.</paragraph>
@@ -52,7 +46,7 @@
       <paragraph role="bascode" localize="false" id="bas_id741598171294507">End If</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id591598171300285">oDlg.Terminate()</paragraph>
    </bascode>
-   <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">Alternatively a dialog instance can be retrieved via the dialog event manager, providing the dialog was initiated with the <literal>SFDialog.Dialog</literal> service. Events often require to identify the dialog class instance that triggered the event.</paragraph>
+   <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">Alternatively a <literal>Dialog</literal> instance can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, providing the dialog was initiated with the <literal>Dialog</literal> service. <literal>DialogEvent</literal> returns the <literal>SFDialogs.Dialog</literal> service instance that triggered the event.</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id311598175259794">Sub SomeEvent(ByRef poEvent As Object)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id781598175253859">    Dim oDlg As Object</paragraph>
@@ -62,7 +56,6 @@
       <paragraph role="bascode" localize="false" id="bas_id421598175139021">End Sub</paragraph>
    </bascode>
    <paragraph role="paragraph" id="par_id251598176312571" xml-lang="en-US">Note that in previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted.</paragraph>
-
    <h2 id="hd_id651583668365757" xml-lang="en-US">Properties</h2>
    <table id="tab_id381583668386455">
       <tablerow>
@@ -202,10 +195,10 @@
             <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953729">
                <bookmark_value>API;UnoControlDialogModel</bookmark_value>
             </bookmark>
-            <paragraph id="par_id94159817792441" role="tablecontent" xml-lang="en-US" localize="false">com.sun.star.awt.XControlModel<br /><link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialogModel-members.html" name="css.awt.UnoControlDialogModel">..awt.UnoControlDialogModel</link></paragraph>
+            <paragraph id="par_id94159817792441" role="tablecontent" xml-lang="en-US" localize="true">UNO<br/>object</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id191598177924897" role="tablecontent" xml-lang="en-US">The UNO object representing the dialog model.</paragraph>
+            <paragraph id="par_id191598177924897" role="tablecontent" xml-lang="en-US">The UNO object representing the dialog model. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControlModel.html" name="XControlModel interface">XControlModel</link> and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialogModel-members.html" name="css.awt.UnoControlDialogModel">UnoControlDialogModel</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -219,14 +212,13 @@
             <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953729">
                <bookmark_value>API;UnoControlDialog</bookmark_value>
             </bookmark>
-            <paragraph id="par_id981598178083938" role="tablecontent" xml-lang="en-US" localize="false">com.sun.star.awt.XControl<br /><link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialog-members.html" name="UnoControlDialog interface">..awt.UnoControlDialog</link></paragraph>
+            <paragraph id="par_id981598178083938" role="tablecontent" xml-lang="en-US" localize="false">UNO<br />object</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id731598178083442" role="tablecontent" xml-lang="en-US">The UNO object representing the dialog view.</paragraph>
+            <paragraph id="par_id731598178083442" role="tablecontent" xml-lang="en-US">The UNO object representing the dialog view. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControlModel.html" name="XControl interface">XControl</link> and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialog-members.html" name="UnoControlDialog interface">UnoControlDialog</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
          </tablecell>
       </tablerow>
    </table>
-
     <table id="tab_id891606472825856">
     <tablerow>
        <tablecell><paragraph id="par_id581606472825856" role="tablehead" localize="false"></paragraph></tablecell>
@@ -247,15 +239,14 @@
        </paragraph></tablecell>
     </tablerow>
     </table>
-
   <section id="Activate">
   <comment> Activate -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721583933076548">
       <bookmark_value>Dialog service;Activate</bookmark_value>
    </bookmark>
    <h2 id="hd _id681583933076692" localize="false">Activate</h2>
-   <paragraph role="paragraph" id="par_id871583933076448">Set the focus on the current dialog instance. Return <literal>True</literal> if focusing was successful.</paragraph>
-   <paragraph role="paragraph" id="par_id151598178880227" xml-lang="en-US">This method is probably called from a dialog or control event, or even more likely, when a dialog is displayed in non-modal mode.</paragraph>
+   <paragraph role="paragraph" id="par_id871583933076448">Set the focus on the current <literal>Dialog</literal> instance. Return <literal>True</literal> if focusing was successful.</paragraph>
+   <paragraph role="paragraph" id="par_id151598178880227" xml-lang="en-US">This method is called from a dialog or control event, or when a dialog is displayed in non-modal mode.</paragraph>
    <h3 id="hd _id61583933076171"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id731583933076815">oDlg.Activate() As Boolean</paragraph>
@@ -270,7 +261,6 @@
       <paragraph role="bascode" localize="false" id="bas_id361598179135096">oDlg.Activate()</paragraph>
    </bascode>
    </section>
-
    <section id="Controls">
    <comment> Controls -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41584541257826">
@@ -300,7 +290,6 @@
       <paragraph role="bascode" localize="false" id="bas_id921598185495193">Set myControl = myDialog.Controls("myTextBox")</paragraph>
    </bascode>
    </section>
-
    <section id="EndExecute">
    <comment> EndExecute -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
@@ -324,7 +313,6 @@
       <paragraph role="bascode" localize="false" id="bas_id91598186155632">End Sub</paragraph>
    </bascode>
    </section>
-
    <section id="Execute">
    <comment> Execute -------------------------------------------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id351598186461621">
@@ -360,7 +348,6 @@
       <paragraph role="bascode" id="bas_id781612273203518">End Select</paragraph>
    </bascode>
    </section>
-
    <section id="Terminate">
    <comment> Terminate -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953729">
@@ -377,13 +364,10 @@
       <paragraph role="bascode" localize="false" id="bas_id121598187953168">oDlg.Terminate()</paragraph>
    </bascode>
    </section>
-
    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
-
    <section id="relatedtopics">
       <embed href="text/sbasic/shared/03/sf_dialogcontrol.xhp#ctrls_h1"/>
       <embed href="text/sbasic/shared/03/sf_ui.xhp#UIService"/>
    </section>
-
 </body>
 </helpdocument>
