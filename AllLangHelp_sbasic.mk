@@ -85,6 +85,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03/sf_exception \
     helpcontent2/source/text/sbasic/shared/03/sf_ui \
     helpcontent2/source/text/sbasic/shared/03/sf_document \
+    helpcontent2/source/text/sbasic/shared/03/sf_session \
     helpcontent2/source/text/sbasic/shared/03/sf_string \
     helpcontent2/source/text/sbasic/shared/03/sf_timer \
     helpcontent2/source/text/sbasic/shared/03/lib_schedule \
