@@ -82,12 +82,13 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03/sf_dialog \
     helpcontent2/source/text/sbasic/shared/03/sf_dialogcontrol \
     helpcontent2/source/text/sbasic/shared/03/sf_dictionary \
-    helpcontent2/source/text/sbasic/shared/03/sf_exception \
-    helpcontent2/source/text/sbasic/shared/03/sf_ui \
     helpcontent2/source/text/sbasic/shared/03/sf_document \
+    helpcontent2/source/text/sbasic/shared/03/sf_exception \
+    helpcontent2/source/text/sbasic/shared/03/sf_filesystem \
     helpcontent2/source/text/sbasic/shared/03/sf_session \
     helpcontent2/source/text/sbasic/shared/03/sf_string \
     helpcontent2/source/text/sbasic/shared/03/sf_timer \
+    helpcontent2/source/text/sbasic/shared/03/sf_ui \
     helpcontent2/source/text/sbasic/shared/03/lib_schedule \
     helpcontent2/source/text/sbasic/shared/03/lib_template \
     helpcontent2/source/text/sbasic/shared/03/lib_wikieditor \
