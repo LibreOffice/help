@@ -46,7 +46,7 @@
      <paragraph role="bascode" localize="false" id="bas_id961582814720760">Dim session As Variant</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id651582814720203">session = CreateScriptService("Session")</paragraph>
     </bascode>
-  
+
   <h2 id="hd_id291582814720762" xml-lang="en-US">Constants</h2>
     <paragraph role="paragraph" id="par_id82158281472034" xml-lang="en-US">Below is a list of constants available to ease the designation of the library containing a Basic or Python script to invoke.
    <br />Use them as <literal>session.CONSTANT</literal>.</paragraph>
@@ -164,7 +164,7 @@
         </tablecell>
      </tablerow>
     </table>
-  
+
 <table id="tab_id501611613601554">
    <tablerow>
      <tablecell colspan="3"><paragraph id="par_id891611613601554" role="tablehead" xml-lang="en-US">List of Methods in the Session Service</paragraph></tablecell>
@@ -196,7 +196,7 @@
        </tablecell>
    </tablerow>
 </table>
-  
+
    <tip id="par_id491613061572993"><literal>Session</literal> service methods behave as follows:
       <br />Arguments are passed by value. Updates performed by the called function are not sent back to the calling script.
       <br />A single value or an array of values is returned to the calling script.
@@ -227,7 +227,7 @@
       <paragraph role="bascode" id="bas_id61582815407231" xml-lang="en-US">' Xray returns no value</paragraph>
    </bascode>
    </section>
-  
+
    <section id="ExecuteCalcFunction">
    <comment> ExecuteCalcFunction -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id571582816585180">
@@ -235,13 +235,13 @@
    </bookmark>
    <h2 id="hd_id551582816585181" localize="false">ExecuteCalcFunction</h2>
    <paragraph role="paragraph" id="par_id111582816585181">Execute a Calc function using its English name and based on the given arguments.
-      <br />If the arguments are arrays, the function is executed as an array function.</paragraph>
+      <br />If the arguments are arrays, the function is executed as an <link href="text/scalc/01/04060107.xhp" name="array formula">array formula</link>.</paragraph>
    <h3 id="hd_id391582816585182"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id391582816585182">session.ExecuteCalcFunction(CalcFunction As String, arg0, ...) As Variant</paragraph>
    </bascode>
    <h3 id="hd_id711582816585182"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id771582816585183"><emph>CalcFunction</emph>: The english name of the function to execute.</paragraph>
+   <paragraph role="paragraph" id="par_id771582816585183"><emph>CalcFunction</emph>: The English name of the function to execute.</paragraph>
    <paragraph role="paragraph" id="par_id371582816585183"><emph>arg0, ...</emph>: The arguments to provide to the called Calc function. Each argument must be either a string, a numeric value or an array of arrays combining those types.</paragraph>
    <h3 id="hd_id891582816585184"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
@@ -251,7 +251,7 @@
       <paragraph role="bascode" id="bas_id881582816585185" xml-lang="en-US">' Generates an error.</paragraph>
    </bascode>
    </section>
-  
+
    <section id="ExecutePythonScript">
    <comment> ExecutePythonScript -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id671582818023244">
@@ -280,7 +280,7 @@
       <paragraph role="bascode" localize="false" id="bas_id101582818023248">session.ExecutePythonScript(session.SCRIPTISSHARED, "Capitalise.py$getNewString", "Abc") ' "abc"</paragraph>
    </bascode>
    </section>
-  
+
    <section id="HasUnoMethod">
    <comment> HasUnoMethod -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id901587477335292">
@@ -302,7 +302,7 @@
       <paragraph role="bascode" localize="false" id="bas_id671587477335639">MsgBox session.HasUnoMethod(a, "callFunction")</paragraph>
    </bascode>
    </section>
-  
+
    <section id="HasUnoProperty">
    <comment> HasUnoProperty -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id511587477832348">
@@ -324,7 +324,7 @@
       <paragraph role="bascode" localize="false" id="bas_id90158747783219">MsgBox session.HasUnoProperty(a, "Wildcards")</paragraph>
    </bascode>
    </section>
-  
+
    <section id="OpenURLInBrowser">   
    <comment> OpenURLInBrowser -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id321601129640799">
@@ -343,14 +343,14 @@
       <paragraph role="bascode" localize="false" id="bas_id781601129640527">session.OpenURLInBrowser("https://docs.python.org/3/library/webbrowser.html")</paragraph>
    </bascode>
    </section>
-  
+
    <section id="RunApplication">
    <comment> RunApplication -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id121582819697896">
       <bookmark_value>Session service;RunApplication</bookmark_value>
    </bookmark>
    <h2 id="hd_id511582819697896" localize="false">RunApplication</h2>
-   <paragraph role="paragraph" id="par_id311582819697897">Executes an arbitrary system command and returns <literal>True </literal> if it was launched successfully.</paragraph>
+   <paragraph role="paragraph" id="par_id311582819697897">Executes an arbitrary system command and returns <literal>True</literal> if it was launched successfully.</paragraph>
    <h3 id="hd_id751582819697897"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id881582819697898">session.RunApplication(Command As String, Parameters As String) As Boolean</paragraph>
@@ -365,7 +365,7 @@
       <paragraph role="bascode" localize="false" id="bas_id641582819697901">session.RunApplication("kate", "/home/me/install.txt") ' GNU/Linux</paragraph>
    </bascode>
    </section>
-  
+
    <section id="SendMail">
    <comment> SendMail -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id601601030349204">
@@ -393,7 +393,7 @@
       <paragraph role="bascode" localize="false" id="bas_id971601033015034">    )</paragraph>
    </bascode>
    </section>
-  
+
    <section id="UnoMethods">
    <comment> UnoMethods -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id701587478024358">
@@ -414,7 +414,7 @@
       <paragraph role="bascode" localize="false" id="bas_id211587478024770">MsgBox SF_Array.Contains(session.UnoMethods(a), "callFunction")</paragraph>
    </bascode>
    </section>
-  
+
    <section id="UnoProperties">
    <comment> UnoProperties -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id57158747834361">
@@ -435,7 +435,7 @@
       <paragraph role="bascode" localize="false" id="bas_id101587478343422">MsgBox SF_Array.Contains(session.UnoProperties(a), "Wildcards")</paragraph>
    </bascode>
    </section>
-  
+
    <section id="UnoObjectType">
    <comment> UnoObjectType -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id221582820251346">
@@ -484,6 +484,7 @@
    <section id="relatedtopics">
       <embed href="text/sbasic/guide/basic_2_python.xhp#basic2python"/>
       <embed href="text/sbasic/shared/calc_functions.xhp#CallingCalcFunctionsh1"/>
+      <embed href="text/sbasic/shared/03/sf_filesystem.xhp#FileSystemService"/>
    </section>
 
 </body>
