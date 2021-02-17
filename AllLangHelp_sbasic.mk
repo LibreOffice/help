@@ -69,6 +69,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/02/11180000 \
     helpcontent2/source/text/sbasic/shared/02/11190000 \
     helpcontent2/source/text/sbasic/shared/02/20000000 \
+    helpcontent2/source/text/sbasic/shared/03/avail_release \
     helpcontent2/source/text/sbasic/shared/03/lib_tools \
     helpcontent2/source/text/sbasic/shared/03/lib_euro \
     helpcontent2/source/text/sbasic/shared/03/lib_depot \
