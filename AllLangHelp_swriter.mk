@@ -248,6 +248,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/02/19030000 \
     helpcontent2/source/text/swriter/02/19040000 \
     helpcontent2/source/text/swriter/02/19050000 \
+    helpcontent2/source/text/swriter/02/add_to_list \
     helpcontent2/source/text/swriter/02/word_count_stb \
     helpcontent2/source/text/swriter/04/01020000 \
     helpcontent2/source/text/swriter/guide/anchor_object \
