@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_L10N" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">ScriptForge.L10N service</title>
+    <filename>/text/sbasic/shared/03/sf_l10n.xhp</filename>
+  </topic>
+</meta>
+<body>
+<section id="ScriptForge-sf_l10n">
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id571585843652319">
+      <bookmark_value>L10N service</bookmark_value>
+   </bookmark>
+</section>
+
+<section id="abstract">
+    <h1 id="hd_id521585843652750" xml-lang="en-US"><variable id="L10NService"><link href="text/sbasic/shared/03/sf_l10n.xhp" name="L10N service"><literal>ScriptForge</literal>.<literal>L10N</literal> service</link></variable></h1>
+
+    <paragraph role="paragraph" xml-lang="en-US" id="par_id411585843652556">This service provides a number of methods related to the translation of strings with minimal impact on the program's source code. The methods provided by the <literal>L10N</literal> service can be used mainly to:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id601614351922212" role="listitem">Create POT files tha can be used as templates for translation of all strings in the program.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id131614352196513" role="listitem">Get translated strings at runtime for the language defined in the <literal>Locale</literal> property.</paragraph>
+      </listitem>
+    </list>
+</section>
+
+    <tip id="par_id811614352321187">The <literal>L10N</literal> service is based on the GNU implementation of PO (portable object) files. To learn more about this file format, visit <link href="https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html" name="GetText">GNU GetText Utilities: PO Files</link>.</tip>
+    <paragraph role="paragraph" id="par_id291585843652438" xml-lang="en-US">PO files have long been promoted in the free software community as a means to providing multilingual user interfaces. This is accomplished through the use of human-readable text files with a well defined structure that specifies, for any given language, the source language string and the localized string.</paragraph>
+    <paragraph role="paragraph" id="par_id181585843652814" xml-lang="en-US">The main advantage of the PO format is dissociation of the programmer and the translator. PO files are independent text files, so the programmer can send POT template files to translators, who will then translate their contents and return the translated PO files for each supported language.</paragraph>
+    <paragraph role="paragraph" id="par_id91585843652832" xml-lang="en-US">This service implements the 3 methods listed below:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id1158584365237"  role="listitem" xml-lang="en-US"><emph>AddText</emph>: Used by the programmer to build a set of strings that will be translated later.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id681585843652331"  role="listitem" xml-lang="en-US"><emph>ExportToPOTFile</emph>: Exports the strings added by the <literal>AddText</literal> method to a POT file.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id531585843652697"  role="listitem" xml-lang="en-US"><emph>GetText</emph>: Gets the translated strings at runtime.</paragraph>
+      </listitem>
+    </list>
+    <note id="par_id361614361362393">Note that the first two methods are used to build a set of translatable strings and export them to a POT file. However, it is not mandatory to create POT files using these methods. Since they are text files, the programmer could have created them using any text editor.</note>
+
+    <h2 id="hd_id351585843652312" xml-lang="en-US">Service invocation</h2>
+    <paragraph role="paragraph" id="par_id421614353247163">To invoke the <literal>L10N</literal> service, two optional arguments can be specified to determine the folder where PO files are located and the locale to be used, as described below.</paragraph>
+    <h3 id="hd_id261585843652264" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <bascode>
+        <paragraph role="bascode" localize="false" id="bas_id73158584365294">CreateScriptService("L10N" [, FolderName As String [, Locale as String]])</paragraph>
+    </bascode>
+    <paragraph role="paragraph" id="par_id331585843652877" xml-lang="en-US"><emph>FolderName</emph>: The folder containing the PO files. It must be expressed in the <literal>FileSystem.FileNaming</literal> notation.</paragraph>
+    <paragraph role="paragraph" id="par_id581585843652789" xml-lang="en-US"><emph>Locale</emph>: A string in the form "la-CO" (language-COUNTRY) or in the form "la" (language) only.</paragraph>
+    <note id="par_id301614358956087">Several instances of the <literal>L10N</literal> service may coexist. However, each instance must use a separate directory for its PO files.</note>
+    <h3 id="hd_id481585843652711" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+    <paragraph role="paragraph" id="par_id891614358528334">The following example instantiates the <literal>L10N</literal> service without any optional arguments. This will only enable the <literal>AddText</literal> and <literal>ExportToPOTFile</literal> methods.</paragraph>
+    <bascode>
+        <paragraph role="bascode" localize="false" id="bas_id891585843652669">GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
+        <paragraph role="bascode" localize="false" id="bas_id821585843652135">Dim myPO As Variant</paragraph>
+        <paragraph role="bascode" localize="false" id="bas_id151585843652269">Set myPO = CreateScriptService("L10N")</paragraph>
+    </bascode>
+    <paragraph role="paragraph" id="par_id611614358672609">The example below specifies the folder containing the PO files. Because the locale is not defined, the service instance will use the current %PRODUCTNAME locale settings.</paragraph>
+    <bascode>
+      <paragraph role="bascode" id="bas_id451614358683971">Set myPO = CreateScriptService("L10N", "C:\myPOFiles\")</paragraph>
+    </bascode>
+    <paragraph role="paragraph" id="par_id321614358809763">Ine the example below, both the folder name and locale settings are explicitly defined to be Belgian French.</paragraph>
+    <bascode>
+      <paragraph role="bascode" id="bas_id661614358846464">Set myPO = CreateScriptService("L10N", "C:\myPOFiles\", "fr-BE")</paragraph>
+    </bascode>
+    <paragraph role="tip" id="par_id411585843652496" xml-lang="en-US">PO files must be named in the form "la-CO.po" or "la.po", where "la" refers to the language and "CO" is the country. Some examples are: "en-US.po", "fr-BE.po" or "fr.po".</paragraph>
+    <paragraph role="paragraph" id="par_id171585843652545" xml-lang="en-US">It is recommended to free resources after use:</paragraph>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id891585843652617">Set myPO = myPO.Dispose()</paragraph>
+    </bascode>
+
+<bookmark xml-lang="en-US" branch="index" id="bm_id871614359551930">
+  <bookmark_value>L10N service;Folder</bookmark_value>
+  <bookmark_value>L10N service;Languages</bookmark_value>
+  <bookmark_value>L10N service;Locale</bookmark_value>
+</bookmark>
+<h2 id="hd_id561585843652465" xml-lang="en-US">Properties</h2>
+  <table id="tab_id711585843652120">
+      <tablerow>
+          <tablecell>
+              <paragraph id="par_id181585843652958" role="tablehead" xml-lang="en-US">Name</paragraph>
+          </tablecell>
+          <tablecell>
+              <paragraph id="par_id741585843652162" role="tablehead" xml-lang="en-US">Readonly</paragraph>
+          </tablecell>
+          <tablecell>
+              <paragraph id="par_id291585843652823" role="tablehead" xml-lang="en-US">Type</paragraph>
+          </tablecell>
+          <tablecell>
+              <paragraph id="par_id351585843652638" role="tablehead" xml-lang="en-US">Description</paragraph>
+          </tablecell>
+      </tablerow>
+      <tablerow>
+          <tablecell>
+              <paragraph id="par_id781585843652397" role="tablecontent" xml-lang="en-US" localize="false">Folder</paragraph>
+          </tablecell>
+          <tablecell>
+              <paragraph id="par_id451585843652928" role="tablecontents" xml-lang="en-US">Yes</paragraph>
+          </tablecell>
+          <tablecell>
+              <paragraph id="par_id351585843652874" role="tablecontents" xml-lang="en-US" localize="false">String</paragraph>
+          </tablecell>
+          <tablecell>
+              <paragraph id="par_id751585843652642" role="tablecontent" xml-lang="en-US">The folder containing the PO files (see the <link href="text/sbasic/shared/03/sf_filesystem.xhp#bm_id901612991354326" name="FileNaming property"><literal>FileSystem.FileNaming</literal></link> property to learn about the notation used).</paragraph>
+          </tablecell>
+      </tablerow>
+      <tablerow>
+          <tablecell>
+              <paragraph id="par_id161585843652104" role="tablecontent" xml-lang="en-US" localize="false">Languages</paragraph>
+          </tablecell>
+          <tablecell>
+              <paragraph id="par_id96158584365279" role="tablecontents" xml-lang="en-US">Yes</paragraph>
+          </tablecell>
+          <tablecell>
+              <paragraph id="par_id611585843652345" role="tablecontents" xml-lang="en-US" localize="false">Array</paragraph>
+          </tablecell>
+          <tablecell>
+              <paragraph id="par_id331585843652912" role="tablecontent" xml-lang="en-US">A zero-based array listing all the base names (without the ".po" extension) of the PO-files found in the specified <literal>Folder</literal>.</paragraph>
+          </tablecell>
+      </tablerow>
+      <tablerow>
+          <tablecell>
+              <paragraph id="par_id721585843652496" role="tablecontent" xml-lang="en-US" localize="false">Locale</paragraph>
+          </tablecell>
+          <tablecell>
+              <paragraph id="par_id961585843652589" role="tablecontents" xml-lang="en-US">Yes</paragraph>
+          </tablecell>
+          <tablecell>
+              <paragraph id="par_id611585843652290" role="tablecontents" xml-lang="en-US" localize="false">String</paragraph>
+          </tablecell>
+          <tablecell>
+              <paragraph id="par_id561585843652947" role="tablecontent" xml-lang="en-US">The currently active language-COUNTRY combination. This property will be initially empty if the service was instantiated without any of the optional arguments.</paragraph>
+          </tablecell>
+      </tablerow>
+    </table>
+
+<table id="tab_id551614360519973">
+   <tablerow>
+       <tablecell colspan="3">
+           <paragraph id="par_id231614360519973" role="tablehead">List of Methods in the L10N Service</paragraph>
+       </tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+         <paragraph id="par_id611614360519255" role="tablecontent" localize="false">
+           <link href="text/sbasic/shared/03/sf_l10n.xhp#AddText" name="AddText">AddText</link>
+         </paragraph>
+       </tablecell>
+       <tablecell>
+         <paragraph id="par_id611614360519104" role="tablecontent" localize="false">
+           <link href="text/sbasic/shared/03/sf_l10n.xhp#ExportToPOTFile" name="ExportToPOTFile">ExportToPOTFile</link>
+         </paragraph>
+       </tablecell>
+       <tablecell>
+         <paragraph id="par_id611614360518452" role="tablecontent" localize="false">
+           <link href="text/sbasic/shared/03/sf_l10n.xhp#GetText" name="GetText">GetText</link>
+         </paragraph>
+       </tablecell>
+   </tablerow>
+</table>
+
+
+<section id="AddText">
+  <comment> AddText -------------------------------------------------------------------------------------------------------------------------- </comment>
+     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id951585843652555">
+         <bookmark_value>L10N service;AddText</bookmark_value>
+     </bookmark>
+  <h2 id="hd_id191585843652902" localize="false">AddText</h2>
+  <paragraph role="paragraph" id="par_id1001585843652271">Adds a new entry in the list of localizable strings. It must not exist yet.</paragraph>
+    <h3 id="hd_id151585843652710" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+     <bascode>
+       <paragraph role="bascode" localize="false" id="bas_id331585843652512">myPO.AddText(Context As String, MsgId As String, [Comment As String]) As Boolean</paragraph>
+     </bascode>
+    <h3 id="hd_id21585843652323" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+    <paragraph role="paragraph" id="par_id391585843652753"><emph>Context</emph>: The key to retrieve the translated string with the <literal>GetText</literal> method. This parameter has a default value of "".</paragraph>
+    <paragraph role="paragraph" id="par_id581585844419114" xml-lang="en-US"><emph>MsgId</emph>: The untranslated string, i.e. the text appearing in the program code. It must not be empty. The MsgId becomes the key to retrieve the translated string via <literal>GetText</literal> method when <literal>Context</literal> is empty.</paragraph>
+    <paragraph role="paragraph" id="par_id311614361926844">The <literal>MsgId</literal> may contain up to 9 placeholders (%1 ... %9) for dynamically modifying the string at runtime.</paragraph>
+    <paragraph role="paragraph" id="par_id541585844475331" xml-lang="en-US"><emph>Comment</emph>: Optional comment to be added alongside the string to help translators.</paragraph>
+    <h3 id="hd_id741585843652525" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+    <paragraph role="paragraph" id="par_id461614364298440">The example below creates a set of strings in English:</paragraph>
+     <bascode>
+       <paragraph role="bascode" localize="false" id="bas_id61585843652630">myPO.AddText(, "This is a string to be included in a POT file")</paragraph>
+       <paragraph role="bascode" localize="false" id="bas_id61585843652141">myPO.AddText("CTX1", "A string with a context")</paragraph>
+       <paragraph role="bascode" localize="false" id="bas_id61585843653298">myPO.AddText(, "Provide a String value", Comment := "Do not translate the word String")</paragraph>
+     </bascode>
+</section>
+
+<section id="ExportToPOTFile">
+  <comment> ExportToPOTFile -------------------------------------------------------------------------------------------------------------------------- </comment>
+     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id471586102707389">
+         <bookmark_value>L10N service;ExportToPOTFile</bookmark_value>
+     </bookmark>
+     <h2 id="hd_id231586102707125" localize="false">ExportToPOTFile</h2>
+     <paragraph role="paragraph" id="par_id281586102707242">Exports a set of untranslated strings as a POT file.</paragraph>
+     <paragraph role="paragraph" id="par_id711586102939257" xml-lang="en-US">To build a set of strings you can use either a succession of <literal>AddText</literal> method calls, or by a successful invocation of the <literal>L10N</literal> service with the <literal>FolderName</literal> argument present. It is also possible to use a combination of both techniques.</paragraph>
+     <h3 id="hd_id961586102707388" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+     <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id961586102707920">myPO.ExportToPOTFile(FileName As String, [Header As String], [Encoding As String])</paragraph>
+     </bascode>
+     <h3 id="hd_id271586102707123" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+     <paragraph role="paragraph" id="par_id31586102707537"><emph>FileName</emph>: The output file in <literal>FileSystem.FileNaming</literal> notation.</paragraph>
+     <paragraph role="paragraph" id="par_id851586102707579" xml-lang="en-US"><emph>Header</emph>: Comments that will be added on top of the generated POT file.</paragraph>
+     <paragraph role="paragraph" id="par_id111614364686973">Do not include any leading "#" characters. If you want the header to be broken into multiple lines, insert escape sequences (\n) where relevant. A standard header will be added alongside the text specified in the <literal>Header</literal> argument.</paragraph>
+     <paragraph role="paragraph" id="par_id5158610270728" xml-lang="en-US"><emph>Encoding</emph>: The character set to be used (Default = "UTF-8").</paragraph>
+     <h3 id="hd_id421586102707515" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+     <bascode>
+         <paragraph role="bascode" localize="false" id="bas_id891586102707992">myPO.ExportToPOTFile("myFile.pot", Header := "First line of the header\nSecond line of the header")</paragraph>
+    </bascode>
+    <note id="par_id581614364494235">The generated file should successfully pass the <literal>msgfmt --check</literal> GNU command.</note>
+</section>
+
+<section id="GetText">
+  <comment> GetText -------------------------------------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id131586165768747">
+        <bookmark_value>L10N service;GetText</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id56158616576884" localize="false">GetText</h2>
+    <paragraph role="paragraph" id="par_id891586165768715">Gets the translated string corresponding to the given <literal>MsgId</literal> argument.</paragraph>
+    <paragraph role="paragraph" id="par_id291614365296959">A list of arguments may be specified to replace the placeholders (%1, %2, ...) in the string.</paragraph>
+    <paragraph role="paragraph" id="par_id231586166181909" xml-lang="en-US">If no translated string is found, the method returns the untranslated string after replacing the placeholders with the specified arguments.</paragraph>
+    <h3 id="hd_id461586165768714" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <paragraph role="paragraph" id="par_id871586352505927" xml-lang="en-US">This method can be called either by the full name <literal>GetText</literal> or by the shortcut <literal>_</literal> (a single underscore):</paragraph>
+    <bascode>
+        <paragraph role="bascode" localize="false" id="bas_id901586165768628">myPO.GetText(MsgId As String[, Arg1[, Arg2[, ...]]]) As String</paragraph>
+        <paragraph role="bascode" localize="false" id="bas_id151586352401577">myPO._(MsgId As String[, Arg1[, Arg2[, ...]]]) As String</paragraph>
+    </bascode>
+    <h3 id="hd_id771586165768201" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+    <paragraph role="paragraph" id="par_id51586165768525" xml-lang="en-US"><emph>MsgId</emph>: The untranslated string, i.e. the text appearing in the program code. It must not be empty. It may contain placeholders (%1 ... %9) that can be used to dinamically insert text at runtime.</paragraph>
+    <paragraph role="paragraph" id="par_id11614365537450">Besides using a single <literal>MsgId</literal> string, this method also accepts the following formats:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id961614365557277" role="listitem">The <literal>Context</literal> string with which the method will retrieve the <literal>MsgId</literal> in the PO file, or;</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id981614365589866" role="listitem">A combination <literal>Context|MsgId</literal>, instructing the method to retrieve the <literal>MsgId</literal> using specified <literal>Context</literal> value. The second part of the argument is used to improve code readability.</paragraph>
+      </listitem>
+    </list>
+    <paragraph role="paragraph" id="par_id571586165768106" xml-lang="en-US"><emph>Arg1, ...</emph>: Values to be inserted into the placeholders. Any variable type is allowed, however only strings, numbers and dates will be considered.</paragraph>
+    <h3 id="hd_id791586165768980" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+    <paragraph role="paragraph" id="par_id701614365961454">Consider the following code is running on a %PRODUCTNAME instalation with locale set to "es-ES". Additionally, there is a file "es-ES.po" inside the specified folder that translates the string passed to the <literal>GetText</literal> method:</paragraph>
+    <bascode>
+      <paragraph role="bascode" id="bas_id171614366110835">myPO = CreateScriptService("L10N", "c:\MyPOFolder\")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id861586165768104">myPO.GetText("Welcome %1! Hope you enjoy this program", "John")</paragraph>
+      <paragraph role="bascode" id="bas_id1001586166834936">' "¡Bienvenido John! Espero que disfrutes de este programa"</paragraph>
+    </bascode>
+</section>
+
+    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+    <section id="relatedtopics">
+      <embed href="text/sbasic/shared/03/sf_filesystem.xhp#FileSystemService"/>
+      <paragraph role="paragraph" id="par_id301613075694148"><link href="text/sbasic/guide/translation.xhp" name="Controls Translation"> Translation of Controls in the Dialog Editor</link></paragraph>
+    </section>
+</body>
+</helpdocument>
