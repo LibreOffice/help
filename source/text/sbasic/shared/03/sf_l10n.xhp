@@ -36,10 +36,11 @@
     </list>
 </section>
 
-    <tip id="par_id811614352321187">The <literal>L10N</literal> service is based on the GNU implementation of PO (portable object) files. To learn more about this file format, visit <link href="https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html" name="GetText">GNU gettext Utilities: PO Files</link>.</tip>
+    <note id="par_id971614966420419">The acronym <literal>L10N</literal> stands for Localization and refers to a set of procedures for translating software to a specific country or region.</note>
     <paragraph role="paragraph" id="par_id291585843652438" xml-lang="en-US">PO files have long been promoted in the free software community as a means to providing multilingual user interfaces. This is accomplished through the use of human-readable text files with a well defined structure that specifies, for any given language, the source language string and the localized string.</paragraph>
     <paragraph role="paragraph" id="par_id181585843652814" xml-lang="en-US">The main advantage of the PO format is dissociation of the programmer and the translator. PO files are independent text files, so the programmer can send POT template files to translators, who will then translate their contents and return the translated PO files for each supported language.</paragraph>
-    <paragraph role="paragraph" id="par_id91585843652832" xml-lang="en-US">This service implements the three methods listed below:</paragraph>
+    <tip id="par_id811614352321187">The <literal>L10N</literal> service is based on the GNU implementation of PO (portable object) files. To learn more about this file format, visit <link href="https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html" name="GetText">GNU gettext Utilities: PO Files</link>.</tip>  
+  <paragraph role="paragraph" id="par_id91585843652832" xml-lang="en-US">This service implements the three methods listed below:</paragraph>
     <list type="unordered">
       <listitem>
         <paragraph id="par_id1158584365237"  role="listitem" xml-lang="en-US"><emph>AddText</emph>: Used by the programmer to build a set of strings that will be translated later.</paragraph>
@@ -238,6 +239,7 @@
         <paragraph role="bascode" localize="false" id="bas_id901586165768628">myPO.GetText(MsgId As String[, Arg1[, Arg2[, ...]]]) As String</paragraph>
         <paragraph role="bascode" localize="false" id="bas_id151586352401577">myPO._(MsgId As String[, Arg1[, Arg2[, ...]]]) As String</paragraph>
     </bascode>
+    <note id="par_id421614967136502">In the ScriptForge library, all methods starting with the "_" character are reserved for internal use only. However, the shortcut <literal>_</literal> used for <literal>GetText</literal> is the only exception to this rule, hence it can be safely used in Basic scripts.</note>
     <h3 id="hd_id771586165768201" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
     <paragraph role="paragraph" id="par_id51586165768525" xml-lang="en-US"><emph>MsgId</emph>: The untranslated string, which is the text appearing in the program code. It must not be empty. It may contain any number of placeholders (%1 %2 %3 ...) that can be used to dynamically insert text at runtime.</paragraph>
     <paragraph role="paragraph" id="par_id11614365537450">Besides using a single <literal>MsgId</literal> string, this method also accepts the following formats:</paragraph>
