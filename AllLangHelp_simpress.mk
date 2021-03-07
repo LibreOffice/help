@@ -215,6 +215,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/main0213 \
     helpcontent2/source/text/simpress/main0214 \
     helpcontent2/source/text/simpress/main0503 \
+    helpcontent2/source/text/simpress/submenu_object_shape \
 ))
 
 # vim: set noet sw=4 ts=4:
