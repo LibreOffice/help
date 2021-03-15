@@ -20,619 +20,1003 @@
  -->
 
 
-<meta>
-      <topic id="textscalc0104060101xml" indexer="include">
-         <title xml-lang="en-US" id="tit">Database Functions</title>
-         <filename>/text/scalc/01/04060101.xhp</filename>
-      </topic>
-   </meta>
-   <body>
-<bookmark xml-lang="en-US" branch="index" id="bm_id3148946"><bookmark_value>Function Wizard; databases</bookmark_value>
-      <bookmark_value>functions; database functions</bookmark_value>
-      <bookmark_value>databases; functions in $[officename] Calc</bookmark_value>
+    <meta>
+        <topic id="textscalc0104060101xml" indexer="include">
+            <title xml-lang="en-US" id="tit">Database Functions</title>
+            <filename>/text/scalc/01/04060101.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+<bookmark xml-lang="en-US" branch="index" id="bm_id3148946">
+    <bookmark_value>Function Wizard; databases</bookmark_value>
+    <bookmark_value>functions; database functions</bookmark_value>
+    <bookmark_value>databases; functions in $[officename] Calc</bookmark_value>
 </bookmark>
-<h1 id="hd_id3148946">Database Functions</h1>
-      <paragraph xml-lang="en-US" id="par_id3145173" role="paragraph"><variable id="datenbanktext">This section deals with functions used with data organized as one row of data for one record.</variable></paragraph>
-      <note id="par_id3154016">The Database category may be confused with a database integrated in $[officename]. However, there is no connection between a database in $[officename] and the Database category in $[officename] Calc.</note>
-      <h3 id="hd_id3150329">Example Data:</h3>
-      <paragraph xml-lang="en-US" id="par_id3153713" role="paragraph">The following data will be used in some of the function description examples:</paragraph>
-      <paragraph xml-lang="en-US" id="par_id3155766" role="paragraph">The range A1:E10 lists the children invited to Joe's birthday party. The following information is given for each entry: column A shows the name, B the grade, then age in years, distance to school in meters and weight in kilograms.</paragraph>
-      <table id="tbl_id3159264">
-         <tablerow>
-            <tablecell>
-</tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3145232" role="tablehead">A</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3146316" role="tablehead">B</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150297" role="tablehead">C</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150344" role="tablehead">D</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150785" role="tablehead">E</paragraph>
-            </tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150090" role="tablecontent">1</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3152992" role="tablecontent">
-<item type="input">Name</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3155532" role="tablecontent">
-<item type="input">Grade</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3156448" role="tablecontent">
-<item type="input">Age</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3154486" role="tablecontent">
-<item type="input">Distance to School</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3152899" role="tablecontent">
-<item type="input">Weight</item>
-</paragraph>
-            </tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3153816" localize="false" role="tablecontent">2</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3151240" role="tablecontent">
-<item type="input">Andy</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3156016" localize="false" role="tablecontent"><item type="input">3</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3145073" localize="false" role="tablecontent"><item type="input">9</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3154956" localize="false" role="tablecontent"><item type="input">150</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3153976" localize="false" role="tablecontent"><item type="input">40</item></paragraph>
-            </tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150894" localize="false" role="tablecontent">3</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3152870" role="tablecontent">
-<item type="input">Betty</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3149692" localize="false" role="tablecontent"><item type="input">4</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3154652" localize="false" role="tablecontent"><item type="input">10</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3149381" localize="false" role="tablecontent"><item type="input">1000</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3153812" localize="false" role="tablecontent"><item type="input">42</item></paragraph>
-            </tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3146965" localize="false" role="tablecontent">4</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3155596" role="tablecontent">
-<item type="input">Charles</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3147244" localize="false" role="tablecontent"><item type="input">3</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3149871" localize="false" role="tablecontent"><item type="input">10</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3155752" localize="false" role="tablecontent"><item type="input">300</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3149052" localize="false" role="tablecontent"><item type="input">51</item></paragraph>
-            </tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3146097" localize="false" role="tablecontent">5</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3147296" role="tablecontent">
-<item type="input">Daniel</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150393" localize="false" role="tablecontent"><item type="input">5</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3145236" localize="false" role="tablecontent"><item type="input">11</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150534" localize="false" role="tablecontent"><item type="input">1200</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150375" localize="false" role="tablecontent"><item type="input">48</item></paragraph>
-            </tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3159121" localize="false" role="tablecontent">6</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150456" role="tablecontent">
-<item type="input">Eva</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3146886" localize="false" role="tablecontent"><item type="input">2</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3149945" localize="false" role="tablecontent"><item type="input">8</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3157904" localize="false" role="tablecontent"><item type="input">650</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3149352" localize="false" role="tablecontent"><item type="input">33</item></paragraph>
-            </tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150028" localize="false" role="tablecontent">7</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3145826" role="tablecontent">
-<item type="input">Frank</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150743" localize="false" role="tablecontent"><item type="input">2</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3154844" localize="false" role="tablecontent"><item type="input">7</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3148435" localize="false" role="tablecontent"><item type="input">300</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3148882" localize="false" role="tablecontent"><item type="input">42</item></paragraph>
-            </tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150140" localize="false" role="tablecontent">8</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3146137" role="tablecontent">
-<item type="input">Greta</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3148739" localize="false" role="tablecontent"><item type="input">1</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3148583" localize="false" role="tablecontent"><item type="input">7</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3154556" localize="false" role="tablecontent"><item type="input">200</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3155255" localize="false" role="tablecontent"><item type="input">36</item></paragraph>
-            </tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3145141" localize="false" role="tablecontent">9</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3153078" role="tablecontent">
-<item type="input">Harry</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3149955" localize="false" role="tablecontent"><item type="input">3</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150005" localize="false" role="tablecontent"><item type="input">9</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3155951" localize="false" role="tablecontent"><item type="input">1200</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3145169" localize="false" role="tablecontent"><item type="input">44</item></paragraph>
-            </tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3153571" localize="false" role="tablecontent">10</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3148761" role="tablecontent">
-<item type="input">Irene</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3149877" localize="false" role="tablecontent"><item type="input">2</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3154327" localize="false" role="tablecontent"><item type="input">8</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3155435" localize="false" role="tablecontent"><item type="input">1000</item></paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3145353" localize="false" role="tablecontent"><item type="input">42</item></paragraph>
-            </tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150662" localize="false" role="tablecontent">11</paragraph>
-            </tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150568" localize="false" role="tablecontent">12</paragraph>
-            </tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3149393" localize="false" role="tablecontent">13</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3153544" role="tablecontent">
-<item type="input">Name</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3158414" role="tablecontent">
-<item type="input">Grade</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3152820" role="tablecontent">
-<item type="input">Age</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3154866" role="tablecontent">
-<item type="input">Distance to School</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3150471" role="tablecontent">
-<item type="input">Weight</item>
-</paragraph>
-            </tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3153920" localize="false" role="tablecontent">14</paragraph>
-            </tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3148429" localize="false" role="tablecontent"><item type="input">&gt;600</item></paragraph>
-            </tablecell>
-            <tablecell>
-</tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3152588" localize="false" role="tablecontent">15</paragraph>
-            </tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-         </tablerow>
-         <tablerow>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3083286" localize="false" role="tablecontent">16</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3163823" role="tablecontent">
-<item type="input">DCOUNT</item>
-</paragraph>
-            </tablecell>
-            <tablecell>
-               <paragraph xml-lang="en-US" id="par_id3145083" localize="false" role="tablecontent"><item type="input">5</item></paragraph>
-            </tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-            <tablecell>
-</tablecell>
-         </tablerow>
-      </table>
 
-      <paragraph xml-lang="en-US" id="par_id3149282" role="paragraph">The formula in cell B16 is =DCOUNT(A1:E10;D1;A13:E14)</paragraph>
-      <h3 id="hd_id3150962">Database Function Parameters:</h3>
-      <paragraph xml-lang="en-US" id="par_id3155837" role="paragraph">The following items are the parameter definitions for all database functions:</paragraph>
-      <paragraph xml-lang="en-US" id="par_id3149453" role="paragraph">
-<emph>Database</emph> is the cell range defining the database. The first row of the range contains the field names, and following rows are records with corresponding field values.</paragraph>
-      <paragraph xml-lang="en-US" id="par_id3151272" role="paragraph">
-<emph>DatabaseField</emph> specifies the column where the function operates on after the search criteria of the first parameter is applied and the data rows are selected. It is not related to the search criteria itself. <variable id="quotes">For the DatabaseField parameter you can enter a reference to a header cell or a number to specify the column within the Database area, starting with 1. To reference a column by means of the literal column header name (from the first row of <emph>Database</emph> range), place quotation marks around the header name.
-</variable></paragraph>
-      <paragraph xml-lang="en-US" id="par_id3147083" role="paragraph">
-<emph>SearchCriteria</emph> is the cell range containing search criteria. Like <emph>Database</emph>, its first row is also field names, and following rows are conditions for related fields. If you write several criteria in one row they are connected by AND. If you write the criteria in different rows they are connected by OR. Empty cells in the search criteria range will be ignored.</paragraph>
-<paragraph xml-lang="en-US" id="par_id3151188" role="paragraph">Choose <link href="text/shared/optionen/01060500.xhp" name="Spreadsheet - Calculate"><switchinline select="sys"><caseinline select="MAC"><menuitem>%PRODUCTNAME - Preferences</menuitem></caseinline><defaultinline><menuitem>Tools - Options</menuitem></defaultinline></switchinline><menuitem> - %PRODUCTNAME Calc - Calculate</menuitem></link> to define how $[officename] Calc acts when searching for identical entries.</paragraph>
-      <paragraph xml-lang="en-US" id="par_id3882869" role="paragraph">See also the Wiki page about <link href="https://wiki.documentfoundation.org/Documentation/How_Tos/Conditional_Counting_and_Summation" name="wiki.documentfoundation.org Documentation/HowTo/Calc/Conditional Counting and Summation">Conditional Counting and Summation</link>.</paragraph>
-<sort order="asc">
-<section id="Section1">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3150882"><bookmark_value>DCOUNT function</bookmark_value>
-         <bookmark_value>counting rows;with numeric values</bookmark_value>
+        <h1 id="hd_id3148946">Database Functions</h1>
+        <h3 id="hd_id721616440441374">Overview</h3>      
+        <paragraph xml-lang="en-US" id="par_id3145173" role="paragraph"><variable id="datenbanktext">The twelve functions in the Database category help you to analyze a simple database that occupies a rectangular spreadsheet area comprising columns and rows, with the data organized as one row for each record.</variable> The header cell of each column displays the name of the column and that name usually reflects the contents of each cell in that column.</paragraph>
+        <paragraph role="paragraph" id="par_id631615842419413">The functions in the Database category take three arguments as follows:</paragraph>
+        <list type="ordered">
+            <listitem>
+                <paragraph id="par_id761615842549780" role="listitem"><emph>Database</emph>. The cell range of the database.</paragraph>
+            </listitem>
+            <listitem>
+                <paragraph id="par_id601615842657372" role="listitem"><emph>DatabaseField</emph>. The column containing the data to be used in the function’s calculations.</paragraph>
+            </listitem>
+            <listitem>
+                <paragraph id="par_id471615842721059" role="listitem"><emph>SearchCriteria</emph>. The cell range of a separate area of the spreadsheet containing search criteria.</paragraph>
+            </listitem>
+        </list>
+        <paragraph role="paragraph" id="par_id101615842794525">These arguments are described more fully below.</paragraph>
+        <paragraph role="paragraph" id="par_id241615842810077">All functions have the same outline concept of operation. The first logical step is to use the specified <emph>SearchCriteria</emph> to identify the subset of records in the <emph>Database</emph> that are to be used during subsequent calculations. The second step is to extract the data values and perform the calculations associated with the specific function (average, sum, product, and so on). The values processed are those in the <emph>DatabaseField</emph> column of the selected records.</paragraph>
+        <note id="par_id981615978852310">Calc treats dates and logical values (TRUE and FALSE) as numeric when calculating with these functions.</note>
+     
+        <h3 id="hd_id911615888814785">Database Function Arguments</h3>
+        <paragraph role="paragraph" id="par_id911615888833104">The following argument definitions apply for all functions in the Database category:</paragraph>
+        <list type="ordered">
+            <listitem>
+                <paragraph id="par_id21615889071992" role="listitem"><emph>Database argument</emph></paragraph>
+                <paragraph role="paragraph" id="par_id31615889105463"><emph>Database</emph> specifies the range of cells occupied by the database table. The first row of the range contains the field names, and subsequent rows are records with corresponding field values.</paragraph>
+                <paragraph role="paragraph" id="par_id521615889152497">One way of defining the range of cells is to enter the cell reference for the upper left-hand cell, followed by a colon (:), and then the lower right-hand cell reference. An example might be A1:E10.</paragraph>
+                <paragraph role="paragraph" id="par_id761615889163416">The <emph>Database</emph> argument may also be specified by passing the name of a named range or database range. Using a meaningful name to define the cell range can enhance formula readability and document maintenance. If the name does not match the name of a defined range, Calc reports a #NAME? error.</paragraph>
+                <paragraph role="paragraph" id="par_id601615889176137">Other errors that might be reported as a result of an invalid <emph>Database</emph> argument are #VALUE! and Err:504 (error in parameter list).</paragraph>
+            </listitem>
+            <listitem>
+                <paragraph id="par_id201615889390777" role="listitem"><emph>DatabaseField argument</emph></paragraph>
+                <paragraph role="paragraph" id="par_id431615889426480"><emph>DatabaseField</emph> specifies the column which the function will use for its calculations after the search criteria have been applied and the data rows have been selected. It is not related to the search criteria.</paragraph>
+                <paragraph role="paragraph" id="par_id661615889458032">Specify the <emph>DatabaseField</emph> argument in any of the following ways:</paragraph>
+                <section id="par_id191615890762881"><comment>Dummy section inserted to nest unordered list within ordered list.</comment>
+                    <list type="unordered">
+                        <listitem>
+                            <paragraph id="par_id981615889517841" role="listitem">By entering a reference to a header cell within the <emph>Database</emph> area. Alternatively, if the cell has been given a meaningful name as a named range or database range, enter that name. If the name does not match the name of a defined range, Calc reports a #NAME? error. If the name is valid but does not correspond to one cell only, Calc reports Err:504 (error in parameter list).</paragraph>
+                        </listitem>
+                        <listitem>
+                            <paragraph id="par_id551615889661457" role="listitem">By entering a number to specify the column within the <emph>Database</emph> area, starting with 1. For example, if a <emph>Database</emph> occupied the cell range D6:H123, then enter 3 to indicate the header cell at F6. Calc expects an integer value that lies between 1 and the number of columns defined within <emph>Database</emph> and ignores any digits after a decimal point. If the value is less than 1, Calc reports Err:504 (error in parameter list). If the value is greater than the number of columns in <emph>Database</emph>, Calc reports a #VALUE! error.</paragraph>
+                        </listitem>
+                        <listitem>
+                            <paragraph id="par_id561615889738472" role="listitem">By entering the literal column header name from the first row of the <emph>Database</emph> range, placing quotation marks around the header name. For example, “Distance to School”. If the string does not match one of the <emph>Database</emph> area’s column headings, Calc reports Err:504 (error in parameter list). You can also provide a reference to an arbitrary cell (not within the <emph>Database</emph> and <emph>SearchCriteria</emph> areas) that contains the required string.</paragraph>
+                        </listitem>
+                    </list>
+                </section>
+                <paragraph role="paragraph" id="par_id181615889841279">The <emph>DatabaseField</emph> argument is optional for the DCOUNT and DCOUNTA functions but it is required for the other ten Database functions.</paragraph>
+            </listitem>
+            <listitem>
+                <paragraph id="par_id841615891322513" role="listitem"><emph>SearchCriteria argument</emph></paragraph>
+                <paragraph role="paragraph" id="par_id351615891337585"><emph>SearchCriteria</emph> specifies the range of cells containing search criteria. Like <emph>Database</emph>, its first row is also field names, and subsequent rows are conditions for related fields. The <emph>Database</emph> and <emph>SearchCriteria</emph> areas need not be adjacent, or even on the same sheet.</paragraph>
+                <paragraph role="paragraph" id="par_id401615891342289">One way of defining the range of cells is to enter the cell reference for the upper left-hand cell, followed by a colon (:), and then the lower right-hand cell reference. For example, A13:B14. The cell range may also be specified by passing the name of a defined named range or database range. If the name does not match the name of a defined range, Calc reports a #NAME? error.</paragraph>
+                <paragraph role="paragraph" id="par_id861615891345281">Err:504 (error in parameter list) may also be reported as a result of an invalid <emph>SearchCriteria</emph> argument.</paragraph>
+                <paragraph role="paragraph" id="par_id901615891349688">The contents of the <emph>SearchCriteria</emph> area are described in more detail in the next section.</paragraph>
+            </listitem>
+
+        </list>
+     
+        <h3 id="hd_id481615892281210">Defining Search Criteria</h3>
+        <paragraph role="paragraph" id="par_id691615892329680">The number of columns occupied by the <emph>SearchCriteria</emph> area need not be the same as the width of the <emph>Database</emph> area. All headings that appear in the first row of <emph>SearchCriteria</emph> must be identical to headings in the first row of <emph>Database</emph>. However, not all headings in <emph>Database</emph> need appear in the first row of <emph>SearchCriteria</emph>, while a heading in <emph>Database</emph> can appear multiple times in the first row of <emph>SearchCriteria</emph>.</paragraph>   
+        <paragraph role="paragraph" id="par_id541615892358897">Search criteria are entered into the cells of the second and subsequent rows of the <emph>SearchCriteria</emph> area, below the row containing headings. Blank cells within the <emph>SearchCriteria</emph> area are ignored.</paragraph> 
+        <paragraph role="paragraph" id="par_id151615892882441">Create criteria in the cells of the <emph>SearchCriteria</emph> area using the comparison operators &lt;, &lt;=, =, &lt;&gt;, &gt;=, and &gt;. = is assumed if a cell is not empty but does not start with a comparison operator.</paragraph>
+        <paragraph role="paragraph" id="par_id561615893059337">If you write several criteria in one row, they are connected by AND. If you write several criteria in different rows, they are connected by OR.</paragraph>
+        <paragraph role="paragraph" id="par_id401615893095178">Criteria can be created using wildcards, providing that wildcards have been enabled via the <menuitem>Enable wildcards in formulas</menuitem> option on the <link href="text/shared/optionen/01060500.xhp" name="Spreadsheet - Calculate"><switchinline select="sys"><caseinline select="MAC"><menuitem>%PRODUCTNAME - Preferences</menuitem></caseinline><defaultinline><menuitem>Tools - Options</menuitem></defaultinline></switchinline><menuitem> - %PRODUCTNAME Calc - Calculate</menuitem></link> dialog. When interoperability with Microsoft Excel is important for your spreadsheet, this option should be enabled.</paragraph>
+        <paragraph role="paragraph" id="par_id921615893158111">Even more powerful criteria can be created using regular expressions, providing that regular expressions have been enabled via the <menuitem>Enable regular expressions in formulas</menuitem>  option on the <link href="text/shared/optionen/01060500.xhp" name="Spreadsheet - Calculate"><switchinline select="sys"><caseinline select="MAC"><menuitem>%PRODUCTNAME - Preferences</menuitem></caseinline><defaultinline><menuitem>Tools - Options</menuitem></defaultinline></switchinline><menuitem> - %PRODUCTNAME Calc - Calculate</menuitem></link> dialog.</paragraph>  
+     
+        <embed href="text/shared/00/00000001.xhp#regexnumex"/>
+     
+        <paragraph role="paragraph" id="par_id881615893236930">Another setting that affects how the search criteria are handled is the <menuitem>Search criteria = and &lt;&gt; must apply to whole cells</menuitem>  option on the <link href="text/shared/optionen/01060500.xhp" name="Spreadsheet - Calculate"><switchinline select="sys"><caseinline select="MAC"><menuitem>%PRODUCTNAME - Preferences</menuitem></caseinline><defaultinline><menuitem>Tools - Options</menuitem></defaultinline></switchinline><menuitem> - %PRODUCTNAME Calc - Calculate</menuitem></link> dialog. This option controls whether the search criteria you set for the Database functions must match the whole cell exactly. When interoperability with Microsoft Excel is important for your spreadsheet, this option should be enabled.</paragraph>
+     
+        <h3 id="hd_id3150329">Examples of Database Function Use</h3>
+        <paragraph xml-lang="en-US" id="par_id3153713" role="paragraph">The following table provides an example database table that is utilized to demonstrate how to use the functions in the Database category. The cell range A1:E10 contains fictitious information about the guests invited to Joe's birthday party. The following information is given for each guest - name, school grade, age in years, distance to school in meters, and weight in kilograms.</paragraph>
+
+        <table id="tbl_id3159264">
+            <tablerow>
+                <tablecell></tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3145232" localize="false" role="tablehead">A</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3146316" localize="false" role="tablehead">B</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150297" localize="false" role="tablehead">C</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150344" localize="false" role="tablehead">D</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150785" localize="false" role="tablehead">E</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150090" localize="false" role="tablehead">1</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3152992" role="tablecontent"><emph>Name</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3155532" role="tablecontent"><emph>Grade</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3156448" role="tablecontent"><emph>Age</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3154486" role="tablecontent"><emph>Distance</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3152899" role="tablecontent"><emph>Weight</emph></paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3153816" localize="false" role="tablehead">2</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3151240" role="tablecontent">Andy</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3156016" localize="false" role="tablecontent">3</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3145073" localize="false" role="tablecontent">9</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3154956" localize="false" role="tablecontent">150</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3153976" localize="false" role="tablecontent">40</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150894" localize="false" role="tablehead">3</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3152870" role="tablecontent">Betty</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3149692" localize="false" role="tablecontent">4</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3154652" localize="false" role="tablecontent">10</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3149381" localize="false" role="tablecontent">1000</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3153812" localize="false" role="tablecontent">42</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3146965" localize="false" role="tablehead">4</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3155596" role="tablecontent">Charles</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3147244" localize="false" role="tablecontent">3</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3149871" localize="false" role="tablecontent">10</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3155752" localize="false" role="tablecontent">300</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3149052" localize="false" role="tablecontent">51</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3146097" localize="false" role="tablehead">5</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3147296" role="tablecontent">Daniel</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150393" localize="false" role="tablecontent">5</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3145236" localize="false" role="tablecontent">11</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150534" localize="false" role="tablecontent">1200</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150375" localize="false" role="tablecontent">48</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3159121" localize="false" role="tablehead">6</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150456" role="tablecontent">Eva</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3146886" localize="false" role="tablecontent">2</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3149945" localize="false" role="tablecontent">8</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3157904" localize="false" role="tablecontent">650</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3149352" localize="false" role="tablecontent">33</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150028" localize="false" role="tablehead">7</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3145826" role="tablecontent">Frank</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150743" localize="false" role="tablecontent">2</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3154844" localize="false" role="tablecontent">7</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3148435" localize="false" role="tablecontent">300</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3148882" localize="false" role="tablecontent">42</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150140" localize="false" role="tablehead">8</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3146137" role="tablecontent">Greta</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3148739" localize="false" role="tablecontent">1</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3148583" localize="false" role="tablecontent">7</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3154556" localize="false" role="tablecontent">200</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3155255" localize="false" role="tablecontent">36</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3145141" localize="false" role="tablehead">9</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3153078" role="tablecontent">Harry</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3149955" localize="false" role="tablecontent">3</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150005" localize="false" role="tablecontent">9</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3155951" localize="false" role="tablecontent">1200</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3145169" localize="false" role="tablecontent">44</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3153571" localize="false" role="tablehead">10</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3148761" role="tablecontent">Irene</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3149877" localize="false" role="tablecontent">2</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3154327" localize="false" role="tablecontent">8</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3155435" localize="false" role="tablecontent">1000</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3145353" localize="false" role="tablecontent">42</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph xml-lang="en-US" id="par_id3150662" localize="false" role="tablehead">11</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+        </table>
+     
+        <paragraph role="paragraph" id="par_id221616245476190">The following six examples use the database table above, combined with different search criteria areas.</paragraph>
+     
+        <h4 id="hd_id861616245631924">Example 1</h4>
+        <table id="tab_id191616245640932">
+            <tablerow>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id441616245640933" localize="false" role="tablehead">A</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id291616245640933" localize="false" role="tablehead">B</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id881616245705884" localize="false" role="tablehead">C</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id301616245711996" localize="false" role="tablehead">D</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id191616245715444" localize="false" role="tablehead">E</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id841616245640933" localize="false" role="tablehead">12</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id891616245640933" role="tablecontent"><emph>Name</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id451616245640933" role="tablecontent"><emph>Grade</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id151616245818988" role="tablecontent"><emph>Age</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id481616245878460" role="tablecontent"><emph>Distance</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id741616245891772" role="tablecontent"><emph>Weight</emph></paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id641616245660252" localize="false" role="tablehead">13</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id41616246075884" role="tablecontent">&gt;600</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id321616245665844" localize="false" role="tablehead">14</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+        </table>
+
+        <paragraph role="paragraph" id="par_id451616246535763">As in this simple example, it is sometimes desirable (but not essential) to place the search criteria area directly under the database table, with the columns of the two areas vertically aligned. Blank entries in the search criteria area are ignored. With the above example database table and this search criteria area, insert the formula <item type="input">=DCOUNT(A1:E10;;A12:E14)</item> into an empty cell elsewhere in the sheet to count how many of Joe’s guests travel further than 600 meters to school. The value 5 is returned (counting Betty, Daniel, Eva, Harry, and Irene).</paragraph>
+        <paragraph role="paragraph" id="par_id731616246561901">Note also that the formula <item type="input">=DCOUNT(A1:E10;;D12:D13)</item> returns exactly the same value, demonstrating that it is only necessary for the search criteria area to contain relevant column headings. </paragraph>     
+        <h4 id="hd_id191616246773750">Example 2</h4>
+
+        <table id="tab_id861616246804093">
+            <tablerow>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id951616246804093" localize="false" role="tablehead">&#160;&#160;&#160;A&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id411616246804093" localize="false" role="tablehead">&#160;&#160;&#160;B&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id581616246838019" localize="false" role="tablehead">&#160;&#160;&#160;C&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id421616246860604" localize="false" role="tablehead">&#160;&#160;&#160;D&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id371616246868876" localize="false" role="tablehead">&#160;&#160;&#160;E&#160;&#160;&#160;</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id401616246804093" localize="false" role="tablehead">12</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id71616246804093" role="tablecontent"><emph>Age</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id41616250394431" role="tablecontent"><emph>Grade</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id991616250406886" localize="false" role="tablehead">13</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id71616250414319" role="tablecontent">&gt;7</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id531616250419463" localize="false" role="tablecontent">2</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id831616251223575" localize="false" role="tablehead">14</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+        </table>
+
+        <paragraph role="paragraph" id="par_id361616251794063">In this example the search criteria area contains only two headings and these are not vertically aligned with the corresponding headings in the example database table. Since there are two conditions in the same row, these are connected by AND. With the above example database table and this search criteria area, insert the formula <item type="input">=DCOUNT(A1:E10;;B12:C13)</item> into an empty cell elsewhere in the sheet to count how many of Joe’s guests are in grade 2 and greater than 7 years old. The value 2 is returned (counting Eva and Irene).</paragraph>     
+     
+        <h4 id="hd_id221616251986854">Example 3</h4>
+             
+        <table id="tab_id851616251871487">
+            <tablerow>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id21616251871487" localize="false" role="tablehead">&#160;&#160;&#160;A&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id311616251871487" localize="false" role="tablehead">&#160;&#160;&#160;B&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id191616251892502" localize="false" role="tablehead">&#160;&#160;&#160;C&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id761616251895935" localize="false" role="tablehead">&#160;&#160;&#160;D&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id711616251899470" localize="false" role="tablehead">&#160;&#160;&#160;E&#160;&#160;&#160;</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id431616251871487" localize="false" role="tablehead">12</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id141616251871487" role="tablecontent"><emph>Age</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id471616251933256" localize="false" role="tablehead">13</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id211616251944567" localize="false" role="tablecontent">9</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id31616252165976" localize="false" role="tablehead">14</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id921616252172663" localize="false" role="tablecontent">10</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+        </table>
+
+        <paragraph role="paragraph" id="par_id351616252313215">In this example the search criteria area contains only one heading. Since there are two conditions in consecutive rows, these are connected by OR. With the above example database table and this search criteria area, insert the formula <item type="input">=DCOUNT(A1:E10;;B12:B14)</item> into an empty cell elsewhere in the sheet to count how many of Joe’s guests are either 9 or 10 years old. The value 4 is returned (counting Andy, Betty, Charles, and Harry).</paragraph>     
+
+        <h4 id="hd_id71616252395407">Example 4 </h4>  
+        <table id="tab_id741616252413665">
+            <tablerow>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id361616252413665" localize="false" role="tablehead">&#160;&#160;&#160;A&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id991616252413665" localize="false" role="tablehead">&#160;&#160;&#160;B&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id111616252426590" localize="false" role="tablehead">&#160;&#160;&#160;C&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id771616252429942" localize="false" role="tablehead">&#160;&#160;&#160;D&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id651616252434463" localize="false" role="tablehead">&#160;&#160;&#160;E&#160;&#160;&#160;</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id131616252413665" localize="false" role="tablehead">12</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id451616252413665" role="tablecontent"><emph>Age</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id431616252540783" role="tablecontent"><emph>Age</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id591616252561087" localize="false" role="tablehead">13</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id411616252568693" role="tablecontent">&gt;=8</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id441616252573495" role="tablecontent">&lt;=10</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id841616252597982" localize="false" role="tablehead">14</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+        </table>
+
+        <paragraph role="paragraph" id="par_id991616252981928">In this example the search criteria area contains two occurrences of the same heading. Since there are two conditions in the same row, these are connected by AND. With the above example database table and this search criteria area, insert the formula <item type="input">=DCOUNT(A1:E10;;B12:C13)</item> into an empty cell elsewhere in the sheet to count how many of Joe’s guests are aged between 8 and 10 (inclusive). The value 6 is returned (counting Andy, Betty, Charles, Eva, Harry, and Irene).  </paragraph>     
+          
+        <h4 id="hd_id561616253067881">Example 5</h4>
+        <table id="tab_id601616253073598">
+            <tablerow>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id981616253073598" localize="false" role="tablehead">&#160;&#160;&#160;A&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id851616253073598" localize="false" role="tablehead">&#160;&#160;&#160;B&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id681616253083615" localize="false" role="tablehead">&#160;&#160;&#160;C&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id711616253086822" localize="false" role="tablehead">&#160;&#160;&#160;D&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id231616253091555" localize="false" role="tablehead">&#160;&#160;&#160;E&#160;&#160;&#160;</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id681616253073598" localize="false" role="tablehead">12</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id301616253073598" role="tablecontent"><emph>Name</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id231616253246590" localize="false" role="tablehead">13</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id251616253264022" role="tablecontent">F*</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id501616253322927" localize="false" role="tablehead">14</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+        </table>
+
+        <paragraph role="paragraph" id="par_id91616253394127">This simple example shows the use of wildcards. For this example to work as intended, select to enable wildcards at <link href="text/shared/optionen/01060500.xhp" name="Spreadsheet - Calculate"><switchinline select="sys"><caseinline select="MAC"><menuitem>%PRODUCTNAME - Preferences</menuitem></caseinline><defaultinline><menuitem>Tools - Options</menuitem></defaultinline></switchinline><menuitem> - %PRODUCTNAME Calc - Calculate</menuitem></link>. With the above example database table and this search criteria area, insert the formula <item type="input">=DCOUNT(A1:E10;;A12:A13)</item> into an empty cell elsewhere in the sheet to count how many of Joe’s guests have names that begin with the letter “F”. The value 1 is returned (counting Frank).</paragraph>
+
+     
+        <h4 id="hd_id121616253593255">Example 6</h4>
+        <table id="tab_id441616253599063">
+            <tablerow>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id691616253599063" localize="false" role="tablehead">&#160;&#160;&#160;A&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id231616253599063" localize="false" role="tablehead">&#160;&#160;&#160;B&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id401616253606239" localize="false" role="tablehead">&#160;&#160;&#160;C&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id661616253609823" localize="false" role="tablehead">&#160;&#160;&#160;D&#160;&#160;&#160;</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id581616253613127" localize="false" role="tablehead">&#160;&#160;&#160;E&#160;&#160;&#160;</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id191616253599063" localize="false" role="tablehead">12</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id731616253599063" role="tablecontent"><emph>Name</emph></paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id391616253645567" localize="false" role="tablehead">13</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph id="par_id761616253649791" role="tablecontent">[ABC].*</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph id="par_id301616253665959" localize="false" role="tablehead">14</paragraph>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+                <tablecell>
+                </tablecell>
+            </tablerow>
+        </table>
+
+        <paragraph role="paragraph" id="par_id631616253692350">This simple example shows the use of regular expressions. For this example to work as intended, select to enable regular expressions at <link href="text/shared/optionen/01060500.xhp" name="Spreadsheet - Calculate"><switchinline select="sys"><caseinline select="MAC"><menuitem>%PRODUCTNAME - Preferences</menuitem></caseinline><defaultinline><menuitem>Tools - Options</menuitem></defaultinline></switchinline><menuitem> - %PRODUCTNAME Calc - Calculate</menuitem></link>. With the above example database table and this search criteria area, insert the formula <item type="input">=DCOUNT(A1:E10;;A12:A13)</item> into an empty cell elsewhere in the sheet to count how many of Joe’s guests have names that begin with the letters “A”, “B”, or “C”. The value 3 is returned (counting Andy, Betty, and Charles).</paragraph>
+     
+        <sort order="asc">
+            <section id="Section1">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3150882">
+    <bookmark_value>DCOUNT function</bookmark_value>
+    <bookmark_value>counting rows;with numeric values</bookmark_value>
 </bookmark><comment>mw added "counting rows;"</comment>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DBANZAHL" id="bm_id3152926" localize="false"/>
-<h2 id="hd_id3150882">DCOUNT</h2>
-         <paragraph xml-lang="en-US" id="par_id3156133" role="paragraph"><ahelp hid="HID_FUNC_DBANZAHL">DCOUNT counts the number of rows (records) in a database that match the specified search criteria and contain numerical values in the DatabaseField column.</ahelp></paragraph>
-         <embed href="text/shared/00/00000001.xhp#regulaer"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3153218" role="code">DCOUNT(Database; [DatabaseField]; SearchCriteria)</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3153273" role="paragraph">If the DatabaseField argument is omitted, DCOUNT returns the count of all records that satisfy Criteria. <embedvar href="text/scalc/01/04060101.xhp#quotes"/></paragraph>
-         <paragraph xml-lang="en-US" role="paragraph" id="par_id301587321851330">If you choose to omit the DatabaseField argument, your formula should be of the form =DCOUNT(Database; ; SearchCriteria).</paragraph>  
-         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-         <paragraph xml-lang="en-US" id="par_id3153623" role="paragraph">In the example above (scroll up, please), we want to know how many children have to travel more than 600 meters to school. The result is to be stored in cell B16. Set the cursor in cell B16. Enter the formula <item type="input">=DCOUNT(A1:E10;D1;A13:E14)</item> in B16. The <emph>Function Wizard</emph> helps you to input ranges.</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3149142" role="paragraph">
-<emph>Database</emph> is the range of data to be evaluated, including its headers: in this case A1:E10. <emph>DatabaseField</emph> specifies the column for the search criteria: in this case, the column with the numerical distance values. <emph>SearchCriteria</emph> is the range where you can enter the search parameters: in this case, A13:E14.</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3145652" role="paragraph">To learn how many children in second grade are over 7 years of age, delete the entry &gt;600 in cell D14 and enter <item type="input">2</item> in cell B14 under Grade, and enter <item type="input">&gt;7</item> in cell C14 to the right. The result is 2. Two children are in second grade and over 7 years of age. As both criteria are in the same row, they are connected by AND.</paragraph>
-      </section>
-      <section id="Section2">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3156123"><bookmark_value>DCOUNTA function</bookmark_value>
-         <bookmark_value>records;counting in Calc databases</bookmark_value>
-         <bookmark_value>counting rows;with numeric or alphanumeric values</bookmark_value>
+                <h2 id="hd_id3150882">DCOUNT</h2>
+                <paragraph xml-lang="en-US" id="par_id3156133" role="paragraph"><ahelp hid="HID_FUNC_DBANZAHL">DCOUNT counts the number of cells (fields) of the specified column that contain numeric values, for all rows (database records) that match the specified search criteria.</ahelp> However, if no column is specified, DCOUNT returns the count of all records that match the specified search criteria irrespective of their contents.</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+                <paragraph xml-lang="en-US" id="par_id3153218" role="code">DCOUNT(Database; [DatabaseField]; SearchCriteria)</paragraph>
+ 
+                <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+                <paragraph xml-lang="en-US" id="par_id3153623" role="paragraph">The example database table giving information about the guests invited to Joe’s birthday party (described above) should occupy cells A1:E10. The content of cells A12:E12 should be identical to the header labels for the database table in cells A1:E1. Make sure that cells A13:E13 are blank, except for cell D13 which should contain ">600" (this search criterion will match records in the database table that have a value greater than 600 in the Distance column).</paragraph>
+                <paragraph role="paragraph" id="par_id441616368480646">Insert the formula <input>=DCOUNT(A1:E10;; A12:E13)</input> into an empty cell elsewhere in the sheet to calculate how many of Joe’s party guests travel further than 600 meters to school. The value 5 is returned.</paragraph>
+                <paragraph role="paragraph" id="par_id361616368488119">The same result is obtained if you use the formula <input>=DCOUNT(A1:E10; "Distance"; A12:E13)</input>, because all entries in the Distance column are numeric. However, if you use the formula <input>=DCOUNT(A1:E10; "Name"; A12:E13)</input>, the value 0 is returned because all entries in the Name column are non-numeric.</paragraph>  
+            </section>
+
+            <section id="Section2">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3156123">
+    <bookmark_value>DCOUNTA function</bookmark_value>
+    <bookmark_value>records;counting in Calc databases</bookmark_value>
+    <bookmark_value>counting rows;with numeric or alphanumeric values</bookmark_value>
 </bookmark><comment>mw added "records;" and "counting rows;"</comment>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DBANZAHL2" id="bm_id3154055" localize="false"/>
-<h2 id="hd_id3156123">DCOUNTA</h2>
-         <paragraph xml-lang="en-US" id="par_id3156110" role="paragraph"><ahelp hid="HID_FUNC_DBANZAHL2">DCOUNTA counts the number of rows (records) in a database that match the specified search conditions, and contain numeric or alphanumeric values.</ahelp></paragraph>
-         <embed href="text/shared/00/00000001.xhp#regulaer"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3146893" role="code">DCOUNTA(Database; [DatabaseField]; SearchCriteria)</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3153274" role="paragraph">If the DatabaseField argument is omitted, DCOUNTA returns the count of all records that satisfy Criteria. <embedvar href="text/scalc/01/04060101.xhp#quotes"/></paragraph>
-         <paragraph xml-lang="en-US" role="paragraph" id="par_id31587322048553">If you choose to omit the DatabaseField argument, your formula should be of the form =DCOUNTA(Database; ; SearchCriteria).</paragraph>        
-         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-         <paragraph xml-lang="en-US" id="par_id3153982" role="paragraph">In the example above (scroll up, please), you can search for the number of children whose name starts with an E or a subsequent letter. Edit the formula in B16 to read <item type="input">=DCOUNTA(A1:E10;"Name";A13:E14)</item>. Delete the old search criteria and enter <item type="input">&gt;=E</item> under Name in field A14. The result is 5. If you now delete all number values for Greta in row 8, the result changes to 4. Row 8 is no longer included in the count because it does not contain any values. The name Greta is text, not a value. Note that the DatabaseField parameter must point to a column that can contain values.<comment>see i25407</comment></paragraph>
-      </section>
-      <section id="Section3">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3147256"><bookmark_value>DGET function</bookmark_value>
-         <bookmark_value>cell contents;searching in Calc databases</bookmark_value>
-         <bookmark_value>searching;cell contents in Calc databases</bookmark_value>
+                <h2 id="hd_id3156123">DCOUNTA</h2>
+                <paragraph xml-lang="en-US" id="par_id3156110" role="paragraph"><ahelp hid="HID_FUNC_DBANZAHL2">DCOUNTA counts the number of cells (fields) of the specified column that are not blank, for all rows (database records) that match the specified search criteria.</ahelp> Blank cells of the specified column are not counted. However, if no column is specified, DCOUNTA returns the count of all records that match the specified search criteria irrespective of their contents.</paragraph>
+         
+                <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+                <paragraph xml-lang="en-US" id="par_id3146893" role="code">DCOUNTA(Database; [DatabaseField]; SearchCriteria)</paragraph>
+        
+                <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+                <paragraph xml-lang="en-US" id="par_id3153982" role="paragraph">The example database table giving information about the guests invited to Joe’s birthday party (described above) should occupy cells A1:E10. The content of cells A12:E12 should be identical to the header labels for the database table in cells A1:E1. Make sure that cells A13:E13 are blank, except for cell D13 which should contain ">600" (this search criterion will match records in the database table that have a value greater than 600 in the Distance column).</paragraph>
+                <paragraph role="paragraph" id="par_id61616368616093">Insert the formula <input>=DCOUNTA(A1:E10;; A12:E13)</input> into an empty cell elsewhere in the sheet to calculate how many of Joe’s party guests travel further than 600 meters to school. The value 5 is returned.</paragraph>
+                <paragraph role="paragraph" id="par_id841616368623207">The same result is obtained if you use the formula <input>=DCOUNTA(A1:E10; "Distance"; A12:E13)</input> or the formula <input>=DCOUNTA(A1:E10; "Name"; A12:E13)</input>. The latter case reflects that in contrast to DCOUNT, DCOUNTA counts both numeric and alphanumeric values in the column indicated by the <emph>DatabaseField</emph> argument.</paragraph>        
+            </section>
+            
+            <section id="Section3">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3147256">
+    <bookmark_value>DGET function</bookmark_value>
+    <bookmark_value>cell contents;searching in Calc databases</bookmark_value>
+    <bookmark_value>searching;cell contents in Calc databases</bookmark_value>
 </bookmark><comment>mw added "cell contents;" and "searching;"</comment>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DBAUSZUG" id="bm_id3149198" localize="false"/>
-<h2 id="hd_id3147256">DGET</h2>
-         <paragraph xml-lang="en-US" id="par_id3152801" role="paragraph"><ahelp hid="HID_FUNC_DBAUSZUG">DGET returns the contents of the referenced cell in a database which matches the specified search criteria.</ahelp> In case of an error, the function returns either #VALUE! for no row found, or Err502 for more than one cell found.</paragraph>
-         <embed href="text/shared/00/00000001.xhp#regulaer"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3154696" role="code">DGET(Database; DatabaseField; SearchCriteria)</paragraph>
-         <embed href="text/scalc/01/04060101.xhp#quotes"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-         <paragraph xml-lang="en-US" id="par_id3155388" role="paragraph">In the above example (scroll up, please), we want to determine what grade a child is in, whose name was entered in cell A14. The formula is entered in cell B16 and differs slightly from the earlier examples because only one column (one database field) can be entered for <emph>DatabaseField</emph>. Enter the following formula:</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3153096" role="paragraph">
-<item type="input">=DGET(A1:E10;"Grade";A13:E14)</item>
-</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3150524" role="paragraph">Enter the name <item type="input">Frank</item> in A14, and you see the result 2. Frank is in second grade. Enter <item type="input">"Age"</item> instead of "Grade" and you will get Frank's age.</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3148833" role="paragraph">Or enter the value <item type="input">11</item> in cell C14 only, and delete the other entries in this row. Edit the formula in B16 as follows:</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3149912" role="paragraph">
-<item type="input">=DGET(A1:E10;"Name";A13:E14)</item>
-</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3148813" role="paragraph">Instead of the grade, the name is queried. The answer appears at once: Daniel is the only child aged 11.</paragraph>
-      </section>
-      <section id="Section4">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3149766"><bookmark_value>DMAX function</bookmark_value>
-         <bookmark_value>maximum values in Calc databases</bookmark_value>
-         <bookmark_value>searching;maximum values in columns</bookmark_value>
+                <h2 id="hd_id3147256">DGET</h2>
+                <paragraph xml-lang="en-US" id="par_id3152801" role="paragraph"><ahelp hid="HID_FUNC_DBAUSZUG">DGET returns the contents of the cell (field) of the specified column, for the single row (database record) that matches the specified search criteria.</ahelp></paragraph>
+                <paragraph role="paragraph" id="par_id171616180137385">Calc reports Err:502 (invalid argument) if multiple matches are found, or a #VALUE! error (wrong data type) if no matches are found. A #VALUE! error is also reported if a single match is found but the relevant cell is empty.</paragraph>         
+         
+                <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+                <paragraph xml-lang="en-US" id="par_id3154696" role="code">DGET(Database; DatabaseField; SearchCriteria)</paragraph>
+         
+                <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+                <paragraph xml-lang="en-US" id="par_id3155388" role="paragraph">The example database table giving information about the guests invited to Joe’s birthday party (described above) should occupy cells A1:E10. The content of cells A12:E12 should be identical to the header labels for the database table in cells A1:E1. Make sure that cells A13:E13 are blank, except for cell C13 which should contain "11" (this search criterion will match records in the database table that have a value of 11 in the Age column).</paragraph>
+                <paragraph xml-lang="en-US" id="par_id3153096" role="paragraph">Insert the formula <input>=DGET(A1:E10; "Name"; A12:E13)</input> into an empty cell elsewhere in the sheet to find the name of Joe’s party guest who is age 11. The name Daniel is returned.</paragraph>
+                <paragraph xml-lang="en-US" id="par_id3150524" role="paragraph">If you change the value in cell C13 to “10”, then the formula <input>=DGET(A1:E10; "Name"; A12:E13)</input> returns an invalid argument error (Err:502). The reflects that multiple records match the specified criterion (both Betty and Charles are age 10).</paragraph>
+            </section>
+            
+            <section id="Section4">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3149766">
+    <bookmark_value>DMAX function</bookmark_value>
+    <bookmark_value>maximum values in Calc databases</bookmark_value>
+    <bookmark_value>searching;maximum values in columns</bookmark_value>
 </bookmark><comment>mw added "maximum..." and "searching;"</comment>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DBMAX" id="bm_id3158401" localize="false"/>
-<h2 id="hd_id3149766">DMAX</h2>
-         <paragraph xml-lang="en-US" id="par_id3154903" role="paragraph"><ahelp hid="HID_FUNC_DBMAX">DMAX returns the maximum content of a cell (field) in a database (all records) that matches the specified search conditions.</ahelp></paragraph>
-         <embed href="text/shared/00/00000001.xhp#regulaer"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3159157" role="code">DMAX(Database; DatabaseField; SearchCriteria)</paragraph>
-         <embed href="text/scalc/01/04060101.xhp#quotes"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-         <paragraph xml-lang="en-US" id="par_id3148442" role="paragraph">To find out how much the heaviest child in each grade weighed in the above example (scroll up, please), enter the following formula in B16:</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3148804" role="paragraph">
-<item type="input">=DMAX(A1:E10;"Weight";A13:E14)</item>
-</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3150510" role="paragraph">Under Grade, enter <item type="input">1, 2, 3,</item> and so on, one after the other. After entering a grade number, the weight of the heaviest child in that grade appears.</paragraph>
-      </section>
-      <section id="Section5">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3159141"><bookmark_value>DMIN function</bookmark_value>
-         <bookmark_value>minimum values in Calc databases</bookmark_value>
-         <bookmark_value>searching;minimum values in columns</bookmark_value>
+                <h2 id="hd_id3149766">DMAX</h2>
+                <paragraph xml-lang="en-US" id="par_id3154903" role="paragraph"><ahelp hid="HID_FUNC_DBMAX">DMAX calculates the maximum value across the cells (fields) of the specified column that contain numeric values, for all rows (database records) that match the specified search criteria.</ahelp> Blank cells or cells containing non-numeric characters are not included.</paragraph>
+                <paragraph role="paragraph" id="par_id51616180409281">Returns 0 if no matches are found, or if there are no non-zero numeric values in the cells of the specified column for the matching records.</paragraph>
+         
+                <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+                <paragraph xml-lang="en-US" id="par_id3159157" role="code">DMAX(Database; DatabaseField; SearchCriteria)</paragraph>
+         
+                <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+                <paragraph xml-lang="en-US" id="par_id3148442" role="paragraph">The example database table giving information about the guests invited to Joe’s birthday party (described above) should occupy cells A1:E10. The content of cells A12:E12 should be identical to the header labels for the database table in cells A1:E1. Make sure that cells A13:E13 are blank, except for cell D13 which should contain ">0" (this search criterion is intended to match all records in the database table).</paragraph>
+                <paragraph xml-lang="en-US" id="par_id3148804" role="paragraph">Insert the formula <input>=DMAX(A1:E10; "Distance"; A12:E13)</input> into an empty cell elsewhere in the sheet to find the maximum distance in meters that any of Joe’s party guests travel to school. The value 1200 is returned.</paragraph>
+            </section>
+            
+            <section id="Section5">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3159141">
+    <bookmark_value>DMIN function</bookmark_value>
+    <bookmark_value>minimum values in Calc databases</bookmark_value>
+    <bookmark_value>searching;minimum values in columns</bookmark_value>
 </bookmark><comment>mw added "minimum..." and "searching;"</comment>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DBMIN" id="bm_id3159152" localize="false"/>
-<h2 id="hd_id3159141">DMIN</h2>
-         <paragraph xml-lang="en-US" id="par_id3154261" role="paragraph"><ahelp hid="HID_FUNC_DBMIN">DMIN returns the minimum content of a cell (field) in a database that matches the specified search criteria.</ahelp></paragraph>
-         <embed href="text/shared/00/00000001.xhp#regulaer"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3148479" role="code">DMIN(Database; DatabaseField; SearchCriteria)</paragraph>
-         <embed href="text/scalc/01/04060101.xhp#quotes"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-         <paragraph xml-lang="en-US" id="par_id3148925" role="paragraph">To find the shortest distance to school for the children in each grade in the above example (scroll up, please), enter the following formula in B16:</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3149161" role="paragraph">
-<item type="input">=DMIN(A1:E10;"Distance to School";A13:E14)</item>
-</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3148917" role="paragraph">In row 14, under Grade, enter <item type="input">1, 2, 3,</item> and so on, one after the other. The shortest distance to school for each grade appears.</paragraph>
-      </section>
-      <section id="Section6">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3154274"><bookmark_value>DAVERAGE function</bookmark_value>
-         <bookmark_value>averages; in Calc databases</bookmark_value>
-         <bookmark_value>calculating;averages in Calc databases</bookmark_value>
+                <h2 id="hd_id3159141">DMIN</h2>
+                <paragraph xml-lang="en-US" id="par_id3154261" role="paragraph"><ahelp hid="HID_FUNC_DBMIN">DMIN calculates the minimum value across the cells (fields) of the specified column that contain numeric values, for all rows (database records) that match the specified search criteria.</ahelp> Blank cells or cells containing non-numeric characters are not included.</paragraph>
+                <paragraph role="paragraph" id="par_id901616180605426">Returns 0 if no matches are found, or if there are no non-zero numeric values in the cells of the specified column for the matching records.</paragraph>
+         
+                <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+                <paragraph xml-lang="en-US" id="par_id3148479" role="code">DMIN(Database; DatabaseField; SearchCriteria)</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+                <paragraph xml-lang="en-US" id="par_id3148925" role="paragraph">The example database table giving information about the guests invited to Joe’s birthday party (described above) should occupy cells A1:E10. The content of cells A12:E12 should be identical to the header labels for the database table in cells A1:E1. Make sure that cells A13:E13 are blank, except for cell D13 which should contain ">0" (this search criterion is intended to match all records in the database table).</paragraph>
+                <paragraph xml-lang="en-US" id="par_id3149161" role="paragraph">Insert the formula <input>=DMIN(A1:E10; "Distance"; A12:E13)</input> into an empty cell elsewhere in the sheet to find the minimum distance in meters that any of Joe’s party guests travel to school. The value 150 is returned.</paragraph>
+            </section>
+      
+            <section id="Section6">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3154274">
+    <bookmark_value>DAVERAGE function</bookmark_value>
+    <bookmark_value>averages; in Calc databases</bookmark_value>
+    <bookmark_value>calculating;averages in Calc databases</bookmark_value>
 </bookmark><comment>mw added "averages;..." and "calculating;"</comment>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DBMITTELWERT" id="bm_id3166435" localize="false"/>
-<h2 id="hd_id3154274">DAVERAGE</h2>
-         <paragraph xml-lang="en-US" id="par_id3166453" role="paragraph"><ahelp hid="HID_FUNC_DBMITTELWERT">DAVERAGE returns the average of the values of all cells (fields) in all rows (database records) that match the specified search criteria.</ahelp></paragraph>
-         <embed href="text/shared/00/00000001.xhp#regulaer"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3150710" role="code">DAVERAGE(Database; DatabaseField; SearchCriteria)</paragraph>
-         <embed href="text/scalc/01/04060101.xhp#quotes"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-         <paragraph xml-lang="en-US" id="par_id3149104" role="paragraph">To find the average weight of all children of the same age in the above example (scroll up, please), enter the following formula in B16:</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3153688" role="paragraph">
-<item type="input">=DAVERAGE(A1:E10;"Weight";A13:E14)</item>
-</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3155587" role="paragraph">In row 14, under Age, enter <item type="input">7, 8, 9,</item> and so on, one after the other. The average weight of all children of the same age appears.</paragraph>
-      </section>
-      <section id="Section7">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3159269"><bookmark_value>DPRODUCT function</bookmark_value>
-         <bookmark_value>multiplying;cell contents in Calc databases</bookmark_value>
+                <h2 id="hd_id3154274">DAVERAGE</h2>
+                <paragraph xml-lang="en-US" id="par_id3166453" role="paragraph"><ahelp hid="HID_FUNC_DBMITTELWERT">DAVERAGE calculates the average of the numeric values in the cells (fields) of the specified column, for all rows (database records) that match the specified search criteria.</ahelp>  Non-numeric values in those cells are ignored.</paragraph>
+                <paragraph role="paragraph" id="par_id31615978739452">Returns a #DIV/0! error if no records match the specified search criteria, or if there are no numeric values in the cells of the specified column for the matching records.</paragraph>
+         
+                <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+                <paragraph xml-lang="en-US" id="par_id3150710" role="code">DAVERAGE(Database; DatabaseField; SearchCriteria)</paragraph>
+         
+                <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+                <paragraph xml-lang="en-US" id="par_id3149104" role="paragraph">The example database table giving information about the guests invited to Joe’s birthday party (described above) should occupy cells A1:E10. The content of cells A12:E12 should be identical to the header labels for the database table in cells A1:E1. Make sure that cells A13:E13 are blank, except for cell D13 which should contain ">0" (this search criterion is intended to match all records in the database table).</paragraph>
+                <paragraph role="paragraph" id="par_id201616368312277">Insert the formula <input>=DAVERAGE(A1:E10; "Distance"; A12:E13)</input> into an empty cell elsewhere in the sheet to calculate the average distance in meters travelled to school by Joe’s party guests. The value 666.67 is returned.</paragraph>        
+            </section>
+      
+            <section id="Section7">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3159269">
+    <bookmark_value>DPRODUCT function</bookmark_value>
+    <bookmark_value>multiplying;cell contents in Calc databases</bookmark_value>
 </bookmark><comment>mw added "multiplying..."</comment>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DBPRODUKT" id="bm_id3159281" localize="false"/>
-<h2 id="hd_id3159269">DPRODUCT</h2>
-         <paragraph xml-lang="en-US" id="par_id3152879" role="paragraph"><ahelp hid="HID_FUNC_DBPRODUKT">DPRODUCT multiplies all cells of a data range where the cell contents match the search criteria.</ahelp></paragraph>
-         <embed href="text/shared/00/00000001.xhp#regulaer"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3154854" role="code">DPRODUCT(Database; DatabaseField; SearchCriteria)</paragraph>
-         <embed href="text/scalc/01/04060101.xhp#quotes"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-         <paragraph xml-lang="en-US" id="par_id3148986" role="paragraph">With the birthday party example above (scroll up, please), there is no meaningful application of this function.</paragraph>
-      </section>
-      <section id="Section8">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3148462"><bookmark_value>DSTDEV function</bookmark_value>
-         <bookmark_value>standard deviations in databases;based on a sample</bookmark_value>
+                <h2 id="hd_id3159269">DPRODUCT</h2>
+                <paragraph xml-lang="en-US" id="par_id3152879" role="paragraph"><ahelp hid="HID_FUNC_DBPRODUKT">DPRODUCT calculates the product of all numeric values in the cells (fields) of the specified column, for all rows (database records) that match the specified search criteria.</ahelp> Blank cells or cells containing non-numeric characters are not included.</paragraph>
+                <paragraph role="paragraph" id="par_id741616180868336">Returns 0 if no matches are found, or if there are no numeric values in the cells of the specified column for the matching records.</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+                <paragraph xml-lang="en-US" id="par_id3154854" role="code">DPRODUCT(Database; DatabaseField; SearchCriteria)</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+                <paragraph xml-lang="en-US" id="par_id3148986" role="paragraph">The example database table giving information about the guests invited to Joe’s birthday party (described above) should occupy cells A1:E10. The content of cells A12:E12 should be identical to the header labels for the database table in cells A1:E1. Make sure that cells A13:E13 are blank, except for cell C13 which should contain ">0" (this search criterion is intended to match all records in the database table).</paragraph>
+                <paragraph role="paragraph" id="par_id91616368981807">Insert the formula <input>=DPRODUCT(A1:E10; "Age"; A12:E13)</input> into an empty cell elsewhere in the sheet to calculate the product of the ages in years of Joe’s party guests. The value 279417600 is returned.</paragraph>        
+            </section>
+            
+            <section id="Section8">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3148462">
+    <bookmark_value>DSTDEV function</bookmark_value>
+    <bookmark_value>standard deviations in databases;based on a sample</bookmark_value>
 </bookmark><comment>mw added "standard deviations...;"</comment>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DBSTDABW" id="bm_id3145370" localize="false"/>
-<h2 id="hd_id3148462">DSTDEV</h2>
-         <paragraph xml-lang="en-US" id="par_id3154605" role="paragraph"><ahelp hid="HID_FUNC_DBSTDABW">DSTDEV calculates the standard deviation of a population based on a sample, using the numbers in a database column that match the given conditions.</ahelp> The records are treated as a sample of data. That means that the children in the example represent a cross section of all children. Note that a representative result can not be obtained from a sample of less than one thousand.</paragraph>
-         <embed href="text/shared/00/00000001.xhp#regulaer"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3148661" role="code">DSTDEV(Database; DatabaseField; SearchCriteria)</paragraph>
-         <embed href="text/scalc/01/04060101.xhp#quotes"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-         <paragraph xml-lang="en-US" id="par_id3149934" role="paragraph">To find the standard deviation of the weight for all children of the same age in the example (scroll up, please), enter the following formula in B16:</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3150630" role="paragraph">
-<item type="input">=DSTDEV(A1:E10;"Weight";A13:E14)</item>
-</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3153536" role="paragraph">In row 14, under Age, enter <item type="input">7, 8, 9,</item> and so on, one after the other. The result shown is the standard deviation of the weight of all children of this age.</paragraph>
-      </section>
-      <section id="Section9">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3150429"><bookmark_value>DSTDEVP function</bookmark_value>
-         <bookmark_value>standard deviations in databases;based on populations</bookmark_value>
+                <h2 id="hd_id3148462">DSTDEV</h2>
+                <paragraph xml-lang="en-US" id="par_id3154605" role="paragraph"><ahelp hid="HID_FUNC_DBSTDABW">DSTDEV calculates the sample standard deviation based on the numeric values in the cells (fields) of the specified column, for all rows (database records) that match the specified search criteria.</ahelp> Non-numeric values are ignored.</paragraph>
+                <paragraph role="paragraph" id="par_id121616181037440">Returns a #NUM! error if exactly one record matches the specified search criteria, or if there is only one numeric value in the cells of the specified column for the matching records.</paragraph>
+                <paragraph role="paragraph" id="par_id931616181041535">Returns 0 if no matches are found, or if there are no numeric values in the cells of the specified column for the matching records.</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+                <paragraph xml-lang="en-US" id="par_id3148661" role="code">DSTDEV(Database; DatabaseField; SearchCriteria)</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+                <paragraph xml-lang="en-US" id="par_id3149934" role="paragraph">The example database table giving information about the guests invited to Joe’s birthday party (described above) should occupy cells A1:E10. The content of cells A12:E12 should be identical to the header labels for the database table in cells A1:E1. Make sure that cells A13:D13 are blank and that cell E13 contains ">0" (this search criterion is intended to match all records in the database table).</paragraph>
+                <paragraph xml-lang="en-US" id="par_id3150630" role="paragraph">Insert the formula <input>=DSTDEV(A1:E10; "Weight"; A12:E13)</input> into an empty cell elsewhere in the sheet to calculate the sample standard deviation of the weights in kg of Joe’s party guests. The value 5.5 is returned.</paragraph>
+            </section>
+            
+            <section id="Section9">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3150429">
+    <bookmark_value>DSTDEVP function</bookmark_value>
+    <bookmark_value>standard deviations in databases;based on populations</bookmark_value>
 </bookmark><comment>mw added "standard deviations...;"</comment>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DBSTDABWN" id="bm_id3149523" localize="false"/>
-<h2 id="hd_id3150429">DSTDEVP</h2>
-         <paragraph xml-lang="en-US" id="par_id3145598" role="paragraph"><ahelp hid="HID_FUNC_DBSTDABWN">DSTDEVP calculates the standard deviation of a population based on all cells of a data range which match the search criteria.</ahelp> The records from the example are treated as the whole population.</paragraph>
-         <embed href="text/shared/00/00000001.xhp#regulaer"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3149484" role="code">DSTDEVP(Database; DatabaseField; SearchCriteria)</paragraph>
-         <embed href="text/scalc/01/04060101.xhp#quotes"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-         <paragraph xml-lang="en-US" id="par_id3155431" role="paragraph">To find the standard deviation of the weight for all children of the same age at Joe's birthday party (scroll up, please), enter the following formula in B16:</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3148411" role="paragraph">
-<item type="input">=DSTDEVP(A1:E10;"Weight";A13:E14)</item>
-</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3143271" role="paragraph">In row 14, under Age, enter <item type="input">7, 8, 9,</item> and so on, one after the other. The result is the standard deviation of the weight for all same-aged children whose weight was checked.</paragraph>
-      </section>
-      <section id="Section10">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3154794"><bookmark_value>DSUM function</bookmark_value>
-         <bookmark_value>calculating;sums in Calc databases</bookmark_value>
-         <bookmark_value>sums;cells in Calc databases</bookmark_value>
+                <h2 id="hd_id3150429">DSTDEVP</h2>
+                <paragraph xml-lang="en-US" id="par_id3145598" role="paragraph"><ahelp hid="HID_FUNC_DBSTDABWN">DSTDEVP calculates the population standard deviation based on the numeric values in the cells (fields) of the specified column, for all rows (database records) that match the specified search criteri.</ahelp> Non-numeric values are ignored.</paragraph>
+                <paragraph role="paragraph" id="par_id541616181205698">Returns a #NUM! error if no records match the specified search criteria, or if there are no numeric values in the cells of the specified column for the matching records.</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+                <paragraph xml-lang="en-US" id="par_id3149484" role="code">DSTDEVP(Database; DatabaseField; SearchCriteria)</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+                <paragraph xml-lang="en-US" id="par_id3155431" role="paragraph">The example database table giving information about the guests invited to Joe’s birthday party (described above) should occupy cells A1:E10. The content of cells A12:E12 should be identical to the header labels for the database table in cells A1:E1. Make sure that cells A13:D13 are blank and that cell E13 contains ">0" (this search criterion is intended to match all records in the database table).</paragraph>
+                <paragraph xml-lang="en-US" id="par_id3148411" role="paragraph">Insert the formula <input>=DSTDEVP(A1:E10; "Weight"; A12:E13)</input> into an empty cell elsewhere in the sheet to calculate the population standard deviation of the weights in kg of Joe’s party guests. The value 5.18545 is returned.</paragraph>
+            </section>
+            
+            <section id="Section10">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3154794">
+    <bookmark_value>DSUM function</bookmark_value>
+    <bookmark_value>calculating;sums in Calc databases</bookmark_value>
+    <bookmark_value>sums;cells in Calc databases</bookmark_value>
 </bookmark><comment>mw added "calculating;" and "sums;"</comment>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DBSUMME" id="bm_id3148687" localize="false"/>
-<h2 id="hd_id3154794">DSUM</h2>
-         <paragraph xml-lang="en-US" id="par_id3149591" role="paragraph"><ahelp hid="HID_FUNC_DBSUMME">DSUM returns the total of all cells in a database field in all rows (records) that match the specified search criteria.</ahelp></paragraph>
-         <embed href="text/shared/00/00000001.xhp#regulaer"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3150989" role="code">DSUM(Database; DatabaseField; SearchCriteria)</paragraph>
-         <embed href="text/scalc/01/04060101.xhp#quotes"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-         <paragraph xml-lang="en-US" id="par_id3152766" role="paragraph">To find the length of the combined distance to school of all children at Joe's birthday party (scroll up, please) who are in second grade, enter the following formula in B16:</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3151312" role="paragraph">
-<item type="input">=DSUM(A1:E10;"Distance to School";A13:E14)</item>
-</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3150596" role="paragraph">Enter <item type="input">2</item> in row 14 under Grade. The sum (1950) of the distances to school of all the children who are in second grade is displayed.</paragraph>
-      </section>
-      <section id="Section11">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3155614"><bookmark_value>DVAR function</bookmark_value>
-         <bookmark_value>variances;based on samples</bookmark_value>
+                <h2 id="hd_id3154794">DSUM</h2>
+                <paragraph xml-lang="en-US" id="par_id3149591" role="paragraph"><ahelp hid="HID_FUNC_DBSUMME">DSUM calculates the sum of all numeric values in the cells (fields) of the specified column, for all rows (database records) that match the specified search criteria.</ahelp> Blank cells or cells containing non-numeric characters are not included.</paragraph>
+                <paragraph role="paragraph" id="par_id691616181332088">Returns 0 if no matches are found, or if there are no numeric values in the cells of the specified column for the matching records.</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+                <paragraph xml-lang="en-US" id="par_id3150989" role="code">DSUM(Database; DatabaseField; SearchCriteria)</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+                <paragraph xml-lang="en-US" id="par_id3152766" role="paragraph">The example database table giving information about the guests invited to Joe’s birthday party (described above) should occupy cells A1:E10. The content of cells A12:E12 should be identical to the header labels for the database table in cells A1:E1. Make sure that cells A13:E13 are blank, except for cell D13 which should contain ">0" (this search criterion is intended to match all records in the database table).</paragraph>
+                <paragraph xml-lang="en-US" id="par_id3151312" role="paragraph">Insert the formula <input>=DSUM(A1:E10; "Distance"; A12:E13)</input> into an empty cell elsewhere in the sheet to find the total distance in meters that all of Joe’s party guests travel to school. The value 6000 is returned.</paragraph>
+            </section>
+            
+            <section id="Section11">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3155614">
+    <bookmark_value>DVAR function</bookmark_value>
+    <bookmark_value>variances;based on samples</bookmark_value>
 </bookmark><comment>mw added "variances;"</comment>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DBVARIANZ" id="bm_id3159391" localize="false"/>
-<h2 id="hd_id3155614">DVAR</h2>
-         <paragraph xml-lang="en-US" id="par_id3154418" role="paragraph"><ahelp hid="HID_FUNC_DBVARIANZ">DVAR returns the variance of all cells of a database field in all records that match the specified search criteria.</ahelp> The records from the example are treated as a sample of data. A representative result cannot be obtained from a sample population of less than one thousand.</paragraph>
-         <embed href="text/shared/00/00000001.xhp#regulaer"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3156138" role="code">DVAR(Database; DatabaseField; SearchCriteria)</paragraph>
-         <embed href="text/scalc/01/04060101.xhp#quotes"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-         <paragraph xml-lang="en-US" id="par_id3153701" role="paragraph">To find the variance of the weight of all children of the same age of the above example (scroll up, please), enter the following formula in B16:</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3153676" role="paragraph">
-<item type="input">=DVAR(A1:E10;"Weight";A13:E14)</item>
-</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3153798" role="paragraph">In row 14, under Age, enter <item type="input">7, 8, 9,</item> and so on, one after the other. You will see as a result the variance of the weight values for all children of this age.</paragraph>
-      </section>
-      <section id="Section12">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3153880"><bookmark_value>DVARP function</bookmark_value>
-         <bookmark_value>variances;based on populations</bookmark_value>
+                <h2 id="hd_id3155614">DVAR</h2>
+                <paragraph xml-lang="en-US" id="par_id3154418" role="paragraph"><ahelp hid="HID_FUNC_DBVARIANZ">DVAR calculates the sample variance based on the numeric values in the cells (fields) of the specified column, for all rows (database records) that match the specified search criteria.</ahelp> Non-numeric values are ignored.</paragraph>
+                <paragraph role="paragraph" id="par_id301616181465164">Returns a #NUM! error if exactly one record matches the specified search criteria, or if there is only one numeric value in the cells of the specified column for the matching records.</paragraph>
+                <paragraph role="paragraph" id="par_id741616181469136">Returns 0 if no matches are found, or if there are no numeric values in the cells of the specified column for the matching records.</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+                <paragraph xml-lang="en-US" id="par_id3156138" role="code">DVAR(Database; DatabaseField; SearchCriteria)</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+                <paragraph xml-lang="en-US" id="par_id3153701" role="paragraph">The example database table giving information about the guests invited to Joe’s birthday party (described above) should occupy cells A1:E10. The content of cells A12:E12 should be identical to the header labels for the database table in cells A1:E1. Make sure that cells A13:E13 are blank, except for cell D13 which should contain ">0" (this search criterion is intended to match all records in the database table).</paragraph>
+                <paragraph xml-lang="en-US" id="par_id3153676" role="paragraph">Insert the formula <input>=DVAR(A1:E10; "Distance"; A12:E13)</input> into an empty cell elsewhere in the sheet to find the sample variance of the distances in meters that Joe’s party guests travel to school. The value 193125 is returned.</paragraph>
+            </section>
+      
+            <section id="Section12">
+<bookmark xml-lang="en-US" branch="index" id="bm_id3153880">
+    <bookmark_value>DVARP function</bookmark_value>
+    <bookmark_value>variances;based on populations</bookmark_value>
 </bookmark><comment>mw added "variances;"</comment>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_DBVARIANZEN" id="bm_id3153891" localize="false"/>
-<h2 id="hd_id3153880">DVARP</h2>
-         <paragraph xml-lang="en-US" id="par_id3155119" role="paragraph"><ahelp hid="HID_FUNC_DBVARIANZEN">DVARP calculates the variance of all cell values in a database field in all records that match the specified search criteria.</ahelp> The records are from the example are treated as an entire population.</paragraph>
-         <embed href="text/shared/00/00000001.xhp#regulaer"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3153776" role="code">DVARP(Database; DatabaseField; SearchCriteria)</paragraph>
-         <embed href="text/scalc/01/04060101.xhp#quotes"/>
-         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-         <paragraph xml-lang="en-US" id="par_id3147099" role="paragraph">To find the variance of the weight for all children of the same age at Joe's birthday party (scroll up, please), enter the following formula in B16:</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3147322" role="paragraph">
-<item type="input">=DVARP(A1:E10;"Weight";A13:E14)</item>
-</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3146902" role="paragraph">In row 14, under Age, enter <item type="input">7, 8, 9,</item> and so on, one after the other. The variance of the weight values for all children of this age attending Joe's birthday party appears.</paragraph>
-      </section>
-</sort>
-<section id="relatedtopics">
-         <embed href="text/scalc/01/04060100.xhp#drking"/>
-      </section>
-   </body>
+                <h2 id="hd_id3153880">DVARP</h2>
+                <paragraph xml-lang="en-US" id="par_id3155119" role="paragraph"><ahelp hid="HID_FUNC_DBVARIANZEN">DVARP calculates the population variation based on the numeric values in the cells (fields) of the specified column, for all rows (database records) that match the specified search criteria.</ahelp> Non-numeric values are ignored.</paragraph>
+                <paragraph role="paragraph" id="par_id301616181648263">Returns a #NUM! error if no records match the specified search criteria, or if there are no numeric values in the cells of the specified column for the matching records.</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+                <paragraph xml-lang="en-US" id="par_id3153776" role="code">DVARP(Database; DatabaseField; SearchCriteria)</paragraph>
+
+                <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+                <paragraph xml-lang="en-US" id="par_id3147099" role="paragraph">The example database table giving information about the guests invited to Joe’s birthday party (described above) should occupy cells A1:E10. The content of cells A12:E12 should be identical to the header labels for the database table in cells A1:E1. Make sure that cells A13:E13 are blank, except for cell D13 which should contain ">0" (this search criterion is intended to match all records in the database table).</paragraph>
+                <paragraph xml-lang="en-US" id="par_id3147322" role="paragraph">Insert the formula <input>=DVARP(A1:E10; "Distance"; A12:E13)</input> into an empty cell elsewhere in the sheet to find the population variance of the distances in meters that Joe’s party guests travel to school. The value 171666.67 is returned.</paragraph>
+            </section>
+        </sort>
+        
+        <section id="relatedtopics">
+            <embed href="text/scalc/01/04060100.xhp#drking"/>
+        </section>
+    </body>
 </helpdocument>
