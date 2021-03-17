@@ -33,31 +33,31 @@
   <bookmark_value>DateDiff function</bookmark_value>
 </bookmark>
 
-
-<paragraph id="par_idN10542" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03030120.xhp">DateDiff Function</link></paragraph>
-<paragraph id="par_idN10546" role="paragraph" xml-lang="en-US">Returns the number of date intervals between two given date values.</paragraph>
+<h1 id="par_idN10542" xml-lang="en-US"><link href="text/sbasic/shared/03030120.xhp">DateDiff Function</link></h1>
+<paragraph id="par_idN10546" role="paragraph" xml-lang="en-US">Returns the number of date or time intervals between two given date values.</paragraph>
 </section>
 
-<paragraph id="par_idN10549" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
-<paragraph id="par_idN10648" role="bascode" xml-lang="en-US">DateDiff (Add, Date1, Date2 [, Week_start [, Year_start]])</paragraph>
+<paragraph id="par_idN10648" role="bascode" xml-lang="en-US">DateDiff (interval As String, date1 As Date, date2 As Date [, firstDayOfWeek As Integer [, firstWeekOfYear As Integer]]) As Double</paragraph>
 </bascode>
 
 <paragraph id="par_idN1064B" role="heading" level="2" xml-lang="en-US">Return value:</paragraph>
 <paragraph id="par_idN1064F" role="paragraph" xml-lang="en-US">A number.</paragraph>
 
-<paragraph id="par_idN10652" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
-<paragraph id="par_idN10656" role="paragraph" xml-lang="en-US"> <emph>Add</emph> - A string expression from the following table, specifying the date interval.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<paragraph id="par_idN10656" role="paragraph" xml-lang="en-US"> <emph>interval</emph> - A string expression from the following table, specifying the date or time interval.</paragraph>
 <embed href="text/sbasic/shared/03030110.xhp#datetable"/>
-<paragraph id="par_idN10664" role="paragraph" xml-lang="en-US"> <emph>Date1, Date2</emph> - The two date values to be compared.</paragraph>
+<paragraph id="par_idN10664" role="paragraph" xml-lang="en-US"> <emph>date1, date2</emph> - The two date values to be compared.</paragraph>
+<embed href="text/sbasic/shared/01020100.xhp#DateLiterals"/>
 
 <section id="weekyear">
-<paragraph id="par_idN1066A" role="paragraph" xml-lang="en-US"> <emph>Week_start</emph> - An optional parameter that specifies the starting day of a week. </paragraph>
+<paragraph id="par_idN1066A" role="paragraph" xml-lang="en-US"> <emph>firstDayOfWeek</emph> - An optional parameter that specifies the starting day of a week. </paragraph>
 
 <table id="tbl_id8356883">
   <tablerow>
     <tablecell>
-      <paragraph id="par_idN1067A" role="tablehead" xml-lang="en-US">Week_start value</paragraph>
+      <paragraph id="par_idN1067A" role="tablehead" xml-lang="en-US">firstDayOfWeek value</paragraph>
     </tablecell>
     <tablecell>
       <paragraph id="par_idN10680" role="tablehead" xml-lang="en-US">Explanation</paragraph>
@@ -129,12 +129,12 @@
   </tablerow>
 </table>
 
-<paragraph id="par_idN106EB" role="paragraph" xml-lang="en-US"> <emph>Year_start</emph> - An optional parameter that specifies the starting week of a year. </paragraph>
+<paragraph id="par_idN106EB" role="paragraph" xml-lang="en-US"> <emph>firstWeekOfYear</emph> - An optional parameter that specifies the starting week of a year. </paragraph>
 
 <table id="tbl_id1173436">
   <tablerow>
     <tablecell>
-      <paragraph id="par_idN106FB" role="tablehead" xml-lang="en-US">Year_start value</paragraph>
+      <paragraph id="par_idN106FB" role="tablehead" xml-lang="en-US">firstWeekOfYear value</paragraph>
     </tablecell>
     <tablecell>
       <paragraph id="par_idN10701" role="tablehead" xml-lang="en-US">Explanation</paragraph>
@@ -176,10 +176,10 @@
 
 </section>
 
-<paragraph id="par_idN10738" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
 <paragraph id="par_idm1341501344" role="bascode" localize="false" xml-lang="en-US">Sub example_datediff</paragraph>
-<paragraph id="par_idm1341500112" role="bascode" localize="false" xml-lang="en-US">    MsgBox DateDiff("d", "1/1/2005", "12/31/2005")</paragraph>
+<paragraph id="par_idm1341500112" role="bascode" localize="false" xml-lang="en-US">    MsgBox DateDiff("d", #1/1/2005#, #2005-12-31#)</paragraph>
 <paragraph id="par_idm1341498848" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
 </body>
