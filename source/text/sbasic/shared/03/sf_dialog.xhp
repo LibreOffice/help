@@ -30,7 +30,7 @@
   <paragraph role="paragraph" id="par_id721598110472337" xml-lang="en-US">A dialog box disappears from memory after its explicit termination.</paragraph>
   <tip id="par_id891598188164936" xml-lang="en-US">The <literal>SFDialogs.Dialog</literal> service is closely related to the <literal>SFDialogs.DialogControl</literal> service.</tip>
    <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation and usage</h2>
-   <paragraph role="paragraph" id="par_id361598174756160" xml-lang="en-US">The dialog service is invoked through the <literal>CreateScriptService</literal> method. It requires three arguments to specify the dialog box to activate:</paragraph>
+   <paragraph role="paragraph" id="par_id361598174756160" xml-lang="en-US">The <literal>Dialog</literal> service is invoked through the <literal>CreateScriptService</literal> method. It requires three arguments to specify the dialog box to activate:</paragraph>
    <paragraph role="paragraph" id="par_id31612271944733"><emph>Container</emph>: "<link href="text/sbasic/shared/03131900.xhp" name="GlobalScope specifier"><literal>GlobalScope</literal></link>" for preinstalled libraries or a window name as defined by <link href="text/sbasic/shared/03/sf_ui.xhp" name="ScriptForge.UI"><literal>ScriptForge.UI</literal></link> service. Empty string "" default value stands for the current document.</paragraph>
    <paragraph role="paragraph" id="par_id311612271947124"><emph>Library</emph>: The case-sensitive name of a library contained in the container. Default value is "Standard".</paragraph>
    <paragraph role="paragraph" id="par_id821612271946316"><emph>DialogName</emph>: A case-sensitive string designating the dialog.</paragraph>
@@ -247,11 +247,11 @@
    <h2 id="hd _id681583933076692" localize="false">Activate</h2>
    <paragraph role="paragraph" id="par_id871583933076448">Set the focus on the current <literal>Dialog</literal> instance. Return <literal>True</literal> if focusing was successful.</paragraph>
    <paragraph role="paragraph" id="par_id151598178880227" xml-lang="en-US">This method is called from a dialog or control event, or when a dialog is displayed in non-modal mode.</paragraph>
-   <h3 id="hd _id61583933076171"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <h3 id="hd _id61583933076171" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id731583933076815">oDlg.Activate() As Boolean</paragraph>
    </bascode>
-   <h3 id="hd _id26158393307687"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <h3 id="hd _id26158393307687" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id221598179105596">Dim oDlg As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id171598179111121">Set oDlg = CreateScriptService(,, "myDialog")</paragraph>
@@ -276,13 +276,13 @@
          <paragraph id="par_id81598185229301"  role="listitem" xml-lang="en-US">a dialog control class instance based on its name</paragraph>
       </listitem>
    </list>
-   <h3 id="hd _id601584541257443"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <h3 id="hd _id601584541257443" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id201584541257726">oDlg.Controls([ControlName As String]) As Variant</paragraph>
    </bascode>
-   <h3 id="hd _id291584541257237"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <h3 id="hd _id291584541257237" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
    <paragraph role="paragraph" id="par_id1001584541257789"><emph>ControlName</emph> : A valid control name as a case-sensitive string. If absent, the list of control names is returned as a zero-based array.</paragraph>
-   <h3 id="hd _id32158454125769"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <h3 id="hd _id32158454125769" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id151598185478904">Dim myDialog As Object, myList As Variant, myControl As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id21598185484092">Set myDialog = CreateScriptService("SFDialogs.Dialog", , "Standard", "Dialog1")</paragraph>
@@ -345,7 +345,7 @@
       <paragraph role="bascode" localize="false" id="bas_id281598186461514">lReturn = oDlg.Execute()</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id291598186461410">Select Case lReturn</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id741598187182079">' ...</paragraph>
-      <paragraph role="bascode" id="bas_id781612273203518">End Select</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id781612273203518">End Select</paragraph>
    </bascode>
    </section>
    <section id="Terminate">
@@ -354,7 +354,7 @@
       <bookmark_value>Dialog service;Terminate</bookmark_value>
    </bookmark>
    <h2 id="hd _id101598187953201" localize="false">Terminate</h2>
-   <paragraph role="paragraph" id="par_id21598187953679">Terminate the dialog service for the current instance. Return <literal>True</literal> if the termination was successful.</paragraph>
+   <paragraph role="paragraph" id="par_id21598187953679">Terminate the <literal>Dialog</literal> service for the current instance. Return <literal>True</literal> if the termination was successful.</paragraph>
    <h3 id="hd _id221598187953425" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id231598187953624">oDlg.Terminate() As Boolean</paragraph>
