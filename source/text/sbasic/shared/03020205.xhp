@@ -56,21 +56,42 @@
 <paragraph id="par_id6618854" role="paragraph">Numbers with decimal delimiters are converted according to the locale settings.</paragraph>
 
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-<bascode>
-<paragraph id="par_idm1340911536" role="bascode" localize="false">Sub ExampleWrite</paragraph>
-<paragraph id="par_idm1340910304" role="bascode" localize="false">    Dim iCount As Integer</paragraph>
-<paragraph id="par_idm1340909072" role="bascode" localize="false">    Dim sValue As String</paragraph>
-<paragraph id="par_idm1340907840" role="bascode" localize="false">    iCount = Freefile</paragraph>
-<paragraph id="par_idm1340906608" role="bascode" localize="false">    Open "C:\data.txt" For Output As iCount</paragraph>
-<paragraph id="par_idm1340905344" role="bascode" localize="false">    sValue = "Hamburg"</paragraph>
-<paragraph id="par_idm1340904112" role="bascode" localize="false">    Write #iCount,sValue,200</paragraph>
-<paragraph id="par_idm1340902864" role="bascode" localize="false">    sValue = "New York"</paragraph>
-<paragraph id="par_idm1340901632" role="bascode" localize="false">    Write #iCount,sValue,300</paragraph>
-<paragraph id="par_idm1340900384" role="bascode" localize="false">    sValue = "Miami"</paragraph>
-<paragraph id="par_idm1340899152" role="bascode" localize="false">    Write #iCount,sValue,450</paragraph>
-<paragraph id="par_idm1340897904" role="bascode" localize="false">    Close #iCount</paragraph>
-<paragraph id="par_idm1340896672" role="bascode" localize="false">End Sub</paragraph>
-</bascode>
+<switch select="sys">
+<case select="WIN">
+  <bascode>
+  <paragraph id="par_idm1340911536" role="bascode" localize="false">Sub ExampleWrite</paragraph>
+  <paragraph id="par_idm1340910304" role="bascode" localize="false">    Dim iCount As Integer</paragraph>
+  <paragraph id="par_idm1340909072" role="bascode" localize="false">    Dim sValue As String</paragraph>
+  <paragraph id="par_idm1340907840" role="bascode" localize="false">    iCount = Freefile</paragraph>
+  <paragraph id="par_idm1340906608" role="bascode" localize="false">    Open "C:\Users\ThisUser\data.txt" For Output As iCount</paragraph>
+  <paragraph id="par_idm1340905344" role="bascode" localize="false">    sValue = "Hamburg"</paragraph>
+  <paragraph id="par_idm1340904112" role="bascode" localize="false">    Write #iCount,sValue,200</paragraph>
+  <paragraph id="par_idm1340902864" role="bascode" localize="false">    sValue = "New York"</paragraph>
+  <paragraph id="par_idm1340901632" role="bascode" localize="false">    Write #iCount,sValue,300</paragraph>
+  <paragraph id="par_idm1340900384" role="bascode" localize="false">    sValue = "Miami"</paragraph>
+  <paragraph id="par_idm1340899152" role="bascode" localize="false">    Write #iCount,sValue,450</paragraph>
+  <paragraph id="par_idm1340897904" role="bascode" localize="false">    Close #iCount</paragraph>
+  <paragraph id="par_idm1340896672" role="bascode" localize="false">End Sub</paragraph>
+  </bascode>
+</case>
+<default>
+  <bascode>
+  <paragraph id="par_idm1340912556" role="bascode" localize="false">Sub ExampleWrite</paragraph>
+  <paragraph id="par_idm1340919854" role="bascode" localize="false">    Dim iCount As Integer</paragraph>
+  <paragraph id="par_idm1340912572" role="bascode" localize="false">    Dim sValue As String</paragraph>
+  <paragraph id="par_idm1340907125" role="bascode" localize="false">    iCount = Freefile</paragraph>
+  <paragraph id="par_idm1340906804" role="bascode" localize="false">    Open "~/data.txt" For Output As iCount</paragraph>
+  <paragraph id="par_idm1340905662" role="bascode" localize="false">    sValue = "Hamburg"</paragraph>
+  <paragraph id="par_idm1340904147" role="bascode" localize="false">    Write #iCount,sValue,200</paragraph>
+  <paragraph id="par_idm1340902258" role="bascode" localize="false">    sValue = "New York"</paragraph>
+  <paragraph id="par_idm1340901147" role="bascode" localize="false">    Write #iCount,sValue,300</paragraph>
+  <paragraph id="par_idm1340900203" role="bascode" localize="false">    sValue = "Miami"</paragraph>
+  <paragraph id="par_idm1340899330" role="bascode" localize="false">    Write #iCount,sValue,450</paragraph>
+  <paragraph id="par_idm1340897887" role="bascode" localize="false">    Close #iCount</paragraph>
+  <paragraph id="par_idm1340896654" role="bascode" localize="false">End Sub</paragraph>
+  </bascode>
+</default>
+</switch>
 
 <section id="relatedtopics" >
    <embed href="text/sbasic/shared/03020103.xhp#Open_h1"/>
@@ -78,6 +99,5 @@
    <embed href="text/sbasic/shared/03020204.xhp#Put_h1"/>
    <embed href="text/sbasic/shared/03020101.xhp#Close_h1"/>
 </section>
-
 </body>
 </helpdocument>
