@@ -32,7 +32,7 @@
   <bookmark_value>Input statement</bookmark_value>
 </bookmark>
 
-<paragraph id="hd_id3154908" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03020202.xhp" name="Input# Statement">Input# Statement</link></paragraph>
+<paragraph id="hd_id3154908" role="heading" level="1" xml-lang="en-US"><variable id="Input_h1"><link href="text/sbasic/shared/03020202.xhp" name="Input# Statement">Input# Statement</link></variable></paragraph>
 <paragraph id="par_id3156424" role="paragraph" xml-lang="en-US">Reads data from an open sequential file.</paragraph>
 </section>
 
@@ -55,12 +55,10 @@
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
 <paragraph id="par_idm871097888" role="bascode" localize="false">Sub ExampleWorkWithAFile</paragraph>
-<paragraph id="par_idm871096912" role="bascode" localize="false">Dim iCount As Integer, sFileName As String</paragraph>
-<paragraph id="par_idm871095952" role="bascode" localize="false">Dim sName As String, sValue As Integer</paragraph>
-<paragraph id="par_idm871093072" role="bascode" localize="false"> </paragraph>
-<paragraph id="par_idm871092096" role="bascode" localize="false">    sFileName = "C:\data.txt"</paragraph>
+<paragraph id="par_idm871096912" role="bascode" localize="false">    Dim iCount As Integer, sFileName As String</paragraph>
+<paragraph id="par_idm871095952" role="bascode" localize="false">    Dim sName As String, sValue As Integer</paragraph>
+<paragraph id="par_idm871092096" role="bascode" localize="false">    sFileName = "C:\Users\ThisUser\data.txt"</paragraph>
 <paragraph id="par_idm871091120" role="bascode" localize="false">    iCount = Freefile</paragraph>
-<paragraph id="par_idm871090160" role="bascode" localize="false"> </paragraph>
 <paragraph id="par_id4144765" role="bascode" xml-lang="en-US">    ' Write data ( which we will read later with Input ) to file</paragraph>
 <paragraph id="par_idm871087952" role="bascode" localize="false">    Open sFileName For Output As iCount</paragraph>
 <paragraph id="par_idm871086976" role="bascode" localize="false">    sName = "Hamburg" : sValue = 200</paragraph>
@@ -70,9 +68,8 @@
 <paragraph id="par_idm871081184" role="bascode" localize="false">    sName = "Miami" : sValue = 459</paragraph>
 <paragraph id="par_idm871079264" role="bascode" localize="false">    Write #iCount, sName, sValue</paragraph>
 <paragraph id="par_idm871078288" role="bascode" localize="false">    Close #iCount</paragraph>
-<paragraph id="par_idm871077328" role="bascode" localize="false"> </paragraph>
-<paragraph id="par_idm871076400" role="bascode" localize="false">    iCount = Freefile</paragraph>
 <paragraph id="par_id4144766" role="bascode" xml-lang="en-US">    ' Read data file using Input</paragraph>
+<paragraph id="par_idm871076400" role="bascode" localize="false">    iCount = Freefile</paragraph>
 <paragraph id="par_idm871074192" role="bascode" localize="false">    Open sFileName For Input As iCount</paragraph>
 <paragraph id="par_idm871073216" role="bascode" localize="false">    Input #iCount, sName, sValue</paragraph>
 <paragraph id="par_idm871072240" role="bascode" localize="false">    MsgBox sName &amp; " " &amp; sValue</paragraph>
@@ -83,6 +80,11 @@
 <paragraph id="par_idm871067360" role="bascode" localize="false">    Close #iCount</paragraph>
 <paragraph id="par_idm871066400" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
-
+<section id="relatedtopics" >
+   <embed href="text/sbasic/shared/03020101.xhp#Close_h1"/>
+   <embed href="text/sbasic/shared/03020103.xhp#Open_h1"/>
+   <embed href="text/sbasic/shared/03010103.xhp#Print_h1"/>
+   <embed href="text/sbasic/shared/03020205.xhp#Write_h1"/>
+</section>
 </body>
 </helpdocument>
