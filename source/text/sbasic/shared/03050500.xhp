@@ -26,20 +26,16 @@
 </meta>
 
 <body>
-
-
 <section id="onerrorgotoresume">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3146795">
   <bookmark_value>Resume Next parameter</bookmark_value>
   <bookmark_value>On Error GoTo ... Resume statement</bookmark_value>
 </bookmark>
-
-
 <paragraph id="hd_id3146795" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03050500.xhp" name="On Error GoTo ... Resume Statement">On Error GoTo ... Resume Statement</link></paragraph>
 <paragraph id="par_id3150358" role="paragraph" xml-lang="en-US">Enables an error-handling routine after an error occurs, or resumes program execution.</paragraph>
 </section>
 
-<paragraph id="hd_id3151212" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <paragraph role="paragraph" id="par_id491585753339474">
   <image src="media/helpimg/sbasic/On-Error_statement.svg" id="img_id4156296484514"><alt xml-lang="en-US" id="alt_id15152796484514">On Error Statement diagram</alt></image>
 </paragraph>
@@ -47,22 +43,22 @@
 <paragraph id="par_id3145173" role="bascode" xml-lang="en-US">On [Local] Error {GoTo Labelname | GoTo 0 | Resume Next}</paragraph>
 </bascode>
 
-<paragraph id="hd_id3154125" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
 <paragraph id="par_id3150869" role="paragraph" xml-lang="en-US"><emph>GoTo Labelname:</emph> If an error occurs, enables the error-handling routine that starts at the line "Labelname".</paragraph>
 <paragraph id="par_id3150439" role="paragraph" xml-lang="en-US"><emph>Resume Next:</emph> If an error occurs, program execution continues with the statement that follows the statement in which the error occurred.</paragraph>
 <paragraph id="par_id3149482" role="paragraph" xml-lang="en-US"><emph>GoTo 0:</emph> Disables the error handler in the current procedure.</paragraph>
 <paragraph id="par_id3149483" role="paragraph" xml-lang="en-US"><emph>Local:</emph> "On error" is global in scope, and remains active until canceled by another "On error" statement. "On Local error" is local to the routine which invokes it. Local error handling overrides any previous global setting. When the invoking routine exits, the local error handling is canceled automatically, and any previous global setting is restored.</paragraph>
 <paragraph id="par_id3148619" role="paragraph" xml-lang="en-US">The On Error GoTo statement is used to react to errors that occur in a macro.<comment>see i112231: The statement must be inserted at the start of a procedure (in a local error-handling routine) or at the start of a module.</comment></paragraph>
 
-<paragraph id="hd_id3146985" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
 <paragraph id="par_idm1341127952" role="bascode" localize="false" xml-lang="en-US">Sub ExampleReset</paragraph>
 <paragraph id="par_idm1341126720" role="bascode" localize="false" xml-lang="en-US">On Error GoTo ErrorHandler</paragraph>
-<paragraph id="par_idm1341125472" role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
-<paragraph id="par_idm1341124240" role="bascode" localize="false" xml-lang="en-US">Dim iCount As Integer</paragraph>
-<paragraph id="par_idm1341123008" role="bascode" localize="false" xml-lang="en-US">Dim sLine As String</paragraph>
-<paragraph id="par_idm1341121776" role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
-<paragraph id="par_idm1341120544" role="bascode" localize="false" xml-lang="en-US">    aFile = "c:\data.txt"</paragraph>
+<paragraph id="par_idm1341125472" role="bascode" localize="false" xml-lang="en-US">    Dim iNumber As Integer</paragraph>
+<paragraph id="par_idm1341124240" role="bascode" localize="false" xml-lang="en-US">    Dim iCount As Integer</paragraph>
+<paragraph id="par_idm1341123008" role="bascode" localize="false" xml-lang="en-US">    Dim sLine As String</paragraph>
+<paragraph id="par_idm1341121776" role="bascode" localize="false" xml-lang="en-US">    Dim aFile As String</paragraph>
+<paragraph id="par_idm1341120544" role="bascode" localize="false" xml-lang="en-US">    aFile = "C:\Users\ThisUser\data.txt"</paragraph>
 <paragraph id="par_idm1341119296" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
 <paragraph id="par_idm1341118064" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Output As #iNumber</paragraph>
 <paragraph id="par_id3153876" role="bascode" xml-lang="en-US">    Print #iNumber, "This is a line of text"</paragraph>
@@ -79,11 +75,12 @@
 <paragraph id="par_idm1341102704" role="bascode" localize="false" xml-lang="en-US">    Exit Sub</paragraph>
 <paragraph id="par_idm1341101472" role="bascode" localize="false" xml-lang="en-US">ErrorHandler:</paragraph>
 <paragraph id="par_idm1341100240" role="bascode" localize="false" xml-lang="en-US">    Reset</paragraph>
-<paragraph id="par_id3146916" role="bascode" xml-lang="en-US">    MsgBox "All files will be closed",0,"Error"</paragraph>
+<paragraph id="par_id3146916" role="bascode" xml-lang="en-US">    MsgBox "All files will be closed",  0,  "Error"</paragraph>
 <paragraph id="par_idm1341097264" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
 <section id="relatedtopics">
   <embed href="text/sbasic/shared/03050000.xhp#ErrHandlingh1"/>
+  <embed href="text/sbasic/shared/03020103.xhp#Open_h1"/>
 </section>  
 </body>
 </helpdocument>

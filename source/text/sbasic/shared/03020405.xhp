@@ -40,15 +40,15 @@
 <paragraph id="par_id3153364" role="note" xml-lang="en-US">If you use a 32-Bit operating system, you cannot use the FileAttr-Function to determine the file access number.</paragraph>
 <paragraph id="par_id3163713" role="paragraph" xml-lang="en-US">See also: <link href="text/sbasic/shared/03020103.xhp" name="Open">Open</link></paragraph>
 
-<paragraph id="hd_id3151116" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
 <paragraph id="par_id3154012" role="bascode" xml-lang="en-US">FileAttr (FileNumber As Integer, Attribute As Integer)</paragraph>
 </bascode>
 
-<paragraph id="hd_id3147349" role="heading" level="2" xml-lang="en-US">Return value:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
 <paragraph id="par_id3146974" role="paragraph" xml-lang="en-US">Integer</paragraph>
 
-<paragraph id="hd_id3153728" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
 <paragraph id="par_id3151074" role="paragraph" xml-lang="en-US"> <emph>FileNumber:</emph> The number of the file that was opened with the Open statement.</paragraph>
 <paragraph id="par_id3144766" role="paragraph" xml-lang="en-US"> <emph>Attribute:</emph> Integer expression that indicates the type of file information that you want to return. The following values are possible:</paragraph>
 <paragraph id="par_id3147396" role="paragraph" xml-lang="en-US">1: The FileAttr-Function indicates the access mode of the file.</paragraph>
@@ -63,21 +63,27 @@
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 <embed href="text/sbasic/shared/00000003.xhp#err52"/>
 
-<paragraph id="hd_id3147339" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
 <paragraph id="par_idm1341149504" role="bascode" localize="false" xml-lang="en-US">Sub ExampleFileAttr</paragraph>
-<paragraph id="par_idm1341148272" role="bascode" localize="false" xml-lang="en-US">Dim iNumber As Integer</paragraph>
-<paragraph id="par_idm1341147040" role="bascode" localize="false" xml-lang="en-US">Dim sLine As String</paragraph>
-<paragraph id="par_idm1341145808" role="bascode" localize="false" xml-lang="en-US">Dim aFile As String</paragraph>
-<paragraph id="par_idm1341144576" role="bascode" localize="false" xml-lang="en-US">    aFile = "c:\data.txt"</paragraph>
+<paragraph id="par_idm1341148272" role="bascode" localize="false" xml-lang="en-US">    Dim iNumber As Integer</paragraph>
+<paragraph id="par_idm1341147040" role="bascode" localize="false" xml-lang="en-US">    Dim sLine As String</paragraph>
+<paragraph id="par_idm1341145808" role="bascode" localize="false" xml-lang="en-US">    Dim aFile As String</paragraph>
+<paragraph id="par_idm1341144576" role="bascode" localize="false" xml-lang="en-US">    aFile = "C:\Users\ThisUser\data.txt"</paragraph>
 <paragraph id="par_idm1341143328" role="bascode" localize="false" xml-lang="en-US">    iNumber = Freefile</paragraph>
 <paragraph id="par_idm1341142096" role="bascode" localize="false" xml-lang="en-US">    Open aFile For Output As #iNumber</paragraph>
 <paragraph id="par_id3155607" role="bascode" xml-lang="en-US">    Print #iNumber, "This is a line of text"</paragraph>
-<paragraph id="par_id3150361" role="bascode" xml-lang="en-US">    MsgBox FileAttr(#iNumber, 1 ),0,"Access mode"</paragraph>
-<paragraph id="par_id3149817" role="bascode" xml-lang="en-US">    MsgBox FileAttr(#iNumber, 2 ),0,"File attribute"</paragraph>
+<paragraph id="par_id3150361" role="bascode" xml-lang="en-US">    MsgBox FileAttr(#iNumber, 1), 0, "Access mode"</paragraph>
+<paragraph id="par_id3149817" role="bascode" xml-lang="en-US">    MsgBox FileAttr(#iNumber, 2), 0, "File attribute"</paragraph>
 <paragraph id="par_idm1341135568" role="bascode" localize="false" xml-lang="en-US">    Close #iNumber</paragraph>
 <paragraph id="par_idm1341134336" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
-</body>
 
+<section id="relatedtopics" >
+   <embed href="text/sbasic/shared/03020101.xhp#Close_h1"/>
+   <embed href="text/sbasic/shared/03020102.xhp#FreeFile_h1"/>
+   <embed href="text/sbasic/shared/03020103.xhp#Open_h1"/>
+   <embed href="text/sbasic/shared/03010103.xhp#Print_h1"/>
+</section>
+</body>
 </helpdocument>
