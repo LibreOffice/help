@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+<meta>
+  <topic id="SF_Form" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">SFDocuments.Form service</title>
+    <filename>/text/sbasic/shared/03/sf_form.xhp</filename>
+  </topic>
+  </meta>
+<body>
+<section id="ScriptForge-sf_form">
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41582391760252">
+      <bookmark_value>Form service</bookmark_value>
+   </bookmark>
+</section>
+<section id="abstract">
+  <h1 id="bm_id781582391760253" xml-lang="en-US"><variable id="FormService"><link href="text/sbasic/shared/03/sf_form.xhp" name="SFDocuments.Form"><literal>SFDocuments</literal>.<literal>Form</literal> service</link></variable></h1>
+  <paragraph role="paragraph" id="par_id931583589764919" xml-lang="en-US">The <literal>Form</literal> service provides methods and properties to manage forms in %PRODUCTNAME documents. This service supports forms in Base, Calc and Writer documents and allows to:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id381618172063851" role="listitem">Open and activate forms.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id261618172129782" role="listitem">Navigate through records shown by the form.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id281618172141607" role="listitem">Get access to the controls inside the form.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id371618172155483" role="listitem">Get access to subforms of a parent form.</paragraph>
+    </listitem>
+  </list>
+</section>
+  <tip id="par_id351616768789190" xml-lang="en-US">The <literal>SFDocuments</literal>.<literal>Form</literal> service is available from %PRODUCTNAME 7.2 onwards.</tip>
+  <paragraph role="paragraph" id="par_id451616765867881" xml-lang="en-US">Forms are usually used in %PRODUCTNAME documents to create user interfaces connected to relational databases. Hence, the <literal>Form</literal> service provides quick access to the linked database through the <link href="text/sbasic/shared/03/sf_database.xhp" name="SFDatabases.Database"><literal>SFDatabases</literal>.<literal>Database</literal> service</link>.</paragraph>
+  <tip id="par_id891598188164936" xml-lang="en-US">The <literal>SFDocuments</literal>.<literal>Form</literal> service is closely related to the <link href="text/sbasic/shared/03/sf_formcontrol.xhp" name="SFDocuments.FormControl"><literal>SFDocuments</literal>.<literal>FormControl</literal> service.</link></tip>
+
+  <h2 id="hd_id161616766330804" xml-lang="en-US">Definitions</h2>
+  <h3 id="hd_id751616766382317" xml-lang="en-US" localize="false">FormDocument</h3>
+  <paragraph role="paragraph" id="par_id951618172906010">Forms are usually created in Base documents, but they can be added to Writer and Calc documents as well. The way a <literal>FormDocument</literal> is handled depends on the %PRODUCTNAME component where it is stored.</paragraph>
+  <paragraph role="paragraph" id="par_id671618173380680">In Base, each form you create using the <menuitem>Insert - Form</menuitem>  functionality or through the <link href="text/shared/autopi/01090000.xhp" name="FormWizard">Form Wizard</link> is actually a <literal>FormDocument</literal> that can be handled with the <literal>Form</literal> service. Base documents can contain an unlimited number of form documents.</paragraph>
+  <paragraph role="paragraph" id="par_id841618177362626">Below is an example showing the hierarchy of all the elements involved in accessing forms and subforms in a Base document. Suppose you have a Base file named <literal>Employees.odb</literal> and inside it you created a form document to add new employees to the database. The form document contains a main form named <literal>EmployeeData</literal> that gives access to a table. There is also a subform <literal>WorksAtPlant</literal> that allows you to associate the new employee to one of the plants of the company.</paragraph>
+  <bascode>
+    <paragraph role="bascode" id="bas_id151618176848874">Employees.odb (Base document)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id381618176868013"> |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id351618176868854"> |-- AddEmployee (FormDocument)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id211618176869166">      |</paragraph>
+    <paragraph role="bascode" id="bas_id941618176869485">      |-- EmployeeData (Main Form)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id571618176869726">           |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id291618176869942">           |-- WorksAtPlant (SubForm)</paragraph>
+  </bascode>
+  <note id="par_id221618173444457">A <literal>FormDocument</literal> can be seen as a set of forms that provide access to datasets such as database tables and queries from within %PRODUCTNAME documents. The names of forms and subforms inside a FormDocument can be accessed using the <link href="text/shared/02/01170600.xhp" name="FormNavigator">Form Navigator</link>.</note>
+  <paragraph role="paragraph" id="par_id721618175731903">In Calc documents, each sheet can contain a single <literal>FormDocument</literal>. A Writer document contains only one <literal>FormDocument</literal>, which is the document itself.</paragraph>
+
+  <h3 id="hd_id851616767037521" xml-lang="en-US">Forms and Subforms</h3>
+  <paragraph role="paragraph" id="par_id681616767265034" xml-lang="en-US">A form document is composed of one or more forms which, in turn, may also contain any number of subforms. A Form is an abstract set of controls that are linked to a specified data source, which can be a database table, a query or a SQL <literal>SELECT</literal> statement.</paragraph>
+  <paragraph role="paragraph" id="par_id711618178831976">In Calc and Writer documents, each form can be linked to datasets located in different databases. On the other hand, in Base documents the database contained in the document is common to all forms.</paragraph>
+  <tip id="par_id191616837111507" xml-lang="en-US">To invoke the <literal>SFDocuments</literal>.<literal>Form</literal> service refer to the methods <literal>Forms()</literal>, <literal>FormDocuments()</literal> and <literal>OpenFormDocument()</literal> of the <link href="text/sbasic/shared/03/sf_document.xhp" name="SFDocuments"><literal>SFDocuments</literal>.<literal>Document</literal></link> service</tip>
+
+<section id="serviceInvocation">
+  <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
+  <h3 id="hd_id991618179698545">In Writer documents</h3>
+  <paragraph role="paragraph" id="par_id51616767892693" xml-lang="en-US">The code snippet below shows how to access the form named <literal>Form1</literal> that is inside the single <literal>FormDocument</literal> of a Writer file:</paragraph>
+  <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id471598171198389">Dim oDoc As Object, myForm As Object, ui as Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id561618179461775">Set ui = CreateScriptService("UI")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id611598171572062">Set oDoc = ui.OpenDocument("~/Documents/MyForm.odt")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id571598171205739">Set myForm = oDoc.Forms("Form1")</paragraph>
+   </bascode>
+   <paragraph role="paragraph" id="par_id531618179517628">Forms can be accessed by their names or by their indices, as shown below:</paragraph>
+   <bascode>
+     <paragraph role="bascode" localize="false" id="bas_id991598171277414">Set myForm = oDoc.Forms(0)</paragraph>
+   </bascode>
+   <h3 id="hd_id921618179792926">In Calc documents</h3>
+   <paragraph role="paragraph" id="par_id481618179851104">Each sheet in a Calc file is a single <literal>FormDocument</literal>. Hence, the <literal>Forms</literal> method requires two arguments, the first indicating the sheet name and the second specifying the form name.</paragraph>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id471598171198125">Dim oDoc As Object, myForm As Object, ui as Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id561618179462475">Set ui = CreateScriptService("UI")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id611598170362062">Set oDoc = ui.OpenDocument("~/Documents/MyForms.ods")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id571598171200339">Set myForm = oDoc.Forms("Sheet1", "Form1")</paragraph>
+   </bascode>
+   <h3 id="hd_id201618180055756">In Base documents</h3>
+   <paragraph role="paragraph" id="par_id711616768164987" xml-lang="en-US">A <literal>FormDocument</literal> inside a Base document is accessed by its name. The following example opens the form document named <literal>thisFormDocument</literal> and access the form <literal>MainForm</literal>:</paragraph>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id471598176518738">Dim oDoc As Object, myForm As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id271598171282891">Set oDoc = CreateScriptService("SFDocuments.Document", ThisDatabaseDocument)</paragraph>
+      <paragraph role="bascode" id="bas_id271598171225874">' The statement below is necessary only if the form hasn't been opened yet</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id551598171288547">oDoc.OpenFormDocument("thisFormDocument")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id741598171294507">Set myForm = oDoc.Forms("thisFormDocument", "MainForm")</paragraph>
+      <paragraph role="bascode" id="bas_id51616768358888">' Or, alternatively, to access the form by its index ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id591598171300285">Set myForm = oDoc.Forms("thisFormDocument", 0)</paragraph>
+   </bascode>
+   <note id="par_id991618249636036">To perform any action on a form using the <literal>Form</literal> service, the <literal>FormDocument</literal> must have been opened either manually by the user or programatically in a user script. The latter can be done in a variety of ways, such as by creating an instance of the <literal>Document</literal> service or by calling the methods <literal>OpenDocument</literal> (<literal>UI</literal> service) and <literal>OpenFormDocument</literal> (<literal>Document</literal> service).</note>
+   <paragraph role="paragraph" id="par_id11618180564274">To access a given subform of a form use the <literal>SubForms</literal> method. Note that in the example below <literal>mySubForm</literal> is a new instance of the <literal>Form</literal> service.</paragraph>
+   <bascode>
+     <paragraph role="bascode" localize="false" id="bas_id71618182658792">Dim mySubForm As Object</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id681616768495330">Set mySubForm = myForm.SubForms("mySubForm")</paragraph>
+   </bascode>
+   <h3 id="hd_id211618180379064">In Form events</h3>
+   <paragraph role="paragraph" id="par_id421616768529754" xml-lang="en-US">To invoke the <literal>Form</literal> service when a form event takes place:</paragraph>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id931616768628138">Sub OnEvent(ByRef poEvent As Object)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id931616768621093">    Dim myForm As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id271616768613253">    Set myForm = CreateScriptService("SFDocuments.FormEvent", poEvent)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id1001618180405172">    '(...)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id751618180415566">End sub</paragraph>
+   </bascode>
+</section>
+
+  <h2 id="hd_id651583668365757" xml-lang="en-US">Properties</h2>
+   <table id="tab_id381583668386455">
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id871583668386455" role="tablehead" xml-lang="en-US">Name</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id491583668386455" role="tablehead" xml-lang="en-US">Readonly</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id271583668474014" role="tablehead" xml-lang="en-US">Type</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id401583668386455" role="tablehead" xml-lang="en-US">Description</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id151583668386455" role="tablecontent" localize="false">AllowDeletes</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id371583668519172" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id271583668386455" role="tablecontent" localize="false">Boolean</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id771583668386455" role="tablecontent" xml-lang="en-US">Specifies if the form allows to delete records.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id951583839708571" role="tablecontent" localize="false">AllowInserts</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id541583839708548" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id751583839708362" role="tablecontent" localize="false">Boolean</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id731583839708412" role="tablecontent" xml-lang="en-US">Specifies if the form allows to add records.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id511584027709311" role="tablecontent" localize="false">AllowUpdates</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id761584027709516" role="tablecontent " xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id491584027709825" role="tablecontent" localize="false">Boolean</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id971584027709752" role="tablecontent" xml-lang="en-US">Specifies if the form allows to update records.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id491583839767611" role="tablecontent" localize="false">BaseForm</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id31583839767743" role="tablecontent " xml-lang="en-US">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id741583839767926" role="tablecontent" localize="false">String</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id111583839767195" role="tablecontent" xml-lang="en-US">Specifies the hierarchical name of the Base Form containing the actual form.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id83158383992056" role="tablecontent" localize="false">Bookmark</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id771583839920487" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id971583839920282" role="tablecontent" localize="false">Variant</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id451583839920858" role="tablecontent" xml-lang="en-US">Specifies uniquely the current record of the form's underlying table, query or SQL statement.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id751588333908795" role="tablecontent" localize="false">CurrentRecord</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id571588333908716" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id781588333908500" role="tablecontent" localize="false">Long</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id721588333908708" role="tablecontent" xml-lang="en-US">Identifies the current record in the dataset being viewed on a form. If the row number is positive, the cursor moves to the given row number with respect to the beginning of the result set. Row count starts at 1. If the given row number is negative, the cursor moves to an absolute row position with respect to the end of the result set. Row -1 refers to the last row in the result set.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id251583774433989" role="tablecontent" localize="false">Filter</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id501583774433513" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id411583774433779" role="tablecontent" localize="false">String</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph role="paragraph" id="par_id151598177605296" xml-lang="en-US">Specifies a subset of records to be displayed as a <literal>SQL</literal> <literal>WHERE</literal>-clause without the <literal>WHERE</literal> keyword.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id731588334016220" role="tablecontent" localize="false">LinkChildFields</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id271588334016191" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id991588334016273" role="tablecontent" localize="false">String</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id251588334016874" role="tablecontent" xml-lang="en-US">Specifies how records in a child subform are linked to records in its parent form.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id881616774153888" role="tablecontent" localize="false">LinkParentFields</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id901616774153495" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id981616774153884" role="tablecontent" localize="false">String</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id981616774153723" role="tablecontent" xml-lang="en-US">Specifies how records in a child subform are linked to records in its parent form.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id561616774304843" role="tablecontent" localize="false">Name</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id501616774304840" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id71616774304482" role="tablecontent" localize="false">String</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id461616774304497" role="tablecontent" xml-lang="en-US">The name of the current form.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id331616774384380" role="tablecontent" localize="false">OrderBy</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id751616774384451" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id641616774384366" role="tablecontent" localize="false">String</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id321616774384489" role="tablecontent" xml-lang="en-US">Specifies in which order the records should be displayed as a <literal>SQL</literal> <literal>ORDER BY</literal> clause without the <literal>ORDER BY</literal> keywords.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id281616774918384" role="tablecontent" localize="false">Parent</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id261616774918923" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id861616774918694" role="tablecontent" localize="false">Object</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id171616774918881" role="tablecontent" xml-lang="en-US">The parent of the current form. It can be either a <literal>SFDocuments</literal>.<literal>Form</literal> or a <literal>SFDocuments</literal>.<literal>Document</literal> object.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id581616777650809" role="tablecontent" localize="false">RecordSource</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id501616777650751" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id991616777650362" role="tablecontent" localize="false">String</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id91616777650933" role="tablecontent" xml-lang="en-US">Specifies the source of the data, as a table name, a query name or a SQL statement.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id741598177924441" role="tablecontent" localize="false">XForm</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id451598177924437" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id94159817792441" role="tablecontent" xml-lang="en-US">UNO<br/>object</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id191598177924897" role="tablecontent" xml-lang="en-US">The UNO object representing interactions with the form. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1form_1_1XForm.html" name="XForm interface">XForm</link> and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1form_1_1component_1_1DataForm.html" name="DataForm service">DataForm</link> in the API documentation for detailed information.</paragraph>
+         </tablecell>
+      </tablerow>
+   </table>
+
+   <h2 id="hd_id421612628828054" xml-lang="en-US">Event properties</h2>
+   <paragraph role="paragraph" id="par_id41612629140856" xml-lang="en-US">The properties below return or set URI strings that define the script triggered by the event.</paragraph>
+   <table id="tab_id951612628879819">
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id961612628879819" role="tablehead" xml-lang="en-US">Name</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id401612628879819" role="tablehead" xml-lang="en-US">ReadOnly</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id281612628879819" role="tablehead" xml-lang="en-US">Basic IDE Description</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id431612629836735" localize="false" role="tablecontent" xml-lang="en-US">OnApproveCursorMove</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id111612629836630" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id1001612629836902" role="tablecontent" xml-lang="en-US">Before record change</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id701612629836389" localize="false" role="tablecontent" xml-lang="en-US">OnApproveParameter</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id291612629836294" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id62161262983683" role="tablecontent" xml-lang="en-US">Fill parameters</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id241612629836863" localize="false" role="tablecontent" xml-lang="en-US">OnApproveReset</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id81612629836634" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id881612629836744" role="tablecontent" xml-lang="en-US">Prior to reset</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id201612629836996" localize="false" role="tablecontent" xml-lang="en-US">OnApproveRowChange</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id591612629836830" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id161612629836775" role="tablecontent" xml-lang="en-US">Before record action</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id111612629836950" localize="false" role="tablecontent" xml-lang="en-US">OnApproveSubmit</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id891612629836630" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id461612629836679" role="tablecontent" xml-lang="en-US">Before submitting</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id711612629836495" localize="false" role="tablecontent" xml-lang="en-US">OnConfirmDelete</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id131612629836291" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id151612629836151" role="tablecontent" xml-lang="en-US">Confirm deletion</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id971612629836286" localize="false" role="tablecontent" xml-lang="en-US">OnCursorMoved</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id211612629836725" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id361612629836624" role="tablecontent" xml-lang="en-US">After record change</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id721612629836537" localize="false" role="tablecontent" xml-lang="en-US">OnErrorOccurred</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id311612629836481" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id721612629836752" role="tablecontent" xml-lang="en-US">Error occurred</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id55161262983695" localize="false" role="tablecontent" xml-lang="en-US">OnLoaded</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id981612629836116" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id381612629836635" role="tablecontent" xml-lang="en-US">When loading</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id621612629836155" localize="false" role="tablecontent" xml-lang="en-US">OnReloaded</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id711612629836704" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id35161262983642" role="tablecontent" xml-lang="en-US">When reloading</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id541616778783953" localize="false" role="tablecontent" xml-lang="en-US">OnReloading</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id44161677878329" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id661616778783899" role="tablecontent" xml-lang="en-US">Before reloading</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id961616778529182" localize="false" role="tablecontent" xml-lang="en-US">OnResetted</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id651616778529764" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id311616778529570" role="tablecontent" xml-lang="en-US">After resetting</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id171616778529918" localize="false" role="tablecontent" xml-lang="en-US">OnRowChanged</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id601616778529481" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id351616778529352" role="tablecontent" xml-lang="en-US">After record action</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id91616778529622" localize="false" role="tablecontent" xml-lang="en-US">OnUnloaded</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id711616778529292" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id981616778529250" role="tablecontent" xml-lang="en-US">When unloading</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id71616778529970" localize="false" role="tablecontent" xml-lang="en-US">OnUnloading</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id521616778529932" role="tablecontent" xml-lang="en-US">No</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id511616778529291" role="tablecontent" xml-lang="en-US">Before unloading</paragraph>
+         </tablecell>
+      </tablerow>
+   </table>
+   <tip id="par_id961618181634322">To learn more about URI strings, refer to the <link href="https://wiki.openoffice.org/wiki/Documentation/DevGuide/Scripting/Scripting_Framework_URI_Specification" name="URI specification">Scripting Framework URI Specification</link>.</tip>
+   <table id="tab_id891606472825856">
+    <tablerow>
+       <tablecell colspan="3"><paragraph id="par_id921606472825856" role="tablehead">List of methods in the Form service</paragraph></tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell><paragraph id="par_id381606472825856" role="tablecontent" localize="false">
+           <link href="text/sbasic/shared/03/sf_form.xhp#Activate" name="Activate method">Activate</link><br/>
+           <link href="text/sbasic/shared/03/sf_form.xhp#CloseFormDocument" name="CloseFormDocument method">CloseFormDocument</link><br/>
+           <link href="text/sbasic/shared/03/sf_form.xhp#Controls" name="Controls method">Controls</link><br/>
+           <link href="text/sbasic/shared/03/sf_form.xhp#GetDatabase" name="GetDatabase method">GetDatabase</link><br/>
+       </paragraph></tablecell>
+       <tablecell><paragraph id="par_id451606472825856" role="tablecontent" localize="false">
+           <link href="text/sbasic/shared/03/sf_form.xhp#MoveFirst" name="MoveFirst method">MoveFirst</link><br/>
+           <link href="text/sbasic/shared/03/sf_form.xhp#MoveLast" name="MoveLast method">MoveLast</link><br/>
+           <link href="text/sbasic/shared/03/sf_form.xhp#MoveNext" name="MoveNext method">MoveNext</link><br/>
+           <link href="text/sbasic/shared/03/sf_form.xhp#MoveNew" name="MoveNew method">MoveNew</link><br/>
+       </paragraph></tablecell>
+       <tablecell><paragraph id="par_id161606472825856" role="tablecontent" localize="false">
+           <link href="text/sbasic/shared/03/sf_form.xhp#MovePrevious" name="MovePrevious method">MovePrevious</link><br/>
+           <link href="text/sbasic/shared/03/sf_form.xhp#Requery" name="Requery method">Requery</link><br/>
+           <link href="text/sbasic/shared/03/sf_form.xhp#Subforms" name="Subforms method">SubForms</link><br/><br/>
+       </paragraph></tablecell>
+    </tablerow>
+    </table>
+
+<section id="Activate">
+  <comment> Activate -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721583933076548">
+      <bookmark_value>Form service;Activate</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id681583933076692" localize="false">Activate</h2>
+   <paragraph role="paragraph" id="par_id871583933076448">Sets the focus on the current <literal>Form</literal> instance. Returns <literal>True</literal> if focusing was successful.</paragraph>
+   <paragraph role="paragraph" id="par_id81616858956290" xml-lang="en-US">The behavior of the <literal>Activate</literal> method depends on the type of document where the form is located:</paragraph>
+   <list type="unordered">
+      <listitem>
+         <paragraph id="par_id761616858967361"  role="listitem" xml-lang="en-US"><emph>In Writer documents:</emph> Sets the focus on that document.</paragraph>
+      </listitem>
+      <listitem>
+         <paragraph id="par_id931616859010103"  role="listitem" xml-lang="en-US"><emph>In Calc documents:</emph> Sets the focus on the sheet to which the the form belongs.</paragraph>
+      </listitem>
+      <listitem>
+         <paragraph id="par_id41616859019478"  role="listitem" xml-lang="en-US"><emph>In Base documents:</emph> Sets the focus on the <literal>FormDocument</literal> the <literal>Form</literal> refers to.</paragraph>
+      </listitem>
+   </list>
+   <h3 id="hd _id61583933076171" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id731583933076815">myForm.Activate() As Boolean</paragraph>
+   </bascode>
+   <h3 id="hd _id26158393307687" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <paragraph role="paragraph" id="par_id921618228229529">The following example assumes you want to activate the form named <literal>FormA</literal> located in <literal>Sheet1</literal> of the currently open Calc file. It first gets access to the document using the <literal>Document</literal> service and <literal>ThisComponent</literal> and then activates the form.</paragraph>
+   <bascode>
+     <paragraph role="bascode" id="bas_id21618228468066">'Gets hold of the form that will be activated</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id421618228118346">Dim oDoc as Object, myForm as Object</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id261618228156375">Set oDoc = CreateScriptService("Document", ThisComponent)</paragraph>
+     <paragraph role="paragraph" localize="false" id="par_id451618228193979">Set myForm = oDoc.Forms("Sheet1", "FormA")</paragraph>
+     <paragraph role="bascode" id="bas_id201618228487565">'Activates the form</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id361598179135096">myForm.Activate()</paragraph>
+   </bascode>
+   <paragraph role="paragraph" id="par_id661618228523419">To use the method Activate with other %PRODUCTNAME documents, read <link href="text/sbasic/shared/03/sf_form.xhp#ServiceInvocation" name="FormServiceInvocation">Service inovcation</link> above.</paragraph>
+  <note id="par_id81618228720782"><literal>ThisComponent</literal> is valid for Calc and Writer documents. For Base documents use <literal>ThisDataBaseDocument</literal>.</note>
+</section>
+
+<section id="CloseFormDocument">
+  <comment> CloseFormDocument -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id14161686043795">
+      <bookmark_value>Form service;CloseFormDocument</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id18161686043718" localize="false">CloseFormDocument</h2>
+   <paragraph role="paragraph" id="par_id501616860541195" xml-lang="en-US">Closes the form document containing the actual <literal>Form</literal> instance. The <literal>Form</literal> instance is disposed.</paragraph>
+   <h3 id="hd _id99161686043761" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id8161686043710">myForm.CloseFormDocument() As Boolean</paragraph>
+   </bascode>
+   <h3 id="hd _id901616860437964" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id511616860437148">myForm.CloseFormDocument()</paragraph>
+   </bascode>
+   <note id="par_id611618229004669">This method only closes form documents located in Base documents. If the form is stored in a Writer or Calc document, calling <literal>CloseFormDocument</literal> will have no effect.</note>
+</section>
+
+<section id="Controls">
+   <comment> Controls -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41584541257826">
+      <bookmark_value>Form service;Controls</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id95158454125767" localize="false">Controls</h2>
+   <paragraph role="paragraph" id="par_id161584541257982">The value returned by the <literal>Controls</literal> method depends on the arguments provided:</paragraph>
+   <list type="unordered">
+      <listitem>
+         <paragraph id="par_id421598179770993"  role="listitem" xml-lang="en-US">If the method is called <emph>without any arguments</emph>, then it returns the list of the controls contained in the form. Beware that the returned list does not contain any subform controls.</paragraph>
+      </listitem>
+      <listitem>
+         <paragraph id="par_id81598185229301"  role="listitem" xml-lang="en-US">If the optional <literal>ControlName</literal> argument is provided, the method returns a <literal>FormControl</literal> class instance refering to the specified control.</paragraph>
+      </listitem>
+   </list>
+   <h3 id="hd _id601584541257443" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id201584541257726">myForm.Controls([ControlName As String]) As Variant</paragraph>
+   </bascode>
+   <h3 id="hd _id291584541257237" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id1001584541257789"><emph>ControlName</emph> : A valid control name as a case-sensitive string. If absent, the list of control names is returned as a zero-based array.</paragraph>
+   <h3 id="hd _id32158454125769" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id151598185478904">Dim myForm As Object, myList As Variant, myControl As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id21598185484092">Set myForm = myDoc.Forms("myForm")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id641598185489492">myList = myform.Controls()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id921598185495193">Set myControl = myform.Controls("myTextBox")</paragraph>
+   </bascode>
+</section>
+
+<section id="GetDatabase">
+   <comment> GetDatabase -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id941616861134691">
+      <bookmark_value>Form service;GetDatabase</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id141616861134554" localize="false">GetDatabase</h2>
+   <paragraph role="paragraph" id="par_id291616861407907" xml-lang="en-US">Return a <link href="text/sbasic/shared/03/sf_database.xhp" name="DBService"><literal>SFDatabases</literal>.<literal>Database</literal></link> instance giving access to the execution of SQL commands on the database the current form is connected to and/or that is stored in the current Base document.</paragraph>
+   <paragraph role="paragraph" id="par_id991616861417207" xml-lang="en-US">Each form in a <literal>FormDocument</literal> has its own database connection, except in Base documents where they all share the same connection.</paragraph>
+   <h3 id="hd _id431616861134316" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id251616861134409">myForm.GetDatabase([User As String], [Password As String]) As Object</paragraph>
+   </bascode>
+   <h3 id="hd _id871616861134673" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id701616861134906"><emph>User, Password</emph> : The login parameters (Default = "").</paragraph>
+   <h3 id="hd _id911616861134351" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id231616861134373">Dim myDb As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id2316168611347">Set myDb = oForm.GetDatabase()</paragraph>
+   </bascode>
+</section>
+
+<section id="MoveFirst">
+  <comment> MoveFirst -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id671616861787529">
+      <bookmark_value>Form service;MoveFirst</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id591616861787279" localize="false">MoveFirst</h2>
+   <paragraph role="paragraph" id="par_id771616861842867" xml-lang="en-US">The form cursor is positioned on the first record. Returns <literal>True</literal> if successful.</paragraph>
+   <h3 id="hd _id601616861787526" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id971616861787676">myForm.MoveFirst() As Boolean</paragraph>
+   </bascode>
+   <h3 id="hd _id51616861787314" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id191616861787635">myForm.MoveFirst()</paragraph>
+   </bascode>
+</section>
+
+<section id="MoveLast">
+  <comment> MoveLast -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id551616863143388">
+      <bookmark_value>Form service;MoveLast</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id831616863143434" localize="false">MoveLast</h2>
+   <paragraph role="paragraph" id="par_id331616863143187" xml-lang="en-US">The form cursor is positioned on the last record. Returns <literal>True</literal> if successful.</paragraph>
+   <h3 id="hd _id66161686314335" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id631616863143741">myForm.MoveLast() As Boolean</paragraph>
+   </bascode>
+   <h3 id="hd _id501616863143323" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id691616863143688">myForm.MoveLast()</paragraph>
+   </bascode>
+</section>
+
+<section id="MoveNew">
+  <comment> MoveNew -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231616863143638">
+      <bookmark_value>Form service;MoveNew</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id41161686314366" localize="false">MoveNew</h2>
+   <paragraph role="paragraph" id="par_id361616863143954" xml-lang="en-US">The form cursor is positioned on the new record area. Returns <literal>True</literal> if successful.</paragraph>
+   <h3 id="hd _id461616863143572" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id8161686314375">myForm.MoveNew() As Boolean</paragraph>
+   </bascode>
+   <h3 id="hd _id311616863143737" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id401616863143757">myForm.MoveNew()</paragraph>
+   </bascode>
+</section>
+
+<section id="MoveNext">
+  <comment> MoveNext -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171616863143921">
+      <bookmark_value>Form service;MoveNext</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id111616863143256" localize="false">MoveNext</h2>
+   <paragraph role="paragraph" id="par_id541616863143461" xml-lang="en-US">The form cursor is positioned on the next record. Returns <literal>True</literal> if successful.</paragraph>
+   <h3 id="hd _id331616863143670" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id211616863143355">myForm.MoveNext([Offset As Long]) As Boolean</paragraph>
+   </bascode>
+   <h3 id="hd _id261616863582793" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id271616863582607"><emph>Offset</emph> : The number of records to go forward (Default = 1).</paragraph>
+   <h3 id="hd _id71616863143475" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id591616863143862">myForm.MoveNext()</paragraph>
+   </bascode>
+</section>
+
+<section id="MovePrevious">
+  <comment> MovePrevious -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id71161686379488">
+      <bookmark_value>Form service;MovePrevious</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id371616863794447" localize="false">MovePrevious</h2>
+   <paragraph role="paragraph" id="par_id616168637945" xml-lang="en-US">The form cursor is positioned on the previous record. Returns <literal>True</literal> if successful.</paragraph>
+   <h3 id="hd _id67161686379485" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id161616863794685">myForm.MovePrevious([Offset As Long]) As Boolean</paragraph>
+   </bascode>
+   <h3 id="hd _id141616863794433" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id751616863794125"><emph>Offset</emph> : The number of records to go backwards (Default = 1).</paragraph>
+   <h3 id="hd _id511616863794613" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id941616863794988">myForm.MovePrevious()</paragraph>
+   </bascode>
+</section>
+
+<section id="Requery">
+  <comment> Requery -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id741616864216894">
+      <bookmark_value>Form service;Requery</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id551616864216705" localize="false">Requery</h2>
+   <paragraph role="paragraph" id="par_id811616864216529" xml-lang="en-US">Reloads the current data from the database and refreshes the form. The cursor is positioned on the first record. Returns <literal>True</literal> if successful.</paragraph>
+   <h3 id="hd _id51616864216609" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id561616864216636">myForm.Requery() As Boolean</paragraph>
+   </bascode>
+   <h3 id="hd _id411616864216103" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id211616864216116">myForm.Requery()</paragraph>
+   </bascode>
+</section>
+
+<section id="Subforms">
+   <comment> Subforms -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id441616864510542">
+      <bookmark_value>Form service;Subforms</bookmark_value>
+   </bookmark>
+   <h2 id="hd _id241616864510145" localize="false">Subforms</h2>
+   <paragraph role="paragraph" id="par_id891616864510614">The value returned by the <literal>Subforms</literal> method depends on the arguments provided:</paragraph>
+   <list type="unordered">
+      <listitem>
+         <paragraph id="par_id951616864510585"  role="listitem" xml-lang="en-US">If the method is called <emph>without any arguments</emph>, then it returns the list of subforms contained in the current form or subform instance.</paragraph>
+      </listitem>
+      <listitem>
+         <paragraph id="par_id591616864510445"  role="listitem" xml-lang="en-US">If the optional <literal>Subform</literal> argument is provided, the method returns a new <literal>SFDocuments</literal>.<literal>Form</literal> instance based on the specified form/subform name or index.</paragraph>
+      </listitem>
+   </list>
+   <h3 id="hd _id54161686451092" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id261616864510459">myForm.Subforms([Subform As Variant]) As Variant</paragraph>
+   </bascode>
+   <h3 id="hd _id7516168645106" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <paragraph role="paragraph" id="par_id341616864510747"><emph>Subform</emph> : A subform stored in the current <literal>Form</literal> class instance given by its name or index.</paragraph>
+   <paragraph role="paragraph" id="par_id211618230389251">When this argument is absent, the method returns a list of available subforms as a zero-based array. If the form has a single subform, you can set <literal>Subform = 0</literal> to get access to it.</paragraph>
+   <h3 id="hd _id491616864510587" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id821616864510402">Dim myForm As Object, myList As Variant, mySubform As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id81616864510872">myList = myform.Subforms()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id951616864510420">Set mySubform = myForm.Subforms("mySubform")</paragraph>
+   </bascode>
+</section>
+
+   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+   <section id="relatedtopics">
+      <embed href="text/sbasic/shared/03/sf_database.xhp#DatabaseService"/>
+      <embed href="text/sbasic/shared/03/sf_document.xhp#DocumentService"/>
+      <embed href="text/sbasic/shared/03/sf_ui.xhp#UIService"/>
+   </section>
+</body>
+</helpdocument>
