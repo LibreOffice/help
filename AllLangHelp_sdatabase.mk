@@ -35,6 +35,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
     helpcontent2/source/text/sdatabase/05030200 \
     helpcontent2/source/text/sdatabase/05030300 \
     helpcontent2/source/text/sdatabase/05030400 \
+    helpcontent2/source/text/sdatabase/05040000 \
+    helpcontent2/source/text/sdatabase/05040100 \
+    helpcontent2/source/text/sdatabase/05040200 \
     helpcontent2/source/text/sdatabase/toolbars \
 ))
 
