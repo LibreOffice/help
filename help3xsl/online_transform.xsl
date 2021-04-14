@@ -595,28 +595,28 @@
     </xsl:variable>
     <xsl:choose>
         <xsl:when test="string-length(@descendant)=0">
-            <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::paragraph"/></xsl:apply-templates>
+            <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::paragraph"/></xsl:apply-templates>
         </xsl:when>
         <xsl:when test="@descendant='h1'">
-            <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::h1"/></xsl:apply-templates>
+            <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::h1"/></xsl:apply-templates>
         </xsl:when>
         <xsl:when test="@descendant='h2'">
-            <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::h2"/></xsl:apply-templates>
+            <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::h2"/></xsl:apply-templates>
         </xsl:when>
         <xsl:when test="@descendant='h3'">
-            <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::h3"/></xsl:apply-templates>
+            <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::h3"/></xsl:apply-templates>
         </xsl:when>
         <xsl:when test="@descendant='h4'">
-            <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::h4"/></xsl:apply-templates>
+            <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::h4"/></xsl:apply-templates>
         </xsl:when>
         <xsl:when test="@descendant='h5'">
-            <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::h5"/></xsl:apply-templates>
+            <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::h5"/></xsl:apply-templates>
         </xsl:when>
         <xsl:when test="@descendant='h6'">
-            <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::h6"/></xsl:apply-templates>
+            <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::h6"/></xsl:apply-templates>
         </xsl:when>
         <xsl:otherwise>
-            <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::paragraph"/></xsl:apply-templates>
+            <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::paragraph"/></xsl:apply-templates>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -629,28 +629,28 @@
     </xsl:variable>
     <xsl:choose>
         <xsl:when test="string-length(@descendant)=0">
-        <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::paragraph"/></xsl:apply-templates>
+        <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::paragraph"/></xsl:apply-templates>
         </xsl:when>
         <xsl:when test="@descendant='h1'">
-        <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::h1"/></xsl:apply-templates>
+        <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::h1"/></xsl:apply-templates>
         </xsl:when>
         <xsl:when test="@descendant='h2'">
-        <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::h2"/></xsl:apply-templates>
+        <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::h2"/></xsl:apply-templates>
         </xsl:when>
         <xsl:when test="@descendant='h3'">
-        <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::h3"/></xsl:apply-templates>
+        <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::h3"/></xsl:apply-templates>
         </xsl:when>
         <xsl:when test="@descendant='h4'">
-        <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::h4"/></xsl:apply-templates>
+        <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::h4"/></xsl:apply-templates>
         </xsl:when>
         <xsl:when test="@descendant='h5'">
-        <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::h5"/></xsl:apply-templates>
+        <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::h5"/></xsl:apply-templates>
         </xsl:when>
         <xsl:when test="@descendant='h6'">
-        <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::h6"/></xsl:apply-templates>
+        <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::h6"/></xsl:apply-templates>
         </xsl:when>
         <xsl:otherwise>
-        <xsl:apply-templates><xsl:sort order="{$order1}" select="descendant::paragraph"/></xsl:apply-templates>
+        <xsl:apply-templates><xsl:sort lang="{$lang}" order="{$order1}" select="descendant::paragraph"/></xsl:apply-templates>
         </xsl:otherwise>
     </xsl:choose>
 
