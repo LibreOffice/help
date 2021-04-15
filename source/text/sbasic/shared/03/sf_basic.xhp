@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+<meta>
+  <topic id="SF_Document" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">ScriptForge.Basic service</title>
+    <filename>/text/sbasic/shared/03/sf_basic.xhp</filename>
+  </topic>
+</meta>
+<body>
+<section id="ScriptForge-sf_basic">
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id261582733781987">
+      <bookmark_value>Basic service</bookmark_value>
+    </bookmark>
+</section>
+<section id="abstract">
+    <h1 id="hd_id731582733781114" xml-lang="en-US"><variable id="BasicService"><link href="text/sbasic/shared/03/sf_basic.xhp" name="Basic service"><literal>ScriptForge</literal>.<literal>Basic</literal> service</link></variable></h1>
+  <paragraph role="paragraph" id="par_id381589189355849" xml-lang="en-US">The <literal>ScriptForge.Basic</literal> service proposes a collection of %PRODUCTNAME Basic methods to be executed in a Python context. <literal>Basic</literal> service methods reproduce the exact syntax and behaviour of Basic builtin functions.
+.</paragraph>
+  <embed href="text/sbasic/shared/03/avail_release.xhp#7.2.service"/>
+</section>
+  <paragraph role="paragraph" id="par_id591589189364267" xml-lang="en-US">Typical example:</paragraph>
+  <pycode>
+   <paragraph role="pycode" localize="false" id="pyc_id971618493778666">svc.MsgBox('This is text')</paragraph>
+  </pycode>
+  <warning id="par_id151618849022977"><literal>ScriptForge</literal>.<literal>Basic</literal> service is limited to Python scripts.</warning>
+  <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id141610734722352">Before using the <literal>Basic</literal> service, import the <literal>CreateScriptService()</literal> method from the <literal>scriptforge</literal> module:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id551610734764343">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id121618496552817">svc = CreateScriptService("Basic")</paragraph>
+  </pycode>
+  <h2 id="hd_id201618922972557">Properties</h2>
+  <table id="tab_id991618922991909">
+   <tablerow>
+       <tablecell><paragraph id="par_id401618922991909" role="tablehead">Name</paragraph></tablecell>
+       <tablecell><paragraph id="par_id591618922991909" role="tablehead">ReadOnly</paragraph></tablecell>
+       <tablecell><paragraph id="par_id211618922991909" role="tablehead">Type</paragraph></tablecell>
+       <tablecell><paragraph id="par_id971618923022846" role="tablehead">Description</paragraph></tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id541619003984227" role="tablecontent">MB_OK, MB_OKCANCEL, MB_RETRYCANCEL, MB_YESNO, MB_YESNOCANCEL</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id21619004009875" role="tablecontent">Yes</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id111619004011627" role="tablecontent">integer</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id791619004012484" role="tablecontent">Values: 0, 1, 5, 4, 3</paragraph>
+       </tablecell>
+   </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id161619003998035" role="tablecontent">MB_ICONEXCLAMATION, MB_ICONINFORMATION, MB_ICONQUESTION, MB_ICONSTOP</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id201619004097755" role="tablecontent">Yes</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id981619004098700" role="tablecontent">integer</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id311619004099683" role="tablecontent">Values: 48, 64, 32, 16<br/></paragraph>
+       </tablecell>
+    </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id831618922991909" role="tablecontent">MB_ABORTRETRYIGNORE, MB_DEFBUTTON1, MB_DEFBUTTON2, MB_DEFBUTTON3</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id581618922991909" role="tablecontent">Yes</paragraph>
+       </tablecell>
+       <tablecell>
+         <paragraph id="par_id161618922991910" role="tablecontent">integer</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id211618923312141" role="tablecontent">Values: 2, 128, 256, 512</paragraph>
+       </tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id471618924470655" role="tablecontent">IDABORT, IDCANCEL, IDIGNORE, IDNO, IDOK, IDRETRY, IDYES</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id961618924503848" role="tablecontent">Yes</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id571618924505303" role="tablecontent">integer</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id871618924506654" role="tablecontent">Values: 3, 2, 5, 7, 1, 4, 6<br/>Constants  indicating <literal>MsgBox</literal> selected button.</paragraph>
+       </tablecell>
+   </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id421619006246768" role="tablecontent">StarDesktop</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id731619006254384" role="tablecontent">Yes</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id711619006255184" role="tablecontent">UNO<br/>object</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id541619006255653" role="tablecontent"><link href="text/sbasic/shared/stardesktop.xhp" name="StarDesktop"><literal>StarDesktop</literal></link> object represents LibreOfficeDev Start Center.</paragraph>
+       </tablecell>
+    </tablerow>
+  </table>
+  
+  <table id="tab_id901611086279902">
+   <tablerow>
+     <tablecell colspan="3"><paragraph id="par_id651606319520519" role="tablehead">List of Methods in the Basic Service</paragraph></tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id761611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_basic.xhp#ConvertFromUrl" name="ConvertFromUrl method">ConvertFromUrl</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#ConvertToUrl" name="ConvertToUrl method">ConvertToUrl</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#CreateUnoService" name="CreateUnoService method">CreateUnoService</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#DateAdd" name="DateAdd method">DateAdd</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#DateDiff" name="DateDiff method">DateDiff</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#DatePart" name="DatePart method">DatePart</link>
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_basic.xhp#DateValue" name="DateValue method">DateValue</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#Format" name="Format method">Format</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#GetDefaultContext" name="GetDefaultContext method">GetDefaultContext</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#GetGuiType" name="GetGuiType method">GetGuiType</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#GetPathSeparator" name="GetPathSeparator method">GetPathSeparator</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#GetSystemTicks" name="GetSystemTicks method">GetSystemTicks</link><br/>
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_basic.xhp#InputBox" name="InputBox0 method">InputBox</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#MsgBox" name="MsgBox method">MsgBox</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#Now" name="Now method">Now</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#RGB" name="RGB method">RGB</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#Xray" name="Xray method">Xray</link>
+           </paragraph>
+       </tablecell>
+   </tablerow>
+  </table>
+
+<section id="ConvertFromUrl">
+  <comment> ConvertFromUrl ------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+    <bookmark_value>Basic service;ConvertFromUrl</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id201589199698251" localize="false">ConvertFromUrl</h2>
+  <paragraph role="paragraph" id="par_id93158919969864">Returns a system path file name for the given <literal>file:</literal> URL.</paragraph>
+  <h3 id="hd_id921589199698523" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" localize="false" id="par_id201618496409224"><input>svc.ConvertFromUrl(url: str): str</input></paragraph>
+  <h3 id="hd_id891618502357257" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <paragraph role="paragraph" id="par_id321618502481706"> <emph>url</emph>: An absolute <literal>file:</literal> URL.</paragraph>
+  <h3 id="hd_id721618502361001" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functvalue"/></h3>
+  <paragraph role="paragraph" id="par_id81618502493505">A system path file name.</paragraph>
+  <h3 id="hd_id5158919969859" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id41158919969836">filename = svc.ConvertFromUrl( "file:///C:/Program%20Files%20(x86)/LibreOffice/News.txt")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id881611147617212">svc.MsgBox(filename)</paragraph>
+  </pycode>
+</section>
+
+<section id="ConvertToUrl">
+  <comment> ConvertToUrl --------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721589200121249">
+    <bookmark_value>Basic service;ConvertToUrl</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261589210021415" localize="false">ConvertToUrl</h2>
+  <paragraph role="paragraph" id="par_id658519200121138">Returns a <literal>file:</literal> URL for the given system path.</paragraph>
+  <h3 id="hd_id671528900121173" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id761618501052294" localize="false"><input>svc.ConvertToUrl(systempath: str): str</input></paragraph>
+  <h3 id="hd_id77158900212192" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <paragraph role="paragraph" id="par_id401618521015903"><emph>systempath</emph>: A system file name as a string.</paragraph>
+  <h3 id="hd_id301618541003255" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functvalue"/></h3>
+  <paragraph role="paragraph" id="par_id61658101307414">A <literal>file:</literal> URL as a string.</paragraph>
+  <h3 id="hd_id285159200121838" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id891985200121516">url = svc.ConvertToUrl( 'C:\Program Files(x86)\LibreOffice\News.txt')</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id51589200605125">svc.MsgBox(url)</paragraph>
+  </pycode>
+</section>
+
+<section id="CreateUnoService">
+  <comment> CreateUnoService ----------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721589200121249">
+    <bookmark_value>Basic service;CreateUnoService</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261589200121415" localize="false">CreateUnoService</h2>
+  <paragraph role="paragraph" id="par_id651589200121138">Instantiates a UNO service with the <literal>ProcessServiceManager</literal>.</paragraph>
+  <h3 id="hd_id671589200121173" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id221618556258876" localize="false"><input>svc.CreateUnoService(servicename: str): uno</input></paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="bas_id60158920012171">svc.CreateUnoService(servicename: str): uno</paragraph>
+  </pycode>
+  <h3 id="hd_id77158920012192" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <paragraph role="paragraph" id="par_id361589200121646"> <emph>servicename</emph> : A fully qualified service name such as "com.sun.star.ui.dialogs.FilePicker" or 'com.sun.star.sheet.FunctionAccess'.</paragraph>
+  <h3 id="hd_id251589200121838" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="bascode" localize="false" id="pyc_id891589200121516">dsk = svc.CreateUnoService('com.sun.star.frame.Desktop')</paragraph>
+  </pycode>
+</section>
+
+<section id="DateAdd">
+  <comment> DateAdd -------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id311599410266448">
+    <bookmark_value>Basic service;DateAdd</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id91599410266599" localize="false">DateAdd</h2>
+  <paragraph role="paragraph" id="par_id901599410483300" xml-lang="en-US">Adds a date or time interval to a given date/time a number of times and returns the resulting date.</paragraph>
+  <h3 id="hd_id861599410266539" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id771618557939013" localize="false"><input>svc.DateAdd(interval: str, number: num, date: datetime): datetime</input></paragraph>
+  <h3 id="hd_id861599410266584" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <paragraph role="paragraph" id="par_id581618562143601"> <emph>interval</emph>: A string expression from the following table, specifying the date or time interval.</paragraph>
+  <embed href="text/sbasic/shared/03030110.xhp#datetable"/>
+  <paragraph role="paragraph" id="par_id281618562144897"> <emph>number</emph>: A numerical expression specifying how often the <literal>interval</literal> value will be added when positive or subtracted when negative.</paragraph>
+  <paragraph role="paragraph" id="par_id811618561843272"> <emph>date</emph>: A given datetime.datetime value, the <literal>interval</literal> value will be added number times to this date/time value.</paragraph>
+  <h3 id="hd_id591618558226710" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functvalue"/></h3>
+  <paragraph role="paragraph" id="par_id181618561778320">A datetime.datetime value.</paragraph>
+  <h3 id="hd_id30159941026663" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id961618558341526">dt = datetime.date(2004, 1, 31)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id891599410846998">dt = svc.DateAdd("m", 1, dt)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id621599410266932">print(dt)</paragraph>
+  </pycode>
+</section>
+
+<section id="DateDiff">
+  <comment> DateDiff ------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id601589202413561">
+    <bookmark_value>Basic service;DateDiff</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id611589202413141" localize="false">DateDiff</h2>
+  <paragraph role="paragraph" id="par_id991589202413257">Returns the number of date or time intervals between two given date/time values.</paragraph>
+  <h3 id="hd_id69158920241331" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id441618562866810" localize="false"><input>svc.DateDiff(interval: str, date1: datetime, date2: datetime, firstdayofweek = 1, firstweekofyear = 1): int</input></paragraph>
+  <h3 id="hd_id55158920241343" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <paragraph role="paragraph" id="par_id481618563770490"> <emph>interval</emph>: A string expression  specifying the date interval, as detailed in above <literal>DateAdd</literal> method.</paragraph>
+  <paragraph role="paragraph" id="par_id121618563772932"> <emph>date1</emph>, <emph>date2</emph>: The two datetime.datetime values to be compared.</paragraph>
+  <embed href="text/sbasic/shared/03030120.xhp#weekyear"/>
+  <h3 id="hd_id631618563376042" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functvalue"/></h3>
+  <paragraph role="paragraph" id="par_id121618563454738">A number.</paragraph>
+  <h3 id="hd_id911589202413592" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id401611153339973">date1 = datetime.date(2005,1, 1)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id121589202413630">date2 = datetime.date(2005,12,31)</paragraph>
+    <paragraph role="pycode" id="pyc_id641618564383315">diffDays = svc.DateDiff('d', date1, date2)</paragraph>
+    <paragraph role="pycode" id="pyc_id151618564392035">print(diffDays)</paragraph>
+  </pycode>
+</section>
+
+<section id="DatePart">
+  <comment> DatePart ------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id691589202925124">
+    <bookmark_value>Basic service;DatePart</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id3615892029256" localize="false">DatePart</h2>
+  <paragraph role="paragraph" id="par_id81589202925519">The DatePart function returns a specified part of a date.</paragraph>
+ <h3 id="hd_id741589202925179" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" localize="false" id="par_id761618670376341"><input>svc.DatePart(interval: str, date: datetime,  firstdayofweek = 1, firstweekofyear = 1): int</input></paragraph>
+  <h3 id="hd_id361618670449758" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <paragraph role="paragraph" id="par_id761618672192231"> <emph>interval</emph>: A string expression  specifying the date interval, as detailed in above <literal>DateAdd</literal> method.</paragraph>
+  <paragraph role="paragraph" id="par_id61618672313838"> <emph>date</emph>: The date/time from which the result is calculated.</paragraph>
+  <paragraph role="paragraph" id="par_id511619445271897"> <emph>firstdayofweek, firstweekofyear</emph>: optional parameters that respectively specify the starting day of a week and the starting week of a year, as detailed in above <literal>DateDiff</literal> method.</paragraph>
+  <h3 id="hd_id911618670488437" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functvalue"/></h3>
+  <paragraph role="paragraph" id="par_id791618672371743">The extracted part for the given date/time.</paragraph>
+  <h3 id="hd_id481589202925957" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="bascode" localize="false" id="pyc_id31589202925376">print(svc.DatePart("ww", datetime.date(2005,12,31)</paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id821589203188905">print(svc.DatePart('q', datetime.date(1999,12,30)</paragraph>
+  </pycode>
+</section>
+
+<section id="DateValue">
+  <comment> DateValue ------------------------------------------------------------------------------ </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141589203370367">
+    <bookmark_value>Basic service;DateValue</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id161589203370594" localize="false">DateValue</h2>
+  <paragraph role="paragraph" id="par_id121589203370778">Computes a date value from a date string.</paragraph>
+  <h3 id="hd_id851589203370467" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" localize="false" id="par_id721618673403017"><input>svc.DateValue(date: str): datetime</input></paragraph>
+  <h3 id="hd_id221589203370830" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <embed href="text/sbasic/shared/03030102.xhp#parm1"/>
+  <h3 id="hd_id151618673970234"><embedvar href="text/sbasic/shared/00000003.xhp#functvalue"/></h3>
+  <paragraph role="paragraph" id="par_id441618674018955">The computed date.</paragraph>
+  <h3 id="hd_id911589203370485" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id81589203370943">dt = svc.DateValue("23-02-2011")</paragraph>
+    <paragraph role="pycode" id="pyc_id931618674563379">print(dt)</paragraph>
+  </pycode>
+</section>
+
+<section id="Format">
+  <comment> Format --------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id71158920514765">
+    <bookmark_value>Basic service;Format</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id811529844547824" localize="false">Format</h2>
+  <paragraph role="paragraph" id="par_id458161678389887">Converts a number to a string, and then formats it according to the format that you specify.</paragraph>
+  <h3 id="hd_id871589205147745" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id901618678405855" localize="false"><input>svc.Format(expression: any, format = ''): str</input></paragraph>
+  <embed href="text/sbasic/shared/03120301.xhp#ValueParms"/>
+  <h3 id="hd_id751618825527776">Formatting Codes</h3>
+  <embed href="text/sbasic/shared/03120301.xhp#codes"/>
+  <h3 id="hd_id681618825574599">Predefined Formats</h3>
+  <embed href="text/sbasic/shared/03120301.xhp#formats"/>
+  <embed href="text/sbasic/shared/00000003.xhp#languageformat"/>
+  <h3 id="hd_id81985205147631" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id431589205147164">txt = svc.Format(6328.2, '##.##0.00')</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id231618679147769">print(txt)</paragraph>
+  </pycode>
+</section>
+
+<section id="GetDefaultContext">
+  <comment> GetDefaultContext ---------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id71158950214765">
+    <bookmark_value>Basic service;GetDefaultContext</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id811589205147428" localize="false">GetDefaultContext</h2>
+  <paragraph role="paragraph" id="par_id451618876389887">Returns the default context of the process service factory, if existent, else returns a null reference.</paragraph>
+  <paragraph role="paragraph" id="par_id881618848030897"><literal>GetDefaultContext</literal> is an alternative to the <link href="text/sbasic/python/python_programming.xhp" name="getComponentContext method">getComponentContext()</link> method available from <literal>XSCRIPTCONTEXT</literal> global variable or from <link href="text/sbasic/python/python_programming.xhp" name="uno.py module">uno.py</link> module.</paragraph>
+  <h3 id="hd_id871502985147745" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id901668178405855" localize="false"><input>svc.GetDefaultContext(): uno</input></paragraph>
+  <h3 id="hd_id81580295741136" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functvalue"/></h3>
+  <paragraph role="paragraph" id="par_id381618831451271">The default component context is used, when instantiating services via <literal>XMultiServiceFactory</literal>. See the <literal>Professional UNO</literal> chapter in the Developer's Guide on <link href="https://api.libreoffice.org/" name="API Developer's Guide">api.libreoffice.org</link> for more information.</paragraph>
+  <h3 id="hd_id81589205147136" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id451389205147164">ctx = svc.GetDefaultContext()</paragraph>
+  </pycode>
+</section>
+
+<section id="GetGuiType">
+  <comment> GetGuiType ----------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id11758950214765">
+    <bookmark_value>Basic service;GetGuiType</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id118589205147428" localize="false">GetGuiType</h2>
+  <paragraph role="paragraph" id="par_id154618876389887">Returns a numerical value that specifies the graphical user interface. This function is only provided for backward compatibility with previous versions.</paragraph>
+  <paragraph role="paragraph" id="par_id341618848532640">Refer to <literal>system()</literal> method from <literal>platform</literal> Python module to <link href="text/sbasic/python/python_platform.xhp" name="identify the operating system">identify the operating system</link>.</paragraph>
+  <h3 id="hd_id178502985147745" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id109668178405855" localize="false"><input>svc.GetGuiType(): int</input></paragraph>
+  <h3 id="hd_id51889205147136" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id154389205147164">n = svc.GetGuiType()</paragraph>
+  </pycode>
+</section>
+
+<section id="GetPathSeparator">
+  <comment> GetPathSeparator ---------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id71158950214567">
+    <bookmark_value>Basic service;GetPathSeparator</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id811589205147824" localize="false">GetPathSeparator</h2>
+  <paragraph role="paragraph" id="par_id451618876389788">Returns the operating system-dependent directory separator used to specify file paths.</paragraph>
+    <paragraph role="paragraph" id="par_id341618848562340">Use <literal>os.pathsep</literal> from <literal>os</literal> Python module to <link href="text/sbasic/python/python_platform.xhp" name="path delimiter">identify the path separator</link>.</paragraph>
+  <h3 id="hd_id871502985147547" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id901668178405558" localize="false"><input>svc.GetPathSeparator(): str</input></paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id53158950247542">svc.GetPathSeparator(): str</paragraph>
+  </pycode>
+  <h3 id="hd_id81589205147631" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id451389205147461">sep = svc.GetPathSeparator()</paragraph>
+  </pycode>
+</section>
+
+<section id="GetSystemTicks">
+  <comment> GetSystemTicks ------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id71155980214765">
+    <bookmark_value>Basic service;GetSystemTicks</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id811589503147428" localize="false">GetSystemTicks</h2>
+  <paragraph role="paragraph" id="par_id451618678389887">Returns the number of system ticks provided by the operating system. You can use this function to optimize certain processes. Use this method to estimate time in milliseconds:</paragraph>
+  <h3 id="hd_id871502589147745" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id901667188405855" localize="false"><input>svc.GetSystemTicks(): int</input></paragraph>
+  <h3 id="hd_id81589215047136" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id251619448108905">ticks_ini = svc.GetSystemTicks()</paragraph>
+    <paragraph role="pycode" id="pyc_id181619448111210">time.sleep(1)</paragraph>
+    <paragraph role="pycode" id="pyc_id301619448111744">ticks_end = svc.GetSystemTicks()</paragraph>
+    <paragraph role="pycode" id="pyc_id651619448112320">svc.MsgBox("{} - {} = {}".format(ticks_end, ticks_ini,ticks_end - ticks_ini))</paragraph>
+  </pycode>
+</section>
+
+<section id="InputBox">
+  <comment> InputBox ------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id61618905164342">
+    <bookmark_value>Basic service;InputBox</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id311618905373414" localize="false">InputBox</h2>
+  <h3 id="hd_id821618905360069" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id91619007097426" localize="false"><input>svc.InputBox(prompt: str, [title: str], [default: str], [xpostwips: int, ypostwips: int]): str</input></paragraph>
+  <h3 id="hd_id101618905360959" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <embed href="text/sbasic/shared/03010201.xhp#parameters"/>
+  <h3 id="hd_id141618905361470" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functvalue"/></h3>
+  <paragraph role="paragraph" id="par_id21619008398677">string</paragraph>
+  <h3 id="hd_id271618905361880" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <section id="ui">
+  <pycode>
+    <paragraph role="pycode" id="pyc_id751619081201175" xml-lang="en-US">txt = s.InputBox('Please enter a phrase:', "Dear user")</paragraph>
+    <paragraph role="pycode" id="pyc_id261619081319555" xml-lang="en-US">s.MsgBox(txt, MB_ICONINFORMATION, "Confirmation of phrase")</paragraph>
+  </pycode>
+  <note id="par_id651618921455396">For in-depth information please refer to <link href="https://wiki.documentfoundation.org/Macros/General/IO_to_Screen" name="Input/Output to Screen with Python">Input/Output to Screen with Python</link> on the Wiki.</note>
+  </section>
+</section>
+
+<section id="MsgBox">
+  <comment> MsgBox -------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id681618905411293">
+    <bookmark_value>Basic service;MsgBox</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id181618br/905397758" localize="false">MsgBox</h2>
+  <paragraph role="paragraph" id="par_id231618922407948">Displays a dialog box containing a message and returns an optional value.<br/>MB_xx constants help specify the dialog type, the number and type of buttons to display, plus the icon type. By adding their respective values they form bit patterns, that define the <literal>MsgBox</literal> dialog appearance.</paragraph>
+
+  <h3 id="hd_id261618905383270" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id71618922431508" localize="false"><input>svc.MsgBox(prompt: str, buttons = svc.MB_OK, [title: str])[: int]</input></paragraph>
+  <h3 id="hd_id321618905384357" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <embed href="text/sbasic/shared/03010101.xhp#parameters"/>
+  <h3 id="hd_id811618905385054" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functvalue"/></h3>
+  <paragraph role="paragraph" id="par_id711619082902143">An optional integer as detailed in above <literal>IDxx</literal> properties.</paragraph>
+  <h3 id="hd_id641618905386806" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <embed href="text/sbasic/shared/03/sf_basic.xhp#ui"/>
+</section>
+
+<section id="Now">
+  <comment> Now ------------------------------------------------------------------------------------ </comment>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id791618906935711">
+    <bookmark_value>Basic service;Now</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id231618906957248" localize="false">Now</h2>
+  <paragraph role="paragraph" id="par_id191619084216660">Returns the current system date and time as a date/time value.</paragraph>
+  <h3 id="hd_id501618906958266" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id631619084685488" localize="false">svc.Now(): datetime</paragraph>
+  <h3 id="hd_id751618906958871" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id411619084749448" localize="false">svc.MsgBox(svc.Now(), svc.MB_OK, "Now")</paragraph>
+  </pycode>
+</section>
+
+<section id="RGB">
+  <comment> RGB ------------------------------------------------------------------------------------ </comment>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id831618907521168">
+    <bookmark_value>Basic service;RGB</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id871618907784332" localize="false">RGB</h2>
+  <paragraph role="paragraph" id="par_id621619448293385">Returns an integer color value consisting of red, green, and blue components.</paragraph>
+  <h3 id="hd_id721618907785633" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id201619096429785"><input>svc.RGB(red:int, green: int, blue: int): int</input></paragraph>
+  <h3 id="hd_id211618907785860" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <embed href="text/sbasic/shared/03010305.xhp#parameters"/>
+  <h3 id="hd_id251618907786074" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functvalue"/></h3>
+  <paragraph role="paragraph" id="par_id381619096830033">integer</paragraph>
+  <paragraph role="paragraph" id="par_id391619096806737"></paragraph>
+  <h3 id="hd_id311618907786537" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id321619096903721" localize="false">YELLOW = s.RGB(255,255,0)</paragraph>
+  </pycode>
+</section>
+
+<section id="Xray">
+  <comment> Xray ----------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id81618907851793">
+    <bookmark_value>Basic service;Xray</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id211618907871281" localize="false">Xray</h2>
+  <paragraph role="paragraph" id="par_id451619094057178">Inspect Uno objects or variables.</paragraph>
+  <h3 id="hd_id21618r907872329" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+  <paragraph role="paragraph" id="par_id301619094111856" localize="false"><input>svc.Xray(obj: any)</input></paragraph>
+  <h3 id="hd_id861618907872626" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+  <paragraph role="paragraph" id="par_id21619094660345"> <emph>obj</emph>: A variable or Uno object.</paragraph>
+  <h3 id="hd_id741618907873241" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id751619095024401" localize="false">svc.Xray(svc.StarDesktop)</paragraph>
+  </pycode>
+</section>
+
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+  <section id="relatedtopics">
+    <paragraph role="paragraph" id="par_id901618486941514"><link href="text/sbasic/python/python_programming.xhp" name="uno.fileUrlToSystemPath() method">uno.fileUrlToSystemPath() method</link></paragraph>
+    <paragraph role="paragraph" id="par_id901618496841514"><link href="text/sbasic/python/python_programming.xhp" name="uno.systemPathToFileUrl() method">uno.systemPathToFileUrl() method</link></paragraph>
+    <paragraph role="paragraph" id="par_id951618554355538"><link href="https://wiki.documentfoundation.org/Macros/General/IO_to_Screen" name="Input/Output to Screen with Python">Input/Output to Screen with Python</link> on the wiki</paragraph>
+    <paragraph role="paragraph" id="par_id610918486941514"><link href="text/sbasic/python/python_programming.xhp" name="XSCRIPTCONTEXT.getComponentContext() method">XSCRIPTCONTEXT.getComponentContext() method</link></paragraph>
+    <paragraph role="paragraph" id="par_id901618484961514"><link href="text/sbasic/python/python_programming.xhp" name="uno.getComponentContext() method">uno.getComponentContext() method</link></paragraph>
+    <paragraph role="paragraph" id="par_id901648186941514"><link href="text/sbasic/python/python_platform.xhp" name="platform.system() method">platform.system() method</link></paragraph>
+    <paragraph role="paragraph" id="par_id901816486941514"><link href="text/sbasic/python/python_platform.xhp" name="os.pathsep() method">os.pathsep() method</link></paragraph>
+   </section>
+
+</body>
+</helpdocument>
