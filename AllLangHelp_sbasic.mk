@@ -79,6 +79,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03/lib_script \
     helpcontent2/source/text/sbasic/shared/03/lib_ScriptForge \
     helpcontent2/source/text/sbasic/shared/03/sf_array \
+    helpcontent2/source/text/sbasic/shared/03/sf_basic \
     helpcontent2/source/text/sbasic/shared/03/sf_calc \
     helpcontent2/source/text/sbasic/shared/03/sf_database \
     helpcontent2/source/text/sbasic/shared/03/sf_dialog \
