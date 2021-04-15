@@ -17,17 +17,24 @@
     <body>
     <h1 id="hd_id31529004750471" xml-lang="en-US"><variable id="ScriptForge_lib"><link href="text/sbasic/shared/03/lib_ScriptForge.xhp" name="ScriptForge library">The <item type="literal">ScriptForge</item> Library</link></variable></h1>
     <bookmark xml-lang="en-US" branch="index" id="bm_id491529070339774">
-        <bookmark_value>BASIC ScriptForge library</bookmark_value>
+        <bookmark_value>ScriptForge libraries</bookmark_value>
     </bookmark>
     <section id="howtoget">
         <embed href="text/sbasic/shared/00000003.xhp#basiclibhowtoget"/>
     </section>
+    <paragraph role="paragraph" id="par_id681619700336879">ScriptForge libraries are an extensible collection of macro scripting resources for LibreOffice to be invoked from user Basic or Python macros.</paragraph>
     <note id="par_id901528999850603" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#basiclibrarynote" markup="keep"/><br/>
         <item type="literal">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</item></note>
     <paragraph role="paragraph" id="par_id781606153472028">The described modules and classes are invoked from user scripts as "Services". A generic constructor of those services has been designed for that purpose:</paragraph>
     <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id201606153529501">CreateScriptService("servicename"[, arg0, Arg1, ...])</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id201606153529501">CreateScriptService("servicename"[, arg0, arg1, ...])</paragraph>
     </bascode>
+    <paragraph role="paragraph" id="par_id761619701141721">Prior to use <literal>ScriptForge</literal> services in Python scripts, importing from <literal>scriptforge</literal> module is necessary:</paragraph>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id701619701322002" localize="false">from scriptforge import CreateScriptService</paragraph>
+      <paragraph role="pycode" id="pyc_id531619701322249" localize="false">svc = CreateScriptService('servicename', *args)</paragraph>
+      <paragraph role="pycode" id="pyc_id471619701322489"></paragraph>
+    </pycode>
     <paragraph role="paragraph" id="par_id891606153700196">Services from external libraries can be registered with the <literal>RegisterScriptServices(...)</literal> method in order to extend the set of available services.</paragraph>
     <note id="par_id851605659675843">The <literal>ScriptForge</literal> Basic library is available from %PRODUCTNAME 7.1 onwards.</note>
 
@@ -69,13 +76,14 @@
        </tablecell>
        <tablecell>
          <paragraph role="paragraph" localize="false" id="par_id771613836902464">
+           <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Calc" name="Base service">Base</link><br/>
            <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Calc" name="Calc service">Calc</link><br/>
-           <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Database" name="Database service">Database</link><br/>
-           <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Document" name="Document service">Document</link>
+           <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Database" name="Database service">Database</link>
          </paragraph>
        </tablecell>
        <tablecell>
          <paragraph id="par_id441543838858931" localize="false" role="tablecontent">
+           <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Document" name="Document service">Document</link><br/>
            <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Form" name="Form service">Form</link><br/><br/><br/>
          </paragraph>
        </tablecell>
@@ -101,15 +109,16 @@
        </tablecell>
        <tablecell>
          <paragraph role="tablecontent" localize="false" id="par_id461613837133275">
+           <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Basic" name="Basic service">Basic</link><br/>
            <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#L10N" name="L10N service">L10N</link><br/>
-           <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Platform" name="Platform service">Platform</link><br/>
-           <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Services" name="Services service">Services</link><br/>
+           <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Platform" name="Platform service">Platform</link>
          </paragraph>
        </tablecell>
        <tablecell>
          <paragraph id="par_id441613723858931" localize="false" role="tablecontent">
+           <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Services" name="Services service">L10N</link><br/>
            <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Session" name="Session service">Session</link><br/>
-           <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Timer" name="Timer service">Timer</link><br/><br/>
+           <link href="text/sbasic/shared/03/lib_ScriptForge.xhp#Timer" name="Timer service">Timer</link>
          </paragraph>
        </tablecell>
     </tablerow>
@@ -117,6 +126,12 @@
 
     <section id="Array">
       <embed href="text/sbasic/shared/03/sf_array.xhp#abstract"/>
+    </section>
+    <section id="Base">
+<!--      <embed href="text/sbasic/shared/03/sf_base.xhp#abstract"/> -->
+    </section>
+    <section id="Basic">
+      <embed href="text/sbasic/shared/03/sf_basic.xhp#abstract"/>
     </section>
     <section id="Calc">
       <embed href="text/sbasic/shared/03/sf_calc.xhp#abstract"/>
