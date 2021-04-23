@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_FormControl" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">SFDocuments.Base service</title>
+    <filename>/text/sbasic/shared/03/sf_base.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+<section id="abstract">
+  <bookmark localize="false" branch="index" id="bm_id41582391760252">
+    <bookmark_value>Base service</bookmark_value>
+  </bookmark>
+  <h1 id="bm_id781582391760253" xml-lang="en-US"><variable id="ctrls_h1"><link href="text/sbasic/shared/03/sf_base.xhp" name="SFDocuments.Base service"><literal>SFDocuments</literal>.<literal>Base</literal> service</link></variable></h1>
+
+  <paragraph role="paragraph" id="par_id901619031958273">The <literal>Base</literal> service provides a number of methods and properties to facilitate the management and handling of %PRODUCTNAME Base documents.</paragraph>
+  <paragraph role="paragraph" id="par_id961619032060880">This service is closely related to the <literal>Document</literal> service, which provides generic methods for handling %PRODUCTNAME documents and are also available for Base documents. Hence, the <literal>Base</literal> service provides methods that are specific for Base documents that enable users to:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id241619032289964" role="listitem">Get access to the database contained in a Base document.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id291619032292829" role="listitem">Open form documents stored in a Base document.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id421619032296454" role="listitem">Check if a form document from a Base document is currently loaded.</paragraph>
+    </listitem>
+</list>
+</section>
+
+  <tip id="par_id241619032941497">Refer to the <link href="text/sbasic/shared/03/sf_document.xhp" name="Document Service"><literal>Document</literal> service</link> to learn more about methods and properties that can be used to manage %PRODUCTNAME documents.</tip>
+
+  <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id311619033224680">The Base service can be invoked in a variety of ways. The code snippet below uses the method <literal>CreateBaseDocument</literal> from the <literal>UI</literal> service to create a new Base file.</paragraph>
+  <paragraph role="paragraph" id="par_id101619033666470">Note that in all examples the object <literal>oDoc</literal> is an instance of the <literal>Base</literal> service.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id791619033406225">Dim ui As Object, oDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id321619033409042">Set ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id101619033409330">Set oDoc = ui.CreateBaseDocument("C:\Documents\MyFile.odb")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id281619033570656">The <literal>Base</literal> service can also be instantiated while opening an existing Base file, as shown below:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id941619033409619">Set oDoc = ui.OpenBaseDocument("C:\Documents\MyFile.odb")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id331619033713781">If a Base document is already open, it is possible to instantiate the <literal>Base</literal> service directly:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id401619033791704">Dim oDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id21619033791983">Set oDoc = CreateScriptService("SFDocuments.Document", "MyFile.odb")</paragraph>
+    <paragraph role="bascode" id="bas_id831619033792158">' In the command above, the "SFDocuments" substring is optional</paragraph>
+  </bascode>
+
+<table id="tab_id101619034669263">
+   <tablerow>
+       <tablecell colspan="3">
+           <paragraph id="par_id451619034669263" role="tablehead">List of Methods in the Base Service</paragraph>
+       </tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id981619034669263" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_base.xhp#FormDocuments" name="FormDocuments method">FormDocuments</link><br/>
+             <link href="text/sbasic/shared/03/sf_base.xhp#Forms" name="Forms method">Forms</link><br/>
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id721619034669263" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_base.xhp#GetDatabase" name="GetDatabase method">GetDatabase</link><br/>
+             <link href="text/sbasic/shared/03/sf_base.xhp#IsLoaded" name="IsLoaded method">IsLoaded</link><br/>
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id711619034669263" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_base.xhp#OpenFormDocument" name="OpenFormDocument method">OpenFormDocument</link><br/><br/>
+           </paragraph>
+       </tablecell>
+   </tablerow>
+</table>
+
+<section id="FormDocuments">
+  <comment> FormDocuments --------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id401619035409457" localize="false">
+    <bookmark_value>Base service;FormDocuments</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id841619035592745" localize="false">FormDocuments</h2>
+  <paragraph role="paragraph" id="par_id481619036833610">Returns an array with the full names (path/name) of all form documents in the Base document as an zero-based Array of strings.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id881619036279023">oDoc.FormDocuments() As Variant</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id431619037334440">The code snippet below prints the names of all form documents in the current Base document.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id121619036825329">Dim oDoc as Object, myForms as Object, formName as String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371619037281873">Set oDoc = CreateScriptService("Document", ThisDataBaseDocument)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id801619037282145">Set myForms = oDoc.FormDocuments()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id851619037282401">For Each formName In myForms</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531619037282633">    MsgBox formName</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id851619037282890">Next formName</paragraph>
+  </bascode>
+  <tip id="par_id921619036922844">To learn more about form documents, refer to the <link href="text/sbasic/shared/03/sf_form.xhp" name="Form service"><literal>Form</literal> service help page</link>.</tip>
+</section>
+
+<section id="Forms">
+  <comment> Forms ---------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id861619035438484" localize="false">
+    <bookmark_value>Base service;Forms</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id291619035603979" localize="false">Forms</h2>
+  <paragraph role="paragraph" id="par_id191619037523467">Depending on the parameters provided this method will return:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id781619037575043" role="listitem">A zero-based Array with the names of all the forms contained in a form document (if the <literal>Form</literal> argument is absent)</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id111619037577804" role="listitem">A <literal>SFDocuments.Form</literal> object representing the form specified in the <literal>Form</literal> argument.</paragraph>
+    </listitem>
+  </list>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id231619037442169">oDoc.Forms(FormDocument As String, [Form As String]) As Variant</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id861619037838260"><emph>FormDocument:</emph> The name of a valid form document as a case-sensitive string.</paragraph>
+  <paragraph role="paragraph" id="par_id281619037857187"><emph>Form:</emph> The name or index number of the form stored in the form document. If this argument is absent, the method will return a list with the names of all forms available in the form document.</paragraph>
+  <note id="par_id921619437863617">Although it is possible to use index numbers to refer to forms, this is only recommended when there is just one form in the form document. If there are two or more forms, it is preferable to use the form name instead.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" id="bas_id231619200162092">' Returns a list of all forms in the form document "myFormDocument"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id741619200190900">Dim formsList as Object : formsList = oDoc.Forms("myFormDocument")</paragraph>
+    <paragraph role="bascode" id="bas_id31619200259812">' Returns an instance of the Form service representing the form "myForm"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id491619200288742">Dim oForm as Object : oForm = oDoc.Forms("myFormDocument", "myForm")</paragraph>
+  </bascode>
+</section>
+
+<section id="GetDatabase">
+  <comment> GetDatabase ----------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id301619035470065" localize="false">
+    <bookmark_value>Base service;GetDatabase</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id111619035612996" localize="false">GetDatabase</h2>
+  <paragraph role="paragraph" id="par_id371619098340303">Returns an instance of the <link href="text/sbasic/shared/03/sf_database.xhp" name="Database service"><literal>Database</literal> service</link> that allows the execution of SQL commands on the database defined and/or stored in the current Base document</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id411619096888199">oDoc.GetDatabase([User As String, [Password As String]]) As Object</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id731619098073221"><emph>User, Password:</emph> Optional login parameters as strings. The default value for both parameters is an empty string "".</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id1001599408773502">Dim myDoc As Object, myDatabase As Object, ui As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id631599408779968">Set ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id801599408784337">Set myDoc = ui.OpenBaseDocument("myDb.odb")</paragraph>
+    <paragraph role="bascode" id="bas_id631615147843278">' User and password are supplied below, if needed</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id741599408788321">Set myDatabase = myDoc.GetDatabase()</paragraph>
+    <paragraph role="bascode" id="bas_id921599408791887">'   ... Run queries, SQL statements, ...</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id...">myDatabase.CloseDatabase()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id251599408799447">myDoc.CloseDocument()</paragraph>
+  </bascode>
+</section>
+
+<section id="IsLoaded">
+  <comment> IsLoaded -------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id351619035498660" localize="false">
+    <bookmark_value>Base service;IsLoaded</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id621619035622085" localize="false">IsLoaded</h2>
+  <paragraph role="paragraph" id="par_id871619098478513">Returns <literal>True</literal> if the specified <literal>FormDocument</literal> is  currently open.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id211619096989127">oDoc.IsLoaded([FormDocument As String]) As Boolean</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id981619098545701"><emph>FormDocument:</emph> The name of a FormDocument to be checked, as a case-sensitive string.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id271619098642739">If Not oDoc.IsLoaded("myFormDocument") Then</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id271619099499790">    oDoc.OpenFormDocument("myFormDocument")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id301619099500376">End If</paragraph>
+  </bascode>
+</section>
+
+<section id="OpenFormDocument">
+  <comment> OpenFormDocument ------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id341619035528912" localize="false">
+    <bookmark_value>Base service;OpenFormDocument</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id611619035632927" localize="false">OpenFormDocument</h2>
+  <paragraph role="paragraph" id="par_id801619099743199">Opens the specified <literal>FormDocument</literal> either in normal or in design mode.</paragraph>
+  <paragraph role="paragraph" id="par_id451619100075330">If the form document is already open, it is activated without changing its mode. The method returns <literal>True</literal> if the form document could be opened.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id641619097217170">oDoc.OpenFormDocument(FormDocument As String, [DesignMode As Boolean]) As Boolean</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id941619099797810"><emph>FormDocument:</emph> The name of the <literal>FormDocument</literal> to be opened, as a case-sensitive string.</paragraph>
+  <paragraph role="paragraph" id="par_id981619099816849"><emph>DesignMode:</emph> If this argument is <literal>True</literal> the <literal>FormDocument</literal> will be opened in design mode.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id251619100191992">Most form documents are stored in the root of the Base document and they can be opened simply using their names, as in the example below:</paragraph>
+  <bascode>
+    <paragraph role="bascode" id="bas_id461619100283210">oDoc.OpenFormDocument("myFormDocument")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id351619100327505">If form documents are organized in folders, it becomes necessary to include the folder name to specify the form document to be opened, as illustrated in the following example:</paragraph>
+  <bascode>
+    <paragraph role="bascode" id="bas_id461619100283712">oDoc.OpenFormDocument("myFolder/myFormDocument")</paragraph>
+  </bascode>
+</section>
+
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/sf_database.xhp#DatabaseService"/>
+    <embed href="text/sbasic/shared/03/sf_document.xhp#DocumentService"/>
+    <embed href="text/sbasic/shared/03/sf_form.xhp#FormService"/>
+    <embed href="text/sbasic/shared/03/sf_ui.xhp#UIService"/>
+   </section>
+
+  </body>
+</helpdocument>
