@@ -121,7 +121,7 @@
 </table>
 <warning id="par_id1191767622119">In all examples below, ranges for calculation contain the row #6, which is ignored because it contains text.</warning>
 </section>
-<paragraph role="paragraph" id="par_id961527953004850" xml-lang="en-US"><variable id="args">Func_Range; Range1; Criterion1[; Range2; Criterion2][; … ; [Range127; Criterion127]]</variable></paragraph>
+<paragraph role="paragraph" id="par_id961527953004850" xml-lang="en-US"><variable id="args">Func_Range; Range1; Criterion[; Range2; Criterion2][; … ; [Range127; Criterion127]]</variable></paragraph>
 <section id="note01">
     <note id="par_id94162948227556">The logical relation between criteria can be defined as logical AND (conjunction). In other words, if and only if all given criteria are met, a value from the corresponding cell of the given <emph>Func_Range</emph> is taken into calculation.</note>
 </section>
@@ -130,9 +130,29 @@
 </section>
 <section id="par00">
     <paragraph id="par_id101585468691583" role="paragraph" xml-lang="en-US"><emph>Range1</emph> – required argument. It is a range of cells, a name of a named range, or a label of a column or a row, to which the corresponding criterion is to be applied.</paragraph>
-    <paragraph id="par_id23526994221948" role="paragraph" xml-lang="en-US"><emph>Criterion1</emph> – required argument. A string expression representing a logical condition or a cell reference to such string expression. The expression can contain text, numbers, regular expressions or wildcards (<link href="text/shared/optionen/01060500.xhp#wildcards" name="Wild cards">if enabled in calculation options</link>).</paragraph>
+        <section id="criterion">
+        <paragraph role="paragraph" id="par_id621619279022341"><emph>Criterion</emph>: A criterion is a single cell Reference, Number or Text. It is used in comparisons with cell contents.</paragraph>
+        <paragraph role="paragraph" id="par_id731619279029255">A reference to an empty cell is interpreted as the numeric value 0.</paragraph>
+        <paragraph role="paragraph" id="par_id31619279035359">A matching expression can be:</paragraph>
+        <list type="unordered">
+            <listitem>
+                <paragraph id="par_id171619279059462"  role="listitem">A Number or Logical value. A matching cell content equals the Number or Logical value. </paragraph>
+            </listitem>
+            <listitem>
+                <paragraph id="par_id511619279076504"  role="listitem">A value beginning with a comparator (&lt;, &lt;=, =, &gt;, &gt;=, &lt;&gt;).</paragraph>
+                <paragraph role="paragraph" id="par_id11619279168512">For =, if the value is empty it matches empty cells.</paragraph>
+                <paragraph role="paragraph" id="par_id161619279207350">For &lt;&gt;, if the value is empty it matches non-empty cells.</paragraph>
+                <paragraph role="paragraph" id="par_id271619279215695">For &lt;&gt;, if the value is not empty it matches any cell content except the value, including empty cells.</paragraph>
+                <paragraph role="paragraph" id="par_id861619279223855"><emph>Note:</emph> "=0" does not match empty cells.</paragraph>
+                <paragraph role="paragraph" id="par_id51619279363954">For = and &lt;&gt;, if the value is not empty and can not be interpreted as a Number type or one of its subtypes and the property <link href="text/shared/optionen/01060500.xhp" name="s">Search criteria = and &lt;&gt; must apply to whole cells</link> is checked, comparison is against the entire cell contents, if unchecked, comparison is against any subpart of the field that matches the criteria. For = and &lt;&gt;, if the value is not empty and can not be interpreted as a Number type or one of its subtypes applies. </paragraph>
+            </listitem>
+            <listitem>
+                <paragraph id="par_id801619279323556"  role="listitem">Other Text value. If the property <link href="text/shared/optionen/01060500.xhp" name="s">Search criteria = and &lt;&gt; must apply to whole cells</link> is true, the comparison is against the entire cell contents, if false, comparison is against any subpart of the field that matches the criteria. The expression can contain text, numbers, regular expressions or wildcards (<link href="text/shared/optionen/01060500.xhp#wildcards" name="Wild cards">if enabled in calculation options</link>).</paragraph>
+            </listitem>
+        </list>
+    </section>
     <paragraph id="par_id190621657742" role="paragraph" xml-lang="en-US"><emph>Range2</emph> – Optional. Range2 and all the following mean the same as Range1.</paragraph>
-    <paragraph id="par_id317001803813193" role="paragraph" xml-lang="en-US"><emph>Criterion2</emph> – Optional. Criterion2 and all the following mean the same as Criterion1.</paragraph>
+    <paragraph id="par_id317001803813193" role="paragraph" xml-lang="en-US"><emph>Criterion2</emph> – Optional. Criterion2 and all the following mean the same as Criterion.</paragraph>
 </section>
 <section id="par01">
     <paragraph xml-lang="en-US" id="par_id191527781733238" role="paragraph">The function can have up to 255 arguments, meaning that you can specify 127 criteria ranges and criteria for them.</paragraph>
