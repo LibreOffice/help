@@ -80,6 +80,17 @@
 
 <warning id="par_id3144770">Once you have declared a variable as a certain type, you cannot declare the variable under the same name again as a different type!</warning>
 
+<paragraph role="paragraph" id="par_id421619551219763">When you declare multiple variables in a single line of code you need to specify the type of each variable. If the type of a variable is not explicitly specified, then Basic will assume that the variable is of the <emph>Variant</emph> type.</paragraph>
+<bascode>
+  <paragraph role="bascode" id="bas_id321619555442706">' Both variables "a" and "b" are of the Integer type</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id511619551568768">Dim a As Integer, b As Integer</paragraph>
+  <paragraph role="bascode" id="bas_id451619555463988">' Variable "c" is a Variant and "d" is an Integer</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id511619551568144">Dim c, d As Integer</paragraph>
+  <paragraph role="bascode" id="bas_id161619555482237">' A variable can also be explicitly declared as a Variant</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id601619552527089">Dim e As Variant, f As Double</paragraph>
+</bascode>
+<note id="par_id521619551687371">The <emph>Variant</emph> type is a special data type that can store any kind of value. To learn more, refer to the section <link href="text/sbasic/shared/01020100.xhp#VariantTypeH2" name="Variant Type">The Variant type</link> below.</note>
+
 <h3 id="hd_id3149331">Forcing Variable Declarations</h3>
 <paragraph id="par_id3149443" role="paragraph" xml-lang="en-US">To force declaration of variables, use the following command:</paragraph>
 <bascode>
@@ -190,6 +201,33 @@
 <bascode>
   <paragraph role="bascode" id="bas_id201616314705492">zeroDay = #12/30/1899#</paragraph>
   <paragraph role="bascode" id="bas_id616163714705267">dob = #2010-09-28#</paragraph>
+</bascode>
+
+<bookmark xml-lang="en-US" branch="index" id="bm_id601619552599885">
+  <bookmark_value>The Variant type</bookmark_value>
+  <bookmark_value>The Any type</bookmark_value>
+</bookmark>
+<h2 id="VariantTypeH2">The Variant type</h2>
+<paragraph role="paragraph" id="par_id1001619552129323">Variables declared as <emph>Variant</emph> can handle any data type. This means that the actual data type is defined during runtime as a value is assigned to the variable.</paragraph>
+<paragraph role="paragraph" id="par_id631619552417188">There are three main ways to create a <emph>Variant</emph> variable, as shown below:</paragraph>
+<bascode>
+  <paragraph role="bascode" id="bas_id751619554900163">Dim varA            ' The type is not specified, hence the variable is a Variant</paragraph>
+  <paragraph role="bascode" id="bas_id181619554965451">Dim varB as Variant ' The variable is explicitly declared as a Variant</paragraph>
+  <paragraph role="bascode" id="bas_id371619554853094">varC = "abc"        ' Previously undeclared variables are treated as Variants</paragraph>
+</bascode>
+<paragraph role="paragraph" id="par_id631619552417343">The example below uses the <link href="text/sbasic/shared/03103600.xhp" name="TypeName function">TypeName function</link> to show how the type of a <emph>Variant</emph> variable changes upon assignment.</paragraph>
+<bascode>
+  <paragraph role="bascode" localize="false" id="bas_id221619552494450">Dim myVar As Variant</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id221619553194424">MsgBox TypeName(myVar) ' Empty</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id671619553194736">myVar = "Hello!"</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id91619553195040">MsgBox TypeName(myVar) ' String</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id731619553195384">myVar = 10</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id211619553195648">MsgBox TypeName(myVar) ' Integer</paragraph>
+</bascode>
+<note id="par_id141619553442668">A <emph>Variant</emph> variable is initialized with the <emph>Empty</emph> special data type. You can use the <link href="text/sbasic/shared/03102400.xhp" name="IsEmpty function">IsEmpty function</link> to test if a variable is an <emph>Empty Variant</emph>.</note>
+<paragraph role="paragraph" id="par_id541619552755706">You can also use the keyword <emph>Any</emph> to declare a variable as a <emph>Variant</emph>. In Basic, variables declared as <emph>Any</emph> are treated exactly as <emph>Variant</emph> variables.</paragraph>
+<bascode>
+  <paragraph role="bascode" id="bas_id141619552837486">Dim myVar As Any ' Variable "myVar" is a Variant</paragraph>
 </bascode>
 
 <h2 id="hd_id3148732">Initial Variable Values</h2>
