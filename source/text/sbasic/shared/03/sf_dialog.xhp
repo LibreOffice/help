@@ -26,18 +26,20 @@
 </section>
   <tip id="par_id831598110550771" xml-lang="en-US">A dialog box can be displayed in modal or in non-modal modes.</tip>
   <paragraph role="paragraph" id="par_id221598110444025" xml-lang="en-US">In modal mode, the box is displayed and the execution of the macro process is suspended until one of the OK or Cancel buttons is pressed. In the meantime, user actions executed on the box can trigger specific actions.</paragraph>
-  <paragraph role="paragraph" id="par_id981598110463521" xml-lang="en-US">In non-modal mode, the dialog box is "floating" on the user desktop and the execution of the macro process continues normally. Regardless of its status, the dialog closes when the macro that displayed it finishes running.</paragraph>
+  <paragraph role="paragraph" id="par_id981598110463521" xml-lang="en-US">In non-modal mode, the dialog box is "floating" on the user desktop and the execution of the macro process continues normally. A non-modal dialog closes when it is terminated with the <literal>Terminate()</literal> method or when the %PRODUCTNAME session ends. The window close button is inactive in non-modal dialogs.</paragraph>
   <paragraph role="paragraph" id="par_id721598110472337" xml-lang="en-US">A dialog box disappears from memory after its explicit termination.</paragraph>
   <tip id="par_id891598188164936" xml-lang="en-US">The <literal>SFDialogs.Dialog</literal> service is closely related to the <literal>SFDialogs.DialogControl</literal> service.</tip>
+
    <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation and usage</h2>
-   <paragraph role="paragraph" id="par_id361598174756160" xml-lang="en-US">The <literal>Dialog</literal> service is invoked through the <literal>CreateScriptService</literal> method. It requires three arguments to specify the dialog box to activate:</paragraph>
+   <paragraph role="paragraph" id="par_id361598174756160" xml-lang="en-US">The <literal>Dialog</literal> service is invoked through the <literal>CreateScriptService</literal> method. It requires three positional arguments to specify the dialog box to activate:</paragraph>
    <paragraph role="paragraph" id="par_id31612271944733"><emph>Container</emph>: "<link href="text/sbasic/shared/03131900.xhp" name="GlobalScope specifier"><literal>GlobalScope</literal></link>" for preinstalled libraries or a window name as defined by <link href="text/sbasic/shared/03/sf_ui.xhp" name="ScriptForge.UI"><literal>ScriptForge.UI</literal></link> service. Empty string "" default value stands for the current document.</paragraph>
    <paragraph role="paragraph" id="par_id311612271947124"><emph>Library</emph>: The case-sensitive name of a library contained in the container. Default value is "Standard".</paragraph>
    <paragraph role="paragraph" id="par_id821612271946316"><emph>DialogName</emph>: A case-sensitive string designating the dialog.</paragraph>
+   <paragraph role="paragraph" id="par_id761620142701399">Below %PRODUCTNAME Basic and Python examples are displaying the <literal>dlgConsole</literal> dialog that belongs to <literal>ScriptForge</literal> shared library:</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id471598171198389">Dim oDlg As Object, lButton As Long</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id611598171572062">Dim Container As String, Library As String, DialogName As String</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id571598171205739">Set oDlg = CreateScriptService("SFDialogs.Dialog", Container, Library, DialogName)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id571598171205739">Set oDlg = CreateScriptService("SFDialogs.Dialog", "GlobalScope", "ScriptForge", "dlgConsole")</paragraph>
       <paragraph role="bascode" id="bas_id321598171269873">'... controls initialization goes here...</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id991598171277414">lButton = oDlg.Execute()</paragraph>
       <paragraph role="bascode" id="bas_id471598176518738">'Default mode = Modal</paragraph>
@@ -45,17 +47,31 @@
       <paragraph role="bascode" id="bas_id551598171288547">'... Process controls and do what is needed here</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id741598171294507">End If</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id591598171300285">oDlg.Terminate()</paragraph>
-   </bascode>
-   <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">Alternatively a <literal>Dialog</literal> instance can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, providing the dialog was initiated with the <literal>Dialog</literal> service. <literal>DialogEvent</literal> returns the <literal>SFDialogs.Dialog</literal> service instance that triggered the event.</paragraph>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id311598175259794">Sub SomeEvent(ByRef poEvent As Object)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id781598175253859">    Dim oDlg As Object</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id921598175248581">    Set oDlg = CreateScriptService("SFDialogs.DialogEvent", poEvent)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id801598175242937">    ' oDlg represents now the instance of the Dialog class having triggered the current event</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id711598175146308">    ' ...</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id421598175139021">End Sub</paragraph>
-   </bascode>
-   <paragraph role="paragraph" id="par_id251598176312571" xml-lang="en-US">Note that in previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted.</paragraph>
+  </bascode>
+    <paragraph role="paragraph" id="par_id601619622310089">Or using Python:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id81619619964621">dlg = CreateScriptService('SFDialogs.Dialog', 'GlobalScope', 'ScriptForge', 'dlgConsole')</paragraph>
+    <paragraph role="pycode" xml-lang="en-US" id="pyc_id41619622700314"># ... controls initialization goes here...</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id661619619964814">rc = dlg.Execute()</paragraph>
+    <paragraph role="pycode" xml-lang="en-US" id="pyc_id661611699964814"># Default mode is Modal</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id711619619964997">if rc == dlg.OKBUTTON:</paragraph>
+    <paragraph role="pycode" xml-lang="en-US" id="pyc_id681619619965191">    # ... Process controls and do what is needed here</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id821619619965373">dlg.Terminate()</paragraph>
+  </pycode>
+
+  <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">Alternatively a <literal>Dialog</literal> instance can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, providing that the dialog was initiated with the <literal>Dialog</literal> service. <literal>DialogEvent</literal> returns the <literal>SFDialogs.Dialog</literal> service instance that triggered the event.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id471620305309968">Sub SomeEvent(ByRef poEvent As Object)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id781598175253859">    Dim oDlg As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921598175248581">    Set oDlg = CreateScriptService("SFDialogs.DialogEvent", poEvent)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id421598175139021">End Sub</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id741619625211462">with Python:</paragraph>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id221620305385871" localize="false">def some_event(event: uno):</paragraph>    
+    <paragraph role="pycode" id="pyc_id661819619965191" localize="false">    dlg = CreateScriptService("SFDialogs.DialogEvent", event)</paragraph>
+  </pycode>
+  <paragraph role="paragraph" id="par_id251598176312571" xml-lang="en-US">Note that in previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted when deemed appropriate.</paragraph>
 
   <h2 id="hd_id651583668365757" xml-lang="en-US">Properties</h2>
    <table id="tab_id381583668386455">
@@ -234,7 +250,6 @@
          </tablecell>
       </tablerow>
    </table>
-
    <h2 id="hd_id421612628828054" xml-lang="en-US">Event properties</h2>
    <embed href="text/sbasic/shared/03/avail_release.xhp#7.2.events"/>
    <paragraph role="paragraph" id="par_id41612629140856" xml-lang="en-US">Returns a URI string with the reference to the script triggered by the event. Read its specification in the <link href="https://wiki.openoffice.org/wiki/Documentation/DevGuide/Scripting/Scripting_Framework_URI_Specification" name="URI specification">scripting framework URI specification</link>.</paragraph>
@@ -390,18 +405,22 @@
    <paragraph role="paragraph" id="par_id871583933076448">Set the focus on the current <literal>Dialog</literal> instance. Return <literal>True</literal> if focusing was successful.</paragraph>
    <paragraph role="paragraph" id="par_id151598178880227" xml-lang="en-US">This method is called from a dialog or control event, or when a dialog is displayed in non-modal mode.</paragraph>
    <h3 id="hd _id61583933076171" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id731583933076815">oDlg.Activate() As Boolean</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id581619625572111"><input>svc.Activate(): bool</input></paragraph>
    <h3 id="hd _id26158393307687" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id221598179105596">Dim oDlg As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id171598179111121">Set oDlg = CreateScriptService(,, "myDialog")</paragraph>
-      <paragraph role="bascode" id="bas_id841598179117184">' Dialog stored in current document's standard library</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id681598179123436">oDlg.Execute(Modal := False)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id681598179123436">oDlg.Execute()</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id371598179128761">' ...</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id361598179135096">oDlg.Activate()</paragraph>
    </bascode>
+   <paragraph role="paragraph" id="par_id811620109056270">Python and %PRODUCTNAME Basic examples both assume that the dialog is stored in current document's <literal>Standard</literal> library.</paragraph>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id761619626867424">dlg = CreateScriptService(,,'myDialog')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id111619626868945">dlg.Execute()</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id781620108954143"># ...</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id391619626869458">dlg.Activate()</paragraph>
+   </pycode>
    </section>
    <section id="Controls">
    <comment> Controls -------------------------------------------------------------------------------------------------------------------------- </comment>
@@ -412,16 +431,15 @@
    <paragraph role="paragraph" id="par_id161584541257982">Return either:</paragraph>
    <list type="unordered">
       <listitem>
-         <paragraph id="par_id421598179770993"  role="listitem" xml-lang="en-US">the list of the controls contained in the dialog</paragraph>
+         <paragraph id="par_id421598179770993" role="listitem" xml-lang="en-US">the list of the controls contained in the dialog</paragraph>
       </listitem>
       <listitem>
-         <paragraph id="par_id81598185229301"  role="listitem" xml-lang="en-US">a dialog control class instance based on its name</paragraph>
+         <paragraph id="par_id81598185229301" role="listitem" xml-lang="en-US">a <literal>DialogControl</literal> class instance based on its name</paragraph>
       </listitem>
    </list>
    <h3 id="hd _id601584541257443" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id201584541257726">oDlg.Controls([ControlName As String]) As Variant</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id81619625753895"><input>svc.Controls(): str[1..n]</input></paragraph>
+   <paragraph role="paragraph" localize="false" id="par_id61819625753598"><input>svc.Controls(controlname: str): uno</input></paragraph>
    <h3 id="hd _id291584541257237" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
    <paragraph role="paragraph" id="par_id1001584541257789"><emph>ControlName</emph> : A valid control name as a case-sensitive string. If absent, the list of control names is returned as a zero-based array.</paragraph>
    <h3 id="hd _id32158454125769" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
@@ -431,6 +449,11 @@
       <paragraph role="bascode" localize="false" id="bas_id641598185489492">myList = myDialog.Controls()</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id921598185495193">Set myControl = myDialog.Controls("myTextBox")</paragraph>
    </bascode>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id351619627575732">dlg = CreateScriptService('SFDialogs.Dialog','', 'Standard', 'Dialog1')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id431619627576082">ctrls = dlg.Controls()</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id131619627576307">ctrl = dlg.Controls('myTextBox')</paragraph>
+   </pycode>
    </section>
    <section id="EndExecute">
    <comment> EndExecute -------------------------------------------------------------------------------------------------------------------------- </comment>
@@ -439,21 +462,28 @@
    </bookmark>
    <h2 id="hd _id491598185776436" localize="false">EndExecute</h2>
    <paragraph role="paragraph" id="par_id381598185776500">Ends the display of a modal dialog and gives back the argument as return value for the current <literal>Execute()</literal> running action.</paragraph>
-   <paragraph role="paragraph" id="par_id551598185953362" xml-lang="en-US"><literal>EndExecute()</literal> is usually contained in the processing of a macro triggered by a dialog or control event.</paragraph>
+   <paragraph role="paragraph" id="par_id551598185953362"><literal>EndExecute()</literal> is usually contained in the processing of a macro triggered by a dialog or control event.</paragraph>
    <h3 id="hd _id16159818577649" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id811598185776225">oDlg.EndExecute(ReturnValue As Long)</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id451619627879243"><input>svc.EndExecute(returnvalue: int)</input></paragraph>
    <h3 id="hd _id721598185776413" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id451598185776957"><emph>ReturnValue</emph> : The value passed to the running <literal>Execute()</literal> method.</paragraph>
+   <paragraph role="paragraph" id="par_id451598185776957"><emph>returnvalue</emph>: The value passed to the running <literal>Execute()</literal> method.</paragraph>
    <h3 id="hd _id771598185776435" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <paragraph role="paragraph" id="par_id411620110780170">Using %PRODUCTNAME Basic:</paragraph>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id521598186134426">Sub OnEvent(poEvent As Variant)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id521598186134426">Sub OnEvent(poEvent As com.sun.star.lang.EventObject)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id631598186139835">    Dim oDlg As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id251598186144483">    Set oDlg = CreateScriptService("SFDialogs.DialogEvent", poEvent)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id191598186150509">    oDlg.EndExecute(ReturnValue := 25)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id91598186155632">End Sub</paragraph>
    </bascode>
+   <paragraph role="paragraph" id="par_id11620110819754">Using Python:</paragraph>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id231619627971450">from com.sun.star.lang import EventObject</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id71619627976171">def on_event(event: EventObject):</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id621619627976387">    dlg = CreateScriptService("SFDialogs.DialogEvent", event)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id191619627976590">    dlg.EndExecute(25)</paragraph>
+   </pycode>
+     <tip id="par_id81620201915101">Above <link href="https://api.libreoffice.org/docs/idl/ref/structcom_1_1sun_1_1star_1_1lang_1_1EventObject.html" name="com.sun.star.lang.EventObject">com.sun.star.lang.EventObject</link> mentions are optional. Such annotations help identify %PRODUCTNAME Application Programming Interface (API).</tip>
    </section>
    <section id="Execute">
    <comment> Execute -------------------------------------------------------------------------------------------------------------------------- </comment>
@@ -463,32 +493,37 @@
    <paragraph role="paragraph" id="par_id29159818646178">Display the dialog box and, when modal, wait for its termination by the user. The returned value is either:</paragraph>
    <list type="unordered">
       <listitem>
-         <paragraph id="par_id541598186676277"  role="listitem" xml-lang="en-US">0 : <literal>Cancel</literal> button pressed</paragraph>
+         <paragraph id="par_id541598186676277" role="listitem" xml-lang="en-US">0 : <literal>Cancel</literal> button pressed</paragraph>
       </listitem>
       <listitem>
-         <paragraph id="par_id821598186716345"  role="listitem" xml-lang="en-US">1 : <literal>OK</literal> button pressed</paragraph>
+         <paragraph id="par_id821598186716345" role="listitem" xml-lang="en-US">1 : <literal>OK</literal> button pressed</paragraph>
       </listitem>
       <listitem>
-         <paragraph id="par_id951598186738346"  role="listitem" xml-lang="en-US">Otherwise the dialog stopped with an <literal>EndExecute()</literal> statement issued by a dialog or control event</paragraph>
+         <paragraph id="par_id951598186738346" role="listitem" xml-lang="en-US">Otherwise the dialog stopped with an <literal>EndExecute()</literal> statement issued by a dialog or control event</paragraph>
       </listitem>
    </list>
    <paragraph role="paragraph" id="par_id741598187335869" xml-lang="en-US">For non-modal dialog boxes the method always returns 0 and the execution of the macro continues.</paragraph>
    <h3 id="hd _id491598186461869" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id841598186461491">oDlg.Execute([Modal As Boolean]) As Long</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id291619628195418"><input>svc.Execute(modal: bool = True): int</input></paragraph>
    <h3 id="hd _id331598186461152" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id11598186461227"><emph>Modal</emph> : <literal>False</literal> when non-modal dialog. Default = <literal>True</literal>.</paragraph>
+   <paragraph role="paragraph" id="par_id11598186461227"><emph>modal</emph>: <literal>False</literal> when non-modal dialog. Default = <literal>True</literal>.</paragraph>
    <h3 id="hd _id28159818646198" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <paragraph role="paragraph" id="par_id231620110023843">In this Basic example <literal>myDialog</literal> dialog is stored in current document's <literal>Standard</literal> library.</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id591598186461923">Dim oDlg As Object, lReturn As Long</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id681598186461370">Set oDlg = CreateScriptService(("SFDialogs.Dialog", , , "myDialog")</paragraph>
-      <paragraph role="bascode" id="bas_id211598187104866">' Dialog stored in current document's standard library</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id281598186461514">lReturn = oDlg.Execute()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id681598186461370">Set oDlg = CreateScriptService("SFDialogs.Dialog", , , "myDialog")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id281598186461514">lReturn = oDlg.Execute(Modal := False)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id291598186461410">Select Case lReturn</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id741598187182079">' ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id741598187182079">    ' ...</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id781612273203518">End Select</paragraph>
    </bascode>
+   <paragraph role="paragraph" id="par_id191620110162627">This Python code displays <literal>DlgConvert</literal> modal dialog from <literal>Euro</literal> shared Basic library.</paragraph>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id541619628291899">dlg = CreateScriptService("SFDialogs.Dialog", 'GlobalScope', 'Euro', "DlgConvert")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id121619628292915">rc = dlg.Execute()</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id211620109965604">if rc == dlg.CANCELBUTTON:</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id61620109984292">    # ...</paragraph>
+   </pycode>
    </section>
    <section id="Terminate">
    <comment> Terminate -------------------------------------------------------------------------------------------------------------------------- </comment>
@@ -498,17 +533,26 @@
    <h2 id="hd _id101598187953201" localize="false">Terminate</h2>
    <paragraph role="paragraph" id="par_id21598187953679">Terminate the <literal>Dialog</literal> service for the current instance. Return <literal>True</literal> if the termination was successful.</paragraph>
    <h3 id="hd _id221598187953425" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id231598187953624">oDlg.Terminate() As Boolean</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id171619628389339"><input>svc.Terminate(): bool</input></paragraph>
    <h3 id="hd _id361598187953840" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <paragraph role="paragraph" id="par_id951620300687150">Below Basic and Python examples open <literal>DlgConsole</literal> and <literal>dlgTrace</literal> non-modal dialogs. They are respectively stored in <literal>ScriptForge</literal> and <literal>Access2Base</literal> shared libraries. Dialog close buttons are disabled and explicit termination is performed at the end of a running process.</paragraph>
+   <paragraph role="paragraph" id="par_id301620302137482">In this example a button in <literal>DlgConsole</literal> is substituting inhibited window closing:</paragraph>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id121598187953168">oDlg.Terminate()</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id971620301085031">oDlg = CreateScriptService("SFDialogs.Dialog","GlobalScope","ScriptForge","DlgConsole")</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id981620301085983">oDlg.Execute(modal:=False)</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id91620301085248">Wait 5000</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id121598187953168">oDlg.Terminate()</paragraph>
    </bascode>
+   <paragraph role="paragraph" id="par_id811620112217958">With Python:</paragraph>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id491620303073866">from time import sleep</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id841620302327611">dlg = CreateScriptService('SFDialogs.Dialog',"GlobalScope",'Access2Base',"dlgTrace")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id381620302328144">dlg.Execute(modal=False)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id251620302328330">sleep 5</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id101620302328498">dlg.Terminate()</paragraph>
+   </pycode>
    </section>
-
    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
-
    <section id="relatedtopics">
       <embed href="text/sbasic/shared/03/sf_dialogcontrol.xhp#ctrls_h1"/>
       <embed href="text/sbasic/shared/03/sf_ui.xhp#UIService"/>
