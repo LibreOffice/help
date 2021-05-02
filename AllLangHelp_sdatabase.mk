@@ -39,6 +39,12 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
     helpcontent2/source/text/sdatabase/05040100 \
     helpcontent2/source/text/sdatabase/05040200 \
     helpcontent2/source/text/sdatabase/toolbars \
+    helpcontent2/source/text/sdatabase/11000002 \
+    helpcontent2/source/text/sdatabase/11020000 \
+    helpcontent2/source/text/sdatabase/11030000 \
+    helpcontent2/source/text/sdatabase/11030100 \
+    helpcontent2/source/text/sdatabase/11080000 \
+    helpcontent2/source/text/sdatabase/11090000 \
 ))
 
 # vim: set noet sw=4 ts=4:
