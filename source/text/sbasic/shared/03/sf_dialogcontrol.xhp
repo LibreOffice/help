@@ -38,25 +38,38 @@
   <tip id="par_id891598188164936" xml-lang="en-US">The <literal>SFDialogs.DialogControl</literal> service is closely related to the <link href="text/sbasic/shared/03/sf_dialog.xhp" name="Dialog service"><literal>SFDialogs.Dialog</literal></link> service.</tip>
 
    <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
-   <paragraph role="paragraph" id="par_id361598174756160" xml-lang="en-US">The <literal>DialogControl</literal><literal></literal> service is invoked from an existing <literal>Dialog</literal> service instance thru its <literal>Controls()</literal> method. The dialog must be initiated with the <literal>SFDialogs.Dialog</literal> service.</paragraph>
+   <paragraph role="paragraph" id="par_id361598174756160" xml-lang="en-US">The <literal>DialogControl</literal> service is invoked from an existing <literal>Dialog</literal> service instance through its <literal>Controls()</literal> method. The dialog must be initiated with the <literal>SFDialogs.Dialog</literal> service.</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id791598453192421">Dim myDialog As Object, myControl As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id251598453197473">Set myDialog = CreateScriptService("SFDialogs.Dialog", "GlobalScope", myLibrary, DialogName)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id421598453203458">Set myControl = myDialog.Controls("myTextBox")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id581598453210170">myControl.Value = "Dialog started at " &amp; Now()</paragraph>
+      <paragraph role="bascode" xml-lang="en-US" id="bas_id581598453210170">myControl.Value = "Dialog started at " &amp; Now()</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id11598453215943">myDialog.Execute()</paragraph>
       <paragraph role="bascode" xml-lang="en-US" id="bas_id961598453222539">' ... process the controls actual values</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id981598453230245">myDialog.Terminate()</paragraph>
    </bascode>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id481026225234594">from datetime import date</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id481620225234594">dlg = CreateScriptService('SFDialogs.Dialog', 'GlobalScope', lib_name, dlg_name)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id811620225234785">text = dlg.Controls('myTextBox')</paragraph>
+     <paragraph role="pycode" xml-lang="en-US" id="pyc_id861620225235002">text.Value = "Dialog started at " + date.today().isoformat()</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id361620225235185">dlg.Execute()</paragraph>
+     <paragraph role="pycode" xml-lang="en-US" id="pyc_id841620225235377"># ... process the controls actual values</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id411620225235569">dlg.Terminate()</paragraph>
+   </pycode>
    <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">Alternatively a control instance can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, providing the dialog was initiated with the <literal>Dialog</literal> service. <literal>DialogEvent</literal> returns the <literal>SFDialogs.DialogControl</literal> class instance that triggered the event.</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id311598175259794">Sub SomeEvent(ByRef poEvent As Object)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id781598175253859">    Dim oControl As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id921598175248581">    Set oControl = CreateScriptService("SFDialogs.DialogEvent", poEvent)</paragraph>
-      <paragraph role="bascode" xml-lang="en-US" id="bas_id801598175242937">    ' oControl represents now the instance of the Control class having triggered the current event</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id711598175146308">    ' ...</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id421598175139021">End Sub</paragraph>
    </bascode>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id921620228762243">def some_event(event: uno):</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id181620228763531">    ctrl = CreateScriptService('SFDialogs.DialogEvent', event)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id731620228763715">    # ...</paragraph>
+   </pycode>
    <paragraph role="paragraph" id="par_id251598176312571" xml-lang="en-US">Note that in previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted.</paragraph>
 
    <h2 id="hd_id71598455687512" xml-lang="en-US">Control types</h2>
@@ -983,22 +996,27 @@
       <paragraph role="paragraph" id="par_id741612711823706" xml-lang="en-US">This method may be called before displaying the dialog box to build the initial tree. It may also be called from a dialog or control event - using the <literal>OnNodeExpanded</literal> event - to complete the tree dynamically.</paragraph>
    </section>
    <h3 id="hd_id841612711823995" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id721612711823131">oControl.AddSubNode(ParentNode As Object, DisplayValue As String[, DataValue As Variant]) As Object</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id781620224364283"><input>svc.AddSubNode(parentnode: uno, displayvalue: str, datavalue = ''): uno</input></paragraph>
    <h3 id="hd_id261612711823446" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id761612711823834"><emph>ParentNode</emph>: A node UNO object, of type <literal>com.sun.star.awt.tree.XMutableTreeNode</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id791612711823819"><emph>DisplayValue</emph>: The text appearing in the tree control box.</paragraph>
-   <paragraph role="paragraph" id="par_id911612711823382"><emph>DataValue</emph>: Any value associated with the new node. Default value is <literal>Empty</literal>.</paragraph>
+   <paragraph role="paragraph" id="par_id761612711823834"><emph>parentnode</emph>: A node UNO object, of type <literal>com.sun.star.awt.tree.XMutableTreeNode</literal>.</paragraph>
+   <paragraph role="paragraph" id="par_id791612711823819"><emph>displayvalue</emph>: The text appearing in the tree control box.</paragraph>
+   <paragraph role="paragraph" id="par_id911612711823382"><emph>datavalue</emph>: Any value associated with the new node. Default value is <literal>Empty</literal>.</paragraph>
    <h3 id="hd_id931612711823178" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <paragraph role="paragraph" id="par_id901620317110685">%PRODUCTNAME Basic and Python examples pick up current document's <literal>myDialog</literal> dialog from <literal>Standard</literal> library.</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id781612711823502">Dim oDlg As Object, myTree As Object, myNode As Object, theRoot As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id811612711823106">Set oDlg = CreateScriptService(,, "myDialog")</paragraph>
-      <paragraph role="bascode" id="bas_id401612711823779">'Dialog stored in current document's standard library</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id751612711823763">Set myTree = oDlg.Controls("myTreeControl")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id31612711823423">Set theRoot = myTree.CreateRoot("Tree top")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id211612712366538">Set myNode = myTree.AddSubNode(theRoot, "A branch ...")</paragraph>
    </bascode>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id771620316787550">dlg = CreateScriptService('', '', 'myDialog')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id511620316787792">tree = dlg.Controls('myTreeControl')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id291620316787950">root = tree.CreateRoot('Tree top')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id201620316788142">node = tree.AddSubNode(root, 'A branch ...')</paragraph>
+   </pycode>
+
    </section>
 
   <section id="AddSubTree">
@@ -1010,12 +1028,10 @@
    <paragraph role="paragraph" id="par_id221612713087885">Return <literal>True</literal> when a subtree, subordinate to a parent node, could be inserted successfully in a tree control. If the parent node had already child nodes before calling this method, the child nodes are erased.</paragraph>
    <embed href="text/sbasic/shared/03/sf_dialogcontrol.xhp#OnNodeExpanded"/>
    <h3 id="hd_id781612713087790" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id841612713087102">oControl.AddSubTree(ParentNode As Object, FlatTree As Variant[, WithDataValue As Boolean]) As Boolean</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id731620308640671"><input>svc.AddSubTree(parentnode: uno, flattree: any, opt withdatavalue: bool): bool</input></paragraph>
    <h3 id="hd_id791612713087478" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id781612713087722"><emph>ParentNode</emph>: A node UNO object, of type <literal>com.sun.star.awt.tree.XMutableTreeNode</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id36161271308759"><emph>FlatTree</emph>: a two dimension array sorted on the columns containing the display values. Such an array can be issued by the <literal>GetRows</literal> method applied on the <literal>SFDatabases.Database</literal> service. When an array item containing the text to be displayed is <literal>Empty</literal> or <literal>Null</literal>, no new subnode is created and the remainder of the row is skipped.</paragraph>
+   <paragraph role="paragraph" id="par_id781612713087722"><emph>parentnode</emph>: A node UNO object, of type <literal>com.sun.star.awt.tree.XMutableTreeNode</literal>.</paragraph>
+   <paragraph role="paragraph" id="par_id36161271308759"><emph>flattree</emph>: a two dimension array sorted on the columns containing the display values. Such an array can be issued by the <literal>GetRows</literal> method applied on the <literal>SFDatabases.Database</literal> service. When an array item containing the text to be displayed is <literal>Empty</literal> or <literal>Null</literal>, no new subnode is created and the remainder of the row is skipped.</paragraph>
    <bascode>
       <paragraph role="bascode" id="bas_id61612716027443">Flat tree    >>>>    Resulting subtree</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id881612716035711">A1	B1	C1             |__   A1	</paragraph>
@@ -1032,7 +1048,7 @@
       <paragraph role="bascode" localize="false" id="bas_id621612716122130">                             |__   B4</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id212612716132791">                                   |__  C6</paragraph>
    </bascode>
-   <paragraph role="paragraph" id="par_id51612713087915"><emph>WithDataValue</emph>: When <literal>False</literal> default value is used, every column of <literal>FlatTree</literal> contains the text to be displayed in the tree control. When <literal>True</literal>, the texts to be displayed (<literal>DisplayValue</literal>) are in columns 0, 2, 4, ... while the data values (<literal>DataValue</literal>) are in columns 1, 3, 5, ...</paragraph>
+   <paragraph role="paragraph" id="par_id51612713087915"><emph>withdatavalue</emph>: When <literal>False</literal> default value is used, every column of <literal>flattree</literal> contains the text to be displayed in the tree control. When <literal>True</literal>, the texts to be displayed (<literal>displayvalue</literal>) are in columns 0, 2, 4, ... while the data values (<literal>datavalue</literal>) are in columns 1, 3, 5, ...</paragraph>
    <h3 id="hd_id781612713087851" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id531612713087285">Dim myTree As Object, theRoot As Object, oDb As Object, vData As Variant</paragraph>
@@ -1044,6 +1060,16 @@
       <paragraph role="bascode" localize="false" id="bas_id551612714139429">    &amp; "ORDER BY [Category].[Name], [Product].[Name]")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id361612714193588">myTree.AddSubTree(theRoot, vData, WithDataValue := True)</paragraph>
    </bascode>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id671620317364456">SQL_STMT = "SELECT [Category].[Name], [Category].[ID], [Product].[Name], [Product].[ID] \</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id51620317364911">    FROM [Category], [Product] WHERE [Product].[CategoryID] = [Category].[ID] \</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id101620318087874">    ORDER BY [Category].[Name], [Product].[Name]"</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id901620317363542">tree = dlg.Controls('myTreeControl')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id361620317363735">root = tree.CreateRoot('By Product category')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id361620317363903">db = CreateScriptService('SFDatabases.Database', '/home/.../mydatabase.odb')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id911620317364071">sub_tree = db.GetRows(SQL_STMT)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id221620317364271">tree.AddSubTree(root, sub_tree, withdatavalue=True)</paragraph>
+   </pycode>
    </section>
 
    <section id="CreateRoot">
@@ -1055,18 +1081,20 @@
      <paragraph role="paragraph" id="par_id151612780723320">Returns a new root node of the tree control, as a node UNO object of type <literal>com.sun.star.awt.tree.XMutableTreeNode</literal>. The new tree root is inserted below pre-existing root nodes. <embedvar href="text/sbasic/shared/03/sf_dialogcontrol.xhp#XMutableTreeNode"/></paragraph>
    <paragraph role="paragraph" id="par_id821612780723965" xml-lang="en-US">This method may be called before displaying the dialog box to build the initial tree. It may also be called from a dialog or control event to complete the tree dynamically.</paragraph>
    <h3 id="hd_id211612780723578" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id921612780723147">oControl.CreateRoot(DisplayValue As String[, DataValue As Variant]) As Object</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id991620309297239"><input>svc.CreateRoot(displayvalue: str, datavalue = ''): uno</input></paragraph>
    <h3 id="hd_id871612780723668" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id671612780723837"><emph>DisplayValue</emph>: The text appearing in the tree control box.</paragraph>
-   <paragraph role="paragraph" id="par_id31612780723267"><emph>DataValue</emph>: Any value associated with the new node. Default value is <literal>Empty</literal>.</paragraph>
+   <paragraph role="paragraph" id="par_id671612780723837"><emph>displayvalue</emph>: The text appearing in the tree control box.</paragraph>
+   <paragraph role="paragraph" id="par_id31612780723267"><emph>datavalue</emph>: Any value associated with the new node. Default value is <literal>Empty</literal>.</paragraph>
    <h3 id="hd_id241612780723961" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id491612780723925">Dim myTree As Object, myNode As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id241612780723722">Set myTree = myDialog.Controls("myTreeControl")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id441612780723817">Set myNode = myTree.CreateRoot("Tree starts here ...")</paragraph>
    </bascode>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id441620318437138">tree = dlg.Controls('myTreeControl')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id301620318437324">node = tree.CreateRoot('Tree starts here ...')</paragraph>
+   </pycode>
    </section>
 
    <section id="FindNode">
@@ -1075,24 +1103,28 @@
       <bookmark_value>DialogControl service;FindNode</bookmark_value>
    </bookmark>
    <h2 id="hd_id801612781589891" localize="false">FindNode</h2>
-   <paragraph role="paragraph" id="par_id171612781589503">Traverses the tree and finds recursively, starting from the root, a node meeting some criteria. Either - 1 match is enough - having its display value matching <literal>DisplayValue</literal> pattern or having its data value equal to <literal>DataValue</literal>. The comparisons may be or not case-sensitive. The first matching occurrence is returned as a node UNO object of type <literal>com.sun.star.awt.tree.XMutableTreeNode</literal>. <embedvar href="text/sbasic/shared/03/sf_dialogcontrol.xhp#XMutableTreeNode"/></paragraph>
+   <paragraph role="paragraph" id="par_id171612781589503">Traverses the tree and finds recursively, starting from the root, a node meeting some criteria. Either - 1 match is enough - having its display value matching <literal>displayvalue</literal> pattern or having its data value equal to <literal>datavalue</literal>. The comparisons may be or not case-sensitive. The first matching occurrence is returned as a node UNO object of type <literal>com.sun.star.awt.tree.XMutableTreeNode</literal>. <embedvar href="text/sbasic/shared/03/sf_dialogcontrol.xhp#XMutableTreeNode"/></paragraph>
    <paragraph role="paragraph" id="par_id741612782475457" xml-lang="en-US">When not found, the method returns <literal>Nothing</literal>, to be tested with the <literal>IsNull()</literal> builtin function.</paragraph>
    <paragraph role="paragraph" id="par_id41612781589363" xml-lang="en-US">This method may be called before displaying the dialog box to build the initial tree. It may also be called from a dialog or control event.</paragraph>
    <h3 id="hd_id60161278158981" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id881612781589726">oControl.FindNode(DisplayValue = Empty, DataValue = Empty [, CaseSensitive = False]) As Object</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id61620309668544"><input>svc.FindNode(displayvalue: str = '', datavalue: str = '', casesensitive = False ''): uno</input></paragraph>
    <h3 id="hd_id771612781589667" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
    <paragraph role="paragraph" id="par_id541613670199211">One argument out of <literal>DisplayValue</literal> or <literal>DataValue</literal> must be specified. If both present, one match is sufficient to select the node.</paragraph>
-   <paragraph role="paragraph" id="par_id591612781589560"><emph>DisplayValue</emph>: The pattern to be matched. See the <link href="text/sbasic/shared/03/sf_string.xhp#IsLike" name="String service IsLike() method"><literal>SF_String.IsLike()</literal></link> method. When equal to the zero-length string (default), this display value is not searched for.</paragraph>
-   <paragraph role="paragraph" id="par_id481612781589626"><emph>DataValue</emph>: A string, a numeric value, a date. Use <literal>Empty</literal> default value when no value applies.</paragraph>
-   <paragraph role="paragraph" id="par_id141582384726168"><emph>CaseSensitive</emph>: Default value is <literal>False</literal></paragraph>
+   <paragraph role="paragraph" id="par_id591612781589560"><emph>displayvalue</emph>: The pattern to be matched. Refer to <link href="text/sbasic/shared/03/sf_string.xhp#IsLike" name="String service IsLike() method"><literal>SF_String.IsLike()</literal></link> method for the list of possible wildcards. When equal to the zero-length string (default), this display value is not searched for.</paragraph>
+   <paragraph role="paragraph" id="par_id481612781589626"><emph>datavalue</emph>: A string, a numeric value, a date. Use <literal>Empty</literal> default value when no value applies.</paragraph>
+   <paragraph role="paragraph" id="par_id141582384726168"><emph>casesensitive</emph>: Default value is <literal>False</literal></paragraph>
    <h3 id="hd_id41612781589546" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id61612781589464">Dim myTree As Object, myNode As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id991612781589903">Set myTree = myDialog.Controls("myTreeControl")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id461612781589942">et myNode = myTree.FindNode("*Sophie*", CaseSensitive := True)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id461612781589942">Set myNode = myTree.FindNode("*Sophie*", CaseSensitive := True)</paragraph>
    </bascode>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id191620318816450">tree = dlg.Controls('myTreeControl')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id281620318817089">node = FindNode('*Sophie*', casesensitive=True)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id861620319785763">if node is None:</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id471620319809524">    # ...</paragraph>
+   </pycode>
    </section>
 
   <section id="SetFocus">
@@ -1104,9 +1136,7 @@
    <paragraph role="paragraph" id="par_id871583933076448">Set the focus on the control. Return <literal>True</literal> if focusing was successful.</paragraph>
    <paragraph role="paragraph" id="par_id151598178880227" xml-lang="en-US">This method is often called from a dialog or control event.</paragraph>
    <h3 id="hd_id61583933076171" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id731583933076815">oControl.SetFocus() As Boolean</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id11620310325234"><input>svc.SetFocus(): bool</input></paragraph>
    <h3 id="hd_id26158393307687" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id221598179105596">Dim oControl As Object</paragraph>
@@ -1114,6 +1144,11 @@
       <paragraph role="bascode" localize="false" id="bas_id681598179123436">Set oControl = oDlg.Controls("thisControl")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id361598179135096">oControl.SetFocus()</paragraph>
     </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id591620319169802">dlg = CreateScriptService('','','myDialog')</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id201620319170298">ctrl = dlg.Controls('thisControl')</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id821620319170682">ctrl.SetFocus()</paragraph>
+    </pycode>
    </section>
 
    <section id="WriteLine">
@@ -1125,6 +1160,7 @@
    <paragraph role="paragraph" id="par_id671598619892378">Add a new line at the end of a multiline text field. A newline character will be inserted when appropriate. The method returns <literal>True</literal> when successful.</paragraph>
    <paragraph role="paragraph" id="par_id941598619892915" xml-lang="en-US">An error is raised if the actual control is not of the type <literal>TextField</literal> or is not multiline.</paragraph>
    <h3 id="hd_id761598619892682" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <paragraph role="paragraph" localize="false" id="par_id841620310387185"><input>svc.WriteLine(opt line: str): bool</input></paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id821598619892939">oControl.WriteLine([Line As String]) As Boolean</paragraph>
    </bascode>
@@ -1133,10 +1169,15 @@
    <h3 id="hd_id391598619892559" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id681598619892624">Dim oDlg As Object, oControl As Object</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id521598619892148">Set oDlg = CreateScriptService(,, "myDialog")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id521598619892148">Set oDlg = CreateScriptService("SFDialogs.Dialog",,, "myDialog")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id391598619892465">Set oControl = oDlg.Controls("thisControl")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id281598619892850">oControl.WriteLine("a new line")</paragraph>
    </bascode>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id61620319410491">dlg = CreateScriptService('SFDialogs.Dialog','','','myDialog')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id701620319411995">ctrl = dlg.Controls('thisControl')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id591620319412507">ctr.WriteLine("a new line")</paragraph>
+   </pycode>
    </section>
 
    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
