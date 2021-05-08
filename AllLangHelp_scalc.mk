@@ -196,6 +196,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_countifs \
     helpcontent2/source/text/scalc/01/func_color \
     helpcontent2/source/text/scalc/01/func_concat \
+    helpcontent2/source/text/scalc/01/func_convert \
     helpcontent2/source/text/scalc/01/func_date \
     helpcontent2/source/text/scalc/01/func_datedif \
     helpcontent2/source/text/scalc/01/func_datevalue \

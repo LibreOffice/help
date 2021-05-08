@@ -1,0 +1,1741 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+-->
+<meta>
+  <topic id="textscalc01func_convertxml">
+    <title id="tit" xml-lang="en-US">CONVERT function</title>
+    <filename>/text/scalc/01/func_convert.xhp</filename>
+  </topic>
+</meta>
+<body>
+<section id="convert_function">
+    <bookmark xml-lang="en-US" branch="hid/SC_HID_AAI_FUNC_CONVERT" id="bm_id3150773" localize="false"/>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id3148446">
+      <bookmark_value>CONVERT function</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id9522389625800">
+      <variable id="convert_head">
+        <link href="text/scalc/01/func_convert.xhp">CONVERT</link>
+      </variable> function
+    </h2>
+    <paragraph xml-lang="en-US" id="par_id3154902" role="paragraph">
+        <ahelp hid="HID_AAI_FUNC_CONVERT"><variable id="convert_desc">Converts a value from one unit of measurement to the corresponding value in another unit of measurement.</variable></ahelp> Enter the units of measurement directly as text in quotation marks or as a reference. The units of measurement specified through the arguments must match the supported unit symbols, which are case-sensitive. For example, the symbol for the unit "newton" is the uppercase "N".</paragraph>
+    <paragraph role="paragraph" id="par_id761620414839890">The measurement units recognized by <literal>CONVERT</literal> fall into 13 groups, which are listed <link href="text/scalc/01/func_convert.xhp#Unit_Groups" name="Unit_Groups_Section">below</link>. CONVERT will perform conversions between any two units within one group but reject any request to convert between units in different groups.</paragraph>
+    <paragraph role="paragraph" id="par_id861620428840333">You can also add binary and decimal prefixes to units of measurement that support them. The list of all prefixes and their corresponding multipliers are shown <link href="text/scalc/01/func_convert.xhp#Prefixes" name="Prefixes_Section">below</link>.</paragraph>
+</section>
+  <warning id="par_id601621101375988">This function may not be compatible with other spreadsheet software.</warning>
+
+<embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
+  <paragraph id="par_id23219159944266" role="paragraph">
+    <input>CONVERT(Number; FromUnit; ToUnit)</input>
+  </paragraph>
+  <paragraph id="par_id3147522" role="paragraph">
+    <emph>Number</emph> is the number to be converted.
+  </paragraph>
+  <paragraph id="par_id3154472" role="paragraph">
+    <emph>FromUnit</emph> is the unit from which conversion is taking place.
+  </paragraph>
+  <paragraph id="par_id3153790" role="paragraph">
+    <emph>ToUnit</emph> is the unit to which conversion is taking place. Both units must be of the same type.
+  </paragraph>
+  <warning id="par_id541620414925560">If <literal>FromUnit</literal> and <literal>ToUnit</literal> are not valid units from the same group, then <literal>CONVERT</literal> reports an invalid argument error (Err:502).</warning>
+
+  <embed href="text/scalc/01/ful_func.xhp#func_head_example"/>
+  <paragraph xml-lang="en-US" id="par_id3156336" role="paragraph">
+    <input>=CONVERT(-10; "C"; "F")</input></paragraph>
+  <paragraph role="paragraph" id="par_id951620413562988">Here the function converts -10 degrees Celsius to degrees Fahrenheit, returning the value 14. There is not a simple multiplicative relationship bewteen temperature units, as different reference points are used. Hence, as in this case, an input negative number may be converted to a positive value.</paragraph>
+  <paragraph xml-lang="en-US" id="par_id3154834" role="paragraph">
+    <input>=CONVERT(3.5; "mi"; "yd")</input></paragraph>
+    <paragraph role="paragraph" id="par_id971620413678102">Here the function converts 3.5 international miles to yards, returning the value 6160. Both units are in the Length and distance group.</paragraph>
+  <paragraph role="paragraph" id="par_id741620413834726">
+    <input>=CONVERT(256; "Gibit"; "Mibyte")</input></paragraph>
+  <paragraph role="paragraph" id="par_id261620413900652">Here the function converts 256 gigibits to mebibytes, returning the value 32768. Both units (bit and byte) are in the Information group and support binary prefixes.</paragraph>
+  <paragraph role="paragraph" id="par_id761620413966496">
+    <input>=CONVERT(1; "dyn"; "e")</input></paragraph>
+  <paragraph role="paragraph" id="par_id531620414005955">Here the function returns an invalid argument error (Err:502) because the two units (dyne and erg) are in different groups (Force and Energy respectively).</paragraph>
+
+  <section id="Unit_Groups">
+    <h2 id="hd_id261620415240175">Units of measurement</h2>
+  </section>
+  <paragraph role="paragraph" id="par_id481620428685029">Below are the unit measurement groups supported by the <literal>CONVERT</literal> function. Beware that conversions can only happen between units that belong to the same group.</paragraph>
+  <note id="par_id461620429183259">The column Prefix indicates whether or not a given unit of measurement supports <link href="text/scalc/01/func_convert.xhp#Prefixes" name="Prefixes_Section">prefixes</link>.</note>
+
+  <h3 id="hd_id301620415514760">Area</h3>
+  <note id="par_id121620479750266">Some measurement units have more than one accepted symbol. The accepted unit symbols are separated by semicolons in the <emph>Unit symbol</emph> column.</note>
+  <table id="tab_id331620415562966">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id831620415562967" role="tablehead">Unit symbol</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id251620415562967" role="tablehead">Description</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id151620415562967" role="tablehead">Prefix</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id521620415562967" localize="false" role="tablecontent">"ang2" ; "ang^2"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id61620415562967" role="tablecontent">Square angstrom</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id981620415903827" localize="false" role="tablecontent">"ar"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id71620415903987" role="tablecontent">Are</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id351620415904306" localize="false" role="tablecontent">"ft2" ; "ft^2"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id631620415904448" role="tablecontent">Square foot</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id91620415904747" localize="false" role="tablecontent">"ha"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id651620415904891" role="tablecontent">Hectare</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id901620415905195" localize="false" role="tablecontent">"in2" ; "in^2"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561620415905331" role="tablecontent">Square inch</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id901620415905225" localize="false" role="tablecontent">"ly2" ; "ly^2"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561620415905004" role="tablecontent">Square light-year</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id911620416024191" localize="false" role="tablecontent">"m2" ; "m^2"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id781620416024343" role="tablecontent">Square meter</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id971620416024652" localize="false" role="tablecontent">"mi2" ; "mi^2"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id731620416024782" role="tablecontent">Square international mile</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id271620416250801" localize="false" role="tablecontent">"Morgen"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id621620416250948" role="tablecontent">Morgen</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id21620416251236" localize="false" role="tablecontent">"Nmi2" ; "Nmi^2"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id661620416251507" role="tablecontent">Square nautical mile</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id181620416251827" localize="false" role="tablecontent">"Pica2" ; "Pica^2" ; "picapt2" ; "picapt^2"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id791620416251948" role="tablecontent">Square pica point</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id611620416252242" localize="false" role="tablecontent">"pica2" ; "pica^2"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id771620416417874" role="tablecontent">Square pica</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id111620416418168" localize="false" role="tablecontent">"uk_acre" ; "acre"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id621620416418311" role="tablecontent">International acre</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id731620416418608" localize="false" role="tablecontent">"us_acre"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id71620416418768" role="tablecontent">US survey acre</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id731620416418769" localize="false" role="tablecontent">"yd2" ; "yd^2"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id71620416418025" role="tablecontent">Square yard</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h3 id="hd_id661620418842010">Energy</h3>
+  <table id="tab_id298181355938591">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id133389281727763" role="tablehead">Unit symbol</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id215779983443756" role="tablehead">Description</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id986783687128923" role="tablehead">Prefix</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id569445286862812" localize="false" role="tablecontent">"BTU" ; "btu"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id797688281572156" role="tablecontent">British thermal unit</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id956443293167821" localize="false" role="tablecontent">"c"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id844417659281393" role="tablecontent">Thermochemical calorie</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id563678512847366" localize="false" role="tablecontent">"cal"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id672765982649722" role="tablecontent">International Steam Table calorie</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id881893877326413" localize="false" role="tablecontent">"e"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id798492531882282" role="tablecontent">erg</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id554868456893697" localize="false" role="tablecontent">"eV" ; "ev"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id547247548598782" role="tablecontent">Electron volt</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id461373165135142" localize="false" role="tablecontent">"flb"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id587393171297892" role="tablecontent">Foot-pound</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id898877643333425" localize="false" role="tablecontent">"HPh" ; "hh"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id695171299238861" role="tablecontent">Horsepower-hour</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id261123119875248" localize="false" role="tablecontent">"J"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id498448587944728" role="tablecontent">Joule</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id432889499844711" localize="false" role="tablecontent">"Wh" ; "wh"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id324829753758823" role="tablecontent">Watt-hour</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h3 id="hd_id281620418969165">Flux density</h3>
+  <table id="tab_id964977165727472">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id474271648545953" role="tablehead">Unit symbol</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id747764511138273" role="tablehead">Description</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id689379352231556" role="tablehead">Prefix</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id771569221719597" localize="false" role="tablecontent">"ga"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id114822916257326" role="tablecontent">Gauss</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id868398115225815" localize="false" role="tablecontent">"T"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id626213287964265" role="tablecontent">Tesla</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h3 id="hd_id511620419033332">Force</h3>
+  <table id="tab_id473572963491635">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id786326578562174" role="tablehead">Unit symbol</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id613697367784781" role="tablehead">Description</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id338735929142246" role="tablehead">Prefix</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id741853522962135" localize="false" role="tablecontent">"dyn" ; "dy"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id332679599387353" role="tablecontent">Dyne</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id559749726818243" localize="false" role="tablecontent">"N"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id297688664469184" role="tablecontent">Newton</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id991778936374989" localize="false" role="tablecontent">"lbf"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id413835658896999" role="tablecontent">Pound-force</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id722282244689641" localize="false" role="tablecontent">"pond"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id472715992174398" role="tablecontent">Pond</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h3 id="hd_id61620419155285">Information</h3>
+  <table id="tab_id655651615396453">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id426724696915849" role="tablehead">Unit symbol</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id612374956817974" role="tablehead">Description</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id538681812985912" role="tablehead">Prefix</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id328775657319692" localize="false" role="tablecontent">"bit"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id287396172896473" role="tablecontent">Bit</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id732213932268164" localize="false" role="tablecontent">"byte"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id288619461492324" role="tablecontent">Byte</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h3 id="hd_id21620419214852">Length and distance</h3>
+  <table id="tab_id151282723362773">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id939442657661828" role="tablehead">Unit symbol</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id385965635167839" role="tablehead">Description</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id783715738435884" role="tablehead">Prefix</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id975194925284695" localize="false" role="tablecontent">"ang"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id871414798381246" role="tablecontent">Angstrom</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id462251953683395" localize="false" role="tablecontent">"ell"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id667871614381886" role="tablecontent">Ell</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id427353475581798" localize="false" role="tablecontent">"ft"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id116286449743311" role="tablecontent">Foot</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id554928677482461" localize="false" role="tablecontent">"in"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id174995614358222" role="tablecontent">Inch</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id759221157681496" localize="false" role="tablecontent">"ly" ; "lightyear"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id597477613742668" role="tablecontent">Light-year</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id576527667856118" localize="false" role="tablecontent">"m"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id414782652978666" role="tablecontent">Meter</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id785562982269695" localize="false" role="tablecontent">"mi"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id246972715165395" role="tablecontent">International mile</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id278335187628755" localize="false" role="tablecontent">"Nmi"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id664674443288268" role="tablecontent">Nautical mile</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id832181127538982" localize="false" role="tablecontent">"parsec" ; "pc"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id139127915416429" role="tablecontent">Parsec</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id396691995323256" localize="false" role="tablecontent">"Pica" ; "picapt"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id343241931577938" role="tablecontent">Pica point</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id331128785553249" localize="false" role="tablecontent">"pica"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id314567699952918" role="tablecontent">Pica</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id891632362725632" localize="false" role="tablecontent">"survey_mi"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id579641593251685" role="tablecontent">US survey mile</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id314284197456168" localize="false" role="tablecontent">"yd"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id247251727323315" role="tablecontent">Yard</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h3 id="hd_id101620426269258">Mass and weight</h3>
+  <table id="tab_id987592258455319">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id662733781297324" role="tablehead">Unit symbol</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id314237495552874" role="tablehead">Description</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id543131496247122" role="tablehead">Prefix</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id414474992528385" localize="false" role="tablecontent">"cwt" ; "shweight"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id163896825569756" role="tablecontent">Short hundredweight</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id449514439345839" localize="false" role="tablecontent">"g"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id219736221925573" role="tablecontent">Gram</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id313343851458777" localize="false" role="tablecontent">"grain"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id613363919875679" role="tablecontent">Grain</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id724595483326729" localize="false" role="tablecontent">"lbm"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id961199633533431" role="tablecontent">Pound</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id939963948418678" localize="false" role="tablecontent">"ozm"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id655456352143671" role="tablecontent">Ounce</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id188555391191767" localize="false" role="tablecontent">"pweight"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id613492674545171" role="tablecontent">Pennyweight</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id657645272418762" localize="false" role="tablecontent">"sg"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id566783887997575" role="tablecontent">Slug</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id323583787534183" localize="false" role="tablecontent">"stone"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id731498557457276" role="tablecontent">Stone</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id554919533186898" localize="false" role="tablecontent">"ton"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id618416327957968" role="tablecontent">Short ton</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id482546497575283" localize="false" role="tablecontent">"u"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id556166667325333" role="tablecontent">Unified atomic mass unit</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id242665252964996" localize="false" role="tablecontent">"uk_cwt" ; "lcwt" ; "hweight"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id161338688697922" role="tablecontent">Long hundredweight</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id825123652593813" localize="false" role="tablecontent">"uk_ton" ; "LTON" ; "brton"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id616379569614142" role="tablecontent">Long ton</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h3 id="hd_id1001620426284123">Power</h3>
+  <table id="tab_id159466558733727">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id765457372987543" role="tablehead">Unit symbol</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id222988613874967" role="tablehead">Description</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id954629589584711" role="tablehead">Prefix</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id337716541277233" localize="false" role="tablecontent">"HP" ; "h"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id578436173796358" role="tablecontent">Mechanical horsepower</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id938191464394781" localize="false" role="tablecontent">"PS"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id418898833841613" role="tablecontent">Pferdestärke or metric horsepower</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id232851659252123" localize="false" role="tablecontent">"W" ; "w"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id239893771814786" role="tablecontent">Watt</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h3 id="hd_id541620426359069">Pressure</h3>
+  <table id="tab_id919321584131771">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id843387541961981" role="tablehead">Unit symbol</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id385992865555923" role="tablehead">Description</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id513642579177244" role="tablehead">Prefix</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id921213995456776" localize="false" role="tablecontent">"atm" ; "at"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id888153229712212" role="tablecontent">Standard atmosphere</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id445134526598488" localize="false" role="tablecontent">"mmHg"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id849582553771429" role="tablecontent">Millimeter of mercury</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id142795818733368" localize="false" role="tablecontent">"Pa"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id477235647442515" role="tablecontent">Pascal</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id253344479916294" localize="false" role="tablecontent">"psi"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id453587511744492" role="tablecontent">Pound per square inch</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id698366341151136" localize="false" role="tablecontent">"Torr"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id385442861685423" role="tablecontent">Torr</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h3 id="hd_id61620426438099">Speed</h3>
+  <table id="tab_id699528473861629">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id589222947765948" role="tablehead">Unit symbol</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id886677898259849" role="tablehead">Description</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id439227432319741" role="tablehead">Prefix</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id954749535393193" localize="false" role="tablecontent">"admkn"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id391572877557741" role="tablecontent">Admiralty knot</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id865786778481645" localize="false" role="tablecontent">"kn"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id152721538362456" role="tablecontent">International knot</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id753435843689377" localize="false" role="tablecontent">"m/h" ; "m/hr"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id117898736774311" role="tablecontent">Meters per hour</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id587139589261195" localize="false" role="tablecontent">"m/s" ; "m/sec"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id145334267535329" role="tablecontent">Meters per second</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id618827791738926" localize="false" role="tablecontent">"mph"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id233825548718154" role="tablecontent">Miles per hour</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h3 id="hd_id351620426496272">Temperature</h3>
+  <table id="tab_id611159446581557">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id916682468647914" role="tablehead">Unit symbol</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id828222863857386" role="tablehead">Description</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id131675777393493" role="tablehead">Prefix</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id872111334289956" localize="false" role="tablecontent">"C" ; "cel"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id611894272236225" role="tablecontent">Degree Celsius</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id938578588825866" localize="false" role="tablecontent">"F" ; "fah"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id446899599712639" role="tablecontent">Degree Fahrenheit</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id125231983731839" localize="false" role="tablecontent">"K" ; "kel"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id452842161272274" role="tablecontent">Kelvin</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id194122867228313" localize="false" role="tablecontent">"Rank"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id946395673872875" role="tablecontent">Degree Rankine</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id483363447419939" localize="false" role="tablecontent">"Reau"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id718454351326149" role="tablecontent">Degree Réaumur</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h3 id="hd_id291620426558219">Time</h3>
+  <table id="tab_id755647196118982">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id935221689591996" role="tablehead">Unit symbol</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id664526138752768" role="tablehead">Description</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id889226439751962" role="tablehead">Prefix</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id381382398556233" localize="false" role="tablecontent">"day" ; "d"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id246817386878489" role="tablecontent">Day</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id945715595918177" localize="false" role="tablecontent">"hr"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id464925665919665" role="tablecontent">Hour</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id869887353345544" localize="false" role="tablecontent">"mn" ; "min"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id134873473826283" role="tablecontent">Minute</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id949824769914642" localize="false" role="tablecontent">"sec" ; "s"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id424852859961766" role="tablecontent">Second</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id986426975385483" localize="false" role="tablecontent">"yr"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id546198897664738" role="tablecontent">Year</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h3 id="hd_id151620426617693">Volume</h3>
+  <table id="tab_id262859621658125">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id245659124219512" role="tablehead">Unit symbol</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id954441838321316" role="tablehead">Description</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id487448753979859" role="tablehead">Prefix</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id742373482648115" localize="false" role="tablecontent">"ang3" ; "ang^3"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id254311578719497" role="tablecontent">Cubic angstrom</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id194119333251239" localize="false" role="tablecontent">"barrel"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id545825775819166" role="tablecontent">Oil barrel</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id673312966527425" localize="false" role="tablecontent">"bushel"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id976829653577442" role="tablecontent">US bushel</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id388214653874841" localize="false" role="tablecontent">"cup"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id184258429676826" role="tablecontent">US cup</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id347348699465995" localize="false" role="tablecontent">"ft3" ; "ft^3"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id278184952564879" role="tablecontent">Cubic foot</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id253793989186841" localize="false" role="tablecontent">"gal"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id466397614396366" role="tablecontent">US gallon</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id477248257624964" localize="false" role="tablecontent">"Glass"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id938562498562468" role="tablecontent">Australian glass (200 milliliters)</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id927845313892281" localize="false" role="tablecontent">"GRT" ; "regton"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id471177863127144" role="tablecontent">Gross register tonnage</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id584476153629656" localize="false" role="tablecontent">"Humpen"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id347175644673122" role="tablecontent">Humpen (500 milliliters)</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id143322419863673" localize="false" role="tablecontent">"in3" ; "in^3"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id995576717914988" role="tablecontent">Cubic inch</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id231695939242594" localize="false" role="tablecontent">"l" ; "L" ; "lt"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id842329689485738" role="tablecontent">Liter</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id915284957397584" localize="false" role="tablecontent">"ly3" ; "ly^3"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id236636296681258" role="tablecontent">Cubic light-year</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id572433334412695" localize="false" role="tablecontent">"m3" ; "m^3"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id538319527687728" role="tablecontent">Cubic meter</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#Yes_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id395785921258135" localize="false" role="tablecontent">"mi3" ; "mi^3"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id463843338576911" role="tablecontent">Cubic international mile</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id648645827638713" localize="false" role="tablecontent">"Middy"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id995778363641811" role="tablecontent">Australian middy (285 milliliters)</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id913659161224112" localize="false" role="tablecontent">"MTON"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id894695318848125" role="tablecontent">Measurement ton</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id673916153456138" localize="false" role="tablecontent">"Nmi3" ; "Nmi^3"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id392284181269245" role="tablecontent">Cubic nautical mile</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id929374968461384" localize="false" role="tablecontent">"oz"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id371262895179554" role="tablecontent">US fluid ounce</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id242677566736799" localize="false" role="tablecontent">"Pica3" ; "Pica^3" ; "picapt3" ; "picapt^3"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id895488213141468" localize="false" role="tablecontent">Cubic pica point</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id122859286345561" localize="false" role="tablecontent">"pica3" ; "pica^3"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id956867693183654" role="tablecontent">Cubic pica</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id582142994514436" localize="false" role="tablecontent">"pt" ; "us_pt"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id698697624265559" role="tablecontent">US pint</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id988446288764263" localize="false" role="tablecontent">"qt"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id615917164511264" role="tablecontent">US quart</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id828968322594669" localize="false" role="tablecontent">"Schooner"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id653481929342877" role="tablecontent">Australian schooner (425 milliliters)</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id377965813595534" localize="false" role="tablecontent">"Sixpack"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id912821548196546" role="tablecontent">Six pack (2 liters)</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id218578441553519" localize="false" role="tablecontent">"tbs"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id248216629889251" role="tablecontent">US tablespoon</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id312637427526639" localize="false" role="tablecontent">"tsp"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id745625921159327" role="tablecontent">US teaspoon</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id679171851162521" localize="false" role="tablecontent">"tspm"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id864223151994899" role="tablecontent">Metric teaspoon</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id744654238369282" localize="false" role="tablecontent">"uk_gal"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id311759289592485" role="tablecontent">Imperial gallon</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id567929573533886" localize="false" role="tablecontent">"uk_pt"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id673293916128784" role="tablecontent">Imperial pint</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id884657269767431" localize="false" role="tablecontent">"uk_qt"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id213353742979736" role="tablecontent">Imperial quart</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id711842253848897" localize="false" role="tablecontent">"yd3" ; "yd^3"</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id817884513513347" role="tablecontent">Cubic yard</paragraph>
+      </tablecell>
+      <tablecell>
+        <embed href="text/scalc/01/ful_func.xhp#No_par"/>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <section id="Prefixes">
+    <h2 id="hd_id21620415408286">Prefixes</h2>
+  </section>
+  <h3 id="hd_id731620426688645">Decimal prefixes</h3>
+  <table id="tab_id828724674227638">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id772395422122114" role="tablehead">Prefix</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id448471762246791" role="tablehead">Multiplier</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id464235713977297" localize="false" role="tablecontent">Y (yotta)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id382297381124942" localize="false" role="tablecontent">10<sup>24</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id195969296892884" localize="false" role="tablecontent">Z (zetta)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id729358319725611" localize="false" role="tablecontent">10<sup>21</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id896911765974332" localize="false" role="tablecontent">E (exa)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id382641377245968" localize="false" role="tablecontent">10<sup>18</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id621313155398871" localize="false" role="tablecontent">P (peta)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id883541189319954" localize="false" role="tablecontent">10<sup>15</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id771989892374889" localize="false" role="tablecontent">T (tera)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id733531858969553" localize="false" role="tablecontent">10<sup>12</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id413938379889651" localize="false" role="tablecontent">G (giga)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id483273257579936" localize="false" role="tablecontent">10<sup>9</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id782419487516479" localize="false" role="tablecontent">M (mega)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id637295562743228" localize="false" role="tablecontent">10<sup>6</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id897563426716439" localize="false" role="tablecontent">k (kilo)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id172178771518245" localize="false" role="tablecontent">10<sup>3</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id667993131196768" localize="false" role="tablecontent">h (hecto)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id624783418367776" localize="false" role="tablecontent">10<sup>2</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id864465688672221" localize="false" role="tablecontent">e (deca)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id815223592146618" localize="false" role="tablecontent">10<sup>1</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id346425652937897" localize="false" role="tablecontent">d (deci)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id876256467492564" localize="false" role="tablecontent">10<sup>-1</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id922142991788446" localize="false" role="tablecontent">c (centi)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id252929881889423" localize="false" role="tablecontent">10<sup>-2</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id881839868947749" localize="false" role="tablecontent">m (milli)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id698257386584299" localize="false" role="tablecontent">10<sup>-3</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id239316775738957" localize="false" role="tablecontent">u (micro)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id322211739146687" localize="false" role="tablecontent">10<sup>-6</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id654828299623554" localize="false" role="tablecontent">n (nano)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id642127274228539" localize="false" role="tablecontent">10<sup>-9</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id658216627833144" localize="false" role="tablecontent">p (pico)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id252946687944726" localize="false" role="tablecontent">10<sup>-12</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id238422159622315" localize="false" role="tablecontent">f (femto)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id642676564889834" localize="false" role="tablecontent">10<sup>-15</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id117872718654341" localize="false" role="tablecontent">a (atto)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id261649234231835" localize="false" role="tablecontent">10<sup>-18</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id469149385818358" localize="false" role="tablecontent">z (zepto)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id223582154553896" localize="false" role="tablecontent">10<sup>-21</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id332536816216951" localize="false" role="tablecontent">y (yocto)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id318813222624119" localize="false" role="tablecontent">10<sup>-24</sup></paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h3 id="hd_id91620427193950">Binary prefixes</h3>
+  <table id="tab_id264635321234215">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id422991712375461" role="tablehead">Prefix</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id553637738674151" role="tablehead">Multiplier</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id173164235173819" localize="false" role="tablecontent">Yi (yobi)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id998779957548991" localize="false" role="tablecontent">2<sup>80</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id177634268414555" localize="false" role="tablecontent">Zi (zebi)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id971825321168754" localize="false" role="tablecontent">2<sup>70</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id618448379119254" localize="false" role="tablecontent">Ei (exbi)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id454829637857684" localize="false" role="tablecontent">2<sup>60</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id969745425575594" localize="false" role="tablecontent">Pi (pebi)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id941231646574848" localize="false" role="tablecontent">2<sup>50</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id493761634389785" localize="false" role="tablecontent">Ti (tebi)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id958478788867513" localize="false" role="tablecontent">2<sup>40</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id378317685761813" localize="false" role="tablecontent">Gi (gibi)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id199491346693428" localize="false" role="tablecontent">2<sup>30</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id261868876761555" localize="false" role="tablecontent">Mi (mebi)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id621531875259349" localize="false" role="tablecontent">2<sup>20</sup></paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id499638781156135" localize="false" role="tablecontent">ki (kibi)</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id573129416738365" localize="false" role="tablecontent">2<sup>10</sup></paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <section id="relatedtopics">
+    <paragraph role="paragraph" id="par_id871621424421294"><link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/CONVERT">CONVERT Wiki page</link></paragraph>
+  </section>
+</body>
+</helpdocument>
