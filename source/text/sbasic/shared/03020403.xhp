@@ -36,6 +36,7 @@
 <paragraph id="par_id3156343" role="paragraph" xml-lang="en-US">Returns a variant string that represents the current path <switchinline select="sys"><caseinline select="WIN">or that of the specified Windows drive</caseinline></switchinline>.</paragraph>
 </section>
 <embed href="text/sbasic/shared/03020401.xhp#deprecated_inStarOffice7"/>
+<embed href="text/sbasic/shared/03020401.xhp#SF_FileSystem_Note"/>
 
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
@@ -48,7 +49,7 @@
 <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
 <paragraph id="par_id3153193" role="paragraph" xml-lang="en-US"> <emph>Text:</emph> Any string expression that specifies an existing drive, for example "C" for the first partition of the first hard drive. This parameter is used solely under Windows.</paragraph>
 <paragraph id="par_id3155133" role="paragraph" xml-lang="en-US">If no drive is specified or if the drive is a zero-length string (""), <literal>CurDir</literal> returns the path for the current drive. %PRODUCTNAME Basic reports an error if the syntax of the drive description is incorrect or if the drive does not exist.</paragraph>
-  
+
 <paragraph id="par_id3150010" role="paragraph" xml-lang="en-US">This function is not case-sensitive.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
@@ -58,16 +59,19 @@
 
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
-<paragraph id="par_idm1341570656" role="bascode" localize="false">Sub ExampleCurDir</paragraph>
-<paragraph id="par_idm1341569424" role="bascode" localize="false">Dim sDir1 As String , sDir2 As String</paragraph>
-<paragraph id="par_idm1341568176" role="bascode" localize="false">    sDir1 = "c:\Test"</paragraph>
-<paragraph id="par_idm1341566944" role="bascode" localize="false">    sDir2 = "d:\Private"</paragraph>
-<paragraph id="par_idm1341565696" role="bascode" localize="false">    ChDir( sDir1 )</paragraph>
-<paragraph id="par_idm1341564464" role="bascode" localize="false">    MsgBox CurDir</paragraph>
-<paragraph id="par_idm1341563232" role="bascode" localize="false">    ChDir( sDir2 )</paragraph>
-<paragraph id="par_idm1341562000" role="bascode" localize="false">    MsgBox CurDir</paragraph>
-<paragraph id="par_idm1341560768" role="bascode" localize="false">End Sub</paragraph>
+  <paragraph id="par_idm1341570656" role="bascode" localize="false">Sub ExampleCurDir</paragraph>
+  <paragraph id="par_idm1341569424" role="bascode" localize="false">    Dim sDir1 As String, sDir2 As String</paragraph>
+  <paragraph id="par_idm1341568176" role="bascode" localize="false">    sDir1 = "C:\Test"</paragraph>
+  <paragraph id="par_idm1341566944" role="bascode" localize="false">    sDir2 = "D:\Private"</paragraph>
+  <paragraph id="par_idm1341565696" role="bascode" localize="false">    ChDir( sDir1 )</paragraph>
+  <paragraph id="par_idm1341564464" role="bascode" localize="false">    MsgBox CurDir</paragraph>
+  <paragraph id="par_idm1341563232" role="bascode" localize="false">    ChDir( sDir2 )</paragraph>
+  <paragraph id="par_idm1341562000" role="bascode" localize="false">    MsgBox CurDir</paragraph>
+  <paragraph id="par_idm1341560768" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
 
+<section id="relatedtopics">
+  <embed href="text/sbasic/shared/03/sf_filesystem.xhp#FileSystemService"/>
+</section>
 </body>
 </helpdocument>
