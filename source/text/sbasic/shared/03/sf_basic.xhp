@@ -123,35 +123,112 @@
    <tablerow>
        <tablecell>
            <paragraph id="par_id761611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_basic.xhp#CDate" name="CDate method">CDate</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#CDateFromUnoDateTime" name="CDateFromUnoDateTime method">CDateFromUnoDateTime</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#CDateToUnoDateTime" name="CDateToUnoDateTime method">CDateToUnoDateTime</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#ConvertFromUrl" name="ConvertFromUrl method">ConvertFromUrl</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#ConvertToUrl" name="ConvertToUrl method">ConvertToUrl</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#CreateUnoService" name="CreateUnoService method">CreateUnoService</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#DateAdd" name="DateAdd method">DateAdd</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#DateDiff" name="DateDiff method">DateDiff</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#DatePart" name="DatePart method">DatePart</link>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_basic.xhp#DateDiff" name="DateDiff method">DateDiff</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#DatePart" name="DatePart method">DatePart</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#DateValue" name="DateValue method">DateValue</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#Format" name="Format method">Format</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#GetDefaultContext" name="GetDefaultContext method">GetDefaultContext</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#GetGuiType" name="GetGuiType method">GetGuiType</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#GetPathSeparator" name="GetPathSeparator method">GetPathSeparator</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#GetSystemTicks" name="GetSystemTicks method">GetSystemTicks</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_basic.xhp#GetSystemTicks" name="GetSystemTicks method">GetSystemTicks</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#InputBox" name="InputBox0 method">InputBox</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#MsgBox" name="MsgBox method">MsgBox</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#Now" name="Now method">Now</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#RGB" name="RGB method">RGB</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#Xray" name="Xray method">Xray</link>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#Xray" name="Xray method">Xray</link><br/><br/>
            </paragraph>
        </tablecell>
    </tablerow>
   </table>
+
+<section id="CDate">
+  <comment> CDate ------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969187">
+    <bookmark_value>Basic service;CDate</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id201589199698020" localize="false">CDate</h2>
+  <paragraph role="paragraph" id="par_id71621894830071">Converts a numeric expression or a string to a <literal>Date</literal> value.</paragraph>
+  <note id="par_id431621896441258">This method exposes the Basic buitin function <link href="text/sbasic/shared/03100300.xhp" name="CDate_Basic">CDate</link> to Python scripts.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id591621897208785">
+    <input>svc.CDate(expression: any): obj</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id401621896675880"><emph>expression</emph>: a numeric expression or a string representing a date.</paragraph>
+  <embed href="text/sbasic/shared/03100300.xhp#CDate_str_date"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id761621898860952">d = svc.CDate(1000.25)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id861621898933001">svc.MsgBox(str(d)) # 1902-09-26 06:00:00</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id871621898933281">svc.MsgBox(d.year) # 1902</paragraph>
+  </pycode>
+</section>
+
+<section id="CDateFromUnoDateTime">
+  <comment> CDateFromUnoDateTime ------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969335">
+    <bookmark_value>Basic service;CDateFromUnoDateTime</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id201589199691468" localize="false">CDateFromUnoDateTime</h2>
+  <paragraph role="paragraph" id="par_id481621950748686">Converts a UNO date/time representation to a <literal>datetime.datetime</literal> Python native object.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id691621950580345">
+    <input>svc.CDateFromUnoDateTime(unodate: uno): obj</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id41621950816227"><emph>unodate</emph>: A UNO date/time object of one of the following types: <literal>com.sun.star.util.DateTime</literal>, <literal>com.sun.star.util.Date</literal> or <literal>com.sun.star.util.Time</literal></paragraph>
+  <note id="par_id501621953208141">UNO dates only accept years ranging from 1900 to 32767.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id281621952224847">The following example creates a <literal>com.sun.star.util.DateTime</literal> object and converts it to a <literal>datetime.datetime</literal> Python object.</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id651621951946709">import uno</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id931621951947749">uno_date = uno.createUnoStruct('com.sun.star.util.DateTime')</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id711621951947956">uno_date.Year = 1983</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id1001621951948124">uno_date.Month = 2</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id201621951948284">uno_date.Day = 23</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id911621952103058">new_date = svc.CDateFromUnoDateTime(uno_date)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id951621952103813">svc.MsgvBox(str(new_date)) # 1983-02-23 00:00:00</paragraph>
+  </pycode>
+</section>
+
+<section id="CDateToUnoDateTime">
+  <comment> CDateToUnoDateTime ------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919967133">
+    <bookmark_value>Basic service;CDateToUnoDateTime</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id201589199690087" localize="false">CDateToUnoDateTime</h2>
+  <paragraph role="paragraph" id="par_id741621952469980">Converts a date representation into a <literal>com.sun.star.util.DateTime</literal> object.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id691621950580116">
+    <input>svc.CDateToUnoDateTime(date: obj): uno</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id511621952524000"><emph>date</emph>: A Python date/time object of one of the following types: <literal>datetime.datetime</literal>, <literal>datetime.date</literal>, <literal>datetime.time</literal>, <literal>float (time.time)</literal> or <literal>time.struct_time</literal>.</paragraph>
+  <note id="par_id501621953208494">UNO dates only accept years ranging from 1900 to 32767.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id131621952700723">from datetime import datetime</paragraph>
+    <paragraph role="pycode" id="pyc_id391621952700963">current_time = datetime.now()</paragraph>
+    <paragraph role="pycode" id="pyc_id941621952701150">uno_date = svc.CDateToUnoDateTime(current_time)</paragraph>
+    <paragraph role="pycode" id="pyc_id191621952701458">svc.MsgBox(str(uno_date.Year) + "-" + str(uno_date.Month) + "-" + str(uno_date.Day))</paragraph>
+  </pycode>
+</section>
+
 <section id="ConvertFromUrl">
   <comment> ConvertFromUrl ------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
