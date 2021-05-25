@@ -8,21 +8,18 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  *
 -->
-
 <meta>
   <topic id="SF_FormControl" indexer="include" status="PUBLISH">
     <title id="tit" xml-lang="en-US">SFDocuments.FormControl service</title>
     <filename>/text/sbasic/shared/03/sf_formcontrol.xhp</filename>
   </topic>
   </meta>
-
 <body>
 <section id="ScriptForge-sf_formcontrol">
    <bookmark localize="false" branch="index" id="bm_id41582391760252">
       <bookmark_value>FormControl service</bookmark_value>
    </bookmark>
 </section>
-
 <section id="abstract">
   <h1 id="bm_id781582391760253" xml-lang="en-US"><variable id="FormControlService"><link href="text/sbasic/shared/03/sf_formcontrol.xhp" name="SFDocuments.FormControl service"><literal>SFDocuments</literal>.<literal>FormControl</literal> service</link></variable></h1>
   <paragraph role="paragraph" id="par_id931583589764919" xml-lang="en-US">The <literal>FormControl</literal> service provides access to the controls that belong to a form, a subform or a table control of a <literal>FormDocument</literal>. Each instance of the <literal>FormControl</literal> service refers to a single control in the form. This service allows users to:</paragraph>
@@ -49,16 +46,25 @@
      <bookmark_value>API;awt.XControl</bookmark_value>
      <bookmark_value>API;awt.XControlModel</bookmark_value>
   </bookmark>
-
    <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
    <paragraph role="paragraph" id="par_id361598174756160" xml-lang="en-US">The <literal>FormControl</literal> service is invoked from an existing <literal>Form</literal> service instance through its <literal>Controls</literal> method.</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id791598453192421">Dim oDoc as Object, myForm As Object, myControl As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id351618773083772">Set oDoc = CreateScriptService("SFDocuments.Document", ThisDataBaseDocument)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id251598453197473">Set myForm = oDoc.Forms("formDocumentName", "formName")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id421598453203458">Set myControl = myForm.Controls("myTextBox")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id251598453197473">Set myForm = oDoc.Forms("formDocumentName", "formName") ' SFDocuments.Form</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id421598453203458">Set myControl = myForm.Controls("myTextBox") ' SFDocuments.FormControl</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id581598453210170">myControl.Value = "Current time = " &amp; Now()</paragraph>
    </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+      <paragraph role="paragraph" localize="false" id="par_id51622556288409">from scriptforge import CreateScriptService</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id301622557445074">from time import localtime, strftime</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id621623152215419">svc = CreateScriptService('ScriptForge.Basic')</paragraph>
+      <paragraph role="paragraph" localize="false" id="par_id851622556289184">doc = CreateScriptService('SFDocuments.Document', svc.ThisDatabaseDocument)</paragraph>
+      <paragraph role="paragraph" localize="false" id="par_id981622556289672">form = doc.Forms('formDocumentName', 'formName')  # SFDocuments.Form</paragraph>
+      <paragraph role="paragraph" localize="false" id="par_id291622556290144">control = form.Controls('myTextBox')  # SFDocuments.FormControl</paragraph>
+      <paragraph role="pycode" id="pyc_id721622556808773">control.Value = 'Current Time = ' + strftime("%a, %d %b %Y %H:%M:%S", localtime())</paragraph>
+   </pycode>
    <tip id="par_id781618772761258">To learn more about how to open a <literal>FormDocument</literal> and get access to its forms, refer to the <link href="text/sbasic/shared/03/sf_form.xhp" name="Form service">SFDocuments.Form</link> service help page.</tip>
    <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">Alternatively a <literal>FormControl</literal> instance can be retrieved via the <literal>SFDocuments.FormEvent</literal> service, which returns the <literal>SFDocuments.FormControl</literal> class instance that triggered the event.</paragraph>
    <bascode>
@@ -69,6 +75,11 @@
       <paragraph role="bascode" localize="false" id="bas_id711598175146308">    ' ...</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id421598175139021">End Sub</paragraph>
    </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id521622558177865">def onEvent(event: uno):</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id841622558178345">    control = CreateScriptService('SfDocuments.FormEvent', event)</paragraph>
+   </pycode>
    <paragraph role="paragraph" id="par_id251598176312571" xml-lang="en-US">Note that in previous examples, the prefix <literal>"SFDocuments."</literal> may be omitted.</paragraph>
    <bookmark xml-lang="en-US" branch="index" id="bm_id541618773673421" localize="false">
       <bookmark_value>FormEvent service</bookmark_value>
@@ -146,7 +157,6 @@
          <paragraph id="par_id661598456015339" localize="false" role="listitem">TimeField</paragraph>
       </listitem>
    </list>
-
    <h2 id="hd_id651583668365757" xml-lang="en-US">Properties</h2>
    <table id="tab_id381583668386455">
       <tablerow>
@@ -594,7 +604,6 @@
          </tablecell>
       </tablerow>
    </table>
-
    <h2 id="hd_id81598540704978" xml-lang="en-US">The <variable id="ValueProperty"><literal>Value</literal> property</variable></h2>
    <table id="tab_id48159854325479">
       <tablerow>
@@ -785,7 +794,6 @@
          </tablecell>
       </tablerow>
    </table>
-
    <h2 id="hd_id421612628828054" xml-lang="en-US">Event properties</h2>
    <paragraph role="paragraph" id="par_id41612629140856" xml-lang="en-US">The properties below return or set URI strings that define the script triggered by the event.</paragraph>
    <table id="tab_id951612628879819">
@@ -1033,7 +1041,6 @@
       </tablerow>
    </table>
    <tip id="par_id961618181634181">To learn more about URI strings, refer to the <link href="https://wiki.openoffice.org/wiki/Documentation/DevGuide/Scripting/Scripting_Framework_URI_Specification" name="URI specification">Scripting Framework URI Specification</link>.</tip>
-
    <table id="tab_id891606472825856">
    <tablerow>
        <tablecell colspan="2"><paragraph id="par_id891611613601554" role="tablehead" xml-lang="en-US">List of Methods in the FormControl Service</paragraph></tablecell>
@@ -1048,7 +1055,6 @@
    </tablerow>
    </table>
     <embed href="text/sbasic/shared/03/avail_release.xhp#7.2.methods"/>
-
 <section id="Controls">
    <comment> Controls -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41584541257826">
@@ -1059,22 +1065,26 @@
    <paragraph role="paragraph" id="par_id701618777636827">If the optional argument <literal>ControlName</literal> is absent, then a zero-based Array containing the names of all controls is returned.</paragraph>
    <paragraph role="paragraph" id="par_id851618777715892">On the other hand, if a <literal>ControlName</literal> is provided, the method returns a <literal>FormControl</literal> class instance corresponding to the specified control.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id201584541257726">oControl.Controls([ControlName As String]) As Variant</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id181622558671497"><input>svc.Controls(): str[0..*]</input></paragraph>
+   <paragraph role="paragraph" localize="false" id="par_id531622558833434"><input>svc.Controls(controlname: str): svc</input></paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id1001584541257789"><emph>ControlName</emph> : A valid control name as a case-sensitive string. If absent, the list of control names is returned as a zero-based array.</paragraph>
+   <paragraph role="paragraph" id="par_id1001584541257789"><emph>controlname</emph>: A valid control name as a case-sensitive string. If absent, the list of control names is returned as a zero-based array.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id151598185478904">Dim myGrid As Object, myList As Variant, myControl As Object</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id21598185484092">Set myGrid = myForm.Controls("myTableControl")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id21598185484092">Set myGrid = myForm.Controls("myTableControl") ' SFDocuments.FormControl</paragraph>
       <paragraph role="bascode" id="bas_id471618778075117">' Returns an Array with the names of all controls in "myTableControl"</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id641598185489492">myList = myGrid.Controls()</paragraph>
       <paragraph role="paragraph" id="par_id931618778110273">' Returns a FormControl class instance corresponding to "myCheckBox"</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id921598185495193">Set myControl = myGrid.Controls("myCheckBox")</paragraph>
    </bascode>
+   <paragraph role="paragraph" id="par_id391622559441530">Using Python:</paragraph>
+   <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id81622558961009">grid = form.Controls('myTableControl')  # SFDocuments.FormControl</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id391622558961234">control_names = form.Controls()</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id571622558961435">control = grid.Controls('myCheckBox')  # SFDocuments.FormControl</paragraph>
+   </pycode>
 </section>
-
 <section id="SetFocus">
   <comment> SetFocus -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark localize="false" branch="index" id="bm_id721583933076548">
@@ -1084,19 +1094,24 @@
    <paragraph role="paragraph" id="par_id871583933076448">Sets the focus on the control. Returns <literal>True</literal> if focusing was successful.</paragraph>
    <paragraph role="paragraph" id="par_id151598178880227" xml-lang="en-US">This method is often called from a form or control event.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id731583933076815">oControl.SetFocus() As Boolean</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id991622559468457"><input>svc.SetFocus(): bool</input></paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id221598179105596">Dim oDoc As Object, oForm As Object, oControl As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id171598179111121">Set oDoc = CreateScriptService("SFDocuments.Document", ThisComponent)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id681598179123436">Set oForm = oDoc.Forms(0)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id741616950370203">Set oControl = oForm.Controls("thisControl")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id741616950370203">Set oControl = oForm.Controls("thisControl") ' SFDocuments.FormControl</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id361598179135096">oControl.SetFocus()</paragraph>
-    </bascode>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id51623154762285">ui = CreateScriptService('ScriptForge.Basic')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id571622559687626">doc = CreateScriptService('SFDocuments.Document', ui.ThisComponent)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id231622559687813">form = doc.Forms(0)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id891622559687994">control = form.Controls('thisControl')  # SFDocuments.FormControl</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id801622560297771">control.SetFocus()</paragraph>
+   </pycode>
 </section>
-
 <comment> Additional examples -------------------------------------------------------------------------------------------------------------------------- </comment>
    <h2 id="hd_id141618777179310">Additional examples</h2>
    <paragraph role="paragraph" id="par_id331618777195723">Below are two examples that illustrate the use of the <literal>FormControl</literal> service.</paragraph>
@@ -1109,6 +1124,15 @@
      <paragraph role="bascode" localize="false" id="bas_id291618776467995">Dim cbCity : cbCity = myForm.Controls("comboboxCity")</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id611618776468297">lbCity.Caption = "Selected City: " &amp; cbCity.Value</paragraph>
    </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id991622562833004">ui = CreateScriptService('ScriptForge.Basic')  # Basic-like methods</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id321622561047923">doc = CreateScriptService('SFDocuments.Document', ui.ThisDatabaseDocument)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id321622561048131">form = doc.Forms('formDocumentName', 'formName')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id1001622561048346">lbl_city = form.Controls('labelCity')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id151622561048563">combo_city = form.Controls('comboboxCity')</paragraph>
+     <paragraph role="pycode" id="pyc_id781622561048794">lbl_city.Caption = "Selected city: " + combo_city.Value</paragraph>
+   </pycode>
    <paragraph role="paragraph" id="par_id251618776614814">The following code snippet can be used to process RadioButton controls that share the same group name. In this example, suppose there are three radio buttons with names <literal>optA</literal>, <literal>optB</literal> and <literal>optC</literal> and we wish to display the caption of the selected control.</paragraph>
    <bascode>
      <paragraph role="bascode" localize="false" id="bas_id461618776931086">Dim oDoc as Object, myForm as Object</paragraph>
@@ -1119,18 +1143,28 @@
      <paragraph role="bascode" localize="false" id="bas_id281618776932488">For Each opt In optNames</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id211618776932791">    optControl = myForm.Controls(opt)</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id311618776933039">    If optControl.Value = True Then</paragraph>
-     <paragraph role="bascode" localize="false" id="bas_id251618776933304">        MsgBox "Selected Option: " &amp; optControl.Caption</paragraph>
+     <paragraph role="bascode" id="bas_id251618776933304">        MsgBox "Selected option: " &amp; optControl.Caption</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id581618776933600">        Exit For</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id511618776933863">    End If</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id31618776934159">Next opt</paragraph>
    </bascode>
-
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id991622562822004">ui = CreateScriptService('ScriptForge.Basic')  # Basic-like methods</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id681622562079356">doc = CreateScriptService('SFDocuments.Document', ui.ThisDatabaseDocument)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id941622562079539">form = doc.Forms('formDocumentName', 'formName')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id741622562079722">radio_buttons = ['optA', 'optB', 'optC']</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id901622562079883">for name in radio_buttons:</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id51622562080068">   control = form.controls(name)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id361622562080243">   if control.Value == True:</paragraph>
+     <paragraph role="pycode" id="pyc_id441622562080419">      ui.MsgBox('Selected option: ' + control.Caption)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id61622563076603">      break</paragraph>
+   </pycode>
    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
-
    <section id="relatedtopics">
+      <embed href="text/sbasic/shared/03/sf_basic.xhp#BasicService"/>
       <embed href="text/sbasic/shared/03/sf_form.xhp#FormService"/>
       <embed href="text/sbasic/shared/03/sf_document.xhp#DocumentService"/>
    </section>
-
 </body>
 </helpdocument>
