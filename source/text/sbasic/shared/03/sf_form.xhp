@@ -41,10 +41,9 @@
   <tip id="par_id351616768789190" xml-lang="en-US">The <literal>SFDocuments</literal>.<literal>Form</literal> service is available from %PRODUCTNAME 7.2 onwards.</tip>
   <paragraph role="paragraph" id="par_id451616765867881" xml-lang="en-US">Forms are usually used in %PRODUCTNAME documents to create user interfaces connected to relational databases. Hence, the <literal>Form</literal> service provides quick access to the linked database through the <link href="text/sbasic/shared/03/sf_database.xhp" name="SFDatabases.Database"><literal>SFDatabases</literal>.<literal>Database</literal> service</link>.</paragraph>
   <tip id="par_id891598188164936" xml-lang="en-US">The <literal>SFDocuments</literal>.<literal>Form</literal> service is closely related to the <link href="text/sbasic/shared/03/sf_formcontrol.xhp" name="SFDocuments.FormControl"><literal>SFDocuments</literal>.<literal>FormControl</literal> service.</link></tip>
-
   <h2 id="hd_id161616766330804" xml-lang="en-US">Definitions</h2>
   <h3 id="hd_id751616766382317" xml-lang="en-US" localize="false">FormDocument</h3>
-  <paragraph role="paragraph" id="par_id951618172906010">Forms are usually created in Base documents, but they can be added to Writer and Calc documents as well. The way a <literal>FormDocument</literal> is handled depends on the %PRODUCTNAME component where it is stored.</paragraph>
+  <paragraph role="paragraph" id="par_id951618172906010">Forms are usually created in Base documents, but they can be added to Writer and Calc documents as well.</paragraph>
   <paragraph role="paragraph" id="par_id671618173380680">In Base, each form you create using the <menuitem>Insert - Form</menuitem>  functionality or through the <link href="text/shared/autopi/01090000.xhp" name="FormWizard">Form Wizard</link> is actually a <literal>FormDocument</literal> that can be handled with the <literal>Form</literal> service. Base documents can contain an unlimited number of form documents.</paragraph>
   <paragraph role="paragraph" id="par_id841618177362626">Below is an example showing the hierarchy of all the elements involved in accessing forms and subforms in a Base document. Suppose you have a Base file named <literal>Employees.odb</literal> and inside it you created a form document to add new employees to the database. The form document contains a main form named <literal>EmployeeData</literal> that gives access to a table. There is also a subform <literal>WorksAtPlant</literal> that allows you to associate the new employee to one of the plants of the company.</paragraph>
   <bascode>
@@ -57,54 +56,78 @@
     <paragraph role="bascode" localize="false" id="bas_id291618176869942">           |-- WorksAtPlant (SubForm)</paragraph>
   </bascode>
   <note id="par_id221618173444457">A <literal>FormDocument</literal> can be seen as a set of forms that provide access to datasets such as database tables and queries from within %PRODUCTNAME documents. The names of forms and subforms inside a FormDocument can be accessed using the <link href="text/shared/02/01170600.xhp" name="FormNavigator">Form Navigator</link>.</note>
-  <paragraph role="paragraph" id="par_id721618175731903">In Calc documents, each sheet can contain a single <literal>FormDocument</literal>. A Writer document contains only one <literal>FormDocument</literal>, which is the document itself.</paragraph>
-
   <h3 id="hd_id851616767037521" xml-lang="en-US">Forms and Subforms</h3>
   <paragraph role="paragraph" id="par_id681616767265034" xml-lang="en-US">A form document is composed of one or more forms which, in turn, may also contain any number of subforms. A Form is an abstract set of controls that are linked to a specified data source, which can be a database table, a query or a SQL <literal>SELECT</literal> statement.</paragraph>
   <paragraph role="paragraph" id="par_id711618178831976">In Calc and Writer documents, each form can be linked to datasets located in different databases. On the other hand, in Base documents the database contained in the document is common to all forms.</paragraph>
   <tip id="par_id191616837111507" xml-lang="en-US">To invoke the <literal>SFDocuments</literal>.<literal>Form</literal> service refer to the methods <literal>Forms()</literal>, <literal>FormDocuments()</literal> and <literal>OpenFormDocument()</literal> of the <link href="text/sbasic/shared/03/sf_document.xhp" name="SFDocuments"><literal>SFDocuments</literal>.<literal>Document</literal></link> service</tip>
-
 <section id="serviceInvocation">
   <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
   <h3 id="hd_id991618179698545">In Writer documents</h3>
-  <paragraph role="paragraph" id="par_id51616767892693" xml-lang="en-US">The code snippet below shows how to access the form named <literal>Form1</literal> that is inside the single <literal>FormDocument</literal> of a Writer file:</paragraph>
+  <paragraph role="paragraph" id="par_id51616767892693" xml-lang="en-US">The code snippet below shows how to access the form named <literal>Form1</literal> that is inside a Writer file:</paragraph>
   <bascode>
       <paragraph role="bascode" localize="false" id="bas_id471598171198389">Dim oDoc As Object, myForm As Object, ui as Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id561618179461775">Set ui = CreateScriptService("UI")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id611598171572062">Set oDoc = ui.OpenDocument("~/Documents/MyForm.odt")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id571598171205739">Set myForm = oDoc.Forms("Form1")</paragraph>
    </bascode>
+   <paragraph role="paragraph" id="par_id511622014622649">Using Python:</paragraph>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id241622014444493">from scriptforge import CreateScriptService</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id391622014212514">svc = CreateScriptService('UI') </paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id891622014222625">doc = svc.OpenDocument('~/Documents/MyForm.odt')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id931622014224129">my_form = doc.Forms('Form1')</paragraph>
+   </pycode>
    <paragraph role="paragraph" id="par_id531618179517628">Forms can be accessed by their names or by their indices, as shown below:</paragraph>
    <bascode>
      <paragraph role="bascode" localize="false" id="bas_id991598171277414">Set myForm = oDoc.Forms(0)</paragraph>
    </bascode>
+   <paragraph role="paragraph" id="par_id11622014642657">With Python:</paragraph>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id691622014677169">my_form = doc.Forms(0)</paragraph>
+   </pycode>
    <warning id="par_id181618250546617">If you try to access a <literal>FormDocument</literal> that is currently opened in <emph>Design Mode</emph> an exception will be raised.</warning>
-   <h3 id="hd_id921618179792926">In Calc documents</h3>
-   <paragraph role="paragraph" id="par_id481618179851104">Each sheet in a Calc file is a single <literal>FormDocument</literal>. Hence, the <literal>Forms</literal> method requires two arguments, the first indicating the sheet name and the second specifying the form name.</paragraph>
+  <h3 id="hd_id921618179792926">In Calc documents</h3>
+   <paragraph role="paragraph" id="par_id481618179851104">A Calc sheet contains up to one <literal>FormDocument</literal>. Hence, the <literal>Forms</literal> method requires two arguments, the first indicating the sheet name and the second specifying the form name.</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id471598171198125">Dim oDoc As Object, myForm As Object, ui as Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id561618179462475">Set ui = CreateScriptService("UI")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id611598170362062">Set oDoc = ui.OpenDocument("~/Documents/MyForms.ods")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id571598171200339">Set myForm = oDoc.Forms("Sheet1", "Form1")</paragraph>
    </bascode>
-   <h3 id="hd_id201618180055756">In Base documents</h3>
-   <paragraph role="paragraph" id="par_id711616768164987" xml-lang="en-US">A <literal>FormDocument</literal> inside a Base document is accessed by its name. The following example opens the form document named <literal>thisFormDocument</literal> and access the form <literal>MainForm</literal>:</paragraph>
+   <paragraph role="paragraph" id="par_id51622028165429">This is achieved identically using Python:</paragraph>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id871622021672708">svc = CreateScriptService('UI')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id671622021672931">doc = svc.OpenDocument('~/Documents/MyForms.ods')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id301622021673180">my_form = doc.Forms('Sheet1', 'Form1')</paragraph>
+   </pycode>
+  <h3 id="hd_id201618180055756">In Base documents</h3>
+   <paragraph role="paragraph" id="par_id711616768164987" xml-lang="en-US">A <literal>FormDocument</literal> inside a Base document is accessed by its name. The following example opens the form document named <literal>thisFormDocument</literal> and accesses the form <literal>MainForm</literal>:</paragraph>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id471598176518738">Dim oDoc As Object, myForm As Object</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id271598171282891">Set oDoc = CreateScriptService("SFDocuments.Document", ThisDatabaseDocument)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id471598176518738">Dim oDb As Object, myForm As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id271598171282891">Set oDb = CreateScriptService("SFDocuments.Document", ThisDatabaseDocument)</paragraph>
       <paragraph role="bascode" id="bas_id271598171225874">' The statement below is necessary only if the form hasn't been opened yet</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id551598171288547">oDoc.OpenFormDocument("thisFormDocument")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id551598171288547">oDb.OpenFormDocument("thisFormDocument")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id741598171294507">Set myForm = oDoc.Forms("thisFormDocument", "MainForm")</paragraph>
       <paragraph role="bascode" id="bas_id51616768358888">' Or, alternatively, to access the form by its index ...</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id591598171300285">Set myForm = oDoc.Forms("thisFormDocument", 0)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id591598171300285">Set myForm = oDb.Forms("thisFormDocument", 0)</paragraph>
    </bascode>
-   <note id="par_id991618249636036">To perform any action on a form using the <literal>Form</literal> service, the <literal>FormDocument</literal> must have been opened either manually by the user or programmatically in a user script. The latter can be done in a variety of ways, such as by creating an instance of the <literal>Document</literal> service or by calling the methods <literal>OpenDocument</literal> (<literal>UI</literal> service) and <literal>OpenFormDocument</literal> (<literal>Document</literal> service).</note>
+   <note id="par_id991618249636036">To perform any action on a form using the <literal>Form</literal> service, the <literal>FormDocument</literal> must have been opened either manually by the user or programmatically in a user script. The latter can be done by calling the <literal>OpenFormDocument</literal> method of the <link href="text/sbasic/shared/03/sf_base.xhp" name="ScriptForge Base Service"><literal>Base</literal> service</link>.</note>
    <paragraph role="paragraph" id="par_id11618180564274">To access a given subform of a form use the <literal>SubForms</literal> method. Note that in the example below <literal>mySubForm</literal> is a new instance of the <literal>Form</literal> service.</paragraph>
    <bascode>
      <paragraph role="bascode" localize="false" id="bas_id71618182658792">Dim mySubForm As Object</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id681616768495330">Set mySubForm = myForm.SubForms("mySubForm")</paragraph>
    </bascode>
-   <h3 id="hd_id211618180379064">In Form events</h3>
+   <paragraph role="paragraph" id="par_id681622028653480">Previous examples translate in Python as:</paragraph>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id501622028742999">db = CreateScriptService('SFDocuments.Document', XSCRIPTCONTEXT.getDocument())</paragraph>
+     <paragraph role="pycode" id="pyc_id811622808499801">#  The statement below is necessary only if the form hasn't been opened yet</paragraph>
+     <paragraph role="pycode" id="pyc_id671622028743191">form_doc = db.OpenFormDocument('thisFormDocument')</paragraph>
+     <paragraph role="pycode" id="pyc_id431622028743374">form = form_doc.Forms('thisFormDocument', 'MainForm')</paragraph>
+     <paragraph role="pycode" id="pyc_id511622808538351">#  Or, alternatively, to access the form by its index ...</paragraph>
+     <paragraph role="pycode" id="pyc_id681622028743582">form = form_doc.Forms('thisFormDocument', 0)</paragraph>
+     <paragraph role="pycode" id="pyc_id611622028743782">sub_form = form.SubForms('mySubForm')</paragraph>
+   </pycode>
+  <h3 id="hd_id211618180379064">In Form events</h3>
    <paragraph role="paragraph" id="par_id421616768529754" xml-lang="en-US">To invoke the <literal>Form</literal> service when a form event takes place:</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id931616768628138">Sub OnEvent(ByRef poEvent As Object)</paragraph>
@@ -113,9 +136,13 @@
       <paragraph role="bascode" localize="false" id="bas_id1001618180405172">    '(...)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id751618180415566">End sub</paragraph>
    </bascode>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id551622022387877" localize="false">def OnEvent(event: uno):</paragraph>
+     <paragraph role="pycode" id="pyc_id081622022388165" localize="false">    form = CreateScriptService('SFDocuments.FormEvent', event)</paragraph>
+     <paragraph role="pycode" id="pyc_id641622022388397" localize="false">    pass</paragraph>
+   </pycode>
    <embed href="text/sbasic/shared/03/sf_formcontrol.xhp#FormEvent_Note"/>
 </section>
-
   <h2 id="hd_id651583668365757" xml-lang="en-US">Properties</h2>
    <table id="tab_id381583668386455">
       <tablerow>
@@ -329,7 +356,6 @@
          </tablecell>
       </tablerow>
    </table>
-
    <h2 id="hd_id421612628828054" xml-lang="en-US">Event properties</h2>
    <paragraph role="paragraph" id="par_id41612629140856" xml-lang="en-US">The properties below return or set URI strings that define the script triggered by the event.</paragraph>
    <table id="tab_id951612628879819">
@@ -535,7 +561,6 @@
        </paragraph></tablecell>
     </tablerow>
     </table>
-
 <section id="Activate">
   <comment> Activate -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721583933076548">
@@ -556,9 +581,7 @@
       </listitem>
    </list>
    <h3 id="hd _id61583933076171" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id731583933076815">myForm.Activate() As Boolean</paragraph>
-   </bascode>
+   <paragraph role="paragraph" id="par_id11622536171845" localize="false"><input>svc.Activate(): bool</input></paragraph>
    <h3 id="hd _id26158393307687" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <paragraph role="paragraph" id="par_id921618228229529">The following example assumes you want to activate the form named <literal>FormA</literal> located in <literal>Sheet1</literal> of the currently open Calc file. It first gets access to the document using the <literal>Document</literal> service and <literal>ThisComponent</literal> and then activates the form.</paragraph>
    <bascode>
@@ -569,10 +592,15 @@
      <paragraph role="bascode" id="bas_id201618228487565">'Activates the form</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id361598179135096">myForm.Activate()</paragraph>
    </bascode>
+   <paragraph role="paragraph" id="par_id71622808759704">Using Python:</paragraph>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id211622537233877" localize="false">doc = CreateScriptService('Document', XSCRIPTCONTEXT.getDocument())</paragraph>
+     <paragraph role="pycode" id="pyc_id181622537234494" localize="false">form = doc.Forms('Sheet1', 'FormA')</paragraph>
+     <paragraph role="pycode" id="pyc_id981622537234703" localize="false">form.Activate()</paragraph>
+   </pycode>
    <paragraph role="paragraph" id="par_id661618228523419">To use the method Activate with other %PRODUCTNAME documents, read <link href="text/sbasic/shared/03/sf_form.xhp#ServiceInvocation" name="FormServiceInvocation">Service invocation</link> above.</paragraph>
   <note id="par_id81618228720782"><literal>ThisComponent</literal> is valid for Calc and Writer documents. For Base documents use <literal>ThisDataBaseDocument</literal>.</note>
 </section>
-
 <section id="CloseFormDocument">
   <comment> CloseFormDocument -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id14161686043795">
@@ -581,16 +609,16 @@
    <h2 id="hd _id18161686043718" localize="false">CloseFormDocument</h2>
    <paragraph role="paragraph" id="par_id501616860541195" xml-lang="en-US">Closes the form document containing the actual <literal>Form</literal> instance. The <literal>Form</literal> instance is disposed.</paragraph>
    <h3 id="hd _id99161686043761" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id8161686043710">myForm.CloseFormDocument() As Boolean</paragraph>
-   </bascode>
+   <paragraph role="paragraph" id="par_id811622538068303" localize="false"><input>svc.CloseFormDocument(): bool</input></paragraph>
    <h3 id="hd _id901616860437964" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id511616860437148">myForm.CloseFormDocument()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id511616860437148">myForm.CloseFormDocument() ' Basic</paragraph>
    </bascode>
+   <pycode>
+      <paragraph role="pycode" id="pyc_id331622538021746" localize="false">form.CloseFormDocument()  # Python</paragraph>
+   </pycode>
    <note id="par_id611618229004669">This method only closes form documents located in Base documents. If the form is stored in a Writer or Calc document, calling <literal>CloseFormDocument</literal> will have no effect.</note>
 </section>
-
 <section id="Controls">
    <comment> Controls -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41584541257826">
@@ -600,27 +628,29 @@
    <paragraph role="paragraph" id="par_id161584541257982">The value returned by the <literal>Controls</literal> method depends on the arguments provided:</paragraph>
    <list type="unordered">
       <listitem>
-         <paragraph id="par_id421598179770993"  role="listitem" xml-lang="en-US">If the method is called <emph>without any arguments</emph>, then it returns the list of the controls contained in the form. Beware that the returned list does not contain any subform controls.</paragraph>
+         <paragraph id="par_id421598179770993"  role="listitem" xml-lang="en-US">If the method is called <emph>without arguments</emph>, then it returns the list of the controls contained in the form. Beware that the returned list does not contain any subform controls.</paragraph>
       </listitem>
       <listitem>
          <paragraph id="par_id81598185229301"  role="listitem" xml-lang="en-US">If the optional <literal>ControlName</literal> argument is provided, the method returns a <literal>FormControl</literal> class instance referring to the specified control.</paragraph>
       </listitem>
    </list>
    <h3 id="hd _id601584541257443" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id201584541257726">myForm.Controls([ControlName As String]) As Variant</paragraph>
-   </bascode>
+   <paragraph role="paragraph" id="par_id471622538274231" localize="false"><input>svc.Controls(opt controlname: str): any</input></paragraph>
    <h3 id="hd _id291584541257237" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id1001584541257789"><emph>ControlName</emph> : A valid control name as a case-sensitive string. If absent, the list of control names is returned as a zero-based array.</paragraph>
+   <paragraph role="paragraph" id="par_id1001584541257789"><emph>controlname</emph> : A valid control name as a case-sensitive string. If absent, the list of control names is returned as a zero-based array.</paragraph>
    <h3 id="hd _id32158454125769" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id151598185478904">Dim myForm As Object, myList As Variant, myControl As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id21598185484092">Set myForm = myDoc.Forms("myForm")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id641598185489492">myList = myform.Controls()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id921598185495193">Set myControl = myform.Controls("myTextBox")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id921598185495193">Set myControl = myform.Controls("myTextBox") ' SFDocuments.FormControl</paragraph>
    </bascode>
+   <pycode>
+      <paragraph role="pycode" id="pyc_id711622538462214" localize="false">form = doc.Forms('myForm')</paragraph>
+      <paragraph role="pycode" id="pyc_id631622538462782" localize="false">form_names = form.Controls()</paragraph>
+      <paragraph role="pycode" id="pyc_id961622538463294" localize="false">form_control = form.Controls('myTextBox')  # SFDocuments.FormControl</paragraph>
+   </pycode>
 </section>
-
 <section id="GetDatabase">
    <comment> GetDatabase -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id941616861134691">
@@ -628,20 +658,20 @@
    </bookmark>
    <h2 id="hd _id141616861134554" localize="false">GetDatabase</h2>
    <paragraph role="paragraph" id="par_id291616861407907" xml-lang="en-US">Return a <link href="text/sbasic/shared/03/sf_database.xhp" name="DBService"><literal>SFDatabases</literal>.<literal>Database</literal></link> instance giving access to the execution of SQL commands on the database the current form is connected to and/or that is stored in the current Base document.</paragraph>
-   <paragraph role="paragraph" id="par_id991616861417207" xml-lang="en-US">Each form in a <literal>FormDocument</literal> has its own database connection, except in Base documents where they all share the same connection.</paragraph>
+   <paragraph role="paragraph" id="par_id991616861417207" xml-lang="en-US">Each form has its own database connection, except in Base documents where they all share the same connection.</paragraph>
    <h3 id="hd _id431616861134316" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id251616861134409">myForm.GetDatabase([User As String], [Password As String]) As Object</paragraph>
-   </bascode>
+   <paragraph role="paragraph" id="par_id221622547947693" localize="false"><input>svc.GetDatabase(opt user: str, opt password: str): svc</input></paragraph>
    <h3 id="hd _id871616861134673" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id701616861134906"><emph>User, Password</emph> : The login parameters (Default = "").</paragraph>
+   <paragraph role="paragraph" id="par_id701616861134906"><emph>user, password</emph>: The login optional parameters (Default = "").</paragraph>
    <h3 id="hd _id911616861134351" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id231616861134373">Dim myDb As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id231616861134373">Dim myDb As Object ' SFDatabases.Database</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id2316168611347">Set myDb = oForm.GetDatabase()</paragraph>
    </bascode>
+   <pycode>
+      <paragraph role="pycode" id="pyc_id871622547824003" localize="false">db = form.GetDatabase()  # SFDatabases.Database</paragraph>
+   </pycode>
 </section>
-
 <section id="MoveFirst">
   <comment> MoveFirst -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id671616861787529">
@@ -650,15 +680,15 @@
    <h2 id="hd _id591616861787279" localize="false">MoveFirst</h2>
    <paragraph role="paragraph" id="par_id771616861842867" xml-lang="en-US">The form cursor is positioned on the first record. Returns <literal>True</literal> if successful.</paragraph>
    <h3 id="hd _id601616861787526" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id971616861787676">myForm.MoveFirst() As Boolean</paragraph>
-   </bascode>
+   <paragraph role="paragraph" id="par_id101622549004980" localize="false"><input>svc.MoveFirst(): bool</input></paragraph>
    <h3 id="hd _id51616861787314" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id191616861787635">myForm.MoveFirst()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id191616861787635">myForm.MoveFirst() ' Basic</paragraph>
    </bascode>
+   <pycode>
+      <paragraph role="pycode" id="pyc_id421622549258920" localize="false">form.MoveFirst()  # Python</paragraph>
+   </pycode>
 </section>
-
 <section id="MoveLast">
   <comment> MoveLast -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id551616863143388">
@@ -667,15 +697,15 @@
    <h2 id="hd _id831616863143434" localize="false">MoveLast</h2>
    <paragraph role="paragraph" id="par_id331616863143187" xml-lang="en-US">The form cursor is positioned on the last record. Returns <literal>True</literal> if successful.</paragraph>
    <h3 id="hd _id66161686314335" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id631616863143741">myForm.MoveLast() As Boolean</paragraph>
-   </bascode>
+   <paragraph role="paragraph" id="par_id931622549019307" localize="false"><input>svc.MoveLast(): bool</input></paragraph>
    <h3 id="hd _id501616863143323" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id691616863143688">myForm.MoveLast()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id691616863143688">myForm.MoveLast() ' Basic</paragraph>
    </bascode>
+   <pycode>
+      <paragraph role="pycode" id="pyc_id831622549604397" localize="false">form.MoveLast()  # Python</paragraph>
+   </pycode>
 </section>
-
 <section id="MoveNew">
   <comment> MoveNew -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231616863143638">
@@ -684,15 +714,15 @@
    <h2 id="hd _id41161686314366" localize="false">MoveNew</h2>
    <paragraph role="paragraph" id="par_id361616863143954" xml-lang="en-US">The form cursor is positioned on the new record area. Returns <literal>True</literal> if successful.</paragraph>
    <h3 id="hd _id461616863143572" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id8161686314375">myForm.MoveNew() As Boolean</paragraph>
-   </bascode>
+   <paragraph role="paragraph" id="par_id131622549039501" localize="false"><input>svc.MoveNew(): bool</input></paragraph>
    <h3 id="hd _id311616863143737" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id401616863143757">myForm.MoveNew()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id401616863143757">myForm.MoveNew() ' Basic</paragraph>
    </bascode>
+   <pycode>
+      <paragraph role="pycode" id="pyc_id381622549678558" localize="false">form.MoveNew()  # Python</paragraph>
+   </pycode>
 </section>
-
 <section id="MoveNext">
   <comment> MoveNext -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171616863143921">
@@ -701,17 +731,17 @@
    <h2 id="hd _id111616863143256" localize="false">MoveNext</h2>
    <paragraph role="paragraph" id="par_id541616863143461" xml-lang="en-US">The form cursor is positioned on the next record. Returns <literal>True</literal> if successful.</paragraph>
    <h3 id="hd _id331616863143670" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id211616863143355">myForm.MoveNext([Offset As Long]) As Boolean</paragraph>
-   </bascode>
+   <paragraph role="paragraph" id="par_id291622549045804" localize="false"><input>svc.MoveNext(opt offset: int): bool</input></paragraph>
    <h3 id="hd _id261616863582793" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id271616863582607"><emph>Offset</emph> : The number of records to go forward (Default = 1).</paragraph>
+   <paragraph role="paragraph" id="par_id271616863582607"><emph>offset</emph>: The number of records to go forward (Default = 1).</paragraph>
    <h3 id="hd _id71616863143475" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id591616863143862">myForm.MoveNext()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id591616863143862">myForm.MoveNext() ' Basic</paragraph>
    </bascode>
+   <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id361622549859524">form.MoveNext()  # Python</paragraph>
+   </pycode>
 </section>
-
 <section id="MovePrevious">
   <comment> MovePrevious -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id71161686379488">
@@ -720,17 +750,17 @@
    <h2 id="hd _id371616863794447" localize="false">MovePrevious</h2>
    <paragraph role="paragraph" id="par_id616168637945" xml-lang="en-US">The form cursor is positioned on the previous record. Returns <literal>True</literal> if successful.</paragraph>
    <h3 id="hd _id67161686379485" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id161616863794685">myForm.MovePrevious([Offset As Long]) As Boolean</paragraph>
-   </bascode>
+   <paragraph role="paragraph" id="par_id981622549054028" localize="false"><input>svc.MovePrevious(opt offset: int): bool</input></paragraph>
    <h3 id="hd _id141616863794433" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id751616863794125"><emph>Offset</emph> : The number of records to go backwards (Default = 1).</paragraph>
+   <paragraph role="paragraph" id="par_id751616863794125"><emph>offset</emph>: The number of records to go backwards (Default = 1).</paragraph>
    <h3 id="hd _id511616863794613" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id941616863794988">myForm.MovePrevious()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id941616863794988">myForm.MovePrevious() ' Basic</paragraph>
    </bascode>
+   <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id221622549920933">form.MovePrevious()  # Python</paragraph>
+   </pycode>
 </section>
-
 <section id="Requery">
   <comment> Requery -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id741616864216894">
@@ -739,15 +769,15 @@
    <h2 id="hd _id551616864216705" localize="false">Requery</h2>
    <paragraph role="paragraph" id="par_id811616864216529" xml-lang="en-US">Reloads the current data from the database and refreshes the form. The cursor is positioned on the first record. Returns <literal>True</literal> if successful.</paragraph>
    <h3 id="hd _id51616864216609" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id561616864216636">myForm.Requery() As Boolean</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id731622550132517">svc.Requery(): bool</paragraph>
    <h3 id="hd _id411616864216103" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id211616864216116">myForm.Requery()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id211616864216116">myForm.Requery() ' Basic</paragraph>
    </bascode>
+   <pycode>
+      <paragraph role="pycode" id="pyc_id401622550186725">form.Requery()  # Python</paragraph>
+   </pycode>
 </section>
-
 <section id="Subforms">
    <comment> Subforms -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id441616864510542">
@@ -760,24 +790,25 @@
          <paragraph id="par_id951616864510585"  role="listitem" xml-lang="en-US">If the method is called <emph>without any arguments</emph>, then it returns the list of subforms contained in the current form or subform instance.</paragraph>
       </listitem>
       <listitem>
-         <paragraph id="par_id591616864510445"  role="listitem" xml-lang="en-US">If the optional <literal>Subform</literal> argument is provided, the method returns a new <literal>SFDocuments</literal>.<literal>Form</literal> instance based on the specified form/subform name or index.</paragraph>
+         <paragraph id="par_id591616864510445" role="listitem" xml-lang="en-US">If the optional <literal>subform</literal> argument is provided, the method returns a new <literal>SFDocuments</literal>.<literal>Form</literal> instance based on the specified form/subform name or index.</paragraph>
       </listitem>
    </list>
    <h3 id="hd _id54161686451092" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id261616864510459">myForm.Subforms([Subform As Variant]) As Variant</paragraph>
-   </bascode>
+   <paragraph role="paragraph" localize="false" id="par_id541622550497960"><input>svc.Subforms(opt subform: any): any</input></paragraph>
    <h3 id="hd _id7516168645106" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id341616864510747"><emph>Subform</emph> : A subform stored in the current <literal>Form</literal> class instance given by its name or index.</paragraph>
+   <paragraph role="paragraph" id="par_id341616864510747"><emph>subform</emph> : A subform stored in the current <literal>Form</literal> class instance given by its name or index.</paragraph>
    <paragraph role="paragraph" id="par_id211618230389251">When this argument is absent, the method returns a list of available subforms as a zero-based array. If the form has a single subform, you can set <literal>Subform = 0</literal> to get access to it.</paragraph>
    <h3 id="hd _id491616864510587" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id821616864510402">Dim myForm As Object, myList As Variant, mySubform As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id81616864510872">myList = myform.Subforms()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id951616864510420">Set mySubform = myForm.Subforms("mySubform")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id951616864510420">Set mySubform = myForm.Subforms("mySubform") ' SFDocuments.Form</paragraph>
    </bascode>
+   <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id101622552303831">subform_names = form.Subforms()</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id781622552304561">subform = form.Subforms('mySubform')  # SFDocuments.Form</paragraph>
+   </pycode>
 </section>
-
    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
    <section id="relatedtopics">
       <embed href="text/sbasic/shared/03/sf_database.xhp#DatabaseService"/>
