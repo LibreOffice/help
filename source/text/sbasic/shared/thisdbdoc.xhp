@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+    <meta>
+        <topic id="org.LibreOffice.Help.ThisDatabaseDocument" indexer="include" status="PUBLISH">
+            <title id="tit" xml-lang="en-US">ThisDatabaseDocument object</title>
+            <filename>/text/sbasic/shared/thisdbdoc.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+
+    <section id="thisdatabasedocument">
+        <bookmark branch="index" xml-lang="en-US" id="N0089">
+            <bookmark_value>ThisDatabaseDocument</bookmark_value>
+            <bookmark_value>API; Database document</bookmark_value>
+        </bookmark>
+        <h1 id="hd_id401544551916353"><link href="text/sbasic/shared/thisdbdoc.xhp" name="ThisDatabaseDocument">ThisDatabaseDocument object</link></h1>
+        <paragraph role="paragraph" id="N0091"><literal>ThisDatabaseDocument</literal> addresses the active <literal>Base</literal> document whose properties can be read and set, and whose methods can be called.</paragraph>
+        <paragraph role="paragraph" id="par_id241622646033201"><literal>ThisDatabaseDocument</literal> returns an object of type <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1sdb_1_1OfficeDatabaseDocument.html" name="XOfficeDatabaseDocument interface">com.sun.star.sdb.XOfficeDatabaseDocument</link>.</paragraph>
+    </section>
+
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <bascode>
+       <paragraph role="bascode" id="bas_id191622796421820" localize="false">ThisDatabaseDocument</paragraph>
+    </bascode>
+    <paragraph role="paragraph" id="par_id241622797081182">When the active window does not relate to a Base document, <literal>ThisDatabaseDocument</literal> returns <literal>Nothing</literal>.</paragraph>
+    <tip id="par_id871622796485123">When the active window is the Basic IDE, <literal>ThisDatabaseDocument</literal> object returns the database owning the current script.</tip>
+
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id631622806529469">Opening current database "formName" and maximizing it can be achieved as shown:</paragraph>
+    <bascode>
+        <paragraph role="bascode" id="N0094" localize="false">Dim form As Object</paragraph>
+        <paragraph role="bascode" id="N0093" localize="false">ThisDatabaseDocument.CurrentController.connect(&quot;&quot;,&quot;&quot;)</paragraph>
+        <paragraph role="bascode" id="N0095" localize="false">form = ThisDatabaseDocument.FormDocuments.getByName("formName").open )</paragraph>
+        <paragraph role="bascode" id="N0096" localize="false">form.currentController.frame.ContainerWindow.IsMaximized = True</paragraph>
+    </bascode>
+ 
+    <section id="relatedtopics">
+       <paragraph role="paragraph" id="par_id251622800540402"><link href="text/sbasic/shared/03132200.xhp"  name="ThisComponent object">ThisComponent</link> object</paragraph>
+       <paragraph role="paragraph" id="par_id101622646874083"><link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1sdb_1_1OfficeDatabaseDocument.html" name="OfficeDatabaseDocument API service">com.sun.star.sdb.OfficeDatabaseDocument</link> API service</paragraph>
+      <paragraph role="paragraph" id="par_id581622646875379"><link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1document_1_1OfficeDocument.html" name="OfficeDocument API service">com.sun.star.document.OfficeDocument</link> API service</paragraph>
+    </section>
+
+</body>
+</helpdocument>

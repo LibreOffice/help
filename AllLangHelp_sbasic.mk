@@ -396,6 +396,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/replace \
     helpcontent2/source/text/sbasic/shared/uno_objects \
     helpcontent2/source/text/sbasic/shared/stardesktop \
+    helpcontent2/source/text/sbasic/shared/stardesktop \
+    helpcontent2/source/text/sbasic/shared/thisdbdoc \
     helpcontent2/source/text/sbasic/shared/GetPathSeparator \
     helpcontent2/source/text/sbasic/shared/keys \
     helpcontent2/source/text/sbasic/shared/main0211 \
