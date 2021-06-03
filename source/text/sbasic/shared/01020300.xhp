@@ -46,6 +46,7 @@
 <note id="par_id314756320">Some restrictions apply for the names of your public variables, subroutines, functions and properties. You must not use the same name as one of the modules of the same library.</note>
 <paragraph id="par_id3154124" role="paragraph" xml-lang="en-US">Procedures (<literal>Sub</literal>routines) functions (<literal>Function</literal>) and properties (<literal>Property</literal>) help you maintaining a structured overview by separating a program into logical pieces.</paragraph>
 <paragraph id="par_id3153193" role="paragraph" xml-lang="en-US">One benefit of procedures, functions and properties is that, once you have developed a program code containing task components, you can use this code in another project.</paragraph>
+
 <h2 id="hd_id3153770">Passing Variables to Procedures, Functions or Properties</h2>
 <paragraph id="par_id3155414" role="paragraph" xml-lang="en-US">Variables can be passed to both procedures, functions or properties. The <literal>Sub</literal> <literal>Function</literal> or <literal>Property</literal> must be declared to expect parameters:</paragraph>
 <bascode>
@@ -55,7 +56,7 @@
 </bascode>
 <paragraph id="par_id3152577" role="paragraph" xml-lang="en-US">The <literal>Sub</literal> is called using the following syntax:</paragraph>
 <bascode>
-  <paragraph id="par_idm1341029952" role="bascode" localize="false" xml-lang="en-US">SubName(Value1, Value2,...)</paragraph>
+  <paragraph id="par_idm1341029952" role="bascode" localize="false" xml-lang="en-US">[Call] SubName( [Parameter1:=]Value1, [Parameter2:=]Value2, ...)</paragraph>
 </bascode>
 <paragraph id="par_id3147124" role="paragraph" xml-lang="en-US">The parameters passed to a <literal>Sub</literal> must fit to those specified in the <literal>Sub</literal> declaration.</paragraph>
 <paragraph id="par_id3147397" role="paragraph" xml-lang="en-US">The same process applies to a <literal>Function</literal>. In addition, functions always return a function result. The result of a function is defined by assigning the return value to the function name:</paragraph>
@@ -67,9 +68,9 @@
 </bascode>
 <paragraph id="par_id3153839" role="paragraph" xml-lang="en-US">The <literal>Function</literal> is called using the following syntax:</paragraph>
 <bascode>
-  <paragraph id="par_id3146914" role="bascode" xml-lang="en-US" localize="false">Variable=FunctionName(Parameter1, Parameter2,...)</paragraph>
+  <paragraph id="par_id3146914" role="bascode" xml-lang="en-US" localize="false">Variable = FunctionName( [Parameter1:=]Value1, [Parameter2:=]Value2, ...)</paragraph>
 </bascode>
-<paragraph role="paragraph" id="par_id981584288549909">Properties combine the syntax of procedures and functions. A property usually requires up to one parameter.</paragraph>
+<paragraph role="paragraph" id="par_id981584288549909">Properties combine the syntax of procedures and functions. A <literal>Property</literal> usually requires up to one parameter.</paragraph>
 <bascode>
   <paragraph role="bascode" id="bas_id521585039888250" localize="false">Private _IsApproved As TYPENAME</paragraph>
   <paragraph role="bascode" id="bas_id471584288905523" localize="false">Property Get IsApproved As TYPENAME</paragraph>
@@ -86,7 +87,8 @@
   <paragraph role="bascode" id="bas_id511584289696025" localize="false">var = IsApproved</paragraph>
   <paragraph role="bascode" id="bas_id551584289696697" localize="false">IsApproved = some_value</paragraph>
 </bascode>
-<tip id="par_idN107B3">You can also use the fully qualified name to call a procedure, function or property:<br/> <literal>Library.Module.Macro()</literal> <br/> For example, to call the Autotext macro from the Gimmicks library, use the following command:<br/> <item type="literal">Gimmicks.AutoText.Main()</item> </tip>
+<tip id="par_idN107B3">You can also use the fully qualified name to call a procedure, function or property:<br/> <literal>[Call] Library.Module.Macro()</literal> <br/> For example, to call the Autotext macro from the Gimmicks library, use the following command:<br/> <item type="literal">Gimmicks.AutoText.Main()</item> </tip>
+
 <h2 id="hd_id3156276">Passing Variables by Value or Reference</h2>
 <paragraph id="par_id3155765" role="paragraph" xml-lang="en-US">Parameters can be passed to a procedure, a function or a property either by reference or by value. Unless otherwise specified, a parameter is always passed by reference. That means that a <literal>Sub</literal>, a <literal>Function</literal> or a <literal>Property</literal> gets the parameter and can read and modify its value.</paragraph>
 <paragraph id="par_id3145640" role="paragraph" xml-lang="en-US">If you want to pass a parameter by value insert the key word <literal>ByVal</literal> in front of the parameter when you call a <literal>Sub</literal>, a <literal>Function</literal> or a <literal>Property</literal>, for example:</paragraph>
@@ -97,6 +99,7 @@
   <paragraph role="bascode" id="bas_id801584367475787" localize="false">result = ReadOnlyParms(parm1, parm2)</paragraph>
 </bascode>
 <paragraph id="par_id3149258" role="paragraph" xml-lang="en-US">In this case, the original content of the parameter will not be modified by the <literal>Function</literal> since it only gets the value and not the parameter itself.</paragraph>
+
 <h2 id="hd_id161584366585035">Defining Optional Parameters</h2>
 <paragraph role="paragraph" id="par_id31584367006971">Functions, procedures or properties can be defined with optional parameters, for example:</paragraph>
 <bascode>
@@ -104,8 +107,16 @@
   <paragraph role="bascode" id="bas_id111584366809406">    &apos; your code goes here</paragraph>
   <paragraph role="bascode" id="bas_id251584366745722" localize="false">End Sub</paragraph>
 </bascode>
+
+<h2 id="hd_id951622730099178">Positional or Keyword Arguments</h2>
+<paragraph role="paragraph" id="par_id591622730131786">When you call a function or a subroutine, you may pass its arguments by position or by name. Passing by position means just listing the arguments in the order in which the parameters are defined in the function or subroutine. Passing by name requires you to prefix the argument with the name of the corresponding parameter followed by a colon and an equal sign (<literal>:=</literal>). Keyword arguments may appear in any order. Refer to Basic Replace() function for such examples.</paragraph>
+<section id="kwargs">
+<paragraph role="paragraph" id="par_id591622730284162">When needing to pass less parameters, use keywords arguments. Passing values for fewer parameters by position requires to supply values for all parameters before them, optional or not. This ensures that the values are in the correct positions. If you pass the parameters by name - using keyword arguments - you may omit all other intermediate arguments.</paragraph>
+</section>
+
 <h2 id="hd_id3150982">Scope of Variables</h2>
 <paragraph id="par_id3149814" role="paragraph" xml-lang="en-US">A variable defined within a <literal>Sub</literal>, a <literal>Function</literal> or a <literal>Property</literal>, only remains valid until the procedure is exited. This is known as a "local" variable. In many cases, you need a variable to be valid in all procedures, in every module of all libraries, or after a <literal>Sub</literal>, a <literal>Function</literal> or a <literal>Property</literal> is exited.</paragraph>
+
 <h3 id="hd_id3154186">Declaring Variables Outside a <literal>Sub</literal> a <literal>Function</literal> or a <literal>Property</literal></h3>
 <bascode>
 <paragraph id="par_id3150208" role="bascode" xml-lang="en-US" localize="false">Global VarName As TYPENAME</paragraph>
@@ -123,8 +134,9 @@
 <paragraph id="par_id3150886" role="bascode" xml-lang="en-US" localize="false">Dim VarName As TYPENAME</paragraph>
 </bascode>
 <paragraph id="par_id3150368" role="paragraph" xml-lang="en-US">The variable is only valid in this module.</paragraph>
+
 <h3 id="hd_id5097506">Example for private variables</h3>
-  <paragraph id="par_id8738975" role="paragraph" xml-lang="en-US">Enforce private variables to be private across modules by setting <literal>CompatibilityMode(True)</literal>.</paragraph><comment>from i17948, see i54894</comment>
+<paragraph id="par_id8738975" role="paragraph" xml-lang="en-US">Enforce private variables to be private across modules by setting <literal>CompatibilityMode(True)</literal>.</paragraph><comment>from i17948, see i54894</comment>
 <bascode>
   <paragraph id="par_idm1340976400" role="bascode" localize="false">' ***** Module1 *****</paragraph>
   <paragraph id="par_idm1340975168" role="bascode" localize="false">Private myText As String</paragraph>
