@@ -431,17 +431,18 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DMax method">DMax</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DMin method">DMin</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DSum method">DSum</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#Forms" name="Forms method">Forms</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#GetColumnName" name="GetColumnName method">GetColumnName</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#GetFormula" name="GetFormula method">GetFormula</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#GetValue" name="GetValue method">GetValue</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ImportFromCSVFile" name="ImportFromCSVFile method">ImportFromCSVFile</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ImportFromDatabase" name="ImportFromDatabase method">ImportFromDatabase</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#InsertSheet" name="InsertSheet method">InsertSheet</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#MoveRange" name="MoveRange method">MoveRange</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id701611613601554" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_calc.xhp#MoveRange" name="MoveRange method">MoveRange</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#MoveSheet" name="MoveSheet method">MoveSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Offset" name="Offset method">Offset</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#RemoveSheet" name="RemoveSheet method">RemoveSheet</link><br/>
@@ -450,7 +451,7 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#SetValue" name="SetValue method">SetValue</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#SetCellStyle" name="SetCellStyle method">SetCellStyle</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#SetFormula" name="SetFormula method">SetFormula</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#SortRange" name="SortRange method">SortRange</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#SortRange" name="SortRange method">SortRange</link><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -465,7 +466,7 @@
   <paragraph role="paragraph" id="par_id93158919969864">If the argument <literal>SheetName</literal> is provided, the given sheet is activated and it becomes the currently selected sheet. If the argument is absent, then the document window is activated.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id821621534014732">
-    <input>doc.Activate(sheetname: str = ""): bool</input>
+    <input>svc.Activate(sheetname: str = ""): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id821591631203996"><emph>sheetname</emph>: The name of the sheet to be activated in the document. The default value is an empty string, meaning that the document window will be activated without changing the active sheet.</paragraph>
@@ -496,7 +497,7 @@
   <paragraph role="paragraph" id="par_id31592919577984">Clears all the contents and formats of the given range.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id441621534763020">
-    <input>doc.ClearAll(range: str)</input>
+    <input>svc.ClearAll(range: str)</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id441592919577809"><emph>range</emph>: The range to be cleared, as a string.</paragraph>
@@ -520,7 +521,7 @@
   <paragraph role="paragraph" id="par_id211592919864118">Clears the formats and styles in the given range.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id381621536397094">
-    <input>doc.ClearFormats(range: str)</input>
+    <input>svc.ClearFormats(range: str)</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id611592919864268"><emph>range</emph>: The range whose formats and styles are to be cleared, as a string.</paragraph>
@@ -544,7 +545,7 @@
   <paragraph role="paragraph" id="par_id841592919928169">Clears the values and formulas in the given range.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id951621536609302">
-    <input>doc.ClearValues(range: str)</input>
+    <input>svc.ClearValues(range: str)</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id771592919928320"><emph>range</emph>: The range whose values and formulas are to be cleared, as a string.</paragraph>
@@ -568,7 +569,7 @@
   <paragraph role="paragraph" id="par_id591591631693816">Copies a specified sheet before an existing sheet or at the end of the list of sheets. The sheet to be copied may be contained inside any <emph>open</emph> Calc document. Returns <literal>True</literal> if successful.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id411621536777187">
-    <input>doc.CopySheet(sheetname: any, newname: str, [beforesheet: any]): bool</input>
+    <input>svc.CopySheet(sheetname: any, newname: str, [beforesheet: any]): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id871591631693741"><emph>sheetname</emph>: The name of the sheet to be copied as a string or its reference as an object.</paragraph>
@@ -611,7 +612,7 @@
     <paragraph role="paragraph" id="par_id271611706609445">If the file does not exist, an error is raised. If the file is not a valid Calc file, a blank sheet is inserted. If the source sheet does not exist in the input file, an error message is inserted at the top of the newly pasted sheet.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id721621537513995">
-    <input>doc.CopySheetFromFile(filename: str, sheetname: str, newname: str, [beforesheet: any]): bool</input>
+    <input>svc.CopySheetFromFile(filename: str, sheetname: str, newname: str, [beforesheet: any]): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id471591714947181" xml-lang="en-US"><emph>filename</emph>: Identifies the file to open. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation. The file must not be protected with a password.</paragraph>
@@ -641,7 +642,7 @@
   <paragraph role="paragraph" id="par_id681592558768463" xml-lang="en-US">The source range may belong to another <emph>open</emph> document.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id431621537972303">
-    <input>doc.CopyToCell(sourcerange: any, destinationcell: str): str</input>
+    <input>svc.CopyToCell(sourcerange: any, destinationcell: str): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id761592558768578"><emph>sourcerange</emph>: The source range as a string when it belongs to the same document or as a reference when it belongs to another open Calc document.</paragraph>
@@ -692,7 +693,7 @@
   <paragraph role="paragraph" id="par_id41592903121807" xml-lang="en-US">The source range may belong to another <emph>open</emph> document.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id981621538491567">
-    <input>doc.CopyToRange(sourcerange: any, destinationrange: str): str</input>
+    <input>svc.CopyToRange(sourcerange: any, destinationrange: str): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id841592903121145"><emph>sourcerange</emph>: The source range as a string when it belongs to the same document or as a reference when it belongs to another open Calc document.</paragraph>
@@ -734,19 +735,19 @@
   <paragraph role="paragraph" id="par_id601595777001498">Apply the functions Average, Count, Max, Min and Sum, respectively, to all the cells containing numeric values on a given range.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id471621539319385">
-    <input>doc.DAvg(range: str): float</input>
+    <input>svc.DAvg(range: str): float</input>
   </paragraph>
   <paragraph role="paragraph" localize="false" id="bas_id331595777279484">
-    <input>doc.DCount(range: str): float</input>
+    <input>svc.DCount(range: str): float</input>
   </paragraph>
   <paragraph role="paragraph" localize="false" id="bas_id911595777285935">
-    <input>doc.DMax(range: str): float</input>
+    <input>svc.DMax(range: str): float</input>
   </paragraph>
   <paragraph role="paragraph" localize="false" id="bas_id471595777292407">
-    <input>doc.DMin(range: str): float</input>
+    <input>svc.DMin(range: str): float</input>
   </paragraph>
   <paragraph role="paragraph" localize="false" id="bas_id41595777298840">
-    <input>doc.DSum(range: str): float</input>
+    <input>svc.DSum(range: str): float</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id741595777001537"><emph>range</emph>: The range to which the function will be applied, as a string.</paragraph>
@@ -763,6 +764,48 @@
   <note id="par_id31611752782288">Cells in the given range that contain text will be ignored by all of these functions. For example, the <literal>DCount</literal> method will not count cells with text, only numerical cells.</note>
 </section>
 
+<section id="Forms">
+  <comment> Forms ------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id271591632726788">
+      <bookmark_value>Document service;Forms</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id331591632724120" localize="false">Forms</h2>
+  <paragraph role="paragraph" id="par_id501623063693649">Depending on the parameters provided this method will return:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id611623063742045" role="listitem">A zero-based Array (or a tuple in Python) with the names of all the forms contained in a given sheet (if the <literal>form</literal> argument is absent)</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id641623063744536" role="listitem">A <literal>SFDocuments.Form</literal> service instance representing the form specified as argument.</paragraph>
+    </listitem>
+  </list>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id371623063588699">
+    <input>svc.Forms(sheetname: str): str[0..*]</input>
+  </paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id371623063588699">
+    <input>svc.Forms(sheetname: str, form: str = ''): svc</input>
+  </paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id751623151751397">
+     <input>svc.Forms(sheetname: str, form: int): svc</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id441623090893210"><emph>sheetname</emph>: The name of the sheet, as a string, from which the form will be retrieved.</paragraph>
+  <paragraph role="paragraph" id="par_id451623063459286"><emph>form</emph>: The name or index corresponding to a form stored in the specified sheet. If this argument is absent, the method will return a list with the names of all forms available in the sheet.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id251623063305557">In the following examples, the first line gets the names of all forms stored in "Sheet1" and the second line retrieves the <literal>Form</literal> object of the form named "Form_A" which is stored in "Sheet1".</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" id="bas_id191623063399519">Set FormNames = oDoc.Forms("Sheet1")</paragraph>
+    <paragraph role="bascode" id="bas_id691623063399711">Set FormA = oDoc.Forms("Sheet1", "Form_A")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id271623063215023">form_names = doc.Forms("Sheet1")</paragraph>
+    <paragraph role="pycode" id="pyc_id961623063234990">form_A = doc.Forms("Sheet1", "Form_A")</paragraph>
+  </pycode>
+</section>
+
 <section id="GetColumnName">
   <comment> GetColumnName -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id271591632726624">
@@ -772,7 +815,7 @@
   <paragraph role="paragraph" id="par_id401591632726431">Converts a column number ranging between 1 and 1024 into its corresponding letter (column 'A', 'B', ..., 'AMJ'). If the given column number is outside the allowed range, a zero-length string is returned.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id781621539718872">
-    <input>doc.GetColumnName(columnnumber: int): str</input>
+    <input>svc.GetColumnName(columnnumber: int): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id83159163272628"><emph>columnnumber</emph>: The column number as an integer value in the interval 1 ... 1024.</paragraph>
@@ -799,7 +842,7 @@
   <paragraph role="paragraph" id="par_id921593880142573">Get the formula(s) stored in the given range of cells as a single string, a 1D or a 2D array of strings.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id301621540291513">
-    <input>doc.GetFormula(range: str): any</input>
+    <input>svc.GetFormula(range: str): any</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id891593880142588"><emph>range</emph>: The range where to get the formulas from, as a string.</paragraph>
@@ -824,7 +867,7 @@
   <paragraph role="paragraph" id="par_id331592231156425">Get the value(s) stored in the given range of cells as a single value, a 1D array or a 2D array. All values are either doubles or strings.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id51621540380926">
-    <input>doc.GetValue(range: str): any</input>
+    <input>svc.GetValue(range: str): any</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id91592231156434"><emph>range</emph>: The range where to get the values from, as a string.</paragraph>
@@ -851,7 +894,7 @@
   <paragraph role="paragraph" id="par_id911593685490873" xml-lang="en-US">The method returns a string representing the modified range of cells.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id661621540542882">
-    <input>doc.ImportFromCSVFile(filename: str, destinationcell: str, [filteroptions: str]): str</input>
+    <input>svc.ImportFromCSVFile(filename: str, destinationcell: str, [filteroptions: str]): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id851593685490824"><emph>filename</emph>: Identifies the file to open. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
@@ -906,7 +949,7 @@
   <paragraph role="paragraph" id="par_id51599568986387" xml-lang="en-US">The method returns <literal>True</literal> when the import was successful.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id451621542093265">
-    <input>doc.ImportFromDatabase(filename: str = "", registrationname: str = "", destinationcell: str = "", sqlcommand: str = "", directsql: bool): bool</input>
+    <input>svc.ImportFromDatabase(filename: str = "", registrationname: str = "", destinationcell: str = "", sqlcommand: str = "", directsql: bool): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id311599568986784"><emph>filename</emph>: Identifies the file to open. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
@@ -934,7 +977,7 @@
   <paragraph role="paragraph" id="par_id121591698472929">Inserts a new empty sheet before an existing sheet or at the end of the list of sheets.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id531621619656738">
-    <input>doc.InsertSheet(sheetname: str, [beforesheet: any]): bool</input>
+    <input>svc.InsertSheet(sheetname: str, [beforesheet: any]): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id941591698472748"><emph>sheetname</emph>: The name of the new sheet.</paragraph>
@@ -961,7 +1004,7 @@
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 
   <paragraph role="paragraph" localize="false" id="par_id211621620062306">
-    <input>doc.MoveRange(source: str, destination: str): str</input>
+    <input>svc.MoveRange(source: str, destination: str): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id571592569476332"><emph>source</emph>: The source range of cells, as a string.</paragraph>
@@ -986,7 +1029,7 @@
   <paragraph role="paragraph" id="par_id831591698903829">Moves an existing sheet and places it before a specified sheet or at the end of the list of sheets.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id1001621620119732">
-    <input>doc.MoveSheet(sheetname: str, [beforesheet: any]): bool</input>
+    <input>svc.MoveSheet(sheetname: str, [beforesheet: any]): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id351591698903911"><emph>sheetname</emph>: The name of the sheet to move. The sheet must exist or an exception is raised.</paragraph>
@@ -1013,7 +1056,7 @@
   <paragraph role="paragraph" id="par_id61611768400376">This method has the same behavior as the homonymous Calc's <link href="text/scalc/01/04060109.xhp" name="Offset function">Offset function</link>.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id301621620394077">
-    <input>doc.Offset(reference: str, rows: int = 0, columns: int = 0, [height: int], [width: int]): str</input>
+    <input>svc.Offset(reference: str, rows: int = 0, columns: int = 0, [height: int], [width: int]): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id901592233506293"><emph>reference</emph>: The range, as a string, that the method will use as reference to perform the offset operation.</paragraph>
@@ -1047,7 +1090,7 @@
   <paragraph role="paragraph" id="par_id661591699085351">Removes an existing sheet from the document.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" id="par_id991621620588147">
-    <input>doc.RemoveSheet(sheetname: str): bool</input>
+    <input>svc.RemoveSheet(sheetname: str): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id331591699085330"><emph>sheetname</emph>: The name of the sheet to remove.</paragraph>
@@ -1071,7 +1114,7 @@
   <paragraph role="paragraph" id="par_id971591704316873">Renames the given sheet and returns <literal>True</literal> if successful.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id301621620709359">
-    <input>doc.RenameSheet(sheetname: str, newname: str): bool</input>
+    <input>svc.RenameSheet(sheetname: str, newname: str): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id161591704316337"><emph>sheetname</emph>: The name of the sheet to rename.</paragraph>
@@ -1098,7 +1141,7 @@
   <paragraph role="paragraph" id="par_id671592745582573" xml-lang="en-US">The method returns a string representing the modified area as a range of cells.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id401621620954121">
-    <input>doc.SetArray(targetcell: str, value: any): str</input>
+    <input>svc.SetArray(targetcell: str, value: any): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id801592745582116"><emph>targetcell</emph>: The cell or a range as a string from where to start to store the given value.</paragraph>
@@ -1139,7 +1182,7 @@
   <paragraph role="paragraph" id="par_id1001592233389953" xml-lang="en-US">The method returns a string representing the modified area as a range of cells.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id961621622582995">
-    <input>doc.SetValue(targetrange: str, value: any): str</input>
+    <input>svc.SetValue(targetrange: str, value: any): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id361592231799255"><emph>targetrange</emph>: The range where to store the given value, as a string.</paragraph>
@@ -1186,7 +1229,7 @@
   <paragraph role="paragraph" id="par_id70159576768715" xml-lang="en-US">The method returns a string representing the modified area as a range of cells.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id731621622877726">
-    <input>doc.SetCellStyle(targetrange: str, style: str): str</input>
+    <input>svc.SetCellStyle(targetrange: str, style: str): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id22159576768782"><emph>targetrange</emph>: The range to which the style will be applied, as a string.</paragraph>
@@ -1214,7 +1257,7 @@
   <paragraph role="paragraph" id="par_id711593880376106" xml-lang="en-US">The method returns a string representing the modified area as a range of cells.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id701621623027410">
-    <input>doc.SetFormula(targetrange: str, formula: any): str</input>
+    <input>svc.SetFormula(targetrange: str, formula: any): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id891593880376776"><emph>targetrange</emph>: The range to insert the formulas, as a string.</paragraph>
@@ -1250,7 +1293,7 @@
   <paragraph role="paragraph" id="par_id141595692394382">Sorts the given range based on up to 3 columns/rows. The sorting order may vary by column/row. It returns a string representing the modified range of cells. The size of the modified area is fully determined by the size of the source area.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id871621623279253">
-    <input>doc.SortRange(range: str, sortkeys: any, sortorder: any = "ASC", destinationcell: str = "", containsheader: bool = False, casesensitive: bool = False, sortcolumns: bool = False): str</input>
+    <input>svc.SortRange(range: str, sortkeys: any, sortorder: any = "ASC", destinationcell: str = "", containsheader: bool = False, casesensitive: bool = False, sortcolumns: bool = False): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id171595692394598"><emph>range</emph>: The range to be sorted, as a string.</paragraph>
