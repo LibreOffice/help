@@ -431,17 +431,18 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DMax method">DMax</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DMin method">DMin</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DSum method">DSum</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#Forms" name="Forms method">Forms</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#GetColumnName" name="GetColumnName method">GetColumnName</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#GetFormula" name="GetFormula method">GetFormula</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#GetValue" name="GetValue method">GetValue</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ImportFromCSVFile" name="ImportFromCSVFile method">ImportFromCSVFile</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ImportFromDatabase" name="ImportFromDatabase method">ImportFromDatabase</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#InsertSheet" name="InsertSheet method">InsertSheet</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#MoveRange" name="MoveRange method">MoveRange</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id701611613601554" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_calc.xhp#MoveRange" name="MoveRange method">MoveRange</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#MoveSheet" name="MoveSheet method">MoveSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Offset" name="Offset method">Offset</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#RemoveSheet" name="RemoveSheet method">RemoveSheet</link><br/>
@@ -450,7 +451,7 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#SetValue" name="SetValue method">SetValue</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#SetCellStyle" name="SetCellStyle method">SetCellStyle</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#SetFormula" name="SetFormula method">SetFormula</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#SortRange" name="SortRange method">SortRange</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#SortRange" name="SortRange method">SortRange</link><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -761,6 +762,42 @@
     <paragraph role="pycode" localize="false" id="pyc_id651621539472141">result = myDoc.DSum("~.A1:A1000")</paragraph>
   </pycode>
   <note id="par_id31611752782288">Cells in the given range that contain text will be ignored by all of these functions. For example, the <literal>DCount</literal> method will not count cells with text, only numerical cells.</note>
+</section>
+
+<section id="Forms">
+  <comment> Forms ------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id271591632726788">
+      <bookmark_value>Document service;Forms</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id331591632724120" localize="false">Forms</h2>
+  <paragraph role="paragraph" id="par_id501623063693649">Depending on the parameters provided this method will return:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id611623063742045" role="listitem">A zero-based Array (or a tuple in Python) with the names of all the forms contained in a given sheet (if the <literal>form</literal> argument is absent)</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id641623063744536" role="listitem">A <literal>SFDocuments.Form</literal> service instance representing the form specified as argument.</paragraph>
+    </listitem>
+  </list>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id371623063588699">
+    <input>doc.Forms(sheetname: str, form: str = ''): svc</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id441623090893210"><emph>sheetname</emph>: The name of the sheet, as a string, from which the form will be retrieved.</paragraph>
+  <paragraph role="paragraph" id="par_id451623063459286"><emph>form</emph>: The name or index corresponding to a form stored in the specified sheet. If this argument is absent, the method will return a list with the names of all forms available in the sheet.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id251623063305557">In the following examples, the first line gets the names of all forms stored in "Sheet1" and the second line retrieves the <literal>Form</literal> object of the form named "Form_A" which is stored in "Sheet1".</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" id="bas_id191623063399519">Set FormNames = oDoc.Forms("Sheet1")</paragraph>
+    <paragraph role="bascode" id="bas_id691623063399711">Set FormA = oDoc.Forms("Sheet1", "Form_A")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id271623063215023">form_names = doc.Forms("Sheet1")</paragraph>
+    <paragraph role="pycode" id="pyc_id961623063234990">form_A = doc.Forms("Sheet1", "Form_A")</paragraph>
+  </pycode>
 </section>
 
 <section id="GetColumnName">
