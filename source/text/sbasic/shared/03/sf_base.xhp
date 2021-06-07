@@ -42,6 +42,7 @@
   <tip id="par_id241619032941497">Refer to the <link href="text/sbasic/shared/03/sf_document.xhp" name="Document Service"><literal>Document</literal> service</link> to learn more about methods and properties that can be used to manage %PRODUCTNAME documents.</tip>
 
   <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <paragraph role="paragraph" id="par_id311619033224680">The Base service can be invoked in a variety of ways. The code snippet below uses the method <literal>CreateBaseDocument</literal> from the <literal>UI</literal> service to create a new Base file.</paragraph>
   <paragraph role="paragraph" id="par_id101619033666470">Note that in all examples the object <literal>oDoc</literal> is an instance of the <literal>Base</literal> service.</paragraph>
   <bascode>
@@ -58,6 +59,19 @@
     <paragraph role="bascode" localize="false" id="bas_id401619033791704">Dim oDoc As Object</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id21619033791983">Set oDoc = CreateScriptService("SFDocuments.Document", "MyFile.odb")</paragraph>
   </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <paragraph role="paragraph" id="par_id871623102536956">The examples above can be translated to Python as follows:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id401623102395018">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id311623102395289">ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id561623102422597">doc = ui.CreateBaseDocument(r"C:\Documents\MyFile.odb")</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id971623102443669">doc = ui.OpenBaseDocument(r"C:\Documents\MyFile.odb")</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id731623102477036">doc = CreateScriptService("SFDocuments.Document", "MyFile.odb")</paragraph>
+  </pycode>
   <note id="par_id281619619980185">The use of the <emph>"SFDocuments."</emph> substring in the previous example is optional.</note>
 
 <table id="tab_id101619034669263">
@@ -95,11 +109,12 @@
   <h2 id="hd_id841619035592745" localize="false">FormDocuments</h2>
   <paragraph role="paragraph" id="par_id481619036833610">Returns an array with the full names (path/name) of all form documents in the Base document as an zero-based Array of strings.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-  <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id881619036279023">oDoc.FormDocuments() As Variant</paragraph>
-  </bascode>
+  <paragraph role="paragraph" localize="false" id="par_id401623103182304">
+    <input>doc.FormDocuments(): any</input>
+  </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id431619037334440">The code snippet below prints the names of all form documents in the current Base document.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id121619036825329">Dim oDoc as Object, myForms as Object, formName as String</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id371619037281873">Set oDoc = CreateScriptService("Document", ThisDataBaseDocument)</paragraph>
@@ -108,6 +123,14 @@
     <paragraph role="bascode" localize="false" id="bas_id531619037282633">    MsgBox formName</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id851619037282890">Next formName</paragraph>
   </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id691623103639534">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" id="pyc_id101623103639206">doc = CreateScriptService("Document", bas.ThisDataBaseDocument)</paragraph>
+    <paragraph role="pycode" id="pyc_id901623103639390">myForms = oDoc.FormDocuments()</paragraph>
+    <paragraph role="pycode" id="pyc_id791623103639701">for formName in myForms:</paragraph>
+    <paragraph role="pycode" id="pyc_id741623103639861">    bas.MsgBox(formName)</paragraph>
+  </pycode>
   <tip id="par_id921619036922844">To learn more about form documents, refer to the <link href="text/sbasic/shared/03/sf_form.xhp" name="Form service"><literal>Form</literal> service help page</link>.</tip>
 </section>
 
@@ -127,20 +150,25 @@
     </listitem>
   </list>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-  <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id231619037442169">oDoc.Forms(FormDocument As String, [Form As String]) As Variant</paragraph>
-  </bascode>
+  <paragraph role="paragraph" localize="false" id="par_id851623104567633">
+    <input>doc.Forms(formdocument: str, form: str = ''): svc</input>
+  </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id861619037838260"><emph>FormDocument:</emph> The name of a valid form document as a case-sensitive string.</paragraph>
-  <paragraph role="paragraph" id="par_id281619037857187"><emph>Form:</emph> The name or index number of the form stored in the form document. If this argument is absent, the method will return a list with the names of all forms available in the form document.</paragraph>
+  <paragraph role="paragraph" id="par_id861619037838260"><emph>formdocument:</emph> The name of a valid form document as a case-sensitive string.</paragraph>
+  <paragraph role="paragraph" id="par_id281619037857187"><emph>form:</emph> The name or index number of the form stored in the form document. If this argument is absent, the method will return a list with the names of all forms available in the form document.</paragraph>
   <note id="par_id921619437863617">Although it is possible to use index numbers to refer to forms, this is only recommended when there is just one form in the form document. If there are two or more forms, it is preferable to use the form name instead.</note>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id21623104676805">The first line of the example below returns a list of all forms in the form document "myFormDocument". The second line returns an instance of the Form service representing the form "myForm".</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
-    <paragraph role="bascode" id="bas_id231619200162092">' Returns a list of all forms in the form document "myFormDocument"</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id741619200190900">Dim formsList as Object : formsList = oDoc.Forms("myFormDocument")</paragraph>
-    <paragraph role="bascode" id="bas_id31619200259812">' Returns an instance of the Form service representing the form "myForm"</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id491619200288742">Dim oForm as Object : oForm = oDoc.Forms("myFormDocument", "myForm")</paragraph>
   </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id431623104770698">formsList = doc.Forms("myFormDocument")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id271623104770978">form = doc.Forms("myFormDocument", "myForm")</paragraph>
+  </pycode>
 </section>
 
 <section id="GetDatabase">
@@ -151,22 +179,32 @@
   <h2 id="hd_id111619035612996" localize="false">GetDatabase</h2>
   <paragraph role="paragraph" id="par_id371619098340303">Returns an instance of the <link href="text/sbasic/shared/03/sf_database.xhp" name="Database service"><literal>Database</literal> service</link> that allows the execution of SQL commands on the database defined and/or stored in the current Base document</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-  <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id411619096888199">oDoc.GetDatabase([User As String, [Password As String]]) As Object</paragraph>
-  </bascode>
+  <paragraph role="paragraph" localize="false" id="par_id431623105245851">
+    <input>doc.GetDatabase(user: str = '', password: str = ''): svc</input>
+  </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id731619098073221"><emph>User, Password:</emph> Optional login parameters as strings. The default value for both parameters is an empty string "".</paragraph>
+  <paragraph role="paragraph" id="par_id731619098073221"><emph>user, password:</emph> Optional login parameters as strings. The default value for both parameters is an empty string "".</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id1001599408773502">Dim myDoc As Object, myDatabase As Object, ui As Object</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id631599408779968">Set ui = CreateScriptService("UI")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id801599408784337">Set myDoc = ui.OpenBaseDocument("myDb.odb")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id801599408784337">Set myDoc = ui.OpenBaseDocument("C:\Documents\myDb.odb")</paragraph>
     <paragraph role="bascode" id="bas_id631615147843278">' User and password are supplied below, if needed</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id741599408788321">Set myDatabase = myDoc.GetDatabase()</paragraph>
     <paragraph role="bascode" id="bas_id921599408791887">'   ... Run queries, SQL statements, ...</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id...">myDatabase.CloseDatabase()</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id251599408799447">myDoc.CloseDocument()</paragraph>
   </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id851623104860711">ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id391623104860891">myDoc = ui.OpenBaseDocument(r"C:\Documents\myDb.odb")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id871623104861054">myDatabase = myDoc.GetDatabase()</paragraph>
+    <paragraph role="pycode" id="pyc_id351623104861223">'   ... Run queries, SQL statements, ...</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id581623104861438">myDatabase.CloseDatabase()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id751623104861711">myDoc.CloseDocument()</paragraph>
+  </pycode>
 </section>
 
 <section id="IsLoaded">
@@ -177,17 +215,23 @@
   <h2 id="hd_id621619035622085" localize="false">IsLoaded</h2>
   <paragraph role="paragraph" id="par_id871619098478513">Returns <literal>True</literal> if the specified <literal>FormDocument</literal> is  currently open.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-  <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id211619096989127">oDoc.IsLoaded([FormDocument As String]) As Boolean</paragraph>
-  </bascode>
+  <paragraph role="paragraph" localize="false" id="par_id831623105309694">
+    <input>doc.IsLoaded(formdocument: str): bool</input>
+  </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id981619098545701"><emph>FormDocument:</emph> The name of a FormDocument to be checked, as a case-sensitive string.</paragraph>
+  <paragraph role="paragraph" id="par_id981619098545701"><emph>formdocument:</emph> The name of a <literal>FormDocument</literal> to be checked, as a case-sensitive string.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id271619098642739">If Not oDoc.IsLoaded("myFormDocument") Then</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id271619099499790">    oDoc.OpenFormDocument("myFormDocument")</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id301619099500376">End If</paragraph>
   </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id871623105432127">if not doc.IsLoaded("myFormDocument"):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id401623105432534">    doc.OpenFormDocument("myFormDocument")</paragraph>
+  </pycode>
 </section>
 
 <section id="OpenFormDocument">
@@ -199,13 +243,14 @@
   <paragraph role="paragraph" id="par_id801619099743199">Opens the specified <literal>FormDocument</literal> either in normal or in design mode.</paragraph>
   <paragraph role="paragraph" id="par_id451619100075330">If the form document is already open, it is activated without changing its mode. The method returns <literal>True</literal> if the form document could be opened.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-  <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id641619097217170">oDoc.OpenFormDocument(FormDocument As String, [DesignMode As Boolean]) As Boolean</paragraph>
-  </bascode>
+  <paragraph role="paragraph" localize="false" id="par_id71623105516650">
+    <input>doc.OpenFormDocument(formdocument: str, designmode: bool = False): bool</input>
+  </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id941619099797810"><emph>FormDocument:</emph> The name of the <literal>FormDocument</literal> to be opened, as a case-sensitive string.</paragraph>
-  <paragraph role="paragraph" id="par_id981619099816849"><emph>DesignMode:</emph> If this argument is <literal>True</literal> the <literal>FormDocument</literal> will be opened in design mode.</paragraph>
+  <paragraph role="paragraph" id="par_id941619099797810"><emph>formDocument:</emph> The name of the <literal>FormDocument</literal> to be opened, as a case-sensitive string.</paragraph>
+  <paragraph role="paragraph" id="par_id981619099816849"><emph>designmode:</emph> If this argument is <literal>True</literal> the <literal>FormDocument</literal> will be opened in design mode.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <paragraph role="paragraph" id="par_id251619100191992">Most form documents are stored in the root of the Base document and they can be opened simply using their names, as in the example below:</paragraph>
   <bascode>
     <paragraph role="bascode" id="bas_id461619100283210">oDoc.OpenFormDocument("myFormDocument")</paragraph>
@@ -214,6 +259,13 @@
   <bascode>
     <paragraph role="bascode" id="bas_id461619100283712">oDoc.OpenFormDocument("myFolder/myFormDocument")</paragraph>
   </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id361623105659717">doc.OpenFormDocument("myFormDocument")</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id361623105659616">doc.OpenFormDocument("myFolder/myFormDocument")</paragraph>
+  </pycode>
 </section>
 
   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
