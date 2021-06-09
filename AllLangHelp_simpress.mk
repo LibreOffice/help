@@ -111,6 +111,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/01/13180100 \
     helpcontent2/source/text/simpress/01/13180200 \
     helpcontent2/source/text/simpress/01/13180300 \
+    helpcontent2/source/text/simpress/01/bulletandposition \
     helpcontent2/source/text/simpress/01/effectoptions \
     helpcontent2/source/text/simpress/01/effectoptionseffect \
     helpcontent2/source/text/simpress/01/effectoptionstext \
