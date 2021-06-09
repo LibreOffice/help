@@ -331,6 +331,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/07080000 \
     helpcontent2/source/text/shared/01/about_meta_tags \
     helpcontent2/source/text/shared/01/certificatepath \
+    helpcontent2/source/text/shared/01/classificationbar \
+    helpcontent2/source/text/shared/01/classificationdialog \
     helpcontent2/source/text/shared/01/digitalsignatures \
     helpcontent2/source/text/shared/01/digitalsignaturespdf \
     helpcontent2/source/text/shared/01/addsignatureline \
@@ -634,6 +636,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/chart_insert \
     helpcontent2/source/text/shared/guide/chart_legend \
     helpcontent2/source/text/shared/guide/chart_title \
+    helpcontent2/source/text/shared/guide/classification \
     helpcontent2/source/text/shared/guide/cmis-remote-files \
     helpcontent2/source/text/shared/guide/cmis-remote-files-setup \
     helpcontent2/source/text/shared/guide/collab \
