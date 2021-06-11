@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_FormControl" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Creating Python Scripts with ScriptForge</title>
+    <filename>/text/sbasic/shared/03/sf_intro.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+  <bookmark localize="false" branch="index" id="bm_id41582391760114">
+    <bookmark_value>Python scripts with ScriptForge</bookmark_value>
+  </bookmark>
+  <h1 id="hd_id461623364876507"><variable id="title"><link href="text/sbasic/shared/03/sf_intro.xhp" name="SF_Intro_Page">Creating Python Scripts with <literal>ScriptForge</literal></link></variable></h1>
+  <h2 id="hd_id361623410405420">Differences between Basic and Python</h2>
+  <paragraph role="paragraph" id="par_id41623410443946">The <link href="text/sbasic/shared/03/lib_ScriptForge.xhp" name="SF_Lib">ScriptForge library</link> is available both for Basic and Python. Most services, methods and properties work identically in both programming languages. However, due to differences in how each language works, <literal>ScriptForge</literal> users must be aware of some characteristics of the library when using Python:</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id551623410718241" role="listitem"><emph>Methods and Property names:</emph> In Python, all methods and properties can be used in lowercased, ProperCased or camelCased formats.</paragraph>
+    </listitem>
+        <listitem>
+        <paragraph id="par_id741623411104297" role="listitem"><emph>Arguments:</emph> All keyword arguments passed on to methods are lowercased.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id441623411216354" role="listitem"><emph>Dates:</emph> All date objects are passed and returned as <literal>datetime.datetime</literal> native Python objects.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id891623411367669" role="listitem"><emph>Arrays:</emph> One-dimensional arrays are passed and returned as tuples (which is an immutable object). Two-dimensional arrays are passed and returned as tuples of tuples.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id981623411507442" role="listitem"><emph>None:</emph> Python's <literal>None</literal> keyword is equivalent to Basic's <literal>Null</literal>, <literal>Empty</literal> or <literal>Nothing</literal>.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id21623411611447" role="listitem"><emph>UNO objects:</emph> All UNO structures are exchanged between Basic and Python without any changes.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id651623412069496" role="listitem"><emph>Debugging:</emph> Whenever an error occurs in Python scripts that use <literal>ScriptForge</literal>, the error message provided by the Python execution stack displays the line of code that triggered the error. In Basic error messages do not display this information.</paragraph>
+    </listitem>
+  </list>
+  <tip id="par_id31623411828158">Visit <embedvar href="text/sbasic/python/main0000.xhp#pythonscriptshelp"/> for more information on Python scripting using %PRODUCTNAME.</tip>
+  <h2 id="hd_id391623411150080">Running Python scripts on %PRODUCTNAME</h2>
+  <paragraph role="paragraph" id="par_id411623364895100">Depending on what you intend to achieve, you may choose one of the following approaches to running Python scripts in %PRODUCTNAME:</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id681623365274024" role="listitem"><emph>Run Scripts inside the current %PRODUCTNAME process:</emph> Python scripts are executed from within the %PRODUCTNAME process by using the <menuitem>Tools - Macros - Run Macro</menuitem> menu or the APSO extension to call user scripts stored in the Python scripts folder. You can also use the APSO Python shell to interactively run Python scripts.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id761623365278133" role="listitem"><emph>Run Scripts separately from the %PRODUCTNAME process:</emph> Python scripts are executed from an external process that connects to an ongoing %PRODUCTNAME process using a socket.</paragraph>
+    </listitem>
+  </list>
+  <tip id="par_id631623365667011">If you plan to run scripts from inside the %PRODUCTNAME process, it is recommended to install the <link href="https://extensions.libreoffice.org/en/extensions/show/apso-alternative-script-organizer-for-python" name="APSO">APSO (Alternative Script Organizer for Python) extension</link>. However, to develop Python scripts from outside %PRODUCTNAME, you can choose your preferred Python IDE.</tip>
+
+  <h2 id="hd_id431623365836802">Running Scripts from inside the %PRODUCTNAME process</h2>
+  <h3 id="hd_id111623365861568">Using the APSO extension</h3>
+  <paragraph role="paragraph" id="par_id681623365892513">The easiest way to get started with Python scripting in %PRODUCTNAME is by installing the APSO extension. After installing it, open any %PRODUCTNAME component and go to <menuitem>Tools - Macros - Organize Python Scripts</menuitem>.</paragraph>
+  <paragraph role="paragraph" id="par_id111623366334727">In APSO's main window go to <menuitem>Menu - Python Shell</menuitem>.</paragraph>
+  <tip id="par_id931623366329927">Alternativelly you can open APSO using the default shortcut <keycode>Alt + Shift + F11</keycode>.</tip>
+  <paragraph role="paragraph" id="par_id661623366478092">Now you can start typing Python commands and the shell will print the corresponding output after each line of code is executed.</paragraph>
+  <paragraph role="paragraph" id="par_id581623366559478">To start using the <literal>ScriptForge</literal> library, you need to import the <literal>CreateScriptService</literal> method, with which you will be able to access the services provided by the library. The example below uses the <literal>Basic</literal> service to display a message box.</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id531623366688016">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id121623366689320">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id561623366689495">bas.MsgBox("Hello!")</paragraph>
+  </pycode>
+  <paragraph role="paragraph" id="par_id701623366829587">To run the example above, enter each line in the Python shell, one by one, pressing the Enter key after you type each line of code.</paragraph>
+  <paragraph role="paragraph" id="par_id471623366906045">Now you can start executing Python commands using any of the ScriptForge services. For example, the code snippet bellow uses the <literal>UI</literal> service to create a blank writer document.</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id331623367002488">ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id501623367002935">doc = ui.CreateDocument("Writer")</paragraph>
+  </pycode>
+
+  <h3 id="hd_id961623367376768">Creating Python script files</h3>
+  <paragraph role="paragraph" id="par_id821623367433650">You can create your own Python files and edit them with your preferred text editor. Later you can call them from within any %PRODUCTNAME component.</paragraph>
+  <paragraph role="paragraph" id="par_id51623367560321">The first step is to locate where your user scripts are stored. For that, refer to <link href="text/sbasic/python/python_locations.xhp" name="Python_Scripts_Path">Python Scripts Organization and Location</link> help page.</paragraph>
+  <paragraph role="paragraph" id="par_id821623367773032">Now you can create a text file inside your Python user scripts folder, for instance <emph>sf_test.py</emph>, and start typing your scripts.</paragraph>
+  <paragraph role="paragraph" id="par_id271623367917630">Next is a simple example that gets the numeric value from a Calc cell and increments it by 1. Simply type the following code into the <emph>sf_test.py</emph> file.</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id71623367973469">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id351623367973643">doc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id821623367973796"></paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id331623367973949">def increment_cell(args=None):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id931623367974077">    value = doc.GetValue("A1")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id741623367974212">    value += 1</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id841623367974349">    doc.SetValue("A1", value)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id231623368367747"></paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id11623368368139">g_exportedScripts = (increment_cell, )</paragraph>
+  </pycode>
+  <paragraph role="paragraph" id="par_id171623368511426">This example creates the <literal>increment_cell</literal> function. Note that <literal>g_exportedScripts</literal> is a tuple that tells which functions will be displayed in %PRODUCTNAME as user scripts.</paragraph>
+  <paragraph role="paragraph" id="par_id471623368615244">To run this script from within a Calc document:</paragraph>
+  <list type="ordered">
+    <listitem>
+        <paragraph id="par_id811623368677444" role="listitem">Create or open a Calc file.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id281623368679141" role="listitem">Enter some numeric value into cell "A1" in the current sheet.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id111623368679893" role="listitem">Go to <menuitem>Tools - Macros - Run Macros</menuitem> .</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id421623368680565" role="listitem">Choose My Macros - sf_test in the library selector. Then choose the <literal>increment_cell</literal> function under the <menuitem>Macro Name</menuitem>  list.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id131623368875763" role="listitem">Click <keycode>Run</keycode>. Note that the value in cell "A1" was incremented by 1.</paragraph>
+    </listitem>
+  </list>
+  <paragraph role="paragraph" id="par_id781623368934689">You can also use APSO to run Python scripts in a similar manner:</paragraph>
+  <list type="ordered">
+    <listitem>
+        <paragraph id="par_id501623369002537" role="listitem">First open APSO by going to <menuitem>Tools - Macros - Organize Python Scripts</menuitem>.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id521623369004825" role="listitem">In the macro list, navigate to <menuitem>My Macros - sf_test - increment_cell</menuitem> .</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id101623369005929" role="listitem">Click <menuitem>Execute</menuitem> .</paragraph>
+    </listitem>
+  </list>
+
+  <h2 id="hd_id531623369208159">Running Scripts separately from the %PRODUCTNAME process</h2>
+  <section id="InstallPath">
+  <h3 id="hd_id261623370168228">Determining the Installation Path</h3>
+  <paragraph role="paragraph" id="par_id261623369722023">The first step to run scripts from a separate process is to find the folder where %PRODUCTNAME is installed. There are several ways to do that, but <literal>ScriptForge</literal> provides a quick way to identify your installation path. For that, open APSO's Python shell and type:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id261623369853713">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id201623369854992">fs = CreateScriptService("FileSystem")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id831623370058117">fs.FileNaming = "SYS"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id941623369856601">inst_dir = fs.InstallFolder</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id941623369856722">print(inst_dir)</paragraph>
+  </pycode>
+  <paragraph role="paragraph" id="par_id81623370150730">The output from the code above is the base directory where %PRODUCTNAME is installed. Now you need to add the "program" subfolder to the resulting path. This is the base folder from which you will run Python scripts from a separate process.</paragraph>
+  <paragraph role="paragraph" id="par_id451623370201479">For example, suppose you get <emph>/usr/lib/libreoffice/</emph> as the result from running the Python code above. Then you need to consider <emph>/usr/lib/libreoffice/program</emph> as the path to run your Python scripts.</paragraph>
+  </section>
+
+  <h3 id="hd_id231623370501084">Start %PRODUCTNAME with socket settings</h3>
+  <paragraph role="paragraph" id="par_id721623369245475">To run Python scripts from a separate process, you need to start %PRODUCTNAME with a few additional options that specify the hostname and port through which the external process will communicate with the %PRODUCTNAME component process.</paragraph>
+  <paragraph role="paragraph" id="par_id221623369584132">Open the your operating system's command prompt, navigate to the program folder of your %PRODUCTNAME installation directory and type:</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id381623369456352"><input>./soffice --accept='socket,host=localhost,port=2021;urp;'</input></paragraph>
+  <paragraph role="paragraph" id="par_id981623370706743">The command above will start %PRODUCTNAME with a communication channel open so that other processes can exchange messages with it.</paragraph>
+  <paragraph role="paragraph" id="par_id621623370871360">Note that the previous example opens %PRODUCTNAME start center. If you want to open a specific component, for instance Writer, you can add the --writer flag to the command, as follows.</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id371623370974348"><input>./soffice --writer --accept='socket,host=localhost,port=2021;urp;'</input></paragraph>
+  <paragraph role="paragraph" id="par_id431623373618951">Take note of the <literal>host</literal> and <literal>port</literal> parameters, which in this example are <emph>localhost</emph> and <emph>2021</emph>, respectively.</paragraph>
+
+  <h3 id="hd_id861623370468356">Running an External Python Shell</h3>
+  <paragraph role="paragraph" id="par_id621623371253647">Start the Python shell from within the <emph>program</emph> folder inside your %PRODUCTNAME installation path. Follow the steps <link href="text/sbasic/shared/03/sf_intro.xhp#InstallPath" name="Install_Path">above</link> to learn how to find your installation path.</paragraph>
+  <paragraph role="paragraph" id="par_id11623373098602"><emph>On Linux / Mac OS:</emph></paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id601623372243559"><input>$ cd /usr/lib/libreoffice/program</input></paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id601623372243336"><input>$ python</input></paragraph>
+  <paragraph role="paragraph" id="par_id311623373151552"><emph>On Windows:</emph></paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id601623372243204"><input>$ cd C:\Program Files\LibreOffice\program\</input></paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id601623372243399"><input>$ python.exe</input></paragraph>
+  <paragraph role="paragraph" id="par_id791623373520018">This will open the Python shell and now you can start typing commands that will be executed by %PRODUCTNAME. But first you need to set up the socket connection.</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id281623373588570">from scriptforge import ScriptForge, CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id121623373589306">ScriptForge(hostname='localhost', port=2021)</paragraph>
+  </pycode>
+  <paragraph role="paragraph" id="par_id351623373686414">The second line of code above defines the <literal>host</literal> and <literal>port</literal> settings so that the Python shell can communicate with an ongoing %PRODUCTNAME process opened with the same socket settings.</paragraph>
+  <paragraph role="paragraph" id="par_id721623373769471">Now you can run other Python commands and they will be able to communicate with the %PRODUCTNAME process. For example:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id731623373850131">ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id671623373851588">doc = ui.OpenDocument("~/Documents/myFile.ods")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id631623373909828">print(doc.DocumentType)</paragraph>
+  </pycode>
+
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#ScriptForge_lib"/>
+    <embed href="text/sbasic/python/main0000.xhp#pythonscriptshelp"/>
+    <embed href="text/shared/guide/start_parameters.xhp#Title_h1"/>
+  </section>
+  </body>
+</helpdocument>
