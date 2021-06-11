@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+    <meta>
+        <topic id="scriptforgemethods" indexer="include" status="PUBLISH">
+            <title id="tit" xml-lang="en-US">ScriptForge Method Signatures</title>
+            <filename>/text/sbasic/shared/03/sf_methods.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+    <h1 id="hd_id31529004750471" xml-lang="en-US"><variable id="SF_Signatures"><link href="text/sbasic/shared/03/sf_methods.xhp" name="ScriptForge Method Signatures"><literal>ScriptForge</literal> Method Signatures</link></variable></h1>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id491529070339774">
+        <bookmark_value>ScriptForge; Method signatures</bookmark_value>
+    </bookmark>
+    <paragraph role="paragraph" id="par_id681619700336879">ScriptForge libraries aggregate macro scripting resources for %PRODUCTNAME to be invoked from Basic macros or Python scripts. Its modules and classes are invoked from user scripts as "Services" that expose properties, methods and events.</paragraph>
+    <list type="unordered">
+       <listitem>
+          <paragraph id="par_id681623415196030" role="listitem">Whenever service methods are proposed solely for %PRODUCTNAME Basic, their syntax presentation matches that of Basic subroutines, functions or properties. </paragraph>
+       </listitem>
+       <listitem>
+          <paragraph id="par_id401623415235965" role="listitem">Whenever service methods are proposed for Python and Basic, or solely for Python, their syntax and arguments use a specific textual layout.</paragraph>
+       </listitem>
+    </list>
+
+    <h2 id="hd_id1001623415980365">Basic only service method</h2>
+    <paragraph role="paragraph" id="par_id791623418737799">Typographical characters such as brackets, ellipsis or curly braces denote optional, repetitive or compulsory arguments:</paragraph>
+    <embed href="text/sbasic/shared/conventions.xhp#Typography)"/>
+    <h3 id="hd _id511616863794613" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+    <bascode>
+       <paragraph role="bascode" localize="false" id="bas_id241623422100136">FSO.HashFile(FileName As String, _</paragraph>
+       <paragraph role="bascode" localize="false" id="bas_id101623423263928">    Algorithm As String = {MD5|SHA1|SHA224|SHA256|SHA384|SHA512}) As String</paragraph>
+       <paragraph role="bascode" localize="false" id="bas_id851623422099952">SF_Array.ImportFromCSVFile(FileName As String, _</paragraph>
+       <paragraph role="bascode" localize="false" id="bas_id741623423196368">    [Delimiter = ","], [DateFormat As String]) As Variant</paragraph>
+       <paragraph role="bascode" localize="false" id="bas_id691623422100368">SF_String.SplitNotQuoted(InputStr As String, _</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id881623423667888">    [Delimiter As String], [Occurrences As Long], [QuoteChar As String]) As Variant</paragraph>
+    </bascode>
+
+    <h2 id="hd_id711623416000470">Python or Basic service methods</h2>
+    <paragraph role="paragraph" id="par_id221623415475781">The following typographical rules are mixing the UML notation, the API documentation layout and the UNO object inspector user interface:</paragraph>
+    <list type="unordered">
+    <listitem>
+        <paragraph id="par_id661623417427142" role="listitem">Optional parameters are indicated with either opt, '=' accompanying a default value, or '[ ]' brackets.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id351623417430814" role="listitem">arguments are lowercased, in order to comply with Python PEP 8 while Basic is case-agnostic.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id781623417432494" role="listitem">Collections arguments or API sequences are denoted using UML multiplicity. That applies also to return values.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id741623417433319" role="listitem">Basic data types and Python annotations are syntactically transposed as:</paragraph>
+    </listitem>
+    </list>
+    <table id="tab_Datatypes">
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id131613838858931" localize="false" role="tablehead">%PRODUCTNAME<br/>Basic</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id441613838858931" role="tablehead">Syntax</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id441613839128931" localize="false" role="tablehead">Python</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id851613847558931" role="tablecontent">Boolean</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph role="tablecontent" localize="false" id="par_id581613836728425">bool</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph role="tablecontent" localize="false" id="par_id731613840022120">bool</paragraph>
+        </tablecell>
+      </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id241623419591966" localize="false" role="tablecontent">Date</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id541623420256687" role="tablecontent">datetime</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id421623420257224" role="tablecontent">datetime</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id651623419593960" localize="false" role="tablecontent">Double</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id321623420281678" role="tablecontent">float</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id471623420282320" role="tablecontent">float</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id421623419594151" localize="false" role="tablecontent">Integer</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id971623420314751" role="tablecontent">int</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id561623420315278" role="tablecontent">int</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id511623419594366" localize="false" role="tablecontent">Long</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id451623420342159" role="tablecontent">int</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id591623420343208" role="tablecontent">int</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id541623419594576" localize="false" role="tablecontent">Object</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id601623420375543" role="tablecontent">obj</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id931623419594783" localize="false" role="tablecontent">Single</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id821623420532337" role="tablecontent">float</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id351623420532936" role="tablecontent">float</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id391623419595010" localize="false" role="tablecontent">String</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id211623420546503" role="tablecontent">str</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id681623420559167" role="tablecontent">str</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id61623419595200" localize="false" role="tablecontent">Variant</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id81623420571390" role="tablecontent">any</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id931623419595424" role="tablecontent">UNO Object</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id821623420607671" role="tablecontent">uno</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id951623419595631" role="tablecontent">User Defined<br/>Type (UDT)</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id491623420626262" role="tablecontent">obj</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id451623419793734" role="tablecontent"><literal>ScriptForge</literal><br/>service</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id761623420648335" role="tablecontent">svc</paragraph>
+       </tablecell>
+    </tablerow>
+  </table>
+  <h3 id="hd _id622616863794724" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+  <paragraph role="paragraph" localize="false" id="par_id261623421276448"><input>svc.Forms( opt form: any ): svc[0..*]</input></paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id921623420866535"><input>svc.MsgBox( prompt: str, buttons = svc.MB_OK , opt title: str ): opt str</input></paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id641623420867288"><input>svc.InputBox( prompt: str, default = "", [ title: str ], [ xpostwips: int, ypostwips: int ] ): str</input></paragraph>
+</body>
+</helpdocument>
