@@ -21,6 +21,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdraw,\
     helpcontent2/source/text/sdraw/00/00000004 \
     helpcontent2/source/text/sdraw/00/page_menu \
     helpcontent2/source/text/sdraw/01/3dsettings_toolbar \
+    helpcontent2/source/text/sdraw/01/consolidatetext \
     helpcontent2/source/text/sdraw/01/delete_page \
     helpcontent2/source/text/sdraw/01/duplicate_page \
     helpcontent2/source/text/sdraw/01/insert_layer \
