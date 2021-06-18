@@ -323,22 +323,26 @@
       <bookmark_value>UI service;GetDocument</bookmark_value>
    </bookmark>
    <h2 id="hd_id171588520551515" localize="false">GetDocument</h2>
-   <paragraph role="paragraph" id="par_id201588520551463">Returns a document object referring to either the active window or the given window.</paragraph>
+   <paragraph role="paragraph" id="par_id201588520551463">Returns a document object referring to either the active window, a given window or the active document.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <paragraph role="paragraph" localize="false" id="par_id811620320778478">
-     <input>svc.GetDocument(windowname: str = ''): svc</input>
-   </paragraph>
+   <paragraph role="paragraph" localize="false" id="par_id811620320778478">     <input>svc.GetDocument(windowname: str = ''): svc</input></paragraph>
+   <paragraph role="paragraph" id="par_id251624026292796"><input>svc.GetDocument(windowname: uno): svc</input></paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id851588520551368"><emph>windowname</emph>: See the definitions <link href="text/sbasic/shared/03/sf_ui.xhp#WindowName" name="WindowName section">above</link>. If this argument is absent, the active window is used.</paragraph>
+   <paragraph role="paragraph" id="par_id851588520551368"><emph>windowname</emph>: See the definitions <link href="text/sbasic/shared/03/sf_ui.xhp#WindowName" name="WindowName section">above</link>. If this argument is absent, the active window is used. UNO objects of types com.sun.star.lang.XComponent or    com.sun.star.comp.dba.ODatabaseDocument are also accepted. Thus passing ThisComponent or ThisDatabaseDocument as argument creates a new SFDocuments.Document, Base or Calc service.
+</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id191588522924110">Dim myDoc As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id591588520551682">Set myDoc = ui.GetDocument("C:\Documents\My file.odt")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id651624025734467">Set myBase = ui.GetDocument(ThisDatabaseDocument)</paragraph>
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
      <paragraph role="pycode" localize="false" id="pyc_id831620330074037">myDoc = svcUI.GetDocument(r"C:\Documents\My file.odt")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id931624025986035">from scriptforge import CreateScriptService</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id641624026031595">bridge = CreateScriptService("Basic")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id601624025839840">myDoc = svcui.GetDocument(bridge.ThisComponent)</paragraph>
    </pycode>
    <tip id="par_id521620330287071">To access the name of the currently active window, refer to the <literal>ActiveWindow</literal> property.</tip>
 </section>
@@ -577,6 +581,7 @@
 
 <section id="relatedtopics">
   <embed href="text/sbasic/shared/03/sf_document.xhp#DocumentService"/>
+   <embed href="text/sbasic/shared/03/sf_basic.xhp#BasicService"/>
 </section>
 </body>
 </helpdocument>
