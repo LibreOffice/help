@@ -40,8 +40,36 @@
 <section id="howtoget">
 <embed href="text/scalc/00/00000404.xhp#eikatext"/>
 </section>
-<sort order="asc" descendant="h2">
 
+<section id="double_quotation_marks_in_formulas">
+<bookmark xml-lang="en-US" branch="index" id="bm_id331624453577057">
+  <bookmark_value>using double quotation marks in formulas</bookmark_value>
+  <bookmark_value>formulas; using double quotation marks</bookmark_value>
+</bookmark>
+  
+<h2 id="hd_id291624454173529">Using double quotation marks in formulas</h2> 
+
+<paragraph role="paragraph" id="par_id891624454058773">To include a text string in a formula, place the text string between two double quotation marks (") and Calc takes the characters in the string without attempting to interpret them. For example, the formula <input>="Hello world!"</input> displays the text string <emph>Hello world!</emph> in the cell, with no surrounding double quotation marks.</paragraph>
+
+<paragraph role="paragraph" id="par_id461624454425320">The more complex formula <input>=CONCATENATE("Life is really simple, "; "but we insist on making it complicated "; "(Confucius).")</input> concatenates three individual strings in double quotation marks, outputting <emph>Life is really simple, but we insist on making it complicated (Confucius).</emph></paragraph>
+
+<paragraph role="paragraph" id="par_id711624454477483">To place a literal double quotation mark within a string inside a formula, two methods can be used:</paragraph>
+  
+<list type="ordered">
+    <listitem>
+        <paragraph id="par_id541624454496424" role="listitem">You can "escape" the double quotation mark with an additional double quotation mark, and Calc treats the escaped double quotation mark as a literal value. For example, the formula <input>="My name is ""John Doe""."</input> outputs the string <emph>My name is "John Doe".</emph> Another simple example is the formula <input>=UNICODE("""")</input> which returns <emph>34</emph>, the decimal value of the Unicode quotation mark character (U+0022) - here the first and fourth double quotation marks indicate the beginning and end of the string, while the second double quotation mark escapes the third.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id21624454513641" role="listitem">You can use the CHAR function or the UNICHAR function to insert a double quotation mark. For example, the formula <input>=UNICHAR(34) &amp; "The Catcher in the Rye" &amp; UNICHAR(34) &amp; " is a famous book by J. D. Salinger."</input> displays the string <emph>"The Catcher in the Rye" is a famous book by J. D. Salinger.</emph></paragraph>
+    </listitem>
+</list>
+
+<paragraph role="paragraph" id="par_id401624454547945">Beware that Calc's AutoCorrect function may modify double quotation marks. AutoCorrect should not change the double quotation marks within formula cells but may change those used in non-formula cells containing text. For example, if you copy a string that is surrounded by some other form of typographical double quotation marks, such as the left double quotation mark (U+201C) and the right double quotation mark (U+201D), and then paste into a formula cell, an error may result. Open the <emph>Double Quotes</emph> area of the <menuitem>Tools > AutoCorrect Options > Localized Options</menuitem> dialog to set the characters used to automatically correct the start and end typographical double quotation marks. Untick the <menuitem>Replace</menuitem> toggle button to disable the feature.</paragraph>
+  
+</section>
+
+<sort order="asc" descendant="h2">  
+  
 <section id="arabic">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3149384">
   <bookmark_value>ARABIC function</bookmark_value>
