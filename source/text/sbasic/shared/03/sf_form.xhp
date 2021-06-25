@@ -83,7 +83,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" id="pyc_id691622014677169">my_form = doc.Forms(0)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id691622014677169">my_form = doc.Forms(0)</paragraph>
    </pycode>
    <warning id="par_id181618250546617">If you try to access a <literal>FormDocument</literal> that is currently opened in <emph>Design Mode</emph> an exception will be raised.</warning>
   <h3 id="hd_id921618179792926">In Calc documents</h3>
@@ -119,13 +119,13 @@
    </bascode>
    <paragraph role="paragraph" id="par_id681622028653480">Previous examples translate in Python as:</paragraph>
    <pycode>
-     <paragraph role="pycode" id="pyc_id501622028742999">db = CreateScriptService('SFDocuments.Document', XSCRIPTCONTEXT.getDocument())</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id501622028742999">db = CreateScriptService('SFDocuments.Document', XSCRIPTCONTEXT.getDocument())</paragraph>
      <paragraph role="pycode" id="pyc_id811622808499801">#  The statement below is necessary only if the form hasn't been opened yet</paragraph>
-     <paragraph role="pycode" id="pyc_id671622028743191">form_doc = db.OpenFormDocument('thisFormDocument')</paragraph>
-     <paragraph role="pycode" id="pyc_id431622028743374">form = form_doc.Forms('thisFormDocument', 'MainForm')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id671622028743191">form_doc = db.OpenFormDocument('thisFormDocument')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id431622028743374">form = form_doc.Forms('thisFormDocument', 'MainForm')</paragraph>
      <paragraph role="pycode" id="pyc_id511622808538351">#  Or, alternatively, to access the form by its index ...</paragraph>
-     <paragraph role="pycode" id="pyc_id681622028743582">form = form_doc.Forms('thisFormDocument', 0)</paragraph>
-     <paragraph role="pycode" id="pyc_id611622028743782">sub_form = form.SubForms('mySubForm')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id681622028743582">form = form_doc.Forms('thisFormDocument', 0)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id611622028743782">sub_form = form.SubForms('mySubForm')</paragraph>
    </pycode>
   <h3 id="hd_id211618180379064">In Form events</h3>
    <paragraph role="paragraph" id="par_id421616768529754" xml-lang="en-US">To invoke the <literal>Form</literal> service when a form event takes place:</paragraph>
@@ -138,17 +138,17 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" id="pyc_id551622022387877" localize="false">def OnEvent(event: uno):</paragraph>
-     <paragraph role="pycode" id="pyc_id081622022388165" localize="false">    form = CreateScriptService('SFDocuments.FormEvent', event)</paragraph>
-     <paragraph role="pycode" id="pyc_id641622022388397" localize="false">    pass</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id551622022387877" localize="false">def OnEvent(event: uno):</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id081622022388165" localize="false">    form = CreateScriptService('SFDocuments.FormEvent', event)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id641622022388397" localize="false">    pass</paragraph>
    </pycode>
    <embed href="text/sbasic/shared/03/sf_formcontrol.xhp#FormEvent_Note"/>
    <paragraph role="paragraph" id="par_id721623150543016">It is recommended to free resources after use of the Form service.</paragraph>
    <bascode>
-     <paragraph role="bascode" localize="false" id="bas_id751681880415566">myForm.Dispose() ' using Basic</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id751681880415566">myForm.Dispose() ' Basic</paragraph>
    </bascode>
    <pycode>
-     <paragraph role="pycode" id="pyc_id551226022387877" localize="false">form.Dispose()  # using Python</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id551226022387877">form.Dispose()  # Python</paragraph>
    </pycode>
    <paragraph role="paragraph" id="par_id221623150547406">This operation is done implicitly when a form document is closed with the <literal>CloseFormDocument()</literal> method described below.</paragraph>
 </section>
@@ -603,9 +603,9 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" id="pyc_id211622537233877" localize="false">doc = CreateScriptService('Document', XSCRIPTCONTEXT.getDocument())</paragraph>
-     <paragraph role="pycode" id="pyc_id181622537234494" localize="false">form = doc.Forms('Sheet1', 'FormA')</paragraph>
-     <paragraph role="pycode" id="pyc_id981622537234703" localize="false">form.Activate()</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id211622537233877" localize="false">doc = CreateScriptService('Document', XSCRIPTCONTEXT.getDocument())</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id181622537234494" localize="false">form = doc.Forms('Sheet1', 'FormA')</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id981622537234703" localize="false">form.Activate()</paragraph>
    </pycode>
   <note id="par_id81618228720782"><literal>ThisComponent</literal> applies to Calc and Writer documents. For Base documents use <literal>ThisDataBaseDocument</literal>.</note>
 </section>
@@ -624,7 +624,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-      <paragraph role="pycode" id="pyc_id331622538021746" localize="false">form.CloseFormDocument()  # Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id331622538021746" localize="false">form.CloseFormDocument()  # Python</paragraph>
    </pycode>
    <note id="par_id611618229004669">This method only closes form documents located in Base documents. If the form is stored in a Writer or Calc document, calling <literal>CloseFormDocument</literal> will have no effect.</note>
 </section>
@@ -680,7 +680,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-      <paragraph role="pycode" id="pyc_id871622547824003" localize="false">db = form.GetDatabase()  # SFDatabases.Database</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id871622547824003">db = form.GetDatabase()  # SFDatabases.Database</paragraph>
    </pycode>
 </section>
 <section id="MoveFirst">
@@ -698,7 +698,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-      <paragraph role="pycode" id="pyc_id421622549258920" localize="false">form.MoveFirst()  # Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id421622549258920">form.MoveFirst()  # Python</paragraph>
    </pycode>
 </section>
 <section id="MoveLast">
@@ -716,7 +716,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-      <paragraph role="pycode" id="pyc_id831622549604397" localize="false">form.MoveLast()  # Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id831622549604397">form.MoveLast()  # Python</paragraph>
    </pycode>
 </section>
 <section id="MoveNew">
@@ -734,7 +734,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-      <paragraph role="pycode" id="pyc_id381622549678558" localize="false">form.MoveNew()  # Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id381622549678558">form.MoveNew()  # Python</paragraph>
    </pycode>
 </section>
 <section id="MoveNext">
@@ -791,7 +791,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-      <paragraph role="pycode" id="pyc_id401622550186725">form.Requery()  # Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id401622550186725">form.Requery()  # Python</paragraph>
    </pycode>
 </section>
 <section id="Subforms">
@@ -814,8 +814,8 @@
    <paragraph role="paragraph" localize="false" id="par_id161623413158150"><input>svc.Subforms(subform: str): svc</input></paragraph>
    <paragraph role="paragraph" localize="false" id="par_id31623413181836"><input>svc.Subforms(subform: int): svc</input></paragraph>
    <h3 id="hd _id7516168645106" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id341616864510747"><emph>subform</emph> : A subform stored in the current <literal>Form</literal> class instance given by its name or index.</paragraph>
-   <paragraph role="paragraph" id="par_id211618230389251">When this argument is absent, the method returns a list of available subforms as a zero-based array. If the form has a single subform, you can set <literal>Subform = 0</literal> to get access to it.</paragraph>
+   <paragraph role="paragraph" id="par_id341616864510747"><emph>subform</emph>: A subform stored in the current <literal>Form</literal> class instance given by its name or index.</paragraph>
+   <paragraph role="paragraph" id="par_id211618230389251">When this argument is absent, the method returns a list of available subforms as a zero-based array. If the form has a single subform, you can set <literal>subform = 0</literal> to get access to it.</paragraph>
    <h3 id="hd _id491616864510587" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id821616864510402">Dim myForm As Object, myList As Variant, mySubform As Object</paragraph>
