@@ -55,34 +55,48 @@
 
     <h2 id="hd_id351585843652312" xml-lang="en-US">Service invocation</h2>
     <paragraph role="paragraph" id="par_id421614353247163">To invoke the <literal>L10N</literal> service, two optional arguments can be specified to determine the folder where PO files are located and the locale to be used, as described below.</paragraph>
-    <h3 id="hd_id261585843652264" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id73158584365294">CreateScriptService("L10N" [, FolderName As String [, Locale as String]])</paragraph>
-    </bascode>
-    <paragraph role="paragraph" id="par_id331585843652877" xml-lang="en-US"><emph>FolderName</emph>: The folder containing the PO files. It must be expressed in the <literal>FileSystem.FileNaming</literal> notation.</paragraph>
-    <paragraph role="paragraph" id="par_id581585843652789" xml-lang="en-US"><emph>Locale</emph>: A string in the form "la-CO" (language-COUNTRY) or in the form "la" (language) only.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id481625854402332">
+      <input>CreateScriptService("L10N", foldername: str, locale: str): svc</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id331585843652877" xml-lang="en-US"><emph>foldername</emph>: The folder containing the PO files. It must be expressed in the <literal>FileSystem.FileNaming</literal> notation.</paragraph>
+    <paragraph role="paragraph" id="par_id581585843652789" xml-lang="en-US"><emph>locale</emph>: A string in the form "la-CO" (language-COUNTRY) or in the form "la" (language) only.</paragraph>
     <note id="par_id301614358956087">Several instances of the <literal>L10N</literal> service may coexist. However, each instance must use a separate directory for its PO files.</note>
-    <embed href="text/sbasic/shared/00000003.xhp#Python_Support"/>
-    <h3 id="hd_id481585843652711" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <paragraph role="paragraph" id="par_id891614358528334">The following example instantiates the <literal>L10N</literal> service without any optional arguments. This will only enable the <literal>AddText</literal> and <literal>ExportToPOTFile</literal> methods.</paragraph>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id891585843652669">GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id821585843652135">Dim myPO As Variant</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id151585843652269">Set myPO = CreateScriptService("L10N")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id891585843652669">GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id821585843652135">Dim myPO As Variant</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id151585843652269">Set myPO = CreateScriptService("L10N")</paragraph>
     </bascode>
     <paragraph role="paragraph" id="par_id611614358672609">The example below specifies the folder containing the PO files. Because the locale is not defined, the service instance will use the current %PRODUCTNAME locale settings.</paragraph>
     <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id451614358683971">Set myPO = CreateScriptService("L10N", "C:\myPOFiles\")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id451614358683971">Set myPO = CreateScriptService("L10N", "C:\myPOFiles")</paragraph>
     </bascode>
+    <warning id="par_id391625855630975">The example above will result in an runtime error if the PO file for the current locale does not exist in the specified folder.</warning>
     <paragraph role="paragraph" id="par_id321614358809763">In the example below, both the folder name and locale settings are explicitly defined to be Belgian French.</paragraph>
     <bascode>
-      <paragraph role="bascode" id="bas_id661614358846464">Set myPO = CreateScriptService("L10N", "C:\myPOFiles\", "fr-BE")</paragraph>
+      <paragraph role="bascode" id="bas_id661614358846464">Set myPO = CreateScriptService("L10N", "C:\myPOFiles", "fr-BE")</paragraph>
     </bascode>
     <paragraph role="tip" id="par_id411585843652496" xml-lang="en-US">PO files must be named in the form "la-CO.po" or "la.po", where "la" refers to the language and "CO" is the country. Some examples are: "en-US.po", "fr-BE.po" or "fr.po".</paragraph>
     <paragraph role="paragraph" id="par_id171585843652545" xml-lang="en-US">It is recommended to free resources after use:</paragraph>
     <bascode>
       <paragraph role="bascode" localize="false" id="bas_id891585843652617">Set myPO = myPO.Dispose()</paragraph>
     </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <paragraph role="paragraph" id="par_id281625854773330">The examples above can be translated to Python as follows:</paragraph>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id941625854656863">from scriptforge import CreateScriptService</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id51625854657247">myPO = CreateScriptService('L10N')</paragraph>
+    </pycode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id761625854846211">myPO = CreateScriptService('L10N', r'C:\myPOFiles')</paragraph>
+    </pycode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id311625854879209">myPO = CreateScriptService('L10N', r'C:\myPOFiles', 'fr-BE')</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id11625855490095">myPO = myPO.Dispose()</paragraph>
+    </pycode>
 
 <bookmark localize="false" branch="index" id="bm_id871614359551930">
   <bookmark_value>L10N service;Folder</bookmark_value>
@@ -176,95 +190,118 @@
 
 
 <section id="AddText">
-  <comment> AddText -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> AddText ----------------------------------------------------------------------------------------------- </comment>
      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id951585843652555">
          <bookmark_value>L10N service;AddText</bookmark_value>
      </bookmark>
   <h2 id="hd_id191585843652902" localize="false">AddText</h2>
   <paragraph role="paragraph" id="par_id1001585843652271">Adds a new entry in the list of localizable strings. It must not exist yet.</paragraph>
-    <h3 id="hd_id151585843652710" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-     <bascode>
-       <paragraph role="bascode" localize="false" id="bas_id331585843652512">myPO.AddText(Context As String, MsgId As String, [Comment As String]) As Boolean</paragraph>
-     </bascode>
-    <h3 id="hd_id21585843652323" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id391585843652753"><emph>Context</emph>: The key to retrieve the translated string with the <literal>GetText</literal> method. This parameter has a default value of "".</paragraph>
-    <paragraph role="paragraph" id="par_id581585844419114" xml-lang="en-US"><emph>MsgId</emph>: The untranslated string, which is the text appearing in the program code. It must not be empty. The <literal>MsgId</literal> becomes the key to retrieve the translated string via <literal>GetText</literal> method when <literal>Context</literal> is empty.</paragraph>
-    <paragraph role="paragraph" id="par_id311614361926844">The <literal>MsgId</literal> string may contain any number of placeholders (%1 %2 %3 ...) for dynamically modifying the string at runtime.</paragraph>
-    <paragraph role="paragraph" id="par_id541585844475331" xml-lang="en-US"><emph>Comment</emph>: Optional comment to be added alongside the string to help translators.</paragraph>
-    <h3 id="hd_id741585843652525" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+    <paragraph role="paragraph" id="par_id641625855725050">The method returns <literal>True</literal> if successful.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id241625855910866">
+      <input>svc.AddText(context: str = '', msgid: str = '', comment: str = ''): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id391585843652753"><emph>context</emph>: The key to retrieve the translated string with the <literal>GetText</literal> method. This parameter has a default value of "".</paragraph>
+    <paragraph role="paragraph" id="par_id581585844419114" xml-lang="en-US"><emph>msgid</emph>: The untranslated string, which is the text appearing in the program code. It must not be empty. The <literal>msgid</literal> becomes the key to retrieve the translated string via <literal>GetText</literal> method when <literal>context</literal> is empty.</paragraph>
+    <paragraph role="paragraph" id="par_id311614361926844">The <literal>msgid</literal> string may contain any number of placeholders (%1 %2 %3 ...) for dynamically modifying the string at runtime.</paragraph>
+    <paragraph role="paragraph" id="par_id541585844475331" xml-lang="en-US"><emph>comment</emph>: Optional comment to be added alongside the string to help translators.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <paragraph role="paragraph" id="par_id461614364298440">The example below creates a set of strings in English:</paragraph>
-     <bascode>
-       <paragraph role="bascode" localize="false" id="bas_id61585843652630">myPO.AddText(, "This is a string to be included in a POT file")</paragraph>
-       <paragraph role="bascode" localize="false" id="bas_id61585843652141">myPO.AddText("CTX1", "A string with a context")</paragraph>
-       <paragraph role="bascode" localize="false" id="bas_id61585843653298">myPO.AddText(, "Provide a String value", Comment := "Do not translate the word String")</paragraph>
-     </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id61585843652630">myPO.AddText(, "This is a string to be included in a POT file")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id61585843652141">myPO.AddText("CTX1", "A string with a context")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id61585843653298">myPO.AddText(, "Provide a String value", Comment := "Do not translate the word String")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id821625856085583">myPO.AddText(msgid = 'This is a string to be included in a POT file')</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id821625856440596">myPO.AddText('CTX1', 'A string with a context')</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id521625856443065">myPO.AddText(msgid = 'Provide a String value', comment = 'Do not translate the word String')</paragraph>
+    </pycode>
 </section>
 
 <section id="ExportToPOTFile">
-  <comment> ExportToPOTFile -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> ExportToPOTFile --------------------------------------------------------------------------------------- </comment>
      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id471586102707389">
          <bookmark_value>L10N service;ExportToPOTFile</bookmark_value>
      </bookmark>
      <h2 id="hd_id231586102707125" localize="false">ExportToPOTFile</h2>
      <paragraph role="paragraph" id="par_id281586102707242">Exports a set of untranslated strings as a POT file.</paragraph>
-     <paragraph role="paragraph" id="par_id711586102939257" xml-lang="en-US">To build a set of strings you can use either a succession of <literal>AddText</literal> method calls, or by a successful invocation of the <literal>L10N</literal> service with the <literal>FolderName</literal> argument present. It is also possible to use a combination of both techniques.</paragraph>
-     <h3 id="hd_id961586102707388" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+     <paragraph role="paragraph" id="par_id711586102939257" xml-lang="en-US">To build a set of strings you can use either a succession of <literal>AddText</literal> method calls, or by a successful invocation of the <literal>L10N</literal> service with the <literal>foldername</literal> argument present. It is also possible to use a combination of both techniques.</paragraph>
+     <paragraph role="paragraph" id="par_id641625855725141">The method returns <literal>True</literal> if successful.</paragraph>
+     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+     <paragraph role="paragraph" localize="false" id="par_id161625856621303">
+       <input>svc.ExportToPOTFile(filename: str, header: str = '', encoding:str = 'UTF-8'): bool</input>
+     </paragraph>
+     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+     <paragraph role="paragraph" id="par_id31586102707537"><emph>filename</emph>: The output file in <literal>FileSystem.FileNaming</literal> notation.</paragraph>
+     <paragraph role="paragraph" id="par_id851586102707579" xml-lang="en-US"><emph>header</emph>: Comments that will be added on top of the generated POT file.</paragraph>
+     <paragraph role="paragraph" id="par_id111614364686973">Do not include any leading "#" characters. If you want the header to be broken into multiple lines, insert escape sequences (\n) where relevant. A standard header will be added alongside the text specified in the <literal>header</literal> argument.</paragraph>
+     <paragraph role="paragraph" id="par_id5158610270728" xml-lang="en-US"><emph>encoding</emph>: The character set to be used (Default = "UTF-8").</paragraph>
+     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
      <bascode>
-         <paragraph role="bascode" localize="false" id="bas_id961586102707920">myPO.ExportToPOTFile(FileName As String, [Header As String], [Encoding As String])</paragraph>
-     </bascode>
-     <h3 id="hd_id271586102707123" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-     <paragraph role="paragraph" id="par_id31586102707537"><emph>FileName</emph>: The output file in <literal>FileSystem.FileNaming</literal> notation.</paragraph>
-     <paragraph role="paragraph" id="par_id851586102707579" xml-lang="en-US"><emph>Header</emph>: Comments that will be added on top of the generated POT file.</paragraph>
-     <paragraph role="paragraph" id="par_id111614364686973">Do not include any leading "#" characters. If you want the header to be broken into multiple lines, insert escape sequences (\n) where relevant. A standard header will be added alongside the text specified in the <literal>Header</literal> argument.</paragraph>
-     <paragraph role="paragraph" id="par_id5158610270728" xml-lang="en-US"><emph>Encoding</emph>: The character set to be used (Default = "UTF-8").</paragraph>
-     <h3 id="hd_id421586102707515" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-     <bascode>
-         <paragraph role="bascode" localize="false" id="bas_id891586102707992">myPO.ExportToPOTFile("myFile.pot", Header := "First line of the header\nSecond line of the header")</paragraph>
+       <paragraph role="bascode" localize="false" id="bas_id761625856867301">' Basic</paragraph>
+       <paragraph role="bascode" localize="false" id="bas_id891586102707992">myPO.ExportToPOTFile("myFile.pot", Header := "First line of the header\nSecond line of the header")</paragraph>
     </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id141625856892715"># Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id131625856893020">myPO.ExportToPOTFile('myFile.pot', header = 'First line of the header\nSecond line of the header')</paragraph>
+    </pycode>
     <note id="par_id581614364494235">The generated file should successfully pass the <literal>msgfmt --check</literal> GNU command.</note>
 </section>
 
 <section id="GetText">
-  <comment> GetText -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> GetText ----------------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id131586165768747">
         <bookmark_value>L10N service;GetText</bookmark_value>
     </bookmark>
     <h2 id="hd_id56158616576884" localize="false">GetText</h2>
-    <paragraph role="paragraph" id="par_id891586165768715">Gets the translated string corresponding to the given <literal>MsgId</literal> argument.</paragraph>
+    <paragraph role="paragraph" id="par_id891586165768715">Gets the translated string corresponding to the given <literal>msgid</literal> argument.</paragraph>
     <paragraph role="paragraph" id="par_id291614365296959">A list of arguments may be specified to replace the placeholders (%1, %2, ...) in the string.</paragraph>
-    <paragraph role="paragraph" id="par_id231586166181909" xml-lang="en-US">If no translated string is found, the method returns the untranslated string after replacing the placeholders with the specified arguments.</paragraph>
-    <h3 id="hd_id461586165768714" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <paragraph role="paragraph" id="par_id231586166181909">If no translated string is found, the method returns the untranslated string after replacing the placeholders with the specified arguments.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" id="par_id871586352505927" xml-lang="en-US">This method can be called either by the full name <literal>GetText</literal> or by the shortcut <literal>_</literal> (a single underscore):</paragraph>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id901586165768628">myPO.GetText(MsgId As String[, Arg1[, Arg2[, ...]]]) As String</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id151586352401577">myPO._(MsgId As String[, Arg1[, Arg2[, ...]]]) As String</paragraph>
-    </bascode>
-    <note id="par_id421614967136502">In the ScriptForge library, all methods starting with the "_" character are reserved for internal use only. However, the shortcut <literal>_</literal> used for <literal>GetText</literal> is the only exception to this rule, hence it can be safely used in Basic scripts.</note>
-    <h3 id="hd_id771586165768201" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id51586165768525" xml-lang="en-US"><emph>MsgId</emph>: The untranslated string, which is the text appearing in the program code. It must not be empty. It may contain any number of placeholders (%1 %2 %3 ...) that can be used to dynamically insert text at runtime.</paragraph>
-    <paragraph role="paragraph" id="par_id11614365537450">Besides using a single <literal>MsgId</literal> string, this method also accepts the following formats:</paragraph>
+    <paragraph role="paragraph" localize="false" id="par_id661625857165908">
+      <input>svc.GetText(msgid: str, args: any[0..*]): str</input>
+    </paragraph>
+    <paragraph role="paragraph" localize="false" id="par_id661625857165119">
+      <input>svc._(msgid: str, args: any[0..*]): str</input>
+    </paragraph>
+    <note id="par_id421614967136502">In the ScriptForge library, all methods starting with the "_" character are reserved for internal use only. However, the shortcut <literal>_</literal> used for <literal>GetText</literal> is the only exception to this rule, hence it can be safely used in Basic and Python scripts.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id51586165768525" xml-lang="en-US"><emph>msgid</emph>: The untranslated string, which is the text appearing in the program code. It must not be empty. It may contain any number of placeholders (%1 %2 %3 ...) that can be used to dynamically insert text at runtime.</paragraph>
+    <paragraph role="paragraph" id="par_id11614365537450">Besides using a single <literal>msgid</literal> string, this method also accepts the following formats:</paragraph>
     <list type="unordered">
       <listitem>
-        <paragraph id="par_id961614365557277" role="listitem">The <literal>Context</literal> string with which the method will retrieve the <literal>MsgId</literal> in the PO file, or;</paragraph>
+        <paragraph id="par_id961614365557277" role="listitem">The <literal>context</literal> string with which the method will retrieve the <literal>msgid</literal> in the PO file, or;</paragraph>
       </listitem>
       <listitem>
-        <paragraph id="par_id981614365589866" role="listitem">A combination <literal>Context|MsgId</literal>, instructing the method to retrieve the <literal>MsgId</literal> using specified <literal>Context</literal> value. The second part of the argument is used to improve code readability.</paragraph>
+        <paragraph id="par_id981614365589866" role="listitem">A combination <literal>context|msgid</literal>, instructing the method to retrieve the <literal>msgid</literal> using specified <literal>context</literal> value. The second part of the argument is used to improve code readability.</paragraph>
       </listitem>
     </list>
-    <paragraph role="paragraph" id="par_id571586165768106" xml-lang="en-US"><emph>Arg1, ...</emph>: Values to be inserted into the placeholders. Any variable type is allowed, however only strings, numbers and dates will be considered.</paragraph>
-    <h3 id="hd_id791586165768980" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+    <paragraph role="paragraph" id="par_id571586165768106" xml-lang="en-US"><emph>args</emph>: Values to be inserted into the placeholders. Any variable type is allowed, however only strings, numbers and dates will be considered.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <paragraph role="paragraph" id="par_id701614365961454">Consider the following code is running on a %PRODUCTNAME installation with locale set to "es-ES". Additionally, there is a file "es-ES.po" inside the specified folder that translates the string passed to the <literal>GetText</literal> method:</paragraph>
     <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id171614366110835">myPO = CreateScriptService("L10N", "c:\MyPOFolder\")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id171614366110835">myPO = CreateScriptService("L10N", "C:\myPOFiles\")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id861586165768104">myPO.GetText("Welcome %1! Hope you enjoy this program", "John")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id1001586166834936">' "¡Bienvenido John! Espero que disfrutes de este programa"</paragraph>
     </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id821625858120620">myPO = CreateScriptService('L10N', r"C:\myPOFiles")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id231625858122952">myPO.GetText('Welcome %1! Hope you enjoy this program', 'John')</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id831625858123194"># "¡Bienvenido John! Espero que disfrutes de este programa"</paragraph>
+    </pycode>
 </section>
 
     <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
     <section id="relatedtopics">
       <embed href="text/sbasic/shared/03/sf_filesystem.xhp#FileSystemService"/>
-      <paragraph role="paragraph" id="par_id301613075694148"><link href="text/sbasic/guide/translation.xhp" name="Controls Translation">Translation of Controls in the Dialog Editor</link></paragraph>
+      <embed href="text/sbasic/guide/translation.xhp#translation"/>
     </section>
 </body>
 </helpdocument>
