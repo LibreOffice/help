@@ -625,6 +625,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/activex \
     helpcontent2/source/text/shared/guide/assistive \
     helpcontent2/source/text/shared/guide/autocorr_url \
+    helpcontent2/source/text/shared/guide/auto_redact \
     helpcontent2/source/text/shared/guide/autohide \
     helpcontent2/source/text/shared/guide/background \
     helpcontent2/source/text/shared/guide/border_paragraph \
