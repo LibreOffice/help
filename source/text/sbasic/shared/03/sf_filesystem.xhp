@@ -18,9 +18,9 @@
 
 <body>
 <section id="ScriptForge-sf_filesystem">
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41582391760252">
-        <bookmark_value>FileSystem service</bookmark_value>
-    </bookmark>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41582391760252">
+    <bookmark_value>FileSystem service</bookmark_value>
+  </bookmark>
 </section>
 
 <section id="abstract">
@@ -111,17 +111,20 @@
     <tip id="par_id861583589907100" xml-lang="en-US">An example of the URL notation is <emph>file:///C:/Documents/my_file.odt</emph>. Whenever possible consider using the URL notation because it is a more portable alternative.</tip>
 
     <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
-    <paragraph role="paragraph" id="par_id141610734722352">Before using the <literal>FileSystem</literal> service the <literal>ScriptForge</literal> library needs to be loaded using:</paragraph>
-      <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id551610734764343">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
-      </bascode>
     <paragraph role="paragraph" id="par_id691612990276070">The following code snippet invokes the <literal>FileSystem</literal> service. The method <literal>BuildPath</literal> was used as an example.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id371582885621964">Dim FSO As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id201582885621287">FSO = CreateScriptService("FileSystem")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id551610734764343">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id371582885621964">Dim FSO As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id201582885621287">Set FSO = CreateScriptService("FileSystem")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id901612990364784">FSO.BuildPath(...)</paragraph>
     </bascode>
-    <embed href="text/sbasic/shared/00000003.xhp#Python_Support"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id301626147154020">from scriptforge import CreateScriptService</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id771626147154696">fso = CreateScriptService("FileSystem")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id741626147154953">fso.BuildPath(...)</paragraph>
+    </pycode>
 
     <bookmark xml-lang="en-US" branch="index" id="bm_id901612991354326" localize="false">
       <bookmark_value>FileSystem service;FileNaming property</bookmark_value>
@@ -323,118 +326,144 @@
 </table>
 
 <section id="BuildPath">
-  <comment> BuildPath -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> BuildPath ----------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721583933076548">
         <bookmark_value>FileSystem service;BuildPath</bookmark_value>
     </bookmark>
     <h2 id="hd_id681583933076692" localize="false">BuildPath</h2>
     <paragraph role="paragraph" id="par_id871583933076448">Joins a folder path and the name of a file and returns the full file name with a valid path separator. The path separator is added only if necessary.</paragraph>
-    <h3 id="hd_id61583933076171" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id251626147640389">
+      <input>svc.BuildPath(foldername: str, name: str): str</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id90158393307695"><emph>foldername</emph>: The path with which <literal>name</literal> will be combined. The specified path does not need to be an existing folder.</paragraph>
+    <paragraph role="paragraph" id="par_id891583933076975"><emph>name</emph>: The name of the file to be appended to <literal>foldername</literal>. This parameter uses the notation of the current operating system.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id731583933076815">FSO.BuildPath(FolderName As String, Name As String) As String</paragraph>
-    </bascode>
-    <h3 id="hd_id321583933076658" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id90158393307695"><emph>FolderName</emph>: The path with which <literal>Name</literal> will be combined. The specified path does not need to be an existing folder.</paragraph>
-    <paragraph role="paragraph" id="par_id891583933076975"><emph>Name</emph>: The name of the file to be appended to <literal>FolderName</literal>. This parameter uses the notation of the current operating system.</paragraph>
-    <h3 id="hd_id26158393307687" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id571583933076688">Dim FSO : FSO = CreateScriptService("FileSystem")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id571583933076688">Dim FSO as Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id891626278435709">Set FSO = CreateScriptService("FileSystem")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id771626215559964">Dim aFileName as String</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id271583933076624">FSO.FileNaming = "URL"</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id531583933076390">MsgBox FSO.BuildPath("file:///home/user", "sample file.odt")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id591583933645158">'file:///home/user/sample%20file.odt</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id531583933076390">aFileName = FSO.BuildPath("file:///home/user", "sample file.odt")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id591583933645158">' file:///home/user/sample%20file.odt</paragraph>
     </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id811626215598688">fso = CreateScriptService("FileSystem")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id951626215599055">fso.FileNaming = "URL"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id151626215599287">aFileName = fso.BuildPath("file:///home/user", "sample file.odt")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id731626215599407"># file:///home/user/sample%20file.odt</paragraph>
+    </pycode>
 </section>
 
 <section id="CompareFiles">
-    <comment> CompareFiles -------------------------------------------------------------------------------------------------------------------------- </comment>
+    <comment> CompareFiles ----------------------------------------------------------------------------- </comment>
       <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141601118910914">
           <bookmark_value>FileSystem service;CompareFiles</bookmark_value>
       </bookmark>
       <h2 id="hd_id441601118910655" localize="false">CompareFiles</h2>
       <paragraph role="paragraph" id="par_id33160111891079">Compares two files and returns <literal>True</literal> when they seem identical.</paragraph>
-      <paragraph role="paragraph" id="par_id631601119001315" xml-lang="en-US">Depending on the value of the <literal>CompareContents</literal> argument, the comparison between both files can be either based only on file attributes (such as the last modified date), or based on the file contents.</paragraph>
-      <h3 id="hd_id91601118910918" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-      <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id401601118910956">FSO.CompareFiles(FileName1 As String, FileName2 As String, [CompareContents As Boolean]) As Boolean</paragraph>
-      </bascode>
-      <h3 id="hd_id641601118910334" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-      <paragraph role="paragraph" id="par_id481601118910755"><emph>FileName1, FileName2</emph>: The files to compare.</paragraph>
-      <paragraph role="paragraph" id="par_id111601118910848" xml-lang="en-US"><emph>CompareContents</emph>: When <literal>True</literal>, the contents of the files are compared (default = <literal>False</literal>).</paragraph>
-      <h3 id="hd_id421601118910835" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-      <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id231601118910666">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id101601118910778">If FSO.CompareFiles("C:\myFile1.txt", "C:\myFile2.txt", CompareContents := False) Then</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id171601123413866">    ...</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id271612997571657">End If</paragraph>
-      </bascode>
+      <paragraph role="paragraph" id="par_id631601119001315" xml-lang="en-US">Depending on the value of the <literal>comparecontents</literal> argument, the comparison between both files can be either based only on file attributes (such as the last modified date), or based on the file contents.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id61626148854349">
+      <input>svc.CompareFiles(filename1: str, filename2: str, comparecontents: bool = False): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+      <paragraph role="paragraph" id="par_id481601118910755"><emph>filename1, filename2</emph>: The files to compare.</paragraph>
+      <paragraph role="paragraph" id="par_id111601118910848" xml-lang="en-US"><emph>comparecontents</emph>: When <literal>True</literal>, the contents of the files are compared (default = <literal>False</literal>).</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id231601118910666">FSO.FileNaming = "SYS"</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id101601118910778">If FSO.CompareFiles("C:\myFile1.txt", "C:\myFile2.txt", CompareContents := False) Then</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id171601123413866">    ' ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id271612997571657">End If</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id341626215746128">fso.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id141626215746355">if fso.CompareFiles("C:\myFile1.txt", "C:\myFile2.txt", comparecontents = False):</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id111626215746495">    # ...</paragraph>
+    </pycode>
 </section>
 
 <section id="CopyFile">
-  <comment> CopyFile -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> CopyFile ---------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41584541257826">
         <bookmark_value>FileSystem service;CopyFile</bookmark_value>
     </bookmark>
     <h2 id="hd_id95158454125767" localize="false">CopyFile</h2>
     <paragraph role="paragraph" id="par_id161584541257982">Copies one or more files from one location to another. Returns <literal>True</literal> if at least one file has been copied or <literal>False</literal> if an error occurred.</paragraph>
-    <paragraph role="paragraph" id="par_id401612998805699">An error will also occur if the <literal>Source</literal> parameter uses wildcard characters and does not match any files.</paragraph>
+    <paragraph role="paragraph" id="par_id401612998805699">An error will also occur if the <literal>source</literal> parameter uses wildcard characters and does not match any files.</paragraph>
     <paragraph role="paragraph" id="par_id331612998814805">The method stops immediately after it encounters an error. The method does not roll back nor does it undo changes made before the error occurred.</paragraph>
-    <h3 id="hd_id601584541257443" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id201584541257726">FSO.CopyFile(Source As String, Destination As String, [Overwrite As Boolean]) As Boolean</paragraph>
-    </bascode>
-    <h3 id="hd_id291584541257237" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id1001584541257789"><emph>Source</emph>: It can be a <literal>FileName</literal> or a <literal>NamePattern</literal> indicating one or more files to be copied.</paragraph>
-    <paragraph role="paragraph" id="par_id111584542310166" xml-lang="en-US"><emph>Destination</emph>: It can be either a <literal>FileName</literal> specifying where the single <literal>Source</literal> file is to be copied, or a <literal>FolderName</literal> into which the multiple files from <literal>Source</literal> are to be copied.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id611626148998301">
+      <input>svc.CopyFile(source: str, destination: str, overwrite: bool = True): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id1001584541257789"><emph>source</emph>: It can be a <literal>FileName</literal> or a <literal>NamePattern</literal> indicating one or more files to be copied.</paragraph>
+    <paragraph role="paragraph" id="par_id111584542310166" xml-lang="en-US"><emph>destination</emph>: It can be either a <literal>FileName</literal> specifying where the single <literal>source</literal> file is to be copied, or a <literal>FolderName</literal> into which the multiple files from <literal>source</literal> are to be copied.</paragraph>
     <list type="unordered">
       <listitem>
-        <paragraph role="paragraph" id="par_id491612999134752">If <literal>FolderName</literal> does not exist, it is created.</paragraph>
+        <paragraph role="paragraph" id="par_id491612999134752">If <literal>destination</literal> does not exist, it is created.</paragraph>
       </listitem>
       <listitem>
-        <paragraph role="paragraph" id="par_id591612999166788">Wildcard characters are not allowed in <literal>Destination</literal>.</paragraph>
+        <paragraph role="paragraph" id="par_id591612999166788">Wildcard characters are not allowed in <literal>destination</literal>.</paragraph>
       </listitem>
     </list>
-    <paragraph role="paragraph" id="par_id251584542431558" xml-lang="en-US"><emph>Overwrite</emph>: If <literal>True</literal> (default), files may be overwritten. The method will fail if <literal>Destination</literal> is readonly, regardless of the value specified in <literal>Overwrite</literal>.</paragraph>
-    <h3 id="hd_id32158454125769" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+    <paragraph role="paragraph" id="par_id251584542431558" xml-lang="en-US"><emph>overwrite</emph>: If <literal>True</literal> (default), files may be overwritten. The method will fail if <literal>destination</literal> is readonly, regardless of the value specified in <literal>overwrite</literal>.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id691626216252568">In the examples below the first line copies a single file whereas the second line copies multiple files using wildcards.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id51584882315776">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" id="bas_id211613000903194">' Copies a single file</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id851613000918341">FSO.CopyFile("C:\Documents\my_file.odt", "C:\Temp\copied_file.odt")</paragraph>
-        <paragraph role="bascode" id="bas_id841584541257574">' Copies multiple files. Only files are copied, subfolders are not.</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id501584541257221">FSO.CopyFile("C:\Documents\*.*", "C:\Temp\", Overwrite := False)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id851613000918341">FSO.CopyFile("C:\Documents\my_file.odt", "C:\Temp\copied_file.odt")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id501584541257221">FSO.CopyFile("C:\Documents\*.*", "C:\Temp\", Overwrite := False)</paragraph>
     </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id471626216422324">fso.CopyFile(r"C:\Documents\my_file.odt", r"C:\Temp\copied_file.odt")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id141626216422517">fso.CopyFile(r"C:\Documents\*.*", r"C:\Temp", overwrite = False)</paragraph>
+    </pycode>
+    <note id="par_id411626216328023">Beware that sulfolders and their contents are not copied when wildcards are used in the <emph>source</emph> argument.</note>
 </section>
 
 <section id="CopyFolder">
-  <comment> CopyFolder -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> CopyFolder ----------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id661584544734386">
         <bookmark_value>FileSystem service;CopyFolder</bookmark_value>
     </bookmark>
     <h2 id="hd_id201584544734113" localize="false">CopyFolder</h2>
     <paragraph role="paragraph" id="par_id731584544734412">Copies one or more folders from one location to another. Returns <literal>True</literal> if at least one folder has been copied or <literal>False</literal> if an error occurred.</paragraph>
-    <paragraph role="paragraph" id="par_id21612999775377">An error will also occur if the <literal>Source</literal> parameter uses wildcard characters and does not match any folders.</paragraph>
+    <paragraph role="paragraph" id="par_id21612999775377">An error will also occur if the <literal>source</literal> parameter uses wildcard characters and does not match any folders.</paragraph>
     <paragraph role="paragraph" id="par_id701612999808912">The method stops immediately after it encounters an error. The method does not roll back nor does it undo changes made before the error occurred.</paragraph>
-    <h3 id="hd_id101584544734915" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id351584544734991">FSO.CopyFolder(Source As String, Destination As String, [Overwrite As Boolean]) As Boolean</paragraph>
-    </bascode>
-    <h3 id="hd_id81584544734599" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id851584544734202"><emph>Source</emph>: It can be a <literal>FolderName</literal> or a <literal>NamePattern</literal> indicating one or more folders to be copied.</paragraph>
-    <paragraph role="paragraph" id="par_id321584544734273" xml-lang="en-US"><emph>Destination</emph>: Specifies the <literal>FolderName</literal> into which the single or multiple folders defined in <literal>Source</literal> are to be copied.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id381626149136823">
+      <input>svc.CopyFolder(source: str, destination: str, overwrite: bool = True): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id851584544734202"><emph>source</emph>: It can be a <literal>FolderName</literal> or a <literal>NamePattern</literal> indicating one or more folders to be copied.</paragraph>
+    <paragraph role="paragraph" id="par_id321584544734273" xml-lang="en-US"><emph>destination</emph>: Specifies the <literal>FolderName</literal> into which the single or multiple folders defined in <literal>source</literal> are to be copied.</paragraph>
     <list type="unordered">
       <listitem>
-        <paragraph role="paragraph" id="par_id491612999134762">If <literal>FolderName</literal> does not exist, it is created.</paragraph>
+        <paragraph role="paragraph" id="par_id491612999134762">If <literal>destination</literal> does not exist, it is created.</paragraph>
       </listitem>
       <listitem>
-        <paragraph role="paragraph" id="par_id591612999166740">Wildcard characters are not allowed in <literal>Destination</literal>.</paragraph>
+        <paragraph role="paragraph" id="par_id591612999166740">Wildcard characters are not allowed in <literal>destination</literal>.</paragraph>
       </listitem>
     </list>
-    <paragraph role="paragraph" id="par_id251584542431525" xml-lang="en-US"><emph>Overwrite</emph>: If <literal>True</literal> (default), files may be overwritten. The method will fail if <literal>Destination</literal> is readonly, regardless of the value specified in <literal>Overwrite</literal>.</paragraph>
-    <h3 id="hd_id961584544734150" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+    <paragraph role="paragraph" id="par_id251584542431525" xml-lang="en-US"><emph>overwrite</emph>: If <literal>True</literal> (default), files may be overwritten. The method will fail if <literal>destination</literal> is readonly, regardless of the value specified in <literal>overwrite</literal>.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id751626216627481">In the examples below all files, folders and subfolders are copied.</paragraph>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id761584882338442">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id651584544734985">FSO.CopyFolder("C:\Documents\*", "C:\Temp\", Overwrite := False)</paragraph>
-        <paragraph role="bascode" id="bas_id541584544734497">' Folders, their files and their subfolders are copied</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id761584882338442">' Basic</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id651584544734985">FSO.CopyFolder("C:\Documents\*", "C:\Temp\", Overwrite := False)</paragraph>
     </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id431626216707056"># Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id771626216707454">fso.CopyFolder(r"C:\Documents\*", r"C:\Temp", overwrite = False)</paragraph>
+    </pycode>
 </section>
 
 <section id="CreateFolder">
@@ -445,41 +474,51 @@
     <h2 id="hd_id501584540675285" localize="false">CreateFolder</h2>
     <paragraph role="paragraph" id="par_id31158454067562">Creates the specified <literal>FolderName</literal>. Returns <literal>True</literal> if the folder could be successfully created.</paragraph>
     <paragraph role="paragraph" id="par_id431613000475359">If the specified folder has a parent folder that does not exist, it is created.</paragraph>
-    <h3 id="hd_id801584540675266" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id531626177201641">
+      <input>svc.CreateFolder(foldername: str): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id491584540675469"><emph>foldername</emph>: A string representing the folder to be created. If the folder already exists, an exception will be raised.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id311584540675905">FSO.CreateFolder(FolderName As String) As Boolean</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id441584540675381">' Basic</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id491584540675179">FSO.CreateFolder("C:\NewFolder")</paragraph>
     </bascode>
-    <h3 id="hd_id2158454067534" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id491584540675469"><emph>FolderName</emph>: A string representing the folder to be created. If the folder already exists, an exception will be raised.</paragraph>
-    <h3 id="hd_id16158454067562" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id441584540675381">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id491584540675179">FSO.CreateFolder("C:\NewFolder\")</paragraph>
-    </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id971626216947436"># Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id181626216947810">fso.CreateFolder(r"C:\NewFolder")</paragraph>
+    </pycode>
 </section>
 
 <section id="CreateTextFile">
-  <comment> CreateTextFile -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> CreateTextFile ------------------------------------------------------------------------------ </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id651585322689546">
         <bookmark_value>FolderSystem service;CreateTextFile</bookmark_value>
     </bookmark>
     <h2 id="hd_id19158532268911" localize="false">CreateTextFile</h2>
-    <paragraph role="paragraph" id="par_id731585322689518">Creates a specified file and returns a <literal>TextStream</literal> object that can be used to write to the file.</paragraph>
+    <paragraph role="paragraph" id="par_id731585322689518">Creates a specified file and returns a <literal>TextStream</literal> service instance that can be used to write to the file.</paragraph>
     <paragraph role="paragraph" id="par_id821613001057759">The method returns a <literal>Null</literal> object if an error occurred.</paragraph>
-    <h3 id="hd_id601585322689682" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id431626178025633">
+      <input>svc.CreateTextFile(filename: str, overwrite: boll = True, encoding: str = 'UTF-8'): svc</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id901585322689715"><emph>filename</emph>: The name of the file to be created.</paragraph>
+    <paragraph role="paragraph" id="par_id501585322689209"><emph>overwrite</emph>: Boolean value that determines if <literal>filename</literal> can be overwritten (default = <literal>True</literal>).</paragraph>
+    <paragraph role="paragraph" id="par_id551585322689192"><emph>encoding</emph>: The character set to be used. The default encoding is "UTF-8".</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id29158532268984">FSO.CreateTextFile(FileName As String, [Overwrite As Boolean], [Encoding As String]) As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id291585322689770">Dim myFile As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id541585322689351">FSO.FileNaming = "SYS"</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id51585322689982">Set myFile = FSO.CreateTextFile("C:\Temp\ThisFile.txt", Overwrite := True)</paragraph>
     </bascode>
-    <h3 id="hd_id831585322689487" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id901585322689715"><emph>FileName</emph>: The name of the file to be created.</paragraph>
-    <paragraph role="paragraph" id="par_id501585322689209" xml-lang="en-US"><emph>Overwrite</emph>: Boolean value that determines if <literal>FileName</literal> can be overwritten (default = <literal>True</literal>).</paragraph>
-    <paragraph role="paragraph" id="par_id551585322689192" xml-lang="en-US"><emph>Encoding</emph>: The character set to be used. The default encoding is "UTF-8".</paragraph>
-    <h3 id="hd_id601585322689988" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id291585322689770">Dim myFile As Object</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id541585322689351">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id51585322689982">Set myFile = FSO.CreateTextFile("C:\Temp\ThisFile.txt", Overwrite := True)</paragraph>
-    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id291626217084462">fso.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id251626217084848">myFile = fso.CreateTextFile(r"C:\Temp\ThisFile.txt", overwrite = True)</paragraph>
+    </pycode>
     <note id="par_id141613001281573">To learn more about the names of character sets, visit <link href="https://www.iana.org/assignments/character-sets/character-sets.xhtml" name="Character Sets">IANA's Character Set</link> page. Beware that %PRODUCTNAME does not implement all existing character sets.</note>
 </section>
 
@@ -490,21 +529,25 @@
     </bookmark>
     <h2 id="hd_id191584882040749" localize="false">DeleteFile</h2>
     <paragraph role="paragraph" id="par_id11584882040881">Deletes one or more files. Returns <literal>True</literal> if at least one file has been deleted or <literal>False</literal> if an error occurred.</paragraph>
-    <paragraph role="paragraph" id="par_id21612999775356">An error will also occur if the <literal>FileName</literal> parameter uses wildcard characters and does not match any files.</paragraph>
+    <paragraph role="paragraph" id="par_id21612999775356">An error will also occur if the <literal>filename</literal> parameter uses wildcard characters and does not match any files.</paragraph>
     <paragraph role="paragraph" id="par_id21613001848493">The files to be deleted must not be readonly.</paragraph>
     <paragraph role="paragraph" id="par_id701612999808832">The method stops immediately after it encounters an error. The method does not roll back nor does it undo changes made before the error occurred.</paragraph>
-    <h3 id="hd_id731584882040846" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id11626178195995">
+      <input>svc.DeleteFile(filename: str): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id441584882040860"><emph>filename</emph>: It can be a <literal>FileName</literal> or a <literal>NamePattern</literal> indicating one or more files to be deleted.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id851626217167909">In the examples below only files are deleted, subfolders are not deleted.</paragraph>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id991584882040438">FSO.DeleteFile(FileName As String) As Boolean</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id321584882040274">' Basic</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id501584882040356">FSO.DeleteFile("C:\Temp\*.docx")</paragraph>
     </bascode>
-    <h3 id="hd_id821584882040911" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id441584882040860"><emph>FileName</emph>: It can be a <literal>FileName</literal> or a <literal>NamePattern</literal> indicating one or more files to be deleted.</paragraph>
-    <h3 id="hd_id591584882040902" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id321584882040274">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id501584882040356">FSO.DeleteFile("C:\Temp\*.docx")</paragraph>
-        <paragraph role="bascode" id="bas_id181584882040535">' Only files are deleted, subfolders are not</paragraph>
-    </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id41626217239069"># Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id491626217239297">fso.DeleteFile(r"C:\Temp\*.docx")</paragraph>
+    </pycode>
 </section>
 
 <section id="DeleteFolder">
@@ -514,121 +557,153 @@
     </bookmark>
     <h2 id="hd_id151584882542309" localize="false">DeleteFolder</h2>
     <paragraph role="paragraph" id="par_id11584882015881">Deletes one or more folders. Returns <literal>True</literal> if at least one folder has been deleted or <literal>False</literal> if an error occurred.</paragraph>
-    <paragraph role="paragraph" id="par_id21612999775346">An error will also occur if the <literal>FolderName</literal> parameter uses wildcard characters and does not match any folders.</paragraph>
+    <paragraph role="paragraph" id="par_id21612999775346">An error will also occur if the <literal>foldername</literal> parameter uses wildcard characters and does not match any folders.</paragraph>
     <paragraph role="paragraph" id="par_id21613001848853">The folders to be deleted must not be readonly.</paragraph>
     <paragraph role="paragraph" id="par_id701612999808842">The method stops immediately after it encounters an error. The method does not roll back nor does it undo changes made before the error occurred.</paragraph>
-    <h3 id="hd_id441584882542432" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id61626178267917">
+      <input>svc.DeleteFolder(foldername: str): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id451584882542247"><emph>foldername</emph>: It can be a <literal>FolderName</literal> or a <literal>NamePattern</literal> indicating one or more folders to be deleted.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id651626217314709">In the examples below only folders and their contents are deleted. Files in the parent folder "C:\Temp" are not deleted.</paragraph>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id851584882542512">FSO.DeleteFolder(FolderName As String) As Boolean</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id751584882542695">' Basic</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id611584882542154">FSO.DeleteFolder("C:\Temp\*")</paragraph>
     </bascode>
-    <h3 id="hd_id641584882542272" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id451584882542247"><emph>FolderName</emph>: It can be a <literal>FolderName</literal> or a <literal>NamePattern</literal> indicating one or more folders to be deleted.</paragraph>
-    <h3 id="hd_id391584882542428" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id751584882542695">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id611584882542154">FSO.DeleteFolder("C:\Temp\*")</paragraph>
-        <paragraph role="bascode" id="bas_id491584882542177">' Only folders are deleted, files in the top folder (C:\Temp\) are not</paragraph>
-    </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id441626217397570"># Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id371626217398060">fso.DeleteFolder(r"C:\Temp\*")</paragraph>
+    </pycode>
 </section>
 
 <section id="FileExists">
-  <comment> FileExists -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> FileExists --------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id571583764426508">
         <bookmark_value>FileSystem service;FileExists</bookmark_value>
     </bookmark>
     <h2 id="hd_id39158376442641" localize="false">FileExists</h2>
     <paragraph role="paragraph" id="par_id161583764426709">Returns <literal>True</literal> if a given file name is valid and exists, otherwise the method returns <literal>False</literal>.</paragraph>
-    <paragraph role="paragraph" id="par_id91613003122613">If the <literal>FileName</literal> parameter is actually an existing folder name, the method returns <literal>False</literal>.</paragraph>
-    <h3 id="hd_id151583764426546" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <paragraph role="paragraph" id="par_id91613003122613">If the <literal>filename</literal> parameter is actually an existing folder name, the method returns <literal>False</literal>.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id201626178344527">
+      <input>svc.FileExists(filename: str): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id361583764426547"><emph>filename</emph>: A string representing the file to be tested.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id921583764426903">FSO.FileExists(FileName As String) As Boolean</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id621583764787755">FSO.FileNaming = "SYS"</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id821583764426197">If FSO.FileExists("C:\Documents\my_file.odt") Then</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id191613003283635">    '...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id891613003291580">End If</paragraph>
     </bascode>
-    <h3 id="hd_id641583764426186" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id361583764426547"><emph>FileName</emph>: A string representing the file to be tested.</paragraph>
-    <h3 id="hd_id691583764426580" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id621583764787755">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id821583764426197">If FSO.FileExists("C:\Documents\my_file.odt") Then</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id191613003283635">    '...</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id891613003291580">End If</paragraph>
-    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id551626270512839">fso.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id411626270513159">if fso.FileExists(r"C:\Documents\my_file.odt"):</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id591626270513425">    # ...</paragraph>
+    </pycode>
 </section>
 
 <section id="Files">
-  <comment> Files -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> Files ------------------------------------------------------------------------------------------ </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id771583944327771">
         <bookmark_value>FileSystem service;Files</bookmark_value>
     </bookmark>
     <h2 id="hd_id461583944327647" localize="false">Files</h2>
     <paragraph role="paragraph" id="par_id11158394432779">Returns a zero-based array of the files stored in a given folder. Each entry in the array is a string containing the full path and file name.</paragraph>
-    <paragraph role="paragraph" id="par_id641613003790120">If <literal>FolderName</literal> does not exist, an exception is raised.</paragraph>
+    <paragraph role="paragraph" id="par_id641613003790120">If the argument <literal>foldername</literal> specifies a folder that does not exist, an exception is raised.</paragraph>
     <paragraph role="paragraph" id="par_id821613003779799">The resulting list may be filtered with wildcards.</paragraph>
-    <h3 id="hd_id201583944327395" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id211626178396995">
+      <input>svc.Files(foldername: str, filter: str = ''): str[0..*]</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id731583944543140"><emph>foldername</emph>: A string representing a folder. The folder must exist. This argument must not designate a file.</paragraph>
+    <paragraph role="paragraph" id="par_id591585648450060" xml-lang="en-US"><emph>filter</emph>: A string containing wildcards ("?" and "*") that will be applied to the resulting list of files (default = "").</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id641583944327587">FSO.Files(FolderName As String, [Filter As String]) As Variant</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id381583944327923">Dim filesList As Variant, file As String</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id581583944327968">FSO.FileNaming = "SYS"</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id451583944327508">filesList = FSO.Files("/home/user/", "*.txt")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id521583944732086">For Each file In filesList</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id421583944743304">    ' ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id721583944748672">Next file</paragraph>
     </bascode>
-    <h3 id="hd_id41158394454325" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id731583944543140"><emph>FolderName</emph>: A string representing a folder. The folder must exist. <literal>FolderName</literal> must not designate a file.</paragraph>
-    <paragraph role="paragraph" id="par_id591585648450060" xml-lang="en-US"><emph>Filter</emph>: A string containing wildcards ("?" and "*") that will be applied to the resulting list of files (default = "").</paragraph>
-    <h3 id="hdid751583944327746" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id381583944327923">Dim filesList As Variant, file As String</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id581583944327968">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id451583944327508">filesList = FSO.Files("/home/user/", "*.txt")</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id521583944732086">For Each file In filesList</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id421583944743304">    ' ...</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id721583944748672">Next file</paragraph>
-    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id811626270625785">fso.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id761626270626093">filesList = fso.Files("/home/user/", "*.txt")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id381626270626357">for file in fileList:</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id941626270626838">    # ...</paragraph>
+    </pycode>
 </section>
 
 <section id="FolderExists">
-  <comment> FolderExists -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> FolderExists -------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id11583765642643">
         <bookmark_value>FileSystem service;FolderExists</bookmark_value>
     </bookmark>
     <h2 id="hd_id421583765642360" localize="false">FolderExists</h2>
     <paragraph role="paragraph" id="par_id51583765642590">Returns <literal>True</literal> if the specified <literal>FolderName</literal> is valid and exists, otherwise the method returns <literal>False</literal>.</paragraph>
-    <paragraph role="paragraph" id="par_id151613004111990">If the <literal>FolderName</literal> parameter is actually an existing file name, the method returns <literal>False</literal>.</paragraph>
-    <h3 id="hd_id541583765642759" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <paragraph role="paragraph" id="par_id151613004111990">If the <literal>foldernme</literal> parameter is actually an existing file name, the method returns <literal>False</literal>.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id451626270785443">
+      <input>svc.FolderExists(foldername: str): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id1001583765642211"><emph>foldername</emph>: A string representing the folder to be tested.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id361583765642228">FSO.FolderExists(FolderName As String) As Boolean</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id301583765642138">FSO.FileNaming = "SYS"</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id771583765642330">If FSO.FolderExists("C:\Documents\Thesis") Then</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id21613004201438">    '...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id861613004206334">End If</paragraph>
     </bascode>
-    <h3 id="hd_id301583765642930" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id1001583765642211"><emph>FolderName</emph>: A string representing the folder to be tested.</paragraph>
-    <h3 id="hd_id331583765642394" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id301583765642138">FSO.FolderNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id771583765642330">If FSO.FolderExists("C:\Documents\Thesis") Then</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id21613004201438">    '...</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id861613004206334">End If</paragraph>
-    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id761626270831628">fso.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id531626270831916">if fso.FolderExists(r"C:\Documents\Thesis")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id801626270832082">    # ...</paragraph>
+    </pycode>
 </section>
 
 <section id="GetBaseName">
-  <comment> GetBaseName -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> GetBaseName ---------------------------------------------------------------------------------------</comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id54158411061866">
         <bookmark_value>FileSystem service;GetBaseName</bookmark_value>
     </bookmark>
     <h2 id="hd_id111584110618587" localize="false">GetBaseName</h2>
     <paragraph role="paragraph" id="par_id521584110618989">Returns the <literal>BaseName</literal> (equal to the last component) of a folder or file name, without its extension.</paragraph>
     <paragraph role="paragraph" id="par_id731613004316790">The method does not check if the specified file or folder exists.</paragraph>
-    <h3 id="hd_id251584110618646" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id301626178954105">
+      <input>svc.GetBaseName(filename: str): str</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id691584110618308"><emph>filename</emph>: A string representing the file name and its path.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id1001626271201609">In the examples below, the first <literal>GetBaseName</literal> method call corresponds to a folder, so the function returns the last component of the path. The second call receives a file name as input, so the name of the file is returned without its extension.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id22158411061854">FSO.GetBaseName(FileName As String) As String</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id201584110618266">MsgBox FSO.GetBaseName("/home/user/Documents") ' "Documents"</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id211584110618884">MsgBox FSO.GetBaseName("/home/user/Documents/my_file.ods") ' "my_file"</paragraph>
     </bascode>
-    <h3 id="hd_id451584110618983" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id691584110618308"><emph>FileName</emph>: A string representing the file name and its path.</paragraph>
-    <h3 id="hd_id48158411061852" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" id="bas_id861584110618986">' If the input parameter is a folder, it returns the last component of the path</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id201584110618266">MsgBox FSO.GetBaseName("/home/user/Documents") ' "Documents"</paragraph>
-        <paragraph role="bascode" id="bas_id591613004793431">' If the input parameter is a file, the method returns the file name without the extension and the path</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id211584110618884">MsgBox FSO.GetBaseName("/home/user/Documents/my_file.ods") ' "my_file"</paragraph>
-    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id431626271314848">bas = CreateScriptService("Basic")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id411626271315092">bas.MsgBox(fso.GetBaseName("/home/user/Documents")) # "Documents"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id821626271315317">bas.MsgBox(fso.GetBaseName("/home/user/Documents/my_file.ods")) # "my_file"</paragraph>
+    </pycode>
 </section>
 
 <section id="GetExtension">
-  <comment> GetExtension -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> GetExtension ------------------------------------------------------------------------------------ </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id271584032680645">
         <bookmark_value>FileSystem service;GetExtension</bookmark_value>
     </bookmark>
@@ -636,39 +711,49 @@
     <paragraph role="paragraph" id="par_id831584032680866">Returns the extension part of a file or folder name without the dot "." character.</paragraph>
     <paragraph role="paragraph" id="par_id941613060736524">The method does not check for the existence of the specified file or folder.</paragraph>
     <paragraph role="paragraph" id="par_id561613060896361">If this method is applied to a folder name or to a file without an extension, then an empty string is returned.</paragraph>
-    <h3 id="hd_id19158403268038" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id481626179171535">
+      <input>svc.GetExtension(filename: str): str</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821584032680311"><emph>filename</emph>: A string representing the file name and its path.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id571584032680636">FSO.GetExtension(FileName As String) As String</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id241584032680600">' Basic</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id651584032680887">ext = FSO.GetExtension("C:\Windows\Notepad.exe")  ' "exe"</paragraph>
     </bascode>
-    <h3 id="hd_id761584032680163" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id821584032680311"><emph>FileName</emph>: A string representing the file name and its path.</paragraph>
-    <h3 id="hd_id631584032680726" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id241584032680600">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id651584032680887">MsgBox FSO.GetExtension("C:\Windows\Notepad.exe")  ' "exe"</paragraph>
-    </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id391626271533012"># Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id751626271533408">ext = fso.GetExtension(r"C:\Windows\Notepad.exe")  # "exe"</paragraph>
+    </pycode>
 </section>
 
 <section id="GetFileLen">
-    <comment> GetFileLen -------------------------------------------------------------------------------------------------------------------------- </comment>
+    <comment> GetFileLen ----------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id511600685050691">
         <bookmark_value>FileSystem service;GetFileLen</bookmark_value>
     </bookmark>
     <h2 id="hd_id301600685050869" localize="false">GetFileLen</h2>
     <paragraph role="paragraph" id="par_id48160068505010">The builtin <literal>FileLen</literal> Basic function returns the number of bytes contained in a file as a <literal>Long</literal> value, i.e. up to 2GB.</paragraph>
     <paragraph role="paragraph" id="par_id571613061005426">The <literal>GetFileLen</literal> method can handle files with much larger sizes by returning a <literal>Currency</literal> value.</paragraph>
-    <h3 id="hd_id471600685050171" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id1001626179285915">
+      <input>svc.GetFileLen(filename: str): num</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id161600685050367"><emph>filename</emph>: A string representing an existing file.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id821600685050342">FSO.GetFileLen(FileName As String) As Currency</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id901600685050677">Dim fLen As Currency</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id721600685050519">FSO.FileNaming = "SYS"</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id961600685050123">fLen = FSO.GetFileLen("C:\pagefile.sys")</paragraph>
     </bascode>
-    <h3 id="hd_id31600685050872" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id161600685050367"><emph>FileName</emph>: A string representing an existing file.</paragraph>
-    <h3 id="hd_id831600685050271" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id901600685050677">Dim a As Currency</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id721600685050519">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id961600685050123">a = FSO.GetFileLen("C:\pagefile.sys")</paragraph>
-    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id201626271668440">fso.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id361626271668899">fLen = fso.GetFileLen(r"C:\pagefile.sys")</paragraph>
+    </pycode>
 </section>
 
 <section id="GetFileModified">
@@ -678,18 +763,24 @@
     </bookmark>
     <h2 id="hd_id651584811478113" localize="false">GetFileModified</h2>
     <paragraph role="paragraph" id="par_id191584811478936">Returns the last modified date of a given file.</paragraph>
-    <h3 id="hd_id831584811478834" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id491626179415178">
+      <input>svc.GetFileModified(filename: str): datetime</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id25158481147822"><emph>filename</emph>: A string representing an existing file.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id521584811478511">FSO.GetFileModified(FileName As String) As Date</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id911584811636241">Dim aDate As Date</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id351584811478870">FSO.FileNaming = "SYS"</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id111584811478888">aDate = FSO.GetFileModified("C:\Documents\my_file.odt")</paragraph>
     </bascode>
-    <h3 id="hd_id271584811478116" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id25158481147822"><emph>FileName</emph>: A string representing an existing file.</paragraph>
-    <h3 id="hd_id811584811478741" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id911584811636241">Dim a As Date</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id351584811478870">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id111584811478888">a = FSO.GetFileModified("C:\Documents\my_file.odt")</paragraph>
-    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id531626271811921">fso.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id301626271812468">aDate = FSO.GetFileModified(r"C:\Documents\my_file.odt")</paragraph>
+    </pycode>
 </section>
 
 <section id="GetName">
@@ -700,44 +791,50 @@
     <h2 id="hd_id761584032366379" localize="false">GetName</h2>
     <paragraph role="paragraph" id="par_id711584032366587">Returns the last component of a file or folder name in native operating system format.</paragraph>
     <paragraph role="paragraph" id="par_id541613061300811">The method does not check if the specified file or folder exists.</paragraph>
-    <h3 id="hd_id801584032366162" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id601626179529154">
+      <input>svc.GetName(filename: str): str</input>
+    </paragraph>  
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id671584032366193"><emph>filename</emph>: A string representing the file name and its path.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id321584032366710">FSO.GetName(FileName As String) As String</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id731626271995119">' Basic</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id61158403236686">a = FSO.GetName("C:\Windows\Notepad.exe")  ' Notepad.exe</paragraph>
     </bascode>
-    <h3 id="hd_id61584032366208" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id671584032366193"><emph>FileName</emph>: A string representing the file name and its path.</paragraph>
-    <h3 id="hd_id141584032366384" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id381584032366430">Dim a As String</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id291584032366309">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id61158403236686">a = FSO.GetName("C:\Windows\Notepad.exe"  ' Notepad.exe</paragraph>
-    </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id91626272012883"># Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id221626272013299">a = fso.GetName(r"C:\Windows\Notepad.exe")  # Notepad.exe</paragraph>
+    </pycode>
 </section>
 
 <section id="GetParentFolderName">
-  <comment> GetParentFolderName -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> GetParentFolderName -------------------------------------------------------------------------------</comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id211584113432829">
         <bookmark_value>FileSystem service;GetParentFolderName</bookmark_value>
     </bookmark>
     <h2 id="hd_id94158411343258" localize="false">GetParentFolderName</h2>
     <paragraph role="paragraph" id="par_id871584113432747">Returns a string containing the name of the parent folder of a specified file or folder name.</paragraph>
     <paragraph role="paragraph" id="par_id611613061603039">The method does not check if the specified file or folder exists.</paragraph>
-    <h3 id="hd_id571584113432706" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id791626179605250">
+      <input>svc.GetParentFolderName(filename: str): str</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id471584113432231"><emph>filename</emph>: A string with the file or folder name to be analyzed.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id151584113432818">FSO.GetParentFolderName(FileName As String) As String</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id100158411343225">' Basic</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id161584113432533">a = FSO.GetParentFolderName("C:\Windows\Notepad.exe")  ' C:\Windows\</paragraph>
     </bascode>
-    <h3 id="hd_id39158411343279" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id471584113432231"><emph>FileName</emph>: A string with the file or folder name to be analyzed.</paragraph>
-    <h3 id="hd_id71584113432160" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id100158411343225">Dim a As String</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id241584113432211">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id161584113432533">a = FSO.GetParentFolderName("C:\Windows\Notepad.exe"  ' C:\Windows\</paragraph>
-    </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id871626272152981"># Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id711626272153205">a = fso.GetParentFolderName(r"C:\Windows\Notepad.exe")  # C:\Windows\</paragraph>
+    </pycode>
 </section>
 
 <section id="GetTempName">
-  <comment> GetTempName -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> GetTempName ---------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id621583851172862">
         <bookmark_value>FileSystem service;GetTempName</bookmark_value>
     </bookmark>
@@ -745,21 +842,28 @@
     <paragraph role="paragraph" id="par_id82158385117289">Returns a randomly generated temporary file name that is useful for performing operations that require a temporary file.</paragraph>
     <paragraph role="paragraph" id="par_id391613061770924">The returned file name does not have any suffix. The folder part of the returned string is the system's temporary folder.</paragraph>
     <paragraph role="paragraph" id="par_id971613061774934">The method does not create the temporary file.</paragraph>
-    <h3 id="hd_id11583851172702" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id81626212807031">
+      <input>svc.GetTempName(): str</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id281583851172149">FSO.GetTempName() As String</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id41583851448294">Dim fName As String</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id311583851172939">FSO.FileNaming = "SYS"</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id381583851172545">fName = FSO.GetTempName() &amp; ".txt"</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id381583851275546">' "/tmp/SF_574068.txt"</paragraph>
     </bascode>
-    <h3 id="hd_id381583851172892" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id41583851448294">Dim a As String</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id311583851172939">FSO.FolderNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id381583851172545">a = FSO.GetTempName() &amp; ".txt"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id381583851275546">' "/tmp/SF_574068.txt"</paragraph>
-    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id791626272322530">fso.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id121626272322966">fName = FSO.GetTempName() + ".txt"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id991626272323308"># "/tmp/SF_574068.txt"</paragraph>
+    </pycode>
 </section>
 
 <section id="HashFile">
-    <comment> HashFile -------------------------------------------------------------------------------------------------------------------------- </comment>
+    <comment> HashFile -------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id771601042514294">
         <bookmark_value>FileSystem service;HashFile</bookmark_value>
     </bookmark>
@@ -767,91 +871,101 @@
     <paragraph role="paragraph" id="par_id58160104251423">Hash functions are used by some cryptographic algorithms, in digital signatures, message authentication codes, fraud detection, fingerprints, checksums (message integrity check), hash tables, password storage and much more.</paragraph>
     <paragraph role="paragraph" id="par_id301601042791356" xml-lang="en-US">The <literal>HashFile</literal> method returns the result of a hash function, applied on a given file and using a specified algorithm. The returned value is a string of lower-case hexadecimal digits.</paragraph>
     <paragraph role="paragraph" id="par_id861601043268484" xml-lang="en-US">The hash algorithms supported are: <literal>MD5</literal>, <literal>SHA1</literal>, <literal>SHA224</literal>, <literal>SHA256</literal>, <literal>SHA384</literal> and <literal>SHA512</literal>.</paragraph>
-    <h3 id="hd_id131601042514185" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id311626212875189">
+      <input>svc.HashFile(filename: str, algorithm: str): str</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id28160104251451"><emph>filename</emph>: A string representing an existing file.</paragraph>
+    <paragraph role="paragraph" id="par_id71601042959846" xml-lang="en-US"><emph>algorithm</emph>: One of the supported algorithms.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id901601042514520">FSO.HashFile(FileName As String, Algorithm As String) As String</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id1160104251483">' Basic</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id391601042514664">sHash = FSO.HashFile("C:\pagefile.sys", "MD5")</paragraph>
     </bascode>
-    <h3 id="hd_id571601042514450" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id28160104251451"><emph>FileName</emph>: A string representing an existing file.</paragraph>
-    <paragraph role="paragraph" id="par_id71601042959846" xml-lang="en-US"><emph>Algorithm</emph>: One of the supported algorithms.</paragraph>
-    <h3 id="hd_id911601042514639" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id1160104251483">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id391601042514664">MsgBox FSO.HashFile("C:\pagefile.sys", "MD5")</paragraph>
-    </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id161626272480577"># Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id221626272480829">sHash = FSO.HashFile(r"C:\pagefile.sys", "MD5")</paragraph>
+    </pycode>
 </section>
 
 <section id="MoveFile">
-  <comment> MoveFile -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> MoveFile -------------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41584791330923">
         <bookmark_value>FileSystem service;MoveFile</bookmark_value>
     </bookmark>
     <h2 id="hd_id321584791330580" localize="false">MoveFile</h2>
     <paragraph role="paragraph" id="par_id51584791330688">Moves one or more files from one location to another. Returns <literal>True</literal> if at least one file has been moved or <literal>False</literal> if an error occurred.</paragraph>
-    <paragraph role="paragraph" id="par_id631613062890648">An error will also occur if the <literal>Source</literal> parameter uses wildcard characters and does not match any files.</paragraph>
+    <paragraph role="paragraph" id="par_id631613062890648">An error will also occur if the <literal>source</literal> parameter uses wildcard characters and does not match any files.</paragraph>
     <paragraph role="paragraph" id="par_id241613062902777">The method stops immediately after it encounters an error. The method does not roll back nor does it undo changes made before the error occurred.</paragraph>
-    <h3 id="hd_id87158479133082" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id851626214194605">
+      <input>svc.MoveFile(source: str, destination: str): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id721584791330406"><emph>source</emph>: It can be a <literal>FileName</literal> or <literal>NamePattern</literal> to designate one or more files to be moved.</paragraph>
+    <paragraph role="paragraph" id="par_id291584791330181" xml-lang="en-US"><emph>destination</emph>: If <literal>source</literal> is a <literal>FileName</literal> then this parameter indicates the new path and file name of the moved file.</paragraph>
+    <paragraph role="paragraph" id="par_id31613063334246">If the move operation involves multiple files, then <literal>destination</literal> must be a folder name. If it does not exist, it is created.</paragraph>
+    <paragraph role="paragraph" id="par_id391613063494599">If <literal>source</literal> and <literal>destination</literal> have the same parent folder, the method will rename the <literal>source</literal>.</paragraph>
+    <paragraph role="paragraph" id="par_id941613063476533">Wildcard characters are not allowed in <literal>destination</literal>.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id91626272612758">In the following examples only files are moved, subfolders are not.</paragraph>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id1001584791330829">FSO.MoveFile(Source As String, Destination As String) As Boolean</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id211584791330821">' Basic</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id881584791330102">FSO.MoveFile("C:\Temp1\*.*", "C:\Temp2")</paragraph>
     </bascode>
-    <h3 id="hd_id93158479133092" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id721584791330406"><emph>Source</emph>: It can be a <literal>FileName</literal> or <literal>NamePattern</literal> to designate one or more files to be moved.</paragraph>
-    <paragraph role="paragraph" id="par_id291584791330181" xml-lang="en-US"><emph>Destination</emph>: If <literal>Source</literal> is a <literal>FileName</literal> then this parameter indicates the new path and file name of the moved file.</paragraph>
-    <paragraph role="paragraph" id="par_id31613063334246">If the move operation involves multiple files, then <literal>Destination</literal> must be a folder name. If it does not exist, it is created.</paragraph>
-    <paragraph role="paragraph" id="par_id391613063494599">If <literal>Source</literal> and <literal>Destination</literal> have the same parent folder, the method will rename the <literal>Source</literal>.</paragraph>
-    <paragraph role="paragraph" id="par_id941613063476533">Wildcard characters are not allowed in <literal>Destination</literal>.</paragraph>
-    <h3 id="hd_id451584791330878" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id211584791330821">Dim a As String</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id471584882463679">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id881584791330102">FSO.MoveFile("C:\Temp1\*.*", "C:\Temp2\")</paragraph>
-        <paragraph role="bascode" id="bas_id331584791330495">' Only files are moved, subfolders are not</paragraph>
-    </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id731626272648304"># Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id501626272649065">fso.MoveFile(r"C:\Temp1\*.*", r"C:\Temp2")</paragraph>
+    </pycode>
 </section>
 
 <section id="MoveFolder">
-  <comment> MoveFolder -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> MoveFolder --------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141584791330310">
         <bookmark_value>FolderSystem service;MoveFolder</bookmark_value>
     </bookmark>
     <h2 id="hd_id221584791330200" localize="false">MoveFolder</h2>
     <paragraph role="paragraph" id="par_id301584791330868">Moves one or more folders from one location to another. Returns <literal>True</literal> if at least one folder has been moved or <literal>False</literal> if an error occurred.</paragraph>
-    <paragraph role="paragraph" id="par_id411613072570664">An error will also occur if the <literal>Source</literal> parameter uses wildcard characters and does not match any folders.</paragraph>
+    <paragraph role="paragraph" id="par_id411613072570664">An error will also occur if the <literal>source</literal> parameter uses wildcard characters and does not match any folders.</paragraph>
     <paragraph role="paragraph" id="par_id601613072595264">The method stops immediately after it encounters an error. The method does not roll back nor does it undo changes made before the error occurred.</paragraph>
-    <h3 id="hd_id441584791330489" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id181626214342806">
+      <input>svc.MoveFolder(source: str, destination: str): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id541584791330777"><emph>source</emph>: It can be a <literal>FolderName</literal> or <literal>NamePattern</literal> to designate one or more folders to be moved.</paragraph>
+    <paragraph role="paragraph" id="par_id551584791330279" xml-lang="en-US"><emph>destination</emph>: If the move operation involves a single folder, then <literal>destination</literal> is the name and path of the moved folder and it must not exist.</paragraph>
+    <paragraph role="paragraph" id="par_id11613072890641">If multiple folders are being moved, then <literal>destination</literal> designates where the folders in <literal>source</literal> will be moved into. If <literal>destination</literal> does not exist, it is created.</paragraph>
+    <paragraph role="paragraph" id="par_id301613072928159">Wildcard characters are not allowed in <literal>destination</literal>.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id301584791330135">FSO.MoveFolder(Source As String, Destination As String) As Boolean</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id1001584791330720">' Basic</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id201584791330500">FSO.MoveFolder("C:\Temp1\*", "C:\Temp2")</paragraph>
     </bascode>
-    <h3 id="hd_id931584791330194" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id541584791330777"><emph>Source</emph>: It can be a <literal>FolderName</literal> or <literal>NamePattern</literal> to designate one or more folders to be moved.</paragraph>
-    <paragraph role="paragraph" id="par_id551584791330279" xml-lang="en-US"><emph>Destination</emph>: If the move operation involves a single folder, then <literal>Destination</literal> is the name and path of the moved folder and it must not exist.</paragraph>
-    <paragraph role="paragraph" id="par_id11613072890641">If multiple folders are being moved, then <literal>Destination</literal> designates where the folders in <literal>Source</literal> will be moved into. If <literal>Destination</literal> does not exist, it is created.</paragraph>
-    <paragraph role="paragraph" id="par_id301613072928159">Wildcard characters are not allowed in <literal>Destination</literal>.</paragraph>
-    <h3 id="hd_id631584791330660" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id1001584791330720">Dim a As String</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id291584882448172">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id201584791330500">FSO.MoveFolder("C:\Temp1\*", "C:\Temp2\")</paragraph>
-    </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id11626275697779"># Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id361626275698068">fso.MoveFolder(r"C:\Temp1\*", r"C:\Temp2")</paragraph>
+    </pycode>
 </section>
 
 <section id="OpenTextFile">
-  <comment> OpenTextFile -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> OpenTextFile ----------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id531585320922937">
         <bookmark_value>FolderSystem service;OpenTextFile</bookmark_value>
     </bookmark>
     <h2 id="hd_id481585320922643" localize="false">OpenTextFile</h2>
     <paragraph role="paragraph" id="par_id121585320922117">Opens a file and returns a <literal>TextStream</literal> object that can be used to read from, write to, or append to the file.</paragraph>
     <paragraph role="paragraph" id="par_id591613073104711">Note that the method does not check if the given file is really a text file.</paragraph>
-    <paragraph role="paragraph" id="par_id951613073135036">The method returns a <literal>Null</literal> object if an error occurred.</paragraph>
-    <h3 id="hd_id231585320922972" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id541585320922330">FSO.OpenTextFile(FileName As String, [IOMode As Integer], [Create As Boolean], [Encoding As String]) As Object</paragraph>
-    </bascode>
-    <h3 id="hd_id561585320922459" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id551585320922678"><emph>FileName</emph>: Identifies the file to open.</paragraph>
-    <paragraph role="paragraph" id="par_id671585320922388" xml-lang="en-US"><emph>IOMode</emph>: Indicates the input/output mode. It can be one of three constants: <literal>FSO.ForReading</literal> (default), <literal>FSO.ForWriting</literal>, or <literal>FSO.ForAppending</literal>.</paragraph>
-    <paragraph role="paragraph" id="par_id21585321398586" xml-lang="en-US"><emph>Create</emph>: Boolean value that indicates whether a new file can be created if the specified filename doesn't exist:</paragraph>
+    <paragraph role="paragraph" id="par_id951613073135036">The method returns a <literal>Null</literal> object (in Basic) or <literal>None</literal> (in Python) if an error occurred.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id21626214460569">
+      <input>svc.OpenTextFile(filename: str, iomode: int = 1, create: bool = False, encoding: str = 'UTF-8'): svc</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id551585320922678"><emph>filename</emph>: Identifies the file to open.</paragraph>
+    <paragraph role="paragraph" id="par_id671585320922388" xml-lang="en-US"><emph>iomode</emph>: Indicates the input/output mode. It can be one of three constants: <literal>svc.ForReading</literal> (default), <literal>svc.ForWriting</literal>, or <literal>svc.ForAppending</literal>.</paragraph>
+    <paragraph role="paragraph" id="par_id21585321398586" xml-lang="en-US"><emph>create</emph>: Boolean value that indicates whether a new file can be created if the specified <literal>filename</literal> doesn't exist:</paragraph>
     <list type="unordered">
       <listitem>
         <paragraph id="par_id721613073434797" role="listitem">If <literal>True</literal> a new file and its parent folders will be created if they do not exist;</paragraph>
@@ -860,32 +974,40 @@
         <paragraph id="par_id201613073469289" role="listitem">If <literal>False</literal> then new files are not created (default).</paragraph>
       </listitem>
     </list>
-    <paragraph role="paragraph" id="par_id771585321576210" xml-lang="en-US"><emph>Encoding</emph>: The character set to be used. The default encoding is "UTF-8".</paragraph>
-    <h3 id="hd_id791585320922270" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+    <paragraph role="paragraph" id="par_id771585321576210" xml-lang="en-US"><emph>encoding</emph>: The character set to be used. The default encoding is "UTF-8".</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id841585320922219">Dim myFile As Object</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id831585320922237">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id141585320922524">Set myFile = FSO.OpenTextFile("C:\Temp\ThisFile.txt", FSO.ForReading)</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id341585321797611">If Not IsNull(myFile) Then</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id261585321805705">    ' ...</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id801613073013084">End If</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id841585320922219">Dim myFile As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id831585320922237">FSO.FileNaming = "SYS"</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id141585320922524">Set myFile = FSO.OpenTextFile("C:\Temp\ThisFile.txt", FSO.ForReading)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id341585321797611">If Not IsNull(myFile) Then</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id261585321805705">    ' ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id801613073013084">End If</paragraph>
     </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id971626275941924">fso.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id271626275942194">myFile = fso.OpenTextFile(r"C:\Temp\ThisFile.txt", fso.ForReading)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id141626275942434">if myFile is not None:</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id721626275942719">    # ...</paragraph>
+    </pycode>
 </section>
 
 <section id="PickFile">
-  <comment> PickFile -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> PickFile --------------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id1001583670342501">
         <bookmark_value>FileSystem service;PickFile</bookmark_value>
     </bookmark>
     <h2 id="hd_id421583670342501" localize="false">PickFile</h2>
     <paragraph role="paragraph" id="par_id871583670342501">Opens a dialog box to open or save files.</paragraph>
     <paragraph role="paragraph" id="par_id881613074436979">If the <literal>SAVE</literal> mode is set and the picked file exists, a warning message will be displayed.</paragraph>
-    <h3 id="hd_id381583670342502" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id541583670342502">FSO.PickFile([DefaultFile As String], [Mode As String], [Filter As String]) As String</paragraph>
-    </bascode>
-    <h3 id="hd_id431583670342502" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id481583670342502"><emph>DefaultFile</emph>: This argument is a string composed of a folder and file name:</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id751626214688263">
+      <input>svc.PickFile(defaultfile: str ='', mode: str = 'OPEN', filter: str = ''): str</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id481583670342502"><emph>defaultfile</emph>: This argument is a string composed of a folder and file name:</paragraph>
     <list type="unordered">
     <listitem>
         <paragraph id="par_id511613074665951" role="listitem">The folder part indicates the folder that will be shown when the dialog opens (default = the last selected folder).</paragraph>
@@ -894,70 +1016,84 @@
         <paragraph id="par_id631613074685308" role="listitem">The file part designates the default file to open or save.</paragraph>
     </listitem>
     </list>
-    <paragraph role="paragraph" id="par_id981583670342502"><emph>Mode</emph>: <literal>OPEN</literal> (input file) or <literal>SAVE</literal> (output file). The default value is <literal>OPEN</literal>.</paragraph>
-    <paragraph role="paragraph" id="par_id31583670342502"><emph>Filter</emph>: The extension of the files displayed when the dialog is opened (default = no filter).</paragraph>
-    <h3 id="hd_id421583670342502" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+    <paragraph role="paragraph" id="par_id981583670342502"><emph>mode</emph>: A string value that can be either "OPEN" (for input files) or "SAVE" (for output files). The default value is "OPEN".</paragraph>
+    <paragraph role="paragraph" id="par_id31583670342502"><emph>filter</emph>: The extension of the files displayed when the dialog is opened (default = no filter).</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id881626276134300">The examples below open a file picker with the "txt" filter applied.</paragraph>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id411583670342503">Dim a As Variant</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id461583764819574">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id691583670342504">a = FSO.PickFile("C:\", "OPEN", "txt")</paragraph>
-        <paragraph role="bascode" id="bas_id941583670925672">' Only *.txt files are displayed</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id791626276255605">' Basic</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id691583670342504">aFile = FSO.PickFile("C:\Documents", "OPEN", "txt")</paragraph>
     </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id681626276275531"># Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id701626276275757">aFile = fso.PickFile(r"C:\Documents", "OPEN", "txt")</paragraph>
+    </pycode>
 </section>
 
 <section id="PickFolder">
-  <comment> PickFolder -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> PickFolder ---------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171583671701309">
         <bookmark_value>FileSystem service;PickFolder</bookmark_value>
     </bookmark>
     <h2 id="hd_id581583671701385" localize="false">PickFolder</h2>
     <paragraph role="paragraph" id="par_id521583671701777">Opens a dialog box to select a folder.</paragraph>
-    <h3 id="hd_id941583671701398" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id671626215115555">
+      <input>svc.PickFolder(defaultfolder: str = '', freetext: str = ''): str</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id951583671701872"><emph>defaultfolder</emph>: A string containing the folder name that will be displayed when the dialog is opened (default = the last selected folder).</paragraph>
+    <paragraph role="paragraph" id="par_id821583671701764"><emph>freetext</emph>: Text to display in the dialog (default = "").</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id31583671701808">FSO.PickFolder([DefaultFolder As String], [FreeText As String]) As String</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id391583764844033">' Basic</paragraph>
+      <paragraph role="bascode" id="bas_id921583671701610">aFolder = FSO.PickFolder("C:\Documents", "Choose a folder or press Cancel")</paragraph>
     </bascode>
-    <h3 id="hd_id601583671701437" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id951583671701872"><emph>DefaultFolder</emph>: A string containing the folder name that will be displayed when the dialog is opened (default = the last selected folder).</paragraph>
-    <paragraph role="paragraph" id="par_id821583671701764"><emph>FreeText</emph>: Text to display in the dialog (default = "").</paragraph>
-    <h3 id="hd_id511583671701308" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id21583671701795">Dim a As Variant</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id391583764844033">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" id="bas_id921583671701610">a = FSO.PickFolder("C:\", "Choose a folder or press Cancel")</paragraph>
-    </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id291626276402041"># Python</paragraph>
+      <paragraph role="pycode" id="pyc_id631626276402296">aFolder = fso.PickFolder(r"C:\Documents", "Choose a folder or press Cancel")</paragraph>
+    </pycode>
 </section>
 
 <section id="SubFolders">
-  <comment> SubFolders -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> SubFolders ---------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id901584016761417">
         <bookmark_value>FileSystem service;Files</bookmark_value>
     </bookmark>
     <h2 id="hd_id51584016761775" localize="false">SubFolders</h2>
-    <paragraph role="paragraph" id="par_id431584016761996">Returns a zero-based array of the folders stored in a given <literal>FolderName</literal>.</paragraph>
+    <paragraph role="paragraph" id="par_id431584016761996">Returns a zero-based array of strings correspondint to the folders stored in a given <literal>foldername</literal>.</paragraph>
     <paragraph role="paragraph" id="par_id431613075267241">The list may be filtered with wildcards.</paragraph>
-    <h3 id="hd_id741584016761670" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id531626215218570">
+      <input>svc.SubFolders(foldername: str, filter: str = ''): str[0..*]</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id701584016761945"><emph>foldername</emph>: A string representing a folder. The folder must exist. <literal>foldername</literal> must not designate a file.</paragraph>
+    <paragraph role="paragraph" id="par_id471585648674921" xml-lang="en-US"><emph>filter</emph>: A string containing wildcards ("?" and "*") that will be applied to the resulting list of folders (default = "").</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id931584016761182">FSO.SubFolders(FolderName As String, [Filter As String]) As Variant</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id541584016761911">Dim folderList As Variant, folder As String</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id391584016761116">FSO.FileNaming = "SYS"</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id701584016761482">folderList = FSO.SubFolders("/home/user/")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id631584016761643">For Each folder In folderList</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id871584016761279">    ' ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id881584016761778">Next folder</paragraph>
     </bascode>
-    <h3 id="hd_id341584016761331" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id701584016761945"><emph>FolderName</emph>: A string representing a folder. The folder must exist. <literal>FolderName</literal> must not designate a file.</paragraph>
-    <paragraph role="paragraph" id="par_id471585648674921" xml-lang="en-US"><emph>Filter</emph>: A string containing wildcards ("?" and "*") that will be applied to the resulting list of folders (default = "").</paragraph>
-    <h3 id="hd_id921584016761389" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id541584016761911">Dim folderList As Variant, folder As String</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id391584016761116">FSO.FileNaming = "SYS"</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id701584016761482">folderList = FSO.SubFolders("/home/user/")</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id631584016761643">For Each folder In folderList</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id871584016761279">    ' ...</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id881584016761778">Next folder</paragraph>
-    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id891626276476767">fso.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id131626276476995">folderList = fso.SubFolders("/home/user/")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id661626276477186">for folder in folderList:</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id891626276477415">    # ...</paragraph>
+    </pycode>
 </section>
 
   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
   <section id="relatedtopics">
     <embed href="text/sbasic/shared/03/sf_textstream.xhp#TextStreamService"/>
-    <paragraph role="paragraph" id="par_id301613075694148"><link href="text/sbasic/shared/03160000.xhp" name="Input function">Input Function</link></paragraph>
-    <paragraph role="paragraph" id="par_id271612398715438"><link href="text/sbasic/shared/03020103.xhp" name="Open statement">Open Statement</link></paragraph>
+    <embed href="text/sbasic/shared/03160000.xhp#Input_h1"/>
+    <embed href="text/sbasic/shared/03020103.xhp#Open_h1"/>
   </section>
 </body>
 </helpdocument>
