@@ -48,6 +48,11 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
     helpcontent2/source/text/sdatabase/dabaadvpropdat \
     helpcontent2/source/text/sdatabase/dabaadvpropgen \
     helpcontent2/source/text/sdatabase/dabaadvprop \
+    helpcontent2/source/text/sdatabase/dabadoc \
+    helpcontent2/source/text/sdatabase/dabaprop \
+    helpcontent2/source/text/sdatabase/dabapropadd \
+    helpcontent2/source/text/sdatabase/dabapropcon \
+    helpcontent2/source/text/sdatabase/dabapropgen \
 ))
 
 # vim: set noet sw=4 ts=4:

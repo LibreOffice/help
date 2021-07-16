@@ -865,11 +865,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
 ))
 
 $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
-    helpcontent2/source/text/shared/explorer/database/dabadoc \
-    helpcontent2/source/text/shared/explorer/database/dabaprop \
-    helpcontent2/source/text/shared/explorer/database/dabapropadd \
-    helpcontent2/source/text/shared/explorer/database/dabapropcon \
-    helpcontent2/source/text/shared/explorer/database/dabapropgen \
     helpcontent2/source/text/shared/explorer/database/dabawiz00 \
     helpcontent2/source/text/shared/explorer/database/dabawiz01 \
     helpcontent2/source/text/shared/explorer/database/dabawiz02 \
