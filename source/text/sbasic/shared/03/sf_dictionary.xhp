@@ -17,9 +17,9 @@
 </meta>
 <body>
 <section id="abstract">
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id261582733781987">
-      <bookmark_value>Dictionary service</bookmark_value>
-   </bookmark>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id261582733781987">
+    <bookmark_value>Dictionary service</bookmark_value>
+  </bookmark>
 
   <h1 id="hd_id731582733781114" xml-lang="en-US"><variable id="SFDictionary"><link href="text/sbasic/shared/03/sf_dictionary.xhp" name="ScriptForge.Dictionary service"><literal>ScriptForge</literal>.<literal>Dictionary</literal> service</link></variable></h1>
 
@@ -35,6 +35,7 @@
   <br/>Additionally its items contain only primitive Basic data types such as dates, text, numbers, and the like.</paragraph>
 
   <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <paragraph role="paragraph" id="par_id821610388789467">The following example creates <literal>myDict</literal> as an empty dictionary.</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id851582897798335">GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
@@ -46,6 +47,28 @@
   <bascode>
      <paragraph role="bascode" localize="false" id="bas_id721582885621540">Set myDict = myDict.Dispose()</paragraph>
   </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <paragraph role="paragraph" id="par_id551626869252987">The example below creates an empty instance of the <literal>Dictionary</literal> service and uses the Python native <literal>update</literal> method to populate it with the contents of a Python <literal>dict</literal> object.</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id61626869417885">dico = dict('A' = 1, 'B' = 2, 'C' = 3)</paragraph>
+    <paragraph role="pycode" id="pyc_id61626869417128"># Initialize myDict as an empty dict object</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id501626869418687">myDict = CreateScriptService('Dictionary')</paragraph>
+    <paragraph role="pycode" id="pyc_id921626869402748"># Load the values of dico into myDict</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id921626869418958">myDict.update(dico)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id271626869419262">myDict['D'] = 4</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id681626869419637">print(myDict)   # {'A': 1, 'B': 2, 'C': 3, 'D': 4}</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id801626869419846">propval = myDict.ConvertToPropertyValues()</paragraph>
+  </pycode>
+  <paragraph role="paragraph" id="par_id981626869718081">It is possible to create an instance of the <literal>Dictionary</literal> service using a Python <literal>dict</literal> object as argument as shown in the following example.</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id891626869184970">dico = dict('A' = 1, 'B' = 2, 'C' = 3)</paragraph>
+    <paragraph role="pycode" id="pyc_id201626869185236"># Initialize myDict with the content of dico</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id201626869182054">myDict = CreateScriptService('Dictionary', dico)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id831626869185400">myDict['D'] = 4</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id351626869185567">print(myDict) # {'A': 1, 'B': 2, 'C': 3, 'D': 4}</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id721626869185728">propval = myDict.ConvertToPropertyValues()</paragraph>
+  </pycode>
+  <note id="par_id211626699007613">Because Python has built-in dictionary support, most of the methods in the <literal>Dictionary</literal> service are available for Basic scripts only. Exceptions are <literal>ConvertToPropertyValues</literal> and <literal>ImportFromPropertyValues</literal> that are supported in both Basic and Python.</note>
 
   <h2 id="hd_id351582885195476" xml-lang="en-US">Properties</h2>
     <table id="tab_id971582885195582">
@@ -109,7 +132,7 @@
 
     <paragraph role="tip" id="par_id461582886731495" xml-lang="en-US">The <literal>Keys</literal> and <literal>Items</literal> properties return their respective contents, using an identical ordering. The order is unrelated to the creation sequence.</paragraph>
 
-    <h3 id="hd_id691582887572811" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <paragraph role="paragraph" id="par_id931610389113917">The following example uses the <literal>Keys</literal> property to iterate over all keys in the dictionary <literal>myDict</literal>.</paragraph>
     <bascode>
     <paragraph role="bascode" localize="false" id="bas_id211582887012398">Dim a As Variant, b As String</paragraph>
@@ -147,310 +170,354 @@
     </tablerow>
     </table>
 
-  <section id="Add">
-  <comment> Add -------------------------------------------------------------------------------------------------------------------------- </comment>
-      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781582887670029">
-        <bookmark_value>Dictionary service;Add</bookmark_value>
-      </bookmark>
-      <h2 id="hd_id831582887670029" localize="false">Add</h2>
-        <paragraph role="paragraph" id="par_id831582887670029">Adds a new key-item pair into the dictionary. Returns <literal>True</literal> if successful.</paragraph>
-        <h3 id="hd_id451582887670029" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id731582887670029">myDict.Add(Key As String, Item As Variant) As Boolean</paragraph>
-        </bascode>
-        <h3 id="hd_id821582887670030" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-          <paragraph role="paragraph" id="par_id341582887670030"><emph>Key</emph> : String value used to identify the Item. The key is not case-sensitive.</paragraph>
-          <paragraph role="paragraph" id="par_id401582887670030"><emph>Item</emph> : Any value, including an array, a Basic object, a UNO object, a dictionary, etc.</paragraph>
-        <h3 id="hd_id461582887670030" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id191582887670030">Dim NewValue As Variant</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id391582887670030">myDict.Add("NewKey", NewValue)</paragraph>
-       </bascode>
+<section id="Add">
+  <comment> Add ---------------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781582887670029">
+      <bookmark_value>Dictionary service;Add</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id831582887670029" localize="false">Add</h2>
+    <paragraph role="paragraph" id="par_id831582887670029">Adds a new key-item pair into the dictionary. Returns <literal>True</literal> if successful.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id881626699610355">
+      <input>dict.Add(key: str, item: any): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id341582887670030"><emph>key</emph>: String value used to identify the Item. The key is not case-sensitive.</paragraph>
+    <paragraph role="paragraph" id="par_id401582887670030"><emph>item</emph>: Any value, including an array, a Basic object, a UNO object, a dictionary, etc.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id191582887670030">Dim NewValue As Variant</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id391582887670030">myDict.Add("NewKey", NewValue)</paragraph>
+    </bascode>
     <warning id="par_id1001610391308765">Every key must be unique in the same dictionary. If the key already exists in the dictionary, a <literal>DUPLICATEKEYERROR</literal> will be raised. Keys that are made of space characters will raise a <literal>INVALIDKEYERROR</literal> error.</warning>
-    </section>
+</section>
 
-    <section id="ConvertToArray">
-    <comment> ConvertToArray -------------------------------------------------------------------------------------------------------------------------- </comment>
-      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id621582888424103">
-        <bookmark_value>Dictionary service;ConvertToArray</bookmark_value>
-      </bookmark>
-      <h2 id="hd_id211582888424104" localize="false">ConvertToArray</h2>
-        <paragraph role="paragraph" id="par_id81582888424104">Stores the contents of the dictionary in a two-columns zero-based array. The keys are stored in the first column and the items are stored in the second column.</paragraph>
-        <paragraph role="paragraph" id="par_id341610391565678">If the dictionary is empty, this method will return an empty <literal>Array</literal>.</paragraph>
-        <h3 id="hd_id201582888424104" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id251582888424105">myDict.ConvertToArray() As Variant</paragraph>
-        </bascode>
-      <h3 id="hd_id461582887670031" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-      <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id651610391840491">Dim myDict as Variant</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id381610391862148">myDict = CreateScriptService("Dictionary")</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id61610391873262">myDict.Add("a", 1)</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id351610391876967">myDict.Add("b", 2)</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id491610391880959">myDict.Add("c", 3)</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id521610391883264">Dim arr as Variant</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id361610391885584">arr = myDict.ConvertToArray()</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id911610391888240">'(("a", 1), ("b", 2), ("c", 3))</paragraph>
-      </bascode>
-    </section>
-  
-    <section id="ConvertToJson">
-        <comment> ConvertToJson --------------------------------------------------------------------------------------------------------------------- </comment>
-        <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id631601296836318">
-            <bookmark_value>Dictionary service;ConvertToJson</bookmark_value>
-        </bookmark>
-        <h2 id="hd_id851601296836224" localize="false">ConvertToJson</h2>
-        <paragraph role="paragraph" id="par_id831601296836981">Converts the contents of a dictionary to <link href="https://en.wikipedia.org/wiki/JSON" name="JSON text">JSON (JavaScript Object Notation)</link> text.</paragraph>
-        <h3 id="hd_id261601297024828" xml-lang="en-US">Limitations</h3>
-        <paragraph role="paragraph" id="par_id401601297178073" xml-lang="en-US">This method supports the following data types: <literal>String</literal>, <literal>Boolean</literal>, numbers, <literal>Null</literal> and <literal>Empty</literal>. Arrays containing items of those types are also allowed, whatever their dimensions. Dates are converted into strings, however they cannot be used inside Arrays. Other data types are converted to their string representation using the <literal>SF_String.Represent</literal> service.</paragraph>
-        <h3 id="hd_id551601296836572" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-        <bascode>
-            <paragraph role="bascode" localize="false" id="bas_id491601296836271">myDict.ConvertToJson([Indent As Variant]) As String</paragraph>
-        </bascode>
-        <h3 id="hd_id1001601296836123" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-      <paragraph role="paragraph" id="par_id8816012968362"><emph>Indent</emph> : When <literal>Indent</literal> is a positive number or a text, JSON array elements and object members are pretty-printed with that indentation level. A negative <literal>Indent</literal> value will add new lines with no indentation. <literal>Indent</literal> default value "" selects the most compact representation. Using a positive integer for <literal>Indent</literal> indents that many spaces per level. When <literal>Indent</literal> is a string, such as <literal>Chr(9)</literal> or <literal>Tab(1)</literal>, the Tab character is used to indent each level.</paragraph>
-        <h3 id="hd_id19160129683665" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-        <bascode>
-            <paragraph role="bascode" localize="false" id="bas_id671601298281962">myDict.Add("p0", 12.5)</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id851601298288784">myDict.Add("p1", "a string àé""ê")</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id201601298295976">myDict.Add("p2", DateSerial(2020,9,28))</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id951601298323286">myDict.Add("p3", True)</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id731601298329491">myDict.Add("p4", Array(1,2,3))</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id451601298336500">MsgBox myDict.ConvertToJson()    </paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id511610392557702">'{"p0": 12.5, "p1": "a string \u00e0\u00e9\"\u00ea", "p2": "2020-09-28", "p3": true, "p4": [1, 2, 3]}</paragraph>
-        </bascode>
-    </section>
+<section id="ConvertToArray">
+  <comment> ConvertToArray ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id621582888424103">
+      <bookmark_value>Dictionary service;ConvertToArray</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id211582888424104" localize="false">ConvertToArray</h2>
+    <paragraph role="paragraph" id="par_id81582888424104">Stores the contents of the dictionary in a two-columns zero-based array. The keys are stored in the first column and the items are stored in the second column.</paragraph>
+    <paragraph role="paragraph" id="par_id341610391565678">If the dictionary is empty, this method will return an empty <literal>Array</literal>.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id71626699963594">
+      <input>dict.ConvertToArray(): any[0..*, 0..1]</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id651610391840491">Dim myDict as Variant</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id381610391862148">myDict = CreateScriptService("Dictionary")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id61610391873262">myDict.Add("a", 1)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id351610391876967">myDict.Add("b", 2)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id491610391880959">myDict.Add("c", 3)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id521610391883264">Dim arr as Variant</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id361610391885584">arr = myDict.ConvertToArray()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id911610391888240">'(("a", 1), ("b", 2), ("c", 3))</paragraph>
+    </bascode>
+</section>
 
-    <section id="ConvertToPropertyValues">
-        <comment> ConvertToPropertyValues ----------------------------------------------------------------------------------------------------------------------- </comment>
-      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id991582889470402">
-        <bookmark_value>Dictionary service;ConvertToPropertyValues</bookmark_value>
-        <bookmark_value>API;PropertyValue</bookmark_value>
-        <bookmark_value>API;DateTime</bookmark_value>
-      </bookmark>
-      <h2 id="hd_id421582889470909" localize="false">ConvertToPropertyValues</h2>
-        <paragraph role="paragraph" id="par_id151582889470596">Store the content of the dictionary in an array of <literal>PropertyValues</literal>.</paragraph>
-        <paragraph role="paragraph" id="par_id231610392665049">Each entry in the array is a <literal>com.sun.star.beans.PropertyValue</literal>. The key is stored in <literal>Name</literal>, the item is stored in <literal>Value</literal>.</paragraph>
-        <paragraph role="paragraph" id="par_id341610392705367">If one of the items has a type <literal>Date</literal>, it is converted to a <literal>com.sun.star.util.DateTime</literal> structure. If one of the items is an empty array, it is converted to <literal>Null</literal>. The resulting array is empty when the dictionary is empty.</paragraph>
-        <h3 id="hd_id841582889470464" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id191582889470444">myDict.ConvertToPropertyValues() As Variant</paragraph>
-        </bascode>
-        <h3 id="hd_id461582887670032" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id81610393124521">Dim myDict as Variant</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id971610393127816">myDict = CreateScriptService("Dictionary")</paragraph>
-          <paragraph role="bascode" id="bas_id531610393130289">'Adds some properties to the dictionary</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id711610393132877">myDict.Add("Color", "Blue")</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id681610393135354">myDict.Add("Width", 20)</paragraph>
-          <paragraph role="bascode" id="bas_id571610393137959">'Converts to an Array of PropertyValue objects</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id351610393140357">Dim prop as Variant</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id101610393142717">prop = myDict.ConvertToPropertyValues()</paragraph>
-        </bascode>
-        <tip id="par_id421610393306916">Many services and methods in the UNO library take in parameters represented using the <literal>PropertyValue</literal> struct, which is part of the LibreOffice API.</tip>
-    </section>
+<section id="ConvertToJson">
+  <comment> ConvertToJson ------------------------------------------------------------------------------------------ </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id631601296836318">
+      <bookmark_value>Dictionary service;ConvertToJson</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id851601296836224" localize="false">ConvertToJson</h2>
+    <paragraph role="paragraph" id="par_id831601296836981">Converts the contents of a dictionary to <link href="https://en.wikipedia.org/wiki/JSON" name="JSON text">JSON (JavaScript Object Notation)</link> text.</paragraph>
+    <h3 id="hd_id261601297024828" xml-lang="en-US">Limitations</h3>
+    <paragraph role="paragraph" id="par_id401601297178073" xml-lang="en-US">This method supports the following data types: <literal>String</literal>, <literal>Boolean</literal>, numbers, <literal>Null</literal> and <literal>Empty</literal>. Arrays containing items of those types are also allowed, whatever their dimensions. Dates are converted into strings, however they cannot be used inside Arrays. Other data types are converted to their string representation using the <literal>SF_String.Represent</literal> service.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id901626700139467">
+      <input>dict.ConvertToJson(indent: str = ""): str</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id8816012968362"><emph>indent</emph>: When <literal>indent</literal> is a positive number or a text, JSON array elements and object members are pretty-printed with that indentation level. A negative <literal>indent</literal> value will add new lines with no indentation. The default value is an empty string "" which selects the most compact representation. Using a positive integer for <literal>indent</literal> indents that many spaces per level. When <literal>indent</literal> is a string, such as <literal>Chr(9)</literal> or <literal>Tab(1)</literal>, the Tab character is used to indent each level.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id671601298281962">myDict.Add("p0", 12.5)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id851601298288784">myDict.Add("p1", "a string àé""ê")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id201601298295976">myDict.Add("p2", DateSerial(2020,9,28))</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id951601298323286">myDict.Add("p3", True)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id731601298329491">myDict.Add("p4", Array(1,2,3))</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id451601298336500">MsgBox myDict.ConvertToJson()    </paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id511610392557702">'{"p0": 12.5, "p1": "a string \u00e0\u00e9\"\u00ea", "p2": "2020-09-28", "p3": true, "p4": [1, 2, 3]}</paragraph>
+    </bascode>
+</section>
 
-    <section id="Exists">
-    <comment> Exists -------------------------------------------------------------------------------------------------------------------------- </comment>
-      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id81582889812915">
-        <bookmark_value>Dictionary service;Exists</bookmark_value>
-      </bookmark>
-      <h2 id="hd_id461582889812915" localize="false">Exists</h2>
-        <paragraph role="paragraph" id="par_id841582889812916">Determines if a key exists in the dictionary.</paragraph>
-        <h3 id="hd_id601582889812916" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id311582889812917">myDict.Exists(Key As String) As Boolean</paragraph>
-        </bascode>
-        <h3 id="hd_id661582889812917" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-          <paragraph role="paragraph" id="par_id971582889812917"><emph>Key</emph> : The key to be looked up in the dictionary.</paragraph>
-        <h3 id="hd_id231582889812918" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id741582889812919">Dim myDict as Variant</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id471582889812919">myDict = CreateScriptService("Dictionary")</paragraph>
-          <paragraph role="bascode" id="bas_id811606485130666">'Adds some properties to the dictionary</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id391610393640781">myDict.Add("Color", "Blue")</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id891610393643755">myDict.Add("Width", 20)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id531610393646186">'(...)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id491610393648822">If Not myDict.Exists("Size") Then</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id681610393651551">   MsgBox "You have to provide a Size value"</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id581610393654335">End If</paragraph>
-        </bascode>
-    </section>
+<section id="ConvertToPropertyValues">
+  <comment> ConvertToPropertyValues --------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id991582889470402">
+    <bookmark_value>Dictionary service;ConvertToPropertyValues</bookmark_value>
+    <bookmark_value>API;PropertyValue</bookmark_value>
+    <bookmark_value>API;DateTime</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id421582889470909" localize="false">ConvertToPropertyValues</h2>
+  <paragraph role="paragraph" id="par_id151582889470596">Stores the contents of the dictionary into an array of <literal>PropertyValues</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id231610392665049">Each entry in the array is a <literal>com.sun.star.beans.PropertyValue</literal>. The key is stored in <literal>Name</literal>, the item is stored in <literal>Value</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id341610392705367">If one of the items has a type <literal>Date</literal>, it is converted to a <literal>com.sun.star.util.DateTime</literal> structure. If one of the items is an empty array, it is converted to <literal>Null</literal>. The resulting array is empty when the dictionary is empty.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id481626700464253">
+    <input>dict.ConvertToPropertyValues(): obj[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id81610393124521">Dim myDict as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id971610393127816">myDict = CreateScriptService("Dictionary")</paragraph>
+    <paragraph role="bascode" id="bas_id531610393130289">'Adds some properties to the dictionary</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id711610393132877">myDict.Add("Color", "Blue")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id681610393135354">myDict.Add("Width", 20)</paragraph>
+    <paragraph role="bascode" id="bas_id571610393137959">'Converts to an Array of PropertyValue objects</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id351610393140357">Dim prop as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id101610393142717">prop = myDict.ConvertToPropertyValues()</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <paragraph role="paragraph" id="par_id771626700938786">Note in the example below that a Python dictionary needs to be passed as the second argument of the <literal>CreateScriptService</literal> method.</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id691626700585141">myDict = dict()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id811626700586188">myDict["Color"] = "Blue"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id331626700586409">myDict["Width"] = 30</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id171626700586634">sfDic = CreateScriptService("Dictionary", myDict)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id251626700586818">prop = sfDic.ConvertToPropertyValues()</paragraph>
+  </pycode>
+  <tip id="par_id421610393306916">Many services and methods in the UNO library take in parameters represented using the <literal>PropertyValue</literal> struct, which is part of the LibreOffice API.</tip>
+</section>
 
-    <section id="ImportFromJson">
-        <comment> ImportFromJson --------------------------------------------------------------------------------------------------------------------- </comment>
-        <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id661601391980619">
-            <bookmark_value>Dictionary service;ImportFromJson</bookmark_value>
-        </bookmark>
-        <h2 id="hd_id81601391980848" localize="false">ImportFromJson</h2>
-        <paragraph role="paragraph" id="par_id791601391980978">Adds the content of a <link href="https://en.wikipedia.org/wiki/JSON" name="JSON text">JSON (JavaScript Object Notation)</link> string into the current dictionary. Returns <literal>True</literal> if successful.</paragraph>
-        <h3 id="hd_id961601392113644" xml-lang="en-US">Limitations</h3>
-        <paragraph role="paragraph" id="par_id481601392181131" xml-lang="en-US">The JSON string may contain numbers, text, booleans, null values and arrays containing those types. It must not contain JSON objects namely sub-dictionaries.</paragraph>
-        <paragraph role="paragraph" id="par_id511601392205908" xml-lang="en-US">An attempt is made to convert text to date if the item matches one of these patterns: YYYY-MM-DD, HH:MM:SS or YYYY-MM-DD HH:MM:SS.</paragraph>
-        <h3 id="hd_id301601391980982" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-        <bascode>
-            <paragraph role="bascode" localize="false" id="bas_id401601391980113">myDict.ImportFromJson(InputStr As String, [Overwrite As Boolean]) As Boolean</paragraph>
-        </bascode>
-        <h3 id="hd_id871601391980130" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-        <paragraph role="paragraph" id="par_id69160139198061"><emph>InputStr</emph> : The string to import.</paragraph>
-        <paragraph role="paragraph" id="par_id201601391980268"><emph>Overwrite</emph> : When <literal>True</literal>, entries with same name may exist in the dictionary and their values are overwritten. When <literal>False</literal> (default), repeated keys will raise an error. Beware that dictionary keys are not case-sensitive while names are case-sensitive in JSON strings.</paragraph>
-        <h3 id="hd_id141601391980338" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-        <bascode>
-            <paragraph role="bascode" localize="false" id="bas_id411601393205207">Dim s As String</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id891601393212562">s = "{'firstName': 'John','lastName': 'Smith','isAlive': true,'age': 66, 'birth':  '1954-09-28 20:15:00'" _</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id221601393220997">    &amp; ",'address': {'streetAddress': '21 2nd Street','city': 'New York','state': 'NY','postalCode': '10021-3100'}" _</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id931601393226582">    &amp; ",'phoneNumbers': [{'type': 'home','number': '212 555-1234'},{'type': 'office','number': '646 555-4567'}]" _</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id671601393233042">    &amp; ",'children': ['Q','M','G','T'],'spouse': null}"</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id131601393240390">s = Replace(s, "'", """")</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id351601393248554">myDict.ImportFromJson(s, OverWrite := True)</paragraph>
-            <paragraph role="bascode" id="bas_id521601393254694">'The (sub)-dictionaries "address" and "phoneNumbers" (0) and (1) are imported as Empty values.</paragraph>
-        </bascode>
-    </section>
+<section id="Exists">
+  <comment> Exists ------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id81582889812915">
+    <bookmark_value>Dictionary service;Exists</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id461582889812915" localize="false">Exists</h2>
+    <paragraph role="paragraph" id="par_id841582889812916">Determines if a key exists in the dictionary.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id441626701103153">
+    <input>dict.Exists(key: str): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id971582889812917"><emph>key</emph>: The key to be looked up in the dictionary.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id741582889812919">Dim myDict as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id471582889812919">myDict = CreateScriptService("Dictionary")</paragraph>
+    <paragraph role="bascode" id="bas_id811606485130666">'Adds some properties to the dictionary</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id391610393640781">myDict.Add("Color", "Blue")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id891610393643755">myDict.Add("Width", 20)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531610393646186">'(...)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id491610393648822">If Not myDict.Exists("Size") Then</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id681610393651551">   MsgBox "You have to provide a Size value"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id581610393654335">End If</paragraph>
+  </bascode>
+</section>
 
-    <section id="ImportFromPropertyValues">
-        <comment> ImportFromPropertyValues --------------------------------------------------------------------------------------------------------------------- </comment>
-        <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id791588941968651">
-            <bookmark_value>Dictionary service;ImportFromPropertyValues</bookmark_value>
-        </bookmark>
-        <h2 id="hd_id71588941968955" localize="false">ImportFromPropertyValues</h2>
-        <paragraph role="paragraph" id="par_id651588941968228">Inserts the contents of an array of <literal>PropertyValue</literal> objects into the current dictionary. <literal>PropertyValue</literal> Names are used as Keys in the dictionary, whereas Values contain the corresponding values. Returns <literal>True</literal> if successful.</paragraph>
-        <h3 id="hd_id82158894196854" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-        <bascode>
-            <paragraph role="bascode" localize="false" id="bas_id961588941968180">myDict.ImportFromPropertyValues(PropertyValues As Variant [, Overwrite As Boolean]) As Boolean</paragraph>
-        </bascode>
-        <h3 id="hd_id271588941968528" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-        <paragraph role="paragraph" id="par_id751588941968522"><emph>PropertyValues</emph> : A zero-based 1 dimensional array containing <literal>com.sun.star.beans.PropertyValue</literal> objects. This parameter may also be a single <literal>PropertyValue</literal> object not contained in an Array.</paragraph>
-        <paragraph role="paragraph" id="par_id21588941968131"><emph>Overwrite</emph> : When <literal>True</literal>, entries with same name may exist in the dictionary and their values are overwritten. When <literal>False</literal> (default), repeated keys will raise an error. Note that dictionary keys are not case-sensitive, whereas names are case-sensitive in sets of property values.</paragraph>
-        <h3 id="hd_id501588941968965" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-        <bascode>
-            <paragraph role="bascode" localize="false" id="bas_id951588941968987">Dim vProp As New com.sun.star.beans.PropertyValue</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id831588943409828">vProp.Name = "prop"</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id891610395011237">vProp.Value = CDateToUnoDateTime(Now)</paragraph>
-            <paragraph role="bascode" localize="false" id="bas_id771588941968883">myDict.ImportFromPropertyValues(vProp, Overwrite := True)</paragraph>
-        </bascode>
-    </section>
+<section id="ImportFromJson">
+  <comment> ImportFromJson ----------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id661601391980619">
+    <bookmark_value>Dictionary service;ImportFromJson</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id81601391980848" localize="false">ImportFromJson</h2>
+  <paragraph role="paragraph" id="par_id791601391980978">Adds the content of a <link href="https://en.wikipedia.org/wiki/JSON" name="JSON text">JSON (JavaScript Object Notation)</link> string into the current dictionary. Returns <literal>True</literal> if successful.</paragraph>
+  <h3 id="hd_id961601392113644" xml-lang="en-US">Limitations</h3>
+  <paragraph role="paragraph" id="par_id481601392181131" xml-lang="en-US">The JSON string may contain numbers, text, booleans, null values and arrays containing those types. It must not contain JSON objects namely sub-dictionaries.</paragraph>
+  <paragraph role="paragraph" id="par_id511601392205908" xml-lang="en-US">An attempt is made to convert text to date if the item matches one of these patterns: YYYY-MM-DD, HH:MM:SS or YYYY-MM-DD HH:MM:SS.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id841626701235169">
+    <input>dict.ImportFromJson(inputstr: str, overwrite: bool = False): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id69160139198061"><emph>inputstr</emph>: The string to import.</paragraph>
+  <paragraph role="paragraph" id="par_id201601391980268"><emph>overwrite</emph>: When <literal>True</literal>, entries with same name may exist in the dictionary and their values are overwritten. When <literal>False</literal> (default), repeated keys will raise an error. Beware that dictionary keys are not case-sensitive while names are case-sensitive in JSON strings.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id411601393205207">Dim s As String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id891601393212562">s = "{'firstName': 'John','lastName': 'Smith','isAlive': true,'age': 66, 'birth':  '1954-09-28 20:15:00'" _</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id221601393220997">    &amp; ",'address': {'streetAddress': '21 2nd Street','city': 'New York','state': 'NY','postalCode': '10021-3100'}" _</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id931601393226582">    &amp; ",'phoneNumbers': [{'type': 'home','number': '212 555-1234'},{'type': 'office','number': '646 555-4567'}]" _</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id671601393233042">    &amp; ",'children': ['Q','M','G','T'],'spouse': null}"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id131601393240390">s = Replace(s, "'", """")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id351601393248554">myDict.ImportFromJson(s, OverWrite := True)</paragraph>
+    <paragraph role="bascode" id="bas_id521601393254694">'The (sub)-dictionaries "address" and "phoneNumbers" (0) and (1) are imported as Empty values.</paragraph>
+  </bascode>
+</section>
 
-    <section id="Item">
-    <comment> Item -------------------------------------------------------------------------------------------------------------------------- </comment>
-      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id741582980366762">
-        <bookmark_value>Dictionary service;Item</bookmark_value>
-      </bookmark>
-      <h2 id="hd_id301582098366573" localize="false">Item</h2>
-        <paragraph role="paragraph" id="par_id891582890366737">Retrieves an existing dictionary entry based on its key. Returns the value of the item if successful, otherwise returns <literal>Empty</literal>.</paragraph>
-        <h3 id="hd_id731582900366531" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id71588290366664">myDict.Item(Key As String) As Variant</paragraph>
-        </bascode>
-        <h3 id="hd_id751782890366698" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-          <paragraph role="paragraph" id="par_id551582890399669"><emph>Key</emph> : Not case-sensitive. Must exist in the dictionary, otherwise a <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
-        <h3 id="hd_id81583890366375" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-        <paragraph role="paragraph" id="par_id181610395933967">The following example iterates over all keys in the dictionary and uses the <literal>Item</literal> method to access their values.</paragraph>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id371528890366702">Dim myDict as Variant, k as Variant, allKeys as Variant</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id661610395517565">myDict = CreateScriptService("Dictionary")</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id181610395523430">myDict.Add("key1", 100)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id621610395527679">myDict.Add("key2", 200)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id871610395530158">myDict.Add("key3", 300)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id891610395534807">allKeys = myDict.Keys</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id71610395537640">For Each k in allKeys</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id411610395540304">   MsgBox(myDict.Item(k))</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id931610395543522">Next k</paragraph>
-       </bascode>
-    </section>
+<section id="ImportFromPropertyValues">
+  <comment> ImportFromPropertyValues ------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id791588941968651">
+    <bookmark_value>Dictionary service;ImportFromPropertyValues</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id71588941968955" localize="false">ImportFromPropertyValues</h2>
+  <paragraph role="paragraph" id="par_id651588941968228">Inserts the contents of an array of <literal>PropertyValue</literal> objects into the current dictionary. <literal>PropertyValue</literal> Names are used as Keys in the dictionary, whereas Values contain the corresponding values. Returns <literal>True</literal> if successful.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id431626701465848">
+    <input>dict.ImportFromPropertyValues(propertyvalues: obj[0..*], overwrite: bool = False): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id751588941968522"><emph>propertyvalues</emph>: A zero-based 1-dimensional array containing <literal>com.sun.star.beans.PropertyValue</literal> objects. This parameter may also be a single <literal>propertyvalue</literal> object not contained in an Array.</paragraph>
+  <paragraph role="paragraph" id="par_id21588941968131"><emph>overwrite</emph>: When <literal>True</literal>, entries with same name may exist in the dictionary and their values are overwritten. When <literal>False</literal> (default), repeated keys will raise an error. Note that dictionary keys are not case-sensitive in Basic, whereas names are case-sensitive in sets of property values and in Python dictionaries.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id641626703615898">The examples below first create an array with two <literal>PropertyValue</literal> objects and then convert it to a dictionary.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id951588941968987">Dim vProp As New com.sun.star.beans.PropertyValue</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id771588941968883">Dim arrProp : arrProp = Array()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id831588943409828">vProp.Name = "Color"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id891610395011237">vProp.Value = "Blue"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371626703397791">arrProp = SF_Array.Append(arrProp, vProp)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id71626703398189">vProp.Name = "Date"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id1001626703398431">vProp.Value = CDateToUnoDateTime(Now)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id881626703398656">arrProp = SF_Array.Append(arrProp, vProp)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id761626703398879">myDict = CreateScriptService("Dictionary")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id181626703399098">myDict.ImportFromPropertyValues(arrProp, Overwrite := True)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id121626703516023">Dim keys : keys = myDict.Keys</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id971626703516446">For Each k In keys</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id811626703516686">    MsgBox k &amp; " - " &amp; myDict.Item(k)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id261626703516863">Next k</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id121626701725559">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id611626704519415">from datetime import datetime</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id221626701725743">import uno</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id911626701725885">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id941626701726044">arrProp = list()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id911626701726205">vProp = uno.createUnoStruct("com.sun.star.beans.PropertyValue")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id751626701726717">vProp.Name = "Color"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id841626704518283">vProp.Value = "Blue"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id291626704518547">arrProp.append(vProp)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id271626704518745">vProp = uno.createUnoStruct("com.sun.star.beans.PropertyValue")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id691626704518975">vProp.Name = "Date"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id691626704519192">vProp.Value = bas.CDateToUnoDateTime(datetime.now())</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id631626704519647">arrProp.append(vProp)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id881626704519864">myDict = CreateScriptService("Dictionary")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id61626704520096">myDict.ImportFromPropertyValues(arrProp, overwrite=True)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id181626704520322">for k in myDict.keys():</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id221626704799909">    bas.MsgBox("{} - {}".format(k, myDict[k]))</paragraph>
+  </pycode>
+</section>
 
-    <section id="Remove">
-    <comment> Remove -------------------------------------------------------------------------------------------------------------------------- </comment>
-      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id741582890366762">
-        <bookmark_value>Dictionary service;Remove</bookmark_value>
-      </bookmark>
-      <h2 id="hd_id301582890366573" localize="false">Remove</h2>
-        <paragraph role="paragraph" id="par_id891582890388737">Removes an existing dictionary entry based on its key. Returns <literal>True</literal> if successful.</paragraph>
-        <h3 id="hd_id731582890366531" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id71582890366664">myDict.Remove(Key As String) As Boolean</paragraph>
-        </bascode>
-        <h3 id="hd_id771582890366698" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-          <paragraph role="paragraph" id="par_id551582890366999"><emph>Key</emph> : Not case-sensitive. Must exist in the dictionary, otherwise an <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
-        <h3 id="hd_id81582890366375" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id56158289627581">myDict.Add("key1", 100)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id651610399290742">myDict.Add("key2", 200)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id741610399296091">myDict.Add("key3", 300)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id591610399299316">MsgBox(myDict.Count) 'Prints "3"</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id661610399302807">myDict.Remove("key2")</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id671610399305808">MsgBox(myDict.Count) 'Prints "2"</paragraph>
-       </bascode>
-    </section>
+<section id="Item">
+  <comment> Item --------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id741582980366762">
+    <bookmark_value>Dictionary service;Item</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id301582098366573" localize="false">Item</h2>
+  <paragraph role="paragraph" id="par_id891582890366737">Retrieves an existing dictionary entry based on its key. Returns the value of the item if successful, otherwise returns <literal>Empty</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id501626704949678">
+    <input>dict.Item(key: str): any</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id551582890399669"><emph>key</emph>: Not case-sensitive. Must exist in the dictionary, otherwise an <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id181610395933967">The following example iterates over all keys in the dictionary and uses the <literal>Item</literal> method to access their values.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id371528890366702">Dim myDict as Variant, k as Variant, allKeys as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id661610395517565">myDict = CreateScriptService("Dictionary")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id181610395523430">myDict.Add("key1", 100)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621610395527679">myDict.Add("key2", 200)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id871610395530158">myDict.Add("key3", 300)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id891610395534807">allKeys = myDict.Keys</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id71610395537640">For Each k in allKeys</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id411610395540304">   MsgBox(myDict.Item(k))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id931610395543522">Next k</paragraph>
+  </bascode>
+</section>
 
-    <section id="RemoveAll">
-    <comment> RemoveAll -------------------------------------------------------------------------------------------------------------------------- </comment>
-      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id471582896275914">
-        <bookmark_value>Dictionary service;RemoveAll</bookmark_value>
-      </bookmark>
-      <h2 id="hd_id911582896275637" localize="false">RemoveAll</h2>
-        <paragraph role="paragraph" id="par_id921582896275624">Removes all the entries from the dictionary. Returns <literal>True</literal> if successful.</paragraph>
-        <h3 id="hd_id161582896275448" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-        <bascode>
-          <paragraph role="bascode"  localize="false" id="bas_id561610400492690">myDict.RemoveAll() As Boolean</paragraph>
-        </bascode>
-        <h3 id="hd_id81582890366376" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id56158289627580">myDict.Add("key1", 100)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id651610399290743">myDict.Add("key2", 200)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id741610399296092">myDict.Add("key3", 300)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id591610399299317">MsgBox(myDict.Count) 'Prints "3"</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id661610399302808">myDict.RemoveAll()</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id671610399305809">MsgBox(myDict.Count) 'Prints "0"</paragraph>
-        </bascode>
-    </section>
+<section id="Remove">
+  <comment> Remove ------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id741582890366762">
+    <bookmark_value>Dictionary service;Remove</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id301582890366573" localize="false">Remove</h2>
+  <paragraph role="paragraph" id="par_id891582890388737">Removes an existing dictionary entry based on its key. Returns <literal>True</literal> if successful.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id861626705083007">
+    <input>dict.Remove(key: str): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id551582890366999"><emph>key</emph>: Not case-sensitive. Must exist in the dictionary, otherwise an <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id56158289627581">myDict.Add("key1", 100)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651610399290742">myDict.Add("key2", 200)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id741610399296091">myDict.Add("key3", 300)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id591610399299316">MsgBox(myDict.Count) ' 3</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id661610399302807">myDict.Remove("key2")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id671610399305808">MsgBox(myDict.Count) ' 2</paragraph>
+  </bascode>
+</section>
 
-    <section id="ReplaceItem">
-    <comment> ReplaceItem -------------------------------------------------------------------------------------------------------------------------- </comment>
-      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id891582895615851">
-        <bookmark_value>Dictionary service;ReplaceItem</bookmark_value>
-      </bookmark>
-      <h2 id="hd_id801582895615477" localize="false">ReplaceItem</h2>
-        <paragraph role="paragraph" id="par_id281582895615444">Replaces an existing item value based on its key. Returns <literal>True</literal> if successful.</paragraph>
-        <h3 id="hd_id66158289561569" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id51582895615226">myDict.ReplaceItem(Key As String, Value As Variant) As Boolean</paragraph>
-        </bascode>
-        <h3 id="hd_id521582895615249" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-          <paragraph role="paragraph" id="par_id991582895615535"><emph>Key</emph> : String value representing the key whose value will be replaced. Not case-sensitive. If the key does not exist in the dictionary, a <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
-          <paragraph role="paragraph" id="par_id721582895615186"><emph>Value</emph> : The new value of the item referred to with the Key parameter.</paragraph>
-        <h3 id="hd_id781582895615372" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id581582895615680">myDict.Add("a", 1)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id351582895615555">MsgBox(myDict.Item("a")) 'Prints "1"</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id361610399892402">myDict.ReplaceItem("a", 100)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id411610399896001">MsgBox(myDict.Item("a")) ' Prints "100"</paragraph>
-       </bascode>
-    </section>
+<section id="RemoveAll">
+  <comment> RemoveAll ---------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id471582896275914">
+    <bookmark_value>Dictionary service;RemoveAll</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id911582896275637" localize="false">RemoveAll</h2>
+  <paragraph role="paragraph" id="par_id921582896275624">Removes all the entries from the dictionary. Returns <literal>True</literal> if successful.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id561626705190520">
+    <input>dict.RemoveAll(): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id56158289627580">myDict.Add("key1", 100)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651610399290743">myDict.Add("key2", 200)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id741610399296092">myDict.Add("key3", 300)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id591610399299317">MsgBox(myDict.Count) ' 3</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id661610399302808">myDict.RemoveAll()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id671610399305809">MsgBox(myDict.Count) ' 0</paragraph>
+  </bascode>
+</section>
 
-    <section id="ReplaceKey">
-    <comment> ReplaceKey -------------------------------------------------------------------------------------------------------------------------- </comment>
-      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id411582896597981">
-        <bookmark_value>Dictionary service;ReplaceKey</bookmark_value>
-      </bookmark>
-      <h2 id="hd_id231582896597839" localize="false">ReplaceKey</h2>
-        <paragraph role="paragraph" id="par_id571582896597766">Replaces an existing key in the dictionary by a new key. The item value is left unchanged. Returns <literal>True</literal> if successful.</paragraph>
-        <h3 id="hd_id441582896597550" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id351582896597447">myDict.ReplaceKey(Key As String, Value As String) As Boolean</paragraph>
-        </bascode>
-        <h3 id="hd_id791582896597306" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-          <paragraph role="paragraph" id="par_id911582896597619"><emph>Key</emph> : String value representing the key to be replaced. Not case-sensitive. If the key does not exist in the dictionary, a <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
-          <paragraph role="paragraph" id="par_id531582896597989"><emph>Value</emph> : String value for the new key. Not case-sensitive. If the new key already exists in the dictionary, a <literal>DUPLICATEKEYERROR</literal> error is raised.</paragraph>
-        <h3 id="hd_id931582896597782" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-        <bascode>
-          <paragraph role="bascode" localize="false" id="bas_id521582896597313">myDict.Add("oldKey", 100)</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id961610400326541">MsgBox(myDict.Item("oldKey")) 'Prints "100"</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id631610400329115">myDict.ReplaceKey("oldKey", "newKey")</paragraph>
-          <paragraph role="bascode" localize="false" id="bas_id761610400331545">MsgBox(myDict.Item("newKey")) ' Prints "100"</paragraph>
-       </bascode>
-    </section>
+<section id="ReplaceItem">
+  <comment> ReplaceItem -------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id891582895615851">
+    <bookmark_value>Dictionary service;ReplaceItem</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id801582895615477" localize="false">ReplaceItem</h2>
+  <paragraph role="paragraph" id="par_id281582895615444">Replaces an existing item value based on its key. Returns <literal>True</literal> if successful.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id551626705258936">
+    <input>dict.ReplaceItem(key: str, value: any): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id991582895615535"><emph>key</emph>: String value representing the key whose value will be replaced. Not case-sensitive. If the key does not exist in the dictionary, an <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
+  <paragraph role="paragraph" id="par_id721582895615186"><emph>value</emph>: The new value of the item referred to with the <literal>key</literal> parameter.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id581582895615680">myDict.Add("a", 1)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id351582895615555">MsgBox(myDict.Item("a")) ' 1</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id361610399892402">myDict.ReplaceItem("a", 100)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id411610399896001">MsgBox(myDict.Item("a")) ' 100</paragraph>
+  </bascode>
+</section>
 
-    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+<section id="ReplaceKey">
+  <comment> ReplaceKey --------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id411582896597981">
+    <bookmark_value>Dictionary service;ReplaceKey</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id231582896597839" localize="false">ReplaceKey</h2>
+  <paragraph role="paragraph" id="par_id571582896597766">Replaces an existing key in the dictionary by a new key. The item value is left unchanged. Returns <literal>True</literal> if successful.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id851626705393127">
+    <input>dict.ReplaceKey(key: str, value: str): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id911582896597619"><emph>key</emph>: String value representing the key to be replaced. Not case-sensitive. If the key does not exist in the dictionary, a <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
+  <paragraph role="paragraph" id="par_id531582896597989"><emph>value</emph>: String value for the new key. Not case-sensitive. If the new key already exists in the dictionary, an <literal>DUPLICATEKEYERROR</literal> error is raised.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id521582896597313">myDict.Add("oldKey", 100)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id961610400326541">MsgBox(myDict.Item("oldKey")) ' 100</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id631610400329115">myDict.ReplaceKey("oldKey", "newKey")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id761610400331545">MsgBox(myDict.Item("newKey")) ' 100</paragraph>
+  </bascode>
+</section>
 
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/sf_array.xhp#ArrayService"/>
+  </section>
 </body>
 </helpdocument>
