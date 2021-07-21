@@ -11,156 +11,166 @@
 
 <meta>
   <topic id="SF_TextStream" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">ScriptForge.TextStream service</title>
+    <title id="tit">ScriptForge.TextStream service</title>
     <filename>/text/sbasic/shared/03/sf_textstream.xhp</filename>
   </topic>
   </meta>
 
 <body>
+
 <section id="ScriptForge-SF_TextStream">
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id50158533078781">
-        <bookmark_value>TextStream service</bookmark_value>
-    </bookmark>
+  <bookmark localize="false" branch="index" id="bm_id50158533078781">
+    <bookmark_value>TextStream service</bookmark_value>
+  </bookmark>
 </section>
 
 <section id="abstract">
-    <h1 id="bm_id351585330787295" xml-lang="en-US"><variable id="TextStreamService"><link href="text/sbasic/shared/03/sf_textstream.xhp" name="TextStream service"><literal>ScriptForge</literal>.<literal>TextStream</literal> service</link></variable></h1>
-    <paragraph role="paragraph" id="par_id511585330787205" xml-lang="en-US">The <literal>TextStream</literal> service is used to sequentially read from and write to files opened or created using the <literal>ScriptForge.FileSystem</literal> service.</paragraph>
-    <paragraph role="paragraph" id="par_id41613596903894" xml-lang="en-US">The methods <literal>OpenTextFile</literal> and <literal>CreateTextFile</literal> from the <literal>FileSystem</literal> service return an instance of the <literal>TextStream</literal> service.</paragraph>
+  <h1 id="bm_id351585330787295"><variable id="TextStreamService"><link href="text/sbasic/shared/03/sf_textstream.xhp" name="TextStream service"><literal>ScriptForge</literal>.<literal>TextStream</literal> service</link></variable></h1>
+  <paragraph role="paragraph" id="par_id511585330787205">The <literal>TextStream</literal> service is used to sequentially read from and write to files opened or created using the <literal>ScriptForge.FileSystem</literal> service.</paragraph>
+  <paragraph role="paragraph" id="par_id41613596903894">The methods <literal>OpenTextFile</literal> and <literal>CreateTextFile</literal> from the <literal>FileSystem</literal> service return an instance of the <literal>TextStream</literal> service.</paragraph>
 </section>
-    <paragraph role="paragraph" id="par_id161585330787262" xml-lang="en-US">Line delimiters may be specified by the user. In input operations CR, LF or CR+LF are supported. In output operations, the default line delimiter is the one used by the operating system.</paragraph>
-    <paragraph role="paragraph" id="par_id831613598137669" xml-lang="en-US">The line delimiter for the operating system where the macro is being executed can be accessed using the <literal>SF_String.sfNEWLINE</literal> property.</paragraph>
-    <note id="par_id851613597445432">All operations needed to read from or write to a file (open, read/write and close) are presumed to happen during the same macro run.</note>
+  <paragraph role="paragraph" id="par_id161585330787262">Line delimiters may be specified by the user. In input operations CR, LF or CR+LF are supported. In output operations, the default line delimiter is the one used by the operating system.</paragraph>
+  <paragraph role="paragraph" id="par_id831613598137669">The line delimiter for the operating system where the macro is being executed can be accessed using the <literal>SF_String.sfNEWLINE</literal> property.</paragraph>
+  <note id="par_id851613597445432">All operations needed to read from or write to a file (open, read/write and close) are presumed to happen during the same macro run.</note>
 
-    <h2 id="hd_id83158533078741" xml-lang="en-US">Service instantiation</h2>
-    <paragraph role="paragraph" id="par_id351613598192725" xml-lang="en-US">The code snippet below uses the <literal>OpenTextFile</literal> method to create an instance of the <literal>TextStream</literal> Service.</paragraph>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id77158533078783">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id971585330787275">Dim FSO As Variant</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id11585330787585">FSO = CreateScriptService("FileSystem")</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id891585330787374">Set myFile = FSO.OpenTextFile("C:\Temp\ThisFile.txt", FSO.ForReading)</paragraph>
-    </bascode>
-    <embed href="text/sbasic/shared/00000003.xhp#Python_Support"/>
-    <paragraph role="paragraph" id="par_id371585330787197" xml-lang="en-US">The file must be closed with the <literal>CloseFile</literal> method after all read or write operations have been executed:</paragraph>
-    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id91613599192241">myFile.CloseFile()</paragraph>
-    </bascode>
-    <paragraph role="paragraph" id="par_id891582733781994" xml-lang="en-US">Optionally, the resources used by the <literal>TextStream</literal> instance can be released using the <literal>Dispose</literal> method:</paragraph>
-    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id761613599333614">Set myFile = myFile.Dispose()</paragraph>
-    </bascode>
-    <note id="par_id121612917368946">The methods in the <literal>TextStream</literal> service are mostly based on the <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1io_1_1XTextInputStream.html" name="XTextInputStream API"><literal>XTextInputStream</literal></link> and <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1io_1_1XTextOutputStream.html" name="XTextOutputStream API"><literal>XTextOutputStream</literal></link> UNO interfaces.</note>
+  <h2 id="hd_id83158533078741">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id351613598192725">The examples below in Basic and Python use the <literal>OpenTextFile</literal> method to create an instance of the <literal>TextStream</literal> Service.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id77158533078783">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id971585330787275">Dim FSO As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id11585330787585">FSO = CreateScriptService("FileSystem")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id891585330787374">Set myFile = FSO.OpenTextFile("C:\Temp\ThisFile.txt", FSO.ForReading)</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id371585330787197">The file must be closed with the <literal>CloseFile</literal> method after all read or write operations have been executed:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id91613599192241">myFile.CloseFile()</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id891582733781994">Optionally, the resources used by the <literal>TextStream</literal> instance can be released using the <literal>Dispose</literal> method:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id761613599333614">Set myFile = myFile.Dispose()</paragraph>
+  </bascode>
+  <note id="par_id121612917368946">The methods in the <literal>TextStream</literal> service are mostly based on the <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1io_1_1XTextInputStream.html" name="XTextInputStream API"><literal>XTextInputStream</literal></link> and <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1io_1_1XTextOutputStream.html" name="XTextOutputStream API"><literal>XTextOutputStream</literal></link> UNO interfaces.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id841626893320674">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981626893320923">fso = CreateScriptService("FileSystem")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id851626893321150">myFile = fso.OpenTextFile(r"C:\Temp\ThisFile.txt", fso.ForReading)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id131626893321309"># ...</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id231626893321491">myFile.CloseFile()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id871626893321683">myFile = myFile.Dispose()</paragraph>
+  </pycode>
 
-    <h2 id="hd_id941585330787948" xml-lang="en-US">Properties</h2>
-    <bookmark xml-lang="en-US" branch="index" id="bm_id1001613600572485" localize="false">
-      <bookmark_value>TextStream service;AtEndOfStream</bookmark_value>
-      <bookmark_value>TextStream service;Encoding</bookmark_value>
-      <bookmark_value>TextStream service;FileName</bookmark_value>
-      <bookmark_value>TextStream service;IOMode</bookmark_value>
-      <bookmark_value>TextStream service;Line</bookmark_value>
-      <bookmark_value>TextStream service;NewLine</bookmark_value>
-    </bookmark>
-    <table id="tab_id81585330787547">
-        <tablerow>
-            <tablecell>
-                <paragraph id="par_id631585330787267" role="tablehead" xml-lang="en-US">Name</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id401585330787370" role="tablehead" xml-lang="en-US">Readonly</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id581585330787700" role="tablehead" xml-lang="en-US">Type</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id551585330787608" role="tablehead" xml-lang="en-US">Description</paragraph>
-            </tablecell>
-        </tablerow>
-        <tablerow>
-            <tablecell>
-                <paragraph id="par_id941585330787832" role="tablecontent" xml-lang="en-US" localize="false">AtEndOfStream</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id181585330787752" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id471585330787948" role="tablecontent" xml-lang="en-US" localize="false">Boolean</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id901585330787680" role="tablecontent" xml-lang="en-US">Used in read mode. A <literal>True</literal> value indicates that the end of the file has been reached. A test using this property should precede calls to the <literal>ReadLine</literal> method.</paragraph>
-            </tablecell>
-        </tablerow>
-        <tablerow>
-            <tablecell>
-                <paragraph id="par_id501585330787895" role="tablecontent" xml-lang="en-US" localize="false">Encoding</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id561585330787568" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id731585330787673" role="tablecontent" xml-lang="en-US" localize="false">String</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id741585330787777" role="tablecontent" xml-lang="en-US">The character set to be used. The default encoding is "UTF-8".</paragraph>
-            </tablecell>
-            </tablerow>
-        <tablerow>
-            <tablecell>
-                <paragraph id="par_id361585330787241" role="tablecontent" xml-lang="en-US" localize="false">FileName</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id641585330787207" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id9158533078741" role="tablecontent" xml-lang="en-US" localize="false">String</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id281585330787614" role="tablecontent" xml-lang="en-US">Returns the name of the current file either in URL format or in the native operating system's format, depending on the current value of the <literal>FileNaming</literal> property of the <literal>FileSystem</literal> service.</paragraph>
-            </tablecell>
-        </tablerow>
-        <tablerow>
-            <tablecell>
-                <paragraph id="par_id451585330787745" role="tablecontent" xml-lang="en-US" localize="false">IOMode</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id111585330787410" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id981585330787716" role="tablecontent" xml-lang="en-US" localize="false">String</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id861585330787417" role="tablecontent" xml-lang="en-US">Indicates the input/output mode. Possible values are "READ", "WRITE" or "APPEND".</paragraph>
-            </tablecell>
-        </tablerow>
-        <tablerow>
-            <tablecell>
-                <paragraph id="par_id721585330787688" role="tablecontent" xml-lang="en-US" localize="false">Line</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id87158533078795" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id601585330787171" role="tablecontent" xml-lang="en-US" localize="false">Long</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id561585330787741" role="tablecontent" xml-lang="en-US">Returns the number of lines read or written so far.</paragraph>
-            </tablecell>
-        </tablerow>
-        <tablerow>
-            <tablecell>
-                <paragraph id="par_id12158533078767" role="tablecontent" xml-lang="en-US" localize="false">NewLine</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id531585330787157" role="tablecontent" xml-lang="en-US">No</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id9415853307876" role="tablecontent" xml-lang="en-US" localize="false">String</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id691585330787279" role="tablecontent" xml-lang="en-US">Sets or returns the current delimiter to be inserted between two successive written lines. The default value is the native line delimiter in the current operating system.</paragraph>
-            </tablecell>
-        </tablerow>
-    </table>
-<note id="par_id141613001281573">To learn more about the names of character sets, visit <link href="https://www.iana.org/assignments/character-sets/character-sets.xhtml" name="Character Sets">IANA's Character Set</link> page. Beware that %PRODUCTNAME does not implement all existing character sets.</note>
+  <h2 id="hd_id941585330787948">Properties</h2>
+  <bookmark branch="index" id="bm_id1001613600572485" localize="false">
+    <bookmark_value>TextStream service;AtEndOfStream</bookmark_value>
+    <bookmark_value>TextStream service;Encoding</bookmark_value>
+    <bookmark_value>TextStream service;FileName</bookmark_value>
+    <bookmark_value>TextStream service;IOMode</bookmark_value>
+    <bookmark_value>TextStream service;Line</bookmark_value>
+    <bookmark_value>TextStream service;NewLine</bookmark_value>
+  </bookmark>
+  <table id="tab_id81585330787547">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id631585330787267" role="tablehead">Name</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id401585330787370" role="tablehead">Readonly</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id581585330787700" role="tablehead">Type</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id551585330787608" role="tablehead">Description</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id941585330787832" role="tablecontent" localize="false">AtEndOfStream</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id181585330787752" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id471585330787948" role="tablecontent" localize="false">Boolean</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id901585330787680" role="tablecontent">Used in read mode. A <literal>True</literal> value indicates that the end of the file has been reached. A test using this property should precede calls to the <literal>ReadLine</literal> method.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id501585330787895" role="tablecontent" localize="false">Encoding</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561585330787568" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id731585330787673" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id741585330787777" role="tablecontent">The character set to be used. The default encoding is "UTF-8".</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id361585330787241" role="tablecontent" localize="false">FileName</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id641585330787207" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id9158533078741" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id281585330787614" role="tablecontent">Returns the name of the current file either in URL format or in the native operating system's format, depending on the current value of the <literal>FileNaming</literal> property of the <literal>FileSystem</literal> service.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id451585330787745" role="tablecontent" localize="false">IOMode</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id111585330787410" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id981585330787716" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id861585330787417" role="tablecontent">Indicates the input/output mode. Possible values are "READ", "WRITE" or "APPEND".</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id721585330787688" role="tablecontent" localize="false">Line</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id87158533078795" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id601585330787171" role="tablecontent" localize="false">Long</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561585330787741" role="tablecontent">Returns the number of lines read or written so far.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id12158533078767" role="tablecontent" localize="false">NewLine</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id531585330787157" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id9415853307876" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id691585330787279" role="tablecontent">Sets or returns the current delimiter to be inserted between two successive written lines. The default value is the native line delimiter in the current operating system.</paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+  <note id="par_id141613001281573">To learn more about the names of character sets, visit <link href="https://www.iana.org/assignments/character-sets/character-sets.xhtml" name="Character Sets">IANA's Character Set</link> page. Beware that %PRODUCTNAME does not implement all existing character sets.</note>
 <table id="tab_id501611613601554">
    <tablerow>
      <tablecell colspan="3"><paragraph id="par_id891611613601554" role="tablehead">List of Methods in the TextStream Service</paragraph></tablecell>
@@ -188,151 +198,179 @@
 </table>
 
 <section id="CloseFile">
-  <comment> CloseFile -------------------------------------------------------------------------------------------------------------------------- </comment>
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id21585330787288">
-        <bookmark_value>TextStream service;CloseFile</bookmark_value>
-    </bookmark>
-    <h2 id="hd_id901585330787252" localize="false">CloseFile</h2>
-    <paragraph role="paragraph" id="par_id421585330787675">Closes the current input or output stream and empties the output buffer if relevant. Returns <literal>True</literal> if the file was successfully closed.</paragraph>
-    <h3 id="hd_id751585330787577" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id131585330787787">myFile.CloseFile() As Boolean</paragraph>
-    </bascode>
+  <comment> CloseFile ------------------------------------------------------------------------------------------ </comment>
+  <bookmark localize="false" branch="index" id="bm_id21585330787288">
+    <bookmark_value>TextStream service;CloseFile</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id901585330787252" localize="false">CloseFile</h2>
+  <paragraph role="paragraph" id="par_id421585330787675">Closes the current input or output stream and empties the output buffer if relevant. Returns <literal>True</literal> if the file was successfully closed.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id971626891612501">
+    <input>myFile.CloseFile(): bool</input>
+  </paragraph>
 </section>
 
 <section id="ReadAll">
-  <comment> ReadAll -------------------------------------------------------------------------------------------------------------------------- </comment>
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id311585330787690">
-        <bookmark_value>TextStream service;ReadAll</bookmark_value>
-    </bookmark>
-    <h2 id="hd_id311585330787335" localize="false">ReadAll</h2>
-    <paragraph role="paragraph" id="par_id65158533078799">Returns all the remaining lines in the text stream as a single string. Line breaks are not removed.</paragraph>
-    <paragraph role="paragraph" id="par_id71613600347125">The resulting string can be split in lines either by using the <literal>Split</literal> built-in Basic function if the line delimiter is known, or with the <literal>SF_String.SplitLines</literal> method.</paragraph>
-    <paragraph role="paragraph" id="par_id91585330787373" xml-lang="en-US">For large files, using the <literal>ReadAll</literal> method wastes memory resources. In such cases it is recommended to read the file line by line using the <literal>ReadLine</literal> method.</paragraph>
-    <h3 id="hd_id991585330787163" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id881585330787244">myFile.ReadAll() As String</paragraph>
-    </bascode>
-    <h3 id="hd_id971585266787755" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <paragraph role="paragraph" id="par_id921613595637851">Consider the text file "Students.txt" with the following contents (a name in each line):</paragraph>
-    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id921613595638140">Herbie Peggy</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id61613595639028">Hardy Jarrett</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id711613595639379">Edith Lorelle</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id331613595639605">Roderick Rosamund</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id641613595639909">Placid Everette</paragraph>
-    </bascode>
-    <paragraph role="paragraph" id="par_id391613596019750">The example below uses the <literal>ReadAll</literal> and <literal>SplitLines</literal> methods to read the contents of the file into an array of strings:</paragraph>
-    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id21613595640293">Sub ReadFile_Example</paragraph>
-      <paragraph role="bascode" id="bas_id251613595640550">    'Loads the FileSystem service</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id931613595640789">    Dim FSO : FSO = CreateScriptService("FileSystem")</paragraph>
-      <paragraph role="bascode" id="bas_id181613595641087">    'Opens the text file with the names to be read</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id291613595641480">    Dim inputFile as Object</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id651613595641754">    Set inputFile = FSO.OpenTextFile("/home/user/Documents/Students.txt")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id711613595642109">    'Reads all the contents in the input file as a single string</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id81613595642474">    Dim allData as String</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id191613595642766">    allData = inputFile.ReadAll()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id961613595643093">    'Splits the string into an array</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id51613595643398">    Dim arrNames as Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id151613595643675">    arrNames = SF_String.SplitLines(allData)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id211613595928948">    ' (...)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id31613600104976">    inputFile.CloseFile()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id21613595645255">End Sub</paragraph>
-    </bascode>
+  <comment> ReadAll -------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id311585330787690">
+    <bookmark_value>TextStream service;ReadAll</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id311585330787335" localize="false">ReadAll</h2>
+  <paragraph role="paragraph" id="par_id65158533078799">Returns all the remaining lines in the text stream as a single string. Line breaks are not removed.</paragraph>
+  <paragraph role="paragraph" id="par_id71613600347125">The resulting string can be split in lines either by using the <literal>Split</literal> built-in Basic function if the line delimiter is known, or with the <literal>SF_String.SplitLines</literal> method.</paragraph>
+  <paragraph role="paragraph" id="par_id91585330787373">For large files, using the <literal>ReadAll</literal> method wastes memory resources. In such cases it is recommended to read the file line by line using the <literal>ReadLine</literal> method.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id501626891694491">
+    <input>myFile.ReadAll(): str</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id921613595637851">Consider the text file "Students.txt" with the following contents (a name in each line):</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id921613595638140">Herbie Peggy</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id61613595639028">Hardy Jarrett</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id711613595639379">Edith Lorelle</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id331613595639605">Roderick Rosamund</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id641613595639909">Placid Everette</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id391613596019750">The examples below in Basic and Python use the <literal>ReadAll</literal> and <literal>SplitLines</literal> methods to read the contents of the file into an array of strings:</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" id="bas_id251613595640550">'Loads the FileSystem service</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id931613595640789">Dim FSO : FSO = CreateScriptService("FileSystem")</paragraph>
+    <paragraph role="bascode" id="bas_id181613595641087">'Opens the text file with the names to be read</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id291613595641480">Dim inputFile as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651613595641754">Set inputFile = FSO.OpenTextFile("/home/user/Documents/Students.txt")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id711613595642109">'Reads all the contents in the input file as a single string</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id81613595642474">Dim allData as String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id191613595642766">allData = inputFile.ReadAll()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id961613595643093">'Splits the string into an array</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id51613595643398">Dim arrNames as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id151613595643675">arrNames = SF_String.SplitLines(allData)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id211613595928948">' (...)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id31613600104976">inputFile.CloseFile()</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id641626893916915">fso = CreateScriptService("FileSystem")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id751626893917578">inputFile = fso.OpenTextFile("/home/user/Documents/Students.txt")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id771626893917826">allData = inputFile.ReadAll()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id951626893918067">arrNames = allData.split(inputFile.NewLine)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id391626893918273"># ...</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id241626893918515">inputFile.CloseFile()</paragraph>
+  </pycode>
 </section>
 
 <section id="ReadLine">
-  <comment> ReadLine -------------------------------------------------------------------------------------------------------------------------- </comment>
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id161585330787462">
-        <bookmark_value>TextStream service;ReadLine</bookmark_value>
-    </bookmark>
-    <h2 id="hd_id111585330787998" localize="false">ReadLine</h2>
-    <paragraph role="paragraph" id="par_id871585330787885">Returns the next line in the text stream as a string. Line breaks are removed from the returned string.</paragraph>
-    <paragraph role="paragraph" id="par_id431613600221626">The <literal>AtEndOfStream</literal> test should precede the <literal>ReadLine</literal> method like in the example below.</paragraph>
-    <paragraph role="paragraph" id="par_id171585330787774" xml-lang="en-US">An error will be raised if the <literal>AtEndOfStream</literal> was reached during the previous <literal>ReadLine</literal> or <literal>SkipLine</literal> method call.</paragraph>
-    <h3 id="hd_id381585330787934" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id941585330787658">myFile.ReadLine() As String</paragraph>
-    </bascode>
-    <h3 id="hd_id971585330787755" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id321585330787499">Dim sLine As String</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id791585330787376">Do While Not myFile.AtEndOfStream</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id461585330787206">    sLine = myFile.ReadLine()</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id521585330787673">    ' (...)</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id715853307876">Loop</paragraph>
-    </bascode>
+  <comment> ReadLine ------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id161585330787462">
+    <bookmark_value>TextStream service;ReadLine</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id111585330787998" localize="false">ReadLine</h2>
+  <paragraph role="paragraph" id="par_id871585330787885">Returns the next line in the text stream as a string. Line breaks are removed from the returned string.</paragraph>
+  <paragraph role="paragraph" id="par_id431613600221626">The <literal>AtEndOfStream</literal> test should precede the <literal>ReadLine</literal> method like in the example below.</paragraph>
+  <paragraph role="paragraph" id="par_id171585330787774">An error will be raised if the <literal>AtEndOfStream</literal> was reached during the previous <literal>ReadLine</literal> or <literal>SkipLine</literal> method call.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id431626892013564">
+    <input>myFile.ReadLine(): str</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id321585330787499">Dim sLine As String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791585330787376">Do While Not myFile.AtEndOfStream</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461585330787206">    sLine = myFile.ReadLine()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id521585330787673">    ' (...)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id715853307876">Loop</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id21626894253022">while not myFile.AtEndOfStream:</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id381626894253384">    sLine = myFile.ReadLine()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id931626894253567">    # ...</paragraph>
+  </pycode>
 </section>
 
 <section id="SkipLine">
-  <comment> SkipLine -------------------------------------------------------------------------------------------------------------------------- </comment>
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id381585330787551">
-        <bookmark_value>TextStream service;SkipLine</bookmark_value>
-    </bookmark>
-    <h2 id="hd_id241585330787168" localize="false">SkipLine</h2>
-    <paragraph role="paragraph" id="par_id11585330787847">Skips the next line in the input stream when reading a <literal>TextStream</literal> file.</paragraph>
-    <paragraph role="paragraph" id="par_id441613600704766">This method can result in <literal>AtEndOfStream</literal> being set to <literal>True</literal>.</paragraph>
-    <h3 id="hd_id431585330787708" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id661585330787443">myFile.SkipLine()</paragraph>
-    </bascode>
+  <comment> SkipLine ------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id381585330787551">
+    <bookmark_value>TextStream service;SkipLine</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id241585330787168" localize="false">SkipLine</h2>
+  <paragraph role="paragraph" id="par_id11585330787847">Skips the next line in the input stream when reading a <literal>TextStream</literal> file.</paragraph>
+  <paragraph role="paragraph" id="par_id441613600704766">This method can result in <literal>AtEndOfStream</literal> being set to <literal>True</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id41626892171105">
+    <input>myFile.SkipLine()</input>
+  </paragraph>
 </section>
 
 <section id="WriteBlankLines">
-  <comment> WriteBlankLines -------------------------------------------------------------------------------------------------------------------------- </comment>
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id61585330787548">
-        <bookmark_value>TextStream service;WriteBlankLines</bookmark_value>
-    </bookmark>
-    <h2 id="hd_id241585330787109" localize="false">WriteBlankLines</h2>
-    <paragraph role="paragraph" id="par_id141585330787657">Writes a specified number of empty lines to the output stream.</paragraph>
-    <h3 id="hd_id731585330787560" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id531585330787648">myFile.WriteBlankLines(Lines As Long)</paragraph>
-    </bascode>
-    <h3 id="hd_id391585330787227" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id291585330787357"><emph>Lines</emph>: The number of empty lines to write.</paragraph>
+  <comment> WriteBlankLines ------------------------------------------------------------------------------------ </comment>
+  <bookmark localize="false" branch="index" id="bm_id61585330787548">
+    <bookmark_value>TextStream service;WriteBlankLines</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id241585330787109" localize="false">WriteBlankLines</h2>
+  <paragraph role="paragraph" id="par_id141585330787657">Writes a specified number of empty lines to the output stream.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id531626892281078">
+    <input>myFile.WriteBlankLines(lines: int)</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id291585330787357"><emph>lines</emph>: The number of empty lines to write to the file.</paragraph>
 </section>
 
 <section id="WriteLine">
-  <comment> WriteLine -------------------------------------------------------------------------------------------------------------------------- </comment>
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id371585330787255">
-        <bookmark_value>TextStream service;WriteLine</bookmark_value>
-    </bookmark>
-    <h2 id="hd_id611585330787877" localize="false">WriteLine</h2>
-    <paragraph role="paragraph" id="par_id101585330787215">Writes the given string to the output stream as a single line.</paragraph>
-    <paragraph role="paragraph" id="par_id421613601002074">The character defined in the <literal>NewLine</literal> property is used as the line delimiter.</paragraph>
-    <h3 id="hd_id861585330787574" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-    <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id8158533078735">myFile.WriteLine(Line As String)</paragraph>
-    </bascode>
-    <h3 id="hd_id191585330787562" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-    <paragraph role="paragraph" id="par_id491585330787650"><emph>Line</emph>: The line to write, may be empty.</paragraph>
-    <h3 id="hd_id971585330145755" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id171613321461620">Sub SquaredValuesFile(lastValue as Integer)</paragraph>
-      <paragraph role="bascode" id="bas_id21613321528612">    'Instantiates the FileSystem Service</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id711613321529004">    Dim FSO as Variant : FSO = CreateScriptService("FileSystem")</paragraph>
-      <paragraph role="bascode" id="bas_id191613321529277">    'Creates a text file</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id861613321529684">    Dim myFile as Variant : myFile = FSO.CreateTextFile("/home/user/Documents/squares.csv")</paragraph>
-      <paragraph role="bascode" id="bas_id641613321530181">    'Writes the Value and Value squared, separated by ";"</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id331613321530548">    Dim value as Integer</paragraph>
-      <paragraph role="bascode" id="bas_id141613321530960">    myFile.WriteLine("Value;Value Squared")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id891613321531342">    For value = 1 To lastValue</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id951613321531798">        myFile.WriteLine(value &amp; ";" &amp; value ^ 2)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id621613321532215">    Next value</paragraph>
-      <paragraph role="bascode" id="bas_id881613321532598">    'Closes the file and free resources</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id671613321532919">    myFile.CloseFile()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id51613321533150">    myFile.Dispose()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id861613321645821">End Sub</paragraph>
-    </bascode>
+  <comment> WriteLine ------------------------------------------------------------------------------------------ </comment>
+  <bookmark localize="false" branch="index" id="bm_id371585330787255">
+    <bookmark_value>TextStream service;WriteLine</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id611585330787877" localize="false">WriteLine</h2>
+  <paragraph role="paragraph" id="par_id101585330787215">Writes the given string to the output stream as a single line.</paragraph>
+  <paragraph role="paragraph" id="par_id421613601002074">The character defined in the <literal>NewLine</literal> property is used as the line delimiter.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id791626892414752">
+    <input>myFile.WriteLine(line: str)</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id491585330787650"><emph>line</emph>: The line to write, may be empty.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id821626894480105">The examples below in Basic and Python create a text file in CSV format in which each line containes a value and its square untill <literal>lastValue</literal> is reached.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id171613321461620">Sub SquaredValuesFile(lastValue as Integer)</paragraph>
+    <paragraph role="bascode" id="bas_id21613321528612">    'Instantiates the FileSystem Service</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id711613321529004">    Dim FSO as Variant : FSO = CreateScriptService("FileSystem")</paragraph>
+    <paragraph role="bascode" id="bas_id191613321529277">    'Creates a text file</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id861613321529684">    Dim myFile as Variant : myFile = FSO.CreateTextFile("/home/user/Documents/squares.csv")</paragraph>
+    <paragraph role="bascode" id="bas_id641613321530181">    'Writes the Value and Value squared, separated by ";"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id331613321530548">    Dim value as Integer</paragraph>
+    <paragraph role="bascode" id="bas_id141613321530960">    myFile.WriteLine("Value;Value Squared")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id891613321531342">    For value = 1 To lastValue</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id951613321531798">        myFile.WriteLine(value &amp; ";" &amp; value ^ 2)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621613321532215">    Next value</paragraph>
+    <paragraph role="bascode" id="bas_id881613321532598">    'Closes the file and free resources</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id671613321532919">    myFile.CloseFile()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id51613321533150">    Set myFile = myFile.Dispose()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id861613321645821">End Sub</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id191626894577635">def squared_values_file(lastValue):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id71626894577912">    fso = CreateScriptService("FileSystem")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id681626894578108">    myFile = fso.CreateTextFile("/home/user/Documents/squares.csv")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id411626894578332">    myFile.WriteLine("Value;Value Squared")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id541626894578572">    for value in range(1, lastValue + 1):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id551626894578859">        myFile.WriteLine("{};{}".format(value, value ** 2))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id711626894579141">    myFile.CloseFile()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id251626894579421">    myFile = myFile.Dispose()</paragraph>
+  </pycode>
 </section>
 
-    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
-    <section id="relatedtopics">
-      <embed href="text/sbasic/shared/03/sf_filesystem.xhp#FileSystemService"/>
-      <paragraph role="paragraph" id="par_id301613075694148"><link href="text/sbasic/shared/03160000.xhp" name="Input function">Input Function</link></paragraph>
-      <paragraph role="paragraph" id="par_id271612398715438"><link href="text/sbasic/shared/03020103.xhp" name="Open statement">Open Statement</link></paragraph>
-    </section>
+<embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+<section id="relatedtopics">
+  <embed href="text/sbasic/shared/03/sf_filesystem.xhp#FileSystemService"/>
+  <embed href="text/sbasic/shared/03160000.xhp#Input_h1"/>
+  <embed href="text/sbasic/shared/03020103.xhp#Open_h1"/>
+</section>
 </body>
 </helpdocument>
