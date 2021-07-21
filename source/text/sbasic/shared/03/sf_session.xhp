@@ -18,11 +18,11 @@
 <body>
 
 <section id="abstract">
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id661582814720399">
-      <bookmark_value>Session service</bookmark_value>
-   </bookmark>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id661582814720399">
+    <bookmark_value>Session service</bookmark_value>
+  </bookmark>
 
-<h1 id="hd_id901582814720985" xml-lang="en-US"><variable id="SessionService"><link href="text/sbasic/shared/03/sf_session.xhp" name="Session service"><literal>ScriptForge</literal>.<literal>Session</literal> service</link></variable></h1>
+  <h1 id="hd_id901582814720985" xml-lang="en-US"><variable id="SessionService"><link href="text/sbasic/shared/03/sf_session.xhp" name="Session service"><literal>ScriptForge</literal>.<literal>Session</literal> service</link></variable></h1>
 
   <paragraph role="paragraph" id="par_id861582814720987" xml-lang="en-US">The <literal>Session</literal> service gathers various general-purpose methods about:</paragraph>
   <list type = "unordered">
@@ -40,16 +40,20 @@
 </section>
 
   <h2 id="hd_id91582814720116" xml-lang="en-US">Service invocation</h2>
-
-    <bascode>
-     <paragraph role="bascode" localize="false" id="bas_id931582897922121">GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
-     <paragraph role="bascode" localize="false" id="bas_id961582814720760">Dim session As Variant</paragraph>
-     <paragraph role="bascode" localize="false" id="bas_id651582814720203">session = CreateScriptService("Session")</paragraph>
-    </bascode>
-  <embed href="text/sbasic/shared/00000003.xhp#Python_Support"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id931582897922121">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id961582814720760">Dim session As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651582814720203">session = CreateScriptService("Session")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id891626808716096">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id261626808717344">session = CreateScriptService("Session")</paragraph>
+  </pycode>
   <h2 id="hd_id291582814720762" xml-lang="en-US">Constants</h2>
-    <paragraph role="paragraph" id="par_id82158281472034" xml-lang="en-US">Below is a list of constants available to ease the designation of the library containing a Basic or Python script to invoke.
-   <br />Use them as <literal>session.CONSTANT</literal>.</paragraph>
+    <paragraph role="paragraph" id="par_id82158281472034" xml-lang="en-US">Below is a list of constants available to ease the designation of the library containing a Basic or Python script to invoke. Use them as <literal>session.CONSTANT</literal>.</paragraph>
+  <section id="constants">
     <table id="tab_id291582814720160">
      <tablerow>
       <tablecell>
@@ -164,7 +168,8 @@
         </tablecell>
      </tablerow>
     </table>
-  
+  </section>
+
 <table id="tab_id501611613601554">
    <tablerow>
      <tablecell colspan="3"><paragraph id="par_id891611613601554" role="tablehead" xml-lang="en-US">List of Methods in the Session Service</paragraph></tablecell>
@@ -196,297 +201,429 @@
        </tablecell>
    </tablerow>
 </table>
-  
-   <tip id="par_id491613061572993"><literal>Session</literal> service methods behave as follows:
-      <br />Arguments are passed by value. Updates performed by the called function are not sent back to the calling script.
-      <br />A single value or an array of values is returned to the calling script.
+
+   <tip id="par_id491613061572993"><literal>Execute...</literal> methods in <literal>Session</literal> service behave as follows:
+      <br/>Arguments are passed by value. Changes made by the called function to the arguments do not update their values in the calling script.
+      <br/>A single value or an array of values is returned to the calling script.
    </tip>
 
-  <section id="ExecuteBasicScript">
-  <comment> ExecuteBasicScript -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41582815407230">
-      <bookmark_value>Session service;ExecuteBasicScript</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id281582815407230" localize="false">ExecuteBasicScript</h2>
-   <paragraph role="paragraph" id="par_id451582815407230">Execute the Basic script given its name and location and fetch its result if any.</paragraph>
-   <paragraph role="paragraph" id="par_id921600856780901" xml-lang="en-US">If the script is not found, or if it returns nothing, the returned value is <literal>Empty</literal>.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id771582815407230">session.ExecuteBasicScript([Scope As String], Script As String[, arg0 As Variant, ...]) As Variant</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id631582815407231"><emph>Scope</emph>: "document" or "application" or one of the applicable <literal>session.CONSTANTS</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id691582815407231"><emph>Script</emph>: "library.module.method" as a case-sensitive string.
-      <br />The library is loaded in memory if necessary.
-      <br />The module must not be a class module.
-      <br />The method may be a <literal>Sub</literal> or a <literal>Function</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id881582815407231"><emph>arg0, ...</emph>: The arguments to provide to the called script.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id561582815407231">session.ExecuteBasicScript(, "XrayTool._Main.Xray", CreateUnoService("com.sun.star.util.TextSearch"))</paragraph>
-      <paragraph role="bascode" id="bas_id61582815407231" xml-lang="en-US">' Xray returns no value</paragraph>
-   </bascode>
-   </section>
+<section id="ExecuteBasicScript">
+  <comment> ExecuteBasicScript ------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41582815407230">
+    <bookmark_value>Session service;ExecuteBasicScript</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id281582815407230" localize="false">ExecuteBasicScript</h2>
+  <paragraph role="paragraph" id="par_id451582815407230">Execute the Basic script given its name and location and fetch its result if any.</paragraph>
+  <paragraph role="paragraph" id="par_id921600856780901" xml-lang="en-US">If the script returns nothing, which is the case of procedures defined with <literal>Sub</literal>, the returned value is <literal>Empty</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id131626808989444">
+    <input>session.ExecuteBasicScript(scope: str, script: str, args: any[0..*]): any</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id631582815407231"><emph>scope</emph>: String specifying where the script is stored. It can be either "document" (constant <literal>session.SCRIPTISEMBEDDED</literal>) or "application" (constant <literal>session.SCRIPTISAPPLICATION</literal>).</paragraph>
+  <paragraph role="paragraph" id="par_id691582815407231"><emph>script</emph>: String specifying the script to be called in the format "library.module.method" as a case-sensitive string.</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id741626828862265" role="listitem">The library is loaded in memory if necessary.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id981626828863001" role="listitem">The module must not be a class module.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id721626828863257" role="listitem">The method may be a <literal>Sub</literal> or a <literal>Function</literal>.</paragraph>
+    </listitem>
+  </list>
+  <paragraph role="paragraph" id="par_id881582815407231"><emph>args</emph>: The arguments to be passed to the called script.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id21626809513802">Consider the following Basic function named <literal>DummyFunction</literal> that is stored in "My Macros" in the "Standard" library inside a module named "Module1".</paragraph>
+  <paragraph role="paragraph" id="par_id551626810319766">The function simply takes in two integer values <literal>v1</literal> and <literal>v2</literal> and return the sum of all values starting in <literal>v1</literal> and ending in <literal>v2</literal>.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id21626810243092">Function DummyFunction(v1 as Integer, v2 as Integer) As Long</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id571626810243635">    Dim result as Long, i as Integer</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id321626810243876">    For i = v1 To v2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id631626810244299">        result = result + i</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id321626810244676">    Next i</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id641626810245084">    DummyFunction = result</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id381626810245324">End Function</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id461626810470057">The examples below show how to call <literal>DummyFunction</literal> from within Basic and Python scripts.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id251626810696112">Dim session : session = CreateScriptService("Session")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id321626810696366">Dim b_script as String, result as Long</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id291626810696576">b_script = "Standard.Module1.DummyFunction"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id751626810696799">result = session.ExecuteBasicScript("application", b_script, 1, 10)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id991626810697024">MsgBox result ' 55</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id291626810829019">session = CreateScriptService("Session")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id231626810829279">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id261626810829451">b_script = 'Standard.Module1.DummyFunction'</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id111626810829725">result = session.ExecuteBasicScript('application', b_script, 1, 10)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id111626810838070">bas.MsgBox(result) # 55</paragraph>
+  </pycode>
+</section>
 
-   <section id="ExecuteCalcFunction">
-   <comment> ExecuteCalcFunction -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id571582816585180">
-      <bookmark_value>Session service;ExecuteCalcFunction</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id551582816585181" localize="false">ExecuteCalcFunction</h2>
-   <paragraph role="paragraph" id="par_id111582816585181">Execute a Calc function using its English name and based on the given arguments.
+<section id="ExecuteCalcFunction">
+  <comment> ExecuteCalcFunction ------------------------------------------------------------------------------------ </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id571582816585180">
+    <bookmark_value>Session service;ExecuteCalcFunction</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id551582816585181" localize="false">ExecuteCalcFunction</h2>
+  <paragraph role="paragraph" id="par_id111582816585181">Execute a Calc function using its English name and based on the given arguments.
       <br />If the arguments are arrays, the function is executed as an <link href="text/scalc/01/04060107.xhp" name="array formula">array formula</link>.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id391582816585182">session.ExecuteCalcFunction(CalcFunction As String, arg0, ...) As Variant</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id771582816585183"><emph>CalcFunction</emph>: The English name of the function to execute.</paragraph>
-   <paragraph role="paragraph" id="par_id371582816585183"><emph>arg0, ...</emph>: The arguments to provide to the called Calc function. Each argument must be either a string, a numeric value or an array of arrays combining those types.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id461582816585184">session.ExecuteCalcFunction("AVERAGE", 1, 5, 3, 7) ' 4</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id641582816585185">session.ExecuteCalcFunction("ABS", Array(Array(-1,2,3),Array(4,-5,6),Array(7,8,-9)))(2)(2) ' 9</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id241582817051111">session.ExecuteCalcFunction("LN", -3)</paragraph>
-      <paragraph role="bascode" id="bas_id881582816585185" xml-lang="en-US">' Generates an error.</paragraph>
-   </bascode>
-   </section>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id701626811351722">
+    <input>session.ExecuteCalcFunction(calcfunction: str, args: any[0..*]): any</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id771582816585183"><emph>calcfunction</emph>: The name of the Calc function to be called, in English.</paragraph>
+  <paragraph role="paragraph" id="par_id371582816585183"><emph>args</emph>: The arguments to be passed to the called Calc function. Each argument must be either a string, a numeric value or an array of arrays combining those types.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id461582816585184">session.ExecuteCalcFunction("AVERAGE", 1, 5, 3, 7) ' 4</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id641582816585185">session.ExecuteCalcFunction("ABS", Array(Array(-1, 2, 3), Array(4, -5, 6), Array(7, 8, -9)))(2)(2) ' 9</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id241582817051111">session.ExecuteCalcFunction("LN", -3)</paragraph>
+    <paragraph role="bascode" id="bas_id881582816585185" xml-lang="en-US">' Generates an error.</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id781626816579430">session.ExecuteCalcFunction("AVERAGE", 1, 5, 3, 7) # 4</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id721626816579849">session.ExecuteCalcFunction("ABS", ((-1, 2, 3), (4, -5, 6), (7, 8, -9)))[2][2] # 9</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id191626816580053">session.ExecuteCalcFunction("LN", -3)</paragraph>
+  </pycode>
+</section>
 
-   <section id="ExecutePythonScript">
-   <comment> ExecutePythonScript -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id671582818023244">
-      <bookmark_value>Session service;ExecutePythonScript</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id741582818023244" localize="false">ExecutePythonScript</h2>
-   <paragraph role="paragraph" id="par_id571582818023245">Execute the Python script given its location and name, fetch its result if any. Result can be a single value or an array of values.</paragraph>
-   <paragraph role="paragraph" id="par_id71600856817410" xml-lang="en-US">If the script is not found, or if it returns nothing, the returned value is <literal>Empty</literal>.</paragraph>
-   <embed href="text/sbasic/python/python_2_basic.xhp#APIScriptingFramework" />
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id111582818023246">session.ExecutePythonScript([Scope] As String, Script As String[, arg0 As Variant, ...]) As Variant</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id791582818023246"><emph>Scope</emph>: One of the applicable <literal>session.CONSTANTS</literal>. Default = <literal>session.SCRIPTISSHARED</literal>.</paragraph>
-      <paragraph role="paragraph" id="par_id71582818023247"><emph>Script</emph>: Either "library/module.py$method" or "module.py$method" or "myExtension.oxt|myScript|module.py$method" as a case-sensitive string.</paragraph>
-      <list type="unordered">
-         <listitem><paragraph id="par_id501613061041313" role="listitem">library: The folder path to the Python module.</paragraph></listitem>
-         <listitem><paragraph id="par_id771613061043097" role="listitem">myScript: The folder containing the Python module.</paragraph></listitem>
-         <listitem><paragraph id="par_id301613061123849" role="listitem">module.py: The Python module.</paragraph></listitem>
-         <listitem><paragraph id="par_id241613061044560" role="listitem">method: The Python function.</paragraph></listitem>
-      </list>
-      <paragraph role="paragraph" id="par_id711582818023247"><emph>arg0, ...</emph>: The arguments to provide to the called script.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id101582818023248">session.ExecutePythonScript(session.SCRIPTISSHARED, "Capitalise.py$getNewString", "Abc") ' "abc"</paragraph>
-   </bascode>
-   </section>
+<section id="ExecutePythonScript">
+  <comment> ExecutePythonScript ------------------------------------------------------------------------------------ </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id671582818023244">
+    <bookmark_value>Session service;ExecutePythonScript</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id741582818023244" localize="false">ExecutePythonScript</h2>
+  <paragraph role="paragraph" id="par_id571582818023245">Execute the Python script given its location and name, fetch its result if any. Result can be a single value or an array of values.</paragraph>
+  <paragraph role="paragraph" id="par_id71600856817410" xml-lang="en-US">If the script is not found, or if it returns nothing, the returned value is <literal>Empty</literal>.</paragraph>
+  <embed href="text/sbasic/python/python_2_basic.xhp#APIScriptingFramework" />
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id421626816736635">
+    <input>session.ExecutePythonScript(scope: str, script: str, args: any[0..*]): any</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id791582818023246"><emph>scope</emph>: One of the applicable constants listed <link href="text/sbasic/shared/03/sf_session.xhp#constants" name="Session constants">above</link>. The default value is <literal>session.SCRIPTISSHARED</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id71582818023247"><emph>script</emph>: Either "library/module.py$method" or "module.py$method" or "myExtension.oxt|myScript|module.py$method" as a case-sensitive string.</paragraph>
+  <list type="unordered">
+    <listitem><paragraph id="par_id501613061041313" role="listitem">library: The folder path to the Python module.</paragraph></listitem>
+    <listitem><paragraph id="par_id771613061043097" role="listitem">myScript: The folder containing the Python module.</paragraph></listitem>
+    <listitem><paragraph id="par_id301613061123849" role="listitem">module.py: The Python module.</paragraph></listitem>
+    <listitem><paragraph id="par_id241613061044560" role="listitem">method: The Python function.</paragraph></listitem>
+  </list>
+  <paragraph role="paragraph" id="par_id711582818023247"><emph>args</emph>: The arguments to be passed to the called script..</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id701626817164878">Consider the Python function <literal>odd_integers</literal> defined below that creates a list with odd integer values between <literal>v1</literal> an <literal>v2</literal>. Suppose this function is stored in a file named <emph>my_macros.py</emph> in your user scripts folder.</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id21626817636630">def odd_integers(v1, v2):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id231626817636935">    odd_list = [v for v in range(v1, v2 + 1) if v % 2 != 0]</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id901626817637127">    return odd_list</paragraph>
+  </pycode>
+  <tip id="par_id751626817335715">Read the help page <embedvar href="text/sbasic/python/python_locations.xhp#pythonlocations1"/> to learn more about where Python scripts can be stored.</tip>
+  <paragraph role="paragraph" id="par_id121626817725471">The following examples show how to call the function <literal>odd_integers</literal> from withing Basic and Python scripts.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id481626817835712">Dim script as String, session as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id141626817836000">script = "my_macros.py$odd_integers"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371626817836256">session = CreateScriptService("Session")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id711626817836519">Dim result as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id221626817836809">result = session.ExecutePythonScript(session.SCRIPTISPERSONAL, script, 1, 9)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id91626817837112">MsgBox SF_String.Represent(result)</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id231626818075452">session = CreateScriptService("Session")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id481626818075720">script = "my_macros.py$odd_integers"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id661626818075938">result = session.ExecutePythonScript(session.SCRIPTISPERSONAL, script, 1, 9)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id811626818076162">bas.MsgBox(repr(result))</paragraph>
+  </pycode>
+</section>
 
-   <section id="HasUnoMethod">
-   <comment> HasUnoMethod -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id901587477335292">
-      <bookmark_value>Session service;HasUnoMethod</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id58158747733586" localize="false">HasUnoMethod</h2>
-   <paragraph role="paragraph" id="par_id111587477335982">Returns <literal>True</literal> if an UNO object contains the given method. Returns <literal>False</literal> when the method is not found or when an argument is invalid.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id981587477335313">session.HasUnoMethod(UnoObject As Object, MethodName As String) As Boolean</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id921587477335673"><emph>UnoObject</emph>: The object to inspect.</paragraph>
-   <paragraph role="paragraph" id="par_id631587477566016" xml-lang="en-US"><emph>MethodName</emph>: the method as a case-sensitive string</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id471587477335112">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id71587477335350">a = CreateUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id671587477335639">MsgBox session.HasUnoMethod(a, "callFunction")</paragraph>
-   </bascode>
-   </section>
+<section id="HasUnoMethod">
+  <comment> HasUnoMethod ------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id901587477335292">
+    <bookmark_value>Session service;HasUnoMethod</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id58158747733586" localize="false">HasUnoMethod</h2>
+  <paragraph role="paragraph" id="par_id111587477335982">Returns <literal>True</literal> if an UNO object contains the given method. Returns <literal>False</literal> when the method is not found or when an argument is invalid.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id761626818201301">
+    <input>session.HasUnoMethod(unoobject: uno, methodname: str): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id921587477335673"><emph>unoobject</emph>: The object to inspect.</paragraph>
+  <paragraph role="paragraph" id="par_id631587477566016" xml-lang="en-US"><emph>methodname</emph>: the method as a case-sensitive string</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id471587477335112">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id71587477335350">a = CreateUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id671587477335639">MsgBox session.HasUnoMethod(a, "callFunction") ' True</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id201626818671015">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id781626818671422">a = bas.createUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441626818671679">result = session.HasUnoMethod(a, "callFunction")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981626818671871">bas.MsgBox(result) # True</paragraph>
+  </pycode>
+</section>
 
-   <section id="HasUnoProperty">
-   <comment> HasUnoProperty -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id511587477832348">
-      <bookmark_value>Session service;HasUnoProperty</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id521587477832241" localize="false">HasUnoProperty</h2>
-   <paragraph role="paragraph" id="par_id191587477832959">Returns <literal>True</literal> if a UNO object has the given property. Returns <literal>False</literal> when the property is not found or when an argument is invalid.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id111587477832613">session.HasUnoProperty(UnoObject As Object, PropertyName As String) As Boolean</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id121587477832805"><emph>UnoObject</emph>: The object to inspect.</paragraph>
-   <paragraph role="paragraph" id="par_id701587477832750" xml-lang="en-US"><emph>PropertyName</emph>: the property as a case-sensitive string</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id61587477832241">Dim svc As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id281587477832114">svc = CreateUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id90158747783219">MsgBox session.HasUnoProperty(svc, "Wildcards")</paragraph>
-   </bascode>
-   </section>
+<section id="HasUnoProperty">
+  <comment> HasUnoProperty ----------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id511587477832348">
+    <bookmark_value>Session service;HasUnoProperty</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id521587477832241" localize="false">HasUnoProperty</h2>
+  <paragraph role="paragraph" id="par_id191587477832959">Returns <literal>True</literal> if a UNO object has the given property. Returns <literal>False</literal> when the property is not found or when an argument is invalid.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id821626818816336">
+    <input>session.HasUnoProperty(unoobject: uno, propertyname: str): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id121587477832805"><emph>unoobject</emph>: The object to inspect.</paragraph>
+  <paragraph role="paragraph" id="par_id701587477832750" xml-lang="en-US"><emph>propertyname</emph>: the property as a case-sensitive string</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id61587477832241">Dim svc As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id281587477832114">svc = CreateUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id90158747783219">MsgBox session.HasUnoProperty(svc, "Wildcards")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id331626818906928">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id191626818907607">a = bas.createUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id951626818907799">result = session.HasUnoProperty(a, "Wildcards")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441626818907959">bas.MsgBox(result) # True</paragraph>
+  </pycode>
+</section>
 
-   <section id="OpenURLInBrowser">
-   <comment> OpenURLInBrowser -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id321601129640799">
-      <bookmark_value>Session service;OpenURLInBrowser</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id971601129640909" localize="false">OpenURLInBrowser</h2>
-   <paragraph role="paragraph" id="par_id97160112964017">Open a Uniform Resource Locator (<link href="text/shared/00/00000002.xhp#URL" name="URL">URL</link>) in the default browser.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id291601129640334">session.OpenURLInBrowser(URL As String)</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id241601129640549"><emph>URL</emph>: The URL to open.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id781601129640527">session.OpenURLInBrowser("https://docs.python.org/3/library/webbrowser.html")</paragraph>
-   </bascode>
-   </section>
+<section id="OpenURLInBrowser">
+  <comment> OpenURLInBrowser --------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id321601129640799">
+    <bookmark_value>Session service;OpenURLInBrowser</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id971601129640909" localize="false">OpenURLInBrowser</h2>
+  <paragraph role="paragraph" id="par_id97160112964017">Open a Uniform Resource Locator (<link href="text/shared/00/00000002.xhp#URL" name="URL">URL</link>) in the default browser.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id831626819024511">
+    <input>session.OpenURLInBrowser(url: str)</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id241601129640549"><emph>url</emph>: The URL to open.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id531626819105690">' Basic</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id781601129640527">session.OpenURLInBrowser("help.libreoffice.org/")</paragraph>
+  </bascode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id551626819119460"># Python</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id121626819119605">session.OpenURLInBrowser("help.libreoffice.org/")</paragraph>
+  </pycode>
+</section>
 
-   <section id="RunApplication">
-   <comment> RunApplication -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id121582819697896">
-      <bookmark_value>Session service;RunApplication</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id511582819697896" localize="false">RunApplication</h2>
-   <paragraph role="paragraph" id="par_id311582819697897">Executes an arbitrary system command and returns <literal>True </literal> if it was launched successfully.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id881582819697898">session.RunApplication(Command As String, Parameters As String) As Boolean</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id461582819697898"><emph>Command</emph>: The command to execute. This may be an executable file or a document which is registered with an application so that the system knows what application to launch for that document. The command must be expressed in the current <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
-   <paragraph role="paragraph" id="par_id611582819697899"><emph>Parameters</emph>: A list of space separated parameters as a single string. The method does not validate the given parameters, but only passes them to the specified command.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id111582819697900">session.RunApplication("Notepad.exe")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id851582819697900">session.RunApplication("C:\myFolder\myDocument.odt")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id641582819697901">session.RunApplication("kate", "/home/me/install.txt") ' GNU/Linux</paragraph>
-   </bascode>
-   </section>
+<section id="RunApplication">
+  <comment> RunApplication ---------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id121582819697896">
+    <bookmark_value>Session service;RunApplication</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id511582819697896" localize="false">RunApplication</h2>
+  <paragraph role="paragraph" id="par_id311582819697897">Executes an arbitrary system command and returns <literal>True</literal> if it was launched successfully.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id691626819239862">
+    <input>session.RunApplication(command: str, parameters: str): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id461582819697898"><emph>command</emph>: The command to execute. This may be an executable file or a document which is registered with an application so that the system knows what application to launch for that document. The command must be expressed in the current <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
+  <paragraph role="paragraph" id="par_id611582819697899"><emph>parameters</emph>: A list of space separated parameters as a single string. The method does not validate the given parameters, but only passes them to the specified command.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id111582819697900">session.RunApplication("Notepad.exe")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id851582819697900">session.RunApplication("C:\myFolder\myDocument.odt")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id641582819697901">session.RunApplication("kate", "/home/user/install.txt") ' GNU/Linux</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id381626819384936">session.RunApplication("Notepad.exe")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id601626819385217">session.RunApplication(r"C:\myFolder\myDocument.odt")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id211626819385376">session.RunApplication("kate", "/home/user/install.txt") # GNU/Linux</paragraph>
+  </pycode>
+</section>
 
-   <section id="SendMail">
-   <comment> SendMail -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id601601030349204">
-      <bookmark_value>Session service;SendMail</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id561601030349199" localize="false">SendMail</h2>
-   <paragraph role="paragraph" id="par_id131601030349755">Send a message - with optional attachments - to recipients from the user's mail client. The message may be edited by the user before sending or, alternatively, be sent immediately.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id21601030349227">session.SendMail(Recipient As String, [Cc As String], [Bcc As String], [Subject As String], [Body As String], [FileNames As String], [EditMessage As Boolean])</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id701601030349896"><emph>Recipient</emph>: An email address (the "To" recipient).</paragraph>
-   <paragraph role="paragraph" id="par_id571601030349904"><emph>Cc</emph>: A comma-separated list of email addresses (the "carbon copy" recipients).</paragraph>
-   <paragraph role="paragraph" id="par_id961601031043346" xml-lang="en-US"><emph>Bcc</emph>: A comma-separated list of email addresses (the "blind carbon copy" recipients).</paragraph>
-   <paragraph role="paragraph" id="par_id891601031050814" xml-lang="en-US"><emph>Subject</emph>: the header of the message.</paragraph>
-   <paragraph role="paragraph" id="par_id191601031056673" xml-lang="en-US"><emph>Body</emph>: The content of the message as an unformatted text.</paragraph>
-   <paragraph role="paragraph" id="par_id511601031063269" xml-lang="en-US"><emph>FileNames</emph>: a comma-separated list of file names. Each file name must respect the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
-   <paragraph role="paragraph" id="par_id161601032784063" xml-lang="en-US"><emph>EditMessage</emph>: When <literal>True</literal> (default), the message is edited before being sent.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id481601030349950">session.SendMail("a@example.com" _</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id901601032999905">    , Cc := "b@other.fr, c@other.be" _</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id651601033006799">    , FileNames := "C:\myFile1.txt, C:\myFile2.txt" _</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id971601033015034">    )</paragraph>
-   </bascode>
-   </section>
+<section id="SendMail">
+  <comment> SendMail ------------------------------------------------------------------------------------------------ </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id601601030349204">
+    <bookmark_value>Session service;SendMail</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id561601030349199" localize="false">SendMail</h2>
+  <paragraph role="paragraph" id="par_id131601030349755">Send a message - with optional attachments - to recipients from the user's mail client. The message may be edited by the user before sending or, alternatively, be sent immediately.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id691626819545788">
+    <input>session.SendMail(recipient: str, cc: str = '', bcc: str = '', subject: str = '', body: str = '', filenames: str = '', editmessage: bool = True)</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id701601030349896"><emph>recipient</emph>: An email address (the "To" recipient).</paragraph>
+  <paragraph role="paragraph" id="par_id571601030349904"><emph>cc</emph>: A comma-separated list of email addresses (the "carbon copy" recipients).</paragraph>
+  <paragraph role="paragraph" id="par_id961601031043346"><emph>bcc</emph>: A comma-separated list of email addresses (the "blind carbon copy" recipients).</paragraph>
+  <paragraph role="paragraph" id="par_id891601031050814"><emph>subject</emph>: the header of the message.</paragraph>
+  <paragraph role="paragraph" id="par_id191601031056673"><emph>body</emph>: The content of the message as an unformatted text.</paragraph>
+  <paragraph role="paragraph" id="par_id511601031063269"><emph>filenames</emph>: a comma-separated list of file names. Each file name must respect the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
+  <paragraph role="paragraph" id="par_id161601032784063"><emph>editmessage</emph>: When <literal>True</literal> (default), the message is edited before being sent.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id481601030349950">session.SendMail("someone@example.com" _</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id901601032999905">    , Cc := "b@other.fr, c@other.be" _</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651601033006799">    , FileNames := "C:\myFile1.txt, C:\myFile2.txt")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id821626819725867">session.SendMail("someone@example.com",</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id391626819726171">                 cc="john@other.fr, mary@other.be"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id771626819726363">                 filenames=r"C:\myFile1.txt, C:\myFile2.txt")</paragraph>
+  </pycode>
+</section>
 
-   <section id="UnoMethods">
-   <comment> UnoMethods -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id701587478024358">
-      <bookmark_value>Session service;UnoMethods</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id861587478024365" localize="false">UnoMethods</h2>
-   <paragraph role="paragraph" id="par_id321587478024997">Returns a list of the methods callable from an UNO object. The list is a zero-based array of strings and may be empty.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id391587478024700">session.UnoMethods(UnoObject As Object) As Variant</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id251587478024311"><emph>UnoObject</emph>: The object to inspect.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id531587478024129">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id931587478024509">a = CreateUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id211587478024770">MsgBox SF_Array.Contains(session.UnoMethods(a), "callFunction")</paragraph>
-   </bascode>
-   </section>
+<section id="UnoMethods">
+  <comment> UnoMethods --------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id701587478024358">
+    <bookmark_value>Session service;UnoMethods</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id861587478024365" localize="false">UnoMethods</h2>
+  <paragraph role="paragraph" id="par_id321587478024997">Returns a list of the methods callable from an UNO object. The list is a zero-based array of strings and may be empty.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id341626819941177">
+    <input>session.UnoMethods(unoobject: uno): str[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id251587478024311"><emph>unoobject</emph>: The object to inspect.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id531587478024129">Dim svc : svc = CreateUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id931587478024509">Dim methods : methods = session.UnoMethods(svc)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id211587478024770">Dim msg as String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id631626820375428">For Each m in methods</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id101626820375677">    msg = msg &amp; m &amp; Chr(13)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id151626820375931">Next m</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id741626820376195">MsgBox msg</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id501626820431003">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id991626820431395">a = bas.createUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id81626820431651">methods = session.UnoMethods(a)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id281626820432068">msg = "\n".join(methods)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id281626820432763">bas.MsgBox(msg)</paragraph>
+  </pycode>
+</section>
 
-   <section id="UnoProperties">
-   <comment> UnoProperties -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id57158747834361">
-      <bookmark_value>Session service;UnoProperties</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id101587478343870" localize="false">UnoProperties</h2>
-   <paragraph role="paragraph" id="par_id141587478343306">Returns a list of the properties of an UNO object. The list is a zero-based array of strings and may be empty.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id111587478343395">session.UnoProperties(UnoObject As Object) As Variant</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id241587478343323"><emph>UnoObject</emph>: The object to inspect.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id281587478343944">Dim svc As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id581587478343738">svc = CreateUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id101587478343422">MsgBox SF_Array.Contains(session.UnoProperties(svc), "Wildcards")</paragraph>
-   </bascode>
-   </section>
+<section id="UnoProperties">
+  <comment> UnoProperties ------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id57158747834361">
+    <bookmark_value>Session service;UnoProperties</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id101587478343870" localize="false">UnoProperties</h2>
+  <paragraph role="paragraph" id="par_id141587478343306">Returns a list of the properties of an UNO object. The list is a zero-based array of strings and may be empty.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="bascode" localize="false" id="bas_id91626820631150">
+    <input>session.UnoProperties(unoobject: uno): str[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id241587478343323"><emph>unoobject</emph>: The object to inspect.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id281587478343944">Dim svc As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id581587478343738">svc = CreateUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id101587478343422">MsgBox SF_Array.Contains(session.UnoProperties(svc), "Wildcards") ' True</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id821626820748621">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id861626820749053">svc = bas.createUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id671626821449697">properties = session.UnoProperties(a)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id991626821450160">b = "Wildcards" in properties</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id371626820749214">bas.MsgBox(str(b)) # True</paragraph>
+  </pycode>
+</section>
 
-   <section id="UnoObjectType">
-   <comment> UnoObjectType -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id221582820251346">
-      <bookmark_value>Session service;UnoObjectType</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id751582820251347" localize="false">UnoObjectType</h2>
-   <paragraph role="paragraph" id="par_id371582820251347">Identify the type of a UNO object as a string.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id881582820251348">session.UnoObjectType(UnoObject As Object) As String</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id921582820251349"><emph>UnoObject</emph>: The object to identify.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id771582820251350">Dim svc As Variant, txt As String</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id721582820680948">svc = CreateUnoService("com.sun.star.system.SystemShellExecute")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id571582820689968">txt = session.UnoObjectType(svc) ' "com.sun.star.comp.system.SystemShellExecute"</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id821582820696697">svc = CreateUnoStruct("com.sun.star.beans.Property")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id315828202513519">txt = session.UnoObjectType(svc) ' "com.sun.star.beans.Property"</paragraph>
-   </bascode>
-   </section>
+<section id="UnoObjectType">
+  <comment> UnoObjectType ------------------------------------------------------------------------------------------ </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id221582820251346">
+    <bookmark_value>Session service;UnoObjectType</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id751582820251347" localize="false">UnoObjectType</h2>
+  <paragraph role="paragraph" id="par_id371582820251347">Identify the type of a UNO object as a string.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id121626821532107">
+    <input>session.UnoObjectType(unoobject: uno): str</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id921582820251349"><emph>unoobject</emph>: The object to identify.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id771582820251350">Dim svc As Variant, txt As String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id721582820680948">svc = CreateUnoService("com.sun.star.system.SystemShellExecute")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id571582820689968">txt = session.UnoObjectType(svc) ' "com.sun.star.comp.system.SystemShellExecute"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id821582820696697">svc = CreateUnoStruct("com.sun.star.beans.Property")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id315828202513519">txt = session.UnoObjectType(svc) ' "com.sun.star.beans.Property"</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id501626821620216">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id501626821626352">svc = bas.createUnoService("com.sun.star.system.SystemShellExecute")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id131626821626637">txt = session.UnoObjectType(svc) # "com.sun.star.comp.system.SystemShellExecute"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id771626821626792">svc = bas.createUnoService("com.sun.star.beans.Property")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id251626821626944">txt = session.UnoObjectType(svc) # "com.sun.star.beans.Property"</paragraph>
+  </pycode>
+</section>
 
-   <section id="WebService">
-   <comment> WebService -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id561582821057372">
-      <bookmark_value>Session service;WebService</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id101582821057372" localize="false">WebService</h2>
-   <paragraph role="paragraph" id="par_id341582821057373">Get some web content from a URI.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id691582821057374">session.WebService(URI As String) As String</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id771582821057374"><emph>URI</emph>: URI text of the web service.</paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id901582821057375">session.WebService("wiki.documentfoundation.org/api.php?" _</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id421582821057375">    &amp; "hidebots=1&amp;days=7&amp;limit=50&amp;action=feedrecentchanges&amp;feedformat=rss")</paragraph>
-   </bascode>
-   </section>
+<section id="WebService">
+  <comment> WebService ---------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id561582821057372">
+    <bookmark_value>Session service;WebService</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id101582821057372" localize="false">WebService</h2>
+  <paragraph role="paragraph" id="par_id341582821057373">Get some web content from a URI.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id941626821793360">
+    <input>session.WebService(uri: str): str</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id771582821057374"><emph>uri</emph>: URI address of the web service.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id901582821057375">session.WebService("wiki.documentfoundation.org/api.php?" _</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id421582821057375">    &amp; "hidebots=1&amp;days=7&amp;limit=50&amp;action=feedrecentchanges&amp;feedformat=rss")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id691626821991398">session.WebService(("wiki.documentfoundation.org/api.php?" </paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id671626821991593">                   "hidebots=1&amp;days=7&amp;limit=50&amp;action=feedrecentchanges&amp;feedformat=rss"))</paragraph>
+  </pycode>
+</section>
 
-   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
 
-   <section id="relatedtopics">
-      <embed href="text/sbasic/shared/03104200.xhp#Array_h1"/>
-      <embed href="text/sbasic/shared/calc_functions.xhp#CallingCalcFunctionsh1"/>
-      <embed href="text/sbasic/guide/basic_2_python.xhp#basic2python"/>
-      <embed href="text/sbasic/shared/03/sf_filesystem.xhp#FileSystemService"/>
-   </section>
+<section id="relatedtopics">
+  <embed href="text/sbasic/shared/03104200.xhp#Array_h1"/>
+  <embed href="text/sbasic/shared/calc_functions.xhp#CallingCalcFunctionsh1"/>
+  <embed href="text/sbasic/guide/basic_2_python.xhp#basic2python"/>
+  <embed href="text/sbasic/shared/03/sf_basic.xhp#BasicService"/>
+  <embed href="text/sbasic/shared/03/sf_filesystem.xhp#FileSystemService"/>
+</section>
 
 </body>
 </helpdocument>
