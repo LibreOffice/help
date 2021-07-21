@@ -45,12 +45,10 @@
   <paragraph role="tip" id="par_id991582733781280" xml-lang="en-US">Durations are expressed in seconds with a precision of 3 decimal digits (milliseconds). A duration value of 12.345 means 12 seconds and 345 milliseconds</paragraph>
 
   <h2 id="hd_id201582733781265" xml-lang="en-US">Service invocation</h2>
-  <paragraph role="paragraph" id="par_id141610734722352">Before using the <literal>Timer</literal> service the <literal>ScriptForge</literal> library needs to be loaded using:</paragraph>
-  <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id551610734764343">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
-  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <paragraph role="paragraph" id="par_id891610734806133">The example below creates a <literal>Timer</literal> object named <literal>myTimer</literal> and starts it immediately.</paragraph>
   <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id551610734764343">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id11582733781672">Dim myTimer As Variant</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id31582733781292">myTimer = CreateScriptService("Timer", True)</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id681582733781715">'The timer starts immediately when the second argument = True, default = False</paragraph>
@@ -59,7 +57,13 @@
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id61582733781413">Set myTimer = myTimer.Dispose()</paragraph>
   </bascode>
-  <embed href="text/sbasic/shared/00000003.xhp#Python_Support"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id351626871397672">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id851626871397921">myTimer = CreateScriptService("Timer", start = True)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id301626871398065"># ...</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id661626871405884">myTimer = myTimer.Dispose()</paragraph>
+  </pycode>
 
   <h2 id="hd_id521582733781450" xml-lang="en-US">Properties</h2>
     <table id="tab_id761582733781447">
@@ -227,29 +231,46 @@
             <paragraph id="par_id381582734996722" role="tablecontent" xml-lang="en-US"><literal>False</literal> if the timer is neither started nor suspended</paragraph>
         </tablecell>
     </tablerow>
-    </table>
+  </table>
 
-    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id711582735902164">myTimer.Start()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id371582735909094">Wait 500</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id691582735916493">myTimer.Suspend()</paragraph>
-      <paragraph role="bascode" id="bas_id141582735926821">'The time elapsed while the Dialog box is open will be counted as suspended time</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id1001582735936992">MsgBox myTimer.Duration &amp; " " &amp; myTimer.SuspendDuration &amp; " " &amp; myTimer.TotalDuration</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id361582735943749">myTimer.Continue()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id71582735950518">Wait 500</paragraph>
-      <paragraph role="bascode" id="bas_id901582735961725">'The time elapsed while the Dialog box is open will be counted as running time</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id621610739916646">MsgBox myTimer.Duration &amp; " " &amp; myTimer.SuspendDuration &amp; " " &amp; myTimer.TotalDuration</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id51610739919950">myTimer.Terminate()</paragraph>
-      <paragraph role="bascode" id="bas_id941610739926687">'Shows the final time measurements</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id291610739929200">MsgBox myTimer.Duration &amp; " " &amp; myTimer.SuspendDuration &amp; " " &amp; myTimer.TotalDuration</paragraph>
-    </bascode>
-
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id731626871820490">The examples below in Basic and Python illustrate the use of the methods and properties in the <literal>Timer</literal> service.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id711582735902164">myTimer.Start()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371582735909094">Wait 500</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id691582735916493">myTimer.Suspend()</paragraph>
+    <paragraph role="bascode" id="bas_id141582735926821">'The time elapsed while the Dialog box is open will be counted as suspended time</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id1001582735936992">MsgBox myTimer.Duration &amp; " " &amp; myTimer.SuspendDuration &amp; " " &amp; myTimer.TotalDuration</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id361582735943749">myTimer.Continue()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id71582735950518">Wait 500</paragraph>
+    <paragraph role="bascode" id="bas_id901582735961725">'The time elapsed while the Dialog box is open will be counted as running time</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621610739916646">MsgBox myTimer.Duration &amp; " " &amp; myTimer.SuspendDuration &amp; " " &amp; myTimer.TotalDuration</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id51610739919950">myTimer.Terminate()</paragraph>
+    <paragraph role="bascode" id="bas_id941610739926687">'Shows the final time measurements</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id291610739929200">MsgBox myTimer.Duration &amp; " " &amp; myTimer.SuspendDuration &amp; " " &amp; myTimer.TotalDuration</paragraph>
+  </bascode>
   <note id="par_id281610740093006">If you call the <literal>Terminate</literal> method, subsequent calls for the <literal>Continue</literal> method will not resume time measurement. Similarly, after a Timer has been terminated, calling the <literal>Start</literal> method will restart it as if it were a clean new Timer.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id731626871933079">from time import sleep</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id921626871933367">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id101626871933551">myTimer.Start()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id961626871933734">sleep(0.5)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id351626871933894">myTimer.Suspend()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id761626871934072">bas.MsgBox("{} {} {}".format(myTimer.Duration, myTimer.SuspendDuration, myTimer.TotalDuration))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id411626871934239">myTimer.Continue()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id941626871934407">sleep(0.5)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id521626871934590">bas.MsgBox("{} {} {}".format(myTimer.Duration, myTimer.SuspendDuration, myTimer.TotalDuration))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id921626871934776">myTimer.Terminate()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id531626872457511">bas.MsgBox("{} {} {}".format(myTimer.Duration, myTimer.SuspendDuration, myTimer.TotalDuration))</paragraph>
+  </pycode>
+  <note id="par_id391626872019832">Beware that the <literal>Wait</literal> function in Basic takes in a duration argument in milliseconds whereas the <literal>sleep</literal> function in Python uses seconds in its argument.</note>
 
   <h2 id="hd_id431610989623086">Working with Multiple Timers</h2>
   <paragraph role="paragraph" id="par_id741610989639201">It is possible to instantiate multiple <literal>Timer</literal> services in parallel, which gives flexibility in measuring time in different parts of the code.</paragraph>
   <paragraph role="paragraph" id="par_id921610989722908">The following example illustrates how to create two <literal>Timer</literal> objects and start them separately.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id771610989793244">Dim myTimerA as Variant, myTimerB as Variant</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id261610989825466">myTimerA = CreateScriptService("Timer")</paragraph>
@@ -266,12 +287,26 @@
     <paragraph role="bascode" localize="false" id="bas_id631610989844852">myTimerA.Terminate()</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id411610989835115">myTimerB.Terminate()</paragraph>
   </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id711626872551380">from time import sleep</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id541626872551709">myTimerA = CreateScriptService("Timer")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id581626872551876">myTimerB = CreateScriptService("Timer")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441626872552076">myTimerA.Start()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id631626872552268">sleep(1)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id41626872552468">bas.MsgBox("{} {}".format(myTimerA.Duration, myTimerB.Duration))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id891626872552670">myTimerB.Start()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id321626872552868">sleep(1)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id11626872553077">bas.MsgBox("{} {}".format(myTimerA.Duration, myTimerB.Duration))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441626872553324">myTimerA.Terminate()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id161626872553821">myTimerB.Terminate()</paragraph>
+  </pycode>
 
   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
 
   <section id="relatedtopics">
-     <paragraph role="paragraph" id="par_id531610970649205"><link href="text/sbasic/shared/03030203.xhp#now">Now function</link></paragraph>
-     <paragraph role="paragraph" id="par_id221610970653662"><link href="text/sbasic/shared/03030303.xhp#timer">Timer function</link></paragraph>
+     <embed href="text/sbasic/shared/03030203.xhp#Now_H1"/>
+     <embed href="text/sbasic/shared/03030303.xhp#Timer_H1"/>
    </section>
 </body>
 </helpdocument>
