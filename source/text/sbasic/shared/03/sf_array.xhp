@@ -17,899 +17,950 @@
 <body>
 
 <section id="abstract">
-   <bookmark xml-lang="en-US" branch="index" id="bm_id281613039222756">
-      <bookmark_value>Array service</bookmark_value>
-   </bookmark>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id281613039222756">
+     <bookmark_value>Array service</bookmark_value>
+  </bookmark>
 
-   <h1 id="bm_id781582391760253" xml-lang="en-US"><variable id="ArrayService"><link href="text/sbasic/shared/03/sf_array.xhp" name="ScriptForge.Array Service"><literal>ScriptForge</literal>.<literal>Array</literal> service</link></variable></h1>
-   <paragraph role="paragraph" id="par_id991582454416549" xml-lang="en-US">Provides a collection of methods for manipulating and transforming arrays of one dimension (vectors) and arrays of two dimensions (matrices). This includes set operations, sorting, importing to and exporting from text files.</paragraph>
-   <paragraph role="paragraph" id="par_id681609955015503">Arrays with more than two dimensions cannot be used with the methods in this service, the only exception being the <literal>CountDims</literal> method that accepts Arrays with any number of dimensions.</paragraph>
+  <h1 id="bm_id781582391760253"><variable id="ArrayService"><link href="text/sbasic/shared/03/sf_array.xhp" name="ScriptForge.Array Service"><literal>ScriptForge</literal>.<literal>Array</literal> service</link></variable></h1>
+  <paragraph role="paragraph" id="par_id991582454416549">Provides a collection of methods for manipulating and transforming arrays of one dimension (vectors) and arrays of two dimensions (matrices). This includes set operations, sorting, importing to and exporting from text files.</paragraph>
+  <paragraph role="paragraph" id="par_id681609955015503">Arrays with more than two dimensions cannot be used with the methods in this service, the only exception being the <literal>CountDims</literal> method that accepts Arrays with any number of dimensions.</paragraph>
 </section>
 
-   <paragraph role="paragraph" id="par_id651582454426538" xml-lang="en-US">Array items may contain any type of value, including (sub)arrays.</paragraph>
+  <paragraph role="paragraph" id="par_id651582454426538">Array items may contain any type of value, including (sub)arrays.</paragraph>
 
-   <h2 id="hd_id981586595097630" xml-lang="en-US">Service invocation</h2>
-   <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>Array</literal> service the <literal>ScriptForge</literal> library needs to be loaded using:</paragraph>
+  <h2 id="hd_id981586595097630">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>Array</literal> service the <literal>ScriptForge</literal> library needs to be loaded using:</paragraph>
   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id871608192694632">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
-   </bascode>
-   <paragraph role="paragraph" id="par_id461609955633383">Loading the library will create the <literal>SF_Array</literal> object that can be used to call the methods in the <literal>Array</literal> service.</paragraph>
-   <paragraph role="paragraph" id="par_id63158659509728" xml-lang="en-US">The following code snippets show the various ways to call methods in the <literal>Array</literal> service (the <literal>Append</literal> method is used as an example):</paragraph>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id311586595097510">SF_Array.Append(...)</paragraph>
-   </bascode>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id811586595097328">Dim arr    :    arr = SF_Array</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id761586595097825">arr.Append(...)</paragraph>
-   </bascode>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id821586595097892">Dim arr    :    arr = CreateScriptService("Array")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id81586595097173">arr.Append(...)</paragraph>
-   </bascode>
-   <note id="par_id571609956486468">The <literal>CreateScriptService</literal> method is only available after you have loaded the <literal>ScriptForge</literal> library.</note>
-   <table id="tab_id221606235233835">
-   <tablerow>
-     <tablecell colspan="3"><paragraph id="par_id651606319520519" role="tablehead">Methods</paragraph></tablecell>
-   </tablerow>
-   <tablerow>
-     <tablecell><paragraph id="par_id361606235233835" role="tablecontent" localize="false">
-       <link href="text/sbasic/shared/03/sf_array.xhp#Append" name="Append method">Append</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#AppendColumn" name="AppendColumn method">AppendColumn</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#AppendRow" name="AppendRow method">AppendRow</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#Contains" name="Contains method">Contains</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#ConvertToDictionary" name="ConvertToDictionary method">ConvertToDictionary</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#CountDims" name="CountDims method">CountDims</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#Difference" name="Difference method">Difference</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#ExportToTextFile" name="ExportToTextFile method">ExportToTextFile</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#ExtractColumn" name="ExtractColumn">ExtractColumn</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#ExtractRow" name="ExtractRow method">ExtractRow</link><br/>
-     </paragraph></tablecell>
-     <tablecell><paragraph id="par_id231606235233835" role="tablecontent" localize="false">
-       <link href="text/sbasic/shared/03/sf_array.xhp#Flatten" name="Flatten method">Flatten</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#ImportFromCSVFile" name="ImportFromCSVFile method">ImportFromCSVFile</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#IndexOf" name="IndexOf method">IndexOf</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#Insert" name="Insert method">Insert</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#InsertSorted" name="InsertSorted method">InsertSorted</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#Intersection" name="Intersection">Intersection</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#Join2D" name="Join2D method">Join2D</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#Prepend" name="Prepend method">Prepend</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#PrependColumn" name="PrependColumn method">PrependColumn</link><br/>
-       <link href="text/sbasic/shared/03/sf_array.xhp#PrependRow" name="PrependRow method">PrependRow</link><br/><br/>
-     </paragraph></tablecell>
-     <tablecell><paragraph id="par_id831606235233835" role="tablecontent" localize="false">
-        <link href="text/sbasic/shared/03/sf_array.xhp#RangeInit" name="RangeInit method">RangeInit</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#Reverse" name="Reverse method">Reverse</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#Shuffle" name="Shuffle method">Shuffle</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#Slice" name="Slice method">Slice</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#Sort" name="Sort method">Sort</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#SortColumns" name="SortColumns method">SortColumns</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#SortRows" name="SortRows method">SortRows</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#Transpose" name="Transpose method">Transpose</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#TrimArray" name="TrimArray method">TrimArray</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#Union" name="Union method">Union</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#Unique" name="Unique method">Unique</link>
-     </paragraph></tablecell>
-   </tablerow>
-   </table>
-   <tip id="par_id191582454485250" xml-lang="en-US">The first argument of most methods is the array object to be considered. It is always passed by reference and left unchanged. Methods such as Append, Prepend, etc return a new array object after their execution.</tip>
-  <section id="Append">
-  <comment> Append -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id251582548992953">
-      <bookmark_value>Array service;Append</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id151582548992953" localize="false">Append</h2>
-   <paragraph role="paragraph" id="par_id931582548992953">Appends the items listed as arguments to the end of the input array.</paragraph>
-   <h3 id="hd_id71582548992953" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id681582548992953">SF_Array.Append(Array_1D As Variant, arg0 As Variant, [arg1 As Variant], ...) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id631582548992953" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id471582548992953"><emph>Array_1D</emph> : the pre-existing array, may be empty.</paragraph>
-   <paragraph role="paragraph" id="par_id531582548992953"><emph>arg0, ...</emph> : a list of items to append to Array_1D.</paragraph>
-   <h3 id="hd_id301582548992954" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id11582548992954">Sub Example_Append()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id101582548992954">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id561582548992954">    a = SF_Array.Append(Array(1, 2, 3), 4, 5)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id541582548992954">        ' (1, 2, 3, 4, 5)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id331582548992954">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="AppendColumn">
-   <comment> AppendColumn -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id591582549679172">
-      <bookmark_value>Array service;AppendColumn</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id291582549679173" localize="false">AppendColumn</h2>
-   <paragraph role="paragraph" id="par_id241582549679173">Appends a new column to the right side of a two dimensional array. The resulting array has the same lower bounds as the initial two dimensional array.</paragraph>
-   <h3 id="hd_id81582549679174" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id901582549679174">SF_Array.AppendColumn(Array_2D As Variant, New_Column As Variant) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id41582549679175" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id461582549679175"><emph>Array_2D</emph> : the pre-existing array, may be empty. If that array has only one dimension, it is considered as the first column of the resulting two-dimensional array.</paragraph>
-     <paragraph role="paragraph" id="par_id991582549679175"><emph>New_Column</emph> : a 1-dimensional array with as many items as there are rows in <literal>Array_2D</literal>.</paragraph>
-   <h3 id="hd_id961582549679176" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id461582549679176">Sub Example_AppendColumn()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id341582549679177">Dim a As Variant, b As variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id681582549679177">    a = SF_Array.AppendColumn(Array(1, 2, 3), Array(4, 5, 6))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id151582549679177">        ' ((1, 4), (2, 5), (3, 6))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id991609959313410">    b = SF_Array.AppendColumn(a, Array(7, 8, 9))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id681609959354695">        ' ((1, 4, 7), (2, 5, 8), (3, 6, 9))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id961582550242823">    c = SF_Array.AppendColumn(Array(), Array(1, 2, 3))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id381582550413514">        ' ∀ i ∈ {0 ≤ i ≤ 2} : b(0, i) ≡ i</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id141582549679178">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="AppendRow">
-   <comment> AppendRow -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id451582551311490">
-      <bookmark_value>Array service;AppendRow</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id751582551333335" localize="false">AppendRow</h2>
-   <paragraph role="paragraph" id="par_id941582551396374">Append to the bottom of a two dimension array a new row. The resulting array has the same lower bounds as the initial two dimension array.</paragraph>
-   <h3 id="hd_id731582551411476" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id721582551425203">SF_Array.AppendRow(Array_2D As Variant, Row As Variant) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id391582551448394" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id631582551461984"><emph>Array_2D</emph> : the pre-existing array, may be empty. If that array has 1 dimension, it is considered as the first row of the resulting 2 dimension array.</paragraph>
-   <paragraph role="paragraph" id="par_id101582551483685"><emph>Row</emph> : a 1D array with as many items as there are columns in Array_2D.</paragraph>
-   <h3 id="hd_id501582551510428" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id241582551522761">Sub Example_AppendRow()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id521582551530025">Dim a As Variant, b As variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id951582551538465">    a = SF_Array.AppendRow(Array(1, 2, 3), Array(4, 5, 6))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id521582551545445">        '  ((1, 2, 3), (4, 5, 6))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id431582551552206">    b = SF_Array..AppendRow(Array(), Array(1, 2, 3))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id851582551572028">        ' ∀ i ∈ {0 ≤ i ≤ 2} : b(i, 0) ≡ i</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id371582551580870">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Contains">
-   <comment> Contains -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id521582552517869">
-      <bookmark_value>Array service;Contains</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id21582552517870" localize="false">Contains</h2>
-   <paragraph role="paragraph" id="par_id391582552517870">Check if a one dimension array contains a certain number, text or date. Text comparison can be case-sensitive or not.
+    <paragraph role="bascode" localize="false" id="bas_id871608192694632">GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id461609955633383">Loading the library will create the <literal>SF_Array</literal> object that can be used to call the methods in the <literal>Array</literal> service.</paragraph>
+  <paragraph role="paragraph" id="par_id63158659509728">The following code snippets show the various ways to call methods in the <literal>Array</literal> service (the <literal>Append</literal> method is used as an example):</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id211626911224256">Dim arr : arr = Array(1, 2, 3)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id311586595097510">arr = SF_Array.Append(arr, 4)</paragraph>
+  </bascode>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id211626911224167">Dim arr : arr = Array(1, 2, 3)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id811586595097328">Dim svc : svc = SF_Array</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id761586595097825">arr = svc.Append(arr, 4)</paragraph>
+  </bascode>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id211626911224417">Dim arr : arr = Array(1, 2, 3)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id821586595097892">Dim svc : svc = CreateScriptService("Array")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id81586595097173">arr = svc.Append(arr, 4)</paragraph>
+  </bascode>
+  <warning id="par_id571609956486468">Because Python has built-in list and tuple support, most of the methods in the <literal>Array</literal> service are available for Basic scripts only. The only exception is <literal>ImportFromCSVFile</literal> which is supported in both Basic and Python.</warning>
+  <table id="tab_id221606235233835">
+  <tablerow>
+    <tablecell colspan="3"><paragraph id="par_id651606319520519" role="tablehead">List of Methods in the Array Service</paragraph></tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell><paragraph id="par_id361606235233835" role="tablecontent" localize="false">
+      <link href="text/sbasic/shared/03/sf_array.xhp#Append" name="Append method">Append</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#AppendColumn" name="AppendColumn method">AppendColumn</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#AppendRow" name="AppendRow method">AppendRow</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#Contains" name="Contains method">Contains</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#ConvertToDictionary" name="ConvertToDictionary method">ConvertToDictionary</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#Copy" name="Copy method">Copy</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#CountDims" name="CountDims method">CountDims</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#Difference" name="Difference method">Difference</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#ExportToTextFile" name="ExportToTextFile method">ExportToTextFile</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#ExtractColumn" name="ExtractColumn">ExtractColumn</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#ExtractRow" name="ExtractRow method">ExtractRow</link><br/>
+    </paragraph></tablecell>
+    <tablecell><paragraph id="par_id231606235233835" role="tablecontent" localize="false">
+      <link href="text/sbasic/shared/03/sf_array.xhp#Flatten" name="Flatten method">Flatten</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#ImportFromCSVFile" name="ImportFromCSVFile method">ImportFromCSVFile</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#IndexOf" name="IndexOf method">IndexOf</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#Insert" name="Insert method">Insert</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#InsertSorted" name="InsertSorted method">InsertSorted</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#Intersection" name="Intersection">Intersection</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#Join2D" name="Join2D method">Join2D</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#Prepend" name="Prepend method">Prepend</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#PrependColumn" name="PrependColumn method">PrependColumn</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#PrependRow" name="PrependRow method">PrependRow</link><br/>
+      <link href="text/sbasic/shared/03/sf_array.xhp#RangeInit" name="RangeInit method">RangeInit</link><br/>
+    </paragraph></tablecell>
+    <tablecell><paragraph id="par_id831606235233835" role="tablecontent" localize="false">
+       <link href="text/sbasic/shared/03/sf_array.xhp#Reverse" name="Reverse method">Reverse</link><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#Shuffle" name="Shuffle method">Shuffle</link><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#Slice" name="Slice method">Slice</link><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#Sort" name="Sort method">Sort</link><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#SortColumns" name="SortColumns method">SortColumns</link><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#SortRows" name="SortRows method">SortRows</link><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#Transpose" name="Transpose method">Transpose</link><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#TrimArray" name="TrimArray method">TrimArray</link><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#Union" name="Union method">Union</link><br/>
+       <link href="text/sbasic/shared/03/sf_array.xhp#Unique" name="Unique method">Unique</link><br/><br/>
+    </paragraph></tablecell>
+  </tablerow>
+  </table>
+  <tip id="par_id191582454485250">The first argument of most methods is the array object to be considered. It is always passed by reference and left unchanged. Methods such as Append, Prepend, etc return a new array object after their execution.</tip>
+
+<section id="Append">
+  <comment> Append --------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id251582548992953">
+    <bookmark_value>Array service;Append</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id151582548992953" localize="false">Append</h2>
+  <paragraph role="paragraph" id="par_id931582548992953">Appends the items listed as arguments to the end of the input array.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id921626975382809">
+    <input>svc.Append(array_1d: any[0..*], arg0: any, [arg1: any] ...): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id471582548992953"><emph>array_1d</emph>: The pre-existing array, may be empty.</paragraph>
+  <paragraph role="paragraph" id="par_id531582548992953"><emph>arg0, arg1, ...</emph>: Items that will be appended to <literal>array_1d</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id101582548992954">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id561582548992954">a = SF_Array.Append(Array(1, 2, 3), 4, 5)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id541582548992954">    ' (1, 2, 3, 4, 5)</paragraph>
+  </bascode>
+</section>
+
+<section id="AppendColumn">
+  <comment> AppendColumn --------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id591582549679172">
+    <bookmark_value>Array service;AppendColumn</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id291582549679173" localize="false">AppendColumn</h2>
+  <paragraph role="paragraph" id="par_id241582549679173">Appends a new column to the right side of a two dimensional array. The resulting array has the same lower bounds as the initial two dimensional array.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id231626975799102">
+    <input>svc.AppendColumn(array_2d: any[0..*, 0..*], column: any[0..*]): any[0..*, 0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id461582549679175"><emph>array_2d</emph>: The pre-existing array, may be empty. If that array has only one dimension, it is considered as the first column of the resulting two-dimensional array.</paragraph>
+  <paragraph role="paragraph" id="par_id991582549679175"><emph>column</emph>: A 1-dimensional array with as many items as there are rows in <literal>array_2d</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id341582549679177">Dim a As Variant, b As variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id681582549679177">a = SF_Array.AppendColumn(Array(1, 2, 3), Array(4, 5, 6))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id151582549679177">    ' ((1, 4), (2, 5), (3, 6))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id991609959313410">b = SF_Array.AppendColumn(a, Array(7, 8, 9))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id681609959354695">    ' ((1, 4, 7), (2, 5, 8), (3, 6, 9))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id961582550242823">c = SF_Array.AppendColumn(Array(), Array(1, 2, 3))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id381582550413514">    ' ∀ i ∈ {0 ≤ i ≤ 2} : b(0, i) ≡ i</paragraph>
+  </bascode>
+</section>
+
+<section id="AppendRow">
+  <comment> AppendRow ------------------------------------------------------------------------------------------ </comment>
+  <bookmark localize="false" branch="index" id="bm_id451582551311490">
+    <bookmark_value>Array service;AppendRow</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id751582551333335" localize="false">AppendRow</h2>
+  <paragraph role="paragraph" id="par_id941582551396374">Append to the bottom of a two dimension array a new row. The resulting array has the same lower bounds as the initial two dimension array.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id371626976443125">
+    <input>svc.AppendRow(array_2d: any[0..*, 0..*], row: any[0..*]): any[0..*, 0..*])</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id631582551461984"><emph>array_2d</emph>: The pre-existing array, may be empty. If that array has 1 dimension, it is considered as the first row of the resulting 2 dimension array.</paragraph>
+  <paragraph role="paragraph" id="par_id101582551483685"><emph>row</emph>: A 1-dimensional array with as many items as there are columns in <literal>array_2d</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id521582551530025">Dim a As Variant, b As variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id951582551538465">a = SF_Array.AppendRow(Array(1, 2, 3), Array(4, 5, 6))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id521582551545445">    '  ((1, 2, 3), (4, 5, 6))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id431582551552206">b = SF_Array..AppendRow(Array(), Array(1, 2, 3))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id851582551572028">    ' ∀ i ∈ {0 ≤ i ≤ 2} : b(i, 0) ≡ i</paragraph>
+  </bascode>
+</section>
+
+<section id="Contains">
+  <comment> Contains ------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id521582552517869">
+    <bookmark_value>Array service;Contains</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id21582552517870" localize="false">Contains</h2>
+  <paragraph role="paragraph" id="par_id391582552517870">Check if a one dimension array contains a certain number, text or date. Text comparison can be case-sensitive or not.
       <br/>Sorted input arrays must be filled homogeneously, meaning all items must be scalars of the same type (<literal>Empty</literal> and <literal>Null</literal> items are forbidden).
       <br/>The result of the method is unpredictable when the array is announced as sorted and is in reality not.
       <br/>A binary search is done when the array is sorted, otherwise, it is simply scanned from top to bottom and <literal>Empty</literal> and <literal>Null</literal> items are ignored.</paragraph>
-   <h3 id="hd_id571582552517870" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id511582552517871">SF_Array.Contains(Array_1D, ToFind As Variant, [CaseSensitive As Boolean], [SortOrder As String]) As Boolean</paragraph>
-   </bascode>
-   <h3 id="hd_id771582552517871" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id451582552517871"><emph>Array_1D</emph> : the array to scan.</paragraph>
-   <paragraph role="paragraph" id="par_id221582552517872"><emph>ToFind</emph> : a number, a date or a string to find.</paragraph>
-   <paragraph role="paragraph" id="par_id981582552517872"><emph>CaseSensitive</emph> : Only for string comparisons, default = <literal>False</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id641582553128490"><emph>SortOrder</emph> : "ASC", "DESC" or "" (= not sorted, default)</paragraph>
-   <h3 id="hd_id921582552517872" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id641582552517872">Sub Example_Contains()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id651582552517872">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id111582552517872">    a = SF_Array.Contains(Array("A","B","c","D"), "C", SortOrder := "ASC") ' True</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id681582552517872">    SF_Array.Contains(Array("A","B","c","D"), "C", CaseSensitive := True) ' False</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id91582552517872">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="ConvertToDictionary">
-   <comment> ConvertToDictionary -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id441582557214489">
-      <bookmark_value>Array service;ConvertToDictionary</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id541582557214489" localize="false">ConvertToDictionary</h2>
-     <paragraph role="paragraph" id="par_id71582557214489">Store the content of a 2-columns array into a <link href="text/sbasic/shared/03/sf_dictionary.xhp" name="dictionary">ScriptForge.Dictionary</link> object.
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id641626976688897">
+    <input>svc.Contains(array_1d: any[0..*], tofind: any, casesensitive: bool = False, sortorder: str = ""): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id451582552517871"><emph>array_1d</emph>: The array to scan.</paragraph>
+  <paragraph role="paragraph" id="par_id221582552517872"><emph>tofind</emph>: A number, a date or a string to find.</paragraph>
+  <paragraph role="paragraph" id="par_id981582552517872"><emph>casesensitive</emph>: Only for string comparisons (Default = <literal>False</literal>).</paragraph>
+  <paragraph role="paragraph" id="par_id641582553128490"><emph>sortorder</emph>: It can be either "ASC", "DESC" or "" (not sorted). The default value is "".</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id651582552517872">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id111582552517872">a = SF_Array.Contains(Array("A","B","c","D"), "C", SortOrder := "ASC") ' True</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id681582552517872">SF_Array.Contains(Array("A","B","c","D"), "C", CaseSensitive := True) ' False</paragraph>
+  </bascode>
+</section>
+
+<section id="ConvertToDictionary">
+  <comment> ConvertToDictionary ------------------------------------------------------------------------------------ </comment>
+  <bookmark localize="false" branch="index" id="bm_id441582557214489">
+    <bookmark_value>Array service;ConvertToDictionary</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id541582557214489" localize="false">ConvertToDictionary</h2>
+    <paragraph role="paragraph" id="par_id71582557214489">Store the content of a 2-columns array into a <link href="text/sbasic/shared/03/sf_dictionary.xhp" name="dictionary">ScriptForge.Dictionary</link> object.
       <br/>The key will be extracted from the first column, the item from the second.</paragraph>
-   <h3 id="hd_id481582557214489" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id921582557214489">SF_Array.ConvertToDictionary(Array_2D As Variant) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id761582557214489" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id561582557214489"><emph>Array_1D</emph> : the first column must contain exclusively strings with a length > 0, in any order.</paragraph>
-   <h3 id="hd_id591582557214490" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id851582557214490">Sub Example_ConvertToDictionary()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id921582557214490">Dim a As Variant, b As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id261582557214490">    a = SF_Array.AppendColumn(Array("a", "b", "c"), Array(1, 2, 3))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id931582557802907">    b = SF_Array.ConvertToDictionary(a)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id421582557214490">    MsgBox b.Item("c") ' 3</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id731582557214490">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="CountDims">
-   <comment> CountDims -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id251582558126024">
-      <bookmark_value>Array service;CountDims</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id761582558126025" localize="false">CountDims</h2>
-   <paragraph role="paragraph" id="par_id671582558126025">Count the number of dimensions of an array. The result can be greater than two.
-      <br/>If the argument is not an array, returns -1
-      <br/>If the array is not initialized, returns 0.</paragraph>
-   <h3 id="hd_id611582558126025" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id211582558126026">SF_Array.CountDims(Array_ND As Variant) As Integer</paragraph>
-   </bascode>
-   <h3 id="hd_id51582558126026" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id771582558126027"><emph>Array_ND</emph> : the array to examine.</paragraph>
-   <h3 id="hd_id611582558126028" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id931582558126028">Sub Example_CountDims()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id661582558126028">Dim a(1 To 10, -3 To 12, 5)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id291582558126028">    MsgBox SF_Array.CountDims(a) ' 3</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id871582558126028">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Difference">
-   <comment> Difference -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id941582558644286">
-      <bookmark_value>Array service;Difference</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id21582558644287" localize="false">Difference</h2>
-   <paragraph role="paragraph" id="par_id91582558644287">Build a set, as a zero-based array, by applying the difference operator on the two input arrays. Resulting items originate from the first array and not from the second.
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id291626977283235">
+    <input>svc.ConvertToDictionary(array_2d: any[0..*, 0..1]): obj</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id561582557214489"><emph>array_2d</emph>: Data to be converted into a <literal>ScriptForge.Dictionary</literal> object.</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id781626977460310" role="listitem">The first column must contain exclusively strings with a length greater than zero, in any order. These values will be used as labels in the dictionary.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id511626977461127" role="listitem">The second column contains the data that will be associated to the corresponding label in the dictionary.</paragraph>
+    </listitem>
+  </list>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id921582557214490">Dim a As Variant, b As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id261582557214490">a = SF_Array.AppendColumn(Array("a", "b", "c"), Array(1, 2, 3))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id931582557802907">b = SF_Array.ConvertToDictionary(a)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id421582557214490">MsgBox b.Item("c") ' 3</paragraph>
+  </bascode>
+</section>
+
+<section id="Copy">
+  <comment> Copy --------------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id251582558126024">
+    <bookmark_value>Array service;Copy</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id991627154151529">Copy</h2>
+  <paragraph role="paragraph" id="par_id571627154604275">Creates a copy of a 1D or 2D array.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id901627155659667">
+    <input>svc.Copy(array_nd: any[0..*]): any[0..*]</input>
+  </paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id901627155659568">
+    <input>svc.Copy(array_nd: any[0..*, 0..*]): any[0..*, 0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id191627155816815"><emph>array_nd</emph>: The 1D or 2D array to be copied.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id451627155478940">A simple assignment of an <literal>Array</literal> object will copy its reference instead of creating a copy of the object's contents. See the example below:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id881627155939064">Dim a as Variant, b as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id71627155939296">a = Array(1, 2, 3)</paragraph>
+    <paragraph role="bascode" id="bas_id801627155939671">' The assignment below is made by reference</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461627155939477">b = a</paragraph>
+    <paragraph role="bascode" id="bas_id291627156013810">' Hence changing values in "b" will also change "a"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id771627155939894">b(0) = 10</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531627155940118">MsgBox a(0) ' 10</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id701627155874259">By using the <literal>Copy</literal> method, a copy of the whole <literal>Array</literal> object is made. In the example below, <literal>a</literal> and <literal>b</literal> are different objects and changing values in <literal>b</literal> will not affect values in <literal>a</literal>.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id551627156150612">Dim a as Variant, b as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id781627156150904">a = Array(1, 2, 3)</paragraph>
+    <paragraph role="bascode" id="bas_id141627156152196">' Creates a copy of "a" using the "Copy" method</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id391627156151116">b = SF_Array.Copy(a)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id661627156151494">b(0) = 10</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id311627156151972">MsgBox a(0) ' 1</paragraph>
+  </bascode>
+</section>
+
+<section id="CountDims">
+  <comment> CountDims ---------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id251582558126024">
+    <bookmark_value>Array service;CountDims</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id761582558126025" localize="false">CountDims</h2>
+  <paragraph role="paragraph" id="par_id671582558126025">Count the number of dimensions of an array. The result can be greater than two.
+    <br/>If the argument is not an array, returns -1
+    <br/>If the array is not initialized, returns 0.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id591626977644227">
+    <input>svc.CountDims(array_nd: any): int</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id771582558126027"><emph>array_nd</emph>: The array to examine.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id661582558126028">Dim a(1 To 10, -3 To 12, 5)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id291582558126028">MsgBox SF_Array.CountDims(a) ' 3</paragraph>
+  </bascode>
+</section>
+
+<section id="Difference">
+  <comment> Difference --------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id941582558644286">
+    <bookmark_value>Array service;Difference</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id21582558644287" localize="false">Difference</h2>
+  <paragraph role="paragraph" id="par_id91582558644287">Build a set, as a zero-based array, by applying the difference operator on the two input arrays. Resulting items originate from the first array and not from the second.
       <br/>The resulting array is sorted in ascending order.
       <br/>Both input arrays must be filled homogeneously, their items must be scalars of the same type. <literal>Empty</literal> and <literal>Null</literal> items are forbidden.
       <br/>Text comparison can be case sensitive or not.</paragraph>
-   <h3 id="hd_id441582558644287" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id491582558644287">SF_Array.Difference(Array1_1D As Variant, Array2_1D As Variant[, CaseSensitive As Boolean]) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id641582558644287" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id271582558644287"><emph>Array1_1D</emph> : A 1 dimension reference array, whose items are examined for removal.</paragraph>
-   <paragraph role="paragraph" id="par_id141582558644287"><emph>Array2_1D</emph> : A 1 dimension array, whose items are subtracted from the first input array.</paragraph>
-   <paragraph role="paragraph" id="par_id291582559651473"><emph>CaseSensitive</emph> : Only if the arrays are populated with strings, default = <literal>False</literal>.</paragraph>
-   <h3 id="hd_id811582558644287" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id151582558644288">Sub Example_Difference()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id141582558644288">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id971582560754091">    a = SF_Array.Difference(Array("A", "C", "A", "b", "B"), Array("C", "Z", "b"), True)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id281582560766794">        ' ("A", "B")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id871582558644288">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="ExportToTextFile">
-   <comment> ExportToTextFile -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_iid101582629162107">
-      <bookmark_value>Array service;ExportToTextFile</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id231586179707778" localize="false">ExportToTextFile</h2>
-   <paragraph role="paragraph" id="par_id941586179707156">Write all items of the array sequentially to a text file. If the file exists already, it will be overwritten without warning.</paragraph>
-   <h3 id="hd_id831586179707159" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id54158617970786">SF_Array.ExportToTextFile(Array_1D As Variant, FileName As String, [Encoding As String]) As Boolean</paragraph>
-   </bascode>
-   <h3 id="hd_id44158617970749" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id100158617970719"><emph>Array_1D</emph> : The array to export. It must contain only strings.</paragraph>
-   <paragraph role="paragraph" id="par_id101586179707232"><emph>FileName</emph> : the name of the text file containing the data. The name is expressed as given by the current <literal>FileNaming</literal> property of the <literal>SF_FileSystem</literal> service. Default = any (both the URL format and the native operating system format are admitted).</paragraph>
-   <paragraph role="paragraph" id="par_id70158617970791" xml-lang="en-US"><emph>Encoding</emph> : The character set that should be used. Use one of the names listed in <link href="https://www.iana.org/assignments/character-sets/character-sets.xhtml" name="IANA character sets">IANA character sets</link>. Note that %PRODUCTNAME may not implement all existing character sets. Default is "UTF-8".</paragraph>
-   <h3 id="hd_id281586179707112" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id831586179707765">Sub Example_ExportToTextFile()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id551586179707687">    SF_Array.ExportToTextFile(Array("A","B","C","D"), "C:\Temp\A short file.txt")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id241586179707813">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="ExtractColumn">
-   <comment> ExtractColumn -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id891582560281081">
-      <bookmark_value>Array service;ExtractColumn</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id721582560281081" localize="false">ExtractColumn</h2>
-   <paragraph role="paragraph" id="par_id171582560281082">Extract from a two dimension array a specific column as a new array.
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id311626977822374">
+    <input>svc.Difference(array1_1d: any[0..*], array2_1d: any[0..*], casesensitive: bool = False): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id271582558644287"><emph>array1_1d</emph>: A 1-dimensional reference array, whose items are examined for removal.</paragraph>
+  <paragraph role="paragraph" id="par_id141582558644287"><emph>array2_1d</emph>: A 1-dimensional array, whose items are subtracted from the first input array.</paragraph>
+  <paragraph role="paragraph" id="par_id291582559651473"><emph>casesensitive</emph>: This argument is only applicable if the arrays are populated with strings (Default = <literal>False</literal>).</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id141582558644288">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id971582560754091">a = SF_Array.Difference(Array("A", "C", "A", "b", "B"), Array("C", "Z", "b"), True)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id281582560766794">    ' ("A", "B")</paragraph>
+  </bascode>
+</section>
+
+<section id="ExportToTextFile">
+  <comment> ExportToTextFile --------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_iid101582629162107">
+    <bookmark_value>Array service;ExportToTextFile</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id231586179707778" localize="false">ExportToTextFile</h2>
+  <paragraph role="paragraph" id="par_id941586179707156">Write all items of the array sequentially to a text file. If the file exists already, it will be overwritten without warning.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id701626978046046">
+    <input>svc.ExportToTextFile(array_1d: any[0..*], filename: str, [encoding: str]): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id100158617970719"><emph>array_1d</emph>: The array to export. It must contain only strings.</paragraph>
+  <paragraph role="paragraph" id="par_id101586179707232"><emph>filename</emph>: The name of the text file where the data will be written to. The name must be expressed according to the current <literal>FileNaming</literal> property of the <literal>SF_FileSystem</literal> service.</paragraph>
+  <paragraph role="paragraph" id="par_id70158617970791"><emph>encoding</emph>: The character set that should be used. Use one of the names listed in <link href="https://www.iana.org/assignments/character-sets/character-sets.xhtml" name="IANA character sets">IANA character sets</link>. Note that %PRODUCTNAME may not implement all existing character sets (Default is "UTF-8").</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id551586179707687">SF_Array.ExportToTextFile(Array("A","B","C","D"), "C:\Temp\A short file.txt")</paragraph>
+  </bascode>
+</section>
+
+<section id="ExtractColumn">
+  <comment> ExtractColumn ------------------------------------------------------------------------------------------ </comment>
+  <bookmark localize="false" branch="index" id="bm_id891582560281081">
+    <bookmark_value>Array service;ExtractColumn</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id721582560281081" localize="false">ExtractColumn</h2>
+  <paragraph role="paragraph" id="par_id171582560281082">Extract from a two dimension array a specific column as a new array.
       <br/>Its lower <literal>LBound</literal> and upper <literal>UBound</literal> boundaries are identical to that of the first dimension of the input array.</paragraph>
-   <h3 id="hd_id341582560281082" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id821582560281083">SF_Array.ExtractColumn(Array_2D As Variant, ColumnIndex As Long) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id841582560281083" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id301582560281083"><emph>Array_2D</emph> : The array from which to extract.</paragraph>
-   <paragraph role="paragraph" id="par_id421582560281084"><emph>ColumnIndex</emph> : The column number to extract - must be in the interval <literal>[LBound, UBound]</literal>.</paragraph>
-   <h3 id="hd_id111582560281085" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id821582560281085">Sub Example_ExtractColumn</paragraph>
-      <paragraph role="bascode" id="bas_id861609975902708">   'Creates a 3x3 matrix: |1, 2, 3|</paragraph>
-      <paragraph role="bascode" localize="false" id="par_id921609975924606">   '                      |4, 5, 6|</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id891609975939001">   '                      |7, 8, 9|</paragraph>
-      <paragraph role="bascode" localize="false" id="par_id511609975955899">   Dim mat as Variant, col as Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id831582560741676">   mat = SF_Array.AppendRow(Array(), Array(1, 2, 3))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id661582560281085">   mat = SF_Array.AppendRow(mat, Array(4, 5, 6))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id941609976001528">   mat = SF_Array.AppendRow(mat, Array(7, 8, 9))</paragraph>
-      <paragraph role="bascode" id="bas_id431609976009994">   'Extracts the third column: |3, 6, 9|</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id71609976022964">   col = SF_Array.ExtractColumn(mat, 2)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id471609976068079">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="ExtractRow">
-   <comment> ExtractRow -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id891582561395261">
-      <bookmark_value>Array service;ExtractRow</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id921582561457245" localize="false">ExtractRow</h2>
-   <paragraph role="paragraph" id="par_id211582561467219">Extract from a two dimension array a specific row as a new array.
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id251626978426782">
+    <input>svc.ExtractColumn(array_2d: any[0..*, 0..*], columnindex: int): any[0..*, 0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id301582560281083"><emph>array_2d</emph>: The array from which to extract.</paragraph>
+  <paragraph role="paragraph" id="par_id421582560281084"><emph>columnindex</emph>: The column number to extract - must be in the interval <literal>[LBound, UBound]</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" id="bas_id861609975902708">'Creates a 3x3 matrix: |1, 2, 3|</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id921609975924606">'                      |4, 5, 6|</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id891609975939001">'                      |7, 8, 9|</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id511609975955899">Dim mat as Variant, col as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id831582560741676">mat = SF_Array.AppendRow(Array(), Array(1, 2, 3))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id661582560281085">mat = SF_Array.AppendRow(mat, Array(4, 5, 6))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941609976001528">mat = SF_Array.AppendRow(mat, Array(7, 8, 9))</paragraph>
+    <paragraph role="bascode" id="bas_id431609976009994">'Extracts the third column: |3, 6, 9|</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id71609976022964">col = SF_Array.ExtractColumn(mat, 2)</paragraph>
+  </bascode>
+</section>
+
+<section id="ExtractRow">
+  <comment> ExtractRow --------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id891582561395261">
+    <bookmark_value>Array service;ExtractRow</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id921582561457245" localize="false">ExtractRow</h2>
+  <paragraph role="paragraph" id="par_id211582561467219">Extract from a two dimension array a specific row as a new array.
       <br/>Its lower <literal>LBound</literal> and upper <literal>UBound</literal> boundaries are identical to that of the second dimension of the input array.</paragraph>
-   <h3 id="hd_id271582561491472" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id531582561508949">SF_Array.ExtractRow(Array_2D As Variant, RowIndex As Long) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id151582561525826" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id911582561542889"><emph>Array_2D</emph> : The array from which to extract.</paragraph>
-   <paragraph role="paragraph" id="par_id441582561551202"><emph>RowIndex</emph> : The row number to extract - must be in the interval <literal>[LBound, UBound]</literal>.</paragraph>
-   <h3 id="hd_id891582561576040" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id941582561596912">Sub Example_ExtractRow</paragraph>
-      <paragraph role="bascode" id="bas_id301582561604167">   'Creates a 3x3 matrix: |1, 2, 3|</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id100158256161206">   '                      |4, 5, 6|</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id91609976515742">   '                      |7, 8, 9|</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id911609976539433">   Dim mat as Variant, row as Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="par_id921609976603577">   mat = SF_Array.AppendRow(Array(), Array(1, 2, 3))</paragraph>
-      <paragraph role="bascode" localize="false" id="par_id281609976618980">   mat = SF_Array.AppendRow(mat, Array(4, 5, 6))</paragraph>
-      <paragraph role="bascode" localize="false" id="par_id591609976629882">   mat = SF_Array.AppendRow(mat, Array(7, 8, 9))</paragraph>
-      <paragraph role="bascode" id="bas_id431609976648017">   'Extracts the first row: |1, 2, 3|</paragraph>
-      <paragraph role="bascode" localize="false" id="par_id781609976663979">   row = SF_Array.ExtractRow(mat, 0)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id921609976680335">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Flatten">
-   <comment> Flatten -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id261585757822682">
-      <bookmark_value>Array service;Flatten</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id351585757822637" localize="false">Flatten</h2>
-   <paragraph role="paragraph" id="par_id431585757822181">Stack all single items of an array and all items in its subarrays into one new array without subarrays. Empty subarrays are ignored and subarrays with a number of dimensions greater than one are not flattened.</paragraph>
-   <h3 id="hd_id861585757822848" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id61585757822431">SF_Array.Flatten(Array_1D As Variant) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id231585757822628" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id431585757822869"><emph>Array_1D</emph> : the pre-existing array, may be empty.</paragraph>
-   <h3 id="hd_id70158575782242" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id721585757822109">Sub Example_Flatten()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id231585757822493">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id131585757822885">    a = SF_Array.Flatten(Array(Array(1, 2, 3), 4, 5))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id631585757822119">        ' (1, 2, 3, 4, 5)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id141585757822713">End Sub</paragraph>
-   </bascode>
-   <tip id="par_id291610040786530">You can use the <literal>Flatten</literal> method along with other methods such as <literal>Append</literal> or <literal>Prepend</literal> to concatenate a set of 1D arrays into a single 1D array.</tip>
-   <h3 id="hd_id361610040935558" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <paragraph role="paragraph" id="par_id941610040961148">Next is an example of how the methods <literal>Flatten</literal> and <literal>Append</literal> can be combined to concatenate three arrays.</paragraph>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id741610041055558">Sub Concatenate_Example</paragraph>
-      <paragraph role="bascode" id="bas_id841610041372527">   'Creates three arrays for this example</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id711610041389170">   Dim a as Variant, b as Variant, c as Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id231610041401412">   a = Array(1, 2, 3)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id281610041413482">   b = Array(4, 5)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id651610041429583">   c = Array(6, 7, 8, 9)</paragraph>
-      <paragraph role="bascode" id="bas_id171610041440657">   'Concatenates the three arrays into a single 1D array</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id331610041455317">   Dim arr as Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id121610041468254">   arr = SF_Array.Flatten(SF_Array.Append(a, b, c))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id981610041490008">   '(1, 2, 3, 4, 5, 6, 7, 8, 9)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id431610041500145">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="ImportFromCSVFile">
-   <comment> ImportFromCSVFile -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_iid101582629162107">
-      <bookmark_value>Array service;ImportFromCSVFile</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id581585561482142" localize="false">ImportFromCSVFile</h2>
-   <paragraph role="paragraph" id="par_id611585561482373">Import the data contained in a comma-separated values (CSV) file. The comma may be replaced by any character.</paragraph>
-   <paragraph role="paragraph" id="par_id41585562158392" xml-lang="en-US">The applicable CSV format is described in <link href="https://tools.ietf.org/html/rfc4180" name="CSV formats">IETF Common Format and MIME Type for CSV Files</link>.</paragraph>
-   <paragraph role="paragraph" id="par_id641585562341028" xml-lang="en-US">Each line in the file contains a full record (line splitting is not allowed).
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id391626978560113">
+    <input>svc.ExtractRow(array_2d: any[0..*, 0..*], rowindex: int): any[0..*, 0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id911582561542889"><emph>array_2d</emph>: The array from which to extract.</paragraph>
+  <paragraph role="paragraph" id="par_id441582561551202"><emph>rowindex</emph>: The row number to extract - must be in the interval <literal>[LBound, UBound]</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" id="bas_id301582561604167">'Creates a 3x3 matrix: |1, 2, 3|</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id100158256161206">'                      |4, 5, 6|</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id91609976515742">'                      |7, 8, 9|</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id911609976539433">Dim mat as Variant, row as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id921609976603577">mat = SF_Array.AppendRow(Array(), Array(1, 2, 3))</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id281609976618980">mat = SF_Array.AppendRow(mat, Array(4, 5, 6))</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id591609976629882">mat = SF_Array.AppendRow(mat, Array(7, 8, 9))</paragraph>
+    <paragraph role="bascode" id="bas_id431609976648017">'Extracts the first row: |1, 2, 3|</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id781609976663979">row = SF_Array.ExtractRow(mat, 0)</paragraph>
+  </bascode>
+</section>
+
+<section id="Flatten">
+  <comment> Flatten ------------------------------------------------------------------------------------------------ </comment>
+  <bookmark localize="false" branch="index" id="bm_id261585757822682">
+    <bookmark_value>Array service;Flatten</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id351585757822637" localize="false">Flatten</h2>
+  <paragraph role="paragraph" id="par_id431585757822181">Stack all single items of an array and all items in its subarrays into one new array without subarrays. Empty subarrays are ignored and subarrays with a number of dimensions greater than one are not flattened.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id551626978750851">
+    <input>svc.Flatten(array_1d: any[0..*]): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id431585757822869"><emph>array_1d</emph>: The pre-existing array, may be empty.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id231585757822493">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id131585757822885">a = SF_Array.Flatten(Array(Array(1, 2, 3), 4, 5))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id631585757822119">    ' (1, 2, 3, 4, 5)</paragraph>
+  </bascode>
+  <tip id="par_id291610040786530">You can use the <literal>Flatten</literal> method along with other methods such as <literal>Append</literal> or <literal>Prepend</literal> to concatenate a set of 1D arrays into a single 1D array.</tip>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id941610040961148">Next is an example of how the methods <literal>Flatten</literal> and <literal>Append</literal> can be combined to concatenate three arrays.</paragraph>
+  <bascode>
+    <paragraph role="bascode" id="bas_id841610041372527">'Creates three arrays for this example</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id711610041389170">Dim a as Variant, b as Variant, c as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id231610041401412">a = Array(1, 2, 3)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id281610041413482">b = Array(4, 5)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651610041429583">c = Array(6, 7, 8, 9)</paragraph>
+    <paragraph role="bascode" id="bas_id171610041440657">'Concatenates the three arrays into a single 1D array</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id331610041455317">Dim arr as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id121610041468254">arr = SF_Array.Flatten(SF_Array.Append(a, b, c))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id981610041490008">'(1, 2, 3, 4, 5, 6, 7, 8, 9)</paragraph>
+  </bascode>
+</section>
+
+<section id="ImportFromCSVFile">
+  <comment> ImportFromCSVFile -------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_iid101582629162107">
+    <bookmark_value>Array service;ImportFromCSVFile</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id581585561482142" localize="false">ImportFromCSVFile</h2>
+  <paragraph role="paragraph" id="par_id611585561482373">Import the data contained in a comma-separated values (CSV) file. The comma may be replaced by any character.</paragraph>
+  <paragraph role="paragraph" id="par_id41585562158392">The applicable CSV format is described in <link href="https://tools.ietf.org/html/rfc4180" name="CSV formats">IETF Common Format and MIME Type for CSV Files</link>.</paragraph>
+  <paragraph role="paragraph" id="par_id641585562341028">Each line in the file contains a full record (line splitting is not allowed).
      <br/>However sequences like <literal>\n</literal>, <literal>\t</literal>, ... are left unchanged. Use <literal>SF_String</literal>.Unescape() method to manage them.</paragraph>
-   <paragraph role="paragraph" id="par_id231585562475026" xml-lang="en-US">The method returns a two dimension array whose rows correspond to a single record read in the file and whose columns correspond to a field of the record. No check is made about the coherence of the field types across columns. A best guess will be made to identify numeric and date types.</paragraph>
-   <paragraph role="paragraph" id="par_id101585562548245" xml-lang="en-US">If a line contains less or more fields than the first line in the file, an exception will be raised. Empty lines however are simply ignored. If the size of the file exceeds the number of items limit (see inside the code), a warning is raised and the array is truncated.</paragraph>
-   <h3 id="hd_id171585561482793" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id351585561482418">SF_Array.ImportFromCSVFile(FileName As String, [Delimiter As String], [DateFormat As String]) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id461585561482379" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id441585561482121"><emph>FileName</emph> : the name of the text file containing the data. The name is expressed as given by the current <literal>FileNaming</literal> property of the <literal>SF_FileSystem</literal> service. Default = any (both the URL format and the native operating system format are admitted).</paragraph>
-   <paragraph role="paragraph" id="par_id251585561482929"><emph>Delimiter</emph> : A single character, usually, a comma, a semicolon or a TAB character. Default = <literal>","</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id631585563491559" xml-lang="en-US"><emph>DateFormat</emph> : A special mechanism handles dates when <literal>DateFormat</literal> is either "YYYY-MM-DD", "DD-MM-YYYY" or "MM-DD-YYYY". The dash (-) may be replaced by a dot (.), a slash (/) or a space. Other date formats will be ignored. Dates defaulting to "" are considered as normal text.</paragraph>
-   <h3 id="hd_id52158556148278" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <paragraph role="paragraph" id="par_id61585564516409" xml-lang="en-US">Given this CSV file:</paragraph>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id891585564144231">Name,DateOfBirth,Address,City</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id761585564150479">Anna,2002/03/31,"Rue de l'église, 21",Toulouse</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id911585564157141">Fred,1998/05/04,"Rue Albert Einstein, 113A",Carcassonne</paragraph>
-   </bascode>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id321585561482696">Sub Example_ImportFromCSVFile()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id391585561482567">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id531585561482408">    a = SF_Array.ImportFromCSVFile("C:\Temp\myFile.csv", DateFormat := "YYYY/MM/DD")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id621585561482783">    MsgBox a(0, 3)    ' City</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id21585564425349">    MsgBox TypeName(a(1, 2))    ' Date</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id831585564433851">    MsgBox a(2, 2)    ' Rue Albert Einstein, 113A</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id591585561482616">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="IndexOf">
-   <comment> IndexOf -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id361582562709465">
-      <bookmark_value>Array service;IndexOf</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id741582562715741" localize="false">IndexOf</h2>
-   <paragraph role="paragraph" id="par_id211582562721860">Look in a one dimension array for a number, a string or a date. Text comparison can be case-sensitive or not.
+  <paragraph role="paragraph" id="par_id231585562475026">The method returns a two dimension array whose rows correspond to a single record read in the file and whose columns correspond to a field of the record. No check is made about the coherence of the field types across columns. A best guess will be made to identify numeric and date types.</paragraph>
+  <paragraph role="paragraph" id="par_id101585562548245">If a line contains less or more fields than the first line in the file, an exception will be raised. Empty lines however are simply ignored. If the size of the file exceeds the number of items limit (see inside the code), a warning is raised and the array is truncated.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id121626979017138">
+    <input>svc.ImportFromCSVFile(filename: str, delimiter: str = ',', dateformat: str = ''): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id441585561482121"><emph>filename</emph>: The name of the text file containing the data. The name must be expressed according to the current <literal>FileNaming</literal> property of the <literal>SF_FileSystem</literal> service.</paragraph>
+  <paragraph role="paragraph" id="par_id251585561482929"><emph>delimiter</emph>: A single character, usually, a comma, a semicolon or a TAB character (Default = ",").</paragraph>
+  <paragraph role="paragraph" id="par_id631585563491559"><emph>dateformat</emph>: A special mechanism handles dates when <literal>dateformat</literal> is either "YYYY-MM-DD", "DD-MM-YYYY" or "MM-DD-YYYY". The dash (-) may be replaced by a dot (.), a slash (/) or a space. Other date formats will be ignored. Dates defaulting to an empty string "" are considered as normal text.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id61585564516409">Consider the CSV file "myFile.csv" with the following contents:</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id281626980354105"><input>Name,DateOfBirth,Address,City</input></paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id301626980648833"><input>Anna,2002/03/31,"Rue de l'église, 21",Toulouse</input></paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id881626980658900"><input>Fred,1998/05/04,"Rue Albert Einstein, 113A",Carcassonne</input></paragraph>
+  <paragraph role="paragraph" id="par_id181626979812772">The examples below in Basic and Python read the contents of the CSV file into an <literal>Array</literal> object.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id391585561482567">Dim arr As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531585561482408">arr = SF_Array.ImportFromCSVFile("C:\Temp\myFile.csv", DateFormat := "YYYY/MM/DD")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621585561482783">MsgBox arr(0, 3) ' City</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id21585564425349">MsgBox arr(1, 2) ' Rue de l'église, 21</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id831585564433851">MsgBox arr(1, 3) ' Toulouse</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id851626979992344">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id571626979992587">svc = CreateScriptService("Array")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id821626979992775">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id511626979992999">arr = svc.ImportFromCSVFile(r"C:\Temp\myFile.csv", dateformat = "YYYY/MM/DD")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id211626979993191">bas.MsgBox(arr[0][3]) # City</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id671626979993408">bas.MsgBox(arr[1][2]) # Rue de l'église, 21</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id481626979993648">bas.MsgBox(arr[1][3]) # Toulouse</paragraph>
+  </pycode>
+</section>
+
+<section id="IndexOf">
+  <comment> IndexOf ------------------------------------------------------------------------------------------------ </comment>
+  <bookmark localize="false" branch="index" id="bm_id361582562709465">
+    <bookmark_value>Array service;IndexOf</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id741582562715741" localize="false">IndexOf</h2>
+  <paragraph role="paragraph" id="par_id211582562721860">Look in a one dimension array for a number, a string or a date. Text comparison can be case-sensitive or not.
       <br/>If the array is sorted it must be filled homogeneously, which means that all items must be scalars of the same type (<literal>Empty</literal> and <literal>Null</literal> items are forbidden).
       <br/>The result of the method is unpredictable when the array is announced as sorted and actually is not.
       <br/>A binary search is performed on sorted arrays. Otherwise, arrays are simply scanned from top to bottom and <literal>Empty</literal> and <literal>Null</literal> items are ignored.
       <br/>
       <br/>The method returns <literal>LBound(input array) - 1</literal> if the search was not successful.</paragraph>
-   <h3 id="hd_id901582562736452" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id251582562747218">SF_Array.IndexOf(Array_1D, ToFind As Variant, [CaseSensitive As Boolean], [SortOrder As String]) As Long</paragraph>
-   </bascode>
-   <h3 id="hd_id11582562760632" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id315825627687760"><emph>Array_1D</emph> : the array to scan.</paragraph>
-   <paragraph role="paragraph" id="par_id511582562775516"><emph>ToFind</emph> : a number, a date or a string to find.</paragraph>
-   <paragraph role="paragraph" id="par_id311582562787187"><emph>CaseSensitive</emph> : Only for string comparisons, default = <literal>False</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id421582562794501"><emph>SortOrder</emph> : <literal>"ASC"</literal>, <literal>"DESC"</literal> or <literal>""</literal> (= not sorted, default)</paragraph>
-   <h3 id="hd_id121582562803122" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id471582562909129">Sub Example_IndexOf()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id291582562917140">    MsgBox SF_Array.IndexOf(Array("A","B","c","D"), "C", SortOrder := "ASC") ' 2</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id100158256292397">    MsgBox SF_Array.IndexOf(Array("A","B","c","D"), "C", CaseSensitive := True) ' -1</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id641582562955330">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Insert">
-   <comment> Insert -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id371582626951108">
-      <bookmark_value>Array service;Insert</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id101582626951109" localize="false">Insert</h2>
-   <paragraph role="paragraph" id="par_id911582626951109">Insert before a given index of the input array the items listed as arguments.
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id741626980743030">
+    <input>svc.IndexOf(array_1d: any[0..*], tofind: any, casesensitive: bool = False, sortorder: str = ''): int</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id315825627687760"><emph>array_1d</emph>: The array to scan.</paragraph>
+  <paragraph role="paragraph" id="par_id511582562775516"><emph>tofind</emph>: A number, a date or a string to find.</paragraph>
+  <paragraph role="paragraph" id="par_id311582562787187"><emph>casesensitive</emph>: Only for string comparisons (Default = <literal>False</literal>).</paragraph>
+  <paragraph role="paragraph" id="par_id421582562794501"><emph>sortorder</emph>: It can be either "ASC", "DESC" or "" (not sorted). The default value is "".</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id291582562917140">MsgBox SF_Array.IndexOf(Array("A","B","c","D"), "C", SortOrder := "ASC") ' 2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id100158256292397">MsgBox SF_Array.IndexOf(Array("A","B","c","D"), "C", CaseSensitive := True) ' -1</paragraph>
+  </bascode>
+</section>
+
+<section id="Insert">
+  <comment> Insert ------------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id371582626951108">
+    <bookmark_value>Array service;Insert</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id101582626951109" localize="false">Insert</h2>
+  <paragraph role="paragraph" id="par_id911582626951109">Insert before a given index of the input array the items listed as arguments.
       <br/>Arguments are inserted blindly. Each of them might be either a scalar of any type or a subarray.</paragraph>
-   <h3 id="hd_id811582626951110" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id821582626951110">SF_Array.Insert(Array_1D As Variant, Before As Long, arg0 As Variant, [arg1 As Variant], ...) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id111582626951110" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id251582626951111"><emph>Array_1D</emph> : the pre-existing array, may be empty.</paragraph>
-   <paragraph role="paragraph" id="par_id361582626951111"><emph>Before</emph> : the index before which to insert; must be in the interval <literal>[LBound, UBound + 1]</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id41582626951111"><emph>arg0, ...</emph> : a list of items to insert inside <literal>Array_1D</literal>.</paragraph>
-   <h3 id="hd_id401582626951112" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id701582626951112">Sub Example_Insert()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id11582626951112">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id231582626951113">    a = SF_Array.Insert(Array(1, 2, 3), 2, "a", "b")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id841582626951113">        ' (1, 2, "a", "b", 3)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id341582626951114">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="InsertSorted">
-   <comment> InsertSorted -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id311582627664147">
-      <bookmark_value>Array service;InsertSorted</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id981582627664147" localize="false">InsertSorted</h2>
-   <paragraph role="paragraph" id="par_id441582627664147">Insert in a sorted array a new item on its place.
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id701626981031599">
+    <input>svc.Insert(array_1d: any[0..*], before: int, arg0: any, [arg1: any] ...): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id251582626951111"><emph>array_1d</emph>: The pre-existing array, may be empty.</paragraph>
+  <paragraph role="paragraph" id="par_id361582626951111"><emph>before</emph>: The index before which to insert; must be in the interval <literal>[LBound, UBound + 1]</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id41582626951111"><emph>arg0, arg1, ...</emph>: Items that will be inserted into <literal>array_1d</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id11582626951112">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id231582626951113">a = SF_Array.Insert(Array(1, 2, 3), 2, "a", "b")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id841582626951113">    ' (1, 2, "a", "b", 3)</paragraph>
+  </bascode>
+</section>
+
+<section id="InsertSorted">
+  <comment> InsertSorted ------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id311582627664147">
+    <bookmark_value>Array service;InsertSorted</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id981582627664147" localize="false">InsertSorted</h2>
+  <paragraph role="paragraph" id="par_id441582627664147">Inserts into a sorted array a new item on its place.
       <br/>The array must be filled homogeneously, meaning that all items must be scalars of the same type.
       <br/><literal>Empty</literal> and <literal>Null</literal> items are forbidden.</paragraph>
-   <h3 id="hd_id621582627664147" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id61582627664147">SF_Array.InsertSorted(Array_1D As Variant, Item As Variant, SortOrder As String, CaseSensitive As Boolean) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id941582627664147" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id121582627664147"><emph>Array_1D</emph> : The array to sort.</paragraph>
-   <paragraph role="paragraph" id="par_id315826276641480"><emph>Item</emph> : The scalar value to insert, of the same type as the existing array items.</paragraph>
-   <paragraph role="paragraph" id="par_id415826279771170"><emph>SortOrder</emph> : <literal>"ASC"</literal> (default) or <literal>"DESC"</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id701582627970037"><emph>CaseSensitive</emph> : Only for string comparisons, default = <literal>False</literal>.</paragraph>
-   <h3 id="hd_id461582627664148" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id261582627664148">Sub Example_InsertSorted()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id91582627664148">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id31582627664148">    a = SF_Array.InsertSorted(Array("A", "C", "a", "b"), "B", CaseSensitive := True)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id831582627664148">        ' ("A", "B", "C", "a", "b")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id591582627664148">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Intersection">
-   <comment> Intersection -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_iid101582629162107">
-      <bookmark_value>Array service;Intersection</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id841582629169550" localize="false">Intersection</h2>
-   <paragraph role="paragraph" id="par_id71582629177169">Build a set, as a zero-based array, by applying the intersection set operator on the two input arrays. Resulting items are contained in both arrays.
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id561626981419647">
+    <input>svc.InsertSorted(array_1d: any[0..*], item: any, sortorder: str = 'ASC', casesensitive: bool = False): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id121582627664147"><emph>array_1d</emph>: The array into which the value will be inserted.</paragraph>
+  <paragraph role="paragraph" id="par_id315826276641480"><emph>item</emph>: The scalar value to insert, of the same type as the existing array items.</paragraph>
+  <paragraph role="paragraph" id="par_id415826279771170"><emph>sortorder</emph>: It can be either "ASC" (default) or "DESC".</paragraph>
+  <paragraph role="paragraph" id="par_id701582627970037"><emph>casesensitive</emph>: Only for string comparisons (Default = <literal>False</literal>).</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id91582627664148">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id31582627664148">a = SF_Array.InsertSorted(Array("A", "C", "a", "b"), "B", CaseSensitive := True)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id831582627664148">    ' ("A", "B", "C", "a", "b")</paragraph>
+  </bascode>
+</section>
+
+<section id="Intersection">
+  <comment> Intersection ------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_iid101582629162107">
+    <bookmark_value>Array service;Intersection</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id841582629169550" localize="false">Intersection</h2>
+  <paragraph role="paragraph" id="par_id71582629177169">Build a set, as a zero-based array, by applying the intersection set operator on the two input arrays. Resulting items are contained in both arrays.
       <br/>The resulting array is sorted in ascending order.
       <br/>Both input arrays must be filled homogeneously, in other words all items must be scalars of the same type. <literal>Empty</literal> and <literal>Null</literal> items are forbidden.
       <br/>Text comparison can be case sensitive or not.</paragraph>
-   <h3 id="hd_id681582629188055" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id731582629197251">SF_Array.Intersection(Array1_1D As Variant, Array2_1D As Variant[, CaseSensitive As Boolean]) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id431582629205750" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id881582629216169"><emph>Array1_1D</emph> : The first input array.</paragraph>
-   <paragraph role="paragraph" id="par_id191582629223038"><emph>Array2_1D</emph> : The second input array.</paragraph>
-   <paragraph role="paragraph" id="par_id71582629230275"><emph>CaseSensitive</emph> : Applies to arrays populated with text items, default = <literal>False</literal>.</paragraph>
-   <h3 id="hd_id871582629239015" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id391582629249730">Sub Example_Intersection()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id331582629257228">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id811582629266094">    a = SF_Array.Intersection(Array("A", "C", "A", "b", "B"), Array("C", "Z", "b"), True)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id171582629275916">        ' ("C", "b")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id561582629284117">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Join2D">
-   <comment> Join2D -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231583064481294">
-      <bookmark_value>Array service;Join2D</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id641583064481282" localize="false">Join2D</h2>
-   <paragraph role="paragraph" id="par_id431583064481679">Join a two-dimensional array with two delimiters, one for the columns, one for the rows.</paragraph>
-   <h3 id="hd_id51158306448110" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id151583064481767">SF_Array.Join2D(Array_2D As Variant, ColumnDelimiter As String, RowDelimiter As String, Quote As Boolean) As String</paragraph>
-   </bascode>
-   <h3 id="hd_id131583064481226" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id821583064481534"><emph>Array_2D</emph> : Each item must be either text, a number, a date or a boolean.
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id91626981727462">
+    <input>svc.Intersection(array1_1d: any[0..*], array2_1d: any[0..*], casesensitive: bool = False): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id881582629216169"><emph>array1_1d</emph>: The first input array.</paragraph>
+  <paragraph role="paragraph" id="par_id191582629223038"><emph>array2_1d</emph>: The second input array.</paragraph>
+  <paragraph role="paragraph" id="par_id71582629230275"><emph>casesensitive</emph>: Applies to arrays populated with text items (Default = <literal>False</literal>).</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id331582629257228">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id811582629266094">a = SF_Array.Intersection(Array("A", "C", "A", "b", "B"), Array("C", "Z", "b"), True)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id171582629275916">    ' ("C", "b")</paragraph>
+  </bascode>
+</section>
+
+<section id="Join2D">
+  <comment> Join2D ------------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id231583064481294">
+    <bookmark_value>Array service;Join2D</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id641583064481282" localize="false">Join2D</h2>
+  <paragraph role="paragraph" id="par_id431583064481679">Join a two-dimensional array with two delimiters, one for the columns, one for the rows.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id421626982116561">
+    <input>svc.Join2D(array_2d: any [0..*, 0..*], [columndelimiter: str], [rowdelimiter: str], [quote: str]): str</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id821583064481534"><emph>array_2d</emph>: Each item must be either text, a number, a date or a boolean.
       <br/>Dates are transformed into the YYYY-MM-DD hh:mm:ss format.
       <br/>Invalid items are replaced by a zero-length string.</paragraph>
-   <paragraph role="paragraph" id="par_id171583066989446" xml-lang="en-US"><emph>ColumnDelimiter</emph> : Delimits each column (default = Tab/Chr(9)).</paragraph>
-    <paragraph role="paragraph" id="par_id431583067008842" xml-lang="en-US"><emph>RowDelimiter</emph>: delimits each row (default = LineFeed/Chr(10))</paragraph>
-   <paragraph role="paragraph" id="par_id541583067456273" xml-lang="en-US"><emph>Quote</emph> : if <literal>True</literal>, protect strings with double quotes. The default is <literal>False</literal>.</paragraph>
-   <h3 id="hd_id24158306448125" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id991583064481860">Sub Example_Join2D()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id981583064481420">-                     | 1, 2, "A", [2020-02-29], 5      |</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id881583064481455">-    SF_Array.Join_2D(| 6, 7, "this is a string", 9, 10 |, ",", "/")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id515830644818749">-            ' "1,2,A,2020-02-29 00:00:00,5/6,7,this is a string,9,10"</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id891583064481120">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Prepend">
-   <comment> Prepend -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id701582629972724">
-      <bookmark_value>Array service;Prepend</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id931582629986047" localize="false">Prepend</h2>
-   <paragraph role="paragraph" id="par_id731582630075045">Prepend at the beginning of the input array the items listed as arguments.</paragraph>
-   <h3 id="hd_id11582630082029" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id401582630090649">SF_Array.Prepend(Array_1D As Variant, arg0 As Variant, [arg1 As Variant], ...) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id961582630099102" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id321582630107068"><emph>Array_1D</emph> : the pre-existing array, may be empty.</paragraph>
-   <paragraph role="paragraph" id="par_id915826301138550"><emph>arg0, ...</emph> : a list of items to prepend to <literal>Array_1D</literal>.</paragraph>
-   <h3 id="hd_id431582630183499" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id711582630125376">Sub Example_Prepend()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id321582630131988">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id851582630138380">    a = SF_Array.Prepend(Array(1, 2, 3), 4, 5)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id681582630144971">        ' (4, 5, 1, 2, 3)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id441582630151256">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="PrependColumn">
-   <comment> PrependColumn -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id211582643223924">
-      <bookmark_value>Array service;PrependColumn</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id25158264322311" localize="false">PrependColumn</h2>
-   <paragraph role="paragraph" id="par_id91582643223166">Prepend to the left side of a two dimension array a new column. The resulting array has the same lower boundaries as the initial two dimension array.</paragraph>
-   <h3 id="hd_id391582643223553" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id981582643223807">SF_Array.PrependColumn(Array_2D As Variant, Column As Variant) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id321582643223125" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id621582643223545"><emph>Array_2D</emph> : the pre-existing array, may be empty. If that array has 1 dimension, it is considered as the last column of the resulting 2 dimension array.</paragraph>
-   <paragraph role="paragraph" id="par_id381582643223870"><emph>Column</emph> : a 1 dimension array with as many items as there are rows in <literal>Array_2D</literal>.</paragraph>
-   <h3 id="hd_id6158264322351" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id781582643223405">Sub Example_PrependColumn()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id601582643223931">Dim a As Variant, b As variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id28158264322323">    a = SF_Array.PrependColumn(Array(1, 2, 3), Array(4, 5, 6))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id901582643223295">        ' ((4, 1), (5, 2), (6, 3))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id361582643223747">    b = SF_Array.PrependColumn(Array(), Array(1, 2, 3))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id821582643223417">        ' ∀ i ∈ {0 ≤ i ≤ 2} : b(0, i) ≡ i</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id351582643223716">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="PrependRow">
-   <comment> PrependRow -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id321582643611165">
-      <bookmark_value>Array service;PrependRow</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id921582643611272" localize="false">PrependRow</h2>
-   <paragraph role="paragraph" id="par_id851582643611291">Prepend at the beginning of a two dimension array a new row. The resulting array has the same lower boundaries as the initial two dimension array.</paragraph>
-   <h3 id="hd_id211582643611828" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id841582643611957">SF_Array.PrependRow(Array_2D As Variant, Row As Variant) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id391582643611919" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id991582643611645"><emph>Array_2D</emph> : the pre-existing array, may be empty. If that array has 1 dimension, it is considered as the last row of the resulting 2 dimension array.</paragraph>
-   <paragraph role="paragraph" id="par_id321582643611415"><emph>Row</emph> : a 1 dimension array containing as many items as there are rows in <literal>Array_2D</literal>.</paragraph>
-   <h3 id="hd_id811582643611644" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id471582643611765">Sub Example_PrependRow()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id611582643611408">Dim a As Variant, b As variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id941582643611530">    a = SF_Array.PrependRow(Array(1, 2, 3), Array(4, 5, 6))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id621582643611876">        ' ((4, 5, 6), (1, 2, 3))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id791582643611123">    b = SF_Array.PrependRow(Array(), Array(1, 2, 3))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id621582643611263">        ' ∀ i ∈ {0 ≤ i ≤ 2} : b(i, 0) ≡ i</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id201582643611274">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="RangeInit">
-   <comment> RangeInit -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id321582648204011">
-      <bookmark_value>Array service;RangeInit</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id61582648204011" localize="false">RangeInit</h2>
-   <paragraph role="paragraph" id="par_id441582648204012">Initialize a new zero-based array with numeric values.</paragraph>
-   <h3 id="hd_id921582648204012" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id121582648204012">SF_Array.RangeInit(From As [number], UpTo As [number] [, ByStep As [number]]) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id541582648204013" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id591582648204013"><emph>From</emph> : value of the first item.</paragraph>
-   <paragraph role="paragraph" id="par_id31582648204013"><emph>UpTo</emph> : The last item should not exceed <literal>UpTo</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id581582648204014"><emph>ByStep</emph> : The difference between two successive items (default = 1).</paragraph>
-   <h3 id="hd_id791582648204014" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id851582648204014">Sub Example_RangeInit()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id341582648204015">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id901582648204015">    a = SF_Array.RangeInit(10, 1, -1)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id171582648204015">        ' (10, 9, 8, 7, 6, 5, 4, 3, 2, 1)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id71582648204016">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Reverse">
-   <comment> Reverse -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id31582648806764">
-      <bookmark_value>Array service;Reverse</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id111582648806764" localize="false">Reverse</h2>
-   <paragraph role="paragraph" id="par_id451582648806764">Return the reversed one dimension input array.</paragraph>
-   <h3 id="hd_id711582648806764" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id81582648806764">SF_Array.Reverse(Array_1D As Variant) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id101582648806765" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id31582648806765"><emph>Array_1D</emph> : The array to reverse.</paragraph>
-   <h3 id="hd_id109582648806765" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id771582648806765">Sub Example_Reverse()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id251582648806765">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id31582648806765">    a = SF_Array.Reverse(Array("a", 2, 3, 4))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id431582648806765">        ' (4, 3, 2, "a")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id1001582648806765">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Shuffle">
-   <comment> Shuffle -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id531582649200087">
-      <bookmark_value>Array service;Shuffle</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id731582649200088" localize="false">Shuffle</h2>
-   <paragraph role="paragraph" id="par_id151582649200088">Return a random permutation of a one dimension array.</paragraph>
-   <h3 id="hd_id161582649200088" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id851582649200088">SF_Array.Shuffle(Array_1D As Variant) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id471582649200088" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id11582649200088"><emph>Array_1D</emph> : The array to shuffle.</paragraph>
-   <h3 id="hd_id61582649200088" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id541582649200088">Sub Example_Shuffle()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id561582649200088">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id831582649200088">    a = SF_Array.Shuffle(Array(1, 2, 3, 4))</paragraph>
-      <paragraph role="bascode" id="bas_id611582649200089">        ' Unpredictable</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id231582649200089">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Slice">
-   <comment> Slice -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id20158618418514">
-      <bookmark_value>Array service;Slice</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id281586184185623" localize="false">Slice</h2>
-   <paragraph role="paragraph" id="par_id111586184185502">Return a subset of a one dimension array.</paragraph>
-   <h3 id="hd_id451586184185454" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id221586184185613">SF_Array.Slice(Array_1D As Variant, From As Long, [UpTo As Long]) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id731586184185764" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id201586184185438"><emph>Array_1D</emph> : The array to slice.</paragraph>
-   <paragraph role="paragraph" id="par_id921586184482370" xml-lang="en-US"><emph>From</emph> : The lower index in <literal>Array_1D</literal> of the subarray to extract (<literal>From</literal> included)</paragraph>
-   <paragraph role="paragraph" id="par_id211586184471488" xml-lang="en-US"><emph>UpTo</emph> : The upper index in <literal>Array_1D</literal> of the subarray to extract (<literal>UpTo</literal> included). Default = upper bound of <literal>Array_1D</literal>. If <literal>UpTo</literal> &lt; <literal>From</literal> then the returned array is empty.</paragraph>
-   <h3 id="hd_id691586184185665" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id90158618418541">Sub Example_Slice()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id951586184185679">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id151586184185884">    a = SF_Array.Slice(Array(1, 2, 3, 4, 5), 1, 3) ' (2, 3, 4)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id681586184185203">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Sort">
-   <comment> Sort -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id561582649483854">
-      <bookmark_value>Array service;Sort</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id65158264948384" localize="false">Sort</h2>
-   <paragraph role="paragraph" id="par_id171582649483675">Sort a one dimension array in ascending or descending order. Text comparisons can be case-sensitive or not.
+  <paragraph role="paragraph" id="par_id171583066989446"><emph>columndelimiter</emph>: Delimits each column (default = Tab/Chr(9)).</paragraph>
+  <paragraph role="paragraph" id="par_id431583067008842"><emph>rowdelimiter</emph>: Delimits each row (default = LineFeed/Chr(10))</paragraph>
+  <paragraph role="paragraph" id="par_id541583067456273"><emph>quote</emph>: If <literal>True</literal>, protect strings with double quotes. The default is <literal>False</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id991583064481860">' arr = | 1, 2, "A", [2020-02-29], 51, 2, "A", [2020-02-29], 5           |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id981583064481420">'       | 6, 7, "this is a string", 9, 106, 7, "this is a string", 9, 10 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id881583064481455">Dim arr as Variant : arr = Array()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id515830644818749">arr = SF_Array.AppendRow(arr, Array(1, 2, "A", [2020-02-29], 51, 2, "A", [2020-02-29], 5))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id891583064481120">arr = SF_Array.AppendRow(arr, Array(6, 7, "this is a string", 9, 106, 7, "this is a string", 9, 10))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id821626983495205">Dim arrText as String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id151626983442821">arrText = SF_Array.Join2D(arr, ",", "/", False)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id661626982983761">' 1,2,A,,51,2,A,,5/6,7,this is a string,9,106,7,this is a string,9,10</paragraph>
+  </bascode>
+</section>
+
+<section id="Prepend">
+  <comment> Prepend -------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id701582629972724">
+    <bookmark_value>Array service;Prepend</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id931582629986047" localize="false">Prepend</h2>
+  <paragraph role="paragraph" id="par_id731582630075045">Prepend at the beginning of the input array the items listed as arguments.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id281626997292148">
+    <input>svc.Prepend(array_1d: any[0..*], arg0: any, [arg1: any] ...): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id321582630107068"><emph>array_1d</emph>: The pre-existing array, may be empty.</paragraph>
+  <paragraph role="paragraph" id="par_id915826301138550"><emph>arg0, arg1, ...</emph>: A list of items to prepend to <literal>array_1d</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id321582630131988">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id851582630138380">a = SF_Array.Prepend(Array(1, 2, 3), 4, 5)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id681582630144971">    ' (4, 5, 1, 2, 3)</paragraph>
+  </bascode>
+</section>
+
+<section id="PrependColumn">
+  <comment> PrependColumn -------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id211582643223924">
+    <bookmark_value>Array service;PrependColumn</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id25158264322311" localize="false">PrependColumn</h2>
+  <paragraph role="paragraph" id="par_id91582643223166">Prepend to the left side of a two dimension array a new column. The resulting array has the same lower boundaries as the initial two dimension array.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id601626997478388">
+    <input>svc.PrependColumn(array_2d: any[0..*, 0..*], column: any[0..*]): any[0..*, 0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id621582643223545"><emph>array_2d</emph>: The pre-existing array, may be empty. If that array has 1 dimension, it is considered as the last column of the resulting 2 dimension array.</paragraph>
+  <paragraph role="paragraph" id="par_id381582643223870"><emph>column</emph>: A 1-dimensional array with as many items as there are rows in <literal>array_2d</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id601582643223931">Dim a As Variant, b As variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id28158264322323">a = SF_Array.PrependColumn(Array(1, 2, 3), Array(4, 5, 6))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id901582643223295">    ' ((4, 1), (5, 2), (6, 3))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id361582643223747">b = SF_Array.PrependColumn(Array(), Array(1, 2, 3))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id821582643223417">    ' ∀ i ∈ {0 ≤ i ≤ 2} : b(0, i) ≡ i</paragraph>
+  </bascode>
+</section>
+
+<section id="PrependRow">
+  <comment> PrependRow ----------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id321582643611165">
+    <bookmark_value>Array service;PrependRow</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id921582643611272" localize="false">PrependRow</h2>
+  <paragraph role="paragraph" id="par_id851582643611291">Prepend at the beginning of a two dimension array a new row. The resulting array has the same lower boundaries as the initial two dimension array.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id791626997749524">
+    <input>svc.PrependRow(array_2d: any[0..*, 0..*], row: any[0..*]): any[0..*, 0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id991582643611645"><emph>array_2d</emph>: The pre-existing array, may be empty. If that array has 1 dimension, it is considered as the last row of the resulting 2 dimension array.</paragraph>
+  <paragraph role="paragraph" id="par_id321582643611415"><emph>row</emph>: A 1-dimensional array containing as many items as there are rows in <literal>array_2d</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id611582643611408">Dim a As Variant, b As variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941582643611530">a = SF_Array.PrependRow(Array(1, 2, 3), Array(4, 5, 6))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621582643611876">    ' ((4, 5, 6), (1, 2, 3))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791582643611123">b = SF_Array.PrependRow(Array(), Array(1, 2, 3))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621582643611263">    ' ∀ i ∈ {0 ≤ i ≤ 2} : b(i, 0) ≡ i</paragraph>
+  </bascode>
+</section>
+
+<section id="RangeInit">
+  <comment> RangeInit ------------------------------------------------------------------------------------------ </comment>
+  <bookmark localize="false" branch="index" id="bm_id321582648204011">
+    <bookmark_value>Array service;RangeInit</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id61582648204011" localize="false">RangeInit</h2>
+  <paragraph role="paragraph" id="par_id441582648204012">Initialize a new zero-based array with numeric values.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id851626997928653">
+    <input>svc.RangeInit(from: num, upto: num, [bystep: num]): num[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id591582648204013"><emph>from</emph>: Value of the first item.</paragraph>
+  <paragraph role="paragraph" id="par_id31582648204013"><emph>upto</emph>: The last item should not exceed <literal>UpTo</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id581582648204014"><emph>bystep</emph>: The difference between two successive items (Default = 1).</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id341582648204015">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id901582648204015">a = SF_Array.RangeInit(10, 1, -1)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id171582648204015">    ' (10, 9, 8, 7, 6, 5, 4, 3, 2, 1)</paragraph>
+  </bascode>
+</section>
+
+<section id="Reverse">
+  <comment> Reverse -------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id31582648806764">
+    <bookmark_value>Array service;Reverse</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id111582648806764" localize="false">Reverse</h2>
+  <paragraph role="paragraph" id="par_id451582648806764">Return the reversed one dimension input array.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id71626998176865">
+    <input>svc.Reverse(array_1d: any[0..*]): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id31582648806765"><emph>array_1d</emph>: The array to reverse.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id251582648806765">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id31582648806765">a = SF_Array.Reverse(Array("a", 2, 3, 4))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id431582648806765">    ' (4, 3, 2, "a")</paragraph>
+  </bascode>
+</section>
+
+<section id="Shuffle">
+  <comment> Shuffle -------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id531582649200087">
+    <bookmark_value>Array service;Shuffle</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id731582649200088" localize="false">Shuffle</h2>
+  <paragraph role="paragraph" id="par_id151582649200088">Returns a random permutation of a one-dimensional array.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id191626998317797">
+    <input>svc.Shuffle(array_1d: any[0..*]): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id11582649200088"><emph>array_1d</emph>: The array to shuffle.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id561582649200088">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id831582649200088">a = SF_Array.Shuffle(Array(1, 2, 3, 4))</paragraph>
+    <paragraph role="bascode" id="bas_id611582649200089">    ' Array "a" is now in random order, f.i. (2, 3, 1, 4)</paragraph>
+  </bascode>
+</section>
+
+<section id="Slice">
+  <comment> Slice ---------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id20158618418514">
+    <bookmark_value>Array service;Slice</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id281586184185623" localize="false">Slice</h2>
+  <paragraph role="paragraph" id="par_id111586184185502">Returns a subset of a one-dimensional array.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id801626998508832">
+    <input>svc.Slice(array_1d: any[0..*], from: int, [upto: int]): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id201586184185438"><emph>array_1d</emph>: The array to slice.</paragraph>
+  <paragraph role="paragraph" id="par_id921586184482370"><emph>from</emph>: The lower index in <literal>array_1d</literal> of the subarray to extract (<literal>from</literal> included)</paragraph>
+  <paragraph role="paragraph" id="par_id211586184471488"><emph>upto</emph>: The upper index in <literal>array_1d</literal> of the subarray to extract (<literal>upto</literal> included). The default value is the upper bound of <literal>array_1d</literal>. If <literal>upto</literal> &lt; <literal>from</literal> then the returned array is empty.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id951586184185679">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id151586184185884">a = SF_Array.Slice(Array(1, 2, 3, 4, 5), 1, 3) ' (2, 3, 4)</paragraph>
+  </bascode>
+</section>
+
+<section id="Sort">
+  <comment> Sort ----------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id561582649483854">
+    <bookmark_value>Array service;Sort</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id65158264948384" localize="false">Sort</h2>
+  <paragraph role="paragraph" id="par_id171582649483675">Sort a one dimension array in ascending or descending order. Text comparisons can be case-sensitive or not.
       <br/>The array must be filled homogeneously, which means that items must be scalars of the same type.
       <br/><literal>Empty</literal> and <literal>Null</literal> items are allowed. Conventionally <literal>Empty</literal> &lt; <literal>Null</literal> &lt; any other scalar value.</paragraph>
-   <h3 id="hd_id111582649483962" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id341582649483281">SF_Array.Sort(Array_1D As Variant, SortOrder As String, CaseSensitive As Boolean) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id911582649483582" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id71158264948346"><emph>Array_1D</emph> : The array to sort.</paragraph>
-   <paragraph role="paragraph" id="par_id21582649483175"><emph>SortOrder</emph> : <literal>"ASC"</literal> (default) or <literal>"DESC"</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id301582649483187"><emph>CaseSensitive</emph> : Only for string comparisons, default = <literal>False</literal>.</paragraph>
-   <h3 id="hd_id94158264948315" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id81582649483649">Sub Example_Sort()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id661582649483468">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id391582649483752">    a = SF_Array.Sort(Array("a", "A", "b", "B", "C"), CaseSensitive := True)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id711582649483987">        ' ("A", "B", "C", "a", "b")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id131582649483610">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="SortColumns">
-   <comment> SortColumns -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id51582650186361">
-      <bookmark_value>Array service;SortColumns</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id20158265018616" localize="false">SortColumns</h2>
-   <paragraph role="paragraph" id="par_id801582650186957">Return a permutation of the columns of a two dimension array, sorted on the values of a given row.
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id711626998747838">
+    <input>svc.Sort(array_1d: any[0..*], sortorder: str, casesensitive: bool = False): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id71158264948346"><emph>array_1d</emph>: The array to sort.</paragraph>
+  <paragraph role="paragraph" id="par_id21582649483175"><emph>sortorder</emph>: It can be either "ASC" (default) or "DESC".</paragraph>
+  <paragraph role="paragraph" id="par_id301582649483187"><emph>casesensitive</emph>: Only for string comparisons (Default = <literal>False</literal>).</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id661582649483468">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id391582649483752">a = SF_Array.Sort(Array("a", "A", "b", "B", "C"), CaseSensitive := True)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id711582649483987">    ' ("A", "B", "C", "a", "b")</paragraph>
+  </bascode>
+</section>
+
+<section id="SortColumns">
+  <comment> SortColumns ---------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id51582650186361">
+    <bookmark_value>Array service;SortColumns</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id20158265018616" localize="false">SortColumns</h2>
+  <paragraph role="paragraph" id="par_id801582650186957">Return a permutation of the columns of a two dimension array, sorted on the values of a given row.
       <br/>The row must be filled homogeneously, which means that all items must be scalars of the same type.
       <br/><literal>Empty</literal> and <literal>Null</literal> items are allowed. Conventionally <literal>Empty</literal> &lt; <literal>Null</literal> &lt; any other scalar value.</paragraph>
-   <h3 id="hd_id551582650186211" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id351582650186630">SF_Array.SortColumns(Array_1D As Variant, RowIndex As Long, SortOrder As String, CaseSensitive As Boolean) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id521582650186884" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id921582650186869"><emph>Array_1D</emph> : The array to sort.</paragraph>
-   <paragraph role="paragraph" id="par_id311582650186221"><emph>RowIndex</emph> : The index of the row to sort the columns on.</paragraph>
-   <paragraph role="paragraph" id="par_id34158265018698"><emph>SortOrder</emph> : <literal>"ASC"</literal> (default) or <literal>"DESC"</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id91158265018699"><emph>CaseSensitive</emph> : Only for string comparisons, default = <literal>False</literal>.</paragraph>
-   <h3 id="hd_id191582650186178" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id561582650186620">Sub Example_SortColumns()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id671582650186608">-                         | 5, 7, 3 |            ' | 7, 5, 3 |</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id251582650186630">-    SF_Array.SortColumns(| 1, 9, 5 |, 2, "ASC") ' | 9, 1, 5 |</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id881582650186969">-                         | 6, 1, 8 |            ' | 1, 6, 8 |</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id841582650186691">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="SortRows">
-   <comment> SortRows -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id301582650954674">
-      <bookmark_value>Array service;SortRows</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id951582650954980" localize="false">SortRows</h2>
-   <paragraph role="paragraph" id="par_id751582650954576">Return a permutation of the rows of a two dimension array, sorted on the values of a given column.
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id301626998975171">
+    <input>svc.SortColumns(array_2d: any[0..*, 0..*], rowindex: int, sortorder: str, casesensitive: bool = False): any[0..*, 0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id921582650186869"><emph>array_2d</emph>: The 2-dimensional array to sort.</paragraph>
+  <paragraph role="paragraph" id="par_id311582650186221"><emph>rowindex</emph>: The index of the row that will be used as reference to sort the columns.</paragraph>
+  <paragraph role="paragraph" id="par_id34158265018698"><emph>sortorder</emph>: It can be either "ASC" (default) or "DESC".</paragraph>
+  <paragraph role="paragraph" id="par_id91158265018699"><emph>casesensitive</emph>: Only for string comparisons (Default = <literal>False</literal>).</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id671582650186608">' arr = | 5, 7, 3 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461626999366253">'       | 1, 9, 5 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id841626999366663">'       | 6, 1, 8 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id561582650186620">Dim arr as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id81626999261871">arr = Array(Array(5, 7, 3), Array(1, 9, 5), Array(6, 1, 8))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id251582650186630">arr = SF_Array.SortColumns(arr, 2, "ASC")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id671582650186588">' arr = | 7, 5, 3 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461626999366287">'       | 9, 1, 5 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id841626999366147">'       | 1, 6, 8 |</paragraph>
+  </bascode>
+</section>
+
+<section id="SortRows">
+  <comment> SortRows ------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id301582650954674">
+    <bookmark_value>Array service;SortRows</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id951582650954980" localize="false">SortRows</h2>
+  <paragraph role="paragraph" id="par_id751582650954576">Return a permutation of the rows of a two dimension array, sorted on the values of a given column.
       <br/>The column must be filled homogeneously, therefore all items must be scalars of the same type.
       <br/><literal>Empty</literal> and <literal>Null</literal> items are allowed. Conventionally <literal>Empty</literal> &lt; <literal>Null</literal> &lt; any other scalar value.</paragraph>
-   <h3 id="hd_id23158265095478" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id491582650954136">SF_Array.SortRows(Array_1D As Variant, ColumnIndex As Long, SortOrder As String, CaseSensitive As Boolean) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id951582650954539" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id621582650954370"><emph>Array_1D</emph> : The array to sort.</paragraph>
-   <paragraph role="paragraph" id="par_id361582650954796"><emph>RowIndex</emph> : The index of the column to sort the rows on.</paragraph>
-   <paragraph role="paragraph" id="par_id471582650954416"><emph>SortOrder</emph> : <literal>"ASC"</literal> (default) or <literal>"DESC"</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id111582650954690"><emph>CaseSensitive</emph> : Only for string comparisons, default = <literal>False</literal>.</paragraph>
-   <h3 id="hd_id631582650954812" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id571582650954484">Sub Example_SortRows()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id715826509543811">-                      | 5, 7, 3 |            ' | 1, 9, 5 |</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id521582650954728">-    SF_Array.SortRows(| 1, 9, 5 |, 2, "ASC") ' | 5, 7, 3 |</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id615826509541952">-                      | 6, 1, 8 |            ' | 6, 1, 8 |</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id851582650954464">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Transpose">
-   <comment> Transpose -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id591582651575793">
-      <bookmark_value>Array service;Transpose</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id671582651575799" localize="false">Transpose</h2>
-   <paragraph role="paragraph" id="par_id611582651575637">Swap rows and columns in a two dimension array.</paragraph>
-   <h3 id="hd_id321582651575687" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id381582651575484">SF_Array.Transpose(Array_2D As Variant) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id671582651575930" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id61582651575188"><emph>Array_2D</emph> : The array to transpose.</paragraph>
-   <h3 id="hd_id701582651575279" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id181582651575760">Sub Example_Transpose()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id811582651575482">-                       | 1, 2 |  ' | 1, 3, 5 |</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id101582651575876">-    SF_Array.Transpose(| 3, 4 |) ' | 2, 4, 6 |</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id211582651575535">-                       | 5, 6 |</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id45158265157597">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="TrimArray">
-   <comment> TrimArray -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id501582652996740">
-      <bookmark_value>Array service;TrimArray</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id27158265299667" localize="false">TrimArray</h2>
-   <paragraph role="paragraph" id="par_id181582652996483">Remove from a one dimension array all <literal>Null</literal>, <literal>Empty</literal> and zero-length entries.
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id681626999672323">
+    <input>svc.SortRows(array_2d: any[0..*, 0..*], columnindex: int, sortorder: str, casesensitive: bool = False): any[0..*, 0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id621582650954370"><emph>array_2d</emph>: The array to sort.</paragraph>
+  <paragraph role="paragraph" id="par_id361582650954796"><emph>columnindex</emph>: The index of the column that will be used as reference to sort the rows.</paragraph>
+  <paragraph role="paragraph" id="par_id471582650954416"><emph>sortorder</emph>: It can be either "ASC" (default) or "DESC".</paragraph>
+  <paragraph role="paragraph" id="par_id111582650954690"><emph>casesensitive</emph>: Only for string comparisons (Default = <literal>False</literal>).</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id671582650186902">' arr = | 5, 7, 3 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461626999366144">'       | 1, 9, 5 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id841626999366532">'       | 6, 1, 8 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id561582650186011">Dim arr as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id81626999261901">arr = Array(Array(5, 7, 3), Array(1, 9, 5), Array(6, 1, 8))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id251582650186954">arr = SF_Array.SortRows(arr, 0, "ASC")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id671582650186887">' arr = | 1, 9, 5 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461626999366241">'       | 5, 7, 3 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id841626999366088">'       | 6, 1, 8 |</paragraph>
+  </bascode>
+</section>
+
+<section id="Transpose">
+  <comment> Transpose ---------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id591582651575793">
+    <bookmark_value>Array service;Transpose</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id671582651575799" localize="false">Transpose</h2>
+  <paragraph role="paragraph" id="par_id611582651575637">Swaps rows and columns in a two-dimensional array.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id561627065272658">
+    <input>svc.Transpose(array_2d: any[0..*, 0..*]): any[0..*, 0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id61582651575188"><emph>array_2d</emph>: The 2-dimensional array to transpose.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id811582651575482">' arr1 = | 1, 2 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id101582651575876">'        | 3, 4 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id211582651575535">'        | 5, 6 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id45158265157597">arr1 = Array(1, 2)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id11627066239364">arr1 = SF_Array.AppendRow(arr1, Array(3, 4))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id871627066239592">arr1 = SF_Array.AppendRow(arr1, Array(5, 6))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id311627066239769">arr2 = SF_Array.Transpose(arr1)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id261627066239952">' arr2 = | 1, 3, 5 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id661627066240113">'        | 2, 4, 6 |</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id121627066240377">MsgBox arr2(0, 2) ' 5</paragraph>
+  </bascode>
+</section>
+
+<section id="TrimArray">
+  <comment> TrimArray ---------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id501582652996740">
+    <bookmark_value>Array service;TrimArray</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id27158265299667" localize="false">TrimArray</h2>
+  <paragraph role="paragraph" id="par_id181582652996483">Remove from a one dimension array all <literal>Null</literal>, <literal>Empty</literal> and zero-length entries.
       <br/>String items are trimmed with %PRODUCTNAME Basic <literal>Trim()</literal> function.</paragraph>
-   <h3 id="hd_id571582652996468" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id171582652996594">SF_Array.TrimArray(Array_1D As Variant) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id311582652996409" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id111582652996147"><emph>Array_1D</emph> : The array to scan.</paragraph>
-   <h3 id="hd_id571582652996650" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id111582652996754">Sub Example_TrimArray()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id471582652996471">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id351582652996622">    a = SF_Array.TrimArray(Array("A","B",Null," D "))</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id811582652996224">        ' ("A","B","D")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id441582652996711">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Union">
-   <comment> Union -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_iid101582629162107">
-      <bookmark_value>Array service;Union</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id341582653148202" localize="false">Union</h2>
-   <paragraph role="paragraph" id="par_id461582653148663">Build a set, as a zero-based array, by applying the union operator on the two input arrays. Resulting items originate from both arrays.
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id151627066407801">
+    <input>svc.TrimArray(array_1d: any[0..*]): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id111582652996147"><emph>array_1d</emph>: The array to trim.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id471582652996471">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id351582652996622">a = SF_Array.TrimArray(Array("A", "B", Null, " D "))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id811582652996224">    ' ("A", "B", "D")</paragraph>
+  </bascode>
+</section>
+
+<section id="Union">
+  <comment> Union -------------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_iid101582629162107">
+    <bookmark_value>Array service;Union</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id341582653148202" localize="false">Union</h2>
+  <paragraph role="paragraph" id="par_id461582653148663">Build a set, as a zero-based array, by applying the union operator on the two input arrays. Resulting items originate from any of both arrays.
       <br/>The resulting array is sorted in ascending order.
       <br/>Both input arrays must be filled homogeneously, their items must be scalars of the same type. <literal>Empty</literal> and <literal>Null</literal> items are forbidden.
       <br/>Text comparison can be case sensitive or not.</paragraph>
-   <h3 id="hd_id301582653148686" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id911582653148550">SF_Array.Union(Array1_1D As Variant, Array2_1D As Variant[, CaseSensitive As Boolean]) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id541582653148630" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id4715826531488"><emph>Array1_1D</emph> : The first input array.</paragraph>
-   <paragraph role="paragraph" id="par_id51158265314898"><emph>Array2_1D</emph> : The second input array.</paragraph>
-   <paragraph role="paragraph" id="par_id821582653148126"><emph>CaseSensitive</emph> : Only if the arrays are populated with strings, default = <literal>False</literal>.</paragraph>
-   <h3 id="hd_id591582653148643" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id501582653148829">Sub Example_Union()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id121582653148214">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id341582653148520">    a = SF_Array.Union(Array("A", "C", "A", "b", "B"), Array("C", "Z", "b"), True)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id781582653148659">        ' ("A", "B", "C", "Z", "b")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id321582653148568">End Sub</paragraph>
-   </bascode>
-   </section>
-   <section id="Unique">
-   <comment> Unique -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_iid101582629162107">
-      <bookmark_value>Array service;Unique</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id141582653464997" localize="false">Unique</h2>
-   <paragraph role="paragraph" id="par_id221582653464565">Build a set of unique values derived from the input array.
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id631627066696377">
+    <input>svc.Union(array1_1d: any[0..*], array2_1d: any[0..*], casesensitive: bool = False): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id4715826531488"><emph>array1_1d</emph>: The first input array.</paragraph>
+  <paragraph role="paragraph" id="par_id51158265314898"><emph>array2_1d</emph>: The second input array.</paragraph>
+  <paragraph role="paragraph" id="par_id821582653148126"><emph>casesensitive</emph>: Applicable only if the arrays are populated with strings (Default = <literal>False</literal>).</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id121582653148214">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id341582653148520">a = SF_Array.Union(Array("A", "C", "A", "b", "B"), Array("C", "Z", "b"), True)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id781582653148659">    ' ("A", "B", "C", "Z", "b")</paragraph>
+  </bascode>
+</section>
+
+<section id="Unique">
+  <comment> Unique ------------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_iid101582629162107">
+    <bookmark_value>Array service;Unique</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id141582653464997" localize="false">Unique</h2>
+  <paragraph role="paragraph" id="par_id221582653464565">Build a set of unique values derived from the input array.
       <br/>The input array must be filled homogeneously, its items must be scalars of the same type. <literal>Empty</literal> and <literal>Null</literal> items are forbidden.
       <br/>Text comparison can be case sensitive or not.</paragraph>
-   <h3 id="hd_id861582653464228" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id341582653464671">SF_Array.Unique(Array_1D As Variant, CaseSensitive As Boolean]) As Variant</paragraph>
-   </bascode>
-   <h3 id="hd_id86158265346453" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
-   <paragraph role="paragraph" id="par_id521582653464553"><emph>Array_1D</emph> : The input array.</paragraph>
-   <paragraph role="paragraph" id="par_id41158265346441"><emph>CaseSensitive</emph> : Only if the array is populated with texts, default = <literal>False</literal>.</paragraph>
-   <h3 id="hd_id101582653464952" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id3158265346464">Sub Example_Unique()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id991582653464938">Dim a As Variant</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id441582653464779">    a = SF_Array.Unique(Array("A", "C", "A", "b", "B"), CaseSensitive := True)</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id881582653464236">        '  ("A", "B", "C", "b")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id991582653464181">End Sub</paragraph>
-   </bascode>
-   </section>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id781627066899997">
+    <input>svc.Unique(array_1d: any[0..*], casesensitive: bool = False): any[0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id521582653464553"><emph>array_1d</emph>: The input array.</paragraph>
+  <paragraph role="paragraph" id="par_id41158265346441"><emph>casesensitive</emph>: Applicable only if the array is populated with strings (Default = <literal>False</literal>).</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id991582653464938">Dim a As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id441582653464779">a = SF_Array.Unique(Array("A", "C", "A", "b", "B"), CaseSensitive := True)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id881582653464236">    '  ("A", "B", "C", "b")</paragraph>
+  </bascode>
+</section>
 
-   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+<embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
 
-   <section id="relatedtopics">
-      <embed href="text/scalc/01/04060107.xhp#arrayfunctit"/>
-      <embed href="text/sbasic/shared/calc_functions.xhp#CallingCalcFunctionsh1"/>
-      <embed href="text/sbasic/shared/03/sf_dictionary.xhp#SFDictionary"/>
-   </section>
+<section id="relatedtopics">
+  <embed href="text/scalc/01/04060107.xhp#arrayfunctit"/>
+  <embed href="text/sbasic/shared/calc_functions.xhp#CallingCalcFunctionsh1"/>
+  <embed href="text/sbasic/shared/03/sf_dictionary.xhp#SFDictionary"/>
+</section>
 
 </body>
 </helpdocument>
