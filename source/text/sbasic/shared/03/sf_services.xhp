@@ -17,248 +17,91 @@
 </meta>
 <body>
 <section id="abstract">
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id751582710853363">
-      <bookmark_value>Services service</bookmark_value>
-   </bookmark>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id751582710853363">
+    <bookmark_value>Services service</bookmark_value>
+  </bookmark>
+  <h1 id="hd_id471582710868716"><variable id="ScriptForgeServices"><link href="text/sbasic/shared/03/sf_services.xhp" name="Services service"><literal>ScriptForge</literal>.<literal>Services</literal> service</link></variable></h1>
+  <paragraph role="paragraph" id="par_id241627513489594">The main purpose of the <literal>Services</literal> module is to provide access to the <literal>CreateScriptService</literal> method, which can be called in user scripts to instantiate services that are implemented using the ScriptForge framework.</paragraph>
+</section>
+<paragraph role="paragraph" id="par_id351582710868545">In ScriptForge terminology a service is a collection of methods and properties that can be used for a common purpose. For example, the <literal>String</literal> service provides methods for manipulating strings whereas the <literal>FileSystem</literal> service allows for the manipulation of files and folders.</paragraph>
+<tip id="par_id541627513771828">The <literal>Services</literal> module of the ScriptForge library provides additional methods that are used either internally to register available services or by developers who are interested in extending ScriptForge by creating new services. The only method that is relevant for user scripts is <literal>CreateScriptService</literal>.</tip>
 
-<h1 id="hd_id471582710868716" xml-lang="en-US"><variable id="ScriptForgeServices"><link href="text/sbasic/shared/03/sf_services.xhp" name="Services service"><literal>ScriptForge</literal>.<literal>Services</literal> service</link></variable></h1>
-
-<paragraph role="paragraph" xml-lang="en-US" id="par_id351582710868545">
-    The ScriptForge library is built upon an extensible collection of so-called "Services".
-    <br />This collection is implemented as categories of Basic libraries or Python modules:
-</paragraph>
-<list type="ordered" format="a">
-   <listitem>
-      <paragraph id="par_id751582711417284"  role="listitem" xml-lang="en-US">the standard <literal>ScriptForge</literal> library shipped with %PRODUCTNAME</paragraph>
-   </listitem>
-   <listitem>
-      <paragraph id="par_id711582711434921"  role="listitem" xml-lang="en-US">a number of "associated" libraries shipped with %PRODUCTNAME as well</paragraph>
-   </listitem>
-   <listitem>
-      <paragraph id="par_id11582711444725"  role="listitem" xml-lang="en-US">any user/contributor LibreOffice extension wanting to fit into the same framework</paragraph>
-   </listitem>
-</list>
+<section id="CreateScriptService">
+  <comment> CreateScriptService ----------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id861582714020042">
+    <bookmark_value>Services service;CreateScriptService</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id751582714020043" localize="false">CreateScriptService</h2>
+  <paragraph role="paragraph" id="par_id871582714020043">This method is used to instantiate a ScriptForge service so it can be called in user scripts.</paragraph>
+  <paragraph role="paragraph" id="par_id711627514310039">The returned value is a Basic object or <literal>Nothing</literal> if an error occurred.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" id="par_id961627475353964">
+    <input>svc.CreateScriptService(service: str, [arg0: any] ...): svc</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id971582714020045"><emph>service</emph>: The name of the service identified as a string in the format "library.service":</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id11627475954271" role="listitem">The <emph>library</emph> is a Basic library that must exist in the <link href="text/sbasic/shared/03131900.xhp" name="GlobalScope">GlobalScope</link>. The default value is "ScriptForge".</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id811627475954641" role="listitem">The <emph>service</emph> is one of the services registered by the ScriptForge library.</paragraph>
+    </listitem>
+  </list>
+  <paragraph role="paragraph" id="par_id391582714020045"><emph>arg0, ...</emph>: A list of arguments required by the invoked service.</paragraph>
+  <paragraph role="paragraph" id="par_id841627475900817">If the first argument refers to an event manager, then <literal>arg0</literal> is mandatory and must be the UNO object representing the event provided as argument to the user macro.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id581582898149266">GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
+    <paragraph role="bascode" id="bas_id981582898174133">' To be done once</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id281582898567582">Dim svc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id571582714020046">Set svc = CreateScriptService("Array")</paragraph>
+    <paragraph role="bascode" id="bas_id311582715700844">' Refers to the "ScriptForge.Array" service or SF_Array</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id671582715735064">Set svc = CreateScriptService("ScriptForge.Dictionary")</paragraph>
+    <paragraph role="bascode" id="bas_id61582715759468">' Returns a new empty dictionary class instance; "ScriptForge." is optional</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id231582715781789">Set svc = CreateScriptService("SFDocuments.Calc")</paragraph>
+    <paragraph role="bascode" id="bas_id901582715797722">' Refers to the Calc service, implemented in the associated SFDocuments library</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id841582715829454">Set svc = CreateScriptService("Timer", True)</paragraph>
+    <paragraph role="bascode" id="bas_id361582715845747">' Returns a Timer class instance starting immediately</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id11596298688112">Set svc = CreateScriptService("SFDocuments.DocumentEvent", oEvent)</paragraph>
+    <paragraph role="bascode" id="bas_id571596298708062">' Refers to the DocumentEvent service implemented in the associated SFDocuments library</paragraph>
+    <paragraph role="bascode" id="bas_id121613492254532">' Returns the instance of the Document class that fired the event</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id881627426495369">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id431627426495747">svc = CreateScriptService("Array")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id681627426496018">svc = CreateScriptService("ScriptForge.Dictionary")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id811627426496299">svc = CreateScriptService("SFDocuments.Calc")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id811627426496564">svc = CreateScriptService("Timer", True)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id921627426496940">svc = CreateScriptService("SFDocuments.DocumentEvent", oEvent)</paragraph>
+  </pycode>
+  <paragraph role="paragraph" id="par_id321627570607194">Python scripts support keyword arguments when calling <literal>CreateScriptService</literal>. The following example illustrates this concept by instantiating the <literal>Timer</literal> and <literal>Document</literal> services using keyword arguments.</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id771627570744091">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id351627570744359"># Timer</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id181627570744511">my_timer = CreateScriptService("Timer", start = True)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id321627570744655"># Document</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id591627570744815">my_doc = CreateScriptService("Document", windowname = "some_file.ods")</paragraph>
+  </pycode>
+  <tip id="par_id901627576693156">To make writing Python scripts more fluid, ScriptForge provides the <literal>Basic</literal> service which allows Python scripts to call a collection of methods with the same syntax and meaning as their homonymous native Basic functions.</tip>
+  <paragraph role="paragraph" id="par_id41627644806288">The following example instantiates the <literal>Basic</literal> service and calls the <literal>MsgBox</literal> method, which is equivalent to the <literal>MsgBox</literal> function available in Basic:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id521627644939451">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id241627644939717">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id841627644939897">bas.MsgBox("Hello World!")</paragraph>
+  </pycode>
+  <note id="par_id581627645023307">Beware that the <literal>Basic</literal> service has to be instantiated in Python scripts using the <literal>CreateScriptService</literal> method.</note>
 </section>
 
-<paragraph role="paragraph" id="par_id211596296017810" xml-lang="en-US">A <emph>service</emph> is a collection of properties or methods which implement the service.</paragraph>
-<tip id="par_id301596296901387" xml-lang="en-US">For the author of a user script, a service may be either a <emph>module</emph> within a library, or an <emph>instance</emph> of a class module.</tip>
-<paragraph role="paragraph" id="par_id411596296395830" xml-lang="en-US">An <emph>event manager</emph> is a script contained in a library which binds an event triggering a macro - usually defined by the <menuitem>Tools - Customize</menuitem>  menu - to the concerned service instance.</paragraph>
-<tip id="par_id771596296933669" xml-lang="en-US">As an example, if several documents trigger the same macro when they are loaded, it might be useful to know which document triggered the macro this time. That's where an event manager plays its role.</tip>
+<embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
 
-<paragraph role="paragraph" id="par_id191582711902530" xml-lang="en-US">The following methods make up the kernel of the <literal>ScriptForge</literal> framework:</paragraph>
-<list type="unordered">
-   <listitem>
-      <paragraph id="par_id641582712034899" role="listitem" xml-lang="en-US" localize="false"><emph>RegisterScriptServices</emph></paragraph>
-      <paragraph role="paragraph" id="par_id351582712098824" xml-lang="en-US">Called internally by <literal>ScriptForge</literal> to register for a library the list of services it implements.
-         <br />Each library associated to <literal>Scriptforge</literal> or extending it must implement its own <literal>RegisterScriptServices</literal> method.</paragraph>
-   </listitem>
-   <listitem>
-      <paragraph id="par_id961595847982832" role="listitem" xml-lang="en-US" localize="false"><emph>RegisterService</emph></paragraph>
-      <paragraph role="paragraph" id="par_id671595847982308" xml-lang="en-US">Called - as many times as there are services to register in the library - by <literal>RegisterScriptServices</literal>.</paragraph>
-   </listitem>
-   <listitem>
-      <paragraph id="par_id201596294275926" role="listitem" xml-lang="en-US" localize="false"><emph>RegisterEventManager</emph></paragraph>
-      <paragraph role="paragraph" id="par_id241596294275434" xml-lang="en-US">Called to register a library event manager by <literal>RegisterScriptServices</literal>.</paragraph>
-   </listitem>
-   <listitem>
-      <paragraph id="par_id281582712132230"  role="listitem" xml-lang="en-US" localize="false"><emph>CreateScriptService</emph></paragraph>
-      <paragraph role="paragraph" id="par_id741582712156448" xml-lang="en-US">Called by user scripts to get an object giving access to the service given as argument.
-         <br />All services should be invoked through the <literal>CreateScriptService</literal> method.</paragraph>
-   </listitem>
-</list>
-<tip id="par_id651582712806415" xml-lang="en-US">Conventionally, the <literal>String</literal>, <literal>Array</literal> and <literal>Exception</literal> services may be invoked directly respectively as <literal>SF_String</literal>, <literal>SF_Array</literal> and <literal>SF_Exception</literal>.</tip>
-
-<table id="tab_id501611613601554">
-   <tablerow>
-     <tablecell colspan="3"><paragraph id="par_id891611613601554" role="tablehead" xml-lang="en-US">List of Methods in the Services Service</paragraph></tablecell>
-   </tablerow>
-   <tablerow>
-       <tablecell>
-           <paragraph id="par_id891611613601556" role="tablecontent" localize="false">
-             <link href="text/sbasic/shared/03/sf_services.xhp#CreateScriptService" name="CreateScriptService method">CreateScriptService</link>
-           </paragraph>
-       </tablecell>
-       <tablecell>
-           <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
-             <link href="text/sbasic/shared/03/sf_services.xhp#RegisterScriptServices" name="RegisterScriptServices method">RegisterScriptServices</link><br/>
-             <link href="text/sbasic/shared/03/sf_services.xhp#RegisterService" name="RegisterService method">RegisterService</link>
-           </paragraph>
-       </tablecell>
-       <tablecell>
-           <paragraph id="par_id701611613601554" role="tablecontent" localize="false">
-             <link href="text/sbasic/shared/03/sf_services.xhp#RegisterEventManager" name="RegisterEventManager method">RegisterEventManager</link>
-           </paragraph>
-       </tablecell>
-   </tablerow>
-</table>
-
-  <section id="CreateScriptService">
-  <comment> CreateScriptService -------------------------------------------------------------------------------------------------------------------------- </comment>
-      <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id861582714020042">
-         <bookmark_value>Services service;CreateScriptService</bookmark_value>
-      </bookmark>
-  <h2 id="hd_id751582714020043" localize="false">CreateScriptService</h2>
-    <paragraph role="paragraph" id="par_id871582714020043">
-       Gain access to one of the services of a library for the benefit of a user script.
-      <br /> The returned value is a Basic object or <literal>Nothing</literal> if an error occurred.
-    </paragraph>
-    <paragraph role="paragraph" id="par_id101582714266656" xml-lang="en-US">
-       A service can be understood as either:
-    </paragraph>
-      <list type="unordered">
-       <listitem>
-          <paragraph id="par_id531582714337820" role="listitem" xml-lang="en-US">as a set of methods gathered in a Basic standard module</paragraph>
-       </listitem>
-       <listitem>
-          <paragraph id="par_id291582714347134" role="listitem" xml-lang="en-US">or a set of methods and properties gathered in a Basic class module.</paragraph>
-       </listitem>
-      </list>
-      <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-      <bascode>
-       <paragraph role="bascode" localize="false" id="bas_id901582714020044">CreateScriptService(Service As String, [arg0, ...] As Variant) As Variant</paragraph>
-      </bascode>
-      <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-     <paragraph role="paragraph" id="par_id971582714020045"><emph>Service</emph>: The name of the service identified as "library.service".
-      <br />The library is a Basic library that must exist in the <link href="text/sbasic/shared/03131900.xhp" name="GlobalScope">GlobalScope</link>. The default value is "ScriptForge".
-      <br />The service is one of the services registered by the library via the <literal>RegisterScriptServices()</literal> method.</paragraph>
-      <paragraph role="paragraph" id="par_id391582714020045"><emph>arg0, ...</emph>: A list of arguments required by the invoked service.
-        <br />If the first argument refers to an event manager, then arg0 is mandatory and must be the UNO object representing the event provided as argument to the user macro.</paragraph>
-      <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-      <bascode>
-        <paragraph role="bascode" localize="false" id="bas_id581582898149266">GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
-        <paragraph role="bascode" id="bas_id981582898174133">' To be done once</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id281582898567582">Dim svc As Object</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id571582714020046">Set svc = CreateScriptService("Array")</paragraph>
-        <paragraph role="bascode" id="bas_id311582715700844">' Refers to the "ScriptForge.Array" service or SF_Array</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id671582715735064">Set svc = CreateScriptService("ScriptForge.Dictionary")</paragraph>
-        <paragraph role="bascode" id="bas_id61582715759468">' Returns a new empty dictionary class instance; "ScriptForge." is optional</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id231582715781789">Set svc = CreateScriptService("SFDocuments.Calc")</paragraph>
-        <paragraph role="bascode" id="bas_id901582715797722">' Refers to the Calc service, implemented in the associated SFDocuments library</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id841582715829454">Set svc = CreateScriptService("Timer", True)</paragraph>
-        <paragraph role="bascode" id="bas_id361582715845747">' Returns a Timer class instance starting immediately</paragraph>
-        <paragraph role="bascode" localize="false" id="bas_id11596298688112">Set svc = CreateScriptService("SFDocuments.DocumentEvent", oEvent)</paragraph>
-        <paragraph role="bascode" id="bas_id571596298708062">' Refers to the DocumentEvent service implemented in the associated SFDocuments library</paragraph>
-        <paragraph role="bascode" id="bas_id121613492254532">' Returns the instance of the Document class that fired the event</paragraph>
-     </bascode>
-   </section>
-
-   <section id="RegisterScriptServices">
-   <comment> RegisterScriptServices ------------------------------------------------------------------------------------------------------------------------ </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id221582722979917">
-      <bookmark_value>Services service;RegisterScriptServices</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id11582722979426" localize="false">RegisterScriptServices</h2>
-   <paragraph role="paragraph" id="par_id1315827229793">
-      By executing a series of invocations of <literal>RegisterService()</literal> and <literal>RegisterEventManager()</literal>, the <literal>RegisterScriptServices()</literal> method incorporates a library into the <literal>ScriptForge</literal> framework.
-      <br/>Each library pertaining to the framework must implement its own version of this method.
-   </paragraph>
-   <warning id="par_id411582723190195" xml-lang="en-US">The method has to be stored in a <emph>standard</emph> Basic module as opposed to a class module.</warning>
-   <paragraph role="paragraph" id="par_id351582724127926">A service is either:</paragraph>
-   <section id="ServiceIdentifier">
-   <list type="unordered">
-      <listitem>
-         <paragraph id="par_id171582722979820" role="listitem" xml-lang="en-US">a Basic standard module passed as a Basic object.</paragraph>
-      </listitem>
-      <listitem>
-         <paragraph id="par_id121582722979649"  role="listitem" xml-lang="en-US">or a string designating the function to execute to get an instance of the service. It is in fact the function containing the <literal>New</literal> keyword of a <link href="text/sbasic/shared/03103700.xhp" name="Set statement">Set</link> statement creating the instance.</paragraph>
-      </listitem>
-   </list>
-   <bascode>
-      <paragraph role="bascode" xml-lang="en-US" id="par_id771582725815107">    GlobalScope.LibraryName.ModuleName ' Object</paragraph>
-      <paragraph role="bascode" xml-lang="en-US" id="bas_id721582724496873">    "LibraryName.ModuleName.FunctionName" ' String</paragraph>
-   </bascode>
-   </section>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id761582722979924">Public Sub RegisterScriptServices()</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id771582727350871">' To be stored in library = myLibrary</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id541582722979219">    With GlobalScope.ScriptForge.SF_Services</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id731582725340888">        .RegisterService("myService1", GlobalScope.myLibrary.myModule)</paragraph>
-      <paragraph role="bascode" id="bas_id11582725353585">        ' Refer to a Basic standard module implementing the service as a set of methods</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id451582725361588">        .RegisterService("myService2", "myLibrary.someModule.someFunction")</paragraph>
-      <paragraph role="bascode" id="bas_id341582725374064">        ' The function should return an instance of a Basic object class implementing the service</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id881582725383456">        ' ...</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id851582725392009">    End With</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id371582725476589">End Sub</paragraph>
-   </bascode>
-   <paragraph role="paragraph" id="par_id741582727674249" xml-lang="en-US">When a user script contains a statement such as:</paragraph>
-   <bascode><paragraph role="bascode" localize="false" id="bas_id301582727687068">Set myServ = CreateScriptService("myLibrary.myService1")</paragraph></bascode>
-   <paragraph role="paragraph" id="par_id611582727701061" xml-lang="en-US"><br /><literal>ScriptForge</literal> performs these tasks:</paragraph>
-   <list type="ordered" format="i">
-      <listitem>
-         <paragraph id="par_id511582728914523" role="listitem" xml-lang="en-US">load the library <literal>myLibrary</literal> when necessary</paragraph>
-         </listitem>
-      <listitem>
-         <paragraph id="par_id441582728492537" role="listitem" xml-lang="en-US">invoke the <literal>RegisterScriptServices</literal> method to load the list of services of <literal>myLibrary</literal> in memory</paragraph>
-      </listitem>
-      <listitem>
-         <paragraph id="par_id531582728511341"  role="listitem" xml-lang="en-US">initialize the variable <literal>myServ</literal> with the given service</paragraph>
-      </listitem>
-    </list>
-   </section>
-
-   <section id="RegisterService">
-   <comment> RegisterService ------------------------------------------------------------------------------------------------------------------------ </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231595857355626">
-      <bookmark_value>Services service;RegisterService</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id501595857355859" localize="false">RegisterService</h2>
-   <paragraph role="paragraph" id="par_id331595857355789" xml-lang="en-US">
-      The method returns <literal>True</literal> if the name-value pair given as argument could be registered successfully.
-   </paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id441595857355915">GlobalScope.ScriptForge.SF_Services.RegisterService(ServiceName As String, ServiceReference As Variant) As Boolean</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id721595857355929"><emph>ServiceName</emph>: The name of the service as a case-insensitive string. The name must be unique.</paragraph>
-   <paragraph role="paragraph" id="par_id271595857355756" xml-lang="en-US"><emph>ServiceReference</emph>: A service reference is either:</paragraph>
-   <embed href="text/sbasic/shared/03/sf_services.xhp#ServiceIdentifier"/>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id11595857355578">    With GlobalScope.ScriptForge.SF_Services</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id571595857355831">        .RegisterService("myService1", GlobalScope.myLibrary.myModule)</paragraph>
-      <paragraph role="bascode" xml-lang="en-US" id="bas_id101595857355820">        ' Refer to a Basic standard module implementing the service as a set of methods</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id771595857355646">        .RegisterService("myService2", "myLibrary.someModule.someFunction")</paragraph>
-      <paragraph role="bascode" xml-lang="en-US" id="bas_id951595857355198">        ' The function should return an instance of a Basic object class implementing the service</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id56159585735558">        ' ...</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id461595857355534">    End With</paragraph>
-   </bascode>
-   </section>
-
-   <section id="RegisterEventManager">
-   <comment> RegisterEventManager ------------------------------------------------------------------------------------------------------------------------ </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id241596299279341">
-      <bookmark_value>Services service;RegisterEventManager</bookmark_value>
-   </bookmark>
-   <h2 id="hd_id981596299279692" localize="false">RegisterEventManager</h2>
-   <paragraph role="paragraph" id="par_id701596299279876" xml-lang="en-US">
-      The method returns <literal>True</literal> if the name-value pair given as argument could be registered successfully.
-   </paragraph>
-   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id201596299279643">GlobalScope.ScriptForge.SF_Services.RegisterEventManager(ServiceName As String, ServiceReference As String) As Boolean</paragraph>
-   </bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id331596299279165"><emph>ServiceName</emph>: The name of the service as a case-insensitive string. The name must be unique.</paragraph>
-   <paragraph role="paragraph" id="par_id92159629927929" xml-lang="en-US"><emph>ServiceReference</emph>: A string designating the function to execute to get an instance of the service. It is in fact the function containing the <literal>New</literal> keyword of a <link href="text/sbasic/shared/03103700.xhp" name="Set statement">Set</link> statement creating the instance.:</paragraph>
-   <bascode><paragraph role="bascode" localize="false" id="bas_id661596299279598">    "LibraryName.ModuleName.FunctionName" ' String</paragraph></bascode>
-   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id89159629927920">    With GlobalScope.ScriptForge.SF_Services</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id531596299279547">        .RegisterEventManager("myEventMgr", "myLibrary.someModule.someFunction")</paragraph>
-      <paragraph role="bascode" id="bas_id521596299279373">        ' The function should return an instance of a Basic object class implementing the service</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id641596299279251">        ' ...</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id801596299279792">    End With</paragraph>
-  </bascode>
-   </section>
-
-   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
-
-   <section id="relatedtopics">
-      <embed href="text/sbasic/shared/03103700.xhp#Set_h1"/>
-      <embed href="text/sbasic/shared/03131900.xhp#GlobalScope_h1"/>
-   </section>
+<section id="relatedtopics">
+  <embed href="text/sbasic/shared/03/sf_basic.xhp#BasicService"/>
+  <embed href="text/sbasic/shared/03103700.xhp#Set_h1"/>
+  <embed href="text/sbasic/shared/03131900.xhp#GlobalScope_h1"/>
+</section>
 
 </body>
 </helpdocument>
