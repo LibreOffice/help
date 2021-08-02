@@ -664,6 +664,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/data_tables \
     helpcontent2/source/text/shared/guide/data_view \
     helpcontent2/source/text/shared/guide/database_main \
+    helpcontent2/source/text/shared/guide/dev_tools \
     helpcontent2/source/text/shared/guide/digital_signatures \
     helpcontent2/source/text/shared/guide/digitalsign_receive \
     helpcontent2/source/text/shared/guide/digitalsign_send \
