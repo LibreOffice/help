@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This file incorporates work covered by the following license notice:
+ *
+ *   Licensed to the Apache Software Foundation (ASF) under one or more
+ *   contributor license agreements. See the NOTICE file distributed
+ *   with this work for additional information regarding copyright
+ *   ownership. The ASF licenses this file to you under the Apache
+ *   License, Version 2.0 (the "License"); you may not use this file
+ *   except in compliance with the License. You may obtain a copy of
+ *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+ -->
+
+<meta>
+  <topic id="textshared0106140000xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Development Tools</title>
+    <filename>/text/shared/guide/dev_tools.xhp</filename>
+  </topic>
+</meta>
+<body>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id821562797360035">
+    <bookmark_value>development tools</bookmark_value>
+  </bookmark>
+  <bookmark branch="hid/.uno:DevelopmentToolsDockingWindow" id="bm_id5584892" localize="false"/>
+  <bookmark branch="hid/.uno:InspectSelectedObject" id="bm_id2672962" localize="false"/>
+  <h1 id="hd_id951627860296699"><variable id="DevTools_h1"><link href="text/shared/guide/dev_tools.xhp" name="DevTools_help">Development Tools</link></variable></h1>
+  <paragraph role="paragraph" id="par_id3155069"><variable id="DevTools_intro"><ahelp hid=".uno:LoadToolBox">Inspects objects in %PRODUCTNAME documents and shows supported UNO services, as well as available methods, properties and implemented interfaces. This feature also allows to explore the document structure using the Document Object Model (DOM).</ahelp></variable></paragraph>
+  <section id="howtoget">
+    <paragraph role="paragraph" id="par_id961562795750725">Choose <menuitem>Tools - Development Tools</menuitem></paragraph>
+  </section>
+  <note id="par_id271627931218557">After <emph>Development Tools</emph> is enabled it will become visible in all documents and %PRODUCTNAME applications. This setting is persistent and the <emph>Development Tools</emph> will remain visible until it is explicitly disabled by choosing <menuitem>Tools - Development Tools</menuitem>.</note>
+  <paragraph role="paragraph" id="par_id3152821">When <emph>Development Tools</emph> is enabled, a dockable window will be shown at the bottom of the screen. This window has two main sections:</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id31627862228021" role="listitem"><emph>Document Object Model tree view:</emph> Displays document portions according to the Document Object Model (DOM). Use this section to chose the object to inspect.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id581627862228381" role="listitem"><emph>Object inspection panel:</emph> Displays the available services, methods, properties and interfaces of the selected object.</paragraph>
+    </listitem>
+  </list>
+  <note id="par_id91627862617231">This feature is available since %PRODUCTNAME 7.2 and can be used in Writer, Calc, Impress and Draw.</note>
+  <h2 id="hd_id791627911297568">Document Model Tree View</h2>
+  <paragraph role="paragraph" id="par_id3153303">The left side of the window contains a <emph>Current Selection</emph> toggle button, a <emph>Refresh</emph> button and a tree view that displays all objects in the document.</paragraph>
+  <paragraph role="paragraph" id="par_id891627912224207">The behavior of the tree view depends on the status of the <emph>Current Selection</emph> toggle button:</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id811627912238786" role="listitem">If <emph>Current Selection</emph> is <emph>enabled</emph>, then the <emph>Object Inspection Panel</emph> will display the properties of the object that is currently selected in the document. Hence, clicking any item in the tree view will have no effect.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id721627912239053" role="listitem">If <emph>Current Selection</emph> is <emph>disabled</emph>, then clicking any item in the tree view will update the contents of the <emph>Object Inspection Panel</emph>.</paragraph>
+    </listitem>
+  </list>
+  <paragraph role="paragraph" id="par_id931627912467594">The types of objects displayed by the <emph>Document Model Tree View</emph> depend on the %PRODUCTNAME application being used:</paragraph>
+  <table id="tab_id751627912559559">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id691627912559559" role="tablehead">%PRODUCTNAME application</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id771627912559559" role="tablehead">Supported objects</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id551627912559559" role="tablecontent">Writer</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id941627912559559" role="tablecontent">Paragraphs<br/>Text Portions in a Paragraph<br/>Shapes<br/>Tables<br/>Frames<br/>Graphic Objects<br/>Embedded Objects (OLE)<br/>Style Families and Styles</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id171627912693619" role="tablecontent">Calc</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id601627912702265" role="tablecontent">Sheets<br/>Shapes per sheet<br/>Charts per sheet<br/>Pivot tables per sheet<br/>Style Families and Styles</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id711627912898951" role="tablecontent">Impress</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561627912902324" role="tablecontent">Slides<br/>Shapes per slide<br/>Master slides<br/>Style Families and Styles</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id711627912898022" role="tablecontent">Draw</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561627912902123" role="tablecontent">Pages<br/>Shapes per page<br/>Style Families and Styles</paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+  <h2 id="hd_id731627913346236">Object Inspection Panel</h2>
+  <paragraph role="paragraph" id="par_id571627913372273">The right side of the window consists of the <emph>Object Inspection Panel</emph> that displays information about the object being inspected.</paragraph>
+  <paragraph role="paragraph" id="par_id361627930602108">The first piece of information available is the <emph>Class Name</emph>, which is the name of the implementation class of the object.</paragraph>
+  <tip id="par_id111627931046662">Use the <emph>class name</emph> to search more information in the API documentation. For example, the top-level object in a Writer document is an instance of the class <emph>SwXTextDocument</emph>, which is documented at <link href="https://docs.libreoffice.org/sw/html/classSwXTextDocument.html" name="SwXTextDocument_API">SwXTextDocument Class Reference</link>.</tip>
+  <paragraph role="paragraph" id="par_id371627930700568">It is possible to inspect the object further by using the four tabs available that display its <emph>Interfaces</emph>, <emph>Services</emph>, <emph>Properties</emph> and <emph>Methods</emph>.</paragraph>
+  <paragraph role="paragraph" id="par_id71627913884995">Each of the tabs organize the information about the object in columns. The set of columns presented depend on which tab is selected.</paragraph>
+  <h3 id="hd_id511627914011995">Interfaces tab</h3>
+  <paragraph role="paragraph" id="par_id321627914033147">Contains a single column presenting the list of interfaces implemented by the object.</paragraph>
+  <h3 id="hd_id21627913972266">Services tab</h3>
+  <paragraph role="paragraph" id="par_id371627913989665">Contains a single column presenting the list of services supported by the object.</paragraph>
+  <h3 id="hd_id901627914056156">Properties tab</h3>
+  <paragraph role="paragraph" id="par_id531627914066770">Contains four columns that describe the properties of the object:</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id461627914264898" role="listitem"><emph>Property</emph>: Shows the names of all properties that can be inspected.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id491627914265327" role="listitem"><emph>Value</emph>: Displays a textual representation of the values of all properties.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id981627914265672" role="listitem"><emph>Type</emph>: Shows the property type.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id391627914265992" role="listitem"><emph>Info</emph>: Presents relevant information about the property. For instance, a property that is read-only will have a "read-only" value in this column.</paragraph>
+    </listitem>
+  </list>
+  <tip id="par_id161627914138859">The <emph>Properties</emph> tab contains an additional section that shows a textual representation of the value of the selected property. When a property is selected the value is updated in the text box available at the bottom of the <emph>Object Inspection Panel</emph>. This is useful when the value is too long to be shown in the <emph>Value</emph> column.</tip>
+  <h3 id="hd_id941627914764723">Methods tab</h3>
+  <paragraph role="paragraph" id="par_id671627914803456">Contains four columns that describe the combined list of methods that can be called by the current object:</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id281627914839271" role="listitem"><emph>Method</emph>: Shows the names of all properties that can be inspected.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id421627914839748" role="listitem"><emph>Return type</emph>: Displays the return type of the methods that can be called by the object. Methods that do not return any value are marked as "void" in this column.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id891627914840174" role="listitem"><emph>Parameters</emph>: Shows the list of parameters that are required by the method as well as their respective types.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id371627914840561" role="listitem"><emph>Implementation class</emph>: Displays the name of the class where the method is implemented.</paragraph>
+    </listitem>
+  </list>
+  
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/uno_objects.xhp#UnoObjects_h1"/>
+  </section>
+</body>
+</helpdocument>
