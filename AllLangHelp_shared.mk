@@ -857,6 +857,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/optionen/mailmerge \
     helpcontent2/source/text/shared/optionen/online_update \
     helpcontent2/source/text/shared/optionen/opencl \
+    helpcontent2/source/text/shared/optionen/search_commands \
     helpcontent2/source/text/shared/optionen/serverauthentication \
     helpcontent2/source/text/shared/optionen/testaccount \
     helpcontent2/source/text/shared/optionen/viewcertificate \
