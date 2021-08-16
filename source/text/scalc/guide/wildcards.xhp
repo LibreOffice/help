@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ -->
+
+<meta>
+  <topic id="calc_wildcards" indexer="include" status="PUBLISH">
+    <title xml-lang="en-US" id="tit">Using Wildcards in Formulas</title>
+    <filename>/text/scalc/guide/wildcards.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3152149">
+    <bookmark_value>wildcards in calc formulas</bookmark_value>
+    <bookmark_value>wildcards, examples</bookmark_value>
+  </bookmark>
+  <h1 id="hd_id941629155075179"><variable id="wildcards_h1"><link href="text/scalc/guide/wildcards.xhp" name="wildcards_link">Using Wildcards in Formulas</link></variable></h1>
+  <paragraph role="paragraph" id="par_id571629155308959">Wildcards are special characters that can be used in search strings that are passed as arguments to some Calc functions. They can also be used to define search criteria in the <emph>Find &amp; Replace</emph> dialog. The use of wildcards enables the definition of more advanced search parameters with a single search string.</paragraph>
+  <paragraph role="paragraph" id="par_id391629156224638">%PRODUCTNAME Calc supports either <emph>wildcards</emph> or <emph>regular expressions</emph> as arguments depending on the current application settings. By default %PRODUCTNAME Calc is set to support wildcards instead of regular expressions.</paragraph>
+  <tip id="par_id551629156504794">To make sure wildcards are supported, go to <switchinline select="sys"><caseinline  select="MAC"><menuitem>LibreOffice - Preferences - %PRODUCTNAME Calc - Calculate</menuitem></caseinline><defaultinline><menuitem>Tools - Options - %PRODUCTNAME Calc - Calculate</menuitem></defaultinline></switchinline> and check if the option <emph>Enable wildcards in formulas</emph> is selected. Note that you can use this dialog to switch to regular expressions by choosing <emph>Enable regular expressions in formulas</emph> or choose to support neither wildcards nor regular expressions.</tip>
+  <paragraph role="paragraph" id="par_id141629156913731">The following wildcards are supported:</paragraph>
+  <table id="tab_id561629209073388">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id801629209195110" role="tablehead">Wildcard</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id861629209212608" role="tablehead">Description</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id591629209073388" role="tablecontent"><emph>? (question mark)</emph></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id31629209073388" role="tablecontent">Matches any single character. For example, the search string "b?g" matches “bag” and “beg” but will not match "boog" or "mug".</paragraph>
+        <paragraph id="par_id121629209114452" role="tablecontent">Note that it will not match "bg" as well, since "?" must match exactly <emph>one</emph> character. The "?" wildcard does not correspond to a zero-character match.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id981629209073388" role="tablecontent"><emph>* (asterisk)</emph></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id51629209073388" role="tablecontent">Matches any sequence of characters, including an empty string. For example, the search string "*cast" will match “cast”, “forecast”, and “outcast”, but will not match "forecaster" using default %PRODUCTNAME settings.</paragraph>
+        <paragraph id="par_id351629209153307" role="tablecontent">If the option <menuitem>Search criteria = and &lt;&gt; must apply to whole cells</menuitem> is disabled in <switchinline select="sys"><caseinline  select="MAC"><menuitem>LibreOffice - Preferences - %PRODUCTNAME Calc - Calculate</menuitem></caseinline><defaultinline><menuitem>Tools - Options - %PRODUCTNAME Calc - Calculate</menuitem></defaultinline></switchinline>, then "forecaster" will be a match using the "*cast" search string.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id181629209277556" role="tablecontent"><emph>~ (tilde)</emph></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id881629209280877" role="tablecontent">Escapes the special meaning of a question mark, asterisk, or tilde character that follows immediately after the tilde character.</paragraph>
+        <paragraph id="par_id861629209431020" role="tablecontent">For example, the search string "why~?" matches “why?” but will not match  "whys" nor "why~s".</paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+  <tip id="par_id1001629157561261">Wildcards are supported in %PRODUCTNAME Calc and in Microsoft Excel. Therefore, if interoperability between both applications is needed, choose to work with wildcards instead of regular expressions. Conversely, if interoperability is not necessary, consider using regular expressions for more powerful search capabilities.</tip>
+  <h2 id="hd_id671629158766165">Supported Spreadsheet Functions</h2>
+  <paragraph role="paragraph" id="par_id161629158785887">Wildcards are supported by the following spreadsheet functions:</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id441629158810517" role="listitem"><emph>Database functions:</emph> DAVERAGE, DCOUNT, DCOUNTA, DGET, DMAX, DMIN, DPRODUCT, DSTDEV, DSTDEVP, DSUM, DVAR and DVARP.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id321629158810916" role="listitem"><emph>Conditional functions:</emph> AVERAGEIF, AVERAGEIFS, COUNTIF, COUNTIFS, MAXIFS, MINIFS, SUMIF and SUMIFS.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id941629158811325" role="listitem"><emph>Lookup functions:</emph> HLOOKUP, LOOKUP and VLOOKUP.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id41629158919808" role="listitem"><emph>Other functions:</emph> MATCH and SEARCH.</paragraph>
+    </listitem>
+  </list>
+  <h2 id="hd_id701629159564269">Examples of Wildcards in Formulas</h2>
+  <paragraph role="paragraph" id="par_id121629289062103">The following examples consider that the options <menuitem>Enable wildcards in formulas</menuitem>  and <menuitem>Search criteria = and &lt;&gt; must apply to whole cells</menuitem> are enabled in <switchinline select="sys"><caseinline  select="MAC"><menuitem>LibreOffice - Preferences - %PRODUCTNAME Calc - Calculate</menuitem></caseinline><defaultinline><menuitem>Tools - Options - %PRODUCTNAME Calc - Calculate</menuitem></defaultinline></switchinline>.</paragraph>
+  <paragraph role="paragraph" id="par_id271629159111490"><input>=COUNTIF(A1:A10;"Chi*")</input> counts the number of cells in the range <emph>A1:A10</emph> containing strings that start with "Chi" followed by zero or more characters.</paragraph>
+  <paragraph role="paragraph" id="par_id741629159343415"><input>=SUMIF(A1:A5;"A??";B1:B5)</input> sums the values in <emph>B1:B5</emph> whose corresponding values in <emph>A1:A5</emph> start with "A" followed by exactly two other characters.</paragraph>
+  <note id="par_id141629159465592">Wildcard comparisons are <emph>not</emph> case sensitive, hence "A?" will match both "A1" and "a1".</note>
+
+  <section id="relatedtopics">
+    <embed href="text/shared/01/02100001.xhp#02100001"/>
+  </section>
+</body>
+</helpdocument>
