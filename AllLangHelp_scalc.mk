@@ -404,6 +404,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/guide/validity \
     helpcontent2/source/text/scalc/guide/value_with_name \
     helpcontent2/source/text/scalc/guide/webquery \
+    helpcontent2/source/text/scalc/guide/wildcards \
     helpcontent2/source/text/scalc/guide/year2000 \
     helpcontent2/source/text/scalc/main0000 \
     helpcontent2/source/text/scalc/main0100 \
