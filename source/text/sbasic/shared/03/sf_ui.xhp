@@ -267,21 +267,26 @@
    <paragraph role="paragraph" id="par_id13159655484952">Creates and stores a new %PRODUCTNAME Base document embedding an empty database of the given type. The method returns a <literal>Document</literal> service instance.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id461620320014911">
-     <input>svc.CreateBaseDocument(filename: str, embeddeddatabase: str = 'HSQLDB', registrationname: str = ''): svc</input>
+     <input>svc.CreateBaseDocument(filename: str, embeddeddatabase: str = 'HSQLDB', registrationname: str = '', opt calcfilename: str): svc</input>
    </paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
    <paragraph role="paragraph" id="par_id441596554849949"><emph>filename</emph> : Identifies the file to create. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation. If the file already exists, it is overwritten without warning</paragraph>
-   <paragraph role="paragraph" id="par_id381596554849698" xml-lang="en-US"><emph>embeddeddatabase</emph> : Either "HSQLDB" (default) or "FIREBIRD".</paragraph>
+   <paragraph role="paragraph" id="par_id381596554849698" xml-lang="en-US"><emph>embeddeddatabase</emph> : Either "HSQLDB" (default), "FIREBIRD" or "CALC".</paragraph>
    <paragraph role="paragraph" id="par_id521596554849185" xml-lang="en-US"><emph>registrationname</emph> : The name used to store the new database in the databases register. When = "" (default), no registration takes place. If the name already exists it is overwritten without warning.</paragraph>
+   <paragraph role="paragraph" id="par_id181629364905056" xml-lang="en-US"><emph>calcfilename</emph> : Only when <literal>embedddeddatabase</literal> = "CALC", <literal>calcfilename</literal> represents the file containing the tables as Calc sheets. The file must exist or an error is raised.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id631596554849994">Dim myBase As Object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id631596554849994">Dim myBase As Object, myCalcBase As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id921596554849612">Set myBase = ui.CreateBaseDocument("C:\Databases\MyBaseFile.odb", "FIREBIRD")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id51629365306345">Set myCalcBase = ui.CreateBaseDocument("C:\Databases\MyCalcBaseFile.odb", _</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id911629365353801">    "CALC", , "C:\Databases\MyCalcFile.ods")</paragraph>
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
      <paragraph role="pycode" localize="false" id="pyc_id361620323808010">myBase = svcUI.CreateBaseDocument(r"C:\Databases\MyBaseFile.odb", "FIREBIRD")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id251629365641121">myCalcBase = svcUI.CreateBaseDocument(r"C:\Databases\MyCalcBaseFile.odb", \</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id431629366045258">    "CALC", calcfilename = r"C:\Databases\MyCalcFile.ods")</paragraph>
    </pycode>
 </section>
 
