@@ -29,291 +29,55 @@
 <bookmark_value>Analysis toolpack;regression analysis</bookmark_value>
 <bookmark_value>regression analysis;Analysis toolpack</bookmark_value>
 <bookmark_value>Data statistics;regression analysis</bookmark_value>
+<bookmark_value>Confidence level;regression analysis</bookmark_value>
+<bookmark_value>regression analysis;linear</bookmark_value>
+<bookmark_value>regression analysis;power</bookmark_value>
+<bookmark_value>regression analysis;logarithmic</bookmark_value>
 </bookmark>
 
 <bookmark xml-lang="en-US" branch="hid/modules/scalc/ui/regressiondialog/RegressionDialog" id="bm_id2745673" localize="false"/>
 <bookmark xml-lang="en-US" branch="hid/modules/scalc/ui/regressiondialog/@@nowidget@@" id="bm_id2745673" localize="false"/>
 <section id="regression">
 <h1 id="hd_id1701201615033510"><variable id="regressionanalysish1"><link href="text/scalc/01/statistics_regression.xhp" name="regression analysis">Regression Analysis</link></variable></h1>
-<paragraph id="par_id1001240" role="paragraph" xml-lang="en-US"><ahelp hid="modules/scalc/ui/regressiondialog/RegressionDialog">Produces the regression analysis of a data set</ahelp></paragraph>
+<paragraph id="par_id1001240" role="paragraph" xml-lang="en-US"><ahelp hid="modules/scalc/ui/regressiondialog/RegressionDialog">Performs linear, logarithmic, or power regression analysis of a data set comprising one dependent variable and multiple independent variables.</ahelp></paragraph>
 </section>
-
+<paragraph role="paragraph" id="par_id431629832333206">For example, a crop yield (dependent variable) may be related to rainfall, temperature conditions, sunshine, humidity, soil quality and more, all of them independent variables.</paragraph>
 <section id="howtoget">
 <paragraph id="par_id1000040" role="paragraph" xml-lang="en-US"><variable id="sam01">Choose <menuitem>Data - Statistics - Regression</menuitem></variable></paragraph>
 </section>
 <paragraph id="par_id1001270" role="note" xml-lang="en-US">For more information on regression analysis, refer to the <link href="https://en.wikipedia.org/wiki/Regression_analysis" name="English Wikipedia: Regression analysis">corresponding Wikipedia article</link>.</paragraph>
-<embed href="text/scalc/01/stat_data.xhp#data"/>
+<h2 id="hd_id891629830986496">Data</h2>
+<h3 id="hd_id101629830993962">Independent variable(s) (X) range:</h3>
+<paragraph role="paragraph" id="par_id961629834099308">Enter a single range that contains multiple independent variable observations (along columns or rows). All X variable observations need to be entered adjacent to each other in the same table.</paragraph>
+<h3 id="hd_id871629830998653">Dependent variable (Y) range:</h3>
+<paragraph role="paragraph" id="par_id391629834089370">Enter the range that contains the dependent variable whose regression is to be calculated.</paragraph>
+<h3 id="hd_id931629831003368">Both X and Y ranges have labels</h3>
+<paragraph role="paragraph" id="par_id261629834071776">Check to use the first line (or column) of the data sets as variable names in the output range.</paragraph>
+<h3 id="hd_id11629831014811">Results to:</h3>
+<paragraph role="paragraph" id="par_id441629834000533">The reference of the top left cell of the range where the results will be displayed.</paragraph>
 <embed href="text/scalc/01/stat_data.xhp#grouped"/>
 
-<h2 id="hd_id1000070">Output Regression Type</h2>
+<h2 id="hd_id1000070">Output Regression Types</h2>
 <paragraph id="par_id1001280" role="paragraph" xml-lang="en-US">Set the regression type. Three types are available: </paragraph>
 
 <list type="unordered">
   <listitem>
-    <paragraph id="par_id1701201620334364" role="ul_item" xml-lang="en-US"><emph>Linear Regression</emph>: find a straight line in the form of <item type="literal">y = a.x + b</item>, where <item type="literal">a</item> is the slope and <item type="literal">b</item> is the intercept that best fits the data.</paragraph>
+    <paragraph id="par_id1701201620334364" role="listitem" xml-lang="en-US"><emph>Linear Regression</emph>: finds a linear function in the form of y = b + a<sub>1</sub>.[x<sub>1</sub>] + a<sub>2</sub>.[x<sub>2</sub>] + a<sub>3</sub>.[x<sub>3</sub>] ..., where a<sub>i</sub> is the i-th slope, [x<sub>i</sub>] is the i-th independent variable, and b is the intercept that best fits the data.</paragraph>
   </listitem>
   <listitem>
-    <paragraph id="par_id1701201620340168" role="ul_item" xml-lang="en-US"><emph>Logarithmic regression</emph>: find a logarithmic curve in the form of <item type="literal">y = a.ln(x) + b</item>, where <item type="literal">a</item> is the slope, <item type="literal">b</item> is the intercept and <item type="literal">ln(x)</item> is the natural logarithm of <item type="literal">x</item>, that best fits the data.</paragraph>
+      <paragraph id="par_id1701201620340168" role="listitem" xml-lang="en-US"><emph>Logarithmic regression</emph>: finds a logarithmic curve in the form of y = b + a<sub>1</sub>.ln[x<sub>1</sub>] + a<sub>2</sub>.ln[x<sub>2</sub>] + a<sub>3</sub>.ln[x<sub>3</sub>] ..., where a<sub>i</sub> is the i-th coefficient, b is the intercept and ln[x<sub>i</sub>] is the natural logarithm of the i-th independent variable, that best fits the data.</paragraph>
   </listitem>
   <listitem>
-    <paragraph id="par_id1701201620340139" role="ul_item" xml-lang="en-US"><emph>Power regression</emph>: Find a power curve in the form of <item type="literal">y = a.x^b</item>, where <item type="literal">a</item> is the coefficient, <item type="literal">b</item> is the power that best fits the data.</paragraph>
+      <paragraph id="par_id1701201620340139" role="listitem" xml-lang="en-US"><emph>Power regression</emph>: finds a power curve in the form of y = exp( b + a<sub>1</sub>.ln[x<sub>1</sub>] + a<sub>2</sub>.ln[x<sub>2</sub>] + a<sub>3</sub>.ln[x<sub>3</sub>] ...), where a<sub>i</sub> is the i-th power, [x<sub>i</sub>] is the i-th independent variable, and b is intercept that best fits the data.</paragraph>
   </listitem></list>
-<embed href="text/scalc/01/stat_data.xhp#regressiondata"/>
-<paragraph id="par_id1001310" role="paragraph" xml-lang="en-US">The results of the three types of <emph>regression analysis</emph> of the measurements in the table above are shown below.</paragraph>
 
-<table id="Tabela1">
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1701201618090526" role="tablehead" xml-lang="en-US">Regression</paragraph>
-    </tablecell>
-    <tablecell>
-    </tablecell>
-    <tablecell>
-    </tablecell>
-    <tablecell>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-    </tablecell>
-    <tablecell>
-    </tablecell>
-    <tablecell>
-    </tablecell>
-    <tablecell>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1701201618090542" role="paragraph" xml-lang="en-US">Regression Model</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1701201618090596" role="paragraph" xml-lang="en-US">Linear</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1701201618090586" role="paragraph" xml-lang="en-US">Logarithmic</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1701201618090555" role="paragraph" xml-lang="en-US">Power</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1701201618090553" role="paragraph" xml-lang="en-US">R^2</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114385" role="paragraph" localize="false" xml-lang="en-US">0.1243901235</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114339" role="paragraph" localize="false" xml-lang="en-US">0.036283506</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114321" role="paragraph" localize="false" xml-lang="en-US">0.0884254697</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1701201618090595" role="paragraph" xml-lang="en-US">Standard Error</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114322" role="paragraph" localize="false" xml-lang="en-US">1.8692568609</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114330" role="paragraph" localize="false" xml-lang="en-US">1.9610483597</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114373" role="paragraph" localize="false" xml-lang="en-US">0.7746321053</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-    </tablecell>
-    <tablecell>
-    </tablecell>
-    <tablecell>
-    </tablecell>
-    <tablecell>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1701201618090563" role="paragraph" xml-lang="en-US">Slope</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id19012061511466" role="paragraph" localize="false" xml-lang="en-US">-0.2193939394</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114648" role="paragraph" localize="false" xml-lang="en-US">-0.4894112008</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114619" role="paragraph" localize="false" xml-lang="en-US">4.812672931</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1701201618090642" role="paragraph" xml-lang="en-US">Intercept</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114679" role="paragraph" localize="false" xml-lang="en-US">4.8666666667</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id190120165114664" role="paragraph" localize="false" xml-lang="en-US">4.3992268695</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id190101615114697" role="paragraph" localize="false" xml-lang="en-US">-0.3103085297</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-    </tablecell>
-    <tablecell>
-    </tablecell>
-    <tablecell>
-    </tablecell>
-    <tablecell>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id190120161511461" role="paragraph" localize="false" xml-lang="en-US">1</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114631" role="paragraph" localize="false" xml-lang="en-US">4.6472727273</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114663" role="paragraph" localize="false" xml-lang="en-US">4.3992268695</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id19012016151142" role="paragraph" localize="false" xml-lang="en-US">4.812672931</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1901201615114687" role="paragraph" localize="false" xml-lang="en-US">2</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114677" role="paragraph" localize="false" xml-lang="en-US">4.4278787879</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114693" role="paragraph" localize="false" xml-lang="en-US">4.0599928755</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114630" role="paragraph" localize="false" xml-lang="en-US">3.8812728356</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1901201615114697" role="paragraph" localize="false" xml-lang="en-US">3</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114659" role="paragraph" localize="false" xml-lang="en-US">4.2084848485</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114671" role="paragraph" localize="false" xml-lang="en-US">3.8615537101</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114664" role="paragraph" localize="false" xml-lang="en-US">3.4224061924</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id190120161511463" role="paragraph" localize="false" xml-lang="en-US">4</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id190120161511462" role="paragraph" localize="false" xml-lang="en-US">3.9890909091</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id190120161511466" role="paragraph" localize="false" xml-lang="en-US">3.7207588815</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114649" role="paragraph" localize="false" xml-lang="en-US">3.1301272785</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1901201615114699" role="paragraph" localize="false" xml-lang="en-US">5</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114635" role="paragraph" localize="false" xml-lang="en-US">3.7696969697</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114716" role="paragraph" localize="false" xml-lang="en-US">3.6115499281</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114792" role="paragraph" localize="false" xml-lang="en-US">2.9207204651</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1901201615114711" role="paragraph" localize="false" xml-lang="en-US">6</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114718" role="paragraph" localize="false" xml-lang="en-US">3.5503030303</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114732" role="paragraph" localize="false" xml-lang="en-US">3.5223197161</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114775" role="paragraph" localize="false" xml-lang="en-US">2.7600654308</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1901201615114712" role="paragraph" localize="false" xml-lang="en-US">7</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id190120161511476" role="paragraph" localize="false" xml-lang="en-US">3.3309090909</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114710" role="paragraph" localize="false" xml-lang="en-US">3.4468766468</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615117" role="paragraph" localize="false" xml-lang="en-US">2.6311476385</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1901201615114767" role="paragraph" localize="false" xml-lang="en-US">8</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114753" role="paragraph" localize="false" xml-lang="en-US">3.1115151515</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id19012016151147" role="paragraph" localize="false" xml-lang="en-US">3.3815248876</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114720" role="paragraph" localize="false" xml-lang="en-US">2.5243514679</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1901201615114746" role="paragraph" localize="false" xml-lang="en-US">9</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114725" role="paragraph" localize="false" xml-lang="en-US">2.8921212121</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114758" role="paragraph" localize="false" xml-lang="en-US">3.3238805506</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114773" role="paragraph" localize="false" xml-lang="en-US">2.4337544465</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id1901201615114789" role="paragraph" localize="false" xml-lang="en-US">10</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id190120161114720" role="paragraph" localize="false" xml-lang="en-US">2.6727272727</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114738" role="paragraph" localize="false" xml-lang="en-US">3.2723159341</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id1901201615114798" role="paragraph" localize="false" xml-lang="en-US">2.3554713075</paragraph>
-    </tablecell>
-  </tablerow>
-</table>
+  <h2 id="hd_id331629834218606">Options</h2>
+  <h3 id="hd_id481629834269509">Confidence level</h3>
+  <paragraph role="paragraph" id="par_id971629835636129">A numeric value between 0 and 1 (exclusive), default is 0.95. Calc uses this percentage to compute the corresponding confidence intervals for each of the estimates (namely the slopes and intercept).</paragraph>
+  <h3 id="hd_id751629834274709">Calculate residuals</h3>
+  <paragraph role="paragraph" id="par_id401629835408653">Select whether to opt in or out of computing the residuals, which may be beneficial in cases where you are interested only in the slopes and intercept estimates and their statistics. The residuals give information on how far the actual data points deviate from the predicted data points, based on the regression model.</paragraph>
+  <h3 id="hd_id861629834279039">Force intercept to be zero</h3>
+  <paragraph role="paragraph" id="par_id121629837424848">Calculates the regression model using zero as the intercept, thus forcing the model to pass through the origin.</paragraph>
 <section id="relatedtopics">
 <embed href="text/scalc/01/stat_data.xhp#otherstat"/>
 </section>
