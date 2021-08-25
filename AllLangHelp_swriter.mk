@@ -200,6 +200,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/mm_seltab \
     helpcontent2/source/text/swriter/01/outlinecontent_visibility \
     helpcontent2/source/text/swriter/01/selection_mode \
+    helpcontent2/source/text/swriter/01/show_whitespace \
     helpcontent2/source/text/swriter/01/title_page \
     helpcontent2/source/text/swriter/01/watermark \
     helpcontent2/source/text/swriter/02/02110000 \
