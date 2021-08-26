@@ -16,20 +16,45 @@
   </topic>
 </meta>
 <body>
-<bookmark xml-lang="en-US" branch="index" id="bm_id291592361063458">
+  <bookmark xml-lang="en-US" branch="index" id="bm_id291592361063458">
     <bookmark_value>calling Calc function;macros</bookmark_value>
     <bookmark_value>macros;calling Calc function</bookmark_value>
     <bookmark_value>createUNOservice function;calling Calc function</bookmark_value>
     <bookmark_value>API;addin.Analysis</bookmark_value>
-</bookmark>
-<h1 id="hd_id91592352089011"><variable id="CallingCalcFunctionsh1"><link href="text/sbasic/shared/calc_functions.xhp" name="Calling Calc Functions">Calling Calc Functions</link></variable></h1>
-<paragraph role="paragraph" id="par_id1001592359117987">In addition to the native BASIC functions, you can call Calc functions in your macros and scripts.</paragraph>
-<h2 id="hd_id251592352174921">Calling Internal Calc functions in Basic</h2>
+  </bookmark>
+  <h1 id="hd_id91592352089011"><variable id="CallingCalcFunctionsh1"><link href="text/sbasic/shared/calc_functions.xhp" name="Calling Calc Functions">Calling Calc Functions</link></variable></h1>
+  <paragraph role="paragraph" id="par_id1001592359117987">In addition to the native BASIC functions, you can call Calc functions in your macros and scripts.</paragraph>
+  <h2 id="hd_id251592352174921">Calling Internal Calc functions in Basic</h2>
   <paragraph role="paragraph" id="par_id731592352332694">Use the <literal>CreateUNOService</literal> function to access the <literal>com.sun.star.sheet.FunctionAccess</literal> service.</paragraph>
-<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-<embed href="text/sbasic/shared/03131600.xhp#calcinternalfunctions"/>
-<h2 id="hd_id561592352225441">Calling Add-In Calc Functions in BASIC</h2>
-<paragraph role="paragraph" id="par_id261592359338681">The Calc Add-In functions are in service <literal>com.sun.star.sheet.addin.Analysis</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id751629987917982">The example below creates a function named <literal>MyVlook</literal> that calls the <literal>VLOOKUP</literal> Calc function over a data array passed as argument and returns the value found by the function.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id371629987889347">Function MyVlook(Lookup, DataArray As Object, Index As Integer, SortedRangeLookup as Byte)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id21629987889617">    Dim oService As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id671629987889986">    Set oService = createUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
+    <paragraph role="bascode" id="bas_id271629987890173">    ' Always use the function name in English</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id831629987890360">    MyVlook = oService.callFunction("VLOOKUP", Array(Lookup, DataArray, Index, SortedRangeLookup))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id91629987891281">End Function</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id241629988142878">The macro below presents an example of how the <literal>MyVlook</literal> function can be called. If first creates a 5-by-2 data array and then calls the function <literal>MyVlook</literal> and shows the returned value using <literal>MsgBox</literal>.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id221629988249322">Sub CallingMyVlook()</paragraph>
+    <paragraph role="bascode" id="bas_id331629988249519">    ' Creates a 5 by 2 array and fills it with data</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id281629988249703">    Dim myData(1 to 5, 1 to 2) as Variant</paragraph>
+    <paragraph role="bascode" id="bas_id641629988249903">    myData(1, 1) = 1 : myData(1, 2) = "Strongly disagree"</paragraph>
+    <paragraph role="bascode" id="bas_id201629988250130">    myData(2, 1) = 3 : myData(2, 2) = "Disagree"</paragraph>
+    <paragraph role="bascode" id="bas_id291629988250317">    myData(3, 1) = 5 : myData(3, 2) = "Undecided"</paragraph>
+    <paragraph role="bascode" id="bas_id731629988250530">    myData(4, 1) = 7 : myData(4, 2) = "Agree"</paragraph>
+    <paragraph role="bascode" id="bas_id641629988250759">    myData(5, 1) = 9 : myData(5, 2) = "Strongly agree"</paragraph>
+    <paragraph role="bascode" id="bas_id521629988250997">    ' Looks up the data array</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id401629988251210">    Dim result as String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id331629988324037">    result = MyVlook(4, myData, 2, 1)</paragraph>
+    <paragraph role="bascode" id="bas_id491629988324413">    ' Shows the message "Disagree"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id871629988324637">    MsgBox result</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id321629988324798">End Sub</paragraph>
+  </bascode>
+  <h2 id="hd_id561592352225441">Calling Add-In Calc Functions in BASIC</h2>
+  <paragraph role="paragraph" id="par_id261592359338681">The Calc Add-In functions are in service <literal>com.sun.star.sheet.addin.Analysis</literal>.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
 <paragraph role="bascode" id="bas_id421592358343633">REM Example calling Addin function SQRTPI</paragraph>
@@ -39,7 +64,7 @@
 <paragraph role="bascode" id="bas_id211592358377026">   MySQRTPI = oService.getSqrtPi(arg)</paragraph>
 <paragraph role="bascode" id="bas_id451592358385346" localize="false">End Function</paragraph>
 </bascode>
-
+<paragraph role="paragraph" id="par_id651629988674793">The table below presents a list of all Calc Add-In functions and their respective UNO service names.</paragraph>
 <table id="tab_id971592356505781">
     <tablerow>
         <tablecell>
@@ -294,7 +319,7 @@
             <paragraph id="par_id221592355620084" role="tablecontent" xml-lang="en-US" >EFFECT</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id221592355620084" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getEffect</paragraph>
+            <paragraph id="par_id221592355620085" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getEffect</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
@@ -454,7 +479,7 @@
             <paragraph id="par_id51592355688940" role="tablecontent" xml-lang="en-US" >IMDIV</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id51592355688940" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImdiv</paragraph>
+            <paragraph id="par_id51592355688941" role="tablecontent" localize="false" >com.sun.star.sheet.addin.Analysis.getImdiv</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>

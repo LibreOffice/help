@@ -24,40 +24,35 @@
   </topic>
 </meta>
 <body>
-<section id="createunoservice">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3150682">
-<bookmark_value>CreateUnoService function</bookmark_value>
-<bookmark_value>API;FilePicker</bookmark_value>
-<bookmark_value>API;FunctionAccess</bookmark_value>
-</bookmark>
-<h1 id="hd_id3150682"><variable id="createunoserviceh1"><link href="text/sbasic/shared/03131600.xhp" name="CreateUnoService Function">CreateUnoService Function</link></variable></h1>
-<paragraph id="par_id3152924" role="paragraph" xml-lang="en-US">Instantiates a Uno service with the ProcessServiceManager.</paragraph>
-</section>
-<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-<paragraph id="par_id3153346" role="code" xml-lang="en-US">oService = CreateUnoService( Uno service name )</paragraph>
-<paragraph id="par_idN1060F" role="paragraph" xml-lang="en-US">For a list of available services, go to: <link href="https://api.libreoffice.org/docs/idl/ref/namespacecom_1_1sun_1_1star.html" name="api.libreoffice.org com::sun::star Module Reference">https://api.libreoffice.org/docs/idl/ref/namespacecom_1_1sun_1_1star.html</link></paragraph>
+  <section id="createunoservice">
+    <bookmark xml-lang="en-US" branch="index" id="bm_id3150682">
+      <bookmark_value>CreateUnoService function</bookmark_value>
+      <bookmark_value>API;FilePicker</bookmark_value>
+      <bookmark_value>API;SimpleFileAccess</bookmark_value>
+    </bookmark>
+    <h1 id="hd_id3150682"><variable id="createunoserviceh1"><link href="text/sbasic/shared/03131600.xhp" name="CreateUnoService Function">CreateUnoService Function</link></variable></h1>
+    <paragraph id="par_id3152924" role="paragraph" xml-lang="en-US">Instantiates a Uno service with the <literal>ProcessServiceManager</literal>.</paragraph>
+  </section>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" id="par_id511629989178074"><input>oService = CreateUnoService( UNO service name )</input></paragraph>
+  <tip id="par_id921629989537850">For a list of available services, visit the <link href="https://api.libreoffice.org/docs/idl/ref/namespacecom_1_1sun_1_1star.html" name="UNO_Service_Names">com::sun::star Module</link> reference page.</tip>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id891561653344669">The example below creates the function <literal>FileExists</literal> that uses the service <literal>com.sun.star.ucb.SimpleFileAccess</literal> to test if a given path is an existing file.</paragraph>
+  <bascode>
+    <paragraph role="bascode" id="bas_id901629989240801">Function FileExists(sPath as String) as Boolean</paragraph>
+    <paragraph role="bascode" id="bas_id361629989241073">    Dim svcSFA as Object</paragraph>
+    <paragraph role="bascode" id="bas_id461629989241289">    Set svcSFA = CreateUnoService("com.sun.star.ucb.SimpleFileAccess")</paragraph>
+    <paragraph role="bascode" id="bas_id441629989241521">    Dim bExists as Boolean : bExists = svcSFA.exists(sPath)</paragraph>
+    <paragraph role="bascode" id="bas_id651629989241801">    Dim bIsFolder as Boolean : bIsFolder = svcSFA.IsFolder(sPath)</paragraph>
+    <paragraph role="bascode" id="bas_id521629989242114">    FileExists = bExists And Not bIsFolder</paragraph>
+    <paragraph role="bascode" id="bas_id211629989242416">End Function</paragraph>
+  </bascode>
+  <tip id="par_id351629989310797">UNO services have an extensive online documentation in the <link href="https://api.libreoffice.org/" name="API_Website">api.libreoffice.org</link> website. Visit the <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1ucb_1_1SimpleFileAccess.html" name="SimpleFileAccess_Page">SimpleFileAccess Service</link> reference page to learn more about the methods provided by the service used in the example above.</tip>
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-<bookmark xml-lang="en-US" branch="index" id="bm_id731561653332192">
-<bookmark_value>Calc functions;API Service</bookmark_value>
-</bookmark>
-<paragraph role="paragraph" id="par_id891561653344669">Calling Calc functions in Basic:</paragraph>
-<section id="calcinternalfunctions">
-<bascode>
-    <paragraph role="bascode" id="par_id741592351349391" xml-lang="en-US">REM The code below does not work for add-in functions, which have a different calling procedure.</paragraph>
-    <paragraph role="bascode" id="par_id511561653511948" xml-lang="en-US" localize="false">Function MyVlook(item, InRange As Object, FromCol As Integer)</paragraph>
-    <paragraph role="bascode" id="par_id771561653522280" xml-lang="en-US" localize="false">    Dim oService As Object</paragraph>
-    <paragraph role="bascode" id="par_id791561653536896" xml-lang="en-US" localize="false">    oService = createUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
-    <paragraph role="bascode" id="par_id31561653863623" xml-lang="en-US">    REM Always use the function English name</paragraph>
-    <paragraph role="bascode" id="par_id391561653548274" xml-lang="en-US" localize="false">    MyVlook = oService.callFunction("VLOOKUP",Array(item, InRange, FromCol, True))</paragraph>
-    <paragraph role="bascode" id="par_id951561653556383" xml-lang="en-US" localize="false">End Function</paragraph>
-</bascode>
-</section>
-<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-<paragraph id="par_id3154046" role="paragraph" localize="false" xml-lang="en-US"><literal>oIntrospection = CreateUnoService( "com.sun.star.beans.Introspection" )</literal></paragraph>
 <bookmark xml-lang="en-US" branch="index" id="bm_id8334604">
 <bookmark_value>filepicker;API service</bookmark_value>
 </bookmark>
-<paragraph id="par_idN10625" role="paragraph" xml-lang="en-US">The following code uses a service to open a file open dialog:</paragraph>
+<paragraph id="par_idN10625" role="paragraph" xml-lang="en-US">The following code uses the service <literal>com.sun.star.ui.dialogs.FilePicker</literal> to show a file open dialog:</paragraph>
 <bascode>
 <paragraph id="par_idm1206777616" role="bascode" localize="false" xml-lang="en-US">Sub Main</paragraph>
 <paragraph id="par_idN1062B" role="bascode" xml-lang="en-US">    fName = FileOpenDialog ("Please select a file")</paragraph>
