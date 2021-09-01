@@ -156,35 +156,46 @@
         <bookmark_value>API;GlobalScope.BasicLibraries</bookmark_value>
         <bookmark_value>Tools;Strings</bookmark_value>
       </bookmark>
-      <paragraph role="paragraph" id="N0650">The <literal>Onload</literal> script is assigned to <emph>Open document</emph> event using <menuitem>Tools - Customize</menuitem> menu <menuitem>Events</menuitem> tab. Events monitoring starts from the moment a <literal>ConsoleLogger</literal> object is instantiated and ultimately stops when Basic engine releases it. <literal>OnLoad</literal> event loads necessary Basic libraries, while caught events are reported using <literal>Access2Base.Trace</literal> module.</paragraph>
+      <paragraph role="paragraph" id="N0650">Using <menuitem>Tools - Customize</menuitem> menu <menuitem>Events</menuitem> tab, the <menuitem>Open document</menuitem> event fires a <literal>ConsoleLogger</literal> initialisation. <literal>_documentEventOccured</literal> routine - set by <literal>ConsoleLogger</literal> - serves as a unique entry point to trap all document events.</paragraph>
+      <h4 id="hd_id421630510141729">controller.Events module</h4>
       <bascode>
-          <paragraph role="bascode" xml-lang="en-US" id="N0651">REM controller.Events module</paragraph>
-          <paragraph role="bascode" localize="false" id="N0652">Option Explicit</paragraph>
-          <paragraph role="bascode" xml-lang="en-US" id="N0653">Private _obj As Object &apos; controller.ConsoleLogger instance</paragraph>
-          <paragraph role="bascode" localize="false" id="N0654">    </paragraph>
-          <paragraph role="bascode" xml-lang="en-US" id="N0655">Sub OnLoad(evt As com.sun.star.document.DocumentEvent) &apos; &gt;&gt; Open Document &lt;&lt;</paragraph>
-          <paragraph role="bascode" localize="false" id="N0656">    _obj = New ConsoleLogger : _obj.Start(evt)</paragraph>
-          <paragraph role="bascode" localize="false" id="N0657">End Sub &apos; controller.OnLoad</paragraph>
-          <paragraph role="bascode" localize="false" id="N0658">&apos; ----</paragraph>
-          <paragraph role="bascode" xml-lang="en-US" id="N0659">REM controller.ConsoleLogger class module</paragraph>
+        <paragraph role="bascode" localize="false" id="bas_id591630567376295">Option Explicit</paragraph>
+        <paragraph role="bascode" localize="false" id="bas_id101630567377583"></paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="bas_id431630567378062">Global _obj As Object &apos; controller.ConsoleLogger instance</paragraph>
+        <paragraph role="bascode" localize="false" id="bas_id971630567378798"></paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="N0655">Sub OnLoad(evt As com.sun.star.document.DocumentEvent) &apos; &gt;&gt; Open Document &lt;&lt;</paragraph>
+        <paragraph role="bascode" localize="false" id="N0656">    _obj = New ConsoleLogger : _obj.StartAdapter(evt)</paragraph>
+        <paragraph role="bascode" localize="false" id="N0657">End Sub &apos; controller.OnLoad</paragraph>
+        <paragraph role="bascode" localize="false" id="bas_id201630509594858">Sub _documentEventOccured(evt As com.sun.star.document.DocumentEvent)</paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="bas_id371630509596674">    ''' ConsoleLogger unique entry point '''</paragraph>
+        <paragraph role="bascode" localize="false" id="bas_id551630509597227">     _obj.DocumentEventOccurs(evt)</paragraph>
+        <paragraph role="bascode" localize="false" id="bas_id511630509597425">End Sub ' controller._documentEventOccured</paragraph>
+        <paragraph role="bascode" xml-lang="en-US" id="bas_id781630509597617">'Sub OnUnload(evt As com.sun.star.document.DocumentEvent) ' &gt;&gt; Document closed &lt;&lt;</paragraph>
+        <paragraph role="bascode" localize="false" id="bas_id921630509597817">'    _obj = Nothing</paragraph>
+        <paragraph role="bascode" localize="false" id="bas_id311630509598024">'End Sub ' controller.OnUnload</paragraph>
+      </bascode>
+      <h4 id="hd_id721630511986813">controller.ConsoleLogger class module</h4>
+      <paragraph role="paragraph" id="par_id901630509435225">Events monitoring starts from the moment a <literal>ConsoleLogger</literal> object is instantiated and ultimately stops upon document closure. <literal>StartAdapter</literal> routine loads necessary Basic libraries, while caught events are reported using <literal>Access2Base.Trace</literal> module.</paragraph>
+      <bascode>
           <paragraph role="bascode" localize="false" id="N0660">Option Explicit</paragraph>
           <paragraph role="bascode" localize="false" id="N0661">Option Compatible</paragraph>
           <paragraph role="bascode" localize="false" id="N0662">Option ClassModule</paragraph>
           <paragraph role="bascode" localize="false" id="N0663">    </paragraph>
           <paragraph role="bascode" xml-lang="en-US" id="N0664">&apos; ADAPTER design pattern object to be instantiated in the "Open Document" event</paragraph>
           <paragraph role="bascode" localize="false" id="N0665">Private Const UI_PROMPT = True</paragraph>
-          <paragraph role="bascode" localize="false" id="N0666">Private Const UI_NOPROMPT = False &apos; Set it to True to visualise documents events</paragraph>
+          <paragraph role="bascode" xml-lang="en-US" id="N0666">Private Const UI_NOPROMPT = False &apos; Set it to True to visualise documents events</paragraph>
           <paragraph role="bascode" localize="false" id="N0667">    </paragraph>
-          <paragraph role="bascode" xml-lang="en-US" id="N0668">&apos; CONSTRUCTOR/DESTRUCTOR</paragraph>
+ <comment><paragraph role="bascode" xml-lang="en-US" id="N0668">&apos; CONSTRUCTOR/DESTRUCTOR</paragraph>
           <paragraph role="bascode" localize="false" id="N0669">Private Sub Class_Initialize()</paragraph>
           <paragraph role="bascode" localize="false" id="N0670">End Sub &apos; controller.ConsoleLogger.Initialize</paragraph>
           <paragraph role="bascode" localize="false" id="N0671">Private Sub Class_Terminate()</paragraph>
           <paragraph role="bascode" localize="false" id="N0672">End Sub &apos; controller.ConsoleLogger.Terminate</paragraph>
-          <paragraph role="bascode" localize="false" id="N0673">    </paragraph>
+          <paragraph role="bascode" localize="false" id="N0673">    </paragraph></comment>
           <paragraph role="bascode" xml-lang="en-US" id="N0674">&apos; MEMBERS</paragraph>
           <paragraph role="bascode" localize="false" id="N0675">Private _evtAdapter As Object &apos; com.sun.star.document.XDocumentEventBroadcaster</paragraph>
+          <paragraph role="bascode" xml-lang="en-US" id="bas_id131630510956418">Private _txtMsg As String ' text message to log in console</paragraph>
           <paragraph role="bascode" localize="false" id="N0676">    </paragraph>
-          <paragraph role="bascode" localize="false" id="N0677">&apos; PROPERTIES</paragraph>
+          <paragraph role="bascode" xml-lang="en-US" id="N0677">&apos; PROPERTIES</paragraph>
           <paragraph role="bascode" localize="false" id="N0678">Private Property Get FileName As String</paragraph>
           <paragraph role="bascode" xml-lang="en-US" id="N0679">    &apos;&apos;&apos; System-dependent filename &apos;&apos;&apos;</paragraph>
           <paragraph role="bascode" localize="false" id="N0680">    Const _LIBRARY = &quot;Tools&quot; : With GlobalScope.BasicLibraries</paragraph>
@@ -194,42 +205,39 @@
           <paragraph role="bascode" localize="false" id="N0684">End Property &apos; controller.ConsoleLogger.Filename</paragraph>
           <paragraph role="bascode" localize="false" id="N0685">    </paragraph>
           <paragraph role="bascode" xml-lang="en-US" id="N0686">&apos; METHODS</paragraph>
-          <paragraph role="bascode" localize="false" id="N0687">Private Sub _documentEventOccured(evt As com.sun.star.document.DocumentEvent)</paragraph>
+          <paragraph role="bascode" localize="false" id="N0687">Public Sub DocumentEventOccurs(evt As com.sun.star.document.DocumentEvent)</paragraph>
           <paragraph role="bascode" xml-lang="en-US" id="N0688">    &apos;&apos;&apos; Monitor document events &apos;&apos;&apos;</paragraph>
           <paragraph role="bascode" localize="false" id="N0689">    Access2Base.Trace.TraceLog(&quot;DEBUG&quot;, _</paragraph>
           <paragraph role="bascode" localize="false" id="N0690">        evt.EventName &amp;&quot; in &quot;&amp; Filename(evt.Source.URL), _</paragraph>
           <paragraph role="bascode" localize="false" id="N0691">        UI_NOPROMPT)</paragraph>
           <paragraph role="bascode" localize="false" id="N0692">    Select Case evt.EventName</paragraph>
-          <paragraph role="bascode" localize="false" id="N0693">        Case &quot;OnUnload&quot; : _Stop(evt)</paragraph>
+          <paragraph role="bascode" localize="false" id="N0693">        Case &quot;OnUnload&quot; : _StopAdapter(evt)</paragraph>
           <paragraph role="bascode" localize="false" id="N0694">    End Select</paragraph>
-          <paragraph role="bascode" localize="false" id="N0695">End Sub &apos; controller.ConsoleLogger._documentEventOccured</paragraph>
+          <paragraph role="bascode" localize="false" id="N0695">End Sub &apos; controller.ConsoleLogger.DocumentEventOccurs</paragraph>
           <paragraph role="bascode" localize="false" id="N0696">    </paragraph>
-          <paragraph role="bascode" localize="false" id="N0697">Private Sub _disposing(evt As com.sun.star.lang.EventObject)</paragraph>
+ <comment><paragraph role="bascode" localize="false" id="N0697">Private Sub _disposing(evt As com.sun.star.lang.EventObject)</paragraph>
           <paragraph role="bascode" localize="false" id="N0698">End Sub &apos; controller.ConsoleLogger.disposing</paragraph>
-          <paragraph role="bascode" localize="false" id="N0699">    </paragraph>
-          <paragraph role="bascode" localize="false" id="N0700">Public Sub Start(Optional evt As com.sun.star.document.DocumentEvent)</paragraph>
+   <paragraph role="bascode" localize="false" id="N0699">    </paragraph></comment>
+          <paragraph role="bascode" localize="false" id="N0700">Public Sub StartAdapter(Optional evt As com.sun.star.document.DocumentEvent)</paragraph>
           <paragraph role="bascode" xml-lang="en-US" id="N0701">    &apos;&apos;&apos; Initialize document events logging &apos;&apos;&apos;</paragraph>
           <paragraph role="bascode" localize="false" id="N0702">    Const _LIBRARY = &quot;Access2Base&quot; : With GlobalScope.BasicLibraries</paragraph>
           <paragraph role="bascode" localize="false" id="N0703">        If Not .IsLibraryLoaded(_LIBRARY) Then .LoadLibrary(_LIBRARY)</paragraph>
           <paragraph role="bascode" localize="false" id="N0704">    End With : Access2Base.Trace.TraceLevel(&quot;DEBUG&quot;)</paragraph>
-          <paragraph role="bascode" localize="false" id="N0705">    Access2Base.Trace.TraceLog(&quot;INFO&quot;, _</paragraph>
-          <paragraph role="bascode" xml-lang="en-US" id="N0706">        IIf(IsMissing(evt),&quot;&quot;,evt.EventName &amp; &quot;-&quot;) &amp; &quot;Document events are being logged&quot;, _</paragraph>
-          <paragraph role="bascode" localize="false" id="N0707">        UI_PROMPT)</paragraph>
-          <paragraph role="bascode" localize="false" id="N0708">    </paragraph>
+          <paragraph role="bascode" id="bas_id211630511166427">    If IsMissing(evt) Then _txtMsg = "" Else _txtMsg = evt.EventName &amp; "-"</paragraph>
+          <paragraph role="bascode" xml-lang="en-US" id="N0705">    Access2Base.Trace.TraceLog("INFO", _txtMsg &amp; "Document events are being logged", UI_PROMPT)</paragraph>
           <paragraph role="bascode" localize="false" id="N0709">    _evtAdapter = CreateUnoListener( &quot;_&quot;, &quot;com.sun.star.document.XDocumentEventListener&quot; )</paragraph>
           <paragraph role="bascode" localize="false" id="N0710">    ThisComponent.addDocumentEventListener( _evtAdapter )</paragraph>
-          <paragraph role="bascode" localize="false" id="N0711">End Sub &apos; controller.ConsoleLogger.Start</paragraph>
+          <paragraph role="bascode" localize="false" id="N0711">End Sub &apos; controller.ConsoleLogger.StartAdapter</paragraph>
           <paragraph role="bascode" localize="false" id="N0712">    </paragraph>
-          <paragraph role="bascode" localize="false" id="N0713">Private Sub _Stop(Optional evt As com.sun.star.document.DocumentEvent)</paragraph>
+          <paragraph role="bascode" localize="false" id="N0713">Private Sub _StopAdapter(Optional evt As com.sun.star.document.DocumentEvent)</paragraph>
           <paragraph role="bascode" xml-lang="en-US" id="N0714">    &apos;&apos;&apos; Terminate document events logging &apos;&apos;&apos;</paragraph>
           <paragraph role="bascode" localize="false" id="N0715">    ThisComponent.removeDocumentEventListener( _evtAdapter )</paragraph>
-          <paragraph role="bascode" localize="false" id="N0716">    Access2Base.Trace.TraceLog(&quot;INFO&quot;, _</paragraph>
-          <paragraph role="bascode" xml-lang="en-US" id="N0717">        IIf(IsMissing(evt),&quot;&quot;,evt.EventName &amp; &quot;-&quot;) &amp; &quot;Document events have been logged&quot;, _</paragraph>
-          <paragraph role="bascode" localize="false" id="N0718">        UI_PROMPT)</paragraph>
-          <paragraph role="bascode" localize="false" id="N0719">    Access2Base.Trace.TraceConsole() &apos; Captured events dialog</paragraph>
-          <paragraph role="bascode" localize="false" id="N0720">End Sub &apos; controller.ConsoleLogger._Stop</paragraph>
+          <paragraph role="bascode" localize="false" id="N0716">    If IsMissing(evt) Then _txtMsg = "" Else _txtMsg = evt.EventName &amp; "-"</paragraph>
+          <paragraph role="bascode" xml-lang="en-US" id="N0717">    Access2Base.Trace.TraceLog("INFO", _txtMsg &amp; "Document events have been logged", UI_PROMPT)</paragraph>
+          <paragraph role="bascode" xml-lang="en-US" id="N0719">    Access2Base.Trace.TraceConsole() &apos; Captured events dialog</paragraph>
+          <paragraph role="bascode" localize="false" id="N0720">End Sub &apos; controller.ConsoleLogger._StopAdapter</paragraph>
           <paragraph role="bascode" localize="false" id="N0721">    </paragraph>
-          <paragraph role="bascode" localize="false" id="N0722">&apos; EVENTS</paragraph>
+          <paragraph role="bascode" xml-lang="en-US" id="N0722">&apos; EVENTS</paragraph>
           <paragraph role="bascode" xml-lang="en-US" id="N0723">&apos; Your code for handled events goes here</paragraph>
       </bascode>
       <warning id="N0724">Mind the misspelled <literal>_documentEventOccured</literal> method that inherits a typo from %PRODUCTNAME Application Programming Interface (API).</warning>
