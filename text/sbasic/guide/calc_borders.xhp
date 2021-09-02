@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_FormControl" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Formatting Borders in Calc with Macros</title>
+    <filename>/text/sbasic/guide/calc_borders.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+  <bookmark localize="false" branch="index" id="bm_id41582391760114">
+    <bookmark_value>macros;format borders</bookmark_value>
+  </bookmark>
+  <h1 id="hd_id461623364876507"><variable id="title"><link href="text/sbasic/guide/calc_borders.xhp" name="Calc_Borders_h1">Formatting Borders in Calc with Macros</link></variable></h1>
+  <paragraph role="paragraph" id="par_id461630536347127">By using Basic or Python programming languages it is possible to write macros that apply formats to ranges of cells in Calc.</paragraph>
+
+  <h2 id="hd_id81630536486560">Formatting Borders in Ranges of Cells</h2>
+  <paragraph role="paragraph" id="par_id871630536518700">The code snippet below creates a <literal>Sub</literal> called <literal>FormatCellBorder</literal> that applies new border formats to a given range address in the current Calc sheet.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id161630537784558">Sub FormatCellBorder(cellAddress as String, newStyle as Byte, newWidth as Long, Optional newColor as Long)</paragraph>
+    <paragraph role="bascode" id="bas_id131630537785605">    ' Creates the UNO struct that will store the new line format</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id751630537785844">    Dim lineFormat as New com.sun.star.table.BorderLine2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id331630537786054">    lineFormat.LineStyle = newStyle</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id561630537786262">    lineFormat.LineWidth = newWidth</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id731630537786476">    If Not IsMissing(newColor) Then lineFormat.Color = newColor</paragraph>
+    <paragraph role="bascode" id="bas_id971630537786724">    ' Gets the target cell</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id221630537786925">    Dim oCell as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id301630537787141">    Set oCell = ThisComponent.CurrentController.ActiveSheet.getCellRangeByName(cellAddress)</paragraph>
+    <paragraph role="bascode" id="bas_id791630537787373">    ' Applies the new format to all borders</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id291630537787589">    oCell.TopBorder = lineFormat</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id471630537787829">    oCell.RightBorder = lineFormat</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id21630537788070">    oCell.LeftBorder = lineFormat</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id491630537788285">    oCell.BottomBorder = lineFormat</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531630537788597">End Sub</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id141630537941393">The <literal>Sub</literal> described above takes in four arguments:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id841630538209958" role="listitem"><emph>cellAddress</emph> is a string such as denoting the range to be formatted in the format "A1".</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id821630538210271" role="listitem"><emph>newStyle</emph> is an integer value that corresponds to the border line style (see table below).</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id191630538210607" role="listitem"><emph>newWidth</emph> is an integer value that defines the line width.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id71630538211142" role="listitem"><emph>newColor</emph> is an integer value corresponding to a color defined using the <link href="text/sbasic/shared/03010305.xhp" name="RGB_link">RGB</link> function.</paragraph>
+    </listitem>
+  </list>
+  <paragraph role="paragraph" id="par_id201630538522838">To call <literal>FormatCellBorder</literal> create a new macro and pass the desired arguments, as shown below:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id871630538918984">Sub MyMacro</paragraph>
+    <paragraph role="bascode" id="bas_id321630538931144">    ' Formats "B5" with solid blue borders</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id1001630538931505">    FormatCellBorder("B5", 0, 20, RGB(0, 0, 255))</paragraph>
+    <paragraph role="bascode" id="bas_id91630538931686">    ' Formats all borders in the range "D2:F6" with red dotted borders</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id261630538932143">    FormatCellBorder("D2:F6", 1, 20, RGB(255, 0, 0))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id471630539067462">End Sub</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id31630540159114">It is possible to implement the same functionality in Python:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id381630541980340">from uno import createUnoStruct</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id231630541980607">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id801630542013431"></paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id221630540777433">def formatCellBorder(cellAddress, newStyle, newWidth, newColor=0):</paragraph>
+    <paragraph role="pycode" id="pyc_id411630540777672">    # Defines the new line format</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id731630540777889">    line_format = createUnoStruct("com.sun.star.table.BorderLine2")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id341630540778097">    line_format.LineStyle = newStyle</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id301630540778329">    line_format.LineWidth = newWidth</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id691630540778577">    line_format.Color = newColor</paragraph>
+    <paragraph role="pycode" id="pyc_id361630540778786">    # Scriptforge service to access cell ranges</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id471630540778985">    doc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id551630540779225">    cell = doc.XCellRange(cellAddress)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id51630540779426">    cell.TopBorder = line_format</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id31630540779643">    cell.RightBorder = line_format</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id401630540779834">    cell.LeftBorder = line_format</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id291630540780067">    cell.BottomBorder = line_format</paragraph>
+  </pycode>
+  <paragraph role="paragraph" id="par_id931630541661889">The code snippet below implements a macro named <literal>myMacro</literal> that calls <literal>formatCellBorder</literal>:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id181630541791470">def myMacro():</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id1001630541791803">    bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id531630541792043">    formatCellBorder("B5", 0, 20, bas.RGB(0, 0, 255))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id601630541792230">    formatCellBorder("D2:F6", 1, 20, bas.RGB(255, 0, 0))</paragraph>
+  </pycode>
+  <note id="par_id261630541889040">The Python code presented above uses the <link href="text/sbasic/shared/03/lib_ScriptForge.xhp" name="SF_link">ScriptForge library</link> that is available since %PRODUCTNAME 7.2.</note>
+
+  <h2 id="hd_id361630539136798">Line Styles</h2>
+  <paragraph role="paragraph" id="par_id501630539147234">Line styles are defined as integer contants. The table below lists the constants for the line styles available in <menuitem>Format - Cells - Borders</menuitem>:</paragraph>
+  <table id="tab_id531630539273987">
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id501630539273987" role="tablehead">Value</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id191630539273987" role="tablehead">Line style name</paragraph>
+       </tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id861630539273987" role="tablecontent">0</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id691630539273987" role="tablecontent">Solid</paragraph>
+       </tablecell>
+   </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id321630539319305" role="tablecontent">1</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id591630539325162" role="tablecontent">Dotted</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id261630539430102" role="tablecontent">2</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id881630539433260" role="tablecontent">Dashed</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id701630539460809" role="tablecontent">14</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id111630539463634" role="tablecontent">Fine dashed</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id101630539468131" role="tablecontent">15</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id261630539471483" role="tablecontent">Double thin</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id851630539475055" role="tablecontent">16</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id671630539478101" role="tablecontent">Dash dot</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id481630539481944" role="tablecontent">17</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id701630539484498" role="tablecontent">Dash dot dot</paragraph>
+       </tablecell>
+    </tablerow>
+  </table>
+  <tip id="par_id751630539680866">Refer to the <link href="https://api.libreoffice.org/docs/idl/ref/namespacecom_1_1sun_1_1star_1_1table_1_1BorderLineStyle.html" name="BorderLineStyle_link">BorderLineStyle Constant Reference</link> in the LibreOffice API documentation to learn more about line style constants.</tip>
+  
+  <h2 id="hd_id31630542361666">Formatting Borders Using TableBorder2</h2>
+  <paragraph role="paragraph" id="par_id11630542436346">Range objects have a property named <literal>TableBorder2</literal> that can be used to format range borders as it is done in the <menuitem>Format - Cells - Borders</menuitem>  dialog in the <emph>Line Arrangement</emph> section.</paragraph>
+  <paragraph role="paragraph" id="par_id641630542724480">In addition to top, bottom, left and right boders, <literal>TableBorder2</literal> also defines vertical and horizontal borders. The macro below applies only the top and bottom borders to the range "B2:E5".</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id761630543331847">Sub TableBorder2Example</paragraph>
+    <paragraph role="bascode" id="bas_id191630543332073">    ' Defines the new line format</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id111630543332260">    Dim lineFormat as New com.sun.star.table.BorderLine2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id101630543332460">    lineFormat.LineStyle = 0</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id241630543332688">    lineFormat.LineWidth = 15</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id631630543332874">    lineFormat.Color = RGB(0, 0, 0)</paragraph>
+    <paragraph role="bascode" id="bas_id281630543333061">    ' Struct that stores the new TableBorder2 definition</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id691630543333288">    Dim tableFormat as New com.sun.star.table.TableBorder2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id451630543333501">    tableFormat.TopLine = lineFormat</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id661630543333742">    tableFormat.BottomLine = lineFormat</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id151630543333968">    tableFormat.IsTopLineValid = True</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id211630543334181">    tableFormat.IsBottomLineValid = True</paragraph>
+    <paragraph role="bascode" id="bas_id11630543334395">    ' Applies the table format to the range "B2:E5"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id761630543334607">    Dim oCell as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531630543334821">    oCell = ThisComponent.CurrentController.ActiveSheet.getCellRangeByName("B2:E5")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id851630543335050">    oCell.TableBorder2 = tableFormat</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id51630543335289">End Sub</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id401630544066231">The macro can be implemented in Python as follows:</paragraph>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id791630544113462">def tableBorder2Example():</paragraph>
+    <paragraph role="pycode" id="pyc_id221630544113741">    line_format = createUnoStruct("com.sun.star.table.BorderLine2")</paragraph>
+    <paragraph role="pycode" id="pyc_id271630544113941">    line_format.LineStyle = 0</paragraph>
+    <paragraph role="pycode" id="pyc_id41630544114154">    line_format.LineWidth = 18</paragraph>
+    <paragraph role="pycode" id="pyc_id921630544114367">    line_format.Color = 0</paragraph>
+    <paragraph role="pycode" id="pyc_id421630544114568">    table_format = createUnoStruct("com.sun.star.table.TableBorder2")</paragraph>
+    <paragraph role="pycode" id="pyc_id721630544114809">    table_format.TopLine = line_format</paragraph>
+    <paragraph role="pycode" id="pyc_id481630544115021">    table_format.BottomLine = line_format</paragraph>
+    <paragraph role="pycode" id="pyc_id371630544115248">    table_format.IsTopLineValid = True</paragraph>
+    <paragraph role="pycode" id="pyc_id171630544115462">    table_format.IsBottomLineValid = True</paragraph>
+    <paragraph role="pycode" id="pyc_id761630544115702">    doc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="pycode" id="pyc_id341630544115915">    cell = doc.XCellRange("B2:E5")</paragraph>
+    <paragraph role="pycode" id="pyc_id841630544116128">    cell.TableBorder2 = table_format</paragraph>
+  </pycode>
+  <tip id="par_id751630539680102">Refer to the <link href="https://api.libreoffice.org/docs/idl/ref/structcom_1_1sun_1_1star_1_1table_1_1TableBorder2.html" name="BorderLineStyle_link">TableBorder2 Struct Reference</link> in the LibreOffice API documentation to learn more about its attributes.</tip>
+
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#ScriptForge_lib"/>
+  </section>
+  </body>
+</helpdocument>
