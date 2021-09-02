@@ -147,6 +147,7 @@
       </tablecell>
       <tablecell>
         <paragraph role="tablecontent" id="par_id831608132069033" localize="false">
+          <link href="text/sbasic/shared/03/sf_exception.xhp#PythonPrint" name="PythonPrint method">PythonPrint</link><br/>
           <link href="text/sbasic/shared/03/sf_exception.xhp#PythonShell" name="PythonShell method">PythonShell</link><br/>
           <link href="text/sbasic/shared/03/sf_exception.xhp#Raise" name="Raise method">Raise</link><br/>
           <link href="text/sbasic/shared/03/sf_exception.xhp#RaiseWarning" name="RaiseWarning method">RaiseWarning</link><br/>
@@ -311,7 +312,29 @@
     <paragraph role="pycode" localize="false" id="pyc_id161621098073293"># None  [1, 2, 3]  line1\nline2</paragraph>
   </pycode>
 </section>
-
+    
+<section id="PythonPrint">
+  <comment> PythonPrint -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id301587219428104">
+    <bookmark_value>Exception service;PythonPrint</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id5515879128204789" localize="false">PythonPrint</h2>
+  <paragraph role="paragraph" id="par_id111621624672183">Display the list of arguments in a readable form in the Python shell (APSO) console. Arguments are separated by a TAB character (simulated by spaces).</paragraph>
+  <paragraph role="paragraph" id="par_id841621426229467">The same string is added to the ScriptForge debug console.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#Requires_APSO"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id81630591881423">exc.PythonPrint(ParamArray args As Variant)</paragraph>
+  </bascode>
+  <note id="par_id181630593352765">Suffice to use builtin print() statement with Python.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id391126449167833"><emph>args</emph>: Any number of arguments of any type. The maximum length of each individual argument is 1024 characters.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id451621479450230">exc.PythonPrint(a, Array(1, 2, 3), , &quot;line1&quot; &amp; Chr(10) &amp; &quot;Line2&quot;, DateSerial(2020, 04, 09))</paragraph>
+  </pycode>
+</section>
+    
 <section id="PythonShell">
   <comment> PythonShell -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id301587219824104">
@@ -321,7 +344,6 @@
   <paragraph role="paragraph" id="par_id111621426672183">Opens an APSO Python shell as a non-modal window. The Python script keeps running after the shell is opened. The output from <literal>print</literal> statements inside the script are shown in the shell.</paragraph>
   <paragraph role="paragraph" id="par_id841621426922467">Only a single instance of the APSO Python shell can be opened at any time. Hence, if a Python shell is already open, then calling this method will have no effect.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#Requires_APSO"/>
-  <embed href="text/sbasic/shared/00000003.xhp#Python_Only"/>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id411621625580764">
     <input>exc.PythonShell(variables: dict)</input>
