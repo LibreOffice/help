@@ -294,7 +294,6 @@
            <paragraph id="par_id761611086279902" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_document.xhp#Activate" name="Activate method">Activate</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#CloseDocument" name="CloseDocument method">CloseDocument</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#Forms" name="Forms method">Forms</link>
            </paragraph>
        </tablecell>
        <tablecell>
@@ -366,48 +365,6 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id731622827946898">if doc.CloseDocument(True):</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id221622827947414">    # ...</paragraph>
-  </pycode>
-</section>
-
-<section id="Forms">
-  <comment> Forms --------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721589200121336">
-    <bookmark_value>Document service;Forms</bookmark_value>
-  </bookmark>
-  <h2 id="hd_id261589200120884" localize="false">Forms</h2>
-  <paragraph role="paragraph" id="par_id501623063693649">Depending on the parameters provided this method will return:</paragraph>
-  <list type="unordered">
-    <listitem>
-        <paragraph id="par_id611623063742045" role="listitem">A zero-based Array (or a tuple in Python) with the names of all the forms contained in the document (if the <literal>form</literal> argument is absent)</paragraph>
-    </listitem>
-    <listitem>
-        <paragraph id="par_id641623063744536" role="listitem">A <literal>SFDocuments.Form</literal> service instance representing the form specified as argument.</paragraph>
-    </listitem>
-  </list>
-  <note id="par_id821623076570573">This method is applicable only for Writer documents. Calc and Base documents have their own <literal>Forms</literal> method in the <link href="text/sbasic/shared/03/sf_calc.xhp#Forms" name="Calc_Forms">Calc</link> and <link href="text/sbasic/shared/03/sf_base.xhp#Forms" name="Base_Forms">Base</link> services, respectively.</note>
-  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-  <paragraph role="paragraph" localize="false" id="par_id371623063588699">
-    <input>svc.Forms(): str[0..*]</input>
-  </paragraph>
-  <paragraph role="paragraph" localize="false" id="par_id471623151738791">
-    <input>svc.Forms(form: str = ''): svc</input>
-  </paragraph>
-  <paragraph role="paragraph" localize="false" id="par_id751623151751397">
-     <input>svc.Forms(form: int): svc</input>
-  </paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id451623063459286"><emph>form</emph>: The name or index corresponding to a form stored in the document. If this argument is absent, the method will return a list with the names of all forms available in the document.</paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-  <paragraph role="paragraph" id="par_id251623063305557">In the following examples, the first line gets the names of all forms in the document and the second line retrieves the <literal>Form</literal> object of the form named "Form_A".</paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
-  <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id191623063399519">Set FormNames = oDoc.Forms()</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id691623063399711">Set FormA = oDoc.Forms("Form_A")</paragraph>
-  </bascode>
-  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
-  <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id271623063215023">form_names = doc.Forms()</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id961623063234990">form_A = doc.Forms("Form_A")</paragraph>
   </pycode>
 </section>
 

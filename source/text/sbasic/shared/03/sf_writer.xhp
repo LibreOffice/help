@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="sf_writer" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">SFDocuments.Writer service</title>
+    <filename>/text/sbasic/shared/03/sf_writer.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+<section id="SFDocuments-sf_writer">
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id261582733781987">
+      <bookmark_value>Writer service</bookmark_value>
+   </bookmark>
+</section>
+
+<section id="abstract">
+    <h1 id="hd_id731582733781114" xml-lang="en-US"><variable id="WriterService"><link href="text/sbasic/shared/03/sf_writer.xhp" name="Writer service"><literal>SFDocuments</literal>.<literal>Writer</literal> service</link></variable></h1>
+    <paragraph role="paragraph" id="par_id381589189355849" xml-lang="en-US">The <literal>SFDocuments</literal> shared library provides a number of methods and properties to facilitate the management and handling of %PRODUCTNAME documents.</paragraph>
+    <paragraph role="paragraph" id="par_id351591014177269" xml-lang="en-US">Some methods are generic for all types of documents and are inherited from the <literal>SF_Document</literal> module, whereas other methods that are specific for Writer documents are defined in the <literal>SF_Writer</literal> module.</paragraph>
+    <paragraph role="paragraph" id="par_id591589189364267" xml-lang="en-US">The <literal>SF_Writer</literal> module is focused on:</paragraph>
+    <list type="unordered">
+      <comment>TBD</comment>
+    </list>
+</section>
+    <embed href="text/sbasic/shared/03/avail_release.xhp#7.3.service"/>
+
+  <h2 id="hd_id581582885621841">Service invocation</h2>
+    <paragraph role="paragraph" id="par_id591589191059889" xml-lang="en-US">The <literal>Writer</literal> service is closely related to the <literal>UI</literal> service of the <literal>ScriptForge</literal> library. Below are a few examples of how the <literal>Writer</literal> service can be invoked.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id551621623999947">The code snippet below creates a <literal>Writer</literal> service instance that corresponds to the currently active Writer document.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id651631197152830">Dim oDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id431621624078370">Set oDoc = CreateScriptService(&quot;SFDocuments.Writer&quot;, &quot;Untitled 1&quot;) &apos; Default = ActiveWindow</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id341621467500466">Another way to create an instance of the <literal>Writer</literal> service is using the <literal>UI</literal> service. In the following example, a new Writer document is created and <literal>oDoc</literal> is a <literal>Writer</literal> service instance:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id371582885621964">Dim ui As Object, oDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id201582885621287">Set ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id561589191748697">Set oDoc = ui.CreateDocument("Writer")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id921621467621019">Or using the <literal>OpenDocument</literal> method from the <literal>UI</literal> service:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id671621467660766">Set oDoc = ui.OpenDocument(&quot;C:\Me\MyFile.odt&quot;)</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id741621467697967">It is also possible to instantiate the <literal>Writer</literal> service using the <literal>CreateScriptService</literal> method:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id371589191782045">Dim oDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id711589191788959">Set oDoc = CreateScriptService("SFDocuments.Writer", "MyFile.odt")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id271621467810774">In the example above, "MyFile.odt" is the name of an open document window. If this argument is not provided, the active window is considered.</paragraph>
+  <paragraph role="paragraph" id="par_id71158288562139" xml-lang="en-US">It is recommended to free resources after use:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id61582733781413">Set oDoc = oDoc.Dispose()</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id231611610666018">However, if the document was closed using the <literal>CloseDocument</literal> method, it becomes unnecessary to free resources using the command described above.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id911621624242302">myDoc = CreateScriptService("Writer") &apos; Default = ActiveWindow</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id201621531742824">svcUI = CreateScriptService("UI")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id661621531772444">myDoc = svcUI.CreateDocument("Writer")</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id401621531828705">myDoc = svcUI.OpenDocument(r"C:\Documents\MyFile.odt")</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id701621532481401">myDoc = CreateScriptService("SFDocuments.Writer", "MyFile.odt")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id951621532568918">myDoc.Dispose()</paragraph>
+  </pycode>
+  <tip id="par_id71611090922315">The use of the prefix "<literal>SFDocuments.</literal>" while calling the service is optional.</tip>
+
+  <h2 id="hd_id291631196803182">Definitions</h2>
+     <comment>TBD</comment>
+
+  <h2 id="hd_id351582885195476" xml-lang="en-US">Properties</h2>
+
+  <h2 id="hd_id501582887473754" xml-lang="en-US">Methods</h2>
+  <table id="tab_id501611613601554">
+   <tablerow>
+     <tablecell colspan="3"><paragraph id="par_id891611613601554" role="tablehead" xml-lang="en-US">List of Methods in the Writer Service</paragraph></tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id891611613601556" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_writer.xhp#Forms" name="Forms method">Forms</link><br/>
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_writer.xhp#PrintOut" name="PrintOut method">PrintOut</link><br/>
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id701611613601554" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_writer.xhp#MoveRange" name="MoveRange method">…</link><br/>
+           </paragraph>
+       </tablecell>
+   </tablerow>
+  </table>
+
+<section id="Forms">
+  <comment> Forms --------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721589200121336">
+    <bookmark_value>Document service;Forms</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261589200120884" localize="false">Forms</h2>
+  <paragraph role="paragraph" id="par_id501623063693649">Depending on the parameters provided this method will return:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id611623063742045" role="listitem">A zero-based Array (or a tuple in Python) with the names of all the forms contained in the document (if the <literal>form</literal> argument is absent)</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id641623063744536" role="listitem">A <literal>SFDocuments.Form</literal> service instance representing the form specified as argument.</paragraph>
+    </listitem>
+  </list>
+  <note id="par_id821623076570573">This method is applicable only for Writer documents. Calc and Base documents have their own <literal>Forms</literal> method in the <link href="text/sbasic/shared/03/sf_calc.xhp#Forms" name="Calc_Forms">Calc</link> and <link href="text/sbasic/shared/03/sf_base.xhp#Forms" name="Base_Forms">Base</link> services, respectively.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id371623063588699">
+    <input>svc.Forms(): str[0..*]</input>
+  </paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id471623151738791">
+    <input>svc.Forms(form: str = ''): svc</input>
+  </paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id751623151751397">
+     <input>svc.Forms(form: int): svc</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id451623063459286"><emph>form</emph>: The name or index corresponding to a form stored in the document. If this argument is absent, the method will return a list with the names of all forms available in the document.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id251623063305557">In the following examples, the first line gets the names of all forms in the document and the second line retrieves the <literal>Form</literal> object of the form named "Form_A".</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id191623063399519">Set FormNames = oDoc.Forms()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id691623063399711">Set FormA = oDoc.Forms("Form_A")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id271623063215023">form_names = doc.Forms()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id961623063234990">form_A = doc.Forms("Form_A")</paragraph>
+  </pycode>
+</section>
+
+<section id="PrintOut">
+  <comment> PrintOut -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231592919577434">
+      <bookmark_value>Writer service;PrintOut</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id921592919577158" localize="false">PrintOut</h2>
+  <paragraph role="paragraph" id="par_id31592919577984">Send the content of the document to the printer. The printer might be defined previously by default, by the user or by the SetPrinter() method. Returns <literal>True</literal> when successful.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id441621534763020">
+    <input>svc.PrintOut(opt pages: str = "", opt copies: num = 1, opt printbackground: bool = True, opt printblankpages: bool = False, opt printevenpages: bool = True, opt printoddpages: bool = True, opt printimages: bool = True): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id441592919577809"><emph>pages</emph>: The pages to print as a string, like in the user interface. Example: &quot;1-4;10;15-18&quot;. Default = all pages</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id521592919577626">oDoc.PrintOut(&quot;1-4;10;15-18&quot;, Copies := 2, PrintImages := False)</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id211621536212144">doc.PrintOut(printblankpages = True, copies = 3)</paragraph>
+  </pycode>
+</section>
+ 
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/sf_document.xhp#DocumentService"/>
+    <embed href="text/sbasic/shared/03/sf_ui.xhp#UIService"/>
+  </section>
+</body>
+</helpdocument>

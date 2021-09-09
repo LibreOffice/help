@@ -102,6 +102,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03/sf_textstream \
     helpcontent2/source/text/sbasic/shared/03/sf_timer \
     helpcontent2/source/text/sbasic/shared/03/sf_ui \
+    helpcontent2/source/text/sbasic/shared/03/sf_writer \
     helpcontent2/source/text/sbasic/shared/03/lib_schedule \
     helpcontent2/source/text/sbasic/shared/03/lib_template \
     helpcontent2/source/text/sbasic/shared/03/lib_wikieditor \
