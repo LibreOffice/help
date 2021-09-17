@@ -1390,15 +1390,21 @@
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_UMRECHNEN" id="bm_id0908200902093111" localize="false"/>
 
 <h2 id="hd_id0908200902074836">CONVERT_OOO</h2>
-<paragraph id="par_id0908200902131122" role="paragraph" xml-lang="en-US"><ahelp hid=".">Converts a value from one unit of measurement to another unit of measurement. The conversion factors are given in a list in the configuration.</ahelp></paragraph>
-<paragraph id="par_id0908200902475420" role="paragraph" xml-lang="en-US">At one time the list of conversion factors included the legacy European currencies and the Euro (see examples below). We suggest using the new function EUROCONVERT for converting these currencies.</paragraph>
+<paragraph id="par_id0908200902131122" role="paragraph" xml-lang="en-US"><ahelp hid=".">Converts to euros a currency value expressed in one of the legacy currencies of 19 member states of the European Union, and vice versa.</ahelp> The conversion uses the fixed exchange rates at which the legacy currencies entered the euro.</paragraph>
+<tip id="par_id581631900947319">We recommend using the more flexible EUROCONVERT function for converting between these currencies.</tip>
 
 <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-<paragraph id="par_id0908200902131191" role="code" xml-lang="en-US">CONVERT_OOO(value; "text"; "text")</paragraph>
+<paragraph id="par_id0908200902131191" role="code" xml-lang="en-US">CONVERT_OOO(Value; "Text1"; "Text2")</paragraph>
+<paragraph role="paragraph" id="par_id901631901062056"><emph>Value</emph> is the amount of the currency to be converted.</paragraph>
+<paragraph role="paragraph" id="par_id461631901137229"><emph>Text1</emph> is a three-character string that specifies the currency to be converted from.</paragraph>
+<paragraph role="paragraph" id="par_id351631901218862"><emph>Text2</emph> is a three-character string that specifies the currency to be converted to.</paragraph>
+<paragraph role="paragraph" id="par_id1001631901312606"><emph>Text1</emph> and <emph>Text2</emph> must each take one of the following values: – "ATS", "BEF", "CYP", "DEM", "EEK", "ESP", "EUR", "FIM", "FRF", "GRD", "IEP", "ITL", "LTL", "LUF", "LVL", "MTL", "NLG", "PTE", "SIT", and "SKK".</paragraph>
+<paragraph role="paragraph" id="par_id111631901383901">One, and only one, of <emph>Text1</emph> or <emph>Text2</emph> must be equal to "EUR".</paragraph>
 
 <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
-<paragraph id="par_id090820090213112" role="paragraph" xml-lang="en-US"><item type="input">=CONVERT_OOO(100;"ATS";"EUR")</item> returns the Euro value of 100 Austrian Schillings.</paragraph>
-<paragraph id="par_id0908200902475431" role="paragraph" xml-lang="en-US">=CONVERT_OOO(100;"EUR";"DEM") converts 100 Euros into German Marks.</paragraph>
+<paragraph id="par_id090820090213112" role="paragraph" xml-lang="en-US"><item type="input">=CONVERT_OOO(100;"ATS";"EUR")</item> returns the euro value of 100 Austrian schillings.</paragraph>
+<paragraph id="par_id0908200902475431" role="paragraph" xml-lang="en-US"><input>=CONVERT_OOO(100;"EUR";"DEM")</input> converts 100 euros into German marks.</paragraph>
+<tip id="par_id251631901851101">Refer to the <link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/CONVERT_OOO" name="CONVERT_OOO Wiki">CONVERT_OOO</link> wiki page for more details about this function.</tip>
 </section>
 
 <section id="Section10">
