@@ -61,13 +61,20 @@ function fillIndex(indexEl, content, modules) {
     for (var i = 0, len = indexKids.length; i < len; i++) {
         indexKids[i].removeAttribute("id");
     }
+    var groupedIndexHTML = '';
     modules.forEach(function(module) {
-        var moduleHeader = indexEl.getElementsByClassName(module)[0];
-        if (typeof moduleHeader !== 'undefined') {
+        var firstEl = indexEl.getElementsByClassName(module)[0];
+        if (typeof firstEl !== 'undefined') {
             // let's wrap the header in a span, so the ::before element will not become a link
-            moduleHeader.outerHTML = '<span id="' + module + '" class="' + module + '">' + moduleHeader.outerHTML + '</span>';
+            groupedIndexHTML += '<span id="' + module + '" class="' + module + '">';
+            var elementsList = indexEl.getElementsByClassName(module)
+            for (let i = 0; i < elementsList.length; i++) {
+                groupedIndexHTML += elementsList[i].outerHTML;
+            };
+            groupedIndexHTML += '</span>';
         }
     });
+    indexEl.innerHTML = groupedIndexHTML;
     Paginator(indexEl);
 }
 // filter the index list based on search field input
