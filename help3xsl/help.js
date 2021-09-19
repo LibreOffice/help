@@ -73,17 +73,29 @@ function fillIndex(indexEl, content, modules) {
 // filter the index list based on search field input
 function filter(indexList) {
     var results = null;
+    var group = [];
     var target = search.value.trim();
     var filtered = '';
     if (target.length < 1) {
         fillIndex(indexEl, fullLinks, modules);
         return;
     }
+
     results = fuzzysort.go(target, bookmarks, {threshold: -15000, key:'text'});
 
-    results.forEach(function(result) {
-        filtered += '<a href="' + result.obj['url'] + '" class="' + result.obj['app'] + '">' + fuzzysort.highlight(result) + '</a>';
+    // tdf#123506 - Group the filtered list into module groups, keeping the ordering
+    modules.forEach(function(module) {
+        group[module] = '';
     });
+    results.forEach(function(result) {
+        group[result.obj['app']] += '<a href="' + result.obj['url'] + '" class="' + result.obj['app'] + '">' + fuzzysort.highlight(result) + '</a>';
+    });
+    modules.forEach(function(module) {
+        if (group[module].length > 0) {
+            filtered += group[module];
+        }
+    });
+
     fillIndex(indexList, filtered, modules);
 
 };
