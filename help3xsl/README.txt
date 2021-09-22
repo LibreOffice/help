@@ -33,6 +33,13 @@ and make sure that symlinks are allowed in the webserver configuration.
 File descriptions
 -----------------
 
+index2.html:
+
+This is the starting point for help when F1 is pressed. The control 'target' is passed in
+and then the javascript here does the lookup of the hid2file.js map. If the target is found then that
+HTML file is given to the browser with the module and other parameters added, otherwise it substitutes
+a default, which is the modules main page.
+
 * default.css:
 
   the cascading style sheet for HTML formatting.
@@ -41,7 +48,7 @@ File descriptions
 
   the XSL transform file. Transform XHP files into HTML files.
 
-  This file is a modification of xmlhelper/util/main_transform.xsl, which was designed for xmlhelp XSL processor.
+  This file is a modification of xmlhelp/util/main_transform.xsl, which was designed for xmlhelp XSL processor.
 
 * help.js
 
