@@ -112,8 +112,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/05080300 \
     helpcontent2/source/text/scalc/01/05080400 \
     helpcontent2/source/text/scalc/01/05100000 \
-    helpcontent2/source/text/scalc/01/05100100 \
-    helpcontent2/source/text/scalc/01/05100200 \
     helpcontent2/source/text/scalc/01/05110000 \
     helpcontent2/source/text/scalc/01/05120000 \
     helpcontent2/source/text/scalc/01/06020000 \
