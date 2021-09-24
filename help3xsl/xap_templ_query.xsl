@@ -82,7 +82,7 @@ $def{SPAGE,<input type=submit name="[" value="$1" disabled=disabled>}
 <script type="text/javascript" src="polyfills.js"></script>
 <script type="text/javascript" src="languages.js"></script>
 <script type="text/javascript" src="]]><xsl:value-of select="$lang"/><![CDATA[/langnames.js"></script>
-<script type="text/javascript" src="fuzzysort.js"></script>
+<script type="text/javascript" src="flexsearch.debug.js"></script>
 <script type="text/javascript" src="prism.js"></script>
 <script type="text/javascript" src="help2.js" defer=""></script>
 <script type="text/javascript" src="a11y-toggle.js" defer=""></script>
