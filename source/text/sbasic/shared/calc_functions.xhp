@@ -11,20 +11,22 @@
 
 <meta>
   <topic id="callingcalcfunction" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">Calling Calc Functions in Macros</title>
+    <title id="tit" xml-lang="en-US">Using Calc Functions in Macros</title>
     <filename>/text/sbasic/shared/calc_functions.xhp</filename>
   </topic>
 </meta>
 <body>
   <bookmark xml-lang="en-US" branch="index" id="bm_id291592361063458">
     <bookmark_value>calling Calc function;macros</bookmark_value>
+    <bookmark_value>setting Calc function;macros</bookmark_value>
     <bookmark_value>macros;calling Calc function</bookmark_value>
+    <bookmark_value>macros;setting Calc function</bookmark_value>
     <bookmark_value>createUNOservice function;calling Calc function</bookmark_value>
     <bookmark_value>API;sheet.addin.Analysis</bookmark_value>
     <bookmark_value>API;sheet.FunctionAccess</bookmark_value>
   </bookmark>
-  <h1 id="hd_id91592352089011"><variable id="CallingCalcFunctionsh1"><link href="text/sbasic/shared/calc_functions.xhp" name="Calling Calc Functions">Calling Calc Functions</link></variable></h1>
-  <paragraph role="paragraph" id="par_id1001592359117987">In addition to the native BASIC functions, you can call Calc functions in your macros and scripts.</paragraph>
+  <h1 id="hd_id91592352089011"><variable id="CallingCalcFunctionsh1"><link href="text/sbasic/shared/calc_functions.xhp" name="Calling Calc Functions">Using Calc Functions in Macros</link></variable></h1>
+  <paragraph role="paragraph" id="par_id1001592359117987">In addition to the native BASIC functions, you can call Calc functions in your macros and scripts and set Calc funtions in cell formulas.</paragraph>
   <h2 id="hd_id251592352174921">Calling Internal Calc functions in Basic</h2>
   <paragraph role="paragraph" id="par_id731592352332694">Use the <literal>CreateUNOService</literal> function to access the <literal>com.sun.star.sheet.FunctionAccess</literal> service.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
@@ -54,17 +56,43 @@
     <paragraph role="bascode" localize="false" id="bas_id871629988324637">    MsgBox result</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id321629988324798">End Sub</paragraph>
   </bascode>
+  <h2 id="hd_id261632673377666">Setting Cell Formulas Containing Internal Calc Functions</h2>
+  <paragraph role="paragraph" id="par_id41632673385259">Use the formula text string to add a formula to a spreadsheet cell. </paragraph>
+  <note id="par_id291632673370039">All Calc functions must be expressed with their English names.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<bascode>
+<paragraph role="bascode" id="par_id531632673814120" xml-lang="en-US" localize="false">Sub AssignFormulaToCell</paragraph>
+<paragraph role="bascode" id="par_id101632673833258" xml-lang="en-US">REM Add a formula to cell A1. Function name must be in English.</paragraph>
+<paragraph role="bascode" id="par_id901632673823257" xml-lang="en-US" localize="false">    oCell = ThisComponent.Sheets.getByIndex(0).getCellRangeByName("A1")</paragraph>
+<paragraph role="bascode" id="par_id131632673828344" xml-lang="en-US" localize="false">    oCell.Formula = "=SUM(B1:B10)"</paragraph>
+<paragraph role="bascode" id="par_id191632673837838" xml-lang="en-US">REM Cell A1 displays the localized function name</paragraph>
+<paragraph role="bascode" id="par_id471632673842154" xml-lang="en-US" localize="false">End Sub</paragraph>
+</bascode>
+
   <h2 id="hd_id561592352225441">Calling Add-In Calc Functions in BASIC</h2>
   <paragraph role="paragraph" id="par_id261592359338681">The Calc Add-In functions are in service <literal>com.sun.star.sheet.addin.Analysis</literal>.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
-<paragraph role="bascode" id="bas_id421592358343633">REM Example calling Addin function SQRTPI</paragraph>
+<paragraph role="bascode" id="bas_id421592358343633">REM Example calling Add-in function SQRTPI</paragraph>
 <paragraph role="bascode" id="bas_id731592358351744">Function MySQRTPI(arg as double) as double</paragraph>
 <paragraph role="bascode" id="bas_id731592358361242" localize="false">   Dim oService as Object</paragraph>
 <paragraph role="bascode" id="bas_id971592358368906" localize="false">   oService = createUNOService("com.sun.star.sheet.addin.Analysis")</paragraph>
 <paragraph role="bascode" id="bas_id211592358377026">   MySQRTPI = oService.getSqrtPi(arg)</paragraph>
 <paragraph role="bascode" id="bas_id451592358385346" localize="false">End Function</paragraph>
 </bascode>
+
+<h2 id="hd_id251632673972700">Setting Cell Formulas with Add-In Functions</h2>
+<paragraph role="paragraph" id="par_id431632674656090">The Add-In function must be expressed by its UNO service name.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<bascode>
+<paragraph role="bascode" id="par_id531632373814120" xml-lang="en-US" localize="false">Sub AssignAddInFormulaToCell</paragraph>
+<paragraph role="bascode" id="par_id101632623833258" xml-lang="en-US">REM Add an Add-In formula to cell A1. Function name is the UNO service name.</paragraph>
+<paragraph role="bascode" id="par_id905632673823257" xml-lang="en-US" localize="false">    oCell = ThisComponent.Sheets.getByIndex(0).getCellRangeByName("A1")</paragraph>
+<paragraph role="bascode" id="par_id131632673828344" xml-lang="en-US" localize="false">    oCell.Formula = "=com.sun.star.sheet.addin.Analysis.getBin2Dec(B1)"</paragraph>
+<paragraph role="bascode" id="par_id191632673867838" xml-lang="en-US">REM Cell A1 displays the localized function name</paragraph>
+<paragraph role="bascode" id="par_id471632673842254" xml-lang="en-US" localize="false">End Sub</paragraph>
+</bascode>
+<h2 id="hd_id661632676716180">Add-In Functions UNO service Names</h2>
 <paragraph role="paragraph" id="par_id651629988674793">The table below presents a list of all Calc Add-In functions and their respective UNO service names.</paragraph>
 <table id="tab_id971592356505781">
     <tablerow>
