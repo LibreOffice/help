@@ -20,18 +20,42 @@
         <bookmark_value>Python Interactive Shell</bookmark_value>
     </bookmark>
     <section id="pythonshell">
-        <paragraph role="heading" level="1" id="N0118"><variable id="pythonshell1"><link href="text/sbasic/python/python_shell.xhp" name="python shell">Running Python Interactive Console</link></variable></paragraph>
+        <h1 id="N0118"><variable id="pythonshell1"><link href="text/sbasic/python/python_shell.xhp" name="python shell">Running Python Interactive Console</link></variable></h1>
     </section>
     <paragraph role="paragraph" id="N0119">The Python interactive console, also known as Python interpreter or Python shell, provides programmers with a quick way to execute commands and try out and test code without creating a file. UNO objects introspection as well as %PRODUCTNAME Python modules documentation can be obtained from the terminal.</paragraph>
-    <paragraph role="heading" level="2" id="N0121">Using a Basic macro:</paragraph>
+
+    <note id="par_id851633601202270">From a full-featured %PRODUCTNAME installed package, use either Basic or Python:</note>
+    <h2 id="N0121">Using a Basic macro</h2>
     <bascode>
         <paragraph role="bascode" id="N0122" localize="false">Sub interpreter_console</paragraph>
         <paragraph role="bascode" id="N0123" localize="false">    ps = CreateUnoService(&quot;com.sun.star.util.PathSettings&quot;)</paragraph>
         <paragraph role="bascode" id="N0124" localize="false">    install_path = ConvertFromURL(ps.Module)</paragraph>
-        <paragraph role="bascode" id="N0125" localize="false">    Shell( install_path + GetPathSeparator() + &quot;python&quot; )</paragraph>
+        <paragraph role="bascode" id="N0125" localize="false">    Shell(<switchinline select="sys"><caseinline  select="UNIX"> &quot;konsole -e &quot; +</caseinline><defaultinline></defaultinline></switchinline> install_path + GetPathSeparator() + &quot;python&quot; )</paragraph>
         <paragraph role="bascode" id="N0126" localize="false">End Sub</paragraph>
     </bascode>
-    <paragraph role="heading" level="2" id="N0127">Using a Python macro:</paragraph>
+
+    <switch select="sys">
+       <case select="UNIX">
+    <paragraph role="paragraph" id="par_id901633602204879">Specify the terminal name according to the desktop environment:</paragraph>
+    <list type="unordered">
+    <listitem>
+        <paragraph id="par_id611633602280615" role="listitem">gnome-terminal if Gnome</paragraph>
+    </listitem>    <listitem>
+        <paragraph id="par_id881633602338296" role="listitem">lxterminal if LxDE</paragraph>
+      </listitem>    <listitem>
+        <paragraph id="par_id801633602345030" role="listitem">qterminal if LxQt</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id171633602345478" role="listitem">mate-terminal if Mate</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id251633602418935" role="listitem">and the like …</paragraph>
+    </listitem>
+    </list>
+       </case>
+    </switch>
+
+    <h2 id="N0127">Using a Python macro</h2>
     <pycode>
         <paragraph role="pycode" id="N0128" localize="false"># -*- coding: utf-8 -*-</paragraph>
         <paragraph role="pycode" id="N0129" localize="false">from __future__ import unicode_literals</paragraph>
@@ -47,13 +71,30 @@
         <paragraph role="pycode" id="N0139" localize="false">    subprocess.Popen(pgm)  # Start Python interactive Shell</paragraph>
         <paragraph role="pycode" id="N0140" localize="false">    </paragraph>
     </pycode>
-    <paragraph role="heading" level="2" id="N0141">Usage:</paragraph>
+    <h3 id="N0141">Example output</h3>
     <paragraph role="paragraph" id="N0142">
-        <image src="media/helpimg/python/python_shell.png" id="N0143"><alt id="N0144">Python Interactive Console</alt></image>
+        <image src="media/helpimg/python/python_interactive_console.png" id="N0143"><alt id="N0143">Python Interactive Console</alt></image>
+    </paragraph>
+
+    <switch select="sys">
+       <case select="UNIX">
+    <h2 id="hd_id381633446811095">Using the Terminal</h2>
+    <note id="par_id801633601715910">From a %PRODUCTNAME copy included in a GNU/Linux platform, use the terminal as shown:</note>
+    <paragraph role="paragraph" id="par_id531633444780190"><literal>whereis</literal> or <literal>type</literal> terminal commands help locate Python interactive console:</paragraph>
+    <paragraph role="paragraph" id="par_id871633361808210" localize="false"><br/><input>user@computer:~$ </input><emph>type -p python3</emph><br/><input>/usr/bin/python3</input><br/> <input>user@computer:~$ </input><emph>/usr/bin/python3</emph><br/> <input>Python 3.7.5 (default, Nov 20 2019, 09:21:52)</input><br/><input>[GCC 9.2.1 20191008] on linux</input><br/><input>Type "help", "copyright", "credits" or "license" for more information.</input><br/><input>>>> </input><emph>import uno</emph><br/><input>>>> </input><emph>dir(uno)</emph><br/><input>['Any', 'Bool', 'ByteSequence', 'Char', 'Enum', 'PY2', 'Type', '_ConstantGroup', '__builtin__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', '_builtin_import', '_component_context', '_impl_getConstantGroupByName', '_uno_extract_printable_stacktrace', '_uno_import', '_uno_struct__eq__', '_uno_struct__getattr__', '_uno_struct__init__', '_uno_struct__ne__', '_uno_struct__repr__', '_uno_struct__setattr__', '_uno_struct__str__', 'absolutize', 'createUnoStruct', 'fileUrlToSystemPath', 'generateUuid', 'getClass', 'getComponentContext', 'getConstantByName', 'getCurrentContext', 'getTypeByName', 'invoke', 'isInterface', 'os', 'pyuno', 'setCurrentContext', 'six_string_types', 'socket', 'sys', 'systemPathToFileUrl', 'traceback', 'warnings']</input><br/><input>>>> </input><emph>exit()</emph><br/><input>user@computer:~$</input></paragraph>
+       </case>
+    </switch>
+      
+    <h2 id="hd_id311633513620803">Alternative console</h2>
+    <paragraph role="paragraph" id="par_id81632760673283">Use <link href="https://extensions.libreoffice.org/extensions/apso-alternative-script-organizer-for-Python" name="APSO extension">APSO extension</link> console as an alternative:</paragraph>
+    <paragraph role="paragraph" id="N0144">
+        <image src="media/helpimg/python/python_shell.png" id="N0144"><alt id="N0144">APSO console</alt></image>
     </paragraph>
     <section id="relatedtopics">
+        <paragraph role="paragraph" id="par_id351633599611244"><link href="text/sbasic/shared/03/sf_exception.html?#PythonShell" name="PythonShell method"><literal>PythonShell</literal></link> function in <link href="text/sbasic/shared/03/sf_exception.html" name="ScriptForge.Exception service"><literal>ScriptForge.Exception</literal></link> service</paragraph>
         <embed href="text/sbasic/python/python_examples.xhp#pythonexamples2"/>
         <embed href="text/sbasic/python/main0000.xhp#pythonscriptshelp"/>
+        
     </section>
-</body>
+    </body>
 </helpdocument>
