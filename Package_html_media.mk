@@ -349,6 +349,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/starmath/un21214.svg \
     helpimg/starmath/un21215.svg \
     helpimg/starmath/un21221.svg \
+    helpimg/python/python_interactive_console.png \
     helpimg/python/python_shell.png \
     helpimg/sw_paste_range.png \
     helpimg/sw_signatureline01.png \
