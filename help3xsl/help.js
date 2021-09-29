@@ -11,9 +11,10 @@
 var url = window.location.pathname;
 var moduleRegex = new RegExp('text\\/(\\w+)\\/');
 var regexArray = moduleRegex.exec(url);
+var userModule = currentModule();
 var modules = ['CALC', 'WRITER', 'IMPRESS', 'DRAW', 'BASE', 'MATH', 'CHART', 'BASIC', 'SHARED'];
 var indexEl = document.getElementsByClassName("index")[0];
-var fullLinks = fullLinkify(indexEl, bookmarks, modules, currentModule());
+var fullLinks = fullLinkify(indexEl, bookmarks, modules, userModule);
 var search = document.getElementById('search-bar');
 search.addEventListener('keyup', debounce(filter, 100, indexEl));
 var flexIndex =  new FlexSearch.Document({ document: {
@@ -38,17 +39,29 @@ window.addEventListener('unload', function(event) {
     sessionStorage.setItem('searchsave', search.value);
 });
 
+function getQuery(q) {
+   var pattern = new RegExp('[?&]' + q + '=([^&]+)');
+   var param = window.location.search.match(pattern);
+   if (param) {
+       return param[1];
+   }
+   return null;
+}
+
 function currentModule() {
-    var module = '';
-    // get the module name from the URL and remove the first character,
-    // but first deal with snowflake Base
-    if(url.indexOf('explorer/database/') !== -1) {
-        module = 'BASE';
-    } else {
-        if (null === regexArray){// comes from search or elsewhere, no defined module in URL
-            module = 'HARED'
+    // We need to know the module that the user is using when they call for help
+    var module = getQuery('DbPAR');
+    if (module == null) {
+        // get the module name from the URL and remove the first character,
+        // but first deal with snowflake Base
+        if(url.indexOf('explorer/database/') !== -1) {
+            module = 'BASE';
         } else {
-            module = regexArray[1].toUpperCase().substring(1);
+            if (null === regexArray){// comes from search or elsewhere, no defined module in URL
+                module = 'HARED'
+            } else {
+                module = regexArray[1].toUpperCase().substring(1);
+            }
         }
     }
     return module;
@@ -99,6 +112,14 @@ function filter(indexList) {
     let regex = new RegExp(target.split(/\s+/).filter((i) => i?.length).join("|"), 'gi');
     let results = flexIndex.search(target, { pluck: "text", enrich: true, limit: 1000 });
 
+    // Similarly to fullLinkify(), limit search results to the user's current module + shared
+    // unless they're somehow not coming from a module.
+    if(userModule !== 'HARED') {
+        resultModules = [userModule, 'SHARED'];
+    } else {
+        resultModules = modules;
+    }
+
     // tdf#123506 - Group the filtered list into module groups, keeping the ordering
     modules.forEach(function(module) {
         group[module] = '';
@@ -106,7 +127,7 @@ function filter(indexList) {
     results.forEach(function(result) {
         group[result.doc.app] += '<a href="' + result.doc.url + '" class="' + result.doc.app + '">' + result.doc.text.replace(regex, (match) => `<strong>${match}</strong>`) + '</a>';
     });
-    modules.forEach(function(module) {
+    resultModules.forEach(function(module) {
         if (group[module].length > 0) {
             filtered += group[module];
         }
