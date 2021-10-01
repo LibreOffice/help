@@ -52,6 +52,24 @@
       "parentUuid": "d9d372ce_e6ec5af5",
       "revId": "71d1c3403820c00020d9dbe17e065eef9da13a43",
       "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3184f90_818a2945",
+        "filename": "source/text/scalc/01/04060106.xhp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1393,
+      "author": {
+        "id": 1000023
+      },
+      "writtenOn": "2021-10-01T13:02:44Z",
+      "side": 1,
+      "message": "\u003e CONVERT_OOO Help page should warn that the function will be deprecated soon (will it?) and user advised to use EUROCONVERT and CONVERT wherever possible.\n\nNo, there is no intention to deprecate it. But advising to use EUROCONVERT() instead of the currency conversions provided with CONVERT_OOO() is good. CONVERT() does not provide conversions CONVERT_OOO() would have, unless users added such factors to the configuration.\n\n\n\u003e Users touching main.xcd is a time bomb for costly calls to Help Desk.\n\nIt was never meant to have users modify main.xcd (conversion factors could be added to registrymodifications.xcu instead, like with all configuration changes). Back in the days it was introduced even as a separate file that could be rewritten, but nowadays that way the configuration mechanism allows enterprises to maintain conversion factors centrally in the admin configuration, it could even be updated on a regular basis to provide arbitrary currency exchange rates, product prices or whatever one would think of. It wasn\u0027t meant for end users. But I also doubt the feature got wider adopted in the wild.",
+      "parentUuid": "6cf3cc22_37283a1b",
+      "revId": "71d1c3403820c00020d9dbe17e065eef9da13a43",
+      "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615"
     }
   ]
 }
