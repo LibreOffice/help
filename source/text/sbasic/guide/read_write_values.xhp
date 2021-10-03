@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_FormControl" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Reading and Writing values to Ranges</title>
+    <filename>/text/sbasic/guide/read_write_values.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+  <bookmark localize="false" branch="index" id="bm_id41582391760114">
+    <bookmark_value>macros;read values from cells</bookmark_value>
+    <bookmark_value>macros;write values to cells</bookmark_value>
+  </bookmark>
+  <h1 id="hd_id461623364876507"><variable id="title"><link href="text/sbasic/guide/read_write_values.xhp" name="ReadWriteValues_h1">Reading and Writing values to Ranges</link></variable></h1>
+  <paragraph role="paragraph" id="par_id781633210592228">Macros in %PRODUCTNAME Calc often need to read and write values from/to sheets. This help page describes the various approaches to accessing sheets and ranges to read or write their values.</paragraph>
+  <note id="par_id191633214565965">All examples presented in this page can be implemented both in Basic and Python.</note>
+
+  <h2 id="hd_id331633213558740">Accessing a Single Cell</h2>
+  <paragraph role="paragraph" id="par_id731633213581386">The example below enters the numeric value 123 into cell "A1" of the current sheet.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id1001633213643422">Dim oSheet as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id871633213643663">Dim oCell as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id591633213643809">oSheet = ThisComponent.CurrentController.getActiveSheet()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id311633213803255">oCell = oSheet.getCellRangeByName("A1")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id321633213808005">oCell.setValue(123)</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id131633213887433">The same can be accomplished with Python:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id641633214066390">doc = XSCRIPTCONTEXT.getDocument()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id201633214066644">sheet = doc.getCurrentController().getActiveSheet()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id831633214066790">cell = sheet.getCellRangeByName("A1")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id371633214066935">cell.setValue(123)</paragraph>
+  </pycode>
+  <paragraph role="paragraph" id="par_id861633214219511">Note that in the previous examples the cell is accessed using its range name "A1". It is also possible to access cells using indices as though the sheet were a matrix where columns and rows are indexed starting from zero.</paragraph>
+  <paragraph role="paragraph" id="par_id161633214461067">This can be done using the <literal>getCellByPosition(colIndex, rowIndex)</literal> method, that takes in a column and a row index. The example below in Basic changes the text value in cell "C1" (column 2, row 0).</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id111633214658017">oSheet = ThisComponent.CurrentController.getActiveSheet()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id81633214658358">oCell = oSheet.getCellByPosition(2, 0)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id121633214658518">oCell.setString("Hello")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id221633214713436">This example can also be implemented in Python as follows:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id501633214747969">doc = XSCRIPTCONTEXT.getDocument()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id321633214748196">sheet = doc.getCurrentController().getActiveSheet()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id581633214748362">cell = sheet.getCellByPosition(2, 0)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id11633214748538">cell.setString("Hello")</paragraph>
+  </pycode>
+  <note id="par_id101633215142970">The main difference between Python and Basic scripts lies on how to get access to the sheet object by using the <literal>XSCRIPTCONTEXT</literal> context variable. After that, all methods and properties are identical in Basic and Python.</note>
+  <h2 id="hd_id411633215666257">Values, Strings and Formulas</h2>
+  <paragraph role="paragraph" id="par_id861633215682610">Calc cells can have three types of values: numeric, strings and formulas. Each type has its own set and get methods:</paragraph>
+  <table id="tab_id841633215791905">
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id191633215791905" role="tablehead">Type</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id381633215791905" localize="false" role="tablehead">Get Method</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id111633215791905" localize="false" role="tablehead">Set Method</paragraph>
+       </tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id181633215791905" role="tablecontent">Numeric</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id701633215791905" localize="false" role="tablecontent"><literal>getValue()</literal></paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id391633215791905" localize="false" role="tablecontent"><literal>setValue(newValue)</literal></paragraph>
+       </tablecell>
+   </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id961633215932180" role="tablecontent">Text</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id641633215941293" localize="false" role="tablecontent"><literal>getString()</literal></paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id731633215943212" localize="false" role="tablecontent"><literal>setString(newString)</literal></paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id651633215984116" role="tablecontent">Formula</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id151633215985290" localize="false" role="tablecontent"><literal>getFormula()</literal></paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id661633215985584" localize="false" role="tablecontent"><literal>setFormula(newFormula)</literal></paragraph>
+       </tablecell>
+    </tablerow>
+  </table>
+  <note id="par_id21633215845395">Dates and currency values are considered as numeric values in Calc.</note>
+  <paragraph role="paragraph" id="par_id221633216111353">The following example enters numeric values into cells "A1" and "A2" and inserts a formula in cell "A3" that returns the multiplication of these values.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id101633216444190">oSheet = ThisComponent.CurrentController.getActiveSheet()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id71633216444993">oCell = oSheet.getCellRangeByName("A1")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id551633216445179">oCell.setValue(10)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id291633216445364">oCell = oSheet.getCellRangeByName("A2")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id831633216445527">oCell.setValue(20)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id351633216445704">oCell = oSheet.getCellRangeByName("A3")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371633216445928">oCell.setFormula("=A1*A2")</paragraph>
+  </bascode>
+  <h2 id="hd_id321633216630043">Accessing Ranges in Different Sheets</h2>
+  <paragraph role="paragraph" id="par_id371633216672570">The previous examples used only the active sheet to perform operations. It is possible to access cell ranges in different sheets by their indices or names.</paragraph>
+  <paragraph role="paragraph" id="par_id861633216843382">The example below enters a numeric value into cell "A1" of the sheet named "Sheet2".</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id451633216955038">oSheet = ThisComponent.Sheets.getByName("Sheet2")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id291633216955305">oCell = oSheet.getCellRangeByName("A1")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id971633216955455">oCell.setValue(123)</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id611633217090743">This example can also be implemented in Python as follows:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id701633217100520">doc = XSCRIPTCONTEXT.getDocument()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id821633217100824">sheet = doc.Sheets["Sheet2"]</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id941633217101010">cell = sheet.getCellRangeByName("A1")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id551633217101223">cell.setValue(123)</paragraph>
+  </pycode>
+  <paragraph role="paragraph" id="par_id631633217279518">Sheets can also be accessed using zero-based indices indicating which sheet considering the order they appear in the Calc file.</paragraph>
+  <paragraph role="paragraph" id="par_id291633264880172">In Basic, instead of using the <literal>getByName</literal> method, use <literal>Sheets(sheetIndex)</literal> as shown next:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id101633264967469">oSheet = ThisComponent.Sheets(0)</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id891633265000047">This can be done in a similar fashion in Python:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id91633265043348">sheet = doc.Sheets[0]</paragraph>
+  </pycode>
+  <h2 id="hd_id451633265241066">Using the ScriptForge Library</h2>
+  <paragraph role="paragraph" id="par_id731633265268585">The Calc service of the ScriptForge library can be used to get and set cell values as follows:</paragraph>
+  <bascode>
+    <paragraph role="paragraph" id="par_id551633265526538">' Loads the ScriptForge library</paragraph>
+    <paragraph role="paragraph" localize="false" id="par_id841633265526803">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
+    <paragraph role="paragraph" id="par_id581633265527001">' Gets access to the current Calc document</paragraph>
+    <paragraph role="paragraph" localize="false" id="par_id721633265527202">oDoc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="paragraph" id="par_id751633265527427">' Sets the value of cells A1 and A2</paragraph>
+    <paragraph role="paragraph" localize="false" id="par_id261633265527616">oDoc.setValue("A1", "Hello")</paragraph>
+    <paragraph role="paragraph" localize="false" id="par_id511633265527793">oDoc.setValue("A2", 123)</paragraph>
+  </bascode>
+  <note id="par_id781633267324929">The <literal>setValue</literal> method can be used to set both numeric and text values. To set a cell formula, use the <literal>setFormula</literal> method.</note>
+  <paragraph role="paragraph" id="par_id251633265634883">With the Calc service, getting and setting cell values can be done with a single line of code. The example below gets the value from cell "A1" and shows it on a message box.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id981633265860659">Dim val as Variant, oDoc as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id321633265860947">oDoc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id961633265861153">val = oDoc.getValue("A1")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id161633265861435">MsgBox val</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id521633608223310">The ScriptForge library also makes it simpler to access ranges in different sheets, as demonstrated in the example below:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id761633608365821">Dim val1, val2</paragraph>
+    <paragraph role="bascode" id="bas_id521633608366292">' Gets cell "A1" from the sheet named "Sheet1"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id351633608366132">val1 = oDoc.getValue("Sheet1.A1")</paragraph>
+    <paragraph role="bascode" id="bas_id661633608366484">' Gets cell "B3" from the sheet named "Sheet2"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id351633608366882">val2 = oDoc.getValue("Sheet2.B3")</paragraph>
+    <paragraph role="bascode" id="bas_id501633608516381">' Places the result into cell "A1" of sheet "Report"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id391633608564643">Dim result : result = val1 * val2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id171633608516608">oDoc.setValue("Report.A1", result)</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id431633266057163">The examples above can also be implemented in Python as follows:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id421633266075692">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id181633266076836">doc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id951633266077067">doc.setValue("A1", "Hello")</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id181633266076867">doc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id631633266227188">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id471633266077260">val = doc.getValue("A1")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id751633266077419">bas.MsgBox(val)</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id51633608688348">first_val = doc.getValue("Sheet1.A1")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id601633608688574">second_val = doc.getValue("Sheet2.B3")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id801633608688713">result = first_val * second_val</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id941633608688898">doc.setValue("Report.A1", result)</paragraph>
+  </pycode>
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#ScriptForge_lib"/>
+    <embed href="text/sbasic/shared/03/sf_calc.xhp#CalcService"/>
+    <embed href="text/sbasic/python/python_programming.xhp#pythonprogrammingheading"/>
+  </section>
+  </body>
+</helpdocument>
