@@ -11,7 +11,7 @@
 #
 # Run this script followed by the path of instdir/share/registry/
 # i.e.: ./convertfilters.py /path/to/source/core/instdir/share/registry
-# 
+#
 # Requires Python 3.6 or greater.
 
 import os
@@ -35,9 +35,9 @@ if not os.path.exists(registry_dir):
 modules = ["writer.xcd","calc.xcd","impress.xcd","draw.xcd","math.xcd","base.xcd","graphicfilter.xcd"]
 
 def gen_id(apiname):
-    '''This function accepts module name and an API Name of the filter, and then generate 
+    '''This function accepts module name and an API Name of the filter, and then generate
     a unique ID. API Names are used since they are unique within the page.
-    
+
     Do not use random numbers or sequence-count numbers here since it will cause all words to be "fuzzy" in PO files
     when the xhp file is regenerated.
     '''
@@ -45,7 +45,7 @@ def gen_id(apiname):
     apiname = apiname.replace("(", "_")
     apiname = apiname.replace(")", "_")
     apiname = apiname.replace("/", "_")
-    
+
     return apiname
 
 output = '''<?xml version="1.0" encoding="UTF-8"?>
@@ -78,10 +78,16 @@ output = '''<?xml version="1.0" encoding="UTF-8"?>
     </h1>
     <paragraph id="par_id581554399002498" role="paragraph" xml-lang="en-US">
         <variable id="variable name">
-            <ahelp hid=".">Tables with filter names for command line document conversion.</ahelp>
+            <ahelp hid=".">Tables with filter names for <link href="text/shared/guide/start_parameters.xhp" name="commandline">command line</link> document conversion.</ahelp>
         </variable>
     </paragraph>
 </section>
+<h2 id="hd_id531633524464103">Usage</h2>
+<paragraph role="paragraph" id="par_id801633524474460">Filter names are used when importing and exporting files in alien formats and converting files formats through the <link href="text/shared/guide/start_parameters.xhp" name="commandline">command line</link>.</paragraph>
+<paragraph role="paragraph" id="par_id314959p" localize="false" xml-lang="en-US"><emph>soffice --convert-to OutputFileExtension[:OutputFilterName[:OutputFilterParams[,param]]] [--outdir output_dir]</emph></paragraph>
+<embed href="text/shared/guide/start_parameters.xhp#convertto"/>
+<paragraph role="tablecontent" id="par_id314959o" localize="false" xml-lang="en-US"><emph>soffice --infilter=&quot;InputFilterName[:InputFilterParams[,param]]&quot;</emph></paragraph>
+<paragraph role="paragraph" id="par_id501550934647297" localize="false"><input>--infilter="Text (encoded):UTF8,LF,Liberation Mono,en-US"</input>.</paragraph>
 '''
 
 output += '''
@@ -107,7 +113,7 @@ for module in modules:
     for filter_node in filternodes:
         uiname = str(filter_node.findtext('prop[@oor:name="UIName"]/value', namespaces=namespaces))
         apiname = filter_node.attrib['{' + namespaces['oor'] + '}name']
-        
+
         filter_type = str(filter_node.findtext('prop[@oor:name="Type"]/value', namespaces=namespaces))
         type_node = tree.find(
             f'oor:component-data[@oor:name="Types"]/node/node[@oor:name="{filter_type}"]',
@@ -117,11 +123,11 @@ for module in modules:
             extensions = str(type_node.findtext('prop[@oor:name="Extensions"]/value', namespaces=namespaces))
         except AttributeError:
             continue
-        
+
         filter_data = [uiname, apiname, mediatype, extensions]
         print(filter_data)
         filters.append(filter_data)
-    
+
     output += f'\
 <section id="filters{module[:-4]}">\n\
     <bookmark xml-lang="en-US" branch="index" id="bm_000{module[:-4]}">\n\
@@ -156,13 +162,13 @@ for module in modules:
                 <paragraph role="table_font_small paragraph" id="FilterName_{uid}">{item[0]}</paragraph>\n\
             </tablecell>\n\
             <tablecell>\n\
-                <paragraph role="table_font_small paragraph" id="APIName_{uid}" localize="false">{item[1]}</paragraph>\n\
+                <paragraph role="table_font_small paragraph" id="APIName_{uid}" localize="false">&quot;{item[1]}&quot;</paragraph>\n\
             </tablecell>\n\
             <tablecell>\n\
                 <paragraph role="table_font_small paragraph" id="MediaType_{uid}" localize="false">{item[2]} ({item[3]})</paragraph>\n\
             </tablecell>\n\
         </tablerow>\n'
-    
+
     output += f'\
     </table>\n\
 </section>\n'
