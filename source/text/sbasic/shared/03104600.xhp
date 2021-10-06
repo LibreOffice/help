@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -18,37 +18,53 @@
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  -->
 
-<helpdocument version="1.0">
 <meta>
-<topic id="textsbasicshared03104600xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">EqualUnoObjects Function</title>
-<filename>/text/sbasic/shared/03104600.xhp</filename>
-</topic>
-<history>
-<created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
-</history>
+  <topic id="textsbasicshared03104600xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">EqualUnoObjects Function</title>
+    <filename>/text/sbasic/shared/03104600.xhp</filename>
+  </topic>
+  <history>
+    <created date="2003-10-31T00:00:00">Sun Microsystems, Inc.</created>
+  </history>
 </meta>
+
 <body>
-<section id="equalunoobjects">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3149205"><bookmark_value>EqualUnoObjects function</bookmark_value>
-</bookmark>
-<paragraph role="heading" id="hd_id3149205" xml-lang="en-US" level="1"><link href="text/sbasic/shared/03104600.xhp" name="EqualUnoObjects Function">EqualUnoObjects Function</link></paragraph>
-<paragraph role="paragraph" id="par_id3145090" xml-lang="en-US">Returns True if the two specified Basic Uno objects represent the same Uno object instance.</paragraph>
-</section>
-<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-<paragraph role="code" localize="false" id="par_id3150669" xml-lang="en-US">EqualUnoObjects( oObj1, oObj2 )</paragraph>
-<embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
-<paragraph role="paragraph" id="par_id3154285" xml-lang="en-US">Bool</paragraph>
-<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-<bascode>
-    <paragraph role="bascode" id="par_id3156024" xml-lang="en-US">' Copy of objects -&gt; same instance</paragraph>
-    <paragraph role="bascode" localize="false" id="par_id3154923" xml-lang="en-US">oIntrospection = CreateUnoService( "com.sun.star.beans.Introspection" )</paragraph>
-    <paragraph role="bascode" localize="false" id="par_id3147559" xml-lang="en-US">oIntro2 = oIntrospection</paragraph>
-    <paragraph role="bascode" localize="false" id="par_id3150541" xml-lang="en-US">print EqualUnoObjects( oIntrospection, oIntro2 )</paragraph>
-    <paragraph role="bascode" id="par_id3153525" xml-lang="en-US">' Copy of structs as value -&gt; new instance</paragraph>
-    <paragraph role="bascode" localize="false" id="par_id3154366" xml-lang="en-US">Dim Struct1 as new com.sun.star.beans.Property</paragraph>
-    <paragraph role="bascode" localize="false" id="par_id3154348" xml-lang="en-US">Struct2 = Struct1</paragraph>
-    <paragraph role="bascode" localize="false" id="par_id3154125" xml-lang="en-US">print EqualUnoObjects( Struct1, Struct2 )</paragraph>
-</bascode>
+  <section id="equalunoobjects">
+    <bookmark xml-lang="en-US" branch="index" id="bm_id3149205">
+      <bookmark_value>EqualUnoObjects function</bookmark_value>
+    </bookmark>
+    <h1 id="hd_id791633472607429"><variable id="EqualUnoObjects_h1"><link href="text/sbasic/shared/03104600.xhp" name="EqualUnoObjects Function">EqualUnoObjects Function</link></variable></h1>
+    <paragraph role="paragraph" id="par_id3145090">Returns <emph>True</emph> if the two specified Basic variables represent the same Uno object instance.</paragraph>
+  </section>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id711633530276845">
+    <input>EqualUnoObjects(oObj1, oObj2)</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id61633530293311"><emph>oObj1, oObj2:</emph> the variables to be tested.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
+  <paragraph role="paragraph" id="par_id3154285">Bool</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id771633473462939">The example below returns <emph>True</emph> because both <literal>oDoc</literal> and <literal>ThisComponent</literal> are references to the same object:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id981633473836933">Dim oDoc as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941633473837598">oDoc = ThisComponent</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id3150541">MsgBox EqualUnoObjects(oDoc, ThisComponent) ' True</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id181633473874216">The example below returns <emph>False</emph> because the assignment creates a copy of the original object. Hence <literal>Struct1</literal> and <literal>Struct2</literal> refer to different object instances.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id441633474052121">Dim Struct1 as new com.sun.star.beans.PropertyValue</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id191633474052633">Dim Struct1 Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id201633474052866">a.Name = "John"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id761633474053090">b = a</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id251633474053313">MsgBox EqualUnoObjects(Struct1, Struct2) ' False</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id441633474053530">b.Name = "Judy"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id611633474053754">MsgBox a.Name ' John</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id251633474053977">MsgBox b.Name ' Judy</paragraph>
+  </bascode>
+  
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03102800.xhp#IsObject_h1"/>
+  </section>
 </body>
 </helpdocument>
