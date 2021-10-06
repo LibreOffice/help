@@ -35,19 +35,34 @@
         <paragraph role="paragraph" id="par_id3147009" xml-lang="en-US">By starting $[officename] software from the command line you can assign various parameters, with which you can influence the performance. The use of command line parameters is only recommended for experienced users.</paragraph>
         <note id="par_id3147618">For normal handling, the use of command line parameters is not necessary. A few of the parameters require a deeper knowledge of the technical background of $[officename] software technology.</note>
         <h2 id="hd_id3154898">Starting $[officename] Software From the Command Line</h2>
-        <list type="ordered">
+        <switch select="sys">
+            <case select="WIN">
+            <list type="ordered">
             <listitem>
-                <paragraph role="listitem" id="par_id3156152" xml-lang="en-US">Under Windows, select <emph>Run</emph> from the Windows Start menu, or open a shell under Linux, *BSD, or macOS platforms.</paragraph>
+                <paragraph role="listitem" id="par_id3156152" xml-lang="en-US">Select <emph>Run</emph> from the Windows Start menu.</paragraph>
             </listitem>
             <listitem>
-                <paragraph role="listitem" id="par_id3152472" xml-lang="en-US">Under Windows, type the following text in the <emph>Open </emph>text field and click <emph>OK</emph>. </paragraph>
+                <paragraph role="listitem" id="par_id3152472" xml-lang="en-US">Type the following text in the <emph>Open</emph> text field and click <emph>OK</emph>. </paragraph>
             </listitem>
             <listitem>
-                <paragraph role="listitem" id="par_id3149669" xml-lang="en-US">Under UNIX-like systems, type the following line of text, then press <emph>Return</emph>:</paragraph>
-                <paragraph role="listitem" id="par_id3147561" xml-lang="en-US"><switchinline select="sys"><caseinline select="WIN">{install}\program\soffice.exe {parameter}</caseinline><caseinline select="UNIX">{install}/program/soffice {parameter}</caseinline></switchinline></paragraph>
-                <paragraph role="listitem" id="par_id3153360" xml-lang="en-US">Replace <emph>{install}</emph> with the path to your installation of $[officename] software (for example, <emph>C:\Program Files\Office</emph> in Windows, or <emph>~/office</emph> in UNIX)</paragraph>
+                <paragraph role="listitem" id="par_id3147561" xml-lang="en-US">{install}\program\soffice.exe {parameter}</paragraph>
+                <paragraph role="listitem" id="par_id3153360" xml-lang="en-US">Replace <emph>{install}</emph> with the path to your installation of %PRODUCTNAME software (for example, <emph>C:\Program Files\%PRODUCTNAME</emph></paragraph>
             </listitem>
-        </list>
+            </list>
+            </case>
+            <default>
+            <list type="ordered">
+            <listitem>
+                <paragraph role="listitem" id="par_id3157152" xml-lang="en-US">Open a shell under Linux, *BSD, or macOS platforms.</paragraph>
+            </listitem>
+            <listitem>
+                <paragraph role="listitem" id="par_id3147669" xml-lang="en-US">Type the following line of text, then press <emph>Return</emph>:</paragraph>
+                <paragraph role="listitem" id="par_id3143561" xml-lang="en-US">{install}/program/soffice {parameter}</paragraph>
+                <paragraph role="listitem" id="par_id3157360" xml-lang="en-US">Replace <emph>{install}</emph> with the path to your installation of %PRODUCTNAME software (for example, <emph>/opt/%PRODUCTNAME</emph> in UNIX)</paragraph>
+            </listitem>
+            </list>
+            </default>
+        </switch>
     <h2 id="hd_id3145171">Valid Command Line Parameters</h2>
     <h3 id="hd_id1016120408556191">Using without special arguments</h3>
     <paragraph role="paragraph" id="par_id215247284938" xml-lang="en-US">Using without any arguments opens the start center.</paragraph>
@@ -83,7 +98,7 @@
             <tablecell>
                 <paragraph role="tablecontent" id="par_id3149983" localize="false" xml-lang="en-US"><emph>--help / -h / -?</emph></paragraph>
             </tablecell>
-            <tablecell colspan="" rowspan="">
+            <tablecell>
                 <paragraph role="tablecontent" id="par_id3147349" xml-lang="en-US">Lists the available command line parameters to the console.</paragraph>
             </tablecell>
         </tablerow>
@@ -254,7 +269,7 @@
             <tablecell>
                 <paragraph role="tablecontent" id="par_id3145641" localize="false" xml-lang="en-US"><emph>--invisible</emph></paragraph>
             </tablecell>
-            <tablecell colspan="" rowspan="">
+            <tablecell>
                 <paragraph role="tablecontent" id="par_id3154756" xml-lang="en-US">Starts in invisible mode.</paragraph>
                 <paragraph role="tablecontent" id="par_id3148914" xml-lang="en-US">Neither the start-up logo nor the initial program window will be visible. $[officename] software can be controlled, and documents and dialogs can be controlled and opened via the <link href="https://api.libreoffice.org" name="API">API</link>.</paragraph>
                 <paragraph role="tablecontent" id="par_id3147341" xml-lang="en-US">Using the parameter, $[officename] can only be ended using the taskmanager (Windows) or the <emph>kill </emph>command (UNIX-like systems).</paragraph>
@@ -389,7 +404,7 @@
             </table>
             <note id="par_id571571707462064">The debug options <emph>--record</emph>, <emph>--backtrace</emph>, <emph>--strace</emph> and <emph>--valgrind</emph> cannot be used together. Please use them one by one.</note>
             </case>
-            <default></default>
+            <default/>
     </switch>
     <h3 id="par_id20161204122420839">New document creation arguments</h3>
     <note id="par_id20161204122414892">The arguments create an empty document of specified kind. Only one of them may be used in one command line. If filenames are specified after an argument, then it tries to open those files in the specified component.</note>
@@ -523,16 +538,17 @@
             </tablecell>
         </tablerow>
         <tablerow>
-            <tablecell colspan="" rowspan="">
-                <paragraph role="tablecontent" id="par_id314959p" localize="false" xml-lang="en-US"><emph>--convert-to OutputFileExtension[:OutputFilterName] [--outdir output_dir]</emph></paragraph>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id314959p" localize="false" xml-lang="en-US"><emph>--convert-to OutputFileExtension<br/>[:OutputFilterName[:OutputFilterParams]]<br/> [--outdir output_dir]</emph></paragraph>
             </tablecell>
             <tablecell>
-                <paragraph role="tablecontent" id="par_id315053p" xml-lang="en-US">Batch convert files (implies --headless). If --outdir isn't specified, then current working directory is used as output_dir.</paragraph>
-                <paragraph id="par_id2016120401222926" role="tablecontent" xml-lang="en-US">If --convert-to is used more than once, last value of OutputFileExtension[:OutputFilterName] is effective. If --outdir is used more than once, only its last value is effective. For example:</paragraph>
+                <section id="convertto">
+                <paragraph id="par_id2016120401222926" role="tablecontent" xml-lang="en-US">If --convert-to is used more than once, last value of OutputFileExtension[:OutputFilterName[:OutputFilterParams]] is effective. If --outdir is used more than once, only its last value is effective. For example:</paragraph>
                 <paragraph id="par_id20161204012319752" role="tablecontent" localize="false" xml-lang="en-US"><input>--convert-to pdf *.doc</input></paragraph>
                 <paragraph role="tablecontent" id="par_id311550932952863" localize="false"><input>--convert-to pdf:writer_pdf_Export --outdir /home/user *.doc</input></paragraph>
                 <paragraph role="tablecontent" id="par_id231550932985601" localize="false"><input>--convert-to "html:XHTML Writer File:UTF8" *.doc</input></paragraph>
                 <paragraph role="tablecontent" id="par_id211550932999288" localize="false"><input>--convert-to "txt:Text (encoded):UTF8" *.doc</input></paragraph>
+                </section>
                 <paragraph role="paragraph" id="par_id781554408625219"><variable id="seefilters">See the <link href="text/shared/guide/convertfilters.xhp" name="list of document filters">list of document filters</link> for file conversion.</variable></paragraph>
             </tablecell>
         </tablerow>
