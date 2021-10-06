@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This file incorporates work covered by the following license notice:
+ *
+ *   Licensed to the Apache Software Foundation (ASF) under one or more
+ *   contributor license agreements. See the NOTICE file distributed
+ *   with this work for additional information regarding copyright
+ *   ownership. The ASF licenses this file to you under the Apache
+ *   License, Version 2.0 (the "License"); you may not use this file
+ *   except in compliance with the License. You may obtain a copy of
+ *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+ -->
+
+<meta>
+  <topic id="iskeywordtopic" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Is Operator</title>
+    <filename>/text/sbasic/shared/is_keyword.xhp</filename>
+  </topic>
+</meta>
+<body>
+  <section id="is_keyword_desc">
+    <bookmark xml-lang="en-US" branch="index" id="bm_id3149205">
+      <bookmark_value>Is Operator</bookmark_value>
+    </bookmark>
+    <h1 id="hd_id791633472607429"><variable id="IsOperator_h1"><link href="text/sbasic/shared/is_keyword.xhp" name="Is_Operator">Is Operator</link></variable></h1>
+    <paragraph role="paragraph" id="par_id3145090">Tests if two Basic variables refer to the same object instance.</paragraph>
+  </section>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id711633530276845">
+    <input>result = oObj1 Is oObj2</input>
+  </paragraph>
+  <paragraph role="paragraph" id="par_id441633531311929">If <literal>oObj1</literal> and <literal>oObj2</literal> are references to the same object instance, the result will be <emph>True</emph>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id771633473462939">The example below first defines a new type <literal>Student</literal>. Calling the <literal>TestObjects</literal> sub creates the object <literal>oStudent1</literal> as a new object of this type.</paragraph>
+  <paragraph role="paragraph" id="par_id841633532400710">The assignment <literal>oStudent2 = oStudent1</literal> actually copies the reference to the same object. Hence the result of applying the <literal>Is</literal> operator is True.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id981633473836933">Type Student</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941633473837598">    FirstName as String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941633473837123">    Program as String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371633532557876">End Type</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id301633532616004"></paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id481633532558146">Sub TestObjects</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id471633532558363">    Dim oStudent1 as new Student</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id991633532558572">    Dim oStudent2 as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id181633532558771">    oStudent2 = oStudent1</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id891633532558970">    MsgBox Student1 Is Student2 ' True</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id501633532559284">End Sub</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id181633473874216">The example below returns <emph>False</emph> because <literal>oStudent1</literal> and <literal>oStudent2</literal> are references to two different objects, each create with the <literal>New</literal> operator.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id941633533047593">Sub TestObjects_v2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id981633533047852">    Dim oStudent1 as new Student</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id101633533048041">    Dim oStudent2 as new Student</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id821633533048265">    MsgBox oStudent1 Is oStudent2 ' False</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id451633533048471">End Sub</paragraph>
+  </bascode>
+  
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03104600.xhp#EqualUnoObjects_h1"/>
+    <embed href="text/sbasic/shared/03102800.xhp#IsObject_h1"/>
+    <embed href="text/sbasic/shared/03090413.xhp#Type_h1"/>
+  </section>
+</body>
+</helpdocument>
