@@ -33,6 +33,40 @@
       "message": "konsole replaced by x-terminal-emulator\n",
       "revId": "b9c74a40073ef01ed4d2b285f8b2354d3a8c3b4f",
       "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4b25d5_2ae17b6f",
+        "filename": "source/text/sbasic/python/python_shell.xhp",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000059
+      },
+      "writtenOn": "2021-10-07T16:22:03Z",
+      "side": 1,
+      "message": "Due to the fact that role\u003dbascode renders raw text, the switch fails. May I suggest:\n\nSub interpreter_console\n    ps \u003d CreateUnoService(\"com.sun.star.util.PathSettings\")\n    install_path \u003d ConvertFromURL(ps.Module)\n    If GetGUIType() \u003d 4 Then\n        term \u003d \"x-terminal-emulator -e\"\n    Else\n        term \u003d \"\"\n    End If\n    Shell( term + install_path + GetPathSeparator() + \"python\" )\nEnd Sub",
+      "revId": "b9c74a40073ef01ed4d2b285f8b2354d3a8c3b4f",
+      "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32975e84_62088cbe",
+        "filename": "source/text/sbasic/python/python_shell.xhp",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000059
+      },
+      "writtenOn": "2021-10-07T16:22:03Z",
+      "side": 1,
+      "message": "I think these window manager details are loose and imprecise. Better drop it and rely on x-terminal-emulator which seems to be standard in modern Linux",
+      "revId": "b9c74a40073ef01ed4d2b285f8b2354d3a8c3b4f",
+      "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615"
     }
   ]
 }
