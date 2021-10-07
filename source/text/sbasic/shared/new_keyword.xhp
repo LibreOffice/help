@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This file incorporates work covered by the following license notice:
+ *
+ *   Licensed to the Apache Software Foundation (ASF) under one or more
+ *   contributor license agreements. See the NOTICE file distributed
+ *   with this work for additional information regarding copyright
+ *   ownership. The ASF licenses this file to you under the Apache
+ *   License, Version 2.0 (the "License"); you may not use this file
+ *   except in compliance with the License. You may obtain a copy of
+ *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+ -->
+
+<meta>
+  <topic id="newkeywordtopic" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">New Operator</title>
+    <filename>/text/sbasic/shared/new_keyword.xhp</filename>
+  </topic>
+</meta>
+<body>
+  <section id="new_keyword_desc">
+    <bookmark xml-lang="en-US" branch="index" id="bm_id3149205">
+      <bookmark_value>New Operator</bookmark_value>
+    </bookmark>
+    <h1 id="hd_id791633472607429"><variable id="NewOperator_h1"><link href="text/sbasic/shared/new_keyword.xhp" name="New_Operator">New Operator</link></variable></h1>
+    <paragraph role="paragraph" id="par_id3145090">Use the <literal>New</literal> operator to instantiate objects of user-defined types, as well as Uno services, structs and enumerations.</paragraph>
+  </section>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id711633530276845">
+    <input>Dim oObj as New ObjectType</input>
+  </paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id411633630491643">
+    <input>oObj = New ObjectType</input>
+  </paragraph>
+  <note id="par_id831633630704012">The <literal>New</literal> operator can be used either during variable declaration or in an assignment operation.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id621633630563936">The following example uses the <literal>New</literal> operator to create an instance of the <literal>PropertyValue</literal> Uno struct.</paragraph>
+  <bascode>
+    <paragraph role="bascode" id="bas_id631633630856218">' Instantiating the object during variable declaration</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id801633630856388">Dim oProp1 as New com.sun.star.beans.PropertyValue</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id901633630856534">oProp1.Name = "Some name"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id441633630856694">oProp1.Value = 100</paragraph>
+    <paragraph role="bascode" id="bas_id11633631135918">' The same can be accomplished with an assignment</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id821633631136215">Dim oProp2 as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id851633631136449">oProp2 = New com.sun.star.beans.PropertyValue</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461633631136636">oProp2.Name = "Other name"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id121633631136838">oProp2.Value = 200</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id971633631328827">The example below creates a new type <literal>Student</literal> and instantiates an object of this type:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id981633473836933">Type Student</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941633473837598">    FirstName as String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941633473837123">    Program as String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371633532557876">End Type</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id301633532616004"></paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id481633532558146">Sub TestObjects</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id471633532558363">    Dim oStudent1 as New Student</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id991633532558572">    oStudent1.FirstName = "John"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id181633532558771">    oStudent2.Program = "Computer Science"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id501633532559284">End Sub</paragraph>
+  </bascode>
+
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03102100.xhp#Dimh1"/>
+    <embed href="text/sbasic/shared/03132400.xhp#CreateObject_h1"/>
+    <embed href="text/sbasic/shared/03103700.xhp#Set_h1"/>
+    <embed href="text/sbasic/shared/03090413.xhp#Type_h1"/>
+  </section>
+</body>
+</helpdocument>
