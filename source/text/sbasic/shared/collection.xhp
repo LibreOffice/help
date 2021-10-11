@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This file incorporates work covered by the following license notice:
+ *
+ *   Licensed to the Apache Software Foundation (ASF) under one or more
+ *   contributor license agreements. See the NOTICE file distributed
+ *   with this work for additional information regarding copyright
+ *   ownership. The ASF licenses this file to you under the Apache
+ *   License, Version 2.0 (the "License"); you may not use this file
+ *   except in compliance with the License. You may obtain a copy of
+ *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+ -->
+
+<meta>
+  <topic id="collectionobject" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Collection Object</title>
+    <filename>/text/sbasic/shared/collection.xhp</filename>
+  </topic>
+</meta>
+<body>
+  <section id="collection_desc">
+    <bookmark xml-lang="en-US" branch="index" id="bm_id3149205">
+      <bookmark_value>Collection Object</bookmark_value>
+      <bookmark_value>Collection;Count</bookmark_value>
+    </bookmark>
+    <h1 id="hd_id791633472607429"><variable id="Collection_h1"><link href="text/sbasic/shared/collection.xhp" name="New_Operator">Collection Object</link></variable></h1>
+    <paragraph role="paragraph" id="par_id581633961735332">Collections can be used to store items of different types. Each item can be accessed by its index or by an optional key associated with it.</paragraph>
+  </section>
+  <paragraph role="paragraph" id="par_id131633961959816">A <literal>Collection</literal> object has the following methods:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id331633962000259" role="listitem"><emph>Add:</emph> inserts a new item into the collection. Optionally a string value can be defined as the key to the item.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id181633962000767" role="listitem"><emph>Count:</emph> returns the number of items in the collection.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id521633962001072" role="listitem"><emph>Item:</emph> returns the item in the collection by passing its index or key.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id981633962001272" role="listitem"><emph>Remove:</emph> removes the specified item from the collection by its index or key.</paragraph>
+    </listitem>
+  </list>
+  <note id="par_id221633976539661">Items in a Collection can be accessed either by their indices (as in a 1-based single-dimensional Array) or by their associated keys.</note>
+  <h2 id="hd_id51633962353863">Creating a Collection</h2>
+  <paragraph role="paragraph" id="par_id491633962366024">To create a <literal>Collection</literal> use the <literal>New</literal> keyword. The following example creates a <literal>Collection</literal> object and populates it with three items:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id91633962500725">Dim myCollection as New Collection</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id31633962501246">myCollection.Add("Some text")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id71633962501432">myCollection.Add(100)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id811633962501606">myCollection.Add(Array(1, 2, 3, 4))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id351633962501979">MsgBox myCollection.Count ' 3</paragraph>
+  </bascode>
+
+  <h2 id="hd_id421633962742512">Adding Items</h2>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id591633974561425">
+    <bookmark_value>Collection;Add</bookmark_value>
+  </bookmark>
+  <paragraph role="paragraph" id="par_id261633962766238">The <literal>Add</literal> method can be used to add new items into the <literal>Collection</literal> object.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id711633530276845">
+    <input>oCollection.Add(item, [key], [before|after])</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph id="par_id501633974650241" role="paragraph"><emph>item:</emph> the item to be added to the <literal>Collection</literal>. May be of any type.</paragraph>
+  <paragraph id="par_id181633974650705" role="paragraph"><emph>key:</emph> string value used as the unique key used to identify this value.</paragraph>
+  <paragraph id="par_id391633974651050" role="paragraph"><emph>before, after:</emph> optional keyword argument that indicates where the new item will be placed in the <literal>Collection</literal>. Only one of the arguments <literal>before</literal> or <literal>after</literal> can be specified to determine the index or key before which (or after which) the new item is to be placed.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id211633962988398">The example below adds two elements into a <literal>Collection</literal>. The first has a key associated with it, whereas the second does not.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id231633963064060">Dim myCollection as New Collection</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651633963064506">myCollection.Add(100, "first")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id241633963064748">myCollection.Add(101)</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id71633963110632">The <literal>Add</literal> method also supports keyword arguments:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id401633963141575">myCollection.Add(item := 100, key := "first")</paragraph>
+  </bascode>
+  <warning id="par_id941633963225913">Keys must be unique in a <literal>Collection</literal> object. Keys must be unique in a <literal>Collection</literal> object. Comparison between keys is <emph>case-insensitive</emph>. Adding repeated keys will result in a runtime error.</warning>
+  <paragraph role="paragraph" id="par_id891633975568372">The example below illustrates how to use the <literal>Before</literal> and <literal>After</literal> keyword arguments to determine the position of the item that is being added.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id641633975892167">Dim myCollection as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id971633975892478">myCollection = New Collection</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id971633975892702">myCollection.Add(item := 101, key := "first")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id351633975892870">myCollection.Add(item := 103, key := "third")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id851633975893071">myCollection.Add(item := 105, key := "fifth")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id771633975893271">MsgBox myCollection.Item(2) ' 103</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id331633975893495">myCollection.Add(item := 102, key := "second", before := "third")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id441633975893727">MsgBox myCollection.Item(2) ' 102</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id201633975961057">myCollection.Add(item := 104, key := "fourth", after := 3)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id61633975961303">MsgBox myCollection.Item(4) ' 104</paragraph>
+  </bascode>
+  <note id="par_id121633976325472">Items in a <literal>Collection</literal> object are assigned an integer index value that starts at 1 and corresponds to the order in which they were added.</note>
+
+  <h2 id="hd_id141633977141797">Accessing Items</h2>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id481633977601834">
+    <bookmark_value>Collection;Item</bookmark_value>
+  </bookmark>
+  <paragraph role="paragraph" id="par_id431633977156315">Use the <literal>Item</literal> method to access a given item by its index or key.</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id371633977493008">
+    <input>oCollection.Item(index)</input>
+  </paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id371633977493107">
+    <input>oCollection.Item(key)</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id261633976447187"><emph>index:</emph> an integer value specifying the index of the item to be returned.</paragraph>
+  <paragraph role="paragraph" id="par_id51633976782487"><emph>key:</emph> a string value specifying the key of the item to be returned.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id671633977931198">Dim myCollection as New Collection</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531633977931446">myCollection.Add(item := 101, key := "A")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371633977931670">myCollection.Add(item := 102, key := "B")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id541633977931901">myCollection.Add(item := 103, key := "C")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id671633977932101">MsgBox myCollection.Item("A") ' 101</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id231633977932309">MsgBox myCollection.Item(3)   ' 103</paragraph>
+  </bascode>
+
+  <h2 id="hd_id651633976030220">Removing Items</h2>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id311633977567197">
+    <bookmark_value>Collection;Remove</bookmark_value>
+  </bookmark>
+  <paragraph role="paragraph" id="par_id391633976125206">Use the <literal>Remove</literal> method to delete items from a <literal>Collection</literal> object.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" id="par_id121633976268027">Items can be removed either by their indices or key values.</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id21633976180029">
+    <input>oCollection.Remove(index)</input>
+  </paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id21633976180011">
+    <input>oCollection.Remove(key)</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id261633976447289"><emph>index:</emph> an integer value specifying the index of the item to be removed.</paragraph>
+  <paragraph role="paragraph" id="par_id51633976782455"><emph>key:</emph> a string value specifying the key of the item to be removed.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id971633976850377">Dim myCollection as New Collection</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941633976851194">myCollection.Add(item := 101, key := "first")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id111633976851408">myCollection.Add(item := 102, key := "second")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id231633976851633">myCollection.Add(item := 103, key := "third")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id151633976852777">MsgBox myCollection.Count ' 3</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id11633977022371">' Removes the  first value</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id401633977022620">myCollection.Remove(1)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id441633977022867">' Removes the value whose key is "third"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id571633977023099">myCollection.Remove("third")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id221633977023371">MsgBox myCollection.Count ' 1</paragraph>
+  </bascode>
+
+  <h2 id="hd_id491633978085731">Iterating Over all Items</h2>
+  <paragraph role="paragraph" id="par_id91633978099143">It is possible to use a <literal>For Each ... Next</literal> statement to iterate over all items in a <literal>Collection</literal>.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id671633977931167">Dim myCollection as New Collection</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531633977931484">myCollection.Add(item := 101, key := "A")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371633977931612">myCollection.Add(item := 102, key := "B")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id541633977931903">myCollection.Add(item := 103, key := "C")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id671633977932122">For Each value In myCollection</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id231633977932310">    MsgBox value</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id481633978297651">Next value</paragraph>
+  </bascode>
+
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03104200.xhp#Array_h1"/>
+    <embed href="text/sbasic/shared/03/sf_dictionary.xhp#SFDictionary"/>
+  </section>
+</body>
+</helpdocument>
