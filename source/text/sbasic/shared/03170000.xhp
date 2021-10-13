@@ -1,71 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <helpdocument version="1.0">
-    <!--
-    * This file is part of the LibreOffice project.
-    *
-    * This Source Code Form is subject to the terms of the Mozilla Public
-    * License, v. 2.0. If a copy of the MPL was not distributed with this
-    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-    *
-    * This file incorporates work covered by the following license notice:
-    *
-    *   Licensed to the Apache Software Foundation (ASF) under one or more
-    *   contributor license agreements. See the NOTICE file distributed
-    *   with this work for additional information regarding copyright
-    *   ownership. The ASF licenses this file to you under the Apache
-    *   License, Version 2.0 (the "License"); you may not use this file
-    *   except in compliance with the License. You may obtain a copy of
-    *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
-    -->
+<!--
+* This file is part of the LibreOffice project.
+*
+* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*
+* This file incorporates work covered by the following license notice:
+*
+*   Licensed to the Apache Software Foundation (ASF) under one or more
+*   contributor license agreements. See the NOTICE file distributed
+*   with this work for additional information regarding copyright
+*   ownership. The ASF licenses this file to you under the Apache
+*   License, Version 2.0 (the "License"); you may not use this file
+*   except in compliance with the License. You may obtain a copy of
+*   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+-->
 
-    <meta>
-        <topic id="textsbasicshared03170000xml" indexer="include" status="PUBLISH">
-            <title id="tit" xml-lang="en-US">Round Function [VBA]</title>
-            <filename>/text/sbasic/shared/03170000.xhp</filename>
-        </topic>
-    </meta>
+<meta>
+  <topic id="textsbasicshared03170000xml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Round Function [VBA]</title>
+    <filename>/text/sbasic/shared/03170000.xhp</filename>
+  </topic>
+</meta>
 
-    <body>
+<body>
+  <section id="Round">
+    <bookmark xml-lang="en-US" branch="index" id="bm_id3150499">
+      <bookmark_value>Round function (VBA)</bookmark_value>
+    </bookmark>
+    <h1 id="hd_id3150499"><variable id="Round_VBA_h1"><link href="text/sbasic/shared/03170000.xhp" name="Round Function [VBA]">Round Function [VBA]</link></variable></h1>
+    <paragraph id="par_id3151384" role="paragraph">Rounds a numeric value to a specified number of decimal digits.</paragraph>
+  </section>
+  <paragraph role="paragraph" id="par_id741634154499890">This function implements the rounding rule known as "round-to-even". With this rule, whenever the difference between the number to be rounded and its nearest integer is equal to 0.5, the number is rounded to the nearest even number. See the examples <link href="text/sbasic/shared/03170000.xhp#round_example" name="round_ex_link">below</link> to learn more about this rule.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#vbasupport"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id141634153766945">
+    <input>Round(expression [,decimalplaces])</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
+  <paragraph id="par_id3150669" role="paragraph" localize="false">Double</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph id="par_id240720170117391741" role="paragraph"><emph>expression</emph>: The numeric expression to be rounded.</paragraph>
+  <paragraph id="par_id240720170117395610" role="paragraph"><emph>decimalplaces</emph>: Optional argument that specifies the number of decimal digits in the resulting rounded value. The default value is 0.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
+  <embed href="text/sbasic/shared/00000003.xhp#err5"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" id="par_id240720170144225359" localize="false">Option VBASupport 1</paragraph>
+    <paragraph role="bascode" id="par_id701512162274019" localize="false">Sub Example_Round</paragraph>
+    <paragraph role="bascode" id="par_id501512162266839" localize="false">    Dim r </paragraph>
+    <paragraph role="bascode" id="par_id91512162260091" localize="false">    r = Pi</paragraph>
+    <paragraph role="bascode" id="par_id571512162254456" localize="false">    print r ' 3,14159265358979</paragraph>
+    <paragraph role="bascode" id="par_id831512162245783" localize="false">    print Round(r, 5) ' 3,14159</paragraph>
+    <paragraph role="bascode" id="par_id981512162218659" localize="false">    r = exp(1)</paragraph>
+    <paragraph role="bascode" id="par_id761512162210883" localize="false">    print r ' 2,71828182845904</paragraph>
+    <paragraph role="bascode" id="par_id521512162200022" localize="false">    print Round(r) ' 3</paragraph>
+    <paragraph role="bascode" id="par_id240720170144221275" localize="false">End Sub</paragraph>
+  </bascode>
+  <section id="round_example">
+    <paragraph role="paragraph" id="par_id541634154843718">The following examples illustrate the "round-to-even" rule:</paragraph>
+  </section>
+  <bascode>
+    <paragraph role="bascode" id="bas_id651634154984931">' Rounding to the nearest integer (decimalplaces = 0)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id1001634154985235">MsgBox Round(3.5) ' 4</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id901634154985511">MsgBox Round(4.5) ' 4</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id231634154985759">MsgBox Round(5.5) ' 6</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id131634154986008">MsgBox Round(6.5) ' 6</paragraph>
+    <paragraph role="bascode" id="bas_id651634157812537">' Rounding with 2 decimal digits (decimalplaces = 2)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id741634157812848">MsgBox Round(1.555, 2) ' 1.56</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id31634157813184">MsgBox Round(1.565, 2) ' 1.56</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id911634157813504">MsgBox Round(1.575, 2) ' 1.58</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id61634157813841">MsgBox Round(1.585, 2) ' 1.58</paragraph>
+  </bascode>
 
-    <section id="Round">
-        <bookmark xml-lang="en-US" branch="index" id="bm_id3150499">
-            <bookmark_value>Round function</bookmark_value>
-        </bookmark>
-        <paragraph id="hd_id3150499" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03170000.xhp" name="Round Function [VBA]">Round Function [VBA]</link></paragraph>
-        <paragraph id="par_id3151384" role="paragraph" xml-lang="en-US">The Round function returns a number rounded to a specified number of digits.</paragraph>
-    </section>
-    <embed href="text/sbasic/shared/00000003.xhp#vbasupport"/>
-    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-    <bascode>
-        <paragraph id="par_id3143267" role="bascode" localize="false" xml-lang="en-US">Round( expression as Double [,numdecimalplaces as Integer] ) </paragraph>
-    </bascode>
-    <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
-    <paragraph id="par_id3150669" role="paragraph" localize="false" xml-lang="en-US">Double</paragraph>
-    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-    <paragraph id="par_id240720170117391741" role="paragraph" xml-lang="en-US"><emph>expression</emph>: Required. The numeric expression to be rounded.</paragraph>
-    <paragraph id="par_id240720170117395610" role="paragraph" xml-lang="en-US"><emph>numdecimalplaces</emph>: Optional. Specifies how many places to the right of the decimal are included in the rounding. Default is 0.</paragraph>
-
-    <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
-    <embed href="text/sbasic/shared/00000003.xhp#err5"/>
-    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-    <bascode>
-        <paragraph id="par_id240720170144228912" role="bascode" localize="false" xml-lang="en-US">REM ***** BASIC *****</paragraph>
-        <paragraph id="par_id240720170144225359" role="bascode" localize="false" xml-lang="en-US">Option VBASupport 1</paragraph>
-        <paragraph role="bascode" id="par_id701512162274019" xml-lang="en-US" localize="false">Sub Example_Round</paragraph>
-        <paragraph role="bascode" id="par_id501512162266839" xml-lang="en-US" localize="false"> Dim r </paragraph>
-        <paragraph role="bascode" id="par_id91512162260091" xml-lang="en-US" localize="false"> r = Pi</paragraph>
-        <paragraph role="bascode" id="par_id571512162254456" xml-lang="en-US" localize="false"> print r ' 3,14159265358979</paragraph>
-        <paragraph role="bascode" id="par_id831512162245783" xml-lang="en-US" localize="false"> print Round(r, 5) ' 3,14159</paragraph>
-        <paragraph role="bascode" id="par_id981512162218659" xml-lang="en-US" localize="false"> r = exp(1)</paragraph>
-        <paragraph role="bascode" id="par_id761512162210883" xml-lang="en-US" localize="false"> print r ' 2,71828182845904</paragraph>
-        <paragraph role="bascode" id="par_id521512162200022" xml-lang="en-US" localize="false"> print Round(r) ' 3</paragraph>
-        <paragraph id="par_id240720170144221275" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-    </bascode>
-
-    <section id="relatedtopics">
-        <paragraph id="par_id061420170153186193" role="paragraph" xml-lang="en-US"><link href="text/scalc/01/04060106.xhp#Section21">Calc ROUND function</link></paragraph>
-        <embed href="text/sbasic/shared/00000003.xhp#VBAMath"/>
-    </section>
+  <section id="relatedtopics">
+    <paragraph id="par_id061420170153186193" role="paragraph"><link href="text/scalc/01/04060106.xhp#Section21">Calc ROUND function</link></paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#VBAMath"/>
+  </section>
 </body>
-
 </helpdocument>
