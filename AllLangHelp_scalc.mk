@@ -188,6 +188,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/format_graphic \
     helpcontent2/source/text/scalc/01/ful_func \
     helpcontent2/source/text/scalc/01/func_aggregate \
+    helpcontent2/source/text/scalc/01/func_arabic \
     helpcontent2/source/text/scalc/01/func_averageif \
     helpcontent2/source/text/scalc/01/func_averageifs \
     helpcontent2/source/text/scalc/01/func_ceiling \
@@ -247,6 +248,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_rawsubtract \
     helpcontent2/source/text/scalc/01/func_regex \
     helpcontent2/source/text/scalc/01/func_replaceb \
+    helpcontent2/source/text/scalc/01/func_roman \
     helpcontent2/source/text/scalc/01/func_roundsig \
     helpcontent2/source/text/scalc/01/func_second \
     helpcontent2/source/text/scalc/01/func_skewp \
