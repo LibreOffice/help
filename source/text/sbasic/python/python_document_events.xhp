@@ -45,7 +45,7 @@
       <paragraph role="paragraph" id="N0528">Next to <link href="text/sbasic/shared/01040000.xhp" name ="assigning macros to events">assigning macros to events</link>, one can monitor events raised by %PRODUCTNAME documents. Application Programming Interface (API) broadcasters are responsible for calling event scripts. Unlike listeners that require to define all supported methods, even if unused, document monitors require only two methods next to hooked event scripts.</paragraph>
       </section>
       <h2 id="N0529">Monitoring Document Events</h2>
-      <paragraph role="paragraph" id="N0530">Monitoring is illustrated herewith for Basic and Python languages using object-oriented programming. Assigning <literal>OnLoad</literal> script, to the <emph>Open Document</emph> event, suffices to initiate and terminate document event monitoring. <menuitem>Tools - Customize</menuitem> menu <menuitem>Events</menuitem> tab is used to assign either scripts.</paragraph>
+      <paragraph role="paragraph" id="N0530">Monitoring is illustrated herewith for Basic and Python languages using object-oriented programming. Assigning <literal>OnLoad</literal> script, to the <menuitem>Open Document</menuitem> event, suffices to initiate and terminate document event monitoring. <menuitem>Tools - Customize</menuitem> menu <menuitem>Events</menuitem> tab is used to assign either scripts.</paragraph>
       <paragraph role="paragraph" id="N0531">Intercepting events helps setting scripts pre- and post-conditions such as loading and unloading libraries or track script processing in the background. <literal>Access2Base.Trace</literal> module usage is illustrating that second context.</paragraph>
      <h3 id="N0532">With Python</h3>
       <bookmark xml-lang="en-US" branch="index" id="bm_id721622446590963">
@@ -54,7 +54,7 @@
         <bookmark_value>API;script.provider.XScript: Monitoring Document Event</bookmark_value>
       </bookmark>
       <paragraph role="paragraph" id="N0533">Events monitoring starts from object instantiation and ultimately stops when Python releases the object. Raised events are reported using <literal>Access2Base</literal> console.</paragraph>
-      <note id="N0534"><literal>OnLoad</literal> and <literal>OnUnload</literal> events can be used to respectively set and unset Python programs path. They are described as <emph>Open document</emph> and <emph>Document closed</emph>.</note>
+      <note id="N0534"><literal>OnLoad</literal> and <literal>OnUnload</literal> events can be used to respectively set and unset Python programs path. They are described as <menuitem>Open document</menuitem> and <menuitem>Document closed</menuitem>.</note>
       <pycode>
          <paragraph role="pycode" localize="false" id="N0535"># -*- coding: utf-8 -*-</paragraph>
          <paragraph role="pycode" localize="false" id="N0536">from __future__ import unicode_literals</paragraph>
@@ -117,7 +117,7 @@
          <paragraph role="pycode" localize="false" id="N0597">        Console.show()</paragraph>
          <paragraph role="pycode" localize="false" id="N0599">    </paragraph>
          <paragraph role="pycode" xml-lang="en-US" id="N0601">def OnLoad(*args):  # &apos;Open Document&apos; event</paragraph>
-         <paragraph role="pycode" localize="false" id="N0602">    listener = UiDocument()  # Initiates listening</paragraph>
+         <paragraph role="pycode" xml-lang="en-US" id="N0602">    listener = UiDocument()  # Initiates listening</paragraph>
          <paragraph role="pycode" localize="false" id="N0603">    </paragraph>
          <paragraph role="pycode" xml-lang="en-US" id="N0604">def OnUnload(*args):  # &apos;Document has been closed&apos; event</paragraph>
          <paragraph role="pycode" xml-lang="en-US" id="N0605">    pass  # (optional) performed when disposed</paragraph>
@@ -152,7 +152,7 @@
          <paragraph role="pycode" localize="false" id="N0635">    @staticmethod</paragraph>
          <paragraph role="pycode" localize="false" id="N0636">    def _a2bScript(script: str, library=&apos;Access2Base&apos;,</paragraph>
          <paragraph role="pycode" localize="false" id="N0637">        module=&apos;Trace&apos;) -&gt; XScript:</paragraph>
-         <paragraph role="pycode" localize="false" id="N0638">        &apos;&apos;&apos; Grab application-based Basic script &apos;&apos;&apos;</paragraph>
+         <paragraph role="pycode" xml-lang="en-US" id="N0638">        &apos;&apos;&apos; Grab application-based Basic script &apos;&apos;&apos;</paragraph>
          <paragraph role="pycode" localize="false" id="N0639">        sm = uno.getComponentContext().ServiceManager</paragraph>
          <paragraph role="pycode" localize="false" id="N0640">        mspf = sm.createInstanceWithContext(</paragraph>
          <paragraph role="pycode" localize="false" id="N0641">            &quot;com.sun.star.script.provider.MasterScriptProviderFactory&quot;,</paragraph>
@@ -163,7 +163,7 @@
          <paragraph role="pycode" localize="false" id="N0646">        return xScript</paragraph>
       </pycode>
       <warning id="N0647">Mind the misspelled <literal>documentEventOccured</literal> method that inherits a typo from %PRODUCTNAME Application Programming Interface (API).</warning>
-      <paragraph role="tip" id="N0648"><emph>Start application</emph> and <emph>Close application</emph> events can respectively be used to set and to unset Python path for user scripts or %PRODUCTNAME scripts. In a similar fashion, document based Python libraries or modules can be loaded and released using <emph>Open document</emph> and <emph>Document closed</emph> events. Refer to <link href="text/sbasic/python/python_import.xhp" name ="Importing Python Modules">Importing Python Modules</link> for more information.</paragraph>
+      <paragraph role="tip" id="N0648"><menuitem>Start application</menuitem> and <menuitem>Close application</menuitem> events can respectively be used to set and to unset Python path for user scripts or %PRODUCTNAME scripts. In a similar fashion, document based Python libraries or modules can be loaded and released using <menuitem>Open document</menuitem> and <menuitem>Document closed</menuitem> events. Refer to <link href="text/sbasic/python/python_import.xhp" name ="Importing Python Modules">Importing Python Modules</link> for more information.</paragraph>
      <h3 id="N0649">With %PRODUCTNAME Basic</h3>
       <bookmark xml-lang="en-US" branch="index" id="bm_id591622446367707">
         <bookmark_value>API;GlobalScope.BasicLibraries</bookmark_value>
