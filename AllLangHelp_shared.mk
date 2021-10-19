@@ -868,16 +868,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
 ))
 
 $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
-    helpcontent2/source/text/shared/explorer/database/dabawiz02 \
-    helpcontent2/source/text/shared/explorer/database/dabawiz02access \
-    helpcontent2/source/text/shared/explorer/database/dabawiz02ado \
-    helpcontent2/source/text/shared/explorer/database/dabawiz02dbase \
-    helpcontent2/source/text/shared/explorer/database/dabawiz02jdbc \
-    helpcontent2/source/text/shared/explorer/database/dabawiz02mysql \
-    helpcontent2/source/text/shared/explorer/database/dabawiz02odbc \
-    helpcontent2/source/text/shared/explorer/database/dabawiz02oracle \
-    helpcontent2/source/text/shared/explorer/database/dabawiz02spreadsheet \
-    helpcontent2/source/text/shared/explorer/database/dabawiz02text \
     helpcontent2/source/text/shared/explorer/database/menubar \
     helpcontent2/source/text/shared/explorer/database/menuedit \
     helpcontent2/source/text/shared/explorer/database/menufile \

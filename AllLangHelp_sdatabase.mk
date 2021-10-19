@@ -55,6 +55,16 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
     helpcontent2/source/text/sdatabase/dabapropgen \
     helpcontent2/source/text/sdatabase/dabawiz00 \
     helpcontent2/source/text/sdatabase/dabawiz01 \
+    helpcontent2/source/text/sdatabase/dabawiz02 \
+    helpcontent2/source/text/sdatabase/dabawiz02access \
+    helpcontent2/source/text/sdatabase/dabawiz02ado \
+    helpcontent2/source/text/sdatabase/dabawiz02dbase \
+    helpcontent2/source/text/sdatabase/dabawiz02jdbc \
+    helpcontent2/source/text/sdatabase/dabawiz02mysql \
+    helpcontent2/source/text/sdatabase/dabawiz02odbc \
+    helpcontent2/source/text/sdatabase/dabawiz02oracle \
+    helpcontent2/source/text/sdatabase/dabawiz02spreadsheet \
+    helpcontent2/source/text/sdatabase/dabawiz02text \
     helpcontent2/source/text/sdatabase/dabawiz03auth \
 ))
 
