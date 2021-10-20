@@ -74,7 +74,7 @@ output = '''<?xml version="1.0" encoding="UTF-8"?>
         <bookmark_value>module file filters</bookmark_value>
     </bookmark>
     <h1 id="hd_id771554399002497">
-        <link href="text/shared/guide/convertfilters.xhp" name="conversion filter names">File Conversion Filter Names</link>
+        <variable id="convertfilters_h1"><link href="text/shared/guide/convertfilters.xhp" name="conversion filter names">File Conversion Filter Names</link></variable>
     </h1>
     <paragraph id="par_id581554399002498" role="paragraph" xml-lang="en-US">
         <variable id="commandline_intro">

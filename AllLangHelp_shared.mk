@@ -648,6 +648,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/copy_drawfunctions \
     helpcontent2/source/text/shared/guide/copytable2application \
     helpcontent2/source/text/shared/guide/copytext2application \
+    helpcontent2/source/text/shared/guide/csv_params \
     helpcontent2/source/text/shared/guide/ctl \
     helpcontent2/source/text/shared/guide/data_addressbook \
     helpcontent2/source/text/shared/guide/data_dbase2office \
@@ -708,6 +709,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/lineend_define \
     helpcontent2/source/text/shared/guide/linestyle_define \
     helpcontent2/source/text/shared/guide/linestyles \
+    helpcontent2/source/text/shared/guide/lotusdbasediff \
     helpcontent2/source/text/shared/guide/macro_recording \
     helpcontent2/source/text/shared/guide/main \
     helpcontent2/source/text/shared/guide/manage_templates \
