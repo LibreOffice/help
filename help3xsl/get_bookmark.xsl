@@ -56,7 +56,7 @@ xsltproc get_bookmark.xsl <file.xhp>
         <xsl:text disable-output-escaping="yes"><![CDATA[", app:"]]></xsl:text>
         <xsl:value-of select="$app"/>
         <xsl:text disable-output-escaping="yes"><![CDATA[", text:"]]></xsl:text>
-            <xsl:call-template name="replace"><xsl:with-param name="text" select="."/></xsl:call-template>
+            <xsl:call-template name="replace"><xsl:with-param name="text" select="normalize-space(.)"/></xsl:call-template>
             <xsl:text disable-output-escaping="yes"><![CDATA["},]]>&#xA;</xsl:text>
         </xsl:for-each>
     </xsl:for-each>
