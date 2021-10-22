@@ -77,7 +77,7 @@ output = '''<?xml version="1.0" encoding="UTF-8"?>
         <link href="text/shared/guide/convertfilters.xhp" name="conversion filter names">File Conversion Filter Names</link>
     </h1>
     <paragraph id="par_id581554399002498" role="paragraph" xml-lang="en-US">
-        <variable id="variable name">
+        <variable id="commandline_intro">
             <ahelp hid=".">Tables with filter names for <link href="text/shared/guide/start_parameters.xhp" name="commandline">command line</link> document conversion.</ahelp>
         </variable>
     </paragraph>
