@@ -294,18 +294,20 @@
            <paragraph id="par_id761611086279902" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_document.xhp#Activate" name="Activate method">Activate</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#CloseDocument" name="CloseDocument method">CloseDocument</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#PrintOut" name="PrintOut method">PrintOut</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_document.xhp#RunCommand" name="RunCommand method">RunCommand</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#Save" name="Save method">Save</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#Save" name="Save method">Save</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#SaveAs" name="SaveAs method">SaveAs</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
-             <link href="text/sbasic/shared/03/sf_document.xhp#SaveAs" name="SaveAs method">SaveAs</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#SaveCopyAs" name="SaveCopyAs">SaveCopyAs</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#SaveCopyAs" name="SaveCopyAs method">SaveCopyAs</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#SetPrinter" name="SetPrinter method">SetPrinter</link><br/><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -349,7 +351,7 @@
   <paragraph role="paragraph" id="par_id341611149562894">The method will also return <literal>False</literal> if the user declines to close it.</paragraph>
   <paragraph role="paragraph" id="par_id981611149616934">Returns <literal>True</literal> if the document was successfully closed.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-  <paragraph role="paragraph" localize="false" id="par_id1001622827822169">
+  <paragraph role="paragraph" localize="false" id="par_id1001622887222169">
     <input>svc.CloseDocument(saveask: bool = True): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
@@ -357,7 +359,7 @@
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id891589200121516">If oDoc.CloseDocument(True) Then</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id891580290121516">If oDoc.CloseDocument(True) Then</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id51589200506125">    ' ...</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id751622827903730">End If</paragraph>
   </bascode>
@@ -365,6 +367,35 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id731622827946898">if doc.CloseDocument(True):</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id221622827947414">    # ...</paragraph>
+  </pycode>
+</section>
+
+<section id="PrintOut">
+  <comment> PrintOut ---------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721985200121249">
+    <bookmark_value>Document service;PrintOut</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261589202101415" localize="false">PrintOut</h2>
+  <paragraph role="paragraph" id="par_id156589200121138">This method sends the content of the document to a default printer or a printer defined by the <literal>SetPrinter()</literal> method.</paragraph>
+  <paragraph role="paragraph" id="par_id981611169416934">Returns <literal>True</literal> if the document was successfully printed.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id1001622827822169">
+    <input>svc.PrintOut(pages: str = "", copies: num = 1): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id211635436910093"><emph>pages</emph>: The pages to print as a string, like in the user interface. Example: &quot;1-4;10;15-18&quot;. Default is all pages.</paragraph>
+  <paragraph role="paragraph" id="par_id141635436912146"><emph>copies</emph><emph></emph>: The number of copies. Default is 1.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id891589200121516">If oDoc.PrintOut("1-4;10;15-18", Copies := 2) Then</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id515892500606125">    ' ...</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id751682227903730">End If</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id731622728946898">if doc.PrintOut(copies=3, pages='45-88'):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id221628227947414">    # ...</paragraph>
   </pycode>
 </section>
 
@@ -483,6 +514,33 @@
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id941622829095519">doc.SaveCopyAs(r"C:\Documents\Copy2.odt", overwrite = True)</paragraph>
+  </pycode>
+</section>
+
+<section id="SetPrinter">
+  <comment> SetPrinter ------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id71158921504765">
+    <bookmark_value>Document service;SetPrinter</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id811589502147824" localize="false">SetPrinter</h2>
+  <paragraph role="paragraph" id="par_id911298505147502">Define the printer options for the document.</paragraph>
+  <paragraph role="paragraph" id="par_id381651114800685">Returns <literal>True</literal> when successful.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id261652828596855">
+    <input>svc.SetPrinter(opt printer: str, opt orientation: str, paperformat: str): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id301589205741697"><emph>printer</emph>: The name of the printer queue where to print to. When absent or space, the default printer is set.</paragraph>
+  <paragraph role="paragraph" id="par_id851985205147348" xml-lang="en-US"><emph>orientation</emph>: Either &quot;PORTRAIT&quot; or &quot;LANDSCAPE&quot;. Left unchanged when absent.</paragraph>
+  <paragraph role="paragraph" id="par_id821985205147330" xml-lang="en-US"><emph>paperformat</emph> One of the following values &quot;A3&quot;, &quot;A4&quot;, &quot;A5&quot;, &quot;LETTER&quot;, &quot;LEGAL&quot;, &quot;TABLOID&quot;. Left unchanged when absent</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id431589204157164">oDoc.SetPrinter(Orientation := "PORTRAIT")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id941628229095519">doc.SetPrinter(paperformat='TABLOID')</paragraph>
   </pycode>
 </section>
 
