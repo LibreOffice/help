@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+<meta>
+  <topic id="SF_Chart" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">ScriptForge.Chart service</title>
+    <filename>/text/sbasic/shared/03/sf_chart.xhp</filename>
+  </topic>
+  </meta>
+<body>
+  <section id="ScriptForge-sf_chart">
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id501600788076381">
+      <bookmark_value>Chart service</bookmark_value>
+    </bookmark>
+  </section>
+  <section id="abstract">
+    <h1 id="bm_id681600788076499"><variable id="ChartService"><link href="text/sbasic/shared/03/sf_chart.xhp" name="Chart service"><literal>ScriptForge</literal>.<literal>Chart</literal> service</link></variable></h1>
+    <paragraph role="paragraph" id="par_id181600788076612">The <literal>Chart</literal> service provides a set of properties and methods to handle charts in Calc documents. With this service it is possible to:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id301600788076785" role="listitem">Access chart objects in Calc documents and manipulate their properties.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id1001600788076848" role="listitem">Create and insert new charts into a Calc document.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id67160078807676" role="listitem">Export charts as image files.</paragraph>
+      </listitem>
+    </list>
+  </section>
+
+  <h2 id="hd_id331635273472588">Chart names</h2>
+  <paragraph role="paragraph" id="par_id251635273489315">Charts may have two different names:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id41635273536840" role="listitem">An <emph>internal name</emph> given by %PRODUCTNAME as soon as the chart object is created (usually "Object 1").</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id641635273537122" role="listitem">A <emph>user-defined name</emph>, which can be defined by right-clicking the chart and choosing <menuitem>Name</menuitem>.</paragraph>
+    </listitem>
+  </list>
+  <note id="par_id191635273980553">The <literal>Chart</literal> service primarily uses the user-defined name to access a chart object. If it does not exist, than the internal name is used.</note>
+
+  <h2 id="hd_id281600788076359">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id321614902851541">The <literal>Chart</literal> service is instantiated from a <literal>Calc</literal> service instance either using the <literal>Charts</literal> or <literal>CreateChart</literal> methods.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id531635274285114">The example below creates a <literal>Chart</literal> service instance from an existing chart in the current Calc document:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id851600788076202">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id1001600788076254">Dim oDoc as Object, oChart as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id721600788076288">Set oDoc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791600788431935">Set oChart = oDoc.Charts("Sheet1", "Object 1")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id851635274721129">The following example instantiate the <literal>Chart</literal> service by creating a new chart object based on the data contained in the range "Sheet1.A1:C10".</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id221635274765110">Dim oDoc as Object, oChart as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461635274776072">Set oDoc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621635274776400">Set oChart = oDoc.CreateChart("My Chart", "Sheet1", "Sheet1.A1:C10")</paragraph>
+  </bascode>
+  <tip id="par_id881635275036852">Read the <link href="text/sbasic/shared/03/sf_calc.xhp#CreateChart" name="CreateChart_link">CreateChart</link> method description to learn more about its arguments.</tip>
+
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <paragraph role="paragraph" id="par_id131635275172617">The examples above can be written in Python as follows:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id631626695710139">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981626695710433">doc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id311626695710851">chart = doc.Charts("Sheet1", "Object 1")</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id831635275439182">doc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id381635275439396">chart = doc.CreateChart("My Chart", "Sheet1", "Sheet1.A1:C10")</paragraph>
+  </pycode>
+
+  <bookmark xml-lang="en-US" branch="index" localize="false" id="bm_id111614901524769">
+    <bookmark_value>Chart service;ChartType</bookmark_value>
+    <bookmark_value>Chart service;Deep</bookmark_value>
+    <bookmark_value>Chart service;Dim3D</bookmark_value>
+    <bookmark_value>Chart service;Exploded</bookmark_value>
+    <bookmark_value>Chart service;Filled</bookmark_value>
+    <bookmark_value>Chart service;Legend</bookmark_value>
+    <bookmark_value>Chart service;Percent</bookmark_value>
+    <bookmark_value>Chart service;Stacked</bookmark_value>
+    <bookmark_value>Chart service;Title</bookmark_value>
+    <bookmark_value>Chart service;XTitle</bookmark_value>
+    <bookmark_value>Chart service;YTitle</bookmark_value>
+    <bookmark_value>Chart service;XChartObj</bookmark_value>
+    <bookmark_value>Chart service;XDiagram</bookmark_value>
+    <bookmark_value>Chart service;XShape</bookmark_value>
+    <bookmark_value>Chart service;XTableChart</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id711600788076834">Properties</h2>
+  <table id="tab_id701600788076583">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id461600788076917" role="tablehead">Name</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id221600788076591" role="tablehead">Readonly</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id761600788076328" role="tablehead">Type</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id67160078807636" role="tablehead">Description</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id491600788076621" role="tablecontent" localize="false">ChartType</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id311600788076756" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831600788076785" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id441600788076826" role="tablecontent">Specifies the chart type as a string that can assume one of the following values: "Pie", "Bar", "Donut", "Column", "Area", "Line", "XY", "Bubble", "Net".</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id941600788076595" role="tablecontent" localize="false">Deep</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id49160078807654" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id961600788076376" role="tablecontent" localize="false">Boolean</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id81600788076419" role="tablecontent">When <literal>True</literal> indicates that the chart is three-dimensional and each series is arranged in the z-direction.</paragraph>
+        <paragraph id="par_id471635276257118" role="tablecontent">When <literal>False</literal> series are arranged considering only two dimensions.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id721600788076638" role="tablecontent" localize="false">Dim3D</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id711600788076534" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id911600788076842" role="tablecontent" localize="false">Boolean or String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541600788076645" role="tablecontent">Specifies if the chart is displayed with 3D elements. If the value is a string, it must be either "Bar", "Cylinder", "Cone" or "Pyramid".</paragraph>
+        <paragraph id="par_id541600788076141" role="tablecontent">If the boolean <literal>True</literal> value is specified, than the chart is displayed using 3D bars.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id961600788076890" role="tablecontent" localize="false">Exploded</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id891600788076190" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id761600788076562" role="tablecontent" localize="false">Numeric</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id91600788076674" role="tablecontent">Specifies how much pie segments are offset from the chart center as a percentage of the radius. Applicable to pie charts only.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id831633021719135" localize="false" role="tablecontent">Filled</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561633021747903" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id201633021748455" role="tablecontent">Boolean</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831633021749007" role="tablecontent">When <literal>True</literal>, specifies a filled net chart. Applicable to net charts only.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951600788076443" role="tablecontent" localize="false">Legend</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id391600788076253" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id381600788076799" role="tablecontent" localize="false">Boolean</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id21600788076541" role="tablecontent">Specifies whether or not the chart has a legend.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id41600788076936" role="tablecontent" localize="false">Percent</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id211600788076138" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id221600788076518" role="tablecontent" localize="false">Boolean</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id521600788076371" role="tablecontent">When <literal>True</literal>, chart series are stacked and each category sums up to 100%. Applicable to Area, Bar, Bubble, Column and Net charts.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id161600788076362" role="tablecontent" localize="false">Stacked</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id21600788076758" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id871600788076196" role="tablecontent" localize="false">Boolean</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id781600788076694" role="tablecontent">When <literal>True</literal>, chart series are stacked. Applicable to Area, Bar, Bubble, Column and Net charts.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id471600788076885" role="tablecontent" localize="false">Title</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id261600788076841" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id661600788076636" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id11600788076757" role="tablecontent">Specifies the main title of the chart.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id221600789141781" role="tablecontent" localize="false">XTitle</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id531600789141795" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561600789141282" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id301600789141619" role="tablecontent">Specifies the title of the X axis.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id821600789286339" role="tablecontent" localize="false">YTitle</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541600789286532" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id181600789286889" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id701600789286280" role="tablecontent">Specifies the title of the Y axis.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id31600789752717" role="tablecontent" localize="false">XChartObj</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id941608709527698" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id100100678952791" role="tablecontent">UNO Object</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id661300789527859" role="tablecontent">Returns the object representing the chart, which is an instance of the <link href="https://docs.libreoffice.org/sc/html/classScChartObj.html" name="ScChartObj"><literal>ScChartObj</literal></link> class.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id31600789527717" role="tablecontent" localize="false">XDiagram</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id941600789527698" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id100160078952791" role="tablecontent">UNO Object</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id631600789527859" role="tablecontent">Returns the <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1chart_1_1XDiagram.html" name="XDiagram"><literal>com.sun.star.chart.XDiagram</literal></link> object representing the diagram of the chart.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id31600789527123" role="tablecontent" localize="false">XShape</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id941600789527099" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id100160078953251" role="tablecontent">UNO Object</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id631600789522587" role="tablecontent">Returns the <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1drawing_1_1XShape.html" name="XShape"><literal>com.sun.star.drawing.XShape</literal></link> object representing the shape of the chart.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id31600789527332" role="tablecontent" localize="false">XTableChart</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id941600789527208" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id100160078952007" role="tablecontent">UNO Object</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id631600789527364" role="tablecontent">Returns the <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1table_1_1XTableChart.html" name="XTableChart"><literal>com.sun.star.table.XTableChart</literal></link> object representing the data being displayed in the chart.</paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h2 id="hd_id581635335807782">Creating a chart</h2>
+  <paragraph role="paragraph" id="par_id231635335826090">Consider the following data in the range "A1:B6" of a sheet named "Report".</paragraph>
+  <table id="tab_id471635335950545">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id901635335950545" localize="false" role="tablehead"></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id111635335950545" localize="false" role="tablehead">A</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id651635335950545" localize="false" role="tablehead">B</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id591635335950822" localize="false" role="tablehead">1</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id401635335950901" localize="false" role="tablecontent">Sample A</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id151635335950965" localize="false" role="tablecontent">Sample B</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id591635335958021" localize="false" role="tablehead">2</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id401635335950888" localize="false" role="tablecontent">36</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id151635335950047" localize="false" role="tablecontent">40</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id591635335956841" localize="false" role="tablehead">3</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id401635335950126" localize="false" role="tablecontent">39</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id151635335933645" localize="false" role="tablecontent">43</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id591635335959875" localize="false" role="tablehead">4</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id401635335950008" localize="false" role="tablecontent">45</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id151635335950367" localize="false" role="tablecontent">40</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id591635335950287" localize="false" role="tablehead">5</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id401635335951225" localize="false" role="tablecontent">52</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id151635335950255" localize="false" role="tablecontent">48</paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+  <paragraph role="paragraph" id="par_id911635336313498">The examples below in Basic and Python show how to create a line chart from this data with legends.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id971635337992020">oDoc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id671633022413022">oChart = oDoc.CreateChart("Samples", "Report", "Report.A1:B6")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id721633022413266">oChart.ChartType = "Line"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id691633022413526">oChart.Legend = True</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id41633022413831">oChart.Resize(1000, 1000, 25000, 15000)</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id841633022704586">doc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id281633022704771">chart = doc.CreateChart("Samples", "Report", "Report.A1:B6")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id211633022704988">chart.ChartType = "Line"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id21635338077411">chart.Legend = True</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id941633022705212">chart.Resize(1000, 1000, 25000, 15000)</paragraph>
+  </pycode>
+  <tip id="par_id931635338174647">The chart does not need to be created in the same sheet where the data is located. It can be created in any existing sheet in the current file by specifying the sheet name in the second argument of the <literal>CreateChart</literal> method.</tip>
+
+  <h2 id="hd_id501582887473754" xml-lang="en-US">Methods</h2>
+  <table id="tab_id501611613601554">
+    <tablerow>
+      <tablecell colspan="2"><paragraph id="par_id891611613601554" role="tablehead" xml-lang="en-US">List of Methods in the Chart Service</paragraph></tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id891611613601556" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_chart.xhp#ExportToFile" name="ExportToFile method">ExportToFile</link><br/>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_chart.xhp#Resize" name="Resize method">Resize</link><br/>
+        </paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <section id="ExportToFile">
+    <comment> ExportToFile ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+      <bookmark_value>Chart service;ExportToFile</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698251" localize="false">ExportToFile</h2>
+    <paragraph role="paragraph" id="par_id93158919969864">Saves the chart as an image file in a specified location. Returns <literal>True</literal> if the image file could be successfully created.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534014732">
+      <input>chart.ExportToFile(filename: str, imagetype: str = "png", overwrite: bool = False): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631203996"><emph>filename</emph>: Identifies the path and file name where the image will be saved. It must follow the notation defined in <literal>SF_FileSystem.FileNaming</literal>.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203116"><emph>imagetype</emph>: The name of the image type to be created. The following values are accepted: "gif", "jpeg", "png" (default), "svg" and "tiff".</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203133"><emph>overwrite</emph>: Specifies if the destination file can be overwritten (Default = <literal>False</literal>).</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id41158919969204">oChart.ExportToFile("C:\Temp\myChart.svg", ImageType := "svg", Overwrite := True)</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534175122">chart.ExportToFile(r"C:\Temp\myChart.svg", imagetype="svg", overwrite=True)</paragraph>
+    </pycode>
+  </section>
+
+  <section id="Resize">
+    <comment> Resize ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+      <bookmark_value>Chart service;Resize</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698887" localize="false">Resize</h2>
+    <paragraph role="paragraph" id="par_id93158919969165">Changes the position of the chart in the current sheet and modifies its width and height. Returns <literal>True</literal> if resizing was successful.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534025532">
+      <input>chart.Resize([xpos: int], [ypos: int], [width: int], [height: int]): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631200626"><emph>xpos, ypos:</emph> Specify the new X and Y positions of the chart. If any of these values are ommited or if negative values are provided, the corresponding positions are left unchanged.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631204288"><emph>width:</emph> Specify the new width of the chart. If this argument is omitted or if a negative values is provided, the chart width is left unchanged.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203208"><emph>height:</emph> Specify the new height of the chart. If this argument is omitted or if a negative values is provided, the chart height is left unchanged.</paragraph>
+    <note id="par_id301635340527472">All arguments are provided as integer values that correspond to 1/100 of a millimiter.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id431635340711712">' Changes only X and Y position</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id41158919969836">oChart.Rezise(1000, 3000)</paragraph>
+      <paragraph role="bascode" id="bas_id241635340728398">' Changes only the chart width and height</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id251635340748780">oChart.Resize(, , 25000, 12500)</paragraph>
+      <paragraph role="bascode" id="bas_id201635340749006">' Keyword arguments are supported</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id991635340749181">oChart.Resize(Width := 25000, Height := 12500)</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534175071">chart.Rezise(1000, 3000)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id391635340950666">chart.Resize(-1, -1, 20000, 20000)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id11635340951050">chart.Resize(width=25000, height=12500)</paragraph>
+    </pycode>
+  </section>
+
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/sf_calc.xhp#CalcService"/>
+  </section>
+</body>
+</helpdocument>
