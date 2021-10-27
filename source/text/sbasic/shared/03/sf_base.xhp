@@ -36,7 +36,6 @@
         <paragraph id="par_id421619032296454" role="listitem">Check if a form document from a Base document is currently loaded.</paragraph>
     </listitem>
 </list>
-  <embed href="text/sbasic/shared/03/avail_release.xhp#7.2.service"/>
 </section>
 
   <tip id="par_id241619032941497">Refer to the <link href="text/sbasic/shared/03/sf_document.xhp" name="Document Service"><literal>Document</literal> service</link> to learn more about methods and properties that can be used to manage %PRODUCTNAME documents.</tip>
@@ -85,18 +84,20 @@
            <paragraph id="par_id981619034669263" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_base.xhp#CloseFormDocument" name="CloseFormDocument method">CloseFormDocument</link><br/>
              <link href="text/sbasic/shared/03/sf_base.xhp#FormDocuments" name="FormDocuments method">FormDocuments</link><br/>
+             <link href="text/sbasic/shared/03/sf_base.xhp#Forms" name="Forms method">Forms</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id721619034669263" role="tablecontent" localize="false">
-             <link href="text/sbasic/shared/03/sf_base.xhp#Forms" name="Forms method">Forms</link><br/>
              <link href="text/sbasic/shared/03/sf_base.xhp#GetDatabase" name="GetDatabase method">GetDatabase</link><br/>
+             <link href="text/sbasic/shared/03/sf_base.xhp#IsLoaded" name="IsLoaded method">IsLoaded</link><br/>
+             <link href="text/sbasic/shared/03/sf_base.xhp#OpenFormDocument" name="OpenFormDocument method">OpenFormDocument</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id711619034669263" role="tablecontent" localize="false">
-             <link href="text/sbasic/shared/03/sf_base.xhp#IsLoaded" name="IsLoaded method">IsLoaded</link><br/>
-             <link href="text/sbasic/shared/03/sf_base.xhp#OpenFormDocument" name="OpenFormDocument method">OpenFormDocument</link><br/>
+             <link href="text/sbasic/shared/03/sf_base.xhp#PrintOut" name="PrintOut method">PrintOut</link><br/>
+             <link href="text/sbasic/shared/03/sf_base.xhp#SetPrinter" name="SetPrinter method">SetPrinter</link><br/><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -298,6 +299,64 @@
   </pycode>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id361623105659616">doc.OpenFormDocument("myFolder/myFormDocument")</paragraph>
+  </pycode>
+</section>
+
+<section id="PrintOut">
+  <comment> PrintOut ---------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721985200121249">
+    <bookmark_value>Base service;PrintOut</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261589202101415" localize="false">PrintOut</h2>
+  <paragraph role="paragraph" id="par_id156589200121138">This method sends the content of the given form document to a default printer or a printer defined by the <literal>SetPrinter()</literal> method.</paragraph>
+  <paragraph role="paragraph" id="par_id981611169416934">Returns <literal>True</literal> if the document was successfully printed.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id1001622827822169">
+    <input>svc.PrintOut(opt formdocument: str, pages: str = "", copies: num = 1): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id368519200121646"><emph>formdocument</emph>: A valid document form name as a case-sensitive string. The form document must be open. It is activated by the method.</paragraph>
+  <paragraph role="paragraph" id="par_id211635436910093"><emph>pages</emph>: The pages to print as a string, like in the user interface. Example: &quot;1-4;10;15-18&quot;. Default is all pages.</paragraph>
+  <paragraph role="paragraph" id="par_id141635436912146"><emph>copies</emph><emph></emph>: The number of copies. Default is 1.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id891589200121516">If oDoc.PrintOut("myForm", "1-4;10;15-18", Copies := 2) Then</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id515892500606125">    ' ...</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id751682227903730">End If</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id731622728946898">if doc.PrintOut('myForm', copies=3, pages='45-88'):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id221628227947414">    # ...</paragraph>
+  </pycode>
+</section>
+
+<section id="SetPrinter">
+  <comment> SetPrinter ------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id71158921504765">
+    <bookmark_value>Base service;SetPrinter</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id811589502147824" localize="false">SetPrinter</h2>
+  <paragraph role="paragraph" id="par_id911298505147502">Define the printer options for a form document. The form document must be open.</paragraph>
+  <paragraph role="paragraph" id="par_id381651114800685">Returns <literal>True</literal> when successful.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id261652828596855">
+    <input>svc.SetPrinter(opt formdocument: str, opt printer: str, opt orientation: str, paperformat: str): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id961635950394507"><emph>formdocument</emph>: A valid document form name as a case-sensitive string.</paragraph>
+  <paragraph role="paragraph" id="par_id301589205741697"><emph>printer</emph>: The name of the printer queue where to print to. When absent or space, the default printer is set.</paragraph>
+  <paragraph role="paragraph" id="par_id851985205147348" xml-lang="en-US"><emph>orientation</emph>: Either &quot;PORTRAIT&quot; or &quot;LANDSCAPE&quot;. Left unchanged when absent.</paragraph>
+  <paragraph role="paragraph" id="par_id821985205147330" xml-lang="en-US"><emph>paperformat</emph> One of the following values &quot;A3&quot;, &quot;A4&quot;, &quot;A5&quot;, &quot;LETTER&quot;, &quot;LEGAL&quot;, &quot;TABLOID&quot;. Left unchanged when absent</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id431589204157164">oDoc.SetPrinter("myForm", Orientation := "PORTRAIT")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id941628229095519">doc.SetPrinter('myForm', paperformat='TABLOID')</paragraph>
   </pycode>
 </section>
 
