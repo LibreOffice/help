@@ -24,8 +24,13 @@
     </bookmark>
     <section id="csv_params_Head">
         <h1 id="hd_id551634734576194"><variable id="csv_params_h1"><link href="text/shared/guide/csv_params.xhp" name="filter options">CSV Filter Options</link></variable></h1>
-        <paragraph id="par_id401634734576197" role="paragraph" xml-lang="en-US">The CSV filter accepts an option string containing five to twelve tokens, separated by commas. Tokens 6 to 12 are optional.</paragraph>
+        <paragraph id="par_id401634734576197" role="paragraph" xml-lang="en-US">The CSV filter accepts an option string containing five to thirteen tokens, separated by commas. Tokens 6 to 13 are optional.</paragraph>
     </section>
+        <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id431634743318433">Import from UTF-8, Language German, Comma separated, Text delimiter ", Quoted field as text. CSV file has columns formatted as date, number, number, number:</paragraph>
+    <paragraph role="paragraph" localize="false" id="par_id331634746049789"><literal>soffice --infilter="Text - txt - csv (StarCalc):44,34,76,1,1/5/2/1/3/1/4/1,1031,true,true" test.csv</literal></paragraph>
+    <paragraph role="paragraph" id="par_id281634743298078">Export to Windows-1252, Field delimiter : comma, Text delimiter : quote, Save cell contents as shown:</paragraph>
+    <paragraph role="paragraph" localize="false" id="par_id411634746578360"><literal>soffice --convert-to "Text - txt - csv (StarCalc):44,34,ANSI,1,,0,false,true,true" --outdir=/home/user test.ods</literal></paragraph>
     <table id="tab_id391634735255956">
         <tablerow>
             <tablecell>
@@ -57,7 +62,7 @@
                 <paragraph id="par_id661634735416764" role="tablecontent">Text Delimiter</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph id="par_id131634735421911" role="tablecontent">The text delimiter as ASCII value, that is, 34 for double quotes and 39 for single quotes. Example: 34 (&quot;)</paragraph>
+                <paragraph id="par_id131634735421911" role="tablecontent">The text delimiter as ASCII value, that is, 34 for double quotes and 39 for single quotes. Example: 34 (&quot;).</paragraph>
             </tablecell>
         </tablerow>
         <tablerow>
@@ -68,7 +73,7 @@
                 <paragraph id="par_id901634735627024" role="tablecontent">Character Set</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph id="par_id871634735631362" role="tablecontent">The character set code used in the file as described in the table below. Example: 0 (System)</paragraph>
+                <paragraph id="par_id871634735631362" role="tablecontent">The character set code used in the file as described in the table below. Example: 0 (System).</paragraph>
             </tablecell>
         </tablerow>
         <tablerow>
@@ -76,10 +81,10 @@
                 <paragraph id="par_id991634735701128" localize="false" role="tablecontent">4</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph id="par_id371634735705688" role="tablecontent">Number of First Line</paragraph>
+                <paragraph id="par_id371634735705688" role="tablecontent">Number of First Row</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph id="par_id681634735710417" role="tablecontent">3 (start from third line)</paragraph>
+                <paragraph id="par_id681634735710417" role="tablecontent">Row number to start reading. Example: 3 (start from third row).</paragraph>
             </tablecell>
         </tablerow>
         <tablerow>
@@ -90,9 +95,9 @@
                 <paragraph id="par_id741634735821982" role="tablecontent">Cell Format Codes for Each Column</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph id="par_id481634735825359" role="tablecontent">A sequence of column/formatting code, where the formatting code is given in the table below. Example: 1/5/2/1/3/1/4/1 </paragraph>
-                <paragraph id="par_id831634735631362" role="tablecontent">If value separators are used, the form of this token is column/format[/column/format/…] where column is the number of the column, with 1 being the leftmost column. The format is explained below.</paragraph>
-              <paragraph id="par_id831635735631362" role="tablecontent">If the first token is FIX it has the form start/format[/start/format/…], where start is the number of the first character for this field, with 0 being the leftmost character in a line. The format is explained below.</paragraph>
+                <paragraph id="par_id481634735825359" role="tablecontent">A sequence of column/formatting code, where the formatting code is given in the table below. Example: "1/5/2/1/3/1/4/1".</paragraph>
+                <paragraph id="par_id831634735631362" role="tablecontent">If value separators are used, the form of this token is column/format[/column/format/…] where column is the number of the column, with 1 being the leftmost column. The format code is detailed below.</paragraph>
+                <paragraph id="par_id831635735631362" role="tablecontent">If the first token is FIX it has the form start/format[/start/format/…], where start is the number of the first character for this field, with 0 being the leftmost character in a line. The format is explained below.</paragraph>
             </tablecell>
         </tablerow>
         <tablerow>
@@ -114,7 +119,7 @@
                 <paragraph id="par_id181634736918511" role="tablecontent">CSV Import, CSV Export</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph id="par_id481634736922278" role="tablecontent">String, either <literal>false</literal> or <literal>true</literal>. Default value: <literal>false</literal>.This token is the equivalent of the check box "Quoted field as text".</paragraph>
+                <paragraph id="par_id481634736922278" role="tablecontent">String, either <literal>false</literal> or <literal>true</literal>. Default value: <literal>false</literal>. This token is the equivalent of the check box "Quoted field as text".</paragraph>
             </tablecell>
         </tablerow>
         <tablerow>
@@ -134,11 +139,10 @@
                 <paragraph id="par_id381634737684396" localize="false" role="tablecontent">9</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph id="par_id961634737712752" role="tablecontent">CSV Import, CSV Export</paragraph>
+                <paragraph id="par_id961634737712752" role="tablecontent">CSV Export</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph id="par_id371634737716545" role="tablecontent"><emph>Import:</emph> Not used: only 8 tokens are used.</paragraph>
-                <paragraph role="tablecontent" id="par_id701634737971414"><emph>Export:</emph> String, either <literal>false</literal> or <literal>true</literal>. Default value:<literal>true</literal>. This token is the equivalent of the check box "Save cell contents as shown".</paragraph>
+                <paragraph role="tablecontent" id="par_id701634737971414">String, either <literal>false</literal> or <literal>true</literal>. Default value:<literal>true</literal>. This token is the equivalent of the check box "Save cell contents as shown".</paragraph>
             </tablecell>
         </tablerow>
           <tablerow>
@@ -146,29 +150,29 @@
            <paragraph id="par_id651634896749838" localize="false" role="tablecontent">10</paragraph>
        </tablecell>
        <tablecell>
-           <paragraph id="par_id481634896761359" role="tablecontent">CSV export</paragraph>
+           <paragraph id="par_id481634896761359" role="tablecontent">CSV Export</paragraph>
        </tablecell>
        <tablecell>
-           <paragraph id="par_id411634896764659" role="tablecontent">Export formulas</paragraph>
-       </tablecell>
-    </tablerow>
-    <tablerow>
-       <tablecell>
-           <paragraph id="par_id421634896890527" role="tablecontent">11</paragraph>
-       </tablecell>
-       <tablecell>
-           <paragraph id="par_id221634896896383" role="tablecontent">CSV export</paragraph>
-       </tablecell>
-       <tablecell>
-           <paragraph id="par_id641634896897119" role="tablecontent">Remove space</paragraph>
+           <paragraph id="par_id411634896764659" role="tablecontent">String, either <literal>false</literal> or <literal>true</literal>. Default value: <literal>false</literal>. Export cell formulas.</paragraph>
        </tablecell>
     </tablerow>
     <tablerow>
        <tablecell>
-           <paragraph id="par_id881634896966734" role="tablecontent">12</paragraph>
+           <paragraph id="par_id421634896890527" localize="false" role="tablecontent">11</paragraph>
        </tablecell>
        <tablecell>
-           <paragraph id="par_id521634896971296" role="tablecontent">CSV export</paragraph>
+           <paragraph id="par_id221634896896383" role="tablecontent">CSV Import</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id641634896897119" role="tablecontent">String, either <literal>false</literal> or <literal>true</literal>. Default value: <literal>false</literal>. Remove spaces. Trim leading and trailing spaces, when reading the file.</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id881634896966734" localize="false" role="tablecontent">12</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id521634896971296" role="tablecontent">CSV Export</paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id161634896971802" role="tablecontent">Export the entire document to individual sheets .csv files or a specified sheet.</paragraph>
@@ -185,13 +189,20 @@
 </list>
        </tablecell>
     </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id131635293273891" localize="false" role="tablecontent" xml-lang="en-US">13</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id451635293273892" role="tablecontent" xml-lang="en-US">CSV Import</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id701635293273893" role="tablecontent" xml-lang="en-US">String, either <literal>false</literal> or <literal>true</literal>. Default value: <literal>false</literal>. Determines whether formula expressions starting with a = equal sign character are to be evaluated as formulas or imported as textual data. If <literal>true</literal> evaluate formulas on input. If <literal>false</literal> or omitted, formulas are input as text.</paragraph>
+        </tablecell>
+    </tablerow>
     </table>
-    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-    <paragraph role="paragraph" id="par_id431634743318433">Import from UTF-8, Language German, Comma separated, Text delimiter ", Quoted field as text. CSV file has columns formatted as date, number, number, number:</paragraph>
-    <paragraph role="paragraph" localize="false" id="par_id331634746049789"><literal>soffice --infilter="Text - txt - csv (StarCalc):44,34,76,1,1/5/2/1/3/1/4/1,1031,true,true" test.csv</literal></paragraph>
-    <paragraph role="paragraph" id="par_id281634743298078">Export to Windows-1252, Field delimiter : comma, Text delimiter : quote, Save cell contents as shown:</paragraph>
-    <paragraph role="paragraph" localize="false" id="par_id411634746578360"><literal>soffice --convert-to "Text - txt - csv (StarCalc):44,34,ANSI,1,,0,false,true,true" --outdir=/home/user test.ods</literal></paragraph>
-    <h2 id="hd_id181634739011588">Formatting codes for Token 5</h2>
+
+    <h2 id="hd_id181634739011588">Formatting Codes for Token 5</h2>
     <table id="tab_id491634738948892">
         <tablerow>
             <tablecell>
@@ -203,43 +214,43 @@
         </tablerow>
         <tablerow>
             <tablecell><paragraph role="tablecontent" id="par_id1011670216">Standard</paragraph></tablecell>
-            <tablecell><paragraph role="tablecontent" localize="false"  id="par_id6835787852">1</paragraph></tablecell>
+            <tablecell><paragraph role="tablecontent" localize="false" id="par_id6835787852">1</paragraph></tablecell>
         </tablerow>
         <tablerow>
             <tablecell><paragraph role="tablecontent" id="par_id1605952714">Text</paragraph></tablecell>
-            <tablecell><paragraph role="tablecontent" localize="false"  id="par_id5487051433">2</paragraph></tablecell>
+            <tablecell><paragraph role="tablecontent" localize="false" id="par_id5487051433">2</paragraph></tablecell>
         </tablerow>
         <tablerow>
             <tablecell><paragraph role="tablecontent" id="par_id5066036143">MM/DD/YY</paragraph></tablecell>
-            <tablecell><paragraph role="tablecontent" localize="false"  id="par_id5817743300">3</paragraph></tablecell>
+            <tablecell><paragraph role="tablecontent" localize="false" id="par_id5817743300">3</paragraph></tablecell>
         </tablerow>
         <tablerow>
             <tablecell><paragraph role="tablecontent" id="par_id6386378851">DD/MM/YY</paragraph></tablecell>
-            <tablecell><paragraph role="tablecontent" localize="false"  id="par_id3144990816">4</paragraph></tablecell>
+            <tablecell><paragraph role="tablecontent" localize="false" id="par_id3144990816">4</paragraph></tablecell>
         </tablerow>
         <tablerow>
             <tablecell><paragraph role="tablecontent" id="par_id6847541095">YY/MM/DD</paragraph></tablecell>
-            <tablecell><paragraph role="tablecontent" localize="false"  id="par_id6717497377">5</paragraph></tablecell>
+            <tablecell><paragraph role="tablecontent" localize="false" id="par_id6717497377">5</paragraph></tablecell>
         </tablerow>
         <tablerow>
             <tablecell><paragraph role="tablecontent" localize="false" id="par_id5281422501">-</paragraph></tablecell>
-            <tablecell><paragraph role="tablecontent" localize="false"  id="par_id7094333156">6</paragraph></tablecell>
+            <tablecell><paragraph role="tablecontent" localize="false" id="par_id7094333156">6</paragraph></tablecell>
         </tablerow>
         <tablerow>
             <tablecell><paragraph role="tablecontent" localize="false" id="par_id9997403722">-</paragraph></tablecell>
-            <tablecell><paragraph role="tablecontent" localize="false"  id="par_id7314932752">7</paragraph></tablecell>
+            <tablecell><paragraph role="tablecontent" localize="false" id="par_id7314932752">7</paragraph></tablecell>
         </tablerow>
         <tablerow>
             <tablecell><paragraph role="tablecontent" localize="false" id="par_id3739500102">-</paragraph></tablecell>
-            <tablecell><paragraph role="tablecontent" localize="false"  id="par_id6512617577">8</paragraph></tablecell>
+            <tablecell><paragraph role="tablecontent" localize="false" id="par_id6512617577">8</paragraph></tablecell>
         </tablerow>
         <tablerow>
             <tablecell><paragraph role="tablecontent" id="par_id7881263433">Ignore field (do not import)</paragraph></tablecell>
-            <tablecell><paragraph role="tablecontent" localize="false"  id="par_id9786657086">9</paragraph></tablecell>
+            <tablecell><paragraph role="tablecontent" localize="false" id="par_id9786657086">9</paragraph></tablecell>
         </tablerow>
         <tablerow>
             <tablecell><paragraph role="tablecontent" id="par_id6920129719">US-English</paragraph></tablecell>
-            <tablecell><paragraph role="tablecontent" localize="false"  id="par_id2181849223">10</paragraph></tablecell>
+            <tablecell><paragraph role="tablecontent" localize="false" id="par_id2181849223">10</paragraph></tablecell>
         </tablerow>
     </table>
     <h2 id="hd_id591634740467955">Character Set Codes for Token 3</h2>
