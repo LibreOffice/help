@@ -66,6 +66,13 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
     helpcontent2/source/text/sdatabase/dabawiz02spreadsheet \
     helpcontent2/source/text/sdatabase/dabawiz02text \
     helpcontent2/source/text/sdatabase/dabawiz03auth \
+    helpcontent2/source/text/sdatabase/menubar \
+    helpcontent2/source/text/sdatabase/menuedit \
+    helpcontent2/source/text/sdatabase/menufile \
+    helpcontent2/source/text/sdatabase/menufilesave \
+    helpcontent2/source/text/sdatabase/menuinsert \
+    helpcontent2/source/text/sdatabase/menutools \
+    helpcontent2/source/text/sdatabase/menuview \
 ))
 
 # vim: set noet sw=4 ts=4:
