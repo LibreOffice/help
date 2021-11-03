@@ -482,6 +482,7 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#MoveRange" name="MoveRange method">MoveRange</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#MoveSheet" name="MoveSheet method">MoveSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Offset" name="Offset method">Offset</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#PrintOut" name="PrintOut method">PrintOut</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#RemoveSheet" name="RemoveSheet method">RemoveSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#RenameSheet" name="RenameSheet method">RenameSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#SetArray" name="SetArray method">SetArray</link><br/>
@@ -1235,6 +1236,36 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id181621620341176">myDoc.Offset("A1", 2, 2)</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id991621620345183">myDoc.Offset("A1", 2, 2, 5, 6)</paragraph>
+  </pycode>
+</section>
+
+<section id="PrintOut">
+  <comment> PrintOut ---------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721985200121249">
+    <bookmark_value>Calc service;PrintOut</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261589202101415" localize="false">PrintOut</h2>
+  <paragraph role="paragraph" id="par_id156589200121138">This method sends the content of the given sheet to a default printer or a printer defined by the <literal>SetPrinter()</literal> method.</paragraph>
+  <paragraph role="paragraph" id="par_id981611169416934">Returns <literal>True</literal> if the sheet was successfully printed.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id1001622827822169">
+    <input>svc.PrintOut(opt sheetname: str, pages: str = "", copies: num = 1): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id368519200121646"><emph>sheetname</emph>: The sheet to print, default is the active sheet.</paragraph>
+  <paragraph role="paragraph" id="par_id211635436910093"><emph>pages</emph>: The pages to print as a string, like in the user interface. Example: &quot;1-4;10;15-18&quot;. Default is all pages.</paragraph>
+  <paragraph role="paragraph" id="par_id141635436912146"><emph>copies</emph><emph></emph>: The number of copies. Default is 1.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id891589200121516">If oDoc.PrintOut("SheetX", "1-4;10;15-18", Copies := 2) Then</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id515892500606125">    ' ...</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id751682227903730">End If</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id731622728946898">if doc.PrintOut('SheetX', copies=3, pages='45-88'):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id221628227947414">    # ...</paragraph>
   </pycode>
 </section>
 
