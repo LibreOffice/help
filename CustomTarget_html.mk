@@ -42,7 +42,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 	$(call gb_Helper_abbreviate_dirs,\
 		( \
 			echo 'var hid2fileMap = {' \
-			&& RESPONSEFILE=$(call var2file,$(shell $(gb_MKTEMP)),100,$(foreach module,$(html_TEXT_MODULES),$(addprefix $(SRCDIR)/,$(gb_AllLangHelp_$(module)_HELPFILES)))) \
+			&& RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),100,$(foreach module,$(html_TEXT_MODULES),$(addprefix $(SRCDIR)/,$(gb_AllLangHelp_$(module)_HELPFILES)))) \
 			&& <"$$RESPONSEFILE" $(if $(filter WNT,$(OS)),tr -d '\r' | env -i PATH="$$PATH") xargs -n 1 printf '%s\n' \
 			| while read xhp; do \
 				rm -f $@.good && \
@@ -216,7 +216,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 	$(call gb_Helper_abbreviate_dirs,\
 		cd $(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*))/helpcontent2/source \
 		&& rm -rf $(dir $@)text \
-		&& RESPONSEFILE=$(call var2file,$(shell $(gb_MKTEMP)),100,$(foreach module,$(html_TEXT_MODULES),$(patsubst helpcontent2/source/%,%,$(gb_AllLangHelp_$(module)_HELPFILES)))) \
+		&& RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),100,$(foreach module,$(html_TEXT_MODULES),$(patsubst helpcontent2/source/%,%,$(gb_AllLangHelp_$(module)_HELPFILES)))) \
 		&& <"$$RESPONSEFILE" $(if $(filter WNT,$(OS)),tr -d '\r' | env -i PATH="$$PATH") xargs -n 1 printf '%s\n' \
 		| while read xhp; do \
 			mkdir -p $$(dirname $(dir $@)$$xhp) && \
@@ -285,7 +285,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 		$(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	$(call gb_Helper_abbreviate_dirs,\
-		RESPONSEFILE=$(call var2file,$(shell $(gb_MKTEMP)),100,$(addprefix $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/,$(gb_AllLangHelp_$(APPDIR)_BOOKMARK_HELPFILES))) \
+		RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),100,$(addprefix $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/,$(gb_AllLangHelp_$(APPDIR)_BOOKMARK_HELPFILES))) \
 		&& ( \
 			<"$$RESPONSEFILE" $(if $(filter WNT,$(OS)),tr -d '\r' | env -i PATH="$$PATH") xargs -n 1 printf '%s\n' \
 			| { rm -f $@.good && while read xhp; do \
