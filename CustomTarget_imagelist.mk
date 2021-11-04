@@ -21,7 +21,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/images_helpimg
 		| $(call gb_ExternalExecutable_get_dependencies,python)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),PRL,1)
 	$(call gb_Helper_abbreviate_dirs, \
-		ILSTFILE=$(call var2file,$(shell $(gb_MKTEMP)),100,$(filter %.ilst,$^)) && \
+		ILSTFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),100,$(filter %.ilst,$^)) && \
 		$(call gb_ExternalExecutable_get_command,python) $(SRCDIR)/solenv/bin/pack_images.py \
 			-g $(helpmedia_DIR) -m $(helpmedia_DIR) -c $(helpmedia_DIR) \
 			-l $${ILSTFILE} \
