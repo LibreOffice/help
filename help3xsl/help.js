@@ -233,4 +233,15 @@ if (typeof linkIndex !== "undefined") {
     }
     current.classList.add('contents-current');
 }
+// close navigation menus when clicking anywhere on the page
+// (ignoring menu button clicks and mobile browsing)
+document.addEventListener('click', function(event) {
+    let a11yButton = event.target.getAttribute("data-a11y-toggle");
+    let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    if (!a11yButton && vw >= 960) {
+        document.querySelectorAll("[data-a11y-toggle] + nav").forEach((el) => {
+            el.setAttribute("aria-hidden", true);
+        });
+    }
+});
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
