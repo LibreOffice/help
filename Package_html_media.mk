@@ -134,6 +134,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/If_statement.svg \
     helpimg/sbasic/Input_statement.svg \
     helpimg/sbasic/LetSet_statement.svg \
+    helpimg/sbasic/Library-Container.svg \
     helpimg/sbasic/Line-Input_statement.svg \
     helpimg/sbasic/MkDir_statement.svg \
     helpimg/sbasic/On-Error_statement.svg \
