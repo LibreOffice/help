@@ -253,6 +253,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_second \
     helpcontent2/source/text/scalc/01/func_skewp \
     helpcontent2/source/text/scalc/01/func_searchb \
+    helpcontent2/source/text/scalc/01/func_sum \
     helpcontent2/source/text/scalc/01/func_sumifs \
     helpcontent2/source/text/scalc/01/func_switch \
     helpcontent2/source/text/scalc/01/func_textjoin \
