@@ -32,7 +32,7 @@ if not os.path.exists(registry_dir):
     print(f"{registry_dir} does not exist. Make sure you have built the core repo before running this script")
     sys.exit(1)
 
-modules = ["writer.xcd","calc.xcd","impress.xcd","draw.xcd","math.xcd","base.xcd","graphicfilter.xcd"]
+modules = ["writer.xcd","calc.xcd","impress.xcd","draw.xcd","math.xcd","base.xcd","graphicfilter.xcd","pdfimport.xcd","xsltfilter.xcd"]
 
 def gen_id(apiname):
     '''This function accepts module name and an API Name of the filter, and then generate
