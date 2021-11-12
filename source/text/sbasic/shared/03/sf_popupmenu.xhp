@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+<meta>
+  <topic id="SF_PopupMenu" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">ScriptForge.PopupMenu service</title>
+    <filename>/text/sbasic/shared/03/sf_popupmenu.xhp</filename>
+  </topic>
+</meta>
+<body>
+  <section id="ScriptForge-sf_popupmenu">
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id501600788076877">
+      <bookmark_value>PopupMenu service</bookmark_value>
+    </bookmark>
+  </section>
+  <section id="abstract">
+    <h1 id="bm_id681600788076499"><variable id="PopupMenuService"><link href="text/sbasic/shared/03/sf_popupmenu.xhp" name="PopupMenu service"><literal>ScriptForge</literal>.<literal>PopupMenu</literal> service</link></variable></h1>
+    <paragraph role="paragraph" id="par_id181600788076612">The <literal>PopupMenu</literal> service can be used to create popup menus that can be associated with events or executed by scripts. This service provides the following capabilities:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id301600788076785" role="listitem">Creation of popup menus with custom entries, checkboxes and radio buttons.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id1001600788076848" role="listitem">Decoration of menu items with icons and tooltips.</paragraph>
+      </listitem>
+    </list>
+  </section>
+
+  <h2 id="hd_id281600788076359">Service invocation</h2>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id321614902851541">The <literal>PopupMenu</literal> service can be instantiated in multiple ways. The example below creates a popup menu without associating it with a mouse or application event.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id701636718117715">Sub ShowPopup</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id851600788076202">    GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id1001600788076254">    Dim myPopup As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id721600788076288">    Set myPopup = CreateScriptService("SFWidgets.PopupMenu", , 300, 300)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791600788431935">    myPopup.AddItem("Item ~A")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791600788431755">    myPopup.AddItem("Item ~B")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791600788431206">    vResponse = myPopup.Execute()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id841636717357955">    ' (...)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id801636717387904">    myPopup.Dispose()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id721636718154385">End Sub</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id341636718182262">Running the <literal>Sub</literal> defined above will create a popup menu with two entries in the position X=300 and Y=300 on the screen.</paragraph>
+  <tip id="par_id711636493696169">The prefix <literal>SFWidgets</literal> can be suppressed while invoking the <literal>PopupMenu</literal> service.</tip>
+  <paragraph role="paragraph" id="par_id851635274721129">The following example defines a <literal>Sub</literal> that can be associated with a mouse event:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id221635274765110">Sub MyPopupClick(Optional poMouseEvent as Object)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461635274776072">    Dim myPopup As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621635274776400">    Set myPopup = CreateScriptService("PopupMenu", poMouseEvent)</paragraph>
+    <paragraph role="bascode" id="bas_id721636488722999">    ' Populate popupmenu with items</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id201636488724356">    Dim vResponse As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371636488724573">    vResponse = myPopup.Execute(False)</paragraph>
+    <paragraph role="bascode" id="bas_id311636488724795">    ' Do something based on vResponse</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id501636493549364">    ' ...</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id721636718367863">    myPopup.Dispose()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941636493510454">End Sub</paragraph>
+  </bascode>
+  <tip id="par_id991636718278125">Use the <literal>Dispose</literal> method to free resources after executing the popup menu.</tip>
+  <paragraph role="paragraph" id="par_id531636493797707">It is also possible to associate a popup menu with events triggered by %PRODUCTNAME applications, form and dialog controls. Events such as "Mouse button pressed" and "Mouse button released" are commonly associated with popup menus.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id221635274762410">Sub MyPopupClick(Optional poEvent as Object)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461635274776234">    Dim myPopup As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621635274776299">    Set myPopup = CreateScriptService("PopupMenu", poEvent)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id501636493549964">    ' ...</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941636493510712">End Sub</paragraph>
+  </bascode>
+
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <paragraph role="paragraph" id="par_id131635275172617">The examples above can be written in Python as follows:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id631626695710139">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441636718456158"></paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441636718456844">def show_popup(args=None):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981626695710433">    my_popup = CreateScriptService("SFWidgets.PopupMenu", None, 300, 300)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id311626695710851">    my_popup.AddItem("Item ~A")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id211636717609237">    my_popup.AddItem("Item ~B")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id616367176100230">    response = my_popup.Execute()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id901636718500313">    # ...</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id41636718501226">    my_popup.Dispose()</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id831635275439182">def my_popup_click(poEvent=None):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id381635275439396">    my_popup = CreateScriptService("SFWidgets.PopupMenu", poEvent)</paragraph>
+    <paragraph role="pycode" id="pyc_id916367179574588">    # Populate popupmenu with items</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981636717957632">    response = my_popup.Execute()</paragraph>
+    <paragraph role="pycode" id="pyc_id851636718008427">    # Do something based on response</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id331636727047102">    my_popup.Dispose()</paragraph>
+  </pycode>
+
+  <bookmark xml-lang="en-US" branch="index" localize="false" id="bm_id111614901520029">
+    <bookmark_value>PopupService service;ShortcutCharacter</bookmark_value>
+    <bookmark_value>PopupService service;SubmenuCharacter</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id711600788076834">Properties</h2>
+  <table id="tab_id701600788076583">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id461600788076917" role="tablehead">Name</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id221600788076591" role="tablehead">Readonly</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id761600788076328" role="tablehead">Type</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id67160078807636" role="tablehead">Description</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id491600788076621" role="tablecontent" localize="false">SubmenuCharacter</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id311600788076756" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831600788076785" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id441600788076826" role="tablecontent">Character or string that defines how menu items are nested. The default character is ">".</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id941600788076595" role="tablecontent" localize="false">ShortcutCharacter</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id49160078807654" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id961600788076376" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id81600788076419" role="tablecontent">Character used to define the access key of a menu item. The default character is "~".</paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h2 id="hd_id181636719707892">Menu and Submenus</h2>
+  <paragraph role="paragraph" id="par_id741636719725402">To create a popup menu with submenus, use the character defined in the <literal>SubmenuCharacter</literal> property while creating the menu entry to define where it will be placed. For instance, consider the following menu/submenu hierarchy.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id991636719842353">' Item A</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id231636719842719">' Item B > Item B.1</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id421636719842904">'          Item B.2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id916367201523640">' ------ (line separator)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id541636719843240">' Item C > Item C.1 > Item C.1.1</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id701636719843447">'                     Item C.1.2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id601636719843672">' Item C > Item C.2 > Item C.2.1</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921636719843864">'                     Item C.2.2</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id211636720111489">The code below uses the default submenu character ">" to create the menu/submenu hierarchy defined above:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="par_id961636720555061">myPopup.AddItem("Item A")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id371636720556397">myPopup.AddItem("Item B>Item B.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id941636720556623">myPopup.AddItem("Item B>Item B.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id261636720973178">myPopup.AddItem("---")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id431636720556822">myPopup.AddItem("Item C>Item C.1>Item C.1.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id651636720557021">myPopup.AddItem("Item C>Item C.1>Item C.1.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id861636720557222">myPopup.AddItem("Item C>Item C.2>Item C.2.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id21636720557437">myPopup.AddItem("Item C>Item C.2>Item C.2.2")</paragraph>
+  </bascode>
+  <note id="par_id121636721243578">The string "---" is used to define line separators in menus or submenus..</note>
+  <h2 id="hd_id211636723438558">Using icons</h2>
+  <paragraph role="paragraph" id="par_id981636723485402">Items in the popup menu can have icons, which are specified as arguments in the <literal>AddCheckBox</literal>, <literal>AddItem</literal> and <literal>AddRadioButton</literal> methods.</paragraph>
+  <paragraph role="paragraph" id="par_id881636724112434">All icons available in %PRODUCTNAME can be used by specifying their path relative to the folder where icon files are located in the installation folder. Icons are located in the following folder:</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id991636724479899"><input>INSTALLDIR/share/config</input></paragraph>
+  <tip id="par_id941636724808906">Use the <literal>InstallFolder</literal> property of the <literal>FileSystem</literal> service to determine where %PRODUCTNAME is installed in your system.</tip>
+  <paragraph role="paragraph" id="par_id201636724575911">This folder contains a series of ZIP files containing the image files of each available icon set. The images inside these ZIP files are organized into folders. To use an icon, specify the icon file with the path to its location inside the ZIP file.</paragraph>
+  <paragraph role="paragraph" id="par_id641636724972071">The example below uses the icon "sc_newdoc.svg" that is located inside the "cmd" folder. The forward slash "/" character is used as the path separator regardless of the operating system.</paragraph>
+  <bascode>
+    <paragraph role="bascode" id="bas_id121636725026678">myPopup.AddItem("Item A", Icon := "cmd/sc_newdoc.svg")</paragraph>
+  </bascode>
+  <note id="par_id691636725233961">All icon sets have the same internal structure. The actual icon displayed depends on the icon set currently in use.</note>
+
+  <h2 id="hd_id501582887473754" xml-lang="en-US">Methods</h2>
+  <table id="tab_id501611613601554">
+    <tablerow>
+      <tablecell colspan="3"><paragraph id="par_id891611613601554" role="tablehead" xml-lang="en-US">List of Methods in the PopupMenu Service</paragraph></tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id891611613601556" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_popupmenu.xhp#AddCheckBox" name="AddCheckBox method">AddCheckBox</link><br/>
+          <link href="text/sbasic/shared/03/sf_popupmenu.xhp#AddItem" name="AddItem method">AddItem</link>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_popupmenu.xhp#AddRadioButton" name="AddRadioButton method">AddRadioButton</link><br/><br/>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541611613625804" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_popupmenu.xhp#Execute" name="Execute method">Execute</link><br/><br/>
+        </paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <section id="AddCheckBox">
+    <comment> AddCheckBox ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+      <bookmark_value>PopupMenu service;AddCheckBox</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698251" localize="false">AddCheckBox</h2>
+    <paragraph role="paragraph" id="par_id93158919969864">Inserts a check box in the popup menu. Returns an integer value that identifies the inserted item.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534014732">
+      <input>svc.AddCheckBox(menuitem: str, opt name: str, opt status: bool, opt icon: str, opt tooltip: str): int</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631203996"><emph>menuitem:</emph> Defines the text to be displayed in the menu. This argument also defines the hierarchy of the item inside the menu by using the submenu character.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203116"><emph>name:</emph> String value to be returned when the item is clicked. By default, the last component of the menu hierarchy is used.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203133"><emph>status:</emph> Defines whether the item is selected when the menu is created (Default = <literal>False</literal>).</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653313"><emph>icon:</emph> Path and name of the icon to be displayed without the leading path separator. The actual icon shown depends on the icon set being used.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653208"><emph>tooltip:</emph> Text to be displayed as tooltip.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id41158919969204">myPopup.AddCheckBox("Option A", Status := True)</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534175122">myPopup.AddCheckBox("Option A", status=True)</paragraph>
+    </pycode>
+  </section>
+
+  <section id="AddItem">
+    <comment> AddItem ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919960353">
+      <bookmark_value>PopupMenu service;AddItem</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698158" localize="false">AddItem</h2>
+    <paragraph role="paragraph" id="par_id93158919963364">Inserts a menu entry in the popup menu. Returns an integer value that identifies the inserted item.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534012185">
+      <input>svc.AddItem(menuitem: str, opt name: str, opt icon: str, opt tooltip: str): int</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631203021"><emph>menuitem:</emph> Defines the text to be displayed in the menu. This argument also defines the hierarchy of the item inside the menu by using the submenu character.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203026"><emph>name:</emph> String value to be returned when the item is clicked. By default, the last component of the menu hierarcy is used.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721652886"><emph>icon:</emph> Path and name of the icon to be displayed without the leading path separator. The actual icon shown depends on the icon set being used.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653118"><emph>tooltip:</emph> Text to be displayed as tooltip.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id41158919969106">myPopup.AddItem("Item A", Tooltip := "A descriptive message")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id321621534170554">myPopup.AddItem("Item A", tooltip = "A descriptive message")</paragraph>
+    </pycode>
+  </section>
+
+  <section id="AddRadioButton">
+    <comment> AddRadioButton --------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969447">
+      <bookmark_value>PopupMenu service;AddRadioButton</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199693022" localize="false">AddRadioButton</h2>
+    <paragraph role="paragraph" id="par_id93158919969399">Inserts a radio button entry in the popup menu. Returns an integer value that identifies the inserted item.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534013775">
+      <input>svc.AddRadioButton(menuitem: str, opt name: str, opt status: str, opt icon: str, opt tooltip: str): int</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631203501"><emph>menuitem:</emph> Defines the text to be displayed in the menu. This argument also defines the hierarchy of the item inside the menu by using the submenu character.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631228716"><emph>name:</emph> String value to be returned when the item is clicked. By default, the last component of the menu hierarcy is used.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203643"><emph>status:</emph> Defines whether the item is selected when the menu is created (Default = <literal>False</literal>).</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653228"><emph>icon:</emph> Path and name of the icon to be displayed without the leading path separator. The actual icon shown depends on the icon set being used.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653114"><emph>tooltip:</emph> Text to be displayed as tooltip.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id41158919969658">myPopup.AddRadioButton("Option A", Name := "A", Status := True)</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534175471">myPopup.AddRadioButton("Option A", name="A", status=True)</paragraph>
+    </pycode>
+  </section>
+
+  <section id="Execute">
+    <comment> Execute --------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919962887">
+      <bookmark_value>PopupMenu service;Execute</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199693201" localize="false">Execute</h2>
+    <paragraph role="paragraph" id="par_id93158919963279">Displays the popup menu and waits for a user action. Returns the item clicked by the user.</paragraph>
+    <paragraph role="paragraph" id="par_id101636726249788">If the user clicks outside the popup menu ou presses the <keycode>Esc</keycode> key, then no item is selected. In such cases, the returned value depends on the <literal>returnid</literal> parameter. If <literal>returnid = True</literal> and no item is selected, then the value 0 (zero) is returned. Otherwise an empty string "" is returned.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534014414">
+      <input>svc.Execute(opt returnid: bool): any</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631202088"><emph>returnid:</emph> If <literal>True</literal> the selected item ID is returned. If <literal>False</literal> the method returns the item's name (Default = <literal>True</literal>).</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id51636726671698">In the examples below, a popup menu is created and the item's name is returned because the <literal>returnid</literal> argument is set to <literal>False</literal>.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id41158919963328">myPopup.AddItem("Item A", Name := "A")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id91636726598754">myPopup.AddItem("Item B", Name := "B")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id871636726599326">Dim vResponse as Variant</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id351636726599500">vResponse = myPopup.Execute(False)</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534173001">myPopup.AddItem("Item A", name="A")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id271636726772842">myPopup.AddItem("Item B", name="B")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id621636726773015">response = myPopup.Execute(False)</paragraph>
+    </pycode>
+  </section>
+
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/sf_dialog.xhp#dlg_h1"/>
+    <embed href="text/sbasic/shared/03/sf_dialogcontrol.xhp#ctrls_h1"/>
+  </section>
+</body>
+</helpdocument>
