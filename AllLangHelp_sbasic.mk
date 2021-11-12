@@ -98,6 +98,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03/sf_l10n \
     helpcontent2/source/text/sbasic/shared/03/sf_methods \
     helpcontent2/source/text/sbasic/shared/03/sf_platform \
+    helpcontent2/source/text/sbasic/shared/03/sf_popupmenu \
     helpcontent2/source/text/sbasic/shared/03/sf_session \
     helpcontent2/source/text/sbasic/shared/03/sf_services \
     helpcontent2/source/text/sbasic/shared/03/sf_string \
