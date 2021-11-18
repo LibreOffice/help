@@ -888,11 +888,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/explorer/database/rep_pagenumbers \
     helpcontent2/source/text/shared/explorer/database/rep_prop \
     helpcontent2/source/text/shared/explorer/database/rep_sort \
-    helpcontent2/source/text/shared/explorer/database/tablewizard00 \
-    helpcontent2/source/text/shared/explorer/database/tablewizard01 \
-    helpcontent2/source/text/shared/explorer/database/tablewizard02 \
-    helpcontent2/source/text/shared/explorer/database/tablewizard03 \
-    helpcontent2/source/text/shared/explorer/database/tablewizard04 \
 ,shared/explorer/database))
 
 # vim: set noet sw=4 ts=4:
