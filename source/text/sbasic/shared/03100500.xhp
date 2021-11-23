@@ -44,9 +44,12 @@
 <paragraph id="hd_id3147531" role="heading" level="2" xml-lang="en-US">Return value:</paragraph>
 <paragraph id="par_id3147560" role="paragraph" xml-lang="en-US">Integer</paragraph>
 
-<paragraph id="hd_id3145069" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
-<paragraph id="par_id3159414" role="paragraph" xml-lang="en-US"> <emph>Expression:</emph> Any numeric expression that you want to convert. If the <emph>Expression</emph> exceeds the value range between -32768 and 32767, $[officename] Basic reports an overflow error. To convert a string expression, the number must be entered as normal text ("123.5") using the default number format of your operating system.</paragraph>
-<paragraph id="par_id3150358" role="paragraph" xml-lang="en-US">This function always rounds the fractional part of a number to the nearest integer.</paragraph>
+<paragraph id="hd_id3145069" role="heading" level="2" xml-lang="en-US">Parameters:
+<paragraph id="par_id3159414" role="paragraph" xml-lang="en-US"> <emph>Expression:</emph> Any expression that you want to convert.
+<paragraph id="par_id3159415" role="paragraph" xml-lang="en-US">If the argument is a number, it is used as numeric value of the expression.</paragraph>
+<paragraph id="par_id3159416" role="paragraph" xml-lang="en-US">If the argument is string, the function trims the leading whitespace; then it tries to recognize a number in following characters. These syntaxes are recognized: decimal numbers (with optional leading sign) using decimal and group separators of locale configured in $[officename] (group separators are accepted in any position), with optional exponential notation like "-12e+1" (where an optionally signed whole decimal number after e or E defines power of 10); octal numbers like "&amp;Onnn...", where "nnn..." after "&amp;O" or "&amp;o" is sequence of characters up to the next non-alphanumeric character, and must be no longer than 11 digits from 0 to 7; hecadecimal numbers like "&Hnnn...", where "nnn..." after "&amp;H" or "&amp;h" is sequence of characters up to the next non-alphanumeric character, and must be no longer than 8 digits from 0 to 9, A to F, or a to f. The rest of the string is ignored. If the string is not recognized, e.g. when after trimming leading whitespace it doesn't start with plus, minus, a decimal digit, or "&amp;", or when the sequence after "&amp;O" is longer than 11 characters or contains an alphabetic character, the numeric value of expression is 0.</paragraph>
+<paragraph id="par_id3159417" role="paragraph" xml-lang="en-US">If the argument is an error, the error number is used as numeric value of the expression.</paragraph>
+<paragraph id="par_id3150358" role="paragraph" xml-lang="en-US">After calculating the numeric value of the expression, it is rounded to the nearest integer (if needed), and if the result is not between -32768 and 32767, $[officename] Basic reports an overflow error. Otherwise, the result is returned.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 
