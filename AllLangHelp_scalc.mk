@@ -189,6 +189,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/ful_func \
     helpcontent2/source/text/scalc/01/func_aggregate \
     helpcontent2/source/text/scalc/01/func_arabic \
+    helpcontent2/source/text/scalc/01/func_asc \
     helpcontent2/source/text/scalc/01/func_averageif \
     helpcontent2/source/text/scalc/01/func_averageifs \
     helpcontent2/source/text/scalc/01/func_ceiling \
@@ -230,6 +231,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_imsinh \
     helpcontent2/source/text/scalc/01/func_imtan \
     helpcontent2/source/text/scalc/01/func_isoweeknum \
+    helpcontent2/source/text/scalc/01/func_jis \
     helpcontent2/source/text/scalc/01/func_maxifs \
     helpcontent2/source/text/scalc/01/func_minifs \
     helpcontent2/source/text/scalc/01/func_minute \
