@@ -54,15 +54,15 @@
   <paragraph role="paragraph" id="par_id181633473874216">The example below returns <emph>False</emph> because the assignment creates a copy of the original object. Hence <literal>Struct1</literal> and <literal>Struct2</literal> refer to different object instances.</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id441633474052121">Dim Struct1 as new com.sun.star.beans.PropertyValue</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id191633474052633">Dim Struct1 Variant</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id201633474052866">a.Name = "John"</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id761633474053090">b = a</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id191633474052633">Dim Struct2 as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id201633474052866">Struct1.Name = "John"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id761633474053090">Struct2 = Struct1</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id251633474053313">MsgBox EqualUnoObjects(Struct1, Struct2) ' False</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id441633474053530">b.Name = "Judy"</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id611633474053754">MsgBox a.Name ' John</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id251633474053977">MsgBox b.Name ' Judy</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id441633474053530">Struct2.Name = "Judy"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id611633474053754">MsgBox Struct1.Name ' John</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id251633474053977">MsgBox Struct2.Name ' Judy</paragraph>
   </bascode>
-  
+
   <section id="relatedtopics">
     <embed href="text/sbasic/shared/03102800.xhp#IsObject_h1"/>
   </section>
