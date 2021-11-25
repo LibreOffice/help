@@ -39,10 +39,13 @@
     <paragraph role="paragraph" id="par_id291585843652438" xml-lang="en-US">PO files have long been promoted in the free software community as a means to providing multilingual user interfaces. This is accomplished through the use of human-readable text files with a well defined structure that specifies, for any given language, the source language string and the localized string.</paragraph>
     <paragraph role="paragraph" id="par_id181585843652814" xml-lang="en-US">The main advantage of the PO format is dissociation of the programmer and the translator. PO files are independent text files, so the programmer can send POT template files to translators, who will then translate their contents and return the translated PO files for each supported language.</paragraph>
     <tip id="par_id811614352321187">The <literal>L10N</literal> service is based on the GNU implementation of PO (portable object) files. To learn more about this file format, visit <link href="https://www.gnu.org/software/gettext/manual/html_node/PO-Files.html" name="GetText">GNU gettext Utilities: PO Files</link>.</tip>  
-  <paragraph role="paragraph" id="par_id91585843652832" xml-lang="en-US">This service implements the three methods listed below:</paragraph>
+  <paragraph role="paragraph" id="par_id91585843652832" xml-lang="en-US">This service implements the methods listed below:</paragraph>
     <list type="unordered">
       <listitem>
         <paragraph id="par_id1158584365237"  role="listitem" xml-lang="en-US"><emph>AddText</emph>: Used by the programmer to build a set of strings that will be translated later.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id81637866601151" role="listitem"><emph>AddTextsFromDialog</emph>: Extracts all strings from a <literal>Dialog</literal> service instance.</paragraph>
       </listitem>
       <listitem>
         <paragraph id="par_id681585843652331"  role="listitem" xml-lang="en-US"><emph>ExportToPOTFile</emph>: Exports the strings added by the <literal>AddText</literal> method to a POT file.</paragraph>
@@ -172,17 +175,18 @@
    <tablerow>
        <tablecell>
          <paragraph id="par_id611614360519255" role="tablecontent" localize="false">
-           <link href="text/sbasic/shared/03/sf_l10n.xhp#AddText" name="AddText">AddText</link>
+           <link href="text/sbasic/shared/03/sf_l10n.xhp#AddText" name="AddText">AddText</link><br/>
+           <link href="text/sbasic/shared/03/sf_l10n.xhp#AddTextsFromDialog" name="AddTextsFromDialog">AddTextsFromDialog</link>
          </paragraph>
        </tablecell>
        <tablecell>
          <paragraph id="par_id611614360519104" role="tablecontent" localize="false">
-           <link href="text/sbasic/shared/03/sf_l10n.xhp#ExportToPOTFile" name="ExportToPOTFile">ExportToPOTFile</link>
+           <link href="text/sbasic/shared/03/sf_l10n.xhp#ExportToPOTFile" name="ExportToPOTFile">ExportToPOTFile</link><br/><br/>
          </paragraph>
        </tablecell>
        <tablecell>
          <paragraph id="par_id611614360518452" role="tablecontent" localize="false">
-           <link href="text/sbasic/shared/03/sf_l10n.xhp#GetText" name="GetText">GetText</link>
+           <link href="text/sbasic/shared/03/sf_l10n.xhp#GetText" name="GetText">GetText</link><br/><br/>
          </paragraph>
        </tablecell>
    </tablerow>
@@ -216,9 +220,59 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id821625856085583">myPO.AddText(msgid = 'This is a string to be included in a POT file')</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id821625856440596">myPO.AddText('CTX1', 'A string with a context')</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id521625856443065">myPO.AddText(msgid = 'Provide a String value', comment = 'Do not translate the word String')</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id821625856085258">myPO.AddText(msgid = 'This is a string to be included in a POT file')</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id821625856440025">myPO.AddText('CTX1', 'A string with a context')</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id521625856443322">myPO.AddText(msgid = 'Provide a String value', comment = 'Do not translate the word String')</paragraph>
+    </pycode>
+</section>
+  
+<section id="AddTextsFromDialog">
+  <comment> AddTextsFromDialog ------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id951585843650024">
+    <bookmark_value>L10N service;AddTextsFromDialog</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id191585843652058" localize="false">AddTextsFromDialog</h2>
+  <paragraph role="paragraph" id="par_id1001585843659821">Automatically extracts strings from a dialog and adds them to the list of localizable text strings. The following strings are extracted:</paragraph>
+  <section id="L10NDlgControls">
+    <list type="unordered">
+      <listitem>
+          <paragraph id="par_id621637863440015" role="listitem">The title of the dialog.</paragraph>
+      </listitem>
+      <listitem>
+          <paragraph id="par_id61637863440399" role="listitem">The caption of the following control types: Button, CheckBox, FixedLine, FixedText, GroupBox and RadioButton.</paragraph>
+      </listitem>
+      <listitem>
+          <paragraph id="par_id251637863440626" role="listitem">Static strings in ListBoxes and ComboBoxes.</paragraph>
+      </listitem>
+      <listitem>
+          <paragraph id="par_id811637863596791" role="listitem">The tooltip or help text displayed when the mouse hovers over the control.</paragraph>
+      </listitem>
+    </list>
+  </section>
+  <paragraph role="paragraph" id="par_id641625855723650">The method returns <literal>True</literal> if successful.</paragraph>
+  <note id="par_id731637863894577">The dialog from which strings will be extracted must not be open when the method is called.</note>
+  <paragraph role="paragraph" id="par_id911637864050221">When a <literal>L10N</literal> service instance is created from an existing PO file, use the <link href="text/sbasic/shared/03/sf_dialog.xhp#GetTextsFromL10N" name="GetTextsFromL10N">GetTextsFromL10N</link> method from the <literal>Dialog</literal> service to automatically load all translated strings into the dialog.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id241625855910158">
+      <input>svc.AddTextsFromDialog(dialog: svc): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id391585843652113"><emph>dialog</emph>: a Dialog service instance corresponding to the dialog from which strings will be extracted.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id461614364298983">The following example extracts all strings from the dialog "MyDialog" stored in the "Standard" library and exports them to a POT file:</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id61585843652225">oDlg = CreateScriptService("Dialog", "GlobalScope", "Standard", "MyDialog")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id61585843652012">myPO = CreateScriptService("L10N")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id61585843653117">myPO.AddTextsFromDialog(oDlg)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id68163786595435">myPO.ExportToPOTFile("en-US.pot")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id821625856085583">dlg = CreateScriptService("Dialog", "GlobalScope", "Standard", "Dialog1")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id821625856440596">myPO = CreateScriptService("L10N")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id521625856443065">myPO.AddTextsFromDialog(dlg)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id401637866328706">myPO.ExportToPOTFile("en-US.pot")</paragraph>
     </pycode>
 </section>
 
