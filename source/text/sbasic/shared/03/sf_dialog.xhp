@@ -251,7 +251,6 @@
       </tablerow>
    </table>
    <h2 id="hd_id421612628828054" xml-lang="en-US">Event properties</h2>
-   <embed href="text/sbasic/shared/03/avail_release.xhp#7.2.events"/>
    <paragraph role="paragraph" id="par_id41612629140856" xml-lang="en-US">Returns a URI string with the reference to the script triggered by the event. Read its specification in the <link href="https://wiki.openoffice.org/wiki/Documentation/DevGuide/Scripting/Scripting_Framework_URI_Specification" name="URI specification">scripting framework URI specification</link>.</paragraph>
    <table id="tab_id951612628879819">
       <tablerow>
@@ -392,11 +391,13 @@
            <link href="text/sbasic/shared/03/sf_dialog.xhp#Execute" name="Execute method">Execute</link><br/>
        </paragraph></tablecell>
        <tablecell><paragraph id="par_id161606472825856" role="tablecontent" localize="false">
-           <link href="text/sbasic/shared/03/sf_dialog.xhp#Terminate" name="Terminate method">Terminate</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#GetTextsFromL10N" name="GetTextsFromL10N method">GetTextsFromL10N</link><br/>
+         <link href="text/sbasic/shared/03/sf_dialog.xhp#Terminate" name="Terminate method">Terminate</link><br/>
        </paragraph></tablecell>
     </tablerow>
     </table>
-  <section id="Activate">
+
+<section id="Activate">
   <comment> Activate -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721583933076548">
       <bookmark_value>Dialog service;Activate</bookmark_value>
@@ -404,9 +405,9 @@
    <h2 id="hd_id681583933076692" localize="false">Activate</h2>
    <paragraph role="paragraph" id="par_id871583933076448">Set the focus on the current <literal>Dialog</literal> instance. Return <literal>True</literal> if focusing was successful.</paragraph>
    <paragraph role="paragraph" id="par_id151598178880227" xml-lang="en-US">This method is called from a dialog or control event, or when a dialog is displayed in non-modal mode.</paragraph>
-   <h3 id="hd_id61583933076171" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id581619625572111"><input>svc.Activate(): bool</input></paragraph>
-   <h3 id="hd_id26158393307687" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id221598179105596">Dim oDlg As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id171598179111121">Set oDlg = CreateScriptService(,, "myDialog")</paragraph>
@@ -421,9 +422,10 @@
      <paragraph role="pycode" localize="false" id="pyc_id781620108954143"># ...</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id391619626869458">dlg.Activate()</paragraph>
    </pycode>
-   </section>
-   <section id="Controls">
-   <comment> Controls -------------------------------------------------------------------------------------------------------------------------- </comment>
+</section>
+
+<section id="Controls">
+  <comment> Controls -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41584541257826">
       <bookmark_value>Dialog service;Controls</bookmark_value>
    </bookmark>
@@ -437,12 +439,12 @@
          <paragraph id="par_id81598185229301" role="listitem" xml-lang="en-US">a <literal>DialogControl</literal> class instance based on its name</paragraph>
       </listitem>
    </list>
-   <h3 id="hd_id601584541257443" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id81619625753895"><input>svc.Controls(): str[0..*]</input></paragraph>
    <paragraph role="paragraph" localize="false" id="par_id61819625753598"><input>svc.Controls(controlname: str): svc</input></paragraph>
-   <h3 id="hd_id291584541257237" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
    <paragraph role="paragraph" id="par_id1001584541257789"><emph>ControlName</emph> : A valid control name as a case-sensitive string. If absent, the list of control names is returned as a zero-based array.</paragraph>
-   <h3 id="hd_id32158454125769" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id151598185478904">Dim myDialog As Object, myList As Variant, myControl As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id21598185484092">Set myDialog = CreateScriptService("SFDialogs.Dialog", , "Standard", "Dialog1")</paragraph>
@@ -454,20 +456,21 @@
      <paragraph role="pycode" localize="false" id="pyc_id431619627576082">ctrls = dlg.Controls()</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id131619627576307">ctrl = dlg.Controls('myTextBox')</paragraph>
    </pycode>
-   </section>
-   <section id="EndExecute">
-   <comment> EndExecute -------------------------------------------------------------------------------------------------------------------------- </comment>
+</section>
+
+<section id="EndExecute">
+  <comment> EndExecute -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
       <bookmark_value>Dialog service;EndExecute</bookmark_value>
    </bookmark>
    <h2 id="hd_id491598185776436" localize="false">EndExecute</h2>
    <paragraph role="paragraph" id="par_id381598185776500">Ends the display of a modal dialog and gives back the argument as return value for the current <literal>Execute()</literal> running action.</paragraph>
    <paragraph role="paragraph" id="par_id551598185953362"><literal>EndExecute()</literal> is usually contained in the processing of a macro triggered by a dialog or control event.</paragraph>
-   <h3 id="hd_id16159818577649" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id451619627879243"><input>svc.EndExecute(returnvalue: int)</input></paragraph>
-   <h3 id="hd_id721598185776413" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
    <paragraph role="paragraph" id="par_id451598185776957"><emph>returnvalue</emph>: The value passed to the running <literal>Execute()</literal> method.</paragraph>
-   <h3 id="hd_id771598185776435" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <paragraph role="paragraph" id="par_id411620110780170">Using %PRODUCTNAME Basic:</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id521598186134426">Sub OnEvent(poEvent As com.sun.star.lang.EventObject)</paragraph>
@@ -484,9 +487,10 @@
      <paragraph role="pycode" localize="false" id="pyc_id191619627976590">    dlg.EndExecute(25)</paragraph>
    </pycode>
      <tip id="par_id81620201915101">Above <link href="https://api.libreoffice.org/docs/idl/ref/structcom_1_1sun_1_1star_1_1lang_1_1EventObject.html" name="com.sun.star.lang.EventObject">com.sun.star.lang.EventObject</link> mentions are optional. Such annotations help identify %PRODUCTNAME Application Programming Interface (API).</tip>
-   </section>
-   <section id="Execute">
-   <comment> Execute -------------------------------------------------------------------------------------------------------------------------- </comment>
+</section>
+
+<section id="Execute">
+  <comment> Execute -------------------------------------------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id351598186461621">
    <bookmark_value>Dialog service;Execute</bookmark_value></bookmark>
    <h2 id="hd_id531598186461915" localize="false">Execute</h2>
@@ -503,11 +507,11 @@
       </listitem>
    </list>
    <paragraph role="paragraph" id="par_id741598187335869" xml-lang="en-US">For non-modal dialog boxes the method always returns 0 and the execution of the macro continues.</paragraph>
-   <h3 id="hd_id491598186461869" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id291619628195418"><input>svc.Execute(modal: bool = True): int</input></paragraph>
-   <h3 id="hd_id331598186461152" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functparameters"/></h3>
+   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
    <paragraph role="paragraph" id="par_id11598186461227"><emph>modal</emph>: <literal>False</literal> when non-modal dialog. Default = <literal>True</literal>.</paragraph>
-   <h3 id="hd_id28159818646198" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <paragraph role="paragraph" id="par_id231620110023843">In this Basic example <literal>myDialog</literal> dialog is stored in current document's <literal>Standard</literal> library.</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id591598186461923">Dim oDlg As Object, lReturn As Long</paragraph>
@@ -524,17 +528,53 @@
      <paragraph role="pycode" localize="false" id="pyc_id211620109965604">if rc == dlg.CANCELBUTTON:</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id61620109984292">    # ...</paragraph>
    </pycode>
-   </section>
-   <section id="Terminate">
-   <comment> Terminate -------------------------------------------------------------------------------------------------------------------------- </comment>
+</section>
+
+<section id="GetTextsFromL10N">
+  <comment> GetTextsFromL10N -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953209">
+      <bookmark_value>Dialog service;GetTextsFromL10N</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id101598187950391" localize="false">GetTextsFromL10N</h2>
+   <paragraph role="paragraph" id="par_id21598187900349">Replaces all fixed text strings in a dialog by their translated versions based on a <literal>L10N</literal> service instance. This method translates the following strings:</paragraph>
+   <embed href="text/sbasic/shared/03/sf_l10n.xhp#L10NDlgControls"/>
+   <paragraph role="paragraph" id="par_id641625855723650">The method returns <literal>True</literal> if successful.</paragraph>
+   <paragraph role="paragraph" id="par_id61637871260604">To create a list of translatable strings in a dialog use the <link href="text/sbasic/shared/03/sf_l10n.xhp#AddTextsFromDialog" name="AddTextsFromDialog">AddTextsFromDialog</link> method from the L10N service.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_id171619628383909">
+     <input>svc.GetTextsFromL10N(l10n: svc): bool</input>
+   </paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+   <paragraph role="paragraph" id="par_id451598185776205"><emph>l10n</emph>: A <literal>L10N</literal> service instance from which translated strings will be retrieved.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <paragraph role="paragraph" id="par_id951620300689850">The following example loads translated strings and applies them to the dialog "MyDialog".</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" localize="false" id="bas_id971620301083254">oDlg = CreateScriptService("Dialog", "GlobalScope", "Standard", "MyDialog")</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id981620301085205">myPO = CreateScriptService("L10N", "/home/user/po_files/")</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id916203010852399">oDlg.GetTextsFromL10N(myPO)</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id121598187953341">oDlg.Execute()</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id491620303073122">dlg = CreateScriptService("Dialog", "GlobalScope", "Standard", "MyDialog")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id841620302327011">myPO = CreateScriptService("L10N", "/home/user/po_files/")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id381620302328388">dlg.GetTextsFromL10N(myPO)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id251620302328896">dlg.Execute()</paragraph>
+   </pycode>
+   <tip id="par_id901637872163895">Read the <link href="text/sbasic/shared/03/sf_l10n.xhp" name="L10N">L10N service</link> help page to learn more about how PO and POT files are handled.</tip>
+</section>
+
+<section id="Terminate">
+  <comment> Terminate -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953729">
       <bookmark_value>Dialog service;Terminate</bookmark_value>
    </bookmark>
    <h2 id="hd_id101598187953201" localize="false">Terminate</h2>
    <paragraph role="paragraph" id="par_id21598187953679">Terminate the <literal>Dialog</literal> service for the current instance. Return <literal>True</literal> if the termination was successful.</paragraph>
-   <h3 id="hd_id221598187953425" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functsyntax"/></h3>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id171619628389339"><input>svc.Terminate(): bool</input></paragraph>
-   <h3 id="hd_id361598187953840" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#functexample"/></h3>
+   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <paragraph role="paragraph" id="par_id951620300687150">Below Basic and Python examples open <literal>DlgConsole</literal> and <literal>dlgTrace</literal> non-modal dialogs. They are respectively stored in <literal>ScriptForge</literal> and <literal>Access2Base</literal> shared libraries. Dialog close buttons are disabled and explicit termination is performed at the end of a running process.</paragraph>
    <paragraph role="paragraph" id="par_id301620302137482">In this example a button in <literal>DlgConsole</literal> is substituting inhibited window closing:</paragraph>
    <bascode>
@@ -551,7 +591,8 @@
      <paragraph role="pycode" localize="false" id="pyc_id251620302328330">sleep 5</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id101620302328498">dlg.Terminate()</paragraph>
    </pycode>
-   </section>
+</section>
+
    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
    <section id="relatedtopics">
       <embed href="text/sbasic/shared/03/sf_dialogcontrol.xhp#ctrls_h1"/>
