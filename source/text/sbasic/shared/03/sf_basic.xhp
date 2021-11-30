@@ -28,7 +28,7 @@
 </section>
   <paragraph role="paragraph" id="par_id591589189364267" xml-lang="en-US">Typical example:</paragraph>
   <pycode>
-   <paragraph role="pycode" xml-lang="en-US" id="pyc_id971618493778666">svc.MsgBox('This has to be displayed in a message box')</paragraph>
+   <paragraph role="pycode" xml-lang="en-US" id="pyc_id971618493778666">bas.MsgBox('This has to be displayed in a message box')</paragraph>
   </pycode>
   <warning id="par_id151618849022977"><literal>ScriptForge</literal>.<literal>Basic</literal> service is limited to Python scripts.</warning>
   <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
@@ -178,8 +178,8 @@
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id761621898860952">d = svc.CDate(1000.25)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id861621898933001">svc.MsgBox(str(d)) # 1902-09-26 06:00:00</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id871621898933281">svc.MsgBox(d.year) # 1902</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id861621898933001">bas.MsgBox(str(d)) # 1902-09-26 06:00:00</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id871621898933281">bas.MsgBox(d.year) # 1902</paragraph>
   </pycode>
 </section>
 
@@ -205,7 +205,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id1001621951948124">uno_date.Month = 2</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id201621951948284">uno_date.Day = 23</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id911621952103058">new_date = svc.CDateFromUnoDateTime(uno_date)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id951621952103813">svc.MsgBox(str(new_date)) # 1983-02-23 00:00:00</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id951621952103813">bas.MsgBox(str(new_date)) # 1983-02-23 00:00:00</paragraph>
   </pycode>
 </section>
 
@@ -227,7 +227,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id131621952700723">from datetime import datetime</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id391621952700963">current_datetime = datetime.now()</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id941621952701150">uno_date = svc.CDateToUnoDateTime(current_datetime)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id191621952701458">svc.MsgBox(str(uno_date.Year) + "-" + str(uno_date.Month) + "-" + str(uno_date.Day))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id191621952701458">bas.MsgBox(str(uno_date.Year) + "-" + str(uno_date.Month) + "-" + str(uno_date.Day))</paragraph>
   </pycode>
 </section>
 
@@ -247,7 +247,7 @@
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id41158919969836">filename = svc.ConvertFromUrl( "file:///C:/Program%20Files%20(x86)/LibreOffice/News.txt")</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id881611147617212">svc.MsgBox(filename)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id881611147617212">bas.MsgBox(filename)</paragraph>
   </pycode>
 </section>
 
@@ -267,7 +267,7 @@
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id891985200121516">url = svc.ConvertToUrl( 'C:\Program Files(x86)\LibreOffice\News.txt')</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id51589200605125">svc.MsgBox(url)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id51589200605125">bas.MsgBox(url)</paragraph>
   </pycode>
 </section>
 
@@ -467,7 +467,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id251619448108905">ticks_ini = svc.GetSystemTicks()</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id181619448111210">time.sleep(1)</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id301619448111744">ticks_end = svc.GetSystemTicks()</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id651619448112320">svc.MsgBox("{} - {} = {}".format(ticks_end, ticks_ini,ticks_end - ticks_ini))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id651619448112320">bas.MsgBox("{} - {} = {}".format(ticks_end, ticks_ini,ticks_end - ticks_ini))</paragraph>
   </pycode>
 </section>
 
@@ -513,7 +513,7 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id561622398178727">dlg_libs = svc.GlobalScope.DialogLibraries()</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id181622398179079">lib_names = dlg_libs.getElementNames()</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id461622398179232">svc.MsgBox("\n".join(lib_names))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id461622398179232">bas.MsgBox("\n".join(lib_names))</paragraph>
   </pycode>
 </section>
 
@@ -547,7 +547,7 @@
   <h2 id="hd_id181618br/905397758" localize="false">MsgBox</h2>
   <paragraph role="paragraph" id="par_id231618922407948">Displays a dialog box containing a message and returns an optional value.<br/>MB_xx constants help specify the dialog type, the number and type of buttons to display, plus the icon type. By adding their respective values they form bit patterns, that define the <literal>MsgBox</literal> dialog appearance.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-  <paragraph role="paragraph" id="par_id71618922431508" localize="false"><input>svc.MsgBox(prompt: str, [buttons: int], [title: str])[: int]</input></paragraph>
+  <paragraph role="paragraph" id="par_id71618922431508" localize="false"><input>bas.MsgBox(prompt: str, [buttons: int], [title: str])[: int]</input></paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <embed href="text/sbasic/shared/03010101.xhp#parameters"/>
   <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
@@ -567,7 +567,7 @@
   <paragraph role="paragraph" id="par_id631619084685488" localize="false"><input>svc.Now(): datetime</input></paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id411619084749448">svc.MsgBox(svc.Now(), svc.MB_OK, "Now")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id411619084749448">bas.MsgBox(svc.Now(), svc.MB_OK, "Now")</paragraph>
   </pycode>
 </section>
 
@@ -605,7 +605,7 @@
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id21622841338969">comp = svc.ThisComponent</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id781622841643538">svc.MsgBox("\n".join(comp.getSupportedServiceNames()))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id781622841643538">bas.MsgBox("\n".join(comp.getSupportedServiceNames()))</paragraph>
   </pycode>
 </section>
 

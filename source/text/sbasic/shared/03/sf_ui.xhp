@@ -87,7 +87,7 @@
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id61620310677393">from scriptforge import CreateScriptService</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id601620310674922">svcUI = CreateScriptService("UI")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id601620310674922">ui = CreateScriptService("UI")</paragraph>
   </pycode>
 
 <h2 id="hd_id841587913266618" xml-lang="en-US">Properties</h2>
@@ -200,11 +200,11 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id21620312350189">svcUI = CreateScriptService("UI")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id21620312350189">ui = CreateScriptService("UI")</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id631620312351013">sBasic = CreateScriptService("Basic")</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id141620312351286">openDocs = svcUI.Documents()</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id141620312351286">openDocs = ui.Documents()</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id661620312351500">strDocs = "\n".join(openDocs)</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id801620312351676">sBasic.MsgBox(strDocs)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id801620312351676">bas.MsgBox(strDocs)</paragraph>
    </pycode>
 
     <table id="tab_id891606472825856">
@@ -254,7 +254,7 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id941620322846267">svcUI.Activate(r"C:\Documents\My file.odt")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id941620322846267">ui.Activate(r"C:\Documents\My file.odt")</paragraph>
     </pycode>
 </section>
 
@@ -284,8 +284,8 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id361620323808010">myBase = svcUI.CreateBaseDocument(r"C:\Databases\MyBaseFile.odb", "FIREBIRD")</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id251629365641121">myCalcBase = svcUI.CreateBaseDocument(r"C:\Databases\MyCalcBaseFile.odb", \</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id361620323808010">myBase = ui.CreateBaseDocument(r"C:\Databases\MyBaseFile.odb", "FIREBIRD")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id251629365641121">myCalcBase = ui.CreateBaseDocument(r"C:\Databases\MyCalcBaseFile.odb", \</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id431629366045258">    "CALC", calcfilename = r"C:\Databases\MyCalcFile.ods")</paragraph>
    </pycode>
 </section>
@@ -316,9 +316,9 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id901620324433095">myDoc1 = svcUI.CreateDocument("Calc")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id901620324433095">myDoc1 = ui.CreateDocument("Calc")</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id361620324544381">FSO = CreateScriptService("FileSystem")</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id161620324434583">myDoc2 = svcUI.CreateDocument(templatefile = FSO.BuildPath(FSO.TemplatesFolder, "personal/CV.ott"))</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id161620324434583">myDoc2 = ui.CreateDocument(templatefile = FSO.BuildPath(FSO.TemplatesFolder, "personal/CV.ott"))</paragraph>
    </pycode>
 </section>
 
@@ -344,10 +344,10 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id831620330074037">myDoc = svcUI.GetDocument(r"C:\Documents\My file.odt")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id831620330074037">myDoc = ui.GetDocument(r"C:\Documents\My file.odt")</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id931624025986035">from scriptforge import CreateScriptService</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id641624026031595">bridge = CreateScriptService("Basic")</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id601624025839840">myDoc = svcui.GetDocument(bridge.ThisComponent)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id601624025839840">myDoc = ui.GetDocument(bridge.ThisComponent)</paragraph>
    </pycode>
    <tip id="par_id521620330287071">To access the name of the currently active window, refer to the <literal>ActiveWindow</literal> property.</tip>
 </section>
@@ -372,7 +372,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id181620330373220">svcUI.Maximize("Untitled 1")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id181620330373220">ui.Maximize("Untitled 1")</paragraph>
    </pycode>
 </section>
 
@@ -396,7 +396,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id481620330501644">svcUI.Minimize()</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id481620330501644">ui.Minimize()</paragraph>
    </pycode>
 </section>
 
@@ -423,7 +423,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id431620331254271">svcUI.OpenBaseDocument(r"C:\Documents\myDB.odb", macroexecution = svcUI.MACROEXECALWAYS)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id431620331254271">ui.OpenBaseDocument(r"C:\Documents\myDB.odb", macroexecution = ui.MACROEXECALWAYS)</paragraph>
    </pycode>
    <tip id="par_id941620762989833">To improve code readability you can use <link href="text/sbasic/shared/03/sf_ui.xhp#Constants" name="CHANGE ME">predefined constants</link> for the <literal>macroexecution</literal> argument, as in the examples above.</tip>
 </section>
@@ -455,7 +455,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id891620331804571">svcUI.OpenDocument(r"C:\Documents\myFile.odt", readonly = True)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id891620331804571">ui.OpenDocument(r"C:\Documents\myFile.odt", readonly = True)</paragraph>
    </pycode>
 </section>
 
@@ -481,7 +481,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id971620331945744">svcUI.Resize(width = 500, height = 500)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id971620331945744">ui.Resize(width = 500, height = 500)</paragraph>
    </pycode>
    <tip id="par_id21620332301809">To resize a window that is not active, first activate it using the <literal>Activate</literal> method.</tip>
 </section>
@@ -515,9 +515,9 @@
    <pycode>
      <paragraph role="pycode" localize="false" id="pyc_id631620332653004">from time import sleep</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id351620332422330">for i in range(101):</paragraph>
-     <paragraph role="pycode" localize="false" id="bas_id261620332627647">    svcUI.SetStatusbar("Test:", i)</paragraph>
+     <paragraph role="pycode" localize="false" id="bas_id261620332627647">    ui.SetStatusbar("Test:", i)</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id181620332715974">    sleep(0.05)</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id381620332733373">svcUI.SetStatusbar()</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id381620332733373">ui.SetStatusbar()</paragraph>
    </pycode>
 </section>
 
@@ -551,10 +551,10 @@
    <pycode>
      <paragraph role="pycode" localize="false" id="pyc_id821620333264948">from time import sleep</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id611620333268146">for i in range(101):</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id331620333268525">    svcUI.ShowProgressBar("Window Title", "Progress ... " + str(i) + "/100", i)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id331620333268525">    ui.ShowProgressBar("Window Title", "Progress ... " + str(i) + "/100", i)</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id451620333268900">    sleep(0.05)</paragraph>
      <paragraph role="pycode" id="pyc_id761620333269236"># Closes the Progress Bar window</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id81620333269484">svcUI.ShowProgressBar()</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id81620333269484">ui.ShowProgressBar()</paragraph>
    </pycode>
 </section>
 
@@ -579,7 +579,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id441620333481074">if svcUI.WindowExists(r"C:\Document\My file.odt"):</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id441620333481074">if ui.WindowExists(r"C:\Document\My file.odt"):</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id801620333495532">    # ...</paragraph>
    </pycode>
 </section>

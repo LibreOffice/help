@@ -74,11 +74,11 @@
     <paragraph role="pycode" localize="false" id="pyc_id911621624242302">myDoc = CreateScriptService("Calc")</paragraph>
   </pycode>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id201621531742824">svcUI = CreateScriptService("UI")</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id661621531772444">myDoc = svcUI.CreateDocument("Calc")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id201621531742824">ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id661621531772444">myDoc = ui.CreateDocument("Calc")</paragraph>
   </pycode>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id401621531828705">myDoc = svcUI.OpenDocument(r"C:\Documents\MyFile.ods")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id401621531828705">myDoc = ui.OpenDocument(r"C:\Documents\MyFile.ods")</paragraph>
   </pycode>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id701621532481401">myDoc = CreateScriptService("SFDocuments.Calc", "MyFile.ods")</paragraph>
@@ -108,8 +108,8 @@
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id561621533543160">docA = svcUI.OpenDocument(r"C:\Documents\FileA.ods", hidden = True, readonly = True)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id61621533637980">docB = svcUI.OpenDocument(r"C:\Documents\FileB.ods")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id561621533543160">docA = ui.OpenDocument(r"C:\Documents\FileA.ods", hidden = True, readonly = True)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id61621533637980">docB = ui.OpenDocument(r"C:\Documents\FileB.ods")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id941621533638353">docB.CopyToRange(docA.Range("SheetX.D4:F8"), "D2:F6")</paragraph>
   </pycode>
 
@@ -558,8 +558,8 @@
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id321621534175071">svcUI = CreateScriptService("UI")</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id971621534192346">myDoc = svcUI.GetDocument(svcUI.ActiveWindow)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id321621534175071">ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id971621534192346">myDoc = ui.GetDocument(ui.ActiveWindow)</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id21621534237588">myDoc.Activate("Sheet4")</paragraph>
   </pycode>
   <tip id="par_id501611617808220">Activating a sheet makes sense only if it is performed on a Calc document. To make sure you have a Calc document at hand you can use the <literal>isCalc</literal> property of the document object, which returns <literal>True</literal> if it is a Calc document and <literal>False</literal> otherwise.</tip>
@@ -721,8 +721,8 @@
     <paragraph role="pycode" localize="false" id="pyc_id741621537296168">myDoc.CopySheet("SheetX", "SheetY")</paragraph>
   </pycode>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id761621537335378">docA = svcUI.OpenDocument(r"C:\Documents\FileA.ods", hidden = True, readonly = True)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id801621537405452">docB = svcUI.OpenDocument(r"C:\Documents\FileB.ods")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id761621537335378">docA = ui.OpenDocument(r"C:\Documents\FileA.ods", hidden = True, readonly = True)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id801621537405452">docB = ui.OpenDocument(r"C:\Documents\FileB.ods")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id361621537425882">docB.CopySheet(docA.Sheet("SheetX"), "SheetY")</paragraph>
   </pycode>
   <tip id="par_id801595695285478" xml-lang="en-US">To copy sheets between <emph>open</emph> documents, use <literal>CopySheet</literal>. To copy sheets from documents that are <emph>closed</emph>, use <literal>CopySheetFromFile</literal>.</tip>
@@ -792,7 +792,7 @@
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id531621538188012">docSource = svcUI.OpenDocument(r"C:\Documents\SourceFile.ods", hidden = True, readonly = True)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id531621538188012">docSource = ui.OpenDocument(r"C:\Documents\SourceFile.ods", hidden = True, readonly = True)</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id741621538288187">docDestination = CreateScriptService("Calc")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id691621538280854">docDestination.CopyToCell(docSource.Range("Sheet1.C2:C4"), "SheetT.A5")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id361621538357798">docSource.CloseDocument()</paragraph>
@@ -842,8 +842,8 @@
     <paragraph role="pycode" localize="false" id="pyc_id761621538667290">doc.CopyToRange("SheetX.A1:F10", "SheetY.C5:J5")</paragraph>
   </pycode>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id531621538188957">docA = svcUI.OpenDocument(r"C:\Documents\FileA.ods", hidden = True, readonly = True)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id741621538288785">docB = svcUI.OpenDocument(r"C:\Documents\FileB.ods")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id531621538188957">docA = ui.OpenDocument(r"C:\Documents\FileA.ods", hidden = True, readonly = True)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id741621538288785">docB = ui.OpenDocument(r"C:\Documents\FileB.ods")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id691621538288954">docB.CopyToRange(docA.Range("SheetX.A1:F10"), "SheetY.C5:J5")</paragraph>
   </pycode>
 </section>
@@ -986,7 +986,7 @@
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id661621539873908">sBasic = CreateScriptService("Basic")</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id901621540022229">sBasic.MsgBox(myDoc.GetColumnName(3))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id901621540022229">bas.MsgBox(myDoc.GetColumnName(3))</paragraph>
   </pycode>
   <note id="par_id451611753568778">The maximum number of columns allowed on a Calc sheet is 1024.</note>
 </section>
