@@ -294,20 +294,21 @@
            <paragraph id="par_id761611086279902" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_document.xhp#Activate" name="Activate method">Activate</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#CloseDocument" name="CloseDocument method">CloseDocument</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#PrintOut" name="PrintOut method">PrintOut</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#ExportAsPDF" name="ExportAsPDF method">ExportAsPDF</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_document.xhp#PrintOut" name="PrintOut method">PrintOut</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#RunCommand" name="RunCommand method">RunCommand</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#Save" name="Save method">Save</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#SaveAs" name="SaveAs method">SaveAs</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_document.xhp#SaveAs" name="SaveAs method">SaveAs</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#SaveCopyAs" name="SaveCopyAs method">SaveCopyAs</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#SetPrinter" name="SetPrinter method">SetPrinter</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#SetPrinter" name="SetPrinter method">SetPrinter</link><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -370,6 +371,53 @@
   </pycode>
 </section>
 
+<section id="ExportAsPDF">
+  <comment> ExportAsPDF -------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721985200121025">
+    <bookmark_value>Document service;ExportAsPDF</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261589202100695" localize="false">ExportAsPDF</h2>
+  <paragraph role="paragraph" id="par_id156589200123048">Exports the document directly as a PDF file to the specified location. Returns <literal>True</literal> if the PDF file was successfully created.</paragraph>
+  <paragraph role="paragraph" id="par_id811638276067119">The export options can be set either manually using the <menuitem>File - Export As - Export as PDF</menuitem> dialog or by calling the methods <literal>GetPDFExportOptions</literal> and <literal>SetPDFExportOptions</literal> from the <link href="text/sbasic/shared/03/sf_session.xhp" name="SFSession">Session</link> service.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id1001622827826679">
+    <input>svc.ExportAsPDF(filename: str, overwrite: bool = False, opt pages: str, opt password: str, opt watermark: str): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id211635436910641"><emph>filename</emph>: The full path and file name of the PDF to be created. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
+  <paragraph role="paragraph" id="par_id141635436912005"><emph>overwrite</emph>: Specifies if the destination file can be overwritten (Default = <literal>False</literal>). An error will occur if <literal>overwrite</literal> is set to <literal>False</literal> and the destination file already exists.</paragraph>
+  <paragraph role="paragraph" id="par_id141635436913587"><emph>pages</emph><emph></emph>: String specifying which pages will be exported. This argument uses the same notation as in the dialog <menuitem>File - Export As - Export as PDF</menuitem>.</paragraph>
+  <paragraph role="paragraph" id="par_id141635436919655"><emph>password</emph><emph></emph>: Specifies a password to open the PDF file.</paragraph>
+  <paragraph role="paragraph" id="par_id141635436913365"><emph>watermark</emph>: Text to be used as watermark in the PDF file, which will be drawn in every page of the resulting PDF.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id301638234284727">The following example exports the current document as a PDF file, defines a password and overwrites the destination file if it already exists.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id891589200127786">oDoc.ExportAsPDF("C:\User\Documents\myFile.pdf", Password := "1234", Overwrite := True)</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id311638276257020">The code snippet below gets the current PDF export options and uses them to create the PDF file.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id791638277305385">Dim exportSettings as Object, oSession as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id51638277174044">oSession = CreateScriptService("Session")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id291638277174233">exportSettings = oSession.GetPDFExportOptions()</paragraph>
+    <paragraph role="bascode" id="bas_id851638277174798">' Sets to True the option to export comments as PDF notes</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id71638277174405">exportSettings.ReplaceItem("ExportNotes", True)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id611638277174622">oSession.SetPDFExportOptions(exportSettings)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461638277174958">oDoc.ExportAsPDF("C:\User\Documents\myFile.pdf")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id731622728946003">doc.ExportAsPDF(r"C:\User\Documents\myFile.pdf", password = "1234", overwrite = True)</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id481638277330132">session = CreateScriptService("Session")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id881638277330334">exportSettings = oSession.GetPDFExportOptions()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id121638277330485">exportSettings.ReplaceItem("ExportNotes", True)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id401638277330637">session.SetPDFExportOptions(exportSettings)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id591638277330780">doc.ExportAsPDF(r"C:\User\Documents\myFile.pdf")</paragraph>
+  </pycode>
+</section>
+
 <section id="PrintOut">
   <comment> PrintOut ---------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721985200121249">
@@ -384,7 +432,7 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id211635436910093"><emph>pages</emph>: The pages to print as a string, like in the user interface. Example: &quot;1-4;10;15-18&quot;. Default is all pages.</paragraph>
-  <paragraph role="paragraph" id="par_id141635436912146"><emph>copies</emph><emph></emph>: The number of copies. Default is 1.</paragraph>
+  <paragraph role="paragraph" id="par_id141635436912146"><emph>copies</emph>: The number of copies. Default is 1.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -426,7 +474,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id821622828361025">doc = CreateScriptService("Document", "MyFile.ods")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id211622828361293">doc.RunCommand("SelectData")</paragraph>
   </pycode>
-  <paragraph role="paragraph" id="par_id751611153375195">The example above actually runs the UNO command <literal>uno:SelectData</literal>. Hence, to use the <literal>RunCommand</literal> method it is necessary to remove the "uno:" substring.</paragraph>
+  <paragraph role="paragraph" id="par_id751611153375195">The example above actually runs the UNO command <literal>.uno:SelectData</literal>. Hence, to use the <literal>RunCommand</literal> method it is necessary to remove the ".uno:" substring.</paragraph>
   <tip id="par_id191611153511038">Each LibreOffice component has its own set of commands available. One easy way to learn commands is going to <emph>Tools > Customize > Keyboard</emph>. When you position your mouse over a function in the <emph>Function</emph> list, a tooltip will appear with the corresponding UNO command.</tip>
 </section>
 
