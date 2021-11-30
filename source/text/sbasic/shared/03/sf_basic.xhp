@@ -24,11 +24,10 @@
     <h1 id="hd_id731582733781114" xml-lang="en-US"><variable id="BasicService"><link href="text/sbasic/shared/03/sf_basic.xhp" name="Basic service"><literal>ScriptForge</literal>.<literal>Basic</literal> service</link></variable></h1>
   <paragraph role="paragraph" id="par_id381589189355849" xml-lang="en-US">The <literal>ScriptForge.Basic</literal> service proposes a collection of %PRODUCTNAME Basic methods to be executed in a Python context. <literal>Basic</literal> service methods reproduce the exact syntax and behaviour of Basic builtin functions.
 </paragraph>
-  <embed href="text/sbasic/shared/03/avail_release.xhp#7.2.service"/>
 </section>
   <paragraph role="paragraph" id="par_id591589189364267" xml-lang="en-US">Typical example:</paragraph>
   <pycode>
-   <paragraph role="pycode" xml-lang="en-US" id="pyc_id971618493778666">svc.MsgBox('This has to be displayed in a message box')</paragraph>
+   <paragraph role="pycode" xml-lang="en-US" id="pyc_id971618493778666">bas.MsgBox('This has to be displayed in a message box')</paragraph>
   </pycode>
   <warning id="par_id151618849022977"><literal>ScriptForge</literal>.<literal>Basic</literal> service is limited to Python scripts.</warning>
   <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
@@ -177,9 +176,9 @@
   <embed href="text/sbasic/shared/03100300.xhp#CDate_str_date"/>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id761621898860952">d = svc.CDate(1000.25)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id861621898933001">svc.MsgBox(str(d)) # 1902-09-26 06:00:00</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id871621898933281">svc.MsgBox(d.year) # 1902</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id761621898860952">d = bas.CDate(1000.25)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id861621898933001">bas.MsgBox(str(d)) # 1902-09-26 06:00:00</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id871621898933281">bas.MsgBox(d.year) # 1902</paragraph>
   </pycode>
 </section>
 
@@ -204,8 +203,8 @@
     <paragraph role="pycode" localize="false" id="pyc_id711621951947956">uno_date.Year = 1983</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id1001621951948124">uno_date.Month = 2</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id201621951948284">uno_date.Day = 23</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id911621952103058">new_date = svc.CDateFromUnoDateTime(uno_date)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id951621952103813">svc.MsgBox(str(new_date)) # 1983-02-23 00:00:00</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id911621952103058">new_date = bas.CDateFromUnoDateTime(uno_date)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id951621952103813">bas.MsgBox(str(new_date)) # 1983-02-23 00:00:00</paragraph>
   </pycode>
 </section>
 
@@ -226,8 +225,8 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id131621952700723">from datetime import datetime</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id391621952700963">current_datetime = datetime.now()</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id941621952701150">uno_date = svc.CDateToUnoDateTime(current_datetime)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id191621952701458">svc.MsgBox(str(uno_date.Year) + "-" + str(uno_date.Month) + "-" + str(uno_date.Day))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id941621952701150">uno_date = bas.CDateToUnoDateTime(current_datetime)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id191621952701458">bas.MsgBox(str(uno_date.Year) + "-" + str(uno_date.Month) + "-" + str(uno_date.Day))</paragraph>
   </pycode>
 </section>
 
@@ -246,8 +245,8 @@
   <paragraph role="paragraph" id="par_id81618502493505">A system path file name.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id41158919969836">filename = svc.ConvertFromUrl( "file:///C:/Program%20Files%20(x86)/LibreOffice/News.txt")</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id881611147617212">svc.MsgBox(filename)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id41158919969836">filename = bas.ConvertFromUrl( "file:///C:/Program%20Files%20(x86)/LibreOffice/News.txt")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id881611147617212">bas.MsgBox(filename)</paragraph>
   </pycode>
 </section>
 
@@ -266,8 +265,8 @@
   <paragraph role="paragraph" id="par_id61658101307414">A <literal>file:</literal> URL as a string.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id891985200121516">url = svc.ConvertToUrl( 'C:\Program Files(x86)\LibreOffice\News.txt')</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id51589200605125">svc.MsgBox(url)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id891985200121516">url = bas.ConvertToUrl( 'C:\Program Files(x86)\LibreOffice\News.txt')</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id51589200605125">bas.MsgBox(url)</paragraph>
   </pycode>
 </section>
 
@@ -284,7 +283,7 @@
   <paragraph role="paragraph" id="par_id361589200121646"><emph>servicename</emph>: A fully qualified service name such as <literal>com.sun.star.ui.dialogs.FilePicker</literal> or <literal>com.sun.star.sheet.FunctionAccess</literal>.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="bascode" localize="false" id="pyc_id891589200121516">dsk = svc.CreateUnoService('com.sun.star.frame.Desktop')</paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id891589200121516">dsk = bas.CreateUnoService('com.sun.star.frame.Desktop')</paragraph>
   </pycode>
 </section>
 
@@ -307,7 +306,7 @@
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id961618558341526">dt = datetime.datetime(2004, 1, 31)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id891599410846998">dt = svc.DateAdd("m", 1, dt)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id891599410846998">dt = bas.DateAdd("m", 1, dt)</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id621599410266932">print(dt)</paragraph>
   </pycode>
 </section>
@@ -331,7 +330,7 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id401611153339973">date1 = datetime.datetime(2005,1, 1)</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id121589202413630">date2 = datetime.datetime(2005,12,31)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id641618564383315">diffDays = svc.DateDiff('d', date1, date2)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id641618564383315">diffDays = bas.DateDiff('d', date1, date2)</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id151618564392035">print(diffDays)</paragraph>
   </pycode>
 </section>
@@ -353,8 +352,8 @@
   <paragraph role="paragraph" id="par_id791618672371743">The extracted part for the given date/time.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="bascode" localize="false" id="pyc_id31589202925376">print(svc.DatePart("ww", datetime.datetime(2005,12,31)</paragraph>
-    <paragraph role="bascode" localize="false" id="pyc_id821589203188905">print(svc.DatePart('q', datetime.datetime(1999,12,30)</paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id31589202925376">print(bas.DatePart("ww", datetime.datetime(2005,12,31)</paragraph>
+    <paragraph role="bascode" localize="false" id="pyc_id821589203188905">print(bas.DatePart('q', datetime.datetime(1999,12,30)</paragraph>
   </pycode>
 </section>
 
@@ -373,7 +372,7 @@
   <paragraph role="paragraph" id="par_id441618674018955">The computed date.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id81589203370943">dt = svc.DateValue("23-02-2011")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id81589203370943">dt = bas.DateValue("23-02-2011")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id931618674563379">print(dt)</paragraph>
   </pycode>
 </section>
@@ -395,7 +394,7 @@
   <embed href="text/sbasic/shared/00000003.xhp#languageformat"/>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id431589205147164">txt = svc.Format(6328.2, '##.##0.00')</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id431589205147164">txt = bas.Format(6328.2, '##.##0.00')</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id231618679147769">print(txt)</paragraph>
   </pycode>
 </section>
@@ -414,7 +413,7 @@
   <paragraph role="paragraph" id="par_id381618831451271">The default component context is used, when instantiating services via <literal>XMultiServiceFactory</literal>. See the <literal>Professional UNO</literal> chapter in the Developer's Guide on <link href="https://api.libreoffice.org/" name="API Developer's Guide">api.libreoffice.org</link> for more information.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id451389205147164">ctx = svc.GetDefaultContext()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id451389205147164">ctx = bas.GetDefaultContext()</paragraph>
   </pycode>
 </section>
 
@@ -430,7 +429,7 @@
   <paragraph role="paragraph" id="par_id109668178405855" localize="false"><input>svc.GetGuiType(): int</input></paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id154389205147164">n = svc.GetGuiType()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id154389205147164">n = bas.GetGuiType()</paragraph>
   </pycode>
 </section>
 
@@ -444,12 +443,9 @@
     <paragraph role="paragraph" id="par_id341618848562340">Use <literal>os.pathsep</literal> from <literal>os</literal> Python module to <link href="text/sbasic/python/python_platform.xhp" name="path delimiter">identify the path separator</link>.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" id="par_id901668178405558" localize="false"><input>svc.GetPathSeparator(): str</input></paragraph>
-  <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id53158950247542">svc.GetPathSeparator(): str</paragraph>
-  </pycode>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id451389205147461">sep = svc.GetPathSeparator()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id451389205147461">sep = bas.GetPathSeparator()</paragraph>
   </pycode>
 </section>
 
@@ -464,10 +460,10 @@
   <paragraph role="paragraph" id="par_id901667188405855" localize="false"><input>svc.GetSystemTicks(): int</input></paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id251619448108905">ticks_ini = svc.GetSystemTicks()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id251619448108905">ticks_ini = bas.GetSystemTicks()</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id181619448111210">time.sleep(1)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id301619448111744">ticks_end = svc.GetSystemTicks()</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id651619448112320">svc.MsgBox("{} - {} = {}".format(ticks_end, ticks_ini,ticks_end - ticks_ini))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id301619448111744">ticks_end = bas.GetSystemTicks()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id651619448112320">bas.MsgBox("{} - {} = {}".format(ticks_end, ticks_ini,ticks_end - ticks_ini))</paragraph>
   </pycode>
 </section>
 
@@ -488,7 +484,7 @@
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id281622398076950">The following example loads the Gimmicks Basic library if it has not been loaded yet.</paragraph>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id301622397623041">libs = svc.GlobalScope.BasicLibraries()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id301622397623041">libs = bas.GlobalScope.BasicLibraries()</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id841622397623202">if not libs.isLibraryLoaded("Gimmicks"):</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id621622397623352">    libs.loadLibrary("Gimmicks")</paragraph>
   </pycode>
@@ -511,9 +507,9 @@
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id811622398234384">The following example shows a message box with the names of all available dialog libraries.</paragraph>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id561622398178727">dlg_libs = svc.GlobalScope.DialogLibraries()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id561622398178727">dlg_libs = bas.GlobalScope.DialogLibraries()</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id181622398179079">lib_names = dlg_libs.getElementNames()</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id461622398179232">svc.MsgBox("\n".join(lib_names))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id461622398179232">bas.MsgBox("\n".join(lib_names))</paragraph>
   </pycode>
 </section>
 
@@ -547,7 +543,7 @@
   <h2 id="hd_id181618br/905397758" localize="false">MsgBox</h2>
   <paragraph role="paragraph" id="par_id231618922407948">Displays a dialog box containing a message and returns an optional value.<br/>MB_xx constants help specify the dialog type, the number and type of buttons to display, plus the icon type. By adding their respective values they form bit patterns, that define the <literal>MsgBox</literal> dialog appearance.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-  <paragraph role="paragraph" id="par_id71618922431508" localize="false"><input>svc.MsgBox(prompt: str, [buttons: int], [title: str])[: int]</input></paragraph>
+  <paragraph role="paragraph" id="par_id71618922431508" localize="false"><input>bas.MsgBox(prompt: str, [buttons: int], [title: str])[: int]</input></paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <embed href="text/sbasic/shared/03010101.xhp#parameters"/>
   <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
@@ -567,7 +563,7 @@
   <paragraph role="paragraph" id="par_id631619084685488" localize="false"><input>svc.Now(): datetime</input></paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id411619084749448">svc.MsgBox(svc.Now(), svc.MB_OK, "Now")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id411619084749448">bas.MsgBox(bas.Now(), bas.MB_OK, "Now")</paragraph>
   </pycode>
 </section>
 
@@ -586,7 +582,7 @@
   <paragraph role="paragraph" localize="false" id="par_id381619096830033">Integer</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id321619096903721">YELLOW = svc.RGB(255,255,0)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id321619096903721">YELLOW = bas.RGB(255,255,0)</paragraph>
   </pycode>
 </section>
 
@@ -604,8 +600,8 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id21622841338969">comp = svc.ThisComponent</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id781622841643538">svc.MsgBox("\n".join(comp.getSupportedServiceNames()))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id21622841338969">comp = bas.ThisComponent</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id781622841643538">bas.MsgBox("\n".join(comp.getSupportedServiceNames()))</paragraph>
   </pycode>
 </section>
 
@@ -623,7 +619,7 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id761622913418091">db_doc = svc.ThisDatabaseDocument</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id761622913418091">db_doc = bas.ThisDatabaseDocument</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id201622913418646">table_names = db_doc.DataSource.getTables().getElementNames()</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id711622913418917">bas.MsgBox("\n".join(table_names))</paragraph>
   </pycode>
@@ -643,7 +639,7 @@
   <paragraph role="paragraph" id="par_id21619094660345"><emph>obj</emph>: A variable or UNO object.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id751619095024401">svc.Xray(svc.StarDesktop)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id751619095024401">bas.Xray(bas.StarDesktop)</paragraph>
   </pycode>
 </section>
 
