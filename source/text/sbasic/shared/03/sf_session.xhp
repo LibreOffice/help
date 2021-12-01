@@ -176,7 +176,8 @@
              <link href="text/sbasic/shared/03/sf_session.xhp#ExecuteBasicScript" name="ExecuteBasicScript method">ExecuteBasicScript</link><br/>
              <link href="text/sbasic/shared/03/sf_session.xhp#ExecuteCalcFunction" name="ExecuteCalcFunction method">ExecuteCalcFunction</link><br/>
              <link href="text/sbasic/shared/03/sf_session.xhp#ExecutePythonScript" name="ExecutePythonScript method">ExecutePythonScript</link><br/>
-             <link href="text/sbasic/shared/03/sf_session.xhp#HasUnoMethod" name="HasUnoMethod method">HasUnoMethod</link>
+             <link href="text/sbasic/shared/03/sf_session.xhp#GetPDFExportOptions" name="GetPDFExportOptions method">GetPDFExportOptions</link><br/>
+             <link href="text/sbasic/shared/03/sf_session.xhp#HasUnoMethod" name="HasUnoMethod method">HasUnoMethod</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
@@ -184,7 +185,8 @@
              <link href="text/sbasic/shared/03/sf_session.xhp#HasUnoProperty" name="HasUnoProperty method">HasUnoProperty</link><br/>
              <link href="text/sbasic/shared/03/sf_session.xhp#OpenURLInBrowser" name="OpenURLInBrowser method">OpenURLInBrowser</link><br/>
              <link href="text/sbasic/shared/03/sf_session.xhp#RunApplication" name="RunApplication method">RunApplication</link><br/>
-             <link href="text/sbasic/shared/03/sf_session.xhp#SendMail" name="SendMail method">SendMail</link>
+             <link href="text/sbasic/shared/03/sf_session.xhp#SendMail" name="SendMail method">SendMail</link><br/>
+             <link href="text/sbasic/shared/03/sf_session.xhp#SetPDFExportOptions" name="SetPDFExportOptions method">SetPDFExportOptions</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
@@ -192,7 +194,7 @@
              <link href="text/sbasic/shared/03/sf_session.xhp#UnoMethods" name="UnoMethods method">UnoMethods</link><br/>
              <link href="text/sbasic/shared/03/sf_session.xhp#UnoProperties" name="UnoProperties method">UnoProperties</link><br/>
              <link href="text/sbasic/shared/03/sf_session.xhp#UnoObjectType" name="UnoObjectType method">UnoObjectType</link><br/>
-             <link href="text/sbasic/shared/03/sf_session.xhp#WebService" name="WebService method">WebService</link>
+             <link href="text/sbasic/shared/03/sf_session.xhp#WebService" name="WebService method">WebService</link><br/><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -342,6 +344,38 @@
   </pycode>
 </section>
 
+<section id="GetPDFExportOptions">
+  <comment> GetPDFExportOptions ------------------------------------------------------------------------------------ </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id571582816536250">
+    <bookmark_value>Session service;GetPDFExportOptions</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id551582816589871" localize="false">GetPDFExportOptions</h2>
+  <paragraph role="paragraph" id="par_id111582816585087">Returns the current PDF export settings defined in the <menuitem>PDF Options</menuitem> dialog, which can be accessed by choosing <menuitem>File - Export as - Export as PDF</menuitem>.</paragraph>
+  <paragraph role="paragraph" id="par_id931638383270026">Export options set with the <menuitem>PDF Options</menuitem> dialog are kept for future use. Hence <literal>GetPDFExportOptions</literal> returns the settings currently defined. In addition, use <literal>SetPDFExportOptions</literal> to change current PDF export options.</paragraph>
+  <paragraph role="paragraph" id="par_id801638383659558">This method returns a <literal>Dictionary</literal> object wherein each key represent export options and the corresponding values are the current PDF export settings.</paragraph>
+  <tip id="par_id751638383457198">Read the <link href="https://wiki.openoffice.org/wiki/API/Tutorials/PDF_export" name="PDFExport_Wiki">PDF Export wiki page</link> to learn more about all available options.</tip>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id701626811351883">
+    <input>session.GetPDFExportOptions(): obj</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id361638384343807">Dim expSettings As Object, msg As String, key As String, optLabels As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id721638384344196">expSettings = session.GetPDFExportOptions()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id181638384344396">optLabels = expSettings.Keys</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id271638384344575">For Each key in optLabels</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id711638384344810">    msg = msg + key &amp; ": " &amp; expSettings.Item(key) &amp; Chr(10)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651638384345031">Next key</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id101638384345303">MsgBox msg</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id431638384345510">' Zoom: 100</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id1001638384345677">' Changes: 4</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id11638384345891">' Quality: 90</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id471638384346131">' ...</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#Basic_Only"/>
+</section>
+
 <section id="HasUnoMethod">
   <comment> HasUnoMethod ------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id901587477335292">
@@ -487,6 +521,37 @@
     <paragraph role="pycode" localize="false" id="pyc_id391626819726171">                 cc="john@other.fr, mary@other.be"</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id771626819726363">                 filenames=r"C:\myFile1.txt, C:\myFile2.txt")</paragraph>
   </pycode>
+</section>
+
+<section id="SetPDFExportOptions">
+  <comment> SetPDFExportOptions ------------------------------------------------------------------------------------ </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id571582816563070">
+    <bookmark_value>Session service;SetPDFExportOptions</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id551582816583371" localize="false">SetPDFExportOptions</h2>
+  <paragraph role="paragraph" id="par_id111582816583005">Modifies the PDF export settings defined in the <menuitem>PDF Options</menuitem> dialog, which can be accessed by choosing <menuitem>File - Export as - Export as PDF</menuitem>.</paragraph>
+  <paragraph role="paragraph" id="par_id181638385131806">Calling this method changes the actual values set in the <menuitem>PDF Options</menuitem> dialog, which are used by the <literal>ExportAsPDF</literal> method from the <literal>Document</literal> service.</paragraph>
+  <paragraph role="paragraph" id="par_id391638385313847">This method returns <literal>True</literal> when successful.</paragraph>
+  <tip id="par_id751638383457321">Read the <link href="https://wiki.openoffice.org/wiki/API/Tutorials/PDF_export" name="PDFExport_Wiki">PDF Export wiki page</link> to learn more about all available options.</tip>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id701626811351011">
+    <input>session.SetPDFExportOptions(pdfoptions: obj): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id771582816585233"><emph>pdfoptions</emph>: <literal>Dictionary</literal> object that defines the PDF export settings to be changed. Each key-value pair represents an export option and the value that will be set in the dialog.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id141638386087986">The following example changes the maximum image resolution to 150 dpi and exports the current document as a PDF file.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id501638385904841">Dim newSettings As Object, oDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id681638465060402">Set oDoc = CreateScriptService("Document")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id411638385905025">Set newSettings = CreateScriptService("Dictionary")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id421638386212072">newSettings.Add("ReduceImageResolution", True)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id801638385905201">newSettings.Add("MaxImageResolution", 150)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id141638385905345">session.SetPDFExportOptions(newSettings)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id381638465110336">oDoc.ExportAsPDF("C:\Documents\myFile.pdf", Overwrite := True)</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#Basic_Only"/>
 </section>
 
 <section id="UnoMethods">
