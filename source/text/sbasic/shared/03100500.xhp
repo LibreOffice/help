@@ -32,29 +32,39 @@
   <bookmark_value>CInt function</bookmark_value>
 </bookmark>
 
-<paragraph id="hd_id3149346" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03100500.xhp" name="CInt Function">CInt Function</link></paragraph>
+<h1 id="hd_id3149346"><link href="text/sbasic/shared/03100500.xhp" name="CInt Function">CInt Function</link></h1>
 <paragraph id="par_id3155419" role="paragraph" xml-lang="en-US">Converts any string or numeric expression to an integer.</paragraph>
 </section>
 
-<paragraph id="hd_id3147573" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<h2 id="hd_id3147573">Syntax:</h2>
 <bascode>
 <paragraph id="par_id3154142" role="bascode" xml-lang="en-US">CInt (Expression)</paragraph>
 </bascode>
 
-<paragraph id="hd_id3147531" role="heading" level="2" xml-lang="en-US">Return value:</paragraph>
+<h2 id="hd_id3147531">Return value:</h2>
 <paragraph id="par_id3147560" role="paragraph" xml-lang="en-US">Integer</paragraph>
 
-<paragraph id="hd_id3145069" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
+<h2 id="hd_id3145069">Parameters:</h2>
 <paragraph id="par_id3159414" role="paragraph" xml-lang="en-US"> <emph>Expression:</emph> Any expression that you want to convert.</paragraph>
 <paragraph id="par_id3159415" role="paragraph" xml-lang="en-US">If the argument is a number, it is used as numeric value of the expression.</paragraph>
-<paragraph id="par_id3159416" role="paragraph" xml-lang="en-US">If the argument is string, the function trims the leading whitespace; then it tries to recognize a number in following characters. These syntaxes are recognized: decimal numbers (with optional leading sign) using decimal and group separators of locale configured in $[officename] (group separators are accepted in any position), with optional exponential notation like &quot;-12e+1&quot; (where an optionally signed whole decimal number after e or E or d or D defines power of 10); octal numbers like &quot;&amp;Onnn...&quot;, where &quot;nnn...&quot; after &quot;&amp;O&quot; or &quot;&amp;o&quot; is sequence of characters up to the next non-alphanumeric character, and must be no longer than 11 digits from 0 to 7; hexadecimal numbers like &quot;&amp;Hnnn...&quot;, where &quot;nnn...&quot; after &quot;&amp;H&quot; or &quot;&amp;h&quot; is sequence of characters up to the next non-alphanumeric character, and must be no longer than 8 digits from 0 to 9, A to F, or a to f. The rest of the string is ignored. If the string is not recognized, e.g. when after trimming leading whitespace it doesn't start with plus, minus, a decimal digit, or &quot;&amp;&quot;, or when the sequence after &quot;&amp;O&quot; is longer than 11 characters or contains an alphabetic character, the numeric value of expression is 0.</paragraph>
+<paragraph id="par_id3159416" role="paragraph" xml-lang="en-US">If the argument is string, the function trims the leading white space; then it tries to recognize a number in following characters. The syntax below are recognized:</paragraph>
+<list type="unordered">
+    <listitem>
+        <paragraph id="par_id811638383475418" role="listitem">Decimal numbers (with optional leading sign) using decimal and group separators of locale configured in $[officename] (group separators are accepted in any position), with optional exponential notation like "-12e+1" (where an optionally signed whole decimal number after e or E or d or D defines power of 10);</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id361638383494362" role="listitem">Octal numbers like "&amp;Onnn...", where "nnn..." after "&amp;O" or "&amp;o" is sequence no longer than 11 digits, from 0 to 7, up to the next non-alphanumeric character;</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id91638383518862" role="listitem">Hexadecimal numbers like "&amp;Hnnn...", where "nnn..." after "&amp;H" or "&amp;h" is sequence of characters up to the next non-alphanumeric character, and must be no longer than 8 digits, from 0 to 9, A to F, or a to f. </paragraph>
+    </listitem>
+</list>
+<paragraph role="paragraph" id="par_id61638383582794">The rest of the string is ignored. If the string is not recognized, e.g. when after trimming leading whitespace it doesn't start with plus, minus, a decimal digit, or "&amp;", or when the sequence after "&amp;O" is longer than 11 characters or contains an alphabetic character, the numeric value of expression is 0.</paragraph>
 <paragraph id="par_id3159417" role="paragraph" xml-lang="en-US">If the argument is an error, the error number is used as numeric value of the expression.</paragraph>
 <paragraph id="par_id3159418" role="paragraph" xml-lang="en-US">If the argument is a date, number of days since 1899-12-30 (serial date) is used as numeric value of the expression. Time is represented as fraction of a day.</paragraph>
 <paragraph id="par_id3150358" role="paragraph" xml-lang="en-US">After calculating the numeric value of the expression, it is rounded to the nearest integer (if needed), and if the result is not between -32768 and 32767, $[officename] Basic reports an overflow error. Otherwise, the result is returned.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
-
 <embed href="text/sbasic/shared/03100400.xhp#examplecountryconvert"/>
 </body>
-
 </helpdocument>
