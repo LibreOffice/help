@@ -201,6 +201,26 @@
         </tablecell>
     </tablerow>
     </table>
+    <h2 id="hd_id591638374883162">Special case of CSV files with separator defined in the first line</h2>
+
+    <paragraph role="paragraph" id="par_id781638374952502">CSV import and export support a <literal>sep=</literal> and <literal>"sep="</literal> field separator setting. When reading a CSV document, the separator is taken from the initial <literal>sep=</literal> or <literal>"sep="</literal> single field, if that is the only line content. </paragraph>
+
+    <paragraph role="paragraph" id="par_id561638377619263">When reading a CSV file, the quoted form is preserved as (unquoted) cell content. You see <literal>sep=|</literal> when | is the separator in the first line. In the unquoted form, the separator is discarded because it is a real field separator in the context. You see <literal>sep=</literal>. in the first line.</paragraph>
+
+    <paragraph role="paragraph" id="par_id761638377626465">When writing a CSV file, the existing single top left cell's content such as <literal>sep=|</literal> is adapted to the current separator with the quoted form of <literal>"sep=|"</literal> (if quotes / text delimiters aren't set empty and | is the separator) and always uses the ASCII " double quote character.</paragraph>
+
+    <paragraph role="paragraph" id="par_id61638377631743">If the line containing the <literal>sep=|</literal> is not to be imported as data, remember to set the <emph>From row</emph> number in the dialog to 2. Note that this line will not be preserved when re-saving.</paragraph>
+
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+
+    <bascode>
+        <paragraph role="bascode" id="par_id371638374806568" xml-lang="en-US" localize="false">sep=|</paragraph>
+        <paragraph role="bascode" id="par_id731638374814029" xml-lang="en-US">"LETTER"|"ANIMAL"</paragraph>
+        <paragraph role="bascode" id="par_id801638374818291" xml-lang="en-US">"a"|"aardvark"</paragraph>
+        <paragraph role="bascode" id="par_id621638374822275" xml-lang="en-US">"b"|"bear"</paragraph>
+        <paragraph role="bascode" id="par_id851638374831208" xml-lang="en-US">"c"|"cow"</paragraph>
+    </bascode>
+
     <h2 id="hd_id181634739011588">Formatting Codes for Token 5</h2>
     <table id="tab_id491634738948892">
         <tablerow>
