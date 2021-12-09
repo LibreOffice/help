@@ -870,8 +870,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
 ))
 
 $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
-    helpcontent2/source/text/shared/explorer/database/migrate_macros \
-    helpcontent2/source/text/shared/explorer/database/password \
     helpcontent2/source/text/shared/explorer/database/querywizard00 \
     helpcontent2/source/text/shared/explorer/database/querywizard01 \
     helpcontent2/source/text/shared/explorer/database/querywizard02 \
