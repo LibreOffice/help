@@ -73,6 +73,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
     helpcontent2/source/text/sdatabase/menuinsert \
     helpcontent2/source/text/sdatabase/menutools \
     helpcontent2/source/text/sdatabase/menuview \
+    helpcontent2/source/text/sdatabase/migrate_macros \
+    helpcontent2/source/text/sdatabase/password \
     helpcontent2/source/text/sdatabase/tablewizard00 \
     helpcontent2/source/text/sdatabase/tablewizard01 \
     helpcontent2/source/text/sdatabase/tablewizard02 \
