@@ -16,6 +16,24 @@
       "message": "This is dangerous. If you keep the English expression untranslated in the syntax section, then you must keep the same expression when explaining just below.\n\nFor example, you have  \"Result \u003d expression1 Or expression2\" untranslated in the syntax section and then below, you have \n\n\u003cemph\u003eResult\u003c/emph\u003e is the ...\n\nwhich is translated. \n\nSo, \"Result\" is untranslated in the syntax and just below \u003cemph\u003eResultado\u003c/emph\u003e é a...\"",
       "revId": "9f1a369dc5282794840e50a49f0e9b68bbeaad9b",
       "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a86ca5_07fedd24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002862
+      },
+      "writtenOn": "2021-12-15T14:31:24Z",
+      "side": 1,
+      "message": "Hi Olivier. I understand your point, this is something that bothers me as well. \n\nHowever, I believe it goes both ways. For instance, the translator might not have translated the argument description, despite having translated it in the Syntax section. This might easily happen over time, specially if the translators are not programmers. How can he/she know that the word \"expression1\" needs translating and the word \"or\" doesn\u0027t need it?\n\nMaybe this \"Result \u003d expression1 Or expression2\" could be simply resolved by changing the syntax to something like: \"\"Result \u003d Expr1 Or Expr2\". What do you think?\n\nIn more complex cases such as in 03090403.xhp (it\u0027s in this patch), which has the following syntax:\n\nDeclare {Sub | Function} Name Lib \"Libname\" [Alias \"Aliasname\"] [Parameter] [As Type]\n\nIt will be hard for the translator to determine which portions need to be translated and which do not need translation. It becomes even harder to maintain consistency with argument descriptions and examples in the same help page. Moreover, in some methods we have keyword arguments (kwargs) that should not be translated (see for example bug 141474).\n\nAnother example: In ScriptForge we have keyword arguments, so argument names must not be translated, neither in the syntax nor in the argument description, whereas the user will not know which is the name of the argument to be used while programming.\n\nThis is why I\u0027m proposing to silence these strings. However, maybe not all of them should be. How do you suggest we handle this complex issue?",
+      "parentUuid": "74d6c167_3c7aa210",
+      "revId": "9f1a369dc5282794840e50a49f0e9b68bbeaad9b",
+      "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615"
     }
   ]
 }
