@@ -32,20 +32,20 @@
   <bookmark_value>CInt function</bookmark_value>
 </bookmark>
 
-<h1 id="hd_id3149346"><link href="text/sbasic/shared/03100500.xhp" name="CInt Function">CInt Function</link></h1>
+<h1 id="hd_id3149346"><variable id="CInt-h1"><link href="text/sbasic/shared/03100500.xhp" name="CInt Function">CInt Function</link></variable></h1>
 <paragraph id="par_id3155419" role="paragraph" xml-lang="en-US">Converts any string or numeric expression to an integer.</paragraph>
 </section>
 
-<h2 id="hd_id3147573">Syntax:</h2>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
-<paragraph id="par_id3154142" role="bascode" xml-lang="en-US">CInt (Expression)</paragraph>
+<paragraph id="par_id3154142" role="bascode" localize="false">CInt (expression as Variant) As Integer</paragraph>
 </bascode>
 
-<h2 id="hd_id3147531">Return value:</h2>
-<paragraph id="par_id3147560" role="paragraph" xml-lang="en-US">Integer</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
+<paragraph id="par_id3147560" role="paragraph" localize="false">Integer</paragraph>
 
-<h2 id="hd_id3145069">Parameters:</h2>
-<paragraph id="par_id3159414" role="paragraph" xml-lang="en-US"> <emph>Expression:</emph> Any expression that you want to convert.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<paragraph id="par_id3159414" role="paragraph" xml-lang="en-US"> <emph>expression</emph>: Any expression or combination of expressions that you want to convert.</paragraph>
 <paragraph id="par_id3159415" role="paragraph" xml-lang="en-US">If the argument is a number, it is used as numeric value of the expression.</paragraph>
 <paragraph id="par_id3159416" role="paragraph" xml-lang="en-US">If the argument is string, the function trims the leading white space; then it tries to recognize a number in following characters. The syntax below are recognized:</paragraph>
 <list type="unordered">
@@ -63,8 +63,28 @@
 <paragraph id="par_id3159417" role="paragraph" xml-lang="en-US">If the argument is an error, the error number is used as numeric value of the expression.</paragraph>
 <paragraph id="par_id3159418" role="paragraph" xml-lang="en-US">If the argument is a date, number of days since 1899-12-30 (serial date) is used as numeric value of the expression. Time is represented as fraction of a day.</paragraph>
 <paragraph id="par_id3150358" role="paragraph" xml-lang="en-US">After calculating the numeric value of the expression, it is rounded to the nearest integer (if needed), and if the result is not between -32768 and 32767, $[officename] Basic reports an overflow error. Otherwise, the result is returned.</paragraph>
+
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
-<embed href="text/sbasic/shared/03100400.xhp#examplecountryconvert"/>
+<embed href="text/sbasic/shared/00000003.xhp#err6"/>
+
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<bascode>
+  <paragraph role="bascode" id="bas_id671639759734244" localize="false">Sub ConvertAsInteger</paragraph>
+  <paragraph role="bascode" id="bas_id251639759734678" localize="false">	Print CInt(-258.0427e+2 + "133"*2 + &amp;h64 -&amp;o220)</paragraph>
+  <paragraph role="bascode" id="bas_id701639759735212" localize="false">	' -25804 +266 +100 -144 = -25582</paragraph>
+  <paragraph role="bascode" id="bas_id531639759783478" xml-lang="en-US">	Print CInt(expression := #1990-10-27) ' 1953 days past 1899-12-30</paragraph>
+  <paragraph role="bascode" id="bas_id641639759784924" localize="false">End Sub</paragraph>
+</bascode>
+
+<section id="relatedtopics">
+  <embed href="text/sbasic/shared/03120105.xhp#CBool_h1"/>
+  <embed href="text/sbasic/shared/03120105.xhp#CByte_h1"/>
+  <embed href="text/sbasic/shared/03100050.xhp#CCur_h1"/>
+  <embed href="text/sbasic/shared/03100400.xhp#CDbl_h1"/>
+  <embed href="text/sbasic/shared/03100600.xhp#CLng_h1"/>
+  <embed href="text/sbasic/shared/03100900.xhp#CSng_h1"/>
+</section>
+
 </body>
 </helpdocument>
