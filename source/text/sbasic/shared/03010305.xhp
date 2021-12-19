@@ -26,37 +26,46 @@
 </meta>
 
 <body>
-
-
 <section id="rgb">
 <bookmark xml-lang="en-US" branch="index" id="bm_id851576768070903">
    <bookmark_value>RGB function</bookmark_value>
 </bookmark>
 
-<paragraph id="hd_id3150792" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03010305.xhp" name="RGB Function">RGB Function</link></paragraph>
+<h1 id="hd_id3150792"><link href="text/sbasic/shared/03010305.xhp" name="RGB Function">RGB Function</link></h1>
   <paragraph id="par_id3150447" role="paragraph" xml-lang="en-US">Returns a <literal>Long</literal> integer color value consisting of red, green, and blue components.</paragraph>
 </section>
 
-<paragraph id="hd_id3147229" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
 <paragraph id="par_id3155132" localize="false" role="bascode" xml-lang="en-US">RGB (Red, Green, Blue)</paragraph>
 </bascode>
 
-<paragraph id="hd_id3156442" role="heading" level="2" xml-lang="en-US">Return value:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
 <paragraph id="par_id3159153" localize="false" role="paragraph" xml-lang="en-US">Long</paragraph>
 
-<paragraph id="hd_id3154013" role="heading" level="2" xml-lang="en-US">Parameter:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
 <section id="parameters">
+<section id="parameters1">
 <paragraph id="par_id3152597" role="paragraph" xml-lang="en-US"> <emph>red</emph>: Any integer expression that represents the red component (0-255) of the composite color.</paragraph>
 <paragraph id="par_id3146974" role="paragraph" xml-lang="en-US"> <emph>green</emph>: Any integer expression that represents the green component (0-255) of the composite color.</paragraph>
 <paragraph id="par_id3151113" role="paragraph" xml-lang="en-US"> <emph>blue</emph>: Any integer expression that represents the blue component (0-255) of the composite color.</paragraph>
+</section>
+<paragraph role="paragraph" id="par_id101639922410794">The resulting <literal>Long</literal> value is calculated with the following formula:<br/>
+<literal>Result = red&#215;65536 + green&#215;256 + blue</literal>.
+</paragraph>
+<warning id="par_id671639922129017">Under VBA compatibility mode (<link href="text/sbasic/shared/03103350.xhp" name="vbasupport"><literal>Option VBASupport 1</literal></link>), the <literal>Long</literal> value is calculated as
+<br/>
+<literal>Result = red + green&#215;256 + blue&#215;65536</literal><br/>
+See <link href="text/sbasic/shared/03010306.xhp" name="rgbvba">RGB Function [VBA]</link>
+</warning>
+
 <tip id="par_id211587653651037">The <link href="text/shared/optionen/01010501.xhp" name="color picker dialog">color picker dialog</link> helps computing red, green and blue components of a composite color. <link href="text/shared/guide/text_color.xhp" name="Changing the color of text">Changing the color of text</link> and selecting <emph>Custom color</emph> displays the color picker dialog.</tip>
 </section>
 
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 
-<paragraph id="hd_id3147435" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
 <paragraph id="par_idm1340938032" role="bascode" localize="false" xml-lang="en-US">Sub ExampleColor</paragraph>
 <paragraph id="par_idm1340936800" role="bascode" localize="false" xml-lang="en-US">Dim lVar As Long</paragraph>
@@ -67,7 +76,6 @@
 <paragraph id="par_id3150716" role="bascode" xml-lang="en-US">        "blue= " &amp; blue(lVar) &amp; Chr(13) , 64,"colors"</paragraph>
 <paragraph id="par_idm1340927072" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
-  
-</body>
 
+</body>
 </helpdocument>
