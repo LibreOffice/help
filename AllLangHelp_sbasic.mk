@@ -123,6 +123,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03010303 \
     helpcontent2/source/text/sbasic/shared/03010304 \
     helpcontent2/source/text/sbasic/shared/03010305 \
+    helpcontent2/source/text/sbasic/shared/03010306 \
     helpcontent2/source/text/sbasic/shared/03020000 \
     helpcontent2/source/text/sbasic/shared/03020100 \
     helpcontent2/source/text/sbasic/shared/03020101 \
