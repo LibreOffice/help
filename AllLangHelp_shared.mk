@@ -870,15 +870,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
 ))
 
 $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
-    helpcontent2/source/text/shared/explorer/database/querywizard00 \
-    helpcontent2/source/text/shared/explorer/database/querywizard01 \
-    helpcontent2/source/text/shared/explorer/database/querywizard02 \
-    helpcontent2/source/text/shared/explorer/database/querywizard03 \
-    helpcontent2/source/text/shared/explorer/database/querywizard04 \
-    helpcontent2/source/text/shared/explorer/database/querywizard05 \
-    helpcontent2/source/text/shared/explorer/database/querywizard06 \
-    helpcontent2/source/text/shared/explorer/database/querywizard07 \
-    helpcontent2/source/text/shared/explorer/database/querywizard08 \
     helpcontent2/source/text/shared/explorer/database/rep_datetime \
     helpcontent2/source/text/shared/explorer/database/rep_insertfield \
     helpcontent2/source/text/shared/explorer/database/rep_main \
