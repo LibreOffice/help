@@ -75,6 +75,15 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
     helpcontent2/source/text/sdatabase/menuview \
     helpcontent2/source/text/sdatabase/migrate_macros \
     helpcontent2/source/text/sdatabase/password \
+    helpcontent2/source/text/sdatabase/querywizard00 \
+    helpcontent2/source/text/sdatabase/querywizard01 \
+    helpcontent2/source/text/sdatabase/querywizard02 \
+    helpcontent2/source/text/sdatabase/querywizard03 \
+    helpcontent2/source/text/sdatabase/querywizard04 \
+    helpcontent2/source/text/sdatabase/querywizard05 \
+    helpcontent2/source/text/sdatabase/querywizard06 \
+    helpcontent2/source/text/sdatabase/querywizard07 \
+    helpcontent2/source/text/sdatabase/querywizard08 \
     helpcontent2/source/text/sdatabase/tablewizard00 \
     helpcontent2/source/text/sdatabase/tablewizard01 \
     helpcontent2/source/text/sdatabase/tablewizard02 \
