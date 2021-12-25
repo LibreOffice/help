@@ -449,27 +449,27 @@
   <paragraph role="paragraph" id="par_id631585563491559"><emph>dateformat</emph>: A special mechanism handles dates when <literal>dateformat</literal> is either "YYYY-MM-DD", "DD-MM-YYYY" or "MM-DD-YYYY". The dash (-) may be replaced by a dot (.), a slash (/) or a space. Other date formats will be ignored. Dates defaulting to an empty string "" are considered as normal text.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id61585564516409">Consider the CSV file "myFile.csv" with the following contents:</paragraph>
-  <paragraph role="paragraph" localize="false" id="par_id281626980354105"><input>Name,DateOfBirth,Address,City</input></paragraph>
-  <paragraph role="paragraph" localize="false" id="par_id301626980648833"><input>Anna,2002/03/31,"Rue de l'église, 21",Toulouse</input></paragraph>
-  <paragraph role="paragraph" localize="false" id="par_id881626980658900"><input>Fred,1998/05/04,"Rue Albert Einstein, 113A",Carcassonne</input></paragraph>
+  <paragraph role="paragraph" id="par_id281626980354105"><input>Name,DateOfBirth,Address,City</input></paragraph>
+  <paragraph role="paragraph" id="par_id301626980648833"><input>Anna,2002/03/31,"Rue de l'église, 21",Toulouse</input></paragraph>
+  <paragraph role="paragraph" id="par_id881626980658900"><input>Fred,1998/05/04,"Rue Albert Einstein, 113A",Carcassonne</input></paragraph>
   <paragraph role="paragraph" id="par_id181626979812772">The examples below in Basic and Python read the contents of the CSV file into an <literal>Array</literal> object.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id391585561482567">Dim arr As Variant</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id531585561482408">arr = SF_Array.ImportFromCSVFile("C:\Temp\myFile.csv", DateFormat := "YYYY/MM/DD")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id621585561482783">MsgBox arr(0, 3) ' City</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id21585564425349">MsgBox arr(1, 2) ' Rue de l'église, 21</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id831585564433851">MsgBox arr(1, 3) ' Toulouse</paragraph>
+    <paragraph role="bascode" id="bas_id531585561482408">arr = SF_Array.ImportFromCSVFile("C:\Temp\myFile.csv", DateFormat := "YYYY/MM/DD")</paragraph>
+    <paragraph role="bascode" id="bas_id621585561482783">MsgBox arr(0, 3) ' City</paragraph>
+    <paragraph role="bascode" id="bas_id21585564425349">MsgBox arr(1, 2) ' Rue de l'église, 21</paragraph>
+    <paragraph role="bascode" id="bas_id831585564433851">MsgBox arr(1, 3) ' Toulouse</paragraph>
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id851626979992344">from scriptforge import CreateScriptService</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id571626979992587">svc = CreateScriptService("Array")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id821626979992775">bas = CreateScriptService("Basic")</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id511626979992999">arr = svc.ImportFromCSVFile(r"C:\Temp\myFile.csv", dateformat = "YYYY/MM/DD")</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id211626979993191">bas.MsgBox(arr[0][3]) # City</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id671626979993408">bas.MsgBox(arr[1][2]) # Rue de l'église, 21</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id481626979993648">bas.MsgBox(arr[1][3]) # Toulouse</paragraph>
+    <paragraph role="pycode" id="pyc_id511626979992999">arr = svc.ImportFromCSVFile(r"C:\Temp\myFile.csv", dateformat = "YYYY/MM/DD")</paragraph>
+    <paragraph role="pycode" id="pyc_id211626979993191">bas.MsgBox(arr[0][3]) # City</paragraph>
+    <paragraph role="pycode" id="pyc_id671626979993408">bas.MsgBox(arr[1][2]) # Rue de l'église, 21</paragraph>
+    <paragraph role="pycode" id="pyc_id481626979993648">bas.MsgBox(arr[1][3]) # Toulouse</paragraph>
   </pycode>
 </section>
 
