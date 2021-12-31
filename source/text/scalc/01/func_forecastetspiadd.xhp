@@ -23,13 +23,12 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id976559765597655">
 <bookmark_value>FORECAST.ETS.PI.ADD function</bookmark_value>
 </bookmark>
-<paragraph id="hd_id0603201617134175" role="heading" level="1" xml-lang="en-US"><link href="text/scalc/01/func_forecastetspiadd.xhp">FORECAST.ETS.PI.ADD function</link></paragraph>
+<h1 id="hd_id0603201617134175"><link href="text/scalc/01/func_forecastetspiadd.xhp">FORECAST.ETS.PI.ADD function</link></h1>
 
 <paragraph id="par_id0603201617141750" role="paragraph" xml-lang="en-US"><ahelp hid="HID_FUNC_FORECAST_ETS_PIA">Calculates the prediction interval(s) for additive forecast based on the historical data using ETS or EDS algorithms.</ahelp> EDS is used when argument <emph>period_length</emph> is 0, otherwise ETS is used.</paragraph>
 <embed href="text/scalc/01/exponsmooth_embd.xhp#intro"/>
 <paragraph id="par_id0603201610005998" role="paragraph" xml-lang="en-US">FORECAST.ETS.PI.ADD calculates with the model</paragraph>
 <embed href="text/scalc/01/exponsmooth_embd.xhp#etsadd"/>
-<embed href="text/scalc/00/avail_release.xhp#5.2"/>
 <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
 <paragraph id="par_id0603201610010044" role="code" xml-lang="en-US">FORECAST.ETS.PI.ADD(target, values, timeline, [confidence_level], [period_length], [data_completion], [aggregation])</paragraph>
 <embed href="text/scalc/01/exponsmooth_embd.xhp#target"/>
@@ -40,7 +39,7 @@
 <embed href="text/scalc/01/exponsmooth_embd.xhp#datacompletion"/>
 <embed href="text/scalc/01/exponsmooth_embd.xhp#aggregation"/>
 <paragraph id="par_id0403201618595126" role="paragraph" xml-lang="en-US">For example, with a 90% Confidence level, a 90% prediction interval will be computed (90% of future points are to fall within this radius from forecast). </paragraph>
-<paragraph id="par_id0403201618595143" role="note" xml-lang="en-US">Note on prediction intervals: there is no exact mathematical way to calculate this for forecasts, there are various approximations. Prediction intervals tend to be increasingly 'over-optimistic' when increasing distance of the forecast-X from the observation data set.</paragraph>
+<note id="par_id0403201618595143">Note on prediction intervals: there is no exact mathematical way to calculate this for forecasts, there are various approximations. Prediction intervals tend to be increasingly 'over-optimistic' when increasing distance of the forecast-X from the observation data set.</note>
 <paragraph id="par_id0403201618595150" role="paragraph" xml-lang="en-US">For ETS, Calc uses an approximation based on 1000 calculations with random variations within the standard deviation of the observation data set (the historical values).</paragraph>
 
 <embed href="text/scalc/01/exponsmooth_embd.xhp#exampledata"/>
@@ -48,6 +47,10 @@
   <paragraph id="hd_id04032016112394554" role="paragraph" xml-lang="en-US">Returns 18.8061295551355, the prediction interval for additive forecast for January 2014 based on <emph>Values</emph> and <emph>Timeline</emph> named ranges above, 90% (=0.9) confidence level, with one sample per period, no missing data, and AVERAGE as aggregation.</paragraph>
   <paragraph id="hd_id04032123185123" role="code" xml-lang="en-US">=FORECAST.ETS.PI.ADD(DATE(2014;1;1);Values;Timeline;0.8;4;TRUE();7)</paragraph>
   <paragraph id="hd_id040312316112394554" role="paragraph" xml-lang="en-US">Returns 23.4416821953741, the prediction interval for additive forecast for January 2014 based on <emph>Values</emph> and <emph>Timeline</emph> named ranges above, with confidence level of 0.8, period length of 4, no missing data, and SUM as aggregation.</paragraph>
+  <embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
+<embed href="text/scalc/00/avail_release.xhp#5.2"/>
+  <embed href="text/scalc/01/common_func.xhp#notODFF"/>
+  <paragraph role="paragraph" id="par_id341640873986703" localize="false"><literal>COM.MICROSOFT.FORECAST.ETS.COFINT</literal></paragraph>
 </section>
 <section id="relatedtopics">
 <paragraph id="par_id0603201619261276" role="paragraph" xml-lang="en-US">See also:

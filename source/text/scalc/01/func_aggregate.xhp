@@ -20,13 +20,11 @@
 <bookmark xml-lang="en-US" branch="index" id="bm_id126123001625791">
   <bookmark_value>AGGREGATE function</bookmark_value>
 </bookmark>
-<paragraph id="hd_id3154073" role="heading" level="1" xml-lang="en-US"><variable id="aggregate_head"><link href="text/scalc/01/func_aggregate.xhp">AGGREGATE</link></variable> function</paragraph>
+<h1 id="hd_id3154073"><variable id="aggregate_head"><link href="text/scalc/01/func_aggregate.xhp">AGGREGATE</link></variable> function</h1>
 <paragraph id="par_id2209201514174373" role="paragraph" xml-lang="en-US"><ahelp hid="."><variable id="aggregate_des">This function returns an aggregate result of the calculations in the range. You can use different aggregate functions listed below. The Aggregate function enables you to omit hidden rows, errors, SUBTOTAL and other AGGREGATE function results in the calculation.</variable></ahelp></paragraph>
 </section>
-<paragraph id="par_id2209201514174453" role="note" xml-lang="en-US">AGGREGATE function is applied to vertical ranges of data with activated AutoFilter. If AutoFilter is not activated, automatic recalculation of the function result does not work for newly hidden rows. It is not supposed to work with horizontal ranges, however it can be applied to them as well, but with limitations. In particular, the AGGREGATE function applied to a horizontal data range does not recognize hiding columns, however correctly omits errors and results of SUBTOTAL and other AGGREGATE functions embedded into the row. </paragraph>
-<embed href="text/scalc/00/avail_release.xhp#4.4"/>
+<note id="par_id2209201514174453">AGGREGATE function is applied to vertical ranges of data with activated AutoFilter. If AutoFilter is not activated, automatic recalculation of the function result does not work for newly hidden rows. It is not supposed to work with horizontal ranges, however it can be applied to them as well, but with limitations. In particular, the AGGREGATE function applied to a horizontal data range does not recognize hiding columns, however correctly omits errors and results of SUBTOTAL and other AGGREGATE functions embedded into the row. </note>
 <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-
 <paragraph id="par_id200801176228491" role="code" xml-lang="en-US">AGGREGATE(Function; Option; Number 1[; Number 2][; ... ;[Number 253]])</paragraph>
 <paragraph id="par_id2309201516102726" role="paragraph" xml-lang="en-US">or</paragraph>
 <paragraph id="par_id30181907128680" role="code" xml-lang="en-US">AGGREGATE(Function; Option; Array[; k])</paragraph>
@@ -276,7 +274,7 @@
 <paragraph id="par_id220402843321947" role="paragraph" xml-lang="en-US"><emph>Number1</emph> – required argument. The first numeric argument (if the range is set by a list of values inside the function) or a reference to a cell that contains it. </paragraph>
 <paragraph id="par_id2309201514193338" role="paragraph" xml-lang="en-US"><emph>Number2, 3, ...</emph> – optional. A numeric argument or a reference to a cell (up to 253 arguments), for which you need the aggregate value.</paragraph>
 <paragraph id="par_id99381371214702" role="paragraph" xml-lang="en-US"><emph>Array</emph> – required argument. The array can be specified by the boundaries of the range, the name of the named range or the column label.</paragraph>
-<paragraph id="par_id2309201515555812" role="note" xml-lang="en-US">For using column labels “Automatically find columns and rows labels” function needs to be enabled.</paragraph>
+<note id="par_id2309201515555812">For using column labels “Automatically find columns and rows labels” function needs to be enabled.</note>
 <paragraph id="par_id2209201514174370" role="paragraph" xml-lang="en-US"><emph>k</emph> – required argument for the following functions: LARGE, SMALL, PERCENTILE.INC, QUARTILE.INC, PERCENTILE.EXC, QUARTILE.EXC. It is a numeric argument, which must correspond to the second argument of these functions.</paragraph>
 
 <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
@@ -430,7 +428,10 @@
 <paragraph id="par_id2309201520180167" role="paragraph" xml-lang="en-US"><item type="input">=AGGREGATE(13;3;Sheet1.B2:B9:Sheet3.B2:B9)</item><br/>The function returns mode of the values of second columns through sheets 1:3 (that have the same data) = 8.</paragraph>
 <paragraph id="par_id2309201520395365" role="paragraph" xml-lang="en-US">You can use reference to a cell or a range for every argument in the formula. The following example shows how it works. Besides, it shows that you can use column labels to specify an array.</paragraph>
 <paragraph id="par_id2309201520395380" role="paragraph" xml-lang="en-US"><item type="input">=AGGREGATE(E3;E5;'ColumnOne')</item><br/>If E3 = 13 and E5 = 5, the function returns mode of the first column = 10.</paragraph>
-
+<embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
+<embed href="text/scalc/00/avail_release.xhp#4.4"/>
+<embed href="text/scalc/01/common_func.xhp#notODFF"/>
+<paragraph role="paragraph" id="par_id341640873986703" localize="false"><literal>COM.MICROSOFT.AGGREGATE</literal></paragraph>
 <section id="relatedtopics">
 <paragraph id="par_id241712879431120" role="paragraph" xml-lang="en-US"><link href="text/scalc/01/04060184.xhp#average">AVERAGE</link>, <link href="text/scalc/01/04060181.xhp#count">COUNT</link>, <link href="text/scalc/01/04060181.xhp#counta">COUNTA</link>, <link href="text/scalc/01/04060184.xhp#max">MAX</link>, <link href="text/scalc/01/04060184.xhp#min">MIN</link>, <link href="text/scalc/01/04060106.xhp#Section26">PRODUCT</link>, <link href="text/scalc/01/04060185.xhp#stdevdots">STDEV.S</link>, <link href="text/scalc/01/04060185.xhp#stdevdotp">STDEV.P</link>, <link href="text/scalc/01/04060106.xhp#Section16">SUM</link>, <link href="text/scalc/01/04060185.xhp#vardots">VAR.S</link>, <link href="text/scalc/01/04060185.xhp#vardotp">VAR.P</link>, <link href="text/scalc/01/04060184.xhp#median">MEDIAN</link>, <link href="text/scalc/01/04060184.xhp#modedotsngl">MODE.SNGL</link>, <link href="text/scalc/01/04060183.xhp#large">LARGE</link>, <link href="text/scalc/01/04060183.xhp#small">SMALL</link>, <link href="text/scalc/01/04060184.xhp#percentileinc">PERCENTILE.INC</link> , <link href="text/scalc/01/04060184.xhp#quartileinc">QUARTILE.INC</link>, <link href="text/scalc/01/04060184.xhp#percentileexc">PERCENTILE.EXC</link>, <link href="text/scalc/01/04060184.xhp#quartileexc">QUARTILE.EXC</link></paragraph>
 <paragraph id="par_id125062615028497" role="paragraph" xml-lang="en-US"><link href="text/shared/optionen/01060500.xhp#hd_id3156199">Automatically find column and row labels</link></paragraph>
