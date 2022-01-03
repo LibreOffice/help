@@ -30,8 +30,9 @@
     <bookmark xml-lang="en-US" branch="index" id="bm_id3149205">
       <bookmark_value>Val function</bookmark_value>
     </bookmark>
-    <h1 id="hd_id3149205"><link href="text/sbasic/shared/03120104.xhp" name="Val Function">Val Function</link></h1>
+    <h1 id="hd_id3149205"><variable id="Val_h1"><link href="text/sbasic/shared/03120104.xhp" name="Val Function">Val Function</link></variable></h1>
     <paragraph id="par_id3153345" role="paragraph">Converts a string to a numeric expression.</paragraph>
+    <note id="par_id281641235880765">The string passed to the <literal>Val</literal> function is locale-independent. This means that commas are interpreted as thousands separators and a dot is used as the decimal separator.</note>
   </section>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <bascode>
@@ -47,9 +48,16 @@
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <bascode>
     <paragraph id="par_idm1341084240" role="bascode" localize="false">Sub ExampleVal</paragraph>
-    <paragraph id="par_idm1341083008" role="bascode" localize="false">    MsgBox Val("123.123")</paragraph>
-    <paragraph id="par_idm1341081760" role="bascode" localize="false">    MsgBox Val("A123.123")</paragraph>
+    <paragraph id="par_idm1341083008" role="bascode" localize="false">    MsgBox Val("123.1") + 1 ' 124.1</paragraph>
+    <paragraph role="bascode" id="bas_id131641236938068">    ' Below 123,1 is interpreted as 1231 since "," is the thousands separator</paragraph>
+    <paragraph id="par_idm1341083014" role="bascode" localize="false">    MsgBox Val("123,1") + 1 ' 1232</paragraph>
+    <paragraph role="bascode" id="bas_id911641237027667">    ' The example below returns 0 (zero) since the string provided is not a valid number</paragraph>
+    <paragraph id="par_idm1341081760" role="bascode" localize="false">    MsgBox Val("A123.123") ' 0</paragraph>
     <paragraph id="par_idm1341080512" role="bascode" localize="false">End Sub</paragraph>
   </bascode>
+
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03120103.xhp#Str_h1"/>
+  </section>
 </body>
 </helpdocument>

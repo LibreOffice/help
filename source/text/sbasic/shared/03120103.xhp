@@ -30,30 +30,44 @@
     <bookmark xml-lang="en-US" branch="index" id="bm_id3143272">
       <bookmark_value>Str function</bookmark_value>
     </bookmark>
-    <h1 id="hd_id3143272"><link href="text/sbasic/shared/03120103.xhp" name="Str Function">Str Function</link></h1>
-    <paragraph id="par_id3155100" role="paragraph">Converts a numeric expression into a string.</paragraph>
+    <h1 id="hd_id3143272"><variable id="Str_h1"><link href="text/sbasic/shared/03120103.xhp" name="Str Function">Str Function</link></variable></h1>
+    <paragraph id="par_id3155100" role="paragraph">The <literal>Str</literal> function converts a numeric value or the result of a calculation into a string.</paragraph>
+    <paragraph id="par_id3146958" role="paragraph">Negative numbers are preceded by a blank space and a minus sign. Positive numbers are preceded by a blank space (without the plus sign).</paragraph>
+    <paragraph role="paragraph" id="par_id601641237849695">If a string is passed as argument, it is returned without any changes.</paragraph>
+    <note id="par_id331641237252390">The string returned by the <literal>Str</literal> function is locale-independent. Hence the dot is used as the decimal separator when needed.</note>
   </section>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <bascode>
-    <paragraph id="par_id3149497" role="bascode">Str (Expression)</paragraph>
+    <paragraph id="par_id3149497" role="bascode">Str (Number As Double)</paragraph>
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
   <paragraph id="par_id3146117" localize="false" role="paragraph">String</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph id="par_id3149178" role="paragraph"> <emph>Expression: </emph>Any numeric expression.</paragraph>
-  <paragraph id="par_id3146958" role="paragraph">The <emph>Str</emph> function converts a numeric variable, or the result of a calculation into a string. Negative numbers are preceded by a minus sign. Positive numbers are preceded by a space (instead of the plus sign).</paragraph>
+  <paragraph id="par_id3149178" role="paragraph"> <emph>Number:</emph> Any numeric expression to be converted into a locale-independent string.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
   <embed href="text/sbasic/shared/00000003.xhp#err5"/>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <bascode>
     <paragraph id="par_idm1341439760" role="bascode" localize="false">Sub ExampleStr</paragraph>
-    <paragraph id="par_idm1341438528" role="bascode" localize="false">    Dim iVar As Single</paragraph>
-    <paragraph id="par_idm1341437296" role="bascode" localize="false">    Dim sVar As String</paragraph>
-    <paragraph id="par_idm1341436064" role="bascode" localize="false">    iVar = 123.123</paragraph>
-    <paragraph id="par_idm1341434832" role="bascode" localize="false">    sVar = LTrim(Str(iVar))</paragraph>
-    <paragraph id="par_idm1341433584" role="bascode" localize="false">    MsgBox sVar &amp; chr(13) &amp; Str(iVar)</paragraph>
+    <paragraph role="bascode" id="bas_id831641238784987">    ' Note the blank space at the beginning of the returned strings</paragraph>
+    <paragraph id="par_idm1341438528" role="bascode" localize="false">    MsgBox Str(10) ' " 10"</paragraph>
+    <paragraph id="par_idm1341437296" role="bascode" localize="false">    MsgBox Str(10.5) ' " 10.5"</paragraph>
+    <paragraph id="par_idm1341436064" role="bascode" localize="false">    MsgBox Str(-12345 + 1.3) ' " -12346.3"</paragraph>
+    <paragraph id="par_idm1341434832" role="bascode" localize="false">    MsgBox Str(10000 / 3) '  " 3333.33333333333"</paragraph>
+    <paragraph role="bascode" id="bas_id991641238830710">    ' Strings passed as arguments are left unchanged</paragraph>
+    <paragraph id="par_idm1341433584" role="bascode" localize="false">    MsgBox Str("ABC") ' "ABC"</paragraph>
     <paragraph id="par_idm1341432272" role="bascode" localize="false">End Sub</paragraph>
   </bascode>
-</body>
+  <paragraph role="paragraph" id="par_id601641238259787">Use the <literal>LTrim</literal> function to remove the blank space at the beginning of the returned string.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id521641238327633">Sub ExampleStr</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id211641238327951">    MsgBox Str(10.5) ' " 10.5"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id481641238328191">    MsgBox LTrim(Str(10.5)) ' "10.5"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id51641238328726">End Sub</paragraph>
+  </bascode>
 
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03120104.xhp#Val_h1"/>
+  </section>
+</body>
 </helpdocument>
