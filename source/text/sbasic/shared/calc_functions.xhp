@@ -70,7 +70,7 @@
 </bascode>
 
   <h2 id="hd_id561592352225441">Calling Add-In Calc Functions in BASIC</h2>
-  <paragraph role="paragraph" id="par_id261592359338681">The Calc Add-In functions are in service <literal>com.sun.star.sheet.addin.Analysis</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id261592359338681">The Calc Add-In functions are in the UNO services <link href="text/sbasic/shared/calc_functions.xhp#analysis" name="analysis"><literal>com.sun.star.sheet.addin.Analysis</literal></link>, <link href="text/sbasic/shared/calc_functions.xhp#dates" name="dates"><literal>com.sun.star.sheet.addin.DateFunctions</literal></link> and <link href="text/sbasic/shared/calc_functions.xhp#pricing" name="pricing"><literal>com.sun.star.sheet.addin.PricingFunctions</literal></link>.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
 <paragraph role="bascode" id="bas_id421592358343633">REM Example calling Add-in function SQRTPI</paragraph>
@@ -88,19 +88,20 @@
 <paragraph role="bascode" id="par_id531632373814120" xml-lang="en-US" localize="false">Sub AssignAddInFormulaToCell</paragraph>
 <paragraph role="bascode" id="par_id101632623833258" xml-lang="en-US">REM Add an Add-In formula to cell A1. Function name is the UNO service name.</paragraph>
 <paragraph role="bascode" id="par_id905632673823257" xml-lang="en-US" localize="false">    oCell = ThisComponent.Sheets.getByIndex(0).getCellRangeByName("A1")</paragraph>
-<paragraph role="bascode" id="par_id131632673828344" xml-lang="en-US" localize="false">    oCell.Formula = "=com.sun.star.sheet.addin.Analysis.getBin2Dec(B1)"</paragraph>
+<paragraph role="bascode" id="par_id131612673828344" xml-lang="en-US" localize="false">    oCell.Formula = "=com.sun.star.sheet.addin.Analysis.getBin2Dec(B1)"</paragraph>
 <paragraph role="bascode" id="par_id191632673867838" xml-lang="en-US">REM Cell A1 displays the localized function name</paragraph>
 <paragraph role="bascode" id="par_id471632673842254" xml-lang="en-US" localize="false">End Sub</paragraph>
 </bascode>
-<h2 id="hd_id661632676716180">Add-In Functions UNO service Names</h2>
-<paragraph role="paragraph" id="par_id651629988674793">The table below presents a list of all Calc Add-In functions and their respective UNO service names.</paragraph>
+<section id="analysis">
+<h2 id="hd_id661632676716180">UNO Service Names for Analysis Add-In Functions</h2>
+<paragraph role="paragraph" id="par_id651629988674793">The table below presents a list of all Calc Analysis Add-In functions and their respective UNO service names.</paragraph>
 <table id="tab_id971592356505781">
     <tablerow>
         <tablecell>
-            <paragraph id="par_id511592356505781" role="tablehead" xml-lang="en-US" localize="false">Calc Function name</paragraph>
+            <paragraph id="par_id511592356505781" role="tablehead" xml-lang="en-US">Calc Function name</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id471592356505782" role="tablehead" xml-lang="en-US" localize="false">UNO service  name</paragraph>
+            <paragraph id="par_id471592356505782" role="tablehead" xml-lang="en-US">UNO service name</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
@@ -912,7 +913,124 @@
         </tablecell>
     </tablerow>
 </table>
-  <section id="relatedtopics">
+</section>
+<section id="dates">
+<h2 id="hd_id661632676736180">UNO Service Names for Date Add-In Functions</h2>
+<paragraph role="paragraph" id="par_id751629988674793">The table below presents a list of all Calc Date Add-In functions and their respective UNO service names.</paragraph>
+<table id="tab_id971592356505781">
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id511593356505781" role="tablehead" xml-lang="en-US">Calc Function name</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id471593356505782" role="tablehead" xml-lang="en-US">UNO service name</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id721593355432992" role="tablecontent" xml-lang="en-US" >DAYSINMONTH</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id391593355432992" role="tablecontent" localize="false" >com.sun.star.sheet.addin.DateFunctions.getDaysInMonth</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id761641413741892" role="tablecontent" xml-lang="en-US" >DAYSINYEAR</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id361641413741893" role="tablecontent" xml-lang="en-US" >com.sun.star.sheet.addin.DateFunctions.getDaysInMonth</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id11641413916930" role="tablecontent" xml-lang="en-US" >MONTHS</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id261641413916931" role="tablecontent" xml-lang="en-US" >com.sun.star.sheet.addin.DateFunctions.getDiffMonths</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id761641413962003" role="tablecontent" xml-lang="en-US" >WEEKS</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id811641413962004" role="tablecontent" xml-lang="en-US" >com.sun.star.sheet.addin.DateFunctions.getDiffWeeks</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id71641413988924" role="tablecontent" xml-lang="en-US" >YEARS</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id401641413988926" role="tablecontent" xml-lang="en-US" >com.sun.star.sheet.addin.DateFunctions.getDiffYears</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id341641414018758" role="tablecontent" xml-lang="en-US" >ROT13</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id831641414018760" role="tablecontent" xml-lang="en-US" >com.sun.star.sheet.addin.DateFunctions.getRot13</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id171641414040589" role="tablecontent" xml-lang="en-US" >WEEKSINYEAR</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id391641414040590" role="tablecontent" xml-lang="en-US" >com.sun.star.sheet.addin.DateFunctions.getWeeksInYear</paragraph>
+        </tablecell>
+    </tablerow>
+</table>
+</section>
+<section id="pricing">
+<h2 id="hd_id661632676732180">UNO Service Names for Pricing Add-In Functions</h2>
+<paragraph role="paragraph" id="par_id751629983674793">The table below presents a list of all Calc Pricing Add-In functions and their respective UNO service names.</paragraph>
+<table id="tab_id971592356505781">
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id511593356506781" role="tablehead" xml-lang="en-US">Calc Function name</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id471593356505762" role="tablehead" xml-lang="en-US">UNO service name</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id701641414383401" role="tablecontent" xml-lang="en-US">OPT_BARRIER</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id761641414383403" role="tablecontent" xml-lang="en-US" >com.sun.star.sheet.addin.PrincingFunctions.getOptBarrier</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id131641414493411" role="tablecontent" xml-lang="en-US">OPT_PROB_HIT</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id191641414493413" role="tablecontent" xml-lang="en-US" >com.sun.star.sheet.addin.PrincingFunctions.getOptProbHit</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id81641414542294" role="tablecontent" xml-lang="en-US" >OPT_PROB_INMONEY</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id861641414542296" role="tablecontent" xml-lang="en-US" >com.sun.star.sheet.addin.PrincingFunctions.getOptProbInMoney</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id711641414594816" role="tablecontent" xml-lang="en-US" >OPT_TOUCH</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id561641414594817" role="tablecontent" xml-lang="en-US" >com.sun.star.sheet.addin.PrincingFunctions.getOptTouch</paragraph>
+        </tablecell>
+    </tablerow>
+</table>
+</section>
+<section id="relatedtopics">
       <embed href="text/sbasic/shared/03131600.xhp#createunoserviceh1"/>
 </section>
 </body>
