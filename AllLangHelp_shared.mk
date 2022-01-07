@@ -759,6 +759,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/xsltfilter \
     helpcontent2/source/text/shared/guide/xsltfilter_create \
     helpcontent2/source/text/shared/guide/xsltfilter_distribute \
+    helpcontent2/source/text/shared/find_toolbar \
     helpcontent2/source/text/shared/main0108 \
     helpcontent2/source/text/shared/main0201 \
     helpcontent2/source/text/shared/main0204 \
