@@ -279,7 +279,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id171626700586634">sfDic = CreateScriptService("Dictionary", myDict)</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id251626700586818">prop = sfDic.ConvertToPropertyValues()</paragraph>
   </pycode>
-  <tip id="par_id421610393306916">Many services and methods in the UNO library take in parameters represented using the <literal>PropertyValue</literal> struct, which is part of the LibreOffice API.</tip>
+  <tip id="par_id421610393306916">Many services and methods in the UNO library take in parameters represented using the <literal>PropertyValue</literal> struct, which is part of the %PRODUCTNAME API.</tip>
 </section>
 
 <section id="Exists">
@@ -351,7 +351,7 @@
     <input>dict.ImportFromPropertyValues(propertyvalues: obj[0..*], overwrite: bool = False): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id751588941968522"><emph>propertyvalues</emph>: A zero-based 1-dimensional array containing <literal>com.sun.star.beans.PropertyValue</literal> objects. This parameter may also be a single <literal>propertyvalue</literal> object not contained in an Array.</paragraph>
+  <paragraph role="paragraph" id="par_id751588941968522"><emph>propertyvalues</emph>: A zero-based 1-dimensional array containing <literal>com.sun.star.beans.PropertyValue</literal> objects. This parameter may also be a single <literal>PropertyValue</literal> object not contained in an Array.</paragraph>
   <paragraph role="paragraph" id="par_id21588941968131"><emph>overwrite</emph>: When <literal>True</literal>, entries with same name may exist in the dictionary and their values are overwritten. When <literal>False</literal> (default), repeated keys will raise an error. Note that dictionary keys are not case-sensitive in Basic, whereas names are case-sensitive in sets of property values and in Python dictionaries.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id641626703615898">The examples below first create an array with two <literal>PropertyValue</literal> objects and then convert it to a dictionary.</paragraph>
@@ -406,7 +406,7 @@
     <input>dict.Item(key: str): any</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id551582890399669"><emph>key</emph>: Not case-sensitive. Must exist in the dictionary, otherwise an <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
+  <paragraph role="paragraph" id="par_id551582890399669"><emph>key</emph>: Not case-sensitive. If it does not exist, <literal>Empty</literal> value is returned.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id181610395933967">The following example iterates over all keys in the dictionary and uses the <literal>Item</literal> method to access their values.</paragraph>
   <bascode>
