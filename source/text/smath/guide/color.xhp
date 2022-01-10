@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ -->
+
+<meta>
+  <topic id="mathcolor" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">Applying Color to Formula Parts</title>
+    <filename>/text/smath/guide/color.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id3156384">
+    <bookmark_value>Color in formulas</bookmark_value>
+    <bookmark_value>RGB colors</bookmark_value>
+  </bookmark>
+  <h1 id="hd_id601641846107898"><variable id="color"><link href="text/smath/guide/color.xhp" name="Color_link">Applying Color to Formula Parts</link></variable></h1>
+  <paragraph role="paragraph" id="par_id481641846189425">Use the command <literal>color</literal> to apply color to the subsequent formula part.</paragraph>
+  <paragraph role="paragraph" id="par_id141641846432331">The example below creates a formula where <emph>a</emph> is shown using the default color (black) and <emph>b</emph> is shown in red.</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id351641846485158">
+    <input>a + color red b</input>
+  </paragraph>
+  <paragraph role="paragraph" id="par_id211641848286949">Beware that the <literal>color</literal> command only changes the color of the formula part that comes immediately after it. For example, in the formula below only <emph>b</emph> will be shown in red, whereas <emph>c</emph> will be shown in black.</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id351641840365858">
+    <input>a + color red b + c</input>
+  </paragraph>
+  <paragraph role="paragraph" id="par_id841641848475043">Use braces to apply color to more parts of the formula. In the following example, <emph>b</emph> and <emph>c</emph> are shown in red.</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id351641840365128">
+    <input>a + color red { b + c }</input>
+  </paragraph>
+  <tip id="par_id651641851485699">A list with predefined color names is available <link href="text/smath/guide/color.xhp#PredefinedColors" name="Colors_list">here</link>.</tip>
+
+  <h2 id="hd_id831641851472401">Using RGB colors</h2>
+  <paragraph role="paragraph" id="par_id701641851641673">Use the command <literal>color rgb</literal> to apply colors using RGB (Red, Green, Blue) values.</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id351641840365134">
+    <input>color rgb 192 0 128 var</input>
+  </paragraph>
+  <note id="par_id941641851779414">RGB values range between 0 and 255.</note>
+
+  <h2 id="hd_id901641851813499">Using hex notation</h2>
+  <paragraph role="paragraph" id="par_id271641851832464">Use the command <literal>color hex</literal> to apply colors using the hexadecimal notation.</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id351641840365002">
+    <input>color hex C00080 var</input>
+  </paragraph>
+
+  <h2 id="hd_id121641851982125">Combining color with other commands</h2>
+  <paragraph role="paragraph" id="par_id321641852002469">It is possible to combine the color command with other commands as <literal>bold</literal>, <literal>italic</literal> or <literal>size</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id521641852051767">The example below writes <emph>var</emph> in bold blue:</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id35164184033258">
+    <input>color blue bold var</input>
+  </paragraph>
+  <paragraph role="paragraph" id="par_id21641852173099">To change color and font size, use <literal>color</literal> in combination with <literal>size</literal> and the desired font size.</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id351641840335284">
+    <input>color blue size 20 var</input>
+  </paragraph>
+
+  <section id="PredefinedColors">
+    <h2 id="hd_id621641846264365">Predefined color names</h2>
+    <paragraph role="paragraph" id="par_id911641846282038">%PRODUCTNAME provides a set of predefined color names that can be used along with the <literal>color</literal> command.</paragraph>
+  </section>
+  <table id="tab_id611641846833413">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id871641846833413" role="tablehead">Markup language</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id661641846833413" role="tablehead">Color</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id741641846833413" role="tablehead">Hex value</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id741641846833014" role="tablehead">RGB</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846833413" localize="false" role="tablecontent"><literal>aqua</literal> or <literal>cyan</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846833413" role="tablecontent">Aqua</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846833413" role="tablecontent">00FFFF</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846833228" role="tablecontent">rgb(0, 255, 255)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846832580" localize="false" role="tablecontent"><literal>black</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846830036" role="tablecontent">Black</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846895473" role="tablecontent">000000</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846830228" role="tablecontent">rgb(0, 0, 0)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641818533413" localize="false" role="tablecontent"><literal>blue</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846320113" role="tablecontent">Blue</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846830022" role="tablecontent">0000FF</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846830214" role="tablecontent">rgb(0, 0, 255)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846830214" localize="false" role="tablecontent"><literal>coral</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846833363" role="tablecontent">Coral</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846836325" role="tablecontent">FF7F50</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846830218" role="tablecontent">rgb(255, 127, 80)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846830854" localize="false" role="tablecontent"><literal>crimson</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846833014" role="tablecontent">Crimson</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846833398" role="tablecontent">DC143C</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846836328" role="tablecontent">rgb(220, 20, 60)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846830853" localize="false" role="tablecontent"><literal>fuchsia</literal> or <literal>magenta</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846800325" role="tablecontent">Fuchsia</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846369853" role="tablecontent">FF00FF</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846865874" role="tablecontent">rgb(255, 0, 255)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846830213" localize="false" role="tablecontent"><literal>gray</literal> or <literal>grey</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846896513" role="tablecontent">Gray</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846021463" role="tablecontent">808080</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846830854" role="tablecontent">rgb(128, 128, 128)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846869350" localize="false" role="tablecontent"><literal>green</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846830214" role="tablecontent">Green</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846839658" role="tablecontent">008000</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846833973" role="tablecontent">rgb(0, 128, 0)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846832058" localize="false" role="tablecontent"><literal>hotpink</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846836253" role="tablecontent">Hot pink</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846844587" role="tablecontent">FF69B4</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846833652" role="tablecontent">rgb(255, 105, 180)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846896541" localize="false" role="tablecontent"><literal>indigo</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846812385" role="tablecontent">Indigo</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846833363" role="tablecontent">4B0082</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846864150" role="tablecontent">rgb(75, 0, 130)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846830325" localize="false" role="tablecontent"><literal>lavender</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846835521" role="tablecontent">Lavender</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846632584" role="tablecontent">E6E6FA</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846652828" role="tablecontent">rgb(230, 230, 250)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846830258" localize="false" role="tablecontent"><literal>lime</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846036523" role="tablecontent">Lime</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846855213" role="tablecontent">00FF00</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846830968" role="tablecontent">rgb(0, 255, 0)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846860143" localize="false" role="tablecontent"><literal>maroom</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846833649" role="tablecontent">Maroom</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846896433" role="tablecontent">800000</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846830328" role="tablecontent">rgb(128, 0, 0)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846003673" localize="false" role="tablecontent"><literal>midnightblue</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846837653" role="tablecontent">Midnight</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846863257" role="tablecontent">191970</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846833628" role="tablecontent">rgb(25, 25, 112)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846836325" localize="false" role="tablecontent"><literal>navy</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846867458" role="tablecontent">Navy</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846864203" role="tablecontent">000080</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846830998" role="tablecontent">rgb(0, 0, 128)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846833993" localize="false" role="tablecontent"><literal>olive</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846837663" role="tablecontent">Olive</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271640366833413" role="tablecontent">808000</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846965228" role="tablecontent">rgb(128, 128, 0)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846688413" localize="false" role="tablecontent"><literal>orange</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846838053" role="tablecontent">Orange</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846806613" role="tablecontent">FFA500</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846836508" role="tablecontent">rgb(255, 165, 0)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846860513" localize="false" role="tablecontent"><literal>orangered</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846836041" role="tablecontent">Orange red</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846815593" role="tablecontent">FF4500</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846839025" role="tablecontent">rgb(255, 69, 0)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846833003" localize="false" role="tablecontent"><literal>purple</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846833063" role="tablecontent">Purple</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846836013" role="tablecontent">0x800080</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641820513228" role="tablecontent">rgb(128, 0, 128)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846800698" localize="false" role="tablecontent"><literal>red</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846833902" role="tablecontent">Red</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846822843" role="tablecontent">FF0000</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846833008" role="tablecontent">rgb(255, 0, 0)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846830963" localize="false" role="tablecontent"><literal>seagreen</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846836613" role="tablecontent">Sea green</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846831113" role="tablecontent">2E8B57</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846838908" role="tablecontent">rgb(46, 139, 87)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846830993" localize="false" role="tablecontent"><literal>silver</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641840569413" role="tablecontent">Silver</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846806358" role="tablecontent">C0C0C0</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846863988" role="tablecontent">rgb(192, 192, 192)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846806325" localize="false" role="tablecontent"><literal>teal</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846896587" role="tablecontent">Teal</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846774513" role="tablecontent">008080</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846877108" role="tablecontent">rgb(0, 128, 128)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951641846830369" localize="false" role="tablecontent"><literal>violet</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846006745" role="tablecontent">Violet</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846830973" role="tablecontent">EE82EE</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641877833228" role="tablecontent">rgb(238, 130, 238)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951661846830258" localize="false" role="tablecontent"><literal>yellow</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id841641846837556" role="tablecontent">Yellow</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846937413" role="tablecontent">FFFF00</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271641846641728" role="tablecontent">rgb(255, 255, 0)</paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+
+  
+  
+  <paragraph role="paragraph" id="par_id11641846424213"></paragraph>
+
+  <section id="relatedtopics">
+    <embed href="text/smath/guide/brackets.xhp#brackets"/>
+  </section>
+</body>
+</helpdocument>

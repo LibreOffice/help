@@ -77,6 +77,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,smath,\
     helpcontent2/source/text/smath/guide/align \
     helpcontent2/source/text/smath/guide/attributes \
     helpcontent2/source/text/smath/guide/brackets \
+    helpcontent2/source/text/smath/guide/color \
     helpcontent2/source/text/smath/guide/comment \
     helpcontent2/source/text/smath/guide/keyboard \
     helpcontent2/source/text/smath/guide/limits \
