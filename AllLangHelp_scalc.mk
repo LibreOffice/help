@@ -251,6 +251,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_regex \
     helpcontent2/source/text/scalc/01/func_replaceb \
     helpcontent2/source/text/scalc/01/func_roman \
+    helpcontent2/source/text/scalc/01/func_rounddown \
     helpcontent2/source/text/scalc/01/func_roundsig \
     helpcontent2/source/text/scalc/01/func_second \
     helpcontent2/source/text/scalc/01/func_skewp \
@@ -262,6 +263,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_time \
     helpcontent2/source/text/scalc/01/func_timevalue \
     helpcontent2/source/text/scalc/01/func_today \
+    helpcontent2/source/text/scalc/01/func_trunc \
     helpcontent2/source/text/scalc/01/func_value \
     helpcontent2/source/text/scalc/01/func_weekday \
     helpcontent2/source/text/scalc/01/func_webservice \
