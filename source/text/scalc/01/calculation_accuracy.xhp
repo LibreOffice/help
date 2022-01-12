@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+    <meta>
+        <topic id="calculation_accuracy" indexer="include" status="PUBLISH">
+            <title id="tit" xml-lang="en-US">Calculation Accuracy</title>
+            <filename>/text/scalc/01/calculation_accuracy.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id741642020503366">
+        <bookmark_value>calculation;accuracy</bookmark_value>
+        <bookmark_value>precision;calculation</bookmark_value>
+    </bookmark>
+    <section id="accuracyHead">
+        <h1 id="hd_id961642017927878"><link href="text/scalc/01/calculation_accuracy.xhp" name="accuracy">%PRODUCTNAME Calculation Accuracy</link></h1>
+    </section>
+    <h2 id="hd_id941642017968835">Inherent Accuracy Problem</h2>
+    <paragraph role="paragraph" id="par_id541642018071800">%PRODUCTNAME  Calc, just like most other spreadsheet software, uses floating-point math capabilities available on hardware. Given that most contemporary hardware uses binary floating-point arithmetic with limited precision defined in <link href="https://en.wikipedia.org/wiki/IEEE_754" name="IEEE754">IEEE 754</link> standard, many decimal numbers - including as simple as 0.1 - cannot be precisely represented in %PRODUCTNAME Calc (which uses 64-bit double-precision numbers internally).</paragraph>
+    <paragraph role="paragraph" id="par_id191642019423811">Calculations with those numbers necessarily results in rounding errors, and those accumulate with every calculation. </paragraph>
+
+    <paragraph role="paragraph" id="par_id221642019437175">This is not a bug, but is expected and currently unavoidable without using complex calculations in software, which would incur inappropriate performance penalties, and thus is out of question. Users need to account for that, and use rounding and comparisons with epsilon as necessary.</paragraph>
+    <paragraph role="paragraph" id="par_id801642019531438">An example with numbers:</paragraph>
+    <table id="tab_id261642018147815">
+        <tablerow>
+            <tablecell>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id201642018147816" role="tablehead" xml-lang="en-US" localize="false">A</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id801642018147817" role="tablehead" xml-lang="en-US" localize="false">1</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id91642018147817" role="tablecontent" xml-lang="en-US" localize="false">31000.99 </paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id851642018218927" role="tablehead" xml-lang="en-US" localize="false">2</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id831642018218928" role="tablecontent" xml-lang="en-US" localize="false">32000.12</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id221642018243152" role="tablehead" xml-lang="en-US" localize="false">3</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id261642018243152" role="tablecontent" xml-lang="en-US" localize="false">=A1-A2</paragraph>
+            </tablecell>
+        </tablerow>
+    </table>
+    <paragraph role="paragraph" id="par_id761642018318896">This will result in -999.129999999997 in A3, instead of expected -999.13 (you might need to increase shown decimal places in cell format to see this).</paragraph>
+<paragraph role="paragraph" id="par_id221642020132399">An example with dates and times:</paragraph>
+    <paragraph role="paragraph" id="par_id801642018326882">Due to the specific of time representation in Calc, this also applies to all calculations involving times. For example, the cells A1 and A2 below show the date and time data as entered (in ISO 8601 format):</paragraph>
+    <table id="tab_id251642018348675">
+        <tablerow>
+            <tablecell>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id561642018348675" role="tablehead" xml-lang="en-US" localize="false">A</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id781642018348676" role="tablehead" xml-lang="en-US" localize="false">1</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id461642018348676" role="tablecontent" xml-lang="en-US" localize="false">2020-04-13 12:18:00</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id341642018408688" role="tablehead" xml-lang="en-US" localize="false">2</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id391642018408688" role="tablecontent" xml-lang="en-US" localize="false">2020-04-13 12:08:00 </paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id401642018497660" role="tablehead" xml-lang="en-US" localize="false">3</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id521642018497660" role="tablecontent" xml-lang="en-US" localize="false">=A1-A2</paragraph>
+            </tablecell>
+        </tablerow>
+    </table>
+    <paragraph role="paragraph" id="par_id801642018552814">Cell A3 will show 00:09:59.999999 instead of expected 00:10:00.000000 if formatted using [HH]:MM:SS.000000 format string. This happens despite only whole numbers of hours and minutes were used, because internally, any time is a fraction of a day, 12:00 (noon) being represented as 0.5. </paragraph>
+      <paragraph role="paragraph" id="par_id921642020011065">The data in A1 is represented internally as 43934.5125, and in A2 as 43934.5055555555591126903891563 (which is not exact representation of the entered datetime, which would be 43934.505555555555555555...). </paragraph>
+      <paragraph role="paragraph" id="par_id801642020017858">Their subtraction results in 0.00694444443287037, a value slightly less than expected 0.00694444444444..., which is 10 minutes.</paragraph>
+    <section id="relatedtopics">
+        <paragraph role="paragraph" id="par_id881642018707017" localize="false"><embedvar href="text/scalc/01/func_rawsubtract.xhp#rawsubtracth1" markup="ignore"/></paragraph>
+    </section>
+</body>
+</helpdocument>
