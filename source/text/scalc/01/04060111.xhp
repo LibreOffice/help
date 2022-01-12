@@ -152,18 +152,27 @@
 <section id="weeks">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3149048"><bookmark_value>WEEKS function</bookmark_value>
 <bookmark_value>number of weeks;between two dates</bookmark_value>
-</bookmark><comment>mw added one entry</comment>
+</bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_DAI_FUNC_DIFFWEEKS" id="bm_id3150435" localize="false"/>
 <h2 id="hd_id3149048">WEEKS</h2>
 <paragraph role="paragraph" id="par_id3153340" xml-lang="en-US"><ahelp hid="HID_DAI_FUNC_DIFFWEEKS">Calculates the difference in weeks between two dates.</ahelp></paragraph>
 <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
 <paragraph role="code" id="par_id3147402" xml-lang="en-US">WEEKS(StartDate; EndDate; Type)</paragraph>
 <paragraph role="paragraph" id="par_id3151387" xml-lang="en-US">
-<emph>StartDate</emph> is the first date</paragraph>
+<emph>StartDate</emph> is the start date in the interval.</paragraph>
 <paragraph role="paragraph" id="par_id3146324" xml-lang="en-US">
-<emph>EndDate</emph> is the second date</paragraph>
+<emph>EndDate</emph> is the end date in the interval. The end date must be greater than the start date, or else an error is returned.</paragraph>
 <paragraph role="paragraph" id="par_id3166467" xml-lang="en-US">
-<emph>Type</emph> calculates the type of difference. The possible values are 0 (interval) and 1 (in numbers of weeks).</paragraph>
+<emph>Type</emph> specifies the type of difference to be calculated. Possible values are 0 (time interval) or 1 (calendar weeks).</paragraph>
+<paragraph role="paragraph" id="par_id81641990941192">If <emph>Type = 0</emph> the function will assume that 7 days is equivalent to one week without considering any specific day to mark the begninning of a week.</paragraph>
+<paragraph role="paragraph" id="par_id31641991010650">If <emph>Type = 1</emph> the function will consider Monday to be the first day of the week. Therefore, except for the start date, each occurrence of a Monday in the interval is counted as an additional week.</paragraph>
+<note id="par_id971641990480242">This function considers Monday to be the first day of the week regardless of the current locale settings.</note>
+<embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+<paragraph role="paragraph" id="par_id671641994821992">In the following examples, dates are passed as strings. However, they can also be stored in separate cells and be passed as references.</paragraph>
+<paragraph role="paragraph" id="par_id71641991391639"><input>=WEEKS("01/12/2022","01/17/2022",0)</input> returns 0 because <emph>Type</emph> was set to 0 and there are only 5 days in the interval.</paragraph>
+<paragraph role="paragraph" id="par_id71641991390039"><input>=WEEKS("01/12/2022","01/19/2022",0)</input> returns 1 because <emph>Type</emph> was set to 0 and there are 7 days in the interval.</paragraph>
+<paragraph role="paragraph" id="par_id71641991391123"><input>=WEEKS("01/12/2022","01/17/2022",1)</input> returns 1 because <emph>Type</emph> was set to 1 and the interval contains a Monday, since 01/12/2022 is a Wednesday and 01/17/2022 is a Monday.</paragraph>
+<paragraph role="paragraph" id="par_id71641991332523"><input>=WEEKS("01/10/2022","01/15/2022",1)</input> returns 0 because <emph>Type</emph> was set to 1 and the interval does not contain any Mondays, except for the start date.</paragraph>
 <embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
 <embed href="text/scalc/01/common_func.xhp#notODFF"/>
 <paragraph role="paragraph" id="par_id311640873986703" localize="false"><literal>ORG.OPENOFFICE.WEEKS</literal></paragraph>
