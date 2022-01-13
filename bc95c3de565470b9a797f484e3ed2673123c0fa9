@@ -16,6 +16,24 @@
       "message": "Hi Rafael,\n\nI\u0027m finding it difficult to effectively review this change because I would need to see it \"in action\" rather than just reading the XHP code. I\u0027ve never built the full help system, and haven\u0027t really got time to learn how to do so at present. Would it be possible to ask Olivier to review?\n\nPoints that I have noticed:\n(1) In the trunc section of 04060106, should the name attribute of the link tag be updated to \"trunc_link\"?\n(2) In the Syntax section of func_truc, the name of the function is incorrect.\n(3) In the Syntax section of func_rounddown, there is a note about how LO ensures interoperability with Excel. This may be correct (I haven\u0027t checked) but is it important enough for the Help, given that we already state that the default value for this argument is 0? I would suspect not but if it is retained, should it also be present for trunc?\n\nRegards,\n\nSteve\n",
       "revId": "bc95c3de565470b9a797f484e3ed2673123c0fa9",
       "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "320904de_702da933",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002862
+      },
+      "writtenOn": "2022-01-13T18:02:09Z",
+      "side": 1,
+      "message": "Indeed. To check if this patch is working entirely, you\u0027ll need to build the help locally. I did it here and everything is working fine.\n\nIt would be good to have Olivier also building it locally to double-check.\n\nAs for your comments...\n\n\u003e (1) In the trunc section of 04060106, should the name attribute of the link tag be updated to \"trunc_link\"?\nFixed\n\n\u003e (2) In the Syntax section of func_truc, the name of the function is incorrect.\nFixed.\n\n\u003e (3) In the Syntax section of func_rounddown, there is a note about how LO ensures interoperability with Excel. (...) if it is retained, should it also be present for trunc?\nI added this note because this is the only difference between TRUNC and ROUNDDOWN in Excel. If the user enters a formula \u003dROUNDDOWN(A1) without the 0 in an ODS file, it will work in LO. However, when the file is exported to Excel, the user will notice that the formula is now \u003dROUNDDOWN(A1;0). This is the case only for ROUNDDOWN, not for TRUNC. I thought this was worth documenting, but if you and Olivier consider this unnecessary for the help, let me know and I\u0027ll remove it.",
+      "parentUuid": "1e73a3bb_e9fe59e4",
+      "revId": "bc95c3de565470b9a797f484e3ed2673123c0fa9",
+      "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615"
     }
   ]
 }
