@@ -52,15 +52,15 @@ function currentModule() {
     // We need to know the module that the user is using when they call for help
     var module = getQuery('DbPAR');
     if (module == null) {
-        // get the module name from the URL and remove the first character,
-        // but first deal with snowflake Base
+        // first deal with snowflake Base
         if(url.indexOf('explorer/database/') !== -1) {
             module = 'BASE';
         } else {
-            if (null === regexArray){// comes from search or elsewhere, no defined module in URL
-                module = 'HARED'
+            if (null === regexArray){
+                // comes from search or elsewhere, no defined module in URL
+                module = 'SHARED'
             } else {
-                module = regexArray[1].toUpperCase().substring(1);
+                module = regexArray[1].toUpperCase();
             }
         }
     }
@@ -69,7 +69,7 @@ function currentModule() {
 function fullLinkify(indexEl, bookmarks, modules, currentModule) {
     var fullLinkified = '';
     // if user is not on a shared category page, limit the index to the current module + shared
-    if(currentModule !== 'HARED') {
+    if(currentModule !== 'SHARED') {
         bookmarks = bookmarks.filter(function(obj) {
             return obj['app'] === currentModule || obj['app'] === 'SHARED';
         });
@@ -114,7 +114,7 @@ function filter(indexList) {
 
     // Similarly to fullLinkify(), limit search results to the user's current module + shared
     // unless they're somehow not coming from a module.
-    if(userModule !== 'HARED') {
+    if(userModule !== 'SHARED') {
         resultModules = [userModule, 'SHARED'];
     } else {
         resultModules = modules;
