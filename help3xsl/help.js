@@ -50,17 +50,19 @@ function getQuery(q) {
 
 function currentModule() {
     // We need to know the module that the user is using when they call for help
-    var module = getQuery('DbPAR');
+    let module = getQuery('DbPAR');
+    let moduleFromURL = regexArray[1].toUpperCase();
     if (module == null) {
         // first deal with snowflake Base
-        if(url.indexOf('explorer/database/') !== -1) {
+        if(url.indexOf('/sdatabase/') !== -1) {
             module = 'BASE';
         } else {
-            if (null === regexArray){
+            if (null === regexArray || moduleFromURL === 'SHARED') {
                 // comes from search or elsewhere, no defined module in URL
                 module = 'SHARED'
             } else {
-                module = regexArray[1].toUpperCase();
+                // drop the 's' from the start
+                module = moduleFromURL.substring(1);
             }
         }
     }
