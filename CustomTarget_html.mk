@@ -14,9 +14,17 @@ html_TREE_MODULES := swriter scalc simpress sdraw sdatabase smath schart sbasic 
 html_TEXT_MODULES := $(html_TREE_MODULES)
 html_BMARK_MODULES := swriter:WRITER scalc:CALC simpress:IMPRESS sdraw:DRAW sdatabase:BASE smath:MATH schart:CHART sbasic:BASIC shared:SHARED
 
+# In case someone has a product name containing quotes, use Unicode
+# code points for ' (27) and " (22) in JS, CSS and entities for HTML.
+PRODUCTNAME_JS := $(subst ',\\\u{27},$(subst ",\\\u{22},$(PRODUCTNAME)))
+PRODUCTNAME_CSS := $(subst ',\\\27,$(subst ",\\\22,$(PRODUCTNAME)))
+PRODUCTNAME_HTML := $(subst ',&apos;,$(subst ",&quot;,$(PRODUCTNAME)))
+
 $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 	hid2file.js \
 	languages.js \
+	default.css \
+	help2.js \
 	$(foreach lang,$(gb_HELP_LANGS),\
 		$(lang)/bookmarks.js \
 		$(lang)/contents.js \
@@ -75,7 +83,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/xap_tpl : \
 	$(call gb_Helper_abbreviate_dirs,\
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
 		--stringparam lang $* \
-		--stringparam productname "$(PRODUCTNAME)" \
+		--stringparam productname "$(PRODUCTNAME_HTML)" \
 		--stringparam productversion "$(PRODUCTVERSION)" \
 		-o $@ \
 		$(SRCDIR)/helpcontent2/help3xsl/xap_templ_query.xsl \
@@ -103,7 +111,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/noscript.html : \
 	$(call gb_Helper_abbreviate_dirs,\
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
 		--stringparam lang $* \
-		--stringparam productname "$(PRODUCTNAME)" \
+		--stringparam productname "$(PRODUCTNAME_HTML)" \
 		--stringparam productversion "$(PRODUCTVERSION)" \
 		-o $@ \
 		$(SRCDIR)/helpcontent2/help3xsl/noscript.xsl \
@@ -119,7 +127,6 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/languages.js : \
 		for lang in $(gb_HELP_LANGS) ; do printf '%s' "'$$lang', " ; done | sed 's/, $$//' ; \
 		printf ']);\n' \
 	) > $@
-
 
 define html_gen_langnames_js_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/langnames.js : \
@@ -177,7 +184,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 			--stringparam lang $(LANGUAGE) \
 			--stringparam local $(if $(HELP_ONLINE),'no','yes') \
 			--stringparam module $(MODULE) \
-			--stringparam productname "$(PRODUCTNAME)" \
+			--stringparam productname "$(PRODUCTNAME_HTML)" \
 			--stringparam productversion "$(PRODUCTVERSION)" \
 			-o $@ \
 			$(SRCDIR)/helpcontent2/help3xsl/get_tree.xsl \
@@ -224,7 +231,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 				--stringparam Language $* \
 				--stringparam local $(if $(HELP_ONLINE),'no','yes') \
 				--stringparam root $(if $(filter WNT,$(OS)),$$(cygpath -m `pwd`),`pwd`)/ \
-				--stringparam productname "$(PRODUCTNAME)" \
+				--stringparam productname "$(PRODUCTNAME_HTML)" \
 				--stringparam productversion "$(PRODUCTVERSION)" \
 				--stringparam xapian $(if $(filter TRUE, $(HELP_OMINDEX_PAGE)),'yes','no') \
 				-o $(dir $@)$${xhp%.xhp}.html \
@@ -293,7 +300,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 					--stringparam app $(APP) \
 					--stringparam Language $(HELP_LANG) \
 					--stringparam local $(if $(HELP_ONLINE),'no','yes') \
-					--stringparam productname "$(PRODUCTNAME)" \
+					--stringparam productname "$(PRODUCTNAME_HTML)" \
 					--stringparam productversion "$(PRODUCTVERSION)" \
 					$(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
 					$$xhp \
@@ -327,5 +334,15 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/filelists/html-help/$(
 endef
 
 $(eval $(foreach lang,$(gb_HELP_LANGS),$(foreach module,$(html_TEXT_MODULES),$(call html__filelist,$(lang),$(module)))))
+
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/default.css : \
+                $(SRCDIR)/helpcontent2/help3xsl/default.css \
+                $(BUILDDIR)/config_host.mk
+	sed -e "s/%PRODUCTNAME/$(PRODUCTNAME_CSS)/g" $< > $@
+
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/help2.js : \
+                $(SRCDIR)/helpcontent2/help3xsl/help2.js \
+                $(BUILDDIR)/config_host.mk
+	sed -e "s/%PRODUCTNAME/$(PRODUCTNAME_JS)/g" $< > $@
 
 # vim: set noet sw=4 ts=4:
