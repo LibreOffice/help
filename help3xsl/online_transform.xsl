@@ -139,7 +139,7 @@
         <xsl:if test="$online">
             <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org"/>
         </xsl:if>
-        <title><xsl:value-of select="$titleL10N"/></title>
+        <title><xsl:value-of disable-output-escaping="yes" select="$titleL10N"/></title>
         <link rel="shortcut icon" href="media/navigation/favicon.ico"/>
         <link  type="text/css" href="normalize.css" rel="Stylesheet"/>
         <link  type="text/css" href="default.css" rel="Stylesheet"/>
@@ -164,7 +164,7 @@
             <div></div>
         </a>
         <a class="logo" href="{$lang}/text/shared/05/new_help.html">
-            <p><xsl:value-of select="$ui_logo"/></p>
+            <p><xsl:value-of disable-output-escaping="yes" select="$ui_logo"/></p>
         </a>
         <div class="dropdowns">
             <div class="modules">
@@ -256,7 +256,7 @@
         <div id="DEBUG" class="debug">
             <h3 class="bug">Help content debug info:</h3>
             <p>This page is: <a href="https://opengrok.libreoffice.org/xref/help/source{$filename}" target="_blank"><xsl:value-of select="$filename"/></a></p>
-            <p>Title is: <xsl:value-of select="$title"/></p>
+            <p>Title is: <xsl:value-of disable-output-escaping="yes" select="$title"/></p>
             <p id="bm_module"></p>
             <p id="bm_system"></p>
             <p id="bm_HID"></p>
@@ -915,7 +915,7 @@
         </xsl:when>
 
         <xsl:otherwise>
-            <xsl:value-of select="$string"/>
+            <xsl:value-of disable-output-escaping="yes" select="$string"/>
         </xsl:otherwise>
     </xsl:choose>
 
