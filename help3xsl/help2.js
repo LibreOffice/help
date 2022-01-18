@@ -187,7 +187,7 @@ function setupModules(lang) {
     var modulesNav = document.getElementById('modules-nav');
     if (!modulesNav.classList.contains('loaded')) {
         var html =
-            '<a href="' + lang + '/text/shared/05/new_help.html?DbPAR=SHARED"><div class="libreoffice-icon"></div>LibreOffice</a>' +
+            '<a href="' + lang + '/text/shared/05/new_help.html?DbPAR=SHARED"><div class="office-icon"></div>%PRODUCTNAME</a>' +
             '<a href="' + lang + '/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer-icon"></div>Writer</a>' +
             '<a href="' + lang + '/text/scalc/main0000.html?DbPAR=CALC"><div class="calc-icon"></div>Calc</a>' +
             '<a href="' + lang + '/text/simpress/main0000.html?DbPAR=IMPRESS"><div class="impress-icon"></div>Impress</a>' +
