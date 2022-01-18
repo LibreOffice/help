@@ -17,6 +17,8 @@ html_BMARK_MODULES := swriter:WRITER scalc:CALC simpress:IMPRESS sdraw:DRAW sdat
 $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 	hid2file.js \
 	languages.js \
+	default.css.replaceproductname \
+	help2.js.replaceproductname \
 	$(foreach lang,$(gb_HELP_LANGS),\
 		$(lang)/bookmarks.js \
 		$(lang)/contents.js \
@@ -119,7 +121,6 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/languages.js : \
 		for lang in $(gb_HELP_LANGS) ; do printf '%s' "'$$lang', " ; done | sed 's/, $$//' ; \
 		printf ']);\n' \
 	) > $@
-
 
 define html_gen_langnames_js_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/langnames.js : \
@@ -327,5 +328,15 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/filelists/html-help/$(
 endef
 
 $(eval $(foreach lang,$(gb_HELP_LANGS),$(foreach module,$(html_TEXT_MODULES),$(call html__filelist,$(lang),$(module)))))
+
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/default.css.replaceproductname : \
+		$(SRCDIR)/helpcontent2/help3xsl/default.css
+	cp $(SRCDIR)/helpcontent2/help3xsl/default.css $@
+	( sed "s|%PRODUCTNAME|$(shell $(gb_AWK) '{ print toupper($$0) }' <<< $(PRODUCTNAME))|g" $@ ) > $(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)/default.css
+
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/help2.js.replaceproductname : \
+		$(SRCDIR)/helpcontent2/help3xsl/help2.js
+	cp $(SRCDIR)/helpcontent2/help3xsl/help2.js $@
+	( sed "s|%PRODUCTNAME|$(PRODUCTNAME)|g" $@ ) > $(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)/help2.js
 
 # vim: set noet sw=4 ts=4:
