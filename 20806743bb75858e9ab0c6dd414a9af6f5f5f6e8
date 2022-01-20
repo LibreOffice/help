@@ -18,6 +18,23 @@
       "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2870f8cc_4f5b9583",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001613
+      },
+      "writtenOn": "2022-01-20T08:10:45Z",
+      "side": 1,
+      "message": "I think I found the root cause of XSLT replacing \u0026 with \u0026amp;\n\nThe xsl:stylesheet of xap_templ_query.xsl has \u003cxsl:output indent\u003d\"yes\" method\u003d\"text\"/\u003e, which in itself should prevent this replacing. However, it seems that online_transform.xsl is overriding this when its stylesheet has method\u003d\"html\" in its xsl:output. I tested this by simply changing the method to \"text\" (which of course produces a rather brutalistic site).\n\nSo this is actually a problem that has existed since the beginning. Therefore I propose to merge this patch as-is, if reviewers are happy and look into the unwanted text-to-html overriding separately.",
+      "revId": "20806743bb75858e9ab0c6dd414a9af6f5f5f6e8",
+      "serverId": "6622c302-437a-49ad-a91d-55ba7dcf1615"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f214a24_ab5f0723",
