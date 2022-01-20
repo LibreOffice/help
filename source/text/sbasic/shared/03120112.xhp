@@ -27,12 +27,10 @@
 
 <body>
 
-
 <section id="chrw">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3149205">
   <bookmark_value>ChrW function</bookmark_value>
 </bookmark>
-
 
 <h1 id="hd_id3149205"><variable id="ChrW_h1"><link href="text/sbasic/shared/03120112.xhp" name="ChrW Function">ChrW Function [VBA]</link></variable></h1>
 <paragraph id="par_id3153311" role="paragraph">Returns the Unicode character that corresponds to the specified character code.</paragraph>
@@ -40,22 +38,23 @@
 <embed href="text/sbasic/shared/00000003.xhp#vbasupport"/>
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
-<paragraph id="par_id3150669" role="bascode" xml-lang="en-US">ChrW(Expression As Integer) As String</paragraph>
+<paragraph id="par_id3150669" role="bascode" localize="false">ChrW(charcode As Integer) As String</paragraph>
 </bascode>
 <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
 <paragraph id="par_id3153824" role="paragraph" xml-lang="en-US">String</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-<paragraph id="par_id3149295" role="paragraph" xml-lang="en-US"> <emph>Expression:</emph> Numeric variables that represent a valid 16 bit Unicode value (0-65535). (To support expressions with a nominally negative argument like <emph>ChrW(&amp;H8000)</emph> in a backwards-compatible way, values in the range −32768 to −1 are internally mapped to the range 32768 to 65535.) An empty value returns error code 5. A value out of the range [0,65535] returns error code 6.</paragraph>
+<paragraph id="par_id3149295" role="paragraph" xml-lang="en-US"> <emph>charcode</emph>: Numeric expression that represent a valid 16 bit Unicode value (0-65535). (To support expressions with a nominally negative argument like <emph>ChrW(&amp;H8000)</emph> in a backwards-compatible way, values in the range −32768 to −1 are internally mapped to the range 32768 to 65535.) An empty value returns error code 5. A value out of the range [0 to 65535] returns error code 6.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 <embed href="text/sbasic/shared/00000003.xhp#err6"/>
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
-<paragraph id="par_idm1341138080" role="bascode" localize="false" xml-lang="en-US">Sub ExampleChrW</paragraph>
+<paragraph id="par_idm1341138080" role="bascode" localize="false">Sub ExampleChrW</paragraph>
 <paragraph id="par_id3154909" role="bascode" xml-lang="en-US"> ' This example inserts the Greek letters alpha and omega in a string.</paragraph>
 <paragraph id="par_id3151380" role="bascode" xml-lang="en-US"> MsgBox "From "+ ChrW(913)+" to " + ChrW(937)</paragraph>
 <paragraph id="par_id3145174" role="bascode" xml-lang="en-US"> ' The printout appears in the dialog as: From Α to Ω</paragraph>
-<paragraph id="par_idm1341131568" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph role="bascode" id="bas_id181642669411658" xml-lang="en-US"> MsgBox Chr(charcode := 116) ' "t" lowercase T letter</paragraph>
+<paragraph id="par_idm1341131568" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
 
 <section id="relatedtopics">
