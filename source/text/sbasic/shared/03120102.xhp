@@ -35,15 +35,17 @@
   </section>
 
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-    <paragraph id="par_id3150669" role="code" xml-lang="en-US">Chr[$](expression As Integer) As String</paragraph>
+    <bascode>
+      <paragraph role="bascode" id="bas_id91642668171601">Chr[$](charcode As Integer) As String</paragraph>
+    </bascode>
 
     <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
     <paragraph id="par_id3153824" role="paragraph" localize="false" xml-lang="en-US">String</paragraph>
 
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-    <paragraph id="par_id3149295" role="paragraph" xml-lang="en-US"><emph>Expression:</emph> a numeric expression that represents a valid 8-bit ASCII value (0-255) or a 16-bit Unicode value. (To support expressions with a nominally negative argument like <emph>Chr(&amp;H8000)</emph> in a backwards-compatible way, values in the range −32768 to −1 are internally mapped to the range 32768 to 65535.)</paragraph>
+    <paragraph id="par_id3149295" role="paragraph" xml-lang="en-US"><emph>charcode</emph>: a numeric expression that represents a valid 8-bit ASCII value (0-255) or a 16-bit Unicode value. (To support expressions with a nominally negative argument like <emph>Chr(&amp;H8000)</emph> in a backwards-compatible way, values in the range −32768 to −1 are internally mapped to the range 32768 to 65535.)</paragraph>
 
-    <warning id="par_id991552913928635">When VBA compatibility mode is enabled (<link href="text/sbasic/shared/03103350.xhp" name="vbasupport"><literal>OPTION VBASUPPORT 1</literal></link>), <emph>Expression</emph> is a numeric expression that represents a valid 8-bit ASCII value (0-255) only.</warning>
+  <warning id="par_id991552913928635">When VBA compatibility mode is enabled (<link href="text/sbasic/shared/03103350.xhp" name="vbasupport"><literal>Option VBASupport 1</literal></link>), <literal>charcode</literal> is a numeric expression that represents a valid 8-bit ASCII value (0-255) only.</warning>
 
     <paragraph id="par_id3159414" role="paragraph" xml-lang="en-US">Use the <emph>Chr$</emph> function to send special control sequences to a printer or to another output source. You can also use it to insert quotation marks in a string expression.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
@@ -53,11 +55,13 @@
 
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <bascode>
-        <paragraph id="par_idm1341138080" role="bascode" localize="false" xml-lang="en-US">Sub ExampleChr</paragraph>
+        <paragraph id="par_idm1341138080" role="bascode" localize="false">Sub ExampleChr</paragraph>
         <paragraph id="par_id3154909" role="bascode" xml-lang="en-US">    ' This example inserts quotation marks (ASCII value 34) in a string.</paragraph>
-        <paragraph id="par_id3151380" role="bascode" xml-lang="en-US">    MsgBox "A "+ Chr$(34)+"short" + Chr(34)+" trip."</paragraph>
+        <paragraph id="par_id3151380" role="bascode" xml-lang="en-US">    MsgBox "A " + Chr$(34) + "short" + Chr(34) + " trip."</paragraph>
         <paragraph id="par_id3145174" role="bascode" xml-lang="en-US">    ' The printout appears in the dialog as: A "short" trip.</paragraph>
-        <paragraph id="par_idm1341131568" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+        <paragraph role="bascode" id="bas_id481642668824226" xml-lang="en-US">    MsgBox Chr(charcode := 64) ' "@" sign</paragraph>
+        <paragraph id="par_idm1341131568" role="bascode" localize="false">End Sub</paragraph>
+        <paragraph role="bascode" id="bas_id661642668825250"></paragraph>
     </bascode>
 
     <section id="relatedtopics">
