@@ -89,6 +89,13 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
     helpcontent2/source/text/sdatabase/tablewizard02 \
     helpcontent2/source/text/sdatabase/tablewizard03 \
     helpcontent2/source/text/sdatabase/tablewizard04 \
+    helpcontent2/source/text/sdatabase/rep_datetime \
+    helpcontent2/source/text/sdatabase/rep_insertfield \
+    helpcontent2/source/text/sdatabase/rep_main \
+    helpcontent2/source/text/sdatabase/rep_navigator \
+    helpcontent2/source/text/sdatabase/rep_pagenumbers \
+    helpcontent2/source/text/sdatabase/rep_prop \
+    helpcontent2/source/text/sdatabase/rep_sort \
 ))
 
 # vim: set noet sw=4 ts=4:
