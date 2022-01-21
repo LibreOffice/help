@@ -873,14 +873,4 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/optionen/viewcertificate_g \
 ))
 
-$(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
-    helpcontent2/source/text/shared/explorer/database/rep_datetime \
-    helpcontent2/source/text/shared/explorer/database/rep_insertfield \
-    helpcontent2/source/text/shared/explorer/database/rep_main \
-    helpcontent2/source/text/shared/explorer/database/rep_navigator \
-    helpcontent2/source/text/shared/explorer/database/rep_pagenumbers \
-    helpcontent2/source/text/shared/explorer/database/rep_prop \
-    helpcontent2/source/text/shared/explorer/database/rep_sort \
-,shared/explorer/database))
-
 # vim: set noet sw=4 ts=4:
