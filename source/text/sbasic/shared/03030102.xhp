@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -18,7 +18,6 @@
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  -->
 
-<helpdocument version="1.0">
 <meta>
   <topic id="textsbasicshared03030102xml" indexer="include" status="PUBLISH">
   <title id="tit" xml-lang="en-US">DateValue Function</title>
@@ -34,28 +33,41 @@
   <bookmark xml-lang="en-US" branch="index" id="bm_id3156344"><bookmark_value>DateValue function</bookmark_value>
   </bookmark>
   <h1 id="hd_id3156344"><variable id="DateValue_H1"><link href="text/sbasic/shared/03030102.xhp" name="DateValue Function">DateValue Function</link></variable></h1>
-  <paragraph role="paragraph" id="par_id3150542" xml-lang="en-US">Returns a date value from a date string. The date string is a complete date in a single numeric value. You can also use this serial number to determine the difference between two dates.</paragraph>
+  <paragraph role="paragraph" id="par_id3150542" xml-lang="en-US">Returns a <emph>Date</emph> object from a string representing a date.</paragraph>
+  <paragraph role="paragraph" id="par_id671643046319326">The returned object is represented internally as a single numeric value corresponding to the specified date. This value can be used to calculate the number of days between two dates.</paragraph>
 </section>
 
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
-  <paragraph role="bascode" id="par_id3154910" xml-lang="en-US">DateValue(date)</paragraph>
+  <paragraph role="bascode" id="par_id3154910" xml-lang="en-US">DateValue(date As String)</paragraph>
 </bascode>
 <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
 <section id="parm1">
-  <paragraph role="paragraph" id="par_id3153770"><emph>Date</emph>: String expression that contains the date that you want to calculate. In contrast to the DateSerial function that passes years, months and days as separate numeric values, the DateValue function requests the date string to be according to either one of the date acceptance patterns defined for your locale setting (see <switchinline select="sys"><caseinline select="MAC"><menuitem>%PRODUCTNAME - Preferences</menuitem></caseinline><defaultinline><menuitem>Tools - Options</menuitem></defaultinline></switchinline><menuitem> - Language Settings - Languages</menuitem>) or to ISO date format (momentarily, only the ISO format with hyphens, e.g. "2012-12-31" is accepted).</paragraph>
+  <paragraph role="paragraph" id="par_id3153770"><emph>date</emph>: A string that contains the date that will be converted to a <emph>Date</emph> object.</paragraph>
+  <note id="par_id841643046880968">The string passed to <literal>DateValue</literal> must be expressed in one of the date formats defined by your locale setting (see <switchinline select="sys"><caseinline select="MAC"><menuitem>%PRODUCTNAME - Preferences</menuitem></caseinline><defaultinline><menuitem>Tools - Options</menuitem></defaultinline></switchinline><menuitem> - Language Settings - Languages</menuitem>) or using the ISO date format "yyyy-mm-dd" (year, month and day separated by hyphens).</note>
 </section>
 <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
-<paragraph role="paragraph" id="par_id3153194">The computed date.<comment>i66764</comment></paragraph>
+<paragraph role="paragraph" localize="false" id="par_id3153194">Date.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
-  <paragraph role="bascode" id="par_id3155412" xml-lang="en-US" localize="false">Sub ExampleDateValue</paragraph>
-  <paragraph role="bascode" id="par_id3153363" xml-lang="en-US" localize="false">    MsgBox DateValue("23/02/2011")</paragraph>
-  <paragraph role="bascode" id="par_id3149262" xml-lang="en-US" localize="false">End Sub</paragraph>
+  <paragraph role="bascode" localize="false" id="par_id3155412">Sub ExampleDateValue</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id671643047301348">    Dim aDate As Date</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id291643047301592">    aDate = DateValue("2021-12-20")</paragraph>
+  <paragraph role="bascode" id="bas_id461643047301827">    ' Prints the localized date</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id551643047302107">    MsgBox aDate</paragraph>
+  <paragraph role="bascode" id="bas_id616430473023063">    ' Extracts the year, month and day from the date object</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id281643047302645">    MsgBox Year(aDate)</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id391643047302940">    MsgBox Month(aDate)</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id201643047303163">    MsgBox Day(aDate)</paragraph>
+  <paragraph role="bascode" id="bas_id601643047303420">    ' Prints the numeric value corresponding to the date (as Long type)</paragraph>
+  <paragraph role="bascode" localize="false" id="bas_id381643047303644">    MsgBox CLng(aDate)</paragraph>
+  <paragraph role="bascode" localize="false" id="par_id3149262">End Sub</paragraph>
 </bascode>
 
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03030101.xhp#DateSerial_H1"/>
+  </section>
 </body>
 </helpdocument>
-
