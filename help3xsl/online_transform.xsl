@@ -194,7 +194,7 @@
             <div id="Bookmarks">
                 <xsl:variable name="pholder">
                     <xsl:choose>
-                        <xsl:when test="not(contains($htmlpage, '/text/shared/explorer/database/')) and contains($htmlpage, '/text/shared/')">
+                        <xsl:when test="contains($htmlpage, '/text/shared/')">
                             <xsl:value-of select="$ui_pholderall"/>
                         </xsl:when>
                         <xsl:otherwise>
