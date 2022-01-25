@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+<meta>
+  <topic id="SF_Menu" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">ScriptForge.Menu service</title>
+    <filename>/text/sbasic/shared/03/sf_menu.xhp</filename>
+  </topic>
+</meta>
+<body>
+  <section id="ScriptForge-sf_pmenu">
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id501600788076877">
+      <bookmark_value>Menu service</bookmark_value>
+    </bookmark>
+  </section>
+  <section id="abstract">
+    <h1 id="bm_id681600788076499"><variable id="MenuService"><link href="text/sbasic/shared/03/sf_menu.xhp" name="Menu service"><literal>ScriptForge</literal>.<literal>Menu</literal> service</link></variable></h1>
+    <paragraph role="paragraph" id="par_id181600788076612">The <literal>Menu</literal> service can be used to create and remove menus from the menubar of a %PRODUCTNAME document window. Each menu entry can be associated with a script or with a UNO command. This service provides the following capabilities:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id301600788076785" role="listitem">Creation of menus with custom entries, checkboxes, radio buttons and separators.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id1001600788076848" role="listitem">Decoration of menu items with icons and tooltips.</paragraph>
+      </listitem>
+    </list>
+  </section>
+  <note id="par_id581643133675012">Menus created with this service are available only for a specified document window. They are not saved into the document or as application settings. Closing and opening the document will restore the default menubar settings.</note>
+
+  <h2 id="hd_id281600788076359">Service invocation</h2>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id321614902851541">The <literal>Menu</literal> service is instantiated by calling the <link href="text/sbasic/shared/03/sf_document.xhp#CreateMenu" name="CreateMenu_link"><literal>CreateMenu</literal></link> method from the <literal>Document</literal> service. The code snippet below creates a menu named <emph>My Menu</emph> in the current document window with two entries <emph>Item A</emph> and <emph>Item B</emph>.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id791643134557838">Sub CreateMenu()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id891643134322054">    GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id141643134322438">    Dim oDoc as Object, oMenu as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id151643134322614">    Set oDoc = CreateScriptService("Document")</paragraph>
+    <paragraph role="bascode" id="bas_id261643134374056">    Set oMenu = oDoc.CreateMenu("My Menu")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id261643134581928">    With oMenu</paragraph>
+    <paragraph role="bascode" id="bas_id431643134582213">        .AddItem("Item A", Command := "About")</paragraph>
+    <paragraph role="bascode" id="bas_id571643134582396">        .AddItem("Item B", Script := "vnd.sun.star.script:Standard.Module1.ItemB_Listener?language=Basic&amp;location=application")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531643134582588">        .Dispose()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id981643134582741">    End With</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791643134722777">End Sub</paragraph>
+  </bascode>
+  <note id="par_id371643135157996">After creating the menu, it is recommended to call the <literal>Dispose</literal> method to free the resources used by the <literal>Menu</literal> service instance.</note>
+  <paragraph role="paragraph" id="par_id341636718182262">In the example above, <emph>Item A</emph> is associated with the UNO command <literal>.uno:About</literal> whereas <emph>Item B</emph> is associated with the script <literal>ItemB_Listener</literal> defined in <literal>Module1</literal> of the <literal>Standard</literal> library of the <literal>My Macros</literal> container.</paragraph>
+  <paragraph role="paragraph" id="par_id851635274721129">The following example defines <literal>ItemB_Listener</literal> that will be called when <emph>Item B</emph> is clicked. This listener simply splits the argument string passed to the <literal>Sub</literal> and shows them in a message box.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id311643135422309">Sub ItemB_Listener(args As String)</paragraph>
+    <paragraph role="bascode" id="bas_id716431354225603">    ' Process the argument string passed to the listener</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id211643135422708">    Dim sArgs as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461643135422860">    sArgs = Split(args, ",")</paragraph>
+    <paragraph role="bascode" id="bas_id901643135423012">    MsgBox "Menu name: "   &amp; sArgs(0) &amp; Chr(13) &amp; _</paragraph>
+    <paragraph role="bascode" id="bas_id301643136028263">           "Menu item: "   &amp; sArgs(1) &amp; Chr(13) &amp; _</paragraph>
+    <paragraph role="bascode" id="bas_id181643136028557">           "Item ID: "     &amp; sArgs(2) &amp; Chr(13) &amp; _</paragraph>
+    <paragraph role="bascode" id="bas_id561643136028710">           "Item status: " &amp; sArgs(3)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id241643136028871">End Sub</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id531636493797707">As shown in the example above, menu entries associated with a script receive a comma-separated string argument with the following values:</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id921643136489994" role="listitem">The toplevel name of the menu.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id611643136491059" role="listitem">The string ID of the selected menu entry.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id961643136491491" role="listitem">The numeric ID of the selected menu entry.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id381643136494580" role="listitem">The current state of the menu item. This is useful for checkboxes and radio buttons. If the item is checked, the value "1" is returned, otherwise "0" is returned.</paragraph>
+    </listitem>
+  </list>
+
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <paragraph role="paragraph" id="par_id131635275172617">The examples above can be written in Python as follows:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id631626695710139">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441636718456158"></paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441636718456844">def create_menu(args=None):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981626695710433">    oDoc = CreateScriptService("Document")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981626695710122">    oMenu = oDoc.CreateMenu("My Menu")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id311626695710851">    oMenu.AddItem("Item A", command="About")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id211636717609237">    oMenu.AddItem("Item B", script="vnd.sun.star.script:my_macros.py$item_b_listener?language=Python&amp;location=user")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id616367176100230">    oMenu.Dispose()</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id831635275439182">def item_b_listener(args):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id481643137165239">    bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id381635275439396">    s_args = args.split(",")</paragraph>
+    <paragraph role="pycode" id="pyc_id981636717957632">    msg = f"Menu item: {s_args[0]}\n"</paragraph>
+    <paragraph role="pycode" id="pyc_id851636718008427">    msg += f"Menu name: {s_args[1]}\n"</paragraph>
+    <paragraph role="pycode" id="pyc_id331636727047102">    msg += f"Item ID: {s_args[2]}\n"</paragraph>
+    <paragraph role="pycode" id="pyc_id71643137333404">    msg += f"Item status: {s_args[3]}"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id111643137333564">    bas.MsgBox(msg)</paragraph>
+  </pycode>
+
+  <bookmark xml-lang="en-US" branch="index" localize="false" id="bm_id111614901520029">
+    <bookmark_value>PopupService service;ShortcutCharacter</bookmark_value>
+    <bookmark_value>PopupService service;SubmenuCharacter</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id711600788076834">Properties</h2>
+  <table id="tab_id701600788076583">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id461600788076917" role="tablehead">Name</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id221600788076591" role="tablehead">Readonly</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id761600788076328" role="tablehead">Type</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id67160078807636" role="tablehead">Description</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id941600788076595" role="tablecontent" localize="false">ShortcutCharacter</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id49160078807654" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id961600788076376" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id81600788076419" role="tablecontent">Character used to define the access key of a menu item. The default character is "~".</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id491600788076621" role="tablecontent" localize="false">SubmenuCharacter</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id311600788076756" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831600788076785" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id441600788076826" role="tablecontent">Character or string that defines how menu items are nested. The default character is ">".</paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h2 id="hd_id181636719707892">Menu and Submenus</h2>
+  <paragraph role="paragraph" id="par_id741636719725402">To create a menu with submenus, use the character defined in the <literal>SubmenuCharacter</literal> property while creating the menu entry to define where it will be placed. For instance, consider the following menu/submenu hierarchy.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id991636719842353">' Item A</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id231636719842719">' Item B > Item B.1</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id421636719842904">'          Item B.2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id916367201523640">' ------ (line separator)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id541636719843240">' Item C > Item C.1 > Item C.1.1</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id701636719843447">'                     Item C.1.2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id601636719843672">' Item C > Item C.2 > Item C.2.1</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921636719843864">'                     Item C.2.2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921636719843567">'                     ------ (line separator)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921636719843154">'                     Item C.2.3</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921636719843965">'                     Item C.2.4</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id211636720111489">The code below uses the default submenu character ">" to create the menu/submenu hierarchy defined above:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="par_id961636720555061">oMenu.AddItem("Item A")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id371636720556397">oMenu.AddItem("Item B>Item B.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id941636720556623">oMenu.AddItem("Item B>Item B.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id261636720973178">oMenu.AddItem("---")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id431636720556822">oMenu.AddItem("Item C>Item C.1>Item C.1.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id651636720557021">oMenu.AddItem("Item C>Item C.1>Item C.1.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id861636720557222">oMenu.AddItem("Item C>Item C.2>Item C.2.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id21636720557437">oMenu.AddItem("Item C>Item C.2>Item C.2.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id21636720557103">oMenu.AddItem("Item C>Item C.2>---")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id21636720557256">oMenu.AddItem("Item C>Item C.2>Item C.2.3")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id21636720557941">oMenu.AddItem("Item C>Item C.2>Item C.2.4")</paragraph>
+  </bascode>
+  <note id="par_id121636721243578">The string "---" is used to define line separators in menus or submenus.</note>
+  <embed href="text/sbasic/shared/03/sf_popupmenu.xhp#using_icons"/>
+
+  <h2 id="hd_id501582887473754" xml-lang="en-US">Methods</h2>
+  <table id="tab_id501611613601554">
+    <tablerow>
+      <tablecell colspan="3"><paragraph id="par_id891611613601554" role="tablehead" xml-lang="en-US">List of Methods in the Menu Service</paragraph></tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id891611613601556" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_menu.xhp#AddCheckBox" name="AddCheckBox method">AddCheckBox</link><br/>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_menu.xhp#AddItem" name="AddItem method">AddItem</link><br/>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541611613625804" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_menu.xhp#AddRadioButton" name="AddRadioButton method">AddRadioButton</link><br/>
+        </paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <section id="AddCheckBox">
+    <comment> AddCheckBox ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+      <bookmark_value>Menu service;AddCheckBox</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698251" localize="false">AddCheckBox</h2>
+    <paragraph role="paragraph" id="par_id93158919969864">Inserts a check box in the menu. Returns an integer value that identifies the inserted item.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534014732">
+      <input>svc.AddCheckBox(menuitem: str, opt name: str, opt status: bool, opt icon: str, opt tooltip: str, opt command: str, opt script: str): int</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631203996"><emph>menuitem:</emph> Defines the text to be displayed in the menu. This argument also defines the hierarchy of the item inside the menu by using the submenu character.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203116"><emph>name:</emph> String value used to identify the menu item. By default, the last component of the menu hierarchy is used.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203133"><emph>status:</emph> Defines whether the item is selected when the menu is created (Default = <literal>False</literal>).</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653313"><emph>icon:</emph> Path and name of the icon to be displayed without the leading path separator. The actual icon shown depends on the icon set being used.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653208"><emph>tooltip:</emph> Text to be displayed as tooltip.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653328"><emph>command:</emph> The name of a UNO command without the <literal>.uno:</literal> prefix. If the command name does not exist, nothing happens.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653107"><emph>script:</emph> The URI for a Basic or Python script that will be executed when the item is clicked.</paragraph>
+    <tip id="par_id31643148484084">Read <link href="https://wiki.openoffice.org/wiki/Documentation/DevGuide/Scripting/Scripting_Framework_URI_Specification" name="URI_Notation">Scripting Framework URI Specification</link> to learn more about the URI syntax used in the <literal>script</literal> argument.</tip>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id891643147754502">' Runs the .uno:Paste command</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id41158919969204">oMenu.AddCheckBox("Item A", Status := True, ToolTip := "Paste values", Command := "Paste")</paragraph>
+      <paragraph role="bascode" id="bas_id271643147793320">' Runs the Basic script Standard.Module1.MyListener stored in the document</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id41158919969324">oMenu.AddCheckBox("Item B", Status := False, Script := "vnd.sun.star.script:Standard.Module1.MyListener?language=Basic&amp;location=document")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534175122">oMenu.AddCheckBox("Item A", status=True, tooltip="Paste values", command="Paste")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534175344">oMenu.AddCheckBox("Item B", status=False, script="vnd.sun.star.script:Standard.Module1.MyListener?language=Basic&amp;location=document")</paragraph>
+    </pycode>
+  </section>
+
+  <section id="AddItem">
+    <comment> AddItem ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919960353">
+      <bookmark_value>Menu service;AddItem</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698158" localize="false">AddItem</h2>
+    <paragraph role="paragraph" id="par_id93158919963364">Inserts a label entry in the menu. Returns an integer value that identifies the inserted item.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534012185">
+      <input>svc.AddItem(menuitem: str, opt name: str, opt icon: str, opt tooltip: str, opt command: str, opt script: str): int</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631203021"><emph>menuitem:</emph> Defines the text to be displayed in the menu. This argument also defines the hierarchy of the item inside the menu by using the submenu character.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203026"><emph>name:</emph> String value to be returned when the item is clicked. By default, the last component of the menu hierarchy is used.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721652886"><emph>icon:</emph> Path and name of the icon to be displayed without the leading path separator. The actual icon shown depends on the icon set being used.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653118"><emph>tooltip:</emph> Text to be displayed as tooltip.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653314"><emph>command:</emph> The name of a UNO command without the <literal>.uno:</literal> prefix. If the command name does not exist, nothing happens.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721652057"><emph>script:</emph> The URI for a Basic or Python script that will be executed when the item is clicked.</paragraph>
+    <tip id="par_id31643148482589">Read <link href="https://wiki.openoffice.org/wiki/Documentation/DevGuide/Scripting/Scripting_Framework_URI_Specification" name="URI_Notation">Scripting Framework URI Specification</link> to learn more about the URI syntax used in the <literal>script</literal> argument.</tip>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id41158919969106">oMenu.AddItem("Item A", Tooltip := "A descriptive message")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id321621534170554">oMenu.AddItem("Item A", tooltip = "A descriptive message")</paragraph>
+    </pycode>
+  </section>
+
+  <section id="AddRadioButton">
+    <comment> AddRadioButton --------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969447">
+      <bookmark_value>Menu service;AddRadioButton</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199693022" localize="false">AddRadioButton</h2>
+    <paragraph role="paragraph" id="par_id93158919969399">Inserts a radio button entry in the menu. Returns an integer value that identifies the inserted item.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534013775">
+      <input>svc.AddRadioButton(menuitem: str, opt name: str, opt status: str, opt icon: str, opt tooltip: str, opt command: str, opt script: str): int</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631203501"><emph>menuitem:</emph> Defines the text to be displayed in the menu. This argument also defines the hierarchy of the item inside the menu by using the submenu character.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631228716"><emph>name:</emph> String value to be returned when the item is clicked. By default, the last component of the menu hierarchy is used.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203643"><emph>status:</emph> Defines whether the item is selected when the menu is created (Default = <literal>False</literal>).</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653228"><emph>icon:</emph> Path and name of the icon to be displayed without the leading path separator. The actual icon shown depends on the icon set being used.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653114"><emph>tooltip:</emph> Text to be displayed as tooltip.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721653447"><emph>command:</emph> The name of a UNO command without the <literal>.uno:</literal> prefix. If the command name does not exist, nothing happens.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721652598"><emph>script:</emph> The URI for a Basic or Python script that will be executed when the item is clicked.</paragraph>
+    <tip id="par_id31643148484322">Read <link href="https://wiki.openoffice.org/wiki/Documentation/DevGuide/Scripting/Scripting_Framework_URI_Specification" name="URI_Notation">Scripting Framework URI Specification</link> to learn more about the URI syntax used in the <literal>script</literal> argument.</tip>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id41158919969658">oMenu.AddRadioButton("Item A", Name := "A", Status := True)</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534175471">oMenu.AddRadioButton("Item A", name="A", status=True)</paragraph>
+    </pycode>
+  </section>
+
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/sf_popupmenu.xhp#PopupMenuService"/>
+    <embed href="text/sbasic/shared/03/sf_document.xhp#DocumentService"/>
+  </section>
+</body>
+</helpdocument>
