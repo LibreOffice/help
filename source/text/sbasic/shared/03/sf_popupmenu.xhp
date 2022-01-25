@@ -8,9 +8,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  *
 -->
+
 <meta>
   <topic id="SF_PopupMenu" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">ScriptForge.PopupMenu service</title>
+    <title id="tit" xml-lang="en-US">SFWidgets.PopupMenu service</title>
     <filename>/text/sbasic/shared/03/sf_popupmenu.xhp</filename>
   </topic>
 </meta>
@@ -21,7 +22,7 @@
     </bookmark>
   </section>
   <section id="abstract">
-    <h1 id="bm_id681600788076499"><variable id="PopupMenuService"><link href="text/sbasic/shared/03/sf_popupmenu.xhp" name="PopupMenu service"><literal>ScriptForge</literal>.<literal>PopupMenu</literal> service</link></variable></h1>
+    <h1 id="bm_id681600788076499"><variable id="PopupMenuService"><link href="text/sbasic/shared/03/sf_popupmenu.xhp" name="PopupMenu service"><literal>SFWidgets</literal>.<literal>PopupMenu</literal> service</link></variable></h1>
     <paragraph role="paragraph" id="par_id181600788076612">The <literal>PopupMenu</literal> service can be used to create popup menus that can be associated with events or executed by scripts. This service provides the following capabilities:</paragraph>
     <list type="unordered">
       <listitem>
@@ -39,7 +40,7 @@
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id701636718117715">Sub ShowPopup</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id851600788076202">    GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id1001600788076254">    Dim myPopup As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id100160078076254">    Dim myPopup As Object</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id721600788076288">    Set myPopup = CreateScriptService("SFWidgets.PopupMenu", , 300, 300)</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id791600788431935">    myPopup.AddItem("Item ~A")</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id791600788431755">    myPopup.AddItem("Item ~B")</paragraph>
@@ -118,20 +119,6 @@
     </tablerow>
     <tablerow>
       <tablecell>
-        <paragraph id="par_id491600788076621" role="tablecontent" localize="false">SubmenuCharacter</paragraph>
-      </tablecell>
-      <tablecell>
-        <paragraph id="par_id311600788076756" role="tablecontent">No</paragraph>
-      </tablecell>
-      <tablecell>
-        <paragraph id="par_id831600788076785" role="tablecontent" localize="false">String</paragraph>
-      </tablecell>
-      <tablecell>
-        <paragraph id="par_id441600788076826" role="tablecontent">Character or string that defines how menu items are nested. The default character is ">".</paragraph>
-      </tablecell>
-    </tablerow>
-    <tablerow>
-      <tablecell>
         <paragraph id="par_id941600788076595" role="tablecontent" localize="false">ShortcutCharacter</paragraph>
       </tablecell>
       <tablecell>
@@ -142,6 +129,20 @@
       </tablecell>
       <tablecell>
         <paragraph id="par_id81600788076419" role="tablecontent">Character used to define the access key of a menu item. The default character is "~".</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id491600788076621" role="tablecontent" localize="false">SubmenuCharacter</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id311600788076756" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831600788076785" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id441600788076826" role="tablecontent">Character or string that defines how menu items are nested. The default character is ">".</paragraph>
       </tablecell>
     </tablerow>
   </table>
@@ -157,30 +158,43 @@
     <paragraph role="bascode" localize="false" id="bas_id701636719843447">'                     Item C.1.2</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id601636719843672">' Item C > Item C.2 > Item C.2.1</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id921636719843864">'                     Item C.2.2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921636719843567">'                     ------ (line separator)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921636719843154">'                     Item C.2.3</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921636719843965">'                     Item C.2.4</paragraph>
   </bascode>
   <paragraph role="paragraph" id="par_id211636720111489">The code below uses the default submenu character ">" to create the menu/submenu hierarchy defined above:</paragraph>
   <bascode>
-    <paragraph role="bascode" localize="false" id="par_id961636720555061">myPopup.AddItem("Item A")</paragraph>
-    <paragraph role="bascode" localize="false" id="par_id371636720556397">myPopup.AddItem("Item B>Item B.1")</paragraph>
-    <paragraph role="bascode" localize="false" id="par_id941636720556623">myPopup.AddItem("Item B>Item B.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id961636720555061">myPopup.AddItem("Item A")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371636720556397">myPopup.AddItem("Item B>Item B.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941636720556623">myPopup.AddItem("Item B>Item B.2")</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id261636720973178">myPopup.AddItem("---")</paragraph>
-    <paragraph role="bascode" localize="false" id="par_id431636720556822">myPopup.AddItem("Item C>Item C.1>Item C.1.1")</paragraph>
-    <paragraph role="bascode" localize="false" id="par_id651636720557021">myPopup.AddItem("Item C>Item C.1>Item C.1.2")</paragraph>
-    <paragraph role="bascode" localize="false" id="par_id861636720557222">myPopup.AddItem("Item C>Item C.2>Item C.2.1")</paragraph>
-    <paragraph role="bascode" localize="false" id="par_id21636720557437">myPopup.AddItem("Item C>Item C.2>Item C.2.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id431636720556822">myPopup.AddItem("Item C>Item C.1>Item C.1.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651636720557021">myPopup.AddItem("Item C>Item C.1>Item C.1.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id861636720557222">myPopup.AddItem("Item C>Item C.2>Item C.2.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id21636720557437">myPopup.AddItem("Item C>Item C.2>Item C.2.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id21636720557103">myPopup.AddItem("Item C>Item C.2>---")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id21636720557256">myPopup.AddItem("Item C>Item C.2>Item C.2.3")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id21636720557941">myPopup.AddItem("Item C>Item C.2>Item C.2.4")</paragraph>
   </bascode>
   <note id="par_id121636721243578">The string "---" is used to define line separators in menus or submenus..</note>
-  <h2 id="hd_id211636723438558">Using icons</h2>
-  <paragraph role="paragraph" id="par_id981636723485402">Items in the popup menu can have icons, which are specified as arguments in the <literal>AddCheckBox</literal>, <literal>AddItem</literal> and <literal>AddRadioButton</literal> methods.</paragraph>
-  <paragraph role="paragraph" id="par_id881636724112434">All icons available in %PRODUCTNAME can be used by specifying their path relative to the folder where icon files are located in the installation folder. Icons are located in the following folder:</paragraph>
-  <paragraph role="paragraph" localize="false" id="par_id991636724479899"><input>INSTALLDIR/share/config</input></paragraph>
-  <tip id="par_id941636724808906">Use the <literal>InstallFolder</literal> property of the <literal>FileSystem</literal> service to determine where %PRODUCTNAME is installed in your system.</tip>
-  <paragraph role="paragraph" id="par_id201636724575911">This folder contains a series of ZIP files containing the image files of each available icon set. The images inside these ZIP files are organized into folders. To use an icon, specify the icon file with the path to its location inside the ZIP file.</paragraph>
-  <paragraph role="paragraph" id="par_id641636724972071">The example below uses the icon "sc_newdoc.svg" that is located inside the "cmd" folder. The forward slash "/" character is used as the path separator regardless of the operating system.</paragraph>
-  <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id121636725026678">myPopup.AddItem("Item A", Icon := "cmd/sc_newdoc.svg")</paragraph>
-  </bascode>
-  <note id="par_id691636725233961">All icon sets have the same internal structure. The actual icon displayed depends on the icon set currently in use.</note>
+  <section id="using_icons">
+    <h2 id="hd_id211636723438558">Using icons</h2>
+    <paragraph role="paragraph" id="par_id981636723485402">Items in the menu can have icons, which are specified as arguments in the <literal>AddCheckBox</literal>, <literal>AddItem</literal> and <literal>AddRadioButton</literal> methods.</paragraph>
+    <paragraph role="paragraph" id="par_id881636724112434">All icons available in %PRODUCTNAME can be used by specifying their path relative to the folder where icon files are located in the installation folder. Icons are located in the following folder:</paragraph>
+    <paragraph role="paragraph" localize="false" id="par_id991636724479899"><input>INSTALLDIR/share/config</input></paragraph>
+    <tip id="par_id941636724808906">Use the <literal>InstallFolder</literal> property of the <literal>FileSystem</literal> service to determine where %PRODUCTNAME is installed in your system.</tip>
+    <paragraph role="paragraph" id="par_id201636724575911">This folder contains a series of ZIP files containing the image files of each available icon set. The images inside these ZIP files are organized into folders. To use an icon, specify the icon file with the path to its location inside the ZIP file.</paragraph>
+    <paragraph role="paragraph" id="par_id641636724972071">The example below uses the icon "sc_newdoc.svg" that is located inside the "cmd" folder. The forward slash "/" character is used as the path separator regardless of the operating system.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id121636725026678">myMenu.AddItem("Item A", Icon := "cmd/sc_newdoc.svg")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id361643307394680">myMenu.AddItem("Item A", icon="cmd/sc_newdoc.svg")</paragraph>
+    </pycode>
+    <note id="par_id691636725233961">All icon sets have the same internal structure. The actual icon displayed depends on the icon set currently in use.</note>
+  </section>
 
   <h2 id="hd_id501582887473754" xml-lang="en-US">Methods</h2>
   <table id="tab_id501611613601554">
@@ -216,7 +230,7 @@
     <paragraph role="paragraph" id="par_id93158919969864">Inserts a check box in the popup menu. Returns an integer value that identifies the inserted item.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id821621534014732">
-      <input>svc.AddCheckBox(menuitem: str, opt name: str, opt status: bool, opt icon: str, opt tooltip: str): int</input>
+      <input>svc.AddCheckBox(menuitem: str, opt name: str, opt status: bool = False, opt icon: str, opt tooltip: str): int</input>
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
     <paragraph role="paragraph" id="par_id821591631203996"><emph>menuitem:</emph> Defines the text to be displayed in the menu. This argument also defines the hierarchy of the item inside the menu by using the submenu character.</paragraph>
@@ -231,7 +245,7 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id321621534175122">myPopup.AddCheckBox("Option A", status=True)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534175122">my_popup.AddCheckBox("Option A", status=True)</paragraph>
     </pycode>
   </section>
 
@@ -258,7 +272,7 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" id="pyc_id321621534170554">myPopup.AddItem("Item A", tooltip = "A descriptive message")</paragraph>
+      <paragraph role="pycode" id="pyc_id321621534170554">my_popup.AddItem("Item A", tooltip = "A descriptive message")</paragraph>
     </pycode>
   </section>
 
@@ -271,7 +285,7 @@
     <paragraph role="paragraph" id="par_id93158919969399">Inserts a radio button entry in the popup menu. Returns an integer value that identifies the inserted item.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id821621534013775">
-      <input>svc.AddRadioButton(menuitem: str, opt name: str, opt status: str, opt icon: str, opt tooltip: str): int</input>
+      <input>svc.AddRadioButton(menuitem: str, opt name: str, opt status: bool = False, opt icon: str, opt tooltip: str): int</input>
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
     <paragraph role="paragraph" id="par_id821591631203501"><emph>menuitem:</emph> Defines the text to be displayed in the menu. This argument also defines the hierarchy of the item inside the menu by using the submenu character.</paragraph>
@@ -286,7 +300,7 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id321621534175471">myPopup.AddRadioButton("Option A", name="A", status=True)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534175471">my_popup.AddRadioButton("Option A", name="A", status=True)</paragraph>
     </pycode>
   </section>
 
@@ -300,7 +314,7 @@
     <paragraph role="paragraph" id="par_id101636726249788">If the user clicks outside the popup menu or presses the <keycode>Esc</keycode> key, then no item is selected. In such cases, the returned value depends on the <literal>returnid</literal> parameter. If <literal>returnid = True</literal> and no item is selected, then the value 0 (zero) is returned. Otherwise an empty string "" is returned.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id821621534014414">
-      <input>svc.Execute(opt returnid: bool): any</input>
+      <input>svc.Execute(opt returnid: bool = True): any</input>
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
     <paragraph role="paragraph" id="par_id821591631202088"><emph>returnid:</emph> If <literal>True</literal> the selected item ID is returned. If <literal>False</literal> the method returns the item's name (Default = <literal>True</literal>).</paragraph>
@@ -315,9 +329,9 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id321621534173001">myPopup.AddItem("Item A", name="A")</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id271636726772842">myPopup.AddItem("Item B", name="B")</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id621636726773015">response = myPopup.Execute(False)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534173001">my_popup.AddItem("Item A", name="A")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id271636726772842">my_popup.AddItem("Item B", name="B")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id621636726773015">response = my_popup.Execute(False)</paragraph>
     </pycode>
   </section>
 
@@ -325,6 +339,7 @@
   <section id="relatedtopics">
     <embed href="text/sbasic/shared/03/sf_dialog.xhp#dlg_h1"/>
     <embed href="text/sbasic/shared/03/sf_dialogcontrol.xhp#ctrls_h1"/>
+    <embed href="text/sbasic/shared/03/sf_menu.xhp#MenuService"/>
   </section>
 </body>
 </helpdocument>

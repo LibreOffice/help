@@ -294,12 +294,14 @@
            <paragraph id="par_id761611086279902" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_document.xhp#Activate" name="Activate method">Activate</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#CloseDocument" name="CloseDocument method">CloseDocument</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#CreateMenu" name="CreateMenu method">CreateMenu</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#ExportAsPDF" name="ExportAsPDF method">ExportAsPDF</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_document.xhp#PrintOut" name="PrintOut method">PrintOut</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#RemoveMenu" name="RemoveMenu method">RemoveMenu</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#RunCommand" name="RunCommand method">RunCommand</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#Save" name="Save method">Save</link><br/>
            </paragraph>
@@ -308,7 +310,7 @@
            <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_document.xhp#SaveAs" name="SaveAs method">SaveAs</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#SaveCopyAs" name="SaveCopyAs method">SaveCopyAs</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#SetPrinter" name="SetPrinter method">SetPrinter</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#SetPrinter" name="SetPrinter method">SetPrinter</link><br/><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -369,6 +371,52 @@
     <paragraph role="pycode" localize="false" id="pyc_id731622827946898">if doc.CloseDocument(True):</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id221622827947414">    # ...</paragraph>
   </pycode>
+</section>
+
+<section id="CreateMenu">
+  <comment> CreateMenu --------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721589200120958">
+    <bookmark_value>Document service;CreateMenu</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261589200121339" localize="false">CreateMenu</h2>
+  <paragraph role="paragraph" id="par_id651589200121080">Creates a new menu entry in the menubar of a given document window.</paragraph>
+  <paragraph role="paragraph" id="par_id981611149616155">This method returns an instance of the <link href="text/sbasic/shared/03/sf_menu.xhp" name="Menu_link1"><input>SFWidgets.Menu</input></link> service.</paragraph>
+  <note id="par_id721643121487974">The menu created is only available during the current %PRODUCTNAME session and is not saved neither in the document nor in the global application settings. Hence closing the document window will make the menu disappear. It will only reappear when the macro that creates the menu is executed again.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id1001622887222964">
+    <input>svc.CreateMenu(menuheader: str, [before: any], submenuchar: str = "&gt;"): svc</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id361589200120316"><emph>menuheader</emph>: The toplevel name of the new menu.</paragraph>
+  <paragraph role="paragraph" id="par_id361589200129686"><emph>before</emph>: The name (as a string) or position (as an integer starting at 1) of an existing menu before which the new menu will be placed. If no value is defined for this argument, the menu will be created at the last position in the menubar.</paragraph>
+  <paragraph role="paragraph" id="par_id361589200122507"><emph>submenuchar</emph>: The delimiter used to create menu trees when calling methods as <literal>AddItem</literal> from the <literal>Menu</literal> service. The default value is "&gt;".</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id891580290121500">Dim oDoc as Object, oMenu as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id515892005061251">Set oDoc = CreateScriptService("Document")</paragraph>
+    <paragraph role="bascode" id="bas_id751622827903865">Set oMenu = oDoc.CreateMenu("My Menu")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621643120224240">With oMenu</paragraph>
+    <paragraph role="bascode" id="bas_id391643120224507">    ' Add items to the menu</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id411643120224708">    .AddItem("Item A")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id411643120224719">    .AddItem("Item B")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461643120224936">    ' ...</paragraph>
+    <paragraph role="bascode" id="bas_id100164312025160">    ' After creating the menu, the service instance can be disposed of</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id401643120225361">    .Dispose()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id701643120225536">End With</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id731622827946021">doc = CreateScriptService("Document")</paragraph>
+    <paragraph role="pycode" id="pyc_id221622827943208">menu = doc.CreateMenu("My Menu")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id381643120494454">menu.AddItem("Item A")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id381643120494463">menu.AddItem("Item B")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id361643120494723"># ...</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id151643120494942">menu.Dispose()</paragraph>
+  </pycode>
+  <section id="menu_tip">
+    <tip id="par_id271643139068194">Refer to the <link href="text/sbasic/shared/03/sf_menu.xhp" name="Menu_link2"><input>SFWidgets.Menu</input></link> help page to learn more about how to create/remove menus in %PRODUCTNAME document windows.</tip>
+  </section>
 </section>
 
 <section id="ExportAsPDF">
@@ -445,6 +493,36 @@
     <paragraph role="pycode" localize="false" id="pyc_id731622728946898">if doc.PrintOut(copies=3, pages='45-88'):</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id221628227947414">    # ...</paragraph>
   </pycode>
+</section>
+
+<section id="RemoveMenu">
+  <comment> RemoveMenu --------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721589200129148">
+    <bookmark_value>Document service;RemoveMenu</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261589200121147" localize="false">RemoveMenu</h2>
+  <paragraph role="paragraph" id="par_id651589200165470">Removes a toplevel menu from the menubar of a given document window.</paragraph>
+  <paragraph role="paragraph" id="par_id981611149610695">Returns <literal>True</literal> if the specified menu could be removed. If the specified menu does not exist, the method returns <literal>False</literal>.</paragraph>
+  <note id="par_id571643121106014">This method can be used to remove any menu entry from the document window, including default menus. However, none of these changes in the menubar are saved to the document or to the application settings. To restore the menubar to the default settings, simply close and reopen the document window.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id1001622887065864">
+    <input>svc.RemoveMenu(menuheader: str): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id361589200121156"><emph>menuheader</emph>: The toplevel name of the menu to be removed.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id891580290121522">Dim oDoc as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id515892005060659">Set oDoc = CreateScriptService("Document")</paragraph>
+    <paragraph role="bascode" id="bas_id391643120223147">oDoc.RemoveMenu("My Menu")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id731622827946155">doc = CreateScriptService("Document")</paragraph>
+    <paragraph role="pycode" id="pyc_id221622827946338">doc.RemoveMenu("My Menu")</paragraph>
+  </pycode>
+  <embed href="text/sbasic/shared/03/sf_document.xhp#menu_tip"/>
 </section>
 
 <section id="RunCommand">
@@ -596,8 +674,9 @@
 
   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
   <section id="relatedtopics">
-    <embed href="text/sbasic/shared/03/sf_ui.xhp#UIService"/>
     <embed href="text/sbasic/shared/03/sf_dictionary.xhp#SFDictionary"/>
+    <embed href="text/sbasic/shared/03/sf_ui.xhp#UIService"/>
+    <embed href="text/sbasic/shared/03/sf_menu.xhp#MenuService"/>
    </section>
 </body>
 </helpdocument>
