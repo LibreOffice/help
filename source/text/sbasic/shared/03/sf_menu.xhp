@@ -9,91 +9,98 @@
  *
 -->
 <meta>
-  <topic id="SF_PopupMenu" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">ScriptForge.PopupMenu service</title>
-    <filename>/text/sbasic/shared/03/sf_popupmenu.xhp</filename>
+  <topic id="SF_Menu" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">ScriptForge.Menu service</title>
+    <filename>/text/sbasic/shared/03/sf_menu.xhp</filename>
   </topic>
 </meta>
 <body>
-  <section id="ScriptForge-sf_popupmenu">
+  <section id="ScriptForge-sf_pmenu">
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id501600788076877">
-      <bookmark_value>PopupMenu service</bookmark_value>
+      <bookmark_value>Menu service</bookmark_value>
     </bookmark>
   </section>
   <section id="abstract">
-    <h1 id="bm_id681600788076499"><variable id="PopupMenuService"><link href="text/sbasic/shared/03/sf_popupmenu.xhp" name="PopupMenu service"><literal>ScriptForge</literal>.<literal>PopupMenu</literal> service</link></variable></h1>
-    <paragraph role="paragraph" id="par_id181600788076612">The <literal>PopupMenu</literal> service can be used to create popup menus that can be associated with events or executed by scripts. This service provides the following capabilities:</paragraph>
+    <h1 id="bm_id681600788076499"><variable id="MenuService"><link href="text/sbasic/shared/03/sf_menu.xhp" name="Menu service"><literal>ScriptForge</literal>.<literal>Menu</literal> service</link></variable></h1>
+    <paragraph role="paragraph" id="par_id181600788076612">The <literal>Menu</literal> service can be used to create and remove menus from the menubar of a %PRODUCTNAME document window. Each menu entry can be associated with a script or with a UNO command. This service provides the following capabilities:</paragraph>
     <list type="unordered">
       <listitem>
-        <paragraph id="par_id301600788076785" role="listitem">Creation of popup menus with custom entries, checkboxes and radio buttons.</paragraph>
+        <paragraph id="par_id301600788076785" role="listitem">Creation of menus with custom entries, checkboxes, radio buttons and separators.</paragraph>
       </listitem>
       <listitem>
         <paragraph id="par_id1001600788076848" role="listitem">Decoration of menu items with icons and tooltips.</paragraph>
       </listitem>
     </list>
   </section>
+  <note id="par_id581643133675012">Menus created with this service are available only for a specified document window. They are not saved into the document or as application settings. Closing and opening the document will restore the default menubar settings.</note>
 
   <h2 id="hd_id281600788076359">Service invocation</h2>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
-  <paragraph role="paragraph" id="par_id321614902851541">The <literal>PopupMenu</literal> service can be instantiated in multiple ways. The example below creates a popup menu without associating it with a mouse or application event.</paragraph>
+  <paragraph role="paragraph" id="par_id321614902851541">The <literal>Menu</literal> service is instantiated by calling the <link href="text/sbasic/shared/03/sf_menu.xhp#CreateMenu" name="CreateMenu_link"><literal>CreateMenu</literal></link> method from the <literal>Document</literal> service. The code snippet below creates a menu named <emph>My Menu</emph> in the current document window with two entries <emph>Item A</emph> and <emph>Item B</emph>.</paragraph>
   <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id701636718117715">Sub ShowPopup</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id851600788076202">    GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id1001600788076254">    Dim myPopup As Object</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id721600788076288">    Set myPopup = CreateScriptService("SFWidgets.PopupMenu", , 300, 300)</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id791600788431935">    myPopup.AddItem("Item ~A")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id791600788431755">    myPopup.AddItem("Item ~B")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id791600788431206">    vResponse = myPopup.Execute()</paragraph>
-    <paragraph role="bascode" id="bas_id841636717357955">    MsgBox("Selected item ID: " &amp; vResponse)</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id801636717387904">    myPopup.Dispose()</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id721636718154385">End Sub</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791643134557838">Sub CreateMenu()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id891643134322054">    GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id141643134322438">    Dim oDoc as Object, oMenu as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id151643134322614">    Set oDoc = CreateScriptService("Document")</paragraph>
+    <paragraph role="bascode" id="bas_id261643134374056">    Set oMenu = oDoc.CreateMenu("My Menu")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id261643134581928">    With oMenu</paragraph>
+    <paragraph role="bascode" id="bas_id431643134582213">        .AddItem("Item A", Command := "About")</paragraph>
+    <paragraph role="bascode" id="bas_id571643134582396">        .AddItem("Item B", Script := "vnd.sun.star.script:Standard.Module1.ItemB_Listener?language=Basic&amp;location=application")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531643134582588">        .Dispose()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id981643134582741">    End With</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791643134722777">End Sub</paragraph>
   </bascode>
-  <paragraph role="paragraph" id="par_id341636718182262">Running the <literal>Sub</literal> defined above will create a popup menu with two entries in the position X=300 and Y=300 on the screen.</paragraph>
-  <tip id="par_id711636493696169">The prefix <literal>SFWidgets</literal> can be suppressed while invoking the <literal>PopupMenu</literal> service.</tip>
-  <paragraph role="paragraph" id="par_id851635274721129">The following example defines a <literal>Sub</literal> that can be associated with a mouse event:</paragraph>
+  <note id="par_id371643135157996">After creating the menu, it is recommended to call the <literal>Dispose</literal> method to free the resources used by the <literal>Menu</literal> service instance.</note>
+  <paragraph role="paragraph" id="par_id341636718182262">In the example above, <emph>Item A</emph> is associated with the UNO command <literal>.uno:About</literal> whereas <emph>Item B</emph> is associated with the script <literal>ItemB_Listener</literal> defined in <literal>Module1</literal> of the <literal>Standard</literal> library of the <literal>My Macros</literal> container.</paragraph>
+  <paragraph role="paragraph" id="par_id851635274721129">The following example defines <literal>ItemB_Listener</literal> that will be called when <emph>Item B</emph> is clicked. This listener simply splits the argument string passed to the <literal>Sub</literal> and shows them in a message box.</paragraph>
   <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id221635274765110">Sub MyPopupClick(Optional poMouseEvent as Object)</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id461635274776072">    Dim myPopup As Object</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id621635274776400">    Set myPopup = CreateScriptService("PopupMenu", poMouseEvent)</paragraph>
-    <paragraph role="bascode" id="bas_id721636488722999">    ' Populate popupmenu with items</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id201636488724356">    Dim vResponse As Variant</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id371636488724573">    vResponse = myPopup.Execute(False)</paragraph>
-    <paragraph role="bascode" id="bas_id311636488724795">    ' Do something based on vResponse</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id501636493549364">    ' ...</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id721636718367863">    myPopup.Dispose()</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id941636493510454">End Sub</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id311643135422309">Sub ItemB_Listener(args As String)</paragraph>
+    <paragraph role="bascode" id="bas_id716431354225603">    ' Process the argument string passed to the listener</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id211643135422708">    Dim sArgs as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461643135422860">    sArgs = Split(args, ",")</paragraph>
+    <paragraph role="bascode" id="bas_id901643135423012">    MsgBox "Menu name: "   &amp; sArgs(0) &amp; Chr(13) &amp; _</paragraph>
+    <paragraph role="bascode" id="bas_id301643136028263">           "Menu item: "   &amp; sArgs(1) &amp; Chr(13) &amp; _</paragraph>
+    <paragraph role="bascode" id="bas_id181643136028557">           "Item ID: "     &amp; sArgs(2) &amp; Chr(13) &amp; _</paragraph>
+    <paragraph role="bascode" id="bas_id561643136028710">           "Item status: " &amp; sArgs(3)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id241643136028871">End Sub</paragraph>
   </bascode>
-  <tip id="par_id991636718278125">Use the <literal>Dispose</literal> method to free resources after executing the popup menu.</tip>
-  <paragraph role="paragraph" id="par_id531636493797707">It is also possible to associate a popup menu with events triggered by %PRODUCTNAME applications, form and dialog controls. Events such as "Mouse button pressed" and "Mouse button released" are commonly associated with popup menus.</paragraph>
-  <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id221635274762410">Sub MyPopupClick(Optional poEvent as Object)</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id461635274776234">    Dim myPopup As Object</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id621635274776299">    Set myPopup = CreateScriptService("PopupMenu", poEvent)</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id501636493549964">    ' ...</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id941636493510712">End Sub</paragraph>
-  </bascode>
+  <paragraph role="paragraph" id="par_id531636493797707">As shown in the example above, menu entries associated with a script receive a comma-separated string argument with the following values:</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id921643136489994" role="listitem">The toplevel name of the menu.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id611643136491059" role="listitem">The string ID of the selected menu entry.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id961643136491491" role="listitem">The numeric ID of the selected menu entry.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id381643136494580" role="listitem">The current state of the menu item. This is useful for checkboxes and radio buttons. If the item is checked, the value "1" is returned, otherwise "0" is returned.</paragraph>
+    </listitem>
+  </list>
 
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <paragraph role="paragraph" id="par_id131635275172617">The examples above can be written in Python as follows:</paragraph>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id631626695710139">from scriptforge import CreateScriptService</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id441636718456158"></paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id441636718456844">def show_popup(args=None):</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id981626695710433">    my_popup = CreateScriptService("SFWidgets.PopupMenu", None, 300, 300)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id981626695710122">    bas = CreateScriptService("Basic")</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id311626695710851">    my_popup.AddItem("Item ~A")</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id211636717609237">    my_popup.AddItem("Item ~B")</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id616367176100230">    response = my_popup.Execute()</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id901636718500313">    bas.MsgBox(f"Selected item ID: {response}")</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id416367185012216">    my_popup.Dispose()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441636718456844">def create_menu(args=None):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981626695710433">    doc = CreateScriptService("Document")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981626695710122">    menu = doc.CreateMenu("My Menu")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id311626695710851">    menu.AddItem("Item A", command="About")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id211636717609237">    menu.AddItem("Item B", script="vnd.sun.star.script:my_macros.py$item_b_listener?language=Python&amp;location=user")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id616367176100230">    menu.Dispose()</paragraph>
   </pycode>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id831635275439182">def my_popup_click(poEvent=None):</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id381635275439396">    my_popup = CreateScriptService("SFWidgets.PopupMenu", poEvent)</paragraph>
-    <paragraph role="pycode" id="pyc_id916367179574588">    # Populate popupmenu with items</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id981636717957632">    response = my_popup.Execute()</paragraph>
-    <paragraph role="pycode" id="pyc_id851636718008427">    # Do something based on response</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id331636727047102">    my_popup.Dispose()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id831635275439182">def item_b_listener(args):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id481643137165239">    bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id381635275439396">    s_args = args.split(",")</paragraph>
+    <paragraph role="pycode" id="pyc_id981636717957632">    msg = f"Menu item: {s_args[0]}\n"</paragraph>
+    <paragraph role="pycode" id="pyc_id851636718008427">    msg += f"Menu name: {s_args[1]}\n"</paragraph>
+    <paragraph role="pycode" id="pyc_id331636727047102">    msg += f"Item ID: {s_args[2]}\n"</paragraph>
+    <paragraph role="pycode" id="pyc_id71643137333404">    msg += f"Item status: {s_args[3]}"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id111643137333564">    bas.MsgBox(msg)</paragraph>
   </pycode>
 
   <bookmark xml-lang="en-US" branch="index" localize="false" id="bm_id111614901520029">
@@ -147,7 +154,7 @@
   </table>
 
   <h2 id="hd_id181636719707892">Menu and Submenus</h2>
-  <paragraph role="paragraph" id="par_id741636719725402">To create a popup menu with submenus, use the character defined in the <literal>SubmenuCharacter</literal> property while creating the menu entry to define where it will be placed. For instance, consider the following menu/submenu hierarchy.</paragraph>
+  <paragraph role="paragraph" id="par_id741636719725402">To create a menu with submenus, use the character defined in the <literal>SubmenuCharacter</literal> property while creating the menu entry to define where it will be placed. For instance, consider the following menu/submenu hierarchy.</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id991636719842353">' Item A</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id231636719842719">' Item B > Item B.1</paragraph>
@@ -163,32 +170,20 @@
   </bascode>
   <paragraph role="paragraph" id="par_id211636720111489">The code below uses the default submenu character ">" to create the menu/submenu hierarchy defined above:</paragraph>
   <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id961636720555061">myPopup.AddItem("Item A")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id371636720556397">myPopup.AddItem("Item B>Item B.1")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id941636720556623">myPopup.AddItem("Item B>Item B.2")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id261636720973178">myPopup.AddItem("---")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id431636720556822">myPopup.AddItem("Item C>Item C.1>Item C.1.1")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id651636720557021">myPopup.AddItem("Item C>Item C.1>Item C.1.2")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id861636720557222">myPopup.AddItem("Item C>Item C.2>Item C.2.1")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id21636720557437">myPopup.AddItem("Item C>Item C.2>Item C.2.2")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id21636720557103">myPopup.AddItem("Item C>Item C.2>---")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id21636720557256">myPopup.AddItem("Item C>Item C.2>Item C.2.3")</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id21636720557941">myPopup.AddItem("Item C>Item C.2>Item C.2.4")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id961636720555061">oMenu.AddItem("Item A")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id371636720556397">oMenu.AddItem("Item B>Item B.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id941636720556623">oMenu.AddItem("Item B>Item B.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id261636720973178">oMenu.AddItem("---")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id431636720556822">oMenu.AddItem("Item C>Item C.1>Item C.1.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id651636720557021">oMenu.AddItem("Item C>Item C.1>Item C.1.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id861636720557222">oMenu.AddItem("Item C>Item C.2>Item C.2.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id21636720557437">oMenu.AddItem("Item C>Item C.2>Item C.2.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id21636720557103">oMenu.AddItem("Item C>Item C.2>---")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id21636720557256">oMenu.AddItem("Item C>Item C.2>Item C.2.3")</paragraph>
+    <paragraph role="bascode" localize="false" id="par_id21636720557941">oMenu.AddItem("Item C>Item C.2>Item C.2.4")</paragraph>
   </bascode>
-  <note id="par_id121636721243578">The string "---" is used to define line separators in menus or submenus..</note>
-  <section id="using_icons">
-    <h2 id="hd_id211636723438558">Using icons</h2>
-    <paragraph role="paragraph" id="par_id981636723485402">Items in the menu can have icons, which are specified as arguments in the <literal>AddCheckBox</literal>, <literal>AddItem</literal> and <literal>AddRadioButton</literal> methods.</paragraph>
-    <paragraph role="paragraph" id="par_id881636724112434">All icons available in %PRODUCTNAME can be used by specifying their path relative to the folder where icon files are located in the installation folder. Icons are located in the following folder:</paragraph>
-    <paragraph role="paragraph" localize="false" id="par_id991636724479899"><input>INSTALLDIR/share/config</input></paragraph>
-    <tip id="par_id941636724808906">Use the <literal>InstallFolder</literal> property of the <literal>FileSystem</literal> service to determine where %PRODUCTNAME is installed in your system.</tip>
-    <paragraph role="paragraph" id="par_id201636724575911">This folder contains a series of ZIP files containing the image files of each available icon set. The images inside these ZIP files are organized into folders. To use an icon, specify the icon file with the path to its location inside the ZIP file.</paragraph>
-    <paragraph role="paragraph" id="par_id641636724972071">The example below uses the icon "sc_newdoc.svg" that is located inside the "cmd" folder. The forward slash "/" character is used as the path separator regardless of the operating system.</paragraph>
-    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id121636725026678">myMenu.AddItem("Item A", Icon := "cmd/sc_newdoc.svg")</paragraph>
-    </bascode>
-    <note id="par_id691636725233961">All icon sets have the same internal structure. The actual icon displayed depends on the icon set currently in use.</note>
-  </section>
+  <note id="par_id121636721243578">The string "---" is used to define line separators in menus or submenus.</note>
+  <embed href="text/sbasic/shared/03/sf_popupmenu.xhp#using_icons"/>
 
   <h2 id="hd_id501582887473754" xml-lang="en-US">Methods</h2>
   <table id="tab_id501611613601554">
@@ -331,9 +326,8 @@
 
   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
   <section id="relatedtopics">
-    <embed href="text/sbasic/shared/03/sf_dialog.xhp#dlg_h1"/>
-    <embed href="text/sbasic/shared/03/sf_dialogcontrol.xhp#ctrls_h1"/>
-    <embed href="text/sbasic/shared/03/sf_menu.xhp#MenuService"/>
+    <embed href="text/sbasic/shared/03/sf_popupmenu.xhp#PopupMenuService"/>
+    <embed href="text/sbasic/shared/03/sf_document.xhp#DocumentService"/>
   </section>
 </body>
 </helpdocument>
