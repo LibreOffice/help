@@ -419,11 +419,6 @@
         <xsl:when test="(concat('/',@href) = /helpdocument/meta/topic/filename) or (@href = /helpdocument/meta/topic/filename)">
             <xsl:apply-templates />
         </xsl:when>
-        <xsl:when test="contains(child::embedvar/@href,'/00/00000004.xhp#wie')"> <!-- special treatment of howtoget links -->
-            <xsl:call-template name="insert_howtoget">
-                <xsl:with-param name="linkhref" select="@href"/>
-            </xsl:call-template>
-        </xsl:when>
         <xsl:otherwise>
             <xsl:call-template name="createlink" />
         </xsl:otherwise>
@@ -481,10 +476,6 @@
             </xsl:call-template>
         </xsl:when>
 
-        <xsl:when test="contains(descendant::embedvar/@href,'/00/00000004.xhp#wie')"> <!-- special treatment of howtoget links -->
-            <xsl:apply-templates />
-        </xsl:when>
-
         <xsl:when test="@role='bascode' or @role='pycode'">
             <xsl:call-template name="brand">
                 <xsl:with-param name="string" select="."/>
@@ -526,10 +517,6 @@
             <xsl:call-template name="insertnote">
                 <xsl:with-param name="type" select="@role" />
             </xsl:call-template>
-        </xsl:when>
-
-        <xsl:when test="contains(descendant::embedvar/@href,'/00/00000004.xhp#wie')"> <!-- special treatment of howtoget links -->
-            <xsl:apply-templates />
         </xsl:when>
 
         <xsl:when test="@role='bascode' or @role='pycode'">
@@ -1437,20 +1424,18 @@
 </xsl:template>
 
 <xsl:template name="resolveembedvar">
-    <xsl:if test="not(@href='text/shared/00/00000004.xhp#wie')"> <!-- special treatment if howtoget links -->
-        <xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
-        <xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'))"/></xsl:variable>
-        <xsl:variable name="anchor"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
-        <xsl:variable name="doc" select="document($href)"/>
-        <xsl:choose>
-            <xsl:when test="$doc//variable[@id=$anchor]"> <!-- test for a variable of that name -->
-                <xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
-            </xsl:when>
-            <xsl:otherwise> <!-- or give up -->
-                <span class="bug">[<xsl:value-of select="@href"/> not found].</span>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:if>
+    <xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
+    <xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'))"/></xsl:variable>
+    <xsl:variable name="anchor"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
+    <xsl:variable name="doc" select="document($href)"/>
+    <xsl:choose>
+        <xsl:when test="$doc//variable[@id=$anchor]"> <!-- test for a variable of that name -->
+            <xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
+        </xsl:when>
+        <xsl:otherwise> <!-- or give up -->
+            <span class="bug">[<xsl:value-of select="@href"/> not found].</span>
+        </xsl:otherwise>
+    </xsl:choose>
 </xsl:template>
 
 <!-- Apply -->
