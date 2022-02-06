@@ -531,29 +531,45 @@
     <bookmark_value>Document service;RunCommand</bookmark_value>
   </bookmark>
   <h2 id="hd_id611589202413141" localize="false">RunCommand</h2>
-  <paragraph role="paragraph" id="par_id991589202413257">Runs a command on a document. The command is executed without arguments.</paragraph>
-  <paragraph role="paragraph" id="par_id921611152932311">A few typical commands are: Save, SaveAs, ExportToPDF, SetDocumentProperties, Undo, Copy, Paste, etc.</paragraph>
+  <paragraph role="paragraph" id="par_id991589202413257">Runs a UNO command on the document window associated with the service instance. A few typical commands are: Save, SaveAs, ExportToPDF, Undo, Copy, Paste, etc.</paragraph>
   <paragraph role="paragraph" id="par_id261589202778896" xml-lang="en-US">The document itself does not need to be active to be able to run commands.</paragraph>
+  <paragraph role="paragraph" id="par_id921611152932311">Commands can be run with or without arguments. Arguments are not validated before running the command. If the command or its arguments are invalid, then nothing will happen.</paragraph>
+  <tip id="par_id31644182402479">For a complete list of UNO commands that can be run in %PRODUCTNAME, refer to the Wiki page <link href="https://wiki.documentfoundation.org/Development/DispatchCommands" name="Commands_Wiki">Development/DispatchCommands</link>.</tip>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id521622828226683">
-    <input>svc.RunCommand(command: str)</input>
+    <input>svc.RunCommand(command: str, [args: any])</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id401589202413575"><emph>command</emph>: Case-sensitive string containing the command in English. The command itself is not checked for correctness. If nothing happens after the command call, then the command is probably wrong.</paragraph>
+  <paragraph role="paragraph" id="par_id401589202413575"><emph>command</emph>: Case-sensitive string containing the UNO command name. The inclusion of the prefix ".uno:" in the command is optional. The command itself is not checked for correctness. If nothing happens after the command call, then the command is probably wrong.</paragraph>
+  <paragraph role="paragraph" id="par_id521644182774710"><emph>args</emph>: For each argument to be passed to the command, specify a pair containing the argument name and value.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-  <paragraph role="paragraph" id="par_id721611153068137">The following example runs the "SelectData" command in a Calc sheet named "MyFile.ods", which will result in the selection of the data area based on the currently selected cell.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id721611153068137">The following example runs the <literal>SelectData</literal> command in a Calc file named "MyFile.ods", which will result in the selection of the data area based on the currently selected cell. Note that this command does not require any arguments.</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id401611153339973">Set oDoc = CreateScriptService("Document", "MyFile.ods")</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id121589202413630">oDoc.RunCommand("SelectData")</paragraph>
   </bascode>
+  <paragraph role="paragraph" id="par_id371644184276886">Below is an example that runs the UNO command <literal>ReplaceAll</literal> and passes values for its arguments <literal>SearchString</literal> and <literal>ReplaceString</literal>. Running this command will replace all occurrence of the string "abc" by "ABC" in the current sheet.</paragraph>
+  <bascode>
+    <paragraph role="bascode" id="bas_id631644184414955">' Arguments passed to the command:</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621644184336024">' SearchString  = "abc"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id516441843364240">' ReplaceString = "ABC"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id391644184337449">oDoc.RunCommand(".uno:ReplaceAll", "SearchString", "abc", "ReplaceString", "ABC")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id41644184549167">Note that calling the command <literal>ReplaceAll</literal> without arguments will open the <menuitem>Find and Replace</menuitem> dialog.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id821622828361025">doc = CreateScriptService("Document", "MyFile.ods")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id211622828361293">doc.RunCommand("SelectData")</paragraph>
   </pycode>
-  <paragraph role="paragraph" id="par_id751611153375195">The example above actually runs the UNO command <literal>.uno:SelectData</literal>. Hence, to use the <literal>RunCommand</literal> method it is necessary to remove the ".uno:" substring.</paragraph>
-  <tip id="par_id191611153511038">Each LibreOffice component has its own set of commands available. One easy way to learn commands is going to <emph>Tools > Customize > Keyboard</emph>. When you position your mouse over a function in the <emph>Function</emph> list, a tooltip will appear with the corresponding UNO command.</tip>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id661644184648102">doc.RunCommand(".uno:ReplaceAll", "SearchString", "abc", "ReplaceString", "ABC")</paragraph>
+  </pycode>
+  <paragraph role="paragraph" id="par_id811644243228448">In Python it is also possible to call <literal>RunCommand</literal> using keyword arguments:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id301644243318500">doc.RunCommand(".uno:ReplaceAll", SearchString = "abc", ReplaceString = "ABC")</paragraph>
+  </pycode>
+  <tip id="par_id191611153511038">Each %PRODUCTNAME component has its own set of commands available. One easy way to learn commands is going to <emph>Tools > Customize > Keyboard</emph>. When you position your mouse over a function in the <emph>Function</emph> list, a tooltip will appear with the corresponding UNO command.</tip>
 </section>
 
 <section id="Save">
