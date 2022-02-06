@@ -216,19 +216,20 @@
            <link href="text/sbasic/shared/03/sf_ui.xhp#Activate" name="Activate method">Activate</link><br/>
            <link href="text/sbasic/shared/03/sf_ui.xhp#CreateBaseDocument" name="CreateBaseDocument method">CreateBaseDocument</link><br/>
            <link href="text/sbasic/shared/03/sf_ui.xhp#CreateDocument" name="CreateDocument method">CreateDocument</link> (*)<br/>
-           <link href="text/sbasic/shared/03/sf_ui.xhp#GetDocument" name="GetDocument method">GetDocument</link>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#GetDocument" name="GetDocument method">GetDocument</link><br/>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#Maximize" name="Maximize method">Maximize</link>
        </paragraph></tablecell>
        <tablecell><paragraph id="par_id451606472825856" role="tablecontent" localize="false">
-           <link href="text/sbasic/shared/03/sf_ui.xhp#Maximize" name="Maximize method">Maximize</link><br/>
            <link href="text/sbasic/shared/03/sf_ui.xhp#Minimize" name="Minimize method">Minimize</link><br/>
            <link href="text/sbasic/shared/03/sf_ui.xhp#OpenBaseDocument" name="OpenBaseDocument method">OpenBaseDocument</link><br/>
-           <link href="text/sbasic/shared/03/sf_ui.xhp#OpenDocument" name="OpenDocument method">OpenDocument</link> (*)
+           <link href="text/sbasic/shared/03/sf_ui.xhp#OpenDocument" name="OpenDocument method">OpenDocument</link> (*)<br/>
+         <link href="text/sbasic/shared/03/sf_ui.xhp#Resize" name="Resize method">Resize</link><br/><br/>
        </paragraph></tablecell>
        <tablecell><paragraph id="par_id161606472825856" role="tablecontent" localize="false">
-           <link href="text/sbasic/shared/03/sf_ui.xhp#Resize" name="Resize method">Resize</link><br/>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#RunCommand" name="RunCommand method">RunCommand</link><br/>
            <link href="text/sbasic/shared/03/sf_ui.xhp#SetStatusBar" name="SetStatusBar method">SetStatusBar</link> (*)<br/>
            <link href="text/sbasic/shared/03/sf_ui.xhp#ShowProgressBar" name="ShowProgressBar method">ShowProgressBar</link><br/>
-           <link href="text/sbasic/shared/03/sf_ui.xhp#WindowExists" name="WindowExists method">WindowExists</link>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#WindowExists" name="WindowExists method">WindowExists</link><br/><br/>
        </paragraph></tablecell>
     </tablerow>
     </table>
@@ -484,6 +485,53 @@
      <paragraph role="pycode" localize="false" id="pyc_id971620331945744">ui.Resize(width = 500, height = 500)</paragraph>
    </pycode>
    <tip id="par_id21620332301809">To resize a window that is not active, first activate it using the <literal>Activate</literal> method.</tip>
+</section>
+
+<section id="RunCommand">
+  <comment> RunCommand --------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id601589202413561">
+    <bookmark_value>UI service;RunCommand</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id611589202413141" localize="false">RunCommand</h2>
+  <paragraph role="paragraph" id="par_id991589202413257">Runs a UNO command on the window associated with the service instance. A few typical commands are: Save, SaveAs, ExportToPDF, Undo, Copy, Paste, etc.</paragraph>
+  <paragraph role="paragraph" id="par_id261589202778896" xml-lang="en-US">The window itself does not need to be active to be able to run commands.</paragraph>
+  <paragraph role="paragraph" id="par_id921611152932311">Commands can be run with or without arguments. Arguments are not validated before running the command. If the command or its arguments are invalid, then nothing will happen.</paragraph>
+  <tip id="par_id31644182402479">For a complete list of UNO commands that can be run in %PRODUCTNAME, refer to the Wiki page <link href="https://wiki.documentfoundation.org/Development/DispatchCommands" name="Commands_Wiki">Development/DispatchCommands</link>.</tip>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id521622828226683">
+    <input>svc.RunCommand(command: str, [args: any])</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id401589202413575"><emph>command</emph>: Case-sensitive string containing the UNO command name. The inclusion of the prefix ".uno:" in the command is optional. The command itself is not checked for correctness. If nothing happens after the command call, then the command is probably wrong.</paragraph>
+  <paragraph role="paragraph" id="par_id521644182774710"><emph>args</emph>: For each argument to be passed to the command, specify a pair containing the argument name and value.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id721611153068137">The following example runs the <literal>.uno:About</literal> command in the current window.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id401611153339973">Set ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id121589202413630">ui.RunCommand("About")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id371644184276886">Below is an example that runs the UNO command <literal>.uno:BasicIDEAppear</literal> and passes the arguments required to open the Basic IDE at a specific line of a module.</paragraph>
+  <bascode>
+    <paragraph role="bascode" id="bas_id631644184414955">' Arguments passed to the command:</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621644184336024">' Document  = "LibreOffice Macros &amp; Dialogs"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id516441843364240">' LibName = "ScriptForge"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id721644186851722">' Name = "SF_Session"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id231644186851949">' Line = 600</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id391644184337449">ui.RunCommand(".uno:BasicIDEAppear", "Document", "LibreOffice Macros &amp; Dialogs", _ </paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id971644186963686">              "LibName", "ScriptForge", "Name", "SF_Session", "Line", 600)</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id41644184549167">Note that calling the command <literal>BasicIDEAppear</literal> without arguments will simply open the <menuitem>Basic IDE</menuitem>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id821622828361025">ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id211622828361293">ui.RunCommand("About")</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id661644184648102">ui.RunCommand(".uno:BasicIDEAppear", "Document", "LibreOffice Macros &amp; Dialogs", \</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981644187044060">              "LibName", "ScriptForge", "Name", "SF_Session", "Line", 600)</paragraph>
+  </pycode>
+  <tip id="par_id191611153511038">Each %PRODUCTNAME component has its own set of commands available. One easy way to learn commands is going to <emph>Tools > Customize > Keyboard</emph>. When you position your mouse over a function in the <emph>Function</emph> list, a tooltip will appear with the corresponding UNO command.</tip>
 </section>
 
 <section id="SetStatusBar">
