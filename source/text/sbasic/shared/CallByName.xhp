@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="textsbasicsharedCallByNamexml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">CallByName Function</title>
+    <filename>/text/sbasic/shared/CallByName.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+
+<section id="CallByName">
+<h1 id="hd_id3150669"><link href="text/sbasic/shared/CallByName.xhp">CallByName Function</link></h1>
+<paragraph id="par_id3149670" role="paragraph">Invokes a subroutine by its string name.</paragraph>
+</section>
+<bookmark xml-lang="en-US" branch="index" id="bm_id3150669">
+  <bookmark_value>CallByName function</bookmark_value>
+</bookmark>
+
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+<bascode>
+  <paragraph id="par_id3153360" role="bascode">CallByName(object As Object, ProcName As String, CallType As Integer [,arg0 [,arg1 …]])</paragraph>
+
+</bascode>
+
+<embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
+<paragraph id="par_id3154141" role="paragraph"><emph>result</emph>: An optional variable that contains the result of the called method or property.</paragraph>
+  
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<paragraph id="par_id3150448" role="paragraph"><emph>object</emph>: A Basic module, <link href="text/sbasic/shared/classmodule.xhp" name="ClassModule">ClassModule</link> instance or UNO service holding properties or methods.</paragraph>
+<paragraph id="par_id3150449" role="paragraph"><emph>ProcName</emph>: The <literal>Function</literal>, <literal>Sub</literal> or <literal>Property</literal> that is being called.</paragraph>
+<paragraph id="par_id3150450" role="paragraph"><emph>CallType</emph>: The type of performed action such as Get, Let, Method and Set.</paragraph>
+<paragraph id="par_id3150451" role="paragraph"><emph>arg0, arg1 …</emph>: The <literal>Function</literal> optional parameters given as positional arguments.</paragraph>
+<paragraph role="paragraph" id="par_id951642689912087">Arguments are provided in the exact same order defined in the method signature. Keyword arguments are not possible.</paragraph>
+<table id="CallType">
+   <tablerow>
+       <tablecell><paragraph id="par_id331644505028463" role="tablehead">Value</paragraph></tablecell>
+       <tablecell><paragraph id="par_id541644505028463" role="tablehead">CallType Description</paragraph></tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell><paragraph id="par_id621644505028464" role="tablecontent">1</paragraph></tablecell>
+       <tablecell><paragraph id="par_id661644505028464" role="tablecontent"><emph>Method</emph>: Calls a procedure as a function or a subroutine.</paragraph></tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell><paragraph id="par_id621644505028465" role="tablecontent">2</paragraph></tablecell>
+       <tablecell><paragraph id="par_id661644505028465" role="tablecontent"><emph>Get</emph>: Reads a property or variable content.</paragraph></tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell><paragraph id="par_id621644505028466" role="tablecontent">4</paragraph></tablecell>
+       <tablecell><paragraph id="par_id661644505028466" role="tablecontent"><emph>Let</emph>: Assigns a content to a <literal>Property</literal> or variable.</paragraph></tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell><paragraph id="par_id621644505028467" role="tablecontent">8</paragraph></tablecell>
+       <tablecell><paragraph id="par_id661644505028467" role="tablecontent"><emph>Set</emph>: Assigns a reference value to an <literal>Object</literal> or <literal>Variant</literal> variable.</paragraph></tablecell>
+   </tablerow>
+</table>
+
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<list type="ordered">
+    <listitem>
+        <paragraph id="par_id661644588401903" role="listitem">A <literal>Calc.Maths</literal> module contains a <literal>Multiply</literal> function expecting a varying list of numbers.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id711644588403951" role="listitem"><literal>ScriptForge.Platform.Architecture</literal> information is retrieved.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id651644588404943" role="listitem"><literal>DisplayDirectory</literal> property of <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1ui_1_1dialogs_1_1FilePicker-members.html" name="FilePicker">com.sun.star.ui.dialogs.FilePicker</link> UNO service is assigned a value, its content is read twice.</paragraph>
+    </listitem>
+</list>
+<bascode>
+  <paragraph role="bascode" id="bas_id861644508337698" localize="false">Sub CallByName_example</paragraph>   
+  <paragraph role="bascode" id="bas_id571644506474125" localize="false">    Const _Method = 1, _Get = 2, _Let = 4, _Set = 8</paragraph>
+  <paragraph role="bascode" id="bas_id611644506475477" localize="false"></paragraph>
+  <paragraph role="bascode" id="bas_id791644586147817" xml-lang="en-US">    BasicLibraries.loadLibrary("Calc") ' Calc.Maths user library.module</paragraph>
+  <paragraph role="bascode" id="bas_id831644509462340" localize="false">    Dim cm As Object : cm = Calc.Maths</paragraph>
+  <paragraph role="bascode" id="bas_id831644509462341" localize="false">    MsgBox CallByName(cm, "Multiply", _Method, 3, 45, 1, 89)		' 12015</paragraph>
+  <paragraph role="bascode" id="bas_id111644586063023" localize="false">    MsgBox CallByName(cm, "Multiply", _Method, 1.85e15, 44, 10^8)	' 8.14E+24</paragraph>
+  <paragraph role="bascode" id="bas_id461644586345928" localize="false"></paragraph>
+  <paragraph role="bascode" id="bas_id51644586026542" localize="false">    GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
+  <paragraph role="bascode" id="bas_id611644506475669" localize="false">    Dim p As Object : p = CreateScriptService("ScriptForge.Platform")</paragraph>
+  <paragraph role="bascode" id="bas_id591644509462257" localize="false">    MsgBox CallByName(p, "Architecture", _Get) ' 32bit/64bit</paragraph>
+  <paragraph role="bascode" id="bas_id781644506475901" localize="false"></paragraph>
+  <paragraph id="par_idm1341471776" role="bascode" localize="false">    Dim uno As Object : uno = CreateUNOService("com.sun.star.ui.dialogs.FilePicker")</paragraph>
+  <paragraph id="par_idm1341471777" role="bascode" localize="false">    CallByName(uno, "DisplayDirectory", _Let, "Libreoffice")</paragraph>
+  <paragraph role="bascode" id="bas_id681644507154187" localize="false">    MsgBox CallByName(uno, "DisplayDirectory", _Get)   ' "LibreOffice"</paragraph>
+  <paragraph role="bascode" id="bas_id161644507201322" localize="false">    var = CallByName(uno, "getDisplayDirectory", _Get) ' "LibreOffice"</paragraph>
+  <paragraph id="par_idm1341470544" role="bascode" localize="false">End Sub</paragraph>
+</bascode>
+
+<h3 id="hd_id971644589733247">Calc.Maths module</h3>
+<bascode>
+  <paragraph role="bascode" id="bas_id811644589423326" xml-lang="en-US">Option Compatible ' Calc.Maths module</paragraph>
+  <paragraph role="bascode" id="bas_id781644589423526" localize="false">Option Explicit</paragraph>
+  <paragraph role="bascode" id="bas_id691644589423728" localize="false"></paragraph>
+  <paragraph role="bascode" id="bas_id801644589423903" localize="false">Public Function Multiply(ParamArray args() As Double) As Variant</paragraph>
+  <paragraph role="bascode" id="bas_id661644589424096" xml-lang="en-US">    ''' Multiply a variable list of numbers '''</paragraph>
+  <paragraph role="bascode" id="bas_id861644589424279" localize="false">    Dim ndx As Integer : Multiply = 1.0</paragraph>
+  <paragraph role="bascode" id="bas_id151644589424456" localize="false">    If UBound(args) >= 0 Then</paragraph>
+  <paragraph role="bascode" id="bas_id591644589424639" localize="false">        For ndx = 0 To UBound(args)</paragraph>
+  <paragraph role="bascode" id="bas_id931644589424831" localize="false">            Multiply = Multiply * args(ndx)</paragraph>
+  <paragraph role="bascode" id="bas_id271644589568598" localize="false">        Next ndx</paragraph>
+  <paragraph role="bascode" id="bas_id621644589568790" localize="false">    End If</paragraph>
+  <paragraph role="bascode" id="bas_id171644589568951" localize="false">End Function 'Calc.Maths.Multiply()</paragraph>
+</bascode>
+
+<section id="relatedtopics">
+  <embed href="text/sbasic/shared/03/sf_platform.xhp#PlatformService"/>
+  <embed href="text/sbasic/shared/compatible.xhp#compatiblestatement"/>
+  <embed href="text/sbasic/shared/classmodule.xhp#classmodulestatement"/>
+</section>
+
+</body>
+</helpdocument>

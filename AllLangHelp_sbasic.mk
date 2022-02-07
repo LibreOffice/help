@@ -395,6 +395,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/new_keyword \
     helpcontent2/source/text/sbasic/shared/calc_functions \
     helpcontent2/source/text/sbasic/shared/code-stubs \
+    helpcontent2/source/text/sbasic/shared/CallByName \
     helpcontent2/source/text/sbasic/shared/classmodule \
     helpcontent2/source/text/sbasic/shared/collection \
     helpcontent2/source/text/sbasic/shared/compatible \
