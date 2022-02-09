@@ -246,4 +246,15 @@ document.addEventListener('click', function(event) {
         });
     }
 });
+// YouTube consent click. This only works for a single video.
+let youtubePlaceholder = document.querySelector(".youtube_placeholder");
+if (youtubePlaceholder) {
+    youtubePlaceholder.prepend(...document.querySelectorAll(".youtube_consent"));
+}
+function youtubeLoader(ytId, width, height) {
+    let iframeMarkup = `<iframe width="${width}" height="${height}" src="https://www.youtube-nocookie.com/embed/${ytId}?version=3" allowfullscreen="true" frameborder="0"></iframe>`;
+    let placeholder = document.getElementById(ytId);
+    placeholder.innerHTML = iframeMarkup;
+    placeholder.removeAttribute("style");
+}
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */

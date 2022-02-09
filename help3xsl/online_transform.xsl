@@ -108,6 +108,7 @@
 <xsl:variable name ="ui_selectlang"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='selectlanguage']"/></xsl:variable>
 <xsl:variable name ="ui_search"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='searchhelpcontents']"/></xsl:variable>
 <xsl:variable name ="ui_copyclip"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='copyclip']"/></xsl:variable>
+<xsl:variable name ="ytvideobutton"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytbutton']"/></xsl:variable>
 <!--
 #############
 # Templates #
@@ -1264,9 +1265,11 @@
     <xsl:variable name="auxID" select="concat('obj',generate-id())"/>
     <xsl:choose>
         <xsl:when test="starts-with(@type,'video/youtube')">
-                <div id="mediadiv">
-                    <iframe id="{@id}" src="{@data}" width="{$width}" height="{$height}" frameborder="0" allowfullscreen="true"></iframe>
-                </div>
+            <div id="{@id}" class="youtube_placeholder" style="border: 1px solid #eee; width:500px; padding: 10px;">
+                <button style="background-color: red;" onClick="youtubeLoader('{@id}', 700, 394)" >
+                    <xsl:value-of select="$ytvideobutton"/>
+                </button>
+            </div>
         </xsl:when>
         <xsl:when test="not(starts-with(@type,'video/youtube')) and starts-with(@type,'video')">
             <div id="mediadiv">
