@@ -296,11 +296,12 @@
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#CreateTextFile" name="CreateTextFile method">CreateTextFile</link><br/>
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#DeleteFile" name="DeleteFile method">DeleteFile</link><br/>
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#DeleteFolder" name="DeleteFolder method">DeleteFolder</link><br/>
-             <link href="text/sbasic/shared/03/sf_filesystem.xhp#FileExists" name="FileExists method">FileExists</link><br/>
+             <link href="text/sbasic/shared/03/sf_filesystem.xhp#ExtensionFolder" name="ExtensionFolder method">ExtensionFolder</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_filesystem.xhp#FileExists" name="FileExists method">FileExists</link><br/>
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#Files" name="Files method">Files</link><br/>
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#FolderExists" name="FolderExists method">FolderExists</link><br/>
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#GetBaseName" name="GetBaseName method">GetBaseName</link><br/>
@@ -308,7 +309,7 @@
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#GetFileLen" name="GetFileLen method">GetFileLen</link><br/>
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#GetFileModified" name="GetFileModified method">GetFileModified</link><br/>
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#GetName" name="GetName method">GetName</link><br/>
-             <link href="text/sbasic/shared/03/sf_filesystem.xhp#GetParentFolderName" name="GetParentFolderName method">GetParentFolderName</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_filesystem.xhp#GetParentFolderName" name="GetParentFolderName method">GetParentFolderName</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
@@ -576,6 +577,34 @@
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id441626217397570"># Python</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id371626217398060">fso.DeleteFolder(r"C:\Temp\*")</paragraph>
+    </pycode>
+</section>
+
+<section id="ExtensionFolder">
+  <comment> ExtensionFolder --------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id91584882542365">
+        <bookmark_value>FileSystem service;ExtensionFolder</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id151584882542104" localize="false">ExtensionFolder</h2>
+    <paragraph role="paragraph" id="par_id11584882015025">Returns a string containing the folder where the specified extension is installed.</paragraph>
+    <paragraph role="paragraph" id="par_id21612999775311">The current value of the property <literal>SF_FileSystem.FileNaming</literal> is used to determine the notation of the returned string.</paragraph>
+    <tip id="par_id891644442917193">Use the property <link href="text/sbasic/shared/03/sf_platform.xhp#Extensions" name="Extensions_link"><literal>Extensions</literal></link> from the <literal>Platform</literal> service to get string array with the IDs of all installed extensions.</tip>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id61626178211365">
+      <input>svc.ExtensionFolder(extension: str): str</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id451584882542121"><emph>extension</emph>: A string value with the ID of the extension. If the extension is not installed, an exception is raised.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id651626217313369">The examples below in Basic and Python return the folder where the APSO extension is installed.</paragraph>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id116444434113410">' Basic</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id751584882540355">sFolder = FSO.ExtensionFolder("apso.python.script.organizer")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id611584882542269">' file:///home/username/.config/libreoffice/4/user/uno_packages/cache/uno_packages/lu10833wz3u2i.tmp_/apso_1_2_7.oxt</paragraph>
+    </bascode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id441626217397588"># Python</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id371626217398166">sFolder = fso.ExtensionFolder("apso.python.script.organizer")</paragraph>
     </pycode>
 </section>
 
