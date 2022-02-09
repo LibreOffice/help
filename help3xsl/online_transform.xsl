@@ -1264,9 +1264,11 @@
     <xsl:variable name="auxID" select="concat('obj',generate-id())"/>
     <xsl:choose>
         <xsl:when test="starts-with(@type,'video/youtube')">
-                <div id="mediadiv">
-                    <iframe id="{@id}" src="{@data}" width="{$width}" height="{$height}" frameborder="0" allowfullscreen="true"></iframe>
-                </div>
+            <div id="{@id}" style="border: 1px solid #eee; width:500px; padding: 10px;">
+                <p>Please accept this video. By accepting you will be accessing content from YouTube, a service provided by an external third party.</p>
+                <p><a href="https://policies.google.com/privacy" target="_blank">YouTube privacy policy</a></p>
+                <button style="background-color: red;" onClick="youtubeLoader('{@id}', {@width}, {@height})">Accept YouTube Content</button>
+            </div>
         </xsl:when>
         <xsl:when test="not(starts-with(@type,'video/youtube')) and starts-with(@type,'video')">
             <div id="mediadiv">
