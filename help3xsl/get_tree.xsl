@@ -39,8 +39,11 @@ xsltproc get_tree.xsl <file.tree>
 </xsl:template>
 
 <xsl:template match="topic">
+    <xsl:variable name="pagetarget">
+        <xsl:value-of select="substring-after(@id,'xhp')"/>
+    </xsl:variable>
     <xsl:variable name="htmlpage">
-        <xsl:value-of select="concat($lang,'/',substring-before(substring-after(@id,'/'),'.xhp'),'.html','?DbPAR=',$module)" />
+        <xsl:value-of select="concat($lang,'/',substring-before(substring-after(@id,'/'),'.xhp'),'.html','?DbPAR=',$module,$pagetarget)" />
     </xsl:variable>
     <![CDATA[<li><a target="_top" href="]]><xsl:value-of select="$htmlpage"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="."/></xsl:with-param></xsl:call-template><![CDATA[</a></li>\]]>
 </xsl:template>
