@@ -1265,7 +1265,7 @@
     <xsl:variable name="auxID" select="concat('obj',generate-id())"/>
     <xsl:choose>
         <xsl:when test="starts-with(@type,'video/youtube')">
-            <div id="{@id}" class="youtube_placeholder" style="border: 1px solid #eee; width:500px; padding: 10px;">
+            <div id="{@id}" class="youtube_placeholder" style="border: 1px solid #eee; max-width:500px; padding: 10px;">
                 <button style="background-color: red;" onClick="youtubeLoader('{@id}', 700, 394)" >
                     <xsl:value-of select="$ytvideobutton"/>
                 </button>
