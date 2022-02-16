@@ -21,51 +21,57 @@
     </bookmark>
     <section id="compatibilitymodefunction">
         <h1 id="N0118"><variable id="compatibilitymodeh1"><link href="text/sbasic/shared/compatibilitymode.xhp" name="CompatibilityMode">CompatibilityMode() Function</link></variable></h1>
-        <paragraph role="paragraph" id="N0120"><literal>CompatibilityMode()</literal> function controls runtime mode and affects all code executed after setting or resetting the mode. </paragraph>
+        <paragraph role="paragraph" id="N0120"><literal>CompatibilityMode()</literal> function controls or queries runtime mode. It affects all code executed after setting or resetting the runtime mode. </paragraph>
         </section>
     <warning id="N0119">Use this feature with caution, limit it to document conversion for example.</warning>
     <note id="par_id271561645872679"><literal>Option Compatible</literal> turns on VBA compatibility at module level for the %PRODUCTNAME Basic interpreter.</note>
     <paragraph role="paragraph" id="N0121">This function may affect or help in the following situations:</paragraph>
+
     <list type="unordered">
-        <listitem><paragraph role="listitem" id="N0122">Creating enumerations with <link href="text/sbasic/shared/enum.xhp" name="enum statement">Enum statement</link></paragraph></listitem>
+        <listitem><paragraph id="par_id301645018760314" role="listitem">Scoping of variables.</paragraph></listitem>
         <listitem><paragraph role="listitem" id="N0124">Running <literal>RmDir</literal> command in VBA mode. In VBA only empty directories are removed by <literal>RmDir</literal> while %PRODUCTNAME Basic removes a directory recursively.</paragraph></listitem>
         <listitem><paragraph role="listitem" id="N0125">Changing behavior of Basic <literal>Dir</literal> command. The directory flag (16) for the <literal>Dir</literal> command means that only directories are returned in %PRODUCTNAME Basic, while in VBA normal files and directories are returned.</paragraph></listitem>
         <listitem>
             <paragraph id="par_id901639929393688"  role="listitem">Color components calculation with the <link href="text/sbasic/shared/03010303.xhp" name="linkred"><literal>Red</literal></link> and <link href="text/sbasic/shared/03010301.xhp" name="linkblue"><literal>Blue</literal></link> functions which <emph>are interchanged</emph> (The <link href="text/sbasic/shared/03010302.xhp" name="linkgreen"><literal>Green</literal></link> function is not affected).</paragraph>
         </listitem>
     </list>
-    <note id="N0126"><literal>CompatibilityMode()</literal> function may be necessary when resorting to <literal>Option Compatible</literal> or <literal>Option VBASupport</literal> compiler modes.</note>
+
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-    <paragraph role="code" localize="false" id="N0128">CompatibilityMode(True | False)</paragraph>
+    <bascode>
+      <paragraph role="bascode" id="bas_id751645014686110">CompatibilityMode([True|False]) [As Boolean]</paragraph>
+    </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <paragraph role="paragraph" id="par_id541561646705787">Given a NOT empty directory at <emph>file:///home/me/Test</emph></paragraph>
     <bascode>
-        <paragraph role="bascode" id="par_id491561646553280" xml-lang="en-US" localize="false">Sub RemoveDir</paragraph>
-        <paragraph role="bascode" id="par_id771561646565613" xml-lang="en-US" localize="false">    CompatibilityMode( true )</paragraph>
-        <paragraph role="bascode" id="par_id311561646572637" xml-lang="en-US" localize="false">    RmDir( "file:///home/me/Test" )</paragraph>
-        <paragraph role="bascode" id="par_id851561646579895" xml-lang="en-US" localize="false">End Sub</paragraph>
+      <paragraph role="bascode" id="par_id491561646553280" localize="false">Sub RemoveDir</paragraph>
+      <paragraph role="paragraph" id="par_id731645017105932" localize="false">    MsgBox CompatibilityMode() ' False</paragraph>
+      <paragraph role="paragraph" id="par_id341645017408891" localize="false"></paragraph>
+      <paragraph role="bascode" id="par_id771561646565613" localize="false">    CompatibilityMode( True )</paragraph>
+      <paragraph role="bascode" id="par_id311561646572637" localize="false">    RmDir( "file:///home/me/Test" )</paragraph>
+      <paragraph role="bascode" id="bas_id761645015439188" localize="false">    CompatibilityMode False </paragraph>
+      <paragraph role="bascode" id="bas_id51645017464045" localize="false"></paragraph>
+      <paragraph role="paragraph" id="par_id731645017105932" localize="false">    MsgBox CompatibilityMode ' False</paragraph>
+      <paragraph role="bascode" id="par_id851561646579895" localize="false">End Sub</paragraph>
    </bascode>
-   <paragraph role="paragraph" id="par_id461561646613414">With <literal>CompatibilityMode( true )</literal> the program results in an error, otherwise the Test directory and all its content is deleted.</paragraph>
+   <paragraph role="paragraph" id="par_id461561646613414">With <literal>CompatibilityMode( True )</literal> the program raises an error, otherwise the <literal>Test</literal> directory and all its content is deleted.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <paragraph role="paragraph" id="par_id411561647797398">Modifying <literal>Dir</literal> behavior</paragraph>
    <bascode>
-    <paragraph role="bascode" id="par_id941561647889938" xml-lang="en-US" localize="false">Sub VBADirCommand</paragraph>
-    <paragraph role="bascode" id="par_id831561647900147" xml-lang="en-US">    CompatibilityMode( true )   ' Shows also normal files</paragraph>
-    <paragraph role="bascode" id="par_id931561647920869" xml-lang="en-US" localize="false">    Entry$ = Dir( "file:///home/me/Tmp/*.*", 16 )</paragraph>
-    <paragraph role="bascode" id="par_id31561647939939" xml-lang="en-US" localize="false">    Total$ = ""</paragraph>
-    <paragraph role="bascode" id="par_id71561647964220" xml-lang="en-US" localize="false">    While Entry$ &lt;&gt; ""</paragraph>
-    <paragraph role="bascode" id="par_id51561647969918" xml-lang="en-US" localize="false">        Total$ = Total$ + Entry$ + Chr$(13)</paragraph>
-    <paragraph role="bascode" id="par_id111561647975134" xml-lang="en-US" localize="false">        Entry$ = Dir</paragraph>
-    <paragraph role="bascode" id="par_id751561647979743" xml-lang="en-US" localize="false">    Wend</paragraph>
-    <paragraph role="bascode" id="par_id401561647986945" xml-lang="en-US" localize="false">    MsgBox Total$</paragraph>
-    <paragraph role="bascode" id="par_id111561647991525" xml-lang="en-US" localize="false">End Sub</paragraph>
-    </bascode>
+    <paragraph role="bascode" id="par_id941561647889938" localize="false">Sub VBADirCommand</paragraph>
+    <paragraph role="bascode" id="par_id831561647900147" xml-lang="en-US">    CompatibilityMode( True )   ' Shows also normal files</paragraph>
+    <paragraph role="bascode" id="par_id931561647920869" localize="false">    Entry$ = Dir( "file:///home/me/Tmp/*.*", 16 )</paragraph>
+    <paragraph role="bascode" id="par_id31561647939939" localize="false">    Total$ = ""</paragraph>
+    <paragraph role="bascode" id="par_id71561647964220" localize="false">    While Entry$ &lt;&gt; ""</paragraph>
+    <paragraph role="bascode" id="par_id51561647969918" localize="false">        Total$ = Total$ + Entry$ + Chr$(13)</paragraph>
+    <paragraph role="bascode" id="par_id111561647975134" localize="false">        Entry$ = Dir</paragraph>
+    <paragraph role="bascode" id="par_id751561647979743" localize="false">    Wend</paragraph>
+    <paragraph role="bascode" id="par_id401561647986945" localize="false">    MsgBox Total$</paragraph>
+    <paragraph role="bascode" id="bas_id641645017016611" xml-lang="en-US">    CompatibilityMode False ' Shows only directories</paragraph>
+    <paragraph role="bascode" id="par_id111561647991525" localize="false">End Sub</paragraph>
+   </bascode>
 
    <section id="relatedtopics">
         <embed href="text/sbasic/shared/compatible.xhp#compatiblestatement"/>
-        <paragraph role="paragraph" id="N0129">
-            Refer to <link href="text/sbasic/python/python_platform.xhp">Identifying the Operating System</link> and <link href="text/sbasic/python/python_session.xhp">Getting Session Information</link> for <literal>Option Compatible</literal> simple examples, or <link href="text/sbasic/guide/access2base.xhp">Access2Base shared Basic library</link> for other class examples making use of <literal>Option Compatible</literal> compiler mode.
-        </paragraph>
         <embed href="text/sbasic/shared/03090407.xhp#remstatement"/>
         <paragraph role="paragraph" id="N0131">
             Variables scope modification in <link href="text/sbasic/shared/01020300.xhp">Using Procedures and Functions</link> with <literal>CompatibilityMode()</literal> function.
