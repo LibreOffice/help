@@ -115,7 +115,7 @@ function fixURL(module, system) {
     if ((DisplayArea = document.getElementById("DisplayArea")) === null) return;
     var itemlink = DisplayArea.getElementsByTagName("a");
     var pSystem = (system === null) ? getSystem() : system;
-    var pAppl = (module === null) ? "WRITER" : module;
+    var pAppl = (module === null) ? "SHARED" : module;
     var n = itemlink.length;
     for (var i = 0; i < n; i++) {
         if (itemlink[i].getAttribute("class") != "objectfiles") {
