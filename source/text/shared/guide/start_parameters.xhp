@@ -581,8 +581,14 @@
                <paragraph id="par_id201612040137850" role="tablecontent" localize="false" xml-lang="en-US"><emph>-env:VAR[=VALUE]</emph></paragraph>
            </tablecell>
            <tablecell>
-               <paragraph id="par_id2016120401398657" role="tablecontent" xml-lang="en-US">Set a bootstrap variable. For example: to set a non-default user profile path:</paragraph>
-               <paragraph id="par_id20161204013922181" role="tablecontent" localize="false" xml-lang="en-US"><item type="input">-env:UserInstallation=file:///tmp/test</item></paragraph>
+               <paragraph id="par_id2016120401398657" role="tablecontent" xml-lang="en-US">Set a bootstrap variable. For example, to set a non-default user profile path:</paragraph>
+               <paragraph id="par_id20161204013922181" role="tablecontent" localize="false" xml-lang="en-US">
+                   <switchinline select="sys">
+                       <caseinline select="WIN"><input>soffice.com -env:UserInstallation=file:///c:/my-test-profile</input> </caseinline>
+                       <caseinline select="MAC"><input>open LibreOffice.app -env:UserInstallation=file:///tmp/test</input> </caseinline>
+                       <defaultinline><input>soffice -env:UserInstallation=file:///tmp/test</input></defaultinline>
+                   </switchinline>
+                   </paragraph>
            </tablecell>
         </tablerow>
     </table>
