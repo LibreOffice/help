@@ -187,6 +187,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/databar_more_options \
     helpcontent2/source/text/scalc/01/ex_data_stat_func \
     helpcontent2/source/text/scalc/01/format_graphic \
+    helpcontent2/source/text/scalc/01/formula2value \
     helpcontent2/source/text/scalc/01/ful_func \
     helpcontent2/source/text/scalc/01/func_aggregate \
     helpcontent2/source/text/scalc/01/func_arabic \
@@ -275,6 +276,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_year \
     helpcontent2/source/text/scalc/01/func_yearfrac \
     helpcontent2/source/text/scalc/01/live_data_stream \
+    helpcontent2/source/text/scalc/01/recalculate_hard \
     helpcontent2/source/text/scalc/01/solver \
     helpcontent2/source/text/scalc/01/solver_options \
     helpcontent2/source/text/scalc/01/solver_options_algo \
