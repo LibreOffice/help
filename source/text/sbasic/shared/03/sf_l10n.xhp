@@ -57,30 +57,37 @@
     <note id="par_id361614361362393">Note that the first two methods are used to build a set of translatable strings and export them to a POT file. However, it is not mandatory to create POT files using these methods. Since they are text files, the programmer could have created them using any text editor.</note>
 
     <h2 id="hd_id351585843652312" xml-lang="en-US">Service invocation</h2>
-    <paragraph role="paragraph" id="par_id421614353247163">To invoke the <literal>L10N</literal> service, two optional arguments can be specified to determine the folder where PO files are located and the locale to be used, as described below.</paragraph>
+    <paragraph role="paragraph" id="par_id421614353247163">There are several ways to invoke the <literal>L10N</literal> service using up to five optional arguments that specify the folder where PO files are stored, the locale and encoding to be used, as well as a fallback PO file and its encoding.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id481625854402332">
-      <input>CreateScriptService("L10N", foldername: str, locale: str): svc</input>
+      <input>CreateScriptService("L10N", foldername: str, locale: str, encoding: str, locale2: str, encoding2: str): svc</input>
     </paragraph>
-    <paragraph role="paragraph" id="par_id331585843652877" xml-lang="en-US"><emph>foldername</emph>: The folder containing the PO files. It must be expressed in the <literal>FileSystem.FileNaming</literal> notation.</paragraph>
-    <paragraph role="paragraph" id="par_id581585843652789" xml-lang="en-US"><emph>locale</emph>: A string in the form "la-CO" (language-COUNTRY) or in the form "la" (language) only.</paragraph>
+    <paragraph role="paragraph" id="par_id331585843652877"><emph>foldername</emph>: The folder containing the PO files. It must be expressed in the <literal>FileSystem.FileNaming</literal> notation.</paragraph>
+    <paragraph role="paragraph" id="par_id581585843652789"><emph>locale</emph>: A string in the form "la-CO" (language-COUNTRY) or in the form "la" (language) only.</paragraph>
+    <paragraph role="paragraph" id="par_id591646219881864"><emph>encoding</emph>: The character set to be used. The default encoding is "UTF-8".</paragraph>
+    <paragraph role="paragraph" id="par_id281646219882464"><emph>locale2</emph>: A string specifying the fallback locale to be used in case the PO file corresponding to the locale defined the <literal>locale</literal> parameter does not exist. This parameter is expressed in the form "la-CO" (language-COUNTRY) or "la" (language) only.</paragraph>
+    <paragraph role="paragraph" id="par_id881646219882951"><emph>encoding2</emph>: The character set of the fallback PO file corresponding to the <literal>locale2</literal> argument. The default encoding is "UTF-8".</paragraph>
     <note id="par_id301614358956087">Several instances of the <literal>L10N</literal> service may coexist. However, each instance must use a separate directory for its PO files.</note>
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
-    <paragraph role="paragraph" id="par_id891614358528334">The following example instantiates the <literal>L10N</literal> service without any optional arguments. This will only enable the <literal>AddText</literal> and <literal>ExportToPOTFile</literal> methods.</paragraph>
+    <paragraph role="paragraph" id="par_id891614358528334">The following example instantiates the <literal>L10N</literal> service without any optional arguments. This will only enable the <literal>AddText</literal> and <literal>ExportToPOTFile</literal> methods, which is useful for creating POT files.</paragraph>
     <bascode>
       <paragraph role="bascode" localize="false" id="bas_id891585843652669">GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id821585843652135">Dim myPO As Variant</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id151585843652269">Set myPO = CreateScriptService("L10N")</paragraph>
     </bascode>
-    <paragraph role="paragraph" id="par_id611614358672609">The example below specifies the folder containing the PO files. Because the locale is not defined, the service instance will use the current %PRODUCTNAME locale settings.</paragraph>
+    <paragraph role="paragraph" id="par_id611614358672609">The example below specifies the folder containing the PO files. Because the locale is not defined, the service instance will use the locale defined in the <literal>OfficeLocale</literal> property of the <link href="text/sbasic/shared/03/sf_platform.xhp" name="OfficeLocale_link">Platform</link> service.</paragraph>
     <bascode>
       <paragraph role="bascode" localize="false" id="bas_id451614358683971">Set myPO = CreateScriptService("L10N", "C:\myPOFiles")</paragraph>
     </bascode>
-    <warning id="par_id391625855630975">The example above will result in an runtime error if the PO file for the current locale does not exist in the specified folder.</warning>
-    <paragraph role="paragraph" id="par_id321614358809763">In the example below, both the folder name and locale settings are explicitly defined to be Belgian French.</paragraph>
+    <warning id="par_id391625855630975">The example above will result in an runtime error if the PO file corresponding to the <literal>OfficeLocale</literal> locale does not exist in the specified folder.</warning>
+    <paragraph role="paragraph" id="par_id321614358809763">In the example below, the locale is explicitly defined to be Belgian French ("fr-BE"), hence the service will load the file "fr-BE.po" from the folder "C:\myPOFiles". If the file does not exist, an error will occur.</paragraph>
     <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id661614358846464">Set myPO = CreateScriptService("L10N", "C:\myPOFiles", "fr-BE")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id661614358846464">Set myPO = CreateScriptService("L10N", "C:\myPOFiles", "fr-BE", "UTF-8")</paragraph>
+    </bascode>
+    <paragraph role="paragraph" id="par_id271646220649616">To avoid errors, it is possible to specify a preferred and a fallback locale and encoding. The following example will first try to load the file "fr-BE.po" from the specified folder and if it does not exist, the file "en-US.po" will be loaded.</paragraph>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id551646220782634">Set myPO = CreateScriptService("L10N", "C:\myPOFiles", "fr-BE", "UTF-8", "en-US", "UTF-8")</paragraph>
     </bascode>
     <paragraph role="tip" id="par_id411585843652496" xml-lang="en-US">PO files must be named in the form "la-CO.po" or "la.po", where "la" refers to the language and "CO" is the country. Some examples are: "en-US.po", "fr-BE.po" or "fr.po".</paragraph>
     <paragraph role="paragraph" id="par_id171585843652545" xml-lang="en-US">It is recommended to free resources after use:</paragraph>
@@ -98,6 +105,9 @@
     </pycode>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id311625854879209">myPO = CreateScriptService('L10N', r'C:\myPOFiles', 'fr-BE')</paragraph>
+    </pycode>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id981646221720301">myPO = CreateScriptService('L10N', r'C:\myPOFiles', 'fr-BE', 'UTF-8', 'en-US', 'UTF-8')</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id11625855490095">myPO = myPO.Dispose()</paragraph>
     </pycode>
 
