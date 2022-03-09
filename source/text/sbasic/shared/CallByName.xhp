@@ -24,6 +24,7 @@
 </section>
 <bookmark xml-lang="en-US" branch="index" id="bm_id3150669">
   <bookmark_value>CallByName function</bookmark_value>
+  <bookmark_value>API;OfficeFilePicker</bookmark_value>
 </bookmark>
 
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
@@ -72,7 +73,7 @@
         <paragraph id="par_id711644588403951" role="listitem"><literal>ScriptForge.Platform.Architecture</literal> information is retrieved.</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id651644588404943" role="listitem"><literal>DisplayDirectory</literal> property of <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1ui_1_1dialogs_1_1FilePicker-members.html" name="FilePicker">com.sun.star.ui.dialogs.FilePicker</link> UNO service is assigned a value, its content is read twice.</paragraph>
+        <paragraph id="par_id651644588404943" role="listitem"><literal>DisplayDirectory</literal> property of <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1ui_1_1dialogs_1_1FilePicker-members.html" name="FilePicker">com.sun.star.ui.dialogs.FilePicker</link> UNO service is set to the user home folder, its content is read twice.</paragraph>
     </listitem>
 </list>
 <bascode>
@@ -88,10 +89,11 @@
   <paragraph role="bascode" id="bas_id611644506475669" localize="false">    Dim p As Object : p = CreateScriptService("ScriptForge.Platform")</paragraph>
   <paragraph role="bascode" id="bas_id591644509462257" localize="false">    MsgBox CallByName(p, "Architecture", _Get) ' 32bit/64bit</paragraph>
   <paragraph role="bascode" id="bas_id781644506475901" localize="false"></paragraph>
-  <paragraph id="par_idm1341471776" role="bascode" localize="false">    Dim uno As Object : uno = CreateUNOService("com.sun.star.ui.dialogs.FilePicker")</paragraph>
-  <paragraph id="par_idm1341471777" role="bascode" localize="false">    CallByName(uno, "DisplayDirectory", _Let, "Libreoffice")</paragraph>
-  <paragraph role="bascode" id="bas_id681644507154187" localize="false">    MsgBox CallByName(uno, "DisplayDirectory", _Get)   ' "LibreOffice"</paragraph>
-  <paragraph role="bascode" id="bas_id161644507201322" localize="false">    var = CallByName(uno, "getDisplayDirectory", _Get) ' "LibreOffice"</paragraph>
+  <paragraph id="par_idm1341471776" role="bascode" localize="false">    Dim uno As Object : uno = CreateUNOService("com.sun.star.ui.dialogs.OfficeFilePicker")</paragraph>
+  <paragraph id="par_idm1341417776" role="bascode" localize="false">    Dim fs As Object  : fs  = CreateScriptService("ScriptForge.FileSystem")</paragraph>
+  <paragraph id="par_idm1341471777" role="bascode" localize="false">    CallByName(uno, "DisplayDirectory", _Let, fs.HomeFolder)</paragraph>
+  <paragraph role="bascode" id="bas_id681644507154187" localize="false">    MsgBox CallByName(uno, "DisplayDirectory", _Get)</paragraph>
+  <paragraph role="bascode" id="bas_id161644507201322" localize="false">    var = CallByName(uno, "getDisplayDirectory", _Get)</paragraph>
   <paragraph id="par_idm1341470544" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
 
