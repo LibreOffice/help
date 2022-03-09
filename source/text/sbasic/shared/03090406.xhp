@@ -17,27 +17,21 @@
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
 -->
-
 <meta>
   <topic id="textsbasicshared03090406xml" indexer="include" status="PUBLISH">
     <title id="tit" xml-lang="en-US">Function Statement</title>
     <filename>/text/sbasic/shared/03090406.xhp</filename>
   </topic>
 </meta>
-
 <body>
-
 <section id="function">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3153346">
   <bookmark_value>Function statement</bookmark_value>
 </bookmark>
-
-<paragraph id="hd_id3153346" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03090406.xhp" name="Function Statement">Function Statement</link></paragraph>
-<paragraph id="par_id3159158" role="paragraph" xml-lang="en-US">Defines a subroutine that can be used as an expression to determine a return type.</paragraph>
-</section>
-
-<section id="TwinMethods">
-<note id="par_id661588586825434"><literal>Sub</literal>, <literal>Function</literal> or <literal>Property</literal> statements are similar methods, without distinction. They receive parameters by reference allowing them to be modified in return. %PRODUCTNAME  Basic compiler accepts their respective argument syntax to be used interchangeably.</note>
+<h1 id="hd_id3153346" xml-lang="en-US"><variable id="Function_h1"><link href="text/sbasic/shared/03090406.xhp" name="Function Statement">Function Statement</link></variable></h1>
+<paragraph id="par_id3159158" role="paragraph" xml-lang="en-US">A function is a block of code which runs when it is called. A function is usually called in an expression.</paragraph>
+<paragraph role="paragraph" id="par_id451647246564161" xml-lang="en-US">You can pass data, known as parameters or arguments, into a function. You may pass a parameter by value or by reference. When by reference, modifications applied to the parameter in the function will be sent back to the calling code.</paragraph>
+<paragraph role="paragraph" id="par_id101647247154065" xml-lang="en-US">A function usually returns data as a result.</paragraph>
 </section>
 
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
@@ -50,49 +44,50 @@
   <paragraph role="bascode" id="bas_id631588427410583" xml-lang="en-US">        statements</paragraph>
   <paragraph role="bascode" id="bas_id581588427417085" localize="false">End Function</paragraph>
 </bascode>
-
 <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
 <section id="RoutineScope">
    <paragraph role="paragraph" id="par_id81588429476557"> <emph>scope:</emph> Function default scope is <literal>Public</literal>. A <literal>Private</literal> scope denotes a module internal routine, not intended to be used from other modules.</paragraph>
 </section>
-
 <paragraph id="par_id3153193" role="paragraph" xml-lang="en-US"> <emph>name:</emph> Name of the subroutine to contain the value returned by the function.</paragraph>
 <paragraph id="par_id3147229" role="paragraph" xml-lang="en-US"> <emph>arguments:</emph> Parameters to be passed to the subroutine.</paragraph>
-
 <embed href="text/sbasic/shared/fragments.xhp#argument"/>
 <embed href="text/sbasic/shared/fragments.xhp#typename"/>
 <embed href="text/sbasic/shared/fragments.xhp#char"/>
-
 <section id="BasicExamples">
 <h2 id="hd_id3163710" xml-lang="en-US">Examples:</h2>
 <bascode>
-<paragraph id="par_idm1340981728" role="bascode" localize="false" xml-lang="en-US">Sub ExampleExit</paragraph>
-<paragraph id="par_idm1340980496" role="bascode" localize="false" xml-lang="en-US">Dim sReturn As String</paragraph>
-<paragraph id="par_idm1340979264" role="bascode" localize="false" xml-lang="en-US">Dim sListArray(10) As String</paragraph>
-<paragraph id="par_idm1340978016" role="bascode" localize="false" xml-lang="en-US">Dim siStep As Single</paragraph>
+<paragraph id="par_idm1340981728" role="bascode" localize="false">Sub ExampleExit</paragraph>
+<paragraph id="par_idm1340980496" role="bascode" localize="false">Dim sReturn As String</paragraph>
+<paragraph id="par_idm1340979264" role="bascode" localize="false">Dim sListArray(10) As String</paragraph>
+<paragraph id="par_idm1340978016" role="bascode" localize="false">Dim siStep As Single</paragraph>
 <paragraph id="par_id3152939" role="bascode" xml-lang="en-US">    For siStep = 0 To 10 ' Fill array with test data</paragraph>
-<paragraph id="par_idm1340975040" role="bascode" localize="false" xml-lang="en-US">        sListArray(siStep) = chr$(siStep + 65)</paragraph>
-<paragraph id="par_idm1340973776" role="bascode" localize="false" xml-lang="en-US">        MsgBox sListArray(siStep)</paragraph>
-<paragraph id="par_idm1340972528" role="bascode" localize="false" xml-lang="en-US">    Next siStep</paragraph>
-<paragraph id="par_idm1340971296" role="bascode" localize="false" xml-lang="en-US">    sReturn = LinSearch(sListArray(), "B")</paragraph>
-<paragraph id="par_idm1340970032" role="bascode" localize="false" xml-lang="en-US">    Print sReturn</paragraph>
-<paragraph id="par_idm1340968800" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-<paragraph id="par_idm1340967568" role="bascode" localize="false" xml-lang="en-US"> </paragraph>
-<paragraph id="par_idm1340966320" role="bascode" localize="false" xml-lang="en-US">Function LinSearch( sList(), sItem As String ) As Integer</paragraph>
+<paragraph id="par_idm1340975040" role="bascode" localize="false">        sListArray(siStep) = chr$(siStep + 65)</paragraph>
+<paragraph id="par_idm1340973776" role="bascode" localize="false">        MsgBox sListArray(siStep)</paragraph>
+<paragraph id="par_idm1340972528" role="bascode" localize="false">    Next siStep</paragraph>
+<paragraph id="par_idm1340971296" role="bascode" localize="false">    sReturn = LinSearch(sListArray(), "B")</paragraph>
+<paragraph id="par_idm1340970032" role="bascode" localize="false">    Print sReturn</paragraph>
+<paragraph id="par_idm1340968800" role="bascode" localize="false">End Sub</paragraph>
+<paragraph id="par_idm1340967568" role="bascode" localize="false"> </paragraph>
+<paragraph id="par_idm1340966320" role="bascode" localize="false">Function LinSearch( sList(), sItem As String ) As Integer</paragraph>
 <paragraph id="par_idm1340965040" role="bascode" localize="false" xml-lang="en-US">Dim iCount As Integer</paragraph>
 <paragraph id="par_id3154943" role="bascode" xml-lang="en-US">' Linsearch searches a TextArray:sList() for a TextEntry:</paragraph>
 <paragraph id="par_id3155601" role="bascode" xml-lang="en-US">' Return value Is the index of the entry Or 0 (Null)</paragraph>
-<paragraph id="par_idm1340960304" role="bascode" localize="false" xml-lang="en-US">    For iCount=1 To Ubound( sList() )</paragraph>
-<paragraph id="par_idm1340959056" role="bascode" localize="false" xml-lang="en-US">        If sList( iCount ) = sItem Then</paragraph>
+<paragraph id="par_idm1340960304" role="bascode" localize="false">    For iCount=1 To Ubound( sList() )</paragraph>
+<paragraph id="par_idm1340959056" role="bascode" localize="false">        If sList( iCount ) = sItem Then</paragraph>
 <paragraph id="par_id3153707" role="bascode" xml-lang="en-US">            Exit For ' sItem found</paragraph>
-<paragraph id="par_idm1340956080" role="bascode" localize="false" xml-lang="en-US">        End If</paragraph>
-<paragraph id="par_idm1340954848" role="bascode" localize="false" xml-lang="en-US">    Next iCount</paragraph>
-<paragraph id="par_idm1340953616" role="bascode" localize="false" xml-lang="en-US">    If iCount = Ubound( sList() ) Then iCount = 0</paragraph>
-<paragraph id="par_idm1340952352" role="bascode" localize="false" xml-lang="en-US">    LinSearch = iCount</paragraph>
-<paragraph id="par_idm1340951120" role="bascode" localize="false" xml-lang="en-US">End Function</paragraph>
+<paragraph id="par_idm1340956080" role="bascode" localize="false">        End If</paragraph>
+<paragraph id="par_idm1340954848" role="bascode" localize="false">    Next iCount</paragraph>
+<paragraph id="par_idm1340953616" role="bascode" localize="false">    If iCount = Ubound( sList() ) Then iCount = 0</paragraph>
+<paragraph id="par_idm1340952352" role="bascode" localize="false">    LinSearch = iCount</paragraph>
+<paragraph id="par_idm1340951120" role="bascode" localize="false">End Function</paragraph>
 </bascode>
 </section>
 
+<section id="relatedtopics">
+  <paragraph role="paragraph" id="par_id181647247913872"><link href="text/sbasic/shared/01010210.xhp" name="Subroutine basics">Subroutines basics</link></paragraph>
+  <embed href="text/sbasic/shared/01020300.xhp#UsingSubs_h1"/>
+  <embed href="text/sbasic/shared/03090409.xhp#Sub_h1"/>
+  <embed href="text/sbasic/shared/property.xhp#Property_h1"/>
+</section>
 </body>
-
 </helpdocument>
