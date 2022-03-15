@@ -777,6 +777,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/main0800 \
     helpcontent2/source/text/shared/submenu_text \
     helpcontent2/source/text/shared/submenu_spacing \
+    helpcontent2/source/text/shared/menu/forms \
     helpcontent2/source/text/shared/menu/insert_chart \
     helpcontent2/source/text/shared/menu/insert_form_control \
     helpcontent2/source/text/shared/menu/insert_shape \
