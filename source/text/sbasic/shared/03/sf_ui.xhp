@@ -73,7 +73,7 @@
   <paragraph role="paragraph" id="par_id181587914255236" xml-lang="en-US">The window name is case-sensitive.</paragraph>
   <h3 id="hd_id541588520711430" xml-lang="en-US">Document object</h3>
 </section>
-  <paragraph role="paragraph" id="par_id841588521238711" xml-lang="en-US">The methods <literal>CreateDocument</literal>, <literal>CreateBaseDocument</literal>, <literal>GetDocument</literal> and <literal>OpenDocument</literal>, described below, generate document objects. When a window contains a document, an instance of the <literal>Document</literal> class represents that document. A counterexample the Basic IDE is not a document but is a window in our terminology. Additionally a document has a type: <literal>Calc</literal>, <literal>Impress</literal>, <literal>Writer</literal>, ...</paragraph>
+  <paragraph role="paragraph" id="par_id841588521238711" xml-lang="en-US">The methods <literal>CreateDocument</literal>, <literal>CreateBaseDocument</literal>, <literal>GetDocument</literal>,  <literal>OpenBaseDocument</literal> and <literal>OpenDocument</literal>, described below, generate document objects. When a window contains a document, an instance of the <literal>Document</literal> class represents that document. A counterexample the Basic IDE is not a document but is a window in our terminology. Additionally a document has a type: <literal>Calc</literal>, <literal>Impress</literal>, <literal>Writer</literal>, ...</paragraph>
   <paragraph role="paragraph" id="par_id331588521254916" xml-lang="en-US">The specific properties and methods applicable on documents are implemented in a document class.</paragraph>
   <tip id="par_id971588521292976" xml-lang="en-US">The implementation of the document objects class is done in the <literal>SFDocuments</literal> associated library. See its "<literal>Document</literal>" service.</tip>
 
@@ -318,8 +318,8 @@
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
      <paragraph role="pycode" localize="false" id="pyc_id901620324433095">myDoc1 = ui.CreateDocument("Calc")</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id361620324544381">FSO = CreateScriptService("FileSystem")</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id161620324434583">myDoc2 = ui.CreateDocument(templatefile = FSO.BuildPath(FSO.TemplatesFolder, "personal/CV.ott"))</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id361620324544381">fs = CreateScriptService("FileSystem")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id161620324434583">myDoc2 = ui.CreateDocument(templatefile = fs.BuildPath(fs.TemplatesFolder, "personal/CV.ott"))</paragraph>
    </pycode>
 </section>
 
@@ -345,10 +345,10 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id831620330074037">myDoc = ui.GetDocument(r"C:\Documents\My file.odt")</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id931624025986035">from scriptforge import CreateScriptService</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id641624026031595">bridge = CreateScriptService("Basic")</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id601624025839840">myDoc = ui.GetDocument(bridge.ThisComponent)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id641624026031595">bas = CreateScriptService("Basic")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id831620330074037">myDoc = ui.GetDocument(r"C:\Documents\My file.odt")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id601624025839840">myDoc = ui.GetDocument(bas.ThisComponent)</paragraph>
    </pycode>
    <tip id="par_id521620330287071">To access the name of the currently active window, refer to the <literal>ActiveWindow</literal> property.</tip>
 </section>
@@ -413,7 +413,7 @@
      <input>svc.OpenBaseDocument(filename: str = '', registrationname: str = '', macroexecution: int = 0): svc</input>
    </paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id231596555746385"><emph>filename</emph>: Identifies the file to open. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation. If the file already exists, it is overwritten without warning</paragraph>
+   <paragraph role="paragraph" id="par_id231596555746385"><emph>filename</emph>: Identifies the file to open. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
    <paragraph role="paragraph" id="par_id711596555746281" xml-lang="en-US"><emph>registrationname</emph>: The name to use to find the database in the databases register. It is ignored if <literal>FileName</literal> &lt;&gt; "".</paragraph>
    <paragraph role="paragraph" id="id721596556313545" xml-lang="en-US"><emph>macroexecution</emph>: 0 = behaviour is defined by the user configuration, 1 = macros are not executable, 2 = macros are executable.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
