@@ -123,8 +123,8 @@
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id301626147154020">from scriptforge import CreateScriptService</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id771626147154696">fso = CreateScriptService("FileSystem")</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id741626147154953">fso.BuildPath(...)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id771626147154696">fs = CreateScriptService("FileSystem")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id741626147154953">fs.BuildPath(...)</paragraph>
     </pycode>
 
     <bookmark xml-lang="en-US" branch="index" id="bm_id901612991354326" localize="false">
@@ -353,9 +353,9 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id811626215598688">fso = CreateScriptService("FileSystem")</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id951626215599055">fso.FileNaming = "URL"</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id151626215599287">aFileName = fso.BuildPath("file:///home/user", "sample file.odt")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id811626215598688">fs = CreateScriptService("FileSystem")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id951626215599055">fs.FileNaming = "URL"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id151626215599287">aFileName = fs.BuildPath("file:///home/user", "sample file.odt")</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id731626215599407"># file:///home/user/sample%20file.odt</paragraph>
     </pycode>
 </section>
@@ -385,8 +385,8 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id341626215746128">fso.FileNaming = "SYS"</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id141626215746355">if fso.CompareFiles(r"C:\myFile1.txt", r"C:\myFile2.txt", comparecontents = False):</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id341626215746128">fs.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id141626215746355">if fs.CompareFiles(r"C:\myFile1.txt", r"C:\myFile2.txt", comparecontents = False):</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id111626215746495">    # ...</paragraph>
     </pycode>
 </section>
@@ -425,8 +425,8 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id471626216422324">fso.CopyFile(r"C:\Documents\my_file.odt", r"C:\Temp\copied_file.odt")</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id141626216422517">fso.CopyFile(r"C:\Documents\*.*", r"C:\Temp", overwrite = False)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id471626216422324">fs.CopyFile(r"C:\Documents\my_file.odt", r"C:\Temp\copied_file.odt")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id141626216422517">fs.CopyFile(r"C:\Documents\*.*", r"C:\Temp", overwrite = False)</paragraph>
     </pycode>
     <note id="par_id411626216328023">Beware that subfolders and their contents are not copied when wildcards are used in the <emph>source</emph> argument.</note>
 </section>
@@ -464,7 +464,7 @@
     </bascode>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id431626216707056"># Python</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id771626216707454">fso.CopyFolder(r"C:\Documents\*", r"C:\Temp", overwrite = False)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id771626216707454">fs.CopyFolder(r"C:\Documents\*", r"C:\Temp", overwrite = False)</paragraph>
     </pycode>
 </section>
 
@@ -489,7 +489,7 @@
     </bascode>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id971626216947436"># Python</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id181626216947810">fso.CreateFolder(r"C:\NewFolder")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id181626216947810">fs.CreateFolder(r"C:\NewFolder")</paragraph>
     </pycode>
 </section>
 
@@ -518,8 +518,8 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id291626217084462">fso.FileNaming = "SYS"</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id251626217084848">myFile = fso.CreateTextFile(r"C:\Temp\ThisFile.txt", overwrite = True)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id291626217084462">fs.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id251626217084848">myFile = fs.CreateTextFile(r"C:\Temp\ThisFile.txt", overwrite = True)</paragraph>
     </pycode>
     <note id="par_id141613001281573">To learn more about the names of character sets, visit <link href="https://www.iana.org/assignments/character-sets/character-sets.xhtml" name="Character Sets">IANA's Character Set</link> page. Beware that %PRODUCTNAME does not implement all existing character sets.</note>
 </section>
@@ -548,7 +548,7 @@
     </bascode>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id41626217239069"># Python</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id491626217239297">fso.DeleteFile(r"C:\Temp\*.docx")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id491626217239297">fs.DeleteFile(r"C:\Temp\*.docx")</paragraph>
     </pycode>
 </section>
 
@@ -576,7 +576,7 @@
     </bascode>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id441626217397570"># Python</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id371626217398060">fso.DeleteFolder(r"C:\Temp\*")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id371626217398060">fs.DeleteFolder(r"C:\Temp\*")</paragraph>
     </pycode>
 </section>
 
@@ -604,7 +604,7 @@
     </bascode>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id441626217397588"># Python</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id371626217398166">sFolder = fso.ExtensionFolder("apso.python.script.organizer")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id371626217398166">sFolder = fs.ExtensionFolder("apso.python.script.organizer")</paragraph>
     </pycode>
 </section>
 
@@ -632,8 +632,8 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id551626270512839">fso.FileNaming = "SYS"</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id411626270513159">if fso.FileExists(r"C:\Documents\my_file.odt"):</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id551626270512839">fs.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id411626270513159">if fs.FileExists(r"C:\Documents\my_file.odt"):</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id591626270513425">    # ...</paragraph>
     </pycode>
 </section>
@@ -666,8 +666,8 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id811626270625785">fso.FileNaming = "SYS"</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id761626270626093">filesList = fso.Files("/home/user/", "*.txt")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id811626270625785">fs.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id761626270626093">filesList = fs.Files("/home/user/", "*.txt")</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id381626270626357">for file in fileList:</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id941626270626838">    # ...</paragraph>
     </pycode>
@@ -697,8 +697,8 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id761626270831628">fso.FileNaming = "SYS"</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id531626270831916">if fso.FolderExists(r"C:\Documents\Thesis")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id761626270831628">fs.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id531626270831916">if fs.FolderExists(r"C:\Documents\Thesis")</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id801626270832082">    # ...</paragraph>
     </pycode>
 </section>
@@ -727,8 +727,8 @@
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id431626271314848">bas = CreateScriptService("Basic")</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id411626271315092">bas.MsgBox(fso.GetBaseName("/home/user/Documents")) # "Documents"</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id821626271315317">bas.MsgBox(fso.GetBaseName("/home/user/Documents/my_file.ods")) # "my_file"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id411626271315092">bas.MsgBox(fs.GetBaseName("/home/user/Documents")) # "Documents"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id821626271315317">bas.MsgBox(fs.GetBaseName("/home/user/Documents/my_file.ods")) # "my_file"</paragraph>
     </pycode>
 </section>
 
@@ -754,7 +754,7 @@
     </bascode>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id391626271533012"># Python</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id751626271533408">ext = fso.GetExtension(r"C:\Windows\Notepad.exe")  # "exe"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id751626271533408">ext = fs.GetExtension(r"C:\Windows\Notepad.exe")  # "exe"</paragraph>
     </pycode>
 </section>
 
@@ -781,8 +781,8 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id201626271668440">fso.FileNaming = "SYS"</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id361626271668899">fLen = fso.GetFileLen(r"C:\pagefile.sys")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id201626271668440">fs.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id361626271668899">fLen = fs.GetFileLen(r"C:\pagefile.sys")</paragraph>
     </pycode>
 </section>
 
@@ -808,7 +808,7 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id531626271811921">fso.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id531626271811921">fs.FileNaming = "SYS"</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id301626271812468">aDate = FSO.GetFileModified(r"C:\Documents\my_file.odt")</paragraph>
     </pycode>
 </section>
@@ -834,7 +834,7 @@
     </bascode>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id91626272012883"># Python</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id221626272013299">a = fso.GetName(r"C:\Windows\Notepad.exe")  # Notepad.exe</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id221626272013299">a = fs.GetName(r"C:\Windows\Notepad.exe")  # Notepad.exe</paragraph>
     </pycode>
 </section>
 
@@ -859,7 +859,7 @@
     </bascode>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id871626272152981"># Python</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id711626272153205">a = fso.GetParentFolderName(r"C:\Windows\Notepad.exe")  # C:\Windows\</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id711626272153205">a = fs.GetParentFolderName(r"C:\Windows\Notepad.exe")  # C:\Windows\</paragraph>
     </pycode>
 </section>
 
@@ -886,7 +886,7 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id791626272322530">fso.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id791626272322530">fs.FileNaming = "SYS"</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id121626272322966">fName = FSO.GetTempName() + ".txt"</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id991626272323308"># "/tmp/SF_574068.txt"</paragraph>
     </pycode>
@@ -946,7 +946,7 @@
     </bascode>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id731626272648304"># Python</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id501626272649065">fso.MoveFile(r"C:\Temp1\*.*", r"C:\Temp2")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id501626272649065">fs.MoveFile(r"C:\Temp1\*.*", r"C:\Temp2")</paragraph>
     </pycode>
 </section>
 
@@ -975,7 +975,7 @@
     </bascode>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id11626275697779"># Python</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id361626275698068">fso.MoveFolder(r"C:\Temp1\*", r"C:\Temp2")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id361626275698068">fs.MoveFolder(r"C:\Temp1\*", r"C:\Temp2")</paragraph>
     </pycode>
 </section>
 
@@ -1017,8 +1017,8 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id971626275941924">fso.FileNaming = "SYS"</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id271626275942194">myFile = fso.OpenTextFile(r"C:\Temp\ThisFile.txt", fso.ForReading)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id971626275941924">fs.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id271626275942194">myFile = fs.OpenTextFile(r"C:\Temp\ThisFile.txt", fs.ForReading)</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id141626275942434">if myFile is not None:</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id721626275942719">    # ...</paragraph>
     </pycode>
@@ -1056,7 +1056,7 @@
     </bascode>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id681626276275531"># Python</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id701626276275757">aFile = fso.PickFile(r"C:\Documents", "OPEN", "txt")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id701626276275757">aFile = fs.PickFile(r"C:\Documents", "OPEN", "txt")</paragraph>
     </pycode>
 </section>
 
@@ -1081,7 +1081,7 @@
     </bascode>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id291626276402041"># Python</paragraph>
-      <paragraph role="pycode" id="pyc_id631626276402296">aFolder = fso.PickFolder(r"C:\Documents", "Choose a folder or press Cancel")</paragraph>
+      <paragraph role="pycode" id="pyc_id631626276402296">aFolder = fs.PickFolder(r"C:\Documents", "Choose a folder or press Cancel")</paragraph>
     </pycode>
 </section>
 
@@ -1112,8 +1112,8 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id891626276476767">fso.FileNaming = "SYS"</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id131626276476995">folderList = fso.SubFolders("/home/user/")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id891626276476767">fs.FileNaming = "SYS"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id131626276476995">folderList = fs.SubFolders("/home/user/")</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id661626276477186">for folder in folderList:</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id891626276477415">    # ...</paragraph>
     </pycode>
