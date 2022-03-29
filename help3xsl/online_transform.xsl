@@ -203,7 +203,7 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:variable>
-                <input id="search-bar" type="text" class="search" placeholder="{$pholder}"/>
+                <input id="search-bar" type="search" class="search" placeholder="{$pholder}"/>
                 <nav class="index"></nav>
             </div>
         </div>

@@ -131,7 +131,7 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
     <div id="Index">
         <div class="index-label">]]><xsl:value-of select="$ui_index"/><![CDATA[ &#32;&#x1f50e;&#xfe0e;&#32;</div>
         <div id="Bookmarks">
-            <input id="search-bar" type="text" class="search" placeholder="]]><xsl:value-of select="$ui_pholderchosen"/><![CDATA["/>
+            <input id="search-bar" type="search" class="search" placeholder="]]><xsl:value-of select="$ui_pholderchosen"/><![CDATA["/>
             <nav class="index"></nav>
         </div>
     </div>
