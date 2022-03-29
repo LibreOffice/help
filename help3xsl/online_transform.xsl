@@ -821,7 +821,7 @@
         </xsl:choose>
     </xsl:variable>
     <div class="{local-name()}">
-        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" title="{local-name()}" style="{$iconsizestyle}"/></div>
+        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" style="{$iconsizestyle}"/></div>
         <div class="notetext"><p id="{@id}"><xsl:apply-templates /></p></div>
     </div>
     <br/>
@@ -835,7 +835,7 @@
         </xsl:choose>
     </xsl:variable>
     <div class="{local-name()}">
-        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" title="{local-name()}" style="{$iconsizestyle}"/></div>
+        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" style="{$iconsizestyle}"/></div>
         <div class="notetext"><p id="{@id}"><xsl:apply-templates mode="embedded"/></p></div>
     </div>
     <br/>
@@ -1055,7 +1055,7 @@
         <xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
     </xsl:variable>
     <div class="{$type}">
-        <div class="noteicon"><img src="{$imgsrc}" alt="{$alt}" title="{$alt}" style="{$iconsizestyle}"/></div>
+        <div class="noteicon"><img src="{$imgsrc}" alt="{$alt}" style="{$iconsizestyle}"/></div>
         <div class="notetext"><p><xsl:apply-templates /></p></div>
     </div>
     <br/>
@@ -1245,7 +1245,7 @@
             <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
         </xsl:if>
     </xsl:variable>
-    <img src="{$src2}" class="{$imagestyle}" alt="{$alt}" title="{$alt}" style="{concat('width:',$width,';height:',$height)}" itemprop="{$property}" itemscope="true" itemtype="http://schema.org/ImageObject"/>
+    <img src="{$src2}" class="{$imagestyle}" alt="{$alt}" style="{concat('width:',$width,';height:',$height)}" itemprop="{$property}" itemscope="true" itemtype="http://schema.org/ImageObject"/>
 </xsl:template>
 
 <!-- Insert an object -->
