@@ -62,6 +62,15 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/kombi1.png \
     helpimg/left.png \
     helpimg/left2.png \
+    helpimg/line_break_none.png \
+    helpimg/line_break_full.png \
+    helpimg/line_break_left.png \
+    helpimg/line_break_right.png \
+    helpimg/line_break_sample_left.png \
+    helpimg/line_break_sample_right.png \
+    helpimg/line_break_sample_full.png \
+    helpimg/line_break_sample_none.png \
+    helpimg/line_break_sample_orig.png \
     helpimg/linkdata.png \
     helpimg/linleft.png \
     helpimg/linright.png \
