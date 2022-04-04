@@ -38,31 +38,40 @@
 <paragraph id="par_id3149234" role="paragraph" xml-lang="en-US">Returns a selected value from a list of arguments.</paragraph>
 </section>
 
-<paragraph id="hd_id3148943" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
-<paragraph id="par_id3147560" role="bascode" xml-lang="en-US">Choose (Index, Selection1[, Selection2, ... [,Selection_n]])</paragraph>
+  <paragraph id="par_id3147560" role="bascode" localize="false">Choose (Index As Integer, Expression1[, Expression2, ... [, Expression_n]]) As Variant</paragraph>
 </bascode>
+<embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
+<paragraph role="paragraph" id="par_id131649410695924">Variant. A value infered from the index number.</paragraph>
 
-<paragraph id="hd_id3154346" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
-<paragraph id="par_id3148664" role="paragraph" xml-lang="en-US"> <emph>Index:</emph> Integer value starting at 1 that specifies which of the possible choices to return.</paragraph>
-<paragraph id="par_id3150791" role="paragraph" xml-lang="en-US"> <emph>Selection1:</emph> Any expression that contains one of the possible choices.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<paragraph id="par_id3148664" role="paragraph" xml-lang="en-US"> <emph>Index</emph>: Integer value starting at 1 that specifies which of the possible choices to return.</paragraph>
+<paragraph id="par_id3150791" role="paragraph" xml-lang="en-US"> <emph>Expression1</emph>: Any expression that contains one of the possible choices.</paragraph>
 <paragraph id="par_id3151043" role="paragraph" xml-lang="en-US">The <emph>Choose</emph> function returns a value from the list of expressions based on the index value. If <emph>Index = 1</emph>, the function returns the first expression in the list, if <emph>Index = 2</emph>, it returns the second expression, and so on.</paragraph>
-<paragraph id="par_id3153192" role="paragraph" xml-lang="en-US">If the index value is less than 1 or greater than the number of expressions listed, the function returns a Null value.</paragraph>
-<paragraph id="par_id3156281" role="paragraph" xml-lang="en-US">The following example uses the <emph>Choose</emph> function to select a string from several strings that form a menu:</paragraph>
+<paragraph id="par_id3153192" role="paragraph" xml-lang="en-US">If the index value is less than 1 or greater than the number of expressions listed, the function returns a <literal>Null</literal> value.</paragraph>
+<paragraph role="paragraph" id="par_id911649410528836">Error #5 occurs if omitting parameters. If expressions are missing, Basic runtime raises error #13.</paragraph>
+ <comment> If the chosen expression is not defined, Basic runtime throws error #448.</comment>
+
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
+<embed href="text/sbasic/shared/00000003.xhp#err13"/>
+<embed href="text/sbasic/shared/00000003.xhp#err448"/>
 
-<paragraph id="hd_id3150439" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<paragraph id="par_id3156281" role="paragraph" xml-lang="en-US">The following example uses the <emph>Choose</emph> function to select a string from several strings that form a menu:</paragraph>
+
 <bascode>
-<paragraph id="par_idm871799424" role="bascode" localize="false" xml-lang="en-US">Sub ExampleChoose</paragraph>
-<paragraph id="par_idm871798192" role="bascode" localize="false" xml-lang="en-US">Dim sReturn As String</paragraph>
-<paragraph id="par_idm871796960" role="bascode" localize="false" xml-lang="en-US">    sReturn = ChooseMenu(2)</paragraph>
-<paragraph id="par_idm871795712" role="bascode" localize="false" xml-lang="en-US">    Print sReturn</paragraph>
-<paragraph id="par_idm871794480" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-<paragraph id="par_idm871793248" role="bascode" localize="false" xml-lang="en-US"> </paragraph>
-<paragraph id="par_idm871792000" role="bascode" localize="false" xml-lang="en-US">Function ChooseMenu(Index As Integer)</paragraph>
+<paragraph id="par_idm871799424" role="bascode" localize="false">Sub ExampleChoose</paragraph>
+<paragraph id="par_idm871795712" role="bascode" xml-lang="en-US">    Print ChooseMenu(2) ' "Save Format"</paragraph>
+<paragraph role="bascode" id="bas_id521649409955269" localize="false"> </paragraph>
+<paragraph role="bascode" id="bas_id101649409956174" localize="false">    MsgBox Choose(index := -5, 9, "Basic", PI) ' NULL</paragraph>
+<paragraph role="bascode" id="bas_id291649409956630" localize="false">    MsgBox Choose(index := 16, 9, "Basic", PI) ' NULL</paragraph>
+<paragraph id="par_idm871794480" role="bascode" localize="false">End Sub</paragraph>
+<paragraph id="par_idm871793248" role="bascode" localize="false"> </paragraph>
+<paragraph id="par_idm871792000" role="bascode" localize="false">Function ChooseMenu(Index As Integer)</paragraph>
 <paragraph id="par_id3156443" role="bascode" xml-lang="en-US">    ChooseMenu = Choose(Index, "Quick Format", "Save Format", "System Format")</paragraph>
-<paragraph id="par_idm871788976" role="bascode" localize="false" xml-lang="en-US">End Function</paragraph>
+<paragraph id="par_idm871788976" role="bascode" localize="false">End Function</paragraph>
 </bascode>
 </body>
 
