@@ -1,6 +1,6 @@
 Latest download version
 
-PrismJS 1.20.0
+PrismJS 1.27.0
 
 Using prism.js for Basic code highlight
 
