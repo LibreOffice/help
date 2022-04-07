@@ -292,7 +292,7 @@ var Prism = (function (_self) {
 		},
 
 		/**
-		 * This namespace contains all currently loaded languages and the same helper functions to create and modify languages.
+		 * This namespace contains all currently loaded languages and the some helper functions to create and modify languages.
 		 *
 		 * @namespace
 		 * @memberof Prism
