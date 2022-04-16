@@ -143,8 +143,8 @@
         <title><xsl:value-of disable-output-escaping="yes" select="$titleL10N"/></title>
         <link rel="shortcut icon" href="media/navigation/favicon.ico"/>
         <link  type="text/css" href="normalize.css" rel="Stylesheet"/>
-        <link  type="text/css" href="default.css" rel="Stylesheet"/>
         <link  type="text/css" href="prism.css" rel="Stylesheet"/>
+        <link  type="text/css" href="default.css" rel="Stylesheet"/>
         <script type="text/javascript" src="polyfills.js"></script>
         <script type="text/javascript" src="languages.js"></script>
         <script type="text/javascript" src="{$lang}/langnames.js"></script>
