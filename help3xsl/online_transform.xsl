@@ -732,7 +732,7 @@
 <xsl:template match="tablecell">
     <xsl:choose>
         <xsl:when test="paragraph[@role='tablehead']">
-            <td rowspan="{@rowspan}" colspan="{@colspan}" class='tableheadcell'><xsl:apply-templates /></td>
+            <th rowspan="{@rowspan}" colspan="{@colspan}" class='tableheadcell'><xsl:apply-templates /></th>
         </xsl:when>
         <xsl:otherwise>
             <td rowspan="{@rowspan}" colspan="{@colspan}"><xsl:apply-templates /></td>
@@ -744,7 +744,7 @@
 <xsl:template match="tablecell" mode="embedded">
     <xsl:choose>
         <xsl:when test="paragraph[@role='tablehead']">
-            <td rowspan="{@rowspan}" colspan="{@colspan}" class='tableheadcell'><xsl:apply-templates mode="embedded"/></td>
+            <th rowspan="{@rowspan}" colspan="{@colspan}" class='tableheadcell'><xsl:apply-templates mode="embedded"/></th>
         </xsl:when>
         <xsl:otherwise>
             <td rowspan="{@rowspan}" colspan="{@colspan}"><xsl:apply-templates mode="embedded"/></td>
@@ -757,6 +757,9 @@
 <xsl:template match="tablerow" mode="onecell"><xsl:apply-templates mode="onecell"/></xsl:template>
 <xsl:template match="tablerow" mode="icontable"><div class="icontable"><xsl:apply-templates mode="icontable"/></div></xsl:template>
 <xsl:template match="tablerow" mode="embedded"><tr><xsl:apply-templates mode="embedded"/></tr></xsl:template>
+
+<!-- TABLEHEAD -->
+<xsl:template match="tablehead"><thead><xsl:apply-templates /></thead></xsl:template>
 
 <!-- TITLE -->
 <xsl:template match="title"/>

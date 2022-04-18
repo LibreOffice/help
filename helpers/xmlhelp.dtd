@@ -228,7 +228,7 @@ Version Nov 2018
   select (sys | appl | distrib | target | ver | lang) #REQUIRED
 >
 
-<!ELEMENT table (caption*, tablerow+)>
+<!ELEMENT table (caption*, tablerow+, tablehead+)>
 <!ATTLIST table
   name CDATA #IMPLIED
   width CDATA #IMPLIED
@@ -252,6 +252,11 @@ Version Nov 2018
   height CDATA #IMPLIED
   class CDATA #IMPLIED
   unit CDATA #IMPLIED
+>
+
+<!ELEMENT tablehead (tablerow+)>
+<!ATTLIST tablehead
+  class CDATA #IMPLIED
 >
 
 <!ELEMENT title (#PCDATA)>
