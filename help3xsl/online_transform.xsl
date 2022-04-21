@@ -132,7 +132,17 @@
             <xsl:otherwise><xsl:value-of select="$productversion"/></xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
-<html lang="{$lang}">
+    <xsl:variable name="direction">
+        <xsl:choose>
+            <xsl:when test="$lang='ar' or $lang='fa' or $lang='he' or $lang='sd' or $lang='ur'">
+                <xsl:value-of select="'rtl'"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="'ltr'"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+<html lang="{$lang}" dir="{$direction}">
     <head>
         <base href="{$install}"/>
         <noscript><meta http-equiv="refresh" content="0; URL={$install}{$lang}/noscript.html"/></noscript>
