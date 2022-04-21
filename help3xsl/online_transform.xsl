@@ -132,7 +132,17 @@
             <xsl:otherwise><xsl:value-of select="$productversion"/></xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
-<html lang="{$lang}">
+    <xsl:variable name="direction">
+        <xsl:choose>
+            <xsl:when test="$lang='ar' or $lang='fa' or $lang='he' or $lang='sd' or $lang='ur'">
+                <xsl:value-of select="'rtl'"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="'ltr'"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+<html lang="{$lang}" dir="{$direction}">
     <head>
         <base href="{$install}"/>
         <noscript><meta http-equiv="refresh" content="0; URL={$install}{$lang}/noscript.html"/></noscript>
@@ -484,7 +494,7 @@
         </xsl:when>
 
         <xsl:when test="@role='smathcode'">
-            <p id="{@id}" class="smathcode"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
+            <p id="{@id}" class="smathcode" dir="auto"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
         </xsl:when>
 
         <xsl:when test="@role='logocode'">
@@ -527,7 +537,7 @@
         </xsl:when>
 
         <xsl:when test="@role='smathcode'">
-            <p id="{@id}" class="smathcode"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
+            <p id="{@id}" class="smathcode" dir="auto"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
         </xsl:when>
 
         <xsl:when test="@role='logocode'">
@@ -959,38 +969,38 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
-    <p id="{@id}" class="{$role}"><xsl:apply-templates /></p>
+    <p id="{@id}" class="{$role}" dir="auto"><xsl:apply-templates /></p>
 </xsl:template>
 
 <xsl:template match="bascode">
     <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
         <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre><code class="language-visual-basic line-numbers"><xsl:apply-templates /></code></pre>
+        <pre dir="auto"><code class="language-visual-basic line-numbers"><xsl:apply-templates /></code></pre>
     </div>
 </xsl:template>
 <xsl:template match="bascode" mode="embedded">
     <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
         <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre><code class="language-visual-basic line-numbers"><xsl:apply-templates mode="embedded" /></code></pre>
+        <pre dir="auto"><code class="language-visual-basic line-numbers"><xsl:apply-templates mode="embedded" /></code></pre>
     </div>
 </xsl:template>
 
 <xsl:template match="pycode">
     <div class="pycode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
         <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre><code class="language-python line-numbers"><xsl:apply-templates /></code></pre>
+        <pre dir="auto"><code class="language-python line-numbers"><xsl:apply-templates /></code></pre>
     </div>
 </xsl:template>
 <xsl:template match="pycode" mode="embedded">
     <div class="pycode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
         <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre><code class="language-python line-numbers"><xsl:apply-templates mode="embedded" /></code></pre>
+        <pre dir="auto"><code class="language-python line-numbers"><xsl:apply-templates mode="embedded" /></code></pre>
     </div>
 </xsl:template>
 
 <!-- Insert Logo code snippet  -->
 <xsl:template name="insertlogocode">
-    <pre><xsl:apply-templates /></pre>
+    <pre dir="auto"><xsl:apply-templates /></pre>
 </xsl:template>
 
 <!-- Insert "How to get Link" -->
@@ -1059,7 +1069,7 @@
     </xsl:variable>
     <div class="{$type}">
         <div class="noteicon"><img src="{$imgsrc}" alt="{$alt}" style="{$iconsizestyle}"/></div>
-        <div class="notetext"><p><xsl:apply-templates /></p></div>
+        <div class="notetext" dir="auto"><p><xsl:apply-templates /></p></div>
     </div>
     <br/>
 </xsl:template>
@@ -1070,6 +1080,7 @@
         <xsl:param name="embedded" />
         <xsl:element name="{concat('h',$level)}">
                 <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+                <xsl:attribute name="dir">auto</xsl:attribute>
                 <xsl:choose>
                     <xsl:when test="$embedded = 'yes'">
                         <xsl:apply-templates mode="embedded"/>
