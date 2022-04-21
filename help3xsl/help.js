@@ -77,7 +77,7 @@ function fullLinkify(indexEl, bookmarks, modules, currentModule) {
         });
     }
     bookmarks.forEach(function(obj) {
-        fullLinkified += '<a href="' + obj['url'] + '" class="' + obj['app'] + '">' + obj['text'] + '</a>';
+        fullLinkified += '<a href="' + obj['url'] + '" class="' + obj['app'] + '" dir="auto">' + obj['text'] + '</a>';
     });
     return fullLinkified;
 }
