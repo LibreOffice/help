@@ -132,7 +132,17 @@
             <xsl:otherwise><xsl:value-of select="$productversion"/></xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
-<html lang="{$lang}">
+    <xsl:variable name="direction">
+        <xsl:choose>
+            <xsl:when test="$lang='ar' or $lang='fa' or $lang='he' or $lang='sd' or $lang='ur'">
+                <xsl:value-of select="'rtl'"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="'ltr'"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:variable>
+<html lang="{$lang}" dir="{$direction}">
     <head>
         <base href="{$install}"/>
         <noscript><meta http-equiv="refresh" content="0; URL={$install}{$lang}/noscript.html"/></noscript>
@@ -165,7 +175,7 @@
             <div></div>
         </a>
         <a class="logo" href="{$lang}/text/shared/05/new_help.html">
-            <p><xsl:value-of disable-output-escaping="yes" select="$ui_logo"/></p>
+            <p dir="auto"><xsl:value-of disable-output-escaping="yes" select="$ui_logo"/></p>
         </a>
         <div class="dropdowns">
             <div class="modules">
@@ -186,12 +196,12 @@
     </header>
     <aside class="rightside">
         <input id="accordion-1" name="accordion-menu" type="checkbox"/>
-        <label for="accordion-1"><xsl:value-of select="$ui_contents"/></label>
+        <label for="accordion-1" dir="auto"><xsl:value-of select="$ui_contents"/></label>
         <div id="Contents" class="contents-treeview"></div>
     </aside>
     <aside class="leftside">
         <div id="Index">
-        <div class="index-label"><xsl:value-of select="$ui_index"/> &#32;&#x1f50e;&#xfe0e;&#32;</div>
+        <div class="index-label" dir="auto"><xsl:value-of select="$ui_index"/> &#32;&#x1f50e;&#xfe0e;&#32;</div>
             <div id="Bookmarks">
                 <xsl:variable name="pholder">
                     <xsl:choose>
@@ -203,8 +213,8 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:variable>
-                <input id="search-bar" type="search" class="search" placeholder="{$pholder}"/>
-                <nav class="index"></nav>
+                <input id="search-bar" type="search" class="search" placeholder="{$pholder}" dir="auto"/>
+                <nav class="index" dir="auto"></nav>
             </div>
         </div>
     </aside>
@@ -231,7 +241,7 @@
             <xsl:if test="$xapian='yes'">
                 <div class="xapian-omega-search">
                     <form name="P" method="get" action="/{$productversion}/{$lang}/search" target="_top">
-                        <input id="omega-autofocus" type="search" name="P"/>
+                        <input id="omega-autofocus" type="search" name="P" dir="auto"/>
                         <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
                     </form>
                 </div>
@@ -241,13 +251,13 @@
     <div id="DonationFrame">
         <xsl:if test="$online">
             <div class="donation">
-                <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank"><xsl:value-of select="$ui_donate"/></a></p>
+                <p dir="auto"><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank"><xsl:value-of select="$ui_donate"/></a></p>
             </div>
         </xsl:if>
     </div>
     <footer>
         <xsl:if test="$online">
-            <p itemscope="true" itemtype="http://schema.org/Organization">
+            <p itemscope="true" itemtype="http://schema.org/Organization" dir="auto">
             <meta itemprop="name" content="The Document Foundation"/>
             <meta itemprop="legalName" content="The Document Foundation"/>
             <meta itemprop="alternateName" content="TDF"/>
@@ -256,11 +266,11 @@
         </xsl:if>
         <div id="DEBUG" class="debug">
             <h3 class="bug">Help content debug info:</h3>
-            <p>This page is: <a href="https://opengrok.libreoffice.org/xref/help/source{$filename}" target="_blank"><xsl:value-of select="$filename"/></a></p>
-            <p>Title is: <xsl:value-of disable-output-escaping="yes" select="$title"/></p>
-            <p id="bm_module"></p>
-            <p id="bm_system"></p>
-            <p id="bm_HID"></p>
+            <p dir="auto">This page is: <a href="https://opengrok.libreoffice.org/xref/help/source{$filename}" target="_blank"><xsl:value-of select="$filename"/></a></p>
+            <p dir="auto">Title is: <xsl:value-of disable-output-escaping="yes" select="$title"/></p>
+            <p id="bm_module" dir="auto"></p>
+            <p id="bm_system" dir="auto"></p>
+            <p id="bm_HID" dir="auto"></p>
         </div>
     </footer>
     </body>
@@ -484,7 +494,7 @@
         </xsl:when>
 
         <xsl:when test="@role='smathcode'">
-            <p id="{@id}" class="smathcode"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
+            <p id="{@id}" class="smathcode" dir="auto"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
         </xsl:when>
 
         <xsl:when test="@role='logocode'">
@@ -527,7 +537,7 @@
         </xsl:when>
 
         <xsl:when test="@role='smathcode'">
-            <p id="{@id}" class="smathcode"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
+            <p id="{@id}" class="smathcode" dir="auto"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
         </xsl:when>
 
         <xsl:when test="@role='logocode'">
@@ -550,7 +560,7 @@
                 <xsl:variable name="href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp')"/></xsl:variable>
                 <xsl:variable name="anchor"><xsl:value-of select="'related'"/></xsl:variable>
                 <xsl:variable name="doc" select="document($href)"/>
-                <p class="related" itemprop="mentions">
+                <p class="related" itemprop="mentions" dir="auto">
                     <xsl:apply-templates select="$doc//variable[@id=$anchor]"/>
                 </p>
                 <div class="relatedbody" itemprop="mentions">
@@ -660,7 +670,7 @@
             </span>
         </xsl:when>
         <xsl:otherwise>
-            <p class="debug">Unsupported switch condition.</p>
+            <p class="debug" dir="auto">Unsupported switch condition.</p>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -679,7 +689,7 @@
             </span>
         </xsl:when>
         <xsl:otherwise>
-            <p class="debug">Unsupported switch condition.</p>
+            <p class="debug" dir="auto">Unsupported switch condition.</p>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -700,7 +710,7 @@
             </span>
         </xsl:when>
         <xsl:otherwise>
-            <p class="debug">Unsupported switch condition.</p>
+            <p class="debug" dir="auto">Unsupported switch condition.</p>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -719,7 +729,7 @@
             </span>
         </xsl:when>
         <xsl:otherwise>
-            <p class="debug">Unsupported switch condition.</p>
+            <p class="debug" dir="auto">Unsupported switch condition.</p>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -732,10 +742,10 @@
 <xsl:template match="tablecell">
     <xsl:choose>
         <xsl:when test="paragraph[@role='tablehead']">
-            <th rowspan="{@rowspan}" colspan="{@colspan}" class='tableheadcell'><xsl:apply-templates /></th>
+            <th rowspan="{@rowspan}" colspan="{@colspan}" class='tableheadcell' dir="auto"><xsl:apply-templates /></th>
         </xsl:when>
         <xsl:otherwise>
-            <td rowspan="{@rowspan}" colspan="{@colspan}"><xsl:apply-templates /></td>
+            <td rowspan="{@rowspan}" colspan="{@colspan}" dir="auto"><xsl:apply-templates /></td>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -744,10 +754,10 @@
 <xsl:template match="tablecell" mode="embedded">
     <xsl:choose>
         <xsl:when test="paragraph[@role='tablehead']">
-            <th rowspan="{@rowspan}" colspan="{@colspan}" class='tableheadcell'><xsl:apply-templates mode="embedded"/></th>
+            <th rowspan="{@rowspan}" colspan="{@colspan}" class='tableheadcell' dir="auto"><xsl:apply-templates mode="embedded"/></th>
         </xsl:when>
         <xsl:otherwise>
-            <td rowspan="{@rowspan}" colspan="{@colspan}"><xsl:apply-templates mode="embedded"/></td>
+            <td rowspan="{@rowspan}" colspan="{@colspan}" dir="auto"><xsl:apply-templates mode="embedded"/></td>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -788,12 +798,14 @@
 <xsl:template match="h1 | h2 | h3 | h4 | h5 | h6">
     <xsl:element name="{local-name()}">
         <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+        <xsl:attribute name="dir">auto</xsl:attribute>
         <xsl:apply-templates />
     </xsl:element>
 </xsl:template>
 <xsl:template match="h1 | h2 | h3 | h4 | h5 | h6" mode="embedded">
     <xsl:element name="{concat('h',substring-after(local-name(),'h') + 1)}">
         <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+        <xsl:attribute name="dir">auto</xsl:attribute>
         <xsl:apply-templates mode="embedded"/>
     </xsl:element>
 </xsl:template>
@@ -824,8 +836,8 @@
         </xsl:choose>
     </xsl:variable>
     <div class="{local-name()}">
-        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" style="{$iconsizestyle}"/></div>
-        <div class="notetext"><p id="{@id}"><xsl:apply-templates /></p></div>
+        <div class="noteicon" dir="auto"><img src="{$imgsrc}" alt="{local-name()}" style="{$iconsizestyle}"/></div>
+        <div class="notetext"><p id="{@id}" dir="auto"><xsl:apply-templates /></p></div>
     </div>
     <br/>
 </xsl:template>
@@ -838,8 +850,8 @@
         </xsl:choose>
     </xsl:variable>
     <div class="{local-name()}">
-        <div class="noteicon"><img src="{$imgsrc}" alt="{local-name()}" style="{$iconsizestyle}"/></div>
-        <div class="notetext"><p id="{@id}"><xsl:apply-templates mode="embedded"/></p></div>
+        <div class="noteicon" dir="auto"><img src="{$imgsrc}" alt="{local-name()}" style="{$iconsizestyle}"/></div>
+        <div class="notetext"><p id="{@id}" dir="auto"><xsl:apply-templates mode="embedded"/></p></div>
     </div>
     <br/>
 </xsl:template>
@@ -916,12 +928,12 @@
 <xsl:template name="insertlistitem">
     <xsl:choose>
        <xsl:when test="ancestor::list[@type='ordered']">
-        <li itemprop="itemListElement" itemscope="true" itemtype="http://schema.org/HowToStep">
+        <li itemprop="itemListElement" itemscope="true" itemtype="http://schema.org/HowToStep" dir="auto">
             <xsl:apply-templates />
         </li>
         </xsl:when>
         <xsl:otherwise>
-        <li itemprop="itemListElement" itemscope="true" itemtype="http://schema.org/ItemListUnordered">
+        <li itemprop="itemListElement" itemscope="true" itemtype="http://schema.org/ItemListUnordered" dir="auto">
             <xsl:apply-templates />
         </li>
         </xsl:otherwise>
@@ -932,7 +944,7 @@
 <xsl:template name="insertlist">
     <xsl:choose>
         <xsl:when test="@type='ordered'">
-            <ol itemprop="HowTo" itemscope="true" itemtype="http://schema.org/HowToSection">
+            <ol itemprop="HowTo" itemscope="true" itemtype="http://schema.org/HowToSection" dir="auto">
                 <xsl:if test="@startwith != ''">
                     <xsl:attribute name="start"><xsl:value-of select="@startwith"/></xsl:attribute>
                 </xsl:if>
@@ -940,7 +952,7 @@
             </ol>
         </xsl:when>
         <xsl:otherwise>
-            <ul itemprop="Unordered" itemscope="true" itemtype="http://schema.org/ItemList">
+            <ul itemprop="Unordered" itemscope="true" itemtype="http://schema.org/ItemList" dir="auto">
                 <xsl:apply-templates />
             </ul>
         </xsl:otherwise>
@@ -959,38 +971,38 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
-    <p id="{@id}" class="{$role}"><xsl:apply-templates /></p>
+    <p id="{@id}" class="{$role}" dir="auto"><xsl:apply-templates /></p>
 </xsl:template>
 
 <xsl:template match="bascode">
     <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
         <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre><code class="language-visual-basic line-numbers"><xsl:apply-templates /></code></pre>
+        <pre dir="auto"><code class="language-visual-basic line-numbers"><xsl:apply-templates /></code></pre>
     </div>
 </xsl:template>
 <xsl:template match="bascode" mode="embedded">
     <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
         <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre><code class="language-visual-basic line-numbers"><xsl:apply-templates mode="embedded" /></code></pre>
+        <pre dir="auto"><code class="language-visual-basic line-numbers"><xsl:apply-templates mode="embedded" /></code></pre>
     </div>
 </xsl:template>
 
 <xsl:template match="pycode">
     <div class="pycode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
         <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre><code class="language-python line-numbers"><xsl:apply-templates /></code></pre>
+        <pre dir="auto"><code class="language-python line-numbers"><xsl:apply-templates /></code></pre>
     </div>
 </xsl:template>
 <xsl:template match="pycode" mode="embedded">
     <div class="pycode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
         <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre><code class="language-python line-numbers"><xsl:apply-templates mode="embedded" /></code></pre>
+        <pre dir="auto"><code class="language-python line-numbers"><xsl:apply-templates mode="embedded" /></code></pre>
     </div>
 </xsl:template>
 
 <!-- Insert Logo code snippet  -->
 <xsl:template name="insertlogocode">
-    <pre><xsl:apply-templates /></pre>
+    <pre dir="auto"><xsl:apply-templates /></pre>
 </xsl:template>
 
 <!-- Insert "How to get Link" -->
@@ -1001,7 +1013,7 @@
     <xsl:variable name="tmp_doc" select="document($tmp_href)"/>
     <div class="howtoget">
         <div>
-            <p class="howtogetheader"><xsl:apply-templates select="$tmp_doc//variable[@id='wie']"/></p>
+            <p class="howtogetheader" dir="auto"><xsl:apply-templates select="$tmp_doc//variable[@id='wie']"/></p>
         </div>
         <div class="howtogetbody">
             <xsl:choose>
@@ -1058,8 +1070,8 @@
         <xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
     </xsl:variable>
     <div class="{$type}">
-        <div class="noteicon"><img src="{$imgsrc}" alt="{$alt}" style="{$iconsizestyle}"/></div>
-        <div class="notetext"><p><xsl:apply-templates /></p></div>
+        <div class="noteicon" dir="auto"><img src="{$imgsrc}" alt="{$alt}" style="{$iconsizestyle}"/></div>
+        <div class="notetext"><p dir="auto"><xsl:apply-templates /></p></div>
     </div>
     <br/>
 </xsl:template>
@@ -1070,6 +1082,7 @@
         <xsl:param name="embedded" />
         <xsl:element name="{concat('h',$level)}">
                 <xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+                <xsl:attribute name="dir">auto</xsl:attribute>
                 <xsl:choose>
                     <xsl:when test="$embedded = 'yes'">
                         <xsl:apply-templates mode="embedded"/>
@@ -1146,17 +1159,17 @@
             <xsl:apply-templates select="$doc//section[@id=$anchor]" mode="embedded"/>
         </xsl:when>
         <xsl:when test="$doc//paragraph[@id=$anchor]"> <!-- then test for a para of that name -->
-            <p class="embedded">
+            <p class="embedded" dir="auto">
                 <xsl:apply-templates select="$doc//paragraph[@id=$anchor]" mode="embedded"/>
             </p>
         </xsl:when>
         <xsl:when test="$doc//variable[@id=$anchor]"> <!-- then test for a variable of that name -->
-            <p class="embedded">
+            <p class="embedded" dir="auto">
                 <xsl:apply-templates select="$doc//variable[@id=$anchor]" mode="embedded"/>
             </p>
         </xsl:when>
         <xsl:otherwise> <!-- then give up -->
-            <p class="bug">D'oh! You found a bug (<xsl:value-of select="@href"/> not found).</p>
+            <p class="bug" dir="auto">D'oh! You found a bug (<xsl:value-of select="@href"/> not found).</p>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
