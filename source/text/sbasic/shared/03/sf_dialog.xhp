@@ -382,20 +382,22 @@
     <tablerow>
        <tablecell><paragraph id="par_id581606472825856" role="tablehead" localize="false"></paragraph></tablecell>
        <tablecell><paragraph id="par_id921606472825856" role="tablehead">Methods</paragraph></tablecell>
-       <tablecell><paragraph id="par_id781606472825856" role="tablehead"  localize="false"></paragraph></tablecell>
+       <tablecell><paragraph id="par_id781606472825856" role="tablehead" localize="false"></paragraph></tablecell>
     </tablerow>
     <tablerow>
        <tablecell><paragraph id="par_id381606472825856" role="tablecontent" localize="false">
            <link href="text/sbasic/shared/03/sf_dialog.xhp#Activate" name="Activate method">Activate</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#Center" name="Center method">Center</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#Controls" name="Controls method">Controls</link><br/>
        </paragraph></tablecell>
        <tablecell><paragraph id="par_id451606472825856" role="tablecontent" localize="false">
            <link href="text/sbasic/shared/03/sf_dialog.xhp#EndExecute" name="EndExecute method">EndExecute</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#Execute" name="Execute method">Execute</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#GetTextsFromL10N" name="GetTextsFromL10N method">GetTextsFromL10N</link><br/>
        </paragraph></tablecell>
        <tablecell><paragraph id="par_id161606472825856" role="tablecontent" localize="false">
-           <link href="text/sbasic/shared/03/sf_dialog.xhp#GetTextsFromL10N" name="GetTextsFromL10N method">GetTextsFromL10N</link><br/>
-         <link href="text/sbasic/shared/03/sf_dialog.xhp#Terminate" name="Terminate method">Terminate</link><br/>
+         <link href="text/sbasic/shared/03/sf_dialog.xhp#Resize" name="Resize method">Resize</link><br/>
+         <link href="text/sbasic/shared/03/sf_dialog.xhp#Terminate" name="Terminate method">Terminate</link><br/><br/>
        </paragraph></tablecell>
     </tablerow>
     </table>
@@ -424,6 +426,51 @@
      <paragraph role="pycode" localize="false" id="pyc_id111619626868945">dlg.Execute()</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id781620108954143"># ...</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id391619626869458">dlg.Activate()</paragraph>
+   </pycode>
+</section>
+
+<section id="Center">
+  <comment> Center -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41584541257826">
+      <bookmark_value>Dialog service;Center</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id95518454125767" localize="false">Center</h2>
+   <paragraph role="paragraph" id="par_id391651225506119">Centers the current dialog instance in the middle of a parent window. Without arguments, the method centers the dialog in the middle of the current window.</paragraph>
+   <paragraph role="paragraph" id="par_id391651552206119">Returns <literal>True</literal> when successful.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_id81619265753895"><input>svc.Center(opt Parent: obj): bool</input></paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+   <paragraph role="paragraph" id="par_id1001585441257789"><emph>Parent</emph>: An optional object that can be either …</paragraph>
+   <list type="unordered">
+      <listitem>
+         <paragraph id="par_id412598177970993" role="listitem" xml-lang="en-US">a ScriptForge dialog object</paragraph>
+      </listitem>
+      <listitem>
+         <paragraph id="par_id81591858229301" role="listitem" xml-lang="en-US">a ScriptForge document (Calc, Base, ...) object</paragraph>
+      </listitem>
+   </list>
+   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" localize="false" id="bas_id591651232045794">Sub TriggerEvent(oEvent As Object)</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id15159958185478904">    Dim oDialog1 As Object, oDialog2 As Object, lExec As Long</paragraph>
+     <paragraph role="bascode" xml-lang="en-US" id="bas_id12598185484092">    Set oDialog1 = CreateScriptService(&quot;DialogEvent&quot;, oEvent) &apos; The dialog that caused the event</paragraph>
+     <paragraph role="bascode" xml-lang="en-US" id="bas_id641598184589492">    Set oDialog2 = CreateScriptService(&quot;Dialog&quot;, ...) &apos; Open a second dialog</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id921598185491593">    oDialog2.Center(oDialog1)</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id981651231801683">    lExec = oDialog2.Execute()</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id841651231804826">    Select Case lExec</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id501651231990722">        ...</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id101651232400516">End Sub</paragraph>
+  </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id21651232676628">def triggerEvent(event: uno):</paragraph>
+     <paragraph role="pycode" xml-lang="en-US" id="pyc_id351619267575732">  dlg1 = CreateScriptService('DialogEvent.Dialog', event)  # The dialog having caused the event</paragraph>
+     <paragraph role="pycode" xml-lang="en-US" id="pyc_id431619267576082">  dlg2 = CreateScriptService('Dialog', ...)  # Open a second dialog</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id141651235460258">  dlg2.Center(dlg1)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id131619267576307">  rc = dlg2.Execute()</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id991651233319117">  if rc is False:</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id691651233365005">    # ...</paragraph>
    </pycode>
 </section>
 
@@ -568,6 +615,33 @@
    <tip id="par_id901637872163895">Read the <link href="text/sbasic/shared/03/sf_l10n.xhp" name="L10N">L10N service</link> help page to learn more about how PO and POT files are handled.</tip>
 </section>
 
+<section id="Resize">
+  <comment> Resize -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953729">
+      <bookmark_value>Dialog service;Resize</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id101598187953210" localize="false">Resize</h2>
+   <paragraph role="paragraph" id="par_id21598187953697">Moves the topleft corner of a dialog to new coordinates and/or modify its dimensions. All distances are expressed in 1/100th mm. Without arguments, the method resets the initial dimensions. Return <literal>True</literal> if the resize was successful.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_id711619628389339"><input>svc.Resize(opt Left: num, opt Top: num, opt Width: num, opt Height: num): bool</input></paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+   <paragraph role="paragraph" id="par_id481651236673068"><emph>Left</emph>: the vertical distance from the top-left corner</paragraph>
+   <paragraph role="paragraph" id="par_id721651236674379"><emph>Top</emph>: the horizontal distance from the top-left corner</paragraph>
+   <paragraph role="paragraph" id="par_id991651236674995"><emph>Width</emph>: the width of the rectangle containing the dialog</paragraph>
+   <paragraph role="paragraph" id="par_id771651236675564"><emph>Height</emph>: the height of the rectangle containing the dialog</paragraph>
+   <paragraph role="paragraph" id="par_id211651236676180">Negative or missing arguments are left unchanged</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" xml-lang="en-US" id="bas_id791620301085031">oDialog.Resize(1000, 2000, Height := 6000) &apos; Width is not changed</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <paragraph role="paragraph" id="par_id181620112217958">With Python:</paragraph>
+   <pycode>
+     <paragraph role="pycode" xml-lang="en-US" id="pyc_id941620303073866">oDialog.Resize(1000, 2000, Height = 6000)  # Width is not changed</paragraph>
+   </pycode>
+</section>
+
 <section id="Terminate">
   <comment> Terminate -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953729">
@@ -580,6 +654,7 @@
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <paragraph role="paragraph" id="par_id951620300687150">Below Basic and Python examples open <literal>DlgConsole</literal> and <literal>dlgTrace</literal> non-modal dialogs. They are respectively stored in <literal>ScriptForge</literal> and <literal>Access2Base</literal> shared libraries. Dialog close buttons are disabled and explicit termination is performed at the end of a running process.</paragraph>
    <paragraph role="paragraph" id="par_id301620302137482">In this example a button in <literal>DlgConsole</literal> is substituting inhibited window closing:</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
    <bascode>
      <paragraph role="bascode" localize="false" id="bas_id971620301085031">oDlg = CreateScriptService("SFDialogs.Dialog","GlobalScope","ScriptForge","DlgConsole")</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id981620301085983">oDlg.Execute(modal:=False)</paragraph>
@@ -587,7 +662,8 @@
      <paragraph role="bascode" localize="false" id="bas_id121598187953168">oDlg.Terminate()</paragraph>
    </bascode>
    <paragraph role="paragraph" id="par_id811620112217958">With Python:</paragraph>
-   <pycode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+<pycode>
      <paragraph role="pycode" localize="false" id="pyc_id491620303073866">from time import sleep</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id841620302327611">dlg = CreateScriptService('SFDialogs.Dialog',"GlobalScope",'Access2Base',"dlgTrace")</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id381620302328144">dlg.Execute(modal=False)</paragraph>
