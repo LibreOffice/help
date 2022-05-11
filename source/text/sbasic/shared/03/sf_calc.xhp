@@ -526,18 +526,20 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#ClearAll" name="ClearAll method">ClearAll</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ClearFormats" name="ClearFormats method">ClearFormats</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ClearValues" name="ClearValues method">ClearValues</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#CompactLeft" name="CompactLeft method">CompactLeft</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#CompactUp" name="CompactUp method">CompactUp</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CopySheet" name="CopySheet method">CopySheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CopySheetFromFile" name="CopySheetFromFile method">CopySheetFromFile</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CopyToCell" name="CopyToCell method">CopyToCell</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CopyToRange" name="CopyToRange method">CopyToRange</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CreateChart" name="CreateChart method">CreateChart</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DAvg method">DAvg</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DCount method">DCount</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DMax method">DMax</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DCount method">DCount</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DMax method">DMax</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DMin method">DMin</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DSum method">DSum</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Forms" name="Forms method">Forms</link><br/>
@@ -550,11 +552,11 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#MoveRange" name="MoveRange method">MoveRange</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#MoveSheet" name="MoveSheet method">MoveSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Offset" name="Offset method">Offset</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#OpenRangeSelector" name="OpenRangeSelector method">OpenRangeSelector</link><br/><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id701611613601554" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_calc.xhp#OpenRangeSelector" name="OpenRangeSelector method">OpenRangeSelector</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#PrintOut" name="PrintOut method">PrintOut</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Printf" name="Printf method">Printf</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#RemoveSheet" name="RemoveSheet method">RemoveSheet</link><br/>
@@ -567,7 +569,7 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#ShiftLeft" name="ShiftLeft method">ShiftLeft</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ShiftRight" name="ShiftRight method">ShiftRight</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ShiftUp" name="ShiftUp method">ShiftUp</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#SortRange" name="SortRange method">SortRange</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#SortRange" name="SortRange method">SortRange</link><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -761,6 +763,86 @@
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id451621536678434">myDoc.ClearValues("SheetX.A1:F10")</paragraph>
+  </pycode>
+</section>
+
+<section id="CompactLeft">
+  <comment> CompactLeft ------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781592919922589">
+    <bookmark_value>Calc service;CompactLeft</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id111592919923294" localize="false">CompactLeft</h2>
+  <paragraph role="paragraph" id="par_id841592919903025">Deletes the columns of a specified range that match a filter expressed as a Calc formula. The filter is applied to each column to decide whether it will be deleted or not.</paragraph>
+  <paragraph role="paragraph" id="par_id601652269911029">The deleted column can be limited to the height of the specified range or span to the height of the entire sheet, thus deleting whole columns.</paragraph>
+  <paragraph role="paragraph" id="par_id701652271281106">This method returns a string with the range address of the compacted range. If all columns are deleted, then an empty string is returned.</paragraph>
+  <note id="par_id191652271892064">If a range of cells is selected, calling this method will not impact the selection.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id951621536600632">
+    <input>svc.CompactLeft(range: str, wholecolumn: bool = False, opt filterformula: str): str</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id771592919922181"><emph>range</emph>: The range from which columns will be deleted, as a string.</paragraph>
+  <paragraph role="paragraph" id="par_id771592919932260"><emph>wholecolumn</emph>: If this option is set to <literal>True</literal> the entire column will be deleted from the sheet. The default value is <literal>False</literal>, which means that the deleted column will be limited to the height of the specified <literal>range</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id771592919915974"><emph>filterformula</emph>: The filter to be applied to each column to determine whether or not it will be deleted. The filter is expressed as a Calc formula that should be applied to the first column. When the formula returns <emph>True</emph> for a column, that column will be deleted. The default filter deletes all empty columns.</paragraph>
+  <paragraph role="paragraph" id="par_id361652271022647">For example, suppose range <emph>A1:J200</emph> is selected (height = 200), so the default formula is <emph>=(COUNTBLANK(A1:A200)=200)</emph>. This means that if all 200 cells are empty in the first column (Column A), then the column is deleted. Note that the formula is expressed with respect to the first column only. Internally the <literal>CompactLeft</literal> method will generalize this formula for all the remaining columns.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" id="bas_id941652271391005">' Delete all empty columns in the range G1:L10 from Sheet1</paragraph>
+    <paragraph role="bascode" id="bas_id691652271390762">newrange = oDoc.CompactLeft("Sheet1.G1:L10")</paragraph>
+    <paragraph role="bascode" id="bas_id921652271392627">' The example below is similar, but the entire column is deleted from the sheet</paragraph>
+    <paragraph role="bascode" id="bas_id941652271392873">newrange = oDoc.CompactLeft("Sheet1.G1:L10", WholeColumn := True)</paragraph>
+    <paragraph role="bascode" id="bas_id751652271393226">' Deletes all columns where the first row is marked with an "X"</paragraph>
+    <paragraph role="bascode" id="bas_id761652271393514">newrange = oDoc.CompactLeft("Sheet1.G1:L10", FilterFormula := "=(G1=""X"")")</paragraph>
+    <paragraph role="bascode" id="bas_id241652271725676">' Deletes all columns where the sum of values in the column is odd</paragraph>
+    <paragraph role="bascode" id="bas_id531652271726131">newrange = oDoc.CompactLeft("Sheet1.G1:L10", FilterFormula := "=(MOD(SUM(G1:G10);2)=1)")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id451621536612334">newrange = myDoc.CompactLeft("Sheet1.G1:L10")</paragraph>
+    <paragraph role="pycode" id="pyc_id201652272121176">newrange = myDoc.CompactLeft("Sheet1.G1:L10", wholecolumn = True)</paragraph>
+    <paragraph role="pycode" id="pyc_id781652272122794">newrange = myDoc.CompactLeft("Sheet1.G1:L10", filterformula = '=(G1="X")')</paragraph>
+    <paragraph role="pycode" id="pyc_id731652272123209">newrange = myDoc.CompactLeft("Sheet1.G1:L10", filterformula = '=(MOD(SUM(G1:G10);2)=1)')</paragraph>
+  </pycode>
+</section>
+
+<section id="CompactUp">
+  <comment> CompactUp --------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781592919928589">
+    <bookmark_value>Calc service;CompactUp</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id111592919923065" localize="false">CompactUp</h2>
+  <paragraph role="paragraph" id="par_id841592919903699">Deletes the rows of a specified range that match a filter expressed as a Calc formula. The filter is applied to each row to decide whether it will be deleted or not.</paragraph>
+  <paragraph role="paragraph" id="par_id601652269910091">The deleted rows can be limited to the width of the specified range or span to the width of the entire sheet, thus deleting whole rows.</paragraph>
+  <paragraph role="paragraph" id="par_id701652271283456">This method returns a string with the range address of the compacted range. If all rows are deleted, then an empty string is returned.</paragraph>
+  <note id="par_id191652271893913">If a range of cells is selected, calling this method will not impact the selection.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id951621536605642">
+    <input>svc.CompactUp(range: str, wholerow: bool = False, opt filterformula: str): str</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id771592919922080"><emph>range</emph>: The range from which rows will be deleted, as a string.</paragraph>
+  <paragraph role="paragraph" id="par_id771592919921160"><emph>wholerow</emph>: If this option is set to <literal>True</literal> the entire row will be deleted from the sheet. The default vaule is <literal>False</literal>, which means that the deleted row will be limited to the width of the specified <literal>range</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id771592919926374"><emph>filterformula</emph>: The filter to be applied to each row to determine whether or not it will be deleted. The filter is expressed as a Calc formula that should be applied to the first row. When the formula returns <emph>True</emph> for a row, that row will be deleted. The default filter deletes all empty rows.</paragraph>
+  <paragraph role="paragraph" id="par_id361652271022681">For example, suppose range <emph>A1:J200</emph> is selected (width = 10), so the default formula is <emph>=(COUNTBLANK(A1:J1)=10)</emph>. This means that if all 10 cells are empty in the first row (Row 1), then the row is deleted. Note that the formula is expressed with respect to the first row only. Internally the <literal>CompactUp</literal> method will generalize this formula for all the remaining rows.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" id="bas_id941652271391554">' Delete all empty rows in the range G1:L10 from Sheet1</paragraph>
+    <paragraph role="bascode" id="bas_id691652271390789">newrange = oDoc.CompactUp("Sheet1.G1:L10")</paragraph>
+    <paragraph role="bascode" id="bas_id921652271392567">' The example below is similar, but the entire row is deleted from the sheet</paragraph>
+    <paragraph role="bascode" id="bas_id941652271392553">newrange = oDoc.CompactUp("Sheet1.G1:L10", WholeRow := True)</paragraph>
+    <paragraph role="bascode" id="bas_id751652271393117">' Deletes all rows where the first column is marked with an "X"</paragraph>
+    <paragraph role="bascode" id="bas_id761652271393034">newrange = oDoc.CompactUp("Sheet1.G1:L10", FilterFormula := "=(G1=""X"")")</paragraph>
+    <paragraph role="bascode" id="bas_id241652271725065">' Deletes all rows where the sum of values in the row is odd</paragraph>
+    <paragraph role="bascode" id="bas_id531652271726010">newrange = oDoc.CompactUp("Sheet1.G1:L10", FilterFormula := "=(MOD(SUM(G1:L1);2)=1)")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id451621536612227">newrange = myDoc.CompactUp("Sheet1.G1:L10")</paragraph>
+    <paragraph role="pycode" id="pyc_id201652272121288">newrange = myDoc.CompactUp("Sheet1.G1:L10", wholerow = True)</paragraph>
+    <paragraph role="pycode" id="pyc_id781652272122931">newrange = myDoc.CompactUp("Sheet1.G1:L10", filterformula = '=(G1="X")')</paragraph>
+    <paragraph role="pycode" id="pyc_id731652272123109">newrange = myDoc.CompactUp("Sheet1.G1:L10", filterformula = '=(MOD(SUM(G1:L1);2)=1)')</paragraph>
   </pycode>
 </section>
 
