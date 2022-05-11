@@ -109,6 +109,9 @@
 <xsl:variable name ="ui_search"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='searchhelpcontents']"/></xsl:variable>
 <xsl:variable name ="ui_copyclip"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='copyclip']"/></xsl:variable>
 <xsl:variable name ="ytvideobutton"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytbutton']"/></xsl:variable>
+<xsl:variable name ="ytaccept"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytaccept']"/></xsl:variable>
+<xsl:variable name ="ytpromovideoH2"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='externalvideo']"/></xsl:variable>
+<xsl:variable name ="ytprivacy"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytprivacy']"/></xsl:variable>
 <!--
 #############
 # Templates #
@@ -1268,8 +1271,11 @@
     <xsl:variable name="auxID" select="concat('obj',generate-id())"/>
     <xsl:choose>
         <xsl:when test="starts-with(@type,'video/youtube')">
-            <div id="{@id}" class="youtube_placeholder" style="border: 1px solid #eee; max-width:500px; padding: 10px;">
-                <button style="background-color: red;" onClick="youtubeLoader('{@id}', 700, 394)" >
+            <div id="{@id}" class="youtube_placeholder">
+                <h2 id="promovideoH2"><xsl:value-of select="$ytpromovideoH2"/></h2>
+                <p><xsl:value-of select="$ytaccept"/></p>
+                <p><a href="https://policies.google.com/privacy" target="_blank"><xsl:value-of select="$ytprivacy"/></a></p>
+                <button class="youtube_button" onClick="youtubeLoader('{@id}', 700, 394)" >
                     <xsl:value-of select="$ytvideobutton"/>
                 </button>
             </div>
