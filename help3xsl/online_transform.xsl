@@ -490,7 +490,7 @@
             </xsl:call-template>
         </xsl:when>
 
-        <xsl:when test="@role='bascode' or @role='pycode'">
+        <xsl:when test="@role='bascode' or @role='pycode' or @role='sqlcode'">
             <xsl:call-template name="brand">
                 <xsl:with-param name="string" select="."/>
             </xsl:call-template>
@@ -533,7 +533,7 @@
             </xsl:call-template>
         </xsl:when>
 
-        <xsl:when test="@role='bascode' or @role='pycode'">
+        <xsl:when test="@role='bascode' or @role='pycode' or @role='sqlcode'">
             <xsl:call-template name="brand">
                 <xsl:with-param name="string" select="."/>
             </xsl:call-template>
@@ -989,7 +989,6 @@
         <pre dir="auto"><code class="language-visual-basic line-numbers"><xsl:apply-templates mode="embedded" /></code></pre>
     </div>
 </xsl:template>
-
 <xsl:template match="pycode">
     <div class="pycode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
         <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
@@ -1000,6 +999,19 @@
     <div class="pycode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
         <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
         <pre dir="auto"><code class="language-python line-numbers"><xsl:apply-templates mode="embedded" /></code></pre>
+    </div>
+</xsl:template>
+
+<xsl:template match="sqlcode">
+    <div class="sqlcode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
+        <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
+        <pre dir="auto"><code class="language-sql"><xsl:apply-templates /></code></pre>
+    </div>
+</xsl:template>
+<xsl:template match="sqlcode" mode="embedded">
+    <div class="sqlcode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
+        <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
+        <pre dir="auto"><code class="language-sql"><xsl:apply-templates mode="embedded" /></code></pre>
     </div>
 </xsl:template>
 

@@ -148,10 +148,11 @@ function debounce(fn, wait, indexList) {
     };
 }
 
-// copy pycode and bascode to clipboard on mouse click
+// copy pycode, sqlcode and bascode to clipboard on mouse click
 // Show border when copy is done
 divcopyable(document.getElementsByClassName("bascode"));
 divcopyable(document.getElementsByClassName("pycode"));
+divcopyable(document.getElementsByClassName("sqlcode"));
 
 function divcopyable(itemcopyable){
 for (var i = 0, len = itemcopyable.length; i < len; i++) {
