@@ -167,9 +167,11 @@
 <h4 id="hd_id3145150">Alias</h4>
 <paragraph id="par_id3146315" role="paragraph" xml-lang="en-US"><ahelp hid="HID_QRYDGN_ROW_ALIAS">Specifies an alias. This alias will be listed in the query instead of the field name. This makes it possible to use user-defined column labels.</ahelp> For example, if the data field is named PtNo and, instead of that name, you would like to have PartNum appear in the query, enter PartNum as the alias.</paragraph>
 <paragraph id="par_id3155959" role="paragraph" xml-lang="en-US">In a SQL statement, aliases are defined as follows:</paragraph>
-<paragraph id="par_id3149922" role="paragraph" xml-lang="en-US">SELECT column AS alias FROM table.</paragraph>
+<paragraph id="par_id3149922" role="code" xml-lang="en-US">SELECT column AS alias FROM table.</paragraph>
 <paragraph id="par_id3159335" role="paragraph" xml-lang="en-US">For example:</paragraph>
-<paragraph id="par_id3148478" role="paragraph" xml-lang="en-US">SELECT "PtNo" AS "PartNum" FROM "Parts"</paragraph>
+<sqlcode>
+<paragraph id="par_id3148478" role="sqlcode" localize="false" xml-lang="en-US">SELECT "PtNo" AS "PartNum" FROM "Parts"</paragraph>
+</sqlcode>
 <bookmark xml-lang="en-US" branch="hid/DBACCESS_HID_QRYDGN_ROW_TABLE" id="bm_id3154665" localize="false"/>
 
 <h4 id="hd_id3148485">Table</h4>
@@ -289,16 +291,22 @@
 </table>
 
 <paragraph id="par_id3156038" role="paragraph" xml-lang="en-US">You can also enter function calls directly into the SQL statement. The syntax is:</paragraph>
-<paragraph id="par_id3156340" role="paragraph" xml-lang="en-US">SELECT FUNCTION(column) FROM table.</paragraph>
+<paragraph id="par_id3156340" role="code" xml-lang="en-US">SELECT FUNCTION(column) FROM table.</paragraph>
 <paragraph id="par_id3155075" role="paragraph" xml-lang="en-US">For example, the function call in SQL for calculating a sum is:</paragraph>
-<paragraph id="par_id3154591" role="paragraph" xml-lang="en-US">SELECT SUM("Price") FROM "Article".</paragraph>
+<sqlcode>
+<paragraph id="par_id3154591" role="sqlcode" xml-lang="en-US">SELECT SUM("Price") FROM "Article".</paragraph>
+</sqlcode>
 <paragraph id="par_id3159205" role="paragraph" xml-lang="en-US">Except for the <emph>Group</emph> function, the above functions are called Aggregate functions. These are functions that calculate data to create summaries from the results. Additional functions that are not listed in the list box might be also possible. These depend on the specific database engine in use and on the current functionality provided by the Base driver used to connect to that database engine.</paragraph>
 <paragraph id="par_id3148651" role="paragraph" xml-lang="en-US">To use other functions not listed in the list box, you must enter them manually under <emph>Field</emph>.</paragraph>
 <paragraph id="par_id3155098" role="paragraph" xml-lang="en-US">You can also assign aliases to function calls. If you do not want to display the query string in the column header, enter a desired substitute name under <emph>Alias</emph>.</paragraph>
 <paragraph id="par_id3155539" role="paragraph" xml-lang="en-US">The corresponding function in an SQL statement is:</paragraph>
-<paragraph id="par_id3149425" role="paragraph" xml-lang="en-US">SELECT FUNCTION() AS alias FROM table</paragraph>
+<paragraph id="par_id3149425" role="code" xml-lang="en-US">SELECT FUNCTION() AS alias FROM table</paragraph>
+<section id="example">
 <paragraph id="par_id3144431" role="paragraph" xml-lang="en-US">Example:</paragraph>
-<paragraph id="par_id3154614" role="paragraph" xml-lang="en-US">SELECT COUNT(*) AS count FROM "Item"</paragraph>
+</section>
+<sqlcode>
+<paragraph id="par_id3154614" role="sqlcode" xml-lang="en-US">SELECT COUNT(*) AS count FROM "Item"</paragraph>
+</sqlcode>
 <note id="par_id3154610">If you run such a function, you cannot insert any additional columns for the query other than as an argument in a "Group" function.</note>
 <paragraph id="par_id3154644" role="paragraph" xml-lang="en-US"> <emph>Examples</emph> </paragraph>
 <paragraph id="par_id3151120" role="paragraph" xml-lang="en-US">In the following example, a query is run through two tables: an "Item" table with the "Item_No" field and a "Suppliers" table with the "Supplier_Name" field. In addition, both tables have a common field name "Supplier_No."</paragraph>
@@ -685,11 +693,16 @@
 
 </section>
 <paragraph id="par_id3146073" role="paragraph" xml-lang="en-US"> <emph>Like </emph>Escape Sequence: {escape 'escape-character'}</paragraph>
-<paragraph id="par_id3150661" role="paragraph" xml-lang="en-US">Example: select * from Item where ItemName like 'The *%' {escape '*'}</paragraph>
+<embed href="text/sdatabase/02010100.xhp#example"/>
+<sqlcode>
+<paragraph role="sqlcode" id="par_id441652550335953" xml-lang="en-US" localize="false">SELECT * FROM Item WHERE ItemName LIKE 'The *%' {escape '*'}</paragraph>
+</sqlcode>
 <paragraph id="par_id3148541" role="paragraph" xml-lang="en-US">The example will give you all of the entries where the item name begins with 'The *'. This means that you can also search for characters that would otherwise be interpreted as placeholders, such as *, ?, _, % or the period.</paragraph>
 <paragraph id="par_id3150572" role="paragraph" xml-lang="en-US"> <emph>Outer Join</emph> Escape Sequence: {oj outer-join}</paragraph>
-<paragraph id="par_id3156052" role="paragraph" xml-lang="en-US">Example: select Article.* from {oj item LEFT OUTER JOIN orders ON item.no=orders.ANR}</paragraph>
-
+<embed href="text/sdatabase/02010100.xhp#example"/>
+<sqlcode>
+<paragraph role="sqlcode" id="par_id841652550235363" xml-lang="en-US" localize="false">SELECT Article.* FROM {oj item LEFT OUTER JOIN orders ON item.no=orders.ANR}</paragraph>
+</sqlcode>
 <h3 id="hd_id3153674">Querying text fields</h3>
 <paragraph id="par_id3149134" role="paragraph" xml-lang="en-US">To query the content of a text field, you must put the expression between single quotes. The distinction between uppercase and lowercase letters depends on the database in use. LIKE, by definition, is case-sensitive (though some databases don't interpret this strictly).</paragraph>
 
@@ -755,8 +768,14 @@
   </tablerow>
 </table>
 
-<paragraph id="par_id3149539" role="paragraph" xml-lang="en-US">Example: select {d '1999-12-31'} from world.years</paragraph>
-<paragraph id="par_id3149540" role="paragraph" xml-lang="en-US">Example: select * from mytable where years='1999-12-31' </paragraph>
+<embed href="text/sdatabase/02010100.xhp#example"/>
+<sqlcode>
+<paragraph role="sqlcode" id="par_id661652550524160" xml-lang="en-US" localize="false">SELECT {d '1999-12-31'} FROM world.years</paragraph>
+</sqlcode>
+<embed href="text/sdatabase/02010100.xhp#example"/>
+<sqlcode>
+<paragraph role="sqlcode" id="par_id381652550614110" xml-lang="en-US" localize="false">SELECT * FROM mytable WHERE years='1999-12-31'</paragraph>
+</sqlcode>
 <paragraph id="par_id3150510" role="paragraph" xml-lang="en-US">All date expressions (date literals) must be enclosed with single quotation marks. (Consult the reference for the particular database and connector you are using for more details.)</paragraph>
 
 <h3 id="hd_id3150427">Querying Yes/No fields</h3>
