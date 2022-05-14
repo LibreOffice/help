@@ -21,7 +21,7 @@
 <meta>
   <topic id="textsharedexplorerdatabase02010100xml" indexer="include" status="PUBLISH">
     <title id="tit" xml-lang="en-US">Query Design</title>
-    <filename>/text/sdatabase/020010100.xhp</filename>
+    <filename>/text/sdatabase/02010100.xhp</filename>
   </topic>
 </meta>
 
@@ -49,7 +49,7 @@
 <comment>mw added "(Base)" to all entries</comment>
 <paragraph id="par_id3153323" role="paragraph" localize="false" xml-lang="en-US"/>
 
-<h1 id="hd_id3153394"><link href="text/sdatabase/020010100.xhp" name="Query Design">Query Design</link></h1>
+<h1 id="hd_id3153394"><link href="text/sdatabase/02010100.xhp" name="Query Design">Query Design</link></h1>
 <paragraph id="par_id3156411" role="paragraph" xml-lang="en-US"><ahelp hid=".">The <emph>Query Design View </emph>allows you to create and edit a database query.</ahelp></paragraph>
 
 <section id="howtoget">
@@ -61,7 +61,7 @@
 
 <h2 id="hd_id3149233">The Design View</h2>
 <paragraph id="par_id3145673" role="paragraph" xml-lang="en-US">To create a query, click the <emph>Queries</emph> icon in a database document, then click <emph>Create Query in Design View</emph>.</paragraph>
-<paragraph id="par_id3150255" role="paragraph" xml-lang="en-US">The lower pane of the Design View is where you <link href="text/sdatabase/020010100.xhp" name="define">define</link> the query. To define a query, specify the database <link href="text/sdatabase/020010100.xhp" name="field names">field names</link> to include and the <link href="text/sdatabase/020010100.xhp" name="criteria">criteria</link> for displaying the fields. To rearrange the columns in the lower pane of the Design View, drag a column header to a new location, or select the column and press <switchinline select="sys"><caseinline select="MAC">Command
+<paragraph id="par_id3150255" role="paragraph" xml-lang="en-US">The lower pane of the Design View is where you define the query. To define a query, specify the database field names to include and the  criteria for displaying the fields. To rearrange the columns in the lower pane of the Design View, drag a column header to a new location, or select the column and press <switchinline select="sys"><caseinline select="MAC">Command
 </caseinline><defaultinline>Ctrl</defaultinline></switchinline>+arrow key.</paragraph>
 <paragraph id="par_id3152474" role="paragraph" xml-lang="en-US">In the top of the query Design View window, the <link href="text/shared/main0214.xhp" name="icons">icons</link> of the <emph>Query Design</emph> Bar and the <emph>Design</emph> bar are displayed.</paragraph>
 <paragraph id="par_id3147559" role="paragraph" xml-lang="en-US">If you want to test a query, double-click the query name in the database document. The query result is displayed in a table similar to the Data Source View. Note: the table displayed is only temporary.</paragraph>
@@ -185,7 +185,7 @@
 <bookmark xml-lang="en-US" branch="hid/DBACCESS_HID_QRYDGN_ROW_CRIT" id="bm_id3147130" localize="false"/>
 
 <h4 id="hd_id3154714">Criteria</h4>
-<paragraph id="par_id3145134" role="paragraph" xml-lang="en-US"><ahelp hid="HID_QRYDGN_ROW_CRIT">Specifies a first <link href="text/sdatabase/020010100.xhp" name="criteria ">criteria </link>by which the content of the data field is to be filtered.</ahelp></paragraph>
+<paragraph id="par_id3145134" role="paragraph" xml-lang="en-US"><ahelp hid="HID_QRYDGN_ROW_CRIT">Specifies a first criteria by which the content of the data field is to be filtered.</ahelp></paragraph>
 
 <h4 id="hd_id3152477">or</h4>
 <paragraph id="par_id3154585" role="paragraph" xml-lang="en-US">Here you can enter one additional filter criterion for each line. Multiple criteria in a single column will be interpreted as boolean OR.</paragraph>
@@ -814,9 +814,9 @@
 <h3 id="hd_id3145772">Parameter queries</h3>
 <paragraph id="par_id191120151905346795" role="paragraph" xml-lang="en-US">Parameter queries allow the user to input values at run-time. These values are used within the criteria for selecting the records to be displayed. Each such value has a parameter name associated with it, which is used to prompt the user when the query is run. </paragraph>
 <paragraph id="par_id191120151905439551" role="paragraph" xml-lang="en-US">Parameter names are preceded by a colon in both the Design and SQL views of a query. This can be used wherever a value can appear. If the same value is to appear more than once in the query, the same parameter name is used.</paragraph>
-<paragraph id="par_id191120151905518123" role="paragraph" xml-lang="en-US">In the simplest case, where the user enters a value which is matched for equality, the parameter name with its preceding colon is simply entered in the Criterion row. In <link href="text/sdatabase/020010100.xhp#sqlmode">SQL mode</link> this should be typed as <item type="input">WHERE "Field" = :Parameter_name</item></paragraph>
+<paragraph id="par_id191120151905518123" role="paragraph" xml-lang="en-US">In the simplest case, where the user enters a value which is matched for equality, the parameter name with its preceding colon is simply entered in the Criterion row. In <link href="text/sdatabase/02010100.xhp#sqlmode">SQL mode</link> this should be typed as <item type="input">WHERE "Field" = :Parameter_name</item></paragraph>
 <warning id="par_id191120151905584287">Parameter names may not contain any of the characters <item type="input">&lt;space&gt;`!"$%^*()+={}[]@'~#&lt;&gt;?/,</item>. They may not be the same as field names or SQL reserved words. They may be the same as aliases.</warning>
-<tip id="par_id191120151931441881">A useful construction for selecting records based on parts of a text field's content is to add a hidden column with <item type="input">"LIKE '%' || :Part_of_field || '%'"</item> as the criterion. This will select records with an exact match. If a case-insensitive test is wanted, one solution is to use <item type="input">LOWER (Field_Name)</item> as the field and <item type="input">LIKE LOWER ( '%' || :Part_of_field || '%' )</item> as the criterion. Note that the spaces in the criterion are important; if they are left out the SQL parser interprets the entire criterion as a string to be matched. In <link href="text/sdatabase/020010100.xhp#sqlmode">SQL mode</link> this should be typed as <item type="input">LOWER ( "Field_Name" ) LIKE LOWER ( '%' || :Part_of_field || '%' )</item>.</tip>
+<tip id="par_id191120151931441881">A useful construction for selecting records based on parts of a text field's content is to add a hidden column with <item type="input">"LIKE '%' || :Part_of_field || '%'"</item> as the criterion. This will select records with an exact match. If a case-insensitive test is wanted, one solution is to use <item type="input">LOWER (Field_Name)</item> as the field and <item type="input">LIKE LOWER ( '%' || :Part_of_field || '%' )</item> as the criterion. Note that the spaces in the criterion are important; if they are left out the SQL parser interprets the entire criterion as a string to be matched. In <link href="text/sdatabase/02010100.xhp#sqlmode">SQL mode</link> this should be typed as <item type="input">LOWER ( "Field_Name" ) LIKE LOWER ( '%' || :Part_of_field || '%' )</item>.</tip>
 <paragraph id="par_id3150585" role="paragraph" xml-lang="en-US">Parameter queries may be used as the data source for <link href="text/shared/02/01170203.xhp" name="subforms">subforms</link>, to allow the user to restrict the displayed records.</paragraph>
 
 <h3 id="hd_id3151035">Parameter Input</h3>
@@ -833,5 +833,4 @@
 <paragraph id="par_id3149632" role="paragraph" xml-lang="en-US">By clicking the <link href="text/shared/02/14030000.xhp" name="Run SQL command directly"><emph>Run SQL command directly</emph></link> icon in the SQL view, you can formulate a query that is not processed by $[officename] and sent directly to the database engine.</paragraph>
 </section>
 </body>
-
 </helpdocument>
