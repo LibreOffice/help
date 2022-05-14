@@ -1,6 +1,6 @@
 Latest download version
 
-PrismJS 1.27.0
+PrismJS 1.28.0
 
 Using prism.js for Basic code highlight
 
@@ -12,10 +12,14 @@ Download page http://prismjs.com/download
 
 Theme: Coy
 
-Languages to download: Visual Basic + Python + defaults pre-sets
+Languages to download: 
+Visual Basic + 
+Python + 
+SQL + 
+defaults Prism pre-sets
 
-Plugins: line numbers,
-
+Plugins: 
+line numbers,
 normalize-whitespace: configure after https://prismjs.com/plugins/normalize-whitespace/
 
 Prism.plugins.NormalizeWhitespace = new NormalizeWhitespace({
