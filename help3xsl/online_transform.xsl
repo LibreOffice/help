@@ -859,6 +859,33 @@
     <br/>
 </xsl:template>
 
+<!--SQLCODE, BASCODE, PYCODE-->
+<xsl:template match="bascode | pycode | sqlcode">
+    <xsl:variable name="codelangclass">
+        <xsl:choose>
+            <xsl:when test="local-name()='bascode'"><xsl:text>language-visual-basic line-numbers</xsl:text></xsl:when>
+            <xsl:when test="local-name()='pycode'"><xsl:text>language-python line-numbers</xsl:text></xsl:when>
+            <xsl:when test="local-name()='sqlcode'"><xsl:text>language-sql</xsl:text></xsl:when>
+        </xsl:choose>
+    </xsl:variable>
+    <div class="{local-name()}" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
+        <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
+        <pre dir="auto"><code class="{$codelangclass}"><xsl:apply-templates /></code></pre>
+    </div>
+</xsl:template>
+<xsl:template match="bascode | pycode | sqlcode" mode="embedded">
+    <xsl:variable name="codelangclass">
+        <xsl:choose>
+            <xsl:when test="local-name()='bascode'"><xsl:text>language-visual-basic line-numbers</xsl:text></xsl:when>
+            <xsl:when test="local-name()='pycode'"><xsl:text>language-python line-numbers</xsl:text></xsl:when>
+            <xsl:when test="local-name()='sqlcode'"><xsl:text>language-sql</xsl:text></xsl:when>
+        </xsl:choose>
+    </xsl:variable>
+    <div class="{local-name()}" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
+        <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
+        <pre dir="auto"><code class="{$codelangclass}"><xsl:apply-templates /></code></pre>
+    </div>
+</xsl:template>
 <!-- In case of missing help files -->
 <xsl:template match="help-id-missing">
 <span id="bm_HID2"></span>
@@ -975,44 +1002,6 @@
         </xsl:choose>
     </xsl:variable>
     <p id="{@id}" class="{$role}" dir="auto"><xsl:apply-templates /></p>
-</xsl:template>
-
-<xsl:template match="bascode">
-    <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
-        <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre dir="auto"><code class="language-visual-basic line-numbers"><xsl:apply-templates /></code></pre>
-    </div>
-</xsl:template>
-<xsl:template match="bascode" mode="embedded">
-    <div class="bascode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
-        <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre dir="auto"><code class="language-visual-basic line-numbers"><xsl:apply-templates mode="embedded" /></code></pre>
-    </div>
-</xsl:template>
-<xsl:template match="pycode">
-    <div class="pycode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
-        <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre dir="auto"><code class="language-python line-numbers"><xsl:apply-templates /></code></pre>
-    </div>
-</xsl:template>
-<xsl:template match="pycode" mode="embedded">
-    <div class="pycode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
-        <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre dir="auto"><code class="language-python line-numbers"><xsl:apply-templates mode="embedded" /></code></pre>
-    </div>
-</xsl:template>
-
-<xsl:template match="sqlcode">
-    <div class="sqlcode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
-        <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre dir="auto"><code class="language-sql"><xsl:apply-templates /></code></pre>
-    </div>
-</xsl:template>
-<xsl:template match="sqlcode" mode="embedded">
-    <div class="sqlcode" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
-        <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
-        <pre dir="auto"><code class="language-sql"><xsl:apply-templates mode="embedded" /></code></pre>
-    </div>
 </xsl:template>
 
 <!-- Insert Logo code snippet  -->
