@@ -533,6 +533,7 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#CopyToCell" name="CopyToCell method">CopyToCell</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CopyToRange" name="CopyToRange method">CopyToRange</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CreateChart" name="CreateChart method">CreateChart</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#CreatePivotTable" name="CreatePivotTable method">CreatePivotTable</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DAvg method">DAvg</link><br/>
            </paragraph>
        </tablecell>
@@ -551,7 +552,7 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#InsertSheet" name="InsertSheet method">InsertSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#MoveRange" name="MoveRange method">MoveRange</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#MoveSheet" name="MoveSheet method">MoveSheet</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#Offset" name="Offset method">Offset</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#Offset" name="Offset method">Offset</link><br/><br/>
            </paragraph>
        </tablecell>
        <tablecell>
@@ -569,7 +570,7 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#ShiftLeft" name="ShiftLeft method">ShiftLeft</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ShiftRight" name="ShiftRight method">ShiftRight</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ShiftUp" name="ShiftUp method">ShiftUp</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#SortRange" name="SortRange method">SortRange</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#SortRange" name="SortRange method">SortRange</link><br/><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -1039,6 +1040,68 @@
   </pycode>
   <tip id="par_id231635441342180">Refer to the help page about ScriptForge's <link href="text/sbasic/shared/03/sf_chart.xhp" name="Chart service">Chart service</link> to learn more how to further manipulate chart objects. It is possible to change properties as the chart type, chart and axes titles and chart position.</tip>
 </section>
+
+<section id="CreatePivotTable">
+  <comment> CreatePivotTable ---------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171592903120147">
+      <bookmark_value>Calc service;CreatePivotTable</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id67159290319647" localize="false">CreatePivotTable</h2>
+  <paragraph role="paragraph" id="par_id1615929033065">Creates a new pivot table with the properties defined by the arguments  passed to the method.</paragraph>
+  <paragraph role="paragraph" id="par_id1001652794922144">A name must be defined for the pivot table. If a pivot table with the same name already exists in the targeted sheet, it will be replaced without warning.</paragraph>
+  <paragraph role="paragraph" id="par_id751652795324382">This method returns a string containing the range where the new pivot table was placed.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id981621538467457">
+    <input>svc.CreatePivotTable(pivottablename: str, sourcerange: str, targetcell: str, datafields: str[0..*], rowfields: str[0..*], columnfields: str[0..*], filterbutton: bool = true, rowtotals: bool = true, columntotals: bool = true): str</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id841592903128525"><emph>pivottablename:</emph> The user-defined name of the new pivot table.</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031203640"><emph>sourcerange:</emph> The range containing the raw data, as a string. It is assumed that the first row contains the field names that will be used by the pivot table.</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031210400"><emph>targetcell:</emph> The top-left cell where the new pivot table will be placed. If a range is specified, only its top-left cell will be considered.</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031951290"><emph>datafields:</emph> It can be either a single string or an array containing strings that define field names and functions to be applied. When an array is specified, it must follow the syntax <input>Array("FieldName[;Function]", ...)</input>.</paragraph>
+  <paragraph role="paragraph" id="par_id361652795942348">The allowed functions are: <literal>Sum</literal>, <literal>Count</literal>, <literal>Average</literal>, <literal>Max</literal>, <literal>Min</literal>, <literal>Product</literal>, <literal>CountNums</literal>, <literal>StDev</literal>, <literal>StDevP</literal>, <literal>Var</literal>, <literal>VarP</literal> and <literal>Median</literal>. Function names must be provied in English. When all values are numerical, <literal>Sum</literal> is the default function, otherwise the default function is <literal>Count</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031211003"><emph>rowfields:</emph> A single string or an array with the field names that will be used as the pivot table rows.</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031211114"><emph>columnfields:</emph> A single string or an array with the field names that will be used as the pivot table columns.</paragraph>
+  <paragraph role="paragraph" id="par_id361652796141240"><emph>filterbutton:</emph> Determines whether a filter button will be displayed above the pivot table (Default = <literal>True</literal>).</paragraph>
+  <paragraph role="paragraph" id="par_id661652796200051"><emph>rowtotals:</emph> Sepecifies if a separate column for row totals will be added to the pivot table (Default = <literal>True</literal>).</paragraph>
+  <paragraph role="paragraph" id="par_id671652796274304"><emph>columntotals</emph> Sepecifies if a separate row for column totals will be added to the pivot table (Default = <literal>True</literal>)</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id211652797038002">Dim vData As Variant, oDoc As Object, ui As Object, sTable As String, sPivot As String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id401652797037306">Set ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id781652797037626">Set oDoc = ui.CreateDocument("Calc")</paragraph>
+    <paragraph role="bascode" id="bas_id201652797038370">vData = Array(Array("Item", "State", "Team", "2002", "2003", "2004"), _</paragraph>
+    <paragraph role="bascode" id="bas_id171652797038762">    Array("Books", "Michigan", "Jean", 14788, 30222, 23490), _</paragraph>
+    <paragraph role="bascode" id="bas_id331652797039146">    Array("Candy", "Michigan", "Jean", 26388, 15641, 32849), _</paragraph>
+    <paragraph role="bascode" id="bas_id911652797039570">    Array("Pens", "Michigan", "Jean", 16569, 32675, 25396), _</paragraph>
+    <paragraph role="bascode" id="bas_id471652797039963">    Array("Books", "Michigan", "Volker", 21961, 21242, 29009), _</paragraph>
+    <paragraph role="bascode" id="bas_id681652797040338">    Array("Candy", "Michigan", "Volker", 26142, 22407, 32841))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id581652797040723">sTable = oDoc.SetArray("A1", vData)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id321652797041090">sPivot = oDoc.CreatePivotTable("PT1", sTable, "H1", _</paragraph>
+    <paragraph role="bascode" id="bas_id851652797041450">    Array("2002", "2003;count", "2004;average"), _ ' Three data fields</paragraph>
+    <paragraph role="bascode" id="bas_id791652797306993">    "Item", _ ' A single row field</paragraph>
+    <paragraph role="bascode" id="bas_id731652797041866">    Array("State", "Team"), False) ' Two column fields</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id761652797473541">ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id716527974738130">doc = ui.CreateDocument("Calc")</paragraph>
+    <paragraph role="pycode" id="pyc_id971652797474132">vData = [["Item", "State", "Team", "2002", "2003", "2004"],</paragraph>
+    <paragraph role="pycode" id="pyc_id921652797555153">         ["Books", "Michigan", "Jean", 14788, 30222, 23490],</paragraph>
+    <paragraph role="pycode" id="pyc_id891652797555537">         ["Candy", "Michigan", "Jean", 26388, 15641, 32849],</paragraph>
+    <paragraph role="pycode" id="pyc_id321652797555864">         ["Pens", "Michigan", "Jean", 16569, 32675, 25396)],</paragraph>
+    <paragraph role="pycode" id="pyc_id121652797556264">         ["Books", "Michigan", "Volker", 21961, 21242, 29009],</paragraph>
+    <paragraph role="pycode" id="pyc_id881652797556680">         ["Candy", "Michigan", "Volker", 26142, 22407, 32841]]</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441652797991546">sTable = doc.SetArray("A1", vData)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id791652797991834">sPivot = doc.CreatePivotTable("PT1", sTable, "H1",</paragraph>
+    <paragraph role="pycode" id="pyc_id941652797992017">                              ["2002", "2003;count", "2004;average"],</paragraph>
+    <paragraph role="pycode" id="pyc_id471652797992561">                              "Item",</paragraph>
+    <paragraph role="pycode" id="pyc_id561652797992185">                              ["State", "Team"], False)</paragraph>
+  </pycode>
+  <tip id="par_id231635441342284">To learn more about Pivot Tables in %PRODUCTNAME Calc, read the <link href="text/scalc/guide/datapilot.xhp" name="Pivot table">Pivot Table</link> help page.</tip>
+</section>
+
 
 <section id="DAvg">
   <comment> DAvg, DCount, DMax, DMin, DSum -------------------------------------------------------------------------------------------------------------------------- </comment>
