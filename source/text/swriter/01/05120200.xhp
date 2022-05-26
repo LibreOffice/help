@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -16,10 +17,9 @@
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  -->
-<helpdocument version="1.0">
 <meta>
 <topic id="textswriter0105120200xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">Optimal Width</title>
+<title id="tit" xml-lang="en-US">Optimal Column Width</title>
 <filename>/text/swriter/01/05120200.xhp</filename>
 </topic>
 <history>
@@ -27,13 +27,55 @@
 </history>
 </meta>
 <body>
+<section id="optimal_column_width">
 <bookmark xml-lang="en-US" branch="hid/.uno:SetOptimalColumnWidth" id="bm_id8687648" localize="false"/>
-<h1 id="hd_id3149500">Optimal Width</h1>
-<paragraph role="paragraph" id="par_id3149050" xml-lang="en-US"><variable id="spaltenbreitetext"><ahelp hid=".uno:SetOptimalColumnWidth">Automatically adjusts column widths to match the contents of the cells.</ahelp> Changing the width of a column does not affect the width of the other columns in the table. The width of the table cannot exceed the page width.
-</variable></paragraph>
-<paragraph role="paragraph" id="par_id5611743" xml-lang="en-US">The change affects only selected cells. You can adjust multiple cells next to each other if you select the cells together.</paragraph>
+<h1 id="hd_id3149500" xml-lang="en-US">Optimal Column Width</h1>
+<switch select="appl">
+  <case select="WRITER">
+    <paragraph role="paragraph" id="par_id3149050" xml-lang="en-US"><variable id="column_width_text"><ahelp hid=".uno:SetOptimalColumnWidth">Adjust column widths among columns with selected cells, according to the paragraph length in each selected cell. Widen the table, up to page width, if necessary.</ahelp></variable></paragraph>
+  </case>
+  <case select="CALC"></case>
+  <default>
+    <paragraph role="paragraph" id="par_id811655764710135"><ahelp hid=".uno:SetOptimalColumnWidth">Adjust column width for selected columns to fit the column’s content, without changing the width of the table or the unselected columns.</ahelp>
+    </paragraph>
+  </default>
+</switch>
+</section>
 <section id="howtoget">
-  <embed href="text/swriter/00/00000405.xhp#optimal_column_width"/>
+  <embed href="text/shared/00/00040500.xhp#optimal_column_width"/>
+</section>
+<switch select="appl">
+  <case select="WRITER">
+    <paragraph role="paragraph" id="par_id611656069528584"><menuitem>Optimal Column Width</menuitem> attempts to give a column width for the selected cells so that the longest paragraph in each cell can, as a minimum, <emph>fit</emph> exactly on a single line, though it is possible and common for columns to be wider than an exact fit.</paragraph>
+    <paragraph role="paragraph" id="par_id601656102623025">The final distribution of column widths depends on several factors, such as the paragraph length of selected cells, the initial width of the columns with selected cells, and whether the table can be widened. Space is also included for any horizontal cell padding, paragraph padding, and paragraph indents. The width of the table is never reduced, and unselected columns are not changed.</paragraph>
+    <paragraph role="paragraph" id="par_id651656105163827">The following list indicates how column widths are distributed for the selected cells. If the first step succeeds in distributing column widths for the selected cells so that all paragraphs in the cell are on a single line, then the process stops, otherwise the second step is attempted, if possible. The third step describes how column widths are distributed when it is not possible to fit all the selected cells after the second step.</paragraph>
+    <list type="ordered">
+      <listitem>
+        <paragraph id="par_id221656101892491" role="listitem">Distribute column widths proportionally according to the longest paragraph in each cell, but remaining within the total column width for cell selection.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id641656101994507" role="listitem">If some cells cannot fit exactly in the total width of the selection, and the table can be expanded (up to the page width), then expand the table width until all cells are fit exactly.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id511656102101362" role="listitem">If the table width is at the page margin, and more than one selected cell does not fit exactly, then give as much width as possible to the first cell that cannot be fit exactly, and an equal (smaller) column width to the other cells that cannot be fit.</paragraph>
+      </listitem>
+    </list>
+    <paragraph role="paragraph" id="par_id471656104869532">Step 1 is often sufficient for tables whose cells are primarily short paragraphs, while Step 3 is usually needed if many columns or rows are selected and/or selected cells have longer paragraphs.</paragraph>
+  </case>
+  <case select="CALC"><comment>Not in CALC</comment></case>
+  <default>
+    <paragraph role="paragraph" id="par_id601656069480524"><menuitem>Optimal Column Width</menuitem> attempts to give a column width for the selected columns so that the longest paragraph in each column can, as a minimum, <emph>fit</emph> exactly on a single line, though it is possible and common for columns to be wider than an exact fit.</paragraph>
+    <paragraph role="paragraph" id="par_id721655819449619">The final distribution of column widths depends on several factors, such as the paragraph length and initial width of the selected columns. Space is also included for any horizontal cell padding, paragraph padding, and paragraph indents. The width of the table is never reduced, and unselected columns are not changed.</paragraph>
+    <paragraph role="paragraph" id="par_id581656107648277">The option distributes column widths proportionally according to the longest paragraph in each column, but remaining within the total column width for the selected columns. When selected columns cannot be fit exactly,  then the first column that cannot be fit exactly gets as much width as possible, while any additional columns that cannot be fit exactly get a smaller column width, which is equal for each of these additional columns.</paragraph>
+  </default>
+</switch>
+<section id="relatedtopics">
+<embed href="text/shared/02/04210000.xhp#optimizeh1"/>
+<switch select="appl">
+<case select="WRITER">
+<embed href="text/swriter/guide/table_sizing.xhp#table_sizing"/>
+</case>
+</switch>
 </section>
 </body>
 </helpdocument>
