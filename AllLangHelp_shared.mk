@@ -351,6 +351,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/mediaplayer \
     helpcontent2/source/text/shared/01/menu_edit_find \
     helpcontent2/source/text/shared/01/menu_view_sidebar \
+    helpcontent2/source/text/shared/01/minimal_column_width \
+    helpcontent2/source/text/shared/01/minimal_row_height \
     helpcontent2/source/text/shared/01/moviesound \
     helpcontent2/source/text/shared/01/nav_rename \
     helpcontent2/source/text/shared/01/notebook_bar \
