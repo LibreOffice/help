@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -16,10 +17,9 @@
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  -->
-<helpdocument version="1.0">
 <meta>
 <topic id="textswriter0105120200xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">Optimal Width</title>
+<title id="tit" xml-lang="en-US">Optimal Column Width</title>
 <filename>/text/swriter/01/05120200.xhp</filename>
 </topic>
 <history>
@@ -27,13 +27,46 @@
 </history>
 </meta>
 <body>
+<section id="optimal_column_width">
 <bookmark xml-lang="en-US" branch="hid/.uno:SetOptimalColumnWidth" id="bm_id8687648" localize="false"/>
-<h1 id="hd_id3149500">Optimal Width</h1>
-<paragraph role="paragraph" id="par_id3149050" xml-lang="en-US"><variable id="spaltenbreitetext"><ahelp hid=".uno:SetOptimalColumnWidth">Automatically adjusts column widths to match the contents of the cells.</ahelp> Changing the width of a column does not affect the width of the other columns in the table. The width of the table cannot exceed the page width.
-</variable></paragraph>
-<paragraph role="paragraph" id="par_id5611743" xml-lang="en-US">The change affects only selected cells. You can adjust multiple cells next to each other if you select the cells together.</paragraph>
+<h1 id="hd_id3149500" xml-lang="en-US">Optimal Column Width</h1>
+<switch select="appl">
+  <case select="WRITER">
+    <paragraph role="paragraph" id="par_id3149050" xml-lang="en-US"><variable id="column_width_text"><ahelp hid=".uno:SetOptimalColumnWidth">Distribute the width of the selected columns to fit the content of selected cells, without changing the width of the table or the unselected columns.</ahelp></variable></paragraph>
+  </case>
+  <case select="CALC"></case>
+  <default>
+    <paragraph role="paragraph" id="par_id811655764710135"><ahelp hid=".uno:SetOptimalColumnWidth">Adjust the width of the selected columns to fit the column's content, without changing the width of the table or the unselected columns.</ahelp>
+    </paragraph>
+  </default>
+</switch>
+</section>
 <section id="howtoget">
-  <embed href="text/swriter/00/00000405.xhp#optimal_column_width"/>
+  <embed href="text/shared/00/00040500.xhp#optimal_column_width"/>
+</section>
+
+
+<switch select="appl">
+  <case select="WRITER">
+    <embed href="text/shared/01/minimal_column_width.xhp#fit_content_to_columns"/>
+    <paragraph role="paragraph" id="par_id5611743" xml-lang="en-US">You can adjust multiple cells next to each other if you select the cells together.</paragraph>
+    <paragraph role="paragraph" id="par_id401655818427478">If all paragraphs in the selected cells appear already on single lines, then nothing changes.</paragraph>
+    <paragraph role="paragraph" id="par_id721655819449619">Any leftover space is distributed proportionately, with thin columns growing slightly, and wide columns growing much wider.</paragraph>
+  </case>
+  <case select="CALC"><comment>Not in CALC</comment>
+  </case>
+  <default>
+    <comment>MAYBE SWITCH NOT NEEDED HERE?</comment>
+  </default>
+</switch>
+  
+<section id="relatedtopics">
+<embed href="text/share/02/04210000.xhp#optimizeh1"/>
+<switch select="appl">
+<case select="WRITER">
+<embed href="text/swriter/guide/table_sizing.xhp#table_sizing"/>
+</case>
+</switch>
 </section>
 </body>
 </helpdocument>
