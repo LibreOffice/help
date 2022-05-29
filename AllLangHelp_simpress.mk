@@ -180,7 +180,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/guide/move_object \
     helpcontent2/source/text/simpress/guide/orgchart \
     helpcontent2/source/text/simpress/guide/page_copy \
-    helpcontent2/source/text/simpress/guide/palette_files \
     helpcontent2/source/text/simpress/guide/photo_album \
     helpcontent2/source/text/simpress/guide/presenter_console \
     helpcontent2/source/text/simpress/guide/print_tofit \
