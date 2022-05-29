@@ -727,6 +727,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/numbering_stop \
     helpcontent2/source/text/shared/guide/openpgp \
     helpcontent2/source/text/shared/guide/pageformat_max \
+    helpcontent2/source/text/shared/guide/palette_files \
     helpcontent2/source/text/shared/guide/paintbrush \
     helpcontent2/source/text/shared/guide/pasting \
     helpcontent2/source/text/shared/guide/print_blackwhite \
