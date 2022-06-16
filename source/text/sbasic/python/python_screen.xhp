@@ -24,7 +24,7 @@
     </bookmark>
     <h1 id="N0434"><variable id="ioscreen"><link href="text/sbasic/python/python_screen.xhp" name="IO to screen">Input/Output to Screen</link></variable></h1>
     <paragraph role="paragraph" id="N0435">Python standard output file is not available when running Python macros from <menuitem>Tools – Macros - Run Macro</menuitem>... menu. Presenting the output of a module requires the Python interactive console. Features such as <literal>input()</literal>, <literal>print()</literal>, <literal>repr()</literal> and <literal>str()</literal> are available from the Python shell.</paragraph>
-    <paragraph role="tip" id="N0436">The <link href="https://extensions.libreoffice.org/extensions/apso-alternative-script-organizer-for-python" name="apso">Alternative Python Script Organizer</link> (APSO) extension offers a msgbox() function out of its <literal>apso_utils</literal> module.</paragraph>
+    <tip id="msgbox_tip">%PRODUCTNAME <literal>msgbox</literal> Python module proposes a msgbox() function that is illustrated in <link href="text/sbasic/python/python_handler.xhp" name="msgbox example">Creating Event Listeners</link> and <link href="text/sbasic/python/python_handler.xhp" name="msgbox_example">Creating a dialog handler</link> example pages.</tip>
     <paragraph role="paragraph" id="N0437">%PRODUCTNAME Basic proposes <literal>InputBox()</literal>, <literal>Msgbox()</literal> and <literal>Print()</literal> screen I/O functions. Python alternatives exist relying either on %PRODUCTNAME API Abstract Windowing Toolkit, either on Python to Basic function calls. The latter proposes a syntax that is intentionally close to that of Basic, and uses a Python module next to a Basic module. The API Scripting Framework is used to perform Basic, BeanShell, JavaScript and Python inter-languages function calls.</paragraph>
     <h2 id="N0438">Python syntax:</h2>
     <paragraph role="code" id="N0439" localize="false">MsgBox(txt, buttons=0, title=None)<br/></paragraph>
@@ -80,6 +80,7 @@
         <paragraph role="pycode" localize="false" id="N0490">    xScript = scriptPro.getScript(scriptName)</paragraph>
         <paragraph role="pycode" localize="false" id="N0491">    return xScript</paragraph>
     </pycode>
+    <note id="par_id161655364816553"><literal>MsgBox</literal> and <literal>InputBox</literal> methods from the <link href="text/sbasic/shared/03/sf_basic.xhp" name="Basic service">Basic service</link> included in <link href="text/sbasic/shared/03/lib_ScriptForge.xhp" name="scriptforge module"> the ScriptForge libraries</link> call directly their native Basic counterparts.</note>
     <h3 id="N0492"><literal>uiScripts</literal> Basic module</h3>
     <bascode>
         <paragraph role="bascode" localize="false" id="N0493">Option Explicit</paragraph>
@@ -95,10 +96,8 @@
         <paragraph role="bascode" localize="false" id="N0503">    Print msg</paragraph>
         <paragraph role="bascode" localize="false" id="N0504">End Sub</paragraph>
     </bascode>
+    <tip id="tip_APSO">The <link href="https://extensions.libreoffice.org/extensions/apso-alternative-script-organizer-for-python" name="apso">Alternative Python Script Organizer</link> (APSO) extension offers a msgbox() function out of its <literal>apso_utils</literal> module.</tip>
     <section id="relatedtopics">
-        <!--
-        <paragraph role="paragraph" id="N0505"><link href="text/sbasic/python/python_2_basic.xhp" name="Calling Basic macros from Python">Calling Basic macros from Python</link></paragraph>
-        -->
         <embed href="text/sbasic/shared/03010000.xhp#BasicScreenIO"/>
         <embed href="text/sbasic/python/python_examples.xhp#pythonexamples2"/>
         <embed href="text/sbasic/python/main0000.xhp#pythonscriptshelp"/>
