@@ -423,6 +423,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/menu/submenu_more_breaks \
     helpcontent2/source/text/swriter/mailmergetoolbar \
     helpcontent2/source/text/swriter/track_changes_toolbar \
+    helpcontent2/source/text/swriter/navigate_toolbar \
 ))
 
 # vim: set noet sw=4 ts=4:
