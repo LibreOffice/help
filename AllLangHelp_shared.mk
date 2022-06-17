@@ -776,6 +776,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/main0500 \
     helpcontent2/source/text/shared/main0650 \
     helpcontent2/source/text/shared/main0800 \
+    helpcontent2/source/text/shared/mediaplay_toolbar \
     helpcontent2/source/text/shared/submenu_text \
     helpcontent2/source/text/shared/submenu_spacing \
     helpcontent2/source/text/shared/menu/forms \
