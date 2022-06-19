@@ -124,7 +124,16 @@
     <paragraph role="paragraph" id="par_id291591020728110" xml-lang="en-US">Either a string designating a set of contiguous cells located in a sheet of the current instance or an <literal>object</literal> produced by the <literal>.Range</literal> property.</paragraph>
     <paragraph role="paragraph" id="par_id691591020711395" xml-lang="en-US">The shortcut "~" (tilde) represents the current selection or the first selected range if multiple ranges are selected.</paragraph>
     <paragraph role="paragraph" id="par_id701592230700986" xml-lang="en-US">The shortcut "*" represents all used cells.</paragraph>
-    <paragraph role="paragraph" id="par_id641591021597701" xml-lang="en-US">The sheet name is optional in a range (default = the active sheet). Surrounding single quotes and $ signs are allowed but ignored.</paragraph>
+    <paragraph role="paragraph" id="par_id641591021597701" xml-lang="en-US">The sheet name is optional when defining a range. If no sheet name is provided, then the active sheet is used. Surrounding single quotes and $ signs are allowed but ignored.</paragraph>
+    <paragraph role="paragraph" id="par_id231655754032310">When specifying a <literal>SheetName</literal> as a string, the use of single quotes to enclose the sheet name are required if the name contains blank spaces " " or periods ".".  </paragraph>
+    <paragraph role="paragraph" id="par_id931655906591984">The examples below illustrate in which cases the use of single quotes is mandatory:</paragraph>
+    <bascode>
+      <paragraph role="bascode" id="bas_id971655754336388">' The use of single quotes is optional</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id891655754336707">oDoc.clearAll("SheetA.A1:B10")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id381655754337100">oDoc.clearAll("'SheetA'.A1:B10")</paragraph>
+      <paragraph role="bascode" id="bas_id711655754337420">' The use of single quotes is required</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id311655754674294">oDoc.clearAll("'Sheet.A'.A1:B10")</paragraph>
+    </bascode>
     <tip id="par_id371592406978640" xml-lang="en-US">Except for the <literal>CurrentSelection</literal> property, the <literal>Calc</literal> service considers only single ranges of cells.</tip>
     <table id="tab_id101591024652566">
         <tablerow>
@@ -134,7 +143,7 @@
         </tablerow>
         <tablerow>
             <tablecell>
-                <paragraph id="par_id481591024294524" role="tablecontent" xml-lang="en-US">1) '$SheetX'.D2<br/>2) $D$2</paragraph>
+                <paragraph id="par_id481591024294524" role="tablecontent" xml-lang="en-US">1) $'SheetX'.D2<br/>2) $D$2</paragraph>
             </tablecell>
             <tablecell>
                 <paragraph id="par_id721591024294894" role="tablecontent" xml-lang="en-US">A single cell</paragraph>
@@ -142,7 +151,7 @@
         </tablerow>
         <tablerow>
             <tablecell>
-                <paragraph id="par_id21591024294492" role="tablecontent" xml-lang="en-US">1) '$SheetX'.D2:F6<br/>2) D2:D10</paragraph>
+                <paragraph id="par_id21591024294492" role="tablecontent" xml-lang="en-US">1) $'SheetX'.D2:F6<br/>2) D2:D10</paragraph>
             </tablecell>
             <tablecell>
                 <paragraph id="par_id9159102429464" role="tablecontent" xml-lang="en-US">Single range with multiple cells</paragraph>
@@ -150,7 +159,7 @@
         </tablerow>
         <tablerow>
             <tablecell>
-                <paragraph id="par_id161592230749179" role="tablecontent" xml-lang="en-US">'$SheetX'.*</paragraph>
+                <paragraph id="par_id161592230749179" role="tablecontent" xml-lang="en-US">$'SheetX'.*</paragraph>
             </tablecell>
             <tablecell>
                 <paragraph id="par_id581592230749243" role="tablecontent" xml-lang="en-US">All used cells in the given sheet</paragraph>
@@ -158,7 +167,7 @@
         </tablerow>
         <tablerow>
             <tablecell>
-                <paragraph id="par_id641591024294318" role="tablecontent" xml-lang="en-US">1) '$SheetX'.A:A (column A)<br/>2) 3:5 (rows 3 to 5)</paragraph>
+                <paragraph id="par_id641591024294318" role="tablecontent" xml-lang="en-US">1) $'SheetX'.A:A (column A)<br/>2) 3:5 (rows 3 to 5)</paragraph>
             </tablecell>
             <tablecell>
                 <paragraph id="par_id431591024294723" role="tablecontent" xml-lang="en-US">All cells in contiguous columns or rows up to the last used cell</paragraph>
@@ -543,6 +552,7 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DMax method">DMax</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DMin method">DMin</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg" name="DSum method">DSum</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#ExportRangeToFile" name="ExportRangeToFile method">ExportRangeToFile</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Forms" name="Forms method">Forms</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#GetColumnName" name="GetColumnName method">GetColumnName</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#GetFormula" name="GetFormula method">GetFormula</link><br/>
@@ -552,7 +562,7 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#InsertSheet" name="InsertSheet method">InsertSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#MoveRange" name="MoveRange method">MoveRange</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#MoveSheet" name="MoveSheet method">MoveSheet</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#Offset" name="Offset method">Offset</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#Offset" name="Offset method">Offset</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
@@ -1143,6 +1153,39 @@
     <paragraph role="pycode" localize="false" id="pyc_id651621539472141">result = myDoc.DSum("~.A1:A1000")</paragraph>
   </pycode>
   <note id="par_id31611752782288">Cells in the given range that contain text will be ignored by all of these functions. For example, the <literal>DCount</literal> method will not count cells with text, only numerical cells.</note>
+</section>
+
+<section id="ExportRangeToFile">
+  <comment> ExportRangeToFile --------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id271591632729478">
+      <bookmark_value>Calc service;ExportRangeToFile</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id331591632723258" localize="false">ExportRangeToFile</h2>
+  <paragraph role="paragraph" id="par_id501623063693113">Exports the specified range as an image or PDF file.</paragraph>
+  <paragraph role="paragraph" id="par_id401655654738754">This method returns <literal>True</literal> if the destination file was successfully saved.</paragraph>
+  <note id="par_id871655655302952">Hidden rows or columns in the specified range are not exported to the destination file.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id371623063577228">
+    <input>svc.ExportRangeToFile(range: str, filename: str, imagetype: str = "pdf", overwrite: bool = False): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id441623090896470"><emph>range</emph>: A sheet name or a cell range to be exported, as a string.</paragraph>
+  <paragraph role="paragraph" id="par_id451623063452651"><emph>filename</emph>: The name of the file to be saved. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
+  <paragraph role="paragraph" id="par_id441623090895310"><emph>imagetype</emph>: Identifies the destination file type. Possible values are "jpeg", "pdf" (default) and "png".</paragraph>
+  <paragraph role="paragraph" id="par_id441623090896317"><emph>overwrite</emph>: When set to <literal>True</literal>, the destination file may be overwritten (Default = <literal>False</literal>).</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" id="bas_id561655655121456">' Exports the entire sheet as a PDF file</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id691623063398621">oDoc.ExportRangeToFile("SheetX", "C:\Temp\image.pdf")</paragraph>
+    <paragraph role="bascode" id="bas_id991655655060661">' Exports the range as a PNG file and overwrites the destination file if it exists</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id191623063399539">oDoc.ExportRangeToFile("SheetX.A1:D10", "C:\Temp\image.png", "png", Overwrite := True)</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id271623063215113">doc.ExportRangeToFile("SheetX", r"C:\Temp\image.pdf")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id961623063234881">doc.ExportRangeToFile("SheetX.A1:D10", r"C:\Temp\image.png", "png", overwrite = True)</paragraph>
+  </pycode>
 </section>
 
 <section id="Forms">
