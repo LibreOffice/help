@@ -657,19 +657,14 @@
 
 </xsl:template>
 
-<!-- SWITCH -->
-<xsl:template match="switch">
+<!-- SWITCH and SWITCHINLINE -->
+<xsl:template match="switch|switchinline">
     <xsl:variable name="idsw">
         <xsl:value-of select="//meta/topic/@id" /><xsl:number level="any" count="switch|switchinline" format="_1"/>
     </xsl:variable>
     <xsl:choose>
-        <xsl:when test ="@select = 'sys'">
-            <span id="swlnsys{$idsw}" class="switch">
-                <xsl:apply-templates />
-            </span>
-        </xsl:when>
-        <xsl:when test ="@select = 'appl'">
-            <span id="swlnappl{$idsw}" class="switch">
+        <xsl:when test ="@select = 'sys' or @select = 'appl'">
+            <span id="swln{@select}{$idsw}" class="{local-name()}">
                 <xsl:apply-templates />
             </span>
         </xsl:when>
@@ -678,60 +673,13 @@
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
-<xsl:template match="switch" mode="embedded">
+<xsl:template match="switch|switchinline" mode="embedded">
     <xsl:variable name="idsw">
         <xsl:value-of select="//meta/topic/@id" /><xsl:number level="any" count="switch|switchinline" format="_1"/>
     </xsl:variable>
     <xsl:choose>
-        <xsl:when test ="@select = 'sys'">
-            <span id="swlnsys{$idsw}" class="switch">
-                <xsl:apply-templates mode="embedded"/>
-            </span>
-        </xsl:when>
-        <xsl:when test ="@select = 'appl'">
-            <span id="swlnappl{$idsw}" class="switch">
-                <xsl:apply-templates mode="embedded"/>
-            </span>
-        </xsl:when>
-        <xsl:otherwise>
-            <p class="debug" dir="auto">Unsupported switch condition.</p>
-        </xsl:otherwise>
-    </xsl:choose>
-</xsl:template>
-
-<!-- SWITCHINLINE -->
-<xsl:template match="switchinline">
-    <xsl:variable name="idsw">
-        <xsl:value-of select="//meta/topic/@id" /><xsl:number level="any" count="switch|switchinline" format="_1"/>
-    </xsl:variable>
-    <xsl:choose>
-        <xsl:when test ="@select = 'sys'">
-            <span id="swlnsys{$idsw}" class="switchinline">
-                <xsl:apply-templates />
-            </span>
-        </xsl:when>
-        <xsl:when test ="@select = 'appl'">
-            <span id="swlnappl{$idsw}" class="switchinline">
-                <xsl:apply-templates />
-            </span>
-        </xsl:when>
-        <xsl:otherwise>
-            <p class="debug" dir="auto">Unsupported switch condition.</p>
-        </xsl:otherwise>
-    </xsl:choose>
-</xsl:template>
-<xsl:template match="switchinline" mode="embedded">
-    <xsl:variable name="idsw">
-        <xsl:value-of select="//meta/topic/@id" /><xsl:number level="any" count="switch|switchinline" format="_1"/>
-    </xsl:variable>
-    <xsl:choose>
-        <xsl:when test ="@select = 'sys'">
-            <span id="swlnsys{$idsw}" class="switchinline">
-                <xsl:apply-templates mode="embedded"/>
-            </span>
-        </xsl:when>
-        <xsl:when test ="@select = 'appl'">
-            <span id="swln{@select}_{$idsw}" class="switchinline">
+        <xsl:when test ="@select = 'sys' or @select = 'appl'">
+            <span id="swln{@select}{$idsw}" class="{local-name()}">
                 <xsl:apply-templates mode="embedded"/>
             </span>
         </xsl:when>
