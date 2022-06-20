@@ -656,16 +656,17 @@
 
 <!-- SWITCH -->
 <xsl:template match="switch">
+    <xsl:variable name="idsw">
+        <xsl:value-of select="//meta/topic/@id" /><xsl:number level="any" count="switch|switchinline" format="_1"/>
+    </xsl:variable>
     <xsl:choose>
         <xsl:when test ="@select = 'sys'">
-            <xsl:variable name="idsw" select="concat('swlnsys',generate-id())"/>
-            <span id="{$idsw}" class="switch">
+            <span id="swlnsys{$idsw}" class="switch">
                 <xsl:apply-templates />
             </span>
         </xsl:when>
         <xsl:when test ="@select = 'appl'">
-            <xsl:variable name="idsw" select="concat('swlnappl',generate-id())"/>
-            <span id="{$idsw}" class="switch">
+            <span id="swlnappl{$idsw}" class="switch">
                 <xsl:apply-templates />
             </span>
         </xsl:when>
@@ -675,16 +676,17 @@
     </xsl:choose>
 </xsl:template>
 <xsl:template match="switch" mode="embedded">
+    <xsl:variable name="idsw">
+        <xsl:value-of select="//meta/topic/@id" /><xsl:number level="any" count="switch|switchinline" format="_1"/>
+    </xsl:variable>
     <xsl:choose>
         <xsl:when test ="@select = 'sys'">
-            <xsl:variable name="idsw" select="concat('swlnsys',generate-id())"/>
-            <span id="{$idsw}" class="switch">
+            <span id="swlnsys{$idsw}" class="switch">
                 <xsl:apply-templates mode="embedded"/>
             </span>
         </xsl:when>
         <xsl:when test ="@select = 'appl'">
-            <xsl:variable name="idsw" select="concat('swlnappl',generate-id())"/>
-            <span id="{$idsw}" class="switch">
+            <span id="swlnappl{$idsw}" class="switch">
                 <xsl:apply-templates mode="embedded"/>
             </span>
         </xsl:when>
@@ -696,16 +698,17 @@
 
 <!-- SWITCHINLINE -->
 <xsl:template match="switchinline">
+    <xsl:variable name="idsw">
+        <xsl:value-of select="//meta/topic/@id" /><xsl:number level="any" count="switch|switchinline" format="_1"/>
+    </xsl:variable>
     <xsl:choose>
         <xsl:when test ="@select = 'sys'">
-            <xsl:variable name="idsw" select="concat('swlnsys',generate-id())"/>
-            <span id="{$idsw}" class="switchinline">
+            <span id="swlnsys{$idsw}" class="switchinline">
                 <xsl:apply-templates />
             </span>
         </xsl:when>
         <xsl:when test ="@select = 'appl'">
-            <xsl:variable name="idsw" select="concat('swlnappl',generate-id())"/>
-            <span id="{$idsw}" class="switchinline">
+            <span id="swlnappl{$idsw}" class="switchinline">
                 <xsl:apply-templates />
             </span>
         </xsl:when>
@@ -715,16 +718,17 @@
     </xsl:choose>
 </xsl:template>
 <xsl:template match="switchinline" mode="embedded">
+    <xsl:variable name="idsw">
+        <xsl:value-of select="//meta/topic/@id" /><xsl:number level="any" count="switch|switchinline" format="_1"/>
+    </xsl:variable>
     <xsl:choose>
         <xsl:when test ="@select = 'sys'">
-            <xsl:variable name="idsw" select="concat('swlnsys',generate-id())"/>
-            <span id="{$idsw}" class="switchinline">
+            <span id="swlnsys{$idsw}" class="switchinline">
                 <xsl:apply-templates mode="embedded"/>
             </span>
         </xsl:when>
         <xsl:when test ="@select = 'appl'">
-            <xsl:variable name="idsw" select="concat('swlnappl',generate-id())"/>
-            <span id="{$idsw}" class="switchinline">
+            <span id="swln{@select}_{$idsw}" class="switchinline">
                 <xsl:apply-templates mode="embedded"/>
             </span>
         </xsl:when>
@@ -1091,13 +1095,15 @@
 <!-- Evaluate a case or caseinline switch -->
 <xsl:template name="insertcase">
     <xsl:param name="embedded" />
-    <xsl:variable name="auxID" select="concat(@select,generate-id())"/>
+    <xsl:variable name="auxID">
+        <xsl:value-of select="//meta/topic/@id" /><xsl:number level="any" count="switch|switchinline" format="_1"/>
+    </xsl:variable>
     <xsl:choose>
         <xsl:when test="$embedded = 'yes'">
-            <span hidden="true" id="{$auxID}" class="{@select}"><xsl:apply-templates mode="embedded"/></span>
+            <span hidden="true" id="{@select}{$auxID}" class="{@select}"><xsl:apply-templates mode="embedded"/></span>
         </xsl:when>
         <xsl:otherwise>
-            <span hidden="true" id="{$auxID}" class="{@select}"><xsl:apply-templates/></span>
+            <span hidden="true" id="{@select}{$auxID}" class="{@select}"><xsl:apply-templates/></span>
         </xsl:otherwise>
     </xsl:choose>
 </xsl:template>
@@ -1105,26 +1111,27 @@
 <!-- Evaluate a default or defaultinline switch -->
 <xsl:template name="insertdefault">
     <xsl:param name="embedded" />
+    <xsl:variable name="auxID">
+        <xsl:value-of select="//meta/topic/@id" /><xsl:number level="any" count="switch|switchinline" format="_1"/>
+    </xsl:variable>
     <xsl:choose>
         <xsl:when test="parent::switch[@select='sys'] or parent::switchinline[@select='sys']">
-            <xsl:variable name="auxID" select="concat('default',generate-id())"/>
             <xsl:choose>
                 <xsl:when test="$embedded = 'yes'">
-                    <span hidden="true" id="{$auxID}"><xsl:apply-templates mode="embedded"/></span>
+                    <span hidden="true" id="default{$auxID}"><xsl:apply-templates mode="embedded"/></span>
                 </xsl:when>
                 <xsl:otherwise>
-                    <span hidden="true" id="{$auxID}"><xsl:apply-templates /></span>
+                    <span hidden="true" id="default{$auxID}"><xsl:apply-templates /></span>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:when>
         <xsl:when test="parent::switch[@select='appl'] or parent::switchinline[@select='appl']">
-            <xsl:variable name="auxID" select="concat('default',generate-id())"/>
             <xsl:choose>
                 <xsl:when test="$embedded = 'yes'">
-                    <span hidden="true" id="{$auxID}"><xsl:apply-templates mode="embedded"/></span>
+                    <span hidden="true" id="default{$auxID}"><xsl:apply-templates mode="embedded"/></span>
                 </xsl:when>
                 <xsl:otherwise>
-                    <span hidden="true" id="{$auxID}"><xsl:apply-templates /></span>
+                    <span hidden="true" id="default{$auxID}"><xsl:apply-templates /></span>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:when>
@@ -1260,6 +1267,9 @@
 
 <!-- Insert an object -->
 <xsl:template name="insertobject">
+    <xsl:variable name="auxID">
+        <xsl:value-of select="//meta/topic/@id" /><xsl:number level="any" count="object" format="_1"/>
+    </xsl:variable>
     <xsl:variable name="tmp_href"><xsl:value-of select="concat($urlpre,'text/shared/00/00000004.xhp')"/></xsl:variable>
     <xsl:variable name="tmp_doc" select="document($tmp_href)"/>
     <xsl:variable name="data">
@@ -1272,7 +1282,6 @@
     <xsl:variable name="height">
         <xsl:call-template name="convert2px"><xsl:with-param name="value" select="@height"/></xsl:call-template>
     </xsl:variable>
-    <xsl:variable name="auxID" select="concat('obj',generate-id())"/>
     <xsl:choose>
         <xsl:when test="starts-with(@type,'video/youtube')">
                 <div id="mediadiv">
@@ -1295,7 +1304,7 @@
                     <xsl:with-param name="string" select="@data"/>
                 </xsl:call-template>
             </xsl:variable>
-            <div class="samplefilesection" id="{$auxID}">
+            <div class="samplefilesection" id="obj{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-calc.svg" width="25px" height="30px"></img></a>
             </div>
@@ -1306,7 +1315,7 @@
                     <xsl:with-param name="string" select="@data"/>
                 </xsl:call-template>
             </xsl:variable>
-            <div class="samplefilesection" id="{$auxID}">
+            <div class="samplefilesection" id="obj{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-writer.svg" width="25px" height="30px"></img></a>
             </div>
@@ -1317,7 +1326,7 @@
                     <xsl:with-param name="string" select="@data"/>
                 </xsl:call-template>
             </xsl:variable>
-            <div class="samplefilesection" id="{$auxID}">
+            <div class="samplefilesection" id="obj{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-impress.svg" width="25px" height="30px"></img></a>
             </div>
@@ -1328,7 +1337,7 @@
                     <xsl:with-param name="string" select="@data"/>
                 </xsl:call-template>
             </xsl:variable>
-            <div class="samplefilesection" id="{$auxID}">
+            <div class="samplefilesection" id="obj{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-draw.svg" width="25px" height="30px"></img></a>
             </div>
@@ -1339,7 +1348,7 @@
                     <xsl:with-param name="string" select="@data"/>
                 </xsl:call-template>
             </xsl:variable>
-            <div class="samplefilesection" id="{$auxID}">
+            <div class="samplefilesection" id="obj{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-math.svg" width="25px" height="30px"></img></a>
             </div>
@@ -1350,7 +1359,7 @@
                     <xsl:with-param name="string" select="@data"/>
                 </xsl:call-template>
             </xsl:variable>
-            <div class="samplefilesection" id="{$auxID}">
+            <div class="samplefilesection" id="obj{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
             <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-base.svg" width="25px" height="30px"></img></a>
             </div>
