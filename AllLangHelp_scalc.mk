@@ -353,6 +353,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/guide/database_sort \
     helpcontent2/source/text/scalc/guide/datapilot \
     helpcontent2/source/text/scalc/guide/datapilot_createtable \
+    helpcontent2/source/text/scalc/guide/datapilot_formatting \
     helpcontent2/source/text/scalc/guide/datapilot_deletetable \
     helpcontent2/source/text/scalc/guide/datapilot_edittable \
     helpcontent2/source/text/scalc/guide/datapilot_filtertable \
