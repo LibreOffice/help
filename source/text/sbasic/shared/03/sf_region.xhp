@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+<meta>
+  <topic id="SF_Region" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">ScriptForge.Region service</title>
+    <filename>/text/sbasic/shared/03/sf_region.xhp</filename>
+  </topic>
+  </meta>
+<body>
+<section id="ScriptForge-sf_region">  
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id501600788079651">
+    <bookmark_value>Region service</bookmark_value>
+  </bookmark>
+</section>
+<section id="abstract">
+  <h1 id="bm_id681600788076499"><variable id="RegionService"><link href="text/sbasic/shared/03/sf_region.xhp" name="Region service"><literal>ScriptForge</literal>.<literal>Region</literal> service</link></variable></h1>
+  <paragraph role="paragraph" id="par_id181600788076612">The <literal>Region</literal> service provides a collection of properties and methods to handle locale and region-related aspects of programming, such as:</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id301600788076785" role="listitem">Accessing locale and region-dependent settings such as number formatting, currency and timezones.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id1001600788076848" role="listitem">Converting timezones and calculate Daylight Saving Time (DST) offsets.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id67160078807676" role="listitem">Transforming numbers into text in any supported language.</paragraph>
+    </listitem>
+  </list>
+</section>
+
+  <h2 id="hd_id851656012844548">Definitions</h2>
+  <h3 id="hd_id421656012886648">Locale or Region</h3>
+  <paragraph role="paragraph" id="par_id191656012908838">A string combining a language and a country in the format "la-CO". The language part is expressed with 2 or 3 lowercase characters followed by a dash and 2 uppercase charaters representing the country.</paragraph>
+  <paragraph role="paragraph" id="par_id431656013368415">For instance, "en-US" corresponds to the English language in the United States; "fr-BE" corresponds to the French language in Belguim, and so forth.</paragraph>
+  <paragraph role="paragraph" id="par_id981656013623018">On some situations the full locale is not required and only the language or country may be specified.</paragraph>
+  <note id="par_id261656013132204">Most properties and methods require a locale as argument. If no locale is specified, then the user-interface locale is used, which is defined in the <link href="text/sbasic/shared/03/sf_platform.xhp#bm_id111614901524769" name="OfficeLocale_link">OfficeLocale</link> property of the <literal>Platform</literal> service.</note>
+  <h3 id="hd_id51656013825718">Timezone</h3>
+  <paragraph role="paragraph" id="par_id541656013854150">A string in the format "Region/City" such as "Europe/Berlin", or a timezone ID such as "UTC" or "GMT-8:00".</paragraph>
+  <warning id="par_id981656078937577">Providing an invalid timezone string to any of the methods in the <literal>Region</literal> service will not result in a runtime error. Instead, methods as <literal>UTCDateTime</literal> and <literal>UTCNow</literal> will return the current operating system date and time.</warning>
+  <paragraph role="paragraph" id="par_id611656014040098">The time offset between the timezone and the Greenwich Meridian Time (GMT) is expressed in minutes.</paragraph>
+  <paragraph role="paragraph" id="par_id121656014053670">The Daylight Saving Time (DST) is an additional offset.</paragraph>
+  <note id="par_id591656014140929">The timezone and DST offsets may be positive or negative.</note>
+
+  <h2 id="hd_id281600788076359">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>Region</literal> service the <literal>ScriptForge</literal> library needs to be loaded or imported:</paragraph>
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#importLibs"/>
+  <paragraph role="paragraph" id="par_id321614902851541">The examples below in Basic and Python instantiate the <literal>Region</literal> service and access the <literal>Country</literal> property.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id851600788076202">GlobalScope.BasicLibraries.LoadLibrary("Region")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id1001600788076254">Dim oRegion As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id721600788076288">oRegion = CreateScriptService("Region")</paragraph>
+    <paragraph role="bascode" id="bas_id791600788431935">MsgBox oRegion.Country("en-US") ' United States</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id631626695710139">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981626695710433">oRregion = CreateScriptService("Region")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id311626695710851">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id391626695711082">bas.MsgBox(oRegion.Country("en-US"))</paragraph>
+  </pycode>
+
+  <bookmark xml-lang="en-US" branch="index" localize="false" id="bm_id11161490152686">
+    <bookmark_value>Region service;Country</bookmark_value>
+    <bookmark_value>Region service;Currency</bookmark_value>
+    <bookmark_value>Region service;DatePatterns</bookmark_value>
+    <bookmark_value>Region service;DateSeparator</bookmark_value>
+    <bookmark_value>Region service;DayAbbrevNames</bookmark_value>
+    <bookmark_value>Region service;DayNames</bookmark_value>
+    <bookmark_value>Region service;DayNarrowNames</bookmark_value>
+    <bookmark_value>Region service;DecimalPoint</bookmark_value>
+    <bookmark_value>Region service;Language</bookmark_value>
+    <bookmark_value>Region service;ListSeparator</bookmark_value>
+    <bookmark_value>Region service;MonthAbbrevNames</bookmark_value>
+    <bookmark_value>Region service;MonthNames</bookmark_value>
+    <bookmark_value>Region service;MonthNarrowNames</bookmark_value>
+    <bookmark_value>Region service;ThousandSeparator</bookmark_value>
+    <bookmark_value>Region service;TimeSeparator</bookmark_value>
+  </bookmark>
+
+  <h2 id="hd_id711600788076834">Properties</h2>
+  <paragraph role="paragraph" id="par_id601656018689690">All properties listed below require a <literal>region</literal> argument, provided as a string. Some properties require this argument to be in the format "la-CO", whereas others may receive "la" or "CO" as input.</paragraph>
+  
+  <table id="tab_id701600788076583">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id461600788076917" role="tablehead">Name</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id221600788076591" role="tablehead">Readonly</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id761600788076328" role="tablehead">Type</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id67160078807636" role="tablehead">Description</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id491600788076621" role="tablecontent" localize="false">Country</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id311600788076756" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831600788076785" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id441600788076826" role="tablecontent">Returns the country name in English corresponding to a given region.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018610267">The <literal>region</literal> argument may be expressed either in "la-CO" or "CO" formats.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id941600788076595" role="tablecontent" localize="false">Currency</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id49160078807654" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id961600788076376" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id81600788076419" role="tablecontent">Returns the ISO 4217 currency code of the specified region.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018613058">The <literal>region</literal> argument may be expressed either in "la-CO" or "CO" formats.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id721600788076638" role="tablecontent" localize="false">DatePatterns</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id711600788076534" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id911600788076842" role="tablecontent">String array</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541600788076645" role="tablecontent">Returns a zero-based array of strings containing the date acceptance patterns for the specified region.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018614967">The <literal>region</literal> argument must be expressed in "la-CO" format.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id961600788076890" role="tablecontent" localize="false">DateSeparator</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id891600788076190" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id761600788076562" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id91600788076674" role="tablecontent">Returns the date separator used in the given region.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018616477">The <literal>region</literal> argument must be expressed in "la-CO" format.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id831633021719246" localize="false" role="tablecontent">DayAbbrevNames</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561633021747014" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id201633021748566" role="tablecontent">String array</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831633021749125" role="tablecontent">Returns a zero-based array of strings containing the list of abbreviated weekday names in the specified language.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018617020">The <literal>region</literal> argument may be expressed either in "la-CO" or "la" formats.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id831633021716585" localize="false" role="tablecontent">DayNames</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561633021747209" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id201633021748322" role="tablecontent">String array</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831633021748865" role="tablecontent">Returns a zero-based array of strings containing the list of weekday names in the specified language.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018610330">The <literal>region</literal> argument may be expressed either in "la-CO" or "la" formats.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id831633021719135" localize="false" role="tablecontent">DayNarrowNames</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561633021747903" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id201633021748455" role="tablecontent">String array</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831633021747711" role="tablecontent">Returns a zero-based array of strings containing the list of the initials of weekday names in the specified language.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018619365">The <literal>region</literal> argument may be expressed either in "la-CO" or "la" formats.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id831633021710186" localize="false" role="tablecontent">DecimalPoint</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561633021748013" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id201633021749655" localize="false" role="tablecontent">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831633021749297" role="tablecontent">Returns the decimal separator used in numbers by the specified region.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018613237">The <literal>region</literal> argument must be expressed in "la-CO" format.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id831633021719022" localize="false" role="tablecontent">Language</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561633021743188" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id201633021743058" localize="false" role="tablecontent">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831633021749018" role="tablecontent">Returns the name of the language, in English, of the specified region.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018610995">The <literal>region</literal> argument may be expressed either in "la-CO" or "la" formats.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951600788076443" role="tablecontent" localize="false">ListSeparator</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id391600788076253" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id381600788076799" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id21600788076541" role="tablecontent">Returns the list separator used in the specified region.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018611315">The <literal>region</literal> argument must be expressed in "la-CO" format.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id831633021710156" localize="false" role="tablecontent">MonthAbbrevNames</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561633021706513" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id201633021746335" role="tablecontent">String array</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831633021741117" role="tablecontent">Returns a zero-based array of strings containing the list of abbreviated month names in the specified language.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018644965">The <literal>region</literal> argument may be expressed either in "la-CO" or "la" formats.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id41600788076936" role="tablecontent" localize="false">MonthNames</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id211600788076138" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id221600788076518" role="tablecontent">String array</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id521600788076371" role="tablecontent">Returns a zero-based array of strings containing the list of month names in the specified language.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018643128">The <literal>region</literal> argument may be expressed either in "la-CO" or "la" formats.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id161600788076362" role="tablecontent" localize="false">MonthNarrowNames</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id21600788076758" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id871600788076196" role="tablecontent">String array</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id781600788076694" role="tablecontent">Returns a zero-based array of strings containing the list of the initials of month names in the specified language.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018659874">The <literal>region</literal> argument may be expressed either in "la-CO" or "la" formats.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id471600788076885" role="tablecontent" localize="false">ThousandSeparator</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id261600788076841" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id661600788076636" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id11600788076757" role="tablecontent">Returns the thousands separator used in numbers in the specified region.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018616990">The <literal>region</literal> argument must be expressed in "la-CO" format.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id221600789141781" role="tablecontent" localize="false">TimeSeparator</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id531600789141795" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561600789141282" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id301600789141619" role="tablecontent">Returns the separator used to format times in the specified region.</paragraph>
+        <paragraph role="paragraph" id="par_id531656018670990">The <literal>region</literal> argument must be expressed in "la-CO" format.</paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <table id="tab_id901611086279902">
+    <tablerow>
+      <tablecell colspan="3"><paragraph id="par_id651606319520519" role="tablehead">List of Methods in the Region Service</paragraph></tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id761611086279902" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_region.xhp#DSTOffset" name="DSTOffset method">DSTOffset</link><br/>
+          <link href="text/sbasic/shared/03/sf_region.xhp#LocalDateTime" name="LocalDateTime method">LocalDateTime</link><br/>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_region.xhp#Number2Text" name="Number2Text method">Number2Text</link><br/>
+          <link href="text/sbasic/shared/03/sf_region.xhp#TimeZoneOffset" name="TimeZoneOffset method">TimeZoneOffset</link><br/>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_region.xhp#UTCDateTime" name="UTCDateTime method">UTCDateTime</link><br/>
+          <link href="text/sbasic/shared/03/sf_region.xhp#UTCNow" name="UTCNow method">UTCNow</link><br/>
+        </paragraph>
+      </tablecell>
+   </tablerow>
+  </table>
+
+  <section id="DSTOffset">
+    <comment> DSTOffset ---------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969187">
+      <bookmark_value>Region service;DSTOffset</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698020" localize="false">DSTOffset</h2>
+    <paragraph role="paragraph" id="par_id71621894830071">Computes the additional Daylight Saving Time (DST) offset, in minutes, that is applicable to a given region and timezone.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897208117">
+      <input>svc.DSTOffset(localdatetime: date, timezone: str, opt locale: str): int</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id401621896675880"><emph>localdatetime</emph>: the local date and time expressed as a date.</paragraph>
+    <paragraph role="paragraph" id="par_id401621896675125"><emph>timezone</emph>: the timezone for which the offset will be calculated.</paragraph>
+    <paragraph role="paragraph" id="par_id401621896675963"><emph>locale</emph>: the locale specifying the country for which the offset will be calculated, given either in "la-CO" or "CO" formats.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id531656022497519">' Calculates the offset applicable in the "America/Los_Angeles" timezone</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id201656022497919">aDateTime = DateSerial(2022, 7, 1) + TimeSerial(16, 0, 0)</paragraph>
+      <paragraph role="bascode" id="bas_id801656022498143">offset = oRegion.DSTOffset(aDateTime, "America/Los_Angeles", "US") ' 60 (minutes)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id601656022498128">aDateTime = DateSerial(2022, 1, 1) + TimeSerial(16, 0, 0)</paragraph>
+      <paragraph role="bascode" id="bas_id831656022498543">offset = oRegion.DSTOffset(aDateTime, "America/Los_Angeles", "US") ' 0 (minutes)</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id761621898860952">import datetime</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id861621898933001">aDateTime = datetime.datetime(2022, 7, 1, 16, 0, 0)</paragraph>
+      <paragraph role="pycode" id="pyc_id871621898933281">offset = oRegion.DSTOffset(aDateTime, "America/Los_Angeles", "US") ' 60 (minutes)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id861621898934287">aDateTime = datetime.datetime(2022, 1, 1, 16, 0, 0)</paragraph>
+      <paragraph role="pycode" id="pyc_id871621898934141">offset = oRegion.DSTOffset(aDateTime, "America/Los_Angeles", "US") ' 0 (minutes)</paragraph>
+    </pycode>
+  </section>
+
+  <section id="LocalDateTime">
+    <comment> LocalDateTime ------------------------------------------------------------------------------------------ </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969630">
+      <bookmark_value>Region service;LocalDateTime</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698124" localize="false">LocalDateTime</h2>
+    <paragraph role="paragraph" id="par_id71621894832058">Computes the local date and time from a UTC date and time.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897208785">
+      <input>svc.LocalDateTime(utcdatetime: date, timezone: str, opt locale: str): date</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id401621896674716"><emph>utcdatetime</emph>: the UTC date and time, expressed using a date object.</paragraph>
+    <paragraph role="paragraph" id="par_id401621896675449"><emph>timezone</emph>: the timezone for which the local time will be calculated.</paragraph>
+    <paragraph role="paragraph" id="par_id401621896675193"><emph>locale</emph>: the locale specifying the country for which the local time will be calculated, given either in "la-CO" or "CO" formats.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id201656022497017">' June 6th, 2022 at 10:30:45 (used here as UTC time)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id803696022498143">UTCTime = DateSerial(2022, 6, 23) + TimeSerial(10, 30, 45)</paragraph>
+      <paragraph role="bascode" id="bas_id531656022497121">' Calculates local time in Sao Paulo, Brazil</paragraph>
+      <paragraph role="bascode" id="bas_id601656022498318">' June 6th, 2022 at 07:30:45</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id830696022498543">localTime = oRegion.LocalDateTime(UTCTime, "America/Sao_Paulo", "BR")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id761621898833352">import datetime</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id861621898933128">utcTime = datetime.datetime(2022, 6, 23, 10, 30, 45)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id871621898933337">localTime = oRegion.LocalDateTime(utcTime, "America/Sao_Paulo", "BR")</paragraph>
+    </pycode>
+  </section>
+
+  <section id="Number2Text">
+    <comment> Number2Text ------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919966650">
+      <bookmark_value>Region service;Number2Text</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698374" localize="false">Number2Text</h2>
+    <paragraph role="paragraph" id="par_id71621894832089">Converts numbers and monetary values into written text for any of the currently supported languages.</paragraph>
+    <tip id="par_id971656026551328">For a list of all supported languages visit the <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1linguistic2_1_1XNumberText.html" name="XNumberText">XNumberText Interface</link> API reference.</tip>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897208441">
+      <input>svc.Number2Text(number: any, opt locale: str): str</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id401621896675306"><emph>number</emph>: the number to be converted into written text. It can be provided either as a numeric type or as a string. When a string is provided, it can be preceded by a prefix informing how the numbers should be written. It is also possible to include ISO 4217 currency codes. See examples below for more information.</paragraph>
+    <paragraph role="paragraph" id="par_id401621896675412"><emph>locale</emph>: the locale defining the language into which the number will be converted to, given either in "la-CO" or "la" formats.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id301656027173020">' Returns "one hundred five"</paragraph>
+      <paragraph role="bascode" id="bas_id531656022496631">numText = oRegion.Number2Text(105, "en-US")</paragraph>
+      <paragraph role="bascode" id="bas_id771656027217144">' Returns: "two point four two"</paragraph>
+      <paragraph role="bascode" id="bas_id201656022493367">numText = oRegion.Number2Text(2.42, "en-US")</paragraph>
+      <paragraph role="bascode" id="bas_id281656027262234">' Returns: "twenty-five euro and ten cents" Notice the "EUR" currency symbol</paragraph>
+      <paragraph role="bascode" id="bas_id201656022497171">numText = oRegion.Number2Text("EUR 25.10", "en-US")</paragraph>
+      <paragraph role="bascode" id="bas_id981656027330132">' Returns: "fifteenth"; Notice the "ordinal" prefix</paragraph>
+      <paragraph role="bascode" id="bas_id841656027330394">numText = oRegion.Number2Text("ordinal 15", "en-US")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id401656027481473">numText = oRegion.Number2Text(105, "en-US")</paragraph>
+      <paragraph role="pycode" id="pyc_id781656027481769">numText = oRegion.Number2Text(2.42, "en-US")</paragraph>
+      <paragraph role="pycode" id="pyc_id951656027482096">numText = oRegion.Number2Text("EUR 25.10", "en-US")</paragraph>
+      <paragraph role="pycode" id="pyc_id231656027482425">numText = oRegion.Number2Text("ordinal 15", "en-US")</paragraph>
+    </pycode>
+    <paragraph role="paragraph" id="par_id801656027524051">To get a list of all supported prefixes in a given language, call <literal>Number2Text</literal> with the special "help" argument, as shown in the example below:</paragraph>
+    <bascode>
+      <paragraph role="bascode" id="bas_id851656027713735">prefixes = oRegion.Number2Text("help")</paragraph>
+      <paragraph role="bascode" id="bas_id716560277139601">MsgBox prefixes</paragraph>
+      <paragraph role="bascode" id="bas_id181656027807107">' The message box will show the following text</paragraph>
+      <paragraph role="bascode" id="bas_id216560277123601">' one, two, three</paragraph>
+      <paragraph role="bascode" id="bas_id361656027712711">' ordinal: first, second, third</paragraph>
+      <paragraph role="bascode" id="bas_id891656027712920">' ordinal-number: 1st, 2nd, 3rd</paragraph>
+      <paragraph role="bascode" id="bas_id611656027713104">' year: nineteen ninety-nine, two thousand, two thousand one</paragraph>
+      <paragraph role="bascode" id="bas_id861656027713288">' currency (for example, USD): two U.S. dollars and fifty cents</paragraph>
+      <paragraph role="bascode" id="bas_id841656027713503">' money USD: two and 50/100 U.S. dollars</paragraph>
+    </bascode>
+    <paragraph role="paragraph" id="par_id781656027840633">The first line in the message box does not have a prefix, which means that it is the standard format. The subsequent lines include the prefix and some examples of numbers using its format.</paragraph>
+    <note id="par_id781656028528520">Each language has its own set of supported prefixes.</note>
+  </section>
+
+  <section id="TimeZoneOffset">
+    <comment> TimeZoneOffset ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919966017">
+      <bookmark_value>Region service;TimeZoneOffset</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199691085" localize="false">TimeZoneOffset</h2>
+    <paragraph role="paragraph" id="par_id71621894832117">Returns the offset between GMT and the given timezone and locale, in minutes.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897203066">
+      <input>svc.TimeZoneOffset(timezone: str, opt locale: str): date</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id401621896675018"><emph>timezone</emph>: the timezone for which the offset to the GMT will be calculated.</paragraph>
+    <paragraph role="paragraph" id="par_id401621896675691"><emph>locale</emph>: the locale specifying the country for which the offset will be calculated, given either in "la-CO" or "CO" formats.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id91656075890495">offset = oRegion.TimeZoneOffset("America/New_York", "US") ' -300</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id211656075890806">offset = oRegion.TimeZoneOffset("Europe/Berlin", "DE") ' 60</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id1001656076044293">offset = oRegion.TimeZoneOffset("America/New_York", "US") # -300</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id501656076044605">offset = oRegion.TimeZoneOffset("Europe/Berlin", "DE") # 60</paragraph>
+    </pycode>
+  </section>
+
+  <section id="UTCDateTime">
+    <comment> UTCDateTime ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919943207">
+      <bookmark_value>Region service;UTCDateTime</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199691808" localize="false">UTCDateTime</h2>
+    <paragraph role="paragraph" id="par_id71621894864217">Returns the UTC date and time considering a given local date and time in a timezone.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897202644">
+      <input>svc.UTCDateTime(localdatetime: date, timezone: str, opt locale: str): date</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id401621896674748"><emph>localdatetime</emph>: the local date and time in a specific timezone expressed as a date.</paragraph>
+    <paragraph role="paragraph" id="par_id401621896675739"><emph>timezone</emph>: the timezone for which the <literal>localdatetime</literal> argument was given.</paragraph>
+    <paragraph role="paragraph" id="par_id401621896675550"><emph>locale</emph>: the locale specifying the country for which the <literal>localdatetime</literal> argument was given, expressed either in "la-CO" or "CO" formats.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id861656077547861">' Date/Time in Berlin, June 23, 2022 at 14:30:00</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id911656077521797">localDT = DateSerial(2022, 6, 23) + TimeSerial(14, 30, 0)</paragraph>
+      <paragraph role="bascode" id="bas_id731656077523173">' The UTC date/time is June 23, 2022 at 12:30:00</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id1001656077527477">utcTime = oRegion.UTCDateTime(localDT, "Europe/Berlin", "DE")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id361656077667354">import datetime</paragraph>
+      <paragraph role="pycode" id="pyc_id901656077667666">localDT = datetime.datetime(2022, 6, 23, 14, 30, 0)</paragraph>
+      <paragraph role="pycode" id="pyc_id521656077682826">utcTime = oRegion.UTCDateTime(localDT, "Europe/Berlin", "DE")</paragraph>
+    </pycode>
+  </section>
+
+  <section id="UTCNow">
+    <comment> UTCNow ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919939587">
+      <bookmark_value>Region service;UTCNow</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199694336" localize="false">UTCNow</h2>
+    <paragraph role="paragraph" id="par_id71621894835287">Returns the current UTC date and time, given a timezone and locale.</paragraph>
+    <paragraph role="paragraph" id="par_id491656078254442">This method uses the current date and time of your operating system to calculate the UTC time.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897201935">
+      <input>svc.UTCNow(timezone: str, opt locale: str): date</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id401621896673318"><emph>timezone</emph>: the timezone for which the current UTC time will be calculated.</paragraph>
+    <paragraph role="paragraph" id="par_id401621896674831"><emph>locale</emph>: the locale specifying the country for which the current UTC time will be calculated, given either in "la-CO" or "CO" formats.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id861656078128374">' Suppose the operating system time is June 23rd, 2022 at 10:42:00</paragraph>
+      <paragraph role="bascode" id="bas_id691656078180784">' If the computer is in Europe/Berlin, then UTC time is June 23rd, 2022 at 08:42:00</paragraph>
+      <paragraph role="bascode" id="bas_id881656078243397">utcTime = oRegion.UTCNow("Europe/Berlin", "DE")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id821656078645252">utcTime = oRegion.UTCNow("Europe/Berlin", "DE")</paragraph>
+    </pycode>
+  </section>
+
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/sf_platform.xhp#PlatformService"/>
+  </section>
+</body>
+</helpdocument>
