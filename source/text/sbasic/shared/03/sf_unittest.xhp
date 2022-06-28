@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+<meta>
+  <topic id="SF_UnitTest" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">SFUnitTests.UnitTest service</title>
+    <filename>/text/sbasic/shared/03/sf_unittest.xhp</filename>
+  </topic>
+  </meta>
+<body>
+<section id="ScriptForge-sf_unittest">
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id501600788079507">
+    <bookmark_value>UnitTest service</bookmark_value>
+  </bookmark>
+</section>
+<section id="abstract">
+  <h1 id="bm_id681600788076499"><variable id="UnitTestService"><link href="text/sbasic/shared/03/sf_unittest.xhp" name="UnitTest service"><literal>SFUnitTests</literal>.<literal>UnitTest</literal> service</link></variable></h1>
+  <paragraph role="paragraph" id="par_id181600788076612">The <literal>UnitTest</literal> service provides a framework for automating unit tests using the Basic language, including the ability to:</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id301600788076785" role="listitem">Aggregate test cases into test suites and unit tests.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id1001600788076848" role="listitem">Share setup and shutdown code among test cases.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id67160078807676" role="listitem">Report test results using the <literal>Console</literal>.</paragraph>
+    </listitem>
+  </list>
+</section>
+  <note id="par_id411656351918942">Both the unit tests and the code to be tested must be written in Basic. The code being tested may call functions written in other languages.</note>
+  <warning id="par_id601656621416963">The <literal>UnitTest</literal> service is not available for Python scripts.</warning>
+
+  <h2 id="hd_id491656351958796">Definitions</h2>
+  <h3 id="hd_id31656351967453">Test Case</h3>
+  <paragraph role="paragraph" id="par_id571656351977812">A test case is the individual unit of testing. It checks for a specific response to a particular set of inputs.</paragraph>
+  <paragraph role="paragraph" id="par_id391656352078166">In the <literal>UnitTest</literal> service, a test case is represented by a single Basic <literal>Sub</literal> whose name starts with a common prefix (the default is "Test_").</paragraph>
+  <paragraph role="paragraph" id="par_id701656352338645">The test case fails if one of the <literal>AssertX</literal> methods returns <literal>False</literal>.</paragraph>
+  <h3 id="hd_id431656352497598">Test Suite</h3>
+  <paragraph role="paragraph" id="par_id771656352513789">A test suite is a collection of test cases that should be executed together.</paragraph>
+  <paragraph role="paragraph" id="par_id941656352597973">All test cases of a test suite are stored in a single Basic module.</paragraph>
+  <paragraph role="paragraph" id="par_id51656352696989">A test suite may implement the <literal>SetUp</literal> and <literal>TearDown</literal> methods to prepare for test cases in its module.</paragraph>
+  <h3 id="hd_id351656352884283">Unit Test</h3>
+  <paragraph role="paragraph" id="par_id461656352894003">A full unit test consists of a set of test suites in the same Basic library.</paragraph>
+
+  <h2 id="hd_id991656353328287">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>UnitTest</literal> service the <literal>ScriptForge</literal> library needs to be loaded or imported:</paragraph>
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#importLibs"/>
+  <h3 id="hd_id941656357981021">Simple mode</h3>
+  <paragraph role="paragraph" id="par_id381656357996613">Invoke the service in <emph>simple mode</emph> to call <literal>AssertX</literal> functions without having to build the full hierarchy of test suites and test cases.</paragraph>
+  <paragraph role="paragraph" id="par_id331656358092318">In simple mode, the service is invoked inside the test case, as shown in the example below:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id561656358185215">Sub SimpleTest</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id116563581854320">    On Local Error GoTo CatchError</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id221656358185634">    Dim myTest As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id801656358185805">    myTest = CreateScriptService("UnitTest")</paragraph>
+    <paragraph role="bascode" id="bas_id501656358186053">    ' A few dummy tests</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791656421185689">    myTest.AssertEqual(1 + 1, 2)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id961656421186032">    myTest.AssertEqual(1 - 1, 0)</paragraph>
+    <paragraph role="bascode" id="bas_id981656421186233">    MsgBox("All tests passed")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id691656421186433">    Exit Sub</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id591656421186681">CatchError:</paragraph>
+    <paragraph role="bascode" id="bas_id971656421186872">    myTest.ReportError("A test failed")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id391656421284881">End Sub</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id321656421319505">In this example, if any of the <literal>AssertEqual</literal> calls fail, the interpreter will go to the <literal>CatchError</literal> label and report the error by calling the <literal>ReportError</literal> method.</paragraph>
+  <h3 id="hd_id341656353807950">Full mode</h3>
+  <paragraph role="paragraph" id="par_id881656353390116">When invoked in <emph>full mode</emph>, the service creation is external to the test code and all tests are organized into test cases and test suites inside a single library.</paragraph>
+  <paragraph role="paragraph" id="par_id41656354017140">The following example creates a <literal>UnitTest</literal> instance whose tests are located inside the current document (<literal>ThisComponent</literal>) in the "Tests" library.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id171656354156234">GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id641656354156652">Dim myUnitTest As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id611656354156951">myUnitTest = CreateScriptService("UnitTest", ThisComponent, "Tests")</paragraph>
+  </bascode>
+  <h3 id="hd_id731656421609300">A minimalist example in full mode</h3>
+  <paragraph role="paragraph" id="par_id721656421629357">Consider that a ODS file has a module named "MathUtils" in its "Standard" library with the following code:</paragraph>
+  <bascode>
+    <paragraph role="bascode" id="bas_id821656421926586">' Code in module Standard.MathUtils</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791656421927279">Function Sum(a, b) As Double</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791656421927530">    Sum = a + b</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id321656421927738">End Function</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id141656421927930"></paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id611656421928122">Function Multiply(a, b) As Double</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id581656421928322">    Multiply = a * b</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id101656421928786">End Function</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id871656422027581">To create a full test suite, consider that a new library named "Tests" is created in the file with a single module "AllTests" containing the code below:</paragraph>
+  <bascode>
+    <paragraph role="bascode" id="bas_id731656422341011">' Code in module Tests.AllTests</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id241656422341227">Sub Main()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id121656422341403">    GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id401656422341627">    Dim test As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id841656422341836">    test = CreateScriptService("UnitTest", ThisComponent, "Tests")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id616564223542052">    test.RunTest("AllTests")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id821656422342284">    test.Dispose()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id681656422342516">End Sub</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id781656422342732"></paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id451656422342948">Sub Setup(test)</paragraph>
+    <paragraph role="bascode" id="bas_id671656422476689">    ' Preparation code ran prior to the first test case</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id151656422476955">    Dim exc As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id981656422477190">    exc = CreateScriptService("Exception")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id991656422477719">    exc.Console(Modal := False)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id151656422477959">End Sub</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id611656422478230"></paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id316564223478487">Sub TearDown(test)</paragraph>
+    <paragraph role="bascode" id="bas_id621656422479007">    ' Optional cleanup code called after the last test case</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id991656422479239">End Sub</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id811656422683092"></paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id711656422683636">Sub Test_Sum(test)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id816564522683844">    On Local Error GoTo CatchError</paragraph>
+    <paragraph role="bascode" id="bas_id141656422684085">    test.AssertEqual(Sum(1, 1), 2, "Sum two positive integers")</paragraph>
+    <paragraph role="bascode" id="bas_id491656422684324">    test.AssertEqual(Sum(-10, 20), 10, "Sum of negative and positive integers")</paragraph>
+    <paragraph role="bascode" id="bas_id201656422684556">    test.AssertEqual(Sum(1.5, 1), 2.5, "Sum of float and integer values")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id211656422684772">    Exit Sub</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id601656422684988">CatchError:</paragraph>
+    <paragraph role="bascode" id="bas_id716356422685228">    test.ReportError("Sum method is broken")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id181656422685436">End Sub</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id951656422832165"></paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id271656422832448">Sub Test_Multiply(test)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531656422832728">    On Local Error GoTo CatchError</paragraph>
+    <paragraph role="bascode" id="bas_id416564228330400">    test.AssertEqual(Multiply(2, 2), 4, "Multiply two positive integers")</paragraph>
+    <paragraph role="bascode" id="bas_id231656422833240">    test.AssertEqual(Multiply(-4, 2), -8, "Multiply negative and positive integers")</paragraph>
+    <paragraph role="bascode" id="bas_id931656422833480">    test.AssertEqual(Multiply(1.5, 3), 4.5, "Multiply of float and integer values")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id471656422833729">    Exit Sub</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id616564228334928">CatchError:</paragraph>
+    <paragraph role="bascode" id="bas_id151656422834184">    test.ReportError("Multiply method is broken")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id271656422834376">End Sub</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id681656423030706">The test suite above consists of two test cases <literal>Test_Sum</literal> and <literal>Test_Multiply</literal>. To run all tests simply run the <literal>Main</literal> method from the "AllTests" module.</paragraph>
+  <paragraph role="paragraph" id="par_id681656423146183">The <link href="text/sbasic/shared/03/sf_exception.xhp#Console" name="Console"><literal>Console</literal></link> from the <literal>Exception</literal> service is used as the default output to print test results. After running the example above, the following output will be displayed in the console:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id471656424558171">' RUNTEST ENTER testsuite='Tests.AllTests', pattern='Test_*'</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id881656424560234">'   SETUP Tests.AllTests.Setup() ENTER</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id816565423395738">'   SETUP Tests.AllTests.Setup() EXIT</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id981656423396035">'   TESTCASE Tests.AllTests.Test_Multiply() ENTER</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id416564233956290">'   TESTCASE Tests.AllTests.Test_Multiply() EXIT (0,017 sec)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id731656423396546">'   TESTCASE Tests.AllTests.Test_Sum() ENTER</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id781656423396778">'   TESTCASE Tests.AllTests.Test_Sum() EXIT (0,016 sec)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id321656423397506">'   TEARDOWN Tests.AllTests.TearDown() ENTER</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id441656423397714">'   TEARDOWN Tests.AllTests.TearDown() EXIT</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id151656423492374">' RUNTEST EXIT testsuite='Tests.AllTests' (0,223 sec)</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id161656423510879">If any of the <literal>AssertEqual</literal> methods fails during these tests, an error message is added to the console.</paragraph>
+
+  <bookmark xml-lang="en-US" branch="index" localize="false" id="bm_id11161490151416">
+    <bookmark_value>Region service;LongMessage</bookmark_value>
+    <bookmark_value>Region service;ReturnCode</bookmark_value>
+    <bookmark_value>Region service;Verbose</bookmark_value>
+    <bookmark_value>Region service;WhenAssertionFails</bookmark_value>
+  </bookmark>
+
+  <h2 id="hd_id711600788076834">Properties</h2>
+  <table id="tab_id701600788076583">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id461600788076917" role="tablehead">Name</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id221600788076591" role="tablehead">Readonly</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id761600788076328" role="tablehead">Type</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id67160078807636" role="tablehead">Description</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id491600788076621" role="tablecontent" localize="false">LongMessage</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id311600788076756" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831600788076785" role="tablecontent" localize="false">Boolean</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id441600788076826" role="tablecontent">When set to <literal>True</literal> (default) the console shows the standard message appended to the message provided by the tester. When <literal>False</literal>, only the message defined by the tester is used.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id941600788076595" role="tablecontent" localize="false">ReturnCode</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id49160078807654" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id961600788076376" role="tablecontent" localize="false">Integer</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id81600788076419" role="tablecontent">Value returned by <literal>RunTest</literal> after the unit test is finished. Next is a list of possible values:</paragraph>
+        <paragraph role="paragraph" id="par_id141656425588260">0 - Test finished without errors or test not started<br/>
+        1 - An assertion within a test case returned <literal>False</literal><br/>
+        2 - A <literal>SkipTest</literal> was issued by the <literal>Setup</literal> method or by one of the test cases.<br/>
+        3 - Abnormal end of test</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id721600788076638" role="tablecontent" localize="false">Verbose</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id711600788076534" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id911600788076842" localize="false" role="tablecontent">Boolean</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541600788076645" role="tablecontent">When set to <literal>True</literal>, all assertions are reported in the console (failing or not). When <literal>False</literal> (default), only failing assertions are reported.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id961600788076890" role="tablecontent" localize="false">WhenAssertionFails</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id891600788076190" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id761600788076562" role="tablecontent" localize="false">Integer</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id91600788076674" role="tablecontent">Defines what is done when an assertion fails. Next is a list of possible values:</paragraph>
+        <paragraph role="paragraph" id="par_id671656425606077">0 - Ignore the failure and continue running the test<br/>
+        1 - The <literal>TearDown</literal> method in the module is executed in the current test suite and the next suite is started (default in full mode).<br/>
+        2 - Stop immediately (default in simple mode)</paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <table id="tab_id901611086279902">
+    <tablerow>
+      <tablecell colspan="3"><paragraph id="par_id651606319520519" role="tablehead">List of Methods in the UnitTest Service</paragraph></tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id761611086279902" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertAlmostEqual" name="AssertAlmostEqual method">AssertAlmostEqual</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertEqual" name="AssertEqual method">AssertEqual</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertFalse" name="AssertFalse method">AssertFalse</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertGreater" name="AssertGreater method">AssertGreater</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertGreaterEqual" name="AssertGreaterEqual method">AssertGreaterEqual</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertIn" name="AssertIn method">AssertIn</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertIsInstance" name="AssertIsInstance method">AssertIsInstance</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertIsNothing" name="AssertIsNothing method">AssertIsNothing</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertLike" name="AssertLike method">AssertLike</link><br/>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertNotRegex" name="AssertNotRegex method">AssertNotRegex</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertIsNull" name="AssertIsNull method">AssertIsNull</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertLess" name="AssertLess method">AssertLess</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertLessEqual" name="AssertLessEqual method">AssertLessEqual</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertNotAlmostEqual" name="AssertNotAlmostEqual method">AssertNotAlmostEqual</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertNotEqual" name="AssertNotEqual method">AssertNotEqual</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertNotIn" name="AssertNotIn method">AssertNotIn</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertNotInstance" name="AssertNotInstance method">AssertNotInstance</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertNotLike" name="AssertNotLike method">AssertNotLike</link><br/>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertNotNothing" name="AssertNotNothing method">AssertNotNothing</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertNotNull" name="AssertNotNull method">AssertNotNull</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertRegex" name="AssertRegex method">AssertRegex</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertTrue" name="AssertTrue method">AssertTrue</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#Fail" name="Fail method">Fail</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#Log" name="Log method">Log</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#ReportError" name="ReportError method">ReportError</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#RunTest" name="RunTest method">RunTest</link><br/>
+          <link href="text/sbasic/shared/03/sf_unittest.xhp#SkipTest" name="SkipTest method">SkipTest</link><br/>
+        </paragraph>
+      </tablecell>
+   </tablerow>
+  </table>
+
+  <h2 id="hd_id201656428230690">Arguments of the AssertX methods</h2>
+  <paragraph role="paragraph" id="par_id591656428251124">All assertions test one or two expressions, referred in the remainder of this help page as <emph>A</emph> and <emph>B</emph>. They are always the first one or two arguments in the <literal>AssertX</literal> method.</paragraph>
+  <paragraph role="paragraph" id="par_id231656428367462">All <literal>AssertX</literal> methods accept a <literal>message</literal> argument specifying a custom message to be reported in the console regarding the assertion. By default an empty string is used. This argument is always in the last position of the assertion.</paragraph>
+  <paragraph role="paragraph" id="par_id91656451227291">Some <literal>AssertX</literal> methods also accept additional arguments, as described by their syntaxes below.</paragraph>
+
+  <section id="AssertAlmostEqual">
+    <comment> AssertAlmostEqual -------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919665187">
+      <bookmark_value>UnitTest service;AssertAlmostEqual</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698020" localize="false">AssertAlmostEqual</h2>
+    <paragraph role="paragraph" id="par_id71621894833351">Returns <literal>True</literal> when <emph>A</emph> and <emph>B</emph> are numerical values and are considered to be close to each other, given a relative tolerance.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897232817">
+      <input>svc.AssertAlmostEqual(a: any, b: any, tolerance: double = 1E-09, message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id241656426318310">This assertion returns <literal>True</literal> if the two conditions below are met:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id861656426361793" role="listitem">A and B can be converted to the <literal>Double</literal> type.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id851656426362072" role="listitem">The absolute difference between A and B divided by the largest absolute value of A or B is <emph>lower</emph> than the value specified in <literal>tolerance</literal>.</paragraph>
+      </listitem>
+    </list>
+  </section>
+
+  <section id="AssertEqual">
+    <comment> AssertEqual -------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919960367">
+      <bookmark_value>UnitTest service;AssertEqual</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id2015891996965210" localize="false">AssertEqual</h2>
+    <paragraph role="paragraph" id="par_id71621894830182">Returns <literal>True</literal> when <emph>A</emph> and <emph>B</emph> are considered to be equal.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897208117">
+      <input>svc.AssertEqual(a: any, b: any, message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id241656426317440">When A and B are scalars, <literal>True</literal> is returned if:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id861656426361808" role="listitem">Both expressions have the same <literal>VarType</literal> or are both numeric.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id851656426362362" role="listitem">Booleans and numeric values are compared with the = operator.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id201656427500186" role="listitem">Strings are compared with the builtin <literal>StrComp</literal> function. The comparison is case-sensitive.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id861656427531067" role="listitem">Dates and times are compared up to the second.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id361656427557940" role="listitem"><literal>Null</literal>, <literal>Empty</literal> and <literal>Nothing</literal> are not equal, but <literal>AssertEqual(Nothing, Nothing)</literal> returns <literal>True</literal>.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id31656427624016" role="listitem">UNO objects are compared with the builtin <literal>EqualUnoObjects</literal> method.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id301656427695507" role="listitem">Note that Basic objects are never equal.</paragraph>
+      </listitem>
+    </list>
+    <paragraph role="paragraph" id="par_id691656427837518">When A and B are arrays, <literal>True</literal> is returned if:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id831656427894608" role="listitem">Both arrays have the same number of dimensions (up to 2 dimensions) and their lower and upper bounds are identical for all dimensions.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id851656427895040" role="listitem">All items in both arrays are equal, one by one.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id571656427895400" role="listitem">Two empty arrays are considered to be equal.</paragraph>
+      </listitem>
+    </list>
+  </section>
+
+  <section id="AssertFalse">
+    <comment> AssertFalse -------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969204">
+      <bookmark_value>UnitTest service;AssertFalse</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199693690" localize="false">AssertFalse</h2>
+    <paragraph role="paragraph" id="par_id71621894830071">Returns <literal>True</literal> when the type of A is <literal>Boolean</literal> and its value is <literal>False</literal>.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897203045">
+      <input>svc.AssertFalse(a: any, message: str = ""): bool</input>
+    </paragraph>
+  </section>
+
+  <section id="AssertGreater">
+    <comment> AssertGreater ------------------------------------------------------------------------------------------ </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969108">
+      <bookmark_value>UnitTest service;AssertGreater</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199665410" localize="false">AssertGreater</h2>
+    <paragraph role="paragraph" id="par_id71621894830337">Returns <literal>True</literal> when A is greater than B.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897207037">
+      <input>svc.AssertGreater(a: any, b: any, message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id991656428670110">The comparison between A and B assumes the following:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id591656428689390" role="listitem">Eligible data types are <literal>String</literal>, <literal>Date</literal> or numeric.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id516564286489629" role="listitem">Both expressions must have the same <literal>VarType</literal> or both must be numeric.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id211656428689774" role="listitem">String comparisons are case-sensitive.</paragraph>
+      </listitem>
+    </list>
+  </section>
+
+  <section id="AssertGreaterEqual">
+    <comment> AssertGreaterEqual ------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919963398">
+      <bookmark_value>UnitTest service;AssertGreaterEqual</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199666322" localize="false">AssertGreaterEqual</h2>
+    <paragraph role="paragraph" id="par_id71621894838548">Returns <literal>True</literal> when A is greater than or equal to B.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897203210">
+      <input>svc.AssertGreaterEqual(a: any, b: any, message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id991656428670202">The comparison between A and B assumes the following:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id591656428689207" role="listitem">Eligible data types are <literal>String</literal>, <literal>Date</literal> or numeric.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id516564286455529" role="listitem">Both expressions must have the same <literal>VarType</literal> or both must be numeric.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id211656428663284" role="listitem">String comparisons are case-sensitive.</paragraph>
+      </listitem>
+    </list>
+  </section>
+
+  <section id="AssertIn">
+    <comment> AssertIn ----------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919964658">
+      <bookmark_value>UnitTest service;AssertIn</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199666309" localize="false">AssertIn</h2>
+    <paragraph role="paragraph" id="par_id71621894831448">Returns <literal>True</literal> when A is found in B.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897203344">
+      <input>svc.AssertIn(a: any, b: any, message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id991656428677632">This assertion assumes the following:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id591656428688858" role="listitem">Expression B may be a 1D array, a ScriptForge <literal>Dictionary</literal> object or a string.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id516564286454219" role="listitem">When expression B is a 1D array, expression A may be a date or a numeric value.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id51656678140228" role="listitem">When expression B is a ScriptForge <literal>Dictionary</literal> object, then string A is searched for among the keys in B.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id211656428663299" role="listitem">String comparisons are case-sensitive.</paragraph>
+      </listitem>
+    </list>
+  </section>
+
+  <section id="AssertIsInstance">
+    <comment> AssertIsInstance --------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919963087">
+      <bookmark_value>UnitTest service;AssertIsInstance</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199666212" localize="false">AssertIsInstance</h2>
+    <paragraph role="paragraph" id="par_id71621894831399">Returns <literal>True</literal> when A is an instance of a specified object type, specified as a string containing the type name.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897201284">
+      <input>svc.AssertIsInstance(a: any, objecttype: str, message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id991656428676302">Expression A may be one of the following:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id591656428676428" role="listitem">A ScriptForge object. In this case, the <literal>objecttype</literal> argument is a string such as "DICTIONARY", "calc", "Dialog", etc.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id516564286456619" role="listitem">A UNO object. In this case, the <literal>objecttype</literal> argument must be a string identical to the value returned by the <literal>SF_Session.UnoObjectType()</literal> method.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id211656428680559" role="listitem">An Array. In this case, the <literal>objecttype</literal> argument is expected to be "array".</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id891656439858783" role="listitem">Any other variable (neither an <literal>Object</literal> nor an <literal>Array</literal>). In this case, <literal>objecttype</literal> is a string matching the value returned by the builtin <literal>TypeName</literal> function.</paragraph>
+      </listitem>
+    </list>
+  </section>
+
+  <section id="AssertIsNothing">
+    <comment> AssertIsNothing ---------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919936404">
+      <bookmark_value>UnitTest service;AssertIsNothing</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199693766" localize="false">AssertIsNothing</h2>
+    <paragraph role="paragraph" id="par_id71621894830197">Returns <literal>True</literal> when A is an object that has the <literal>Nothing</literal> value.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897221145">
+      <input>svc.AssertIsNothing(a: any, message: str = ""): bool</input>
+    </paragraph>
+  </section>
+
+  <section id="AssertIsNull">
+    <comment> AssertIsNull ------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969366">
+      <bookmark_value>UnitTest service;AssertIsNull</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199693825" localize="false">AssertIsNull</h2>
+    <paragraph role="paragraph" id="par_id71621894863251">Returns <literal>True</literal> when A has the <literal>Null</literal> value.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897202545">
+      <input>svc.AssertIsNull(a: any, message: str = ""): bool</input>
+    </paragraph>
+  </section>
+
+  <section id="AssertLess">
+    <comment> AssertLess --------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919964338">
+      <bookmark_value>UnitTest service;AssertLess</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199663022" localize="false">AssertLess</h2>
+    <paragraph role="paragraph" id="par_id71621894838018">Returns <literal>True</literal> when A is less than B.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id59162189726574">
+      <input>svc.AssertLess(a: any, b: any, message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id991656428672332">The comparison between A and B assumes the following:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id591656428689311" role="listitem">Eligible data types are <literal>String</literal>, <literal>Date</literal> or numeric.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id516564286265809" role="listitem">Both expressions must have the same <literal>VarType</literal> or both must be numeric.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id211656428660996" role="listitem">String comparisons are case-sensitive.</paragraph>
+      </listitem>
+    </list>
+  </section>
+
+  <section id="AssertLessEqual">
+    <comment> AssertLessEqual ---------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919964174">
+      <bookmark_value>UnitTest service;AssertLessEqual</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199661992" localize="false">AssertLessEqual</h2>
+    <paragraph role="paragraph" id="par_id71621894208818">Returns <literal>True</literal> when A is less than or equal to B.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id59162189720864">
+      <input>svc.AssertLessEqual(a: any, b: any, message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id991656428606322">The comparison between A and B assumes the following:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id591656428682251" role="listitem">Eligible data types are <literal>String</literal>, <literal>Date</literal> or numeric.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id516564286265711" role="listitem">Both expressions must have the same <literal>VarType</literal> or both must be numeric.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id211656428660176" role="listitem">String comparisons are case-sensitive.</paragraph>
+      </listitem>
+    </list>
+  </section>
+
+  <section id="AssertLike">
+    <comment> AssertLike --------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919968226">
+      <bookmark_value>UnitTest service;AssertLike</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199611825" localize="false">AssertLike</h2>
+    <paragraph role="paragraph" id="par_id71621894862651">Returns <literal>True</literal> if string A matches a given pattern containing wildcards.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897207315">
+      <input>svc.AssertLike(a: any, pattern: str = "", message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id51656446203238">The following wildcards are accepted:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id661656446233484" role="listitem">? - Represents any single character.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id681656446233831" role="listitem">* - Represents zero, one, or multiple characters.</paragraph>
+      </listitem>
+    </list>
+  </section>
+
+  <section id="AssertNotAlmostEqual">
+    <comment> AssertNotAlmostEqual ----------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919665187">
+      <bookmark_value>UnitTest service;AssertNotAlmostEqual</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id2015891996638414" localize="false">AssertNotAlmostEqual</h2>
+    <paragraph role="paragraph" id="par_id71621894832641">Returns <literal>True</literal> when <emph>A</emph> and <emph>B</emph> are numerical values and are <emph>not</emph> considered to be close to each other, given a relative tolerance.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id5916218972331205">
+      <input>svc.AssertNotAlmostEqual(a: any, b: any, tolerance: double = 1E-09, message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id241656426317970">This assertion returns <literal>True</literal> if the two conditions below are met:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id861656426361686" role="listitem">A and B can be converted to the <literal>Double</literal> type.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id851656426332052" role="listitem">The absolute difference between A and B divided by the largest absolute value of A or B is <emph>greater</emph> than the value specified in <literal>tolerance</literal>.</paragraph>
+      </listitem>
+    </list>
+  </section>
+
+  <section id="AssertNotEqual">
+    <comment> AssertNotEqual ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919961047">
+      <bookmark_value>UnitTest service;AssertNotEqual</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id2015891996963410" localize="false">AssertNotEqual</h2>
+    <paragraph role="paragraph" id="par_id71621894862842">Returns <literal>True</literal> when <emph>A</emph> and <emph>B</emph> are <emph>not</emph> considered to be equal.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897227497">
+      <input>svc.AssertNotEqual(a: any, b: any, message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id581656446598206">This method works both for scalars and arrays. Read the instructions in <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertEqual" name="AssertEqual"><literal>AssertEqual</literal></link> for more information on what equality means in this assertion.</paragraph>
+  </section>
+
+  <section id="AssertNotIn">
+    <comment> AssertNotIn -------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919932358">
+      <bookmark_value>UnitTest service;AssertNotIn</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199617409" localize="false">AssertNotIn</h2>
+    <paragraph role="paragraph" id="par_id71621894832638">Returns <literal>True</literal> when A (a string) is <emph>not</emph> found in B.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897212544">
+      <input>svc.AssertNotIn(a: any, b: any, message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id271656446302516">Read the instructions in <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertIn" name="AssertIn"><literal>AssertIn</literal></link> for more information on the assumptions of this method.</paragraph>
+  </section>
+
+  <section id="AssertNotInstance">
+    <comment> AssertNotInstance -------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919963186">
+      <bookmark_value>UnitTest service;AssertNotInstance</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199676312" localize="false">AssertNotInstance</h2>
+    <paragraph role="paragraph" id="par_id71621894831403">Returns <literal>True</literal> when A is <emph>not</emph> an instance of a specified object type.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897136284">
+      <input>svc.AssertNotInstance(a: any, objecttype: str, message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id271656446949396">Read the instructions in <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertIsInstance" name="AssertIsInstance"><literal>AssertIsInstance</literal></link> for more information on the assumptions of this method.</paragraph>
+  </section>
+
+  <section id="AssertNotLike">
+    <comment> AssertNotLike ------------------------------------------------------------------------------------------ </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919967256">
+      <bookmark_value>UnitTest service;AssertNotLike</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199612225" localize="false">AssertNotLike</h2>
+    <paragraph role="paragraph" id="par_id71621894863961">Returns <literal>True</literal> if string A <emph>does not</emph> match a given pattern containing wildcards.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897237415">
+      <input>svc.AssertNotLike(a: any, pattern: str = "", message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id271656446258396">Read the instructions in <link href="text/sbasic/shared/03/sf_unittest.xhp#AssertLike" name="AssertLike"><literal>AssertLike</literal></link> for more information on the assumptions of this method.</paragraph>
+  </section>
+
+  <section id="AssertNotNothing">
+    <comment> AssertNotNothing --------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158914467256">
+      <bookmark_value>UnitTest service;AssertNotNothing</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199743855" localize="false">AssertNotNothing</h2>
+    <paragraph role="paragraph" id="par_id71621894420261">Returns <literal>True</literal> except when A is an object that has the <literal>Nothing</literal> value.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621843337415">
+      <input>svc.AssertNotNothing(a: any, message: str = ""): bool</input>
+    </paragraph>
+  </section>
+
+  <section id="AssertNotNull">
+    <comment> AssertNotNull ------------------------------------------------------------------------------------------ </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919966555">
+      <bookmark_value>UnitTest service;AssertNotNull</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199602825" localize="false">AssertNotNull</h2>
+    <paragraph role="paragraph" id="par_id71621894876551">Returns <literal>True</literal> except when A has the <literal>Null</literal> value.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621897223945">
+      <input>svc.AssertNotNull(a: any, message: str = ""): bool</input>
+    </paragraph>
+  </section>
+
+  <section id="AssertNotRegex">
+    <comment> AssertNotRegex ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919964125">
+      <bookmark_value>UnitTest service;AssertNotRegex</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199602432" localize="false">AssertNotRegex</h2>
+    <paragraph role="paragraph" id="par_id71621894860331">Returns <literal>True</literal> when A is <emph>not</emph> a string or <emph>does not</emph> match the given regular expression.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621898163945">
+      <input>svc.AssertNotRegex(a: any, regex: str = "", message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id931656448163772">The comparison is case-sensitive.</paragraph>
+  </section>
+
+  <section id="AssertRegex">
+    <comment> AssertRegex -------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919933525">
+      <bookmark_value>UnitTest service;AssertRegex</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199601132" localize="false">AssertRegex</h2>
+    <paragraph role="paragraph" id="par_id71621894836031">Returns <literal>True</literal> when string A matches the given regular expression.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621898142945">
+      <input>svc.AssertRegex(a: any, regex: str = "", message: str = ""): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id931656448163625">The comparison is case-sensitive.</paragraph>
+  </section>
+
+  <section id="AssertTrue">
+    <comment> AssertTrue --------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919986595">
+      <bookmark_value>UnitTest service;AssertTrue</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id20158919962312" localize="false">AssertTrue</h2>
+    <paragraph role="paragraph" id="par_id71621894063449">Returns <literal>True</literal> when expression A is a <literal>Boolean</literal> and its value is <literal>True</literal>.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621898125645">
+      <input>svc.AssertTrue(a: any, message: str = ""): bool</input>
+    </paragraph>
+  </section>
+
+  <section id="Fail">
+    <comment> Fail --------------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919986595">
+      <bookmark_value>UnitTest service;Fail</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id20158919736312" localize="false">Fail</h2>
+    <paragraph role="paragraph" id="par_id71621894086431">Forces a test case to fail.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621890114545">
+      <input>svc.Fail(message: str = "")</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id751656448550854">A message can be provided to be reported in the console.</paragraph>
+  </section>
+
+  <section id="Log">
+    <comment> Log ---------------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919986595">
+      <bookmark_value>UnitTest service;Log</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id20158919909612" localize="false">Log</h2>
+    <paragraph role="paragraph" id="par_id71621894063631">Writes the specified <literal>message</literal> in the console.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621898149545">
+      <input>svc.Log(message: str = "")</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id751656448510894">A message can be provided to be reported in the console.</paragraph>
+  </section>
+
+  <section id="ReportError">
+    <comment> ReportError -------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919949695">
+      <bookmark_value>UnitTest service;ReportError</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id20158919658972" localize="false">ReportError</h2>
+    <paragraph role="paragraph" id="par_id71621894199311">Displays a message box with a message and the current property values of the <literal>Exception</literal> service.</paragraph>
+    <paragraph role="paragraph" id="par_id851656622819891">This method is commonly used in the exception handling section of the <literal>Sub</literal> containing the test case, which is reached when an assertion fails or when the <literal>Fail</literal> method is called.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591639698323545">
+      <input>svc.ReportError(message: str = "")</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id291656448892783">Depending on the value of the property <literal>WhenAssertionFails</literal>, the test execution may continue or be interrupted.</paragraph>
+    <paragraph role="paragraph" id="par_id551656448951538">When writing test cases it is recommended to include a call to the <literal>ReportError</literal> method in the exception handling section of the <literal>Sub</literal>.</paragraph>
+    <paragraph role="paragraph" id="par_id711656449128572">If the property <literal>LongMessage</literal> is equal to <literal>True</literal>, the specified <literal>message</literal> is followed by the standard error message description. Otherwise only the <literal>message</literal> is displayed.</paragraph>
+  </section>
+
+  <section id="RunTest">
+    <comment> RunTest ------------------------------------------------------------------------------------------------ </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919984145">
+      <bookmark_value>UnitTest service;RunTest</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id20158919960992" localize="false">RunTest</h2>
+    <paragraph role="paragraph" id="par_id71621894063361">Executes the complete test suite implemented in the specified module. Each test case is run independently from each other.</paragraph>
+    <paragraph role="paragraph" id="par_id201656449688023">Running a test suite consists of:</paragraph>
+    <list type="ordered">
+      <listitem>
+        <paragraph id="par_id751656449718279" role="listitem">Executing the optional <literal>Setup</literal> method present in the module.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id611656449718505" role="listitem">Executing once each test case, in no specific order.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id461656449718687" role="listitem">Executing the optional <literal>TearDown</literal> method present in the module.</paragraph>
+      </listitem>
+    </list>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591621898140525">
+      <input>svc.RunTest(testsuite: str, testcasepattern: str = "", message: str = ""): int</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id751656448521144">The argument <literal>testcasepattern</literal> specifies a pattern composed of "?" and "*" wildcards to select which test cases will be run. The comparison is not case-sensitive.</paragraph>
+    <paragraph role="paragraph" id="par_id81656448858455">If a <literal>message</literal> is provided, it is written to the console when the test starts.</paragraph>
+  </section>
+
+  <section id="SkipTest">
+    <comment> SkipTest ----------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919949695">
+      <bookmark_value>UnitTest service;SkipTest</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id20158919952512" localize="false">SkipTest</h2>
+    <paragraph role="paragraph" id="par_id71621894064311">Interrupts the running test suite without calling the <literal>TearDown</literal> method.</paragraph>
+    <paragraph role="paragraph" id="par_id781656450313544">Skipping a test is usually meaningful during the <literal>Setup</literal> method when not all conditions to run the test are met.</paragraph>
+    <paragraph role="paragraph" id="par_id531656450405799">It is up to the <literal>Setup</literal> method to exit the <literal>Sub</literal> shortly after the <literal>SkipTest</literal> call.</paragraph>
+    <paragraph role="paragraph" id="par_id581656450504005">If <literal>SkipTest</literal> is called from within a test case, the execution of the test suite is interrupted and the remaining test cases are not run. Keep in mind that the order in which test cases are run is arbitrary within a test suite.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id591639698149545">
+      <input>svc.SkipTest(message: str = "")</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id81656449618455">If a <literal>message</literal> is provided, it is written to the console.</paragraph>
+  </section>
+
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/sf_exception.xhp#ExceptionService"/>
+  </section>
+</body>
+</helpdocument>
