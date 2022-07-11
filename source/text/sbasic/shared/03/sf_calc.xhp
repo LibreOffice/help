@@ -796,6 +796,7 @@
   <paragraph role="paragraph" id="par_id771592919932260"><emph>wholecolumn</emph>: If this option is set to <literal>True</literal> the entire column will be deleted from the sheet. The default value is <literal>False</literal>, which means that the deleted column will be limited to the height of the specified <literal>range</literal>.</paragraph>
   <paragraph role="paragraph" id="par_id771592919915974"><emph>filterformula</emph>: The filter to be applied to each column to determine whether or not it will be deleted. The filter is expressed as a Calc formula that should be applied to the first column. When the formula returns <emph>True</emph> for a column, that column will be deleted. The default filter deletes all empty columns.</paragraph>
   <paragraph role="paragraph" id="par_id361652271022647">For example, suppose range <emph>A1:J200</emph> is selected (height = 200), so the default formula is <emph>=(COUNTBLANK(A1:A200)=200)</emph>. This means that if all 200 cells are empty in the first column (Column A), then the column is deleted. Note that the formula is expressed with respect to the first column only. Internally the <literal>CompactLeft</literal> method will generalize this formula for all the remaining columns.</paragraph>
+  <note id="par_id431657568414625">The formula specified in the <literal>filterformula</literal> argument must be expressed in English.</note>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -836,6 +837,7 @@
   <paragraph role="paragraph" id="par_id771592919921160"><emph>wholerow</emph>: If this option is set to <literal>True</literal> the entire row will be deleted from the sheet. The default value is <literal>False</literal>, which means that the deleted row will be limited to the width of the specified <literal>range</literal>.</paragraph>
   <paragraph role="paragraph" id="par_id771592919926374"><emph>filterformula</emph>: The filter to be applied to each row to determine whether or not it will be deleted. The filter is expressed as a Calc formula that should be applied to the first row. When the formula returns <emph>True</emph> for a row, that row will be deleted. The default filter deletes all empty rows.</paragraph>
   <paragraph role="paragraph" id="par_id361652271022681">For example, suppose range <emph>A1:J200</emph> is selected (width = 10), so the default formula is <emph>=(COUNTBLANK(A1:J1)=10)</emph>. This means that if all 10 cells are empty in the first row (Row 1), then the row is deleted. Note that the formula is expressed with respect to the first row only. Internally the <literal>CompactUp</literal> method will generalize this formula for all the remaining rows.</paragraph>
+  <note id="par_id431657568414712">The formula specified in the <literal>filterformula</literal> argument must be expressed in English.</note>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
