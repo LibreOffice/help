@@ -573,9 +573,9 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#RemoveSheet" name="RemoveSheet method">RemoveSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#RenameSheet" name="RenameSheet method">RenameSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#SetArray" name="SetArray method">SetArray</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#SetValue" name="SetValue method">SetValue</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#SetCellStyle" name="SetCellStyle method">SetCellStyle</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#SetFormula" name="SetFormula method">SetFormula</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#SetValue" name="SetValue method">SetValue</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ShiftDown" name="ShiftDown method">ShiftDown</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ShiftLeft" name="ShiftLeft method">ShiftLeft</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ShiftRight" name="ShiftRight method">ShiftRight</link><br/>
@@ -796,6 +796,7 @@
   <paragraph role="paragraph" id="par_id771592919932260"><emph>wholecolumn</emph>: If this option is set to <literal>True</literal> the entire column will be deleted from the sheet. The default value is <literal>False</literal>, which means that the deleted column will be limited to the height of the specified <literal>range</literal>.</paragraph>
   <paragraph role="paragraph" id="par_id771592919915974"><emph>filterformula</emph>: The filter to be applied to each column to determine whether or not it will be deleted. The filter is expressed as a Calc formula that should be applied to the first column. When the formula returns <emph>True</emph> for a column, that column will be deleted. The default filter deletes all empty columns.</paragraph>
   <paragraph role="paragraph" id="par_id361652271022647">For example, suppose range <emph>A1:J200</emph> is selected (height = 200), so the default formula is <emph>=(COUNTBLANK(A1:A200)=200)</emph>. This means that if all 200 cells are empty in the first column (Column A), then the column is deleted. Note that the formula is expressed with respect to the first column only. Internally the <literal>CompactLeft</literal> method will generalize this formula for all the remaining columns.</paragraph>
+  <note id="par_id431657568414625">Calc functions used in the <literal>filterformula</literal> argument must be expressed using their English names. Visit the Wiki page <link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/List_of_Functions" name="CalcFunctions">List of Calc Functions</link> for a complete list of Calc functions in English.</note>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -836,6 +837,7 @@
   <paragraph role="paragraph" id="par_id771592919921160"><emph>wholerow</emph>: If this option is set to <literal>True</literal> the entire row will be deleted from the sheet. The default value is <literal>False</literal>, which means that the deleted row will be limited to the width of the specified <literal>range</literal>.</paragraph>
   <paragraph role="paragraph" id="par_id771592919926374"><emph>filterformula</emph>: The filter to be applied to each row to determine whether or not it will be deleted. The filter is expressed as a Calc formula that should be applied to the first row. When the formula returns <emph>True</emph> for a row, that row will be deleted. The default filter deletes all empty rows.</paragraph>
   <paragraph role="paragraph" id="par_id361652271022681">For example, suppose range <emph>A1:J200</emph> is selected (width = 10), so the default formula is <emph>=(COUNTBLANK(A1:J1)=10)</emph>. This means that if all 10 cells are empty in the first row (Row 1), then the row is deleted. Note that the formula is expressed with respect to the first row only. Internally the <literal>CompactUp</literal> method will generalize this formula for all the remaining rows.</paragraph>
+  <note id="par_id431657568414714">The Calc functions used in the formula specified in the <literal>filterformula</literal> argument must be expressed using their English names. Visit the Wiki page <link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/List_of_Functions" name="CalcFunctions">List of Calc Functions</link> for a complete list of Calc functions in English.</note>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -1264,6 +1266,7 @@
   </bookmark>
   <h2 id="hd_id88159388014220" localize="false">GetFormula</h2>
   <paragraph role="paragraph" id="par_id921593880142573">Get the formula(s) stored in the given range of cells as a single string, a 1D or a 2D array of strings.</paragraph>
+  <note id="par_id291658146319931">The names of Calc functions used in the returned formulas are expressed in English. Visit the Wiki page <link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/List_of_Functions" name="CalcFunctions">List of Calc Functions</link> for a complete list of Calc functions in English.</note>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id301621540291513">
     <input>svc.GetFormula(range: str): any</input>
@@ -1729,53 +1732,6 @@
   <tip id="par_id291592905671530" xml-lang="en-US">To dump the full contents of an array in a sheet, use <emph>SetArray</emph>. To dump the contents of an array only within the boundaries of the targeted range of cells, use <emph>SetValue</emph>.</tip>
 </section>
 
-<section id="SetValue">
-  <comment> SetValue -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id901592231799526">
-      <bookmark_value>Calc service;SetValue</bookmark_value>
-  </bookmark>
-  <h2 id="hd_id681592231799943" localize="false">SetValue</h2>
-  <paragraph role="paragraph" id="par_id601592231799489">Stores the given value in the specified range. The size of the modified area is equal to the size of the target range.</paragraph>
-  <paragraph role="paragraph" id="par_id1001592233389953" xml-lang="en-US">The method returns a string representing the modified area as a range of cells.</paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-  <paragraph role="paragraph" localize="false" id="par_id961621622582995">
-    <input>svc.SetValue(targetrange: str, value: any): str</input>
-  </paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id361592231799255"><emph>targetrange</emph>: The range where to store the given value, as a string.</paragraph>
-  <paragraph role="paragraph" id="par_id461592232081985" xml-lang="en-US"><emph>value</emph>: A scalar, a vector or an array with the new values for each cell of the range. The new values must be strings, numeric values or dates. Other types will cause the corresponding cells to be emptied.</paragraph>
-  <paragraph role="paragraph" id="par_id841592745785192" xml-lang="en-US">The full range is updated and the remainder of the sheet is left unchanged. If the size of <literal>value</literal> is smaller than the size of <literal>targetrange</literal>, then the remaining cells will be emptied.</paragraph>
-  <paragraph role="paragraph" id="par_id191611776838396">If the size of <literal>value</literal> is larger than the size of <literal>targetrange</literal>, then <literal>value</literal> is only partially copied until it fills the size of <literal>targetrange</literal>.</paragraph>
-  <paragraph role="paragraph" id="par_id71611776941663">Vectors are expanded vertically, except if <literal>targetrange</literal> has a height of exactly 1 row.</paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
-  <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id2715922317995">oDoc.SetValue("A1", 2)</paragraph>
-    <paragraph role="bascode" id="bas_id541592232948567">'Below the Value array is smaller than the TargetRange (remaining cells are emptied)</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id701592232940773">oDoc.SetValue("A1:F1", Array(1, 2, 3))</paragraph>
-    <paragraph role="bascode" id="bas_id541592232948825">'Below the Value and TargetRange have the same size</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id981592232966698">oDoc.SetValue("A1:D2", SF_Array.AppendRow(Array(1, 2, 3, 4), Array(5, 6, 7, 8)))</paragraph>
-  </bascode>
-  <paragraph role="paragraph" id="par_id731621689592755">If you want to fill a single row with values, you can use the <literal>Offset</literal> function. In the example below, consider that <literal>arrData</literal> is a one-dimensional array:</paragraph>
-  <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id21621689635263">Dim firstCell As String : firstCell = "A1"</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id881621689635592">Dim lenArray As Integer : lenArray = UBound(arrData) - LBound(arrData) + 1</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id71621689635887">Dim newRange As String : newRange = oDoc.Offset(firstCell, width = lenArray)</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id831621689898866">oDoc.SetValue(newRange, arrData)</paragraph>
-  </bascode>
-  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
-  <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id861621622679043">myDoc.SetValue("A1", 2)</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id881621622724608">myDoc.SetValue("A1:F1", (1, 2, 3))</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id51621622725754">myDoc.SetValue("A1:D2", ((1, 2, 3, 4), (5, 6, 7, 8)))</paragraph>
-  </pycode>
-  <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id891621689922925">firstCell = "A1"</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id61621689923184">newRange = doc.Offset(firstCell, width = len(arrData))</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id771621689923430">doc.SetValue(newRange, arrData)</paragraph>
-  </pycode>
-</section>
-
 <section id="SetCellStyle">
   <comment> SetCellStyle -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id21595767687885">
@@ -1823,7 +1779,8 @@
   <paragraph role="paragraph" id="par_id811593880756356">If the given formula is a string, the unique formula is pasted along the whole range with adjustment of the relative references.</paragraph>
   <paragraph role="paragraph" id="par_id491593880857823">If the size of <literal>formula</literal> is smaller than the size of <literal>targetrange</literal>, then the remaining cells are emptied.</paragraph>
   <paragraph role="paragraph" id="par_id701611778103306">If the size of <literal>formula</literal> is larger than the size of <literal>targetrange</literal>, then the formulas are only partially copied until it fills the size of <literal>targetrange</literal>.</paragraph>
-   <paragraph role="paragraph" id="par_id761611777946581">Vectors are always expanded vertically, except if <literal>targetrange</literal> has a height of exactly 1 row.</paragraph>
+  <paragraph role="paragraph" id="par_id761611777946581">Vectors are always expanded vertically, except if <literal>targetrange</literal> has a height of exactly 1 row.</paragraph>
+  <note id="par_id431657568413185">Calc functions used in the <literal>formula</literal> argument must be expressed using their English names. Visit the Wiki page <link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/List_of_Functions" name="CalcFunctions">List of Calc Functions</link> for a complete list of Calc functions in English.</note>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -1838,6 +1795,53 @@
     <paragraph role="pycode" localize="false" id="pyc_id941621623159044">myDoc.SetFormula("A1", "=A2")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id151621623174150">myDoc.SetFormula("A1:F1", ("=A2", "=B2", "=C2+10"))</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id651621623174759">myDoc.SetFormula("A1:D2", "=E1")</paragraph>
+  </pycode>
+</section>
+
+<section id="SetValue">
+  <comment> SetValue -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id901592231799526">
+      <bookmark_value>Calc service;SetValue</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id681592231799943" localize="false">SetValue</h2>
+  <paragraph role="paragraph" id="par_id601592231799489">Stores the given value in the specified range. The size of the modified area is equal to the size of the target range.</paragraph>
+  <paragraph role="paragraph" id="par_id1001592233389953" xml-lang="en-US">The method returns a string representing the modified area as a range of cells.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id961621622582995">
+    <input>svc.SetValue(targetrange: str, value: any): str</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id361592231799255"><emph>targetrange</emph>: The range where to store the given value, as a string.</paragraph>
+  <paragraph role="paragraph" id="par_id461592232081985" xml-lang="en-US"><emph>value</emph>: A scalar, a vector or an array with the new values for each cell of the range. The new values must be strings, numeric values or dates. Other types will cause the corresponding cells to be emptied.</paragraph>
+  <paragraph role="paragraph" id="par_id841592745785192" xml-lang="en-US">The full range is updated and the remainder of the sheet is left unchanged. If the size of <literal>value</literal> is smaller than the size of <literal>targetrange</literal>, then the remaining cells will be emptied.</paragraph>
+  <paragraph role="paragraph" id="par_id191611776838396">If the size of <literal>value</literal> is larger than the size of <literal>targetrange</literal>, then <literal>value</literal> is only partially copied until it fills the size of <literal>targetrange</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id71611776941663">Vectors are expanded vertically, except if <literal>targetrange</literal> has a height of exactly 1 row.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id2715922317995">oDoc.SetValue("A1", 2)</paragraph>
+    <paragraph role="bascode" id="bas_id541592232948567">'Below the Value array is smaller than the TargetRange (remaining cells are emptied)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id701592232940773">oDoc.SetValue("A1:F1", Array(1, 2, 3))</paragraph>
+    <paragraph role="bascode" id="bas_id541592232948825">'Below the Value and TargetRange have the same size</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id981592232966698">oDoc.SetValue("A1:D2", SF_Array.AppendRow(Array(1, 2, 3, 4), Array(5, 6, 7, 8)))</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id731621689592755">If you want to fill a single row with values, you can use the <literal>Offset</literal> function. In the example below, consider that <literal>arrData</literal> is a one-dimensional array:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id21621689635263">Dim firstCell As String : firstCell = "A1"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id881621689635592">Dim lenArray As Integer : lenArray = UBound(arrData) - LBound(arrData) + 1</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id71621689635887">Dim newRange As String : newRange = oDoc.Offset(firstCell, width = lenArray)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id831621689898866">oDoc.SetValue(newRange, arrData)</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id861621622679043">myDoc.SetValue("A1", 2)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id881621622724608">myDoc.SetValue("A1:F1", (1, 2, 3))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id51621622725754">myDoc.SetValue("A1:D2", ((1, 2, 3, 4), (5, 6, 7, 8)))</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id891621689922925">firstCell = "A1"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id61621689923184">newRange = doc.Offset(firstCell, width = len(arrData))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id771621689923430">doc.SetValue(newRange, arrData)</paragraph>
   </pycode>
 </section>
 
