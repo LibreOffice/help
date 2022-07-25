@@ -62,12 +62,17 @@
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id671621467660766">Set oDoc = ui.OpenDocument("C:\Documents\MyFile.ods")</paragraph>
   </bascode>
-  <paragraph role="paragraph" id="par_id741621467697967">It is also possible to instantiate the <literal>Calc</literal> service using the <literal>CreateScriptService</literal> method:</paragraph>
+  <paragraph role="paragraph" id="par_id741621467697967">It is also possible to instantiate the <literal>Calc</literal> service specifying a window name for the <literal>CreateScriptService</literal> method:</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id371589191782045">Dim oDoc As Object</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id711589191788959">Set oDoc = CreateScriptService("SFDocuments.Calc", "MyFile.ods")</paragraph>
   </bascode>
   <paragraph role="paragraph" id="par_id271621467810774">In the example above, "MyFile.ods" is the name of an open document window. If this argument is not provided, the active window is considered.</paragraph>
+  <paragraph role="paragraph" id="par_id551658777771853">It is also possible to invoke the <literal>Calc</literal> service using the document referenced by <literal>ThisComponent</literal>. This is specially useful when running a macro from within the Basic IDE.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id861658777838994">Dim oDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id541658777839238">Set oDoc = CreateScriptService("Calc", ThisComponent)</paragraph>
+  </bascode>
   <paragraph role="paragraph" id="par_id71158288562139" xml-lang="en-US">It is recommended to free resources after use:</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id61582733781413">Set oDoc = oDoc.Dispose()</paragraph>
@@ -87,6 +92,10 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id701621532481401">myDoc = CreateScriptService("SFDocuments.Calc", "MyFile.ods")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id951621532568918">myDoc.Dispose()</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id711658778703006">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id811658778703326">myDoc = CreateScriptService("Calc", bas.ThisComponent)</paragraph>
   </pycode>
   <tip id="par_id71611090922315">The use of the prefix "<literal>SFDocuments.</literal>" while calling the service is optional.</tip>
 

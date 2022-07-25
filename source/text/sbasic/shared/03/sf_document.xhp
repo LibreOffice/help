@@ -58,10 +58,15 @@
     <paragraph role="bascode" localize="false" id="bas_id511589191758563">Set oDocA = ui.CreateDocument("Calc")</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id331589191766531">Set oDocB = ui.OpenDocument("C:\Documents\MyFile.odt")</paragraph>
   </bascode>
-  <paragraph role="paragraph" id="par_id691622816765571">Directly if the document is already open.</paragraph>
+  <paragraph role="paragraph" id="par_id691622816765571">Using a window name if the document is already open.</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id371589191782045">Dim oDoc As Object</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id711589191788959">Set oDoc = CreateScriptService("SFDocuments.Document", "Untitled 1") 'Default = ActiveWindow</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id551658777771853">Using the document referenced by <literal>ThisComponent</literal>. This is specially useful when running a macro from within the Basic IDE.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id861658777838994">Dim oDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id541658777839238">Set oDoc = CreateScriptService("Document", ThisComponent)</paragraph>
   </bascode>
   <paragraph role="paragraph" id="par_id821622816825012">From a macro triggered by a document event.</paragraph>
   <bascode>
@@ -90,6 +95,10 @@
   </pycode>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id931622818866918">doc = CreateScriptService("SFDocuments.Document", "Untitled 1")</paragraph>
+  </pycode>
+    <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id711658778703006">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id811658778703326">doc = CreateScriptService("Document", bas.ThisComponent)</paragraph>
   </pycode>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id551622819064247">def RunEvent(event)</paragraph>
