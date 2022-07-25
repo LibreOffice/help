@@ -318,10 +318,11 @@
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#HashFile" name="HashFile method">HashFile</link><br/>
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#MoveFile" name="MoveFile method">MoveFile</link><br/>
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#MoveFolder" name="MoveFolder method">MoveFolder</link><br/>
+             <link href="text/sbasic/shared/03/sf_filesystem.xhp#Normalize" name="Normalize method">Normalize</link><br/>
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#OpenTextFile" name="OpenTextFile method">OpenTextFile</link><br/>
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#PickFile" name="PickFile method">PickFile</link><br/>
              <link href="text/sbasic/shared/03/sf_filesystem.xhp#PickFolder" name="PickFolder method">PickFolder</link><br/>
-             <link href="text/sbasic/shared/03/sf_filesystem.xhp#SubFolders" name="SubFolders method">SubFolders</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_filesystem.xhp#SubFolders" name="SubFolders method">SubFolders</link><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -587,7 +588,7 @@
     </bookmark>
     <h2 id="hd_id151584882542104" localize="false">ExtensionFolder</h2>
     <paragraph role="paragraph" id="par_id11584882015025">Returns a string containing the folder where the specified extension package is installed.</paragraph>
-    <paragraph role="paragraph" id="par_id21612999775311">The current value of the property <literal>SF_FileSystem.FileNaming</literal> is used to determine the notation of the returned string.</paragraph>
+    <note id="par_id711658780480236">The current value of the property <literal>SF_FileSystem.FileNaming</literal> is used to determine the notation of the returned string.</note>
     <tip id="par_id891644442917193">Use the property <link href="text/sbasic/shared/03/sf_platform.xhp#hd_id711600788076834" name="Extensions_link"><literal>Extensions</literal></link> from the <literal>Platform</literal> service to get string array with the IDs of all installed extensions.</tip>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id61626178211365">
@@ -977,6 +978,42 @@
       <paragraph role="pycode" localize="false" id="pyc_id11626275697779"># Python</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id361626275698068">fs.MoveFolder(r"C:\Temp1\*", r"C:\Temp2")</paragraph>
     </pycode>
+</section>
+
+<section id="Normalize">
+  <comment> Normalize --------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id1001583670342602">
+    <bookmark_value>FileSystem service;Normalize</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id421583670341541" localize="false">Normalize</h2>
+  <paragraph role="paragraph" id="par_id871583670342051">Returns a string containing the normalized pathn ame by collapsing redundant separators and up-level references.</paragraph>
+  <paragraph role="paragraph" id="par_id541658780038027">For instance, the path names <literal>A//B</literal>, <literal>A/B/</literal>, <literal>A/./B</literal> and <literal>A/foo/../B</literal> are all normalized to <literal>A/B</literal>.</paragraph>
+  <paragraph role="paragraph" id="par_id881613074436118">On Windows, forward slashes "/" are converted to backward slashes "\".</paragraph>
+  <note id="par_id381658780455018">The current value of the property <literal>SF_FileSystem.FileNaming</literal> is used to determine the notation of the <literal>filename</literal> argument as well as the format of the returned string.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id751626214682583">
+    <input>svc.Normalize(filename: str): str</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id481583670340107"><emph>filename</emph>: a string representing a valid path name. The file or directory represented by this argument may not exist.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id841658781032852">FSO.FileNaming = "URL"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id601658781033092">' file:///home/user/Documents</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id451658781033332">normPath = FSO.Normalize("file:///home/user/Documents/")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id171658781033549">' file:///home/user/Documents</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id611658781033796">normPath = FSO.Normalize("file:///home//user//Documents/")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651658781034005">' file:///home/user</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371658781034284">normPath = FSO.Normalize("file:///home//user//Documents/../")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id631658781275044">fs.FileNaming = "URL"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id941658781275287">normPath = fs.Normalize("file:///home/user/Documents/")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id871658781275468">normPath = fs.Normalize("file:///home//user//Documents/")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id841658781275636">normPath = fs.Normalize("file:///home//user//Documents/../")</paragraph>
+  </pycode>
 </section>
 
 <section id="OpenTextFile">
