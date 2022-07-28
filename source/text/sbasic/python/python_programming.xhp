@@ -11,16 +11,19 @@
     <meta>
         <topic id="text/sbasic/python/Python_Programming">
             <title id="tit" xml-lang="en-US">Python : Programming with Python</title>
-            <filename>/text/sbasic/python/python_programming.xhp</filename> 
+            <filename>/text/sbasic/python/python_programming.xhp</filename>
         </topic>
     </meta>
     <body>
     <bookmark branch="index" id="N0218">
-        <bookmark_value>Python;Programming</bookmark_value>
-        <bookmark_value>XSCRIPTCONTEXT;Python</bookmark_value>
-        <bookmark_value>XSCRIPTCONTEXT;getComponentContext()</bookmark_value>
-        <bookmark_value>uno.py</bookmark_value>
-        <bookmark_value>uno.py;getComponentContext()</bookmark_value>
+      <bookmark_value>Python;Programming</bookmark_value>
+      <bookmark_value>XSCRIPTCONTEXT;Python</bookmark_value>
+      <bookmark_value>XSCRIPTCONTEXT;getComponentContext</bookmark_value>
+      <bookmark_value>XSCRIPTCONTEXT;getDesktop</bookmark_value>
+      <bookmark_value>XSCRIPTCONTEXT;getDocument</bookmark_value>
+      <bookmark_value>uno.py;getComponentContext</bookmark_value>
+      <bookmark_value>uno.py;getDesktop</bookmark_value>
+      <bookmark_value>uno.py;getDocument</bookmark_value>
     </bookmark>
     <section id="pythonprogramming">
         <h1 id="hd_id691546462755220"><variable id="pythonprogrammingheading"><link href="text/sbasic/python/python_programming.xhp" name="python programming">Programming with Python Scripts</link></variable></h1>
@@ -82,6 +85,18 @@
         <paragraph role="paragraph" id="N0241">%PRODUCTNAME Basic libraries contain classes, routines and variables, Python modules contain classes, functions and variables. Common pieces of reusable Python or UNO features must be stored in <link href="text/sbasic/python/python_locations.xhp" name="My macros">My macros</link> within <literal>(User Profile)/Scripts/python/pythonpath</literal>. Python libraries help organize modules in order to prevent module name collisions. Import <literal>uno.py</literal> inside shared modules.</paragraph>
     </section>
     <paragraph role="paragraph" id="N0242">Genuine BASIC UNO facilities can be inferred using <literal>uno.py</literal> module. Use <link href="text/sbasic/python/python_shell.xhp" name="Python interactive shell">Python interactive shell</link> to get a complete module description using <literal>dir()</literal> and <literal>help()</literal> Python commands.</paragraph>
+      <bookmark xml-lang="en-US" branch="index" id="bm_id391659034206678">
+        <bookmark_value>uno.py</bookmark_value>
+        <bookmark_value>uno.py;absolutize</bookmark_value>
+        <bookmark_value>uno.py;createUnoStruct</bookmark_value>
+        <bookmark_value>uno.py;fileUrlToSystemPath</bookmark_value>
+        <bookmark_value>uno.py;getClass</bookmark_value>
+        <bookmark_value>uno.py;getComponentContext</bookmark_value>
+        <bookmark_value>uno.py;Enum</bookmark_value>
+        <bookmark_value>uno.py;getConstantByName</bookmark_value>
+        <bookmark_value>uno.py;isInterface</bookmark_value>
+        <bookmark_value>uno.py;systemPathToFileUrl</bookmark_value>
+      </bookmark>
     <table  id="N0243">
         <tablerow>
             <tablecell>
@@ -231,7 +246,7 @@
             <tablecell>
             </tablecell>
             <tablecell>
-                <paragraph role="tablecontent" localize="false" id="N0292">EqualUnoObjects()</paragraph>
+                <paragraph role="tablecontent" localize="false" id="N1244">EqualUnoObjects()</paragraph>
             </tablecell>
         </tablerow>
         <tablerow>
@@ -276,21 +291,21 @@
         </tablerow>
         <tablerow>
             <tablecell>
-                <paragraph role="tablecontent" localize="false" id="N0298">desktop = smgr.createInstanceWithContext(DESK , ctx)</paragraph>
-                <paragraph role="tablecontent" localize="false" id="N0299">doc = desktop.CurrentComponent</paragraph>
+                <paragraph role="tablecontent" localize="false" id="N2298">desktop = smgr.createInstanceWithContext(DESK , ctx)</paragraph>
+                <paragraph role="tablecontent" localize="false" id="N1299">doc = desktop.CurrentComponent</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph role="tablecontent" localize="false" id="N0301">ThisComponent</paragraph>
+                <paragraph role="tablecontent" localize="false" id="N1301">ThisComponent</paragraph>
             </tablecell>
         </tablerow>
     </table>
-    <h2 id="N0297">Importing an embedded Module</h2>
+    <h2 id="N1297">Importing an embedded Module</h2>
     <section id="PythonEmbeddedImport" >
-        <paragraph role="paragraph" id="N0298">Similarly to %PRODUCTNAME Basic that supports browsing and dynamic loading of libraries, Python libraries can be explored and imported on demand. For more information on library containers, visit <link href="https://api.libreoffice.org/" name="API Documentation site">%PRODUCTNAME Application Programming Interface</link> (API) or download <link href="https://www.libreoffice.org/download/download/" name="SDK download page">%PRODUCTNAME Software Development Kit</link> (SDK).</paragraph>
-        <paragraph role="paragraph" id="N0299">Importing a Python document embedded module is illustrated below, exception handling is not detailed:</paragraph>
+        <paragraph role="paragraph" id="N1298">Similarly to %PRODUCTNAME Basic that supports browsing and dynamic loading of libraries, Python libraries can be explored and imported on demand. For more information on library containers, visit <link href="https://api.libreoffice.org/" name="API Documentation site">%PRODUCTNAME Application Programming Interface</link> (API) or download <link href="https://www.libreoffice.org/download/download/" name="SDK download page">%PRODUCTNAME Software Development Kit</link> (SDK).</paragraph>
+        <paragraph role="paragraph" id="N3299">Importing a Python document embedded module is illustrated below, exception handling is not detailed:</paragraph>
         <pycode>
-            <paragraph role="pycode" localize="false" id="N0300">import uno, sys</paragraph>
-            <paragraph role="pycode" localize="false" id="N0301"></paragraph>
+            <paragraph role="pycode" localize="false" id="N1300">import uno, sys</paragraph>
+            <paragraph role="pycode" localize="false" id="N3301"></paragraph>
             <paragraph role="pycode" localize="false" id="N0302">def load_library(library_name: str, module_name=None):</paragraph>
             <paragraph role="pycode" id="N0303">    &quot;&quot;&quot; load library and import module</paragraph>
             <paragraph role="pycode" localize="false" id="N0304">    </paragraph>
@@ -303,7 +318,7 @@
             <paragraph role="pycode" id="N0311">        sys.path.insert(0, url)  # doclib takes precedence</paragraph>
             <paragraph role="pycode" id="N0312">    if module_name:  # import if requested</paragraph>
             <paragraph role="pycode" localize="false" id="N0313">        return zipimport.zipimporter(url).load_module(module_name)</paragraph>
-            <paragraph role="pycode" localize="false" id="N0314"></paragraph>
+            <paragraph role="pycode" localize="false" id="N1314"></paragraph>
             <paragraph role="pycode" localize="false" id="N0315">def import_embedded_python():</paragraph>
             <paragraph role="pycode" id="N0316">    ui = load_library(&quot;my_gui&quot;,&apos;screen_io&apos;)  # add &lt;lib&gt; path + import &lt;module&gt; </paragraph>
             <paragraph role="pycode" localize="false" id="N0317">    ui.MsgBox(sys.modules.keys())</paragraph>
