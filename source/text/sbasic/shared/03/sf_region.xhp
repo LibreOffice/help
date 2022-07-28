@@ -493,20 +493,31 @@
       <paragraph role="pycode" id="pyc_id951656027482096">numText = oRegion.Number2Text("EUR 25.10", "en-US")</paragraph>
       <paragraph role="pycode" id="pyc_id231656027482425">numText = oRegion.Number2Text("ordinal 15", "en-US")</paragraph>
     </pycode>
-    <paragraph role="paragraph" id="par_id801656027524051">To get a list of all supported prefixes in a given language, call <literal>Number2Text</literal> with the special "help" argument, as shown in the example below:</paragraph>
+    <paragraph role="paragraph" id="par_id801656027524051">To get a list of all supported prefixes in a given language, call <literal>Number2Text</literal> with the special "help" argument. In the example below, assume your locale is set to "en-US", then the list of available prefixes for "en-US" will be shown by <literal>MsgBox</literal>:</paragraph>
     <bascode>
       <paragraph role="bascode" localize="false" id="bas_id851656027713735">prefixes = oRegion.Number2Text("help")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id716560277139601">MsgBox prefixes</paragraph>
-      <paragraph role="bascode" id="bas_id181656027807107">' Considering the "en-US" locale the message box will show the following text</paragraph>
-      <paragraph role="bascode" id="bas_id216560277123601">' one, two, three</paragraph>
-      <paragraph role="bascode" id="bas_id361656027712711">' ordinal: first, second, third</paragraph>
-      <paragraph role="bascode" id="bas_id891656027712920">' ordinal-number: 1st, 2nd, 3rd</paragraph>
-      <paragraph role="bascode" id="bas_id611656027713104">' year: nineteen ninety-nine, two thousand, two thousand one</paragraph>
-      <paragraph role="bascode" id="bas_id861656027713288">' currency (for example, USD): two U.S. dollars and fifty cents</paragraph>
-      <paragraph role="bascode" id="bas_id841656027713503">' money USD: two and 50/100 U.S. dollars</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id216560277123601">' one, two, three</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id361656027712711">' ordinal: first, second, third</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id891656027712920">' ordinal-number: 1st, 2nd, 3rd</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id611656027713104">' year: nineteen ninety-nine, two thousand, two thousand one</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id861656027713288">' currency (for example, USD): two U.S. dollars and fifty cents</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id841656027713503">' money USD: two and 50/100 U.S. dollars</paragraph>
     </bascode>
     <paragraph role="paragraph" id="par_id781656027840633">The first line in the message box does not have a prefix, which means that it is the standard format. The subsequent lines include the prefix and some examples of numbers using its format.</paragraph>
-    <note id="par_id781656028528520">Each language has its own set of supported prefixes.</note>
+    <note id="par_id781656028528520">Each language has its own set of supported prefixes. The number of available prefixes may vary from language to language.</note>
+    <paragraph role="paragraph" id="par_id531663849363398">To get the list of prefixes for a specific language or locale, it can be specified as the second argument in <literal>Number2Text</literal>. The example below shows the available prefixes available for the "pt-BR" locale:</paragraph>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id301663849799013">prefixes = oRegion.Number2Text("help", "pt-BR")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id801663849799462">MsgBox prefixes</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id931663849708619">' um, dois, três</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id416638497808923">' feminine: uma, duas, três</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id371663849709114">' masculine: um, dois, três</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id701663849709307">' ordinal-feminine: primeira, segunda, terceira</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id411663849709530">' ordinal-masculine: primeiro, segundo, terceiro</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id611663849709803">' ordinal-number-feminine: 1.ª, 2.ª, 3.ª</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id831663849710011">' ordinal-number-masculine: 1.º, 2.º, 3.º</paragraph>
+    </bascode>
   </section>
 
   <section id="TimeZoneOffset">
@@ -563,9 +574,9 @@
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-      <paragraph role="pycode" id="pyc_id361656077667354">import datetime</paragraph>
-      <paragraph role="pycode" id="pyc_id901656077667666">localDT = datetime.datetime(2022, 6, 23, 14, 30, 0)</paragraph>
-      <paragraph role="pycode" id="pyc_id521656077682826">utcTime = oRegion.UTCDateTime(localDT, "Europe/Berlin", "DE")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id361656077667354">import datetime</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id901656077667666">localDT = datetime.datetime(2022, 6, 23, 14, 30, 0)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id521656077682826">utcTime = oRegion.UTCDateTime(localDT, "Europe/Berlin", "DE")</paragraph>
     </pycode>
   </section>
 
