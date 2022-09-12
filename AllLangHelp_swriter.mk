@@ -207,6 +207,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/title_page \
     helpcontent2/source/text/swriter/01/watermark \
     helpcontent2/source/text/swriter/01/contentcontrol00 \
+    helpcontent2/source/text/swriter/01/contentcontrol01 \
     helpcontent2/source/text/swriter/02/02110000 \
     helpcontent2/source/text/swriter/02/03210000 \
     helpcontent2/source/text/swriter/02/03220000 \
