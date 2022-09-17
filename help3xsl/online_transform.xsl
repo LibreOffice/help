@@ -1182,6 +1182,9 @@
             <xsl:when test="starts-with(@src,'media/screenshots/')">
                 <xsl:value-of select="'screenshot'"/>
             </xsl:when>
+            <xsl:when test="starts-with(@src,'media/icon-themes/')">
+                <xsl:value-of select="'iconimage'"/>
+            </xsl:when>
             <xsl:when test="starts-with(@src,'media/')">
                 <xsl:value-of select="'genericimage'"/>
             </xsl:when>
