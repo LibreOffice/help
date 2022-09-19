@@ -20,6 +20,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     files/scalc/pivot.ods \
     files/scalc/trigon.ods \
     files/scalc/functions_ifs.ods \
+    files/scalc/conditionalformatting.ods \
     helpimg/area1.png \
     helpimg/area2.png \
     helpimg/border_ca_1.png \
