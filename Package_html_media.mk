@@ -381,6 +381,8 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/warning_small.png \
     helpimg/what-if.png \
     helpimg/zellvor.png \
+    helpimg/impress_remote01.png \
+    helpimg/impress_remote02.png \
     navigation/favicon.ico \
     navigation/libo-base.svg \
     navigation/libo-basic.svg \
@@ -404,8 +406,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/swriter/ui/watermarkdialog/WatermarkDialog.png \
     screenshots/writerperfect/ui/exportepub/EpubDialog.png \
     screenshots/svx/ui/compressgraphicdialog/CompressGraphicDialog.png \
-    screenshots/miscellaneous/impressremote/ui/image01/impress_remote01.png \
-    screenshots/miscellaneous/impressremote/ui/image02/impress_remote02.png \
     screenshots/modules/simpress/ui/optimpressgeneralpage/OptSavePage.png \
     screenshots/modules/simpress/ui/sdviewpage/SdViewPage.png \
     screenshots/modules/simpress/ui/prntopts/prntopts.png \
