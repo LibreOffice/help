@@ -419,7 +419,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/simpress/ui/customanimationeffecttab/EffectTab.png \
     screenshots/modules/simpress/ui/customanimationtexttab/TextAnimationTab.png \
     screenshots/modules/simpress/ui/customanimationtimingtab/TimingTab.png \
-    screenshots/cui/ui/charnamepage/CharNamePage.png \
     screenshots/cui/ui/colorpage/ColorPage.png \
     screenshots/cui/ui/colorpickerdialog/ColorPicker.png \
     screenshots/cui/ui/effectspage/EffectsPage.png \
