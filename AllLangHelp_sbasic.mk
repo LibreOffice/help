@@ -406,6 +406,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/CreateUnoSvcWithArgs \
     helpcontent2/source/text/sbasic/shared/conventions \
     helpcontent2/source/text/sbasic/shared/enum \
+    helpcontent2/source/text/sbasic/shared/doEvents \
     helpcontent2/source/text/sbasic/shared/ErrVBA \
     helpcontent2/source/text/sbasic/shared/fragments \
     helpcontent2/source/text/sbasic/shared/partition \

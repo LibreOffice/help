@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+    <meta>
+        <topic id="org.LibreOffice.Help.DoEvents" indexer="include" status="PUBLISH">
+            <title id="tit" xml-lang="en-US">DoEvents Function</title>
+            <filename>/text/sbasic/shared/doEvents.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+
+    <section id="doEvents">
+        <bookmark branch="index" xml-lang="en-US" id="N0089">
+            <bookmark_value>DoEvents function</bookmark_value>
+        </bookmark>
+        <bookmark id="bm_id341544551916349" xml-lang="en-US" branch="hid/zzzz" localize="false"/>
+        <h1 id="hd_id401544551916353"><link href="text/sbasic/shared/doEvents.xhp" name="DoEvents">DoEvents Function</link></h1>
+        <paragraph role="paragraph" id="N0091">Transfers control to the operating system during macro execution, so that it can process the events in waiting.</paragraph>
+        <note id="par_id511668006240908"><literal>DoEvents</literal> provides compatibility with VBA. It always returns 0. Using it in %PRODUCTNAME is not necessary.</note>
+    </section>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <bascode>
+        <paragraph role="bascode" id="N0092" localize="false">[Call] DoEvents[()] As Integer</paragraph>
+    </bascode>  
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id321668008155736" localize="false">Sub DoEventsExample</paragraph>
+      <paragraph role="bascode" id="bas_id971668008155959" localize="false">    Dim i As Long, sheet As Object, cell As Object</paragraph>
+      <paragraph role="bascode" id="bas_id441668008156303" xml-lang="en-US">    sheet = ThisComponent.Sheets.getByIndex(0) ' sheet 1</paragraph>
+      <paragraph role="bascode" id="bas_id316680008156501" xml-lang="en-US">    cell = sheet.getCellByPosition(0,0) ' cell A1</paragraph>
+      <paragraph role="bascode" id="bas_id816680081560679" localize="false">    For i = 1 To 20000</paragraph>
+      <paragraph role="bascode" id="bas_id421668008156870" localize="false">        cell.setString(Str(i))</paragraph>
+      <paragraph role="bascode" id="bas_id121668008157054" localize="false">        DoEvents</paragraph>
+      <paragraph role="bascode" id="bas_id601668008157253" localize="false">    Next i</paragraph>
+      <paragraph role="bascode" id="bas_id361668008158286" localize="false">End Sub ' DoEventsExample</paragraph>
+    </bascode>
+    <bascode>
+      <paragraph role="bascode" id="bas_id716680050893205" localize="false">Sub DoEvents_example</paragraph>
+      <paragraph role="bascode" id="bas_id601668005918217" localize="false">    Dim i As Long, uiDoc As Object</paragraph>
+      <paragraph role="bascode" id="bas_id901668005918762" localize="false">    GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
+      <paragraph role="bascode" id="bas_id561668005919132" localize="false">	Set ui = CreateScriptService("SFDocuments.Calc", ThisComponent)</paragraph>
+      <paragraph role="bascode" id="bas_id851668005919324" localize="false">    For i = 1 To 20000</paragraph>
+      <paragraph role="bascode" id="bas_id761668005919489" localize="false">        ui.SetValue("A1", i)</paragraph>
+      <paragraph role="bascode" id="bas_id981668005919668" localize="false">        DoEvents</paragraph>
+      <paragraph role="bascode" id="bas_id321668005919835" localize="false">    Next i</paragraph>
+      <paragraph role="bascode" id="bas_id816680059020060" localize="false">    ui.Dispose()</paragraph>
+      <paragraph role="bascode" id="bas_id421668005921071" localize="false">End Sub ' DoEvents_example</paragraph>
+    </bascode>
+   <section id="relatedtopics">
+     <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#ScriptForge_lib"/>
+   </section>
+</body>
+</helpdocument>
+
