@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+ * This file incorporates work covered by the following license notice:
+ *
+ *   Licensed to the Apache Software Foundation (ASF) under one or more
+ *   contributor license agreements. See the NOTICE file distributed
+ *   with this work for additional information regarding copyright
+ *   ownership. The ASF licenses this file to you under the Apache
+ *   License, Version 2.0 (the "License"); you may not use this file
+ *   except in compliance with the License. You may obtain a copy of
+ *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
+-->
+<meta>
+  <topic id="textsbasicsharedcreateunosvcwithargsxml" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">CreateUnoServiceWithArguments Function</title>
+    <filename>/text/sbasic/shared/CreateUnoSvcWithArgs.xhp</filename>
+  </topic>
+</meta>
+<body>
+  <section id="CreateUnoSvcWithArgs">
+    <bookmark xml-lang="en-US" branch="index" id="bm_id3150682">
+      <bookmark_value>CreateUnoServiceWithArguments function</bookmark_value>
+      <bookmark_value>API;FilePicker</bookmark_value>
+    </bookmark>
+    <h1 id="hd_id3150682"><variable id="UnoSvcWithArgs_h1"><link href="text/sbasic/shared/CreateUnoSvcWithArgs.xhp" name="CreateUnoServiceWithArguments Function">CreateUnoServiceWithArguments Function</link></variable></h1>
+    <paragraph id="par_id3152924" role="paragraph" xml-lang="en-US">Instantiates a UNO service with the <literal>ProcessServiceManager</literal>, including supplemental optional arguments.</paragraph>
+  </section>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_syntax"> CreateUnoServiceWithArguments(ServiceName As String, Arguments() As Variant) As Object</paragraph>
+  </bascode>
+  <tip id="par_id301666950633646">UNO services that can be used with <literal>CreateUnoServiceWithArguments</literal> function are identifiable with method names that follow a <literal>createWith..</literal> pattern.</tip>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id781666942583785"><emph>ServiceName</emph>: The UNO service name to be created.</paragraph>
+  <paragraph role="paragraph" id="par_id11666942585785"><emph>Arguments</emph>: One to many arguments that specify the instance of the service. <emph>Arguments</emph> are stored as a one dimensional array, according to their positions in the constructor method definition.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
+  <paragraph role="paragraph" id="par_id311666942529939">An instance of the given UNO service name, otherwise <literal>Null</literal> value.</paragraph>
+  <note id="par_id921629989537850">For a list of available services, visit the <link href="https://api.libreoffice.org/docs/idl/ref/namespacecom_1_1sun_1_1star.html" name="UNO_Service_Names">com::sun::star Module</link> reference page.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id891561653344669">The <literal>com.sun.star.ui.dialogs.FilePicker</literal> example below displays a <emph>Save As</emph> dialog with two extra controls: a listbox and a checkbox.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id901629989240801">Sub FileSaveAsDialog()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id361629989241073">   td = com.sun.star.ui.dialogs.TemplateDescription</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461629989241289">   options = td.FILESAVE_AUTOEXTENSION_TEMPLATE</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id441629989241521">   dlg = createUnoServiceWithArguments( _</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651629989241801">      "com.sun.star.ui.dialogs.FilePicker", _</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id521629989242114">      Array(options))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id211629989242416">End Sub ' FileSaveAsDialog</paragraph>
+  </bascode>
+  <tip id="par_id351629989310797">UNO services have an extensive online documentation in the <link href="https://api.libreoffice.org/" name="API_Website">api.libreoffice.org</link> website. Visit the <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1ui_1_1dialogs_1_1FilePicker.html" name="FilePicker_Page">FilePicker Service</link> reference page to learn more about the methods provided by the service used in the example above.</tip>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<bookmark xml-lang="en-US" branch="index" id="bm_id8334604">
+<bookmark_value>filepicker;API service</bookmark_value>
+</bookmark>
+<paragraph id="par_idN10625" role="paragraph" xml-lang="en-US">The following code uses the service <literal>com.sun.star.security.DocumentDigitalSignatures</literal> to sign the current document:</paragraph>
+<bascode>
+<paragraph id="par_idm1206777616" role="bascode" localize="false">Sub  SignCurrentDocDialog</paragraph>
+<paragraph id="par_idm1206766192" role="bascode" localize="false">   Dim pv(0) as new com.sun.star.beans.PropertyValue</paragraph>
+<paragraph id="bas_id11593417954" role="bascode" localize="false">   pv(0).Name  = "StorageFormat"</paragraph>
+<paragraph id="par_idm1206774256" role="bascode" localize="false">   pv(0).Value = "ZipFormat"</paragraph>
+<paragraph id="par_idm1206773152" role="bascode" localize="false">   mode = com.sun.star.embed.ElementModes</paragraph>
+<paragraph id="par_idm1206772000" role="bascode" localize="false">   sf = CreateUnoService("com.sun.star.embed.StorageFactory</paragraph>
+<paragraph id="bas_id11593417954966" role="bascode" localize="false">   storage = sf.createInstanceWithArguments(Array(ThisComponent.URL, mode.WRITE, pv))</paragraph>
+<paragraph id="par_idm1206770832" role="bascode" localize="false">   dds = CreateUnoServiceWithArguments( _</paragraph>
+<paragraph id="par_idm1206769648" role="bascode" localize="false">      "com.sun.star.security.DocumentDigitalSignatures", _</paragraph>
+<paragraph id="par_idm1206768496" role="bascode" localize="false">      Array("1.2", True)) </paragraph>
+<paragraph id="par_idm1206767344" role="bascode" localize="false">   dds.signDocumentContent(storage, Null)</paragraph>
+<paragraph id="par_idm1206765040" role="bascode" localize="false">End Sub ' SignCurrentDocDialog</paragraph>
+</bascode>
+<paragraph role="paragraph" id="par_id921666951609352"><literal>CreateWithVersion</literal> and <literal>createWithVersionAndValidSignature</literal> constructor methods in <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1security_1_1DocumentDigitalSignatures.html" name="DocumentDigitalSignatures">com.sun.star.security.DocumentDigitalSignatures</link> UNO service indicate two different ways of instantiating this service with <literal>CreateUnoServiceWithArguments</literal> function.</paragraph>
+<section id="relatedtopics">
+    <embed href="text/sbasic/shared/03131600.xhp#createunoserviceh1"/>
+    <embed href="text/sbasic/shared/uno_objects.xhp#UnoObjects_h1"/>
+    <embed href="text/sbasic/shared/calc_functions.xhp#CallingCalcFunctionsh1"/>
+</section>
+</body>
+</helpdocument>
