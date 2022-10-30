@@ -236,6 +236,7 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     screenshots/modules/smath/ui/spacingdialog/$(lang)/SpacingDialog.png \
     screenshots/svx/ui/compressgraphicdialog/$(lang)/CompressGraphicDialog.png \
     screenshots/modules/scalc/ui/xmlsourcedialog/$(lang)/XMLSourceDialog.png \
+    screenshots/modules/sdraw/ui/insertlayer/$(lang)/InsertLayerDialog.png \
     screenshots/modules/simpress/ui/optimpressgeneralpage/$(lang)/OptSavePage.png \
     screenshots/modules/simpress/ui/sdviewpage/$(lang)/SdViewPage.png \
     screenshots/modules/simpress/ui/prntopts/$(lang)/prntopts.png \

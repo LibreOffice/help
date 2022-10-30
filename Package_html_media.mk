@@ -397,6 +397,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/scalc/ui/deletecells/DeleteCellsDialog.png \
     screenshots/modules/scalc/ui/xmlsourcedialog/XMLSourceDialog.png \
     screenshots/modules/sdraw/ui/dlgsnap/SnapObjectDialog.png \
+    screenshots/modules/sdraw/ui/insertlayer/InsertLayerDialog.png \
     screenshots/modules/smath/ui/alignmentdialog/AlignmentDialog.png \
     screenshots/modules/smath/ui/fontdialog/FontDialog.png \
     screenshots/modules/smath/ui/fontsizedialog/FontSizeDialog.png \
