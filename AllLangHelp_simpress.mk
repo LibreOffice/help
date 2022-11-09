@@ -30,8 +30,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/00/slide_menu \
     helpcontent2/source/text/simpress/01/01170000 \
     helpcontent2/source/text/simpress/01/slide_properties \
-    helpcontent2/source/text/simpress/01/01180001 \
-    helpcontent2/source/text/simpress/01/01180002 \
     helpcontent2/source/text/simpress/01/02110000 \
     helpcontent2/source/text/simpress/01/02120000 \
     helpcontent2/source/text/simpress/01/02130000 \
