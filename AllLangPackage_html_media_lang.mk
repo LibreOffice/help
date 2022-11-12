@@ -255,6 +255,7 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     screenshots/modules/simpress/ui/customanimationtexttab/$(lang)/TextAnimationTab.png \
     screenshots/modules/simpress/ui/customanimationtimingtab/$(lang)/TimingTab.png \
     screenshots/modules/swriter/ui/watermarkdialog/$(lang)/WatermarkDialog.png \
+    screenshots/modules/swriter/ui/indexentry/$(lang)/IndexEntryDialog.png \
     screenshots/writerperfect/ui/exportepub/$(lang)/EpubDialog.png \
     screenshots/cui/ui/colorpickerdialog/$(lang)/ColorPicker.png \
     screenshots/cui/ui/colorpage/$(lang)/ColorPage.png \

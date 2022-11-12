@@ -408,6 +408,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/modules/smath/ui/savedefaultsdialog/SaveDefaultsDialog.png \
     screenshots/modules/smath/ui/spacingdialog/SpacingDialog.png \
     screenshots/modules/swriter/ui/watermarkdialog/WatermarkDialog.png \
+    screenshots/modules/swriter/ui/indexentry/IndexEntryDialog.png \
     screenshots/writerperfect/ui/exportepub/EpubDialog.png \
     screenshots/svx/ui/compressgraphicdialog/CompressGraphicDialog.png \
     screenshots/modules/simpress/ui/optimpressgeneralpage/OptSavePage.png \
