@@ -24,8 +24,8 @@
          <bookmark_value>API;XDialogEventHandler</bookmark_value>
       </bookmark>
       <bookmark xml-lang="en-US" branch="hid/cui/ui/assigncomponentdialog/AssignComponent" id="bm_id66701251" localize="false"/>
-      <h1 id="N0665"><variable id="pythonhandler_h1"><link href="text/sbasic/python/python_handler.xhp" name="Creating a Dialog Handler">Creating a Dialog Handler</link></variable></h1>
-      <paragraph role="paragraph" id="N0666">Next to <link href="text/sbasic/shared/01040000.xhp" name ="Assigning macros to events">assigning macros to events</link> or <link href="text/sbasic/basic/python/python_listener" name ="creating event listeners">creating event listeners</link>, one can use dialog handlers, whose principle is to define UNO keywords, or methods, that are mapped to events to watch for. The event handler is responsible for executing methods using the <literal>vnd.sun.star.UNO:&lt;method_name&gt;</literal> protocol. Unlike listeners that require to define all supported methods, even if unused, dialog handlers require only two methods on top of intended control hook scripts.</paragraph>
+      <h1 id="N0665"><variable id="pythonhandler_h1"><link href="text/sbasic/python/python_handler.xhp">Creating a Dialog Handler</link></variable></h1>
+      <paragraph role="paragraph" id="N0666">Next to <link href="text/sbasic/shared/01040000.xhp">assigning macros to events</link> or <link href="text/sbasic/basic/python/python_listener">creating event listeners</link>, one can use dialog handlers, whose principle is to define UNO keywords, or methods, that are mapped to events to watch for. The event handler is responsible for executing methods using the <literal>vnd.sun.star.UNO:&lt;method_name&gt;</literal> protocol. Unlike listeners that require to define all supported methods, even if unused, dialog handlers require only two methods on top of intended control hook scripts.</paragraph>
       <paragraph role="paragraph" id="N0667">The advantages of this approach are:</paragraph>
       <list type="unordered">
          <listitem><paragraph role="listitem" id="N0668">It packs the code that handles event-driven macros,</paragraph></listitem>
@@ -34,7 +34,7 @@
       <paragraph role="paragraph" id="N0670">This mechanism is illustrated herewith for Basic and Python languages using an imported copy of <literal>Access2Base</literal> <literal>dlgTrace</literal> dialog. Exception handling and localisation are omitted for clarity.</paragraph>
       <h2 id="N0671">Assigning Dialog methods</h2>
       <paragraph role="paragraph" id="N0672">Export <literal>Access2Base</literal> <literal>dlgTrace</literal> dialog and import it into <literal>MyLib</literal> application library.</paragraph>
-      <paragraph role="paragraph" id="N0673">Inside the control properties pane of the <link href="text/sbasic/guide/create_dialog.xhp" name ="Dialog Editor">Dialog Editor</link>, use the Events tab to replace macro assignments by component assignments, and type in the intended method names:</paragraph>
+      <paragraph role="paragraph" id="N0673">Inside the control properties pane of the <link href="text/sbasic/guide/create_dialog.xhp">Dialog Editor</link>, use the Events tab to replace macro assignments by component assignments, and type in the intended method names:</paragraph>
       <list type="unordered">
          <listitem><paragraph role="listitem" id="N0674">Set <literal>Dump to file</literal> dialog button component method name to <literal>_dump2File</literal></paragraph></listitem>
          <listitem><paragraph role="listitem" id="N0675">Optionally define <literal>txtTracelog</literal> key pressed and mouse button pressed events component method names as <literal>_openHelp</literal></paragraph></listitem>
@@ -42,7 +42,7 @@
       </list>
       <paragraph role="paragraph" id="N0677">Events assigned actions should mention the <literal>vnd.sun.star.UNO:</literal> protocol.</paragraph>
       <h2 id="N0678">Creating the handler</h2>
-      <paragraph role="paragraph" id="N0679"><literal>createDialogWithHandler</literal> method of <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1DialogProvider2.html" name ="com.sun.star.awt.DialogProvider2">com.sun.star.awt.DialogProvider2</link> service is used to set the dialog and its handler. The handler is responsible for implementing <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XDialogEventHandler.html" name ="com.sun.star.awt.XDialogEventHandler">com.sun.star.awt.XDialogEventHandler</link> interface.</paragraph>
+      <paragraph role="paragraph" id="N0679"><literal>createDialogWithHandler</literal> method of <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1DialogProvider2.html">com.sun.star.awt.DialogProvider2</link> service is used to set the dialog and its handler. The handler is responsible for implementing <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XDialogEventHandler.html">com.sun.star.awt.XDialogEventHandler</link> interface.</paragraph>
       <warning id="N0680">All component method names must be explicitly declared when using a dialog handler.</warning>
       <h3 id="N0681">With Python</h3>
       <paragraph role="paragraph" id="N0682">In this example the dialog is located on the computer.</paragraph>
@@ -110,7 +110,7 @@
       <paragraph role="pycode" localize="false" id="N0739">    </paragraph>
       </pycode>
       <note id="N0740">As expected, <literal>onOkHasFocus</literal> missing method throws an exception.</note>
-      <tip id="N0741">Refer to <link href="text/sbasic/python/python_2_basic.xhp" name ="Python calls to %PRODUCTNAME Basic">Python calls to %PRODUCTNAME Basic</link> page for <literal>getBasicScript</literal> routine description and for details about cross-language scripting execution.</tip>
+      <tip id="N0741">Refer to <link href="text/sbasic/python/python_2_basic.xhp">Python calls to %PRODUCTNAME Basic</link> page for <literal>getBasicScript</literal> routine description and for details about cross-language scripting execution.</tip>
       <h3 id="N0742">With %PRODUCTNAME Basic</h3>
       <paragraph role="paragraph" id="N0743">In this example the dialog is embedded in a document, and can equally be located on the computer.</paragraph>
       <bascode>
@@ -158,7 +158,7 @@
       <section id="relatedtopics" >
          <embed href="text/sbasic/python/python_2_basic.xhp#py2ba_h1"/>
          <embed href="text/sbasic/guide/show_dialog.xhp#show_dialog"/>
-         <paragraph role="paragraph" id="N0505"><link href="text/sbasic/shared/03132000.xhp" name ="CreateUnoListener Function">CreateUnoListener Function</link></paragraph>
+         <paragraph role="paragraph" id="N0505"><link href="text/sbasic/shared/03132000.xhp">CreateUnoListener Function</link></paragraph>
          <embed href="text/sbasic/python/python_listener.xhp#pythonlistener"/>
          <embed href="text/sbasic/python/python_dialogs.xhp#pythondialog"/>
          <embed href="text/sbasic/python/python_document_events.xhp#pythonmonitor"/>
