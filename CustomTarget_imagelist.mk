@@ -29,15 +29,13 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/images_helpimg
 			$(if $(findstring s,$(MAKEFLAGS)),> /dev/null) && \
 		rm -rf $${ILSTFILE})
 
-# helpimg.ilst is phony to rebuild everything each time
-.PHONY : $(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/helpimg.ilst
+# include everything including directories to also rebuild on file deletion
+helpmedia_allMedia:=$(shell $(FIND) $(helpmedia_DIR)/media/helpimg)
+# but we're only interested in the png images
+helpmedia_images = $(filter %.png,$(helpmedia_allMedia))
 
-$(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/helpimg.ilst : \
-		$(SRCDIR)/helpcontent2/helpers/create_ilst.pl
-	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),PRL,1)
-	$(call gb_Helper_abbreviate_dirs,\
-		$(PERL) $< -dir=$(helpmedia_DIR)/media/helpimg -pre=media/helpimg > $@.out && \
-			mv $@.out $@ \
-	)
+$(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/helpimg.ilst: $(helpmedia_allMedia)
+	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),LST,1)
+	$(file >$@,$(subst $(WHITESPACE),$(NEWLINE),$(sort $(subst $(helpmedia_DIR)/,%MODULE%/,$(helpmedia_images)))))
 
 # vim: set noet sw=4 ts=4:
