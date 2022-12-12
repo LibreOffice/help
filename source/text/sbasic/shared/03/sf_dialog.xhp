@@ -38,7 +38,7 @@
    <paragraph role="paragraph" id="par_id31612271944733"><emph>Container</emph>: "<link href="text/sbasic/shared/03131900.xhp"><literal>GlobalScope</literal></link>" for preinstalled libraries or a window name as defined by <link href="text/sbasic/shared/03/sf_ui.xhp"><literal>ScriptForge.UI</literal></link> service. Empty string "" default value stands for the current document.</paragraph>
    <paragraph role="paragraph" id="par_id311612271947124"><emph>Library</emph>: The case-sensitive name of a library contained in the container. Default value is "Standard".</paragraph>
    <paragraph role="paragraph" id="par_id821612271946316"><emph>DialogName</emph>: A case-sensitive string designating the dialog.</paragraph>
-   <paragraph role="paragraph" id="par_id761620142701399">Below %PRODUCTNAME Basic and Python examples are displaying the <literal>dlgConsole</literal> dialog that belongs to <literal>ScriptForge</literal> shared library:</paragraph>
+   <paragraph role="paragraph" id="par_id761620142701399">The examples below in Basic and Python display the <literal>dlgConsole</literal> dialog that belongs to the <literal>ScriptForge</literal> shared library:</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id471598171198389">Dim oDlg As Object, lButton As Long</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id611598171572062">Dim Container As String, Library As String, DialogName As String</paragraph>
@@ -61,20 +61,49 @@
     <paragraph role="pycode" xml-lang="en-US" id="pyc_id681619619965191">    # ... Process controls and do what is needed here</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id821619619965373">dlg.Terminate()</paragraph>
   </pycode>
+  <note id="par_id811670854106781">Use the string "GlobalScope" as the <emph>container</emph> argument when the dialog is stored either in <menuitem>My Macros &amp; Dialogs</menuitem> or in <menuitem>Application Macros &amp; Dialogs</menuitem>.</note>
 
-  <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">Alternatively a <literal>Dialog</literal> instance can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, providing that the dialog was initiated with the <literal>Dialog</literal> service. <literal>DialogEvent</literal> returns the <literal>SFDialogs.Dialog</literal> service instance that triggered the event.</paragraph>
+  <h2 id="hd_id141670854511382">Retrieving the Dialog instance that triggered a dialog event</h2>
+  <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">An instance of the <literal>Dialog</literal> service can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, provided that the dialog was initiated with the <literal>Dialog</literal> service. In the example below, <literal>oDlg</literal> contains the <literal>Dialog</literal> instance that triggered the dialog event.</paragraph>
   <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id471620305309968">Sub SomeEvent(ByRef poEvent As Object)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id471620305309968">Sub aDialogEventHander(ByRef poEvent As Object)</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id781598175253859">    Dim oDlg As Object</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id921598175248581">    Set oDlg = CreateScriptService("SFDialogs.DialogEvent", poEvent)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id191670854798613">    ' ...</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id421598175139021">End Sub</paragraph>
   </bascode>
-  <paragraph role="paragraph" id="par_id741619625211462">with Python:</paragraph>
+  <paragraph role="paragraph" id="par_id741619625211462">Or using Python:</paragraph>
   <pycode>
-    <paragraph role="pycode" id="pyc_id221620305385871" localize="false">def some_event(event: uno):</paragraph>
-    <paragraph role="pycode" id="pyc_id661819619965191" localize="false">    dlg = CreateScriptService("SFDialogs.DialogEvent", event)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id221620305385871">def control_event_handler(event: uno):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id661819619965191">    dlg = CreateScriptService("SFDialogs.DialogEvent", event)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id871670855024161">    # ...</paragraph>
   </pycode>
-  <paragraph role="paragraph" id="par_id251598176312571" xml-lang="en-US">Note that in previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted when deemed appropriate.</paragraph>
+  <paragraph role="paragraph" id="par_id251598176312571" xml-lang="en-US">Note that in the previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted when deemed appropriate.</paragraph>
+  <h2 id="hd_id681670854491710">Handling exceptions in event handlers</h2>
+  <paragraph role="paragraph" id="par_id971670855125683">When creating an event handler for dialog events it is good practice to handle errors inside the subroutine itself. For instance, suppose the event handler below is called when the mouse button is pressed in the dialog window.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id841670857159416">Sub OnMouseButtonPressed(ByRef oEvent As Object)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id401670857159673">On Local Error GoTo Catch</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941670857159896">    Dim oDialog As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id311670857160096">    oDialog = CreateScriptService("DialogEvent", oEvent)</paragraph>
+    <paragraph role="bascode" id="bas_id261670857160312">    ' Process the event</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id521670857237087">    Exit Sub</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id211670857160512">Catch:</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id716708571060704">    MsgBox SF_Exception.Description</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id361670857160919">    SF_Exception.Clear</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371670857161112">End Sub</paragraph>
+  </bascode>
+  <tip id="par_id691670857377446">Call <literal>SF_Exception.Clear</literal> if you do not want the error to propagate after the dialog execution ended.</tip>
+  <paragraph role="paragraph" id="par_id741619625211445">In Python use native <literal>try/except</literal> blocks for exception handling as shown below:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id111670866555779">def on_mouse_button_pressed(event=None):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id871670866556117">    try:</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id721670866556311">        dlg = CreateScriptService("DialogEvent", event)</paragraph>
+    <paragraph role="pycode" id="pyc_id491670866556493">        # Process the event</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id521670866556680">    except Exception as e:</paragraph>
+    <paragraph role="pycode" id="pyc_id416708660557072">        # The object "bas" is an instance of the Basic service</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id491670866556877">        bas.MsgBox(str(e))</paragraph>
+  </pycode>
 
   <h2 id="hd_id651583668365757" xml-lang="en-US">Properties</h2>
    <table id="tab_id381583668386455">
@@ -397,7 +426,8 @@
        </paragraph></tablecell>
        <tablecell><paragraph id="par_id161606472825856" role="tablecontent" localize="false">
          <link href="text/sbasic/shared/03/sf_dialog.xhp#Resize">Resize</link><br/>
-         <link href="text/sbasic/shared/03/sf_dialog.xhp#Terminate">Terminate</link><br/><br/>
+         <link href="text/sbasic/shared/03/sf_dialog.xhp#SetPageManager">SetPageManager</link><br/>
+         <link href="text/sbasic/shared/03/sf_dialog.xhp#Terminate">Terminate</link><br/>
        </paragraph></tablecell>
     </tablerow>
     </table>
@@ -640,6 +670,58 @@
    <pycode>
      <paragraph role="pycode" xml-lang="en-US" id="pyc_id941620303073866">oDialog.Resize(1000, 2000, Height = 6000)  # Width is not changed</paragraph>
    </pycode>
+</section>
+
+<section id="SetPageManager">
+  <comment> SetPageManager --------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953104">
+    <bookmark_value>Dialog service;SetPageManager</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id101598187953960" localize="false">SetPageManager</h2>
+  <paragraph role="paragraph" id="par_id21598187950047">Defines which controls in a dialog are responsible for switching pages, making it easier to manage the <literal>Page</literal> property of a dialog and its controls.</paragraph>
+  <paragraph role="paragraph" id="par_id291670871829824">Dialogs may have multiple pages and the currently visible page is defined by the <literal>Page</literal> dialog property. If the <literal>Page</literal> property is left unchanged, the default visible page is equal to 0 (zero), meaning that no particular page is defined and all visible controls are displayed regardless of the value set in their own <literal>Page</literal> property.</paragraph>
+  <paragraph role="paragraph" id="par_id431670872095503">When the <literal>Page</literal> property of a dialog is changed to some other value such as 1, 2, 3 and so forth, then only the controls whose <literal>Page</literal> property match the current dialog page will be displayed.</paragraph>
+  <paragraph role="paragraph" id="par_id161670872517032">By using the <literal>SetPageManager</literal> method it is possible to define four types of page managers:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id161670872665432" role="listitem"><emph>List box or combo box:</emph> in this case, each entry in the list box or combo box corresponds to a page. The first item refers to Page 1, the second items refers to Page 2 and so on.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id141670872835955" role="listitem"><emph>Group of radio buttons:</emph> defines a group of radio buttons that will control which page is visible.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id11670872840588" role="listitem"><emph></emph><emph>Sequence of buttons:</emph> defines a set of buttons, each of which corresponding to a dialog page. This can be used to emulate a tabbed interface by placing buttons side by side in the dialog.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id461670873122132" role="listitem"><emph>Previous/Next buttons:</emph> defines which buttons in the dialog that will be used to navigate to the Previous/Next page in the dialog.</paragraph>
+    </listitem>
+  </list>
+  <tip id="par_id871670874232499">It is possible to use more than one page management mechanism at the same time.</tip>
+  <paragraph role="paragraph" id="par_id831670873941232">This method is supposed to be called just once before calling the <literal>Execute</literal> method. Subsequent calls are ignored.</paragraph>
+  <paragraph role="paragraph" id="par_id371670874142972"> If successful this method returns <literal>True</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id711619628364179"><input>svc.SetPageManager(pilotcontrols: str = "", tabcontrols: str = "", wizardcontrols: str = "", opt lastpage: int): bool</input></paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id481651236673466"><emph>pilotcontrols:</emph> a comma-separated list of <literal>ListBox</literal>, <literal>ComboBox</literal> or <literal>RadioButton</literal> control names used as page managers. For RadioButton controls, specify the name of the first control in the group to be used.</paragraph>
+  <paragraph role="paragraph" id="par_id721651236670589"><emph>tabcontrols:</emph> a comma-separated list of button names that will be used as page managers. The order in which they are specified in this argument corresponds to the page number they are associated with.</paragraph>
+  <paragraph role="paragraph" id="par_id991651236674963"><emph>wizardcontrols:</emph> a comma-separated list with the names of two buttons that will be used as the Previous/Next buttons.</paragraph>
+  <paragraph role="paragraph" id="par_id771651236671764"><emph>lastpage:</emph> the number of the last available page. It is recommended to specify this value when using the Previous/Next page manager.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <paragraph role="paragraph" id="par_id861670874176863">Consider a dialog with three pages. The dialog has a <literal>ListBox</literal> control named "aPageList" that will be used to control the visible page. Additionally, there are two buttons named "btnPrevious" and "btnNext" that will be used as the Previous/Next buttons in the dialog.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id791620301085277">oDialog.SetPageManager(PilotControls := "aPageList", _</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id521670874392677">                       WizardControls := "btnPrevious,btnNext", _</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921670874397803">                       LastPage := 3)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id431670874436519">oDialog.Execute()</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id941620303073556">dlg.SetPageManager(pilotcontrols="aPageList",</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id301670874656516">                   wizardcontrols="btnPrevious,btnNext",</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id921670874657500">                   lastpage=3)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id601670874657708">dlg.Execute()</paragraph>
+  </pycode>
 </section>
 
 <section id="Terminate">

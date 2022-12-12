@@ -53,23 +53,50 @@
      <paragraph role="pycode" xml-lang="en-US" id="pyc_id841620225235377"># ... process the controls actual values</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id411620225235569">dlg.Terminate()</paragraph>
    </pycode>
-   <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">Alternatively a control instance can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, providing the dialog was initiated with the <literal>Dialog</literal> service. <literal>DialogEvent</literal> returns the <literal>SFDialogs.DialogControl</literal> class instance that triggered the event.</paragraph>
-   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id311598175259794">Sub SomeEvent(ByRef poEvent As Object)</paragraph>
+  <h2 id="hd_id141670854511382">Retrieving the DialogControl instance that triggered a control event</h2>
+  <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">An instance of the <literal>DialogControl</literal> service can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, provided that the dialog was initiated with the <literal>Dialog</literal> service. In the example below, <literal>oControl</literal> contains the <literal>DialogControl</literal> instance that triggered the control event.</paragraph>
+  <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id311598175259794">Sub aControlEventHandler(ByRef poEvent As Object)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id781598175253859">    Dim oControl As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id921598175248581">    Set oControl = CreateScriptService("SFDialogs.DialogEvent", poEvent)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id711598175146308">    ' ...</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id421598175139021">End Sub</paragraph>
-   </bascode>
-   <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id921620228762243">def some_event(event: uno):</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id181620228763531">    ctrl = CreateScriptService('SFDialogs.DialogEvent', event)</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id741619625211462">Or using Python:</paragraph>
+  <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id921620228762243">def control_event_handler(event: uno):</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id181620228763531">    oControl = CreateScriptService('SFDialogs.DialogEvent', event)</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id731620228763715">    # ...</paragraph>
-   </pycode>
-   <paragraph role="paragraph" id="par_id251598176312571" xml-lang="en-US">Note that in previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted.</paragraph>
-   <h2 id="hd_id71598455687512" xml-lang="en-US">Control types</h2>
-   <paragraph role="paragraph" id="par_id851598455863395" xml-lang="en-US">The <literal>DialogControl</literal> service is available for these control types:</paragraph>
-   <list type="unordered">
+  </pycode>
+  <paragraph role="paragraph" id="par_id251598176312571" xml-lang="en-US">Note that in the previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted when deemed appropriate.</paragraph>
+  <h2 id="hd_id681670854491710">Handling exceptions in event handlers</h2>
+  <paragraph role="paragraph" id="par_id971670855125683">When creating an event handler for control events it is good practice to handle errors inside the subroutine itself. For instance, suppose the event handler below is called when button is clicked.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id841670857159416">Sub OnButtonClicked(ByRef oEvent As Object)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id401670857159673">On Local Error GoTo Catch</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941670857159896">    Dim oControl As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id311670857160096">    oControl = CreateScriptService("DialogEvent", oEvent)</paragraph>
+    <paragraph role="bascode" id="bas_id261670857160312">    ' Process the event</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id521670857237087">    Exit Sub</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id211670857160512">Catch:</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id716708571060704">    MsgBox SF_Exception.Description</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id361670857160919">    SF_Exception.Clear</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371670857161112">End Sub</paragraph>
+  </bascode>
+  <tip id="par_id691670857377446">Call <literal>SF_Exception.Clear</literal> if you do not want the error to propagate after the dialog execution ended.</tip>
+  <paragraph role="paragraph" id="par_id741619625211445">In Python use native <literal>try/except</literal> blocks for exception handling as shown below:</paragraph>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id111670866555779">def on_button_clicked(event=None):</paragraph>
+    <paragraph role="pycode" id="pyc_id871670866556117">    try:</paragraph>
+    <paragraph role="pycode" id="pyc_id721670866556311">        oControl = CreateScriptService("DialogEvent", event)</paragraph>
+    <paragraph role="pycode" id="pyc_id491670866556493">        # Process the event</paragraph>
+    <paragraph role="pycode" id="pyc_id521670866556680">    except Exception as e:</paragraph>
+    <paragraph role="pycode" id="pyc_id416708660557072">        # The object "bas" below is an instance of the Basic service</paragraph>
+    <paragraph role="pycode" id="pyc_id491670866556877">        bas.MsgBox(str(e))</paragraph>
+  </pycode>
+  <h2 id="hd_id71598455687512" xml-lang="en-US">Control types</h2>
+  <paragraph role="paragraph" id="par_id851598455863395" xml-lang="en-US">The <literal>DialogControl</literal> service is available for these control types:</paragraph>
+  <list type="unordered">
       <listitem>
          <paragraph id="par_id121598455880500" localize="false" role="listitem">Button</paragraph>
       </listitem>
