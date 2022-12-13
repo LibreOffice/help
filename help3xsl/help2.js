@@ -70,15 +70,15 @@ function setSystemSpan(spanZ) {
 
 function moduleColor (module) {
     switch (module){
-        case "WRITER" : {color="#0369A3"; break;}
-        case "CALC"   : {color="#43C330"; break;}
+        case "WRITER" : {color="#083fa6"; break;}
+        case "CALC"   : {color="#007c3c"; break;}
         case "CHART"  : {color="darkcyan"; break;}
-        case "IMPRESS": {color="#A33E03"; break;}
-        case "DRAW"   : {color="#C99C00"; break;}
-        case "BASE"   : {color="#8E03A3"; break;}
+        case "IMPRESS": {color="#d0120d"; break;}
+        case "DRAW"   : {color="#cb6d30"; break;}
+        case "BASE"   : {color="#7324a9"; break;}
         case "BASIC"  : {color="black"; break;}
-        case "MATH"   : {color="darkslategray"; break;}
-        case "SHARED" : {color="gray"; break;}
+        case "MATH"   : {color="#c10018"; break;}
+        case "SHARED" : {color="darkslategray"; break;}
         default : {color="#18A303"; break;}
     }
     document.getElementById("TopLeftHeader").style.background = color;
