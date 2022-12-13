@@ -721,20 +721,46 @@
   </bookmark>
   <h2 id="hd_id921592919577158" localize="false">ClearAll</h2>
   <paragraph role="paragraph" id="par_id31592919577984">Clears all the contents and formats of the given range.</paragraph>
+  <paragraph role="paragraph" id="par_id961670941803758">A filter formula can be specified to determine which cells shall be affected.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id441621534763020">
-    <input>svc.ClearAll(range: str)</input>
+    <input>svc.ClearAll(range: str, opt filterformula: str, opt filterscope: str)</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id441592919577809"><emph>range</emph>: The range to be cleared, as a string.</paragraph>
+  <paragraph role="paragraph" id="par_id441592919577809"><emph>range:</emph> The range to be cleared, as a string.</paragraph>
+  <section id="filterformula_desc">
+    <paragraph role="paragraph" id="par_id351670939954166"><emph>filterformula:</emph> A Calc formula that shall be applied to the given range to determine which cells will be affected. The specified formula must return <literal>True</literal> or <literal>False</literal>. If this argument is not specified, then all cells in the range are affected.</paragraph>
+    <paragraph role="paragraph" id="par_id461670939954392"><emph>filterscope:</emph> Determines how <literal>filterformula</literal> is expanded to the given range. This argument is mandatory if a <literal>filterformula</literal> is specified. The following values are accepted:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id991670941074213" role="listitem"><emph>"CELL":</emph> The formula specified in the <literal>filterformula</literal> argument is expanded once for each cell in <literal>range</literal>.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id911670941074926" role="listitem"><emph>"ROW":</emph> The formula specified in the <literal>filterformula</literal> argument is expanded once for each row in <literal>range</literal>.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id581670941075101" role="listitem"><emph>"COLUMN":</emph> The formula specified in the <literal>filterformula</literal> argument is expanded once for each column in <literal>range</literal>.</paragraph>
+      </listitem>
+    </list>
+  </section>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id521592919577626">oDoc.ClearAll("SheetX.A1:F10")</paragraph>
+    <paragraph role="bascode" id="bas_id681670941294573">' Clears all cells in the range SheetX.A1:J10</paragraph>
+    <paragraph role="bascode" id="bas_id521592919577626">oDoc.ClearAll("SheetX.A1:J10")</paragraph>
+    <paragraph role="bascode" id="bas_id681670941294511">' Clears all cells in the range SheetX.A1:J10 that have a value greater than 100</paragraph>
+    <paragraph role="bascode" id="bas_id521592919575446">oDoc.ClearAll("SheetX.A1:J10", "=SheetX.A1>100", "CELL")</paragraph>
+    <paragraph role="bascode" id="bas_id681670941233673">' Clears all rows in the range SheetX.A1:J10 whose sum is greater than 500</paragraph>
+    <paragraph role="bascode" id="bas_id521592919518126">oDoc.ClearAll("SheetX.A1:J10", "=SUM(SheetX.A1:J1)>100", "ROW")</paragraph>
+    <paragraph role="bascode" id="bas_id681670941293083">' Clears all columns in the range SheetX.A1:J10 whose sum is greater than 500</paragraph>
+    <paragraph role="bascode" id="bas_id521592919577149">oDoc.ClearAll("SheetX.A1:J10", "=SUM(SheetX.A1:A10)>100", "COLUMN")</paragraph>
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id211621536212144">myDoc.ClearAll("SheetX.A1:F10")</paragraph>
+    <paragraph role="pycode" id="pyc_id211621536212144">myDoc.ClearAll("SheetX.A1:F10")</paragraph>
+    <paragraph role="pycode" id="pyc_id701670942024915">myDoc.ClearAll("SheetX.A1:J10", "=SheetX.A1>100", "CELL")</paragraph>
+    <paragraph role="pycode" id="pyc_id261670942025274">myDoc.ClearAll("SheetX.A1:J10", "=SUM(SheetX.A1:J1)>100", "ROW")</paragraph>
+    <paragraph role="pycode" id="pyc_id711670942025635">myDoc.ClearAll("SheetX.A1:J10", "=SUM(SheetX.A1:A10)>100", "COLUMN")</paragraph>
   </pycode>
 </section>
 
@@ -745,12 +771,14 @@
   </bookmark>
   <h2 id="hd_id871592919864356" localize="false">ClearFormats</h2>
   <paragraph role="paragraph" id="par_id211592919864118">Clears the formats and styles in the given range.</paragraph>
+  <paragraph role="paragraph" id="par_id961670941800058">A filter formula can be specified to determine which cells shall be affected.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id381621536397094">
-    <input>svc.ClearFormats(range: str)</input>
+    <input>svc.ClearFormats(range: str, opt filterformula: str, opt filterscope: str)</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id611592919864268"><emph>range</emph>: The range whose formats and styles are to be cleared, as a string.</paragraph>
+  <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -760,6 +788,7 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id501621536545590">myDoc.ClearFormats("SheetX.*")</paragraph>
   </pycode>
+  <tip id="par_id461670942481008">Refer to the <link href="text/sbasic/shared/03/sf_calc.xhp#ClearAll" name="ClearAll_link3"><literal>ClearAll</literal></link> method documentation available above for examples on how to use the arguments <literal>filterformula</literal> and <literal>filterscope</literal>.</tip>
 </section>
 
 <section id="ClearValues">
@@ -769,12 +798,14 @@
   </bookmark>
   <h2 id="hd_id111592919928265" localize="false">ClearValues</h2>
   <paragraph role="paragraph" id="par_id841592919928169">Clears the values and formulas in the given range.</paragraph>
+  <paragraph role="paragraph" id="par_id961670941801218">A filter formula can be specified to determine which cells shall be affected.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id951621536609302">
-    <input>svc.ClearValues(range: str)</input>
+    <input>svc.ClearValues(range: str, opt filterformula: str, opt filterscope: str)</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id771592919928320"><emph>range</emph>: The range whose values and formulas are to be cleared, as a string.</paragraph>
+  <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -784,6 +815,7 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id451621536678434">myDoc.ClearValues("SheetX.A1:F10")</paragraph>
   </pycode>
+  <tip id="par_id461670942481009">Refer to the <link href="text/sbasic/shared/03/sf_calc.xhp#ClearAll" name="ClearAll_link3"><literal>ClearAll</literal></link> method documentation available above for examples on how to use the arguments <literal>filterformula</literal> and <literal>filterscope</literal>.</tip>
 </section>
 
 <section id="CompactLeft">
@@ -1748,14 +1780,15 @@
   </bookmark>
   <h2 id="hd_id201595767687377" localize="false">SetCellStyle</h2>
   <paragraph role="paragraph" id="par_id521595767687154">Applies the specified cell style to the given target range. The full range is updated and the remainder of the sheet is left untouched. If the cell style does not exist, an error is raised.</paragraph>
-  <paragraph role="paragraph" id="par_id70159576768715" xml-lang="en-US">The method returns a string representing the modified area as a range of cells.</paragraph>
+  <paragraph role="paragraph" id="par_id70159576768715">The method returns a string representing the modified area as a range of cells.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id731621622877726">
-    <input>svc.SetCellStyle(targetrange: str, style: str): str</input>
+    <input>svc.SetCellStyle(targetrange: str, style: str, opt filterformula: str, opt filterscope: str): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id22159576768782"><emph>targetrange</emph>: The range to which the style will be applied, as a string.</paragraph>
-  <paragraph role="paragraph" id="par_id181595767687247" xml-lang="en-US"><emph>style</emph>: The name of the cell style to apply.</paragraph>
+  <paragraph role="paragraph" id="par_id181595767687247"><emph>style</emph>: The name of the cell style to apply.</paragraph>
+  <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -1767,6 +1800,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id731621622966995">myDoc.SetCellStyle("A1:J1", "Heading 1")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id931621622967434">myDoc.SetCellStyle("A2:J100", "Neutral")</paragraph>
   </pycode>
+  <tip id="par_id461670942481010">Refer to the <link href="text/sbasic/shared/03/sf_calc.xhp#ClearAll" name="ClearAll_link3"><literal>ClearAll</literal></link> method documentation available above for examples on how to use the arguments <literal>filterformula</literal> and <literal>filterscope</literal>.</tip>
 </section>
 
 <section id="SetFormula">
