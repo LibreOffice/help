@@ -128,13 +128,14 @@
              <link href="text/sbasic/shared/03/sf_basic.xhp#ConvertFromUrl">ConvertFromUrl</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#ConvertToUrl">ConvertToUrl</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#CreateUnoService">CreateUnoService</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#CreateUnoStruct">CreateUnoStruct</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#DateAdd">DateAdd</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#DateDiff">DateDiff</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#DatePart">DatePart</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_basic.xhp#DatePart">DatePart</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#DateValue">DateValue</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#Format">Format</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#GetDefaultContext">GetDefaultContext</link><br/>
@@ -143,17 +144,17 @@
              <link href="text/sbasic/shared/03/sf_basic.xhp#GetSystemTicks">GetSystemTicks</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#BasicLibraries">GlobalScope.BasicLibraries</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#DialogLibraries">GlobalScope.DialogLibraries</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#InputBox">InputBox</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_basic.xhp#InputBox">InputBox</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#MsgBox">MsgBox</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#Now">Now</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#RGB">RGB</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#ThisComponent">ThisComponent</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#ThisDatabaseDocument">ThisDatabaseDocument</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#Xray">Xray</link><br/><br/><br/><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#Xray">Xray</link><br/><br/><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -198,8 +199,7 @@
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id281621952224847">The following example creates a <literal>com.sun.star.util.DateTime</literal> object and converts it to a <literal>datetime.datetime</literal> Python object.</paragraph>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id651621951946709">import uno</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id931621951947749">uno_date = uno.createUnoStruct('com.sun.star.util.DateTime')</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id931621951947749">uno_date = bas.CreateUnoStruct('com.sun.star.util.DateTime')</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id711621951947956">uno_date.Year = 1983</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id1001621951948124">uno_date.Month = 2</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id201621951948284">uno_date.Day = 23</paragraph>
@@ -283,7 +283,24 @@
   <paragraph role="paragraph" id="par_id361589200121646"><emph>servicename</emph>: A fully qualified service name such as <literal>com.sun.star.ui.dialogs.FilePicker</literal> or <literal>com.sun.star.sheet.FunctionAccess</literal>.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="bascode" localize="false" id="pyc_id891589200121516">dsk = bas.CreateUnoService('com.sun.star.frame.Desktop')</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id891589200120966">dsk = bas.CreateUnoService('com.sun.star.frame.Desktop')</paragraph>
+  </pycode>
+</section>
+
+<section id="CreateUnoStruct">
+  <comment> CreateUnoStruct --------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721569200121087">
+    <bookmark_value>Basic service;CreateUnoStruct</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261589202228475" localize="false">CreateUnoStruct</h2>
+  <paragraph role="paragraph" id="par_id651589200135438">Returns an instance of a UNO structure of the specified type.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" id="par_id221618556258097" localize="false"><input>svc.CreateUnoStruct(unostructure: str): uno</input></paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id3615892001216366"><emph>unostructure</emph>: A fully qualified structure name such as <literal>com.sun.star.beans.Property</literal> or <literal>com.sun.star.util.DateTime</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id891589200121516">date_struct = bas.CreateUnoStruct('com.sun.star.util.DateTime')</paragraph>
   </pycode>
 </section>
 
@@ -352,8 +369,8 @@
   <paragraph role="paragraph" id="par_id791618672371743">The extracted part for the given date/time.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="bascode" localize="false" id="pyc_id31589202925376">print(bas.DatePart("ww", datetime.datetime(2005,12,31)</paragraph>
-    <paragraph role="bascode" localize="false" id="pyc_id821589203188905">print(bas.DatePart('q', datetime.datetime(1999,12,30)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id31589202925376">print(bas.DatePart("ww", datetime.datetime(2005,12,31)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id821589203188905">print(bas.DatePart('q', datetime.datetime(1999,12,30)</paragraph>
   </pycode>
 </section>
 
