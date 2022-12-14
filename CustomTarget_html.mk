@@ -48,7 +48,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 		( \
 			RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(foreach module,$(html_TEXT_MODULES),$(gb_AllLangHelp_$(module)_HELPFILES)))  && \
 			echo 'var hid2fileMap = {' \
-			&& cd $(SRCDIR) && xargs $(call gb_ExternalExecutable_get_command,xsltproc) $< <$$RESPONSEFILE || { rm $$RESPONSEFILE; exit 1 ; } \
+			&& cd $(SRCDIR) && $(call gb_ExternalExecutable_get_command,xsltproc,xargs) $< <$$RESPONSEFILE || { rm $$RESPONSEFILE; exit 1 ; } \
 			&& rm "$$RESPONSEFILE" \
 			&& echo '};' \
 		) > $@ \
