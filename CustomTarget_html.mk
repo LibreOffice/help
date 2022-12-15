@@ -38,21 +38,21 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 	) \
 ))
 
+# trailing space for Windows so that xargs doesn't interpret the final CR (that
+# win-make adds as the newline character) as part of the last filename
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 		$(SRCDIR)/helpcontent2/help3xsl/generate_hid2file.xsl \
 		$(call gb_ExternalExecutable_get_dependencies,xsltproc) \
 		$(foreach module,$(html_TEXT_MODULES),$(call gb_AllLangHelp_get_helpfiles_target,$(module))) \
 		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
-	$(call gb_Helper_abbreviate_dirs,\
-		( \
-			RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(foreach module,$(html_TEXT_MODULES),$(gb_AllLangHelp_$(module)_HELPFILES)))  && \
-			echo 'var hid2fileMap = {' \
-			&& cd $(SRCDIR) && $(call gb_ExternalExecutable_get_command,xsltproc,xargs) $< <$$RESPONSEFILE || { rm $$RESPONSEFILE; exit 1 ; } \
-			&& rm "$$RESPONSEFILE" \
-			&& echo '};' \
-		) > $@ \
-	)
+	( \
+		RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(subst helpcontent2/source/text/,,$(foreach module,$(html_TEXT_MODULES),$(gb_AllLangHelp_$(module)_HELPFILES))$(if $(filter WNT,$(OS), )))  && \
+		echo 'var hid2fileMap = {' \
+		&& cd $(SRCDIR)/helpcontent2/source/text && $(call gb_ExternalExecutable_get_command,xsltproc,xargs) $< <$$RESPONSEFILE || { rm $$RESPONSEFILE; exit 1 ; } \
+		&& rm "$$RESPONSEFILE" \
+		&& echo '};' \
+	) > $@
 
 
 # Xapian localized templates
