@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_Datasheet" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">SFDatabases.Datasheet service</title>
+    <filename>/text/sbasic/shared/03/sf_datasheet.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+<section id="abstract">
+  <bookmark localize="false" branch="index" id="bm_id41582391760252">
+    <bookmark_value>Datasheet service</bookmark_value>
+  </bookmark>
+  <h1 id="bm_id781582391760253" xml-lang="en-US"><variable id="ctrls_h1"><link href="text/sbasic/shared/03/sf_datasheet.xhp" name="SFDatabases.Datasheet service"><literal>SFDatabases</literal>.<literal>Datasheet</literal> service</link></variable></h1>
+  <paragraph role="paragraph" id="par_id901619031958273">The <literal>Datasheet</literal> service allows to visualize the contents of database tables as well as the results of queries and SQL statements using Base's Data View. Additionally, this service allows to:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id241619032289964" role="listitem">Add custom menus to the data view.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id291619032292829" role="listitem">Access values in specific positions of the data view.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id421619032296454" role="listitem">Position the cursor in a specific cell of the data view.</paragraph>
+    </listitem>
+</list>
+</section>
+
+  <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>Datasheet</literal> service the <literal>ScriptForge</literal> library needs to be loaded or imported:</paragraph>
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#importLibs"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id311619033224680">The <literal>Datasheet</literal> service can be invoked in two different ways depending on whether the database file is open.</paragraph>
+  <paragraph role="paragraph" id="par_id781671108693239">The example below considers that the database file is open, hence the <literal>UI</literal> service can be used to retrieve the document and the <literal>OpenTable</literal> method from the <literal>Database</literal> service is used to get a <literal>Datasheet</literal> service instance.</paragraph>
+  <bascode>
+    <paragraph role="bascode" id="bas_id561671040218003">Dim ui As Object, oBase As Object, oSheet As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791619033406225">Set ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="bascode" id="bas_id981671039972329">' Object oBase is an instance of the Base service</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id321619033409042">Set oBase = ui.GetDocument("C:\Documents\myDB.odb")</paragraph>
+    <paragraph role="bascode" id="bas_id451671040032633">' Object oSheet is an instance of the Datasheet service</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id101619033409330">Set oSheet = oBase.OpenTable("Customers")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id721671040093835">In the example above it is also possible to use the method <literal>OpenQuery</literal> from the <literal>Base</literal> service to get a <literal>Datasheet</literal> instance.</paragraph>
+  <paragraph role="paragraph" id="par_id281619033570656">To invoke the <literal>Datasheet</literal> service when the database file is not open, use the <literal>OpenTable</literal>, <literal>OpenQuery</literal> or <literal>OpenSql</literal> methods from the <literal>Database</literal> service. The example below uses the <literal>OpenTable</literal> method to open an existing table in the database file:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id941619033409619">Dim oDatabase As Object, oSheet As Object</paragraph>
+    <paragraph role="bascode" id="bas_id451671040032621">' Object oDatabase is an instance of the Database service</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id801671040425413">Set oDatabase = CreateScriptService("Database", "C:\Documents\myDB.odb")</paragraph>
+    <paragraph role="bascode" id="bas_id451671040032011">' Object oSheet is an instance of the Datasheet service</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371671040425688">Set oSheet = oDatabase.OpenTable("Customers")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <paragraph role="paragraph" id="par_id871623102536956">The examples above can be translated to Python as follows:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id401623102395018">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id311623102395289">ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id561623102422597">base_doc = ui.GetDocument(r"C:\Documents\MyFile.odb")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id21671040633741">sheet = base_doc.OpenTable("Customers")</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id971623102443669">database = CreateScriptService("Database", r"C:\Documents\myDB.odb")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id861671040733796">sheet = database.OpenTable("Customers")</paragraph>
+  </pycode>
+
+<h2 id="hd_id711600788076834">Properties</h2>
+  <paragraph role="paragraph" id="par_id31671041470077">The following properties are available in the <literal>Datasheet</literal> service:</paragraph>
+  <table id="tab_id701600788076583">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id461600788076917" role="tablehead">Name</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id221600788076591" role="tablehead">Read-only</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id761600788076328" role="tablehead">Type</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id67160078807636" role="tablehead">Description</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id491600788076621" role="tablecontent" localize="false">ColumnHeaders</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id311600788076756" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831600788076785" role="tablecontent">Array of Strings</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id441600788076826" role="tablecontent">Returns an <literal>Array</literal> with the names of column headers in the datasheet.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id941600788076595" role="tablecontent" localize="false">CurrentColumn</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id49160078807654" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id961600788076376" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id81600788076419" role="tablecontent">Returns the currently selected column name.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id721600788076638" role="tablecontent" localize="false">CurrentRow</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id711600788076534" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id911600788076842" role="tablecontent" localize="false">Integer</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541600788076645" role="tablecontent">Returns the number of the currently selected row, starting at 1.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id961600788076890" role="tablecontent" localize="false">DatabaseFileName</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id891600788076190" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id761600788076562" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id91600788076674" role="tablecontent">Returns the file name of the Base file in <literal>FSO.FileNaming</literal> format.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id831633021719135" localize="false" role="tablecontent">Filter</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561633021747903" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id201633021748455" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831633021749007" role="tablecontent">Specifies a filter to be applied to the datasheet expressed as the <literal>WHERE</literal> clause of a SQL query without the <literal>WHERE</literal> keyword. If an empty string is specified then the active <literal>Filter</literal> is removed.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951600788076443" role="tablecontent" localize="false">LastRow</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id391600788076253" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id381600788076799" role="tablecontent" localize="false">Integer</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id21600788076541" role="tablecontent">Returns the number of rows in the datasheet.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id41600788076936" role="tablecontent" localize="false">OrderBy</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id211600788076138" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id221600788076518" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id521600788076371" role="tablecontent">Specifies the order in which records are shown expressed as the <literal>ORDER BY</literal> clause of a SQL query without the <literal>ORDER BY</literal> keyword. If an empty string is specified then the active <literal>OrderBy</literal> is removed.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id161600788076362" role="tablecontent" localize="false">ParentDatabase</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id21600788076758" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id871600788076196" role="tablecontent">Object</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id781600788076694" role="tablecontent">Returns the <literal>Database</literal> service instance to which the datasheet belongs.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id471600788076885" role="tablecontent" localize="false">Source</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id261600788076841" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id661600788076636" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id11600788076757" role="tablecontent">Returns a String that represents the data source, which can be a SQL statement, a table name or a query name.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id221600789141781" role="tablecontent" localize="false">SourceType</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id531600789141795" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id561600789141282" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id301600789141619" role="tablecontent">Returns the type of the data source, which can be one of the following values: "SQL", "TABLE" or "QUERY".</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id821600789286339" role="tablecontent" localize="false">XComponent</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541600789286532" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id181600789286889" role="tablecontent">UNO Object</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id701600789286280" role="tablecontent">Returns the <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1lang_1_1XComponent.html" name="XComponent">com.sun.star.lang.XComponent</link> UNO object  that represents the datasheet.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id31600789752717" role="tablecontent" localize="false">XControlModel</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id941608709527698" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id100100678952791" role="tablecontent">UNO Object</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id661300789527859" role="tablecontent">Returns the <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControl.html" name="XControl">com.sun.star.awt.XControl</link> UNO object that represents the datasheet.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id31600789527717" role="tablecontent" localize="false">XTabControllerModel</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id941600789527698" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id100160078952791" role="tablecontent">UNO Object</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id631600789527859" role="tablecontent">Returns the <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XTabControllerModel.html" name="XTabControllerModel">com.sun.star.awt.XTabControllerModel</link> UNO object  that represents the datasheet.</paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <h2 id="hd_id501582887473754">Methods</h2>
+  <table id="tab_id101619034669263">
+    <tablerow>
+      <tablecell colspan="3">
+        <paragraph id="par_id451619034669263" role="tablehead">List of Methods in the Datasheet Service</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id981619034669263" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_datasheet.xhp#Activate" name="Activate method">Activate</link><br/>
+          <link href="text/sbasic/shared/03/sf_datasheet.xhp#CloseDatasheet" name="CloseDatasheet method">CloseDatasheet</link><br/>
+          <link href="text/sbasic/shared/03/sf_datasheet.xhp#CreateMenu" name="CreateMenu method">CreateMenu</link><br/>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id721619034669263" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_datasheet.xhp#GetText" name="GetText method">GetText</link><br/>
+          <link href="text/sbasic/shared/03/sf_datasheet.xhp#GetValue" name="GetValue method">GetValue</link><br/><br/>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id711619034669263" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_datasheet.xhp#GoToCell" name="GoToCell method">GoToCell</link><br/>
+          <link href="text/sbasic/shared/03/sf_datasheet.xhp#RemoveMenu" name="RemoveMenu method">RemoveMenu</link><br/><br/>
+        </paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <section id="Activate">
+    <comment> Activate -------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id341609135528912" localize="false">
+      <bookmark_value>Datasheet service;Activate</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id61161309632927" localize="false">Activate</h2>
+    <paragraph role="paragraph" id="par_id801916099743199">Brings to front the data view window referred to by the <literal>Datasheet</literal> instance.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id71613205516650">
+      <input>svc.Activate()</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id461619100382712">oSheet.Activate()</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id361623165059717">sheet.Activate()</paragraph>
+    </pycode>
+  </section>
+
+  <section id="CloseDatasheet">
+    <comment> CloseDatasheet -------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id341609135513552" localize="false">
+      <bookmark_value>Datasheet service;CloseDatasheet</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id61161309639987" localize="false">CloseDatasheet</h2>
+    <paragraph role="paragraph" id="par_id801916099748128">Closes the data view window referred to by the <literal>Datasheet</literal> instance.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id71613205555140">
+      <input>svc.CloseDatasheet()</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id461619100389742">oSheet.CloseDatasheet()</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id361623165059633">sheet.CloseDatasheet()</paragraph>
+    </pycode>
+  </section>
+
+  <section id="CreateMenu">
+    <comment> CreateMenu ------------------------------------------------------------------------------------------ </comment>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id341609135511882" localize="false">
+      <bookmark_value>Datasheet service;CreateMenu</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id61161309633147" localize="false">CreateMenu</h2>
+    <paragraph role="paragraph" id="par_id801916099748639">Creates a new menu entry in the data view window and returns a <literal>SFWidgets.Menu</literal> service instance, with which menu items can be programmatically added.</paragraph>
+    <note id="par_id71671047526843">Menus added using the <literal>CreateMenu</literal> method are lost as soon as the data view window is closed.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id71613205513340">
+      <input>svc.CreateMenu(menuheader: str, opt before: any, opt submenuchar: str): obj</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id941619079997155"><emph>menuheader:</emph> The name of the new menu.</paragraph>
+    <paragraph role="paragraph" id="par_id941619079997180"><emph>before:</emph> This argument can be either the name of an existing menu entry before which the new menu will be placed or a number expressing the position of the new menu. If this argument is left blank the new menu is placed as the last entry.</paragraph>
+    <paragraph role="paragraph" id="par_id941619079997090"><emph>submenuchar:</emph> The delimiter used in menu trees (Default = ">")</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id461671048374708">Dim oMenu As Object</paragraph>
+      <paragraph role="bascode" id="bas_id461619100382442">Set oMenu = oSheet.CreateMenu("My Menu", Before := "Data")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id161671048412794">With oMenu</paragraph>
+      <paragraph role="bascode" id="bas_id591671048413063">    .AddItem("Item 1", Command := ".uno:About")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id701671048413215">    ' ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id471671048413433">    .Dispose()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id116710484137001">End With</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id361623165059667">menu = sheet.CreateMenu("My Menu", before="Data")</paragraph>
+      <paragraph role="pycode" id="pyc_id571671048780765">menu.AddItem("Item 1", command=".uno:About")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id671671048785091"># ...</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id216710487856701">menu.Dispose()</paragraph>
+    </pycode>
+    <tip id="par_id521671048538692">Read the <link href="text/sbasic/shared/03/sf_menu.xhp" name="SF_Menu">Menu service</link> help page to learn more about how to create menu and submenu entries and associate commands.</tip>
+  </section>
+
+  <section id="GetText">
+    <comment> GetText --------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id341609135520362" localize="false">
+      <bookmark_value>Datasheet service;GetText</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id61161309634747" localize="false">GetText</h2>
+    <paragraph role="paragraph" id="par_id801916099748009">Returns the text in a given column of the current row.</paragraph>
+    <note id="par_id161671050245887">This method does not change the position of the cursor in the data view window.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id71615225513340">
+      <input>svc.GetText(column: any): str</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id941619079997693"><emph>column:</emph> The name of the column as a String or the column position (starting at 1). If a position greater than the number of columns is given, the last column is returned.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id461619100382744">oSheet.GetText("FirstName")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id361623165059617">sheet.GetText("FirstName")</paragraph>
+    </pycode>
+  </section>
+
+  <section id="GetValue">
+    <comment> GetValue -------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id341609648521152" localize="false">
+      <bookmark_value>Datasheet service;GetValue</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id61161309633547" localize="false">GetValue</h2>
+    <paragraph role="paragraph" id="par_id801916099747177">Returns the value in a given column of the current row as a valid Basic type.</paragraph>
+    <paragraph role="paragraph" id="par_id91671050315349">The types that can be returned are: <literal>String</literal>, <literal>Integer</literal>, <literal>Long</literal>, <literal>Single</literal>, <literal>Double</literal>, <literal>Date</literal> and <literal>Null</literal>.</paragraph>
+    <paragraph role="paragraph" id="par_id411671050476363">Binary types are returned as a <literal>Long</literal> value indicating the length of the binary field.</paragraph>
+    <paragraph role="paragraph" id="par_id141671050559691">An <literal>Empty</literal> value is returned if the required value could not be retrieved.</paragraph>
+    <note id="par_id161671050245365">This method does not change the position of the cursor in the data view window.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id71615225513355">
+      <input>svc.GetValue(column: any): any</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id941619079997253"><emph>column:</emph> The name of the column as a String or the column position (starting at 1). If a position greater than the number of columns is given, the last column is returned.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id461619100382711">oSheet.GetValue("Address")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id361623165059647">sheet.GetValue("Address")</paragraph>
+    </pycode>
+  </section>
+
+  <section id="GoToCell">
+    <comment> GoToCell -------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id341601448421747" localize="false">
+      <bookmark_value>Datasheet service;GoToCell</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id61161309659787" localize="false">GoToCell</h2>
+    <paragraph role="paragraph" id="par_id801916099747188">Moves the cursor to the specified row and column.</paragraph>
+    <note id="par_id161671050245147">This method does not change the position of the cursor in the data view window.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id71615225513065">
+      <input>svc.GoToCell(opt row: int, opt column: any): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id231671105664098"><emph>row:</emph> The row number as a numeric value starting at 1. If the requested row exceeds the number of existing rows, the cursor is moved to the last row. If this argument is not specified, then the row is not changed.</paragraph>
+    <paragraph role="paragraph" id="par_id941619079997124"><emph>column:</emph> The name of the column as a <literal>String</literal> or the column position (starting at 1). If the requested column exceeds the number of existing columns, the cursor is moved to the last column. If this argument is not specified, then the column is not changed.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id741671106250967">' Moves the cursor to the column "LastName" in row 4</paragraph>
+      <paragraph role="bascode" id="bas_id51671106293155">oSheet.GoToCell(4, "LastName")</paragraph>
+      <paragraph role="bascode" id="bas_id616711059619900">' Moves the cursor to the third column of the current row</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id461619100382302">oSheet.GoToCell(Column := 3)</paragraph>
+      <paragraph role="bascode" id="bas_id611671106014685">' Moves cursor one row down leaving it in the same column</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id301671106059707">oSheet.GoToCell(Row := oSheet.CurrentRow + 1)</paragraph>
+      <paragraph role="bascode" id="bas_id711671107842042">' Moves to the last column of the last row</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id101671107871019">Dim LastColumn As Integer : LastColumn = UBound(oSheet.ColumnHeaders) + 1</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id721671107903292">oSheet.GoToCell(oSheet.LastRow, LastColumn)</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id361623165059099">sheet.GoToCell(4, "LastName")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id971671106400005">sheet.GoToCell(column=3)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id351671106399053">sheet.GoToCell(row=sheet.CurrentRow + 1)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id231671107978407">sheet.GoToCell(sheet.LastRow, len(sheet.ColumnHeaders))</paragraph>
+    </pycode>
+  </section>
+
+  <section id="RemoveMenu">
+    <comment> RemoveMenu ------------------------------------------------------------------------------------------ </comment>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id341609648544472" localize="false">
+      <bookmark_value>Datasheet service;RemoveMenu</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id61161309659147" localize="false">RemoveMenu</h2>
+    <paragraph role="paragraph" id="par_id801916099747090">Removes a menu entry from the data view by its name.</paragraph>
+    <note id="par_id511671106735805">This method can remove menus that belong to the standard user interface as well as menus that were programmatically added with the <literal>CreateMenu</literal> method. The removal of standard menus is not permanent and they will reappear after the window is closed and reopened.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id71615225513347">
+      <input>svc.RemoveMenu(menuheader: str): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id941619079997083"><emph>menuheader:</emph> The case-sensitive name of the menu to be removed. The name must not include the tilde ("~") character.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id461619100382736">oSheet.RemoveMenu("Data")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id361623165059611">sheet.RemoveMenu("Data")</paragraph>
+    </pycode>
+  </section>
+
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/sf_database.xhp#DatabaseService"/>
+    <embed href="text/sbasic/shared/03/sf_ui.xhp#UIService"/>
+  </section>
+  </body>
+</helpdocument>
