@@ -88,19 +88,21 @@
              <link href="text/sbasic/shared/03/sf_base.xhp#CloseFormDocument">CloseFormDocument</link><br/>
              <link href="text/sbasic/shared/03/sf_base.xhp#FormDocuments">FormDocuments</link><br/>
              <link href="text/sbasic/shared/03/sf_base.xhp#Forms">Forms</link><br/>
+             <link href="text/sbasic/shared/03/sf_base.xhp#GetDatabase">GetDatabase</link>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id721619034669263" role="tablecontent" localize="false">
-             <link href="text/sbasic/shared/03/sf_base.xhp#GetDatabase">GetDatabase</link><br/>
              <link href="text/sbasic/shared/03/sf_base.xhp#IsLoaded">IsLoaded</link><br/>
              <link href="text/sbasic/shared/03/sf_base.xhp#OpenFormDocument">OpenFormDocument</link><br/>
+             <link href="text/sbasic/shared/03/sf_base.xhp#OpenQuery">OpenQuery</link><br/>
+             <link href="text/sbasic/shared/03/sf_base.xhp#OpenTable">OpenTable</link>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id711619034669263" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_base.xhp#PrintOut">PrintOut</link><br/>
-             <link href="text/sbasic/shared/03/sf_base.xhp#SetPrinter">SetPrinter</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_base.xhp#SetPrinter">SetPrinter</link><br/><br/><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -303,6 +305,62 @@
     <paragraph role="pycode" localize="false" id="pyc_id361623105659616">doc.OpenFormDocument("myFolder/myFormDocument")</paragraph>
   </pycode>
 </section>
+
+  <section id="OpenQuery">
+    <comment> OpenQuery ------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781599490609222">
+      <bookmark_value>Base Service;OpenQuery</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id80159949060014" localize="false">OpenQuery</h2>
+    <paragraph role="paragraph" id="par_id31599490604484">Opens the Data View window of the specified query and returns an instance of the <literal>Datasheet</literal> service.</paragraph>
+    <paragraph role="paragraph" id="par_id281671113374329">The query can be opened either in normal or design mode.</paragraph>
+    <paragraph role="paragraph" id="par_id801671111609985">If the query is already open, its Data View window will be made active.</paragraph>
+    <note id="par_id521671113436716">Closing the Base document will cause the Data View window to be closed as well.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id421625701780171">
+      <input>svc.OpenQuery(queryname: str, designmode: bool = False): obj</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id701599490609511"><emph>queryname</emph>: The name of an existing query as a case-sensitive String.</paragraph>
+    <paragraph role="paragraph" id="par_id461671113939669"><emph>designmode</emph>: If this argument is set to <literal>True</literal> the query is opened in design mode. Otherwise it is opened in normal mode (Default = <literal>False</literal>).</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id47159949060363">oDoc.OpenQuery("MyQuery", DesignMode := True)</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id331625701876004">doc.OpenQuery("MyQuery", designmode=True)</paragraph>
+    </pycode>
+  </section>
+
+  <section id="OpenTable">
+    <comment> OpenTable ------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id78159949060145">
+      <bookmark_value>Base Service;OpenTable</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id80159949063922" localize="false">OpenTable</h2>
+    <paragraph role="paragraph" id="par_id31599490604787">Opens the Data View window of the specified table and returns an instance of the <literal>Datasheet</literal> service.</paragraph>
+    <paragraph role="paragraph" id="par_id281671113374441">The table can be opened either in normal or design mode.</paragraph>
+    <paragraph role="paragraph" id="par_id801671111609395">If the table is already open, its Data View window will be made active.</paragraph>
+    <note id="par_id521671113436658">Closing the Base document will cause the Data View window to be closed as well.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id421625701751251">
+      <input>svc.OpenTable(tablename: str, designmode: bool = False): obj</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id701599490609099"><emph>tablename</emph>: The name of an existing table as a case-sensitive String.</paragraph>
+    <paragraph role="paragraph" id="par_id461671113939471"><emph>designmode</emph>: If this argument is set to <literal>True</literal> the table is opened in design mode. Otherwise it is opened in normal mode (Default = <literal>False</literal>).</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id47159949064613">oDoc.OpenTable("MyTable", DesignMode = False)</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id331625701876226">doc.OpenTable("MyTable", designmode=False)</paragraph>
+    </pycode>
+  </section>
 
 <section id="PrintOut">
   <comment> PrintOut ---------------------------------------------------------------- </comment>
