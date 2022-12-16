@@ -22,7 +22,7 @@
     <bookmark_value>Datasheet service</bookmark_value>
   </bookmark>
   <h1 id="bm_id781582391760253" xml-lang="en-US"><variable id="ctrls_h1"><link href="text/sbasic/shared/03/sf_datasheet.xhp" name="SFDatabases.Datasheet service"><literal>SFDatabases</literal>.<literal>Datasheet</literal> service</link></variable></h1>
-  <paragraph role="paragraph" id="par_id901619031958273">The <literal>Datasheet</literal> service allows to visualize the contents of database tables as well as the results of queries and SQL statements using Base's Data View. Additionally, this service allows to:</paragraph>
+  <paragraph role="paragraph" id="par_id901619031958273">The <literal>Datasheet</literal> service allows to visualize the contents of database tables using Base's Data View. Additionally, this service allows to:</paragraph>
   <list type="unordered">
     <listitem>
         <paragraph id="par_id241619032289964" role="listitem">Add custom menus to the data view.</paragraph>
@@ -41,7 +41,7 @@
   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#importLibs"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <paragraph role="paragraph" id="par_id311619033224680">The <literal>Datasheet</literal> service can be invoked in two different ways depending on whether the database file is open.</paragraph>
-  <paragraph role="paragraph" id="par_id781671108693239">The example below considers that the database file is open, hence the <literal>UI</literal> service can be used to retrieve the document and the <literal>OpenTable</literal> method from the <literal>Database</literal> service is used to get a <literal>Datasheet</literal> service instance.</paragraph>
+  <paragraph role="paragraph" id="par_id781671108693239">The example below considers that the database file is open, hence the <literal>UI</literal> service can be used to retireve the document and the <literal>OpenTable</literal> method from the <literal>Database</literal> service is used to get a <literal>Datasheet</literal> service instance.</paragraph>
   <bascode>
     <paragraph role="bascode" id="bas_id561671040218003">Dim ui As Object, oBase As Object, oSheet As Object</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id791619033406225">Set ui = CreateScriptService("UI")</paragraph>
@@ -51,7 +51,7 @@
     <paragraph role="bascode" localize="false" id="bas_id101619033409330">Set oSheet = oBase.OpenTable("Customers")</paragraph>
   </bascode>
   <paragraph role="paragraph" id="par_id721671040093835">In the example above it is also possible to use the method <literal>OpenQuery</literal> from the <literal>Base</literal> service to get a <literal>Datasheet</literal> instance.</paragraph>
-  <paragraph role="paragraph" id="par_id281619033570656">To invoke the <literal>Datasheet</literal> service when the database file is not open, use the <literal>OpenTable</literal>, <literal>OpenQuery</literal> or <literal>OpenSql</literal> methods from the <literal>Database</literal> service. The example below uses the <literal>OpenTable</literal> method to open an existing table in the database file:</paragraph>
+  <paragraph role="paragraph" id="par_id281619033570656">To invoke the <literal>Datasheet</literal> service when the database file is not open, use the <literal>OpenTable</literal> method of the <literal>Database</literal> service as illustrated next:</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id941619033409619">Dim oDatabase As Object, oSheet As Object</paragraph>
     <paragraph role="bascode" id="bas_id451671040032621">' Object oDatabase is an instance of the Database service</paragraph>
@@ -72,9 +72,10 @@
     <paragraph role="pycode" localize="false" id="pyc_id861671040733796">sheet = database.OpenTable("Customers")</paragraph>
   </pycode>
 
-<h2 id="hd_id711600788076834">Properties</h2>
+  <h2 id="hd_id711600788076834">Properties</h2>
   <paragraph role="paragraph" id="par_id31671041470077">The following properties are available in the <literal>Datasheet</literal> service:</paragraph>
-  <table id="tab_id701600788076583">
+  <section id="properties_toc">
+   <table id="tab_id701600788076583">
     <tablerow>
       <tablecell>
         <paragraph id="par_id461600788076917" role="tablehead">Name</paragraph>
@@ -271,10 +272,12 @@
         <paragraph id="par_id631600789527859" role="tablecontent">Returns the <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XTabControllerModel.html" name="XTabControllerModel">com.sun.star.awt.XTabControllerModel</link> UNO object  that represents the datasheet.</paragraph>
       </tablecell>
     </tablerow>
-  </table>
+   </table>
+  </section>
 
   <h2 id="hd_id501582887473754">Methods</h2>
-  <table id="tab_id101619034669263">
+  <section id="methods_toc">
+   <table id="tab_id101619034669263">
     <tablerow>
       <tablecell colspan="3">
         <paragraph id="par_id451619034669263" role="tablehead">List of Methods in the Datasheet Service</paragraph>
@@ -301,7 +304,8 @@
         </paragraph>
       </tablecell>
     </tablerow>
-  </table>
+   </table>
+  </section>
 
   <section id="Activate">
     <comment> Activate -------------------------------------------------------------------------------------------- </comment>
@@ -394,10 +398,10 @@
     <note id="par_id161671050245887">This method does not change the position of the cursor in the data view window.</note>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id71615225513340">
-      <input>svc.GetText(column: any): str</input>
+      <input>svc.GetText(opt column: any): str</input>
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-    <paragraph role="paragraph" id="par_id941619079997693"><emph>column:</emph> The name of the column as a String or the column position (starting at 1). If a position greater than the number of columns is given, the last column is returned.</paragraph>
+    <paragraph role="paragraph" id="par_id941619079997693"><emph>column:</emph> The name of the column as a String or the column position (starting at 1). If a position greater than the number of columns is given, the last column is returned. If this argument is not specified then the currently selected column is returned.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
@@ -416,16 +420,16 @@
     </bookmark>
     <h2 id="hd_id61161309633547" localize="false">GetValue</h2>
     <paragraph role="paragraph" id="par_id801916099747177">Returns the value in a given column of the current row as a valid Basic type.</paragraph>
-    <paragraph role="paragraph" id="par_id91671050315349">The types that can be returned are: <literal>String</literal>, <literal>Integer</literal>, <literal>Long</literal>, <literal>Single</literal>, <literal>Double</literal>, <literal>Date</literal> and <literal>Null</literal>.</paragraph>
-    <paragraph role="paragraph" id="par_id411671050476363">Binary types are returned as a <literal>Long</literal> value indicating the length of the binary field.</paragraph>
+    <paragraph role="paragraph" id="par_id91671050315349">The types that can be returned are: <literal>String</literal>, <literal>Integer</literal>, <literal>Long</literal>, <literal>Double</literal>, <literal>Date</literal> and <literal>Null</literal>.</paragraph>
+    <paragraph role="paragraph" id="par_id411671050476363">Binary types are returned as a <literal>Long</literal> value.</paragraph>
     <paragraph role="paragraph" id="par_id141671050559691">An <literal>Empty</literal> value is returned if the required value could not be retrieved.</paragraph>
     <note id="par_id161671050245365">This method does not change the position of the cursor in the data view window.</note>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id71615225513355">
-      <input>svc.GetValue(column: any): any</input>
+      <input>svc.GetValue(opt column: any): any</input>
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-    <paragraph role="paragraph" id="par_id941619079997253"><emph>column:</emph> The name of the column as a String or the column position (starting at 1). If a position greater than the number of columns is given, the last column is returned.</paragraph>
+    <paragraph role="paragraph" id="par_id941619079997253"><emph>column:</emph> The name of the column as a String or the column position (starting at 1). If a position greater than the number of columns is given, the last column is returned. If this argument is not specified then the currently selected column is returned.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
@@ -461,16 +465,16 @@
       <paragraph role="bascode" localize="false" id="bas_id461619100382302">oSheet.GoToCell(Column := 3)</paragraph>
       <paragraph role="bascode" id="bas_id611671106014685">' Moves cursor one row down leaving it in the same column</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id301671106059707">oSheet.GoToCell(Row := oSheet.CurrentRow + 1)</paragraph>
-      <paragraph role="bascode" id="bas_id711671107842042">' Moves to the last column of the last row</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id101671107871019">Dim LastColumn As Integer : LastColumn = UBound(oSheet.ColumnHeaders) + 1</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id721671107903292">oSheet.GoToCell(oSheet.LastRow, LastColumn)</paragraph>
+      <paragraph role="bascode" id="bas_id711671107842042">' Moves to the first column of the last row</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id101671107871019">Dim LastRow As Integer : LastRow = UBound(oSheet.ColumnHeaders) + 1</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id721671107903292">oSheet.GoToCell(LastRow, 1)</paragraph>
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
       <paragraph role="pycode" id="pyc_id361623165059099">sheet.GoToCell(4, "LastName")</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id971671106400005">sheet.GoToCell(column=3)</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id351671106399053">sheet.GoToCell(row=sheet.CurrentRow + 1)</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id231671107978407">sheet.GoToCell(sheet.LastRow, len(sheet.ColumnHeaders))</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id231671107978407">sheet.GoToCell(len(sheet.ColumnHeaders), 1)</paragraph>
     </pycode>
   </section>
 
