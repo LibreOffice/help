@@ -14,6 +14,8 @@ html_TREE_MODULES := swriter scalc simpress sdraw sdatabase smath schart sbasic 
 html_TEXT_MODULES := $(html_TREE_MODULES)
 html_BMARK_MODULES := swriter:WRITER scalc:CALC simpress:IMPRESS sdraw:DRAW sdatabase:BASE smath:MATH schart:CHART sbasic:BASIC shared:SHARED
 
+gb_html_allhelpfiles = $(foreach module,$(html_TEXT_MODULES),$(gb_AllLangHelp_$(module)_HELPFILES))
+
 # In case someone has a product name containing quotes, use Unicode
 # code points for ' (27) and " (22) in JS, CSS and entities for HTML.
 gb_PRODUCTNAME_JS := $(subst ',\\\u{27},$(subst ",\\\u{22},$(PRODUCTNAME)))
@@ -47,7 +49,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	( \
-		RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(subst helpcontent2/source/text/,,$(foreach module,$(html_TEXT_MODULES),$(gb_AllLangHelp_$(module)_HELPFILES))$(if $(filter WNT,$(OS)), )))  && \
+		RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(subst helpcontent2/source/text/,,$(gb_html_allhelpfiles)$(if $(filter WNT,$(OS)), )))  && \
 		echo 'var hid2fileMap = {' \
 		&& cd $(SRCDIR)/helpcontent2/source/text && $(call gb_ExternalExecutable_get_command,xsltproc,xargs) $< <$$RESPONSEFILE || { rm $$RESPONSEFILE; exit 1 ; } \
 		&& rm "$$RESPONSEFILE" \
@@ -208,31 +210,27 @@ endef
 $(eval $(foreach lang,$(gb_HELP_LANGS),$(call html_gen_html_dep,$(lang))))
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
-		$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/links.txt.xsl) \
-		$(call gb_ExternalExecutable_get_dependencies,xsltproc)
+        $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/links.txt.xsl) \
+        $(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
-	$(call gb_Helper_abbreviate_dirs,\
-		cd $(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*))/helpcontent2/source \
-		&& rm -rf $(dir $@)text \
-		&& RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(foreach module,$(html_TEXT_MODULES),$(patsubst helpcontent2/source/%,%,$(gb_AllLangHelp_$(module)_HELPFILES)))) \
-		&& <"$$RESPONSEFILE" $(if $(filter WNT,$(OS)),tr -d '\r' | env -i PATH="$$PATH") xargs -n 1 printf '%s\n' \
-		| while read xhp; do \
-			mkdir -p $$(dirname $(dir $@)$$xhp) && \
-			$(call gb_ExternalExecutable_get_command,xsltproc) \
-				--stringparam Language $* \
-				--stringparam local $(if $(HELP_ONLINE),'no','yes') \
-				--stringparam root $(if $(filter WNT,$(OS)),$$(cygpath -m `pwd`),`pwd`)/ \
-				--stringparam productname "$(gb_PRODUCTNAME_HTML)" \
-				--stringparam productversion "$(PRODUCTVERSION)" \
-				--stringparam xapian $(if $(filter TRUE, $(HELP_OMINDEX_PAGE)),'yes','no') \
-				-o $(dir $@)$${xhp%.xhp}.html \
-				$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/online_transform.xsl) \
-				$(if $(filter WNT,$(OS)),$$(cygpath -m `pwd`),`pwd`)/$$xhp \
-			|| exit \
-		; done \
-		&& rm "$$RESPONSEFILE" \
-		&& touch $@ \
-	)
+	rm -rf $(dir $@)text && mkdir -p $(dir $@)text && cd $(dir $@)text && mkdir -p $(sort $(subst helpcontent2/source/text/,,$(dir $(gb_html_allhelpfiles)))) \
+	&& cd $(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*)) \
+	&& RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(addsuffix $(NEWLINE),$(subst helpcontent2/source/,,$(gb_html_allhelpfiles)))) \
+	&& while read xhp; do \
+	    $(call gb_ExternalExecutable_get_command,xsltproc) \
+	        --stringparam Language $* \
+	        --stringparam local $(if $(HELP_ONLINE),'no','yes') \
+	        --stringparam root $(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*))/helpcontent2/source/ \
+	        --stringparam productname "$(gb_PRODUCTNAME_HTML)" \
+	        --stringparam productversion "$(PRODUCTVERSION)" \
+	        --stringparam xapian $(if $(filter TRUE, $(HELP_OMINDEX_PAGE)),'yes','no') \
+	        -o $(dir $@)$${xhp%.xhp}.html \
+	        $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/online_transform.xsl) \
+	        helpcontent2/source/$$xhp \
+	    || exit \
+	; done <"$$RESPONSEFILE" \
+	&& rm "$$RESPONSEFILE" \
+	&& touch $@
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.js :
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),CAT,2)
