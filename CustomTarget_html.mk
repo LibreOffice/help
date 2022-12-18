@@ -272,35 +272,25 @@ endef
 
 $(eval $(foreach module,$(html_BMARK_MODULES),$(call html_gen_bookmarks_deps,$(subst :, ,$(module)))))
 
-# In the below recipe, the file $@.good is used to communicate failure of xsltproc in the pipeline
-# (similar to Bash's `set -o pipefail`; the final `rm $@.good` will fail, and fail the whole
-# command, if any xsltproc invocation failed):
+# strip the helpconent2/source/text prefix and cd to the corresponding directory to maximize
+# the number of files that xargs can squeeze into a single invocation of xsltproc
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
-		$(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
-		$(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
-		$(call gb_ExternalExecutable_get_dependencies,xsltproc)
+        $(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
+        $(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
+        | $(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
-	$(call gb_Helper_abbreviate_dirs,\
-		RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(addprefix $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/,$(gb_AllLangHelp_$(APPDIR)_BOOKMARK_HELPFILES))) \
-		&& ( \
-			<"$$RESPONSEFILE" $(if $(filter WNT,$(OS)),tr -d '\r' | env -i PATH="$$PATH") xargs -n 1 printf '%s\n' \
-			| { rm -f $@.good && while read xhp; do \
-				$(call gb_ExternalExecutable_get_command,xsltproc) \
-					--stringparam app $(APP) \
-					--stringparam Language $(HELP_LANG) \
-					--stringparam local $(if $(HELP_ONLINE),'no','yes') \
-					--stringparam productname "$(gb_PRODUCTNAME_HTML)" \
-					--stringparam productversion "$(PRODUCTVERSION)" \
-					$(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
-					$$xhp \
-				|| exit \
-			; done && touch $@.good; } \
-			| sort -k3b -s \
-			| awk 'NF' \
-			&& rm $@.good \
-		) > $@ \
-		&& rm "$$RESPONSEFILE" \
-	)	
+	RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(subst helpcontent2/source/text/,,$(gb_AllLangHelp_$(APPDIR)_BOOKMARK_HELPFILES))$(if $(filter WNT,$(OS)), )) \
+	&& cd $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/helpcontent2/source/text \
+	&& ( \
+	    $(call gb_ExternalExecutable_get_command,xsltproc,xargs) \
+	        --stringparam app $(APP) \
+	        --stringparam Language $(HELP_LANG) \
+	        --stringparam local $(if $(HELP_ONLINE),'no','yes') \
+	        --stringparam productname "$(gb_PRODUCTNAME_HTML)" \
+	        --stringparam productversion "$(PRODUCTVERSION)" \
+	        $(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
+	    <$$RESPONSEFILE || { rm $$RESPONSEFILE; exit 1; } \
+	) | sort -k3b -s >$@ && rm "$$RESPONSEFILE"
 
 # The various gid_File_Help_*_Zip in scp2 that use EXTRA_ALL_GOOD_HELP_LOCALIZATIONS_LANG expect
 # $(module)/$(lang).filelist files containing lists of files (in instdir) for the corresponding
