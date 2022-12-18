@@ -43,10 +43,10 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 # trailing space for Windows so that xargs doesn't interpret the final CR (that
 # win-make adds as the newline character) as part of the last filename
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
-		$(SRCDIR)/helpcontent2/help3xsl/generate_hid2file.xsl \
-		$(call gb_ExternalExecutable_get_dependencies,xsltproc) \
-		$(foreach module,$(html_TEXT_MODULES),$(call gb_AllLangHelp_get_helpfiles_target,$(module))) \
-		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
+        $(SRCDIR)/helpcontent2/help3xsl/generate_hid2file.xsl \
+        $(foreach module,$(html_TEXT_MODULES),$(call gb_AllLangHelp_get_helpfiles_target,$(module))) \
+        $(SRCDIR)/helpcontent2/CustomTarget_html.mk \
+        | $(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	( \
 		RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(subst helpcontent2/source/text/,,$(gb_html_allhelpfiles)$(if $(filter WNT,$(OS)), )))  && \
@@ -69,9 +69,9 @@ endef
 $(eval $(foreach lang,$(gb_HELP_LANGS),$(call html_gen_xaptpl_dep,$(lang))))
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/xap_tpl : \
-		$(SRCDIR)/helpcontent2/help3xsl/xap_templ_query.xsl \
-		$(call gb_ExternalExecutable_get_dependencies,xsltproc) \
-		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
+        $(SRCDIR)/helpcontent2/help3xsl/xap_templ_query.xsl \
+        $(SRCDIR)/helpcontent2/CustomTarget_html.mk \
+        | $(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XAT,1)
 	$(call gb_Helper_abbreviate_dirs,\
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
@@ -96,10 +96,10 @@ endef
 $(eval $(foreach lang,$(gb_HELP_LANGS),$(call html_gen_noscript_dep,$(lang))))
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/noscript.html : \
-		$(SRCDIR)/helpcontent2/help3xsl/noscript.xsl \
-		$(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
-		$(call gb_ExternalExecutable_get_dependencies,xsltproc) \
-		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
+        $(SRCDIR)/helpcontent2/help3xsl/noscript.xsl \
+        $(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
+        $(SRCDIR)/helpcontent2/CustomTarget_html.mk \
+        | $(call gb_ExternalExecutable_get_dependencies,xsltproc) \
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),NJS,1)
 	$(call gb_Helper_abbreviate_dirs,\
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
@@ -114,12 +114,8 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/noscript.html : \
 
 # set of installed languages - has to be language independent
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/languages.js : \
-		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
-	( \
-		printf 'var languagesSet = new Set([' ; \
-		for lang in $(gb_HELP_LANGS) ; do printf '%s' "'$$lang', " ; done | sed 's/, $$//' ; \
-		printf ']);\n' \
-	) > $@
+        $(SRCDIR)/helpcontent2/CustomTarget_html.mk
+	printf 'var languagesSet = new Set([%s]);\n' "$(subst $(WHITESPACE),$(COMMA) ,$(patsubst %,'%',$(gb_HELP_LANGS)))" > $@
 
 define html_gen_langnames_js_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/langnames.js : \
@@ -131,11 +127,10 @@ $(eval $(foreach lang,$(gb_HELP_LANGS),$(call html_gen_langnames_js_dep,$(lang))
 
 # names of the languages - has to be translated, ie. per language
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/langnames.js : \
-		$(SRCDIR)/helpcontent2/CustomTarget_html.mk
+        $(SRCDIR)/helpcontent2/CustomTarget_html.mk
 	( \
 		echo 'var languageNames = {' ; \
-		grep '<paragraph[^>]*id="lang_' $(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*))/helpcontent2/source/text/shared/help/browserhelp.xhp | \
-			sed -e 's/^.*<variable id="\([^"]*\)"[^>]*>\([^<]*\)<.*$$/"\1": "\2",/' ; \
+			sed -n -e 's/^.*<paragraph[^>]* id="lang_.*<variable id="\([^"]*\)"[^>]*>\([^<]*\)<.*$$/"\1": "\2",/p' $(filter %/browserhelp.xhp,$^) ; \
 		echo '};' \
 	) > $@
 
@@ -168,9 +163,9 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.js :
 	)
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
-		$(SRCDIR)/helpcontent2/help3xsl/get_tree.xsl \
-		$(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
-		$(call gb_ExternalExecutable_get_dependencies,xsltproc)
+        $(SRCDIR)/helpcontent2/help3xsl/get_tree.xsl \
+        $(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
+        | $(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	$(call gb_Helper_abbreviate_dirs,\
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
@@ -186,20 +181,20 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 
 # link txt file for icon replacement table - tdf#128519
 # copy online_transform.xsl to workdir and build links.txt.xsl
-$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/online_transform.xsl) : \
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/online_transform.xsl : \
 		$(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl
 	cp $(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl $@
 
-$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/links.txt.xsl) : \
-		$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/online_transform.xsl) \
-		$(SRCDIR)/icon-themes/colibre/links.txt \
-		$(SRCDIR)/helpcontent2/helpers/make_icon_link.txt.py \
-		$(call gb_ExternalExecutable_get_dependencies,python)
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/links.txt.xsl : \
+        $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/online_transform.xsl \
+        $(SRCDIR)/icon-themes/colibre/links.txt \
+        $(SRCDIR)/helpcontent2/helpers/make_icon_link.txt.py \
+        | $(call gb_ExternalExecutable_get_dependencies,python)
 	$(call gb_ExternalExecutable_get_command,python) $(SRCDIR)/helpcontent2/helpers/make_icon_link.txt.py $(SRCDIR)/icon-themes/colibre/links.txt $@
 
 define html_gen_html_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/html.text : \
-		$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/links.txt.xsl) \
+		$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/links.txt.xsl \
 	$(foreach module,$(html_TEXT_MODULES), \
 		$(if $(filter en-US,$(1)), \
 			$(call gb_AllLangHelp_get_helpfiles_target,$(module)), \
@@ -210,8 +205,8 @@ endef
 $(eval $(foreach lang,$(gb_HELP_LANGS),$(call html_gen_html_dep,$(lang))))
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
-        $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/links.txt.xsl) \
-        $(call gb_ExternalExecutable_get_dependencies,xsltproc)
+        $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/links.txt.xsl \
+        | $(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	rm -rf $(dir $@)text && mkdir -p $(dir $@)text && cd $(dir $@)text && mkdir -p $(sort $(subst helpcontent2/source/text/,,$(dir $(gb_html_allhelpfiles)))) \
 	&& cd $(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*)) \
@@ -225,7 +220,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 	        --stringparam productversion "$(PRODUCTVERSION)" \
 	        --stringparam xapian $(if $(filter TRUE, $(HELP_OMINDEX_PAGE)),'yes','no') \
 	        -o $(dir $@)$${xhp%.xhp}.html \
-	        $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/online_transform.xsl) \
+	        $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/online_transform.xsl \
 	        helpcontent2/source/$$xhp \
 	    || exit \
 	; done <"$$RESPONSEFILE" \
@@ -265,10 +260,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/%/bookmarks.part 
 
 endef
 
-define html_gen_bookmarks_deps
-$(call html__gen_bookmarks_deps,$(firstword $(1)),$(lastword $(1)))
-
-endef
+html_gen_bookmarks_deps = $(call html__gen_bookmarks_deps,$(firstword $(1)),$(lastword $(1)))
 
 $(eval $(foreach module,$(html_BMARK_MODULES),$(call html_gen_bookmarks_deps,$(subst :, ,$(module)))))
 
