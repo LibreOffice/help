@@ -264,9 +264,8 @@ html_gen_bookmarks_deps = $(call html__gen_bookmarks_deps,$(firstword $(1)),$(la
 
 $(eval $(foreach module,$(html_BMARK_MODULES),$(call html_gen_bookmarks_deps,$(subst :, ,$(module)))))
 
-# In the below recipe, the file $@.good is used to communicate failure of xsltproc in the pipeline
-# (similar to Bash's `set -o pipefail`; the final `rm $@.good` will fail, and fail the whole
-# command, if any xsltproc invocation failed):
+# strip the helpconent2/source/text prefix and cd to the corresponding directory to maximize
+# the number of files that xargs can squeeze into a single invocation of xsltproc
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
         $(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
         $(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
