@@ -48,6 +48,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
         $(SRCDIR)/helpcontent2/CustomTarget_html.mk \
         | $(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
+	$(call gb_Trace_StartRange,$(@F),XSL)
 	( \
 		RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(subst helpcontent2/source/text/,,$(gb_html_allhelpfiles)$(if $(filter WNT,$(OS)), )))  && \
 		echo 'var hid2fileMap = {' \
@@ -55,6 +56,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 		&& rm "$$RESPONSEFILE" \
 		&& echo '};' \
 	) > $@
+	$(call gb_Trace_EndRange,$(@F),XSL)
 
 
 # Xapian localized templates
@@ -73,6 +75,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/xap_tpl : \
         $(SRCDIR)/helpcontent2/CustomTarget_html.mk \
         | $(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XAT,1)
+	$(call gb_Trace_StartRange,$*/$(@F),XSL)
 	$(call gb_Helper_abbreviate_dirs,\
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
 		--stringparam lang $* \
@@ -82,6 +85,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/xap_tpl : \
 		$(SRCDIR)/helpcontent2/help3xsl/xap_templ_query.xsl \
 		$(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*))/helpcontent2/source/text/shared/help/browserhelp.xhp \
 	)
+	$(call gb_Trace_EndRange,$*/$(@F),XSL)
 
 endif
 
@@ -101,6 +105,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/noscript.html : \
         $(SRCDIR)/helpcontent2/CustomTarget_html.mk \
         | $(call gb_ExternalExecutable_get_dependencies,xsltproc) \
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),NJS,1)
+	$(call gb_Trace_StartRange,$*/$(@F),XSL)
 	$(call gb_Helper_abbreviate_dirs,\
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
 		--stringparam lang $* \
@@ -110,6 +115,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/noscript.html : \
 		$(SRCDIR)/helpcontent2/help3xsl/noscript.xsl \
 		$(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*))/helpcontent2/source/text/shared/help/browserhelp.xhp \
 	)
+	$(call gb_Trace_EndRange,$*/$(@F),XSL)
 
 
 # set of installed languages - has to be language independent
@@ -167,6 +173,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
         $(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
         | $(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
+	$(call gb_Trace_StartRange,$*/$(@F),XSL)
 	$(call gb_Helper_abbreviate_dirs,\
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
 			--stringparam lang $(LANGUAGE) \
@@ -178,6 +185,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 			$(SRCDIR)/helpcontent2/help3xsl/get_tree.xsl \
 			$(TREE_FILE) \
 	)
+	$(call gb_Trace_EndRange,$*/$(@F),XSL)
 
 # link txt file for icon replacement table - tdf#128519
 # copy online_transform.xsl to workdir and build links.txt.xsl
@@ -190,7 +198,9 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/links.txt.xsl : \
         $(SRCDIR)/icon-themes/colibre/links.txt \
         $(SRCDIR)/helpcontent2/helpers/make_icon_link.txt.py \
         | $(call gb_ExternalExecutable_get_dependencies,python)
+	$(call gb_Trace_StartRange,$(@F),PY)
 	$(call gb_ExternalExecutable_get_command,python) $(SRCDIR)/helpcontent2/helpers/make_icon_link.txt.py $(SRCDIR)/icon-themes/colibre/links.txt $@
+	$(call gb_Trace_EndRange,$(@F),PY)
 
 define html_gen_html_dep
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(1)/html.text : \
@@ -208,6 +218,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
         $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/links.txt.xsl \
         | $(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
+	$(call gb_Trace_StartRange,$*/$(@F),XSL)
 	rm -rf $(dir $@)text && mkdir -p $(dir $@)text && cd $(dir $@)text && mkdir -p $(sort $(subst helpcontent2/source/text/,,$(dir $(gb_html_allhelpfiles)))) \
 	&& cd $(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*)) \
 	&& RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(addsuffix $(NEWLINE),$(subst helpcontent2/source/,,$(gb_html_allhelpfiles)))) \
@@ -226,6 +237,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 	; done <"$$RESPONSEFILE" \
 	&& rm "$$RESPONSEFILE" \
 	&& touch $@
+	$(call gb_Trace_EndRange,$*/$(@F),XSL)
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.js :
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),CAT,2)
@@ -271,6 +283,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
         $(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
         | $(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
+	$(call gb_Trace_StartRange,$*/$(@F),XSL)
 	RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(subst helpcontent2/source/text/,,$(gb_AllLangHelp_$(APPDIR)_BOOKMARK_HELPFILES))$(if $(filter WNT,$(OS)), )) \
 	&& cd $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/helpcontent2/source/text \
 	&& ( \
@@ -283,6 +296,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 	        $(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
 	    <$$RESPONSEFILE || { rm $$RESPONSEFILE; exit 1; } \
 	) | sort -k3b -s >$@ && rm "$$RESPONSEFILE"
+	$(call gb_Trace_EndRange,$*/$(@F),XSL)
 
 # The various gid_File_Help_*_Zip in scp2 that use EXTRA_ALL_GOOD_HELP_LOCALIZATIONS_LANG expect
 # $(module)/$(lang).filelist files containing lists of files (in instdir) for the corresponding
