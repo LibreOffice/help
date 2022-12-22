@@ -99,7 +99,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/noscript.html : \
         $(SRCDIR)/helpcontent2/help3xsl/noscript.xsl \
         $(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
         $(SRCDIR)/helpcontent2/CustomTarget_html.mk \
-        | $(call gb_ExternalExecutable_get_dependencies,xsltproc) \
+        | $(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),NJS,1)
 	$(call gb_Helper_abbreviate_dirs,\
 		$(call gb_ExternalExecutable_get_command,xsltproc) \
