@@ -210,8 +210,8 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	rm -rf $(dir $@)text && mkdir -p $(dir $@)text && cd $(dir $@)text && mkdir -p $(sort $(subst helpcontent2/source/text/,,$(dir $(gb_html_allhelpfiles)))) \
 	&& cd $(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*)) \
-	&& RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(addsuffix $(NEWLINE),$(subst helpcontent2/source/,,$(gb_html_allhelpfiles)))) \
-	&& while read xhp; do \
+	&& RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(addsuffix $(WHITESPACE)dummyIgnoreCRinEOL$(NEWLINE),$(subst helpcontent2/source/,,$(gb_html_allhelpfiles)))) \
+	&& while read xhp dummy; do \
 	    $(call gb_ExternalExecutable_get_command,xsltproc) \
 	        --stringparam Language $* \
 	        --stringparam local $(if $(HELP_ONLINE),'no','yes') \
