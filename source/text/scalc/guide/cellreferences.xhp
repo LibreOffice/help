@@ -29,8 +29,11 @@
    <body>
 <bookmark xml-lang="en-US" branch="index" id="bm_id3147436"><bookmark_value>sheet references</bookmark_value>
       <bookmark_value>references; to cells in other sheets/documents</bookmark_value>
+      <bookmark_value>addresses; to cells in other sheets/documents</bookmark_value>
       <bookmark_value>cells; operating in another document</bookmark_value>
       <bookmark_value>documents;references</bookmark_value>
+      <bookmark_value>cell;address</bookmark_value>
+      <bookmark_value>address; of cell</bookmark_value>
 </bookmark><comment>mw made "sheet references;" a one level entry</comment><comment>MW changed "references;" and added "documents;"</comment>
 <h1 id="hd_id3147436"><variable id="cellreferences"><link href="text/scalc/guide/cellreferences.xhp">Referencing Other Sheets</link>
 </variable></h1>
@@ -69,7 +72,11 @@
          </listitem>
          <listitem>
             <paragraph xml-lang="en-US" id="par_id8261665" role="listitem">Switch back to the new spreadsheet. In the input line you will now see how $[officename] Calc has added the reference to the formula for you. </paragraph>
-            <paragraph xml-lang="en-US" id="par_id5888241" role="listitem">The reference to a cell of another document contains the name of the other document in single inverted commas, then a hash #, then the name of the sheet of the other document, followed by a point and the name of the cell.</paragraph>
+            <section id="otherdocref">
+               <paragraph xml-lang="en-US" id="par_id5888241" role="listitem">The reference to a cell of another document contains the fully qualified name of the other document between single quotes <literal>(')</literal>, then a hash <literal>#</literal>, then the name of the sheet of the other document, followed by a period and the name or reference of the cell. </paragraph>
+               <paragraph role="paragraph" id="par_id51672076541215">For example, <switchinline select="sys"><caseinline select="WIN">'file:///C:/Users/user/Documents/Price list.ods'#$'Information SKU'.H51</caseinline><defaultinline>'file:///home/user/Documents/Price list.ods'#$'Information SKU'.H51</defaultinline></switchinline>.</paragraph>
+               <note id="par_id451672076939681">The path and document name URI <emph>must always</emph> be enclosed in single quotes. If the name contains single quotes (') they must be escaped using two single quotes (''). Only a sheet name may not be quoted if it does not contain a space or a character that would be an operator or the name would be pure numeric (for example, '123' must be quoted).</note>
+            </section>
          </listitem>
          <listitem>
             <paragraph xml-lang="en-US" id="par_id7697683" role="listitem">Confirm the formula by clicking the green check mark.</paragraph>

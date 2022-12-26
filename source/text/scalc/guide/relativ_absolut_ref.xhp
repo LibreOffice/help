@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -18,7 +16,6 @@
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  -->
-	
 <helpdocument version="1.0">
 <meta>
 <topic id="textscalcguiderelativ_absolut_refxml" indexer="include" status="PUBLISH">
@@ -38,17 +35,27 @@
 <bookmark_value>relative references</bookmark_value>
 <bookmark_value>references; to cells</bookmark_value>
 <bookmark_value>cells; references</bookmark_value>
+<bookmark_value>range of cells; defining</bookmark_value>
+<bookmark_value>cell references;ranges union</bookmark_value>
+<bookmark_value>cell references;ranges concatenation</bookmark_value>
+<bookmark_value>cell references;ranges intersection</bookmark_value>
 </bookmark>
-<paragraph role="heading" id="hd_id3156423" xml-lang="en-US" level="1"><variable id="relativ_absolut_ref"><link href="text/scalc/guide/relativ_absolut_ref.xhp">Addresses and References, Absolute and Relative</link>
-</variable></paragraph>
-<paragraph role="heading" id="hd_id3163712" xml-lang="en-US" level="2">Relative Addressing</paragraph>
+<h1 id="hd_id3156423"><variable id="relativ_absolut_ref"><link href="text/scalc/guide/relativ_absolut_ref.xhp">Addresses and References, Absolute and Relative</link>
+</variable></h1>
+<h2 id="hd_id191672069640769">Cell references</h2>
+<paragraph role="paragraph" id="par_id451672069651941">An individual cell is fully identified by the sheet it belongs, the column identifier (letter) located along the top of the columns and a row identifier (number) found along the left-hand side of the spreadsheet. On spreadsheets read from left to right, the complete reference for the upper left cell of the sheet is <emph>Sheet.A1</emph>.</paragraph>
+<h2 id="hd_id211672069771744">Cell ranges</h2>
+<paragraph role="paragraph" id="par_id161672070752816">You can reference a set of cells by referencing them in ranges. Ranges can be a block of cells, entire set of columns and entire set of rows. The range A1:B2 is the first four cells in the upper left corner of the sheet. Range A:E contains all the cells of column A, B, C, D and E. Range 2:5 contains all the cells of row 2, 3, 4 and 5.</paragraph>
+<embed href="text/scalc/guide/cellreferences.xhp#otherdocref"/>
+<embed href="text/scalc/01/04060199.xhp#referenceoperators"/>
+<h2 id="hd_id3163712">Relative Addressing</h2>
 <paragraph role="paragraph" id="par_id3146119" xml-lang="en-US">The cell in column A, row 1 is addressed as A1. You can address a range of adjacent cells by first entering the coordinates of the upper left cell of the area, then a colon followed by the coordinates of the lower right cell. For example, the square formed by the first four cells in the upper left corner is addressed as A1:B2.</paragraph>
 <paragraph role="paragraph" id="par_id3154730" xml-lang="en-US">By addressing an area in this way, you are making a relative reference to A1:B2. Relative here means that the reference to this area will be adjusted automatically when you copy the formulas.</paragraph>
-<paragraph role="heading" id="hd_id3149377" xml-lang="en-US" level="2">Absolute Addressing</paragraph>
+<h2 id="hd_id3149377">Absolute Addressing</h2>
 <paragraph role="paragraph" id="par_id3154943" xml-lang="en-US">Absolute referencing is the opposite of relative addressing. A dollar sign is placed before each letter and number in an absolute reference, for example, $A$1:$B$2.</paragraph>
-<paragraph role="tip" id="par_id3147338" xml-lang="en-US">$[officename] can convert the current reference, in which the cursor is positioned in the input line, from relative to absolute and vice versa by pressing F4. If you start with a relative address such as A1, the first time you press this key combination, both row and column are set to absolute references ($A$1). The second time, only the row (A$1), and the third time, only the column ($A1). If you press the key combination once more, both column and row references are switched back to relative (A1)</paragraph>
+<tip id="par_id3147338">$[officename] can convert the current reference, in which the cursor is positioned in the input line, from relative to absolute and vice versa by pressing F4. If you start with a relative address such as A1, the first time you press this key combination, both row and column are set to absolute references ($A$1). The second time, only the row (A$1), and the third time, only the column ($A1). If you press the key combination once more, both column and row references are switched back to relative (A1)</tip>
 <paragraph role="paragraph" id="par_id3153963" xml-lang="en-US">$[officename] Calc shows the references to a formula. If, for example, you click the formula =SUM(A1:C5;D15:D24) in a cell, the two referenced areas in the sheet will be highlighted in color. For example, the formula component "A1:C5" may be in blue and the cell range in question bordered in the same shade of blue. The next formula component "D15:D24" can be marked in red in the same way.</paragraph>
-<paragraph role="heading" id="hd_id3154704" xml-lang="en-US" level="2">When to Use Relative and Absolute References</paragraph>
+<h2 id="hd_id3154704">When to Use Relative and Absolute References</h2>
 <paragraph role="paragraph" id="par_id3147346" xml-lang="en-US">What distinguishes a relative reference? Assume you want to calculate in cell E1 the sum of the cells in range A1:B2. The formula to enter into E1 would be: =SUM(A1:B2). If you later decide to insert a new column in front of column A, the elements you want to add would then be in B1:C2 and the formula would be in F1, not in E1. After inserting the new column, you would therefore have to check and correct all formulas in the sheet, and possibly in other sheets.</paragraph>
 <paragraph role="paragraph" id="par_id3155335" xml-lang="en-US">Fortunately, $[officename] does this work for you. After having inserted a new column A, the formula =SUM(A1:B2) will be automatically updated to =SUM(B1:C2). Row numbers will also be automatically adjusted when a new row 1 is inserted. Absolute and relative references are always adjusted in $[officename] Calc whenever the referenced area is moved. But be careful if you are copying a formula since in that case only the relative references will be adjusted, not the absolute references.</paragraph>
 <paragraph role="paragraph" id="par_id3145791" xml-lang="en-US">Absolute references are used when a calculation refers to one specific cell in your sheet. If a formula that refers to exactly this cell is copied relatively to a cell below the original cell, the reference will also be moved down if you did not define the cell coordinates as absolute.</paragraph>

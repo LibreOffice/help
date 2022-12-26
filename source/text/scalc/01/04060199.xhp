@@ -240,6 +240,7 @@
 </tablecell>
 </tablerow>
 </table>
+<section id="referenceoperators">
 <h2 id="hd_id3153550">Reference operators</h2>
 <paragraph role="paragraph" id="par_id3149024" xml-lang="en-US">These operators return a cell range of zero, one or more cells.</paragraph>
 <paragraph role="paragraph" id="par_id2324900" xml-lang="en-US">Range has the highest precedence, then intersection, and then finally union.</paragraph>
@@ -263,7 +264,7 @@
 <paragraph role="tablecontent" id="par_id3153924" xml-lang="en-US">Range</paragraph>
 </tablecell>
 <tablecell>
-<paragraph role="tablecontent" id="par_id3148432" localize="false"  xml-lang="en-US">A1:C108</paragraph>
+<paragraph role="tablecontent" id="par_id3148432" xml-lang="en-US">A1:C108, A:D or 3:13</paragraph>
 </tablecell>
 </tablerow>
 <tablerow>
@@ -288,10 +289,13 @@
 <paragraph role="tablecontent" id="par_id838953" xml-lang="en-US">Concatenation or union</paragraph>
 </tablecell>
 <tablecell>
-<paragraph role="tablecontent" id="par_id2511978" xml-lang="en-US">Takes two references and returns a reference list, which is a concatenation of the left reference followed by the right reference. Double entries are referenced twice. See note below this table.</paragraph>
+<paragraph role="tablecontent" id="par_id2511978" xml-lang="en-US">Takes two references and returns a reference list, which is a concatenation of the left reference followed by the right reference. Double entries are referenced twice.</paragraph>
+<paragraph role="paragraph" id="par_id961672071835372"><input>=COUNT(A1:B2~B2:C3)</input> counts values of A1:B2 and B2:C3. Note that the cell B2 is counted twice.</paragraph>
+<paragraph role="paragraph" id="par_id401672243346224"><input>=INDEX(A1:B2~C1:D2;2;1;2)</input> selects cell C2, that is, the first cell of the second row, first column, of the second range (C1:D2) of the range list.</paragraph>
 </tablecell>
 </tablerow>
 </table>
-<note id="par_id181890">Reference concatenation using a tilde character was implemented lately. When a formula with the tilde operator exists in a document that is opened in old versions of the software, an error is returned. A reference list is not allowed inside an array expression.</note>
+<note id="par_id181890">A reference list is not allowed inside an array expression.</note>
+</section>
 </body>
 </helpdocument>
