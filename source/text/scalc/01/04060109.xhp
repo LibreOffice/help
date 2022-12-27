@@ -179,17 +179,17 @@
 </bookmark>
 <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_INDEX" id="bm_id3157989" localize="false"/>
 <h2 id="hd_id3151221">INDEX</h2>
-         <paragraph xml-lang="en-US" id="par_id3150268" role="paragraph"><ahelp hid="HID_FUNC_INDEX">INDEX returns a sub range, specified by row and column number, or an optional range index. Depending on context, INDEX returns a reference or content.</ahelp><comment>UFI: will change with i4904; see http://so-web.germany.sun.com/iBIS/servlet/edit.ControlPanel?tid=i57108</comment><comment>changed by i83070</comment></paragraph>
+<paragraph xml-lang="en-US" id="par_id3150268" role="paragraph"><ahelp hid="HID_FUNC_INDEX">INDEX returns a sub range, specified by row and column number, and/or an optional range index.</ahelp></paragraph>
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
-         <paragraph xml-lang="en-US" id="par_id3149007" role="code">INDEX(Reference [; Row [; Column [; Range]]])</paragraph>
+         <paragraph xml-lang="en-US" id="par_id3149007" role="code">INDEX(Reference [; [Row] [; [Column] [; Range]]])</paragraph>
          <paragraph xml-lang="en-US" id="par_id3153260" role="paragraph">
-            <emph>Reference</emph> is a reference, entered either directly or by specifying a range name. If the reference consists of multiple ranges, you must enclose the reference or range name in parentheses.</paragraph>
+           <emph>Reference</emph> is a reference, entered either directly or by specifying a range name. If the reference consists of multiple ranges, you must enclose the list of references or range names in parentheses, or use the tilde (~) concatenation/union operator.</paragraph>
          <paragraph xml-lang="en-US" id="par_id3145302" role="paragraph">
-            <emph>Row</emph> (optional) represents the row index of the reference range, for which to return a value. In case of zero (no specific row) all referenced rows are returned.</paragraph>
+            <emph>Row</emph> (optional) represents the row index of the reference range, for which to return a value. In case of zero or omitted (no specific row) all referenced rows are returned.</paragraph>
          <paragraph xml-lang="en-US" id="par_id3154628" role="paragraph">
-            <emph>Column</emph> (optional) represents the column index of the reference range, for which to return a value. In case of zero (no specific column) all referenced columns are returned.</paragraph>
+            <emph>Column</emph> (optional) represents the column index of the reference range, for which to return a value. In case of zero or omitted (no specific column) all referenced columns are returned.</paragraph>
          <paragraph xml-lang="en-US" id="par_id3155514" role="paragraph">
-            <emph>Range</emph> (optional) represents the index of the subrange if referring to a multiple range.</paragraph>
+            <emph>Range</emph> (optional) represents the index of the subrange if referring to a multiple range, default 1.</paragraph>
         <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
          <paragraph xml-lang="en-US" id="par_id3159112" role="paragraph">
             <item type="input">=INDEX(Prices;4;1)</item> returns the value from row 4 and column 1 of the database range defined in <emph>Data - Define</emph> as <emph>Prices</emph>.</paragraph>
@@ -199,12 +199,12 @@
             <item type="input">=INDEX(A1:B6;1)</item> returns a reference to the first row of A1:B6.</paragraph>
          <paragraph xml-lang="en-US" id="par_id9272133" role="paragraph">
             <item type="input">=INDEX(A1:B6;0;1)</item> returns a reference to the first column of A1:B6.</paragraph>
-         <paragraph xml-lang="en-US" id="par_id3158419" role="paragraph">
-            <item type="input">=INDEX((multi);4;1)</item> indicates the value contained in row 4 and column 1 of the (multiple) range, which you named under <emph>Sheet - Named Ranges and Expressions - Define</emph> as <emph>multi</emph>. The multiple range may consist of several rectangular ranges, each with a row 4 and column 1. If you now want to call the second block of this multiple range enter the number <item type="input">2</item> as the <emph>range</emph> parameter.</paragraph>
          <paragraph xml-lang="en-US" id="par_id3148595" role="paragraph">
             <item type="input">=INDEX(A1:B6;1;1)</item> indicates the value in the upper-left of the A1:B6 range.</paragraph>
          <paragraph xml-lang="en-US" id="par_id9960020" role="paragraph">
-            <item type="input">=INDEX((multi);0;0;2)</item> returns a reference to the second range of the multiple range.</paragraph>
+            <item type="input">=INDEX((A1:B6;C1:D6);0;0;2)</item> returns a reference to the second range C1:D6 of the multiple range.</paragraph>
+         <paragraph xml-lang="en-US" id="par_id3158419" role="paragraph">
+           <item type="input">=INDEX(multi;4;1)</item> indicates the value contained in row 4 and column 1 of the (multiple) range, which you named under <emph>Sheet - Named Ranges and Expressions - Define</emph> as <emph>multi</emph> with the expression <emph>(A1:B6;C1:D6)</emph> for example. The multiple range may consist of several rectangular ranges, each with a row 4 and column 1. If you now want to call the second block of this multiple range enter the number <item type="input">2</item> as the <emph>Range</emph> parameter.</paragraph>
       </section>
       <section id="Section6">
 <bookmark xml-lang="en-US" branch="index" id="bm_id3153181"><bookmark_value>INDIRECT function</bookmark_value>
