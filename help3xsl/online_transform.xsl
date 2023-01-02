@@ -952,7 +952,7 @@
         </xsl:when>
 
         <xsl:otherwise>
-            <xsl:value-of disable-output-escaping="yes" select="$string"/>
+            <xsl:value-of select="$string"/>
         </xsl:otherwise>
     </xsl:choose>
 
