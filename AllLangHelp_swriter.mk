@@ -24,6 +24,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/00/00000404 \
     helpcontent2/source/text/swriter/00/00000405 \
     helpcontent2/source/text/swriter/00/00000406 \
+    helpcontent2/source/text/swriter/00/formmenu \
     helpcontent2/source/text/swriter/00/stylesmenu \
     helpcontent2/source/text/swriter/01/01120000 \
     helpcontent2/source/text/swriter/01/01150000 \
@@ -207,7 +208,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/title_page \
     helpcontent2/source/text/swriter/01/watermark \
     helpcontent2/source/text/swriter/01/contentcontrol00 \
-    helpcontent2/source/text/swriter/01/contentcontrol01 \
     helpcontent2/source/text/swriter/02/02110000 \
     helpcontent2/source/text/swriter/02/03210000 \
     helpcontent2/source/text/swriter/02/03220000 \
@@ -282,6 +282,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/guide/chapter_numbering \
     helpcontent2/source/text/swriter/guide/conditional_text \
     helpcontent2/source/text/swriter/guide/conditional_text2 \
+    helpcontent2/source/text/swriter/guide/contentcontrols \
     helpcontent2/source/text/swriter/guide/delete_from_dict \
     helpcontent2/source/text/swriter/guide/dragdroptext \
     helpcontent2/source/text/swriter/guide/even_odd_sdw \
@@ -423,6 +424,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/menu/insert_footnote_endnote \
     helpcontent2/source/text/swriter/menu/insert_frame \
     helpcontent2/source/text/swriter/menu/submenu_more_breaks \
+    helpcontent2/source/text/swriter/menu/contentcontrol_submenu \
     helpcontent2/source/text/swriter/mailmergetoolbar \
     helpcontent2/source/text/swriter/track_changes_toolbar \
     helpcontent2/source/text/swriter/navigate_toolbar \
