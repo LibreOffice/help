@@ -40,7 +40,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/02130000 \
     helpcontent2/source/text/swriter/01/02140000 \
     helpcontent2/source/text/swriter/01/02150000 \
-    helpcontent2/source/text/swriter/01/02160000 \
     helpcontent2/source/text/swriter/01/02170000 \
     helpcontent2/source/text/swriter/01/03050000 \
     helpcontent2/source/text/swriter/01/03070000 \
