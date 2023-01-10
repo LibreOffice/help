@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="textscalc01func_style">
+    <title id="tit" xml-lang="en-US">STYLE function</title>
+    <filename>/text/scalc/01/func_style.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+  <section id="func_style_definition">
+    <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_VORLAGE" id="bm_id3154342" localize="false"/>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id346793467934121">
+      <bookmark_value>STYLE function</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id321673374992325"><variable id="func_style_header"><link href="text/scalc/01/func_style.xhp">STYLE</link></variable> function</h2>
+    <paragraph role="paragraph" id="par_id441673375101757"><ahelp hid="HID_FUNC_VORLAGE"><variable id="func_style_desc">Applies a style to the cell containing the formula.</variable></ahelp> After a set amount of time, another style can be applied.</paragraph>
+  </section>
+  <paragraph role="paragraph" id="par_id681673375365338">This function always returns the numeric value 0, which allows to use it by adding the <emph>STYLE</emph> function to other functions in the same cell without changing its value.</paragraph>
+
+  <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+  <paragraph role="paragraph" id="par_id961673376106137">
+    <input>STYLE("Style" [; Time [; "Style2"]])</input>
+  </paragraph>
+  <paragraph role="paragraph" id="par_id31673375542211">
+    <emph>Style</emph> is the name of the cell style to be applied to the cell. Style names are not case-sensitive and must be entered in quotation marks.
+  </paragraph>
+  <paragraph role="paragraph" id="par_id161673375589532">
+    <emph>Time</emph> is an optional time range in seconds. After this time is ellapsed, the style defined in <emph>Style2</emph> is applied. Leave this parameter blank if you do not want the style to be changed.
+  </paragraph>
+  <paragraph role="paragraph" id="par_id81673375703156">
+    <emph>Style2</emph> is the optional name of a cell style assigned to the cell after the time specified in the <emph>Time</emph> parameter has passed. If this parameter is missing the "Default" cell style is applied.
+  </paragraph>
+  <note id="par_id971673376620554"><embedvar href="text/scalc/00/00000004.xhp#optional"/></note>
+
+  <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+  <paragraph role="paragraph" id="par_id491673376748686">
+    <input>=10+STYLE("Good",60,"Neutral")</input>
+  </paragraph>
+  <paragraph role="paragraph" id="par_id11673376842469">Enters the value 10 into the cell and applies the style named "Good". After 60 seconds, the style "Neutral" is applied.</paragraph>
+
+  <paragraph role="paragraph" id="par_id271673376901358">
+    <input>=A1*A2+STYLE(IF(CURRENT()&lt;100,"Bad","Good"))</input>
+  </paragraph>
+  <paragraph role="paragraph" id="par_id1001673377339392">Enters the result of multiplying the values in cells A1 and A2 and applies the style "Bad" if the result is less than 100, otherwie the style "Good" is applied. Here the function <emph>CURRENT()</emph> is used to get the currently evaluated value of the function in the cell.</paragraph>
+
+  <paragraph role="paragraph" id="par_id761673377678426">
+    <input>="Total"&amp;T(STYLE("Result"))</input>
+  </paragraph>
+  <paragraph role="paragraph" id="par_id871673377683120">Enters the text "Total" into the cell and applies the style named "Result". Note that this example deals with textual values, hence the output of the <emph>STYLE</emph> funcion needs to be appended to the text using the &amp; operator. The function <emph>T()</emph> is used to prevent the number "0" being appended to the resulting text.</paragraph>
+
+  <embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
+  <embed href="text/scalc/01/common_func.xhp#notODFF"/>
+  <paragraph role="paragraph" id="par_id311644873986703" localize="false"><literal>ORG.OPENOFFICE.STYLE</literal></paragraph>
+
+  <section id="relatedtopics">
+    <paragraph role="paragraph" id="par_id631673379195650"><link href="text/scalc/01/04060109.xhp">Spreadsheet Functions</link></paragraph>
+    <paragraph role="paragraph" id="par_id151673379420755"><link href="text/scalc/guide/cellstyle_by_formula.xhp">Assigning Formats by Formula</link></paragraph>
+    <paragraph role="paragraph" id="par_id461673376361959"><link href="text/scalc/01/04060104.xhp#func_current_description">CURRENT function</link></paragraph>
+    <paragraph role="paragraph" id="par_id381673378944042"><link href="text/scalc/01/04060110.xhp#t">T function</link></paragraph>
+  </section>
+
+</body>
+</helpdocument>
