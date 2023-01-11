@@ -865,6 +865,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/optionen/expertconfig \
     helpcontent2/source/text/shared/optionen/javaclasspath \
     helpcontent2/source/text/shared/optionen/javaparameters \
+    helpcontent2/source/text/shared/optionen/languagetools \
     helpcontent2/source/text/shared/optionen/macrosecurity \
     helpcontent2/source/text/shared/optionen/macrosecurity_sl \
     helpcontent2/source/text/shared/optionen/macrosecurity_ts \
@@ -874,6 +875,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/optionen/search_commands \
     helpcontent2/source/text/shared/optionen/serverauthentication \
     helpcontent2/source/text/shared/optionen/testaccount \
+    helpcontent2/source/text/shared/optionen/translatetools \
     helpcontent2/source/text/shared/optionen/viewcertificate \
     helpcontent2/source/text/shared/optionen/viewcertificate_c \
     helpcontent2/source/text/shared/optionen/viewcertificate_d \
