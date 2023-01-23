@@ -112,7 +112,35 @@
            <paragraph id="par_id711619006255184" role="tablecontent">UNO<br/>object</paragraph>
        </tablecell>
        <tablecell>
-           <paragraph id="par_id541619006255653" role="tablecontent"><link href="text/sbasic/shared/stardesktop.xhp"><literal>StarDesktop</literal></link> object represents %PRODUCTNAME Start Center.</paragraph>
+           <paragraph id="par_id541619006255653" role="tablecontent">Returns the <link href="text/sbasic/shared/stardesktop.xhp"><literal>StarDesktop</literal></link> object that represents the %PRODUCTNAME application.</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id421619006246257" localize="false" role="tablecontent">ThisComponent</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id731619006034384" role="tablecontent">Yes</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id711619006259094" role="tablecontent">UNO<br/>object</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id541619006256911" role="tablecontent">If the current component refers to a %PRODUCTNAME document, this method returns the UNO object representing the document. This property returns <literal>None</literal> when the current component does not correspond to a document.</paragraph>
+       </tablecell>
+    </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id421619006230624" localize="false" role="tablecontent">ThisDatabaseDocument</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id731619006259634" role="tablecontent">Yes</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id711619004425514" role="tablecontent">UNO<br/>object</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id541619006255121" role="tablecontent">If the script is being executed from a Base document or any of its subcomponents this method returns the main component of the Base instance. This property returns <literal>None</literal> otherwise.</paragraph>
        </tablecell>
     </tablerow>
   </table>
@@ -135,11 +163,11 @@
              <link href="text/sbasic/shared/03/sf_basic.xhp#CreateUnoService">CreateUnoService</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#CreateUnoStruct">CreateUnoStruct</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#DateAdd">DateAdd</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#DateDiff">DateDiff</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_basic.xhp#DateDiff">DateDiff</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#DatePart">DatePart</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#DateValue">DateValue</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#Format">Format</link><br/>
@@ -147,19 +175,17 @@
              <link href="text/sbasic/shared/03/sf_basic.xhp#GetGuiType">GetGuiType</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#GetPathSeparator">GetPathSeparator</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#GetSystemTicks">GetSystemTicks</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#BasicLibraries">GlobalScope.BasicLibraries</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#DialogLibraries">GlobalScope.DialogLibraries</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_basic.xhp#BasicLibraries">GlobalScope.BasicLibraries</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#DialogLibraries">GlobalScope.DialogLibraries</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#InputBox">InputBox</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#MsgBox">MsgBox</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#Now">Now</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#RGB">RGB</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#ThisComponent">ThisComponent</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#ThisDatabaseDocument">ThisDatabaseDocument</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#Xray">Xray</link><br/><br/><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#Xray">Xray</link><br/><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -607,46 +633,6 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id321619096903721">YELLOW = bas.RGB(255,255,0)</paragraph>
   </pycode>
-</section>
-
-<section id="ThisComponent">
-  <comment> ThisComponent -------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" branch="index" id="bm_id81618907850447">
-    <bookmark_value>Basic service;ThisComponent</bookmark_value>
-  </bookmark>
-  <h2 id="hd_id211618907871087" localize="false">ThisComponent</h2>
-  <paragraph role="paragraph" id="par_id141622840830978">If the current component refers to a %PRODUCTNAME document, this method returns the UNO object representing the document.</paragraph>
-  <paragraph role="paragraph" id="par_id961622841287976">The method will return <literal>None</literal> when the current component does not correspond to a document.</paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-  <paragraph role="paragraph" localize="false" id="par_id671622840735153">
-    <input>svc.ThisComponent(): uno</input>
-  </paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-  <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id21622841338969">comp = bas.ThisComponent</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id781622841643538">bas.MsgBox("\n".join(comp.getSupportedServiceNames()))</paragraph>
-  </pycode>
-</section>
-
-<section id="ThisDatabaseDocument">
-  <comment> ThisDatabaseDocument ------------------------------------------ </comment>
-  <bookmark xml-lang="en-US" branch="index" id="bm_id81618907858201">
-    <bookmark_value>Basic service;ThisDatabaseDocument</bookmark_value>
-  </bookmark>
-  <h2 id="hd_id211618907879635" localize="false">ThisDatabaseDocument</h2>
-  <paragraph role="paragraph" id="par_id271622912644859">If the script is being executed from a Base document or any of its subcomponents this method returns the main component of the Base instance.</paragraph>
-  <paragraph role="paragraph" id="par_id811622912819443">This method returns <literal>None</literal> otherwise.</paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-  <paragraph role="paragraph" localize="false" id="par_id711622840776224">
-    <input>svc.ThisDatabaseDocument(): uno</input>
-  </paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-  <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id761622913418091">db_doc = bas.ThisDatabaseDocument</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id201622913418646">table_names = db_doc.DataSource.getTables().getElementNames()</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id711622913418917">bas.MsgBox("\n".join(table_names))</paragraph>
-  </pycode>
-  <tip id="par_id201623153844931">Visit the <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1sdb_1_1OfficeDatabaseDocument.html">OfficeDatabaseDocument</link> API page to learn more about Base's main component structure.</tip>
 </section>
 
 <section id="Xray">
