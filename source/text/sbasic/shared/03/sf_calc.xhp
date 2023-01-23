@@ -584,6 +584,7 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#OpenRangeSelector">OpenRangeSelector</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#PrintOut">PrintOut</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Printf">Printf</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#RemoveDuplicates">RemoveDuplicates</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#RemoveSheet">RemoveSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#RenameSheet">RenameSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#SetArray">SetArray</link><br/>
@@ -594,7 +595,7 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#ShiftLeft">ShiftLeft</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ShiftRight">ShiftRight</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ShiftUp">ShiftUp</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#SortRange">SortRange</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#SortRange">SortRange</link><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -1688,6 +1689,43 @@
   </pycode>
 </section>
 
+<section id="RemoveDuplicates">
+  <comment> RemoveDuplicates ------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id821596699086119">
+      <bookmark_value>Calc service;RemoveDuplicates</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id311591699085124" localize="false">RemoveDuplicates</h2>
+  <paragraph role="paragraph" id="par_id661591699086251">Removes duplicate rows from a specified range. The comparison to determine if a given row is a duplicate is done based on a subset of columns in the range.</paragraph>
+  <paragraph role="paragraph" id="par_id111674511007536">This method returns a string containing the resulting range.</paragraph>
+  <note id="par_id831674511881468">The removal of duplicate rows is done starting at the first row in the range moving downwards, meaning that if two or more rows are duplicates then only the first one is kept.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id991621620503647">
+    <input>svc.RemoveDuplicates(range: str, opt columns: int[0..*], header: bool = False, casesensitive: bool = False, mode: str = "COMPACT"): str</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id331591699082900"><emph>range</emph>: The range from which duplicates will be removed, as a string.</paragraph>
+  <paragraph role="paragraph" id="par_id331591699082848"><emph>columns</emph>: An array containing column numbers indicating which columns will be considered to determine if a row is a duplicate or not. If this argument is left blank, then only the first column is used. Items in this array must be in the interval between 1 and the range width.</paragraph>
+  <paragraph role="paragraph" id="par_id331591699082147"><emph>header</emph>: Specifies whether the first row is a header row (Default = <literal>False</literal>).</paragraph>
+  <paragraph role="paragraph" id="par_id331591699082231"><emph>casesensitive</emph>: Specifies whether string comparisons are case-senstive (Default = <literal>False</literal>).</paragraph>
+  <paragraph role="paragraph" id="par_id331591699082446"><emph>mode</emph>: Specifies what to do with duplicate rows. If <literal>mode = "CLEAR"</literal> then duplicates are simply removed from the sheet leaving the cells blank. If <literal>mode = "COMPACT"</literal> then duplicates are removed and empty rows are compacted up (Default = <literal>"COMPACT"</literal>).</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" id="bas_id991674511267999">' Removes duplicate rows where values in column A are duplicate</paragraph>
+    <paragraph role="bascode" id="bas_id401674511347995">' Note that all optional arguments use their default value</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id81591699080330">oDoc.RemoveDuplicates("A1:B10")</paragraph>
+    <paragraph role="bascode" id="bas_id31674511325842">' Removes duplicate rows conidering that the first row contains headers</paragraph>
+    <paragraph role="bascode" id="bas_id11674511430892">' Columns A and B are used to determine if a row is a duplicate</paragraph>
+    <paragraph role="bascode" id="bas_id941674511492390">' Cells containing duplicate values are left blank</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id601674511460422">oDoc.RemoveDuplicates("A1:D10", columns := Array(1, 2), header := True, mode := "CLEAR")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id891621620636925">myDoc.RemoveDuplicates("A1:B10")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id891674511728519">myDoc.RemoveDuplicates("A1:D10", columns = (1, 2), header = True, mode = "CLEAR")</paragraph>
+  </pycode>
+</section>
+
 <section id="RemoveSheet">
   <comment> RemoveSheet -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id821591699085559">
@@ -2049,14 +2087,14 @@
       <bookmark_value>Calc service;SortRange</bookmark_value>
   </bookmark>
   <h2 id="hd_id71595692394823" localize="false">SortRange</h2>
-  <paragraph role="paragraph" id="par_id141595692394382">Sorts the given range based on up to 3 columns/rows. The sorting order may vary by column/row. It returns a string representing the modified range of cells. The size of the modified area is fully determined by the size of the source area.</paragraph>
+  <paragraph role="paragraph" id="par_id141595692394382">Sorts the given range based on a set of columns/rows that are considered as keys. The sorting order may vary by column/row. It returns a string representing the modified range of cells. The size of the modified area is fully determined by the size of the source area.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id871621623279253">
     <input>svc.SortRange(range: str, sortkeys: any, sortorder: any = "ASC", destinationcell: str = "", containsheader: bool = False, casesensitive: bool = False, sortcolumns: bool = False): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id171595692394598"><emph>range</emph>: The range to be sorted, as a string.</paragraph>
-  <paragraph role="paragraph" id="par_id171595692814163"><emph>sortkeys</emph>: A scalar (if 1 column/row) or an array of column/row numbers starting from 1. The maximum number of keys is 3.</paragraph>
+  <paragraph role="paragraph" id="par_id171595692814163"><emph>sortkeys</emph>: A scalar (if 1 column/row) or an array of column/row numbers starting from 1.</paragraph>
   <paragraph role="paragraph" id="par_id421595692962095"><emph>sortorder</emph>: A scalar or an array of strings containing the values "ASC" (ascending), "DESC" (descending) or "" (which defaults to ascending). Each item is paired with the corresponding item in <literal>sortkeys</literal>. If the <literal>sortorder</literal> array is shorter than <literal>sortkeys</literal>, the remaining keys are sorted in ascending order.</paragraph>
   <paragraph role="paragraph" id="par_id361595692394604"><emph>destinationcell</emph>: The destination cell of the sorted range of cells, as a string. If a range is given, only its top-left cell is considered. By default the source Range is overwritten.</paragraph>
   <paragraph role="paragraph" id="par_id441595693011034"><emph>containsheader</emph>: When <literal>True</literal>, the first row/column is not sorted.</paragraph>
