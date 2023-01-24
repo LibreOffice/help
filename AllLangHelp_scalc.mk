@@ -191,6 +191,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/data_form \
     helpcontent2/source/text/scalc/01/data_provider \
     helpcontent2/source/text/scalc/01/databar_more_options \
+    helpcontent2/source/text/scalc/01/default_number_formats \
     helpcontent2/source/text/scalc/01/ex_data_stat_func \
     helpcontent2/source/text/scalc/01/format_graphic \
     helpcontent2/source/text/scalc/01/formula2value \
@@ -307,11 +308,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/ODFF \
     helpcontent2/source/text/scalc/01/text2columns \
     helpcontent2/source/text/scalc/01/xml_source \
-    helpcontent2/source/text/scalc/02/02130000 \
-    helpcontent2/source/text/scalc/02/02140000 \
-    helpcontent2/source/text/scalc/02/02150000 \
-    helpcontent2/source/text/scalc/02/02160000 \
-    helpcontent2/source/text/scalc/02/02170000 \
     helpcontent2/source/text/scalc/02/06010000 \
     helpcontent2/source/text/scalc/02/06030000 \
     helpcontent2/source/text/scalc/02/06040000 \
