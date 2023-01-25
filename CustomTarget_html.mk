@@ -191,6 +191,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/contents.part : \
 # copy online_transform.xsl to workdir and build links.txt.xsl
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/online_transform.xsl : \
 		$(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl
+	mkdir -p $(dir $@)
 	cp $(SRCDIR)/helpcontent2/help3xsl/online_transform.xsl $@
 
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/links.txt.xsl : \
