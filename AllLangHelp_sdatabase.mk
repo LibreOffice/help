@@ -64,6 +64,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
     helpcontent2/source/text/sdatabase/dabawiz02ado \
     helpcontent2/source/text/sdatabase/dabawiz02connection \
     helpcontent2/source/text/sdatabase/dabawiz02dbase \
+    helpcontent2/source/text/sdatabase/dabawiz02firebird \
     helpcontent2/source/text/sdatabase/dabawiz02jdbc \
     helpcontent2/source/text/sdatabase/dabawiz02mysql \
     helpcontent2/source/text/sdatabase/dabawiz02odbc \
