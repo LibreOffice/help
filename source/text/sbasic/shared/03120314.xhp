@@ -40,60 +40,59 @@
 
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
-<paragraph id="par_id3153824" role="bascode" xml-lang="en-US">Split (Text As String, delimiter, number)</paragraph>
+<paragraph id="par_id3153824" role="bascode" xml-lang="en-US">Split (expression As String, delimiter, limit)</paragraph>
 </bascode>
 
 <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
 <paragraph id="par_id3154285" role="paragraph" xml-lang="en-US">With Option VBASupport 1: String, with Option VBASupport 0: Variant/String</paragraph>
 
 <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-<paragraph id="par_id3156023" role="paragraph" xml-lang="en-US"> <emph>Text:</emph> Any string expression.</paragraph>
-<paragraph id="par_id3147560" role="paragraph" xml-lang="en-US"> <emph>delimiter (optional):</emph> A string of one or more characters length that is used to delimit the Text. The default is the space character.</paragraph>
-<paragraph id="par_id3145069" role="paragraph" xml-lang="en-US"> <emph>number (optional):</emph> The number of substrings that you want to return.</paragraph>
+<paragraph id="par_id3156023" role="paragraph" xml-lang="en-US"> <emph>expression</emph>: Any string expression.</paragraph>
+<paragraph id="par_id3147560" role="paragraph" xml-lang="en-US"> <emph>delimiter</emph>: An optional string of one or more characters length that is used to delimit <literal>String</literal>. The default is the space character.</paragraph>
+<paragraph id="par_id3145069" role="paragraph" xml-lang="en-US"> <emph>limit</emph>: An optional number of substrings that you want to return.</paragraph>
 
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-
 <section id="splitjoinex">
 <bascode>
-<paragraph id="par_idm1341285008" role="bascode" localize="false" xml-lang="en-US">Dim a(3)</paragraph>
-<paragraph id="par_idm1341283776" role="bascode" localize="false" xml-lang="en-US">Sub main()</paragraph>
-<paragraph id="par_idm1341282544" role="bascode" localize="false" xml-lang="en-US">    a(0) = "ABCDE"</paragraph>
-<paragraph id="par_idm1341281312" role="bascode" localize="false" xml-lang="en-US">    a(1) = 42</paragraph>
-<paragraph id="par_idm1341280080" role="bascode" localize="false" xml-lang="en-US">    a(2) = "MN"</paragraph>
-<paragraph id="par_idm1341278848" role="bascode" localize="false" xml-lang="en-US">    a(3) = "X Y Z"</paragraph>
-<paragraph id="par_idm1341277616" role="bascode" localize="false" xml-lang="en-US">    JStr = Join1()</paragraph>
-<paragraph id="par_idm1341276384" role="bascode" localize="false" xml-lang="en-US">    Call Show(JStr, Split1(JStr))</paragraph>
-<paragraph id="par_idm1341275136" role="bascode" localize="false" xml-lang="en-US">    JStr = Join2()</paragraph>
-<paragraph id="par_idm1341273904" role="bascode" localize="false" xml-lang="en-US">    Call Show(JStr, Split1(JStr))</paragraph>
-<paragraph id="par_idm1341272656" role="bascode" localize="false" xml-lang="en-US">    JStr = Join3()</paragraph>
-<paragraph id="par_idm1341271424" role="bascode" localize="false" xml-lang="en-US">    Call Show(JStr, Split1(JStr))</paragraph>
-<paragraph id="par_idm1341270176" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-<paragraph id="par_idm1341268944" role="bascode" localize="false" xml-lang="en-US"> </paragraph>
-<paragraph id="par_idm1341267696" role="bascode" localize="false" xml-lang="en-US">Function Join1()</paragraph>
-<paragraph id="par_idm1341266464" role="bascode" localize="false" xml-lang="en-US">    Join1 = Join(a(), "abc")</paragraph>
-<paragraph id="par_idm1341265216" role="bascode" localize="false" xml-lang="en-US">End Function</paragraph>
-<paragraph id="par_idm1341263984" role="bascode" localize="false" xml-lang="en-US"> </paragraph>
-<paragraph id="par_idm1341262784" role="bascode" localize="false" xml-lang="en-US">Function Join2()</paragraph>
-<paragraph id="par_idm1341261552" role="bascode" localize="false" xml-lang="en-US">    Join2 = Join(a(), ",")</paragraph>
-<paragraph id="par_idm1341260304" role="bascode" localize="false" xml-lang="en-US">End Function</paragraph>
-<paragraph id="par_idm1341259072" role="bascode" localize="false" xml-lang="en-US"> </paragraph>
-<paragraph id="par_idm1341257872" role="bascode" localize="false" xml-lang="en-US">Function Join3()</paragraph>
-<paragraph id="par_idm1341256640" role="bascode" localize="false" xml-lang="en-US">    Join3 = Join(a())</paragraph>
-<paragraph id="par_idm1341255408" role="bascode" localize="false" xml-lang="en-US">End Function</paragraph>
-<paragraph id="par_idm1341254176" role="bascode" localize="false" xml-lang="en-US"> </paragraph>
-<paragraph id="par_idm1341252976" role="bascode" localize="false" xml-lang="en-US">Function Split1(aStr)</paragraph>
-<paragraph id="par_idm1341251744" role="bascode" localize="false" xml-lang="en-US">    Split1 = Split(aStr, "D")</paragraph>
-<paragraph id="par_idm1341250496" role="bascode" localize="false" xml-lang="en-US">End Function</paragraph>
-<paragraph id="par_idm1341249264" role="bascode" localize="false" xml-lang="en-US"> </paragraph>
-<paragraph id="par_idm1341248064" role="bascode" localize="false" xml-lang="en-US">Sub Show(JoinStr, TheArray)</paragraph>
-<paragraph id="par_idm1341246816" role="bascode" localize="false" xml-lang="en-US">    l = LBound(TheArray)</paragraph>
-<paragraph id="par_idm1341245568" role="bascode" localize="false" xml-lang="en-US">    u = UBound(TheArray)</paragraph>
-<paragraph id="par_idm1341244320" role="bascode" localize="false" xml-lang="en-US">    total$ = "=============================" + Chr$(13) + JoinStr + Chr$(13) + Chr$(13)</paragraph>
-<paragraph id="par_idm1341243024" role="bascode" localize="false" xml-lang="en-US">    For i = l To u</paragraph>
-<paragraph id="par_idm1341241792" role="bascode" localize="false" xml-lang="en-US">        total$ = total$ + TheArray(i) + Str(Len(TheArray(i))) + Chr$(13)</paragraph>
-<paragraph id="par_idm1341240496" role="bascode" localize="false" xml-lang="en-US">    Next i</paragraph>
-<paragraph id="par_idm1341239264" role="bascode" localize="false" xml-lang="en-US">    MsgBox total$</paragraph>
-<paragraph id="par_idm1341238032" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1341285008" role="bascode" localize="false">Dim a(3)</paragraph>
+<paragraph id="par_idm1341283776" role="bascode" localize="false">Sub main()</paragraph>
+<paragraph id="par_idm1341282544" role="bascode" localize="false">    a(0) = "ABCDE"</paragraph>
+<paragraph id="par_idm1341281312" role="bascode" localize="false">    a(1) = 42</paragraph>
+<paragraph id="par_idm1341280080" role="bascode" localize="false">    a(2) = "MN"</paragraph>
+<paragraph id="par_idm1341278848" role="bascode" localize="false">    a(3) = "X Y Z"</paragraph>
+<paragraph id="par_idm1341277616" role="bascode" localize="false">    JStr = Join1()</paragraph>
+<paragraph id="par_idm1341276384" role="bascode" localize="false">    Call Show(JStr, Split1(JStr))</paragraph>
+<paragraph id="par_idm1341275136" role="bascode" localize="false">    JStr = Join2()</paragraph>
+<paragraph id="par_idm1341273904" role="bascode" localize="false">    Call Show(JStr, Split1(JStr))</paragraph>
+<paragraph id="par_idm1341272656" role="bascode" localize="false">    JStr = Join3()</paragraph>
+<paragraph id="par_idm1341271424" role="bascode" localize="false">    Call Show(JStr, Split1(JStr))</paragraph>
+<paragraph id="par_idm1341270176" role="bascode" localize="false">End Sub</paragraph>
+<paragraph id="par_idm1341268944" role="bascode" localize="false"> </paragraph>
+<paragraph id="par_idm1341267696" role="bascode" localize="false">Function Join1()</paragraph>
+<paragraph id="par_idm1341266464" role="bascode" localize="false">    Join1 = Join(a(), "abc")</paragraph>
+<paragraph id="par_idm1341265216" role="bascode" localize="false">End Function</paragraph>
+<paragraph id="par_idm1341263984" role="bascode" localize="false"> </paragraph>
+<paragraph id="par_idm1341262784" role="bascode" localize="false">Function Join2()</paragraph>
+<paragraph id="par_idm1341261552" role="bascode" localize="false">    Join2 = Join(a(), ",")</paragraph>
+<paragraph id="par_idm1341260304" role="bascode" localize="false">End Function</paragraph>
+<paragraph id="par_idm1341259072" role="bascode" localize="false"> </paragraph>
+<paragraph id="par_idm1341257872" role="bascode" localize="false">Function Join3()</paragraph>
+<paragraph id="par_idm1341256640" role="bascode" localize="false">    Join3 = Join(a())</paragraph>
+<paragraph id="par_idm1341255408" role="bascode" localize="false">End Function</paragraph>
+<paragraph id="par_idm1341254176" role="bascode" localize="false"> </paragraph>
+<paragraph id="par_idm1341252976" role="bascode" localize="false">Function Split1(aStr)</paragraph>
+<paragraph id="par_idm1341251744" role="bascode" localize="false">    Split1 = Split(aStr, "D")</paragraph>
+<paragraph id="par_idm1341250496" role="bascode" localize="false">End Function</paragraph>
+<paragraph id="par_idm1341249264" role="bascode" localize="false"> </paragraph>
+<paragraph id="par_idm1341248064" role="bascode" localize="false">Sub Show(JoinStr, TheArray)</paragraph>
+<paragraph id="par_idm1341246816" role="bascode" localize="false">    l = LBound(TheArray)</paragraph>
+<paragraph id="par_idm1341245568" role="bascode" localize="false">    u = UBound(TheArray)</paragraph>
+<paragraph id="par_idm1341244320" role="bascode" localize="false">    total$ = "=============================" + Chr$(13) + JoinStr + Chr$(13) + Chr$(13)</paragraph>
+<paragraph id="par_idm1341243024" role="bascode" localize="false">    For i = l To u</paragraph>
+<paragraph id="par_idm1341241792" role="bascode" localize="false">        total$ = total$ + TheArray(i) + Str(Len(TheArray(i))) + Chr$(13)</paragraph>
+<paragraph id="par_idm1341240496" role="bascode" localize="false">    Next i</paragraph>
+<paragraph id="par_idm1341239264" role="bascode" localize="false">    MsgBox total$</paragraph>
+<paragraph id="par_idm1341238032" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
 </section>
 <section id="relatedtopics">

@@ -33,20 +33,17 @@
   <bookmark_value>SetAttr statement</bookmark_value>
 </bookmark>
 
-
-<paragraph id="hd_id3147559" role="heading" level="1" xml-lang="en-US"><link href="text/sbasic/shared/03020414.xhp">SetAttr Statement</link></paragraph>
+<h1 id="hd_id3147559" ><link href="text/sbasic/shared/03020414.xhp">SetAttr Statement</link></h1>
 <paragraph id="par_id3147264" role="paragraph" xml-lang="en-US">Sets the attribute information for a specified file.</paragraph>
 </section>
 
-<paragraph id="hd_id3150359" role="heading" level="2" xml-lang="en-US">Syntax:</paragraph>
-<bascode>
-<paragraph id="par_id3154365" role="bascode" xml-lang="en-US">SetAttr FileName As String, Attribute As Integer</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/><bascode>
+<paragraph id="par_id3154365" role="bascode" xml-lang="en-US">SetAttr PathName As String, Attributes As Integer</paragraph>
 </bascode>
 
-<paragraph id="hd_id3125863" role="heading" level="2" xml-lang="en-US">Parameters:</paragraph>
-<paragraph id="par_id3154909" role="paragraph" xml-lang="en-US">FileName: Name of the file, including the path, that you want to test attributes of. If you do not enter a path, <emph>SetAttr</emph> searches for the file in the current directory. You can also use <link href="text/sbasic/shared/00000002.xhp">URL notation</link>.</paragraph>
-<paragraph id="par_id3153192" role="paragraph" xml-lang="en-US"> <emph>Attribute:</emph> Bit pattern defining the attributes that you want to set or to clear:</paragraph>
-<paragraph id="par_id3145786" role="paragraph" xml-lang="en-US"> <emph>Value</emph> </paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<paragraph id="par_id3154909" role="paragraph" xml-lang="en-US"> <emph>FileName</emph>: Name of the file, including the path, that you want to test attributes of. If you do not enter a path, <emph>SetAttr</emph> searches for the file in the current directory. You can also use <link href="text/sbasic/shared/00000002.xhp">URL notation</link>.</paragraph>
+<paragraph id="par_id3153192" role="paragraph" xml-lang="en-US"> <emph>Attributes</emph>: Bit pattern defining the attributes that you want to set or to clear:</paragraph>
 
 <table id="Table1">
   <tablerow>
@@ -101,21 +98,20 @@
 <embed href="text/sbasic/shared/00000003.xhp#err53"/>
 <embed href="text/sbasic/shared/00000003.xhp#err70"/>
 
-<paragraph id="hd_id3147434" role="heading" level="2" xml-lang="en-US">Example:</paragraph>
-<bascode>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/><bascode>
 <paragraph id="par_idm1340803584" role="bascode" localize="false" xml-lang="en-US">Sub ExampleSetGetAttr</paragraph>
 <paragraph id="par_id3148645" role="bascode" xml-lang="en-US"> On Error GoTo ErrorHandler ' Define target for error handler</paragraph>
-<paragraph id="par_idm1340800592" role="bascode" localize="false" xml-lang="en-US"> If Dir("C:\test",16)="" Then MkDir "C:\test"</paragraph>
-<paragraph id="par_idm1340799328" role="bascode" localize="false" xml-lang="en-US"> If Dir("C:\test\autoexec.sav")="" Then FileCopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
-<paragraph id="par_idm1340798016" role="bascode" localize="false" xml-lang="en-US"> SetAttr "c:\test\autoexec.sav" ,0</paragraph>
-<paragraph id="par_idm1340796752" role="bascode" localize="false" xml-lang="en-US"> FileCopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
-<paragraph id="par_idm1341620608" role="bascode" localize="false" xml-lang="en-US"> SetAttr "c:\test\autoexec.sav" , ATTR_READONLY</paragraph>
-<paragraph id="par_idm1341619344" role="bascode" localize="false" xml-lang="en-US"> Print GetAttr( "c:\test\autoexec.sav" )</paragraph>
-<paragraph id="par_idm1341618080" role="bascode" localize="false" xml-lang="en-US"> End</paragraph>
-<paragraph id="par_idm1341616848" role="bascode" localize="false" xml-lang="en-US">ErrorHandler:</paragraph>
-<paragraph id="par_idm1341615616" role="bascode" localize="false" xml-lang="en-US"> Print Error</paragraph>
-<paragraph id="par_idm1341614384" role="bascode" localize="false" xml-lang="en-US"> End</paragraph>
-<paragraph id="par_idm1341613152" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1340800592" role="bascode" localize="false"> If Dir("C:\test",16)="" Then MkDir "C:\test"</paragraph>
+<paragraph id="par_idm1340799328" role="bascode" localize="false"> If Dir("C:\test\autoexec.sav")="" Then FileCopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
+<paragraph id="par_idm1340798016" role="bascode" localize="false"> SetAttr "c:\test\autoexec.sav" ,0</paragraph>
+<paragraph id="par_idm1340796752" role="bascode" localize="false"> FileCopy "c:\autoexec.bat", "c:\test\autoexec.sav"</paragraph>
+<paragraph id="par_idm1341620608" role="bascode" localize="false"> SetAttr "c:\test\autoexec.sav" , ATTR_READONLY</paragraph>
+<paragraph id="par_idm1341619344" role="bascode" localize="false"> Print GetAttr( "c:\test\autoexec.sav" )</paragraph>
+<paragraph id="par_idm1341618080" role="bascode" localize="false"> End</paragraph>
+<paragraph id="par_idm1341616848" role="bascode" localize="false">ErrorHandler:</paragraph>
+<paragraph id="par_idm1341615616" role="bascode" localize="false"> Print Error</paragraph>
+<paragraph id="par_idm1341614384" role="bascode" localize="false"> End</paragraph>
+<paragraph id="par_idm1341613152" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
 </body>
 
