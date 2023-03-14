@@ -16,16 +16,8 @@
 </xsl:template>
 
 <!-- remove colspan="" rowspan="" in tablecell -->
-<xsl:template match="//tablecell[@colspan='' and @rowspan='']">
-<tablecell>
-<xsl:if test="@id"><xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute></xsl:if>
-<xsl:if test="@width"><xsl:attribute name="width"><xsl:value-of select="@width"/></xsl:attribute></xsl:if>
-<xsl:if test="@unit"><xsl:attribute name="unit"><xsl:value-of select="@unit"/></xsl:attribute></xsl:if>
-<xsl:if test="@class"><xsl:attribute name="class"><xsl:value-of select="@class"/></xsl:attribute></xsl:if>
-<xsl:if test="@localize"><xsl:attribute name="localize"><xsl:value-of select="@localize"/></xsl:attribute></xsl:if>
-<xsl:apply-templates/>
-</tablecell>
-</xsl:template>
+<xsl:template match="@colspan[//tablecell/@colspan='']" />
+<xsl:template match="@rowspan[//tablecell/@rowspan='']" />
 
 <xsl:template match="node()|@*">
     <xsl:copy>
