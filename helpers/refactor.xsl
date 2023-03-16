@@ -18,6 +18,8 @@
 <!-- remove colspan="" rowspan="" in tablecell -->
 <xsl:template match="@colspan[//tablecell/@colspan='']" />
 <xsl:template match="@rowspan[//tablecell/@rowspan='']" />
+<!--remove xml-lang, marked IMPLIED everywhere-->
+<xsl:template match="@xml-lang" />
 
 <xsl:template match="node()|@*">
     <xsl:copy>
