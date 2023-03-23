@@ -45,7 +45,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdraw,\
     helpcontent2/source/text/sdraw/guide/keyboard \
     helpcontent2/source/text/sdraw/guide/layers \
     helpcontent2/source/text/sdraw/guide/layer_move \
-    helpcontent2/source/text/sdraw/guide/layer_new \
     helpcontent2/source/text/sdraw/guide/layer_tipps \
     helpcontent2/source/text/sdraw/guide/main \
     helpcontent2/source/text/sdraw/guide/rotate_object \
