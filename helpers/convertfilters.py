@@ -60,13 +60,13 @@ output = '''<?xml version="1.0" encoding="UTF-8"?>
 -->
 <meta>
     <topic id="convertfilters" indexer="include" status="PUBLISH">
-        <title id="tit" xml-lang="en-US">File Conversion Filters Tables</title>
+        <title id="tit">File Conversion Filters Tables</title>
         <filename>/text/shared/guide/convertfilters.xhp</filename>
     </topic>
 </meta>
 <body>
 <section id="convertfilters01">
-    <bookmark xml-lang="en-US" branch="index" id="bm_id541554406270299">
+    <bookmark  branch="index" id="bm_id541554406270299">
         <bookmark_value>filters;document conversion</bookmark_value>
         <bookmark_value>document conversion;filters</bookmark_value>
         <bookmark_value>convert-to;filters</bookmark_value>
@@ -76,7 +76,7 @@ output = '''<?xml version="1.0" encoding="UTF-8"?>
     <h1 id="hd_id771554399002497">
         <variable id="convertfilters_h1"><link href="text/shared/guide/convertfilters.xhp">File Conversion Filter Names</link></variable>
     </h1>
-    <paragraph id="par_id581554399002498" role="paragraph" xml-lang="en-US">
+    <paragraph id="par_id581554399002498" role="paragraph" >
         <variable id="commandline_intro">
             <ahelp hid=".">Tables with filter names for <link href="text/shared/guide/start_parameters.xhp">command line</link> document conversion.</ahelp>
         </variable>
@@ -84,9 +84,9 @@ output = '''<?xml version="1.0" encoding="UTF-8"?>
 </section>
 <h2 id="hd_id531633524464103">Usage</h2>
 <paragraph role="paragraph" id="par_id801633524474460">Filter names are used when importing and exporting files in alien formats and converting files formats through the <link href="text/shared/guide/start_parameters.xhp">command line</link>.</paragraph>
-<paragraph role="paragraph" id="par_id314959p" localize="false" xml-lang="en-US"><emph>soffice --convert-to OutputFileExtension[:OutputFilterName[:OutputFilterParams[,param]]] [--outdir output_dir]</emph></paragraph>
+<paragraph role="paragraph" id="par_id314959p" localize="false" ><emph>soffice --convert-to OutputFileExtension[:OutputFilterName[:OutputFilterParams[,param]]] [--outdir output_dir]</emph></paragraph>
 <embed href="text/shared/guide/start_parameters.xhp#convertto"/>
-<paragraph role="tablecontent" id="par_id314959o" localize="false" xml-lang="en-US"><emph>soffice --infilter=&quot;InputFilterName[:InputFilterParams[,param]]&quot;</emph></paragraph>
+<paragraph role="tablecontent" id="par_id314959o" localize="false" ><emph>soffice --infilter=&quot;InputFilterName[:InputFilterParams[,param]]&quot;</emph></paragraph>
 <paragraph role="paragraph" id="par_id501550934647297" localize="false"><input>--infilter="Text (encoded):UTF8,LF,Liberation Mono,en-US"</input>.</paragraph>
 '''
 
@@ -130,7 +130,7 @@ for module in modules:
 
     output += f'\
 <section id="filters{module[:-4]}">\n\
-    <bookmark xml-lang="en-US" branch="index" id="bm_000{module[:-4]}">\n\
+    <bookmark  branch="index" id="bm_000{module[:-4]}">\n\
         <bookmark_value>command line document conversion; filters for {module[:-4].upper()}</bookmark_value>\n\
     </bookmark>\n\
     <h2 id="hd_000{module[:-4]}">Filters for {module[:-4].upper()}</h2>\n\
