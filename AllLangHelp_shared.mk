@@ -738,6 +738,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/palette_files \
     helpcontent2/source/text/shared/guide/paintbrush \
     helpcontent2/source/text/shared/guide/pasting \
+    helpcontent2/source/text/shared/guide/pdf_params \
     helpcontent2/source/text/shared/guide/print_blackwhite \
     helpcontent2/source/text/shared/guide/print_faster \
     helpcontent2/source/text/shared/guide/protection \
