@@ -175,11 +175,13 @@
 </bookmark>
 <bookmark branch="hid/SC_HID_FUNC_INDEX" id="bm_id3157989" localize="false"/>
 <h2 id="hd_id3151221">INDEX</h2>
-<paragraph id="par_id3150268" role="paragraph"><ahelp hid="HID_FUNC_INDEX">INDEX returns a value or an array of values from a reference range, specified by row and column index number or array of row and array of columns index numbers, and an optional range index.</ahelp></paragraph>
+      <paragraph id="par_id3150268" role="paragraph"><ahelp hid="HID_FUNC_INDEX">INDEX returns a reference, a value or an array of values from a reference range, specified by row and column index number or array of row and array of columns index numbers, and an optional range index.</ahelp></paragraph>
+
+      <paragraph role="paragraph" id="par_id901682701069280">INDEX() returns a reference if the argument is one or more references. When used in a cell in the form =INDEX(), the reference is resolved and the values displayed. When INDEX() is used in arguments of other functions, =FUNCTION(INDEX()...), the function gets the reference passed that was returned by INDEX(). Returning a reference is different from returning an array of values for functions that handles them differently.</paragraph>
+
          <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
          <paragraph id="par_id3149007" role="code">INDEX(Reference [; [Row] [; [Column] [; Range]]])</paragraph>
-         <paragraph id="par_id3153260" role="paragraph">
-            <emph>Reference</emph> is a reference, entered either directly or by specifying a range name. If the reference consists of multiple ranges, you must enclose the list of references or range names in parentheses, or use the tilde (~) <link href="text/scalc/01/04060199.xhp#referenceoperators">range concatenation operator</link>.</paragraph>
+         <paragraph id="par_id3153260" role="paragraph"><emph>Reference</emph> is a reference, entered either directly or by specifying a range name. If the reference consists of multiple ranges, you must enclose the list of references or range names in parentheses, or either use the tilde (~) <link href="text/scalc/01/04060199.xhp#referenceoperators">range concatenation operator</link> or define a named range with multiple areas.</paragraph>
          <paragraph id="par_id3145302" role="paragraph">
             <emph>Row</emph> (optional) represents the row or the array of row indexes of the reference range, for which to return a value. In case of zero or omitted (no specific row) all referenced rows are returned.</paragraph>
          <paragraph id="par_id3154628" role="paragraph">
