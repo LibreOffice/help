@@ -21,8 +21,8 @@
     <bookmark_value>convert to PDF;command line parameters</bookmark_value>
 </bookmark>
 <section id="pdfcliparams">
-    <h1 id="hd_id121682091245245"><variable id="h1"><link href="text/shared/guide/pdf_params.xhp">PDF Export  Command Line Parameters</link></variable></h1>
-    <paragraph id="par_id671682091245248" role="paragraph">The PDF filter accepts an options string containing PDF properties for export.</paragraph>
+    <h1 id="hd_id121682091245245"><variable id="h1"><link href="text/shared/guide/pdf_params.xhp">PDF Export Command Line Parameters</link></variable></h1>
+    <paragraph id="par_id671682091245248" role="paragraph">The PDF filter accepts a string of options containing PDF properties for export.</paragraph>
 </section>
 
 <h3 id="hd_id971682091492801">Examples:</h3>
@@ -33,7 +33,7 @@
 
 <paragraph role="paragraph" localize="false" id="par_id271682091918895"><input>soffice --convert-to 'pdf:draw_pdf_Export:{"TiledWatermark":{"type":"string","value":"draft"}}' test.odg</input></paragraph>
 
-<paragraph role="paragraph" id="par_id661682091944531">To encrypt file:</paragraph>
+<paragraph role="paragraph" id="par_id661682091944531">To encrypt a file:</paragraph>
 
 <paragraph role="paragraph" localize="false" id="par_id671682092011327"><input>soffice --convert-to 'pdf:draw_pdf_Export:{"EncryptFile":{"type":"boolean","value":"true"},"DocumentOpenPassword":{"type":"string","value":"secret"}}' test.odg</input></paragraph>
 
@@ -90,7 +90,7 @@
             <paragraph id="par_id991682094882340" localize="false" role="tablecontent"><literal>UseLosslessCompression</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id191682094882341" role="tablecontent"> Specifies if graphics are exported to PDF using a lossless compression like <emph>PNG</emph> or compressed using the <emph>JPEG</emph> format.</paragraph>
+            <paragraph id="par_id191682094882341" role="tablecontent">Specifies if images are exported to PDF using a lossless compression format like <emph>PNG</emph> or compressed using the <emph>JPEG</emph> format.</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id981682094882342" localize="false" role="tablecontent">boolean</paragraph>
@@ -104,9 +104,9 @@
             <paragraph id="par_id341682095024851" localize="false" role="tablecontent"><literal>Quality</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id821682095024852" role="tablecontent">Specifies quality of the JPG export. A higher value results in higher image quality and file.</paragraph>
-            <paragraph role="paragraph" id="par_id931682095141797">Minimum inclusive value: 1. Represents lowest value that can be used. The lower the value, the less good is the image quality and the smaller is be the file size.</paragraph>
-            <paragraph role="paragraph" id="par_id791682095148125">Maximum inclusive value:100. Represents highest value that can be used. The higher the value, the better is the image quality and the bigger is the file size.</paragraph>
+            <paragraph id="par_id821682095024852" role="tablecontent">Specifies the quality of the JPG export. A higher value produces a higher-quality image and a larger file.</paragraph>
+            <paragraph role="paragraph" id="par_id931682095141797">Minimum inclusive value: 1. Represents the lowest value that can be used. The lower the value, the worse is the image quality and the smaller is the file size.</paragraph>
+            <paragraph role="paragraph" id="par_id791682095148125">Maximum inclusive value: 100. Represents the highest value that can be used. The higher the value, the better is the image quality and the larger is the file size.</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id121682095024853" localize="false" role="tablecontent">long</paragraph>
@@ -120,7 +120,7 @@
             <paragraph id="par_id211682095187330" localize="false" role="tablecontent"><literal>ReduceImageResolution</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id281682095187331" role="tablecontent"> Specifies if the resolution of each image is reduced to the resolution specified by the property <literal>MaxImageResolution</literal>. </paragraph>
+            <paragraph id="par_id281682095187331" role="tablecontent">Specifies if the resolution of each image is reduced to the resolution specified by the property <literal>MaxImageResolution</literal>.</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id781682095187332" localize="false" role="tablecontent">boolean</paragraph>
@@ -134,7 +134,7 @@
             <paragraph id="par_id651682095537395" localize="false" role="tablecontent"><literal>MaxImageResolution</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id201682095537396" role="tablecontent">If the property <literal>ReduceImageResolution</literal> is set to true all images will be reduced to the given value in DPI. Possible values are: 75, 150, 300, 600, and 1200.</paragraph>
+            <paragraph id="par_id201682095537396" role="tablecontent">If the property <literal>ReduceImageResolution</literal> is set to true, all images will be reduced to the given value in DPI. Possible values are: 75, 150, 300, 600 and 1200.</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id661682095537398" localize="false" role="tablecontent">long</paragraph>
@@ -148,14 +148,14 @@
             <paragraph id="par_id931682095840340" localize="false" role="tablecontent"><literal>SelectPdfVersion</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id701682095840341" role="tablecontent">Specifies the version of PDF to emit. Possible values are: </paragraph>
-            <paragraph role="paragraph" id="par_id421682095915294">0 = PDF 1.7 (default selection).</paragraph>
-            <paragraph role="paragraph" localize="false" id="par_id261682095923984">1 = PDF/A-1b</paragraph>
-            <paragraph role="paragraph" localize="false" id="par_id61682125726522">2 = PDF/A-2b</paragraph>
-            <paragraph role="paragraph" localize="false" id="par_id501682125731427">3 = PDF/A-3b</paragraph>
-            <paragraph role="paragraph" localize="false" id="par_id401682125738450">15 = PDF 1.5</paragraph>
-            <paragraph role="paragraph" localize="false" id="par_id451682125743938">16 = PDF 1.6</paragraph>
-            <paragraph role="paragraph" localize="false" id="par_id851682125748773">17 = PDF 1.7</paragraph>
+            <paragraph id="par_id701682095840341" role="tablecontent">Specifies the PDF version to emit. Possible values are:</paragraph>
+            <paragraph role="paragraph" id="par_id421682095915294">0: PDF 1.7 (default choice).</paragraph>
+            <paragraph role="paragraph" localize="false" id="par_id261682095923984">1: PDF/A-1b</paragraph>
+            <paragraph role="paragraph" localize="false" id="par_id61682125726522">2: PDF/A-2b</paragraph>
+            <paragraph role="paragraph" localize="false" id="par_id501682125731427">3: PDF/A-3b</paragraph>
+            <paragraph role="paragraph" localize="false" id="par_id401682125738450">15: PDF 1.5</paragraph>
+            <paragraph role="paragraph" localize="false" id="par_id451682125743938">16: PDF 1.6</paragraph>
+            <paragraph role="paragraph" localize="false" id="par_id851682125748773">17: PDF 1.7</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id371682095840342" localize="false" role="tablecontent">long</paragraph>
@@ -169,7 +169,7 @@
             <paragraph id="par_id551682098105758" localize="false" role="tablecontent"><literal>PDFUACompliance</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id461682098105759" role="tablecontent">Creates a universal accessibility-complying PDF file that follows the requirements of PDF/UA (ISO 14289) specifications.</paragraph>
+            <paragraph id="par_id461682098105759" role="tablecontent">Creates an accessible PDF file that follows the requirements of the PDF/UA (ISO 14289) specification.</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id331682098105760" localize="false" role="tablecontent">boolean</paragraph>
@@ -183,7 +183,7 @@
             <paragraph id="par_id471682096518884" localize="false" role="tablecontent"><literal>UseTaggedPDF</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id301682096518885" role="tablecontent">Determines if PDF are created by using special tags also known as Tagged PDF.</paragraph>
+            <paragraph id="par_id301682096518885" role="tablecontent">Determines if PDFs are created using special accessibility tags.</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id691682096518886" localize="false" role="tablecontent">boolean</paragraph>
@@ -211,12 +211,12 @@
             <paragraph id="par_id601682096666646" localize="false" role="tablecontent"><literal>FormsType</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id621682096666647" role="tablecontent">Specifies the submitted format of a PDF form.  Possible values:</paragraph>
+            <paragraph id="par_id621682096666647" role="tablecontent">Specifies the submit format of a PDF form. Possible values are:</paragraph>
 
-            <paragraph role="paragraph" id="par_id241682096785203">0= Specifies that forms type FDF is used.</paragraph>
-            <paragraph role="paragraph" id="par_id451682096789430">1= Specifies that forms type PDF is used.</paragraph>
-            <paragraph role="paragraph" id="par_id431682096793624">2= Specifies that forms type HTML is used.</paragraph>
-            <paragraph role="paragraph" id="par_id871682096797498">3= Specifies that forms type XML is used.</paragraph>
+            <paragraph role="paragraph" id="par_id241682096785203">0: Specifies that form type FDF is used.</paragraph>
+            <paragraph role="paragraph" id="par_id451682096789430">1: Specifies that form type PDF is used.</paragraph>
+            <paragraph role="paragraph" id="par_id431682096793624">2: Specifies that form type HTML is used.</paragraph>
+            <paragraph role="paragraph" id="par_id871682096797498">3: Specifies that form type XML is used.</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id141682096666648" localize="false" role="tablecontent">long</paragraph>
@@ -328,7 +328,7 @@
             <paragraph id="par_id71682126441874" localize="false" role="tablecontent"><literal>ExportHiddenSlides</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id641682126441875" role="tablecontent">For %PRODUCTNAME Impress, export slides not shown in slide shows.</paragraph>
+            <paragraph id="par_id641682126441875" role="tablecontent">For %PRODUCTNAME Impress, exports slides not included in slide shows.</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id721682126441876" localize="false" role="tablecontent">boolean</paragraph>
@@ -512,10 +512,10 @@
             <paragraph id="par_id751682101522617" localize="false" role="tablecontent"><literal>InitialView</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id981682101522618" role="tablecontent">Specifies how the PDF document should be displayed when opened. Possible values:</paragraph>
-            <paragraph role="paragraph" id="par_id141682101963159">0= Select the default viewer mode, neither outlines or thumbnails.</paragraph>
-            <paragraph role="paragraph" id="par_id701682101968454">1= The document is opened with outline pane opened</paragraph>
-            <paragraph role="paragraph" id="par_id191682101972902">2= The document is opened with thumbnail pane opened</paragraph>
+            <paragraph id="par_id981682101522618" role="tablecontent">Specifies how the PDF document should be displayed when opened. Possible values are:</paragraph>
+            <paragraph role="paragraph" id="par_id141682101963159">0: Select the default viewer mode, neither outlines nor thumbnails.</paragraph>
+            <paragraph role="paragraph" id="par_id701682101968454">1: The document is opened with outline pane opened</paragraph>
+            <paragraph role="paragraph" id="par_id191682101972902">2: The document is opened with thumbnail pane opened</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id521682101522619" localize="false" role="tablecontent">long</paragraph>
@@ -543,12 +543,12 @@
             <paragraph id="par_id531682102185256" localize="false" role="tablecontent"><literal>Magnification</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id581682102185257" role="tablecontent">Specifies the action to be performed when the PDF document is opened. Possible values:</paragraph>
-            <paragraph role="paragraph" id="par_id721682102242609">0= Opens with default zoom magnification.</paragraph>
-            <paragraph role="paragraph" id="par_id231682102247131">1= Opens magnified to fit the entire page within the window.</paragraph>
-            <paragraph role="paragraph" id="par_id291682102252023">2= Opens magnified to fit the entire page width within the window.</paragraph>
-            <paragraph role="paragraph" id="par_id801682102257172">3= Opens magnified to fit the entire width of its bounding box within the window (cuts out margins).</paragraph>
-            <paragraph role="paragraph" id="par_id681682102262481">4= Opens with the zoom level specified in the Zoom property.</paragraph>
+            <paragraph id="par_id581682102185257" role="tablecontent">Specifies the action to be performed when the PDF document is opened. Possible values are:</paragraph>
+            <paragraph role="paragraph" id="par_id721682102242609">0: Opens with default zoom magnification.</paragraph>
+            <paragraph role="paragraph" id="par_id231682102247131">1: Opens magnified to fit the entire page within the window.</paragraph>
+            <paragraph role="paragraph" id="par_id291682102252023">2: Opens magnified to fit the entire page width within the window.</paragraph>
+            <paragraph role="paragraph" id="par_id801682102257172">3: Opens magnified to fit the entire width of its bounding box within the window (cuts out margins).</paragraph>
+            <paragraph role="paragraph" id="par_id681682102262481">4: Opens with the zoom level specified in the Zoom property.</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id351682102185259" localize="false" role="tablecontent">long</paragraph>
@@ -576,12 +576,12 @@
             <paragraph id="par_id91682102357424" localize="false" role="tablecontent"><literal>PageLayout</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id771682102357425" role="tablecontent">Specifies the page layout to be used when the document is opened. Possible values:</paragraph>
+            <paragraph id="par_id771682102357425" role="tablecontent">Specifies the page layout to be used when the document is opened. Possible values are:</paragraph>
 
-            <paragraph role="paragraph" id="par_id151682102404677">0= Display the pages according to the reader configuration.</paragraph>
-            <paragraph role="paragraph" id="par_id671682102409679">1= Display one page at a time.</paragraph>
-            <paragraph role="paragraph" id="par_id331682102414339">2= Display the pages in one column.</paragraph>
-            <paragraph role="paragraph" id="par_id921682102421537">3= Display the pages in two columns odd pages on the right, to have the odd pages on the left the <literal>FirstPageOnLeft</literal> property should be used as well.</paragraph>
+            <paragraph role="paragraph" id="par_id151682102404677">0: Display the pages according to the reader configuration.</paragraph>
+            <paragraph role="paragraph" id="par_id671682102409679">1: Display one page at a time.</paragraph>
+            <paragraph role="paragraph" id="par_id331682102414339">2: Display the pages in one column.</paragraph>
+            <paragraph role="paragraph" id="par_id921682102421537">3: Display the pages in two columns odd pages on the right, to have the odd pages on the left the <literal>FirstPageOnLeft</literal> property should be used as well.</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id171682102357426" localize="false" role="tablecontent">long</paragraph>
@@ -710,7 +710,7 @@
             <paragraph id="par_id21682103930313" localize="false" role="tablecontent"><literal>HideViewerWindowControls</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id491682103930314" role="tablecontent"> Specifies whether to hide the PDF viewer controls when the document is active. </paragraph>
+            <paragraph id="par_id491682103930314" role="tablecontent">Specifies whether to hide the PDF viewer controls when the document is active.</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id711682103930315" localize="false" role="tablecontent">boolean</paragraph>
@@ -738,9 +738,9 @@
             <paragraph id="par_id11682104068265" localize="false" role="tablecontent"><literal>OpenBookmarkLevels</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id731682104068266" role="tablecontent">Specifies how many bookmark levels should be opened in the reader application when the PDF gets opened. Possible values:</paragraph>
+            <paragraph id="par_id731682104068266" role="tablecontent">Specifies how many bookmark levels should be opened in the reader application when the PDF gets opened. Possible values are:</paragraph>
             <paragraph role="paragraph" id="par_id131682104132952">-1: all bookmark levels are opened</paragraph>
-            <paragraph role="paragraph" id="par_id441682104137875">1 – 10: indicate a bookmark level (from 1 to 10)</paragraph>
+            <paragraph role="paragraph" id="par_id441682104137875">1–10: indicate a bookmark level (from 1 to 10)</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id541682104068267" localize="false" role="tablecontent">long</paragraph>
@@ -813,10 +813,10 @@
             <paragraph id="par_id641682104540031" localize="false" role="tablecontent"><literal>PDFViewSelection</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id991682104540032" role="tablecontent">Specifies the way the exported PDF will be viewed (experienced) by the user. Possible values:</paragraph>
-            <paragraph role="paragraph" id="par_id681682104589018">0 = Specifies that the PDF will be exported with all the links external to the document treated as URI. This is the Default</paragraph>
-            <paragraph role="paragraph" id="par_id341682104594990">1 = Specifies that the PDF will be exported in order to be viewed through a PDF reader application only. Valid only if not exporting to PDF/A-1 (e.g. SelectPdfVersion not set to 1).</paragraph>
-            <paragraph role="paragraph" id="par_id161682104601779">2 = Specifies that the PDF will be exported in order to be viewed through an Internet browser, using the PDF plug-in provided with it. The bookmark of the URI will be rendered compatible with the target bookmark generated with %PRODUCTNAME PDF Export feature (see <literal>ExportBookmarksToPDFDestination</literal>).</paragraph>
+            <paragraph id="par_id991682104540032" role="tablecontent">Specifies the way the exported PDF will be viewed (experienced) by the user. Possible values are:</paragraph>
+            <paragraph role="paragraph" id="par_id681682104589018">0: Specifies that the PDF will be exported with all the links external to the document treated as URI. This is the Default</paragraph>
+            <paragraph role="paragraph" id="par_id341682104594990">1: Specifies that the PDF will be exported in order to be viewed through a PDF reader application only. Valid only if not exporting to PDF/A-1 (e.g. SelectPdfVersion not set to 1).</paragraph>
+            <paragraph role="paragraph" id="par_id161682104601779">2: Specifies that the PDF will be exported in order to be viewed through an Internet browser, using the PDF plug-in provided with it. The bookmark of the URI will be rendered compatible with the target bookmark generated with %PRODUCTNAME PDF Export feature (see <literal>ExportBookmarksToPDFDestination</literal>).</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id941682104540033" localize="false" role="tablecontent">long</paragraph>
@@ -928,11 +928,11 @@
             <paragraph id="par_id301682110333149" localize="false" role="tablecontent"><literal>Printing</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id331682110333150" role="tablecontent">Specifies what printing is allowed. Possible values: </paragraph>
+            <paragraph id="par_id331682110333150" role="tablecontent">Specifies what printing is allowed. Possible values are:</paragraph>
 
-            <paragraph role="paragraph" id="par_id451682110379499">0 = The document cannot be printed.</paragraph>
-            <paragraph role="paragraph" id="par_id971682110383819">1 = The document can be printed at low resolution only.</paragraph>
-            <paragraph role="paragraph" id="par_id441682110387779">2 = The document can be printed at maximum resolution.</paragraph>
+            <paragraph role="paragraph" id="par_id451682110379499">0: The document cannot be printed.</paragraph>
+            <paragraph role="paragraph" id="par_id971682110383819">1: The document can be printed at low resolution only.</paragraph>
+            <paragraph role="paragraph" id="par_id441682110387779">2: The document can be printed at maximum resolution.</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id101682110333152" localize="false" role="tablecontent">long</paragraph>
@@ -946,12 +946,12 @@
             <paragraph id="par_id11682110417182" localize="false" role="tablecontent"><literal>Changes</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id111682110417183" role="tablecontent">Specifies the change allowed to the document. Possible values: </paragraph>
-            <paragraph role="paragraph" id="par_id791682110462123">0 = The document cannot be changed.</paragraph>
-            <paragraph role="paragraph" id="par_id91682110466372">1 = Inserting deleting and rotating pages is allowed.</paragraph>
-            <paragraph role="paragraph" id="par_id301682110472022">2 = Filling of form field is allowed.</paragraph>
-            <paragraph role="paragraph" id="par_id461682110476540">3 = Both filling of form field and commenting is allowed.</paragraph>
-            <paragraph role="paragraph" id="par_id491682110483959">4 = All the changes of the previous selections are permitted, with the only exclusion of page extraction (copy).</paragraph>
+            <paragraph id="par_id111682110417183" role="tablecontent">Specifies the changes that can be made to the document. Possible values are:</paragraph>
+            <paragraph role="paragraph" id="par_id791682110462123">0: The document cannot be changed.</paragraph>
+            <paragraph role="paragraph" id="par_id91682110466372">1: Inserting deleting and rotating pages is allowed.</paragraph>
+            <paragraph role="paragraph" id="par_id301682110472022">2: Filling of form field is allowed.</paragraph>
+            <paragraph role="paragraph" id="par_id461682110476540">3: Both filling of form field and commenting is allowed.</paragraph>
+            <paragraph role="paragraph" id="par_id491682110483959">4: All the changes of the previous selections are permitted, with the only exclusion of page extraction (copy).</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id221682110417184" localize="false" role="tablecontent">long</paragraph>
@@ -1100,7 +1100,7 @@
             <paragraph id="par_id161682129138274" localize="false" role="tablecontent"><literal>SignatureTSA</literal></paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id1001682129138275" role="tablecontent">During the PDF signing process, the Time Stamp Authority URL will be used to obtain a digitally signed timestamp that is then embedded in the signature.</paragraph>
+            <paragraph id="par_id1001682129138275" role="tablecontent">During the PDF signing process, the timestamp authority URL will be used to obtain a digitally signed timestamp that is then embedded in the signature.</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id671682129138276" localize="false" role="tablecontent">string</paragraph>
