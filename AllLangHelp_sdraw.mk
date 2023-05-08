@@ -60,7 +60,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdraw,\
     helpcontent2/source/text/sdraw/main_shape \
     helpcontent2/source/text/sdraw/main_tools \
     helpcontent2/source/text/sdraw/main0200 \
-    helpcontent2/source/text/sdraw/main0202 \
     helpcontent2/source/text/sdraw/main0210 \
     helpcontent2/source/text/sdraw/main0213 \
     helpcontent2/source/text/sdraw/main0503 \
