@@ -734,7 +734,7 @@
 
 <!-- VARIABLE -->
 <xsl:template match="variable"><a name="{@id}"></a><xsl:apply-templates /></xsl:template>
-<xsl:template match="variable" mode="embedded"><a name="{@id}"></a><xsl:apply-templates mode="embedded"/></xsl:template>
+<xsl:template match="variable" mode="embedded"><xsl:apply-templates mode="embedded"/></xsl:template>
 
 <xsl:template match="text()">
     <xsl:call-template name="brand">
@@ -1410,7 +1410,6 @@
 </xsl:template>
 
 <xsl:template name="resolveembedvar">
-    <xsl:variable name="archive"><xsl:value-of select="concat(substring-before(substring-after(@href,'text/'),'/'),'/')"/></xsl:variable>
     <xsl:variable name="href"><xsl:value-of select="concat($urlpre,substring-before(@href,'#'))"/></xsl:variable>
     <xsl:variable name="anchor"><xsl:value-of select="substring-after(@href,'#')"/></xsl:variable>
     <xsl:variable name="doc" select="document($href)"/>
