@@ -118,8 +118,9 @@
 #############
 //-->
 
-<!-- Create the document skeleton -->
+<!-- Create the document skeleton, test if the indexer is to include in output  -->
 <xsl:template match="/">
+<xsl:if test="//topic[@indexer='include']">
     <xsl:variable name="htmlpage"><xsl:value-of select="concat(substring-before($filename,'.xhp'),'.html')"/></xsl:variable>
     <xsl:variable name="titleL10N">
         <xsl:call-template name="brand"><xsl:with-param name="string"><xsl:value-of select="$title"/></xsl:with-param></xsl:call-template>
@@ -278,6 +279,7 @@
     </footer>
     </body>
 </html>
+</xsl:if>
 </xsl:template>
 
 <!-- AHELP -->
