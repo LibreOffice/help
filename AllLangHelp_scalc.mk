@@ -192,6 +192,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/data_provider \
     helpcontent2/source/text/scalc/01/databar_more_options \
     helpcontent2/source/text/scalc/01/default_number_formats \
+    helpcontent2/source/text/scalc/01/duplicate_sheet \
     helpcontent2/source/text/scalc/01/ex_data_stat_func \
     helpcontent2/source/text/scalc/01/format_graphic \
     helpcontent2/source/text/scalc/01/formula2value \
@@ -283,9 +284,11 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_workday \
     helpcontent2/source/text/scalc/01/func_year \
     helpcontent2/source/text/scalc/01/func_yearfrac \
+    helpcontent2/source/text/scalc/01/hide_sheet \
     helpcontent2/source/text/scalc/01/live_data_stream \
     helpcontent2/source/text/scalc/01/recalculate_hard \
     helpcontent2/source/text/scalc/01/shared_spreadsheet \
+    helpcontent2/source/text/scalc/01/sheet_tab_color \
     helpcontent2/source/text/scalc/01/solver \
     helpcontent2/source/text/scalc/01/solver_options \
     helpcontent2/source/text/scalc/01/solver_options_algo \
@@ -423,6 +426,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/guide/webquery \
     helpcontent2/source/text/scalc/guide/wildcards \
     helpcontent2/source/text/scalc/guide/year2000 \
+    helpcontent2/source/text/scalc/menu/sheet_tab_menu \
     helpcontent2/source/text/scalc/main0000 \
     helpcontent2/source/text/scalc/main0100 \
     helpcontent2/source/text/scalc/main0101 \
