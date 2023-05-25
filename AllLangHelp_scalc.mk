@@ -193,6 +193,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/databar_more_options \
     helpcontent2/source/text/scalc/01/default_number_formats \
     helpcontent2/source/text/scalc/01/duplicate_sheet \
+    helpcontent2/source/text/scalc/01/events_sheet \
     helpcontent2/source/text/scalc/01/ex_data_stat_func \
     helpcontent2/source/text/scalc/01/format_graphic \
     helpcontent2/source/text/scalc/01/formula2value \
