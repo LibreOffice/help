@@ -25,7 +25,7 @@
     </bookmark>
     <section id="csv_params_Head">
         <h1 id="hd_id551634734576194"><variable id="csv_params_h1"><link href="text/shared/guide/csv_params.xhp">CSV Filter Options</link></variable></h1>
-        <paragraph id="par_id401634734576197" role="paragraph" xml-lang="en-US">The CSV filter accepts an option string containing five to thirteen tokens, separated by commas. Tokens 6 to 13 are optional.</paragraph>
+        <paragraph id="par_id401634734576197" role="paragraph" xml-lang="en-US">The CSV filter accepts an option string containing five to fifteen tokens, separated by commas. Tokens 6 to 15 are optional.</paragraph>
     </section>
         <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <paragraph role="paragraph" id="par_id431634743318433">Import from UTF-8, Language German, Comma separated, Text delimiter ", Quoted field as text. CSV file has columns formatted as date, number, number, number:</paragraph>
@@ -134,7 +134,7 @@
             </tablecell>
             <tablecell>
                 <paragraph id="par_id41634737061097" role="tablecontent"><emph>Import:</emph> String, either <literal>false</literal> or <literal>true</literal>. Default value: <literal>false</literal>. This token is the equivalent of the check box "Detect special numbers".</paragraph>
-                <paragraph role="tablecontent" id="par_id161634737264744"><emph>Export:</emph> String, either false or true. Default value: <literal>true</literal>. This token has no UI equivalent. If <literal>true</literal>, the number cells are stored as numbers. If <literal>false</literal>, the numbers are stored as text, with text delimiters.</paragraph>
+                <paragraph role="tablecontent" id="par_id161634737264744"><emph>Export:</emph> String, either <literal>false</literal> or <literal>true</literal>. Default value: <literal>true</literal>. This token has no UI equivalent. If <literal>true</literal>, the number cells are stored as numbers. If <literal>false</literal>, the numbers are stored as text, with text delimiters.</paragraph>
             </tablecell>
         </tablerow>
         <tablerow>
@@ -217,6 +217,17 @@
         </tablecell>
         <tablecell>
             <paragraph id="par_id41678874718368" role="tablecontent" xml-lang="en-US">String, either <literal>false</literal> or <literal>true</literal>. Default value: <literal>false</literal>. If <literal>true</literal> include a byte-order-mark (BOM) in the export. If <literal>false</literal> the export does not include a BOM. If omitted (not present at all), the default value is <literal>false</literal> to keep the behaviour of old versions' options string that didn't have this token at all. If present and empty (or any other value than <literal>true</literal>) the default value is <literal>false</literal>. Automatically detected during the import.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id541678874653433" localize="false" role="tablecontent" xml-lang="en-US">15</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph role="paragraph" id="par_id221678874688126">Detect numbers in scientific notation</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id41678874718367" role="tablecontent" xml-lang="en-US">String, either <literal>false</literal> or <literal>true</literal>. Default value: <literal>true</literal>. If <literal>true</literal> detect if a cell content containing an 'E' or 'e' is a number in scientific notation. If <literal>false</literal> do not try to detect numbers in scientific notation. Token can be <literal>false</literal> only if token 8 (Detect special numbers) is <literal>false</literal>. If omitted, the default value is <literal>true</literal> to keep the behaviour of old versions' options string that didn't have this token at all.</paragraph>
         </tablecell>
     </tablerow>
     </table>
