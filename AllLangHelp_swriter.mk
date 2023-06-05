@@ -179,6 +179,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/edit_reference_submenu \
     helpcontent2/source/text/swriter/01/accessibility_check \
     helpcontent2/source/text/swriter/01/format_object \
+    helpcontent2/source/text/swriter/01/goto \
     helpcontent2/source/text/swriter/01/legacynumbering \
     helpcontent2/source/text/swriter/01/mailmerge00 \
     helpcontent2/source/text/swriter/01/mailmerge01 \
@@ -204,6 +205,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/pagenumbering \
     helpcontent2/source/text/swriter/01/protectdocument \
     helpcontent2/source/text/swriter/01/selection_mode \
+    helpcontent2/source/text/swriter/01/select_text \
     helpcontent2/source/text/swriter/01/show_whitespace \
     helpcontent2/source/text/swriter/01/style_inspector \
     helpcontent2/source/text/swriter/01/title_page \
