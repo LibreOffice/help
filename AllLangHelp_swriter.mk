@@ -176,7 +176,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/06220000 \
     helpcontent2/source/text/swriter/01/06990000 \
     helpcontent2/source/text/swriter/01/contentcontrol00 \
-    helpcontent2/source/text/swriter/01/edit_reference_submenu \
     helpcontent2/source/text/swriter/01/accessibility_check \
     helpcontent2/source/text/swriter/01/format_object \
     helpcontent2/source/text/swriter/01/goto \
@@ -423,6 +422,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/main0216 \
     helpcontent2/source/text/swriter/main0220 \
     helpcontent2/source/text/swriter/main0503 \
+    helpcontent2/source/text/swriter/menu/edit_reference_submenu \
     helpcontent2/source/text/swriter/menu/insert_header_footer \
     helpcontent2/source/text/swriter/menu/insert_footnote_endnote \
     helpcontent2/source/text/swriter/menu/insert_frame \
