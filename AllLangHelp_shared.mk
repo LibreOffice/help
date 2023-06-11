@@ -347,7 +347,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/font_features \
     helpcontent2/source/text/shared/01/gallery \
     helpcontent2/source/text/shared/01/gallery_files \
-    helpcontent2/source/text/shared/01/grid \
     helpcontent2/source/text/shared/01/grid_and_helplines \
     helpcontent2/source/text/shared/01/guides \
     helpcontent2/source/text/shared/01/image_compression \
@@ -381,6 +380,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/ref_pdf_export_user_interface \
     helpcontent2/source/text/shared/01/ref_pdf_export_universal_accessibility \
     helpcontent2/source/text/shared/01/ref_pdf_send_as \
+    helpcontent2/source/text/shared/01/scrollbars \
     helpcontent2/source/text/shared/01/signexistingpdf \
     helpcontent2/source/text/shared/01/securitywarning \
     helpcontent2/source/text/shared/01/selectcertificate \
@@ -530,6 +530,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/02/colortoolbar \
     helpcontent2/source/text/shared/02/flowcharts \
     helpcontent2/source/text/shared/02/fontwork \
+    helpcontent2/source/text/shared/02/gridtofront \
     helpcontent2/source/text/shared/02/limit \
     helpcontent2/source/text/shared/02/namedialog \
     helpcontent2/source/text/shared/02/paintbrush \
