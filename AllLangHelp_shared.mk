@@ -386,6 +386,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/selectcertificate \
     helpcontent2/source/text/shared/01/select_template_category \
     helpcontent2/source/text/shared/01/timestampauth \
+    helpcontent2/source/text/shared/01/view_comments \
     helpcontent2/source/text/shared/guide/tipoftheday \
     helpcontent2/source/text/shared/01/webhtml \
     helpcontent2/source/text/shared/01/xformsdata \
