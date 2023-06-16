@@ -209,6 +209,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/style_inspector \
     helpcontent2/source/text/swriter/01/title_page \
     helpcontent2/source/text/swriter/01/translate \
+    helpcontent2/source/text/swriter/01/view_table_bounds \
+    helpcontent2/source/text/swriter/01/view_images_charts \
     helpcontent2/source/text/swriter/01/watermark \
     helpcontent2/source/text/swriter/02/02110000 \
     helpcontent2/source/text/swriter/02/03210000 \
