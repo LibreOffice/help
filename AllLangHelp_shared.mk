@@ -350,6 +350,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/grid_and_helplines \
     helpcontent2/source/text/shared/01/guides \
     helpcontent2/source/text/shared/01/image_compression \
+    helpcontent2/source/text/shared/01/insert_chart \
     helpcontent2/source/text/shared/01/mediaplayer \
     helpcontent2/source/text/shared/01/menu_edit_find \
     helpcontent2/source/text/shared/01/menu_view_sidebar \
@@ -386,7 +387,11 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/selectcertificate \
     helpcontent2/source/text/shared/01/select_template_category \
     helpcontent2/source/text/shared/01/timestampauth \
+<<<<<<< HEAD   (10a36b tdf#155875 Tab'd UI commands Writer/Insert in Help)
     helpcontent2/source/text/shared/guide/tipoftheday \
+=======
+    helpcontent2/source/text/shared/01/view_comments \
+>>>>>>> CHANGE (4346eb tdf#155875 Tab'd UI commands Writer/Insert in Help)
     helpcontent2/source/text/shared/01/webhtml \
     helpcontent2/source/text/shared/01/xformsdata \
     helpcontent2/source/text/shared/01/xformsdataadd \
@@ -765,6 +770,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/template_manager \
     helpcontent2/source/text/shared/guide/text_color \
     helpcontent2/source/text/shared/guide/textmode_change \
+    helpcontent2/source/text/shared/guide/tipoftheday \
     helpcontent2/source/text/shared/guide/undo_formatting \
     helpcontent2/source/text/shared/guide/version_number \
     helpcontent2/source/text/shared/guide/viewing_file_properties \
@@ -792,7 +798,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/submenu_spacing \
     helpcontent2/source/text/shared/menu/forms \
     helpcontent2/source/text/shared/menu/comment_menu \
-    helpcontent2/source/text/shared/menu/insert_chart \
     helpcontent2/source/text/shared/menu/insert_form_control \
     helpcontent2/source/text/shared/menu/insert_shape \
     helpcontent2/source/text/shared/menu/save_image \
