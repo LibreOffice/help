@@ -370,6 +370,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/pasterowabove \
     helpcontent2/source/text/shared/01/pastecolumnleft \
     helpcontent2/source/text/shared/01/profile_safe_mode \
+    helpcontent2/source/text/shared/01/qrcode \
     helpcontent2/source/text/shared/01/quickcolorselector \
     helpcontent2/source/text/shared/01/ref_epub_export \
     helpcontent2/source/text/shared/01/ref_pdf_export \
@@ -745,7 +746,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/print_blackwhite \
     helpcontent2/source/text/shared/guide/print_faster \
     helpcontent2/source/text/shared/guide/protection \
-    helpcontent2/source/text/shared/guide/qrcode \
     helpcontent2/source/text/shared/guide/redaction \
     helpcontent2/source/text/shared/guide/redlining \
     helpcontent2/source/text/shared/guide/redlining_accept \
