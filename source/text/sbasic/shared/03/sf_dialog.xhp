@@ -62,6 +62,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id821619619965373">dlg.Terminate()</paragraph>
   </pycode>
   <note id="par_id811670854106781">Use the string "GlobalScope" as the <emph>container</emph> argument when the dialog is stored either in <menuitem>My Macros &amp; Dialogs</menuitem> or in <menuitem>Application Macros &amp; Dialogs</menuitem>.</note>
+  <paragraph role="paragraph" id="par_id741688131419964">The dialog service offers methods that create new controls dynamically in an existing dialog predefined with the <link href="text/sbasic/guide/create_dialog.html">Dialog Editor</link>. A dialog is initialized with controls in the Dialog Editor and new controls can be added at run-time before or after the dialog <literal>Execute()</literal> statement.</paragraph>
 
   <h2 id="hd_id141670854511382">Retrieving the Dialog instance that triggered a dialog event</h2>
   <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">An instance of the <literal>Dialog</literal> service can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, provided that the dialog was initiated with the <literal>Dialog</literal> service. In the example below, <literal>oDlg</literal> contains the <literal>Dialog</literal> instance that triggered the dialog event.</paragraph>
@@ -427,17 +428,38 @@
            <link href="text/sbasic/shared/03/sf_dialog.xhp#Activate">Activate</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#Center">Center</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#Controls">Controls</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateButton">CreateButton</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateCheckBox">CreateCheckBox</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateComboBox">CreateComboBox</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateCurrencyField">CreateCurrencyField</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateDateField">CreateDateField</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateFileControl">CreateFileControl</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateFixedLine">CreateFixedLine</link><br/>
          </paragraph>
        </tablecell>
        <tablecell>
          <paragraph id="par_id451606472825856" role="tablecontent" localize="false">
-           <link href="text/sbasic/shared/03/sf_dialog.xhp#EndExecute">EndExecute</link><br/>
-           <link href="text/sbasic/shared/03/sf_dialog.xhp#Execute">Execute</link><br/>
-           <link href="text/sbasic/shared/03/sf_dialog.xhp#GetTextsFromL10N">GetTextsFromL10N</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateFixedText">CreateFixedText</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateFormattedField">CreateFormattedField</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateGroupBox">CreateGroupBox</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateImageControl">CreateImageControl</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateListBox">CreateListBox</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateNumericField">CreateNumericField</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreatePatternField">CreatePatternField</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateProgressBar">CreateProgressBar</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateRadioButton">CreateRadioButton</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateScrollBar">CreateScrollBar</link><br/>
          </paragraph>
        </tablecell>
        <tablecell>
          <paragraph id="par_id161606472825856" role="tablecontent" localize="false">
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateTableControl">CreateTableControl</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateTextField">CreateTextField</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateTimeField">CreateTimeField</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateTreeControl">CreateTreeControl</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#EndExecute">EndExecute</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#Execute">Execute</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#GetTextsFromL10N">GetTextsFromL10N</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#Resize">Resize</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#SetPageManager">SetPageManager</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#Terminate">Terminate</link><br/>
@@ -448,7 +470,7 @@
   </section>
 
 <section id="DialogUnits">
-<note id="par_id161660427825856">Dimensioning a dialog is done by using Map <link href="text/CHANGE ME(path/to/xhp/file#select id)">AppFont units</link>. A dialog or control model also uses AppFont units. While their views use pixels.</note>  
+<note id="par_id161660427825856">Dimensioning a dialog is done by using <link href="text/sbasic/shared/00000002.xhp#AppFontUnits">Map AppFont units</link>. A dialog or control model also uses AppFont units. While their views use pixels.</note>
 </section>
 
 <section id="Activate">
@@ -557,6 +579,561 @@
    </pycode>
 </section>
 
+<section id="CreateButton">
+  <comment> CreateButton------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id181598185776261">
+      <bookmark_value>Dialog service;CreateButton</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id501519885886436" localize="false">CreateButton</h2>
+   <paragraph role="paragraph" id="par_id381591885776500">Create a new control of type Button in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateButton"><input>svc.CreateButton(opt ControlName: str, opt Place,  Toggle = False, Push = ""): svc</input></paragraph>
+   <section id="CreateSharedParms">
+   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+   <paragraph role="paragraph" id="parm_ControlName"><emph>ControlName</emph>: the name of the new control. It must not exist yet.</paragraph>
+   <paragraph role="paragraph" id="parm_Place"><emph>Place</emph>: either …</paragraph>
+   <list type="unordered">
+      <listitem><paragraph id="par_id421598177970993" role="listitem" xml-lang="en-US">a Basic <link href="sbasic/shared/03104200.xhp">Array</link> or Python tuple with 4 elements: (X, Y, width, height)</paragraph></listitem>
+      <listitem><paragraph id="par_id881591858229301" role="listitem" xml-lang="en-US">a com.sun.star.awt.Rectangle [X, Y, Width, Height] object</paragraph></listitem>
+   </list>
+   <paragraph role="paragraph" id="par_id241688051343685">All elements are expressed in <link href="text/sbasic/shared/00000002.xhp#AppFontUnits">Map AppFont units</link>.</paragraph>
+   </section>
+   <paragraph role="paragraph" id="par_id971688053679708"><emph>Toggle</emph>: when <literal>True</literal> a Toggle button is created. Default = <literal>False</literal></paragraph>
+   <paragraph role="paragraph" id="par_id961688054652555"><emph>Push</emph>: &quot;OK&quot;, &quot;CANCEL&quot; or &quot;&quot; (default)</paragraph>
+   <section id="CreateReturn">
+     <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
+     <paragraph role="paragraph" id="par_id961688054748539">An instance of <link href="text/sbasic/shared/03/sf_dialogcontrol.xhp"><literal>SFDialogs</literal>.<literal>DialogControl</literal></link> service or <literal>Nothing</literal>.</paragraph>
+   </section>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id241688389976612">Set myButton = oDlg.CreateButton(&quot;Button1&quot;, Array(20, 20, 60, 15))</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id861688389993653">myButton = dlg.CreateButton('Button1', (20, 20, 60, 15))</paragraph>
+   </pycode>  
+</section>
+
+<section id="CreateCheckBox">
+  <comment> CreateCheckBox ----------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171958185776261">
+      <bookmark_value>Dialog service;CreateCheckBox</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id941688119314514" localize="false">CreateCheckBox</h2>
+   <paragraph role="paragraph" id="par_id991591995776500">Create a new control of type CheckBox in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateCheck"><input>svc.CreateCheckBox(opt ControlName: str, opt Place, Multiline = False): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id241688132171052"><emph>MultiLine</emph>: When True (default = False), the caption may be displayed on more than one line.</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id211688391124091">Set myCheckBox = oDlg.CreateCheckBox(&quot;CheckBox1&quot;, Array(20, 20, 60, 15), MultiLine := True)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id711688391128090">myCheckBox = dlg.CreateCheckBox('CheckBox1', (20, 20, 60, 15), MultiLine = True)</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateComboBox">
+  <comment> CreateComboBox ----------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id175198185776261">
+      <bookmark_value>Dialog service;CreateComboBox</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id941688113914514" localize="false">CreateComboBox</h2>
+   <paragraph role="paragraph" id="par_id991591885776500">Create a new control of type ComboBox in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateCombo"><input>svc.CreateComboBox(opt ControlName: str, opt Place, Border = "3D", DropDown = True, LineCount = 5): svc</input></paragraph>
+   <embed href="text/sbasic/sharedCurrencyField/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id241688132526109"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id641688132528598"><emph>DropDown</emph>: When True (default), a drop down button is displayed</paragraph>
+   <paragraph role="paragraph" id="par_id901688132529427"><emph>LineCount</emph>: Specifies the maximum line count displayed in the drop down (default = 5)</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id571688391233995">Set myComboBox = oDlg.CreateComboBox(&quot;ComboBox1&quot;, Array(20, 20, 60, 15), Dropdown := True)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id681688391240490">myComboBox = dlg.CreateComboBox('ComboBox1', (20, 20, 60, 15), Dropdown = True)</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateCurrencyField">
+  <comment> CreateCurrencyField ------------------------------------------------------------------------------------ </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
+      <bookmark_value>Dialog service;CreateCurrencyField</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id941688119315414" localize="false">CreateCurrencyField</h2>
+   <paragraph role="paragraph" id="par_id991591005776500">Create a new control of type CurrencyField in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateCurrency"><input>svc.CreateCurrencyField(opt ControlName: str, opt Place, Border ="3D", SpinButton = False, MinValue = -1000000, MaxValue = +1000000, Increment = 1, Accuracy = 2): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id511688132750220"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id751688132750844"><emph>SpinButton</emph>: when True (default = False), a spin button is present</paragraph>
+   <paragraph role="paragraph" id="par_id741688132751443"><emph>MinValue</emph>: the smallest value that can be entered in the control. Default = -1000000</paragraph>
+   <paragraph role="paragraph" id="par_id361688132752004"><emph>MaxValue</emph>: the largest value that can be entered in the control. Default = +1000000</paragraph>
+   <paragraph role="paragraph" id="par_id371688132752523"><emph>Increment</emph>: the step when the spin button is pressed. Default = 1</paragraph>
+   <paragraph role="paragraph" id="par_id321688132753003"><emph>Accuracy</emph>: specifies the decimal accuracy. Default = 2 decimal digits</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id931688391314834">Set myCurrencyField = oDlg.CreateCurrencyField(&quot;CurrencyField1&quot;, Array(20, 20, 60, 15), SpinButton := True)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id41688391319204">myCurrencyField = dlg.CreateCurrencyField('CurrencyField1', (20, 20, 60, 15), SpinButton = True)</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateDateField">
+  <comment> CreateDateField ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598187576261">
+      <bookmark_value>Dialog service;CreateDateField</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id491598185886346" localize="false">CreateDateField</h2>
+   <paragraph role="paragraph" id="par_id199598185776500">Create a new control of type DateField in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateDate"><input>svc.CreateDateField(opt ControlName: str, opt Place, Border = "3D", DropDown = False, opp MinDate, opt MaxDate): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id831688133418579"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id521688133422980"><emph>DropDown</emph>: when True (default = False), a dropdown button is shown</paragraph>
+   <paragraph role="paragraph" id="par_id361688133423860"><emph>MinDate</emph>: the smallest date that can be entered in the control. Default = 1900-01-01</paragraph>
+   <paragraph role="paragraph" id="par_id221688133424380"><emph>MaxDate</emph>: the largest Date that can be entered in the control. Default = 2200-12-31</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id431688391456485">Set myDateField = oDlg.CreateDateField(&quot;DateField1&quot;, Array(20, 20, 60, 15), Dropdown := True)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id491688391462954">myDateField = dlg.CreateDateField('DateField1', (20, 20, 60, 15), Dropdown = True)</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateFileControl">
+  <comment> CreateFileControl -----------------------------------------------------------------------------------------------------------------FileControl-- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598187756261">
+      <bookmark_value>Dialog service;CreateFileControl</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id491598158586436" localize="false">CreateFileControl</h2>
+   <paragraph role="paragraph" id="par_id199591885776511">Create a new control of type FileControl in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateFileControl"><input>svc.CreateFileControl(opt ControlName: str, opt Place, Border = "3D"): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id1001688133702877"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id741688391752376">Set myFileControl = oDlg.CreateFileControl(&quot;FileControl1&quot;, Array(20, 20, 60, 15))</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id181688391760784">myFileControl = dlg.CreateFileControl('FileControl1', (20, 20, 60, 15))</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateFixedLine">
+  <comment> CreateFixedLine ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id717598185776261">
+      <bookmark_value>Dialog service;CreateFixedLine</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id491598185648836" localize="false">CreateFixedLine</h2>
+   <paragraph role="paragraph" id="par_id199195885776500">Create a new control of type FixedLine in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateFixedLine"><input>svc.CreateFixedLine(opt ControlName: str, opt Place, Orientation: str): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id351688134656035"><emph>Orientation</emph>: &quot;H[orizontal]&quot; or &quot;V[ertical]&quot;.</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id301688392274784">Set myFixedLine = oDlg.CreateFixedLine(&quot;FixedLine1&quot;, Array(20, 20, 60, 15), Orientation := &quot;vertical&quot;)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id491688392278136">myFixedLine = dlg.CreateFixedLine('FixedLine1', (20, 20, 60, 15), Orientation = 'vertical')</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateFixedText">
+  <comment> CreateFixedText
+    ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185772621">
+      <bookmark_value>Dialog service;CreateFixedText</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id499998185886436" localize="false">CreateFixedText</h2>
+   <paragraph role="paragraph" id="par_id199721885776533">Create a new control of type FixedText in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateFixedText"><input>svc.CreateFixedText(opt ControlName: str, opt Place, Border = "3D", MultiLine = False, Align = "LEFT", VerticalAlign = "TOP"): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id781688134809419"><emph>Border</emph>: &quot;NONE&quot; (default) or &quot;FLAT&quot; or &quot;3D&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id311688134819532"><emph>Multiline</emph>: When True (default = False), the caption may be displayed on more than one line</paragraph>
+   <paragraph role="paragraph" id="par_id121688134820022"><emph>Align</emph>: horizontal alignment, &quot;LEFT&quot; (default) or &quot;CENTER&quot; or &quot;RIGHT&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id316881340820555"><emph>VerticalAlign</emph>: vertical alignment, &quot;TOP&quot; (default) or &quot;MIDDLE&quot; or &quot;BOTTOM&quot;</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id521688392367919">Set myFixedText = oDlg.CreateFixedText(&quot;FixedText1&quot;, Array(20, 20, 60, 15), MultiLine := True)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id971688392372871">myFixedText = dlg.CreateFixedText('FixedText1', (20, 20, 60, 15), MultiLine = True)</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateFormattedField">
+  <comment> CreateFormattedField ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id177778185776261">
+      <bookmark_value>Dialog service;CreateFormattedField</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id491598185997436" localize="false">CreateFormattedField</h2>
+   <paragraph role="paragraph" id="par_id199591885776500">Create a new control of type FormattedField in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateFormatFld"><input>svc.CreateFormattedField(opt ControlName: str, opt Place, Border = "3D", SpinButton = False, MinValue = -1000000, MaxValue = +1000000): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id561688135183954"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id691688135184764"><emph>SpinButton</emph>: when True (default = False), a spin button is present</paragraph>
+   <paragraph role="paragraph" id="par_id941688135185218"><emph>MinValue</emph>: the smallest value that can be entered in the control. Dafault = -1000000</paragraph>
+   <paragraph role="paragraph" id="par_id881688135185626"><emph>MaxValue</emph>: the largest value that can be entered in the control. Dafault = +1000000</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id211688392640319">Set myFormattedField = oDlg.CreateFormattedField(&quot;FormattedField1&quot;, Array(20, 20, 60, 15), SpinButton := True)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id481688392650918">myFormattedField = dlg.CreateFormattedField('FormattedField1', (20, 20, 60, 15), SpinButton = True)</paragraph>
+   </pycode>
+</section>
+ 
+<section id="CreateGroupBox">
+  <comment> CreateGroupBox ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id166698185776261">
+      <bookmark_value>Dialog service;CreateGroupBox</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id496608185886436" localize="false">CreateGroupBox</h2>
+   <paragraph role="paragraph" id="par_id100691885776500">Create a new control of type GroupBox in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateGroupBox"><input>svc.CreateGroupBox(opt ControlName: str, opt Place): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id1001688392702670">Set myGroupBox = oDlg.CreateGroupBox(&quot;GroupBox1&quot;, Array(20, 20, 60, 15))</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id941688392712142">myGroupBox = dlg.CreateGroupBox('GroupBox1', (20, 20, 60, 15))</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateImageControl">
+  <comment> CreateImageControl ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id155598185776261">
+      <bookmark_value>Dialog service;CreateImageControl</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id496598185886436" localize="false">CreateImageControl</h2>
+   <paragraph role="paragraph" id="par_id199591885776504">Create a new control of type ImageControl in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateImageControl"><input>svc.CreateImageControl(opt ControlName: str, opt Place, Border = "3D", Scale = "FITTOSIZE"): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id551688135418418"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id431688135405342"><emph>Scale</emph>: One of next values: &quot;FITTOSIZE&quot; (default), &quot;KEEPRATIO&quot; or &quot;NO&quot;</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id911688392874655">Set myImageControl = oDlg.CreateImageControl(&quot;ImageControl1&quot;, Array(20, 20, 60, 15))</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+       <paragraph role="pycode" id="pyc_id271688392883751">myImageControl = dlg.CreateImageControl('ImageControl1", (20, 20, 60, 15))</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateListBox">
+  <comment> CreateListBox ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171588885776261">
+      <bookmark_value>Dialog service;CreateListBox</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id497598185886436" localize="false">CreateListBox</h2>
+   <paragraph role="paragraph" id="par_id199591885776506">Create a new control of type ListBox in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateListBox"><input>svc.CreateListBox(opt ControlName: str, opt Place, Border = "3D", DropDown = True, LineCount = 5, MultiSelect = False): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id1001688135548955"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id11688135550412"><emph>DropDown</emph>: When True (default), a drop down button is displed</paragraph>
+   <paragraph role="paragraph" id="par_id121688135552418"><emph>LineCount</emph>: Specifies the maximum line count displayed in the drop down (default = 5)</paragraph>
+   <paragraph role="paragraph" id="par_id661688135552802"><emph>MultiSelect</emph>: When True, more than 1 entry may be selected. Default = False</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id771688392940502">Set myListBox = oDlg.CreateListBox(&quot;ListBox1&quot;, Array(20, 20, 60, 15), Dropdown := True, MultiSelect := True)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id921688392950230">myListBox = dlg.CreateListBox('ListBox1', (20, 20, 60, 15), Dropdown = True, MultiSelect = True)</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateNumericField">
+  <comment> CreateNumericField ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171333185776261">
+      <bookmark_value>Dialog service;CreateNumericField</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id498598185886436" localize="false">CreateNumericField</h2>
+   <paragraph role="paragraph" id="par_id199591885776510">Create a new control of type NumericField in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateNumFld"><input>svc.CreateNumericField(opt ControlName: str, opt Place, Border = "3D", SpinButton = False, MinValue = -1000000, MaxValue = 1000000, Increment = 1, Accuracy = 2): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id841688135885946"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id781688135886499"><emph>SpinButton</emph>: when True (default = False), a spin button is present</paragraph>
+   <paragraph role="paragraph" id="par_id481688135887010"><emph>MinValue</emph>: the smallest value that can be entered in the control. Dafault = -1000000</paragraph>
+   <paragraph role="paragraph" id="par_id371688135887594"><emph>MaxValue</emph>: the largest value that can be entered in the control. Dafault = +1000000</paragraph>
+   <paragraph role="paragraph" id="par_id191688135888122"><emph>Increment</emph>: the step when the spin button is pressed. Default = 1</paragraph>
+   <paragraph role="paragraph" id="par_id451688135888638"><emph>Accuracy</emph>: specifies the decimal accuracy. Default = 2 decimal digits</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id1001688393400045">Set myNumericField = oDlg.CreateNumericField(&quot;NumericField1&quot;, Array(20, 20, 60, 15), SpinButton := True)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id951688393408429">myNumericField = dlg.CreateNumericField('NumericField1', (20, 20, 60, 15), SpinButton = True)</paragraph>
+   </pycode>
+</section>
+
+<section id="CreatePattern Field">
+  <comment> CreatePatternField ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id172608185776261">
+      <bookmark_value>Dialog service;CreatePatternField</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id491598185897536" localize="false">CreatePatternField</h2>
+   <paragraph role="paragraph" id="par_id200591996776500">Create a new control of type PatternField in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreatePattern"><input>svc.CreatePatternField(opt ControlName: str, opt Place, Border = "3D", EditMask: str, opt LiteralMax: str): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id251688136173107"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id631688136173778"><emph>EditMask</emph>: a character code that determines what the user may enter<br/>Refer to <link href="https://wiki.documentfoundation.org/Documentation/DevGuide/Graphical_User_Interfaces#Pattern_Field">Pattern_Field</link> in the wiki for more information.</paragraph>
+   <paragraph role="paragraph" id="par_id321688136174244"><emph>LiteralMask</emph>: contains the initial values that are displayed in the pattern field</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id1001688393462780">Set myPatternField = oDlg.CreatePatternField(&quot;PatternField1&quot;, Array(20, 20, 60, 15), EditMask := &quot;NNLNNLLLLL&quot;, LiteralMask := &quot;__.__.2002&quot;)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id231688393481925">myPatternField = dlg.CreatePatternField('PatternField1', (20, 20, 60, 15), EditMask = 'NNLNNLLLLL', LiteralMask = '__.__.2002')</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateProgressBar">
+  <comment> CreateProgressBar ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
+      <bookmark_value>Dialog service;CreateProgressBar</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id492608185886436" localize="false">CreateProgressBar</h2>
+   <paragraph role="paragraph" id="par_id311591885776500">Create a new control of type ProgressBar in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateProgressBar"><input>svc.CreateProgressBar(opt ControlName: str, opt Place, Border = "3D", MinValue = 0, MaxValue = 100): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id551688136587329"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id411688136587778"><emph>MinValue</emph>: the smallest value that can be entered in the control. Default = 0</paragraph>
+   <paragraph role="paragraph" id="par_id261688136588146"><emph>MaxValue</emph>: the largest value that can be entered in the control. Default = 100</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id361688393568688">Set myProgressBar = oDlg.CreateProgressBar(&quot;ProgressBar1&quot;, Array(20, 20, 60, 15), MaxValue := 1000)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id971688393576061">myProgressBar = dlg.CreateProgressBar('ProgressBar1', (20, 20, 60, 15), MaxValue = 1000)</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateRadioButton">
+  <comment> CreateRadioButton ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
+      <bookmark_value>Dialog service;CreateRadioButton</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id491598296886436" localize="false">CreateRadioButton</h2>
+   <paragraph role="paragraph" id="par_id200502985776500">Create a new control of type RadioButton in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateRadioBtn"><input>svc.CreateRadioButton(opt ControlName: str, opt Place, MultiLine = False): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id211688136829297"><emph>MultiLine</emph>: When True (default = False), the caption may be displayed on more than one line</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id61688393673927">Set myRadioButton = oDlg.CreateRadioButton(&quot;RadioButton1&quot;, Array(20, 20, 60, 15), MultiLine := True)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id751688393681262">myRadioButton = dlg.CreateRadioButton('RadioButton1', (20, 20, 60, 15), MultiLine = True)</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateScrollBar">
+  <comment> CreateScrollBar ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171609185776261">
+      <bookmark_value>Dialog service;CreateScrollBar</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id491598196886436" localize="false">CreateScrollBar</h2>
+   <paragraph role="paragraph" id="par_id200591886886500">Create a new control of type ScrollBar in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateScrollBar"><input>svc.CreateScrollBar(opt ControlName: str, opt Place, Orientation: str, Border = "3D", MinValue = 0, MaxValue = 100): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id731688136882518"><emph>Orientation</emph>: H[orizontal] or V[ertical]</paragraph>
+   <paragraph role="paragraph" id="par_id341688136882960"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id621688136883363"><emph>MinValue</emph>: the smallest value that can be entered in the control. Dafault = 0</paragraph>
+   <paragraph role="paragraph" id="par_id241688136883785"><emph>MaxValue</emph>: the largest value that can be entered in the control. Dafault = 100</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id881688393719078">Set myScrollBar = oDlg.CreateScrollBar(&quot;ScrollBar1&quot;, Array(20, 20, 60, 15), MaxValue := 1000)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id551688393726542">myScrollBar = dialog.CreateScrollBar('ScrollBar1', (20, 20, 60, 15), MaxValue = 1000)</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateTableControl">
+  <comment> CreateTableControl ------------------------------------------------------------------------------------------------------------------------ </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
+      <bookmark_value>Dialog service;CreateTableControl</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id4918951858TableCtrl" localize="false">CreateTableControl</h2>
+   <paragraph role="paragraph" id="par_id200502985776722">Create a new control of type TableControl in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateTableCtrl"><input>svc.CreateTableControl(opt ControlName: str, opt Place, Border, RowHeaders, ColumnHeaders, ScrollBars, GridLines): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id541688393982300"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id351688393983486"><emph>RowHeaders</emph>: when True (default), the row Headerss are shown</paragraph>
+   <paragraph role="paragraph" id="par_id941688393983846"><emph>ColumnHeaders</emph>: when True (default), the column Headerss are shown</paragraph>
+   <paragraph role="paragraph" id="par_id141688393984239"><emph>ScrollBars</emph>: H[orizontal] or V[ertical] or B[oth] or N[one] (default). Scrollbars appear dynamically when they are needed.</paragraph>
+   <paragraph role="paragraph" id="par_id741688393984702"><emph>GridLines</emph>: when True (default = False) horizontal and vertical lines are painted between the grid cells</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id901688393903227">Set myTableControl = oDlg.CreateTableControl(&quot;TableControl1&quot;, Array(20, 20, 60, 15), ScrollBars := &quot;B&quot;)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id201688393912277">myTableControl = dlg.CreateTableControl('TableControl1', (20, 20, 60, 15), ScrollBars = 'B')</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateTextField">
+  <comment> CreateTextField ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598196876261">
+      <bookmark_value>Dialog service;CreateTextField</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id491598186886436" localize="false">CreateTextField</h2>
+   <paragraph role="paragraph" id="par_id200591895776500">Create a new control of type TextField in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateTextFld"><input>svc.CreateTextField(opt ControlName: str, opt Place, Border, MultiLine, MaximumLength, PasswordCharacter): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id281688394635114"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id341688394635645"><emph>MultiLine</emph>: When True (default = False), the caption may be displayed on more than one line</paragraph>
+   <paragraph role="paragraph" id="par_id671688394636092"><emph>MaximumLength</emph>: the maximum character count (default = 0 meaning unlimited)</paragraph>
+   <paragraph role="paragraph" id="par_id231688394641827"><emph>PasswordCharacter</emph>: a single character specifying the echo for a password text field (default = &quot;&quot;)</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode><paragraph role="bascode" id="bas_id171688394748227">Set myTextField = oDlg.CreateTextField(&quot;TextField1&quot;, Array(20, 20, 120, 50), MultiLine := True)</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id651688394757252">myTextField = dlg.CreateTextField('TextField1', (20, 20, 120, 50), MultiLine = True)</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateTimeField">
+  <comment> CreateTimeField ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598196876372">
+      <bookmark_value>Dialog service;CreateTimeField</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id491598186886547" localize="false">CreateTimeField</h2>
+   <paragraph role="paragraph" id="par_id200591895776611">Create a new control of type TimeField in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateTimeFld"><input>svc.CreateTimeField(opt ControlName: str, opt Place, Border, MinTime, MaxTime): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id771688394821811"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <paragraph role="paragraph" id="par_id711688394822256"><emph>MinTime</emph>: the smallest time that can be entered in the control. Default = 0</paragraph>
+   <paragraph role="paragraph" id="par_id491688394822582"><emph>MaxTime</emph>: the largest time that can be entered in the control. Default = 24h</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id341688394893210">Set myTimeField = oDlg.CreateTimeField(&quot;TimeField1&quot;, Array(20, 20, 60, 15))</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id31688394900314">myTimeField = dlog.CreateTimeField('TimeField1', (20, 20, 60, 15))</paragraph>
+   </pycode>
+</section>
+
+<section id="CreateTreeControl">
+  <comment> CreateTreeControl ------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171538585776261">
+      <bookmark_value>Dialog service;CreateTreeControl</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id491599195886436" localize="false">CreateTreeControl</h2>
+   <paragraph role="paragraph" id="par_id200692885776500">Create a new control of type TreeControl in the current dialog.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateTreeCtrl"><input>svc.CreateTreeControl(opt ControlName: str, opt Place, Border = "3D"): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id241688394984562"><emph>Border</emph>: &quot;3D&quot; (default) or &quot;FLAT&quot; or &quot;NONE&quot;</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id941688395020850">Set myTreeControl = oDlg.CreateTreeControl(&quot;TreeControl1&quot;, Array(20, 20, 60, 15))</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id721688395030169">myTreeControl = dlg.CreateTreeControl('TreeControl1', (20, 20, 60, 15))</paragraph>
+   </pycode>
+</section>
+
+
+<section id="Create…">
+  <comment> Create…------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
+      <bookmark_value>Dialog service;Create…</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id491598185886436" localize="false">Create…</h2>
+   <paragraph role="paragraph" id="par_id200591885776500">… .</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_Create00000"><input>svc.Create…(opt ControlName: str, opt Place, …, …, …): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+</section>
+
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+
+
 <section id="EndExecute">
   <comment> EndExecute -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
@@ -570,7 +1147,7 @@
    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
    <paragraph role="paragraph" id="par_id451598185776957"><emph>returnvalue</emph>: The value passed to the running <literal>Execute()</literal> method.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-   <paragraph role="paragraph" id="par_id411620110780170">Using %PRODUCTNAME Basic:</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id521598186134426">Sub OnEvent(poEvent As com.sun.star.lang.EventObject)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id631598186139835">    Dim oDlg As Object</paragraph>
@@ -578,7 +1155,7 @@
       <paragraph role="bascode" localize="false" id="bas_id191598186150509">    oDlg.EndExecute(ReturnValue := 25)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id91598186155632">End Sub</paragraph>
    </bascode>
-   <paragraph role="paragraph" id="par_id11620110819754">Using Python:</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
      <paragraph role="pycode" localize="false" id="pyc_id231619627971450">from com.sun.star.lang import EventObject</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id71619627976171">def on_event(event: EventObject):</paragraph>
@@ -682,12 +1259,11 @@
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
    <bascode>
-     <paragraph role="bascode" xml-lang="en-US" id="bas_id791620301085031">oDialog.Resize(1000, 2000, Height := 6000) &apos; Width is not changed</paragraph>
+     <paragraph role="bascode" xml-lang="en-US" id="bas_id791620301085031">oDlg.Resize(1000, 2000, Height := 6000) &apos; Width is not changed</paragraph>
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
-   <paragraph role="paragraph" id="par_id181620112217958">With Python:</paragraph>
    <pycode>
-     <paragraph role="pycode" xml-lang="en-US" id="pyc_id941620303073866">oDialog.Resize(1000, 2000, Height = 6000)  # Width is not changed</paragraph>
+     <paragraph role="pycode" xml-lang="en-US" id="pyc_id941620303073866">dlg.Resize(1000, 2000, Height = 6000)  # Width is not changed</paragraph>
    </pycode>
 </section>
 
@@ -729,10 +1305,10 @@
   <paragraph role="paragraph" id="par_id861670874176863">Consider a dialog with three pages. The dialog has a <literal>ListBox</literal> control named "aPageList" that will be used to control the visible page. Additionally, there are two buttons named "btnPrevious" and "btnNext" that will be used as the Previous/Next buttons in the dialog.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id791620301085277">oDialog.SetPageManager(PilotControls := "aPageList", _</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791620301085277">oDlg.SetPageManager(PilotControls := "aPageList", _</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id521670874392677">                       WizardControls := "btnPrevious,btnNext", _</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id921670874397803">                       LastPage := 3)</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id431670874436519">oDialog.Execute()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id431670874436519">oDlg.Execute()</paragraph>
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
@@ -762,7 +1338,6 @@
      <paragraph role="bascode" localize="false" id="bas_id91620301085248">Wait 5000</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id121598187953168">oDlg.Terminate()</paragraph>
    </bascode>
-   <paragraph role="paragraph" id="par_id811620112217958">With Python:</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
 <pycode>
      <paragraph role="pycode" localize="false" id="pyc_id491620303073866">from time import sleep</paragraph>
