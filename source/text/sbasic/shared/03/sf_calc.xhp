@@ -2087,7 +2087,7 @@
       <bookmark_value>Calc service;SortRange</bookmark_value>
   </bookmark>
   <h2 id="hd_id71595692394823" localize="false">SortRange</h2>
-  <paragraph role="paragraph" id="par_id141595692394382">Sorts the given range based on a set of columns/rows that are considered as keys. The sorting order may vary by column/row. It returns a string representing the modified range of cells. The size of the modified area is fully determined by the size of the source area.</paragraph>
+  <paragraph role="paragraph" id="par_id141595692394382">Sort the given range on any number of columns/rows. The sorting order may vary by column/row. If the number of sort keys is &gt; 3 then the range is sorted several times, by groups of 3 keys, starting from the last key. It returns a string representing the modified range of cells. The size of the modified area is fully determined by the size of the source area.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id871621623279253">
     <input>svc.SortRange(range: str, sortkeys: any, sortorder: any = "ASC", destinationcell: str = "", containsheader: bool = False, casesensitive: bool = False, sortcolumns: bool = False): str</input>
@@ -2095,7 +2095,7 @@
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id171595692394598"><emph>range</emph>: The range to be sorted, as a string.</paragraph>
   <paragraph role="paragraph" id="par_id171595692814163"><emph>sortkeys</emph>: A scalar (if 1 column/row) or an array of column/row numbers starting from 1.</paragraph>
-  <paragraph role="paragraph" id="par_id421595692962095"><emph>sortorder</emph>: A scalar or an array of strings containing the values "ASC" (ascending), "DESC" (descending) or "" (which defaults to ascending). Each item is paired with the corresponding item in <literal>sortkeys</literal>. If the <literal>sortorder</literal> array is shorter than <literal>sortkeys</literal>, the remaining keys are sorted in ascending order.</paragraph>
+  <paragraph role="paragraph" id="par_id421595692962095"><emph>sortorder</emph>: A scalar or an array of strings containing the values "ASC" (ascending), "DESC" (descending). Each item is paired with the corresponding item in <literal>sortkeys</literal>. If the <literal>sortorder</literal> array is shorter than <literal>sortkeys</literal>, the remaining keys are sorted in ascending order.</paragraph>
   <paragraph role="paragraph" id="par_id361595692394604"><emph>destinationcell</emph>: The destination cell of the sorted range of cells, as a string. If a range is given, only its top-left cell is considered. By default the source Range is overwritten.</paragraph>
   <paragraph role="paragraph" id="par_id441595693011034"><emph>containsheader</emph>: When <literal>True</literal>, the first row/column is not sorted.</paragraph>
   <paragraph role="paragraph" id="par_id241595693169032"><emph>casesensitive</emph>: Only for string comparisons. Default = <literal>False</literal></paragraph>
