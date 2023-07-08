@@ -338,22 +338,23 @@
              <link href="text/sbasic/shared/03/sf_document.xhp#Activate">Activate</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#CloseDocument">CloseDocument</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#CreateMenu">CreateMenu</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#ExportAsPDF">ExportAsPDF</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#Echo">Echo</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_document.xhp#ExportAsPDF">ExportAsPDF</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#PrintOut">PrintOut</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#RemoveMenu">RemoveMenu</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#RunCommand">RunCommand</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#Save">Save</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_document.xhp#Save">Save</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#SaveAs">SaveAs</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#SaveCopyAs">SaveCopyAs</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#SetPrinter">SetPrinter</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#SetPrinter">SetPrinter</link><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -461,6 +462,40 @@
   <section id="menu_tip">
     <tip id="par_id271643139068194">Refer to the <link href="text/sbasic/shared/03/sf_menu.xhp"><input>SFWidgets.Menu</input></link> help page to learn more about how to create/remove menus in %PRODUCTNAME document windows.</tip>
   </section>
+</section>
+
+<section id="Echo">
+  <comment> Echo ------------------------------------------------------------------------------------------------ </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721985200199205">
+    <bookmark_value>Document service;Echo</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261589202103395" localize="false">Echo</h2>
+  <paragraph role="paragraph" id="par_id156589200192258">Suspends user interface (UI) updates during the execution of a macro. Optionally, the mouse pointer can be changed into an hourglass while UI updates are suspended.</paragraph>
+  <tip id="par_id851688837646904">This method may provide some performance benefits for macros that perform numerous operations that require UI updates.</tip>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id1001622824461169">
+    <input>svc.Echo(echoon: bool = True, hourglass: bool = False)</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id211635436910325"><emph>echoon</emph>: Specify <literal>False</literal> to suspend UI updates. The default value is <literal>True</literal>, which enables real time UI updates.</paragraph>
+  <paragraph role="paragraph" id="par_id141635436912288"><emph>hourglass</emph>: Specify <literal>True</literal> to change the mouse pointer to an hourglass (Default = <literal>False</literal>).</paragraph>
+  <note id="par_id741689124521451">Moving the mouse pointer after it changed to an hourglass may cause it to switch to a different pointer depending on its new background.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" id="bas_id941688837091778">' Suspends UI updates and change mouse pointer to an hourglass</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id541688837092368">oDoc.Echo(EchoOn := False, HourGlass := True)</paragraph>
+    <paragraph role="bascode" id="bas_id561688837092732">' Other macro commands</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id681688837447046">' ...</paragraph>
+    <paragraph role="bascode" id="bas_id251688837093108">' Restores UI updates and mouse pointer</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id451688837093737">oDoc.Echo()</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id916888374940240">doc.Echo(echoon = False, hourglass = True)</paragraph>
+    <paragraph role="pycode" id="pyc_id691688837494400">...</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id221688837494813">doc.Echo()</paragraph>
+  </pycode>
 </section>
 
 <section id="ExportAsPDF">
