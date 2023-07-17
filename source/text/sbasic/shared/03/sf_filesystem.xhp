@@ -127,6 +127,66 @@
       <paragraph role="pycode" localize="false" id="pyc_id741626147154953">fs.BuildPath(...)</paragraph>
     </pycode>
 
+  <section id="virtual_fs">
+    <h2 id="hd_id981689594663689">Accessing the Virtual File System of a Document</h2>
+    <paragraph role="paragraph" id="par_id661689594721047">%PRODUCTNAME document files are compressed ZIP files that contain the files and folders that represent the actual document contents. While the document is open, it is possible to access this virtual file system, explore its structure, as well as read and create files and folders.</paragraph>
+    <paragraph role="paragraph" id="par_id891689594949717">The following example shows how to create a text file named <literal>myFile.txt</literal> and store it inside the document's virtual file system.</paragraph>
+  </section>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id551689595084816">GlobalScope.BasicLibraries.LoadLibrary("ScriptForge")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id816895950850917">Dim oDoc As Object, fso As Object, oFile As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id116895950852050">Dim sRoot, sFile, sMyDir</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id501689595085400">Set fso = CreateScriptService("FileSystem")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id801689595085584">Set oDoc = CreateScriptService("Document", ThisComponent)</paragraph>
+    <paragraph role="bascode" id="bas_id661689595249846">' Gets the URL path notation to the root of the virtual file system</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id100168959508801">sRoot = oDoc.FileSystem()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id381689595086000">sMyDir = sRoot &amp; "myDir"</paragraph>
+    <paragraph role="bascode" id="bas_id941689595087305">' Creates the folder "myDir" if it does not exist</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id861689596696060">If Not fso.FolderExists(sMyDir) Then</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id891689595086225">    fso.CreateFolder(sMyDir)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id871689596727549">End If</paragraph>
+    <paragraph role="bascode" id="bas_id911689595459107">' Creates the file and write some text into it</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id691689595086408">sFile = fso.BuildPath(sMyDir, "myFile.txt")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id821689595086608">oFile = fso.CreateTextFile(sFile)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id431689595086864">oFile.WriteLine("Hello!")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791689595087080">oFile.CloseFile()</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id971689597147836">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id221689597148142">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id421689597148347">doc = CreateScriptService("Document", bas.ThisComponent)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id891689597148541">fso = CreateScriptService("FileSystem")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id951689597148915">sRoot = doc.FileSystem</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id881689597149091">sMyDir = sRoot + "myDir"</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id881689597149283">if not fso.FolderExists(sMyDir):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id591689597149475">    fso.CreateFolder(sMyDir)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id191689597149667">sFile = fso.BuildPath(sMyDir, "myFile.txt")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id211689597149851">oFile = fso.CreateTextFile(sFile)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id631689597150068">oFile.WriteLine("Hello!")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id331689597260015">oFile.CloseFile()</paragraph>
+  </pycode>
+  <paragraph role="paragraph" id="par_id121689595522630">In general, all methods of the <literal>FileSystem</literal> service can be used to manipulate files in the document's virtual file system. However, the following restrictions apply:</paragraph>
+  <list type="unordered">
+    <listitem>
+      <paragraph id="par_id321689595825516" role="listitem">It is not possible to create files in the root folder. Use existing subfolders or create new folders to store files in the document's file system.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id861689595826432" role="listitem">The <literal>FileNaming</literal> notation is always considered to be "URL".</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id181689595826743" role="listitem">The methods <literal>CompareFiles</literal>, <literal>GetFileModified</literal>, <literal>HashFile</literal>, <literal>PickFile</literal> and <literal>PickFolder</literal> are not applicable.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id361689595827152" role="listitem">The method <literal>GetFileLen</literal> always returns zero.</paragraph>
+    </listitem>
+    <listitem>
+      <paragraph id="par_id131689596237329" role="listitem">The method <literal>Normalize</literal> always returns the input string unchanged.</paragraph>
+    </listitem>
+  </list>
+  <note id="par_id51689595641705">The path to the virtual file system is not a physical address on the computer's hard drive. It can only be accessed from within a %PRODUCTNAME script and it only exists while the document file is open.</note>
+
     <bookmark xml-lang="en-US" branch="index" id="bm_id901612991354326" localize="false">
       <bookmark_value>FileSystem service;FileNaming property</bookmark_value>
       <bookmark_value>FileSystem service;ConfigFolder property</bookmark_value>
@@ -873,24 +933,27 @@
     </bookmark>
     <h2 id="hd_id981583851172348" localize="false">GetTempName</h2>
     <paragraph role="paragraph" id="par_id82158385117289">Returns a randomly generated temporary file name that is useful for performing operations that require a temporary file.</paragraph>
-    <paragraph role="paragraph" id="par_id391613061770924">The returned file name does not have any suffix. The folder part of the returned string is the system's temporary folder.</paragraph>
+    <paragraph role="paragraph" id="par_id391613061770924">By default, the returned file name does not have an extension. Use the <literal>extension</literal> parameter to specify the extension of the file name to be generated.</paragraph>
+    <paragraph role="paragraph" id="par_id251689599133544">The folder part of the returned string is the system's temporary folder.</paragraph>
     <paragraph role="paragraph" id="par_id971613061774934">The method does not create the temporary file.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id81626212807031">
-      <input>svc.GetTempName(): str</input>
+      <input>svc.GetTempName(extension: str): str</input>
     </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id471584113435991"><emph>extension</emph>: The extension of the temporary file name (Default = "").</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
       <paragraph role="bascode" localize="false" id="bas_id41583851448294">Dim fName As String</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id311583851172939">FSO.FileNaming = "SYS"</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id381583851172545">fName = FSO.GetTempName() &amp; ".txt"</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id381583851172545">fName = FSO.GetTempName(Extension := "txt")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id381583851275546">' "/tmp/SF_574068.txt"</paragraph>
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id791626272322530">fs.FileNaming = "SYS"</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id121626272322966">fName = FSO.GetTempName() + ".txt"</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id121626272322966">fName = FSO.GetTempName(extension = "txt")</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id991626272323308"># "/tmp/SF_574068.txt"</paragraph>
     </pycode>
 </section>
