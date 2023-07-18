@@ -163,6 +163,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id281623373588570">from scriptforge import ScriptForge, CreateScriptService</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id121623373589306">ScriptForge(hostname='localhost', port=2021)</paragraph>
   </pycode>
+  <note id="par_id761689720152565">Read the section <link href="text/sbasic/shared/03/sf_intro.xhp#pythonpath">Setting PYTHONPATH</link> below in case of errors importing <literal>scriptforge.py</literal> or <literal>uno.py</literal>.</note>
   <paragraph role="paragraph" id="par_id351623373686414">The second line of code above defines the <literal>host</literal> and <literal>port</literal> settings so that the Python shell can communicate with an ongoing %PRODUCTNAME process opened with the same socket settings.</paragraph>
   <paragraph role="paragraph" id="par_id721623373769471">Now you can run other Python commands and they will be able to communicate with the %PRODUCTNAME process. For example:</paragraph>
   <pycode>
@@ -171,6 +172,27 @@
     <paragraph role="pycode" localize="false" id="pyc_id671623373851588">doc = ui.OpenDocument("~/Documents/myFile.ods")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id631623373909828">bas.MsgBox(doc.DocumentType)</paragraph>
   </pycode>
+  <bookmark  branch="index" id="bm_id631689720744160">
+    <bookmark_value>Python interpreter;PYTHONPATH</bookmark_value>
+  </bookmark>
+
+  <section id="pythonpath">
+    <h3 id="hd_id341689720315095">Setting PYTHONPATH</h3>
+    <paragraph role="paragraph" id="par_id811689720328559">Depending on your operating system's configuration you will need to set the environment variable <literal>PYTHONPATH</literal> in order to import the <literal>scriptforge.py</literal> library, which in turn requires importing the <literal>uno.py</literal> library.</paragraph>
+  </section>
+  <paragraph role="paragraph" id="par_id781689720489355">Use your operating system's file search tool to determine the directory where both these files are located.</paragraph>
+  <paragraph role="paragraph" id="par_id431689720583565">For instance, on a default Ubuntu installation both files may be located at:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id791689720632086" role="listitem"><emph>scriptforge.py</emph>: Located in <literal>/usr/lib/libreoffice/program</literal></paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id881689720632438" role="listitem"><emph>uno.py</emph>: Located in <literal>/usr/lib/python3/dist-packages</literal></paragraph>
+    </listitem>
+  </list>
+  <paragraph role="paragraph" id="par_id701689720782180">In this case, set the environment variable <literal>PYTHONPATH</literal> as follows before starting the Python interpreter:</paragraph>
+  <paragraph role="paragraph" id="par_id601689720825610"><input>export PYTHONPATH=/usr/lib/libreoffice/program:/usr/lib/python3/dist-packages</input></paragraph>
+  <note id="par_id971689720909044">The location of these files will be different for each operating system and %PRODUCTNAME installation method.</note>
 
   <section id="relatedtopics">
     <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#ScriptForge_lib"/>
