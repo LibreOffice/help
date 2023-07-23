@@ -790,14 +790,14 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/main0650 \
     helpcontent2/source/text/shared/main0800 \
     helpcontent2/source/text/shared/mediaplay_toolbar \
-    helpcontent2/source/text/shared/submenu_text \
-    helpcontent2/source/text/shared/submenu_spacing \
     helpcontent2/source/text/shared/menu/forms \
     helpcontent2/source/text/shared/menu/comment_menu \
     helpcontent2/source/text/shared/menu/insert_form_control \
     helpcontent2/source/text/shared/menu/insert_shape \
     helpcontent2/source/text/shared/menu/save_image \
     helpcontent2/source/text/shared/menu/set_image_background \
+    helpcontent2/source/text/shared/menu/submenu_spacing \
+    helpcontent2/source/text/shared/menu/submenu_text \
     helpcontent2/source/text/shared/need_help \
     helpcontent2/source/text/shared/optionen/01000000 \
     helpcontent2/source/text/shared/optionen/01010000 \
