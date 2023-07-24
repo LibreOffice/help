@@ -347,6 +347,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/font_features \
     helpcontent2/source/text/shared/01/gallery \
     helpcontent2/source/text/shared/01/gallery_files \
+    helpcontent2/source/text/shared/01/graphic_styles \
     helpcontent2/source/text/shared/01/grid_and_helplines \
     helpcontent2/source/text/shared/01/guides \
     helpcontent2/source/text/shared/01/image_compression \
