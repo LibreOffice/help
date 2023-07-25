@@ -278,26 +278,32 @@ html_gen_bookmarks_deps = $(call html__gen_bookmarks_deps,$(firstword $(1)),$(la
 
 $(eval $(foreach module,$(html_BMARK_MODULES),$(call html_gen_bookmarks_deps,$(subst :, ,$(module)))))
 
+# intermediate responsefile target, make will clear those automatically
+# unless they are explicitly listed as target or non-pattern prerequisite
+# depend on the online_transform.xsl just as a proxy to make sure the directory exists
+# is only interemdiate because those were used as temp files previously - could just
+# as well be plain/explicit targets
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%_bookmarks.part.responsefile:| $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/online_transform.xsl
+	$(file > $@,$(subst helpcontent2/source/text/,,$(gb_AllLangHelp_$*_BOOKMARK_HELPFILES))$(if $(filter WNT,$(OS)), ))
+
 # strip the helpcontent2/source/text prefix and cd to the corresponding directory to maximize
 # the number of files that xargs can squeeze into a single invocation of xsltproc
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
         $(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
         $(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
+        $(foreach module,$(html_TREE_MODULES),$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(module)_bookmarks.part.responsefile) \
         | $(call gb_ExternalExecutable_get_dependencies,xsltproc)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	$(call gb_Trace_StartRange,$*/$(@F),XSL)
-	RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(subst helpcontent2/source/text/,,$(gb_AllLangHelp_$(APPDIR)_BOOKMARK_HELPFILES))$(if $(filter WNT,$(OS)), )) \
-	&& cd $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/helpcontent2/source/text \
-	&& ( \
-	    $(call gb_ExternalExecutable_get_command,xsltproc,$(if $(filter WNT,$(OS)),env -i $(gb_Helper_set_ld_path)) xargs) \
+	cd $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/helpcontent2/source/text \
+	&& $(call gb_ExternalExecutable_get_command,xsltproc,$(if $(filter WNT,$(OS)),env -i $(gb_Helper_set_ld_path)) xargs -a $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/$(firstword $(subst /, ,$*))_bookmarks.part.responsefile) \
 	        --stringparam app $(APP) \
 	        --stringparam Language $(HELP_LANG) \
 	        --stringparam local $(if $(HELP_ONLINE),'no','yes') \
 	        --stringparam productname "$(gb_PRODUCTNAME_HTML)" \
 	        --stringparam productversion "$(PRODUCTVERSION)" \
 	        $(SRCDIR)/helpcontent2/help3xsl/get_bookmark.xsl \
-	    <$$RESPONSEFILE || { rm $$RESPONSEFILE; exit 1; } \
-	) | sort -k3b -s >$@ && rm "$$RESPONSEFILE"
+	| sort -k3b -s >$@
 	$(call gb_Trace_EndRange,$*/$(@F),XSL)
 
 # The various gid_File_Help_*_Zip in scp2 that use EXTRA_ALL_GOOD_HELP_LOCALIZATIONS_LANG expect
