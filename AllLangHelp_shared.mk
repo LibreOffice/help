@@ -380,6 +380,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/signexistingpdf \
     helpcontent2/source/text/shared/01/securitywarning \
     helpcontent2/source/text/shared/01/selectcertificate \
+    helpcontent2/source/text/shared/01/themescolordialog \
+    helpcontent2/source/text/shared/01/themesdialog \
     helpcontent2/source/text/shared/01/timestampauth \
     helpcontent2/source/text/shared/guide/tipoftheday \
     helpcontent2/source/text/shared/01/webhtml \
