@@ -799,6 +799,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/menu/insert_shape \
     helpcontent2/source/text/shared/menu/save_image \
     helpcontent2/source/text/shared/menu/set_image_background \
+    helpcontent2/source/text/shared/menu/submenu_image \
+    helpcontent2/source/text/shared/menu/submenu_lists \
     helpcontent2/source/text/shared/menu/submenu_spacing \
     helpcontent2/source/text/shared/menu/submenu_text \
     helpcontent2/source/text/shared/need_help \
