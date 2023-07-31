@@ -8,19 +8,19 @@
  */
 // Used to set Application in caseinline=APP
 function setApplSpan(spanZ) {
-    var module = getParameterByName("DbPAR");
+    let module = getParameterByName("DbPAR");
     if (module === null) {
-        module = "WRITER";
+        module = "SHARED";
     }
-    var y = spanZ.getElementsByTagName("SPAN");
-    var n = y.length;
-    var foundAppl = false;
+    let y = spanZ.getElementsByTagName("SPAN");
+    let n = y.length;
+    let foundAppl = false;
     for (i = 0; i < n; i++) {
         if (y[i].getAttribute("id") === null){
             continue;
         }
         else if( y[i].getAttribute("id").startsWith(module)){
-            y[i].removeAttribute("hidden");
+            y[i].hidden = false;
             foundAppl=true;
         }
     }
@@ -29,8 +29,9 @@ function setApplSpan(spanZ) {
             continue;
         }
         else if( y[i].getAttribute("id").startsWith("default")){
+            y[i].hidden = true;
             if(!foundAppl){
-                y[i].removeAttribute("hidden");
+                y[i].hidden = false;
             }
         }
     }
@@ -38,29 +39,31 @@ function setApplSpan(spanZ) {
 // Used to set system in case, caseinline=SYSTEM
 function setSystemSpan(spanZ) {
     // if no System in URL, get browser system
-    var system = getParameterByName("System");
+    let system = getParameterByName("System");
     if (system === null) {
         system = getSystem();
     }
-    var y = spanZ.getElementsByTagName("SPAN");
-    var n = y.length;
-    var foundSystem = false;
-    for (i = 0; i < n; i++) {
+    let y = spanZ.getElementsByTagName("SPAN");
+    let n = y.length;
+    let foundSystem = false;
+
+    for (let i = 0; i < n; i++) {
         if (y[i].getAttribute("id") === null){
             continue;
         }
         else if( y[i].getAttribute("id").startsWith(system)){
-            y[i].removeAttribute("hidden");
+            y[i].hidden = false;
             foundSystem=true;
         }
     }
-    for (i = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
         if (y[i].getAttribute("id") === null){
             continue;
         }
         else if( y[i].getAttribute("id").startsWith("default")){
+            y[i].hidden = true;
             if(!foundSystem){
-                y[i].removeAttribute("hidden");
+                y[i].hidden = false;
             }
         }
     }
@@ -187,7 +190,7 @@ function setupModules(lang) {
     var modulesNav = document.getElementById('modules-nav');
     if (!modulesNav.classList.contains('loaded')) {
         var html =
-            '<a href="' + lang + '/text/shared/05/new_help.html?DbPAR=SHARED"><div class="office-icon"></div>%PRODUCTNAME</a>' +
+            '<a href="' + lang + '/text/shared/05/new_help.html?DbPAR=SHARED"><div class="office-icon"></div>LibreOfficeDev</a>' +
             '<a href="' + lang + '/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer-icon"></div>Writer</a>' +
             '<a href="' + lang + '/text/scalc/main0000.html?DbPAR=CALC"><div class="calc-icon"></div>Calc</a>' +
             '<a href="' + lang + '/text/simpress/main0000.html?DbPAR=IMPRESS"><div class="impress-icon"></div>Impress</a>' +
