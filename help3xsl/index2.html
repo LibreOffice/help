@@ -45,6 +45,8 @@
                 window.location.replace(lang + '/' + defaultFile + '?System=' + system + '&DbPAR=' + module);
             }
             var bookmark = target.slice(target.indexOf('/') + 1, target.length);
+            // tdf#156573 Replace character "?" by "%3F"
+            bookmark = bookmark.replace("?", "%3F");
             var file = hid2fileMap[bookmark];
             // check first if a root bookmark @@nowidget@@ can be used
             if (file === undefined) {
