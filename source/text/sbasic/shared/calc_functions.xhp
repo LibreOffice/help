@@ -21,20 +21,20 @@
     <bookmark_value>setting Calc function;macros</bookmark_value>
     <bookmark_value>macros;calling Calc function</bookmark_value>
     <bookmark_value>macros;setting Calc function</bookmark_value>
-    <bookmark_value>createUNOservice function;calling Calc function</bookmark_value>
+    <bookmark_value>CreateUnoService function;calling Calc function</bookmark_value>
     <bookmark_value>API;sheet.addin.Analysis</bookmark_value>
     <bookmark_value>API;sheet.FunctionAccess</bookmark_value>
   </bookmark>
   <h1 id="hd_id91592352089011"><variable id="CallingCalcFunctionsh1"><link href="text/sbasic/shared/calc_functions.xhp">Using Calc Functions in Macros</link></variable></h1>
   <paragraph role="paragraph" id="par_id1001592359117987">In addition to the native BASIC functions, you can call Calc functions in your macros and scripts and set Calc functions in cell formulas.</paragraph>
   <h2 id="hd_id251592352174921">Calling Internal Calc functions in Basic</h2>
-  <paragraph role="paragraph" id="par_id731592352332694">Use the <literal>CreateUNOService</literal> function to access the <literal>com.sun.star.sheet.FunctionAccess</literal> service.</paragraph>
+  <paragraph role="paragraph" id="par_id731592352332694">Use the <literal>CreateUnoService</literal> function to access the <literal>com.sun.star.sheet.FunctionAccess</literal> service.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id751629987917982">The example below creates a function named <literal>MyVlook</literal> that calls the <literal>VLOOKUP</literal> Calc function over a data array passed as argument and returns the value found by the function.</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id371629987889347">Function MyVlook(Lookup, DataArray As Object, Index As Integer, SortedRangeLookup as Byte)</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id21629987889617">    Dim oService As Object</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id671629987889986">    Set oService = createUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id671629987889986">    Set oService = CreateUnoService("com.sun.star.sheet.FunctionAccess")</paragraph>
     <paragraph role="bascode" id="bas_id271629987890173">    ' Always use the function name in English</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id831629987890360">    MyVlook = oService.callFunction("VLOOKUP", Array(Lookup, DataArray, Index, SortedRangeLookup))</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id91629987891281">End Function</paragraph>
@@ -76,7 +76,7 @@
 <paragraph role="bascode" id="bas_id421592358343633">REM Example calling Add-in function SQRTPI</paragraph>
 <paragraph role="bascode" id="bas_id731592358351744">Function MySQRTPI(arg as double) as double</paragraph>
 <paragraph role="bascode" id="bas_id731592358361242" localize="false">   Dim oService as Object</paragraph>
-<paragraph role="bascode" id="bas_id971592358368906" localize="false">   oService = createUNOService("com.sun.star.sheet.addin.Analysis")</paragraph>
+<paragraph role="bascode" id="bas_id971592358368906" localize="false">   oService = CreateUnoService("com.sun.star.sheet.addin.Analysis")</paragraph>
 <paragraph role="bascode" id="bas_id211592358377026">   MySQRTPI = oService.getSqrtPi(arg)</paragraph>
 <paragraph role="bascode" id="bas_id451592358385346" localize="false">End Function</paragraph>
 </bascode>
