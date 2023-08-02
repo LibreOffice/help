@@ -390,6 +390,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/guide/text_nav_keyb \
     helpcontent2/source/text/swriter/guide/text_rotate \
     helpcontent2/source/text/swriter/guide/textdoc_inframe \
+    helpcontent2/source/text/swriter/guide/title_page \
     helpcontent2/source/text/swriter/guide/using_hyphen \
     helpcontent2/source/text/swriter/guide/using_numbered_lists \
     helpcontent2/source/text/swriter/guide/using_numbered_lists2 \
