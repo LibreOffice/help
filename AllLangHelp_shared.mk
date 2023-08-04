@@ -760,6 +760,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/text_color \
     helpcontent2/source/text/shared/guide/textmode_change \
     helpcontent2/source/text/shared/guide/undo_formatting \
+    helpcontent2/source/text/shared/guide/usingthemes \
     helpcontent2/source/text/shared/guide/version_number \
     helpcontent2/source/text/shared/guide/viewing_file_properties \
     helpcontent2/source/text/shared/guide/workfolder \
