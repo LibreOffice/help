@@ -237,8 +237,6 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/html.text : \
 	    || exit \
 	; done <"$$RESPONSEFILE" \
 	&& rm "$$RESPONSEFILE" \
-	&& find $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/$*) -type f -empty -delete \
-	&& find $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl/$*) -type d -empty -delete \
 	&& touch $@
 	$(call gb_Trace_EndRange,$*/$(@F),XSL)
 
