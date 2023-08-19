@@ -230,6 +230,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/02/06120000 \
     helpcontent2/source/text/swriter/02/06130000 \
     helpcontent2/source/text/swriter/02/06140000 \
+    helpcontent2/source/text/swriter/02/06150000 \
+    helpcontent2/source/text/swriter/02/06160000 \
+    helpcontent2/source/text/swriter/02/06170000 \
     helpcontent2/source/text/swriter/02/08010000 \
     helpcontent2/source/text/swriter/02/08080000 \
     helpcontent2/source/text/swriter/02/10010000 \
