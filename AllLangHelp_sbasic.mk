@@ -95,6 +95,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03/sf_filesystem \
     helpcontent2/source/text/sbasic/shared/03/sf_form \
     helpcontent2/source/text/sbasic/shared/03/sf_formcontrol \
+    helpcontent2/source/text/sbasic/shared/03/sf_formdocument \
     helpcontent2/source/text/sbasic/shared/03/sf_intro \
     helpcontent2/source/text/sbasic/shared/03/sf_l10n \
     helpcontent2/source/text/sbasic/shared/03/sf_menu \

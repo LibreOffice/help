@@ -10,7 +10,7 @@
 -->
 
 <meta>
-  <topic id="SF_FormControl" indexer="include" status="PUBLISH">
+  <topic id="SF_Base" indexer="include" status="PUBLISH">
     <title id="tit" xml-lang="en-US">SFDocuments.Base service</title>
     <filename>/text/sbasic/shared/03/sf_base.xhp</filename>
   </topic>
@@ -21,7 +21,7 @@
   <bookmark localize="false" branch="index" id="bm_id41582391760252">
     <bookmark_value>Base service</bookmark_value>
   </bookmark>
-  <h1 id="bm_id781582391760253" xml-lang="en-US"><variable id="ctrls_h1"><link href="text/sbasic/shared/03/sf_base.xhp"><literal>SFDocuments</literal>.<literal>Base</literal> service</link></variable></h1>
+  <h1 id="bm_id781582391760253" xml-lang="en-US"><variable id="BaseService"><link href="text/sbasic/shared/03/sf_base.xhp"><literal>SFDocuments</literal>.<literal>Base</literal> service</link></variable></h1>
 
   <paragraph role="paragraph" id="par_id901619031958273">The <literal>Base</literal> service provides a number of methods and properties to facilitate the management and handling of %PRODUCTNAME Base documents.</paragraph>
   <paragraph role="paragraph" id="par_id961619032060880">This service is closely related to the <literal>Document</literal> service, which provides generic methods for handling %PRODUCTNAME documents, including Base documents. Hence, the <literal>Base</literal> service extends the <literal>Document</literal> service and provides additional methods that are specific for Base documents, enabling users to:</paragraph>
@@ -117,6 +117,7 @@
   </bookmark>
   <h2 id="hd_id61161309632927" localize="false">CloseFormDocument</h2>
   <paragraph role="paragraph" id="par_id801916099743199">Closes the given form document. Returns <literal>True</literal> if closure is successful.</paragraph>
+  <warning id="par_id81692554166441">The method <literal>CloseFormDocument</literal> is deprecated since %PRODUCTNAME 7.6. Although it is still available, it may be removed from the <literal>Base</literal> service in a future release. Use the <literal>CloseDocument</literal> method from the <literal>FormDocument</literal> service instead.</warning>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id71613205516650">
     <input>svc.CloseFormDocument(formdocument: str): bool</input>
@@ -183,6 +184,7 @@
         <paragraph id="par_id111619037577804" role="listitem">A <literal>SFDocuments.Form</literal> object representing the form specified in the <literal>Form</literal> argument.</paragraph>
     </listitem>
   </list>
+  <warning id="par_id81692554166191">The method <literal>Forms</literal> is deprecated since %PRODUCTNAME 7.6. Although it is still available, it may be removed from the <literal>Base</literal> service in a future release. Use the <literal>Forms</literal> method from the <literal>FormDocument</literal> service instead.</warning>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id851623104561457">
     <input>svc.Forms(formdocument: str): str[0..*]</input>
@@ -280,11 +282,12 @@
     <bookmark_value>Base service;OpenFormDocument</bookmark_value>
   </bookmark>
   <h2 id="hd_id611619035632927" localize="false">OpenFormDocument</h2>
-  <paragraph role="paragraph" id="par_id801619099743199">Opens the specified <literal>FormDocument</literal> either in normal or in design mode.</paragraph>
-  <paragraph role="paragraph" id="par_id451619100075330">If the form document is already open, it is activated without changing its mode. The method returns <literal>True</literal> if the form document could be opened.</paragraph>
+  <paragraph role="paragraph" id="par_id801619099743199">Opens the specified <literal>FormDocument</literal> either in normal or in design mode. This method returns a <literal>FormDocument</literal> service instance corresponding to the specified form document.</paragraph>
+  <paragraph role="paragraph" id="par_id451619100075330">If the form document is already open, it is activated without changing its mode.</paragraph>
+  <paragraph role="paragraph" id="par_id651692554712005">If the specified form document does not exist, then <literal>Nothing</literal> is returned.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id71623105516650">
-    <input>svc.OpenFormDocument(formdocument: str, designmode: bool = False): bool</input>
+    <input>svc.OpenFormDocument(formdocument: str, designmode: bool = False): svc</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id941619099797810"><emph>formDocument:</emph> The name of the <literal>FormDocument</literal> to be opened, as a case-sensitive string.</paragraph>
@@ -293,18 +296,19 @@
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <paragraph role="paragraph" id="par_id251619100191992">Most form documents are stored in the root of the Base document and they can be opened simply using their names, as in the example below:</paragraph>
   <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id461619100283210">oDoc.OpenFormDocument("myFormDocument")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id511692554784974">Dim oFormDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461619100283210">oFormDoc = oDoc.OpenFormDocument("myFormDocument")</paragraph>
   </bascode>
   <paragraph role="paragraph" id="par_id351619100327505">If form documents are organized in folders, it becomes necessary to include the folder name to specify the form document to be opened, as illustrated in the following example:</paragraph>
   <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id461619100283712">oDoc.OpenFormDocument("myFolder/myFormDocument")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461619100283712">oFormDoc = oDoc.OpenFormDocument("myFolder/myFormDocument")</paragraph>
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id361623105659717">doc.OpenFormDocument("myFormDocument")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id361623105659717">formDoc = doc.OpenFormDocument("myFormDocument")</paragraph>
   </pycode>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id361623105659616">doc.OpenFormDocument("myFolder/myFormDocument")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id361623105659616">formDoc = doc.OpenFormDocument("myFolder/myFormDocument")</paragraph>
   </pycode>
 </section>
 
@@ -372,6 +376,7 @@
   <h2 id="hd_id261589202101415" localize="false">PrintOut</h2>
   <paragraph role="paragraph" id="par_id156589200121138">This method sends the content of the given form document to a default printer or a printer defined by the <literal>SetPrinter()</literal> method.</paragraph>
   <paragraph role="paragraph" id="par_id981611169416934">Returns <literal>True</literal> if the document was successfully printed.</paragraph>
+  <warning id="par_id81692554166367">The method <literal>PrintOut</literal> is deprecated since %PRODUCTNAME 7.6. Although it is still available, it may be removed from the <literal>Base</literal> service in a future release. Use the <literal>PrintOut</literal> method from the <literal>FormDocument</literal> service instead.</warning>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id1001622827822169">
     <input>svc.PrintOut(opt formdocument: str, pages: str = "", copies: num = 1): bool</input>
@@ -402,6 +407,7 @@
   <h2 id="hd_id811589502147824" localize="false">SetPrinter</h2>
   <paragraph role="paragraph" id="par_id911298505147502">Define the printer options for a form document. The form document must be open.</paragraph>
   <paragraph role="paragraph" id="par_id381651114800685">Returns <literal>True</literal> when successful.</paragraph>
+  <warning id="par_id81692554166449">The method <literal>SetPrinter</literal> is deprecated since %PRODUCTNAME 7.6. Although it is still available, it may be removed from the <literal>Base</literal> service in a future release. Use the <literal>SetPrinter</literal> method from the <literal>Document</literal> service instead.</warning>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id261652828596855">
     <input>svc.SetPrinter(opt formdocument: str, opt printer: str, opt orientation: str, paperformat: str): bool</input>

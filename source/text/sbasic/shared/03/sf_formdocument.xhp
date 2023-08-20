@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_FormDocument" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">SFDocuments.FormDocument service</title>
+    <filename>/text/sbasic/shared/03/sf_formdocument.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+  <bookmark localize="false" branch="index" id="bm_id41582391760252">
+    <bookmark_value>FormDocument service</bookmark_value>
+  </bookmark>
+
+  <section id="abstract">
+    <h1 id="bm_id781582391760253" xml-lang="en-US"><variable id="ctrls_h1"><link href="text/sbasic/shared/03/sf_formdocument.xhp"><literal>SFDocuments</literal>.<literal>FormDocument</literal> service</link></variable></h1>
+    <paragraph role="paragraph" id="par_id321692486382326">The <literal>FormDocument</literal> service allows to access form documents stored in %PRODUCTNAME Base documents.</paragraph>
+    <paragraph role="paragraph" id="par_id621692487292145">In a Base document, existing form documents can be viewed by selecting <menuitem>View - Forms</menuitem> in the user interface. Each form document may be composed of one or more forms, including the main form and other sub-forms.</paragraph>
+  </section>
+  <paragraph role="paragraph" id="par_id891692486448415">This service inherits methods and properties from the <literal>Document</literal> service and is often used alongside the <literal>Base</literal> and <literal>Database</literal> services.</paragraph>
+  <tip id="par_id241619032941497">Refer to the <link href="text/sbasic/shared/03/sf_document.xhp"><literal>Document</literal> service</link> to learn more about methods and properties that can be used to manage %PRODUCTNAME documents.</tip>
+
+  <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>FormDocument</literal> service the <literal>ScriptForge</literal> library needs to be loaded or imported:</paragraph>
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#importLibs"/>
+
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id991692486784449">A <literal>FormDocument</literal> service instance can be created by calling the method <literal>OpenFormDocument</literal> that exists both in the <literal>Base</literal> and <literal>Database</literal> services.</paragraph>
+  <paragraph role="paragraph" id="par_id381692486890118">The example below uses the <literal>UI</literal> service to open a Base document and then retrieve a form document. Note that in this example both the Base document and the form document will be opened and displayed on the screen.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id471692487061946">Dim ui As Object, oBase As Object, oFormDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id581692487062158">ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id131692487062426">oBase = ui.OpenBaseDocument("C:\Documents\MyDatabase.odb")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id721692487062713">oFormDoc = oBase.OpenFormDocument("MyFormDocument")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id571692491035953">' ...</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id591692491043313">oFormDoc.CloseDocument()</paragraph>
+  </bascode>
+  <paragraph role="paragraph" localize="false" id="par_id591692487747857">The following example uses the <literal>Database</literal> service to open the form document. In this case, the Base file will not be opened and only the form document will be shown.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id551692487833051">Dim oDatabase As Object, oFormDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id191692487833284">oDatabase = CreateScriptService("Database", "C:\Documents\MyDatabase.odb")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id916924878330507">oFormDoc = oDatabase.OpenFormDocument("MyFormDocument")</paragraph>
+  </bascode>
+  <note id="par_id151692489140384">Calling <literal>OpenFormDocument</literal> for a form document that is already open will activate the document window and bring it to focus.</note>
+
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <paragraph role="paragraph" id="par_id871623102536956">The examples above can be translated to Python as follows:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id581692490698824">ui = CreateScriptService("UI")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id316924907006203">baseDoc = ui.OpenBaseDocument("C:\Documents\MyDatabase.odb")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981692490709359">formDoc = baseDoc.OpenFormDocument("MyFormDocument")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id311692491093043"># ...</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id651692491093324">formDoc.CloseDocument()</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id316924909297102">database = CreateScriptService("Database", "C:\Documents\MyDatabase.odb")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id431692490930126">formDoc = database.OpenFormDocument("MyFormDocument")</paragraph>
+  </pycode>
+
+  <section id="methods_toc">
+  <table id="tab_id101619034669263">
+   <tablerow>
+       <tablecell colspan="3">
+           <paragraph id="par_id451619034669263" role="tablehead">List of Methods in the FormDocument Service</paragraph>
+       </tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id981619034669263" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_formdocument.xhp#CloseDocument">CloseDocument</link><br/>
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id721619034669263" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_formdocument.xhp#Forms">Forms</link><br/>
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id711619034669263" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_formdocument.xhp#PrintOut">PrintOut</link><br/>
+           </paragraph>
+       </tablecell>
+   </tablerow>
+  </table>
+  </section>
+
+<section id="CloseDocument">
+  <comment> CloseFormDocument ------------------------------------------------------------------------ </comment>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id341609135528912" localize="false">
+    <bookmark_value>FormDocument service;CloseDocument</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id61161309632927" localize="false">CloseDocument</h2>
+  <paragraph role="paragraph" id="par_id801916099743199">Closes the form document referred to by the <literal>FormDocument</literal> instance. Returns <literal>True</literal> if the form document was successfully closed.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id71613205516650">
+    <input>svc.CloseDocument(): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id461619100382712">oFormDoc.CloseDocument()</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id361623165059717">formDoc.CloseDocument()</paragraph>
+  </pycode>
+</section>
+
+<section id="Forms">
+  <comment> Forms ------------------------------------------------------------------------------------ </comment>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id401619035409457" localize="false">
+    <bookmark_value>FormDocument service;Forms</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id841619035592745" localize="false">Forms</h2>
+  <paragraph role="paragraph" id="par_id481619036833610">Returns either an array with the names of the main forms contained in the form document or a <literal>Form</literal> service instance referring to a specific form.</paragraph>
+  <paragraph role="paragraph" id="par_id311692532433990">Call this method without arguments to obtain a zero-based string array with the names of all forms contained in the form document.</paragraph>
+  <paragraph role="paragraph" id="par_id491692532525080">Provide a form name or index as argument to obtain a <literal>Form</literal> service instance corresponding to the specified form.</paragraph>
+  <note id="par_id281692532725116">A form document has at least one main form. More complex form documents may be composed of more than one form and sub-forms.</note>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id401623103182304">
+    <input>svc.Forms(): str[0..*]</input>
+  </paragraph>
+  <paragraph role="paragraph" id="par_id91692538279673">
+    <input>svc.Forms(form: str): svc</input>
+  </paragraph>
+  <paragraph role="paragraph" id="par_id91692538279664">
+    <input>svc.Forms(form: int): svc</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id211692538352686"><emph>form</emph>: This argument can be either a string with the name of a form that exists in the form document or the zero-based index of the form that shall be returned. If this argument is not specifiec, then an array with the name of all available forms is returned.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id151692537703209">The following example checks if the form document contains a form named "MainForm":</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id371619037281873">arrForms = oFormDoc.Forms()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id121619036825329">If SF_Array.Contains(arrForms, "MainForm") Then</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id981692537788204">    ' ...</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id401692537800988">End If</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id661692537831637">The example below retrieves the form named "MainForm" and moves it to the last record:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id581692532853174">Dim oForm As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id581692532853457">oForm = oFormDoc.Forms("MainForm")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id141692533017896">oForm.MoveLast()</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id641692538531956">arrForms = formDoc.Forms()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id851692538532348">if "MainForm" in arrForms:</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id711692538533028">    # ...</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id811692538598933">form = formDoc.Forms("MainForm")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id481692538599198">form.MoveLast()</paragraph>
+  </pycode>
+  <tip id="par_id921619036922844">To learn more about form methods and properties, refer to the <link href="text/sbasic/shared/03/sf_form.xhp"><literal>Form</literal> service help page</link>.</tip>
+</section>
+
+<section id="PrintOut">
+  <comment> PrintOut --------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721985200121249">
+    <bookmark_value>FormDocument service;PrintOut</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261589202101415" localize="false">PrintOut</h2>
+  <paragraph role="paragraph" id="par_id156589200121138">This method sends the contents form document to the default printer or to the printer defined by the <literal>SetPrinter()</literal> method.</paragraph>
+  <paragraph role="paragraph" id="par_id981611169416934">Returns <literal>True</literal> if the document was successfully sent to the printer.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id1001622827822169">
+    <input>svc.PrintOut(pages: str = "", copies: int = 1, printbackground: bool = true, printblankpages: bool = false, printevenpages: bool = true, printoddpages: bool = true, printimages: bool = true): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id211635436910093"><emph>pages</emph>: The pages to print as a string. This argument should be specified in the same manner as in the user interface (see <menuitem>File - Print</menuitem> dialog). Example: &quot;1-4;10;15-18&quot;. The default value is an empty string "" which will cause all pages to be printed.</paragraph>
+  <paragraph role="paragraph" id="par_id141635436912146"><emph>copies</emph>: The number of copies to be printed (Default = 1).</paragraph>
+  <paragraph role="paragraph" id="par_id871692539875337"><emph>printbackground</emph>: specifies whether the background image should be printed (Default = True).</paragraph>
+  <paragraph role="paragraph" id="par_id661692539947123"><emph>printblankpages</emph>: specifies whether blank pages should be printed (Default = False).</paragraph>
+  <paragraph role="paragraph" id="par_id661692539947144"><emph>printevenpages</emph>: specifies whether even pages should be printed (Default = True).</paragraph>
+  <paragraph role="paragraph" id="par_id661692539947875"><emph>printoddpages</emph>: specifies whether odd pages should be printed (Default = True).</paragraph>
+  <paragraph role="paragraph" id="par_id661692539947323"><emph>printimages</emph>: specifies whether images should be printed (Default = True).</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id891589200121516">oFormDoc.PrintOut("1-4", Copies := 2, PrintBackground := False)</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id731622728946898">formDoc.PrintOut("1-4", copies = 2, printbackground = False)</paragraph>
+  </pycode>
+</section>
+
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/sf_base.xhp#BaseService"/>
+    <embed href="text/sbasic/shared/03/sf_database.xhp#DatabaseService"/>
+    <embed href="text/sbasic/shared/03/sf_document.xhp#DocumentService"/>
+    <embed href="text/sbasic/shared/03/sf_form.xhp#FormService"/>
+    <embed href="text/sbasic/shared/03/sf_ui.xhp#UIService"/>
+   </section>
+
+  </body>
+</helpdocument>

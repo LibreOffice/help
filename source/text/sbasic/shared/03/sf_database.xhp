@@ -195,15 +195,16 @@
            <link href="text/sbasic/shared/03/sf_database.xhp#CloseDatabase">CloseDatabase</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DAvg</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DCount</link><br/>
-           <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DMin</link>
+           <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DMin</link><br/>
+           <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DMax</link>
          </paragraph>
        </tablecell>
        <tablecell>
          <paragraph id="par_id611614360519104" role="tablecontent" localize="false">
-           <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DMax</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DSum</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#DLookup">DLookup</link><br/>
-           <link href="text/sbasic/shared/03/sf_database.xhp#GetRows">GetRows</link>
+           <link href="text/sbasic/shared/03/sf_database.xhp#GetRows">GetRows</link><br/>
+           <link href="text/sbasic/shared/03/sf_database.xhp#OpenFormDocument">OpenFormDocument</link><br/><br/>
          </paragraph>
        </tablecell>
        <tablecell>
@@ -211,7 +212,7 @@
            <link href="text/sbasic/shared/03/sf_database.xhp#OpenQuery">OpenQuery</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#OpenSql">OpenSql</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#OpenTable">OpenTable</link><br/>
-           <link href="text/sbasic/shared/03/sf_database.xhp#RunSql">RunSql</link>
+           <link href="text/sbasic/shared/03/sf_database.xhp#RunSql">RunSql</link><br/><br/>
          </paragraph>
        </tablecell>
    </tablerow>
@@ -372,6 +373,41 @@
       <paragraph role="pycode" localize="false" id="pyc_id41625701996174">queryResults = myDB.GetRows("EmployeeData", header = True)</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id871625701996504">queryResults = myDB.GetRows("SELECT * FROM EmployeeData ORDER BY [FirstName]", maxrows = 50)</paragraph>
     </pycode>
+</section>
+
+<section id="OpenFormDocument">
+  <comment> OpenFormDocument ------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id341619035528912" localize="false">
+    <bookmark_value>Database service;OpenFormDocument</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id611619035632927" localize="false">OpenFormDocument</h2>
+  <paragraph role="paragraph" id="par_id801619099743199">Opens the specified form document in normal mode. This method returns a <literal>FormDocument</literal> service instance corresponding to the specified form document.</paragraph>
+  <paragraph role="paragraph" id="par_id451619100075330">If the form document is already open, the form document window is activated.</paragraph>
+  <paragraph role="paragraph" id="par_id651692554712005">If the specified form document does not exist, then <literal>Nothing</literal> is returned.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id71623105516650">
+    <input>svc.OpenFormDocument(formdocument: str): svc</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id941619099797810"><emph>formdocument:</emph> The name of the <literal>FormDocument</literal> to be opened, as a case-sensitive string.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id251619100191992">Most form documents are stored in the root of the Base document and they can be opened simply using their names, as in the example below:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id511692554784974">Dim oFormDoc As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id461619100283210">oFormDoc = myDB.OpenFormDocument("myFormDocument")</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id351619100327505">If form documents are organized in folders, it becomes necessary to include the folder name to specify the form document to be opened, as illustrated in the following example:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id461619100283712">oFormDoc = myDB.OpenFormDocument("myFolder/myFormDocument")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id361623105659717">formDoc = myDB.OpenFormDocument("myFormDocument")</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id361623105659616">formDoc = myDB.OpenFormDocument("myFolder/myFormDocument")</paragraph>
+  </pycode>
 </section>
 
   <section id="OpenQuery">
