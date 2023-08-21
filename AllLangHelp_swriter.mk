@@ -207,6 +207,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/select_text \
     helpcontent2/source/text/swriter/01/show_whitespace \
     helpcontent2/source/text/swriter/01/spotlight_styles \
+    helpcontent2/source/text/swriter/01/spotlight_chars_df \
     helpcontent2/source/text/swriter/01/style_inspector \
     helpcontent2/source/text/swriter/01/title_page \
     helpcontent2/source/text/swriter/01/translate \
