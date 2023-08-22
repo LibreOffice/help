@@ -78,6 +78,7 @@
       <bookmark_value>Platform service;Processor</bookmark_value>
       <bookmark_value>Platform service;PythonVersion</bookmark_value>
       <bookmark_value>Platform service;SystemLocale</bookmark_value>
+      <bookmark_value>Platform service;UserData</bookmark_value>
     </bookmark>
     <h2 id="hd_id711600788076834">Properties</h2>
     <section id="properties_toc">
@@ -381,28 +382,70 @@
                <paragraph id="par_id831633021741336" role="tablecontent">Returns the locale of the operating system as a string in the format "la-CO" (language-COUNTRY). This is equivalent to the <literal>Locale</literal> property.</paragraph>
             </tablecell>
         </tablerow>
+        <tablerow>
+            <tablecell>
+               <paragraph id="par_id831633021124410" localize="false" role="tablecontent">UserData</paragraph>
+            </tablecell>
+           <tablecell>
+               <paragraph id="par_id561633021702057" role="tablecontent">Yes</paragraph>
+           </tablecell>
+           <tablecell>
+               <paragraph id="par_id201633021740149" localize="false" role="tablecontent">Dictionary</paragraph>
+           </tablecell>
+           <tablecell>
+               <paragraph id="par_id831633021741958" role="tablecontent">Returns a <literal>Dictionary</literal> instance containing key-value pairs with the information found in the <emph>Tools - Options - User Data</emph> dialog.</paragraph>
+            </tablecell>
+        </tablerow>
       </table>
     </section>
-    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-    <paragraph role="paragraph" id="par_id311633022159446">The following examples in Basic and Python illustrate how to use the <literal>Fonts</literal> property to write the names of all available fonts to the current Calc sheet starting at cell "A1":</paragraph>
-    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
-    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id671633022413022">Dim oDoc as Object</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id721633022413266">Dim allFonts as Object</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id691633022413526">Dim svcPlatform as Object</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id41633022413831">Set oDoc = CreateScriptService("Calc")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id541633022414069">Set svcPlatform = CreateScriptService("Platform")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id641633022414366">allFonts = svcPlatform.Fonts</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id651633022414637">oDoc.setArray("~.A1", allFonts)</paragraph>
-    </bascode>
-    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
-    <pycode>
-      <paragraph role="pycode" localize="false" id="pyc_id701633022704347">from scriptforge import CreateScriptService</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id841633022704586">svc_platform = CreateScriptService("Platform")</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id281633022704771">doc = CreateScriptService("Calc")</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id211633022704988">all_fonts = svc_platform.Fonts</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id941633022705212">doc.setArray("~.A1", all_fonts)</paragraph>
-    </pycode>
+
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id311633022159446">The following examples in Basic and Python illustrate how to use the <literal>Fonts</literal> property to write the names of all available fonts to the current Calc sheet starting at cell "A1":</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id671633022413022">Dim oDoc as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id721633022413266">Dim allFonts as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id691633022413526">Dim svcPlatform as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id41633022413831">Set oDoc = CreateScriptService("Calc")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id541633022414069">Set svcPlatform = CreateScriptService("Platform")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id641633022414366">allFonts = svcPlatform.Fonts</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651633022414637">oDoc.setArray("~.A1", allFonts)</paragraph>
+  </bascode>
+  
+  <paragraph role="paragraph" id="par_id371692709207404">The example below demonstrates how to create a Calc table with all the values stored in the <literal>UserData</literal> property, which is a <literal>Dictionary</literal> service instance:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id641692709300966">Dim svcPlatform as Object, oUserData as Object, oDoc as Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id311692709301217">Dim arrUserData As Object, currCell As String</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id971692709301406">Set svcPlatform = CreateScriptService("Platform")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id316927093016144">oUserData = svcPlatform.UserData</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id561692709303342">arrUserData = oUserData.ConvertToArray()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id841692709301807">Set oDoc = CreateScriptService("Calc", ThisComponent)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id431692709302006">oDoc.SetArray("~.A1", Array(Array("Key", "Value")))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id316927093022302">oDoc.SetArray("~.A2", arrUserData)</paragraph>
+  </bascode>
+  
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <paragraph role="paragraph" id="par_id611692709647033">The examples above can be writen in Python as follows:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id701633022704347">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id381692710943396">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id281633022704771">doc = CreateScriptService("Calc", bas.ThisComponent)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id841633022704586">svc_platform = CreateScriptService("Platform")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id211633022704988">all_fonts = svc_platform.Fonts</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id941633022705212">doc.setArray("~.A1", all_fonts)</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id931692710915930">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id381692710943141">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id281633022704859">doc = CreateScriptService("Calc", bas.ThisComponent)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id841633022704500">svc_platform = CreateScriptService("Platform")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id851692711000316">user_data = svc_platform.UserData</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id781692711000574">arr_user_data = [[key, user_data[key]] for key in user_data]</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id241692711000804">doc.SetArray("~.A1", (("Key", "Value"),))</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441692711001100">doc.SetArray("~.A2", arr_user_data)</paragraph>
+  </pycode>
+  
+
     <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
     <section id="relatedtopics">
       <embed href="text/sbasic/python/python_platform.xhp#pythonplatform"/>
