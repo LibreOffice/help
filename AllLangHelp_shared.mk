@@ -347,10 +347,12 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/font_features \
     helpcontent2/source/text/shared/01/gallery \
     helpcontent2/source/text/shared/01/gallery_files \
+    helpcontent2/source/text/shared/01/graphic_size_check \
     helpcontent2/source/text/shared/01/graphic_styles \
     helpcontent2/source/text/shared/01/grid_and_helplines \
     helpcontent2/source/text/shared/01/guides \
     helpcontent2/source/text/shared/01/image_compression \
+    helpcontent2/source/text/shared/01/image_external_tool \
     helpcontent2/source/text/shared/01/insert_chart \
     helpcontent2/source/text/shared/01/mediaplayer \
     helpcontent2/source/text/shared/01/menu_edit_find \
@@ -383,6 +385,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/ref_pdf_export_user_interface \
     helpcontent2/source/text/shared/01/ref_pdf_export_universal_accessibility \
     helpcontent2/source/text/shared/01/ref_pdf_send_as \
+    helpcontent2/source/text/shared/01/replace_image \
+    helpcontent2/source/text/shared/01/save_graphic \
     helpcontent2/source/text/shared/01/scrollbars \
     helpcontent2/source/text/shared/01/signexistingpdf \
     helpcontent2/source/text/shared/01/securitywarning \
