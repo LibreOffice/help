@@ -343,6 +343,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/addsignatureline \
     helpcontent2/source/text/shared/01/signsignatureline \
     helpcontent2/source/text/shared/01/extensionupdate \
+    helpcontent2/source/text/shared/01/fit_to_cell \
     helpcontent2/source/text/shared/01/formatting_mark \
     helpcontent2/source/text/shared/01/font_features \
     helpcontent2/source/text/shared/01/gallery \
