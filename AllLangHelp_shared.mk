@@ -545,6 +545,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/02/namedialog \
     helpcontent2/source/text/shared/02/paintbrush \
     helpcontent2/source/text/shared/02/querypropdlg \
+    helpcontent2/source/text/shared/02/rotate_left \
+    helpcontent2/source/text/shared/02/rotate_right \
+    helpcontent2/source/text/shared/02/rotate_180 \
     helpcontent2/source/text/shared/02/stars \
     helpcontent2/source/text/shared/02/symbolshapes \
     helpcontent2/source/text/shared/04/01010000 \
@@ -807,6 +810,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/menu/set_image_background \
     helpcontent2/source/text/shared/menu/submenu_image \
     helpcontent2/source/text/shared/menu/submenu_lists \
+    helpcontent2/source/text/shared/menu/submenu_rotateflip \
     helpcontent2/source/text/shared/menu/submenu_spacing \
     helpcontent2/source/text/shared/menu/submenu_text \
     helpcontent2/source/text/shared/need_help \
