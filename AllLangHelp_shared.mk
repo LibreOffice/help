@@ -393,6 +393,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/securitywarning \
     helpcontent2/source/text/shared/01/selectcertificate \
     helpcontent2/source/text/shared/01/select_template_category \
+    helpcontent2/source/text/shared/01/StyleNewByExample \
     helpcontent2/source/text/shared/01/StyleUpdateByExample \
     helpcontent2/source/text/shared/01/themescolordialog \
     helpcontent2/source/text/shared/01/themesdialog \
