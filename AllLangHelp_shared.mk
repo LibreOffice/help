@@ -338,6 +338,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/certificatepath \
     helpcontent2/source/text/shared/01/classificationbar \
     helpcontent2/source/text/shared/01/classificationdialog \
+    helpcontent2/source/text/shared/01/DeleteColumns \
+    helpcontent2/source/text/shared/01/DeleteRows \
+    helpcontent2/source/text/shared/01/DeleteTable \
     helpcontent2/source/text/shared/01/digitalsignatures \
     helpcontent2/source/text/shared/01/digitalsignaturespdf \
     helpcontent2/source/text/shared/01/addsignatureline \
