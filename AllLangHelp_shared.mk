@@ -355,6 +355,10 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/image_compression \
     helpcontent2/source/text/shared/01/image_external_tool \
     helpcontent2/source/text/shared/01/insert_chart \
+    helpcontent2/source/text/shared/01/InsertColumnsAfter \
+    helpcontent2/source/text/shared/01/InsertColumnsBefore \
+    helpcontent2/source/text/shared/01/InsertRowsAfter \
+    helpcontent2/source/text/shared/01/InsertRowsBefore \
     helpcontent2/source/text/shared/01/mediaplayer \
     helpcontent2/source/text/shared/01/menu_edit_find \
     helpcontent2/source/text/shared/01/menu_view_sidebar \
