@@ -335,6 +335,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/07010000 \
     helpcontent2/source/text/shared/01/07080000 \
     helpcontent2/source/text/shared/01/about_meta_tags \
+    helpcontent2/source/text/shared/01/addsignatureline \
     helpcontent2/source/text/shared/01/certificatepath \
     helpcontent2/source/text/shared/01/classificationbar \
     helpcontent2/source/text/shared/01/classificationdialog \
@@ -343,8 +344,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/DeleteTable \
     helpcontent2/source/text/shared/01/digitalsignatures \
     helpcontent2/source/text/shared/01/digitalsignaturespdf \
-    helpcontent2/source/text/shared/01/addsignatureline \
-    helpcontent2/source/text/shared/01/signsignatureline \
+    helpcontent2/source/text/shared/01/EntireCell \
+    helpcontent2/source/text/shared/01/EntireColumn \
+    helpcontent2/source/text/shared/01/EntireRow \
     helpcontent2/source/text/shared/01/extensionupdate \
     helpcontent2/source/text/shared/01/fit_to_cell \
     helpcontent2/source/text/shared/01/formatting_mark \
@@ -396,10 +398,12 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/replace_image \
     helpcontent2/source/text/shared/01/save_graphic \
     helpcontent2/source/text/shared/01/scrollbars \
-    helpcontent2/source/text/shared/01/signexistingpdf \
     helpcontent2/source/text/shared/01/securitywarning \
     helpcontent2/source/text/shared/01/selectcertificate \
+    helpcontent2/source/text/shared/01/SelectTable \
     helpcontent2/source/text/shared/01/select_template_category \
+    helpcontent2/source/text/shared/01/signexistingpdf \
+    helpcontent2/source/text/shared/01/signsignatureline \
     helpcontent2/source/text/shared/01/StyleNewByExample \
     helpcontent2/source/text/shared/01/StyleUpdateByExample \
     helpcontent2/source/text/shared/01/themescolordialog \

@@ -213,6 +213,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/style_inspector \
     helpcontent2/source/text/swriter/01/TableDeleteMenu \
     helpcontent2/source/text/swriter/01/TableInsertMenu \
+    helpcontent2/source/text/swriter/01/TableSelectMenu \
     helpcontent2/source/text/swriter/01/title_page \
     helpcontent2/source/text/swriter/01/translate \
     helpcontent2/source/text/swriter/01/view_resolved_comments \
