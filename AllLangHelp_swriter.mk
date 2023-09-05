@@ -131,14 +131,10 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/05100000 \
     helpcontent2/source/text/swriter/01/05100300 \
     helpcontent2/source/text/swriter/01/05100400 \
-    helpcontent2/source/text/swriter/01/05110000 \
     helpcontent2/source/text/swriter/01/05110100 \
-    helpcontent2/source/text/swriter/01/05110200 \
     helpcontent2/source/text/swriter/01/05110300 \
     helpcontent2/source/text/swriter/01/05110500 \
-    helpcontent2/source/text/swriter/01/05120000 \
     helpcontent2/source/text/swriter/01/05120100 \
-    helpcontent2/source/text/swriter/01/05120200 \
     helpcontent2/source/text/swriter/01/05120300 \
     helpcontent2/source/text/swriter/01/05120400 \
     helpcontent2/source/text/swriter/01/05120500 \
@@ -211,6 +207,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/spotlight_styles \
     helpcontent2/source/text/swriter/01/spotlight_chars_df \
     helpcontent2/source/text/swriter/01/style_inspector \
+    helpcontent2/source/text/swriter/01/TableAutoFitMenu \
     helpcontent2/source/text/swriter/01/TableDeleteMenu \
     helpcontent2/source/text/swriter/01/TableInsertMenu \
     helpcontent2/source/text/swriter/01/TableSelectMenu \

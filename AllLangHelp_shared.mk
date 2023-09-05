@@ -401,6 +401,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/securitywarning \
     helpcontent2/source/text/shared/01/selectcertificate \
     helpcontent2/source/text/shared/01/SelectTable \
+    helpcontent2/source/text/shared/01/SetOptimalColumnWidth \
+    helpcontent2/source/text/shared/01/SetOptimalRowHeight \
     helpcontent2/source/text/shared/01/select_template_category \
     helpcontent2/source/text/shared/01/signexistingpdf \
     helpcontent2/source/text/shared/01/signsignatureline \
