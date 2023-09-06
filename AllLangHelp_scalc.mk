@@ -285,6 +285,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_yearfrac \
     helpcontent2/source/text/scalc/01/hide_sheet \
     helpcontent2/source/text/scalc/01/live_data_stream \
+    helpcontent2/source/text/scalc/01/MergeCellsMenu \
     helpcontent2/source/text/scalc/01/recalculate_hard \
     helpcontent2/source/text/scalc/01/shared_spreadsheet \
     helpcontent2/source/text/scalc/01/sheet_tab_color \
