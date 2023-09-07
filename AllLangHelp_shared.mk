@@ -336,6 +336,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/07080000 \
     helpcontent2/source/text/shared/01/about_meta_tags \
     helpcontent2/source/text/shared/01/addsignatureline \
+    helpcontent2/source/text/shared/01/AutoFormat \
     helpcontent2/source/text/shared/01/certificatepath \
     helpcontent2/source/text/shared/01/classificationbar \
     helpcontent2/source/text/shared/01/classificationdialog \
