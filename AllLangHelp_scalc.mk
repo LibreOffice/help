@@ -133,7 +133,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/06040000 \
     helpcontent2/source/text/scalc/01/06050000 \
     helpcontent2/source/text/scalc/01/06060000 \
-    helpcontent2/source/text/scalc/01/06060100 \
     helpcontent2/source/text/scalc/01/06060200 \
     helpcontent2/source/text/scalc/01/06070000 \
     helpcontent2/source/text/scalc/01/06080000 \
