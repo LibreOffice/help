@@ -208,6 +208,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/spotlight_chars_df \
     helpcontent2/source/text/swriter/01/style_inspector \
     helpcontent2/source/text/swriter/01/TableAutoFitMenu \
+    helpcontent2/source/text/swriter/01/TableConvertMenu \
     helpcontent2/source/text/swriter/01/TableDeleteMenu \
     helpcontent2/source/text/swriter/01/TableInsertMenu \
     helpcontent2/source/text/swriter/01/TableNumberRecognition \
