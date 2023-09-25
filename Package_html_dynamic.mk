@@ -16,6 +16,7 @@ $(eval $(call gb_Package_add_files,helpcontent2_html_dynamic,$(LIBO_SHARE_HELP_F
     languages.js \
     default.css \
     help2.js \
+    $(if $(HELP_ONLINE),tdf_matomo.js) \
 ))
 
 # vim: set noet sw=4 ts=4:

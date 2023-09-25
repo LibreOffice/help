@@ -27,6 +27,7 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 	languages.js \
 	default.css \
 	help2.js \
+	$(if $(HELP_ONLINE),tdf_matomo.js) \
 	$(foreach lang,$(gb_HELP_LANGS),\
 		$(lang)/bookmarks.js \
 		$(lang)/contents.js \
@@ -330,5 +331,10 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/help2.js : \
                 $(SRCDIR)/helpcontent2/help3xsl/help2.js \
                 $(BUILDDIR)/config_host.mk
 	sed -e "s/%PRODUCTNAME/$(gb_PRODUCTNAME_JS)/g" $< > $@
+
+$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/tdf_matomo.js : \
+                $(SRCDIR)/helpcontent2/help3xsl/tdf_matomo.js 
+	mkdir -p $(dir $@)
+	cp $(SRCDIR)/helpcontent2/help3xsl/tdf_matomo.js $@
 
 # vim: set noet sw=4 ts=4:
