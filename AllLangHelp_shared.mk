@@ -639,13 +639,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/autopi/01100300 \
     helpcontent2/source/text/shared/autopi/01100400 \
     helpcontent2/source/text/shared/autopi/01100500 \
-    helpcontent2/source/text/shared/autopi/01110000 \
-    helpcontent2/source/text/shared/autopi/01110100 \
-    helpcontent2/source/text/shared/autopi/01110200 \
-    helpcontent2/source/text/shared/autopi/01110300 \
-    helpcontent2/source/text/shared/autopi/01110400 \
-    helpcontent2/source/text/shared/autopi/01110500 \
-    helpcontent2/source/text/shared/autopi/01110600 \
     helpcontent2/source/text/shared/autopi/01120000 \
     helpcontent2/source/text/shared/autopi/01120100 \
     helpcontent2/source/text/shared/autopi/01120200 \

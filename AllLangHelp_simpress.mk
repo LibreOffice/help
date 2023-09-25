@@ -165,7 +165,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/guide/change_scale \
     helpcontent2/source/text/simpress/guide/footer \
     helpcontent2/source/text/simpress/guide/gluepoints \
-    helpcontent2/source/text/simpress/guide/html_export \
     helpcontent2/source/text/simpress/guide/html_import \
     helpcontent2/source/text/simpress/guide/impress_remote \
     helpcontent2/source/text/simpress/guide/individual \
