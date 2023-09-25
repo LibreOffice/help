@@ -98,20 +98,6 @@ function moduleColor (module) {
     }
 }
 
-// Find spans that need the switch treatment and give it to them
-var spans = document.querySelectorAll("[class^=switch]");
-var n = spans.length;
-for (z = 0; z < n; z++) {
-    var id = spans[z].getAttribute("id");
-    if (id === null) {
-        continue;
-    }
-    else if (id.startsWith("swlnsys")) {
-        setSystemSpan(spans[z]);
-    } else {
-        setApplSpan(spans[z]);
-    }
-}
 /* add &DbPAR= and &System= to the links in DisplayArea div */
 /* skip for object files */
 function fixURL(module, system) {
@@ -216,33 +202,6 @@ function setupLanguages(page) {
     }
 }
 
-// Test, if we are online
-if (document.body.getElementsByTagName('meta')) {
-    var _paq = _paq || [];
-    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-    _paq.push(['disableCookies']);
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-    var u="//piwik.documentfoundation.org/";
-    _paq.push(['setTrackerUrl', u+'piwik.php']);
-    _paq.push(['setSiteId', '68']);
-    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-    })();
-    var system = getParameterByName("System");
-} else {
-    var system = getSystem();
-}
-
-var module = getParameterByName("DbPAR");
-fixURL(module,system);
-moduleColor(module);
-var helpID = getParameterByName("HID");
-// only used in xhp pages with <help-id-missing/> tags
-var missingElement = document.getElementById("bm_HID2");
-if(missingElement != null){missingElement.innerHTML = helpID;}
-
 function debugInfo(dbg) {
     if (dbg == null) return;
     document.getElementById("DEBUG").style.display = "block";
@@ -251,15 +210,43 @@ function debugInfo(dbg) {
     document.getElementById("bm_HID").innerHTML = "HID is: "+helpID;
 }
 
+// Find spans that need the switch treatment and give it to them
+function impl_Switches(){
+
+    let spans = document.querySelectorAll("[class^=switch]");
+    let n = spans.length;
+    for (let z = 0; z < n; z++) {
+        let id = spans[z].getAttribute("id");
+        if (id === null) {
+            continue;
+        }
+        else if (id.startsWith("swlnsys")) {
+            setSystemSpan(spans[z]);
+        } else {
+        setApplSpan(spans[z]);
+        }
+    }
+}
+// Main
+let module = getParameterByName("DbPAR");
+let system = getParameterByName("System");
+let helpID = getParameterByName("HID");
+impl_Switches();
+fixURL(module,system);
+moduleColor(module);
+// only used in xhp pages with <help-id-missing/> tags
+let missingElement = document.getElementById("bm_HID2");
+if(missingElement != null){missingElement.innerHTML = helpID;}
+
 debugInfo(getParameterByName("Debug"));
 
 // Mobile devices need the modules and langs on page load
 if (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) < 960) {
-    var e = new Event('click');
-    var modulesBtn = document.getElementById('modules');
-    var langsBtn = document.getElementById('langs');
-    var modules = document.getElementById('modules-nav');
-    var langs = document.getElementById('langs-nav');
+    let e = new Event('click');
+    let modulesBtn = document.getElementById('modules');
+    let langsBtn = document.getElementById('langs');
+    let modules = document.getElementById('modules-nav');
+    let langs = document.getElementById('langs-nav');
     modules.setAttribute('data-a11y-toggle-open', '');
     modulesBtn.dispatchEvent(e);
     if (langs) {
