@@ -113,6 +113,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/01/effectoptionseffect \
     helpcontent2/source/text/simpress/01/effectoptionstext \
     helpcontent2/source/text/simpress/01/effectoptionstiming \
+    helpcontent2/source/text/simpress/01/PresentationMinimizer \
     helpcontent2/source/text/simpress/01/remoteconnections \
     helpcontent2/source/text/simpress/01/slidesorter \
     helpcontent2/source/text/simpress/02/04010000 \
