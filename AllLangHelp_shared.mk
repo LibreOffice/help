@@ -337,6 +337,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/about_meta_tags \
     helpcontent2/source/text/shared/01/addsignatureline \
     helpcontent2/source/text/shared/01/AutoFormat \
+    helpcontent2/source/text/shared/01/AutoRedactDoc \
     helpcontent2/source/text/shared/01/certificatepath \
     helpcontent2/source/text/shared/01/classificationbar \
     helpcontent2/source/text/shared/01/classificationdialog \
@@ -387,6 +388,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/Protect \
     helpcontent2/source/text/shared/01/qrcode \
     helpcontent2/source/text/shared/01/quickcolorselector \
+    helpcontent2/source/text/shared/01/RedactDoc \
     helpcontent2/source/text/shared/01/ref_epub_export \
     helpcontent2/source/text/shared/01/ref_pdf_export \
     helpcontent2/source/text/shared/01/ref_pdf_export_digital_signature \
@@ -405,6 +407,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/SelectTable \
     helpcontent2/source/text/shared/01/SetOptimalColumnWidth \
     helpcontent2/source/text/shared/01/SetOptimalRowHeight \
+    helpcontent2/source/text/shared/01/SpellOnline \
     helpcontent2/source/text/shared/01/select_template_category \
     helpcontent2/source/text/shared/01/signexistingpdf \
     helpcontent2/source/text/shared/01/signsignatureline \
@@ -811,6 +814,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/main0500 \
     helpcontent2/source/text/shared/main0650 \
     helpcontent2/source/text/shared/main0800 \
+    helpcontent2/source/text/shared/main_tools \
     helpcontent2/source/text/shared/mediaplay_toolbar \
     helpcontent2/source/text/shared/menu/forms \
     helpcontent2/source/text/shared/menu/comment_menu \
