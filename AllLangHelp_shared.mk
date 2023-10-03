@@ -407,12 +407,14 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/SelectTable \
     helpcontent2/source/text/shared/01/SetOptimalColumnWidth \
     helpcontent2/source/text/shared/01/SetOptimalRowHeight \
+    helpcontent2/source/text/shared/01/search_commands \
     helpcontent2/source/text/shared/01/SpellOnline \
     helpcontent2/source/text/shared/01/select_template_category \
     helpcontent2/source/text/shared/01/signexistingpdf \
     helpcontent2/source/text/shared/01/signsignatureline \
     helpcontent2/source/text/shared/01/StyleNewByExample \
     helpcontent2/source/text/shared/01/StyleUpdateByExample \
+    helpcontent2/source/text/shared/01/TipOfTheDay \
     helpcontent2/source/text/shared/01/themescolordialog \
     helpcontent2/source/text/shared/01/themesdialog \
     helpcontent2/source/text/shared/01/timestampauth \
@@ -910,7 +912,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/optionen/mailmerge \
     helpcontent2/source/text/shared/optionen/online_update \
     helpcontent2/source/text/shared/optionen/opencl \
-    helpcontent2/source/text/shared/optionen/search_commands \
     helpcontent2/source/text/shared/optionen/serverauthentication \
     helpcontent2/source/text/shared/optionen/testaccount \
     helpcontent2/source/text/shared/optionen/translatetools \
