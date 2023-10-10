@@ -77,12 +77,12 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/01010303 \
     helpcontent2/source/text/shared/01/01010304 \
     helpcontent2/source/text/shared/01/01020000 \
-    helpcontent2/source/text/shared/01/01020001 \
+    helpcontent2/source/text/shared/01/OpenRemote \
     helpcontent2/source/text/shared/01/01020101 \
     helpcontent2/source/text/shared/01/01020103 \
     helpcontent2/source/text/shared/01/01050000 \
     helpcontent2/source/text/shared/01/01060000 \
-    helpcontent2/source/text/shared/01/01060001 \
+    helpcontent2/source/text/shared/01/SaveAsRemote \
     helpcontent2/source/text/shared/01/01060002 \
     helpcontent2/source/text/shared/01/01070000 \
     helpcontent2/source/text/shared/01/01070001 \
