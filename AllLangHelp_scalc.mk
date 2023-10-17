@@ -291,6 +291,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/SelectColumn \
     helpcontent2/source/text/scalc/01/SelectData \
     helpcontent2/source/text/scalc/01/SelectRow \
+    helpcontent2/source/text/scalc/01/SetInputMode \
     helpcontent2/source/text/scalc/01/shared_spreadsheet \
     helpcontent2/source/text/scalc/01/sheet_tab_color \
     helpcontent2/source/text/scalc/01/solver \
