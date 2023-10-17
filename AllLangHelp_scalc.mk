@@ -189,6 +189,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/databar_more_options \
     helpcontent2/source/text/scalc/01/default_number_formats \
     helpcontent2/source/text/scalc/01/duplicate_sheet \
+    helpcontent2/source/text/scalc/01/EditSelectMenu \
     helpcontent2/source/text/scalc/01/events_sheet \
     helpcontent2/source/text/scalc/01/ex_data_stat_func \
     helpcontent2/source/text/scalc/01/format_graphic \
@@ -282,9 +283,14 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_year \
     helpcontent2/source/text/scalc/01/func_yearfrac \
     helpcontent2/source/text/scalc/01/hide_sheet \
+    helpcontent2/source/text/scalc/01/JumpToNextTableSel \
+    helpcontent2/source/text/scalc/01/JumpToPrevTableSel \
     helpcontent2/source/text/scalc/01/live_data_stream \
     helpcontent2/source/text/scalc/01/MergeCellsMenu \
     helpcontent2/source/text/scalc/01/recalculate_hard \
+    helpcontent2/source/text/scalc/01/SelectColumn \
+    helpcontent2/source/text/scalc/01/SelectData \
+    helpcontent2/source/text/scalc/01/SelectRow \
     helpcontent2/source/text/scalc/01/shared_spreadsheet \
     helpcontent2/source/text/scalc/01/sheet_tab_color \
     helpcontent2/source/text/scalc/01/solver \
@@ -307,7 +313,11 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/statistics_test_z \
     helpcontent2/source/text/scalc/01/stat_data \
     helpcontent2/source/text/scalc/01/ODFF \
+    helpcontent2/source/text/scalc/01/TableSelectAll \
     helpcontent2/source/text/scalc/01/text2columns \
+    helpcontent2/source/text/scalc/01/SelectUnprotectedCells \
+    helpcontent2/source/text/scalc/01/SelectVisibleColumns \
+    helpcontent2/source/text/scalc/01/SelectVisibleRows \
     helpcontent2/source/text/scalc/01/zoom \
     helpcontent2/source/text/scalc/01/xml_source \
     helpcontent2/source/text/scalc/02/06010000 \
