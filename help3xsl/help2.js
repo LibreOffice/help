@@ -172,7 +172,7 @@ function existingLang(lang) {
 function setupModules(lang) {
     var modulesNav = document.getElementById('modules-nav');
     if (!modulesNav.classList.contains('loaded')) {
-        var html =
+        let html =
             '<a href="' + lang + '/text/shared/05/new_help.html?DbPAR=SHARED"><div class="office-icon"></div>%PRODUCTNAME</a>' +
             '<a href="' + lang + '/text/swriter/main0000.html?DbPAR=WRITER"><div class="writer-icon"></div>Writer</a>' +
             '<a href="' + lang + '/text/scalc/main0000.html?DbPAR=CALC"><div class="calc-icon"></div>Calc</a>' +
@@ -187,10 +187,12 @@ function setupModules(lang) {
     }
 }
 
-function setupLanguages(page) {
-    var langNav = document.getElementById('langs-nav');
+function setupLanguages(url) {
+    let langNav = document.getElementById('langs-nav');
+    if (!langNav) return;
+    let page = url.substring(url.search('/text/'));
     if (!langNav.classList.contains('loaded')) {
-        var html = '';
+        let html = '';
         languagesSet.forEach(function(lang) {
             html += '<a href="' + lang + page + '">' + ((lang in languageNames)? languageNames[lang]: lang) + '</a>';
         });
@@ -237,18 +239,19 @@ if(missingElement != null){missingElement.innerHTML = helpID;}
 
 debugInfo(getParameterByName("Debug"));
 
-// Mobile devices need the modules and langs on page load
+// Mobile devices need the modules and langs displayed on page load
 if (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) < 960) {
-    let e = new Event('click');
-    let modulesBtn = document.getElementById('modules');
-    let langsBtn = document.getElementById('langs');
     let modules = document.getElementById('modules-nav');
     let langs = document.getElementById('langs-nav');
-    modules.setAttribute('data-a11y-toggle-open', '');
-    modulesBtn.dispatchEvent(e);
+    modules.removeAttribute('hidden');
     if (langs) {
-        langs.setAttribute('data-a11y-toggle-open', '');
-        langsBtn.dispatchEvent(e);
+        langs.removeAttribute('hidden');
     }
 }
+
+const href = window.location.href;
+const lang = existingLang(getParameterByName("Language", href) || navigator.language);
+setupModules(lang);
+setupLanguages(href);
+
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */

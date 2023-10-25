@@ -185,17 +185,17 @@
         </a>
         <div class="dropdowns">
             <div class="modules">
-                <button type="button" data-a11y-toggle="modules-nav" id="modules" onclick="setupModules('{$lang}');">
+                <button type="button" data-a11y-toggle="modules-nav" id="modules" aria-haspopup="true" aria-expanded="false" aria-controls="modules-nav">
                     <xsl:value-of select="$ui_module"/>
                 </button>
-            <nav id="modules-nav"/><!-- is filled in via setupModules() on demand -->
+                <nav id="modules-nav" hidden=""/><!-- is filled in via setupModules() -->
             </div>
             <xsl:if test="$online">
                 <div class="lang">
-                    <button type="button" data-a11y-toggle="langs-nav" id="langs" onclick="setupLanguages('{$htmlpage}');">
+                    <button type="button" data-a11y-toggle="langs-nav" id="langs" aria-haspopup="true" aria-expanded="false" aria-controls="modules-nav">
                         <xsl:value-of select="$ui_language"/>
                     </button>
-                    <nav id="langs-nav"/><!-- is filled in via setupLanguages() on demand -->
+                    <nav id="langs-nav" hidden=""/><!-- is filled in via setupLanguages() -->
                 </div>
             </xsl:if>
         </div>

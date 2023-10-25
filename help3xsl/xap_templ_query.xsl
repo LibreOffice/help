@@ -118,9 +118,9 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
     </header>
 </div>
 <div class="modules">
-    <button type="button" data-a11y-toggle="modules-nav" id="modules" onclick="setupModules(']]><xsl:value-of select="$lang"/><![CDATA[');">]]><xsl:value-of select="$ui_module"/><![CDATA[
+    <button type="button" data-a11y-toggle="modules-nav" id="modules" onclick="setupModules(']]><xsl:value-of select="$lang"/><![CDATA[');" aria-haspopup="true" aria-expanded="false" aria-controls="modules-nav">]]><xsl:value-of select="$ui_module"/><![CDATA[
     </button>
-    <nav id="modules-nav"/><!-- is filled in via setupModules() on demand -->
+    <nav id="modules-nav" hidden=""/><!-- is filled in via setupModules() on demand -->
 </div>
 <aside class="rightside">
     <input id="accordion-1" name="accordion-menu" type="checkbox"/>

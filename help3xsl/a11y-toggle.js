@@ -1,100 +1,54 @@
+/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 /*
-MIT License
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */
 
-Copyright (c) 2016 Edenspiekermann
-
-*/
-
-(function () {
-  'use strict';
-
-  var internalId = 0;
-  var togglesMap = {};
-  var targetsMap = {};
-
-  function $ (selector, context) {
-    return Array.prototype.slice.call(
-      (context || document).querySelectorAll(selector)
-    );
-  }
-
-  function getClosestToggle (element) {
-    if (element.closest) {
-      return element.closest('[data-a11y-toggle]');
-    }
-
-    while (element) {
-      if (element.nodeType === 1 && element.hasAttribute('data-a11y-toggle')) {
-        return element;
-      }
-
-      element = element.parentNode;
-    }
-
-    return null;
-  }
-
-  function handleToggle (toggle) {
-    var target = toggle && targetsMap[toggle.getAttribute('aria-controls')];
-
-    if (!target) {
-      return false;
-    }
-
-    var toggles = togglesMap['#' + target.id];
-    var isExpanded = target.getAttribute('aria-hidden') === 'false';
-
-    target.setAttribute('aria-hidden', isExpanded);
-    toggles.forEach(function (toggle) {
-      toggle.setAttribute('aria-expanded', !isExpanded);
+function hideNavs() {
+    let navs = document.querySelectorAll('[data-a11y-toggle] + nav');
+    navs.forEach((nav) => {
+        if (!nav.hasAttribute('hidden')) {
+            nav.previousElementSibling.setAttribute('aria-expanded', 'false');
+            nav.setAttribute('hidden', 'true');
+        }
     });
-  }
-
-  var initA11yToggle = function (context) {
-    togglesMap = $('[data-a11y-toggle]', context).reduce(function (acc, toggle) {
-      var selector = '#' + toggle.getAttribute('data-a11y-toggle');
-      acc[selector] = acc[selector] || [];
-      acc[selector].push(toggle);
-      return acc;
-    }, togglesMap);
-
-    var targets = Object.keys(togglesMap);
-    targets.length && $(targets).forEach(function (target) {
-      var toggles = togglesMap['#' + target.id];
-      var isExpanded = target.hasAttribute('data-a11y-toggle-open');
-      var labelledby = [];
-
-      toggles.forEach(function (toggle) {
-        toggle.id || toggle.setAttribute('id', 'a11y-toggle-' + internalId++);
-        toggle.setAttribute('aria-controls', target.id);
-        toggle.setAttribute('aria-expanded', isExpanded);
-        labelledby.push(toggle.id);
-      });
-
-      target.setAttribute('aria-hidden', !isExpanded);
-      target.hasAttribute('aria-labelledby') || target.setAttribute('aria-labelledby', labelledby.join(' '));
-
-      targetsMap[target.id] = target;
-    });
-  };
-
-  document.addEventListener('DOMContentLoaded', function () {
-    initA11yToggle();
-  });
-
-  document.addEventListener('click', function (event) {
-    var toggle = getClosestToggle(event.target);
-    handleToggle(toggle);
-  });
-
-  document.addEventListener('keyup', function (event) {
-    if (event.which === 13 || event.which === 32) {
-      var toggle = getClosestToggle(event.target);
-      if (toggle && toggle.getAttribute('role') === 'button') {
-        handleToggle(toggle);
-      }
+}
+const navToggle = document.querySelectorAll('[data-a11y-toggle]');
+navToggle.forEach((toggle) => {
+      let navList = toggle.nextElementSibling;
+      let navLinks = navList.querySelectorAll('a');
+      toggle.addEventListener('click', (event) => {
+          if (navList.hasAttribute('hidden')) {
+              toggle.setAttribute('aria-expanded', 'true');
+              navList.removeAttribute('hidden');
+              // Set focus on first link
+              // will be highlighted for keyboard users
+              navLinks[0].focus();
+          } else {
+              navList.setAttribute('hidden', 'true');
+              toggle.setAttribute('aria-expanded', 'false');
+          }
+          event.stopPropagation();
+    }, false);
+});
+document.addEventListener('keydown', (event) => {
+    // Ignore IME composition
+    if (event.isComposing || event.keyCode === 229) {
+        return;
     }
-  });
 
-  window && (window.a11yToggle = initA11yToggle);
-})();
+    // Close menu with ESC key
+    if (event.keyCode === 27) {
+        hideNavs();
+    }
+}, false);
+document.addEventListener('click', (event) => {
+    // close navigation menus when clicking anywhere (except when on mobile)
+    if (event.target.closest('[data-a11y-toggle] + nav') || Math.max(document.documentElement.clientWidth, window.innerWidth || 0) < 960) return
+    hideNavs();
+})
+
+/* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */

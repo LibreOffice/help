@@ -258,4 +258,5 @@ function youtubeLoader(ytId, width, height) {
     placeholder.innerHTML = iframeMarkup;
     placeholder.removeAttribute("style");
 }
+
 /* vim:set shiftwidth=4 softtabstop=4 expandtab cinoptions=b1,g0,N-s cinkeys+=0=break: */
