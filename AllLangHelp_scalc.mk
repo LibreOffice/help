@@ -287,6 +287,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/JumpToPrevTableSel \
     helpcontent2/source/text/scalc/01/live_data_stream \
     helpcontent2/source/text/scalc/01/MergeCellsMenu \
+    helpcontent2/source/text/scalc/01/NormalViewMode \
     helpcontent2/source/text/scalc/01/recalculate_hard \
     helpcontent2/source/text/scalc/01/SelectColumn \
     helpcontent2/source/text/scalc/01/SelectData \
