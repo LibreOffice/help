@@ -317,10 +317,12 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/ODFF \
     helpcontent2/source/text/scalc/01/TableSelectAll \
     helpcontent2/source/text/scalc/01/text2columns \
+    helpcontent2/source/text/scalc/01/ToggleFormula \
     helpcontent2/source/text/scalc/01/ToggleSheetGrid \
     helpcontent2/source/text/scalc/01/SelectUnprotectedCells \
     helpcontent2/source/text/scalc/01/SelectVisibleColumns \
     helpcontent2/source/text/scalc/01/SelectVisibleRows \
+    helpcontent2/source/text/scalc/01/ViewHiddenColRow \
     helpcontent2/source/text/scalc/01/zoom \
     helpcontent2/source/text/scalc/01/xml_source \
     helpcontent2/source/text/scalc/02/06010000 \
