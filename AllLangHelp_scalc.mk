@@ -283,6 +283,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_year \
     helpcontent2/source/text/scalc/01/func_yearfrac \
     helpcontent2/source/text/scalc/01/hide_sheet \
+    helpcontent2/source/text/scalc/01/InsertCurrentDate \
+    helpcontent2/source/text/scalc/01/InsertCurrentTime \
     helpcontent2/source/text/scalc/01/JumpToNextTableSel \
     helpcontent2/source/text/scalc/01/JumpToPrevTableSel \
     helpcontent2/source/text/scalc/01/live_data_stream \
