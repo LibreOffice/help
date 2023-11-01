@@ -346,6 +346,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/DeleteTable \
     helpcontent2/source/text/shared/01/digitalsignatures \
     helpcontent2/source/text/shared/01/digitalsignaturespdf \
+    helpcontent2/source/text/shared/01/DrawText \
     helpcontent2/source/text/shared/01/EntireCell \
     helpcontent2/source/text/shared/01/EntireColumn \
     helpcontent2/source/text/shared/01/EntireRow \
