@@ -8,21 +8,18 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  *
 -->
-
 <meta>
   <topic id="SF_Document" indexer="include" status="PUBLISH">
     <title id="tit" xml-lang="en-US">SFDocuments.Document service</title>
     <filename>/text/sbasic/shared/03/sf_document.xhp</filename>
   </topic>
 </meta>
-
 <body>
 <section id="SFDocuments-sf_document">
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id261582733781987">
       <bookmark_value>Document service</bookmark_value>
     </bookmark>
 </section>
-
 <section id="abstract">
     <h1 id="hd_id731582733781114" xml-lang="en-US"><variable id="DocumentService"><link href="text/sbasic/shared/03/sf_document.xhp"><literal>SFDocuments</literal>.<literal>Document</literal> service</link></variable></h1>
   <paragraph role="paragraph" id="par_id381589189355849" xml-lang="en-US">The <literal>SFDocuments</literal> library provides methods and properties to facilitate the management and manipulation of %PRODUCTNAME documents.</paragraph>
@@ -36,15 +33,12 @@
   </listitem>
   </list>
 </section>
-
   <warning id="par_id301611085807704">The properties, methods or arguments marked with <emph>(*)</emph> are <emph>NOT applicable to Base documents</emph>.</warning>
   <paragraph role="paragraph" id="par_id241589189701274" xml-lang="en-US">Methods and properties that are specific to certain %PRODUCTNAME components are stored in separate services, such as <literal>SFDocuments.SF_Calc</literal> and <literal>SFDocuments.SF_Base</literal>.</paragraph>
   <paragraph role="paragraph" id="par_id641611090052376">Although the Basic language does not offer inheritance between object classes, the latter services may be considered as subclasses of the <literal>SFDocuments.Document</literal> service. Such subclasses can invoke the properties and methods described below.</paragraph>
-
   <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
   <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>Document</literal> service the <literal>ScriptForge</literal> library needs to be loaded or imported:</paragraph>
   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#importLibs"/>
-
   <paragraph role="paragraph" id="par_id581611090387382">Below are three variants of how the <literal>Document</literal> service can be invoked.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <paragraph role="paragraph" id="par_id181622816732197">Using the <literal>getDocument</literal> method from the <literal>ScriptForge</literal>.<literal>UI</literal> service:</paragraph>
@@ -106,7 +100,6 @@
     <paragraph role="pycode" localize="false" id="pyc_id221622819064967">    # (...)</paragraph>
   </pycode>
   <tip id="par_id71611090922315">The use of the prefix "<literal>SFDocuments.</literal>" while calling the service is optional.</tip>
-
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id81611339709014">
     <bookmark_value>API;Duration</bookmark_value>
     <bookmark_value>API;XComponent</bookmark_value>
@@ -121,13 +114,17 @@
     <bookmark_value>Document service;IsBase property</bookmark_value>
     <bookmark_value>Document service;IsCalc property</bookmark_value>
     <bookmark_value>Document service;IsDraw property</bookmark_value>
+    <bookmark_value>Document service;IsFormDocument property</bookmark_value>
     <bookmark_value>Document service;IsImpress property</bookmark_value>
     <bookmark_value>Document service;IsMath property</bookmark_value>
     <bookmark_value>Document service;IsWriter property</bookmark_value>
     <bookmark_value>Document service;Keywords property</bookmark_value>
     <bookmark_value>Document service;Readonly property</bookmark_value>
+    <bookmark_value>Document service;StyleFamilies property</bookmark_value>
     <bookmark_value>Document service;Subject property</bookmark_value>
     <bookmark_value>Document service;Title property</bookmark_value>
+    <bookmark_value>Document service;XComponent property</bookmark_value>
+    <bookmark_value>Document service;XDocumentSettings property</bookmark_value>
   </bookmark>
   <h2 id="hd_id351582885195476" xml-lang="en-US">Properties</h2>
   <section id="properties_toc">
@@ -204,7 +201,7 @@
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id881589194572136" role="tablecontent" xml-lang="en-US" localize="false">ExportFilters</paragraph>
+            <paragraph id="par_id881589194572136" role="tablecontent" localize="false">ExportFilters (*)</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id201589194571699" role="tablecontent" xml-lang="en-US">Yes</paragraph>
@@ -218,7 +215,7 @@
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id881589194574646" role="tablecontent" localize="false">FileSystem</paragraph>
+            <paragraph id="par_id881589194574646" role="tablecontent" localize="false">FileSystem (*)</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id201589194571306" role="tablecontent">Yes</paragraph>
@@ -233,7 +230,7 @@
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id881589194573253" role="tablecontent" xml-lang="en-US" localize="false">ImportFilters</paragraph>
+            <paragraph id="par_id881589194573253" role="tablecontent" localize="false">ImportFilters (*)</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id201589194571067" role="tablecontent" xml-lang="en-US">Yes</paragraph>
@@ -291,13 +288,27 @@
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id921589195028191" role="tablecontent" xml-lang="en-US" localize="false">Subject (*)</paragraph>
+            <paragraph id="par_id921589195028191" role="tablecontent" localize="false">StyleFamilies (*)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id201589196128733" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id551589195138724" role="tablecontent" localize="false">String array</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id372699195028843" role="tablecontent" xml-lang="en-US">List of available style families. Applicable to all document types except Base.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id031589195028191" role="tablecontent" localize="false">Subject (*)</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id201589195028733" role="tablecontent" xml-lang="en-US">No</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id551589195028724" role="tablecontent" xml-lang="en-US" localize="false">String</paragraph>
+            <paragraph id="par_id551589195028724" role="tablecontent" localize="false">String</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id371589195028843" role="tablecontent" xml-lang="en-US">Gives access to the Subject property of the document.</paragraph>
@@ -319,7 +330,7 @@
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id97158288519551" role="tablecontent" xml-lang="en-US" localize="false">XComponent</paragraph>
+            <paragraph id="par_id97158288519551" role="tablecontent" localize="false">XComponent</paragraph>
         </tablecell>
         <tablecell>
             <paragraph id="par_id221582885195686" role="tablecontent" xml-lang="en-US">Yes</paragraph>
@@ -328,12 +339,25 @@
             <paragraph id="par_id371582885195525" role="tablecontent" xml-lang="en-US">UNO Object</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id881582885195976" role="tablecontent" xml-lang="en-US" >The UNO object <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1lang_1_1XComponent.html"><literal>com.sun.star.lang.XComponent</literal></link> or <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1sdb_1_1OfficeDatabaseDocument.html"><literal>com.sun.star.comp.dba.ODatabaseDocument</literal></link> representing the document</paragraph>
+            <paragraph id="par_id881582885195976" role="tablecontent" xml-lang="en-US" >The UNO object <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1lang_1_1XComponent.html"><literal>com.sun.star.lang.XComponent</literal></link> or <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1sdb_1_1OfficeDatabaseDocument.html"><literal>com.sun.star.comp.dba.ODatabaseDocument</literal></link> representing the document.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+            <paragraph id="par_id97158299619551" role="tablecontent" localize="false">XDocumentSettings (*)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id232682885195686" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id371693885195525" role="tablecontent" xml-lang="en-US">UNO Object</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id881582885205976" role="tablecontent" xml-lang="en-US">A <literal>com.sun.star.XXX.DocumentSettings</literal> UNO object - where XXX is sheet, text, drawing or presentation - that gives access to UNO internal properties, that are specific to the document's type.</paragraph>
         </tablecell>
       </tablerow>
     </table>
   </section>
-
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <paragraph role="paragraph" id="par_id861611146581334">The example below prints all the properties of a document. Note that the <literal>oDoc</literal> object returned by the <literal>UI.OpenDocument</literal> method is a <literal>SFDocuments.Document</literal> object.</paragraph>
@@ -360,7 +384,6 @@
     <paragraph role="pycode" localize="false" id="pyc_id71622827329510">bas.MsgBox(msg)</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id71622827327225">doc.CloseDocument()</paragraph>
   </pycode>
-
   <section id="methods_toc">
   <table id="tab_id901611086279902">
    <tablerow>
@@ -372,29 +395,33 @@
              <link href="text/sbasic/shared/03/sf_document.xhp#Activate">Activate</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#CloseDocument">CloseDocument</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#CreateMenu">CreateMenu</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#CreateMenu">DeleteStyles</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#Echo">Echo</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#ExportAsPDF">ExportAsPDF</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
-             <link href="text/sbasic/shared/03/sf_document.xhp#ExportAsPDF">ExportAsPDF</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#ExportAsPDF">ImportStylesFromFile</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#PrintOut">PrintOut</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#RemoveMenu">RemoveMenu</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#RunCommand">RunCommand</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#Save">Save</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#SaveAs">SaveAs</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
-             <link href="text/sbasic/shared/03/sf_document.xhp#Save">Save</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#SaveAs">SaveAs</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#SaveCopyAs">SaveCopyAs</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#SetPrinter">SetPrinter</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#SetPrinter">Style</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#Toolbars">Toolbars</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#SetPrinter">XStyle</link><br/><br/>
            </paragraph>
        </tablecell>
    </tablerow>
   </table>
   </section>
-
 <section id="Activate">
   <comment> Activate -------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
@@ -422,7 +449,6 @@
   </pycode>
   <tip id="par_id601611148080503">Keep in mind that you can invoke the <literal>Document</literal> service by passing to <literal>CreateScriptService</literal> either "Document" or "SFDocuments.Document"</tip>
 </section>
-
 <section id="CloseDocument">
   <comment> CloseDocument ---------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721589200121249">
@@ -451,7 +477,6 @@
     <paragraph role="pycode" localize="false" id="pyc_id221622827947414">    # ...</paragraph>
   </pycode>
 </section>
-
 <section id="CreateMenu">
   <comment> CreateMenu --------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721589200120958">
@@ -497,7 +522,37 @@
     <tip id="par_id271643139068194">Refer to the <link href="text/sbasic/shared/03/sf_menu.xhp"><input>SFWidgets.Menu</input></link> help page to learn more about how to create/remove menus in %PRODUCTNAME document windows.</tip>
   </section>
 </section>
-
+<section id="DeleteStyles">
+  <comment> DeleteStyles --------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id721589200120958">
+    <bookmark_value>Document service;DeleteStyles</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261590300232440" localize="false">DeleteStyles</h2>
+  <paragraph role="paragraph" id="par_id652699200121080">Suppresses a single style or an array of styles given by their names	within a specific styles family. Only user-defined styles may be deleted, built-in styles are ignored. It applies to all document types except <literal>Base</literal> and <literal>FormDocument</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id1001623997222964">
+    <input>svc.DeleteStyles(family: str, stylelist: str[1..*])</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <section id="family">
+    <paragraph role="paragraph" id="par_id361580300131416"><emph>family</emph>: One of the style families present in the actual document, as a case-sensitive string. Valid family names can be retrieved using <literal>StyleFamilies</literal> property.</paragraph>
+  </section>
+  <paragraph role="paragraph" id="par_id361589211129686"><emph>stylelist</emph>: A single style name as a string or an array of style names. The style names may be localized or not. The StylesList is typically the output of the execution of a <literal>Styles()</literal> method.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" xml-lang="en-US" id="bas_id551699456930743">' Removing unused paragraph styles</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id591701264507313">Const family = "ParagraphStyles"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id751633827903865">aList = oDoc.Styles(family, used := False, userDefined := True)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id621643231224240">oDoc.DeleteStyles(family, aList)</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" xml-lang="en-US" id="pyc_id61699457030186"># Removing styles according to a prefix</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id421699456520283">a_list = doc.Styles('ParagraphStyles', namepattern = "Py*")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id421709456520393">doc.Styles('ParagraphStyles', a_list)</paragraph>
+  </pycode>
+</section>
 <section id="Echo">
   <comment> Echo ------------------------------------------------------------------------------------------------ </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721985200199205">
@@ -531,7 +586,6 @@
     <paragraph role="pycode" localize="false" id="pyc_id221688837494813">doc.Echo()</paragraph>
   </pycode>
 </section>
-
 <section id="ExportAsPDF">
   <comment> ExportAsPDF -------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721985200121025">
@@ -578,7 +632,41 @@
     <paragraph role="pycode" localize="false" id="pyc_id591638277330780">doc.ExportAsPDF(r"C:\User\Documents\myFile.pdf")</paragraph>
   </pycode>
 </section>
-
+<section id="ImportStylesFromFile">
+  <comment> ImportStylesFromFile ---------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id832985200121350">
+    <bookmark_value>Document service;ImportStylesFromFile</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id372589202101526" localize="false">ImportStylesFromFile</h2>
+  <paragraph role="paragraph" id="par_id266589200121149">This method loads all the styles belonging to one or more style families from a closed file into the actual document. The actual document must be a <literal>Calc</literal> or a <literal>Writer</literal> document.</paragraph>
+  <paragraph role="paragraph" id="par_id11701265953648">	Are always imported together:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id221701265998649" role="listitem"><literal>ParagraphStyles</literal> and <literal>CharacterStyles</literal></paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id441701265999801" role="listitem"><literal>NumberingStyles</literal> and <literal>ListStyles</literal></paragraph>
+    </listitem>
+  </list>
+  <paragraph role="paragraph" id="par_id091611169416945">Returns <literal>True</literal> if styles were successfully imported.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id2101622827822170">
+    <input>svc.ImportStylesFromFile(filename: str, families: str[1..*], overwrite = False): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id321635436910004"><emph>filename</emph>: The file from which to load the styles in the <literal>FileSystem</literal> notation. The file is presumed to be of the same document type as the actual document.</paragraph>
+  <paragraph role="paragraph" id="par_id251635436912157"><emph>families</emph>: One of the style families present in the actual document, as a case-sensitive string or an array of such strings. Default = all families.</paragraph>
+  <paragraph role="paragraph" id="par_id362635436912268"><emph>overwrite</emph>: When <literal>True</literal>, the actual styles may be overwritten. Default is <literal>False</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id89158920012167">oDoc.ImportStylesFromFile("C:\User\Documents\myFile.ods", "ParagraphStyles", True)</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id731622728946909">doc.ImportStylesFromFile('C:\User\Documents\myFile.ods', ("ParagraphStyles",), False)</paragraph>
+  </pycode>
+</section>
 <section id="PrintOut">
   <comment> PrintOut ---------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721985200121249">
@@ -607,7 +695,6 @@
     <paragraph role="pycode" localize="false" id="pyc_id221628227947414">    # ...</paragraph>
   </pycode>
 </section>
-
 <section id="RemoveMenu">
   <comment> RemoveMenu --------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721589200129148">
@@ -637,7 +724,6 @@
   </pycode>
   <embed href="text/sbasic/shared/03/sf_document.xhp#menu_tip"/>
 </section>
-
 <section id="RunCommand">
   <comment> RunCommand --------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id601589202413561">
@@ -684,7 +770,6 @@
   </pycode>
   <tip id="par_id191611153511038">Each %PRODUCTNAME component has its own set of commands available. One easy way to learn commands is going to <emph>Tools - Customize - Keyboard</emph>. When you position your mouse over a function in the <emph>Function</emph> list, a tooltip will appear with the corresponding UNO command.</tip>
 </section>
-
 <section id="Save">
   <comment> Save ------------------------------------------------------------------------ </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id691589202925124">
@@ -711,7 +796,6 @@
     <paragraph role="pycode" localize="false" id="pyc_id781622828542374">    # ...</paragraph>
   </pycode>
 </section>
-
 <section id="SaveAs">
   <comment> SaveAs --------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141589203370367">
@@ -741,7 +825,6 @@
     <paragraph role="pycode" localize="false" id="pyc_id801622828865363">doc.SaveAs(r"C:\Documents\NewCopy.odt", overwrite = True)</paragraph>
   </pycode>
 </section>
-
 <section id="SaveCopyAs">
   <comment> SaveCopyAs ------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id71158920514765">
@@ -771,7 +854,6 @@
     <paragraph role="pycode" localize="false" id="pyc_id941622829095519">doc.SaveCopyAs(r"C:\Documents\Copy2.odt", overwrite = True)</paragraph>
   </pycode>
 </section>
-
 <section id="SetPrinter">
   <comment> SetPrinter ------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id71158921504765">
@@ -800,7 +882,101 @@
     <paragraph role="pycode" localize="false" id="pyc_id941628229095519">doc.SetPrinter(paperformat='TABLOID')</paragraph>
   </pycode>
 </section>
-
+<section id="Styles">
+  <comment> Styles --------------------------------------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id721589200120958">
+    <bookmark_value>Document service;Styles</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id262600300121440" localize="false">Styles</h2>
+  <paragraph role="paragraph" id="par_id652600200121080">Retrieves a list of styles matching an optional compound criteria, the returned array may be empty. It applies to all document types except <literal>Base</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id1001623997333964">
+    <input>svc.Styles(family, opt namepattern: str, opt used: bool, opt userdefined: bool, opt parentstyle: str, opt category: str): str[0..*])</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/03/sf_document.xhp#family"/>
+  <paragraph role="paragraph" id="par_id361589322129686"><emph>category</emph>: A case-insensitive string: TEXT, CHAPTER, LIST, INDEX, EXTRA, HTML. For their respective meanings, refer to <link href="https://api.libreoffice.org/docs/idl/ref/namespacecom_1_1sun_1_1star_1_1style_1_1ParagraphStyleCategory.html">paragraph style category</link> API documentation.</paragraph>
+  <paragraph role="paragraph" id="par_id921701269531603">This argument is ignored when the Family differs from "ParagraphStyles".</paragraph>
+  <paragraph role="paragraph" id="par_id472589322129797"><emph>namepattern</emph>: A filter on the style names, as a case-sensitive string pattern. The names include the internal and localized names.</paragraph>
+  <paragraph role="paragraph" id="par_id551701269163643">Admitted wildcard are:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id481701269193780" role="listitem">the "?" representing any single character.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id821701269197990" role="listitem">the "*" representing zero, one, or multiple characters</paragraph>
+    </listitem>
+  </list>
+  <paragraph role="paragraph" id="par_id583589322129808"><emph>parentstyle</emph>: When present, only the children of the given, localized or not, parent style name are retained.</paragraph>
+  <paragraph role="paragraph" id="par_id694589322129919"><emph>used</emph>: When <literal>True</literal>, the style must be used in the document, when absent the argument is ignored.</paragraph>
+  <paragraph role="paragraph" id="par_id705589322129020"><emph>userdefined</emph>: When <literal>True</literal>, the style must have been added by the user, either in the document or its template, when absent, the argument is ignored.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id21699458678271">Dim vStyles As Variant</paragraph>
+    <paragraph role="bascode" xml-lang="en-US" id="bas_id751644827903865">vStyles = oDoc.Styles("ParagraphStyles") '	All styles in the family</paragraph>
+    <paragraph role="bascode" xml-lang="en-US" id="bas_id32799458678382">vStyles = oDoc.Styles("ParagraphStyles", "H*") '	Heading, Heading 1, ...</paragraph>
+    <paragraph role="bascode" xml-lang="en-US" id="bas_id621654231224240">vStyles = oDoc.Styles("ParagraphStyles", Used := False, UserDefined := True) ' All user-defined styles that are not used</paragraph>
+    <paragraph role="bascode" xml-lang="en-US" id="bas_id421701270188965">vStyles = oDoc.Styles("ParagraphStyles", ParentStyle := "Standard") ' All styles derived from the 'Default Paragraph Style'
+</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" xml-lang="en-US" id="pyc_id901701270289703">vStyles = doc.Styles('ParagraphStyles')  #	All styles in the family</paragraph>
+    <paragraph role="pycode" xml-lang="en-US" id="pyc_id91701270291214">vStyles = doc.Styles('ParagraphStyles', 'H*')  #	Heading, Heading 1, ...</paragraph>
+    <paragraph role="pycode" xml-lang="en-US" id="pyc_id381701270291427">vStyles = doc.Styles('ParagraphStyles', Used = False, UserDefined = True)  # All user-defined styles that are not used</paragraph>
+    <paragraph role="pycode" xml-lang="en-US" id="pyc_id841701270291654">vStyles = doc.Styles('ParagraphStyles', ParentStyle = 'Standard")  # All styles derived from the "Default Paragraph Style"</paragraph>
+  </pycode>
+</section>
+<section id="Toolbars">
+  <comment> XStyles --------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721580310120958">
+    <bookmark_value>Document service;Toolbars</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261501400121339" localize="false">Toolbars</h2>
+  <paragraph role="paragraph" id="par_id091612259727155">This method returns either a list of the available toolbar names in the actual document or a Toolbar object instance from the SFWidgets library.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id2111634997222964">
+    <input>svc.Toolbars(opt ToolbarName: str): uno</input>
+    <input>svc.Toolbars(): str[0..]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <embed href="text/sbasic/shared/03/sf_document.xhp#family"/>
+  <paragraph role="paragraph" id="par_id361580321120786"><emph>ToolbarName</emph>: The usual name of one of the available toolbars.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id422801270747157">Dim oToolbar As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531712370872084">Set oToolbar = oDoc.Toolbars("myToolbar")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+	<paragraph role="pycode" localize="false" id="pyc_id181702380926212">a_list = doc.Toolbars()</paragraph>
+  </pycode>
+</section><section id="XStyles">
+  <comment> XStyles --------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721589200120958">
+    <bookmark_value>Document service;XStyles</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id261590300121339" localize="false">XStyles</h2>
+  <paragraph role="paragraph" id="par_id091612259616155">This method returns the UNO representation of a given style for all document types except <literal>Base</literal>. <literal>Nothing</literal> is returned when the StyleName does not exist in the given Family.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id1001634997222964">
+    <input>svc.XStyles(family: str, stylename: str): uno</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <embed href="text/sbasic/shared/03/sf_document.xhp#family"/>
+  <paragraph role="paragraph" id="par_id361589211120786"><emph>stylename</emph>: One of the styles present in the given family, as a case-sensitive string. The <literal>StyleName</literal> may be localized or not.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id421701270747157">Dim oStyle As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531701270872084">Set oStyle = oDoc.XStyle("ParagraphStyle", "Heading 2")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+	<paragraph role="pycode" localize="false" id="pyc_id181701270926212">oStyle = doc.XStyle('ParagraphStyle', 'Heading 2')</paragraph>
+  </pycode>
+</section>
   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
   <section id="relatedtopics">
     <embed href="text/sbasic/shared/03/sf_dictionary.xhp#SFDictionary"/>
