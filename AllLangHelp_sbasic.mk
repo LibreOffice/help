@@ -109,6 +109,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03/sf_textstream \
     helpcontent2/source/text/sbasic/shared/03/sf_timer \
     helpcontent2/source/text/sbasic/shared/03/sf_toc \
+    helpcontent2/source/text/sbasic/shared/03/sf_toolbar \
+    helpcontent2/source/text/sbasic/shared/03/sf_toolbarbutton \
     helpcontent2/source/text/sbasic/shared/03/sf_ui \
     helpcontent2/source/text/sbasic/shared/03/sf_unittest \
     helpcontent2/source/text/sbasic/shared/03/sf_writer \

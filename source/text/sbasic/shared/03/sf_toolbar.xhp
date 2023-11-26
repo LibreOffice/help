@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_Toolbar" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">SFWidgets.Toolbar service</title>
+    <filename>/text/sbasic/shared/03/sf_toolbar.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+  <section id="SFWidgets-sf_toolbar">
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id261582733781987">
+      <bookmark_value>Toolbar service</bookmark_value>
+    </bookmark>
+  </section>
+
+  <section id="abstract">
+    <h1 id="hd_id731582733781114" xml-lang="en-US"><variable id="ToolbarService"><link href="text/sbasic/shared/03/sf_toolbar.xhp"><literal>SFWidgets</literal>.<literal>Toolbar</literal> service</link></variable></h1>
+    <paragraph role="paragraph" id="par_id571700837631557">The <literal>Toolbar</literal> service allows to retrieve information related to the toolbars available for a specific document window. With this service it is possible to:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id891589189452545" role="listitem">Toggle the visibility of specific toolbars.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id811589189463041" role="listitem">Access information about the buttons available in each toolbar.</paragraph>
+      </listitem>
+    </list>
+  </section>
+  <paragraph role="paragraph" id="par_id141700851608146">Each %PRODUCTNAME application has its own set of available toolbars. This service handles both built-in and custom toolbars.</paragraph>
+  <note id="par_id181700851890467">The status bar and the menu bar are not considered toolbars in the context of this service.</note>
+
+  <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>Toolbar</literal> service the <literal>ScriptForge</literal> library needs to be loaded or imported:</paragraph>
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#importLibs"/>
+
+  <paragraph role="paragraph" id="par_id411700851985942">The <literal>Toolbar</literal> service is invoked using the <literal>Toolbars</literal> method, which is available in the following services: <literal>Calc</literal>, <literal>Datasheet</literal>, <literal>Document</literal>, <literal>FormDocument</literal> and <literal>Writer</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id771700853155061">The example below gets an <literal>Array</literal> with the names of the toolbars available in the current document.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id561700853223079">oDoc = CreateScriptService("Document", ThisComponent)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id821700853223579">arrToolbars = oDoc.Toolbars()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id751700853223764">MsgBox SF_String.Represent(arrToolbars)</paragraph>
+  </bascode>
+  <tip id="par_id961700853354817">Use the <literal>Toolbars</literal> method without arguments to retrieve an array with available toolbar names.</tip>
+  <paragraph role="paragraph" id="par_id171700853415555">The example below toggles the visibility of the <menuitem>Standard</menuitem> toolbar:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id141700853757638">oDoc = CreateScriptService("Document", ThisComponent)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651700853757894">toolbar = oDoc.Toolbars("standardbar")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id117008537580631">toolbar.Visible = Not toolbar.Visible</paragraph>
+  </bascode>
+  
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id171701008968310">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id621701008969941">doc = CreateScriptService("Document", bas.ThisComponent)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441701008970173">arr_toolbars = doc.Toolbars()</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id617010091805031">bas.MsgBox(repr(toolbars))</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id221701009213403">bas = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id481701009213644">doc = CreateScriptService("Document", bas.ThisComponent)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id801701009213818">toolbar = doc.Toolbars("standardbar")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id381701009320054">toolbar.Visible = not toolbar.Visible</paragraph>
+  </pycode>
+
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id81611339709014">
+    <bookmark_value>Toolbar service;BuiltIn property</bookmark_value>
+    <bookmark_value>Toolbar service;Docked property</bookmark_value>
+    <bookmark_value>Toolbar service;HasGlobalScope property</bookmark_value>
+    <bookmark_value>Toolbar service;Name property</bookmark_value>
+    <bookmark_value>Toolbar service;ResourceURL property</bookmark_value>
+    <bookmark_value>Toolbar service;Visible property</bookmark_value>
+    <bookmark_value>Toolbar service;XUIElement property</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id351582885195476" xml-lang="en-US">Properties</h2>
+  <section id="properties_toc">
+    <table id="tab_id971582885195582">
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id41582885195836" role="tablehead">Name</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id31582885195372" role="tablehead">Readonly</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id31582885195238" role="tablehead">Type</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id931582885195131" role="tablehead">Description</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id7715828856553" role="tablecontent" localize="false">BuiltIn</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655779" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885655525" role="tablecontent" localize="false">Boolean</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885655885" role="tablecontent">Returns <literal>True</literal> when the toolbar is part of the set of standard toolbars shipped with %PRODUCTNAME.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885655313" role="tablecontent" localize="false">Docked</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655669" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885623525" role="tablecontent" localize="false">Boolean</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885657885" role="tablecontent">Returns <literal>True</literal> when the toolbar is active in the window and docked.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885655394" role="tablecontent" localize="false">HasGlobalScope</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655710" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885651142" role="tablecontent" localize="false">Boolean</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885655102" role="tablecontent">Returns <literal>True</literal> when the toolbar is available in all documents of the same type.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885655332" role="tablecontent" localize="false">Name</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655205" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885655787" role="tablecontent" localize="false">String</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885655369" role="tablecontent">Returns the name of the toolbar.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885655349" role="tablecontent" localize="false">ResourceURL</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655966" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885605065" role="tablecontent" localize="false">String</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885655812" role="tablecontent">Returns the resource URL of the toolbar, in the form <literal>private:toolbar/toolbar_name</literal>.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885655387" role="tablecontent" localize="false">Visible</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655212" role="tablecontent">No</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885655373" role="tablecontent" localize="false">Boolean</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885655344" role="tablecontent">Returns <literal>True</literal> when the toolbar is active and visible in the document window.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885655311" role="tablecontent" localize="false">XUIElement</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655788" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885655522" role="tablecontent" localize="false">UNO Object</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885655062" role="tablecontent">Returns the <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1ui_1_1XUIElement.html">com.sun.star.ui.XUIElement</link> UNO object that represents the toolbar.</paragraph>
+        </tablecell>
+      </tablerow>
+    </table>
+  </section>
+
+  <section id="methods_toc">
+  <table id="tab_id901611086279902">
+   <tablerow>
+     <tablecell colspan="3"><paragraph id="par_id651606319520519" role="tablehead">List of Methods in the Toolbar Service</paragraph></tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id761611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_toolbar.xhp#ToolbarButtons">ToolbarButtons</link><br/>
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
+           </paragraph>
+       </tablecell>
+   </tablerow>
+  </table>
+  </section>
+
+  <section id="ToolbarButtons">
+    <comment> ToolbarButtons ------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+      <bookmark_value>Toolbar service;ToolbarButtons</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698251" localize="false">ToolbarButtons</h2>
+    <paragraph role="paragraph" id="par_id93158919969864">Returns an <literal>Array</literal> containing the names of all toolbar buttons when called without arguments.</paragraph>
+    <paragraph role="paragraph" id="par_id421611148353046">Provide the name of a toolbar button as argument to obtain a <literal>ToolbarButton</literal> service instance.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id181622827609276">
+      <input>svc.ToolbarButtons(opt buttonname: str): any</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id381701012526415"><emph>buttonname</emph>: The name of a toolbar button in the current toolbar.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id601611148017930">The example below returns the command executed when the button <menuitem>New</menuitem> is clicked in the <menuitem>Standard</menuitem> toolbar:</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id421701012864607">oToolbar = oDoc.Toolbars("standardbar")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id771701013457279">oToolbarButton = oToolbar.ToolbarButtons("New")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id841701013457456">MsgBox oToolbarButton.OnClick</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id821701012860544">toolbar = doc.Toolbars("standardbar")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id321701013509953">toolbar_button = toolbar.ToolbarButtons("New")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id981701013510153">bas.MsgBox(toolbar_button.OnClick)</paragraph>
+    </pycode>
+    <note id="par_id531701012694220">Inactive toolbars do not have buttons. Therefore, calling the <literal>ToolbarButtons</literal> method will make the toolbar visible.</note>
+  </section>
+
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/sf_toolbarbutton.xhp#ToolbarButtonService"/>
+   </section>
+</body>
+</helpdocument>
