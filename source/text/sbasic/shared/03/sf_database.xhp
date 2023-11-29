@@ -193,18 +193,19 @@
        <tablecell>
          <paragraph id="par_id611614360519255" role="tablecontent" localize="false">
            <link href="text/sbasic/shared/03/sf_database.xhp#CloseDatabase">CloseDatabase</link><br/>
+           <link href="text/sbasic/shared/03/sf_database.xhp#CreateDataset">CreateDataset</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DAvg</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DCount</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DMin</link><br/>
-           <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DMax</link>
          </paragraph>
        </tablecell>
        <tablecell>
          <paragraph id="par_id611614360519104" role="tablecontent" localize="false">
+           <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DMax</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DSum</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#DLookup">DLookup</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#GetRows">GetRows</link><br/>
-           <link href="text/sbasic/shared/03/sf_database.xhp#OpenFormDocument">OpenFormDocument</link><br/><br/>
+           <link href="text/sbasic/shared/03/sf_database.xhp#OpenFormDocument">OpenFormDocument</link><br/>
          </paragraph>
        </tablecell>
        <tablecell>
@@ -238,6 +239,34 @@
     <paragraph role="pycode" localize="false" id="pyc_id591625699936578">myDatabase.CloseDatabase() # Python</paragraph>
   </pycode>
 </section>
+
+  <section id="CreateDataset">
+    <comment> CreateDataset -------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id161599488115021">
+      <bookmark_value>Database Service;CreateDataset</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id151599488110425" localize="false">CreateDataset</h2>
+    <paragraph role="paragraph" id="par_id41599488113502">Creates a <literal>Dataset</literal> service instance based on a table, query or SQL <literal>SELECT</literal> statement.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id41625701240781">
+      <input>db.CreateDataset(sqlcommand: str, opt directsql: bool, opt filter: str, opt orderby: str): svc</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id591701267115505"><emph>sqlcommand</emph>: A table name, a query name or a valid SQL <literal>SELECT</literal> statement. Identifiers may be enclosed with square brackets. This argument is case-sensitive.</paragraph>
+    <paragraph role="paragraph" id="par_id841701267114060"><emph>directsql</emph>: Set this argument to <literal>True</literal> to send the statement directly to the database engine without preprocessing by %PRODUCTNAME (Default = <literal>False</literal>).</paragraph>
+    <paragraph role="paragraph" id="par_id241701267114527"><emph>filter</emph>: Specifies the condition that records must match to be included in the returned dataset. This argument is expressed as a SQL <literal>WHERE</literal> statement without the "WHERE" keyword.</paragraph>
+    <paragraph role="paragraph" id="par_id471701267115093"><emph>orderby</emph>: Specifies the ordering of the dataset as a SQL <literal>ORDER BY</literal> statement without the "ORDER BY" keyword.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id941701267748877">The following examples in Basic and Python return a dataset with the records of a table named "Customers".</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id241701267631273">oDataset = myDatabase.CreateDataset("Customers", Filter := "[Name] LIKE 'A'")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id931701267696812">dataset = myDatabase.CreateDataset("Customers", Filter = "[Name] LIKE 'A'")</paragraph>
+    </pycode>
+  </section>
 
 <section id="DFunctions">
   <comment> DFunctions ----------------------------------------------------------------------------------- </comment>
@@ -514,6 +543,7 @@
   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
   <section id="relatedtopics">
     <embed href="text/sbasic/shared/03/sf_datasheet.xhp#DatasheetService"/>
+    <embed href="text/sbasic/shared/03/sf_dataset.xhp#DatasetService"/>
     <embed href="text/sbasic/shared/03/sf_document.xhp#DocumentService"/>
     <embed href="text/sbasic/shared/03/sf_form.xhp#FormService"/>
     <embed href="text/sbasic/shared/03/sf_ui.xhp#UIService"/>

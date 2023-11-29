@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_Dataset" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">SFDatabases.Dataset service</title>
+    <filename>/text/sbasic/shared/03/sf_dataset.xhp</filename>
+  </topic>
+</meta>
+
+<body>
+  <section id="SFDatabases-sf_dataset">
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id261582733781987">
+      <bookmark_value>Dataset service</bookmark_value>
+    </bookmark>
+  </section>
+
+  <section id="abstract">
+    <h1 id="hd_id731582733781114"><variable id="DatasetService"><link href="text/sbasic/shared/03/sf_dataset.xhp"><literal>SFDatabases</literal>.<literal>Dataset</literal> service</link></variable></h1>
+    <paragraph role="paragraph" id="par_id571700837631557">The <literal>Dataset</literal> service is used to represent tabular data produced by a database. With this service it is possible to:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id891589189452545" role="listitem">Navigate through and access the data in a dataset.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id811589189463041" role="listitem">Update, insert and remove records in a dataset.</paragraph>
+      </listitem>
+    </list>
+  </section>
+  <warning id="par_id251701124711074">Updating and inserting records using the <literal>Dataset</literal> service is slower than using SQL statements. When updating or inserting large amounts of records, it is recommended to use SQL statements instead of using the methods in this service.</warning>
+
+  <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>Dataset</literal> service the <literal>ScriptForge</literal> library needs to be loaded or imported:</paragraph>
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#importLibs"/>
+
+  <paragraph role="paragraph" id="par_id411700851985942">The <literal>Dataset</literal> service is invoked using the <literal>CreateDataset</literal> method, which can be called either from a <literal>Database</literal> service instance or from another <literal>Dataset</literal> instance.</paragraph>
+  
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id771700853155061">The following example creates a <literal>Dataset</literal> from the table "Customers" stored in a database file.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id761701125551155">oDatabase = CreateScriptService("Database", "C:\MyDatabase.odb")</paragraph>
+    <paragraph role="bascode" id="bas_id491701125551393">oDataset = oDatabase.CreateDataset("Customers")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id541701125551611">With oDataset</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id771701125645042">    Do While .MoveNext()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id961701125645540">        oValues = .Values()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id101701125645737">        ' ...</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id331701125645989">    Loop</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id451701179309908">    .CloseDataset()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id1001701125646221">End With</paragraph>
+  </bascode>
+  <note id="par_id821701125782721">Upon the creation of the <literal>Dataset</literal>, the current record is positioned before the first record.</note>
+  <paragraph role="paragraph" id="par_id171700853415555">The example below creates a <literal>Dataset</literal> instance by filtering the original dataset.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id141700853757638">oNewDataset = oDataset.CreateDataset(Filter := "[City]='New York'")</paragraph>
+  </bascode>
+  
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id61701127356712">database = CreateScriptService("Database", r"C:\MyDatabase.odb")</paragraph>
+    <paragraph role="pycode" id="pyc_id301701127357007">dataset = database.CreateDataset("Customers")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id551701127357252">while dataset.MoveNext():</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id281701127357477">    values = dataset.Values</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id701701127629668">    # ...</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id491701179357893">dataset.CloseDataset()</paragraph>
+  </pycode>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id181701127476970">new_dataset = dataset.CreateDataset(filter = "[City]='New York'")</paragraph>
+  </pycode>
+
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id81611339709014">
+    <bookmark_value>Dataset service;BOF property</bookmark_value>
+    <bookmark_value>Dataset service;DefaultValues property</bookmark_value>
+    <bookmark_value>Dataset service;EOF property</bookmark_value>
+    <bookmark_value>Dataset service;Fields property</bookmark_value>
+    <bookmark_value>Dataset service;Filter property</bookmark_value>
+    <bookmark_value>Dataset service;OrderBy property</bookmark_value>
+    <bookmark_value>Dataset service;ParentDatabase property</bookmark_value>
+    <bookmark_value>Dataset service;RowCount property</bookmark_value>
+    <bookmark_value>Dataset service;RowNumber property</bookmark_value>
+    <bookmark_value>Dataset service;Source property</bookmark_value>
+    <bookmark_value>Dataset service;SourceType property</bookmark_value>
+    <bookmark_value>Dataset service;UpdatableFields property</bookmark_value>
+    <bookmark_value>Dataset service;Values property</bookmark_value>
+    <bookmark_value>Dataset service;XRowSet property</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id351582885195476" xml-lang="en-US">Properties</h2>
+  <section id="properties_toc">
+    <table id="tab_id971582885195582">
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id41582885195836" role="tablehead">Name</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id31582885195372" role="tablehead">Readonly</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id31582885195238" role="tablehead">Type</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id931582885195131" role="tablehead">Description</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id7715828856553" role="tablecontent" localize="false">BOF</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655779" role="tablecontent">No</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885655525" role="tablecontent" localize="false">Boolean</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885655885" role="tablecontent">Returns <literal>True</literal> if the current record position is before the first record in the dataset, otherwise returns <literal>False</literal>.</paragraph>
+          <paragraph id="par_id581582885655855" role="tablecontent">Set this property to <literal>True</literal> to move the cursor to the beginning of the dataset. Setting this property to <literal>False</literal> is ignored.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885655313" role="tablecontent" localize="false">DefaultValues</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655669" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885623525" role="tablecontent"><literal>Dictionary</literal> service</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885657885" role="tablecontent">Returns a <literal>Dictionary</literal>  with the default values used for each field in the dataset. The fields or columns in the dataset are the keys in the dictionary.</paragraph>
+          <paragraph id="par_id581582885653105" role="tablecontent">The database field types are converted to their corresponding Basic/Python data types. When the field type is undefined, the default value is <literal>Null</literal> if the field is nullable or <literal>Empty</literal>.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885655394" role="tablecontent" localize="false">EOF</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655710" role="tablecontent">No</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885651142" role="tablecontent" localize="false">Boolean</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885611885" role="tablecontent">Returns <literal>True</literal> if the current record position is after the last record in the dataset, otherwise returns <literal>False</literal>.</paragraph>
+          <paragraph id="par_id581582885609855" role="tablecontent">Set this property to <literal>True</literal> to move the cursor to the end of the dataset. Setting this property to <literal>False</literal> is ignored.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885655332" role="tablecontent" localize="false">Fields</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655205" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885655787" role="tablecontent" localize="false">Array</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885655369" role="tablecontent">Returns an <literal>Array</literal> containing the names of all fields in the dataset.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885655349" role="tablecontent" localize="false">Filter</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655966" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885605065" role="tablecontent" localize="false">String</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885655812" role="tablecontent">Returns the filter applied in addition to the eventual <literal>WHERE</literal> clause(s) in the initial SQL statement. This property is expressed as a <literal>WHERE</literal> clause without the "WHERE" keyword.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885655387" role="tablecontent" localize="false">OrderBy</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655212" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885655373" role="tablecontent" localize="false">String</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885655344" role="tablecontent">Returns the ordering clause that replaces the eventual <literal>ORDER BY</literal> clause present in the initial SQL statement. This property is expressed as a <literal>ORDER BY</literal> clause without the "ORDER BY" keywords.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885655311" role="tablecontent" localize="false">ParentDatabase</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885655788" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885655522" role="tablecontent"><literal>Database</literal> service</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885655062" role="tablecontent">Returns the <literal>Database</literal> instance corresponding to the parent database of the current dataset.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885654161" role="tablecontent" localize="false">RowCount</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582885650968" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582885653372" role="tablecontent" localize="false">Long</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582885656472" role="tablecontent">Returns the exact number of records in the dataset.</paragraph>
+          <paragraph id="par_id581582885656491" role="tablecontent">Note that the evaluation of this property implies browsing the whole dataset, which may be costly depending on the dataset size.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885024161" role="tablecontent" localize="false">RowNumber</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582886340968" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582887873372" role="tablecontent" localize="false">Long</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582884026472" role="tablecontent">Returns the number of the current record starting at 1. Returns 0 if this property is unknown.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885025521" role="tablecontent" localize="false">Source</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582886349968" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582887879362" role="tablecontent" localize="false">String</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582884023472" role="tablecontent">Returns the source of the dataset. It can be either a table name, a query name or a SQL statement.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885447521" role="tablecontent" localize="false">SourceType</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582886352968" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582887207362" role="tablecontent" localize="false">String</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582884295472" role="tablecontent">Returns the source of the dataset. It can be one of the following string values: <literal>TABLE</literal>, <literal>QUERY</literal> or <literal>SQL</literal>.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885454221" role="tablecontent" localize="false">UpdatableFields</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582886368268" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582887229662" role="tablecontent" localize="false">Array</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582884255372" role="tablecontent">Returns an <literal>Array</literal> containing the names of the fields of the dataset that are updatable.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885004221" role="tablecontent" localize="false">Values</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582886302268" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582887375662" role="tablecontent" localize="false">Array</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582884370372" role="tablecontent">Returns a <literal>Dictionary</literal> containing the pairs (field name: value) of the current record in the dataset.</paragraph>
+        </tablecell>
+      </tablerow>
+      <tablerow>
+        <tablecell>
+          <paragraph id="par_id771582885065221" role="tablecontent" localize="false">XRowSet</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id861582886325668" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id271582887376762" role="tablecontent"><literal>UNO</literal> object</paragraph>
+        </tablecell>
+        <tablecell>
+          <paragraph id="par_id581582884392072" role="tablecontent">Returns the <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1sdb_1_1RowSet.html">com.sun.star.sdb.RowSet</link> UNO object representing the dataset.</paragraph>
+        </tablecell>
+      </tablerow>
+    </table>
+  </section>
+
+  <section id="methods_toc">
+  <table id="tab_id901611086279902">
+   <tablerow>
+     <tablecell colspan="3"><paragraph id="par_id651606319520519" role="tablehead">List of Methods in the Dataset Service</paragraph></tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id761611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_dataset.xhp#CloseDataset">CloseDataset</link><br/>
+             <link href="text/sbasic/shared/03/sf_dataset.xhp#CreateDataset">CreateDataset</link><br/>
+             <link href="text/sbasic/shared/03/sf_dataset.xhp#Delete">Delete</link><br/>
+             <link href="text/sbasic/shared/03/sf_dataset.xhp#ExportValueToFile">ExportValueToFile</link><br/>
+             <link href="text/sbasic/shared/03/sf_dataset.xhp#GetRows">GetRows</link><br/>
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_dataset.xhp#GetValue">GetValue</link><br/>
+             <link href="text/sbasic/shared/03/sf_dataset.xhp#Insert">Insert</link><br/>
+             <link href="text/sbasic/shared/03/sf_dataset.xhp#MoveFirstLast">MoveFirst</link><br/>
+             <link href="text/sbasic/shared/03/sf_dataset.xhp#MoveFirstLast">MoveLast</link><br/><br/>
+           </paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_dataset.xhp#MoveNextPrevious">MoveNext</link><br/>
+             <link href="text/sbasic/shared/03/sf_dataset.xhp#MoveNextPrevious">MovePrevious</link><br/>
+             <link href="text/sbasic/shared/03/sf_dataset.xhp#Reload">Reload</link><br/>
+             <link href="text/sbasic/shared/03/sf_dataset.xhp#Update">Update</link><br/><br/>
+           </paragraph>
+       </tablecell>
+   </tablerow>
+  </table>
+  </section>
+
+  <section id="CloseDataset">
+    <comment> CloseDataset ---------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+      <bookmark_value>Dataset service;CloseDataset</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698251" localize="false">CloseDataset</h2>
+    <paragraph role="paragraph" id="par_id93158919969864">Closes the current dataset. This method returns <literal>True</literal> when successful.</paragraph>
+    <note id="par_id781701179217081">It is recommended to close the dataset after its use to free resources.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id181622827609276">
+      <input>svc.CloseDataset(): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id421701012864607">oDataset = oDatabase.CreateDataset("MyTable")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id771701013457279">' ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id841701013457456">oDataset.CloseDataset()</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id821701012860544">dataset = database.CreateDataset("MyTable")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id321701013509953"># ...</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id981701013510153">dataset.CloseDataset()</paragraph>
+    </pycode>
+  </section>
+
+  <section id="CreateDataset">
+    <comment> CreateDataset -------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969443">
+      <bookmark_value>Dataset service;CreateDataset</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199660251" localize="false">CreateDataset</h2>
+    <paragraph role="paragraph" id="par_id93158919343864">Returns a <literal>Dataset</literal> service instance from an existing dataset by applying the specified filter and order by statements.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id140222827609276">
+      <input>svc.CreateDataset(opt filter: str, opt orderby: str): svc</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id381701012509515"><emph>filter</emph>: Specifies the condition that records must match to be included in the returned dataset. This argument is expressed as a SQL <literal>WHERE</literal> statement without the "WHERE" keyword. If this argument is not specified, then the filter used in the current dataset is applied, otherwise the current filter is replaced by this argument.</paragraph>
+    <paragraph role="paragraph" id="par_id381701012563515"><emph>orderby</emph>: Specifies the ordering of the dataset as a SQL <literal>ORDER BY</literal> statement without the "ORDER BY" keyword. If this argument is not specified, then the sorting order used in the current dataset is applied, otherwise the current sorting order is replaced by this argument.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id721701180069642">' Use an empty string to remove the current filter</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id191701180070057">oNewDataset = oDataset.CreateDataset(Filter := "")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id981701180070457">' Examples of common filters</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id217011800710769">oNewDataset = oDataset.CreateDataset(Filter := "[Name] = 'John'")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id341701180070985">oNewDataset = oDataset.CreateDataset(Filter := "[Name] LIKE 'A'")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id371701180071169">' It is possible to append additional conditions to the current filter</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id817011802603460">oNewDataset = oDataset.CreateDataset(Filter := "(" &amp; oDataset.Filter &amp; ") AND [Name] LIKE 'A'")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id221701180362978">new_dataset = dataset.CreateDataset(filter = "")</paragraph>
+      <paragraph role="pycode" id="pyc_id581701180363338">new_dataset = dataset.CreateDataset(filter = "[Name] = 'John'")</paragraph>
+      <paragraph role="pycode" id="pyc_id261701180365275">new_dataset = dataset.CreateDataset(filter = "[Name] LIKE 'A'")</paragraph>
+      <paragraph role="pycode" id="pyc_id481701180365786">new_dataset = dataset.CreateDataset(filter = f"({dataset.Filter}) AND [Name] LIKE 'A'")</paragraph>
+    </pycode>
+  </section>
+
+  <section id="Delete">
+    <comment> Delete --------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id9215369969883">
+      <bookmark_value>Dataset service;Delete</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199650151" localize="false">Delete</h2>
+    <paragraph role="paragraph" id="par_id93158919961074">Deletes the current record from the dataset. This method returns <literal>True</literal> when successful.</paragraph>
+    <paragraph role="paragraph" id="par_id101701180833688">After this operation the cursor is positioned at the record immediately after the deleted record. If the deleted record is the last in the dataset, then the cursor is positioned after it and the property <literal>EOF</literal> returns <literal>True</literal>.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id195222827609276">
+      <input>svc.Delete(): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id421720212864607">oDataset.Delete()</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id821702692860544">dataset.Delete()</paragraph>
+    </pycode>
+  </section>
+
+  <section id="ExportValueToFile">
+    <comment> ExportValueToFile ----------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92153179969443">
+      <bookmark_value>Dataset service;ExportValueToFile</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589196160251" localize="false">ExportValueToFile</h2>
+    <paragraph role="paragraph" id="par_id93158955243864">Exports the value of a binary field of the current record to the specified file.</paragraph>
+    <note id="par_id171701181928026">If the specified field is not binary or if it cointains no data, then the output file is not created.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id140222827334276">
+      <input>svc.ExportValueToFile(fieldname: str, filename: str, overwrite: bool): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id381701012500605"><emph>fieldname</emph>: The name of the binary field to be exported, as a case-sensitive string.</paragraph>
+    <paragraph role="paragraph" id="par_id381701012563717"><emph>filename</emph>: The complete path to the file to be created using the notation defined in the <literal>FileSystem</literal>.<literal>FileNaming</literal> property.</paragraph>
+    <paragraph role="paragraph" id="par_id417011815228395"><emph>overwrite</emph>: Set this argument to <literal>True</literal> to allow the destination file to be overwritten (Default = <literal>False</literal>).</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id1001701183010649">In the example below the dataset contains a field named "Picture" that shall be exported to an image file.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id191701180096457">oDataset.ExportValueToFile("Picture", "C:\my_image.png", True)</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id221701180362303">dataset.ExportValueToFile("Picture", r"C:\my_image.png", True)</paragraph>
+    </pycode>
+  </section>
+
+  <section id="GetRows">
+    <comment> GetRows -------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158910859443">
+      <bookmark_value>Dataset service;GetRows</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199660414" localize="false">GetRows</h2>
+    <paragraph role="paragraph" id="par_id93158919349654">Returns the contents of the dataset in a 2-dimensional array, starting from the first record after the current record.</paragraph>
+    <paragraph role="paragraph" id="par_id86170118381308">After execution, the cursor is positioned at the row that was last read or after the last record in the dataset, in which case the <literal>EOF</literal> property returns <literal>True</literal>.</paragraph>
+    <paragraph role="paragraph" id="par_id86170118381410">This method can be used to read data from the dataset in chunks, whose size is defined by the <literal>maxrows</literal> argument.</paragraph>
+    <note id="par_id741701183770602">The returned array will always have two dimensions, even if the dataset contains a single column and a single record.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id140222821409276">
+      <input>svc.GetRows(header: bool, maxrows: int): any</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id381701010547515"><emph>header</emph>: Set this argument to <literal>True</literal> to make the first entry in the <literal>Array</literal> contain the column headers (Default = <literal>False</literal>).</paragraph>
+    <paragraph role="paragraph" id="par_id381701012520715"><emph>maxrows</emph>: Define the maximum number of records to be returned. If the number of existing records is smaller than <literal>maxrows</literal>, then the returned array will have only the existing records. Leave this argument blank or set it to zero to return all rows in the dataset (Default = 0)</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id171701202610657">The following example reads a dataset in chunks of 100 rows until all the dataset has been read.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id131701202714067">Dim arrChunk As Variant, lMaxRows As Long</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id671701202730607">lMaxRows = 100</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id881701202730925">Do</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id881701202731108">    arrChunk = oDataset.GetRows(MaxRows := lMaxRows)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id301701202731287">    If UBound(arrChunk, 1) >= 0 Then</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id141701202731470">        ' ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id771701202731672">    End If</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id201701202866549">Loop Until UBound(arrChunk, 1) &lt; lMaxRows - 1</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id241701203815432">max_rows = 100</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id811701203815898">chunk = dataset.GetRows(maxrows = max_rows)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id551701203816166">while len(chunk) > 0:</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id171701203816348">    # ...</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id121701203816581">    chunk = dataset.GetRows(maxrows = max_rows)</paragraph>
+    </pycode>
+  </section>
+
+  <section id="GetValue">
+    <comment> GetValue ------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92153179971743">
+      <bookmark_value>Dataset service;GetValue</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589196152051" localize="false">GetValue</h2>
+    <paragraph role="paragraph" id="par_id93190955243864">Returns the value of the specified field from the current record of the dataset.</paragraph>
+    <note id="par_id171701181922516">If the specified field is binary, then its length is returned.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id140222825444276">
+      <input>svc.GetValue(fieldname: str): any</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id381701012554805"><emph>fieldname</emph>: The name of the field to be returned, as a case-sensitive string.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id191701180036057">currId = oDataset.GetValue(FieldName := "ID")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id221701180366903">curr_id = dataset.GetValue(fieldname = "ID")</paragraph>
+    </pycode>
+  </section>
+
+  <section id="Insert">
+    <comment> Insert ---------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92153179527743">
+      <bookmark_value>Dataset service;Insert</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589196824051" localize="false">Insert</h2>
+    <paragraph role="paragraph" id="par_id93190998043864">Inserts a new record at the end of the dataset and initialize its fields with the specified values.</paragraph>
+    <paragraph role="paragraph" id="par_id941701206804894">If the primary key of the dataset is an auto value, then this method returns the primary key value of the new record. Otherwise, the method will return 0 (when successful) or -1 (when not successful).</paragraph>
+    <note id="par_id51701203344601">Updatable fields with unspecified values are initialized with their default values.</note>
+    <note id="par_id171701181920016">If the specified field is binary, then its length is returned.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id149342825444276">
+      <input>svc.Insert(pvargs: any): int</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id381701012511805"><emph>pvargs</emph>: A <literal>Dictionary</literal> containing pairs of field names and their respective values. Alternativelly, an even number of arguments can be specified alternating field names (as a <literal>String</literal>) and their values.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <paragraph role="paragraph" id="par_id641701259882955">Consider a table named "Customers" with 4 fields: "ID" (<literal>BigInt</literal>, auto value and primary key), "Name" (<literal>VarChar</literal>), "Age" (<literal>Integer</literal>), "City" (<literal>VarChar</literal>).</paragraph>
+    <paragraph role="paragraph" id="par_id701701205243738">The example below inserts a new record into this dataset using a <literal>Dictionary</literal>.</paragraph>
+    <bascode>
+      <paragraph role="bascode" id="bas_id131701260037206">oDataset = oDatabase.CreateDataset("Customers")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id651701260037472">oNewData = CreateScriptService("Dictionary")</paragraph>
+      <paragraph role="bascode" id="bas_id171701260037639">oNewData.Add("Name", "John")</paragraph>
+      <paragraph role="bascode" id="bas_id641701260037815">oNewData.Add("Age", 50)</paragraph>
+      <paragraph role="bascode" id="bas_id401701260038016">oNewData.Add("City", "Chicago")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id361701260038216">lNewID = oDataset.Insert(oNewData)</paragraph>
+    </bascode>
+    <paragraph role="paragraph" id="par_id671701260191972">The same result can be achieved by passing all pairs of fields and values as arguments:</paragraph>
+    <bascode>
+      <paragraph role="bascode" id="bas_id91701260241574">oDataset.Insert("Name", "John", "Age", 50, "City", "Chicago")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id401701260819750">dataset = database.CreateDataset("Customers")</paragraph>
+      <paragraph role="pycode" id="pyc_id181701260820135">new_data = {"Name": "John", "Age": 30, "City": "Chicago"}</paragraph>
+      <paragraph role="pycode" id="pyc_id651701260820486">new_id = dataset.Insert(new_data)</paragraph>
+    </pycode>
+    <paragraph role="paragraph" id="par_id971701261086678">The following calls are accepted in Python:</paragraph>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id101701260954243">dataset.Insert("Name", "John", "Age", 50, "City", "Chicago")</paragraph>
+      <paragraph role="pycode" id="pyc_id131701261111943">dataset.Insert(Name = "John", Age = 50, City = "Chicago")</paragraph>
+    </pycode>
+  </section>
+
+  <section id="MoveFirstLast">
+    <comment> MoveFirstLast -------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92159920571743">
+      <bookmark_value>Dataset service;MoveFirst</bookmark_value>
+      <bookmark_value>Dataset service;MoveLast</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589196153251" localize="false">MoveFirst / MoveLast</h2>
+    <paragraph role="paragraph" id="par_id93190955243874">Moves the dataset cursor to the first (with <literal>MoveFirst</literal>) or to the last (with <literal>MoveLast</literal>) record.</paragraph>
+    <paragraph role="paragraph" id="par_id411701262609847">This method returns <literal>True</literal> when successful.</paragraph>
+    <note id="par_id61701280052346">Deleted records are ignored by this method.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id140222825443186">
+      <input>svc.MoveFirst(): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" localize="false" id="par_id140231225444276">
+      <input>svc.MoveLast(): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id191701180876057">oDataset.MoveFirst()</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id221701180096903">dataset.MoveFirst()</paragraph>
+    </pycode>
+  </section>
+
+  <section id="MoveNextPrevious">
+    <comment> MoveNextPrevious ------------------------------------------------------------------------------------ </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92157026521743">
+      <bookmark_value>Dataset service;MoveNext</bookmark_value>
+      <bookmark_value>Dataset service;MovePrevious</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589196152099" localize="false">MoveNext / MovePrevious</h2>
+    <paragraph role="paragraph" id="par_id93190955243345">Moves the dataset cursor forward (with <literal>MoveNext</literal>) or backwards (with <literal>MovePrevious</literal>) by a given number of records.</paragraph>
+    <paragraph role="paragraph" id="par_id411701262609872">This method returns <literal>True</literal> when successful.</paragraph>
+    <note id="par_id617012800527025">Deleted records are ignored by this method.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id140222825444006">
+      <input>svc.MoveNext(offset: int = 1): bool</input>
+    </paragraph>
+    <paragraph role="paragraph" localize="false" id="par_id140222825444394">
+      <input>svc.MovePrevious(offset: int = 1): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id381701012554644"><emph>offset</emph>: The number of records by which the cursor shall be moved forward or backwards. This argument may be a negative value (Default = 1).</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id191701180036941">oDataset.MoveNext()</paragraph>
+      <paragraph role="bascode" id="bas_id951701262692898">oDataset.MoveNext(5)</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id221701180366885">dataset.MoveNext()</paragraph>
+      <paragraph role="pycode" id="pyc_id601701262720188">dataset.MoveNext(5)</paragraph>
+    </pycode>
+  </section>
+
+  <section id="Reload">
+    <comment> Reload --------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92157026521993">
+      <bookmark_value>Dataset service;Reload</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589196152548" localize="false">Reload</h2>
+    <paragraph role="paragraph" id="par_id93190955243383">Reloads the dataset from the database. The properties <literal>Filter</literal> and <literal>OrderBy</literal> may be defined when calling this method.</paragraph>
+    <paragraph role="paragraph" id="par_id411701262522872">This method returns <literal>True</literal> when successful.</paragraph>
+    <tip id="par_id681701263394717">Reloading the dataset is useful when records have been inserted to or deleted from the database. Note that the methods <literal>CreateDataset</literal> and <literal>Reload</literal> perform similar functions, however <literal>Reload</literal> reuses the same <literal>Dataset</literal> class instance.</tip>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id140222825444506">
+      <input>svc.Reload(opt filter: str, opt orderby: str): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id381701012509626"><emph>filter</emph>: Specifies the condition that records must match to be included in the returned dataset. This argument is expressed as a SQL <literal>WHERE</literal> statement without the "WHERE" keyword. If this argument is not specified, then the filter used in the current dataset is applied, otherwise the current filter is replaced by this argument.</paragraph>
+    <paragraph role="paragraph" id="par_id381701012563914"><emph>orderby</emph>: Specifies the ordering of the dataset as a SQL <literal>ORDER BY</literal> statement without the "ORDER BY" keyword. If this argument is not specified, then the sorting order used in the current dataset is applied, otherwise the current sorting order is replaced by this argument.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id191701180036128">oDataset.Reload()</paragraph>
+      <paragraph role="bascode" id="bas_id951701262692252">oDataset.Reload(Filter := "[Name] = 'John'", OrderBy := "Age")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id221701180367255">dataset.Reload()</paragraph>
+      <paragraph role="pycode" id="pyc_id601701262720097">dataset.Reload(Filter = "[Name] = 'John'", OrderBy = "Age"</paragraph>
+    </pycode>
+  </section>
+
+  <section id="Update">
+    <comment> Update --------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92157026521088">
+      <bookmark_value>Dataset service;Update</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589196157828" localize="false">Update</h2>
+    <paragraph role="paragraph" id="par_id93190955060783">Update the values of the specified fields in the current record.</paragraph>
+    <paragraph role="paragraph" id="par_id411701262529574">This method returns <literal>True</literal> when successful.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id140222823694506">
+      <input>svc.Update(pvargs: any): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id381701012546805"><emph>pvargs</emph>: A <literal>Dictionary</literal> containing pairs of field names and their respective values. Alternativelly, an even number of arguments can be specified alternating field names (as a <literal>String</literal>) and their values.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <paragraph role="paragraph" id="par_id791701264626511">The example below updates the current record using a <literal>Dictionary</literal>.</paragraph>
+    <bascode>
+      <paragraph role="bascode" id="bas_id617012650175222">oNewValues = CreateScriptService("Dictionary")</paragraph>
+      <paragraph role="bascode" id="bas_id511701265017930">oNewValues.Add("Age", 51)</paragraph>
+      <paragraph role="bascode" id="bas_id491701265018498">oNewValues.Add("City", "New York")</paragraph>
+      <paragraph role="bascode" id="bas_id401701265027933">oDataset.Update(oNewValues)</paragraph>
+    </bascode>
+    <paragraph role="paragraph" id="par_id221701264980261">The same result can be achieved by passing all pairs of fields and values as arguments:</paragraph>
+    <bascode>
+      <paragraph role="bascode" id="bas_id191701180033508">oDataset.Update("Age", 51, "City", "New York")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id221701180363025">new_values = {"Age": 51, "City": "New York"}</paragraph>
+      <paragraph role="pycode" id="pyc_id601701262720082">dataset.Update(new_values)</paragraph>
+    </pycode>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id761701265203650">dataset.Update("Age", 51, "City", "New York")</paragraph>
+      <paragraph role="pycode" id="pyc_id141701265203921">dataset.Update(Age = 51, City = "New York")</paragraph>
+    </pycode>
+  </section>
+
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/sf_database.xhp#DatabaseService"/>
+   </section>
+</body>
+</helpdocument>

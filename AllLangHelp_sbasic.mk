@@ -86,6 +86,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03/sf_calc \
     helpcontent2/source/text/sbasic/shared/03/sf_chart \
     helpcontent2/source/text/sbasic/shared/03/sf_database \
+    helpcontent2/source/text/sbasic/shared/03/sf_dataset \
     helpcontent2/source/text/sbasic/shared/03/sf_datasheet \
     helpcontent2/source/text/sbasic/shared/03/sf_dialog \
     helpcontent2/source/text/sbasic/shared/03/sf_dialogcontrol \
