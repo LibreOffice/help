@@ -712,17 +712,19 @@
     <paragraph role="paragraph" id="par_id821613003779799">The resulting list may be filtered with wildcards.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id211626178396995">
-      <input>svc.Files(foldername: str, filter: str = ''): str[0..*]</input>
+      <input>svc.Files(foldername: str, filter: str = '', includesubfolders: bool = False): str[0..*]</input>
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
     <paragraph role="paragraph" id="par_id731583944543140"><emph>foldername</emph>: A string representing a folder. The folder must exist. This argument must not designate a file.</paragraph>
     <paragraph role="paragraph" id="par_id591585648450060" xml-lang="en-US"><emph>filter</emph>: A string containing wildcards ("?" and "*") that will be applied to the resulting list of files (default = "").</paragraph>
+    <paragraph role="paragraph" id="par_id731583944543907"><emph>includesubfolders</emph>: Set this argument to <literal>True</literal> to include the contents of subfolders (Default = <literal>False</literal>).</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
       <paragraph role="bascode" localize="false" id="bas_id381583944327923">Dim filesList As Variant, file As String</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id581583944327968">FSO.FileNaming = "SYS"</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id451583944327508">filesList = FSO.Files("/home/user/", "*.txt")</paragraph>
+      <paragraph role="bascode" id="bas_id901701437618763">' Returns all files matching the "*.txt" filter, including files in subfolders</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id451583944327508">filesList = FSO.Files("/home/user/", "*.txt", IncludeSubfolders := True)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id521583944732086">For Each file In filesList</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id421583944743304">    ' ...</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id721583944748672">Next file</paragraph>
@@ -730,7 +732,7 @@
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id811626270625785">fs.FileNaming = "SYS"</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id761626270626093">filesList = fs.Files("/home/user/", "*.txt")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id761626270626093">filesList = fs.Files("/home/user/", "*.txt", includesubfolders = True)</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id381626270626357">for file in fileList:</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id941626270626838">    # ...</paragraph>
     </pycode>
@@ -1197,11 +1199,12 @@
     <paragraph role="paragraph" id="par_id431613075267241">The list may be filtered with wildcards.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id531626215218570">
-      <input>svc.SubFolders(foldername: str, filter: str = ''): str[0..*]</input>
+      <input>svc.SubFolders(foldername: str, filter: str = '', includesubfolders: bool = False): str[0..*]</input>
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
     <paragraph role="paragraph" id="par_id701584016761945"><emph>foldername</emph>: A string representing a folder. The folder must exist. <literal>foldername</literal> must not designate a file.</paragraph>
     <paragraph role="paragraph" id="par_id471585648674921" xml-lang="en-US"><emph>filter</emph>: A string containing wildcards ("?" and "*") that will be applied to the resulting list of folders (default = "").</paragraph>
+  <paragraph role="paragraph" id="par_id731583944548857"><emph>includesubfolders</emph>: Set this argument to <literal>True</literal> to include the contents of subfolders (Default = <literal>False</literal>).</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
