@@ -44,6 +44,90 @@
     <paragraph role="paragraph" id="par_id681599407189019" xml-lang="en-US">The provided interfaces include simple tables and queries lists, as well as access to database data.</paragraph>
     <tip id="par_id891599407280007" xml-lang="en-US">To make SQL statements more readable, you may use square brackets "[ ]" to enclose names of tables, queries and fields instead of using other enclosing characters that may be exclusive to certain Relational Database Management Systems (RDBMS). But beware that enclosing characters are mandatory in this context.</tip>
 
+  <section id="Transaction">
+    <h2 id="hd_id461701357494930">Transaction handling</h2>
+    <bookmark  branch="index" id="bm_id121701365380522">
+      <bookmark_value>Database service; Transaction handling</bookmark_value>
+    </bookmark>
+    <paragraph role="paragraph" id="par_id71701357507703">By default the database handles transactions in auto-commit mode, meaning that a commit is done after every SQL statement.</paragraph>
+    <paragraph role="paragraph" id="par_id321701357603871">Use the <literal>SetTransactionMode</literal> method to change the default behavior, which allows for manual commits and rollbacks.</paragraph>
+    <paragraph role="paragraph" id="par_id431701443412927">The methods <literal>Commit</literal> and <literal>Rollback</literal> are used to delimit transactions.</paragraph>
+    <paragraph role="paragraph" id="par_id531701365474516">In %PRODUCTNAME, there are five types of transaction isolation modes, as defined in the <link href="https://api.libreoffice.org/docs/idl/ref/namespacecom_1_1sun_1_1star_1_1sdbc_1_1TransactionIsolation.html">com.sun.star.sdbc.TransactionIsolation</link> constant group:</paragraph>
+  </section>
+  <table id="tab_id221701441607725">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id631701441607725" role="tablehead">Constant</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id671701441607725" role="tablehead">Value</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id441701441607725" role="tablehead">Interpretation</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id681701441607725" role="tablecontent">NONE</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831701441607725" role="tablecontent">0</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id601701441607725" role="tablecontent">Transaction handling is disabled and the database is set to the default auto-commit mode.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id681701441607147" role="tablecontent">READ_UNCOMMITTED</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831701441607208" role="tablecontent">1</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id601701441607099" role="tablecontent">Dirty reads, non-repeatable reads and phantom reads can occur.</paragraph>
+        <paragraph id="par_id601701441603205" role="tablecontent">If a row is changed by a transaction, another transaction will be able to read these changes even if they have not been committed.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id681701441607317" role="tablecontent">READ_COMMITTED</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831701441607714" role="tablecontent">2</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id601701441607012" role="tablecontent">Dirty reads are prevented, however non-repeatable reads and phantom reads can occur.</paragraph>
+        <paragraph id="par_id601701441608244" role="tablecontent">This level prevents that rows with uncommitted changes are read.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id681701441607209" role="tablecontent">REPEATABLE_READ</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831701441607103" role="tablecontent">4</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id601701441607300" role="tablecontent">Dirty reads and non-repeatable reads are prevented. However, phantom reads can occur.</paragraph>
+        <paragraph id="par_id601701441608161" role="tablecontent">Besides preventing uncommitted data from being read, it also prevents that two read operations in the same transaction return different results.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id681701441607060" role="tablecontent">SERIALIZABLE</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831701441607688" role="tablecontent">8</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id601701441607896" role="tablecontent">Dirty reads, non-repeatable reads and phantom reads are prevented.</paragraph>
+        <paragraph id="par_id601701441607117" role="tablecontent">In addition to the constraints of the previous level, it also ensures that the set of records that match a <literal>WHERE</literal> clause remains unchanged inside the same transaction.</paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+  <tip id="par_id991701357744355">Read the Wikipedia page on <link href="https://en.wikipedia.org/wiki/Isolation_(database_systems)">Isolation in Database Systems</link> to learn more about transaction integrity.</tip>
+
     <h2 id="hd_id91587913266988" xml-lang="en-US">Service invocation</h2>
     <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>Database</literal> service the <literal>ScriptForge</literal> library needs to be loaded or imported:</paragraph>
     <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#importLibs"/>
@@ -193,6 +277,7 @@
        <tablecell>
          <paragraph id="par_id611614360519255" role="tablecontent" localize="false">
            <link href="text/sbasic/shared/03/sf_database.xhp#CloseDatabase">CloseDatabase</link><br/>
+           <link href="text/sbasic/shared/03/sf_database.xhp#Commit">Commit</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#CreateDataset">CreateDataset</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DAvg</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#DFunctions">DCount</link><br/>
@@ -206,14 +291,16 @@
            <link href="text/sbasic/shared/03/sf_database.xhp#DLookup">DLookup</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#GetRows">GetRows</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#OpenFormDocument">OpenFormDocument</link><br/>
+           <link href="text/sbasic/shared/03/sf_database.xhp#OpenQuery">OpenQuery</link><br/>
          </paragraph>
        </tablecell>
        <tablecell>
          <paragraph id="par_id611614360518452" role="tablecontent" localize="false">
-           <link href="text/sbasic/shared/03/sf_database.xhp#OpenQuery">OpenQuery</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#OpenSql">OpenSql</link><br/>
            <link href="text/sbasic/shared/03/sf_database.xhp#OpenTable">OpenTable</link><br/>
-           <link href="text/sbasic/shared/03/sf_database.xhp#RunSql">RunSql</link><br/><br/>
+           <link href="text/sbasic/shared/03/sf_database.xhp#Rollback">Rollback</link><br/>
+           <link href="text/sbasic/shared/03/sf_database.xhp#RunSql">RunSql</link><br/>
+           <link href="text/sbasic/shared/03/sf_database.xhp#SetTransactionMode">SetTransactionMode</link><br/><br/>
          </paragraph>
        </tablecell>
    </tablerow>
@@ -239,6 +326,49 @@
     <paragraph role="pycode" localize="false" id="pyc_id591625699936578">myDatabase.CloseDatabase() # Python</paragraph>
   </pycode>
 </section>
+
+  <section id="Commit">
+    <comment> Commit --------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id991587913240529">
+      <bookmark_value>Database Service;Commit</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id76158791326672" localize="false">Commit</h2>
+    <paragraph role="paragraph" id="par_id201587913264308">Commits all updates done since the previous <literal>Commit</literal> or <literal>Rollback</literal> call.</paragraph>
+    <note id="par_id391701355293522">This method is ignored if commits are done automatically after each SQL statement, i.e. the database is set to the default auto-commit mode.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821625603786747">
+      <input>db.Commit()</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id141701355821478">' Set the REPEATABLE_READ transaction level</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id191625699913187">myDB.SetTransactionMode(4)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id791701355662193">myDB.RunSql("UPDATE ...")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id517013556462633">myDB.Commit()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id941701355662801">myDB.RunSql("DELETE ...")</paragraph>
+      <paragraph role="bascode" id="bas_id311701355662993">' Test some condition before commiting</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id841701355961091">If bSomeCondition Then</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id491701355985754">    myDB.Commit()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id117013559861863">Else</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id100170135598648">    myDB.Rollback()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id291701356026092">End If</paragraph>
+      <paragraph role="bascode" id="bas_id711701355663208">' Restore auto-commit mode</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id441701355777989">myDB.SetTransactionMode()</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id591625699936776">myDB.SetTransactionMode(4)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id721701356152080">myDB.RunSql("UPDATE ...")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id531701356152407">myDB.Commit()</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id841701356152599">myDB.RunSql("DELETE ...")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id861701356152807">if some_condition:</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id991701356153032">    myDB.Commit()</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id351701356153359">else:</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id761701357236266">    myDB.Rollback()</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id201701357236435">myDB.SetTransactionMode()</paragraph>
+    </pycode>
+  </section>
 
   <section id="CreateDataset">
     <comment> CreateDataset -------------------------------------------------------------------------------------- </comment>
@@ -513,6 +643,37 @@
     </pycode>
   </section>
 
+  <section id="Rollback">
+    <comment> Rollback ------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781599490603364">
+      <bookmark_value>Database Service;Rollback</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id80159949010214" localize="false">Rollback</h2>
+    <paragraph role="paragraph" id="par_id31599490603311">Cancels all changes made to the database since the last <literal>Commit</literal> or <literal>Rollback</literal> call.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id421625701753721">
+      <input>db.Rollback()</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id251701443147366">myDB.SetTransactionMode(1)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id701701443119662">myDB.RunSql("UPDATE ...")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id401701443301083">' ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id441701443140590">If bSomeCondition Then</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id471591949067683">    myDB.Rollback()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id541701443221657">End If</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id171701443246729">myDB.SetTransactionMode(1)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id961701443248882">myDB.RunSql("UPDATE ...")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id861701443289938"># ...</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id551701443249113">if bSomeCondition:</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id331625701876109">    myDB.Rollback()</paragraph>
+    </pycode>
+  </section>
+
 <section id="RunSql">
   <comment> RunSql -------------------------------------------------------------------------------------------- </comment>
     <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781599490609499">
@@ -539,6 +700,43 @@
       <paragraph role="pycode" localize="false" id="pyc_id331625701876367">myDatabase.RunSql("INSERT INTO [EmployeeData] VALUES(25, 'Smith', 'John')", directsql = True)</paragraph>
     </pycode>
 </section>
+
+  <section id="SetTransactionMode">
+    <comment> SetTransactionMode --------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781599490603230">
+      <bookmark_value>Database Service;SetTransactionMode</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id80159949010722" localize="false">SetTransactionMode</h2>
+    <paragraph role="paragraph" id="par_id31599490604648">Defines the level of isolation in database transactions.</paragraph>
+    <paragraph role="paragraph" id="par_id281701459963822">By default databases manage transactions in auto-commit mode, which means that a <literal>Commit</literal> is automatically performed after every SQL statement.</paragraph>
+    <paragraph role="paragraph" id="par_id181701460140309">Use this method to manually determine the isolation level of transactions. When a transaction mode other than <literal>NONE</literal> is set, the script has to explicitly call the <literal>Commit</literal> method to apply the changes to the database.</paragraph>
+    <paragraph role="paragraph" id="par_id211701461020712">This method returns <literal>True</literal> when successful.</paragraph>
+    <warning id="par_id831701530239962">Changing the transaction mode closes all <literal>Dataset</literal> instances created from the current database.</warning>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id421625701752132">
+      <input>db.SetTransactionMode(transactionmode: int = 0): bool</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id701599490609584"><emph>transactionmode</emph>: Specifies the transaction mode. This argument must be one of the constants defined in <link href="https://api.libreoffice.org/docs/idl/ref/namespacecom_1_1sun_1_1star_1_1sdbc_1_1TransactionIsolation.html">com.sun.star.sdbc.TransactionIsolation</link> (Default = <literal>NONE</literal>)</paragraph>
+    <note id="par_id301701459879269">Read the section <link href="text/sbasic/shared/03/sf_database.xhp#Transaction">Transaction handling</link> above to learn more about the transaction isolation levels used in %PRODUCTNAME.</note>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id141701443608332">myDB.SetTransactionMode(com.sun.star.sdbc.TransactionIsolation.REPEATABLE_READ)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id711701460522626">oDataset = myDB.CreateDataset("SELECT ...")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id701701460619670">' ...</paragraph>
+      <paragraph role="bascode" id="bas_id951701460628717">' Reset the transaction mode to default</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id581701460647887">myDB.SetTransactionMode()</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id741701460782621">from com.sun.star.sdbc import TransactionIsolation</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id101701443616246">myDB.SetTransactionMode(TransactionIsolation.REPEATABLE_READ)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id951701460806562">dataset = myDB.CreateDataset("SELECT ...")</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id171701460807371"># ...</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id981701460901220">myDB.SetTransactionMode()</paragraph>
+    </pycode>
+  </section>
 
   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
   <section id="relatedtopics">
