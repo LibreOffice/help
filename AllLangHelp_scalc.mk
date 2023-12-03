@@ -195,6 +195,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/FieldMenu \
     helpcontent2/source/text/scalc/01/format_graphic \
     helpcontent2/source/text/scalc/01/formula2value \
+    helpcontent2/source/text/scalc/01/FormatSparklineMenu \
     helpcontent2/source/text/scalc/01/ful_func \
     helpcontent2/source/text/scalc/01/func_aggregate \
     helpcontent2/source/text/scalc/01/func_arabic \
