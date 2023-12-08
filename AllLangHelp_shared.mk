@@ -840,6 +840,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/menu/submenu_rotateflip \
     helpcontent2/source/text/shared/menu/submenu_spacing \
     helpcontent2/source/text/shared/menu/submenu_text \
+    helpcontent2/source/text/shared/menu/style_menu \
     helpcontent2/source/text/shared/need_help \
     helpcontent2/source/text/shared/optionen/01000000 \
     helpcontent2/source/text/shared/optionen/01010000 \

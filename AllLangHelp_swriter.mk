@@ -419,7 +419,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/main0105 \
     helpcontent2/source/text/swriter/main0107 \
     helpcontent2/source/text/swriter/main0110 \
-    helpcontent2/source/text/swriter/main0115 \
     helpcontent2/source/text/swriter/main0120 \
     helpcontent2/source/text/swriter/main0200 \
     helpcontent2/source/text/swriter/main0202 \
