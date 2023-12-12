@@ -323,6 +323,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/TableSelectAll \
     helpcontent2/source/text/scalc/01/text2columns \
     helpcontent2/source/text/scalc/01/ToggleFormula \
+    helpcontent2/source/text/scalc/01/ToggleRelative \
     helpcontent2/source/text/scalc/01/ToggleSheetGrid \
     helpcontent2/source/text/scalc/01/SelectUnprotectedCells \
     helpcontent2/source/text/scalc/01/SelectVisibleColumns \
