@@ -181,6 +181,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/12120100 \
     helpcontent2/source/text/scalc/01/12120200 \
     helpcontent2/source/text/scalc/01/12120300 \
+    helpcontent2/source/text/scalc/01/Add \
     helpcontent2/source/text/scalc/01/calculate \
     helpcontent2/source/text/scalc/01/cell_styles \
     helpcontent2/source/text/scalc/01/calculation_accuracy \
