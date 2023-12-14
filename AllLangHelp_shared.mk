@@ -683,6 +683,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/background \
     helpcontent2/source/text/shared/guide/border_paragraph \
     helpcontent2/source/text/shared/guide/border_table \
+    helpcontent2/source/text/shared/guide/builtin_help \
     helpcontent2/source/text/shared/guide/breaking_lines \
     helpcontent2/source/text/shared/guide/change_title \
     helpcontent2/source/text/shared/guide/chart_axis \
