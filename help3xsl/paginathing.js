@@ -69,8 +69,10 @@ var Paginator = function(element) {
         parent = existingContainer.parentNode;
         parent.removeChild(existingContainer);
     }
+    const searchInput = document.getElementById("search-bar");
     var container = document.createElement('nav');
     container.setAttribute('class', options.containerClass);
+    container.setAttribute('tabindex', '0');
     var ul = document.createElement('ul');
     ul.setAttribute('class', options.ulClass);
 
@@ -227,6 +229,7 @@ var Paginator = function(element) {
                         limitPagination = pagLimit();
                     }
                     show(page);
+                    searchInput.focus();
                 });
             }());
         }

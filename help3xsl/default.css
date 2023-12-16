@@ -32,6 +32,7 @@ do not break anything related to layout by scaling.
   --font_mono: Menlo, "Cascadia Mono", "Cascadia Code", Consolas, "DejaVu Sans Mono", monospace;
   --font_body: Ubuntu, Cantarell, "Segoe UI Variable", "Segoe UI", "Noto Sans", "DejaVu Sans", "Lucida Grande", sans-serif, FreeSerif, NanumGothic, "Noto Sans Tibetan", Taprom;
   --background-color: #f7f8f7;
+  --module-color: #18A303;
 }
 
 body,
@@ -226,6 +227,7 @@ html[dir=ltr] th {
     margin-top: 0px;
 }
 .tableheadcell {
+    background: var(--module-color);
     color: white;
     vertical-align:top;
 }
@@ -252,7 +254,8 @@ h4,
 h5,
 h6 {
     margin-bottom: 0.67rem;
-    color: #148603;
+    color: var(--module-color);
+    border-bottom-color: var(--module-color);
 }
 p,
 ol,
@@ -263,7 +266,7 @@ td {
 h1 {
     font-size: 1.83rem;
     font-weight: 300;
-    border-bottom: 2px solid #148603;
+    border-bottom: 2px solid;
     margin-bottom: 1.67rem;
 }
 h1 a {
@@ -326,14 +329,15 @@ h6 {
     margin-top: 15px;
     margin-bottom: 15px;
 }
-
 #DisplayArea {
     background-color: #FCFCFC;
     overflow: auto;
     padding: 10px 10px 40px 10px;
     grid-area: main;
 }
-
+#omega-autofocus {
+    width: 274px;
+}
 .mediabutton {
     background-color: cyan;
 }
@@ -360,6 +364,7 @@ h6 {
 
 .embedded {}
 #TopLeftHeader {
+    background: var(--module-color);
     grid-area: header;
     position: sticky;
     top: 0px;
@@ -379,6 +384,7 @@ h6 {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    width: 100%;
 }
 .symbol, .logo, .logo:hover, .logo:visited {
     color: #fff;
@@ -495,9 +501,8 @@ footer p {
 label[for=accordion-1] {
     color: #233336;
     display: block;
-    padding: 10px 0 10px 20px;
+    margin: 0 0 10px 10px;
     font-size: 22px;
-    line-height: .6;
 }
 label[for=accordion-1]:after {
     font-size: 44px;
@@ -510,7 +515,7 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
     color: #333;
     z-index: 6;
     display: block;
-    margin: 0 20px 0 20px;
+    margin: 0 20px 20px 20px;
 }
 .index-label {
     font-size: 22px;
@@ -518,7 +523,7 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
     padding-left: 20px;
     margin: 20px 0 0 0;
 }
-#Index, .index {
+.index {
     margin-top: 10px;
 }
 .index {
@@ -532,7 +537,8 @@ aside input[type=checkbox]:checked ~ .contents-treeview {
     display: none;
 }
 #Bookmarks {
-    padding: 0 20px;
+    width: 300px;
+    margin-left: 10px;
 }
 #Bookmarks p {
     font-size: 22px;
@@ -628,7 +634,6 @@ li.disabled a {
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
     box-sizing: border-box;
     line-height: 1.5em;
-    margin-top: 10px;
     outline: none;
     padding: 0 .25em;
     transition: all 0.30s ease-in-out;
@@ -642,13 +647,25 @@ li.disabled a {
 #search-bar::placeholder {
     font-style: italic;
 }
+#SearchFrame .nav-container {
+    display: none;
+    position: absolute;
+    background-color: var(--background-color);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 80svh;
+    width: 300px;
+}
+#SearchFrame:focus-within .nav-container {
+    display: block;
+}
 .xapian-donation {
     border-top: 2px solid #148603;
     background-color: #FCFCFC;
     box-shadow: 0 2px 8px 0 rgba(0,0,0,.05);
 }
 #DonationFrame {
-    background: #18A303;
+    background: var(--module-color);
     position: sticky;
     top: 0px;
 }
@@ -672,10 +689,9 @@ li.disabled a {
     text-align: center;
 }
 #SearchFrame {
-    background: #18A303;
     top: 0px;
     position: sticky;
-    z-index: 100;
+    z-index: 1;
 }
 .xapian-omega-search {
     margin: auto;
@@ -823,6 +839,57 @@ li.disabled a {
     }
 }
 @media screen and (min-width: 960px) {
+    html {
+        scroll-padding-top: 64px;
+    }
+    body {
+        display: grid;
+        grid-template-columns: 320px 100px 300px 1fr;
+        grid-template-rows: minmax(1em, auto) minmax(1em, auto) 1fr minmax(1em, auto);
+        grid-template-areas: "header header search donation"
+                                "leftside main main main"
+                                "leftside main main main"
+                                ". footer footer footer"
+    }
+    #TopLeftHeader {
+        display: grid;
+        align-items: end;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: "symbol logo"
+                            "symbol dropdowns"
+    }
+    #SearchFrame {
+        grid-area: search;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .index-label {
+        color: #fff;
+    }
+    #DonationFrame {
+        grid-area: donation;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #Contents {
+        color: #333;
+        z-index: 6;
+        display: block;
+        margin: 0 20px 0 20px;
+    }
+    label[for=accordion-1] {
+        margin: 0;
+    }
+    label[for=accordion-1]:after {
+        content: "";
+        font-size: unset;
+    }
+    #Bookmarks {
+        margin-left: 0;
+    }
     .dropdowns {
         flex-direction: row;
         overflow-y: auto;
@@ -872,14 +939,13 @@ li.disabled a {
     }
     .leftside {
         grid-area: leftside;
-    }
-    .rightside {
-        grid-area: rightside;
+        padding: 40px 10px 0 10px;
     }
     #DonationFrame {
         grid-area: donation;
     }
     #SearchFrame {
+        background: var(--module-color);
         grid-area: search;
     }
     footer {
@@ -894,18 +960,14 @@ li.disabled a {
     }
     #DisplayArea {
         box-shadow: 0 2px 8px 0 rgba(0,0,0,.05);
-        padding: 10px 50px 40px 50px;
+        padding: 40px 50px;
     }
     .xapian-omega-search {
         width: 100%;
     }
     .xapian-omega-search form {
         display: flex;
-        justify-content: center;
-    }
-    .omega-autofocus {
-        max-width: 200px;
-        width: 100%
+        justify-content: flex-end;
     }
     /* ScriptForge service tables */
     .sf_table {
@@ -922,77 +984,22 @@ li.disabled a {
     }
 }
 @media screen and (min-width: 1440px) {
-    #Contents {
-        color: #333;
-        z-index: 6;
-        display: block;
-        margin: 0 20px 0 20px;
+    body {
+        display: grid;
+        grid-template-columns: 360px 100px 400px 400px 1fr;
+        grid-template-rows: 1fr minmax(1em, auto) minmax(1em, auto);
+        grid-template-areas: "header header search search donation"
+                                "leftside main main main ."
+                                ". footer footer footer ."
+    }
+    .donation {
+        max-width: 300px;
     }
     label[for=accordion-1] {
         background-color: transparent;
         text-decoration: none;
     }
-     label[for=accordion-1]:hover {
+    label[for=accordion-1]:hover {
         background-color: transparent;
-    }
-     label[for=accordion-1]:after {
-        content: "";
-    }
-    .omega-autofocus {
-        max-width: 400px;
-    }
-}
-/* Use @supports to sneak these rules past IE */
-@supports (grid-area: auto) {
-    @media screen and (min-width: 960px) {
-        #TopLeftHeader {
-            display: grid;
-            align-items: end;
-            grid-template-columns: auto auto;
-            grid-template-rows: auto auto;
-            grid-template-areas: "symbol logo"
-                                "symbol dropdowns"
-        }
-        #SearchFrame {
-            grid-area: search;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        #DonationFrame {
-            grid-area: donation;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        body {
-            display: grid;
-            grid-template-columns: 320px 100px 300px 1fr;
-            grid-template-rows: minmax(1em, auto) minmax(1em, auto) 1fr minmax(1em, auto);
-            grid-template-areas: "header header search donation"
-                                 "rightside main main main"
-                                 "leftside main main main"
-                                 ". footer footer footer"
-        }
-        html {
-            scroll-padding-top: 64px;
-        }
-    }
-    @media screen and (min-width: 1440px) {
-        body {
-            display: grid;
-            grid-template-columns: 360px 100px 400px 400px 1fr;
-            grid-template-rows: 1fr minmax(1em, auto) minmax(1em, auto);
-            grid-template-areas: "header header search search donation"
-                                 "leftside main main main rightside"
-                                 ". footer footer footer ."
-        }
-        .donation {
-            max-width: 300px;
-        }
-        .rightside {
-            width: auto;
-            border-right: none;
-        }
     }
 }
