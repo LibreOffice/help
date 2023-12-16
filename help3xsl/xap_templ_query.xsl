@@ -22,8 +22,9 @@ xsltproc xap_template_query.xsl <file.xhp>
     <!-- Strings for the help UI page -->
     <xsl:variable name ="ui_contents"><xsl:apply-templates select="//variable[@id='contents']"/></xsl:variable>
     <xsl:variable name ="ui_index"><xsl:apply-templates select="//variable[@id='index']"/></xsl:variable>
-    <xsl:variable name ="ui_pholderall"><xsl:apply-templates select="//variable[@id='pholderall']"/></xsl:variable>
-    <xsl:variable name ="ui_pholderchosen"><xsl:apply-templates select="//variable[@id='pholderchosen']"/></xsl:variable>
+    <xsl:variable name ="ui_pholderbmarksall"><xsl:apply-templates select="//variable[@id='pholderbmarksall']"/></xsl:variable>
+    <xsl:variable name ="ui_pholderbmarkschosen"><xsl:apply-templates select="//variable[@id='pholderbmarkschosen']"/></xsl:variable>
+    <xsl:variable name ="ui_pholderfullsearch"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='pholderfullsearch']"/></xsl:variable>
     <xsl:variable name ="ui_module"><xsl:apply-templates select="//variable[@id='module']"/></xsl:variable>
     <xsl:variable name ="ui_language"><xsl:apply-templates select="//variable[@id='language']"/></xsl:variable>
     <xsl:variable name ="ui_donate"><xsl:apply-templates select="//variable[@id='donate']"/></xsl:variable>
@@ -131,7 +132,7 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
     <div id="Index">
         <div class="index-label">]]><xsl:value-of select="$ui_index"/><![CDATA[ &#32;&#x1f50e;&#xfe0e;&#32;</div>
         <div id="Bookmarks">
-            <input id="search-bar" type="search" class="search" placeholder="]]><xsl:value-of select="$ui_pholderchosen"/><![CDATA["/>
+            <input id="search-bar" type="search" class="search" placeholder="]]><xsl:value-of select="$ui_pholderbmarkschosen"/><![CDATA["/>
             <nav class="index"></nav>
         </div>
     </div>
@@ -148,7 +149,7 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
 <div id="DisplayArea">
     <form name="P" method="get" action="]]><xsl:value-of select="$lang"/><![CDATA[/search" target="_top">
 <center>
-<input id="omega-autofocus" type=search name=P value="$html{$query}" size=40 autofocus>
+<input id="omega-autofocus" type=search name=P placeholder="]]><xsl:value-of select="$ui_pholderfullsearch"/>"<![CDATA[ value="$html{$query}" size=40 autofocus>
 <script>
 if (!("autofocus" in document.createElement("input")))
  document.getElementById("omega-autofocus").focus();

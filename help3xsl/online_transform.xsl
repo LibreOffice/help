@@ -96,22 +96,23 @@
 <!-- Strings for the help UI page -->
 <xsl:variable name="tmp_href_ui"><xsl:value-of select="concat($urlpre,'text/shared/help/browserhelp.xhp')"/></xsl:variable>
 <xsl:variable name="tmp_doc_ui" select="document($tmp_href_ui)"/>
-<xsl:variable name ="ui_contents"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='contents']"/></xsl:variable>
-<xsl:variable name ="ui_index"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='index']"/></xsl:variable>
-<xsl:variable name ="ui_pholderall"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='pholderall']"/></xsl:variable>
-<xsl:variable name ="ui_pholderchosen"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='pholderchosen']"/></xsl:variable>
-<xsl:variable name ="ui_module"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='module']"/></xsl:variable>
-<xsl:variable name ="ui_language"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='language']"/></xsl:variable>
-<xsl:variable name ="ui_donate"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='donate']"/></xsl:variable>
-<xsl:variable name ="ui_logo"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='LibreOfficeHelp']"/></xsl:variable>
-<xsl:variable name ="ui_selectmodule"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='selectmodule']"/></xsl:variable>
-<xsl:variable name ="ui_selectlang"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='selectlanguage']"/></xsl:variable>
-<xsl:variable name ="ui_search"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='searchhelpcontents']"/></xsl:variable>
-<xsl:variable name ="ui_copyclip"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='copyclip']"/></xsl:variable>
-<xsl:variable name ="ytvideobutton"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytbutton']"/></xsl:variable>
-<xsl:variable name ="ytaccept"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytaccept']"/></xsl:variable>
-<xsl:variable name ="ytpromovideoH2"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='externalvideo']"/></xsl:variable>
-<xsl:variable name ="ytprivacy"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytprivacy']"/></xsl:variable>
+<xsl:variable name="ui_contents"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='contents']"/></xsl:variable>
+<xsl:variable name="ui_index"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='index']"/></xsl:variable>
+<xsl:variable name="ui_pholderbmarksall"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='pholderbmarksall']"/></xsl:variable>
+<xsl:variable name="ui_pholderbmarkschosen"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='pholderbmarkschosen']"/></xsl:variable>
+<xsl:variable name="ui_pholderfullsearch"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='pholderfullsearch']"/></xsl:variable>
+<xsl:variable name="ui_module"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='module']"/></xsl:variable>
+<xsl:variable name="ui_language"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='language']"/></xsl:variable>
+<xsl:variable name="ui_donate"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='donate']"/></xsl:variable>
+<xsl:variable name="ui_logo"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='LibreOfficeHelp']"/></xsl:variable>
+<xsl:variable name="ui_selectmodule"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='selectmodule']"/></xsl:variable>
+<xsl:variable name="ui_selectlang"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='selectlanguage']"/></xsl:variable>
+<xsl:variable name="ui_search"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='searchhelpcontents']"/></xsl:variable>
+<xsl:variable name="ui_copyclip"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='copyclip']"/></xsl:variable>
+<xsl:variable name="ytvideobutton"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytbutton']"/></xsl:variable>
+<xsl:variable name="ytaccept"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytaccept']"/></xsl:variable>
+<xsl:variable name="ytpromovideoH2"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='externalvideo']"/></xsl:variable>
+<xsl:variable name="ytprivacy"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytprivacy']"/></xsl:variable>
 <!--
 #############
 # Templates #
@@ -200,32 +201,39 @@
             </xsl:if>
         </div>
     </header>
-    <aside class="rightside">
+    <aside class="leftside">
         <input id="accordion-1" name="accordion-menu" type="checkbox"/>
         <label for="accordion-1" dir="auto"><xsl:value-of select="$ui_contents"/></label>
         <div id="Contents" class="contents-treeview"></div>
     </aside>
-    <aside class="leftside">
-        <div id="Index">
-        <div class="index-label" dir="auto"><xsl:value-of select="$ui_index"/> &#32;&#x1f50e;&#xfe0e;&#32;</div>
-            <div id="Bookmarks">
-                <xsl:variable name="pholder">
-                    <xsl:choose>
-                        <xsl:when test="contains($htmlpage, '/text/shared/')">
-                            <xsl:value-of select="$ui_pholderall"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:value-of select="$ui_pholderchosen"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:variable>
-                <input id="search-bar" type="search" class="search" placeholder="{$pholder}" dir="auto"/>
+    <div id="SearchFrame">
+        <div id="Bookmarks">
+            <xsl:variable name="pholder">
+                <xsl:choose>
+                    <xsl:when test="contains($htmlpage, '/text/shared/')">
+                        <xsl:value-of select="$ui_pholderbmarksall"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="$ui_pholderbmarkschosen"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
+            <input id="search-bar" type="search" class="search" placeholder="{$pholder}" dir="auto"/>
+            <div class="nav-container" tabindex="0">
                 <nav class="index" dir="auto"></nav>
             </div>
         </div>
-    </aside>
+    </div>
     <div id="DisplayArea" itemprop="softwareHelp" itemscope="true" itemtype="http://schema.org/SoftwareApplication">
         <xsl:if test="$online">
+            <xsl:if test="$xapian='yes'">
+                <div class="xapian-omega-search">
+                    <form name="P" method="get" action="/{$productversion}/{$lang}/search" target="_top">
+                        <input id="omega-autofocus" type="search" name="P" placeholder="{$ui_pholderfullsearch}" dir="auto"/>
+                        <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
+                    </form>
+                </div>
+            </xsl:if>
             <!-- help2.js checks, if meta elements exist in the body -->
             <meta itemprop="applicationCategory" content="BusinessApplication"/>
             <meta itemprop="applicationSuite" content="LibreOffice"/>
@@ -242,18 +250,6 @@
         </xsl:if>
         <xsl:apply-templates select="/helpdocument/body"/>
     </div>
-    <div id="SearchFrame">
-        <xsl:if test="$online">
-            <xsl:if test="$xapian='yes'">
-                <div class="xapian-omega-search">
-                    <form name="P" method="get" action="/{$productversion}/{$lang}/search" target="_top">
-                        <input id="omega-autofocus" type="search" name="P" dir="auto"/>
-                        <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
-                    </form>
-                </div>
-            </xsl:if>
-        </xsl:if>
-      </div>
     <div id="DonationFrame">
         <xsl:if test="$online">
             <div class="donation">

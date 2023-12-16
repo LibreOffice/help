@@ -70,7 +70,6 @@ function setSystemSpan(spanZ) {
 }
 
 // paint headers and headings with appl color
-
 function moduleColor (module) {
     switch (module){
         case "WRITER" : {color="#083fa6"; break;}
@@ -84,18 +83,8 @@ function moduleColor (module) {
         case "SHARED" : {color="darkslategray"; break;}
         default : {color="#18A303"; break;}
     }
-    document.getElementById("TopLeftHeader").style.background = color;
-    document.getElementById("SearchFrame").style.background = color;
-    document.getElementById("DonationFrame").style.background = color;
-    var cols = document.getElementsByClassName('tableheadcell');
-    for(i = 0; i < cols.length; i++) {cols[i].style.backgroundColor = color;};
-    for (j of [1,2,3,4,5,6]) {
-        var hh = document.getElementsByTagName("H" + j);
-        for(i = 0; i < hh.length; i++) {
-            hh[i].style.color = color;
-            hh[i].style.borderBottomColor = color;
-        }
-    }
+    let root = document.documentElement;
+    root.style.setProperty('--module-color', color);
 }
 
 /* add &DbPAR= and &System= to the links in DisplayArea div */
