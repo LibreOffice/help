@@ -24,7 +24,7 @@ xsltproc xap_template_query.xsl <file.xhp>
     <xsl:variable name ="ui_index"><xsl:apply-templates select="//variable[@id='index']"/></xsl:variable>
     <xsl:variable name ="ui_pholderbmarksall"><xsl:apply-templates select="//variable[@id='pholderbmarksall']"/></xsl:variable>
     <xsl:variable name ="ui_pholderbmarkschosen"><xsl:apply-templates select="//variable[@id='pholderbmarkschosen']"/></xsl:variable>
-    <xsl:variable name ="ui_pholderfullsearch"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='pholderfullsearch']"/></xsl:variable>
+    <xsl:variable name ="ui_pholderfullsearch"><xsl:apply-templates select="//variable[@id='pholderfullsearch']"/></xsl:variable>
     <xsl:variable name ="ui_module"><xsl:apply-templates select="//variable[@id='module']"/></xsl:variable>
     <xsl:variable name ="ui_language"><xsl:apply-templates select="//variable[@id='language']"/></xsl:variable>
     <xsl:variable name ="ui_donate"><xsl:apply-templates select="//variable[@id='donate']"/></xsl:variable>
