@@ -189,6 +189,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/data_provider \
     helpcontent2/source/text/scalc/01/databar_more_options \
     helpcontent2/source/text/scalc/01/default_number_formats \
+    helpcontent2/source/text/scalc/01/DeleteNote \
+    helpcontent2/source/text/scalc/01/DeleteAllNotes \
     helpcontent2/source/text/scalc/01/duplicate_sheet \
     helpcontent2/source/text/scalc/01/EditSelectMenu \
     helpcontent2/source/text/scalc/01/events_sheet \
@@ -285,6 +287,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_workday \
     helpcontent2/source/text/scalc/01/func_year \
     helpcontent2/source/text/scalc/01/func_yearfrac \
+    helpcontent2/source/text/scalc/01/HideNote \
     helpcontent2/source/text/scalc/01/hide_sheet \
     helpcontent2/source/text/scalc/01/InsertCurrentDate \
     helpcontent2/source/text/scalc/01/InsertCurrentTime \
@@ -300,7 +303,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/SelectRow \
     helpcontent2/source/text/scalc/01/SetInputMode \
     helpcontent2/source/text/scalc/01/shared_spreadsheet \
+    helpcontent2/source/text/scalc/01/SheetCommentMenu \
     helpcontent2/source/text/scalc/01/sheet_tab_color \
+    helpcontent2/source/text/scalc/01/ShowNote \
     helpcontent2/source/text/scalc/01/solver \
     helpcontent2/source/text/scalc/01/solver_options \
     helpcontent2/source/text/scalc/01/solver_options_algo \
