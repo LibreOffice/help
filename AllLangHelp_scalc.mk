@@ -292,10 +292,13 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/InsertCurrentDate \
     helpcontent2/source/text/scalc/01/InsertCurrentTime \
     helpcontent2/source/text/scalc/01/JumpToNextTableSel \
+    helpcontent2/source/text/scalc/01/JumpToNextTable \
     helpcontent2/source/text/scalc/01/JumpToPrevTableSel \
+    helpcontent2/source/text/scalc/01/JumpToPrevTable \
     helpcontent2/source/text/scalc/01/live_data_stream \
     helpcontent2/source/text/scalc/01/ManageNames \
     helpcontent2/source/text/scalc/01/MergeCellsMenu \
+    helpcontent2/source/text/scalc/01/NavigateMenu \
     helpcontent2/source/text/scalc/01/NormalViewMode \
     helpcontent2/source/text/scalc/01/recalculate_hard \
     helpcontent2/source/text/scalc/01/SelectColumn \
