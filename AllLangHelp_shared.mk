@@ -331,7 +331,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/06200000 \
     helpcontent2/source/text/shared/01/06201000 \
     helpcontent2/source/text/shared/01/06202000 \
-    helpcontent2/source/text/shared/01/06990000 \
     helpcontent2/source/text/shared/01/07010000 \
     helpcontent2/source/text/shared/01/07080000 \
     helpcontent2/source/text/shared/01/about_meta_tags \
