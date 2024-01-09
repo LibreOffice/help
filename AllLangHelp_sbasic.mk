@@ -407,6 +407,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/CallByName \
     helpcontent2/source/text/sbasic/shared/classmodule \
     helpcontent2/source/text/sbasic/shared/collection \
+    helpcontent2/source/text/sbasic/shared/color_scheme \
     helpcontent2/source/text/sbasic/shared/compatible \
     helpcontent2/source/text/sbasic/shared/compatibilitymode \
     helpcontent2/source/text/sbasic/shared/Compiler_options \
