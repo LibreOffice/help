@@ -134,7 +134,7 @@
           <paragraph id="par_id271582885623525" role="tablecontent"><literal>Dictionary</literal> service</paragraph>
         </tablecell>
         <tablecell>
-          <paragraph id="par_id581582885657885" role="tablecontent">Returns a <literal>Dictionary</literal>  with the default values used for each field in the dataset. The fields or columns in the dataset are the keys in the dictionary.</paragraph>
+          <paragraph id="par_id581582885657885" role="tablecontent">Returns a <literal>Dictionary</literal> with the default values used for each field in the dataset. The fields or columns in the dataset are the keys in the dictionary.</paragraph>
           <paragraph id="par_id581582885653105" role="tablecontent">The database field types are converted to their corresponding Basic/Python data types. When the field type is undefined, the default value is <literal>Null</literal> if the field is nullable or <literal>Empty</literal>.</paragraph>
         </tablecell>
       </tablerow>
@@ -379,7 +379,7 @@
       <bookmark_value>Dataset service;CreateDataset</bookmark_value>
     </bookmark>
     <h2 id="hd_id201589199660251" localize="false">CreateDataset</h2>
-    <paragraph role="paragraph" id="par_id93158919343864">Returns a <literal>Dataset</literal> service instance from an existing dataset by applying the specified filter and order by statements.</paragraph>
+    <paragraph role="paragraph" id="par_id93158919343864">Returns a <literal>Dataset</literal> service instance from an existing dataset by applying the specified filter and <literal>ORDER BY</literal> statements.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id140222827609276">
       <input>svc.CreateDataset(opt filter: str, opt orderby: str): svc</input>
@@ -393,17 +393,17 @@
       <paragraph role="bascode" id="bas_id721701180069642">' Use an empty string to remove the current filter</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id191701180070057">oNewDataset = oDataset.CreateDataset(Filter := "")</paragraph>
       <paragraph role="bascode" id="bas_id981701180070457">' Examples of common filters</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id217011800710769">oNewDataset = oDataset.CreateDataset(Filter := "[Name] = 'John'")</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id341701180070985">oNewDataset = oDataset.CreateDataset(Filter := "[Name] LIKE 'A'")</paragraph>
+      <paragraph role="bascode" id="bas_id217011800710769">oNewDataset = oDataset.CreateDataset(Filter := "[Name] = 'John'")</paragraph>
+      <paragraph role="bascode" id="bas_id341701180070985">oNewDataset = oDataset.CreateDataset(Filter := "[Name] LIKE 'A'")</paragraph>
       <paragraph role="bascode" id="bas_id371701180071169">' It is possible to append additional conditions to the current filter</paragraph>
-      <paragraph role="bascode" localize="false" id="bas_id817011802603460">oNewDataset = oDataset.CreateDataset(Filter := "(" &amp; oDataset.Filter &amp; ") AND [Name] LIKE 'A'")</paragraph>
+      <paragraph role="bascode" id="bas_id817011802603460">oNewDataset = oDataset.CreateDataset(Filter := "(" &amp; oDataset.Filter &amp; ") AND [Name] LIKE 'A'")</paragraph>
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id221701180362978">new_dataset = dataset.CreateDataset(filter = "")</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id581701180363338">new_dataset = dataset.CreateDataset(filter = "[Name] = 'John'")</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id261701180365275">new_dataset = dataset.CreateDataset(filter = "[Name] LIKE 'A'")</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id481701180365786">new_dataset = dataset.CreateDataset(filter = f"({dataset.Filter}) AND [Name] LIKE 'A'")</paragraph>
+      <paragraph role="pycode" id="pyc_id581701180363338">new_dataset = dataset.CreateDataset(filter = "[Name] = 'John'")</paragraph>
+      <paragraph role="pycode" id="pyc_id261701180365275">new_dataset = dataset.CreateDataset(filter = "[Name] LIKE 'A'")</paragraph>
+      <paragraph role="pycode" id="pyc_id481701180365786">new_dataset = dataset.CreateDataset(filter = f"({dataset.Filter}) AND [Name] LIKE 'A'")</paragraph>
     </pycode>
   </section>
 
