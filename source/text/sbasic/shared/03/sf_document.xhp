@@ -353,7 +353,7 @@
             <paragraph id="par_id371693885195525" role="tablecontent" xml-lang="en-US">UNO Object</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id881582885205976" role="tablecontent" xml-lang="en-US">A <literal>com.sun.star.XXX.DocumentSettings</literal> UNO object - where XXX is sheet, text, drawing or presentation - that gives access to UNO internal properties, that are specific to the document's type.</paragraph>
+            <paragraph id="par_id881582885205976" role="tablecontent" xml-lang="en-US">A <literal>com.sun.star.XXX.DocumentSettings</literal> UNO object, where XXX is either <literal>sheet</literal>, <literal>text</literal>, <literal>drawing</literal> or <literal>presentation</literal>. This object gives access to the internal UNO properties that are specific to the document's type.</paragraph>
         </tablecell>
       </tablerow>
     </table>
@@ -540,7 +540,7 @@
   <section id="family">
     <paragraph role="paragraph" id="par_id361580300131416"><emph>family</emph>: One of the style families present in the actual document, as a case-sensitive string. Valid family names can be retrieved using <literal>StyleFamilies</literal> property.</paragraph>
   </section>
-  <paragraph role="paragraph" id="par_id361589211129686"><emph>stylelist</emph>: A single style name as a string or an array of style names. The style names may be localized or not. The StylesList is typically the output of the execution of a <literal>Styles()</literal> method.</paragraph>
+  <paragraph role="paragraph" id="par_id361589211129686"><emph>stylelist</emph>: A single style name as a string or an array of style names. The style names may be localized or not. The <literal>StylesList</literal> is typically the output of the execution of a <literal>Styles()</literal> method.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -586,7 +586,7 @@
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id916888374940240">doc.Echo(echoon = False, hourglass = True)</paragraph>
-    <paragraph role="pycode" id="pyc_id691688837494400">...</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id691688837494400">...</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id221688837494813">doc.Echo()</paragraph>
   </pycode>
 </section>
@@ -661,7 +661,7 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id321635436910004"><emph>filename</emph>: The file from which to load the styles in the <literal>FileSystem</literal> notation. The file is presumed to be of the same document type as the actual document.</paragraph>
-  <paragraph role="paragraph" id="par_id251635436912157"><emph>families</emph>: One of the style families present in the actual document, as a case-sensitive string or an array of such strings. Default = all families.</paragraph>
+  <paragraph role="paragraph" id="par_id251635436912157"><emph>families</emph>: One of the style families present in the actual document, as a case-sensitive string or an array of such strings. Leave this argument blank to import all families.</paragraph>
   <paragraph role="paragraph" id="par_id362635436912268"><emph>overwrite</emph>: When <literal>True</literal>, the actual styles may be overwritten. Default is <literal>False</literal>.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
@@ -970,14 +970,14 @@
   </pycode>
   </section>
 </section>
-  
+
 <section id="XStyles">
   <comment> XStyles --------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721589200120958">
     <bookmark_value>Document service;XStyles</bookmark_value>
   </bookmark>
   <h2 id="hd_id261590300121339" localize="false">XStyles</h2>
-  <paragraph role="paragraph" id="par_id091612259616155">This method returns the UNO representation of a given style for all document types except <literal>Base</literal>. <literal>Nothing</literal> is returned when the StyleName does not exist in the given Family.</paragraph>
+  <paragraph role="paragraph" id="par_id091612259616155">This method returns the UNO representation of a given style for all document types except <literal>Base</literal>. <literal>Nothing</literal> is returned when the <literal>StyleName</literal> does not exist in the given family.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id1001634997222964">
     <input>svc.XStyles(family: str, stylename: str): uno</input>
