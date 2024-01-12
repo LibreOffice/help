@@ -35,7 +35,7 @@
       <paragraph role="listitem" id="par_id51587913266596" xml-lang="en-US">Statusbar settings</paragraph>
    </listitem>
    <listitem>
-      <paragraph id="par_id401599404339702"  role="listitem" xml-lang="en-US">Display of a floating progress bar</paragraph>
+      <paragraph id="par_id401599404339702" role="listitem" xml-lang="en-US">Display of a floating progress bar</paragraph>
    </listitem>
    <listitem>
       <paragraph role="listitem" id="par_id761587913266388" xml-lang="en-US">Creation of new windows</paragraph>
@@ -122,20 +122,6 @@
            </tablecell>
         <tablecell>
            <paragraph id="par_id351587913266349" role="tablecontent" xml-lang="en-US">a valid and unique <literal>WindowName</literal> for the currently active window. When the window cannot be identified, a zero-length string is returned.</paragraph>
-        </tablecell>
-     </tablerow>
-     <tablerow>
-        <tablecell>
-           <paragraph id="par_id161597813266162" role="tablecontent" localize="false">Documents</paragraph>
-        </tablecell>
-        <tablecell>
-           <paragraph id="par_id658517913266754" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-        </tablecell>
-        <tablecell>
-           <paragraph id="par_id421587994189890" role="tablecontent" localize="false">String array</paragraph>
-           </tablecell>
-        <tablecell>
-           <paragraph id="par_id153587913266349" role="tablecontent" xml-lang="en-US">The list of the currently open documents. Special windows are ignored. This list consists of a zero-based one dimensional array either of filenames (in SF_FileSystem.FileNaming notation) or of window titles for unsaved documents.</paragraph>
         </tablecell>
      </tablerow>
      <tablerow>
@@ -251,10 +237,10 @@
    <paragraph role="paragraph" id="par_id311620312548992">The examples below show a <literal>MsgBox</literal> with the names of all currently open documents.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id201587985861232">Dim openDocs as Object, strDocs as String</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id201587985861232">Dim openDocs As Object, strDocs As String</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id261587985839734">Set openDocs = ui.Documents()</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id621587985950181">strDocs = openDocs(0)</paragraph>
-     <paragraph role="bascode" localize="false" id="bas_id11587985956383">For i = 1 to UBound(openDocs)</paragraph>
+     <paragraph role="bascode" localize="false" id="bas_id11587985956383">For i = 1 To UBound(openDocs)</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id981620312219531">    strDocs = strDocs &amp; Chr(10) &amp; openDocs(i)</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id341587985962974">Next i</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id191620312244070">MsgBox strDocs</paragraph>
@@ -280,14 +266,15 @@
            <link href="text/sbasic/shared/03/sf_ui.xhp#Activate">Activate</link><br/>
            <link href="text/sbasic/shared/03/sf_ui.xhp#CreateBaseDocument">CreateBaseDocument</link><br/>
            <link href="text/sbasic/shared/03/sf_ui.xhp#CreateDocument">CreateDocument</link> (*)<br/>
-           <link href="text/sbasic/shared/03/sf_ui.xhp#GetDocument">GetDocument</link><br/>
-           <link href="text/sbasic/shared/03/sf_ui.xhp#Maximize">Maximize</link>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#Documents">Documents</link><br/>
+           <link href="text/sbasic/shared/03/sf_ui.xhp#GetDocument">GetDocument</link>
        </paragraph></tablecell>
        <tablecell><paragraph id="par_id451606472825856" role="tablecontent" localize="false">
+           <link href="text/sbasic/shared/03/sf_ui.xhp#Maximize">Maximize</link><br/>
            <link href="text/sbasic/shared/03/sf_ui.xhp#Minimize">Minimize</link><br/>
            <link href="text/sbasic/shared/03/sf_ui.xhp#OpenBaseDocument">OpenBaseDocument</link><br/>
            <link href="text/sbasic/shared/03/sf_ui.xhp#OpenDocument">OpenDocument</link> (*)<br/>
-         <link href="text/sbasic/shared/03/sf_ui.xhp#Resize">Resize</link><br/><br/>
+         <link href="text/sbasic/shared/03/sf_ui.xhp#Resize">Resize</link><br/>
        </paragraph></tablecell>
        <tablecell><paragraph id="par_id161606472825856" role="tablecontent" localize="false">
            <link href="text/sbasic/shared/03/sf_ui.xhp#RunCommand">RunCommand</link><br/>
@@ -336,7 +323,7 @@
      <input>svc.CreateBaseDocument(filename: str, embeddeddatabase: str = 'HSQLDB', registrationname: str = '', opt calcfilename: str): svc</input>
    </paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-   <paragraph role="paragraph" id="par_id441596554849949"><emph>filename</emph> : Identifies the file to create. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation. If the file already exists, it is overwritten without warning</paragraph>
+   <paragraph role="paragraph" id="par_id441596554849949"><emph>filename</emph> : Identifies the file to create. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation. If the file already exists, it is overwritten without warning.</paragraph>
    <paragraph role="paragraph" id="par_id381596554849698" xml-lang="en-US"><emph>embeddeddatabase</emph> : Either "HSQLDB" (default), "FIREBIRD" or "CALC".</paragraph>
    <paragraph role="paragraph" id="par_id521596554849185" xml-lang="en-US"><emph>registrationname</emph> : The name used to store the new database in the databases register. When = "" (default), no registration takes place. If the name already exists it is overwritten without warning.</paragraph>
    <paragraph role="paragraph" id="par_id181629364905056" xml-lang="en-US"><emph>calcfilename</emph> : Only when <literal>embeddeddatabase</literal> = "CALC", <literal>calcfilename</literal> represents the file containing the tables as Calc sheets. The file must exist or an error is raised.</paragraph>
@@ -362,7 +349,7 @@
       <bookmark_value>UI service;CreateDocument</bookmark_value>
    </bookmark>
    <h2 id="hd_id45158852175376" localize="false">CreateDocument (*)</h2>
-   <paragraph role="paragraph" id="par_id651588521753997">Create a new %PRODUCTNAME document of a given type or based on a given template. The method returns a document object.</paragraph>
+   <paragraph role="paragraph" id="par_id651588521753997">Create a new %PRODUCTNAME document of a given type or based on a given template. The method returns an instance of the document class or one of its subclasses (Calc, Writer).</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id401620320696126">
      <input>svc.CreateDocument(documenttype: str = '', templatefile: str = '', hidden: bool = False): svc</input>
@@ -388,13 +375,37 @@
    </pycode>
 </section>
 
+<section id="Documents">
+   <comment> Documents -------------------------------------------------------------------------------------------------------------------------- </comment>
+   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id461589631753429">
+      <bookmark_value>UI service;Documents</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id45159962175376" localize="false">Documents</h2>
+   <paragraph role="paragraph" id="par_id651699521753997">The list of the currently open documents. Special windows are ignored. This list consists of a zero-based one dimensional array either of filenames - using <link href="text/sbasic/shared/03/sf_filesystem.xhp#properties_toc">ScriptForge.FileSystem.FileNaming</link> notation - or of window titles for unsaved documents.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_id401732430696126">
+     <input>svc.Documents(): str[1..*]</input>
+   </paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <paragraph role="paragraph" id="par_id701620773517802">In both examples below, the method may return an empty array if there are no documents open.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id201699522371030">Dim docList As Variant</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id042588522377598">docList = ui.Documents</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" localize="false" id="pyc_id901620335533095">docList = ui.Documents()</paragraph>
+   </pycode>
+</section>
+
 <section id="GetDocument">
    <comment> GetDocument -------------------------------------------------------------------------------------------------------------------------- </comment>
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id351588520551838">
       <bookmark_value>UI service;GetDocument</bookmark_value>
    </bookmark>
    <h2 id="hd_id171588520551515" localize="false">GetDocument</h2>
-   <paragraph role="paragraph" id="par_id201588520551463">Returns an open document object referring to either the active window, a given window or the active document.</paragraph>
+   <paragraph role="paragraph" id="par_id201588520551463">Returns an instance of the Document class or one of its subclasses (Calc, Writer, Base, FormDocument) referring to either a given window or the active document.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id811620320778478">     <input>svc.GetDocument(windowname: str = ''): svc</input></paragraph>
    <paragraph role="paragraph" localize="false" id="par_id251624026292796"><input>svc.GetDocument(windowname: uno): svc</input></paragraph>
@@ -472,7 +483,7 @@
       <bookmark_value>UI service;OpenBaseDocument</bookmark_value>
    </bookmark>
    <h2 id="hd_id671596555746148" localize="false">OpenBaseDocument</h2>
-   <paragraph role="paragraph" id="par_id691596555746539">Open an existing %PRODUCTNAME Base document. The method returns a document object.</paragraph>
+   <paragraph role="paragraph" id="par_id691596555746539">Open an existing %PRODUCTNAME Base document. The method returns a <literal>Base</literal> object.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id21620321395150">
      <input>svc.OpenBaseDocument(filename: str = '', registrationname: str = '', macroexecution: int = 0): svc</input>
@@ -480,7 +491,7 @@
    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
    <paragraph role="paragraph" id="par_id231596555746385"><emph>filename</emph>: Identifies the file to open. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
    <paragraph role="paragraph" id="par_id711596555746281" xml-lang="en-US"><emph>registrationname</emph>: The name to use to find the database in the databases register. It is ignored if <literal>FileName</literal> &lt;&gt; "".</paragraph>
-   <paragraph role="paragraph" id="id721596556313545" xml-lang="en-US"><emph>macroexecution</emph>: 0 = behaviour is defined by the user configuration, 1 = macros are not executable, 2 = macros are executable.</paragraph>
+   <paragraph role="paragraph" id="id721596556313545" xml-lang="en-US"><emph>macroexecution</emph>: 0 = behaviour is defined by the user configuration, 1 = macros are not executable, 2 = macros are executable. Default is 0.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
    <bascode>
@@ -489,7 +500,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id431620331254271">ui.OpenBaseDocument(r"C:\Documents\myDB.odb", macroexecution = ui.MACROEXECALWAYS)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id431620331254271">myBase = ui.OpenBaseDocument(r"C:\Documents\myDB.odb", macroexecution = ui.MACROEXECALWAYS)</paragraph>
    </pycode>
    <tip id="par_id941620762989833">To improve code readability you can use <link href="text/sbasic/shared/03/sf_ui.xhp#constants_toc">predefined constants</link> for the <literal>macroexecution</literal> argument, as in the examples above.</tip>
 </section>
@@ -510,7 +521,7 @@
    <paragraph role="paragraph" id="par_id451588523635507" xml-lang="en-US"><emph>password</emph>: To use when the document is protected. If wrong or absent while the document is protected, the user will be prompted to enter a password.</paragraph>
    <paragraph role="paragraph" id="par_id611588524329781" xml-lang="en-US"><emph>readonly</emph>: Default = <literal>False</literal>.</paragraph>
    <paragraph role="paragraph" id="par_id641588523635497" xml-lang="en-US"><emph>hidden</emph>: if <literal>True</literal>, open the new document in the background (default = <literal>False</literal>). To use with caution: activation or closure afterwards can only happen programmatically.</paragraph>
-   <paragraph role="paragraph" id="par_id981588524474719" xml-lang="en-US"><emph>macroexecution</emph>: 0 = behaviour is defined by the user configuration, 1 = macros are not executable, 2 = macros are executable.</paragraph>
+   <paragraph role="paragraph" id="par_id981588524474719" xml-lang="en-US"><emph>macroexecution</emph>: 0 = behaviour is defined by the user configuration, 1 = macros are not executable, 2 = macros are executable. Default is 0.</paragraph>
    <paragraph role="paragraph" id="par_id611588524584693" xml-lang="en-US"><emph>filtername</emph>: The name of a filter that should be used for loading the document. If present, the filter must exist.</paragraph>
    <paragraph role="paragraph" id="par_id191588524634348" xml-lang="en-US"><emph>filteroptions</emph>: An optional string of options associated with the filter.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
@@ -521,7 +532,7 @@
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" localize="false" id="pyc_id891620331804571">ui.OpenDocument(r"C:\Documents\myFile.odt", readonly = True)</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id891620331804571">myDoc = ui.OpenDocument(r"C:\Documents\myFile.odt", readonly = True)</paragraph>
    </pycode>
 </section>
 
@@ -543,7 +554,7 @@
    <paragraph role="paragraph" id="par_id801587987507028">In the following examples, the <literal>width</literal> and <literal>height</literal> of the window are changed while <literal>top</literal> and <literal>left</literal> are left unchanged.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
    <bascode>
-      <paragraph role="bascode" localize="false" id="bas_id171587986945392">ui.Resize(, ,500, 500)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id171587986945392">ui.Resize(Width := 500, Height := 500)</paragraph>
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
@@ -647,7 +658,7 @@
    <paragraph role="paragraph" id="par_id571598864255776">Displays a non-modal dialog box. Specify its title, an explicatory text and a percentage of progress to be represented on a progressbar. The dialog will remain visible until a call to the method without arguments or until the user manually closes the dialog.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id41620322016943">
-     <input>svc.ShowProgressBar(title: str = '', text: str = '', percentage: str = -1)</input>
+     <input>svc.ShowProgressBar(title: str = '', text: str = '', percentage: int = -1)</input>
    </paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
    <paragraph role="paragraph" id="par_id441598864535695" xml-lang="en-US"><emph>title</emph> : The title appearing on top of the dialog box. Default = "ScriptForge".</paragraph>
