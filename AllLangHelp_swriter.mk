@@ -205,7 +205,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/selection_mode \
     helpcontent2/source/text/swriter/01/select_text \
     helpcontent2/source/text/swriter/01/show_whitespace \
-    helpcontent2/source/text/swriter/01/spotlight_styles \
+    helpcontent2/source/text/swriter/01/SpotlightMenu \
+    helpcontent2/source/text/swriter/01/SpotlightCharStyles \
+    helpcontent2/source/text/swriter/01/SpotlightParaStyles \
     helpcontent2/source/text/swriter/01/spotlight_chars_df \
     helpcontent2/source/text/swriter/01/style_inspector \
     helpcontent2/source/text/swriter/01/TableAutoFitMenu \
@@ -378,6 +380,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/guide/shortcut_writing \
     helpcontent2/source/text/swriter/guide/smarttags \
     helpcontent2/source/text/swriter/guide/spellcheck_dialog \
+    helpcontent2/source/text/swriter/guide/spotlight_styles \
     helpcontent2/source/text/swriter/guide/stylist_fillformat \
     helpcontent2/source/text/swriter/guide/stylist_fromselect \
     helpcontent2/source/text/swriter/guide/stylist_update \
