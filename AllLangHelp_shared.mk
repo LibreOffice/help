@@ -374,6 +374,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/moviesound \
     helpcontent2/source/text/shared/01/nav_rename \
     helpcontent2/source/text/shared/01/notebook_bar \
+    helpcontent2/source/text/shared/01/OutlineFont \
+    helpcontent2/source/text/shared/01/Overline \
     helpcontent2/source/text/shared/01/online_update \
     helpcontent2/source/text/shared/01/online_update_dialog \
     helpcontent2/source/text/shared/01/packagemanager \
