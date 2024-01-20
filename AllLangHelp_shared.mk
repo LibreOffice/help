@@ -338,6 +338,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/AutoFormat \
     helpcontent2/source/text/shared/01/AutoRedactDoc \
     helpcontent2/source/text/shared/01/certificatepath \
+    helpcontent2/source/text/shared/01/ChangeCaseToLower \
+    helpcontent2/source/text/shared/01/ChangeCaseToUpper \
     helpcontent2/source/text/shared/01/classificationbar \
     helpcontent2/source/text/shared/01/classificationdialog \
     helpcontent2/source/text/shared/01/DeleteColumns \
@@ -355,6 +357,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/font_features \
     helpcontent2/source/text/shared/01/gallery \
     helpcontent2/source/text/shared/01/gallery_files \
+    helpcontent2/source/text/shared/01/Grow \
     helpcontent2/source/text/shared/01/graphic_size_check \
     helpcontent2/source/text/shared/01/graphic_styles \
     helpcontent2/source/text/shared/01/grid_and_helplines \
@@ -410,6 +413,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/SetOptimalColumnWidth \
     helpcontent2/source/text/shared/01/SetOptimalRowHeight \
     helpcontent2/source/text/shared/01/search_commands \
+    helpcontent2/source/text/shared/01/Shrink \
     helpcontent2/source/text/shared/01/SignaturesMenu \
     helpcontent2/source/text/shared/01/SpellOnline \
     helpcontent2/source/text/shared/01/select_template_category \
