@@ -338,6 +338,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/AutoFormat \
     helpcontent2/source/text/shared/01/AutoRedactDoc \
     helpcontent2/source/text/shared/01/certificatepath \
+    helpcontent2/source/text/shared/01/ChangeCaseRotateCase \
     helpcontent2/source/text/shared/01/ChangeCaseToLower \
     helpcontent2/source/text/shared/01/ChangeCaseToUpper \
     helpcontent2/source/text/shared/01/classificationbar \
