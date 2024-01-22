@@ -340,6 +340,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/certificatepath \
     helpcontent2/source/text/shared/01/ChangeCaseRotateCase \
     helpcontent2/source/text/shared/01/ChangeCaseToLower \
+    helpcontent2/source/text/shared/01/ChangeCaseToSentenceCase \
+    helpcontent2/source/text/shared/01/ChangeCaseToTitleCase \
+    helpcontent2/source/text/shared/01/ChangeCaseToToggleCase \
     helpcontent2/source/text/shared/01/ChangeCaseToUpper \
     helpcontent2/source/text/shared/01/classificationbar \
     helpcontent2/source/text/shared/01/classificationdialog \
