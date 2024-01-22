@@ -415,7 +415,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/librelogo/LibreLogo \
     helpcontent2/source/text/swriter/main0000 \
     helpcontent2/source/text/swriter/main0100 \
-    helpcontent2/source/text/swriter/main0101 \
     helpcontent2/source/text/swriter/main0102 \
     helpcontent2/source/text/swriter/main0103 \
     helpcontent2/source/text/swriter/main0104 \

@@ -87,7 +87,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,smath,\
     helpcontent2/source/text/smath/guide/text \
     helpcontent2/source/text/smath/main0000 \
     helpcontent2/source/text/smath/main0100 \
-    helpcontent2/source/text/smath/main0101 \
     helpcontent2/source/text/smath/main0102 \
     helpcontent2/source/text/smath/main0103 \
     helpcontent2/source/text/smath/main0105 \

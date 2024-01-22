@@ -844,6 +844,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/menu/comment_menu \
     helpcontent2/source/text/shared/menu/insert_form_control \
     helpcontent2/source/text/shared/menu/insert_shape \
+    helpcontent2/source/text/shared/menu/PickList \
     helpcontent2/source/text/shared/menu/save_image \
     helpcontent2/source/text/shared/menu/set_image_background \
     helpcontent2/source/text/shared/menu/submenu_image \
