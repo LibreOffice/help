@@ -420,6 +420,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/Shrink \
     helpcontent2/source/text/shared/01/SignaturesMenu \
     helpcontent2/source/text/shared/01/SmallCaps \
+    helpcontent2/source/text/shared/01/SpacePara115 \
     helpcontent2/source/text/shared/01/SpellOnline \
     helpcontent2/source/text/shared/01/select_template_category \
     helpcontent2/source/text/shared/01/signexistingpdf \
