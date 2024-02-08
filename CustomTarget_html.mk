@@ -51,7 +51,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/hid2file.js : \
 	( \
 		RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(subst helpcontent2/source/text/,,$(gb_html_allhelpfiles)$(if $(filter WNT,$(OS)), )))  && \
 		echo 'var hid2fileMap = {' \
-		&& cd $(SRCDIR)/helpcontent2/source/text && $(call gb_ExternalExecutable_get_command,xsltproc,xargs) $< <$$RESPONSEFILE || { rm $$RESPONSEFILE; exit 1 ; } \
+		&& cd $(SRCDIR)/helpcontent2/source/text && $(call gb_ExternalExecutable_get_command,xsltproc,$(if $(filter WNT,$(OS)),env -i $(gb_Helper_set_ld_path)) xargs) $< <$$RESPONSEFILE || { rm $$RESPONSEFILE; exit 1 ; } \
 		&& rm "$$RESPONSEFILE" \
 		&& echo '};' \
 	) > $@
@@ -275,7 +275,7 @@ $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%/bookmarks.part : \
 	RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(subst helpcontent2/source/text/,,$(gb_AllLangHelp_$(APPDIR)_BOOKMARK_HELPFILES))$(if $(filter WNT,$(OS)), )) \
 	&& cd $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/helpcontent2/source/text \
 	&& ( \
-	    $(call gb_ExternalExecutable_get_command,xsltproc,xargs) \
+	    $(call gb_ExternalExecutable_get_command,xsltproc,$(if $(filter WNT,$(OS)),env -i $(gb_Helper_set_ld_path)) xargs) \
 	        --stringparam app $(APP) \
 	        --stringparam Language $(HELP_LANG) \
 	        --stringparam local $(if $(HELP_ONLINE),'no','yes') \
