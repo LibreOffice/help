@@ -24,16 +24,37 @@
         <h1 id="N0118"><variable id="pythonshell1"><link href="text/sbasic/python/python_shell.xhp">Running Python Interactive Console</link></variable></h1>
     </section>
     <paragraph role="paragraph" id="N0119">The Python interactive console, also known as Python interpreter or Python shell, provides programmers with a quick way to execute commands and try out and test code without creating a file. UNO objects introspection as well as %PRODUCTNAME Python modules documentation can be obtained from the terminal.</paragraph>
+    <paragraph role="paragraph" id="par_id761707735472290"></paragraph>
 
-    <note id="par_id851633601202270">From a full-featured %PRODUCTNAME installed package, use either Basic or Python:</note>
+    <switch select="sys">
+       <case select="UNIX">
+    <h2 id="hd_id381633446811095">Using the Terminal</h2>
+    <note id="par_id801633601715910">From a %PRODUCTNAME copy included in a GNU/Linux platform, use the terminal as shown:</note>
+    <paragraph role="paragraph" id="par_id531633444780190"><literal>whereis</literal> or <literal>type</literal> terminal commands help locate Python interactive console:</paragraph>
+    <paragraph role="paragraph" id="par_id871633361808210" localize="false"><br/><input>user@computer:~$ </input><emph>type -p python3</emph><br/><input>/usr/bin/python3</input><br/> <input>user@computer:~$ </input><emph>/usr/bin/python3</emph><br/> <input>Python 3.7.5 (default, Nov 20 2019, 09:21:52)</input><br/><input>[GCC 9.2.1 20191008] on linux</input><br/><input>Type "help", "copyright", "credits" or "license" for more information.</input><br/><input>>>> </input><emph>import uno</emph><br/><input>>>> </input><emph>dir(uno)</emph><br/><input>['Any', 'Bool', 'ByteSequence', 'Char', 'Enum', 'PY2', 'Type', '_ConstantGroup', '__builtin__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', '_builtin_import', '_component_context', '_impl_getConstantGroupByName', '_uno_extract_printable_stacktrace', '_uno_import', '_uno_struct__eq__', '_uno_struct__getattr__', '_uno_struct__init__', '_uno_struct__ne__', '_uno_struct__repr__', '_uno_struct__setattr__', '_uno_struct__str__', 'absolutize', 'createUnoStruct', 'fileUrlToSystemPath', 'generateUuid', 'getClass', 'getComponentContext', 'getConstantByName', 'getCurrentContext', 'getTypeByName', 'invoke', 'isInterface', 'os', 'pyuno', 'setCurrentContext', 'six_string_types', 'socket', 'sys', 'systemPathToFileUrl', 'traceback', 'warnings']</input><br/><input>>>> </input><emph>exit()</emph><br/><input>user@computer:~$</input></paragraph>
+       </case>
+    </switch>
+
+    <note id="par_id851633601202270">From a full-featured %PRODUCTNAME installed package, a Basic or Python script locates the embedded copy of Python console.</note>
     <h2 id="N0121">Using a Basic macro</h2>
+    <paragraph role="paragraph" id="par_id71707747845585">This routine resorts to <link href="text/sbasic/python/python_platform.xhp">Plaftform class module</link> in order to distinguish the actual operating system.</paragraph>
     <bascode>
         <paragraph role="bascode" id="N0122" localize="false">Sub interpreter_console</paragraph>
-        <paragraph role="bascode" id="bas_id731633624333087" localize="false">    Const UNIX = 4</paragraph>
+        <paragraph role="bascode" id="bas_id731633624333087" localize="false">    Set opsys = New Platform</paragraph>
         <paragraph role="bascode" id="N0123" localize="false">    ps = CreateUnoService(&quot;com.sun.star.util.PathSettings&quot;)</paragraph>
         <paragraph role="bascode" id="N0124" localize="false">    install_path = ConvertFromURL(ps.Module)</paragraph>
-        <paragraph role="bascode" id="bas_id461633624179286" localize="false">    cmd = IIF(GetGuiType()=UNIX,"x-terminal-emulator -e ","")</paragraph>
-        <paragraph role="bascode" id="N0125" localize="false">    Shell(cmd + install_path + GetPathSeparator() + &quot;python&quot; )</paragraph>
+        <paragraph role="bascode" id="bas_id101707747333171" localize="false">    If opsys.isMacOSX Then</paragraph>
+        <paragraph role="bascode" id="bas_id961707747337170" localize="false">        cmd = "/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal "</paragraph>
+        <paragraph role="bascode" id="bas_id181707747337380" localize="false">        pgm_path = Array( install_path,"..","Resources","python" )</paragraph>
+        <paragraph role="bascode" id="bas_id617077473375703" localize="false">    ElseIf opsys.isLinux Then</paragraph>
+        <paragraph role="bascode" id="bas_id461633624179286" localize="false">        cmd = "x-terminal-emulator -e "</paragraph>
+        <paragraph role="bascode" id="bas_id117077473377805" localize="false">        pgm_path = Array(install_path,"python")</paragraph>
+        <paragraph role="bascode" id="bas_id821707747338190" localize="false">    ElseIf opsys.isWindows Then</paragraph>
+        <paragraph role="bascode" id="bas_id191707747338398" localize="false">        cmd = ""</paragraph>
+        <paragraph role="bascode" id="bas_id771707747338596" localize="false">        pgm_path = Array("python")</paragraph>
+        <paragraph role="bascode" id="bas_id721707747338830" localize="false">    EndIf</paragraph>
+        <paragraph role="bascode" id="bas_id881707747337980" localize="false">    python_interpreter = Join( pgm_path, GetPathSeparator() )</paragraph>
+        <paragraph role="bascode" id="N0125" localize="false">    Shell(cmd + python_interpreter)</paragraph>
         <paragraph role="bascode" id="N0126" localize="false">End Sub</paragraph>
     </bascode>
 
@@ -58,25 +79,16 @@
         <image src="media/helpimg/python/python_interactive_console.png" id="N0143"><alt id="N0143">Python Interactive Console</alt></image>
     </paragraph>
 
-    <switch select="sys">
-       <case select="UNIX">
-    <h2 id="hd_id381633446811095">Using the Terminal</h2>
-    <note id="par_id801633601715910">From a %PRODUCTNAME copy included in a GNU/Linux platform, use the terminal as shown:</note>
-    <paragraph role="paragraph" id="par_id531633444780190"><literal>whereis</literal> or <literal>type</literal> terminal commands help locate Python interactive console:</paragraph>
-    <paragraph role="paragraph" id="par_id871633361808210" localize="false"><br/><input>user@computer:~$ </input><emph>type -p python3</emph><br/><input>/usr/bin/python3</input><br/> <input>user@computer:~$ </input><emph>/usr/bin/python3</emph><br/> <input>Python 3.7.5 (default, Nov 20 2019, 09:21:52)</input><br/><input>[GCC 9.2.1 20191008] on linux</input><br/><input>Type "help", "copyright", "credits" or "license" for more information.</input><br/><input>>>> </input><emph>import uno</emph><br/><input>>>> </input><emph>dir(uno)</emph><br/><input>['Any', 'Bool', 'ByteSequence', 'Char', 'Enum', 'PY2', 'Type', '_ConstantGroup', '__builtin__', '__builtins__', '__cached__', '__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', '_builtin_import', '_component_context', '_impl_getConstantGroupByName', '_uno_extract_printable_stacktrace', '_uno_import', '_uno_struct__eq__', '_uno_struct__getattr__', '_uno_struct__init__', '_uno_struct__ne__', '_uno_struct__repr__', '_uno_struct__setattr__', '_uno_struct__str__', 'absolutize', 'createUnoStruct', 'fileUrlToSystemPath', 'generateUuid', 'getClass', 'getComponentContext', 'getConstantByName', 'getCurrentContext', 'getTypeByName', 'invoke', 'isInterface', 'os', 'pyuno', 'setCurrentContext', 'six_string_types', 'socket', 'sys', 'systemPathToFileUrl', 'traceback', 'warnings']</input><br/><input>>>> </input><emph>exit()</emph><br/><input>user@computer:~$</input></paragraph>
-       </case>
-    </switch>
-
     <h2 id="hd_id311633513620803">Alternative console</h2>
     <paragraph role="paragraph" id="par_id81632760673283">Use <link href="https://extensions.libreoffice.org/extensions/apso-alternative-script-organizer-for-Python">APSO extension</link> console as an alternative:</paragraph>
     <paragraph role="paragraph" id="N0144">
         <image src="media/helpimg/python/python_shell.png" id="N0144"><alt id="N0144">APSO console</alt></image>
     </paragraph>
     <section id="relatedtopics">
+        <embed href="text/sbasic/python/python_platform.xhp#pythonplatform"/>
+        <paragraph role="paragraph" id="par_id351633599611244"><link href="text/sbasic/shared/03/sf_exception.xhp?#PythonShell"><literal>PythonShell</literal></link> function in <link href="text/sbasic/shared/03/sf_exception.xhp"><literal>ScriptForge.Exception</literal></link> service</paragraph>
         <embed href="text/sbasic/python/python_examples.xhp#pythonexamples2"/>
         <embed href="text/sbasic/python/main0000.xhp#pythonscriptshelp"/>
-        <paragraph role="paragraph" id="par_id351633599611244"><link href="text/sbasic/shared/03/sf_exception.xhp?#PythonShell"><literal>PythonShell</literal></link> function in <link href="text/sbasic/shared/03/sf_exception.xhp"><literal>ScriptForge.Exception</literal></link> service</paragraph>
-
     </section>
     </body>
 </helpdocument>
