@@ -278,6 +278,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_today \
     helpcontent2/source/text/scalc/01/func_trunc \
     helpcontent2/source/text/scalc/01/func_value \
+    helpcontent2/source/text/scalc/01/func_xlookup \
     helpcontent2/source/text/scalc/01/func_weekday \
     helpcontent2/source/text/scalc/01/func_webservice \
     helpcontent2/source/text/scalc/01/func_weeknum \
