@@ -34,7 +34,9 @@
 <paragraph role="paragraph" id="par_id241708281629922"><emph>Return</emph>: is the reference of the array or range to return.</paragraph>
 <note id="par_id821708357634624">If <emph>Return</emph> is an array of values, the XLOOKUP function must be entered as an <link href="text/scalc/01/04060107.xhp#creating_array_formulas">array formula</link>.</note>
 <paragraph role="paragraph" id="par_id271708281637035"><emph>NotFound</emph>: a text to return if the <emph>Lookup</emph> value is not found. If a valid match is not found, and <emph>NotFound</emph> is omitted, returns #N/A.</paragraph>
-<paragraph role="paragraph" id="par_id121708281643207"><emph>MatchType</emph>: Specify the match type:</paragraph>
+
+<section id="matchmode">
+    <paragraph role="paragraph" id="par_id121708281643207"><emph>MatchType</emph>: Specify the match type:</paragraph>
 <list type="unordered">
     <listitem>
         <paragraph id="par_id111708281542144"  role="listitem"><emph>0</emph> - Exact match (default). If <emph>Lookup</emph> value is not found and <emph>NotFound</emph> text is omitted, then return #N/A.</paragraph>
@@ -48,8 +50,11 @@
     <listitem>
         <paragraph id="par_id881708281558005"  role="listitem"><emph>2</emph> - A <link href="text/scalc/guide/wildcards.xhp">wildcard</link> match where characters *, ?, and ~ have special meaning.</paragraph>
     </listitem>
-</list>
-<paragraph role="paragraph" id="par_id871708281607313"><emph>SearchMode</emph>: Specify the search mode to use:</paragraph>
+    </list>
+</section>
+
+<section id="searchmode">
+    <paragraph role="paragraph" id="par_id871708281607313"><emph>SearchMode</emph>: Specify the search mode to use:</paragraph>
 <list type="unordered">
     <listitem>
         <paragraph id="par_id281708281579757"  role="listitem"><emph>1</emph>: - Search starting at the first item (default).</paragraph>
@@ -63,9 +68,11 @@
     <listitem>
         <paragraph id="par_id561708281595885"  role="listitem"><emph>-2</emph> - Binary search that relies on <emph>Array</emph> being sorted in descending order. If not sorted, invalid results will be returned.</paragraph>
     </listitem>
-</list>
+    </list>
+</section>
 <embed href="text/scalc/01/ful_func.xhp#func_head_example"/>
-<paragraph role="paragraph" id="par_id961708354814163">The table below contains a glossary for translators:</paragraph>
+<section id="xfunc_example">
+    <paragraph role="paragraph" id="par_id961708354814163">The table below contains a glossary for translators:</paragraph>
 <table id="tab_id951708353695721">
     <tablerow>
         <tablecell>
@@ -152,14 +159,16 @@
             <paragraph id="par_id331708354377976" localize="false" role="tablecontent">開ける</paragraph>
         </tablecell>
     </tablerow>
-</table>
-<paragraph role="paragraph" id="par_id31708356677157"><input>={XLOOKUP("New", A2:A4, B2:E4,"Missing")}</input> returns the array {Nouveau,Nuovo,新しい}.</paragraph>
-<paragraph role="paragraph" id="par_id671708356683379"><input>={XLOOKUP("Reload", A2:A4, B2:E4,"Missing")}</input> returns the array {"Missing","Missing","Missing"}.</paragraph>
+    </table>
+</section>
+<paragraph role="paragraph" id="par_id31708356677157"><input>={XLOOKUP("New", A2:A4, B2:D4,"Missing")}</input> returns the array {"Nouveau","Nuovo","新しい"}.</paragraph>
+<paragraph role="paragraph" id="par_id671708356683379"><input>={XLOOKUP("Reload", A2:A4, B2:D4,"Missing")}</input> returns the array {"Missing","Missing","Missing"}.</paragraph>
 <embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
 <embed href="text/scalc/00/avail_release.xhp#24.8"/>
 <embed href="text/scalc/01/common_func.xhp#notODFF"/>
 <paragraph role="paragraph" id="par_id341640870986703" localize="false"><literal>COM.MICROSOFT.XLOOKUP</literal></paragraph>
 <section id="relatedtopics">
+    <paragraph role="paragraph" id="par_id31708365865376" localize="false"><embedvar href="text/scalc/01/func_xmatch.xhp#h1" markup="ignore"/></paragraph>
     <tip id="par_id701677016751508"><link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/XLOOKUP">XLOOKUP wiki page</link>.</tip>
 </section>
 </body>
