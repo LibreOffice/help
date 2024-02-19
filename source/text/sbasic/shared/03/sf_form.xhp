@@ -563,15 +563,14 @@
     <tablerow>
        <tablecell><paragraph id="par_id381606472825856" role="tablecontent" localize="false">
            <link href="text/sbasic/shared/03/sf_form.xhp#Activate">Activate</link><br/>
-           <link href="text/sbasic/shared/03/sf_form.xhp#CloseFormDocument">CloseFormDocument</link><br/>
            <link href="text/sbasic/shared/03/sf_form.xhp#Controls">Controls</link><br/>
            <link href="text/sbasic/shared/03/sf_form.xhp#GetDatabase">GetDatabase</link><br/>
+           <link href="text/sbasic/shared/03/sf_form.xhp#MoveFirst">MoveFirst</link><br/>
        </paragraph></tablecell>
        <tablecell><paragraph id="par_id451606472825856" role="tablecontent" localize="false">
-           <link href="text/sbasic/shared/03/sf_form.xhp#MoveFirst">MoveFirst</link><br/>
            <link href="text/sbasic/shared/03/sf_form.xhp#MoveLast">MoveLast</link><br/>
            <link href="text/sbasic/shared/03/sf_form.xhp#MoveNext">MoveNext</link><br/>
-           <link href="text/sbasic/shared/03/sf_form.xhp#MoveNew">MoveNew</link><br/>
+           <link href="text/sbasic/shared/03/sf_form.xhp#MoveNew">MoveNew</link><br/><br/>
        </paragraph></tablecell>
        <tablecell><paragraph id="par_id161606472825856" role="tablecontent" localize="false">
            <link href="text/sbasic/shared/03/sf_form.xhp#MovePrevious">MovePrevious</link><br/>
@@ -622,10 +621,8 @@
 </section>
 <section id="CloseFormDocument">
   <comment> CloseFormDocument -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id14161686043795">
-      <bookmark_value>Form service;CloseFormDocument</bookmark_value>
-   </bookmark>
    <h2 id="hd_id18161686043718" localize="false">CloseFormDocument</h2>
+   <warning id="par_id951709729717741">This method is deprecated, use <link href="text/sbasic/shared/03/sf_formdocument.xhp#CloseDocument">ScriptForge.FormDocument.CloseDocument</link> method instead.</warning>
    <paragraph role="paragraph" id="par_id501616860541195" xml-lang="en-US">Closes the form document containing the actual <literal>Form</literal> instance. The <literal>Form</literal> instance is disposed.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" id="par_id811622538068303" localize="false"><input>svc.CloseFormDocument(): bool</input></paragraph>
@@ -637,7 +634,6 @@
    <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id331622538021746">form.CloseFormDocument()  # Python</paragraph>
    </pycode>
-   <note id="par_id611618229004669">This method only closes form documents located in Base documents. If the form is stored in a Writer or Calc document, calling <literal>CloseFormDocument</literal> will have no effect.</note>
 </section>
 <section id="Controls">
    <comment> Controls -------------------------------------------------------------------------------------------------------------------------- </comment>
@@ -677,6 +673,7 @@
    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id941616861134691">
       <bookmark_value>Form service;GetDatabase</bookmark_value>
    </bookmark>
+  <section id="getDbContent">
    <h2 id="hd_id141616861134554" localize="false">GetDatabase</h2>
    <paragraph role="paragraph" id="par_id291616861407907" xml-lang="en-US">Return a <link href="text/sbasic/shared/03/sf_database.xhp"><literal>SFDatabases</literal>.<literal>Database</literal></link> instance giving access to the execution of SQL commands on the database the current form is connected to and/or that is stored in the current Base document.</paragraph>
    <paragraph role="paragraph" id="par_id991616861417207" xml-lang="en-US">Each form has its own database connection, except in Base documents where they all share the same connection.</paragraph>
@@ -693,6 +690,7 @@
    <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id871622547824003">db = form.GetDatabase()  # SFDatabases.Database</paragraph>
    </pycode>
+  </section>
 </section>
 <section id="MoveFirst">
   <comment> MoveFirst -------------------------------------------------------------------------------------------------------------------------- </comment>
