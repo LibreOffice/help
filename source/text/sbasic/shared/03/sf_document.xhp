@@ -395,26 +395,25 @@
              <link href="text/sbasic/shared/03/sf_document.xhp#Activate">Activate</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#CloseDocument">CloseDocument</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#CreateMenu">CreateMenu</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#CreateMenu">DeleteStyles</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#DeleteStyles">DeleteStyles</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#Echo">Echo</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#ExportAsPDF">ExportAsPDF</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
-             <link href="text/sbasic/shared/03/sf_document.xhp#ExportAsPDF">ImportStylesFromFile</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#PrintOut">PrintOut</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#RemoveMenu">RemoveMenu</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#RunCommand">RunCommand</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#Save">Save</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#SaveAs">SaveAs</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#SaveAs">SaveAs</link><br/><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_document.xhp#SaveCopyAs">SaveCopyAs</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#SetPrinter">SetPrinter</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#SetPrinter">Style</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#Style">Style</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#Toolbars">Toolbars</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#SetPrinter">XStyle</link><br/><br/>
            </paragraph>
@@ -534,13 +533,13 @@
   <paragraph role="paragraph" id="par_id652699200121080">Suppresses a single style or an array of styles given by their names within a specific styles family. Only user-defined styles may be deleted, built-in styles are ignored. It applies to all document types except <literal>Base</literal> and <literal>FormDocument</literal>.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id1001623997222964">
-    <input>svc.DeleteStyles(family: str, stylelist: str[1..*])</input>
+    <input>svc.DeleteStyles(family: str, styleslist: str[1..*])</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <section id="family">
     <paragraph role="paragraph" id="par_id361580300131416"><emph>family</emph>: One of the style families present in the actual document, as a case-sensitive string. Valid family names can be retrieved using <literal>StyleFamilies</literal> property.</paragraph>
   </section>
-  <paragraph role="paragraph" id="par_id361589211129686"><emph>stylelist</emph>: A single style name as a string or an array of style names. The style names may be localized or not. The <literal>StylesList</literal> is typically the output of the execution of a <literal>Styles()</literal> method.</paragraph>
+  <paragraph role="paragraph" id="par_id361589211129686"><emph>styleslist</emph>: A single style name as a string or an array of style names. The style names may be localized or not. The <literal>StylesList</literal> is typically the output of the execution of a <literal>Styles()</literal> method.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -635,42 +634,6 @@
     <paragraph role="pycode" localize="false" id="pyc_id121638277330485">exportSettings.ReplaceItem("ExportNotes", True)</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id401638277330637">session.SetPDFExportOptions(exportSettings)</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id591638277330780">doc.ExportAsPDF(r"C:\User\Documents\myFile.pdf")</paragraph>
-  </pycode>
-</section>
-
-<section id="ImportStylesFromFile">
-  <comment> ImportStylesFromFile ---------------------------------------------------------------- </comment>
-  <bookmark localize="false" branch="index" id="bm_id832985200121350">
-    <bookmark_value>Document service;ImportStylesFromFile</bookmark_value>
-  </bookmark>
-  <h2 id="hd_id372589202101526" localize="false">ImportStylesFromFile</h2>
-  <paragraph role="paragraph" id="par_id266589200121149">This method loads all the styles belonging to one or more style families from a closed file into the actual document. The actual document must be a <literal>Calc</literal> or a <literal>Writer</literal> document.</paragraph>
-  <paragraph role="paragraph" id="par_id11701265953648">	Are always imported together:</paragraph>
-  <list type="unordered">
-    <listitem>
-        <paragraph id="par_id221701265998649" role="listitem"><literal>ParagraphStyles</literal> and <literal>CharacterStyles</literal></paragraph>
-    </listitem>
-    <listitem>
-        <paragraph id="par_id441701265999801" role="listitem"><literal>NumberingStyles</literal> and <literal>ListStyles</literal></paragraph>
-    </listitem>
-  </list>
-  <paragraph role="paragraph" id="par_id091611169416945">Returns <literal>True</literal> if styles were successfully imported.</paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
-  <paragraph role="paragraph" localize="false" id="par_id2101622827822170">
-    <input>svc.ImportStylesFromFile(filename: str, families: str[1..*], overwrite = False): bool</input>
-  </paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id321635436910004"><emph>filename</emph>: The file from which to load the styles in the <literal>FileSystem</literal> notation. The file is presumed to be of the same document type as the actual document.</paragraph>
-  <paragraph role="paragraph" id="par_id251635436912157"><emph>families</emph>: One of the style families present in the actual document, as a case-sensitive string or an array of such strings. Leave this argument blank to import all families.</paragraph>
-  <paragraph role="paragraph" id="par_id362635436912268"><emph>overwrite</emph>: When <literal>True</literal>, the actual styles may be overwritten. Default is <literal>False</literal>.</paragraph>
-  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
-  <bascode>
-    <paragraph role="bascode" localize="false" id="bas_id89158920012167">oDoc.ImportStylesFromFile("C:\User\Documents\myFile.ods", "ParagraphStyles", True)</paragraph>
-  </bascode>
-  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
-  <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id731622728946909">doc.ImportStylesFromFile('C:\User\Documents\myFile.ods', ("ParagraphStyles",), False)</paragraph>
   </pycode>
 </section>
 

@@ -97,13 +97,13 @@
            </paragraph>
        </tablecell>
        <tablecell>
-           <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
-             <link href="text/sbasic/shared/03/sf_writer.xhp#PrintOut">PrintOut</link><br/>
+           <paragraph id="par_id541611613612654" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_writer.xhp#ImportStylesFromFile">ImportStylesFromFile</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id701611613601554" role="tablecontent" localize="false">
-             <link href="text/sbasic/shared/03/sf_writer.xhp#MoveRange">…</link><br/>
+             <link href="text/sbasic/shared/03/sf_writer.xhp#PrintOut">PrintOut</link><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -149,6 +149,42 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id271623063215023">form_names = doc.Forms()</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id961623063234990">form_A = doc.Forms("Form_A")</paragraph>
+  </pycode>
+</section>
+
+<section id="ImportStylesFromFile">
+  <comment> ImportStylesFromFile ---------------------------------------------------------------- </comment>
+  <bookmark localize="false" branch="index" id="bm_id832985200121350">
+    <bookmark_value>Document service;ImportStylesFromFile</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id372589202101526" localize="false">ImportStylesFromFile</h2>
+  <paragraph role="paragraph" id="par_id266589200121149">This method loads all the styles belonging to one or more style families from a closed file into the actual document. The actual document must be a <literal>Calc</literal> or a <literal>Writer</literal> document.</paragraph>
+  <paragraph role="paragraph" id="par_id11701265953648">	Are always imported together:</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id221701265998649" role="listitem"><literal>ParagraphStyles</literal> and <literal>CharacterStyles</literal></paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id441701265999801" role="listitem"><literal>NumberingStyles</literal> and <literal>ListStyles</literal></paragraph>
+    </listitem>
+  </list>
+  <paragraph role="paragraph" id="par_id091611169416945">Returns <literal>True</literal> if styles were successfully imported.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id2101622827822170">
+    <input>svc.ImportStylesFromFile(filename: str, families: str[1..*], overwrite = False): bool</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id321635436910004"><emph>filename</emph>: The file from which to load the styles in the <literal>FileSystem</literal> notation. The file is presumed to be of the same document type as the actual document.</paragraph>
+  <paragraph role="paragraph" id="par_id251635436912157"><emph>families</emph>: One of the style families present in the actual document, as a case-sensitive string or an array of such strings. Leave this argument blank to import all families.</paragraph>
+  <paragraph role="paragraph" id="par_id362635436912268"><emph>overwrite</emph>: When <literal>True</literal>, the actual styles may be overwritten. Default is <literal>False</literal>.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id89158920012167">oDoc.ImportStylesFromFile("C:\User\Documents\myFile.ods", "ParagraphStyles", True)</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id731622728946909">doc.ImportStylesFromFile('C:\User\Documents\myFile.ods', ("ParagraphStyles",), False)</paragraph>
   </pycode>
 </section>
 
