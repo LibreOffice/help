@@ -30,6 +30,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdraw,\
     helpcontent2/source/text/sdraw/01/navigate_page \
     helpcontent2/source/text/sdraw/01/page_properties \
     helpcontent2/source/text/sdraw/01/rename_page \
+    helpcontent2/source/text/sdraw/01/TextAutoFitToSize \
     helpcontent2/source/text/sdraw/04/01020000 \
     helpcontent2/source/text/sdraw/guide/align_arrange \
     helpcontent2/source/text/sdraw/guide/color_define \
