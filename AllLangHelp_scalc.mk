@@ -266,9 +266,10 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_roman \
     helpcontent2/source/text/scalc/01/func_rounddown \
     helpcontent2/source/text/scalc/01/func_roundsig \
+    helpcontent2/source/text/scalc/01/func_searchb \
     helpcontent2/source/text/scalc/01/func_second \
     helpcontent2/source/text/scalc/01/func_skewp \
-    helpcontent2/source/text/scalc/01/func_searchb \
+    helpcontent2/source/text/scalc/01/func_sort \
     helpcontent2/source/text/scalc/01/func_style \
     helpcontent2/source/text/scalc/01/func_sum \
     helpcontent2/source/text/scalc/01/func_sumifs \
