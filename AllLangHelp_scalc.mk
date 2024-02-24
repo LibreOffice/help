@@ -270,6 +270,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_second \
     helpcontent2/source/text/scalc/01/func_skewp \
     helpcontent2/source/text/scalc/01/func_sort \
+    helpcontent2/source/text/scalc/01/func_sortby \
     helpcontent2/source/text/scalc/01/func_style \
     helpcontent2/source/text/scalc/01/func_sum \
     helpcontent2/source/text/scalc/01/func_sumifs \
@@ -279,6 +280,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_timevalue \
     helpcontent2/source/text/scalc/01/func_today \
     helpcontent2/source/text/scalc/01/func_trunc \
+    helpcontent2/source/text/scalc/01/func_unique \
     helpcontent2/source/text/scalc/01/func_value \
     helpcontent2/source/text/scalc/01/func_xlookup \
     helpcontent2/source/text/scalc/01/func_xmatch \
