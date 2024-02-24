@@ -219,6 +219,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_edate \
     helpcontent2/source/text/scalc/01/func_eomonth \
     helpcontent2/source/text/scalc/01/func_error_type \
+    helpcontent2/source/text/scalc/01/func_filter \
     helpcontent2/source/text/scalc/01/func_findb \
     helpcontent2/source/text/scalc/01/func_floor \
     helpcontent2/source/text/scalc/01/func_forecastetsadd \
