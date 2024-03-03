@@ -293,5 +293,6 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     files/scalc/$(lang)/functions_ifs.ods \
     files/scalc/$(lang)/function_fourier.ods \
     files/scalc/$(lang)/conditionalformatting.ods \
+    files/scalc/$(lang)/statistics_data.ods \
 )))
 # vim: set noet sw=4 ts=4:
