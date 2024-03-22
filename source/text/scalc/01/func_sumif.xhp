@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *
+-->
+<meta>
+  <topic id="textscalc01func_sumifxml" indexer="include" status="PUBLISH">
+    <title id="tit" >SUMIF Function</title>
+    <filename>/text/scalc/01/func_sumif.xhp</filename>
+  </topic>
+</meta>
+  
+<body>
+  <section id="func_sumif">
+    <bookmark xml-lang="en-US" branch="index" id="bm_id3151957">
+      <bookmark_value>SUMIF function</bookmark_value>
+      <bookmark_value>adding;specified numbers</bookmark_value>
+    </bookmark>
+    <bookmark xml-lang="en-US" branch="hid/SC_HID_FUNC_SUMMEWENN" id="bm_id3151969" localize="false"/>
+    <h1 id="hd_id3151957"><variable id="sumif_head"><link href="text/scalc/01/func_sumif.xhp">SUMIF</link></variable></h1>
+    <paragraph id="par_id3151986" role="paragraph" xml-lang="en-US">
+      <ahelp hid=".">Determines which values in a range of cells meet a specified criterion, then returns the sum of the matching values. Alternatively the function can determine which values in one range of cells meet a criterion, then return the sum of values in the corresponding cells in a second range of cells.</ahelp></paragraph>
+  </section>  
+<note id="par_id411711032873068">SUMIF can only apply a single criterion to a range. Use <link href="text/scalc/01/func_sumifs.xhp#sumifs_head">SUMIFS</link> if you need to apply mulitiple criteria.</note>
+
+    <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+    <paragraph id="par_id3152028" role="code" xml-lang="en-US"><input>SUMIF(Range; Criterion [;SumRange])</input></paragraph>
+    <paragraph id="par_id3152043" role="paragraph" xml-lang="en-US"><emph>Range: </emph> The range of cells to which the criterion is applied.</paragraph>
+    <paragraph role="paragraph" id="par_id521711134077228">SUMIF supports the reference concatenation operator (~) only in the Range parameter, and only if the optional SumRange parameter is not given.</paragraph>
+    <embed href="text/scalc/01/ex_data_stat_func.xhp#criterion"/>
+    <embed href="text/shared/00/00000001.xhp#regex"/>
+    <paragraph id="par_id3152083" role="paragraph" xml-lang="en-US"><emph>SumRange: </emph>Optional. The range of cells from which values are summed. If no SumRange is given, the values in the Range are summed.</paragraph>
+
+  <section id="ex_sumif">
+    <embed href="text/scalc/01/ex_data_stat_func.xhp#ex_func_average"/>
+    <h4 id="hd_id451710857799382">Simple usage</h4>
+    <paragraph role="paragraph" id="par_id171711049202378"><input>=SUMIF(C2:C6,">=100")</input></paragraph>
+    <paragraph role="paragraph" id="par_id381711049216331">Sums only the values from range C2:C6 that are &gt;=100. Returns 370 because cells C2:C3 do not meet the criterion. The values from Range are summed because no SumRange is given.</paragraph>
+    <paragraph id="par_id6670125" role="paragraph" xml-lang="en-US"><input>=SUMIF(B2:B5,"&gt;=20",C2:C6)</input></paragraph>
+    <paragraph role="paragraph" id="par_id341710857230552">Sums values from the range B2:B6 only if the corresponding values in the range A1:A5 are &gt;=20. Returns 340 because the fifth and sixth rows do not meet the criterion.</paragraph>
+    <h4 id="hd_id291710867590698">Using regular expressions</h4>
+    <paragraph role="paragraph" id="par_id911710859836541"><input>=SUMIF(A2:A6,"pen",C2:C5)</input></paragraph>
+    <paragraph role="paragraph" id="par_id31710859838046">Sums values from the range C2:C6 only if the corresponding range in A2:A6 exactly match the letters "pen". Returns 85 because rows A2 and A4:A6 do not meet the criterion.</paragraph>    
+    <paragraph role="paragraph" id="par_id781710871590769"><input>=SUMIF(A2:A6,"pen*",C2:C6)</input></paragraph>    
+    <paragraph role="paragraph" id="par_id431710871624405">Sums the values from the range C2:C6 only if the corresponding cell in range A2:A6 contains the letters "pen". Returns the value 150 because rows A4:A5 do not meet the criterion.</paragraph>   
+    <paragraph role="paragraph" id="par_id311711128230771"><input>=SUMIF(ProductName,"pen*",Revenue)</input></paragraph>
+    <paragraph role="paragraph" id="par_id741711128545751">A named range can be given as the Range or SumRange paramater. For example, if the columns in the above table are respectively named "ProductName", "Sales", and "Revenue", the function returns 150. This function will only work as described if you have defined the names of the columns using the <link href="text/scalc/01/04070100.xhp#definenames)">Define Names</link> dialog.</paragraph>
+    <h4 id="hd_id531711029933195">Reference to a cell as a criterion</h4>
+    <paragraph role="paragraph" id="par_id561711031254255">If you need to change a criterion easily, you may specify it in a separate cell and use a reference to this cell in the condition of the SUMIFS function. For example:</paragraph>
+    <paragraph role="paragraph" id="par_id331711030450765"><input>=SUMIF(A2:A6,E2,C2:C6)</input></paragraph>
+    <paragraph role="paragraph" id="par_id11711031541218">If E2 = pen, the function returns 85 because the link to the cell is substituted with its contents.</paragraph>
+</section>
+ <section id="relatedtopics">
+    <tip id="par_id771677014538669"><link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/SUMIF">SUMIF wiki page</link>.</tip>
+   <paragraph id="par_id11921178730928" role="paragraph" xml-lang="en-US" localize="false">
+     <embedvar href="text/scalc/01/func_sum.xhp#sum_head"/>,
+     <embedvar href="text/scalc/01/func_sumifs.xhp#sumifs_head"/>
+   </paragraph>
+   <paragraph id="par_id11931178730928" role="paragraph" xml-lang="en-US" localize="false">
+     <embedvar href="text/scalc/01/04060181.xhp#countif_head"/>,
+     <embedvar href="text/scalc/01/func_countifs.xhp#countifs_head"/>,
+     <embedvar href="text/scalc/01/func_minifs.xhp#minifs_head"/>,
+     <embedvar href="text/scalc/01/func_maxifs.xhp#maxifs_head"/>,
+     <embedvar href="text/scalc/01/func_averageifs.xhp#averageifs_head"/>
+   </paragraph>
+   <paragraph id="par_id15970172625152" role="paragraph" localize="false" xml-lang="en-US">
+    <embedvar href="text/shared/01/02100001.xhp#02100001"/></paragraph>
+  </section>
+</body>
+</helpdocument>
