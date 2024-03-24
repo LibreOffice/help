@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+    <meta>
+        <topic id="text/sbasic/shared/exportasfixedformat.xhp" indexer="include" status="PUBLISH">
+        <title id="tit">ExportAsFixedFormat</title>
+        <filename>/text/sbasic/shared/exportasfixedformat.xhp</filename>
+    </topic>
+</meta>
+<body>
+<bookmark branch="index" id="bm_id371711286795900">
+    <bookmark_value>ExportAsFixedFormat method [VBA]</bookmark_value>
+</bookmark>
+<section id="exportasfixedformat">
+    <h1 id="hd_id981711281680887"><variable id="h1"><link href="text/sbasic/shared/exportasfixedformat.xhp">ExportAsFixedFormat Method [VBA]</link></variable></h1>
+    <paragraph id="par_id561711281680890" role="paragraph">Method to export a Calc document to PDF format.</paragraph>
+</section>
+    <embed href="text/sbasic/shared/00000003.xhp#vbasupport"/>
+    <embed href="text/shared/need_help.xhp#needhelp"/>
+
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="code" id="par_id961711284173030">expression.ExportAsFixedFormat (Type, Filename, Quality, IncludeDocProperties, IgnorePrintAreas, From, To, OpenAfterPublish)</paragraph>
+    <paragraph role="paragraph" id="par_id731711284383305"><emph>Type</emph>: Integer, required. Can be either 0 or 1. <emph>0</emph> for "PDF" - Portable Document Format file (.pdf) and <emph>1</emph> for  "XPS" - XPS Document (.xps)</paragraph>
+    <note id="par_id471711285929795">XPS export format is not supported by %PRODUCTNAME.</note>
+    <paragraph role="paragraph" id="par_id611711284387498"><emph>Filename</emph>: String, optional. The file name of the exported file.</paragraph>
+    <paragraph role="paragraph" id="par_id251711284391770"><emph>Quality</emph>: Integer, optional. Can be 0 or 1. <emph>0</emph> is for standard quality, <emph>1</emph> is for minimum quality.</paragraph>
+    <paragraph role="paragraph" id="par_id161711284395682"><emph>IncludeDocProperties</emph>: Boolean, optional. Set to <literal>True</literal> to indicate that document properties should be included in the exported file, or set to <literal>False</literal> to suppress the export of document properties.</paragraph>
+    <paragraph role="paragraph" id="par_id461711284399442"><emph>IgnorePrintAreas</emph>: Boolean, optional. If set to <literal>True</literal>, ignores any print ranges on export. If set to <literal>False</literal>, honor the print ranges on export.</paragraph>
+    <paragraph role="paragraph" id="par_id341711284404400"><emph>From</emph>:Integer, optional. Page number of the first page to export. If omitted, export starts at the beginning.</paragraph>
+    <paragraph role="paragraph" id="par_id21711284409841"><emph>To</emph>: Integer, optional. Page number of the last page to export. If omitted, export ends with the last page.</paragraph>
+    <paragraph role="paragraph" id="par_id461711284415267"><emph>OpenAfterPublish</emph>:Boolean, optional. If set to <literal>True</literal>, displays the file in the proper viewer after export. On <literal>False</literal>, the file is exported but not displayed.</paragraph>
+
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <bascode>
+        <paragraph role="bascode" id="par_id921711287715213" localize="false">Option VBASupport 1</paragraph>
+        <paragraph role="bascode" id="par_id601711287720548" localize="false">Sub ExportAsPDF()</paragraph>
+        <paragraph role="bascode" id="par_id221711287732684" localize="false">    ActiveSheet.ExportAsFixedFormat _</paragraph>
+        <paragraph role="bascode" id="par_id391711287743852" localize="false">    Type:=0, _</paragraph>
+        <paragraph role="bascode" id="par_id871711287752660" localize="false">    Filename:=".\ExportAsPDF.pdf", _</paragraph>
+        <paragraph role="bascode" id="par_id331711287757251" localize="false">    Quality:=0, _</paragraph>
+        <paragraph role="bascode" id="par_id141711287762403" localize="false">    IncludeDocProperties:=True, _</paragraph>
+        <paragraph role="bascode" id="par_id591711287767283" localize="false">    IgnorePrintAreas:=False, _</paragraph>
+        <paragraph role="bascode" id="par_id291711287773955" localize="false">    OpenAfterPublish:=True</paragraph>
+        <paragraph role="bascode" id="par_id761711287783131" localize="false">End Sub</paragraph>
+    </bascode>
+    <section id="relatedtopics">
+        <embed href="text/sbasic/shared/special_vba_func.xhp#exclusivevba"/>
+</section>
+</body>
+</helpdocument>
+

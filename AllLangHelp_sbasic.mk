@@ -400,8 +400,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03170010 \
     helpcontent2/source/text/sbasic/shared/03170020 \
     helpcontent2/source/text/sbasic/shared/05060700 \
-    helpcontent2/source/text/sbasic/shared/is_keyword \
-    helpcontent2/source/text/sbasic/shared/new_keyword \
     helpcontent2/source/text/sbasic/shared/calc_functions \
     helpcontent2/source/text/sbasic/shared/code-stubs \
     helpcontent2/source/text/sbasic/shared/CallByName \
@@ -413,23 +411,26 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/Compiler_options \
     helpcontent2/source/text/sbasic/shared/CreateUnoSvcWithArgs \
     helpcontent2/source/text/sbasic/shared/conventions \
-    helpcontent2/source/text/sbasic/shared/enum \
     helpcontent2/source/text/sbasic/shared/doEvents \
+    helpcontent2/source/text/sbasic/shared/enum \
     helpcontent2/source/text/sbasic/shared/ErrVBA \
+    helpcontent2/source/text/sbasic/shared/exportasfixedformat \
     helpcontent2/source/text/sbasic/shared/fragments \
-    helpcontent2/source/text/sbasic/shared/partition \
-    helpcontent2/source/text/sbasic/shared/property \
-    helpcontent2/source/text/sbasic/shared/replace \
-    helpcontent2/source/text/sbasic/shared/uno_objects \
-    helpcontent2/source/text/sbasic/shared/stardesktop \
-    helpcontent2/source/text/sbasic/shared/thisdbdoc \
     helpcontent2/source/text/sbasic/shared/GetPathSeparator \
+    helpcontent2/source/text/sbasic/shared/is_keyword \
     helpcontent2/source/text/sbasic/shared/keys \
     helpcontent2/source/text/sbasic/shared/main0211 \
     helpcontent2/source/text/sbasic/shared/main0601 \
+    helpcontent2/source/text/sbasic/shared/new_keyword \
+    helpcontent2/source/text/sbasic/shared/partition \
+    helpcontent2/source/text/sbasic/shared/property \
+    helpcontent2/source/text/sbasic/shared/replace \
     helpcontent2/source/text/sbasic/shared/Resume \
     helpcontent2/source/text/sbasic/shared/special_vba_func \
+    helpcontent2/source/text/sbasic/shared/stardesktop \
     helpcontent2/source/text/sbasic/shared/strconv \
+    helpcontent2/source/text/sbasic/shared/thisdbdoc \
+    helpcontent2/source/text/sbasic/shared/uno_objects \
     helpcontent2/source/text/sbasic/shared/vbasupport \
     helpcontent2/source/text/sbasic/python/main0000 \
     helpcontent2/source/text/sbasic/python/python_2_basic \
