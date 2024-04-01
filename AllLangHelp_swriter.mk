@@ -338,7 +338,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/guide/insert_graphic_dialog \
     helpcontent2/source/text/swriter/guide/insert_graphic_fromchart \
     helpcontent2/source/text/swriter/guide/insert_graphic_fromdraw \
-    helpcontent2/source/text/swriter/guide/insert_graphic_gallery \
     helpcontent2/source/text/swriter/guide/insert_graphic_scan \
     helpcontent2/source/text/swriter/guide/insert_tab_innumbering \
     helpcontent2/source/text/swriter/guide/join_numbered_lists \

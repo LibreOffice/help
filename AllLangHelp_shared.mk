@@ -739,7 +739,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/doc_save \
     helpcontent2/source/text/shared/guide/dragdrop \
     helpcontent2/source/text/shared/guide/dragdrop_beamer \
-    helpcontent2/source/text/shared/guide/dragdrop_fromgallery \
     helpcontent2/source/text/shared/guide/dragdrop_gallery \
     helpcontent2/source/text/shared/guide/dragdrop_graphic \
     helpcontent2/source/text/shared/guide/dragdrop_table \
