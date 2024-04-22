@@ -68,11 +68,24 @@
       <case select="CALC">
         <paragraph id="par_id951701984989443" role="paragraph"><ahelp hid=".">Contains commands to apply, create, edit, update, load, and manage styles in a spreadsheet document.</ahelp></paragraph>
       </case>
+      <case select="IMPRESS">
+        <paragraph role="paragraph" id="par_id191713460859953">Contains commands to create, edit, update, and manage styles in a presentation document.</paragraph>
+      </case>
     </switch>
   </section>
   <section id="howtoget">
     <embed href="text/shared/00/00000004.xhp#from_menu_bar"/>
-    <paragraph role="paragraph" id="par_id71693522443488">Choose <menuitem>Styles</menuitem>.</paragraph>
+    <switch select="appl">
+      <case select="IMPRESS">
+        <paragraph role="paragraph" id="par_id991713461213944">Choose <menuitem>Format - Styles</menuitem>.</paragraph>
+      </case>
+      <case select="DRAW">
+        <paragraph role="paragraph" id="par_id811713461480734">Choose <menuitem>Format - Styles</menuitem>.</paragraph>
+      </case>
+      <default>
+        <paragraph role="paragraph" id="par_id71693522443488">Choose <menuitem>Styles</menuitem>.</paragraph>
+      </default>
+    </switch>
   </section>
   <switch select="appl">
     <case select="WRITER">
@@ -83,20 +96,20 @@
       <h2 id="par_id811701985858003">Cell styles entries</h2>
       <paragraph role="paragraph" id="par_id31701985198261">The entries includes most common cell styles. Click on the style to apply.</paragraph>
     </case>
-    <case select="IMPRESS">
-    </case>
-    <case select="DRAW">
-    </case>
+  </switch>
+  <switch select="appl">
+    <case select="IMPRESS"></case>
+    <case select="DRAW"></case>
     <default>
+      <tip id="par_id451529878529005">You can customize the list of styles entries using menu <link href="text/shared/01/06140100.xhp"><emph>Tools - Customize</emph></link>. Because custom styles belongs to the actual document, remember to store the customized menu in the document scope.</tip>
     </default>
   </switch>
 
-  <tip id="par_id451529878529005">You can customize the list of styles entries using menu <link href="text/shared/01/06140100.xhp"><emph>Tools - Customize</emph></link>. Because custom styles belongs to the actual document, remember to store the customized menu in the document scope.</tip>
-
   <switch select="appl">
-    <case select="WRITER">
+    <case select="CALC"></case>
+    <default>
       <embed href="text/swriter/01/EditStyle.xhp#editstyle"/>
-    </case>
+  </default>
   </switch>
   <embed href="text/shared/01/StyleUpdateByExample.xhp#styleupdatebyexample"/>
   <embed href="text/shared/01/StyleNewByExample.xhp#stylenewbyexample"/>
