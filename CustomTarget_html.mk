@@ -281,7 +281,7 @@ $(eval $(foreach module,$(html_BMARK_MODULES),$(call html_gen_bookmarks_deps,$(s
 # intermediate responsefile target, make will clear those automatically
 # unless they are explicitly listed as target or non-pattern prerequisite
 # depend on the online_transform.xsl just as a proxy to make sure the directory exists
-# is only interemdiate because those were used as temp files previously - could just
+# is only intermediate because those were used as temp files previously - could just
 # as well be plain/explicit targets
 $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/%_bookmarks.part.responsefile:| $(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)/online_transform.xsl
 	$(file > $@,$(subst helpcontent2/source/text/,,$(gb_AllLangHelp_$*_BOOKMARK_HELPFILES))$(if $(filter WNT,$(OS)), ))
