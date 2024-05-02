@@ -7,7 +7,7 @@
 # # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 # #
 #
-$(eval $(call gb_GeneratedPackage_GeneratedPackage,helpcontent2_html_lang_generated,$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)))
+$(eval $(call gb_GeneratedPackage_GeneratedPackage,helpcontent2_html_lang_generated,$(gb_CustomTarget_workdir)/helpcontent2/help3xsl))
 
 $(eval $(call gb_GeneratedPackage_use_customtarget,helpcontent2_html_lang_generated,helpcontent2/help3xsl))
 

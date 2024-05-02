@@ -7,7 +7,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #
 
-$(eval $(call gb_Package_Package,helpcontent2_html_dynamic,$(call gb_CustomTarget_get_workdir,helpcontent2/help3xsl)))
+$(eval $(call gb_Package_Package,helpcontent2_html_dynamic,$(gb_CustomTarget_workdir)/helpcontent2/help3xsl))
 
 $(eval $(call gb_Package_use_customtarget,helpcontent2_html_dynamic,helpcontent2/help3xsl))
 

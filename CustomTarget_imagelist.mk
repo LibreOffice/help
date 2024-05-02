@@ -16,8 +16,8 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/source/auxiliary,\
 	images_helpimg.zip \
 ))
 
-$(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/images_helpimg.zip : \
-		$(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/helpimg.ilst \
+$(gb_CustomTarget_workdir)/helpcontent2/source/auxiliary/images_helpimg.zip : \
+		$(gb_CustomTarget_workdir)/helpcontent2/source/auxiliary/helpimg.ilst \
 		| $(call gb_ExternalExecutable_get_dependencies,python)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),PRL,1)
 	$(call gb_Helper_abbreviate_dirs, \
@@ -34,7 +34,7 @@ helpmedia_allMedia:=$(shell $(FIND) $(helpmedia_DIR)/media/helpimg)
 # but we're only interested in the png images
 helpmedia_images = $(filter %.png,$(helpmedia_allMedia))
 
-$(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)/helpimg.ilst: $(helpmedia_allMedia)
+$(gb_CustomTarget_workdir)/helpcontent2/source/auxiliary/helpimg.ilst: $(helpmedia_allMedia)
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),LST,1)
 	$(file >$@,$(subst $(WHITESPACE),$(NEWLINE),$(sort $(subst $(helpmedia_DIR)/,%MODULE%/,$(helpmedia_images)))))
 

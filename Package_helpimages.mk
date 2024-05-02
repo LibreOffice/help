@@ -7,7 +7,7 @@
 # # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 # #
 #
-$(eval $(call gb_Package_Package,helpcontent2_helpimages,$(call gb_CustomTarget_get_workdir,helpcontent2/source/auxiliary)))
+$(eval $(call gb_Package_Package,helpcontent2_helpimages,$(gb_CustomTarget_workdir)/helpcontent2/source/auxiliary))
 
 $(eval $(call gb_Package_add_files,helpcontent2_helpimages,$(LIBO_SHARE_FOLDER)/config,\
 	images_helpimg.zip \
