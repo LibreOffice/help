@@ -65,7 +65,7 @@ ifeq ($(HELP_OMINDEX_PAGE),TRUE)
 
 define html_gen_xaptpl_dep
 $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/$(1)/xap_tpl : \
-	$(if $(filter en-US,$(1)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(1)))/helpcontent2/source/text/shared/help/browserhelp.xhp
+	$(if $(filter en-US,$(1)),$(SRCDIR),$(gb_HelpTranslatePartTarget_workdir)/$(1))/helpcontent2/source/text/shared/help/browserhelp.xhp
 
 endef
 	
@@ -84,7 +84,7 @@ $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/%/xap_tpl : \
 		--stringparam productversion "$(PRODUCTVERSION)" \
 		-o $@ \
 		$(SRCDIR)/helpcontent2/help3xsl/xap_templ_query.xsl \
-		$(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*))/helpcontent2/source/text/shared/help/browserhelp.xhp \
+		$(if $(filter en-US,$*),$(SRCDIR),$(gb_HelpTranslatePartTarget_workdir)/$*)/helpcontent2/source/text/shared/help/browserhelp.xhp \
 	)
 	$(call gb_Trace_EndRange,$*/$(@F),XSL)
 
@@ -94,7 +94,7 @@ endif
 
 define html_gen_noscript_dep
 $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/$(1)/noscript.html : \
-	$(if $(filter en-US,$(1)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(1)))/helpcontent2/source/text/shared/help/browserhelp.xhp
+	$(if $(filter en-US,$(1)),$(SRCDIR),$(gb_HelpTranslatePartTarget_workdir)/$(1))/helpcontent2/source/text/shared/help/browserhelp.xhp
 
 endef
 
@@ -114,7 +114,7 @@ $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/%/noscript.html : \
 		--stringparam productversion "$(PRODUCTVERSION)" \
 		-o $@ \
 		$(SRCDIR)/helpcontent2/help3xsl/noscript.xsl \
-		$(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*))/helpcontent2/source/text/shared/help/browserhelp.xhp \
+		$(if $(filter en-US,$*),$(SRCDIR),$(gb_HelpTranslatePartTarget_workdir)/$*)/helpcontent2/source/text/shared/help/browserhelp.xhp \
 	)
 	$(call gb_Trace_EndRange,$*/$(@F),XSL)
 
@@ -126,7 +126,7 @@ $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/languages.js : \
 
 define html_gen_langnames_js_dep
 $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/$(1)/langnames.js : \
-	$(if $(filter en-US,$(1)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(1)))/helpcontent2/source/text/shared/help/browserhelp.xhp
+	$(if $(filter en-US,$(1)),$(SRCDIR),$(gb_HelpTranslatePartTarget_workdir)/$(1))/helpcontent2/source/text/shared/help/browserhelp.xhp
 
 endef
 
@@ -222,13 +222,13 @@ $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/%/html.text : \
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	$(call gb_Trace_StartRange,$*/$(@F),XSL)
 	rm -rf $(dir $@)text && mkdir -p $(dir $@)text && cd $(dir $@)text && mkdir -p $(sort $(subst helpcontent2/source/text/,,$(dir $(gb_html_allhelpfiles)))) \
-	&& cd $(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*)) \
+	&& cd $(if $(filter en-US,$*),$(SRCDIR),$(gb_HelpTranslatePartTarget_workdir)/$*) \
 	&& RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(addsuffix $(WHITESPACE)dummyIgnoreCRinEOL$(NEWLINE),$(subst helpcontent2/source/,,$(gb_html_allhelpfiles)))) \
 	&& while read xhp dummy; do \
 	    $(call gb_ExternalExecutable_get_command,xsltproc) \
 	        --stringparam Language $* \
 	        --stringparam local $(if $(HELP_ONLINE),'no','yes') \
-	        --stringparam root $(if $(filter en-US,$*),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$*))/helpcontent2/source/ \
+	        --stringparam root $(if $(filter en-US,$*),$(SRCDIR),$(gb_HelpTranslatePartTarget_workdir)/$*)/helpcontent2/source/ \
 	        --stringparam productname "$(gb_PRODUCTNAME_HTML)" \
 	        --stringparam productversion "$(PRODUCTVERSION)" \
 	        --stringparam xapian $(if $(filter TRUE, $(HELP_OMINDEX_PAGE)),'yes','no') \
@@ -287,7 +287,7 @@ $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/%/bookmarks.part : \
 	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),XSL,1)
 	$(call gb_Trace_StartRange,$*/$(@F),XSL)
 	RESPONSEFILE=$(call gb_var2file,$(shell $(gb_MKTEMP)),$(subst helpcontent2/source/text/,,$(gb_AllLangHelp_$(APPDIR)_BOOKMARK_HELPFILES))$(if $(filter WNT,$(OS)), )) \
-	&& cd $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(HELP_LANG)))/helpcontent2/source/text \
+	&& cd $(if $(filter en-US,$(HELP_LANG)),$(SRCDIR),$(gb_HelpTranslatePartTarget_workdir)/$(HELP_LANG))/helpcontent2/source/text \
 	&& ( \
 	    $(call gb_ExternalExecutable_get_command,xsltproc,$(if $(filter WNT,$(OS)),env -i $(gb_Helper_set_ld_path)) xargs) \
 	        --stringparam app $(APP) \
@@ -315,7 +315,7 @@ $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/filelists/html-help/$(2)/$(1).f
             $(call gb_Package_get_target,helpcontent2_html_lang_$(1)) \
             $(call gb_Package_get_target,helpcontent2_html_media_lang_$(1)))
 	mkdir -p $$$$(dirname $$@)
-	sed -e 's|$(if $(filter $(1),en-US),$(SRCDIR),$(call gb_HelpTranslatePartTarget_get_workdir,$(1)))/helpcontent2/source/|$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)/$(1)/|g' -e 's|.xhp|.html|g' $(call gb_HelpTarget_get_filelist,$(2)/$(1)) > $$@
+	sed -e 's|$(if $(filter $(1),en-US),$(SRCDIR),$(gb_HelpTranslatePartTarget_workdir)/$(1))/helpcontent2/source/|$(INSTROOT)/$(LIBO_SHARE_HELP_FOLDER)/$(1)/|g' -e 's|.xhp|.html|g' $(call gb_HelpTarget_get_filelist,$(2)/$(1)) > $$@
 	$(if $(filter $(2),shared),cat $(call gb_Package_get_target,helpcontent2_html_lang_$(1)) $(call gb_Package_get_target,helpcontent2_html_media_lang_$(1)) >> $$@,:)
 
 endef
