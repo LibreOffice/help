@@ -581,6 +581,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/02/blockarrows \
     helpcontent2/source/text/shared/02/callouts \
     helpcontent2/source/text/shared/02/colortoolbar \
+    helpcontent2/source/text/shared/02/eliminate_points \
     helpcontent2/source/text/shared/02/flowcharts \
     helpcontent2/source/text/shared/02/fontwork \
     helpcontent2/source/text/shared/02/gridtofront \
