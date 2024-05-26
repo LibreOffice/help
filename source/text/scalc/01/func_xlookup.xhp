@@ -11,10 +11,10 @@
 
     <meta>
         <topic id="textscalc01func_xlookupxhp" indexer="include" status="PUBLISH">
-        <title id="tit">XLOOKUP Function</title>
-        <filename>/text/scalc/01/func_xlookup.xhp</filename>
-    </topic>
-</meta>
+            <title id="tit">XLOOKUP Function</title>
+            <filename>/text/scalc/01/func_xlookup.xhp</filename>
+        </topic>
+    </meta>
 
 <body>
 <bookmark branch="hid/SC_HID_FUNC_XLOOKUP_MS" id="bm_id501708280229180" localize="false"/>
@@ -25,144 +25,80 @@
     <h1 id="hd_id821708279355736"><variable id="h1"><link href="text/scalc/01/func_xlookup.xhp">XLOOKUP</link></variable></h1>
     <paragraph id="par_id581708279355738" role="paragraph">Searches for a value in an array and returns a reference to a cell or range of cells.</paragraph>
 </section>
-<paragraph role="paragraph" id="par_id631708282151776">XLOOKUP function is a modern and flexible replacement for older functions like <link href="text/scalc/01/04060109.xhp#Section9">VLOOKUP</link>, <link href="text/scalc/01/04060109.xhp#Section17">HLOOKUP</link>, and <link href="text/scalc/01/04060109.xhp#Section14">LOOKUP</link>.  XLOOKUP supports approximate and exact matching, wildcards (* ?) for partial matches, and lookups in vertical or horizontal ranges. XLOOKUP can perform a reverse search and offers a fast binary search option when working with large datasets.</paragraph>
-<embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
-<paragraph role="code" id="par_id211708281649651">XLOOKUP(Lookup; Array; Return [; NotFound; MatchType; SearchMode ] )</paragraph>
+<paragraph role="paragraph" id="par_id631708282151776">XLOOKUP function is a modern and flexible replacement for older functions like <link href="text/scalc/01/04060109.xhp#Section9">VLOOKUP</link>, <link href="text/scalc/01/04060109.xhp#Section17">HLOOKUP</link>, and <link href="text/scalc/01/04060109.xhp#Section14">LOOKUP</link>. XLOOKUP supports approximate and exact matching, wildcards (* ?) for partial matches, and lookups in vertical or horizontal ranges. XLOOKUP can perform a reverse search and offers a fast binary search option when working with large datasets.</paragraph>
 
-<paragraph role="paragraph" id="par_id861708281340704"><emph>Lookup</emph>: The value of any type to search for in <emph>Array</emph>. If omitted, XLOOKUP returns blank cells it finds in <emph>Array</emph>.</paragraph>
-<paragraph role="paragraph" id="par_id831708281625340"><emph>Array</emph>: is the reference of the array or range to search.</paragraph>
+<embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
+<paragraph role="code" id="par_id211708281649651">XLOOKUP( [Lookup] ; Array ; Return [ ; [ NotFound ] [ ; [MatchType] [ ; SearchMode ] ] ] )</paragraph>
+
+<paragraph role="paragraph" id="par_id861708281340704"><emph>Lookup</emph>: (optional) The value of any type to search for in <emph>Array</emph>. If omitted, XLOOKUP returns blank cells it finds in <emph>Array</emph>.</paragraph>
+<paragraph role="paragraph" id="par_id831708281625340"><emph>Array</emph>: is the reference of the array to search.  Array must be a 1-dimensional array and must be contained in one sheet only.</paragraph>
 <paragraph role="paragraph" id="par_id241708281629922"><emph>Return</emph>: is the reference of the array or range to return.</paragraph>
-<note id="par_id821708357634624">If <emph>Return</emph> is an array of values, the XLOOKUP function must be entered as an <link href="text/scalc/01/04060107.xhp#creating_array_formulas">array formula</link>.</note>
-<paragraph role="paragraph" id="par_id271708281637035"><emph>NotFound</emph>: a text to return if the <emph>Lookup</emph> value is not found. If a valid match is not found, and <emph>NotFound</emph> is omitted, returns #N/A.</paragraph>
+<note id="par_id821708357634624">If <emph>Return</emph> is a range of cells, the XLOOKUP function must be entered as an <link href="text/scalc/01/04060107.xhp#creating_array_formulas">array formula</link>.</note>
+<paragraph role="paragraph" id="par_id271708281637035"><emph>NotFound</emph>: a text or cell content to return if the <emph>Lookup</emph> value is not found. If a valid match is not found and <emph>NotFound</emph> is omitted, the function returns the #N/A error.</paragraph>
 
 <section id="matchmode">
-    <paragraph role="paragraph" id="par_id121708281643207"><emph>MatchType</emph>: Specify the match type:</paragraph>
+    <paragraph role="paragraph" id="par_id121708281643207"><emph>MatchType</emph>: (optional) specifies the match type. Values can be:</paragraph>
 <list type="unordered">
     <listitem>
-        <paragraph id="par_id111708281542144"  role="listitem"><emph>0</emph> - Exact match (default). If <emph>Lookup</emph> value is not found and <emph>NotFound</emph> text is omitted, then return #N/A.</paragraph>
+        <paragraph id="par_id111708281542144" role="listitem"><emph>0</emph>: exact match (default). If <emph>Lookup</emph> value is not found and <emph>NotFound</emph> text is omitted, then return the #N/A error.</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id851708281548335"  role="listitem"><emph>-1</emph> - Exact match. If <emph>Lookup</emph> value is not found, then return the next smaller item.</paragraph>
+        <paragraph id="par_id851708281548335" role="listitem"><emph>-1</emph>: attempt exact match. If <emph>Lookup</emph> value is not found, then return the next smaller item.</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id801708281553430"  role="listitem"><emph>1</emph> - Exact match. If <emph>Lookup</emph> value is not found, then return the next larger item.</paragraph>
+        <paragraph id="par_id801708281553430" role="listitem"><emph>1</emph>: attempt exact match. If <emph>Lookup</emph> value is not found, then return the next larger item.</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id881708281558005"  role="listitem"><emph>2</emph> - A <link href="text/scalc/guide/wildcards.xhp">wildcard</link> match where characters *, ?, and ~ have special meaning.</paragraph>
+        <paragraph id="par_id881708281558005" role="listitem"><emph>2</emph>: a <link href="text/scalc/guide/wildcards.xhp">wildcard</link> match where characters *, ?, and ~ have special meanings.</paragraph>
     </listitem>
     </list>
 </section>
 
 <section id="searchmode">
-    <paragraph role="paragraph" id="par_id871708281607313"><emph>SearchMode</emph>: Specify the search mode to use:</paragraph>
+    <paragraph role="paragraph" id="par_id871708281607313"><emph>SearchMode</emph>: (optional) specifies the search mode to use.</paragraph>
+    <embed href="text/scalc/01/ful_func.xhp#func_case_sensitive"/>
 <list type="unordered">
     <listitem>
-        <paragraph id="par_id281708281579757"  role="listitem"><emph>1</emph>: - Search starting at the first item (default).</paragraph>
+        <paragraph id="par_id281708281579757" role="listitem"><emph>1</emph>: returns the first occurrence starting from the first item of <emph>Array</emph> (default).</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id251708281584285"  role="listitem"><emph>-1</emph> - Reverse search starting at the last item.</paragraph>
+        <paragraph id="par_id251708281584285" role="listitem"><emph>-1</emph>: reverse search. Returns the first occurrence starting from the last item of <emph>Array</emph>.</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id191708281589997"  role="listitem"><emph>2</emph> - Binary search that relies on <emph>Array</emph> being sorted in ascending order. If not sorted, invalid results will be returned.</paragraph>
+        <paragraph id="par_id191708281589997" role="listitem"><emph>2</emph>: binary search that relies on <emph>Array</emph> being sorted in ascending order. If not sorted, invalid results will be returned.</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id561708281595885"  role="listitem"><emph>-2</emph> - Binary search that relies on <emph>Array</emph> being sorted in descending order. If not sorted, invalid results will be returned.</paragraph>
+        <paragraph id="par_id561708281595885" role="listitem"><emph>-2</emph>: binary search that relies on <emph>Array</emph> being sorted in descending order. If not sorted, invalid results will be returned.</paragraph>
     </listitem>
     </list>
 </section>
+
+<embed href="text/scalc/01/common_func.xhp#optional_args"/>
+
 <embed href="text/scalc/01/ful_func.xhp#func_head_example"/>
-<section id="xfunc_example">
-    <paragraph role="paragraph" id="par_id961708354814163">The table below contains a glossary for translators:</paragraph>
-<table id="tab_id951708353695721">
+
+<embed href="text/scalc/01/04060109.xhp#xmpl_periodic_elements"/>
+<paragraph role="paragraph" id="par_id141716739193733"><input>{=XLOOKUP("Atomic Number";A2:A4;A2:DO4)}</input> returns the array</paragraph>
+<table id="tbl_id841716753067380">
     <tablerow>
-        <tablecell>
-            <paragraph id="par_id401708355378097" localize="false" role="tablehead"></paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id81708355053626" localize="false" role="tablehead">A</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id771708355056839" localize="false" role="tablehead">B</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id481708355061087" localize="false" role="tablehead">C</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id971708355064256" localize="false" role="tablehead">D</paragraph>
-        </tablecell>
+        <tablecell><paragraph id="par_id741716739042699"  localize="false" role="tablecontent">Atomic Number</paragraph></tablecell>
+        <tablecell><paragraph id="par_id261716735499470"  localize="false" role="tablecontent">1</paragraph></tablecell>
+        <tablecell><paragraph id="par_id791716735507557"  localize="false" role="tablecontent">2</paragraph></tablecell>
+        <tablecell><paragraph id="par_id221716735520590"  localize="false" role="tablecontent">3</paragraph></tablecell>
+        <tablecell><paragraph id="par_id351716738989500"  localize="false" role="tablecontent">...</paragraph></tablecell>
+        <tablecell><paragraph id="par_id831716738992540"  localize="false" role="tablecontent">118</paragraph></tablecell>
     </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id601708355403103" localize="false" role="tablehead">1</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id781708353695722" role="tablecontent"><emph>English</emph></paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id641708353695723" role="tablecontent"><emph>French</emph></paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id671708353695724" role="tablecontent"><emph>Italian</emph></paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id331708353781503" role="tablecontent"><emph>Japanese</emph></paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id931708356090847" localize="false" role="tablehead">2</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id531708353695725" localize="false" role="tablecontent"><emph>New</emph></paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id151708353695726" localize="false" role="tablecontent">Nouveau</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id901708353695727" localize="false" role="tablecontent">Nuovo</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id821708353888675" localize="false" role="tablecontent">新しい</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id81708356113416" localize="false" role="tablehead">3</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id791708354354481" localize="false" role="tablecontent"><emph>Save</emph></paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id91708354359320" localize="false" role="tablecontent">Enregistrer</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id381708354362377" localize="false" role="tablecontent">Salva</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id881708354364975" localize="false" role="tablecontent">保存</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id401708355388097" localize="false" role="tablehead">4</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id541708354368489" localize="false" role="tablecontent"><emph>Open</emph></paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id991708354371528" localize="false" role="tablecontent">Ouvrir</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id351708354374560" localize="false" role="tablecontent">Apri</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id331708354377976" localize="false" role="tablecontent">開ける</paragraph>
-        </tablecell>
-    </tablerow>
-    </table>
-</section>
-<paragraph role="paragraph" id="par_id31708356677157"><input>={XLOOKUP("New", A2:A4, B2:D4,"Missing")}</input> returns the array {"Nouveau","Nuovo","新しい"}.</paragraph>
-<paragraph role="paragraph" id="par_id671708356683379"><input>={XLOOKUP("Reload", A2:A4, B2:D4,"Missing")}</input> returns the array {"Missing","Missing","Missing"}.</paragraph>
+</table>
+<paragraph role="paragraph" id="par_id231716739652495"><input>{=XLOOKUP("Helium";B1:DO1;B1:DO4)}</input> returns the array</paragraph>
+<table id="tbl_id691716753111818">
+    <tablerow><tablecell><paragraph id="par_id21716739329244" role="tablecontent">Helium</paragraph></tablecell></tablerow>
+    <tablerow><tablecell><paragraph id="par_id181716739331829"  localize="false" role="tablecontent">He</paragraph></tablecell></tablerow>
+    <tablerow><tablecell><paragraph id="par_id121716739334900"  localize="false" role="tablecontent">2</paragraph></tablecell></tablerow>
+    <tablerow><tablecell><paragraph id="par_id41716739337755"  localize="false" role="tablecontent">4.0026</paragraph></tablecell></tablerow>
+</table>
+
+<paragraph role="paragraph" id="par_id671708356683379"><input>{=XLOOKUP("Kryptonite";B1:DO1;B1:DO4;"Unknown element")}</input> returns the array {"Unknown element","Unknown element","Unknown element","Unknown element"}.</paragraph>
+
 <embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
 <embed href="text/scalc/00/avail_release.xhp#24.8"/>
 <embed href="text/scalc/01/common_func.xhp#notODFF"/>
