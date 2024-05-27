@@ -22,16 +22,48 @@
 </bookmark>
 <section id="filter">
     <h1 id="hd_id901708806478126"><variable id="h1"><link href="text/scalc/01/func_filter.xhp">FILTER</link></variable></h1>
-    <paragraph id="par_id771708806478128" role="paragraph">Filters a data range or array based on conditions you specify.</paragraph>
+    <paragraph id="par_id771708806478128" role="paragraph">Filters a data range or array based on specified conditions.</paragraph>
 </section>
 <embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
-<paragraph role="code" id="par_id211708281649651">FILTER(Range, Criteria, Return if empty)</paragraph>
+<paragraph role="code" id="par_id211708281649651">FILTER( Range; Criteria [; Return if empty])</paragraph>
 <paragraph role="paragraph" id="par_id411709395137111"><emph>Range</emph>: The array or range to filter.</paragraph>
 <paragraph role="paragraph" id="par_id471709395141324"><emph>Criteria</emph>: A boolean array whose height (filtering by columns) or width (filtering by rows) is the same as the array, used to select data from the <emph>Range</emph>.</paragraph>
-<paragraph role="paragraph" id="par_id421709395146863"><emph>Return if empty</emph>: the value to return if all values in the Include array are empty (filter return nothing).</paragraph>
+<paragraph role="paragraph" id="par_id421709395146863"><emph>Result if empty</emph>: (optional) the value to return if all values in the <emph>Criteria</emph> array are empty (filter return nothing).</paragraph>
 <embed href="text/scalc/01/stat_data.xhp#sampledata01"/>
-<paragraph role="paragraph" id="par_id21709506838932"><input>{=FILTER(A2:C13,A2:A13>50)}</input> returns the array {57,49,12|56,33,60|57,,} containing all grades with Maths grade above 50. Note that this is an array formula.</paragraph>
-<paragraph role="paragraph" id="par_id561709507935610"><input>{=FILTER(A2:C13,B2:B13>90,"No results")}</input>  Returns the string "No results", since no grade on Physics is above 90.</paragraph>
+<paragraph role="paragraph" id="par_id21709506838932"><input>{=FILTER(A2:C13;A2:A13>50)}</input> returns the array containing all grades with Maths grade above 50. Note that this is an <link href="text/scalc/01/04060107.xhp#creating_array_formulas">array formula</link>.</paragraph>
+        <table id="tab_id711716824543361">
+            <tablerow>
+                <tablecell>
+                    <paragraph localize="false" id="par_id631716824543362" role="tablecontent">57</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph localize="false" id="par_id771716824543363" role="tablecontent">49</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph localize="false" id="par_id1001716824543364" role="tablecontent">12</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph localize="false" id="par_id921716824543365" role="tablecontent">56</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph localize="false" id="par_id441716824543367" role="tablecontent">33</paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph localize="false" id="par_id441716824543368" role="tablecontent">60</paragraph>
+                </tablecell>
+            </tablerow>
+            <tablerow>
+                <tablecell>
+                    <paragraph localize="false" id="par_id341716824688536" role="tablecontent">57</paragraph>
+                </tablecell>
+                <tablecell></tablecell>
+                <tablecell></tablecell>
+            </tablerow>
+        </table>
+<paragraph role="paragraph" id="par_id561709507935610"><input>{=FILTER(A2:C13;B2:B13>90;"No results")}</input>  Returns the string "No results", since no grade on Physics is above 90.</paragraph>
+
 <embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
 <embed href="text/scalc/00/avail_release.xhp#24.8"/>
 <embed href="text/scalc/01/common_func.xhp#notODFF"/>
