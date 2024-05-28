@@ -25,6 +25,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdraw,\
     helpcontent2/source/text/sdraw/01/consolidatetext \
     helpcontent2/source/text/sdraw/01/delete_page \
     helpcontent2/source/text/sdraw/01/duplicate_page \
+    helpcontent2/source/text/sdraw/01/equalize_height \
+    helpcontent2/source/text/sdraw/01/equalize_width \
     helpcontent2/source/text/sdraw/01/insert_layer \
     helpcontent2/source/text/sdraw/01/new_page \
     helpcontent2/source/text/sdraw/01/navigate_page \
