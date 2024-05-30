@@ -17,17 +17,6 @@
 </meta>
 <body>
 
-<bookmark branch="hid/cui/ui/bulletandposition/BulletAndPosition" id="bm_id21623252319017" localize="false"/>
-<bookmark branch="hid/cui/ui/bulletandposition/@@nowidget@@" id="bm_id21623252319027" localize="false"/>
-<bookmark branch="index" id="bm_id121623276174916">
-<bookmark_value>bullets;Impress</bookmark_value>
-<bookmark_value>ordered list;Impress</bookmark_value>
-<bookmark_value>unordered list;Impress</bookmark_value>
-<bookmark_value>bullets;Draw</bookmark_value>
-<bookmark_value>ordered list;Draw</bookmark_value>
-<bookmark_value>unordered list;Draw</bookmark_value>
-</bookmark>
-
 <section id="bulletandposition">
 <h1 id="hd_id591623253567629"><link href="text/simpress/01/bulletandposition.xhp">Bullet and Position</link></h1>
 <paragraph id="par_id401623253567633" role="paragraph" localize="false"><embedvar href="text/shared/01/06050600.xhp#positioninfo" markup="ignore"/></paragraph>
@@ -36,10 +25,16 @@
 <section id="howtoget">
   <embed href="text/shared/00/00000004.xhp#from_menu_bar"/>
   <paragraph role="paragraph" id="par_id371623258309050">In a selected text, choose <menuitem>Format - Bullets and Numbering</menuitem>.</paragraph>
+  <switch select="appl">
+    <case select="DRAW">
+    </case>
+    <case select="IMPRESS">
   <embed href="text/shared/00/00000004.xhp#from_context"/>
   <paragraph role="paragraph" id="par_id151692539352713">In a selected text, choose <menuitem>Bullets and Numbering</menuitem>.</paragraph>
+  </case>
+  </switch>
   <embed href="text/shared/00/00000004.xhp#from_tabUI"/>
-  <paragraph role="paragraph" id="par_id571692539528746">On the <menuitem>Home</menuitem> tab, long click on <menuitem>Ordered</menuitem> or <menuitem>Unordered</menuitem> list, select <menuitem>Customize</menuitem>.</paragraph>
+  <paragraph role="paragraph" id="par_id571692539528746">On the <switchinline select="appl"><caseinline select="DRAW"><menuitem>Text</menuitem></caseinline><caseinline select="IMPRESS"><menuitem>Home</menuitem></caseinline></switchinline> tab, long click on <menuitem>Ordered</menuitem> or <menuitem>Unordered</menuitem> list, select <menuitem>Customize</menuitem>.</paragraph>
   <embed href="text/shared/00/00000004.xhp#from_toolbars"/>
   <embed href="text/shared/00/00040500.xhp#sybullets_and_numbering"/>
   <embed href="text/shared/00/00000004.xhp#from_sidebar"/>
@@ -47,6 +42,7 @@
 </section>
 
 <embed href="text/shared/01/06050600.xhp#positionlevels"/>
+<section id="properties">
 <h2 id="hd_id401623260265986">Properties</h2>
 <h3 id="hd_id191623260097778">Type</h3>
 <paragraph role="paragraph" id="par_id291623260116361">Select the type of list. Unordered with character bullet, unordered with graphics bullet, or ordered with a numbering scheme of your choice.</paragraph>
@@ -56,12 +52,18 @@
 <paragraph role="paragraph" id="par_id551623260225990">For ordered lists, select the value of first item of the list.</paragraph>
 <h3 id="hd_id671623259902753">Color</h3>
 <paragraph role="paragraph" id="par_id781623260255715">Select the color of the list characters for ordered and unordered lists. Color does not apply for lists with graphic bullets.</paragraph>
+</section>
+
+<section id="separator">
 <h2 id="hd_id691623261496489">Separator</h2>
 <paragraph role="paragraph" id="par_id791623261930996">For ordered lists, set the text to display before and after the numbering scheme.</paragraph>
 <h3 id="hd_id681623261502578">Before</h3>
 <paragraph role="paragraph" id="par_id641623261927147">Enter the text to display before the numbering.</paragraph>
 <h3 id="hd_id331623261507547">After</h3>
 <paragraph role="paragraph" id="par_id391623261922737">Enter the text to display after the numbering.</paragraph>
+</section>
+
+<section id="size">
 <h2 id="hd_id551623260579519">Size</h2>
 <paragraph role="paragraph" id="par_id521623261977095">Set the size of the character and graphic bullets with respect to the paragraph font size.</paragraph>
 <h3 id="hd_id261623260584277">Width</h3>
@@ -69,9 +71,11 @@
 <h3 id="hd_id531623260588282">Height</h3>
 <paragraph role="paragraph" id="par_id321623291834607">Enter the height of the graphic bullet character.</paragraph>
 <h3 id="hd_id951623260634795">Keep ratio</h3>
-<paragraph role="paragraph" id="par_id261623260666478">Check this box to preserve the height-to-width ratio of the graphic bullet.</paragraph>
 <h3 id="hd_id181623260599850">Rel. Size</h3>
 <paragraph role="paragraph" id="par_id281623260605208">For character unordered and ordered lists, set the relative size of the list character. The relative size applies to the <emph>Before</emph> and <emph>After</emph> text as well.</paragraph>
+</section>
+
+<section id="position">
 <h2 id="hd_id931623261370137">Position</h2>
 <h3 id="hd_id421623262130068">Indent</h3>
 <paragraph role="paragraph" id="par_id6081728">Enter the distance from the left edge of the containing object to the start of all lines in the list.</paragraph>
@@ -80,19 +84,29 @@
 <note id="par_id221623265073936">The combined total length of <emph>Before</emph>, <emph>After</emph> and the numbering characters may override the width setting.</note>
 <h3 id="hd_id291623263843749">Relative</h3>
 <paragraph role="paragraph" id="par_id561623268136625">Relative to the upper list level. The entered value is added to that of this field in the level before. If “Indent: 20mm” on list level 1 and “Indent: 10mm Relative” on list level 2 will result in an effective indent of 30mm for level 2.</paragraph>
-
 <h3 id="hd_id261623263839244">Alignment</h3>
 <paragraph role="paragraph" id="par_id361623265059971">Select the alignment of the ordered list numbering contents inside the list <emph>Width</emph> setting.</paragraph>
+</section>
 
+<section id="scope">
 <h2 id="hd_id871623265256880">Scope</h2>
 <h3 id="hd_id41623265263152"><switchinline select="appl"><caseinline select="IMPRESS">Slide</caseinline><defaultinline>Page</defaultinline>
 </switchinline></h3>
 <paragraph role="paragraph" id="par_id31623272228782">Applies the modification to the whole <switchinline select="appl"><caseinline select="IMPRESS">slide</caseinline><defaultinline>page</defaultinline></switchinline>.</paragraph>
 <h3 id="hd_id351623265267695">Selection</h3>
 <paragraph role="paragraph" id="par_id821623272290885">Applies the modification to the selection.</paragraph>
-<h3 id="hd_id141623265272187">Apply to Master</h3>
-<paragraph role="paragraph" id="par_id31623272423870">Click to apply the modification to all <switchinline select="appl"><caseinline select="IMPRESS">slides</caseinline><defaultinline>pages</defaultinline></switchinline> that use the current master <switchinline select="appl"><caseinline select="IMPRESS">slide</caseinline><defaultinline>page</defaultinline></switchinline>.</paragraph>
+<switch select="appl">
+  <case select="IMPRESS">
+    <h3 id="hd_id141623265272187">Apply to Master</h3>
+    <paragraph role="paragraph" id="par_id31623272423870">Click to apply the modification to all <switchinline select="appl"><caseinline select="IMPRESS">slides</caseinline><defaultinline>pages</defaultinline></switchinline> that use the current master <switchinline select="appl"><caseinline select="IMPRESS">slide</caseinline><defaultinline>page</defaultinline></switchinline>.</paragraph>
+  </case>
+  <default>
+  </default>
+</switch>
+</section>
+
 <embed href="text/shared/00/00000001.xhp#preview"/>
+
 <section id="relatedtopics">
 <embed href="text/shared/01/06050600.xhp#positionh1"/>
 </section>
