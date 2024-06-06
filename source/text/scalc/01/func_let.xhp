@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+    <meta>
+        <topic id="text/scalc/01/func_let.xhp" indexer="include" status="PUBLISH">
+        <title id="tit">LET function</title>
+        <filename>/text/scalc/01/func_let.xhp</filename>
+    </topic>
+</meta>
+<body>
+<bookmark id="bm_id221708806478124" branch="hid/SC_HID_FUNC_LET_MS" localize="false"/>
+<bookmark branch="index" id="bm_id361708283183878">
+<bookmark_value>LET function</bookmark_value>
+</bookmark>
+<section id="let">
+    <h1 id="hd_id721717677746932"><variable id="h1"><link href="text/scalc/01/func_let.xhp">LET</link></variable></h1>
+    <paragraph id="par_id71717677746935" role="paragraph">Assigns names to calculation results. This allows storing intermediate calculations, values, or defining names inside a formula. These names only apply within the scope of the LET function.</paragraph>
+</section>
+<embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
+<paragraph role="code" id="par_id211708281649651">LET(Name1; Name_value1; Calculation_or_Name2; [Name_value2; Calculation_or_Name3 [; ...]])</paragraph>
+
+<paragraph role="paragraph" id="par_id301717681619674"><emph>Name1</emph>: the first name to assign. Must start with a letter. Cannot be the output of a formula or conflict with range syntax.</paragraph>
+<note id="par_id721717688901981">Name1 must follow the <link href="text/scalc/guide/value_with_name.xhp">naming rules of %PRODUCTNAME Calc</link>.</note>
+<paragraph role="paragraph" id="par_id951717681624139"><emph>Name_value1</emph>: the value or calculation to assign to Name1.</paragraph>
+<paragraph role="paragraph" id="par_id421717686226452"><emph>Name2; Name_value2;...</emph>: (optional) same as Name1 and Name_value1, respectively. Name_value2 must follow Name2 and so on.</paragraph>
+<paragraph role="paragraph" id="par_id231717686233659"><emph>Calculation</emph>: a formula expression that uses all names within the LET function.</paragraph>
+<note id="par_id91717686350018"><emph>Calculation</emph> must be the last argument in the LET function.</note>
+<embed href="text/scalc/01/ful_func.xhp#func_head_example"/>
+<embed href="text/scalc/01/04060109.xhp#xmpl_periodic_elements"/>
+<paragraph role="paragraph" id="par_id121717701196975">Calculate the molar mass of the water molecule knowing that the molecule has 2 hydrogen atoms and one oxygen atom.</paragraph>
+<paragraph role="paragraph" id="par_id311717701158800"><input>=LET(mHydro; HLOOKUP("Hydrogen"; $A$1:$DO$4; 4; 0); mOxy; HLOOKUP("Oxygen"; $A$1:$DO$4; 4; 0); "The molar mass of water is "&amp;(mOxy+2*mHydro)&amp;" g/mol")</input> returns "The molar mass of water is 18.015 g/mol".</paragraph>
+<embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
+<embed href="text/scalc/00/avail_release.xhp#24.8"/>
+<embed href="text/scalc/01/common_func.xhp#notODFF"/>
+<paragraph role="paragraph" id="par_id341640870986703" localize="false"><literal>COM.MICROSOFT.LET</literal></paragraph>
+<section id="relatedtopics">
+    <tip id="par_id701677016751508"><link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/LET">LET wiki page</link>.</tip>
+</section>
+</body>
+</helpdocument>
