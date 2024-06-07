@@ -432,6 +432,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/thisdbdoc \
     helpcontent2/source/text/sbasic/shared/uno_objects \
     helpcontent2/source/text/sbasic/shared/vbasupport \
+    helpcontent2/source/text/sbasic/shared/vba_objects \
     helpcontent2/source/text/sbasic/python/main0000 \
     helpcontent2/source/text/sbasic/python/python_2_basic \
     helpcontent2/source/text/sbasic/python/python_dialogs \
