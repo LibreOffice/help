@@ -113,6 +113,7 @@
 <xsl:variable name="ytaccept"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytaccept']"/></xsl:variable>
 <xsl:variable name="ytpromovideoH2"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='externalvideo']"/></xsl:variable>
 <xsl:variable name="ytprivacy"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytprivacy']"/></xsl:variable>
+<xsl:variable name="ui_books"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='books']"/></xsl:variable>
 <!--
 #############
 # Templates #
@@ -258,6 +259,16 @@
         </xsl:if>
     </div>
     <footer>
+        <h2 style="text-align: center;"><a href="https://books.libreoffice.org" target="_blank"><xsl:value-of select="$ui_books"/></a></h2>
+        <div class="noteicon" dir="auto" style="display:flex;justify-content:center;">
+            <img src="media/navigation/libo-writer.svg" alt="Writer Icon" style="width:60px;height:60px;"></img>
+            <img src="media/navigation/libo-calc.svg" alt="Calc Icon" style="width:60px;height:60px;"></img>
+            <img src="media/navigation/libo-impress.svg" alt="Impress Icon" style="width:60px;height:60px;"></img>
+            <img src="media/navigation/libo-draw.svg" alt="Draw Icon" style="width:60px;height:60px;"></img>
+            <img src="media/navigation/libo-base.svg" alt="Base Icon" style="width:60px;height:60px;"></img>
+            <img src="media/navigation/libo-math.svg" alt="Math Icon" style="width:60px;height:60px;"></img>
+            <img src="media/navigation/libo-symbol-black.svg" alt="Getting Started Icon" style="width:60px;height:60px;"></img>
+        </div>
         <xsl:if test="$online">
             <p itemscope="true" itemtype="http://schema.org/Organization" dir="auto">
             <meta itemprop="name" content="The Document Foundation"/>
