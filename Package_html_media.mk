@@ -438,7 +438,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/cui/ui/optfltrpage/OptFltrPage.png \
     screenshots/cui/ui/opthtmlpage/OptHtmlPage.png \
     screenshots/cui/ui/optaccessibilitypage/OptAccessibilityPage.png \
-    screenshots/cui/ui/optsavepage/OptSavePage.png \
     screenshots/cui/ui/optadvancedpage/OptAdvancedPage.png \
     screenshots/cui/ui/optasianpage/OptAsianPage.png \
     screenshots/cui/ui/optctlpage/OptCTLPage.png \
