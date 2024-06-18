@@ -268,7 +268,6 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     screenshots/cui/ui/optfltrpage/$(lang)/OptFltrPage.png \
     screenshots/cui/ui/opthtmlpage/$(lang)/OptHtmlPage.png \
     screenshots/cui/ui/optaccessibilitypage/$(lang)/OptAccessibilityPage.png \
-    screenshots/cui/ui/optsavepage/$(lang)/OptSavePage.png \
     screenshots/cui/ui/optadvancedpage/$(lang)/OptAdvancedPage.png \
     screenshots/cui/ui/optasianpage/$(lang)/OptAsianPage.png \
     screenshots/cui/ui/optctlpage/$(lang)/OptCTLPage.png \
