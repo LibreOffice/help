@@ -100,6 +100,14 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/scalc/IMSEC_equation.svg \
     helpimg/scalc/IMSECH_equation.svg \
     helpimg/scalc/IMTAN_equation.svg \
+    helpimg/scalc/comment_indicator.png \
+    helpimg/scalc/formula_indicator.png \
+    helpimg/scalc/edit_highlight.png \
+    helpimg/scalc/anchor.png \
+    helpimg/scalc/row_col_highlight.png \
+    helpimg/scalc/cursor_themed.png \
+    helpimg/scalc/cursor_system.png \
+    helpimg/scalc/refs_in_color.png \
     helpimg/sc_func_opt01.svg \
     helpimg/sd_drawing_with_comment.png \
     helpimg/sd_PresenterConsole01.png \
