@@ -425,6 +425,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/select_template_category \
     helpcontent2/source/text/shared/01/signexistingpdf \
     helpcontent2/source/text/shared/01/signsignatureline \
+    helpcontent2/source/text/shared/01/styles \
     helpcontent2/source/text/shared/01/StyleNewByExample \
     helpcontent2/source/text/shared/01/StyleUpdateByExample \
     helpcontent2/source/text/shared/01/TipOfTheDay \
