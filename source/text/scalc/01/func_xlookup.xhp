@@ -28,28 +28,28 @@
 <paragraph role="paragraph" id="par_id631708282151776">XLOOKUP function is a modern and flexible replacement for older functions like <link href="text/scalc/01/04060109.xhp#Section9">VLOOKUP</link>, <link href="text/scalc/01/04060109.xhp#Section17">HLOOKUP</link>, and <link href="text/scalc/01/04060109.xhp#Section14">LOOKUP</link>. XLOOKUP supports approximate and exact matching, wildcards (* ?) or regular expressions for partial matches, and lookups in vertical or horizontal ranges. XLOOKUP can perform a reverse search and offers a fast binary search option when working with large datasets.</paragraph>
 
 <embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
-<paragraph role="code" id="par_id211708281649651">XLOOKUP( [Lookup] ; Array ; Return [ ; [ NotFound ] [ ; [MatchType] [ ; SearchMode ] ] ] )</paragraph>
+<paragraph role="code" id="par_id211708281649651">XLOOKUP( [Search criterion] ; Search Array ; Result Array [ ; [ Result if not found ] [ ; [Match Mode] [ ; Search Mode ] ] ] )</paragraph>
 
-<paragraph role="paragraph" id="par_id861708281340704"><emph>Lookup</emph>: (optional) The value of any type to search for in <emph>Array</emph>. If omitted, XLOOKUP returns blank cells it finds in <emph>Array</emph>.</paragraph>
-<paragraph role="paragraph" id="par_id831708281625340"><emph>Array</emph>: is the reference of the array to search.  Array must be a 1-dimensional array and must be contained in one sheet only.</paragraph>
-<paragraph role="paragraph" id="par_id241708281629922"><emph>Return</emph>: is the reference of the array or range to return.</paragraph>
-<note id="par_id821708357634624">If <emph>Return</emph> is a range of cells, the XLOOKUP function must be entered as an <link href="text/scalc/01/04060107.xhp#creating_array_formulas">array formula</link>.</note>
-<paragraph role="paragraph" id="par_id271708281637035"><emph>NotFound</emph>: a text or cell content to return if the <emph>Lookup</emph> value is not found. If a valid match is not found and <emph>NotFound</emph> is omitted, the function returns the #N/A error.</paragraph>
+<paragraph role="paragraph" id="par_id861708281340704"><emph>Search criterion</emph>: (optional) The value of any type to search for in <emph>Array</emph>. If omitted, XLOOKUP returns blank cells it finds in <emph>Search Array</emph>.</paragraph>
+<paragraph role="paragraph" id="par_id831708281625340"><emph>Search Array</emph>: is the reference of the array to search.  Array must be a 1-dimensional array and must be contained in one sheet only.</paragraph>
+<paragraph role="paragraph" id="par_id241708281629922"><emph>Result Array</emph>: is the reference of the array or range to return.</paragraph>
+<note id="par_id821708357634624">If <emph>Result Array</emph> is a range of cells, the XLOOKUP function must be entered as an <link href="text/scalc/01/04060107.xhp#creating_array_formulas">array formula</link>.</note>
+<paragraph role="paragraph" id="par_id271708281637035"><emph>Result if not found</emph>: a text or cell content to return if the <emph>Lookup</emph> value is not found. If a valid match is not found and <emph>Result if not found</emph> is omitted, the function returns the #N/A error.</paragraph>
 
 <section id="matchmode">
-    <paragraph role="paragraph" id="par_id121708281643207"><emph>MatchType</emph>: (optional) specifies the match type. Values can be:</paragraph>
+    <paragraph role="paragraph" id="par_id121708281643207"><emph>Match Mode</emph>: (optional) specifies the match type. Values can be:</paragraph>
 <list type="unordered">
     <listitem>
-        <paragraph id="par_id111708281542144" role="listitem"><emph>0</emph>: exact match (default). If <emph>Lookup</emph> value is not found and <emph>NotFound</emph> text is omitted, then return the #N/A error.</paragraph>
+        <paragraph id="par_id111708281542144" role="listitem"><emph>0</emph>: exact match (default). If <emph>Search criterion</emph> value is not found and <emph>Result if not found</emph> text is omitted, then return the #N/A error.</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id851708281548335" role="listitem"><emph>-1</emph>: attempt exact match. If <emph>Lookup</emph> value is not found, then return the next smaller item.</paragraph>
+        <paragraph id="par_id851708281548335" role="listitem"><emph>-1</emph>: attempt exact match. If <emph>Search criterion</emph> value is not found, then return the next smaller item.</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id801708281553430" role="listitem"><emph>1</emph>: attempt exact match. If <emph>Lookup</emph> value is not found, then return the next larger item.</paragraph>
+        <paragraph id="par_id801708281553430" role="listitem"><emph>1</emph>: attempt exact match. If <emph>Search criterion</emph> value is not found, then return the next larger item.</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id881708281558005" role="listitem"><emph>2</emph>: a <link href="text/scalc/guide/wildcards.xhp">wildcard</link> match where characters *, ?, and ~ have special meanings.</paragraph>
+        <paragraph id="par_id881708281558005" role="listitem"><emph>2</emph>: a <link href="text/scalc/guide/wildcards.xhp">wildcard</link> match where characters * (multiple characters), ? (single character), and ~ have special meanings.</paragraph>
     </listitem>
     <listitem>
     <paragraph role="listitem" id="par_id111718970605394"><emph>3</emph>: a <link href="text/shared/01/02100001.xhp">regular expression</link> match.</paragraph>
@@ -58,22 +58,22 @@
 </section>
 
 <section id="searchmode">
-    <paragraph role="paragraph" id="par_id871708281607313"><emph>SearchMode</emph>: (optional) specifies the search mode to use.</paragraph>
+    <paragraph role="paragraph" id="par_id871708281607313"><emph>Search Mode</emph>: (optional) specifies the search mode to use.</paragraph>
 <list type="unordered">
     <listitem>
-        <paragraph id="par_id281708281579757" role="listitem"><emph>1</emph>: returns the first occurrence starting from the first item of <emph>Array</emph> (default).</paragraph>
+        <paragraph id="par_id281708281579757" role="listitem"><emph>1</emph>: returns the first occurrence starting from the first item of <emph>Search Array</emph> (default).</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id251708281584285" role="listitem"><emph>-1</emph>: reverse search. Returns the first occurrence starting from the last item of <emph>Array</emph>.</paragraph>
+        <paragraph id="par_id251708281584285" role="listitem"><emph>-1</emph>: reverse search. Returns the first occurrence starting from the last item of <emph>Search Array</emph>.</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id191708281589997" role="listitem"><emph>2</emph>: binary search that relies on <emph>Array</emph> being sorted in ascending order. If not sorted, invalid results will be returned.</paragraph>
+        <paragraph id="par_id191708281589997" role="listitem"><emph>2</emph>: binary search that relies on <emph>Search Array</emph> being sorted in ascending order. If not sorted, invalid results will be returned.</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id561708281595885" role="listitem"><emph>-2</emph>: binary search that relies on <emph>Array</emph> being sorted in descending order. If not sorted, invalid results will be returned.</paragraph>
+        <paragraph id="par_id561708281595885" role="listitem"><emph>-2</emph>: binary search that relies on <emph>Search Array</emph> being sorted in descending order. If not sorted, invalid results will be returned.</paragraph>
     </listitem>
     </list>
-    <warning id="par_id551718627629229"><emph>MatchType</emph> values 2 and 3 cannot be combined with binary search (<emph>SearchMode</emph> value <emph>2</emph> or <emph>-2</emph>).</warning>
+    <warning id="par_id551718627629229"><emph>Match Mode</emph> values 2 and 3 cannot be combined with binary search (<emph>Search Mode</emph> value <emph>2</emph> or <emph>-2</emph>).</warning>
 </section>
 <embed href="text/scalc/01/common_func.xhp#optional_args"/>
 
