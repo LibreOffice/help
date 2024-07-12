@@ -126,6 +126,10 @@ pre,
     font-family: var(--font_mono);
     word-wrap: anywhere;
 }
+/* prevent SVGs without width from overflowing the container */
+img[src$=".svg"] {
+    max-width: 100%;
+}
 .literal {
     white-space: normal;
 }
@@ -184,6 +188,9 @@ pre,
 }
 .noteicon, .notetext {
     padding:0.3em;
+}
+.noteicon {
+    flex-shrink: 0;
 }
 /* Override some Prism.js styles */
 code[class*="language-"], pre[class*="language-"] {
