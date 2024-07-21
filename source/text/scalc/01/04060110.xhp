@@ -67,6 +67,18 @@
 <paragraph role="paragraph" id="par_id401624454547945">Be aware that Calc's AutoCorrect function may modify double quotation marks. AutoCorrect should not change the double quotation marks within formula cells but may change those used in non-formula cells containing text. For example, if you copy a string that is surrounded by some other form of typographical double quotation marks, such as the left double quotation mark (U+201C) and the right double quotation mark (U+201D), and then paste into a formula cell, an error may result. Open the <emph>Double Quotes</emph> area of the <menuitem>Tools - AutoCorrect Options - Localized Options</menuitem> dialog to set the characters used to automatically correct the start and end typographical double quotation marks. Uncheck the <menuitem>Replace</menuitem> toggle button to disable the feature.</paragraph>
 
 </section>
+<h2 id="hd_id451721571883016">Empty string and blank cells</h2>
+<paragraph role="paragraph" id="par_id241721571890240"><variable id="stringblank">Cells with the empty string ("") are not equivalent to blank cells. When searching or calculating with text, the empty string "" is the text with length zero.</variable></paragraph>
+<paragraph role="paragraph" id="par_id451721571895265">For example, when the formula in A1 returns the empty string "", the following applies:</paragraph>
+<paragraph role="paragraph" id="par_id591721571900225"><input>=ISBLANK(A1)</input> returns FALSE. The cell is not blank.</paragraph>
+<paragraph role="paragraph" id="par_id781721571904769"><input>=ISFORMULA(A1)</input> returns TRUE. The cell is a formula.</paragraph>
+<paragraph role="paragraph" id="par_id671721571909081"><input>=ISLOGICAL(A1)</input> returns FALSE. Not a logical value.
+</paragraph>
+<paragraph role="paragraph" id="par_id791721571916704"><input>=ISNONTEXT(A1)</input> returns FALSE. The cell has the empty string.</paragraph>
+<paragraph role="paragraph" id="par_id91721571920288"><input>=ISNUMBER(A1)</input> returns FALSE. Not a number.</paragraph>
+<paragraph role="paragraph" id="par_id821721571924250"><input>=ISTEXT(A1)</input> returns TRUE. The cell has the empty string, calculated by a formula.</paragraph>
+<paragraph role="paragraph" id="par_id71721571927654"><input>=LEN(A1)</input> returns 0. The length of the empty string is 0.</paragraph>
+
 
 <sort order="asc" descendant="h2">
 
