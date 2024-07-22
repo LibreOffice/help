@@ -198,6 +198,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/mm_seladdlis \
     helpcontent2/source/text/swriter/01/mm_seltab \
     helpcontent2/source/text/swriter/01/outlinecontent_visibility \
+    helpcontent2/source/text/swriter/01/page \
     helpcontent2/source/text/swriter/01/pagenumbering \
     helpcontent2/source/text/swriter/01/paragraph_signature \
     helpcontent2/source/text/swriter/01/protectdocument \
