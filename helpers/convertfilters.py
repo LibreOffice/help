@@ -16,9 +16,6 @@
 
 import os
 import sys
-import random
-import time
-from math import floor
 from lxml import etree
 
 output_file_path = os.path.join(os.path.dirname(sys.argv[0]), "convertfilters.xhp")
@@ -169,11 +166,11 @@ for module in modules:
             </tablecell>\n\
         </tablerow>\n'
 
-    output += f'\
+    output += '\
     </table>\n\
 </section>\n'
 
-output += f'\
+output += '\
 </body>\n\
 </helpdocument>'
 
@@ -181,4 +178,4 @@ with open(output_file_path, "w") as f:
     f.write(output)
 
 print(f'\nDone. File saved at: {output_file_path}.')
-print(f'Please move this file into helpcontent2/source/text/shared/guide.')
+print('Please move this file into helpcontent2/source/text/shared/guide.')
