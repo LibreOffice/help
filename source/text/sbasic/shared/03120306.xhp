@@ -41,7 +41,9 @@
 
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
-<paragraph id="par_id3147530" role="bascode" xml-lang="en-US">Mid (Text As String, Start As Long [, Length As Long]) or Mid (Text As String, Start As Long , Length As Long, Text As String)</paragraph>
+<paragraph id="par_id3147530" role="bascode" xml-lang="en-US">Mid (Text As String, Start As Long [, Length As Long]) </paragraph>
+<paragraph id="par_id3147540" role="bascode" xml-lang="en-US">Mid (Text As String, Start As Long, Length As Long, Text As String)</paragraph>
+
 </bascode>
 
 <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
@@ -59,16 +61,14 @@
 
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
-<paragraph id="par_idm1341563264" role="bascode" localize="false" xml-lang="en-US">Sub ExampleUSDate</paragraph>
-<paragraph id="par_idm1341562032" role="bascode" localize="false" xml-lang="en-US">Dim sInput As String</paragraph>
-<paragraph id="par_idm1341560800" role="bascode" localize="false" xml-lang="en-US">Dim sUS_date As String</paragraph>
-<paragraph id="par_id3153189" role="bascode" xml-lang="en-US">    sInput = InputBox("Please input a date in the international format 'YYYY-MM-DD'")</paragraph>
-<paragraph id="par_idm1341557792" role="bascode" localize="false" xml-lang="en-US">    sUS_date = Mid(sInput, 6, 2)</paragraph>
-<paragraph id="par_idm1341556544" role="bascode" localize="false" xml-lang="en-US">    sUS_date = sUS_date &amp; "/"</paragraph>
-<paragraph id="par_idm1341555280" role="bascode" localize="false" xml-lang="en-US">    sUS_date = sUS_date &amp; Right(sInput, 2)</paragraph>
-<paragraph id="par_idm1341554016" role="bascode" localize="false" xml-lang="en-US">    sUS_date = sUS_date &amp; "/"</paragraph>
-<paragraph id="par_idm1341552752" role="bascode" localize="false" xml-lang="en-US">    sUS_date = sUS_date &amp; Left(sInput, 4)</paragraph>
-<paragraph id="par_idm1341551488" role="bascode" localize="false" xml-lang="en-US">    MsgBox sUS_date</paragraph>
+<paragraph id="par_idm1341563264" role="bascode" localize="false" xml-lang="en-US">Sub ExampleMid_Function_and_Statement</paragraph>
+<paragraph id="par_idm1341562032" role="bascode" localize="false" xml-lang="en-US">  original_text = &quot;This is the original Text&quot;</paragraph>
+<paragraph id="par_idm1341557792" role="bascode" localize="false" xml-lang="en-US">&apos; Mid as function </paragraph>
+<paragraph id="par_idm1341556544" role="bascode" localize="false" xml-lang="en-US">  msgbox Mid( original_text , 13, 8) &apos; returns the word original</paragraph>
+<paragraph id="par_idm1341555280" role="bascode" localize="false" xml-lang="en-US">  msgbox original_text               &apos; original_text not modified</paragraph>
+<paragraph id="par_idm1341553792" role="bascode" localize="false" xml-lang="en-US">&apos; Mid as statement </paragraph>
+<paragraph id="par_idm1341552752" role="bascode" localize="false" xml-lang="en-US">  Mid( original_text, 13, 8, &quot;new&quot; )</paragraph>
+<paragraph id="par_idm1341551488" role="bascode" localize="false" xml-lang="en-US">  msgbox original_text               &apos; returns This is the new Text</paragraph>
 <paragraph id="par_idm1341550256" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
 </bascode>
 <section id="relatedtopics">
