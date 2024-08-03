@@ -206,6 +206,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/selection_mode \
     helpcontent2/source/text/swriter/01/select_text \
     helpcontent2/source/text/swriter/01/show_whitespace \
+    helpcontent2/source/text/swriter/01/sidebar_quickfind \
     helpcontent2/source/text/swriter/01/SpotlightMenu \
     helpcontent2/source/text/swriter/01/SpotlightCharStyles \
     helpcontent2/source/text/swriter/01/SpotlightParaStyles \
