@@ -121,7 +121,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/03000000 \
     helpcontent2/source/text/sbasic/shared/03010000 \
     helpcontent2/source/text/sbasic/shared/03010100 \
-    helpcontent2/source/text/sbasic/shared/03010101 \
     helpcontent2/source/text/sbasic/shared/03010102 \
     helpcontent2/source/text/sbasic/shared/03010103 \
     helpcontent2/source/text/sbasic/shared/03010200 \

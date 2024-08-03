@@ -20,22 +20,20 @@
 
 <meta>
   <topic id="textsbasicshared03010102xml" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">MsgBox Function</title>
+    <title id="tit">MsgBox Function</title>
     <filename>/text/sbasic/shared/03010102.xhp</filename>
   </topic>
 </meta>
 
 <body>
 
-
 <section id="msgbox">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3153379">
+<bookmark branch="index" id="bm_id3153379">
   <bookmark_value>MsgBox function</bookmark_value>
 </bookmark>
 
-
-<h1 id="hd_id3153379"><link href="text/sbasic/shared/03010102.xhp">MsgBox Function</link></h1>
-<paragraph id="par_id3145171" role="paragraph" xml-lang="en-US">Displays a dialog box containing a message and returns a value.</paragraph>
+<h1 id="hd_id3153379"><variable id="msgbox_h1"><link href="text/sbasic/shared/03010102.xhp">MsgBox Function</link></variable></h1>
+<paragraph id="par_id3145171" role="paragraph">Displays a dialog box containing a message and returns a value.</paragraph>
 </section>
 
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
@@ -43,113 +41,282 @@
 <paragraph id="par_id3148664" role="bascode" localize="false">MsgBox (Prompt As String [,Buttons = MB_OK [,Title As String]]) As Integer</paragraph>
 </bascode>
 
-<embed href="text/sbasic/shared/03010101.xhp#MsgBox_statement"/>
+<section id="MsgBox_function">
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<section id="parameters">
+<paragraph id="par_id3148798" role="paragraph"> <emph>prompt</emph>: String expression displayed as a message in the dialog box. Line breaks can be inserted with Chr$(13).</paragraph>
+<paragraph id="par_id3150769" role="paragraph"> <emph>title</emph>: String expression displayed in the title bar of the dialog. If omitted, the title bar displays the name of the respective application.</paragraph>
+<paragraph id="par_id3147228" role="paragraph"> <emph>buttons</emph>: Any integer expression that specifies the dialog type, as well as the number and type of buttons to display, and the icon type. <emph>buttons</emph> represents a combination of bit patterns, that is, a combination of elements can be defined by adding their respective values:</paragraph>
+</section>
 
-<embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
-<paragraph id="par_id3146985" role="paragraph" xml-lang="en-US">Integer</paragraph>
-<table id="tbl_051220170325378371">
+
+<section id="MsgBox_constants">
+<table id="tbl_051220170220345412">
   <tablerow>
     <tablecell>
-      <paragraph id="par_id051220170330379805" role="tablehead" xml-lang="en-US">Named constant</paragraph>
+      <paragraph id="par_id051220170241588881" role="tablehead">Named constant</paragraph>
     </tablecell>
     <tablecell>
-      <paragraph id="par_id051220170330387072" role="tablehead" xml-lang="en-US">Integer value</paragraph>
+      <paragraph id="par_id051220170241585541" role="tablehead">Integer value</paragraph>
     </tablecell>
     <tablecell>
-      <paragraph id="par_id051220170330387973" role="tablehead" xml-lang="en-US">Definition</paragraph>
+      <paragraph id="par_id051220170241585124" role="tablehead">Definition</paragraph>
     </tablecell>
   </tablerow>
   <tablerow>
     <tablecell>
-      <paragraph id="par_id051220170330388585" role="tablecontent" localize="false" xml-lang="en-US">IDOK</paragraph>
+      <paragraph id="par_id051220170241588348" role="tablecontent" localize="false">MB_OK</paragraph>
     </tablecell>
     <tablecell>
-      <paragraph id="par_id051220170330389516" role="tablecontent" localize="false" xml-lang="en-US">1</paragraph>
+      <paragraph id="par_id051220170241583191" role="tablecontent" localize="false">0</paragraph>
     </tablecell>
     <tablecell>
-      <paragraph id="par_id3145230" role="paragraph" xml-lang="en-US"> OK</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id051220170330381793" role="tablecontent" localize="false" xml-lang="en-US">IDCANCEL</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id051220170330388083" role="tablecontent" localize="false" xml-lang="en-US">2</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3149567" role="paragraph" xml-lang="en-US"> Cancel</paragraph>
+      <paragraph id="par_id3147397" role="paragraph">Display OK button only.</paragraph>
     </tablecell>
   </tablerow>
   <tablerow>
     <tablecell>
-      <paragraph id="par_id051220170330387992" role="tablecontent" localize="false" xml-lang="en-US">IDABORT</paragraph>
+      <paragraph id="par_id051220170241583930" role="tablecontent" localize="false">MB_OKCANCEL</paragraph>
     </tablecell>
     <tablecell>
-      <paragraph id="par_id05122017033038256" role="tablecontent" localize="false" xml-lang="en-US">3</paragraph>
+      <paragraph id="par_id051220170241598544" role="tablecontent" localize="false">1</paragraph>
     </tablecell>
     <tablecell>
-      <paragraph id="par_id4056825" role="paragraph" xml-lang="en-US"> Abort</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id051220170330383300" role="tablecontent" localize="false" xml-lang="en-US">IDRETRY</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id051220170330382200" role="tablecontent" localize="false" xml-lang="en-US">4</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3155335" role="paragraph" xml-lang="en-US"> Retry</paragraph>
+      <paragraph id="par_id3145646" role="paragraph">Display OK and Cancel buttons.</paragraph>
     </tablecell>
   </tablerow>
   <tablerow>
     <tablecell>
-      <paragraph id="par_id0512201703303859" role="tablecontent" localize="false" xml-lang="en-US">IDIGNORE</paragraph>
+      <paragraph id="par_id051220170241591470" role="tablecontent" localize="false">MB_ABORTRETRYIGNORE</paragraph>
     </tablecell>
     <tablecell>
-      <paragraph id="par_id051220170330388644" role="tablecontent" localize="false" xml-lang="en-US">5</paragraph>
+      <paragraph id="par_id051220170241592832" role="tablecontent" localize="false">2</paragraph>
     </tablecell>
     <tablecell>
-      <paragraph id="par_id3146918" role="paragraph" xml-lang="en-US"> Ignore</paragraph>
-    </tablecell>
-  </tablerow>
-  <tablerow>
-    <tablecell>
-      <paragraph id="par_id051220170330386652" role="tablecontent" localize="false" xml-lang="en-US">IDYES</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id051220170330387211" role="tablecontent" localize="false" xml-lang="en-US">6</paragraph>
-    </tablecell>
-    <tablecell>
-      <paragraph id="par_id3155961" role="paragraph" xml-lang="en-US"> Yes</paragraph>
+      <paragraph id="par_id3149410" role="paragraph">Display Abort, Retry, and Ignore buttons.</paragraph>
     </tablecell>
   </tablerow>
   <tablerow>
     <tablecell>
-      <paragraph id="par_id051220170330381656" role="tablecontent" localize="false" xml-lang="en-US">IDNO</paragraph>
+      <paragraph id="par_id051220170241594311" role="tablecontent" localize="false">MB_YESNOCANCEL</paragraph>
     </tablecell>
     <tablecell>
-      <paragraph id="par_id051220170330383819" role="tablecontent" localize="false" xml-lang="en-US">7</paragraph>
+      <paragraph id="par_id051220170241594996" role="tablecontent" localize="false">3</paragraph>
     </tablecell>
     <tablecell>
-      <paragraph id="par_id3148488" role="paragraph" xml-lang="en-US"> No</paragraph>
+      <paragraph id="par_id3151075" role="paragraph">Display Yes, No, and Cancel buttons.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170241596937" role="tablecontent" localize="false">MB_YESNO</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170241592706" role="tablecontent" localize="false">4</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3153878" role="paragraph">Display Yes and No buttons.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170241591119" role="tablecontent" localize="false">MB_RETRYCANCEL</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170241595093" role="tablecontent" localize="false">5</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3155601" role="paragraph">Display Retry and Cancel buttons.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id05122017024159933" role="tablecontent" localize="false">MB_ICONSTOP</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id05122017024159655" role="tablecontent" localize="false">16</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3150716" role="paragraph">Add the Stop icon to the dialog.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170241591424" role="tablecontent" localize="false">MB_ICONQUESTION</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170241593191" role="tablecontent" localize="false">32</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3153837" role="paragraph">Add the Question icon to the dialog.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170241598357" role="tablecontent" localize="false">MB_ICONEXCLAMATION</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170242002870" role="tablecontent" localize="false">48</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3150751" role="paragraph">Add the Exclamation Point icon to the dialog.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170242001511" role="tablecontent" localize="false">MB_ICONINFORMATION</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170242008091" role="tablecontent" localize="false">64</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3146915" role="paragraph">Add the Information icon to the dialog.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170242003564" role="tablecontent" localize="false"> </paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170242001398" role="tablecontent" localize="false">128</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3145640" role="paragraph">First button in the dialog as default button.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170242007839" role="tablecontent" localize="false">MB_DEFBUTTON2</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170242005589" role="tablecontent" localize="false">256</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3153765" role="paragraph">Second button in the dialog as default button.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170242005074" role="tablecontent" localize="false">MB_DEFBUTTON3</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170242001655" role="tablecontent" localize="false">512</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3153715" role="paragraph">Third button in the dialog as default button.</paragraph>
     </tablecell>
   </tablerow>
 </table>
+</section>
+
+
+<embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
+<paragraph id="par_id3146985" role="paragraph">Integer</paragraph>
+
+<table id="tbl_051220170325378371">
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170330379805" role="tablehead">Named constant</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170330387072" role="tablehead">Integer value</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170330387973" role="tablehead">Definition</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170330388585" role="tablecontent" localize="false">IDOK</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170330389516" role="tablecontent" localize="false">1</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3145230" role="paragraph"> OK</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170330381793" role="tablecontent" localize="false">IDCANCEL</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170330388083" role="tablecontent" localize="false">2</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3149567" role="paragraph"> Cancel</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170330387992" role="tablecontent" localize="false">IDABORT</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id05122017033038256" role="tablecontent" localize="false">3</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id4056825" role="paragraph"> Abort</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170330383300" role="tablecontent" localize="false">IDRETRY</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170330382200" role="tablecontent" localize="false">4</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3155335" role="paragraph"> Retry</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id0512201703303859" role="tablecontent" localize="false">IDIGNORE</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170330388644" role="tablecontent" localize="false">5</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3146918" role="paragraph"> Ignore</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170330386652" role="tablecontent" localize="false">IDYES</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170330387211" role="tablecontent" localize="false">6</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3155961" role="paragraph"> Yes</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id051220170330381656" role="tablecontent" localize="false">IDNO</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id051220170330383819" role="tablecontent" localize="false">7</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3148488" role="paragraph"> No</paragraph>
+    </tablecell>
+  </tablerow>
+</table>
+</section>
 
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 
 <h2 id="hd_id3150090">Example:</h2>
 <bascode>
-<paragraph id="par_idm1340837456" role="bascode" localize="false" xml-lang="en-US">Sub ExampleMsgBox</paragraph>
-<paragraph id="par_idm1340836224" role="bascode" localize="false" xml-lang="en-US">Dim sVar As Integer</paragraph>
-<paragraph id="par_id3151278" role="bascode" xml-lang="en-US"> sVar = MsgBox("Las Vegas")</paragraph>
-<paragraph id="par_id3149034" role="bascode" xml-lang="en-US"> sVar = MsgBox("Las Vegas",1)</paragraph>
-<paragraph id="par_id3166424" role="bascode" xml-lang="en-US"> sVar = MsgBox( "Las Vegas",256 + 16 + 2,"Dialog title")</paragraph>
-<paragraph id="par_id051220170242005479" role="bascode" xml-lang="en-US"> sVar = MsgBox("Las Vegas", MB_DEFBUTTON2 + MB_ICONSTOP + MB_ABORTRETRYIGNORE, "Dialog title")</paragraph>
-<paragraph id="par_idm1340829728" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1340837456" role="bascode" localize="false">Sub ExampleMsgBox</paragraph>
+<paragraph id="par_idm1340836224" role="bascode" localize="false">Dim sVar As Integer</paragraph>
+<paragraph id="par_id3151278" role="bascode"> sVar = MsgBox("Las Vegas")</paragraph>
+<paragraph id="par_id3149034" role="bascode"> sVar = MsgBox("Las Vegas",1)</paragraph>
+<paragraph id="par_id3166424" role="bascode"> sVar = MsgBox( "Las Vegas",256 + 16 + 2,"Dialog title")</paragraph>
+<paragraph id="par_id051220170242005479" role="bascode"> sVar = MsgBox("Las Vegas", MB_DEFBUTTON2 + MB_ICONSTOP + MB_ABORTRETRYIGNORE, "Dialog title")</paragraph>
+<paragraph id="par_idm1340829728" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
 </body>
 
