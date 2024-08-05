@@ -63,44 +63,6 @@
         </tablerow>
     </table>
     <paragraph role="paragraph" id="par_id761642018318896">This will result in -999.129999999997 in A3, instead of expected -999.13 (you might need to increase shown decimal places in cell format to see this).</paragraph>
-<paragraph role="paragraph" id="par_id221642020132399">An example with dates and times:</paragraph>
-    <paragraph role="paragraph" id="par_id801642018326882">Due to the specific of time representation in Calc, this also applies to all calculations involving times. For example, the cells A1 and A2 below show the date and time data as entered (in ISO 8601 format):</paragraph>
-    <table id="tab_id251642018348675">
-        <tablerow>
-            <tablecell>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id561642018348675" role="tablehead" xml-lang="en-US" localize="false">A</paragraph>
-            </tablecell>
-        </tablerow>
-        <tablerow>
-            <tablecell>
-                <paragraph id="par_id781642018348676" role="tablehead" xml-lang="en-US" localize="false">1</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id461642018348676" role="tablecontent" xml-lang="en-US" localize="false">2020-04-13 12:18:00</paragraph>
-            </tablecell>
-        </tablerow>
-        <tablerow>
-            <tablecell>
-                <paragraph id="par_id341642018408688" role="tablehead" xml-lang="en-US" localize="false">2</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id391642018408688" role="tablecontent" xml-lang="en-US" localize="false">2020-04-13 12:08:00 </paragraph>
-            </tablecell>
-        </tablerow>
-        <tablerow>
-            <tablecell>
-                <paragraph id="par_id401642018497660" role="tablehead" xml-lang="en-US" localize="false">3</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id521642018497660" role="tablecontent" xml-lang="en-US" localize="false">=A1-A2</paragraph>
-            </tablecell>
-        </tablerow>
-    </table>
-      <paragraph role="paragraph" id="par_id101643312991679">Cell A3 will show 00:10:00 if the default formatting [HH]:MM:SS is applied to the cell. However, cell A3 will show 00:09:59.999999 instead of expected 00:10:00.000000 if formatted using [HH]:MM:SS.000000 format string. This happens despite only whole numbers of hours and minutes were used, because internally, any time is a fraction of a day, 12:00 (noon) being represented as 0.5. </paragraph>
-      <paragraph role="paragraph" id="par_id921642020011065">The data in A1 is represented internally as 43934.5125, and in A2 as 43934.5055555555591126903891563 (which is not exact representation of the entered datetime, which would be 43934.505555555555555555...). </paragraph>
-      <paragraph role="paragraph" id="par_id801642020017858">Their subtraction results in 0.00694444443287037, a value slightly less than expected 0.00694444444444..., which is 10 minutes.</paragraph>
     <section id="relatedtopics">
         <embed href="text/scalc/01/func_rawsubtract.xhp#rawsubtracth1"/>
     </section>
