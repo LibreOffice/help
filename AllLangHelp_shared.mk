@@ -588,6 +588,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/02/fontwork \
     helpcontent2/source/text/shared/02/gridtofront \
     helpcontent2/source/text/shared/02/limit \
+    helpcontent2/source/text/shared/02/mediaplay_toolbar \
     helpcontent2/source/text/shared/02/namedialog \
     helpcontent2/source/text/shared/02/paintbrush \
     helpcontent2/source/text/shared/02/querypropdlg \
@@ -841,7 +842,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/main0650 \
     helpcontent2/source/text/shared/main0800 \
     helpcontent2/source/text/shared/main_tools \
-    helpcontent2/source/text/shared/mediaplay_toolbar \
     helpcontent2/source/text/shared/menu/forms \
     helpcontent2/source/text/shared/menu/comment_menu \
     helpcontent2/source/text/shared/menu/insert_form_control \
