@@ -586,6 +586,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/02/eliminate_points \
     helpcontent2/source/text/shared/02/flowcharts \
     helpcontent2/source/text/shared/02/fontwork \
+    helpcontent2/source/text/shared/02/fontwork_toolbar \
     helpcontent2/source/text/shared/02/gridtofront \
     helpcontent2/source/text/shared/02/limit \
     helpcontent2/source/text/shared/02/mediaplay_toolbar \
@@ -684,7 +685,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/autopi/01170300 \
     helpcontent2/source/text/shared/autopi/01170400 \
     helpcontent2/source/text/shared/autopi/01170500 \
-    helpcontent2/source/text/shared/fontwork_toolbar \
     helpcontent2/source/text/shared/help/browserhelp \
     helpcontent2/source/text/shared/guide/aaa_start \
     helpcontent2/source/text/shared/guide/accessibility \
