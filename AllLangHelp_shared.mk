@@ -584,6 +584,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/02/callouts \
     helpcontent2/source/text/shared/02/colortoolbar \
     helpcontent2/source/text/shared/02/eliminate_points \
+    helpcontent2/source/text/shared/02/find_toolbar \
     helpcontent2/source/text/shared/02/flowcharts \
     helpcontent2/source/text/shared/02/fontwork \
     helpcontent2/source/text/shared/02/fontwork_toolbar \
@@ -827,7 +828,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/xsltfilter \
     helpcontent2/source/text/shared/guide/xsltfilter_create \
     helpcontent2/source/text/shared/guide/xsltfilter_distribute \
-    helpcontent2/source/text/shared/find_toolbar \
     helpcontent2/source/text/shared/main0108 \
     helpcontent2/source/text/shared/main0201 \
     helpcontent2/source/text/shared/main0204 \
