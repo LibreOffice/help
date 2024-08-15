@@ -190,6 +190,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/mm_emailmergeddoc \
     helpcontent2/source/text/swriter/01/mm_finent \
     helpcontent2/source/text/swriter/01/mm_matfie \
+    helpcontent2/source/text/swriter/01/navigator_context_menu \
     helpcontent2/source/text/swriter/01/mm_newaddblo \
     helpcontent2/source/text/swriter/01/mm_newaddlis \
     helpcontent2/source/text/swriter/01/mm_printmergeddoc \

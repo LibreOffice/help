@@ -380,6 +380,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/minimal_row_height \
     helpcontent2/source/text/shared/01/moviesound \
     helpcontent2/source/text/shared/01/nav_rename \
+    helpcontent2/source/text/shared/01/navigator \
     helpcontent2/source/text/shared/01/notebook_bar \
     helpcontent2/source/text/shared/01/OutlineFont \
     helpcontent2/source/text/shared/01/Overline \
