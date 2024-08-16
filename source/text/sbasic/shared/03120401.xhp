@@ -17,54 +17,52 @@
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
 -->
-
 <meta>
   <topic id="textsbasicshared03120401xml" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">InStr Function</title>
+    <title id="tit">InStr Function</title>
     <filename>/text/sbasic/shared/03120401.xhp</filename>
   </topic>
 </meta>
-
 <body>
-
-
 <section id="instr">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3155934">
+<bookmark branch="index" id="bm_id3155934">
   <bookmark_value>InStr function</bookmark_value>
 </bookmark>
 
 <h1 id="hd_id3155934"><link href="text/sbasic/shared/03120401.xhp">InStr Function</link></h1>
-<paragraph id="par_id3153990" role="paragraph" xml-lang="en-US">Returns the position of a string within another string.</paragraph>
+<paragraph id="par_id3153990" role="paragraph">Returns the position of a string within another string.</paragraph>
 </section>
-<paragraph id="par_id3147303" role="paragraph" xml-lang="en-US">The Instr function returns the position at which the match was found. If the string was not found, the function returns 0.</paragraph>
+<paragraph id="par_id3147303" role="paragraph">The Instr function returns the position at which the match was found. If the string was not found, the function returns 0.</paragraph>
 
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
-<paragraph id="par_id3146957" role="bascode" xml-lang="en-US">InStr ([Start As Long,] String1 As String, String2 As String[, Compare]) As Integer</paragraph>
+<paragraph id="par_id3146957" role="bascode">InStr ([Start As Long,] String1 As String, String2 As String[, Compare As Integer]) As Integer</paragraph>
 </bascode>
 
 <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
 <paragraph id="par_id3149763" localize="false" role="paragraph">Integer</paragraph>
 
 <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-<paragraph id="par_id3153126" role="paragraph" xml-lang="en-US"> <emph>Start</emph>: A numeric expression that marks the position in a string where the search for the specified substring starts. If you omit this parameter, the search starts at the first character of the string. The minimum allowed value is 1. The maximum allowed value is 2,147,483,648.<comment>see i17928</comment></paragraph>
-<paragraph id="par_id3145609" role="paragraph" xml-lang="en-US"> <emph>String1</emph>: The string expression that you want to search.</paragraph>
-<paragraph id="par_id3147559" role="paragraph" xml-lang="en-US"> <emph>String2</emph>: The string expression that you want to search for.</paragraph>
-<paragraph id="par_id3154758" role="paragraph" xml-lang="en-US"> <emph>Compare</emph>: Optional numeric expression that defines the type of comparison. The value of this parameter can be 0 or 1. The default value of 1 specifies a text comparison that is not case-sensitive. The value of 0 specifies a binary comparison that is case-sensitive.<comment>fixes i17929</comment></paragraph>
-<paragraph id="par_id3153361" role="paragraph" xml-lang="en-US">To avoid a run-time error, do not set the Compare parameter if the first optional parameter is omitted.</paragraph>
+<paragraph id="par_id3153126" role="paragraph"> <emph>Start</emph>: A numeric expression that marks the position in a string where the search for the specified substring starts. If you omit this parameter, the search starts at the first character of the string. The minimum allowed value is 1. The maximum allowed value is 2,147,483,648.<comment>see i17928</comment></paragraph>
+<paragraph id="par_id3145609" role="paragraph"> <emph>String1</emph>: The string expression being searched.</paragraph>
+<paragraph id="par_id3147559" role="paragraph"> <emph>String2</emph>: The string expression that you want to search for.</paragraph>
+<paragraph id="par_id3154758" role="paragraph"> <emph>Compare</emph>: Optional type of comparison. The value can be 0 or 1. The default value of 1 specifies case-insensitive. The value of 0 specifies case-sensitive.</paragraph>
+<note id="par_id3154888">Case-insensitive comparison may use locale specifics, for example, "s" may match "&#946;".</note>
+<paragraph id="par_id3153361" role="paragraph">To avoid a run-time error, do not set the <emph>Compare</emph> parameter if the <emph>Start</emph> parameter is omitted.</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 
 <h2 id="hd_id3154366">Example:</h2>
 <bascode>
-<paragraph id="par_idm1341612352" role="bascode" localize="false" xml-lang="en-US">Sub ExamplePosition</paragraph>
-<paragraph id="par_idm1341611120" role="bascode" localize="false" xml-lang="en-US">Dim sInput As String</paragraph>
-<paragraph id="par_idm1341609888" role="bascode" localize="false" xml-lang="en-US">Dim iPos As Integer</paragraph>
-<paragraph id="par_id31447603655" role="bascode" localize="false" xml-lang="en-US">    sInput = "Office"</paragraph>
-<paragraph id="par_id31541252287" role="bascode" localize="false" xml-lang="en-US">    iPos = Instr(sInput,"c")</paragraph>
-<paragraph id="par_idm1341605120" role="bascode" localize="false" xml-lang="en-US">    Print iPos</paragraph>
-<paragraph id="par_idm1341603888" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1341612352" role="bascode" localize="false">Sub ExamplePosition</paragraph>
+<paragraph id="par_idm1341611120" role="bascode" localize="false">  Const sCalc = &quot;LibreOffice Calc&quot;</paragraph>
+<paragraph id="par_idm1341611122" role="bascode" localize="false"/>
+<paragraph id="par_idm1341609888" role="bascode">  Instr(sCalc, &quot;calc&quot;)     &apos; returns 13</paragraph>
+<paragraph id="par_id31447603655" role="bascode">  Instr(String1:=sCalc, String2:=&quot;calc&quot;, Start:=1)  &apos; returns 13</paragraph>
+<paragraph id="par_id31541252287" role="bascode">  Instr(11, sCalc, &quot;c&quot;)     &apos; returns 13</paragraph>
+<paragraph id="par_idm1341605124" role="bascode">  Instr(11, sCalc, &quot;c&quot;,  1) &apos; returns 13</paragraph>
+<paragraph id="par_idm1341605126" role="bascode">  Instr(11, sCalc, &quot;c&quot;,  0) &apos; returns 16</paragraph>
+<paragraph id="par_idm1341603888" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
 </body>
-
 </helpdocument>
