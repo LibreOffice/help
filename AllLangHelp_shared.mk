@@ -752,6 +752,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/email \
     helpcontent2/source/text/shared/guide/error_report \
     helpcontent2/source/text/shared/guide/export_ms \
+    helpcontent2/source/text/shared/guide/graphic_export_params \
     helpcontent2/source/text/shared/guide/fax \
     helpcontent2/source/text/shared/guide/filternavigator \
     helpcontent2/source/text/shared/guide/find_attributes \
