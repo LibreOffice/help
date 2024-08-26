@@ -136,7 +136,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/05120100 \
     helpcontent2/source/text/swriter/01/05120300 \
     helpcontent2/source/text/swriter/01/05120400 \
-    helpcontent2/source/text/swriter/01/05120500 \
     helpcontent2/source/text/swriter/01/05130000 \
     helpcontent2/source/text/swriter/01/05130002 \
     helpcontent2/source/text/swriter/01/05130004 \
