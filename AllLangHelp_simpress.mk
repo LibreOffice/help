@@ -56,7 +56,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/01/new_slide \
     helpcontent2/source/text/simpress/01/04030000 \
     helpcontent2/source/text/simpress/01/04030100 \
-    helpcontent2/source/text/simpress/01/04040000m \
     helpcontent2/source/text/simpress/01/04110100 \
     helpcontent2/source/text/simpress/01/04110200 \
     helpcontent2/source/text/simpress/01/04120000 \
