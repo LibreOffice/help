@@ -103,6 +103,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
     helpcontent2/source/text/sdatabase/rep_pagenumbers \
     helpcontent2/source/text/sdatabase/rep_prop \
     helpcontent2/source/text/sdatabase/rep_sort \
+    helpcontent2/source/text/sdatabase/SortDown \
+    helpcontent2/source/text/sdatabase/SortUp \
 ))
 
 # vim: set noet sw=4 ts=4:
