@@ -449,8 +449,11 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/ZoomOptimal \
     helpcontent2/source/text/shared/01/ZoomPage \
     helpcontent2/source/text/shared/01/ZoomPageWidth \
+    helpcontent2/source/text/shared/01/ZoomPanning \
     helpcontent2/source/text/shared/01/ZoomPercent \
     helpcontent2/source/text/shared/01/ZoomPrevious \
+    helpcontent2/source/text/shared/01/ZoomPlus \
+    helpcontent2/source/text/shared/01/ZoomMinus \
     helpcontent2/source/text/shared/02/01110000 \
     helpcontent2/source/text/shared/02/01140000 \
     helpcontent2/source/text/shared/02/01170000 \

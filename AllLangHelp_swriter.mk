@@ -244,8 +244,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/02/06170000 \
     helpcontent2/source/text/swriter/02/08010000 \
     helpcontent2/source/text/swriter/02/08080000 \
-    helpcontent2/source/text/swriter/02/10010000 \
-    helpcontent2/source/text/swriter/02/10020000 \
     helpcontent2/source/text/swriter/02/10030000 \
     helpcontent2/source/text/swriter/02/10040000 \
     helpcontent2/source/text/swriter/02/10050000 \
