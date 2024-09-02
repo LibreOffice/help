@@ -91,7 +91,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,smath,\
     helpcontent2/source/text/smath/main0103 \
     helpcontent2/source/text/smath/main0105 \
     helpcontent2/source/text/smath/main0106 \
-    helpcontent2/source/text/smath/main0107 \
     helpcontent2/source/text/smath/main0200 \
     helpcontent2/source/text/smath/main0202 \
     helpcontent2/source/text/smath/main0203 \

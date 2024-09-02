@@ -188,7 +188,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/main0103 \
     helpcontent2/source/text/simpress/main0104 \
     helpcontent2/source/text/simpress/main_format \
-    helpcontent2/source/text/simpress/main0107 \
     helpcontent2/source/text/simpress/main0113 \
     helpcontent2/source/text/simpress/main0114 \
     helpcontent2/source/text/simpress/main_slide \
