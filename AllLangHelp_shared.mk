@@ -419,6 +419,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/SetOptimalRowHeight \
     helpcontent2/source/text/shared/01/search_commands \
     helpcontent2/source/text/shared/01/Shrink \
+    helpcontent2/source/text/shared/01/sidebar_character_panel \
+    helpcontent2/source/text/shared/01/sidebar_paragraph_panel \
+    helpcontent2/source/text/shared/01/sidebar_properties \
     helpcontent2/source/text/shared/01/SignaturesMenu \
     helpcontent2/source/text/shared/01/SmallCaps \
     helpcontent2/source/text/shared/01/SpacePara115 \
@@ -430,6 +433,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/styles \
     helpcontent2/source/text/shared/01/StyleNewByExample \
     helpcontent2/source/text/shared/01/StyleUpdateByExample \
+    helpcontent2/source/text/shared/01/table_design \
     helpcontent2/source/text/shared/01/TipOfTheDay \
     helpcontent2/source/text/shared/01/themescolordialog \
     helpcontent2/source/text/shared/01/themesdialog \

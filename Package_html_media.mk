@@ -114,6 +114,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sd_PresenterConsole02.png \
     helpimg/sd_PresenterConsole03.png \
     helpimg/sd_PresenterConsole04.png \
+    helpimg/sdraw/Green_cross.svg \
     helpimg/si_presentation_with_comment.png \
     helpimg/sheettabs.png \
     helpimg/sistop.png \
