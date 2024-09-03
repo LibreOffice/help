@@ -465,7 +465,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/main0000 \
     helpcontent2/source/text/scalc/main0100 \
     helpcontent2/source/text/scalc/main0102 \
-    helpcontent2/source/text/scalc/main0103 \
     helpcontent2/source/text/scalc/main0104 \
     helpcontent2/source/text/scalc/main0105 \
     helpcontent2/source/text/scalc/main0112 \
