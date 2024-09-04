@@ -17,59 +17,52 @@
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
 -->
-
 <meta>
   <topic id="textsbasicshared03120306xml" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">Mid Function, Mid Statement</title>
+    <title id="tit">Mid Function, Mid Statement</title>
     <filename>/text/sbasic/shared/03120306.xhp</filename>
   </topic>
 </meta>
-
 <body>
-
-
 <section id="mid">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3143268">
+<bookmark branch="index" id="bm_id3143268">
   <bookmark_value>Mid function</bookmark_value>
-  <bookmark_value>Mid statement</bookmark_value>
 </bookmark>
-
-
-<h1 id="hd_id3143268"><link href="text/sbasic/shared/03120306.xhp">Mid Function, Mid Statement</link></h1>
-<paragraph id="par_id3148473" role="paragraph" xml-lang="en-US">Returns the specified portion of a string expression (<emph>Mid function</emph>), or replaces the portion of a string expression with another string (<emph>Mid statement</emph>).</paragraph>
+<h1 id="hd_id3143268"><link href="text/sbasic/shared/03120306.xhp">Mid Function</link></h1>
+<paragraph id="par_id3148473" role="paragraph">Returns the specified portion of a string expression (<emph>Mid function</emph>), or replaces the portion of a string expression with another string (<emph>Mid subroutine</emph>).</paragraph>
 </section>
-
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
-<paragraph id="par_id3147530" role="bascode" xml-lang="en-US">Mid (Text As String, Start As Long [, Length As Long]) </paragraph>
-<paragraph id="par_id3147540" role="bascode" xml-lang="en-US">Mid (Text As String, Start As Long, Length As Long, Text As String)</paragraph>
-
+<paragraph id="par_id3147530" role="bascode">Mid(string As String, Start As Long [, Length As Long]) As String</paragraph>
+<paragraph id="par_id3147540" role="bascode">Mid([ByRef] string As String, Start As Long, [Length As Long], Text As String)</paragraph>
 </bascode>
-
 <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
-<paragraph id="par_id3149295" role="paragraph" xml-lang="en-US">String (only by Function)</paragraph>
-
+<paragraph id="par_id3149295" role="paragraph">String (only by Function)</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-<paragraph id="par_id3148664" role="paragraph" xml-lang="en-US"> <emph>Text:</emph> Any string expression that you want to modify.</paragraph>
-<paragraph id="par_id3150359" role="paragraph" xml-lang="en-US"> <emph>Start: </emph>Numeric expression that indicates the character position within the string where the string portion that you want to replace or to return begins. The minimum allowed value is 1. The maximum allowed value is 2,147,483,648.<comment>see i17928</comment></paragraph>
-<paragraph id="par_id3148451" role="paragraph" xml-lang="en-US"> <emph>Length:</emph> Numeric expression that returns the number of characters that you want to replace or return. The maximum allowed value is 2,147,483,648.</paragraph>
-<paragraph id="par_id3125864" role="paragraph" xml-lang="en-US">If the Length parameter in the <emph>Mid function</emph> is omitted, all characters in the string expression from the start position to the end of the string are returned.</paragraph>
-<paragraph id="par_id3144762" role="paragraph" xml-lang="en-US">If the Length parameter in the <emph>Mid statement</emph> is less than the length of the text that you want to replace, the text is reduced to the specified length.</paragraph>
-<paragraph id="par_id3150769" role="paragraph" xml-lang="en-US"> <emph>Text:</emph> The string to replace the string expression (<emph>Mid statement</emph>).</paragraph>
+<paragraph id="par_id3148664" role="paragraph"> <emph>string:</emph> Any string expression that you want to extract (<emph>Mid function</emph>). Any text variable name that you want to modify (<emph>Mid subroutine</emph>).</paragraph>
+<paragraph id="par_id3150359" role="paragraph"> <emph>Start: </emph>Numeric expression that indicates the character position within the string where the string portion that you want to replace or to return begins. The minimum allowed value is 1. The maximum allowed value is 2,147,483,648.<comment>see i17928</comment></paragraph>
+<paragraph id="par_id3148451" role="paragraph"> <emph>Length:</emph> Numeric expression that returns the number of characters that you want to replace or return. The maximum allowed value is 2,147,483,648.</paragraph>
+<paragraph id="par_id3125864" role="paragraph">If the Length parameter in the <emph>Mid function</emph> is omitted, all characters in the string expression from the start position to the end of the string are returned.</paragraph>
+<paragraph id="par_id3144762" role="paragraph">If the Length parameter in the <emph>Mid subroutine</emph> is less than the length of the text that you want to replace, the text is reduced to the specified length.</paragraph>
+<paragraph id="par_id3150769" role="paragraph"> <emph>Text:</emph> The string to replace the string expression (<emph>Mid subroutine</emph>).</paragraph>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
-
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
-<paragraph id="par_idm1341563264" role="bascode" localize="false" xml-lang="en-US">Sub ExampleMid_Function_and_Statement</paragraph>
-<paragraph id="par_idm1341562032" role="bascode" localize="false" xml-lang="en-US">  original_text = &quot;This is the original Text&quot;</paragraph>
-<paragraph id="par_idm1341557792" role="bascode" localize="false" xml-lang="en-US">&apos; Mid as function </paragraph>
-<paragraph id="par_idm1341556544" role="bascode" localize="false" xml-lang="en-US">  msgbox Mid( original_text , 13, 8) &apos; returns the word original</paragraph>
-<paragraph id="par_idm1341555280" role="bascode" localize="false" xml-lang="en-US">  msgbox original_text               &apos; original_text not modified</paragraph>
-<paragraph id="par_idm1341553792" role="bascode" localize="false" xml-lang="en-US">&apos; Mid as statement </paragraph>
-<paragraph id="par_idm1341552752" role="bascode" localize="false" xml-lang="en-US">  Mid( original_text, 13, 8, &quot;new&quot; )</paragraph>
-<paragraph id="par_idm1341551488" role="bascode" localize="false" xml-lang="en-US">  msgbox original_text               &apos; returns This is the new Text</paragraph>
-<paragraph id="par_idm1341550256" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph role="bascode" id="bas_id611731518138752" localize="false">Sub ExampleMid_Function_and_Statement</paragraph>
+<paragraph role="bascode" id="bas_id271731518141155" localize="false">  text = &quot;This is the original Text&quot;</paragraph>
+<paragraph role="bascode" id="bas_id251731518141762">func1:</paragraph>
+<paragraph role="bascode" id="bas_id81731518142155">  MsgBox Mid(text, 13, 8)   &apos; returns the word "original"</paragraph>
+<paragraph role="bascode" id="bas_id71731518142368">  MsgBox text               &apos; text is not modified</paragraph>
+<paragraph role="bascode" id="bas_id91731518142552">stmt1:</paragraph>
+<paragraph role="bascode" id="bas_id211731518272913" localize="false">  Mid(text, 13, 8, &quot;new&quot;)</paragraph>
+<paragraph role="bascode" id="bas_id51731518274333">  MsgBox text               &apos; returns "This is the new Text"</paragraph>
+<paragraph role="bascode" id="bas_id651731518274713">func2:</paragraph>
+<paragraph role="bascode" id="bas_id461725547890578">  MsgBox Mid(start:=10, string:="The quick brown fox ..") ' shows " brown fox .."</paragraph>
+<paragraph role="bascode" id="bas_id291731517149800">stmt2:</paragraph>
+<paragraph role="bascode" id="bas_id421731517151668" localize="false">  Mid text, 9, 12, &quot;a new Phrase&quot;</paragraph>
+<paragraph role="bascode" id="bas_id31731517580882">  MsgBox text               &apos; returns "This is a new Phrase"</paragraph>
+<paragraph id="par_idm1341550256" role="bascode">End Sub</paragraph>
 </bascode>
 <section id="relatedtopics">
     <paragraph role="paragraph" id="par_id161599082457466" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#stringfunctions"/></paragraph>
