@@ -33,11 +33,11 @@ Version Nov 2018
   visibility (hidden | visible) #IMPLIED
 >
 
+<!ENTITY % commonAttrs "id CDATA #REQUIRED xml-lang CDATA #IMPLIED localize CDATA #IMPLIED">
+
 <!ELEMENT alt (#PCDATA)>
 <!ATTLIST alt
-  xml-lang CDATA #IMPLIED
-  id CDATA #REQUIRED
-  localize CDATA #IMPLIED
+  %commonAttrs;
 >
 
 <!ELEMENT bascode (paragraph+)>
@@ -46,14 +46,14 @@ Version Nov 2018
 
 <!ELEMENT sqlcode (paragraph+)>
 
-<!ELEMENT body (h1 | h2 | h3 | h4 | h5 | h6 | section | paragraph | table | comment | bookmark | switch | embed | list | sort | bascode | pycode | sqlcode | note | warning | tip)*>
+<!ENTITY % hn "h1 | h2 | h3 | h4 | h5 | h6">
+
+<!ELEMENT body ( %hn; | section | paragraph | table | comment | bookmark | switch | embed | list | sort | bascode | pycode | sqlcode | note | warning | tip)*>
 
 <!ELEMENT bookmark (bookmark_value)*>
 <!ATTLIST bookmark
   branch CDATA #REQUIRED
-  xml-lang CDATA #IMPLIED
-  id CDATA #REQUIRED
-  localize CDATA #IMPLIED
+  %commonAttrs;
 >
 
 <!ELEMENT bookmark_value (#PCDATA | embedvar)*>
@@ -62,12 +62,10 @@ Version Nov 2018
 
 <!ELEMENT caption (#PCDATA | embedvar | br | emph | sub | sup | item | link | switchinline | variable)*>
 <!ATTLIST caption
-  xml-lang CDATA #IMPLIED
-  id CDATA #REQUIRED
-  localize CDATA #IMPLIED
+  %commonAttrs;
 >
 
-<!ELEMENT case (h1 | h2 | h3 | h4 | h5 | h6 | note | warning |tip | paragraph | table | comment | bookmark | embed | link | list | switch | section | sort | bascode | pycode | sqlcode )*>
+<!ELEMENT case ( %hn; | note | warning |tip | paragraph | table | comment | bookmark | embed | link | list | switch | section | sort | bascode | pycode | sqlcode )*>
 <!ATTLIST case
   select CDATA #REQUIRED
 >
@@ -84,7 +82,7 @@ Version Nov 2018
   date CDATA #REQUIRED
 >
 
-<!ELEMENT default (h1 | h2 | h3 | h4 | h5 | h6 | note | warning |tip | paragraph | table | comment | bookmark | embed | link | list | switch | section | sort | bascode | pycode | sqlcode)*>
+<!ELEMENT default ( %hn; | note | warning |tip | paragraph | table | comment | bookmark | embed | link | list | switch | section | sort | bascode | pycode | sqlcode)*>
 
 <!ELEMENT defaultinline (#PCDATA | image | embedvar | br | emph | sub | sup | item | link | switchinline | variable | ahelp | object | keycode | menuitem | input | literal | widget)*>
 
@@ -119,29 +117,26 @@ Version Nov 2018
 
 <!ELEMENT filename (#PCDATA)>
 
-<!ELEMENT h1 (#PCDATA | comment | embedvar | br | emph | item | link | switchinline | variable | ahelp | bookmark | keycode | menuitem | input | literal | widget)*>
-<!ATTLIST h1 id CDATA #REQUIRED xml-lang CDATA #IMPLIED localize CDATA #IMPLIED
->
+<!ENTITY % hnContent "(#PCDATA | comment | embedvar | br | emph | item | link | switchinline | variable | ahelp | bookmark | keycode | menuitem | input | literal | widget)*">
 
-<!ELEMENT h2 (#PCDATA | comment | embedvar | br | emph | item | link | switchinline | variable | ahelp | bookmark | keycode | menuitem | input | literal | widget)*>
-<!ATTLIST h2 id CDATA #REQUIRED  xml-lang CDATA #IMPLIED localize CDATA #IMPLIED
->
+<!ELEMENT h1 %hnContent; >
+<!ATTLIST h1 %commonAttrs; >
 
-<!ELEMENT h3 (#PCDATA | comment | embedvar | br | emph | item | link | switchinline | variable | ahelp | bookmark | keycode | menuitem | input | literal | widget)*>
-<!ATTLIST h3 id CDATA #REQUIRED  xml-lang CDATA #IMPLIED localize CDATA #IMPLIED
->
+<!ELEMENT h2 %hnContent; >
+<!ATTLIST h2 %commonAttrs; >
 
-<!ELEMENT h4 (#PCDATA | comment | embedvar | br | emph | item | link | switchinline | variable | ahelp | bookmark | keycode | menuitem | input | literal | widget)*>
-<!ATTLIST h4 id CDATA #REQUIRED  xml-lang CDATA #IMPLIED localize CDATA #IMPLIED
->
+<!ELEMENT h3 %hnContent; >
+<!ATTLIST h3 %commonAttrs; >
 
-<!ELEMENT h5 (#PCDATA | comment | embedvar | br | emph | item | link | switchinline | variable | ahelp | bookmark | keycode | menuitem | input | literal | widget)*>
-<!ATTLIST h5 id CDATA #REQUIRED  xml-lang CDATA #IMPLIED localize CDATA #IMPLIED
->
+<!ELEMENT h4 %hnContent; >
+<!ATTLIST h4 %commonAttrs; >
 
-<!ELEMENT h6 (#PCDATA | comment | embedvar | br | emph | item | link | switchinline | variable | ahelp | bookmark | keycode | menuitem | input | literal | widget)*>
-<!ATTLIST h6 id CDATA #REQUIRED  xml-lang CDATA #IMPLIED localize CDATA #IMPLIED
->
+<!ELEMENT h5 %hnContent; >
+<!ATTLIST h5 %commonAttrs; >
+
+<!ELEMENT h6 %hnContent; >
+<!ATTLIST h6 %commonAttrs; >
+
 
 <!ELEMENT helpdocument (meta, body)>
 <!ATTLIST helpdocument
@@ -203,14 +198,12 @@ Version Nov 2018
 <!ATTLIST paragraph
   role CDATA #REQUIRED
   level CDATA #IMPLIED
-  id ID #REQUIRED
   l10n CDATA #IMPLIED
-  xml-lang CDATA #IMPLIED
   oldref CDATA #IMPLIED
-  localize CDATA #IMPLIED
+  %commonAttrs;
 >
 
-<!ELEMENT section (section | h1 | h2 | h3 | h4 | h5 | h6 | paragraph | table | list | comment | bookmark | embed | switch | sort | bascode | pycode | sqlcode | note |warning | tip)*>
+<!ELEMENT section (section | %hn; | paragraph | table | list | comment | bookmark | embed | switch | sort | bascode | pycode | sqlcode | note |warning | tip)*>
 <!ATTLIST section
   id CDATA #REQUIRED
 >
@@ -264,9 +257,7 @@ Version Nov 2018
 
 <!ELEMENT title (#PCDATA)>
 <!ATTLIST title
-  xml-lang CDATA #IMPLIED
-  id CDATA #REQUIRED
-  localize CDATA #IMPLIED
+  %commonAttrs;
 >
 
 <!ELEMENT topic (title+, filename, bookmark*)>
@@ -284,26 +275,20 @@ Version Nov 2018
 
 <!ELEMENT note (#PCDATA | image | comment | embedvar | br | emph | sub | sup | item | link | switchinline | variable | ahelp | object | bookmark | menuitem | input | keycode | literal | widget | help-id-missing)*>
 <!ATTLIST note
-  id CDATA #REQUIRED
   l10n CDATA #IMPLIED
-  xml-lang CDATA #IMPLIED
-  localize CDATA #IMPLIED
+  %commonAttrs;
 >
 
 <!ELEMENT tip (#PCDATA | image | comment | embedvar | br | emph | sub | sup | item | link | switchinline | variable | ahelp | object | bookmark | menuitem | input | keycode | literal | widget | help-id-missing)*>
 <!ATTLIST tip
-  id CDATA #REQUIRED
   l10n CDATA #IMPLIED
-  xml-lang CDATA #IMPLIED
-  localize CDATA #IMPLIED
+  %commonAttrs;
 >
 
 <!ELEMENT warning (#PCDATA | image | comment | embedvar | br | emph | sub | sup | item | link | switchinline | variable | ahelp | object | bookmark | menuitem | input | keycode | literal | widget | help-id-missing)*>
 <!ATTLIST warning
-  id CDATA #REQUIRED
   l10n CDATA #IMPLIED
-  xml-lang CDATA #IMPLIED
-  localize CDATA #IMPLIED
+  %commonAttrs;
 >
 
 <!ELEMENT help-id-missing EMPTY>
