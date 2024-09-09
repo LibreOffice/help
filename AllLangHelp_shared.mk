@@ -430,6 +430,9 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/signexistingpdf \
     helpcontent2/source/text/shared/01/signsignatureline \
     helpcontent2/source/text/shared/01/styles \
+    helpcontent2/source/text/shared/01/delete_style \
+    helpcontent2/source/text/shared/01/edit_style \
+    helpcontent2/source/text/shared/01/new_style \
     helpcontent2/source/text/shared/01/StyleNewByExample \
     helpcontent2/source/text/shared/01/StyleUpdateByExample \
     helpcontent2/source/text/shared/01/table_design \
