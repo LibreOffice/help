@@ -10,31 +10,31 @@
 -->
 <meta>
   <topic id="SF_Dialog" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">SFDialogs.Dialog service</title>
+    <title id="tit">SFDialogs.Dialog service</title>
     <filename>/text/sbasic/shared/03/sf_dialog.xhp</filename>
   </topic>
   </meta>
 <body>
 <section id="SFDocuments-sf_Dialog">
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41582391760252">
+   <bookmark localize="false" branch="index" id="bm_id41582391760252">
       <bookmark_value>Dialog service</bookmark_value>
    </bookmark>
 </section>
 <section id="abstract">
-  <h1 id="bm_id781582391760253" xml-lang="en-US"><variable id="dlg_h1"><link href="text/sbasic/shared/03/sf_dialog.xhp"><literal>SFDialogs</literal>.<literal>Dialog</literal> service</link></variable></h1>
-  <paragraph role="paragraph" id="par_id931583589764919" xml-lang="en-US">The <literal>Dialog</literal> service contributes to the management of dialogs created with the Basic <link href="text/sbasic/guide/create_dialog.xhp">Dialog Editor</link> or dialogs created on-the-fly. Each instance of the current class represents a single dialog box displayed to the user.</paragraph>
+  <h1 id="bm_id781582391760253"><variable id="dlg_h1"><link href="text/sbasic/shared/03/sf_dialog.xhp"><literal>SFDialogs</literal>.<literal>Dialog</literal> service</link></variable></h1>
+  <paragraph role="paragraph" id="par_id931583589764919">The <literal>Dialog</literal> service contributes to the management of dialogs created with the Basic <link href="text/sbasic/guide/create_dialog.xhp">Dialog Editor</link> or dialogs created on-the-fly. Each instance of the current class represents a single dialog box displayed to the user.</paragraph>
 </section>
-  <tip id="par_id831598110550771" xml-lang="en-US">A dialog box can be displayed in modal or in non-modal modes.</tip>
-  <paragraph role="paragraph" id="par_id221598110444025" xml-lang="en-US">In modal mode, the box is displayed and the execution of the macro process is suspended until one of the OK or Cancel buttons is pressed. In the meantime, user actions executed on the box can trigger specific actions.</paragraph>
-  <paragraph role="paragraph" id="par_id981598110463521" xml-lang="en-US">In non-modal mode, the dialog box is "floating" on the user desktop and the execution of the macro process continues normally. A non-modal dialog closes when it is terminated with the <literal>Terminate()</literal> method or when the %PRODUCTNAME session ends. The window close button is inactive in non-modal dialogs.</paragraph>
-  <paragraph role="paragraph" id="par_id721598110472337" xml-lang="en-US">A dialog box disappears from memory after its explicit termination.</paragraph>
-  <tip id="par_id891598188164936" xml-lang="en-US">The <literal>SFDialogs.Dialog</literal> service is closely related to the <literal>SFDialogs.DialogControl</literal> service.</tip>
+  <tip id="par_id831598110550771">A dialog box can be displayed in modal or in non-modal modes.</tip>
+  <paragraph role="paragraph" id="par_id221598110444025">In modal mode, the box is displayed and the execution of the macro process is suspended until one of the OK or Cancel buttons is pressed. In the meantime, user actions executed on the box can trigger specific actions.</paragraph>
+  <paragraph role="paragraph" id="par_id981598110463521">In non-modal mode, the dialog box is "floating" on the user desktop and the execution of the macro process continues normally. A non-modal dialog closes when it is terminated with the <literal>Terminate()</literal> method or when the %PRODUCTNAME session ends. The window close button is inactive in non-modal dialogs.</paragraph>
+  <paragraph role="paragraph" id="par_id721598110472337">A dialog box disappears from memory after its explicit termination.</paragraph>
+  <tip id="par_id891598188164936">The <literal>SFDialogs.Dialog</literal> service is closely related to the <literal>SFDialogs.DialogControl</literal> service.</tip>
 
-   <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation and usage</h2>
+   <h2 id="hd_id581582885621841">Service invocation and usage</h2>
    <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>Dialog</literal> service the <literal>ScriptForge</literal> library needs to be loaded or imported:</paragraph>
    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#importLibs"/>
 
-   <paragraph role="paragraph" id="par_id361598174756160" xml-lang="en-US">The <literal>Dialog</literal> service is invoked through the <literal>CreateScriptService</literal> method. It requires three supplemental positional arguments to specify the dialog box to activate:</paragraph>
+   <paragraph role="paragraph" id="par_id361598174756160">The <literal>Dialog</literal> service is invoked through the <literal>CreateScriptService</literal> method. It requires three supplemental positional arguments to specify the dialog box to activate:</paragraph>
    <paragraph role="paragraph" id="par_id31612271944733"><emph>Container</emph>: "<link href="text/sbasic/shared/03131900.xhp"><literal>GlobalScope</literal></link>" for preinstalled libraries or a window name as defined by <link href="text/sbasic/shared/03/sf_ui.xhp"><literal>ScriptForge.UI</literal></link> service. Empty string "" default value stands for the current document.</paragraph>
    <paragraph role="paragraph" id="par_id311612271947124"><emph>Library</emph>: The case-sensitive name of a library contained in the container. Default value is "Standard".</paragraph>
    <paragraph role="paragraph" id="par_id821612271946316"><emph>DialogName</emph>: A case-sensitive string designating the dialog.</paragraph>
@@ -54,22 +54,22 @@
     <paragraph role="paragraph" id="par_id601619622310089">Or using Python:</paragraph>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id81619619964621">dlg = CreateScriptService('SFDialogs.Dialog', 'GlobalScope', 'ScriptForge', 'dlgConsole')</paragraph>
-    <paragraph role="pycode" xml-lang="en-US" id="pyc_id41619622700314"># ... controls initialization goes here...</paragraph>
+    <paragraph role="pycode" id="pyc_id41619622700314"># ... controls initialization goes here...</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id661619619964814">rc = dlg.Execute()</paragraph>
-    <paragraph role="pycode" xml-lang="en-US" id="pyc_id661611699964814"># Default mode is Modal</paragraph>
+    <paragraph role="pycode" id="pyc_id661611699964814"># Default mode is Modal</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id711619619964997">if rc == dlg.OKBUTTON:</paragraph>
-    <paragraph role="pycode" xml-lang="en-US" id="pyc_id681619619965191">    # ... Process controls and do what is needed here</paragraph>
+    <paragraph role="pycode" id="pyc_id681619619965191">    # ... Process controls and do what is needed here</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id821619619965373">dlg.Terminate()</paragraph>
   </pycode>
   <note id="par_id811670854106781">Use the string "GlobalScope" as the <emph>container</emph> argument when the dialog is stored either in <menuitem>My Macros &amp; Dialogs</menuitem> or in <menuitem>Application Macros &amp; Dialogs</menuitem>.</note>
-  <tip id="par_id461688463074274">The dialog service offers methods that create new controls dynamically in an existing dialog predefined with the <link href="text/sbasic/guide/create_dialog.html">Dialog Editor</link>. A dialog is initialized with controls in the Dialog Editor and new controls can be added at run-time before or after the dialog <literal>Execute()</literal> statement.</tip>
+  <tip id="par_id461688463074274">The dialog service offers methods that create new controls dynamically in an existing dialog predefined with the <link href="text/sbasic/guide/create_dialog.xhp">Dialog Editor</link>. A dialog is initialized with controls in the Dialog Editor and new controls can be added at run-time before or after the dialog <literal>Execute()</literal> statement.</tip>
 
   <paragraph role="paragraph" id="par_id261688459210848">The <literal>Dialog</literal> service can equally be invoked - through the <literal>CreateScriptService</literal> method - when creating dialogs on-the-fly. It requires two supplemental positional arguments after the name of the ad-hoc service "NewDialog":</paragraph>
   <paragraph role="paragraph" id="par_id751688460276630"><emph>DialogName</emph>: A case-sensitive string designating the dialog.</paragraph>
    <paragraph role="paragraph" id="par_id751688460276640"><emph>Place</emph>: Window location of the dialog being either :</paragraph>
    <list type="unordered">
-      <listitem><paragraph id="par_id421598178080993" role="listitem" xml-lang="en-US">a Basic <link href="sbasic/shared/03104200.xhp">Array</link> or Python tuple with 4 elements: (X, Y, width, height)</paragraph></listitem>
-      <listitem><paragraph id="par_id881502858229301" role="listitem" xml-lang="en-US">a com.sun.star.awt.Rectangle [X, Y, Width, Height] object</paragraph></listitem>
+      <listitem><paragraph id="par_id421598178080993" role="listitem">a Basic <link href="text/sbasic/shared/03104200.xhp">Array</link> or Python tuple with 4 elements: (X, Y, width, height)</paragraph></listitem>
+      <listitem><paragraph id="par_id881502858229301" role="listitem">a com.sun.star.awt.Rectangle [X, Y, Width, Height] object</paragraph></listitem>
    </list>
    <paragraph role="paragraph" id="par_id241688051453685">All elements are expressed in <link href="text/sbasic/shared/00000002.xhp#AppFontUnits">Map AppFont units</link>.</paragraph>
   <bascode>
@@ -82,13 +82,13 @@
     <paragraph role="paragraph" id="par_id601619633410089">Or using Python:</paragraph>
   <pycode>
     <paragraph role="pycode" id="pyc_id711688462077145" localize="false">def newDialog():</paragraph>
-    <paragraph role="pycode" id="pyc_id981688462077340" xml-lang="en-US">   dlg = CreateScriptService('NewDialog', 'myDialog1', (100,200, 40, 110))</paragraph>
-    <paragraph role="pycode" xml-lang="en-US" id="pyc_id681619620065191">   # ... Process controls and do what is needed</paragraph>
+    <paragraph role="pycode" id="pyc_id981688462077340">   dlg = CreateScriptService('NewDialog', 'myDialog1', (100,200, 40, 110))</paragraph>
+    <paragraph role="pycode" id="pyc_id681619620065191">   # ... Process controls and do what is needed</paragraph>
   </pycode>
   <paragraph role="paragraph" id="par_id951688460698125">All properties and methods applicable to predefined dialogs are available for such new dialogs. In particular the series of <literal>CreateXXX()</literal> methods for the addition of new dialog controls.</paragraph>
 
   <h2 id="hd_id141670854511382">Retrieving the Dialog instance that triggered a dialog event</h2>
-  <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">An instance of the <literal>Dialog</literal> service can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, provided that the dialog was initiated with the <literal>Dialog</literal> service. In the example below, <literal>oDlg</literal> contains the <literal>Dialog</literal> instance that triggered the dialog event.</paragraph>
+  <paragraph role="paragraph" id="par_id951598174966322">An instance of the <literal>Dialog</literal> service can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, provided that the dialog was initiated with the <literal>Dialog</literal> service. In the example below, <literal>oDlg</literal> contains the <literal>Dialog</literal> instance that triggered the dialog event.</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id471620305309968">Sub aDialogEventHander(ByRef poEvent As Object)</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id781598175253859">    Dim oDlg As Object</paragraph>
@@ -102,7 +102,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id661819619965191">    dlg = CreateScriptService("SFDialogs.DialogEvent", event)</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id871670855024161">    # ...</paragraph>
   </pycode>
-  <paragraph role="paragraph" id="par_id251598176312571" xml-lang="en-US">Note that in the previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted when deemed appropriate.</paragraph>
+  <paragraph role="paragraph" id="par_id251598176312571">Note that in the previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted when deemed appropriate.</paragraph>
 
   <h3 id="hd_id681670854491710">Handling exceptions in event handlers</h3>
   <paragraph role="paragraph" id="par_id971670855125683">When creating an event handler for dialog events it is good practice to handle errors inside the subroutine itself. For instance, suppose the event handler below is called when the mouse button is pressed in the dialog window.</paragraph>
@@ -130,21 +130,21 @@
     <paragraph role="pycode" localize="false" id="pyc_id491670866556877">        bas.MsgBox(str(e))</paragraph>
   </pycode>
 
-  <h2 id="hd_id651583668365757" xml-lang="en-US">Properties</h2>
+  <h2 id="hd_id651583668365757">Properties</h2>
   <section id="properties_toc">
     <table id="tab_id381583668386455">
       <tablerow>
          <tablecell>
-            <paragraph id="par_id871583668386455" role="tablehead" xml-lang="en-US">Name</paragraph>
+            <paragraph id="par_id871583668386455" role="tablehead">Name</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id491583668386455" role="tablehead" xml-lang="en-US">ReadOnly</paragraph>
+            <paragraph id="par_id491583668386455" role="tablehead">ReadOnly</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id271583668474014" role="tablehead" xml-lang="en-US">Type</paragraph>
+            <paragraph id="par_id271583668474014" role="tablehead">Type</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id401583668386455" role="tablehead" xml-lang="en-US">Description</paragraph>
+            <paragraph id="par_id401583668386455" role="tablehead">Description</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -152,13 +152,13 @@
             <paragraph id="par_id151583668386455" role="tablecontent" localize="false">OKBUTTON</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id371583668519172" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id371583668519172" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id271583668386455" role="tablecontent" localize="false">Integer</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id771583668386455" role="tablecontent" xml-lang="en-US">Value = 1. An OK button was pressed.</paragraph>
+            <paragraph id="par_id771583668386455" role="tablecontent">Value = 1. An OK button was pressed.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -166,13 +166,13 @@
             <paragraph id="par_id951583839708571" role="tablecontent" localize="false">CANCELBUTTON</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id541583839708548" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id541583839708548" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id751583839708362" role="tablecontent" localize="false">Integer</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id731583839708412" role="tablecontent" xml-lang="en-US">Value = 0. A Cancel button was pressed.</paragraph>
+            <paragraph id="par_id731583839708412" role="tablecontent">Value = 0. A Cancel button was pressed.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -180,13 +180,13 @@
             <paragraph id="par_id511584027709311" role="tablecontent" localize="false">Caption</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id761584027709516" role="tablecontent " xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id761584027709516" role="tablecontent ">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id491584027709825" role="tablecontent" localize="false">String</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id971584027709752" role="tablecontent" xml-lang="en-US">Specify the title of the dialog.</paragraph>
+            <paragraph id="par_id971584027709752" role="tablecontent">Specify the title of the dialog.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -194,13 +194,13 @@
             <paragraph id="par_id491583839767611" role="tablecontent" localize="false">Height</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id31583839767743" role="tablecontent " xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id31583839767743" role="tablecontent ">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id741583839767926" role="tablecontent" localize="false">Long</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id111583839767195" role="tablecontent" xml-lang="en-US">Specify the height of the dialog box.</paragraph>
+            <paragraph id="par_id111583839767195" role="tablecontent">Specify the height of the dialog box.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -208,13 +208,13 @@
             <paragraph id="par_id83158383992056" role="tablecontent" localize="false">Modal</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id771583839920487" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id771583839920487" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id971583839920282" role="tablecontent" localize="false">Boolean</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id451583839920858" role="tablecontent" xml-lang="en-US">Specifies if the dialog box is currently in execution in modal mode.</paragraph>
+            <paragraph id="par_id451583839920858" role="tablecontent">Specifies if the dialog box is currently in execution in modal mode.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -222,13 +222,13 @@
             <paragraph id="par_id751588333908795" role="tablecontent" localize="false">Name</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id571588333908716" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id571588333908716" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id781588333908500" role="tablecontent" localize="false">String</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id721588333908708" role="tablecontent" xml-lang="en-US">The name of the dialog</paragraph>
+            <paragraph id="par_id721588333908708" role="tablecontent">The name of the dialog</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -236,13 +236,13 @@
             <paragraph id="par_id251583774433989" role="tablecontent" localize="false">Page</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id501583774433513" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id501583774433513" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id411583774433779" role="tablecontent" localize="false">Integer</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph role="paragraph" id="par_id151598177605296" xml-lang="en-US">A dialog may have several pages that can be traversed by the user step by step. The Page property of the Dialog object defines which page of the dialog is active.</paragraph>
+            <paragraph role="paragraph" id="par_id151598177605296">A dialog may have several pages that can be traversed by the user step by step. The Page property of the Dialog object defines which page of the dialog is active.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -250,13 +250,13 @@
             <paragraph id="par_id731588334016220" role="tablecontent" localize="false">Visible</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id271588334016191" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id271588334016191" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id991588334016273" role="tablecontent" localize="false">Boolean</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id251588334016874" role="tablecontent" xml-lang="en-US">Specify if the dialog box is visible on the desktop. By default it is not visible until the Execute() method is run and visible afterwards.</paragraph>
+            <paragraph id="par_id251588334016874" role="tablecontent">Specify if the dialog box is visible on the desktop. By default it is not visible until the Execute() method is run and visible afterwards.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -264,16 +264,16 @@
             <paragraph id="par_id741598177924441" role="tablecontent" localize="false">XDialogModel</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id451598177924437" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id451598177924437" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953729">
+            <bookmark localize="false" branch="index" id="bm_id141598187953729">
                <bookmark_value>API;UnoControlDialogModel</bookmark_value>
             </bookmark>
-            <paragraph id="par_id94159817792441" role="tablecontent" xml-lang="en-US" localize="true">UNO<br/>object</paragraph>
+            <paragraph id="par_id94159817792441" role="tablecontent">UNO<br/>object</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id191598177924897" role="tablecontent" xml-lang="en-US">The UNO object representing the dialog model. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControlModel.html">XControlModel</link> and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialogModel-members.html">UnoControlDialogModel</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
+            <paragraph id="par_id191598177924897" role="tablecontent">The UNO object representing the dialog model. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControlModel.html">XControlModel</link> and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialogModel-members.html">UnoControlDialogModel</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -281,16 +281,16 @@
             <paragraph id="par_id801598178083859" role="tablecontent" localize="false">XDialogView</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id811598178083501" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id811598178083501" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953729">
+            <bookmark localize="false" branch="index" id="bm_id141598187953729">
                <bookmark_value>API;UnoControlDialog</bookmark_value>
             </bookmark>
-            <paragraph id="par_id981598178083938" role="tablecontent" xml-lang="en-US" localize="true">UNO<br />object</paragraph>
+            <paragraph id="par_id981598178083938" role="tablecontent">UNO<br />object</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id731598178083442" role="tablecontent" xml-lang="en-US">The UNO object representing the dialog view. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControlModel.html">XControl</link> and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialog-members.html">UnoControlDialog</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
+            <paragraph id="par_id731598178083442" role="tablecontent">The UNO object representing the dialog view. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControlModel.html">XControl</link> and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialog-members.html">UnoControlDialog</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -298,30 +298,30 @@
             <paragraph id="par_id491583938767611" role="tablecontent" localize="false">Width</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id31385839767743" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id31385839767743" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id147583839767926" role="tablecontent" localize="false">Long</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id111583839717695" role="tablecontent" xml-lang="en-US">Specify the width of the dialog box.</paragraph>
+            <paragraph id="par_id111583839717695" role="tablecontent">Specify the width of the dialog box.</paragraph>
          </tablecell>
       </tablerow>
    </table>
-   <h2 id="hd_id421612628828054" xml-lang="en-US">Event properties</h2>
+   <h2 id="hd_id421612628828054">Event properties</h2>
    <section id="OnEventsDefinition">
-   <paragraph role="paragraph" id="par_id41612629140856" xml-lang="en-US"><literal>On…</literal> properties return a URI string with the reference to the script triggered by the event. <literal>On…</literal> properties can be set programmatically.<br/>Read its specification in the <link href="https://wiki.documentfoundation.org/Documentation/DevGuide/Scripting_Framework#Scripting_Framework_URI_Specification">scripting framework URI specification</link>.</paragraph>
+   <paragraph role="paragraph" id="par_id41612629140856"><literal>On…</literal> properties return a URI string with the reference to the script triggered by the event. <literal>On…</literal> properties can be set programmatically.<br/>Read its specification in the <link href="https://wiki.documentfoundation.org/Documentation/DevGuide/Scripting_Framework#Scripting_Framework_URI_Specification">scripting framework URI specification</link>.</paragraph>
    </section>
    <table id="tab_id951612628879819">
       <tablerow>
          <tablecell>
-            <paragraph id="par_id961612628879819" role="tablehead" xml-lang="en-US">Name</paragraph>
+            <paragraph id="par_id961612628879819" role="tablehead">Name</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id401612628879819" role="tablehead" xml-lang="en-US">Read/Write</paragraph>
+            <paragraph id="par_id401612628879819" role="tablehead">Read/Write</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id281612628879819" role="tablehead" xml-lang="en-US">Basic IDE Description</paragraph>
+            <paragraph id="par_id281612628879819" role="tablehead">Basic IDE Description</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -329,10 +329,10 @@
             <paragraph id="par_id431612629836735" localize="false" role="tablecontent">OnFocusGained</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id111612629836630" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id111612629836630" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id1001612629836902" role="tablecontent" xml-lang="en-US">When receiving focus</paragraph>
+            <paragraph id="par_id1001612629836902" role="tablecontent">When receiving focus</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -340,10 +340,10 @@
             <paragraph id="par_id701612629836389" localize="false" role="tablecontent">OnFocusLost</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id291612629836294" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id291612629836294" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id62161262983683" role="tablecontent" xml-lang="en-US">When losing focus</paragraph>
+            <paragraph id="par_id62161262983683" role="tablecontent">When losing focus</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -351,10 +351,10 @@
             <paragraph id="par_id241612629836863" localize="false" role="tablecontent">OnKeyPressed</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id81612629836634" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id81612629836634" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id881612629836744" role="tablecontent" xml-lang="en-US">Key pressed</paragraph>
+            <paragraph id="par_id881612629836744" role="tablecontent">Key pressed</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -362,10 +362,10 @@
             <paragraph id="par_id201612629836996" localize="false" role="tablecontent">OnKeyReleased</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id591612629836830" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id591612629836830" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id161612629836775" role="tablecontent" xml-lang="en-US">Key released</paragraph>
+            <paragraph id="par_id161612629836775" role="tablecontent">Key released</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -373,7 +373,7 @@
             <paragraph id="par_id111612629836950" localize="false" role="tablecontent">OnMouseDragged</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id891612629836630" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id891612629836630" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id461612629836679" role="tablecontent">Mouse moved while key presses</paragraph>
@@ -384,10 +384,10 @@
             <paragraph id="par_id711612629836495" localize="false" role="tablecontent">OnMouseEntered</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id131612629836291" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id131612629836291" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id151612629836151" role="tablecontent" xml-lang="en-US">Mouse inside</paragraph>
+            <paragraph id="par_id151612629836151" role="tablecontent">Mouse inside</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -395,10 +395,10 @@
             <paragraph id="par_id971612629836286" localize="false" role="tablecontent">OnMouseExited</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id211612629836725" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id211612629836725" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id361612629836624" role="tablecontent" xml-lang="en-US">Mouse outside</paragraph>
+            <paragraph id="par_id361612629836624" role="tablecontent">Mouse outside</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -406,10 +406,10 @@
             <paragraph id="par_id721612629836537" localize="false" role="tablecontent">OnMouseMoved</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id311612629836481" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id311612629836481" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id721612629836752" role="tablecontent" xml-lang="en-US">Mouse moved</paragraph>
+            <paragraph id="par_id721612629836752" role="tablecontent">Mouse moved</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -417,10 +417,10 @@
             <paragraph id="par_id55161262983695" localize="false" role="tablecontent">OnMousePressed</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id981612629836116" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id981612629836116" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id381612629836635" role="tablecontent" xml-lang="en-US">Mouse button pressed</paragraph>
+            <paragraph id="par_id381612629836635" role="tablecontent">Mouse button pressed</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -428,10 +428,10 @@
             <paragraph id="par_id621612629836155" localize="false" role="tablecontent">OnMouseReleased</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id711612629836704" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id711612629836704" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id35161262983642" role="tablecontent" xml-lang="en-US">Mouse button released</paragraph>
+            <paragraph id="par_id35161262983642" role="tablecontent">Mouse button released</paragraph>
          </tablecell>
       </tablerow>
     </table>
@@ -443,7 +443,7 @@
   <table id="tab_id891606472825856">
     <tablerow>
       <tablecell colspan="3">
-        <paragraph id="par_id891611613601554" role="tablehead" xml-lang="en-US">List of Methods in the Dialog Service</paragraph>
+        <paragraph id="par_id891611613601554" role="tablehead">List of Methods in the Dialog Service</paragraph>
       </tablecell>
     </tablerow>
     <tablerow>
@@ -502,12 +502,12 @@
 
 <section id="Activate">
   <comment> Activate -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721583933076548">
+   <bookmark localize="false" branch="index" id="bm_id721583933076548">
       <bookmark_value>Dialog service;Activate</bookmark_value>
    </bookmark>
    <h2 id="hd_id681583933076692" localize="false">Activate</h2>
    <paragraph role="paragraph" id="par_id871583933076448">Set the focus on the current <literal>Dialog</literal> instance. Return <literal>True</literal> if focusing was successful.</paragraph>
-   <paragraph role="paragraph" id="par_id151598178880227" xml-lang="en-US">This method is called from a dialog or control event, or when a dialog is displayed in non-modal mode.</paragraph>
+   <paragraph role="paragraph" id="par_id151598178880227">This method is called from a dialog or control event, or when a dialog is displayed in non-modal mode.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id581619625572111"><input>svc.Activate(): bool</input></paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
@@ -529,7 +529,7 @@
 
 <section id="Center">
   <comment> Center -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41584541257826">
+   <bookmark localize="false" branch="index" id="bm_id41584541257826">
       <bookmark_value>Dialog service;Center</bookmark_value>
    </bookmark>
    <h2 id="hd_id95518454125767" localize="false">Center</h2>
@@ -541,10 +541,10 @@
    <paragraph role="paragraph" id="par_id1001585441257789"><emph>Parent</emph>: An optional object that can be either …</paragraph>
    <list type="unordered">
       <listitem>
-         <paragraph id="par_id412598177970993" role="listitem" xml-lang="en-US">a ScriptForge dialog object</paragraph>
+         <paragraph id="par_id412598177970993" role="listitem">a ScriptForge dialog object</paragraph>
       </listitem>
       <listitem>
-         <paragraph id="par_id81591858229301" role="listitem" xml-lang="en-US">a ScriptForge document (Calc, Base, ...) object</paragraph>
+         <paragraph id="par_id81591858229301" role="listitem">a ScriptForge document (Calc, Base, ...) object</paragraph>
       </listitem>
    </list>
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
@@ -552,8 +552,8 @@
    <bascode>
      <paragraph role="bascode" localize="false" id="bas_id591651232045794">Sub TriggerEvent(oEvent As Object)</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id15159958185478904">    Dim oDialog1 As Object, oDialog2 As Object, lExec As Long</paragraph>
-     <paragraph role="bascode" xml-lang="en-US" id="bas_id12598185484092">    Set oDialog1 = CreateScriptService("DialogEvent", oEvent) &apos; The dialog that caused the event</paragraph>
-     <paragraph role="bascode" xml-lang="en-US" id="bas_id641598184589492">    Set oDialog2 = CreateScriptService("Dialog", ...) &apos; Open a second dialog</paragraph>
+     <paragraph role="bascode" id="bas_id12598185484092">    Set oDialog1 = CreateScriptService("DialogEvent", oEvent) &apos; The dialog that caused the event</paragraph>
+     <paragraph role="bascode" id="bas_id641598184589492">    Set oDialog2 = CreateScriptService("Dialog", ...) &apos; Open a second dialog</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id921598185491593">    oDialog2.Center(oDialog1)</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id981651231801683">    lExec = oDialog2.Execute()</paragraph>
      <paragraph role="bascode" localize="false" id="bas_id841651231804826">    Select Case lExec</paragraph>
@@ -563,8 +563,8 @@
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
      <paragraph role="pycode" localize="false" id="pyc_id21651232676628">def triggerEvent(event: uno):</paragraph>
-     <paragraph role="pycode" xml-lang="en-US" id="pyc_id351619267575732">  dlg1 = CreateScriptService('DialogEvent.Dialog', event)  # The dialog having caused the event</paragraph>
-     <paragraph role="pycode" xml-lang="en-US" id="pyc_id431619267576082">  dlg2 = CreateScriptService('Dialog', ...)  # Open a second dialog</paragraph>
+     <paragraph role="pycode" id="pyc_id351619267575732">  dlg1 = CreateScriptService('DialogEvent.Dialog', event)  # The dialog having caused the event</paragraph>
+     <paragraph role="pycode" id="pyc_id431619267576082">  dlg2 = CreateScriptService('Dialog', ...)  # Open a second dialog</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id141651235460258">  dlg2.Center(dlg1)</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id131619267576307">  rc = dlg2.Execute()</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id991651233319117">  if rc is False:</paragraph>
@@ -574,7 +574,7 @@
 
 <section id="CloneControl">
   <comment> CloneControl -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id42694541257826">
+   <bookmark localize="false" branch="index" id="bm_id42694541257826">
       <bookmark_value>Dialog service;CloneControl</bookmark_value>
    </bookmark>
    <h2 id="hd_id95169554125767" localize="false">CloneControl</h2>
@@ -599,17 +599,17 @@
 
 <section id="Controls">
   <comment> Controls -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41584541257826">
+   <bookmark localize="false" branch="index" id="bm_id41584541257826">
       <bookmark_value>Dialog service;Controls</bookmark_value>
    </bookmark>
    <h2 id="hd_id95158454125767" localize="false">Controls</h2>
    <paragraph role="paragraph" id="par_id161584541257982">Return either:</paragraph>
    <list type="unordered">
       <listitem>
-         <paragraph id="par_id421598179770993" role="listitem" xml-lang="en-US">the list of the controls contained in the dialog</paragraph>
+         <paragraph id="par_id421598179770993" role="listitem">the list of the controls contained in the dialog</paragraph>
       </listitem>
       <listitem>
-         <paragraph id="par_id81598185229301" role="listitem" xml-lang="en-US">a <literal>DialogControl</literal> class instance based on its name</paragraph>
+         <paragraph id="par_id81598185229301" role="listitem">a <literal>DialogControl</literal> class instance based on its name</paragraph>
       </listitem>
    </list>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
@@ -633,7 +633,7 @@
 
 <section id="CreateButton">
   <comment> CreateButton------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id181598185776261">
+   <bookmark localize="false" branch="index" id="bm_id181598185776261">
       <bookmark_value>Dialog service;CreateButton</bookmark_value>
    </bookmark>
    <h2 id="hd_id501519885886436" localize="false">CreateButton</h2>
@@ -645,8 +645,8 @@
    <paragraph role="paragraph" id="parm_ControlName"><emph>ControlName</emph>: the name of the new control. It must not exist yet.</paragraph>
    <paragraph role="paragraph" id="parm_Place"><emph>Place</emph>: either …</paragraph>
    <list type="unordered">
-      <listitem><paragraph id="par_id421598177970993" role="listitem" xml-lang="en-US">a Basic <link href="sbasic/shared/03104200.xhp">Array</link> or Python tuple with 4 elements: (X, Y, width, height)</paragraph></listitem>
-      <listitem><paragraph id="par_id881591858229301" role="listitem" xml-lang="en-US">a com.sun.star.awt.Rectangle [X, Y, Width, Height] object</paragraph></listitem>
+      <listitem><paragraph id="par_id421598177970993" role="listitem">a Basic <link href="sbasic/shared/03104200.xhp">Array</link> or Python tuple with 4 elements: (X, Y, width, height)</paragraph></listitem>
+      <listitem><paragraph id="par_id881591858229301" role="listitem">a com.sun.star.awt.Rectangle [X, Y, Width, Height] object</paragraph></listitem>
    </list>
    <paragraph role="paragraph" id="par_id241688051343685">All elements are expressed in <link href="text/sbasic/shared/00000002.xhp#AppFontUnits">Map AppFont units</link>.</paragraph>
    </section>
@@ -669,7 +669,7 @@
 
 <section id="CreateCheckBox">
   <comment> CreateCheckBox ----------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171958185776261">
+   <bookmark localize="false" branch="index" id="bm_id171958185776261">
       <bookmark_value>Dialog service;CreateCheckBox</bookmark_value>
    </bookmark>
    <h2 id="hd_id941688119314514" localize="false">CreateCheckBox</h2>
@@ -692,7 +692,7 @@
 
 <section id="CreateComboBox">
   <comment> CreateComboBox ----------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id175198185776261">
+   <bookmark localize="false" branch="index" id="bm_id175198185776261">
       <bookmark_value>Dialog service;CreateComboBox</bookmark_value>
    </bookmark>
    <h2 id="hd_id941688113914514" localize="false">CreateComboBox</h2>
@@ -717,7 +717,7 @@
 
 <section id="CreateCurrencyField">
   <comment> CreateCurrencyField ------------------------------------------------------------------------------------ </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
+   <bookmark localize="false" branch="index" id="bm_id171598185776261">
       <bookmark_value>Dialog service;CreateCurrencyField</bookmark_value>
    </bookmark>
    <h2 id="hd_id941688119315414" localize="false">CreateCurrencyField</h2>
@@ -745,7 +745,7 @@
 
 <section id="CreateDateField">
   <comment> CreateDateField ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598187576261">
+   <bookmark localize="false" branch="index" id="bm_id171598187576261">
       <bookmark_value>Dialog service;CreateDateField</bookmark_value>
    </bookmark>
    <h2 id="hd_id491598185886346" localize="false">CreateDateField</h2>
@@ -771,7 +771,7 @@
 
 <section id="CreateFileControl">
   <comment> CreateFileControl -----------------------------------------------------------------------------------------------------------------FileControl-- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598187756261">
+   <bookmark localize="false" branch="index" id="bm_id171598187756261">
       <bookmark_value>Dialog service;CreateFileControl</bookmark_value>
    </bookmark>
    <h2 id="hd_id491598158586436" localize="false">CreateFileControl</h2>
@@ -794,7 +794,7 @@
 
 <section id="CreateFixedLine">
   <comment> CreateFixedLine ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id717598185776261">
+   <bookmark localize="false" branch="index" id="bm_id717598185776261">
       <bookmark_value>Dialog service;CreateFixedLine</bookmark_value>
    </bookmark>
    <h2 id="hd_id491598185648836" localize="false">CreateFixedLine</h2>
@@ -818,7 +818,7 @@
 <section id="CreateFixedText">
   <comment> CreateFixedText
     ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185772621">
+   <bookmark localize="false" branch="index" id="bm_id171598185772621">
       <bookmark_value>Dialog service;CreateFixedText</bookmark_value>
    </bookmark>
    <h2 id="hd_id499998185886436" localize="false">CreateFixedText</h2>
@@ -844,7 +844,7 @@
 
 <section id="CreateFormattedField">
   <comment> CreateFormattedField ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id177778185776261">
+   <bookmark localize="false" branch="index" id="bm_id177778185776261">
       <bookmark_value>Dialog service;CreateFormattedField</bookmark_value>
    </bookmark>
    <h2 id="hd_id491598185997436" localize="false">CreateFormattedField</h2>
@@ -870,7 +870,7 @@
 
 <section id="CreateGroupBox">
   <comment> CreateGroupBox ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id166698185776261">
+   <bookmark localize="false" branch="index" id="bm_id166698185776261">
       <bookmark_value>Dialog service;CreateGroupBox</bookmark_value>
    </bookmark>
    <h2 id="hd_id496608185886436" localize="false">CreateGroupBox</h2>
@@ -892,7 +892,7 @@
 
 <section id="CreateHyperlink">
   <comment> CreateHyperlink ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id167708185776261">
+   <bookmark localize="false" branch="index" id="bm_id167708185776261">
       <bookmark_value>Dialog service;CreateHyperlink</bookmark_value>
    </bookmark>
    <h2 id="hd_id496608185886547" localize="false">CreateHyperlink</h2>
@@ -918,7 +918,7 @@
 
 <section id="CreateImageControl">
   <comment> CreateImageControl ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id155598185776261">
+   <bookmark localize="false" branch="index" id="bm_id155598185776261">
       <bookmark_value>Dialog service;CreateImageControl</bookmark_value>
    </bookmark>
    <h2 id="hd_id496598185886436" localize="false">CreateImageControl</h2>
@@ -942,7 +942,7 @@
 
 <section id="CreateListBox">
   <comment> CreateListBox ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171588885776261">
+   <bookmark localize="false" branch="index" id="bm_id171588885776261">
       <bookmark_value>Dialog service;CreateListBox</bookmark_value>
    </bookmark>
    <h2 id="hd_id497598185886436" localize="false">CreateListBox</h2>
@@ -968,7 +968,7 @@
 
 <section id="CreateNumericField">
   <comment> CreateNumericField ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171333185776261">
+   <bookmark localize="false" branch="index" id="bm_id171333185776261">
       <bookmark_value>Dialog service;CreateNumericField</bookmark_value>
    </bookmark>
    <h2 id="hd_id498598185886436" localize="false">CreateNumericField</h2>
@@ -996,7 +996,7 @@
 
 <section id="CreatePattern Field">
   <comment> CreatePatternField ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id172608185776261">
+   <bookmark localize="false" branch="index" id="bm_id172608185776261">
       <bookmark_value>Dialog service;CreatePatternField</bookmark_value>
    </bookmark>
    <h2 id="hd_id491598185897536" localize="false">CreatePatternField</h2>
@@ -1021,7 +1021,7 @@
 
 <section id="CreateProgressBar">
   <comment> CreateProgressBar ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
+   <bookmark localize="false" branch="index" id="bm_id171598185776261">
       <bookmark_value>Dialog service;CreateProgressBar</bookmark_value>
    </bookmark>
    <h2 id="hd_id492608185886436" localize="false">CreateProgressBar</h2>
@@ -1046,7 +1046,7 @@
 
 <section id="CreateRadioButton">
   <comment> CreateRadioButton ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
+   <bookmark localize="false" branch="index" id="bm_id171598185776261">
       <bookmark_value>Dialog service;CreateRadioButton</bookmark_value>
    </bookmark>
    <h2 id="hd_id491598296886436" localize="false">CreateRadioButton</h2>
@@ -1069,7 +1069,7 @@
 
 <section id="CreateScrollBar">
   <comment> CreateScrollBar ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171609185776261">
+   <bookmark localize="false" branch="index" id="bm_id171609185776261">
       <bookmark_value>Dialog service;CreateScrollBar</bookmark_value>
    </bookmark>
    <h2 id="hd_id491598196886436" localize="false">CreateScrollBar</h2>
@@ -1095,7 +1095,7 @@
 
 <section id="CreateTableControl">
   <comment> CreateTableControl ------------------------------------------------------------------------------------------------------------------------ </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
+   <bookmark localize="false" branch="index" id="bm_id171598185776261">
       <bookmark_value>Dialog service;CreateTableControl</bookmark_value>
    </bookmark>
    <h2 id="hd_id4918951858TableCtrl" localize="false">CreateTableControl</h2>
@@ -1122,7 +1122,7 @@
 
 <section id="CreateTextField">
   <comment> CreateTextField ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598196876261">
+   <bookmark localize="false" branch="index" id="bm_id171598196876261">
       <bookmark_value>Dialog service;CreateTextField</bookmark_value>
    </bookmark>
    <h2 id="hd_id491598186886436" localize="false">CreateTextField</h2>
@@ -1147,7 +1147,7 @@
 
 <section id="CreateTimeField">
   <comment> CreateTimeField ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598196876372">
+   <bookmark localize="false" branch="index" id="bm_id171598196876372">
       <bookmark_value>Dialog service;CreateTimeField</bookmark_value>
    </bookmark>
    <h2 id="hd_id491598186886547" localize="false">CreateTimeField</h2>
@@ -1172,7 +1172,7 @@
 
 <section id="CreateTreeControl">
   <comment> CreateTreeControl ------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171538585776261">
+   <bookmark localize="false" branch="index" id="bm_id171538585776261">
       <bookmark_value>Dialog service;CreateTreeControl</bookmark_value>
    </bookmark>
    <h2 id="hd_id491599195886436" localize="false">CreateTreeControl</h2>
@@ -1195,7 +1195,7 @@
 
 <section id="EndExecute">
   <comment> EndExecute -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171598185776261">
+   <bookmark localize="false" branch="index" id="bm_id171598185776261">
       <bookmark_value>Dialog service;EndExecute</bookmark_value>
    </bookmark>
    <h2 id="hd_id491598185776436" localize="false">EndExecute</h2>
@@ -1226,22 +1226,22 @@
 
 <section id="Execute">
   <comment> Execute -------------------------------------------------------------------------------------------------------------------------- </comment>
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id351598186461621">
+    <bookmark localize="false" branch="index" id="bm_id351598186461621">
    <bookmark_value>Dialog service;Execute</bookmark_value></bookmark>
    <h2 id="hd_id531598186461915" localize="false">Execute</h2>
    <paragraph role="paragraph" id="par_id29159818646178">Display the dialog box and, when modal, wait for its termination by the user. The returned value is either:</paragraph>
    <list type="unordered">
       <listitem>
-         <paragraph id="par_id541598186676277" role="listitem" xml-lang="en-US">0 : <literal>Cancel</literal> button pressed</paragraph>
+         <paragraph id="par_id541598186676277" role="listitem">0 : <literal>Cancel</literal> button pressed</paragraph>
       </listitem>
       <listitem>
-         <paragraph id="par_id821598186716345" role="listitem" xml-lang="en-US">1 : <literal>OK</literal> button pressed</paragraph>
+         <paragraph id="par_id821598186716345" role="listitem">1 : <literal>OK</literal> button pressed</paragraph>
       </listitem>
       <listitem>
-         <paragraph id="par_id951598186738346" role="listitem" xml-lang="en-US">Otherwise the dialog stopped with an <literal>EndExecute()</literal> statement issued by a dialog or control event</paragraph>
+         <paragraph id="par_id951598186738346" role="listitem">Otherwise the dialog stopped with an <literal>EndExecute()</literal> statement issued by a dialog or control event</paragraph>
       </listitem>
    </list>
-   <paragraph role="paragraph" id="par_id741598187335869" xml-lang="en-US">For non-modal dialog boxes the method always returns 0 and the execution of the macro continues.</paragraph>
+   <paragraph role="paragraph" id="par_id741598187335869">For non-modal dialog boxes the method always returns 0 and the execution of the macro continues.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id291619628195418"><input>svc.Execute(modal: bool = True): int</input></paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
@@ -1267,7 +1267,7 @@
 
 <section id="GetTextsFromL10N">
   <comment> GetTextsFromL10N -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953209">
+   <bookmark localize="false" branch="index" id="bm_id141598187953209">
       <bookmark_value>Dialog service;GetTextsFromL10N</bookmark_value>
    </bookmark>
    <h2 id="hd_id101598187950391" localize="false">GetTextsFromL10N</h2>
@@ -1302,7 +1302,7 @@
 
 <section id="OrderTabs">
   <comment> OrderTabs -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id142608187953729">
+   <bookmark localize="false" branch="index" id="bm_id142608187953729">
       <bookmark_value>Dialog service;OrderTabs</bookmark_value>
    </bookmark>
    <h2 id="hd_id101598187953321" localize="false">OrderTabs</h2>
@@ -1319,17 +1319,17 @@
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
    <bascode>
-     <paragraph role="bascode" xml-lang="en-US" id="bas_id791620301085031" localize="false">oDlg.OrderTabs(Array("myListBox", "myTextField", "myNumericField"), Start := 10)</paragraph>
+     <paragraph role="bascode" id="bas_id791620301085031" localize="false">oDlg.OrderTabs(Array("myListBox", "myTextField", "myNumericField"), Start := 10)</paragraph>
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" xml-lang="en-US" id="pyc_id941620303073866" localize="false">dlg.OrderTabs(('myListBox', 'myTextField', 'myNumericField'), Start = 10)</paragraph>
+     <paragraph role="pycode" id="pyc_id941620303073866" localize="false">dlg.OrderTabs(('myListBox', 'myTextField', 'myNumericField'), Start = 10)</paragraph>
    </pycode>
 </section>
 
 <section id="Resize">
   <comment> Resize -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953729">
+   <bookmark localize="false" branch="index" id="bm_id141598187953729">
       <bookmark_value>Dialog service;Resize</bookmark_value>
    </bookmark>
    <h2 id="hd_id101598187953210" localize="false">Resize</h2>
@@ -1345,17 +1345,17 @@
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
    <bascode>
-     <paragraph role="bascode" xml-lang="en-US" id="bas_id791621411085031">oDlg.Resize(1000, 2000, Height := 6000) &apos; Width is not changed</paragraph>
+     <paragraph role="bascode" id="bas_id791621411085031">oDlg.Resize(1000, 2000, Height := 6000) &apos; Width is not changed</paragraph>
    </bascode>
    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
    <pycode>
-     <paragraph role="pycode" xml-lang="en-US" id="pyc_id941620304183866">dlg.Resize(1000, 2000, Height = 6000)  # Width is not changed</paragraph>
+     <paragraph role="pycode" id="pyc_id941620304183866">dlg.Resize(1000, 2000, Height = 6000)  # Width is not changed</paragraph>
    </pycode>
 </section>
 
 <section id="SetPageManager">
   <comment> SetPageManager --------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953104">
+  <bookmark localize="false" branch="index" id="bm_id141598187953104">
     <bookmark_value>Dialog service;SetPageManager</bookmark_value>
   </bookmark>
   <h2 id="hd_id101598187953960" localize="false">SetPageManager</h2>
@@ -1407,7 +1407,7 @@
 
 <section id="Terminate">
   <comment> Terminate -------------------------------------------------------------------------------------------------------------------------- </comment>
-   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141598187953729">
+   <bookmark localize="false" branch="index" id="bm_id141598187953729">
       <bookmark_value>Dialog service;Terminate</bookmark_value>
    </bookmark>
    <h2 id="hd_id101598187953201" localize="false">Terminate</h2>
