@@ -393,6 +393,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/pastenestedtable \
     helpcontent2/source/text/shared/01/pasterowabove \
     helpcontent2/source/text/shared/01/pastecolumnleft \
+    helpcontent2/source/text/shared/01/print_preview \
     helpcontent2/source/text/shared/01/profile_safe_mode \
     helpcontent2/source/text/shared/01/Protect \
     helpcontent2/source/text/shared/01/qrcode \
