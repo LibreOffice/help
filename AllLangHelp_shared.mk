@@ -367,6 +367,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/image_compression \
     helpcontent2/source/text/shared/01/image_external_tool \
     helpcontent2/source/text/shared/01/insert_chart \
+    helpcontent2/source/text/shared/01/InsertAuthorField \
     helpcontent2/source/text/shared/01/InsertColumnsAfter \
     helpcontent2/source/text/shared/01/InsertColumnsBefore \
     helpcontent2/source/text/shared/01/InsertRowsAfter \

@@ -67,7 +67,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/01/04990300 \
     helpcontent2/source/text/simpress/01/04990400 \
     helpcontent2/source/text/simpress/01/04990500 \
-    helpcontent2/source/text/simpress/01/04990600 \
     helpcontent2/source/text/simpress/01/04990700 \
     helpcontent2/source/text/simpress/01/05090000m \
     helpcontent2/source/text/simpress/01/05120000 \
