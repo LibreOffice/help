@@ -305,7 +305,7 @@
 
 <!-- BOOKMARK -->
 <xsl:template match="bookmark">
-	<a name="{@id}"></a>
+	<a id="{@id}"></a>
 	<xsl:choose>
 		<xsl:when test="starts-with(@branch,'hid')" />
 		<xsl:otherwise><xsl:apply-templates /></xsl:otherwise>
@@ -565,7 +565,7 @@
 
 <!-- SECTION -->
 <xsl:template match="section">
-    <a name="{@id}"></a>
+    <a id="{@id}"></a>
     <xsl:choose>
         <xsl:when test="@id='relatedtopics'">
             <div class="relatedtopics">
@@ -592,7 +592,7 @@
 
 <!-- SECTION -->
 <xsl:template match="section" mode="embedded">
-    <a name="{@id}"></a>
+    <a id="{@id}"></a>
     <xsl:apply-templates mode="embedded"/>
 </xsl:template>
 
@@ -743,7 +743,7 @@
 <xsl:template match="topic"/>
 
 <!-- VARIABLE -->
-<xsl:template match="variable"><a name="{@id}"></a><xsl:apply-templates /></xsl:template>
+<xsl:template match="variable"><a id="{@id}"></a><xsl:apply-templates /></xsl:template>
 <xsl:template match="variable" mode="embedded"><xsl:apply-templates mode="embedded"/></xsl:template>
 
 <xsl:template match="text()">
