@@ -23,7 +23,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,smath,\
     helpcontent2/source/text/smath/01/02110000 \
     helpcontent2/source/text/smath/01/03040000 \
     helpcontent2/source/text/smath/01/03050000 \
-    helpcontent2/source/text/smath/01/03060000 \
     helpcontent2/source/text/smath/01/03070000 \
     helpcontent2/source/text/smath/01/03080000 \
     helpcontent2/source/text/smath/01/03090000 \
