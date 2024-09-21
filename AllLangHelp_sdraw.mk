@@ -29,7 +29,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdraw,\
     helpcontent2/source/text/sdraw/01/insert_layer \
     helpcontent2/source/text/sdraw/01/new_page \
     helpcontent2/source/text/sdraw/01/navigate_page \
-    helpcontent2/source/text/sdraw/01/page_properties \
     helpcontent2/source/text/sdraw/01/rename_page \
     helpcontent2/source/text/sdraw/01/TextAutoFitToSize \
     helpcontent2/source/text/sdraw/04/01020000 \
