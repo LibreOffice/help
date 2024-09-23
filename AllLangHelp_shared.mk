@@ -373,6 +373,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/InsertRowsAfter \
     helpcontent2/source/text/shared/01/InsertRowsBefore \
     helpcontent2/source/text/shared/01/insert_table \
+    helpcontent2/source/text/shared/01/LeftToRight \
     helpcontent2/source/text/shared/01/mediaplayer \
     helpcontent2/source/text/shared/01/menu_edit_find \
     helpcontent2/source/text/shared/01/menu_view_sidebar \
@@ -411,6 +412,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/ref_pdf_export_universal_accessibility \
     helpcontent2/source/text/shared/01/ref_pdf_send_as \
     helpcontent2/source/text/shared/01/replace_image \
+    helpcontent2/source/text/shared/01/RightToLeft \
     helpcontent2/source/text/shared/01/save_graphic \
     helpcontent2/source/text/shared/01/scrollbars \
     helpcontent2/source/text/shared/01/securitywarning \
