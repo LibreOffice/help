@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+    <meta>
+        <topic id="textscalc01databasetablereferencexhp" indexer="include" status="PUBLISH">
+        <title id="tit">Database Table Reference</title>
+        <filename>/text/scalc/01/database_table_reference.xhp</filename>
+    </topic>
+</meta>
+<body>
+<bookmark branch="index" id="bm_id41727196271367">
+    <bookmark_value>table references; formula</bookmark_value>
+    <bookmark_value>formulas; in database tables </bookmark_value>
+    <bookmark_value>database tables;references in formula</bookmark_value>
+    <bookmark_value>table references; reserved reference keywords</bookmark_value>
+    <bookmark_value>database tables; reserved reference keywords</bookmark_value>
+    <bookmark_value>ranges;structured reference</bookmark_value>
+    <bookmark_value>table;structured reference</bookmark_value>
+    <bookmark_value>table;table reference</bookmark_value>
+    <bookmark_value>reference;table reference</bookmark_value>
+    <bookmark_value>database;database table reference</bookmark_value>
+    <bookmark_value>table;database table reference</bookmark_value>
+    <bookmark_value>reference; database table reference</bookmark_value>
+    <bookmark_value>database table reference;using</bookmark_value>
+    <bookmark_value>database table reference;syntax</bookmark_value>
+    <bookmark_value>database table reference;combinations</bookmark_value>
+    <bookmark_value>database table reference;reserved reference keywords</bookmark_value>
+</bookmark>
+<section id="database table reference">
+    <h1 id="hd_id261727196150395"><variable id="h1"><link href="text/scalc/01/database_table_reference.xhp">Database Table Reference</link></variable></h1>
+    <section id="_content">
+        <paragraph role="paragraph" id="par_id971727196189190">%PRODUCTNAME Calc lets you reference data in Database tables by using a special notation, a “database table reference”, for cell references inside the table. This special notation aims to improve the readability of formulas that reference cells inside a database table.</paragraph>
+    </section>
+    </section>
+    <h2 id="hd_id251727196581271"><variable id="database_tables_hd">Database tables</variable></h2>
+    <paragraph role="paragraph" id="par_id191727196629328">Spreadsheet "tables" are defined by database ranges (<menuitem>Data - </menuitem><link href="text/scalc/01/12010000.xhp"><menuitem>Define Range</menuitem></link>). In addition to the name of the database, the following is mandatory for using database table references:</paragraph>
+    <list type="unordered">
+        <listitem>
+            <paragraph id="par_id141727196753394"  role="listitem">Tables must be vertically oriented.</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id911727196798116"  role="listitem">The column label names must follow the <link href="text/scalc/guide/value_with_name.xhp">named range rules</link>.</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id901727196806657"  role="listitem">Tables must have column labels, if interoperability with Microsoft Excel is required.</paragraph>
+        </listitem>
+    </list>
+    <h3 id="hd_id931727375572332">Example</h3>
+    <paragraph role="paragraph" id="par_id81727201630515">The table below contains values used in examples later on in this document.</paragraph>
+    <table id="tab_database_table_referernce">
+        <tablerow>
+            <tablecell>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id141727201854082" localize="false">A</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id311727201857053" localize="false">B</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id571727201859690" localize="false">C</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id451727201862491" localize="false">D</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id431727202260481" localize="false">1</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id31727202150808">Name</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id361727202171012">Region</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id611727202173933">Sales</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id441727202181897">Seniority</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id671727203153492" localize="false">2</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id481727203157400" localize="false">Smith</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id141727203161521">West</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id171727203165534" localize="false">21</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id181727203176474" localize="false">5</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id361727203179819" localize="false">3</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id131727203183215" localize="false">Jones</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id401727203186267">East</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id61727203189137" localize="false">23</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id961727203191980"  localize="false">11</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id861727203195555" localize="false">4</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id701727203198479" localize="false">Johnson</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id101727203202305">East</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id781727203206340" localize="false">9</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id121727203209906" localize="false">7</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id691727203212998" localize="false">5</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id371727203216926" localize="false">Taylor</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id891727203219387">West</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id91727203222012" localize="false">34</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id391727203224776" localize="false">11</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id861727203228578" localize="false">6</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id481727203233593" localize="false">Brown</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id221727203236182">East</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id861727203238838" localize="false">23</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id691727203241574" localize="false">15</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id641727203244794" localize="false">7</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id41727203247719" localize="false">Walker</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id761727203251679">East</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id691727203255253" localize="false">12</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id511727203258635" localize="false">4</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id531727203261611" localize="false">8</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id801727203264678" localize="false">Edwards</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id911727203267195" localize="false">East</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id451727203270187" localize="false">15</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id621727203273289" localize="false">12</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id481727203278635" localize="false">9</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id901727203281325" localize="false">Thomas</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id571727203283637">West</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id131727203286170" localize="false">17</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id421727203288876" localize="false">10</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id271727203291324" localize="false">10</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id611727203294238" localize="false">Wilson</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id1001727203298578">West</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id951727203301174" localize="false">31</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id931727203304440" localize="false">3</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id71727203308083" localize="false">11</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id841727203311290">Totals</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id971727203314627" localize="false">2</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id671727203317856" localize="false">185</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id851727203324004" localize="false">8.67</paragraph>
+            </tablecell>
+        </tablerow>
+    </table>
+    <paragraph role="paragraph" id="par_id831727204582132">The cell range <input>A1:D11</input>  was defined as the <link href="text/scalc/01/12010000.xhp">database range</link> "<input>myData</input> ". The options <link href="text/scalc/01/12010000.xhp#contains_column_labels"><menuitem>Contains column labels</menuitem></link> and <link href="text/scalc/01/12010000.xhp#contains_totals_row"><menuitem>Contains totals row</menuitem></link> were checked when defining the <link href="text/scalc/01/12010000.xhp">database range</link>.</paragraph>
+    <section id="refererencing_data">
+        <h2 id="hd_id121727204707941"><variable id="refererencing_data_hd">Referencing data in tables</variable></h2>
+        <paragraph role="paragraph" id="par_id331727204750507">A database table reference has the form name of <input>database_range[…]</input>. The part inside the square brackets can be a <link href="text/scalc/01/database_table_reference.xhp#reserved_reference_keywords">reserved reference keyword</link>, a field name in square brackets, or a combination of the two.</paragraph>
+        <paragraph role="paragraph" id="par_id871727204795355">In cases where a single keyword or a single field name is used, use single brackets instead of double brackets.</paragraph>
+        <h4 id="hd_id721727375856048">Example</h4>
+        <paragraph role="paragraph" id="par_id861727375863992"><input>myData[#Headers]</input>  instead of <input>myData[[#Headers]]</input> or <input>myData[Region]</input> instead of <input>myData[[Region]]</input>.</paragraph>
+    </section>
+    <section id="reserved_reference_keywords">
+        <h3 id="hd_id801727204890686"><variable id="reserved_reference_keywords_hd">Reserved reference keywords</variable></h3>
+    <table id="tab_reserved_reference_keywords">
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id921727205221496">Keyword</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id311727205224800">Usage</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablehead" id="par_id811727205227612">Example</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id221727205404469" localize="false"><literal>[#Headers]</literal> </paragraph>
+                </tablecell>
+                <tablecell>
+                    <paragraph role="tablecontent" id="par_id741727205444930">The keyword <literal>[#Headers]</literal>  references the row of field names (column labels). It is the first row of the database range.</paragraph>
+                    <paragraph role="tablecontent" id="par_id701727205544887"> If the database range has no labels row defined (Contains columns row), a #REF!  error is generated.</paragraph>
+                    </tablecell>
+                <tablecell>
+                    <paragraph role="tablecontent" id="par_id161727205452550">The expression <literal>myData[#Headers]</literal> references the cells <literal>A1:D1</literal>.</paragraph>
+                </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id451727205608044" localize="false"><literal>[#Data]</literal> </paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id741727205622598" localize="false">The keyword <literal>[#Data]</literal> references the data records of the database range, excluding the column label row and the totals row.</paragraph>
+                <paragraph role="tablecontent" id="par_id601727205675886">The short form <input>myData[]</input> can be used as well.</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id481727205632987">The expression <input>myData[#Data]</input> references the cell rectangle <input>A2:D10</input>.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id801727205770281" localize="false"><literal>[#Totals]</literal> </paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id181727205788642" localize="false">The keyword <literal>[#Totals]</literal> references the row of totals. It is the last row of the database range.</paragraph>
+                <paragraph role="tablecontent" id="par_id211727205840457">If the database range has no line of totals defined (<link href="text/scalc/01/12010000.xhp#contains_totals_row"><menuitem>Contains totals row</menuitem></link>), a #REF! error is generated.</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id691727205815586">The expression <input>myData[#Totals]</input> references the cells <input>A11:D11</input>.</paragraph>
+            </tablecell>
+            </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id311727205884492" localize="false"><literal>[#All]</literal> </paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id151727205893803">The keyword <literal>[#All]</literal> references the entire database range including column labels and totals.</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id311727205907842">The expression <input>myData[#All]</input> references the cells <input>A1:D11</input>.</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id771727205927812" localize="false"><literal>[#This Row]</literal> </paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id221727205934899">This keyword describes an <link href="text/scalc/01/04060107.xhp#implicit_intersection">implicit intersection</link>.</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph role="tablecontent" id="par_id491727205948824">If the expression <literal>myData[#This Row]</literal> is used in a formula in cell <input>F2</input>, it references <input>A2:D2</input>. If the same expression is used in a formula in cell <input>F5</input>, it references <input>A5:D5</input>.</paragraph>
+            </tablecell>
+        </tablerow>
+        </table>
+    </section>
+    <h3 id="hd_id411727208826224"><variable id="field name in square brackets_hd">Field name in square brackets</variable></h3>
+    <paragraph role="paragraph" id="par_id91727208864918">To reference the array of all values in the records that belong to the same field, use the form <input>[field name]</input>. The referenced cell range does not include label and totals. </paragraph>
+<h4 id="hd_id621727375719966">Example</h4>
+<paragraph role="paragraph" id="par_id41727208903631">The expression <input>myData[[Region]]</input> or its simplified form <input>myData[Region]</input> references the cells <input>B2:B10</input>. If the database range has no label row, generic labels like <input>Column1</input>, <input>Column2</input> can be used.</paragraph>
+<note id="par_id141727208910739">In Microsoft Excel, if the formula cell belongs to the table, then the name of the table may be omitted. For example, the formula <input>=SUM(myData[Sales]</input>) in cell <input>C11</input> could be written as <input>=SUM([Sales]</input>). Omission of the table name is not yet possible in Calc.</note>
+<section id="sectionidentifier">
+    <h2 id="hd_id11727208935686"><variable id="combinations_hd">Combinations</variable></h2>
+    <h3 id="hd_id911727368734633"><variable id="colums_and_data_hd">Columns and data records</variable></h3>
+    <paragraph role="paragraph" id="par_id621727211351391">To reference a combination of the column labels  and data records, use the format <input>[#Headers];[#Data]</input> or <input>[#Headers],[#Data]</input>, where the separator is the same separator as for function parameters that is defined in <menuitem>Tools - Options - Calc - Formula - </menuitem><link href="text/shared/optionen/01060900.xhp#separators"><menuitem>Separators</menuitem></link>.</paragraph>
+    <h3 id="hd_id111727368792150"><variable id="data_and_totals_hd">Data records and total row</variable></h3>
+    <paragraph role="paragraph" id="par_id191727211364444">To reference a combination of data records and totals row, use <input>[#Data];[#Totals]</input>. For example, <input>myData[[#Data];[#Totals]]</input> references the cells <input>A2:D11</input>.</paragraph>
+    <paragraph role="paragraph" id="par_id231727211374505">A combination like <input>[#Headers];[#Totals]</input> is not possible as that would result in two disjoint cell rectangles.</paragraph>
+    <h3 id="hd_id491727369582280"><variable id="adjacent_columns_hd">Adjacent columns</variable></h3>
+    <paragraph role="paragraph" id="par_id221727211378888">To reference several adjacent columns, use the range operator “<input>:</input>”. For example, the formula <input>myData[[Name]:[Sales]]</input> addresses the cells <input>A2:C10</input>.</paragraph>
+    <h3 id="hd_id301727369611525"><variable id="non-adjacent_columns_hd">Non-adjacent columns</variable></h3>
+    <paragraph role="paragraph" id="par_id941727211383085">The use of non-adjacent columns is not possible since it would reference two separate cell rectangles.</paragraph>
+    <h3 id="hd_id931727369670465"><variable id="field name and keyword_hd">Field name and keyword</variable></h3>
+    <paragraph role="paragraph" id="par_id261727211388563">The reference via field name and the use of a reference keyword can be combined. First state the keyword, then the function separator, and last the field name in brackets. For example, <input>myData[[#Totals];[Sales]]</input> references the cell <input>C11</input>.</paragraph>
+</section>
+<section id="relatedtopics">
+    <embed href="text/scalc/guide/database_define.xhp#database_define"/>
+    <embed href="text/scalc/01/04060101.xhp#h1"/>
+    <embed href="text/scalc/01/12010000.xhp#h1"/>
+    <paragraph role="paragraph" id="par_id371727210314917"><link href="text/scalc/01/04060107.xhp#implicit_intersection">Implicit intersection in formulas</link></paragraph>
+</section>
+</body>
+</helpdocument>
