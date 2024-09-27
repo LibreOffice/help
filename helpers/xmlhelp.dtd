@@ -26,14 +26,23 @@ Version Nov 2018
   Added extensions: H1, .. H6, menuitem, keycode, literal input, widget, note, tip, warning
   Added extensions: pycode, sqlcode, bascode
 -->
+<!ENTITY % commonAttrs "id CDATA #REQUIRED xml-lang CDATA #IMPLIED localize CDATA #IMPLIED">
+
+<!ENTITY % hn "h1 | h2 | h3 | h4 | h5 | h6">
+
+<!ENTITY % codeContent "bascode | sqlcode | pycode">
+
+<!ENTITY % noteContent "note | tip | warning">
+
+<!ENTITY % hnContent "#PCDATA | comment | embedvar | br | emph | item | link | sub | sup | switchinline | variable | ahelp | bookmark | keycode | menuitem | input | literal | widget | help-id-missing">
+
+<!ENTITY % paraContent "%hnContent; | image | object ">
 
 <!ELEMENT ahelp (#PCDATA | embedvar | br | comment | emph | menuitem | widget | keycode | input | literal | sub | sup | item | link | switchinline | variable)*>
 <!ATTLIST ahelp
   hid CDATA #REQUIRED
   visibility (hidden | visible) #IMPLIED
 >
-
-<!ENTITY % commonAttrs "id CDATA #REQUIRED xml-lang CDATA #IMPLIED localize CDATA #IMPLIED">
 
 <!ELEMENT alt (#PCDATA)>
 <!ATTLIST alt
@@ -46,9 +55,8 @@ Version Nov 2018
 
 <!ELEMENT sqlcode (paragraph+)>
 
-<!ENTITY % hn "h1 | h2 | h3 | h4 | h5 | h6">
 
-<!ELEMENT body ( %hn; | section | paragraph | table | comment | bookmark | switch | embed | list | sort | bascode | pycode | sqlcode | note | warning | tip)*>
+<!ELEMENT body ( %hn; | section | paragraph | table | comment | bookmark | switch | embed | list | sort | %codeContent; | %noteContent;)*>
 
 <!ELEMENT bookmark (bookmark_value)*>
 <!ATTLIST bookmark
@@ -65,7 +73,7 @@ Version Nov 2018
   %commonAttrs;
 >
 
-<!ELEMENT case ( %hn; | note | warning |tip | paragraph | table | comment | bookmark | embed | link | list | switch | section | sort | bascode | pycode | sqlcode )*>
+<!ELEMENT case ( %hn; | %noteContent; | paragraph | table | comment | bookmark | embed | link | list | switch | section | sort | %codeContent;)*>
 <!ATTLIST case
   select CDATA #REQUIRED
 >
@@ -82,7 +90,7 @@ Version Nov 2018
   date CDATA #REQUIRED
 >
 
-<!ELEMENT default ( %hn; | note | warning |tip | paragraph | table | comment | bookmark | embed | link | list | switch | section | sort | bascode | pycode | sqlcode)*>
+<!ELEMENT default ( %hn; | %noteContent; | paragraph | table | comment | bookmark | embed | link | list | switch | section | sort | %codeContent;)*>
 
 <!ELEMENT defaultinline (#PCDATA | image | embedvar | br | emph | sub | sup | item | link | switchinline | variable | ahelp | object | keycode | menuitem | input | literal | widget)*>
 
@@ -117,24 +125,23 @@ Version Nov 2018
 
 <!ELEMENT filename (#PCDATA)>
 
-<!ENTITY % hnContent "(#PCDATA | comment | embedvar | br | emph | item | link | switchinline | variable | ahelp | bookmark | keycode | menuitem | input | literal | widget)*">
 
-<!ELEMENT h1 %hnContent; >
+<!ELEMENT h1 (%hnContent;)* >
 <!ATTLIST h1 %commonAttrs; >
 
-<!ELEMENT h2 %hnContent; >
+<!ELEMENT h2 (%hnContent;)* >
 <!ATTLIST h2 %commonAttrs; >
 
-<!ELEMENT h3 %hnContent; >
+<!ELEMENT h3 (%hnContent;)* >
 <!ATTLIST h3 %commonAttrs; >
 
-<!ELEMENT h4 %hnContent; >
+<!ELEMENT h4 (%hnContent;)* >
 <!ATTLIST h4 %commonAttrs; >
 
-<!ELEMENT h5 %hnContent; >
+<!ELEMENT h5 (%hnContent;)* >
 <!ATTLIST h5 %commonAttrs; >
 
-<!ELEMENT h6 %hnContent; >
+<!ELEMENT h6 (%hnContent;)* >
 <!ATTLIST h6 %commonAttrs; >
 
 
@@ -176,7 +183,7 @@ Version Nov 2018
   sorted (asc | desc) #IMPLIED
 >
 
-<!ELEMENT listitem (comment | section | paragraph | table | switch | embed | bookmark | note | tip | warning)*>
+<!ELEMENT listitem (comment | section | paragraph | table | switch | embed | bookmark | %noteContent;)*>
 <!ATTLIST listitem
   format (1 | i | I | a | A) #IMPLIED
   bullet (disc | circle | square) #IMPLIED
@@ -194,7 +201,7 @@ Version Nov 2018
   width CDATA #IMPLIED
 >
 
-<!ELEMENT paragraph (#PCDATA | image | comment | embedvar | br | emph | sub | sup | item | link | switchinline | variable | ahelp | object | bookmark | menuitem | input | keycode | literal | widget | help-id-missing)*>
+<!ELEMENT paragraph (%paraContent;)*>
 <!ATTLIST paragraph
   role CDATA #REQUIRED
   level CDATA #IMPLIED
@@ -203,7 +210,7 @@ Version Nov 2018
   %commonAttrs;
 >
 
-<!ELEMENT section (section | %hn; | paragraph | table | list | comment | bookmark | embed | switch | sort | bascode | pycode | sqlcode | note |warning | tip)*>
+<!ELEMENT section (section | %hn; | paragraph | table | list | comment | bookmark | embed | switch | sort | %codeContent; | %noteContent;)*>
 <!ATTLIST section
   id CDATA #REQUIRED
 >
@@ -211,7 +218,7 @@ Version Nov 2018
 <!ELEMENT sort (section+)>
 <!ATTLIST sort
   order (asc | desc) #IMPLIED
-  descendant (paragraph | h1 | h2 | h3 | h4 | h5 | h6 ) #IMPLIED
+  descendant (paragraph | %hn;) #IMPLIED
 >
 
 <!ELEMENT switch ((case | comment)* | default?)*>
@@ -234,7 +241,7 @@ Version Nov 2018
   id CDATA #REQUIRED
 >
 
-<!ELEMENT tablecell (section | paragraph | comment | embed | bookmark | image | list | bascode | pycode | note | warning | tip)*>
+<!ELEMENT tablecell (section | paragraph | comment | embed | bookmark | image | list | bascode | pycode | %noteContent;)*>
 <!ATTLIST tablecell
   colspan CDATA #IMPLIED
   rowspan CDATA #IMPLIED
@@ -273,19 +280,19 @@ Version Nov 2018
   visibility (hidden | visible) #IMPLIED
 >
 
-<!ELEMENT note (#PCDATA | image | comment | embedvar | br | emph | sub | sup | item | link | switchinline | variable | ahelp | object | bookmark | menuitem | input | keycode | literal | widget | help-id-missing)*>
+<!ELEMENT note (%paraContent;)*>
 <!ATTLIST note
   l10n CDATA #IMPLIED
   %commonAttrs;
 >
 
-<!ELEMENT tip (#PCDATA | image | comment | embedvar | br | emph | sub | sup | item | link | switchinline | variable | ahelp | object | bookmark | menuitem | input | keycode | literal | widget | help-id-missing)*>
+<!ELEMENT tip (%paraContent;)*>
 <!ATTLIST tip
   l10n CDATA #IMPLIED
   %commonAttrs;
 >
 
-<!ELEMENT warning (#PCDATA | image | comment | embedvar | br | emph | sub | sup | item | link | switchinline | variable | ahelp | object | bookmark | menuitem | input | keycode | literal | widget | help-id-missing)*>
+<!ELEMENT warning (%paraContent;)*>
 <!ATTLIST warning
   l10n CDATA #IMPLIED
   %commonAttrs;
