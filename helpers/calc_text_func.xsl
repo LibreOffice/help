@@ -5,7 +5,7 @@
 <xsl:param name="func" select="BASE"/>
 
 <xsl:template match="/">
-  <xsl:for-each select="//section/h2[contains(text(), $func)]">
+  <xsl:for-each select="//section/h2[text() = $func ]">
   	
   	<xsl:call-template name="section"/>
   </xsl:for-each>

@@ -202,6 +202,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_averageifs \
     helpcontent2/source/text/scalc/01/func_base \
     helpcontent2/source/text/scalc/01/func_bahttext \
+    helpcontent2/source/text/scalc/01/func_char \
+    helpcontent2/source/text/scalc/01/func_clean \
     helpcontent2/source/text/scalc/01/func_ceiling \
     helpcontent2/source/text/scalc/01/func_countifs \
     helpcontent2/source/text/scalc/01/func_color \
