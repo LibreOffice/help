@@ -207,6 +207,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_ceiling \
     helpcontent2/source/text/scalc/01/func_countifs \
     helpcontent2/source/text/scalc/01/func_color \
+    helpcontent2/source/text/scalc/01/func_code \
+    helpcontent2/source/text/scalc/01/func_concatenate \
     helpcontent2/source/text/scalc/01/func_concat \
     helpcontent2/source/text/scalc/01/func_convert \
     helpcontent2/source/text/scalc/01/func_date \
