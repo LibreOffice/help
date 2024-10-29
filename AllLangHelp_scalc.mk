@@ -217,6 +217,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_day \
     helpcontent2/source/text/scalc/01/func_days \
     helpcontent2/source/text/scalc/01/func_days360 \
+    helpcontent2/source/text/scalc/01/func_decimal \
+    helpcontent2/source/text/scalc/01/func_dollar \
     helpcontent2/source/text/scalc/01/func_eastersunday \
     helpcontent2/source/text/scalc/01/func_edate \
     helpcontent2/source/text/scalc/01/func_eomonth \
