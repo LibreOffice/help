@@ -219,6 +219,12 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_days360 \
     helpcontent2/source/text/scalc/01/func_decimal \
     helpcontent2/source/text/scalc/01/func_dollar \
+    helpcontent2/source/text/scalc/01/func_exact \
+    helpcontent2/source/text/scalc/01/func_find \
+    helpcontent2/source/text/scalc/01/func_fixed \
+    helpcontent2/source/text/scalc/01/func_left \
+    helpcontent2/source/text/scalc/01/func_len \
+    helpcontent2/source/text/scalc/01/func_lower \
     helpcontent2/source/text/scalc/01/func_eastersunday \
     helpcontent2/source/text/scalc/01/func_edate \
     helpcontent2/source/text/scalc/01/func_eomonth \

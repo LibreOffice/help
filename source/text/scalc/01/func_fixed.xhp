@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+  <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+  -->
+  <meta>
+    <topic id="calcfunc_fixed" indexer="include" status="PUBLISH">
+      <title id="tit">FIXED Function</title>
+      <filename>/text/scalc/01/func_fixed.xhp</filename>
+    </topic>
+  </meta>
+  <body>
+    <bookmark branch="index" id="bm_id3149268">
+  <bookmark_value>FIXED function</bookmark_value>
+</bookmark>
+    <bookmark branch="hid/SC_HID_FUNC_FEST" id="bm_id3149450" localize="false"/>
+    <section id="func_fixed">
+      <h1 id="hd_id3149268">
+        <variable id="fixed_h1">
+          <link href="text/scalc/01/func_fixed.xhp">FIXED</link>
+        </variable>
+      </h1>
+      <paragraph role="paragraph" id="par_id641617285271044">
+        <ahelp hid="HID_FUNC_FEST">Returns a number as text with a specified number of decimal places and optional thousands separators.</ahelp>
+      </paragraph>
+    </section>
+    <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+    <paragraph id="par_id3147567" role="code">FIXED(Number; [Decimals = 2 [; NoThousandsSeparators = FALSE]])</paragraph>
+    <paragraph id="par_id3151272" role="paragraph"> <emph>Number</emph> is rounded to <literal>Decimals</literal> places (after the decimal separator) and the result formatted as text, using <link href="text/shared/optionen/01140000.xhp">locale-specific settings</link>.</paragraph>
+    <paragraph id="par_id3156322" role="paragraph"> <emph>Decimals</emph> (optional) refers to the number of decimal places to be displayed. If <literal>Decimals</literal> is negative, <literal>Number</literal> is rounded to ABS(<literal>Decimals</literal>) places to the left from the decimal point. If <literal>Decimals</literal> is a fraction, it is truncated actually ignoring what is the closest integer.</paragraph>
+    <paragraph id="par_id3150877" role="paragraph"> <emph>NoThousandsSeparators</emph> (optional) determines whether the thousands separator is used.  If it is <literal>TRUE</literal> or non-zero, then group separators are omitted from the resulting string. If the parameter is equal to 0 or if it is missing altogether, the thousands separators of your <link href="text/shared/optionen/01140000.xhp">current locale setting</link> are displayed.</paragraph>
+    <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+    <paragraph id="par_id3145208" role="paragraph"> <item type="input">=FIXED(1234567.89;3)</item> returns 1,234,567.890 as a text string. </paragraph>
+    <paragraph id="par_id5282143" role="paragraph"> <item type="input">=FIXED(123456.789;;TRUE)</item> returns 123456.79 as a text string.</paragraph>
+    <paragraph role="paragraph" id="par_id21617202293406"> <item type="input">=FIXED(12345.6789;-2)</item> returns 12,300 as a text string.</paragraph>
+    <paragraph role="paragraph" id="par_id161617202295558"> <item type="input">=FIXED(12134567.89;-3;1)</item> returns 12135000 as a text string.</paragraph>
+    <paragraph role="paragraph" id="par_id451617286696878"> <item type="input">=FIXED(12345.789;3/4)</item> returns 12,346 as a text string.</paragraph>
+    <paragraph role="paragraph" id="par_id371617286698199"> <item type="input">=FIXED(12345.789;8/5)</item> returns 12,345.8 as a text string.</paragraph>
+  </body>
+</helpdocument>
