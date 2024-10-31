@@ -374,6 +374,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/InsertRowsBefore \
     helpcontent2/source/text/shared/01/insert_table \
     helpcontent2/source/text/shared/01/LeftToRight \
+    helpcontent2/source/text/shared/01/login_dialog \
     helpcontent2/source/text/shared/01/mediaplayer \
     helpcontent2/source/text/shared/01/menu_edit_find \
     helpcontent2/source/text/shared/01/menu_view_sidebar \
