@@ -7,7 +7,7 @@ $hlp0='helpers/calc_text_func0.xsl';  #replace section
 $source= 'source/text/scalc/01/04060110.xhp';
 $tmp = $source . '.tmp';
 
-@todo = qw/  EXACT FIND FIXED LEFT LEFTB LEN LENB LOWER MID MIDB PROPER REPLACE REPT RIGHT RIGHTB SEARCH SUBSTITUTE T TEXT TRIM UNICHAR UNICODE UPPER /;
+@todo = qw/  LEFTB LENB MIDB RIGHTB /;
 
 
 for $F ( @ARGV) {

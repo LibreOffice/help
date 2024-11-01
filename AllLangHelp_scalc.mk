@@ -271,6 +271,18 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_opt_prob_hit \
     helpcontent2/source/text/scalc/01/func_opt_prob_inmoney \
     helpcontent2/source/text/scalc/01/func_opt_touch \
+    helpcontent2/source/text/scalc/01/func_proper \
+    helpcontent2/source/text/scalc/01/func_replace \
+    helpcontent2/source/text/scalc/01/func_rept \
+    helpcontent2/source/text/scalc/01/func_right \
+    helpcontent2/source/text/scalc/01/func_search \
+    helpcontent2/source/text/scalc/01/func_substitute \
+    helpcontent2/source/text/scalc/01/func_t \
+    helpcontent2/source/text/scalc/01/func_text \
+    helpcontent2/source/text/scalc/01/func_trim \
+    helpcontent2/source/text/scalc/01/func_unichar \
+    helpcontent2/source/text/scalc/01/func_unicode \
+    helpcontent2/source/text/scalc/01/func_upper \
     helpcontent2/source/text/scalc/01/func_randarray \
     helpcontent2/source/text/scalc/01/func_rawsubtract \
     helpcontent2/source/text/scalc/01/func_regex \
