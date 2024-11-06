@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+  <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+  -->
+  <meta>
+    <topic id="calcfunc_leftb" indexer="include" status="PUBLISH">
+      <title id="tit">LEFTB Function</title>
+      <filename>/text/scalc/01/func_leftb.xhp</filename>
+    </topic>
+  </meta>
+  <body>
+
+<bookmark branch="index" id="bm_id2947083">
+  <bookmark_value>LEFTB function</bookmark_value>
+</bookmark>
+
+<bookmark branch="hid/SC_HID_FUNC_LEFTB" id="bm_id2954645" localize="false"/>
+<section id="func_leftb">
+<h1 id="hd_id2947083"><variable id="leftbvar"><link href="text/scalc/01/func_leftb.xhp">LEFTB</link></variable></h1>
+<paragraph id="par_id2953622" role="paragraph"><ahelp hid="HID_FUNC_LEFTB">Returns the first characters of a DBCS text.</ahelp></paragraph>
+</section>
+<embed href="text/scalc/00/avail_release.xhp#4.2"/>
+<embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+<paragraph id="par_id2946786" role="code">LEFTB("Text" [; Number_bytes])</paragraph>
+<paragraph id="par_id2947274" role="paragraph"><emph>Text</emph> is the text where the initial partial words are to be determined.</paragraph>
+<paragraph id="par_id2953152" role="paragraph"><emph>Number_bytes</emph> (optional) specifies the number of characters you want LEFTB to extract, based on bytes. If this parameter is not defined, one character is returned.</paragraph>
+
+<embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+<paragraph id="par_id2949141" role="paragraph"><item type="input">=LEFTB("中国";1)</item> returns " " (1 byte is only half a DBCS character and a space character is returned instead).</paragraph>
+<paragraph id="par_id2949151" role="paragraph"><item type="input">=LEFTB("中国";2)</item> returns "中" (2 bytes constitute one complete DBCS character).</paragraph>
+<paragraph id="par_id2949161" role="paragraph"><item type="input">=LEFTB("中国";3)</item> returns "中 " (3 bytes constitute one DBCS character and a half; the last character returned is therefore a space character).</paragraph>
+<paragraph id="par_id2949171" role="paragraph"><item type="input">=LEFTB("中国";4)</item> returns "中国" (4 bytes constitute two complete DBCS characters).</paragraph>
+<paragraph id="par_id2949181" role="paragraph"><item type="input">=LEFTB("office";3)</item> returns "off" (3 non-DBCS characters each consisting of 1 byte).</paragraph>
+  </body>
+</helpdocument>

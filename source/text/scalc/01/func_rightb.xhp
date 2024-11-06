@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+  <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+  -->
+  <meta>
+    <topic id="calcfunc_rightb" indexer="include" status="PUBLISH">
+      <title id="tit">RIGHTB Function</title>
+      <filename>/text/scalc/01/func_rightb.xhp</filename>
+    </topic>
+  </meta>
+  <body>
+    
+<bookmark branch="index" id="bm_id2949805">
+  <bookmark_value>RIGHTB function</bookmark_value>
+</bookmark>
+
+<bookmark branch="hid/SC_HID_FUNC_RIGHTB" id="bm_id2954602" localize="false"/>
+<section id="func_rightb">
+<h1 id="hd_id2949805"><variable id="rightbvar"><link href="text/scalc/01/func_rightb.xhp">RIGHTB</link></variable></h1>
+<paragraph id="par_id2945375" role="paragraph"><ahelp hid="HID_FUNC_RIGHTB">Returns the last character or characters of a text with double bytes characters sets (DBCS).</ahelp></paragraph>
+</section>
+<embed href="text/scalc/00/avail_release.xhp#4.2"/>
+<embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+<paragraph id="par_id2954344" role="code">RIGHTB("Text" [; Number_bytes])</paragraph>
+<paragraph id="par_id2949426" role="paragraph"><emph>Text</emph> is the text of which the right part is to be determined.</paragraph>
+<paragraph id="par_id2953350" role="paragraph"><emph>Number_bytes</emph> (optional) specifies the number of characters you want RIGHTB to extract, based on bytes. If this parameter is not defined, one byte is returned.</paragraph>
+
+<embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+<paragraph id="par_id2951132" role="paragraph"><item type="input">RIGHTB("中国";1)</item> returns " " (1 byte is only half a DBCS character and a space character is returned instead).</paragraph>
+<paragraph id="par_id2951142" role="paragraph"><item type="input">RIGHTB("中国";2)</item> returns "国" (2 bytes constitute one complete DBCS character).</paragraph>
+<paragraph id="par_id2951152" role="paragraph"><item type="input">RIGHTB("中国";3)</item> returns " 国" (3 bytes constitute one half DBCS character and one whole DBCS character; a space is returned for the first half).</paragraph>
+<paragraph id="par_id2951162" role="paragraph"><item type="input">RIGHTB("中国";4)</item> returns "中国" (4 bytes constitute two complete DBCS characters).</paragraph>
+<paragraph id="par_id2951172" role="paragraph"><item type="input">RIGHTB("office";3)</item> returns "ice" (3 non-DBCS characters each consisting of 1 byte).</paragraph>
+  </body>
+</helpdocument>

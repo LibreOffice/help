@@ -255,6 +255,11 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_imtan \
     helpcontent2/source/text/scalc/01/func_isoweeknum \
     helpcontent2/source/text/scalc/01/func_jis \
+    helpcontent2/source/text/scalc/01/func_leftb \
+    helpcontent2/source/text/scalc/01/func_lenb \
+    helpcontent2/source/text/scalc/01/func_mid \
+    helpcontent2/source/text/scalc/01/func_midb \
+    helpcontent2/source/text/scalc/01/func_rightb \
     helpcontent2/source/text/scalc/01/func_let \
     helpcontent2/source/text/scalc/01/func_maxifs \
     helpcontent2/source/text/scalc/01/func_minifs \
