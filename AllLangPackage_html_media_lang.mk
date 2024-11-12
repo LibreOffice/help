@@ -235,7 +235,6 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     screenshots/modules/smath/ui/savedefaultsdialog/$(lang)/SaveDefaultsDialog.png \
     screenshots/modules/smath/ui/spacingdialog/$(lang)/SpacingDialog.png \
     screenshots/svx/ui/compressgraphicdialog/$(lang)/CompressGraphicDialog.png \
-    screenshots/modules/scalc/ui/xmlsourcedialog/$(lang)/XMLSourceDialog.png \
     screenshots/modules/sdraw/ui/copydlg/$(lang)/DuplicateDialog.png \
     screenshots/modules/sdraw/ui/dlgsnap/$(lang)/SnapObjectDialog.png \
     screenshots/modules/sdraw/ui/insertlayer/$(lang)/InsertLayerDialog.png \

@@ -632,7 +632,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/06/svx_screenshots \
     helpcontent2/source/text/shared/06/optionen_screenshots \
     helpcontent2/source/text/shared/06/shared_cui_screenshots \
-    helpcontent2/source/text/shared/06/sc_screenshots \
     helpcontent2/source/text/shared/06/sd_screenshots \
     helpcontent2/source/text/shared/06/simpress_screenshots \
     helpcontent2/source/text/shared/06/sw_screenshots \

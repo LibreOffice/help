@@ -404,8 +404,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     navigation/libo-symbol-black.svg \
     navigation/libo-symbol-white.svg \
     navigation/libo-writer.svg \
-    screenshots/modules/scalc/ui/deletecells/DeleteCellsDialog.png \
-    screenshots/modules/scalc/ui/xmlsourcedialog/XMLSourceDialog.png \
     screenshots/modules/sdraw/ui/copydlg/DuplicateDialog.png \
     screenshots/modules/sdraw/ui/dlgsnap/SnapObjectDialog.png \
     screenshots/modules/sdraw/ui/insertlayer/InsertLayerDialog.png \
