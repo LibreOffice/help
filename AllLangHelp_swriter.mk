@@ -203,6 +203,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/select_text \
     helpcontent2/source/text/swriter/01/show_whitespace \
     helpcontent2/source/text/swriter/01/sidebar_comments \
+    helpcontent2/source/text/swriter/01/sidebar_design \
     helpcontent2/source/text/swriter/01/sidebar_quickfind \
     helpcontent2/source/text/swriter/01/SpotlightMenu \
     helpcontent2/source/text/swriter/01/SpotlightCharStyles \
