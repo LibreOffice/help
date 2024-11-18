@@ -16,9 +16,13 @@
     </topic>
 </meta>
 <body>
+<!--<bookmark branch="index" id="bm_id191731595334168">
+    <bookmark_value>sidebar;properties</bookmark_value>
+    <bookmark_value>properties;sidebar</bookmark_value>
+</bookmark>-->
 <!--<bookmark branch="hid/SIDEBAR_PROPERTYDECK" id="bm_id861723927377618" localize="false"/>-->
-<!--Unhide once page is complete. DM 2024-09-02-->
-<h1 id="hd_id501723992938575"><variable id="properties_sidebar_h1"><link href="text/shared/01/sidebar_properties.xhp">Properties Sidebar</link></variable></h1>
+<!--Unhide bookmarks once page is complete. DM 2024-11-15-->
+<h1 id="hd_id501723992938575"><variable id="h1"><link href="text/shared/01/sidebar_properties.xhp">Properties Sidebar</link></variable></h1>
 <section id="properties_sidebar_content">
   <paragraph role="paragraph" id="par_id411723922015777">The <menuitem>Properties</menuitem> sidebar provides quick access to options for formatting the layout and the contents of a document.</paragraph>
   </section>
@@ -59,6 +63,8 @@
         <embed href="text/shared/01/StyleNewByExample.xhp#stylenewbyexample_content"/>
         <embed href="text/shared/01/StyleNewByExample.xhp#systylenewbyexample"/>
     </case>
+    <case select="CALC">
+    </case>
     <default>
     </default>
 </switch>
@@ -76,6 +82,23 @@
         <embed href="text/shared/01/table_design.xhp#table_design_content"/>
     </default>
 </switch>
-<embed href="text/shared/01/sidebar_paragraph_panel.xhp#paragraph"/>
+<switch select="appl">
+    <case select="CALC">
+    </case>
+    <case select="BASE">
+    </case>
+    <default>
+        <embed href="text/shared/01/sidebar_paragraph_panel.xhp#paragraph"/>
+    </default>
+</switch>
+<switch select="appl">
+    <case select="CALC">
+        <section id="number format">
+                <embed href="text/scalc/sidebar_number_format.xhp#number_format"/>
+        </section>
+    </case>
+    <default>
+</default>
+</switch>
 </body>
 </helpdocument>
