@@ -346,7 +346,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/SheetCommentMenu \
     helpcontent2/source/text/scalc/01/sheet_tab_color \
     helpcontent2/source/text/scalc/01/ShowNote \
-    helpcontent2/source/text/scalc/sidebar_number_format \
+    helpcontent2/source/text/scalc/01/sidebar_alignment \
+    helpcontent2/source/text/scalc/01/sidebar_number_format \
     helpcontent2/source/text/scalc/01/solver \
     helpcontent2/source/text/scalc/01/solver_options \
     helpcontent2/source/text/scalc/01/solver_options_algo \
