@@ -175,6 +175,10 @@
         <script type="text/javascript" src="{$lang}/contents.js" defer=""></script>
         <script type="text/javascript" src="help.js" defer=""></script>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <!--tdf#155193 - do not index when indexer="excluded", see omindex on HTML indexing-->
+        <xsl:if test="//topic[@indexer='exclude']">
+            <meta name="robots" content="noindex"/>
+        </xsl:if>
     </head>
     <body>
 
