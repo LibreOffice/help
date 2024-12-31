@@ -37,7 +37,6 @@ $(eval $(call gb_CustomTarget_register_targets,helpcontent2/help3xsl,\
 		$(foreach module,$(html_TEXT_MODULES),filelists/html-help/$(module)/$(lang).filelist) \
 		$(lang)/langnames.js \
 		$(if $(HELP_OMINDEX_PAGE),$(lang)/xap_tpl) \
-		$(lang)/noscript.html \
 	) \
 ))
 
@@ -89,35 +88,6 @@ $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/%/xap_tpl : \
 	$(call gb_Trace_EndRange,$*/$(@F),XSL)
 
 endif
-
-# Create noscript.html, when browser has no javascript enabled
-
-define html_gen_noscript_dep
-$(gb_CustomTarget_workdir)/helpcontent2/help3xsl/$(1)/noscript.html : \
-	$(if $(filter en-US,$(1)),$(SRCDIR),$(gb_HelpTranslatePartTarget_workdir)/$(1))/helpcontent2/source/text/shared/help/browserhelp.xhp
-
-endef
-
-$(eval $(foreach lang,$(gb_HELP_LANGS),$(call html_gen_noscript_dep,$(lang))))
-
-$(gb_CustomTarget_workdir)/helpcontent2/help3xsl/%/noscript.html : \
-        $(SRCDIR)/helpcontent2/help3xsl/noscript.xsl \
-        $(SRCDIR)/helpcontent2/help3xsl/brand.xsl \
-        $(SRCDIR)/helpcontent2/CustomTarget_html.mk \
-        | $(call gb_ExternalExecutable_get_dependencies,xsltproc)
-	$(call gb_Output_announce,$(subst $(WORKDIR)/,,$@),$(true),NJS,1)
-	$(call gb_Trace_StartRange,$*/$(@F),XSL)
-	$(call gb_Helper_abbreviate_dirs,\
-		$(call gb_ExternalExecutable_get_command,xsltproc) \
-		--stringparam lang $* \
-		--stringparam productname "$(gb_PRODUCTNAME_HTML)" \
-		--stringparam productversion "$(PRODUCTVERSION)" \
-		-o $@ \
-		$(SRCDIR)/helpcontent2/help3xsl/noscript.xsl \
-		$(if $(filter en-US,$*),$(SRCDIR),$(gb_HelpTranslatePartTarget_workdir)/$*)/helpcontent2/source/text/shared/help/browserhelp.xhp \
-	)
-	$(call gb_Trace_EndRange,$*/$(@F),XSL)
-
 
 # set of installed languages - has to be language independent
 $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/languages.js : \
