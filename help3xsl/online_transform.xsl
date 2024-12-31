@@ -150,7 +150,6 @@
 <html lang="{$lang}" dir="{$direction}">
     <head>
         <base href="{$install}"/>
-        <noscript><meta http-equiv="refresh" content="0; URL={$install}{$lang}/noscript.html"/></noscript>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <xsl:if test="$online">
             <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org"/>
@@ -230,6 +229,11 @@
         </div>
     </div>
     <div id="DisplayArea" itemprop="softwareHelp" itemscope="true" itemtype="http://schema.org/SoftwareApplication">
+        <div id="WarnJS">
+            <h1 dir="auto">
+            <xsl:call-template name="brand"><xsl:with-param name="string"><xsl:value-of select="$tmp_doc_ui//variable[@id='noscriptmsg']"/></xsl:with-param></xsl:call-template>
+            </h1>
+        </div>
         <xsl:if test="$online">
             <xsl:if test="$xapian='yes'">
                 <div class="xapian-omega-search">
