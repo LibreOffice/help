@@ -7,10 +7,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-// Javascript is available? If not, display warning block
-let h = document.getElementById("WarnJS");
-h.style.display = "none";
-
 // Pagination and bookmark search
 var url = window.location.pathname;
 var moduleRegex = new RegExp('text\\/(\\w+)\\/');

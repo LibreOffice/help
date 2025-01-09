@@ -229,11 +229,13 @@
         </div>
     </div>
     <div id="DisplayArea" itemprop="softwareHelp" itemscope="true" itemtype="http://schema.org/SoftwareApplication">
-        <div id="WarnJS">
-            <h1 dir="auto">
-            <xsl:call-template name="brand"><xsl:with-param name="string"><xsl:value-of select="$tmp_doc_ui//variable[@id='noscriptmsg']"/></xsl:with-param></xsl:call-template>
-            </h1>
-        </div>
+        <noscript>
+            <div id="WarnJS">
+                <h1 dir="auto">
+                <xsl:call-template name="brand"><xsl:with-param name="string"><xsl:value-of select="$tmp_doc_ui//variable[@id='noscriptmsg']"/></xsl:with-param></xsl:call-template>
+                </h1>
+            </div>
+        </noscript>
         <xsl:if test="$online">
             <xsl:if test="$xapian='yes'">
                 <div class="xapian-omega-search">
