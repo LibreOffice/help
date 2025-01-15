@@ -69,24 +69,6 @@ function setSystemSpan(spanZ) {
     }
 }
 
-// paint headers and headings with appl color
-function moduleColor (module) {
-    switch (module){
-        case "WRITER" : {color="#083fa6"; break;}
-        case "CALC"   : {color="#007c3c"; break;}
-        case "CHART"  : {color="darkcyan"; break;}
-        case "IMPRESS": {color="#d0120d"; break;}
-        case "DRAW"   : {color="#cb6d30"; break;}
-        case "BASE"   : {color="#7324a9"; break;}
-        case "BASIC"  : {color="black"; break;}
-        case "MATH"   : {color="#c10018"; break;}
-        case "SHARED" : {color="darkslategray"; break;}
-        default : {color="#18A303"; break;}
-    }
-    let root = document.documentElement;
-    root.style.setProperty('--module-color', color);
-}
-
 /* add &DbPAR= and &System= to the links in DisplayArea div */
 /* skip for object files */
 function fixURL(module, system) {
@@ -224,7 +206,6 @@ let system = getParameterByName("System");
 let helpID = getParameterByName("HID");
 impl_Switches();
 fixURL(module,system);
-moduleColor(module);
 // only used in xhp pages with <help-id-missing/> tags
 let missingElement = document.getElementById("bm_HID2");
 if(missingElement != null){missingElement.innerHTML = helpID;}
