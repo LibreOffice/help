@@ -32,7 +32,10 @@ do not break anything related to layout by scaling.
   --font_mono: Menlo, "Cascadia Mono", "Cascadia Code", Consolas, "DejaVu Sans Mono", monospace;
   --font_body: Ubuntu, Cantarell, "Segoe UI Variable", "Segoe UI", "Noto Sans", "DejaVu Sans", "Lucida Grande", sans-serif, FreeSerif, NanumGothic, "Noto Sans Tibetan", Taprom;
   --background-color: #f7f8f7;
-  --module-color: #18A303;
+  --heading-color: #18A303;
+  --hover-color:green;
+  --link-color:#023a86;
+  --visited-color:purple;
 }
 /* Enable disable Javascript*/
 #WarnJS {
@@ -111,14 +114,14 @@ body {
 }
 a {
     text-decoration-color: rgba(0,0,0,0.15);
-    color: #0461e0;
+    color: var(--link-color);
 }
 a:hover {
     text-decoration: underline;
-    color: #023a86;
+    color: var(--hover-color);
 }
 a:visited {
-    color: #633363;
+    color: var(--visited-color);
 }
 pre,
 .code,
@@ -154,7 +157,7 @@ img[src$=".svg"] {
 .related {
     font-weight: bold;
     margin-top: 1.67rem;
-    border-top: 1px solid black;
+    border-top: 2px solid var(--heading-color);
 }
 .emph,
 .menuitem {
@@ -225,10 +228,11 @@ pre[class*="language-"] > code {
 }
 .iconcell {
     padding:0.3em;
+    /* background: var(--heading-color); */
 }
 
 table {
-    background: #FEFEFE;
+    background: var(--background-color);
     box-shadow: rgba(0,0,0,0.08) 0 1px 5px 0;
     border-collapse: collapse;
 }
@@ -248,7 +252,7 @@ html[dir=ltr] th {
     margin-top: 0px;
 }
 .tableheadcell {
-    background: var(--module-color);
+    background: green;
     color: white;
     vertical-align:top;
 }
@@ -275,8 +279,8 @@ h4,
 h5,
 h6 {
     margin-bottom: 0.67rem;
-    color: var(--module-color);
-    border-bottom-color: var(--module-color);
+    color: var(--heading-color);
+    border-bottom-color: var(--heading-color);
 }
 p,
 ol,
@@ -286,7 +290,7 @@ td {
 }
 h1 {
     font-size: 1.83rem;
-    font-weight: 300;
+    font-weight: bold;
     border-bottom: 2px solid;
     margin-bottom: 1.67rem;
 }
@@ -306,6 +310,12 @@ h6 {
 }
 .relatedtopics {
     font-weight: normal;
+}
+.related {
+    font-weight: bold;
+    margin-top: 1.67rem;
+    border-top: 2px solid var(--heading-color);
+    color: var(--heading-color);
 }
 .howtoget {
     background: #EBE7E9;
@@ -327,8 +337,8 @@ h6 {
 .howtogetbody {
     padding: 0 0.3em;
 }
-.samplefilesection{
-}
+/*.samplefilesection{}*/
+
 .wide {
     width: 100%;
 }
@@ -378,14 +388,13 @@ h6 {
     display:block;
     box-shadow: rgba(0,0,0,0.08) 0 1px 5px 0;
 }
-.iconimage {}
+/* .iconimage{} */
+/* .switch, */
+/* .switchinline {} */
 
-.switch,
-.switchinline {}
-
-.embedded {}
+/* .embedded {} */
 #TopLeftHeader {
-    background: var(--module-color);
+    background: var(--heading-color);
     grid-area: header;
     position: sticky;
     top: 0px;
@@ -686,15 +695,15 @@ li.disabled a {
     box-shadow: 0 2px 8px 0 rgba(0,0,0,.05);
 }
 #DonationFrame {
-    background: var(--module-color);
+    background: var(--background-color);
     position: sticky;
     top: 0px;
 }
 .donation{
     border: 1px solid #f1c62a;
     border-radius: 2px;
-    padding: 5px 10px;
-    margin: auto;
+    padding: 10px 10px;
+    margin: 5px 10px;
     max-width: 200px;
     color: #ffffff;
 }
@@ -963,9 +972,10 @@ li.disabled a {
     }
     #DonationFrame {
         grid-area: donation;
+        background-color: var(--heading-color);
     }
     #SearchFrame {
-        background: var(--module-color);
+        background: var(--heading-color);
         grid-area: search;
     }
     footer {
@@ -1023,3 +1033,166 @@ li.disabled a {
         background-color: transparent;
     }
 }
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #002a1a;
+        --heading-color: #ddffee;
+        --hover-color:#60ec93;
+        --link-color:#BB86FC;
+        --visited-color:#CF6679;
+    }
+
+    body {
+        background-color: var(--background-color);
+        color: #e0e0e0;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--heading-color);
+        border-bottom-color: var(--heading-color);
+    }
+    a {
+        color: var(--link-color);
+    }
+
+    a:hover {
+        color: var(--hover-color);
+    }
+
+    a:visited {
+        color: var(--visited-color);;
+    }
+
+    .note {
+        background-color: #2E2E2E;
+        border-left-color: #03DAC6;
+    }
+
+    .tip {
+        background-color: #2E2E2E;
+        border-left-color: #BB86FC;
+    }
+
+    .warning {
+        background-color: #2E2E2E;
+        border-left-color: #CF6679;
+    }
+
+    .widget {
+        background: #808080;
+        border-color: #eeeeee;;
+        color:#eeeeee;
+        font-weight: bold;
+    }
+    .iconimage {
+        background: var(--heading-color);
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+
+    .howtoget {
+        background: #1E1E1E;
+        border-left-color: #BB86FC;
+    }
+
+    .howtogetheader {
+        background: #333333;
+    }
+
+    .youtube_placeholder {
+        background-color: #1E1E1E;
+    }
+
+    .pagination-container {
+        color: #e0e0e0;
+    }
+
+    .pagination a {
+        color: #BB86FC;
+    }
+
+    .pagination li.active {
+        background-color: #3700B3;
+    }
+
+    .pagination li.active a {
+        color: #e0e0e0;
+    }
+
+    .pagination li.disabled a {
+        color: #666666;
+    }
+
+    footer {
+        background-color: var(--background-color);
+    }
+
+    .contents-treeview a:hover, .index a:hover {
+        border-left-color: #BB86FC;
+    }
+
+    .contents-current {
+        background: #333333;
+        border-left-color: #BB86FC;
+    }
+    .contents-treeview label,
+    .contents-treeview label:before {
+        cursor: pointer;
+        color: var(--heading-color);
+    }
+    #TopLeftHeader {
+        background-color: var(--background-color);
+    }
+    #DonationFrame {
+        background-color: var(--background-color);
+    }
+    #DisplayArea
+    {
+        background-color: var(--background-color);
+        color:#efefef
+    }
+    .dropdowns {
+        background-color: var(--background-color);
+    }
+
+    #langs-nav a, #modules-nav a {
+        background-color: var(--background-color);
+    }
+
+    #SearchFrame {
+        background-color: var(--background-color);
+    }
+
+    .xapian-donation {
+        background-color: #1E1E1E;
+    }
+
+    .donation {
+        background-color: var(--background-color);
+    }
+
+    .donation:hover {
+        background: linear-gradient(90deg, #3700B3 0%, #03DAC6 100%);
+    }
+
+    .sf_table {
+        background-color: #1E1E1E;
+    }
+
+    .sf_table td {
+        border-color: #333333;
+    }
+    .screenshot, .genericimage {
+        background-color: whitesmoke;
+    }
+    .tableheadcell {
+        background: var(--background-color);
+        color: var(--heading-color);
+        vertical-align:top;
+    }
+}
+
