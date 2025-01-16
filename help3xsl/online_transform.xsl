@@ -270,7 +270,7 @@
     </div>
     <footer>
         <h2 style="text-align: center;"><a href="https://books.libreoffice.org" target="_blank"><xsl:value-of select="$ui_books"/></a></h2>
-        <div class="noteicon" dir="auto" style="display:flex;justify-content:center;">
+        <div class="noteicon" dir="auto" style="display:flex;justify-content:center;flex-wrap:wrap;row-gap:15px;">
             <img src="media/navigation/libo-writer.svg" alt="Writer Icon" style="width:60px;height:60px;"></img>
             <img src="media/navigation/libo-calc.svg" alt="Calc Icon" style="width:60px;height:60px;"></img>
             <img src="media/navigation/libo-impress.svg" alt="Impress Icon" style="width:60px;height:60px;"></img>
