@@ -322,6 +322,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_weeknum_ooo \
     helpcontent2/source/text/scalc/01/func_weeknumadd \
     helpcontent2/source/text/scalc/01/func_workday \
+    helpcontent2/source/text/scalc/01/func_wrapcols \
+    helpcontent2/source/text/scalc/01/func_wraprows \
     helpcontent2/source/text/scalc/01/func_year \
     helpcontent2/source/text/scalc/01/func_yearfrac \
     helpcontent2/source/text/scalc/01/HandleDuplicateRecords \
