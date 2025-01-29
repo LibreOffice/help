@@ -282,6 +282,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_search \
     helpcontent2/source/text/scalc/01/func_substitute \
     helpcontent2/source/text/scalc/01/func_t \
+    helpcontent2/source/text/scalc/01/func_take \
     helpcontent2/source/text/scalc/01/func_text \
     helpcontent2/source/text/scalc/01/func_tocol \
     helpcontent2/source/text/scalc/01/func_torow \
