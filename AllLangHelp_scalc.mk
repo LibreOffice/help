@@ -245,6 +245,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_fourier \
     helpcontent2/source/text/scalc/01/exponsmooth_embd \
     helpcontent2/source/text/scalc/01/func_hour \
+    helpcontent2/source/text/scalc/01/func_hstack \
     helpcontent2/source/text/scalc/01/func_ifs \
     helpcontent2/source/text/scalc/01/func_imcot \
     helpcontent2/source/text/scalc/01/func_imcos \
@@ -319,6 +320,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_trunc \
     helpcontent2/source/text/scalc/01/func_unique \
     helpcontent2/source/text/scalc/01/func_value \
+    helpcontent2/source/text/scalc/01/func_vstack \
     helpcontent2/source/text/scalc/01/func_xlookup \
     helpcontent2/source/text/scalc/01/func_xmatch \
     helpcontent2/source/text/scalc/01/func_weekday \
