@@ -204,6 +204,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_char \
     helpcontent2/source/text/scalc/01/func_clean \
     helpcontent2/source/text/scalc/01/func_ceiling \
+    helpcontent2/source/text/scalc/01/func_choosecols \
+    helpcontent2/source/text/scalc/01/func_chooserows \
     helpcontent2/source/text/scalc/01/func_countifs \
     helpcontent2/source/text/scalc/01/func_color \
     helpcontent2/source/text/scalc/01/func_code \
