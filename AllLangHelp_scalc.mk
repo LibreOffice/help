@@ -348,6 +348,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/MergeCellsMenu \
     helpcontent2/source/text/scalc/01/NavigateMenu \
     helpcontent2/source/text/scalc/01/NormalViewMode \
+    helpcontent2/source/text/scalc/01/pastespecialcalc \
+    helpcontent2/source/text/scalc/01/ODFF \
     helpcontent2/source/text/scalc/01/recalculate_hard \
     helpcontent2/source/text/scalc/01/SelectColumn \
     helpcontent2/source/text/scalc/01/SelectData \
@@ -379,7 +381,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/statistics_test_t \
     helpcontent2/source/text/scalc/01/statistics_test_z \
     helpcontent2/source/text/scalc/01/stat_data \
-    helpcontent2/source/text/scalc/01/ODFF \
     helpcontent2/source/text/scalc/01/TableSelectAll \
     helpcontent2/source/text/scalc/01/text2columns \
     helpcontent2/source/text/scalc/01/ToggleFormula \
