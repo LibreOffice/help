@@ -31,6 +31,7 @@
     <bookmark branch="hid/modules/scalc/ui/dataproviderdlg/@@nowidget@@" id="bm_id240920171033409926" localize="false"/>
 <bookmark branch="index" id="bm_id240920171018528200">
 <bookmark_value>data provider;for spreadsheets</bookmark_value>
+<bookmark_value>data provider;transformations</bookmark_value>
 <bookmark_value>data provider;refresh data provider</bookmark_value>
 </bookmark>
 
@@ -59,16 +60,169 @@
   </table>
 </section>
 
-<h2 id="hd_id41739294146861">Database range</h2>
+<h2 id="hd_id41739294146861">Database Range</h2>
 <paragraph role="paragraph" id="par_id381739294159238">The database range to receive the data from the provider. Choose the range from the available dropdown list.</paragraph>
-<h2 id="hd_id11739294164013">Data Provider</h2>
+<h2 id="hd_id11739294164013">Data Format</h2>
 <paragraph role="paragraph" id="par_id411739294172365">The type of the data to be imported.</paragraph>
 <h2 id="hd_id771739294177396">URL</h2>
 <paragraph role="paragraph" id="par_id21739294199172">The URL of the data provider. If the provider is a local file, insert the file path and name. If the provider is a web service, insert the URL.</paragraph>
-<h2 id="hd_id881739294185949">Id/Xpath</h2>
+<h2 id="hd_id881739294185949">Identifier</h2>
 <paragraph role="paragraph" id="par_id991739294192437">The target <emph>ID</emph> for HTML provided data or <emph>Xpath</emph> for XML provided data.</paragraph>
 <h2 id="hd_id81739294235914">Transformations</h2>
 <paragraph role="paragraph" id="par_id131739297549651">The provided data can be transformed using the available transformations from the dropdown list. You will need to provide further information depending on the transformation. For example, you can set the sort order for the sort transformations.</paragraph>
+<h3 id="hd_id121741205426373">Delete Columns</h3>
+<paragraph role="paragraph" id="par_id371741264764548">Deletes columns listed in <emph>Columns</emph>. Enter the list of columns indexes separated by semicolons.</paragraph>
+<h3 id="hd_id21741205430956">Delete Rows</h3>
+<paragraph role="paragraph" id="par_id351741264769117">Deletes rows containing the value entered in <emph>Lookup value</emph> entry and found in <emph>Column</emph> index number.</paragraph>
+<h3 id="hd_id81741205435804">Swap Rows</h3>
+<paragraph role="paragraph" id="par_id491741264773681">Swap row position between the first and second rows.</paragraph>
+<h3 id="hd_id891741205439580">Split Columns</h3>
+<paragraph role="paragraph" id="par_id91741266520464">Separates the column in two on the occurrence of the separator string.</paragraph>
+<h3 id="hd_id801741205443572">Merge Columns</h3>
+<paragraph role="paragraph" id="par_id931741266512040">Merges columns adding the separator string between each merged value.</paragraph>
+<h3 id="hd_id781741205447620">Text Transformation</h3>
+<paragraph role="paragraph" id="par_id251741287228280">Transforms text data in the list of columns.</paragraph>
+<list type="unordered">
+<listitem>
+    <paragraph id="par_id621741265182509"  role="listitem"><emph>To Lower</emph>: transforms all uppercase characters to lowercase.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id931741266233821"  role="listitem"><emph>To Upper</emph>: transforms all lowercase characters to uppercase.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id31741266350179"  role="listitem"><emph>Capitalize</emph>: capitalizes the first character of each word.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id811741266451457"  role="listitem"><emph>Trim</emph>: removes spaces from the data, leaving only a single space character between words.</paragraph>
+</listitem>
+</list>
+<h3 id="hd_id591741205451860">Sort Columns</h3>
+<paragraph role="paragraph" id="par_id541741268695831">Sorts rows ascending or descending by the values in the column index number.</paragraph>
+<h3 id="hd_id511741205455460">Aggregate Functions</h3>
+<paragraph role="paragraph" id="par_id271741269442206">Adds the result of an aggregate function to the bottom of the column.</paragraph>
+<list type="unordered">
+<listitem>
+    <paragraph id="par_id641741269370623"  role="listitem"><emph>Sum</emph>: the sum of the column data.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id751741269375319"  role="listitem"><emph>Average</emph>: the average value of the column data.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id211741269379607"  role="listitem"><emph>Maximum Value</emph>: the maximum value of the column data.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id271741269383551"  role="listitem"><emph>Minimum Value</emph>: the minimum value of the column data.</paragraph>
+</listitem>
+</list>
+<h3 id="hd_id251741205460604">Numeric</h3>
+<paragraph role="paragraph" id="par_id921741287284398">Applies numeric functions on columns.</paragraph>
+<list type="unordered">
+<listitem>
+    <paragraph id="par_id181741286856945"  role="listitem"><emph>Sign</emph>: returns +1 for strictly positive numbers, -1 for strictly negative and 0 for zero values.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id31741286861080"  role="listitem"><emph>Round</emph>: rounds numbers to a certain number of decimal places.</paragraph><comment>must fix bug#165619</comment>
+</listitem>
+<listitem>
+    <paragraph id="par_id601741286864784"  role="listitem"><emph>Round Up</emph>: rounds numbers to the nearest upper integer.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id251741286868464"  role="listitem"><emph>Round Down</emph>: rounds numbers to the nearest lower integer.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id571741286872864"  role="listitem"><emph>Absolute value</emph>: returns the absolute value of the numbers.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id761741286907711"  role="listitem"><emph>Log with base e</emph>: returns the natural logarithm of the numbers.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id31741286926046"  role="listitem"><emph>Log with base 10</emph>: returns the logarithm base 10 of the numbers.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id641741286930767"  role="listitem"><emph>Cube</emph>: returns the cube of the numbers.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id251741286936459"  role="listitem"><emph>Square</emph>: returns the square of the numbers.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id431741286940734"  role="listitem"><emph>Square Root</emph>: returns the square root of the numbers.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id751741286945038"  role="listitem"><emph>Exponent</emph>: returns the exponential of the numbers (e<sup>x</sup>).</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id421741286949254"  role="listitem"><emph>Is Even</emph>: returns +1 is the number is even, 0 if the number is odd. Decimal numbers returns 0.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id851741286953094"  role="listitem"><emph>Is Odd</emph>: returns +1 is the number is odd, 0 if the number is even. Decimal numbers returns 0.</paragraph>
+</listitem>
+</list>
+
+<h3 id="hd_id151741205464747">Replace Null</h3>
+<paragraph role="paragraph" id="par_id171741287725956">Replaces null or missing data in the list of columns with the supplied text.</paragraph>
+<h3 id="hd_id891741205469100">Date and Time</h3>
+<paragraph role="paragraph" id="par_id841741288387492">Performs date and time transformations on data in the list of column indexes.</paragraph>
+<note id="par_id761741295010729">The date and time values depends on the locale settings.</note>
+<list type="unordered">
+<listitem>
+    <paragraph id="par_id721741290614073"  role="listitem"><emph>Date String</emph>:</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id731741290619260"  role="listitem"><emph>Year</emph>: returns the year of the date.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id601741290728493"  role="listitem"><emph>Start of Year</emph>: returns the date value of the first day of the year.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id501741290733221"  role="listitem"><emph>End of Year</emph>: returns the date value of the last day of the year.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id91741290737453"  role="listitem"><emph>Month</emph>: returns the month number of the date.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id951741290741517"  role="listitem"><emph>Month Name</emph>: returns the month name of the date.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id841741290745421"  role="listitem"><emph>Start of Month</emph>: returns the date value of first day of the month.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id511741290749881"  role="listitem"><emph>End of Month</emph>: returns the date value of the last day of the month.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id351741290754069"  role="listitem"><emph>Day</emph>: returns the day of the month.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id511741290758021"  role="listitem"><emph>Day of Week</emph>: returns the day of the week.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id701741290761644"  role="listitem"><emph>Day of Year</emph>: returns the day of the year.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id881741290766989"  role="listitem"><emph>Quarter</emph>: returns the quarter number of the date.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id531741290770820"  role="listitem"><emph>Start of Quarter</emph>: returns the date value of the first day of the quarter.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id631741290775108"  role="listitem"><emph>End of Quarter</emph>: returns the date value of the last day of the quarter.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id511741290839522"  role="listitem"><emph>Hour</emph>: returns the hour of the date.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id961741290843338"  role="listitem"><emph>Minute</emph>: returns the minute of the date.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id291741290847683"  role="listitem"><emph>Second</emph>: returns the second of the date.</paragraph>
+</listitem>
+<listitem>
+    <paragraph id="par_id731741290851850"  role="listitem"><emph>Time</emph>: returns the time of the date.</paragraph>
+</listitem>
+</list>
+
+<h3 id="hd_id431741205473092">Find and Replace</h3>
+<paragraph role="paragraph" id="par_id11741291871906">Finds and replaces values in <emph>Column</emph> index number.</paragraph>
+
 <h2 id="hd_id341739296057828">Add</h2>
 <paragraph role="paragraph" id="par_id871739296067246">Click <emph>Add</emph> to include the selected transformation to the transformation set. Transformations are included at the bottom of the list.</paragraph>
 <tip id="par_id611739296048750">If the order of transformations is important, plan the sequence of transformations in advance.</tip>
