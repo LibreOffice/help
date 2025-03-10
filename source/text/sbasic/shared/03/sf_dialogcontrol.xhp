@@ -9,8 +9,9 @@
  *
 -->
 <meta>
+
   <topic id="SF_DialogControl" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">SFDialogs.DialogControl service</title>
+    <title id="tit">SFDialogs.DialogControl service</title>
     <filename>/text/sbasic/shared/03/sf_dialogcontrol.xhp</filename>
   </topic>
   </meta>
@@ -19,42 +20,42 @@
    <bookmark localize="false" branch="index" id="bm_id41582391760252">
       <bookmark_value>DialogControl service</bookmark_value>
    </bookmark>
-  <h1 id="bm_id781582391760253" xml-lang="en-US"><variable id="ctrls_h1"><link href="text/sbasic/shared/03/sf_dialogcontrol.xhp"><literal>SFDialogs</literal>.<literal>DialogControl</literal> service</link></variable></h1>
-  <paragraph role="paragraph" id="par_id931583589764919" xml-lang="en-US">The <literal>DialogControl</literal> service manages the controls belonging to a dialog defined with the Basic <link href="text/sbasic/guide/create_dialog.xhp">Dialog Editor</link>. Each instance of the current service represents a single control within a dialog box.</paragraph>
-  <bookmark xml-lang="en-US" branch="index" id="bm_id331612167249331" localize="false">
+  <h1 id="bm_id781582391760253"><variable id="ctrls_h1"><link href="text/sbasic/shared/03/sf_dialogcontrol.xhp"><literal>SFDialogs</literal>.<literal>DialogControl</literal> service</link></variable></h1>
+  <paragraph role="paragraph" id="par_id931583589764919">The <literal>DialogControl</literal> service manages the controls belonging to a dialog defined with the Basic <link href="text/sbasic/guide/create_dialog.xhp">Dialog Editor</link>. Each instance of the current service represents a single control within a dialog box.</paragraph>
+  <bookmark branch="index" id="bm_id331612167249331" localize="false">
      <bookmark_value>API;awt.XControl</bookmark_value>
      <bookmark_value>API;awt.XControlModel</bookmark_value>
   </bookmark>
-  <paragraph role="paragraph" id="par_id701598191157426" xml-lang="en-US">The focus is set on getting and setting the values displayed by the controls of the dialog box. Formatting is accessible via the <literal>XControlModel</literal> and <literal>XControlView</literal> properties.</paragraph>
-  <paragraph role="paragraph" id="par_id981598191184526" xml-lang="en-US">Note that the unique <literal>DialogControl.Value</literal> property content varies according to the control type.</paragraph>
-  <paragraph role="paragraph" id="par_id991612698027551" xml-lang="en-US">A special attention is given to controls of type tree control. It is easy to populate a tree, either branch by branch, or with a set of branches at once. Populating a tree control can be performed statically or dynamically.</paragraph>
+  <paragraph role="paragraph" id="par_id701598191157426">The focus is set on getting and setting the values displayed by the controls of the dialog box. Formatting is accessible via the <literal>XControlModel</literal> and <literal>XControlView</literal> properties.</paragraph>
+  <paragraph role="paragraph" id="par_id981598191184526">Note that the unique <literal>DialogControl.Value</literal> property content varies according to the control type.</paragraph>
+  <paragraph role="paragraph" id="par_id991612698027551">A special attention is given to controls of type tree control. It is easy to populate a tree, either branch by branch, or with a set of branches at once. Populating a tree control can be performed statically or dynamically.</paragraph>
 </section>
-  <tip id="par_id891598188164936" xml-lang="en-US">The <literal>SFDialogs.DialogControl</literal> service is closely related to the <link href="text/sbasic/shared/03/sf_dialog.xhp"><literal>SFDialogs.Dialog</literal></link> service.</tip>
-   <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
+  <tip id="par_id891598188164936">The <literal>SFDialogs.DialogControl</literal> service is closely related to the <link href="text/sbasic/shared/03/sf_dialog.xhp"><literal>SFDialogs.Dialog</literal></link> service.</tip>
+   <h2 id="hd_id581582885621841">Service invocation</h2>
    <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>DialogControl</literal> service the <literal>ScriptForge</literal> library needs to be loaded or imported:</paragraph>
    <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#importLibs"/>
 
-   <paragraph role="paragraph" id="par_id361598174756160" xml-lang="en-US">The <literal>DialogControl</literal> service is invoked from an existing <literal>Dialog</literal> service instance through its <literal>Controls()</literal> method. The dialog must be initiated with the <literal>SFDialogs.Dialog</literal> service.</paragraph>
+   <paragraph role="paragraph" id="par_id361598174756160">The <literal>DialogControl</literal> service is invoked from an existing <literal>Dialog</literal> service instance through its <literal>Controls()</literal> method. The dialog must be initiated with the <literal>SFDialogs.Dialog</literal> service.</paragraph>
    <bascode>
       <paragraph role="bascode" localize="false" id="bas_id791598453192421">Dim myDialog As Object, myControl As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id251598453197473">Set myDialog = CreateScriptService("SFDialogs.Dialog", "GlobalScope", myLibrary, DialogName)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id421598453203458">Set myControl = myDialog.Controls("myTextBox")</paragraph>
-      <paragraph role="bascode" xml-lang="en-US" id="bas_id581598453210170">myControl.Value = "Dialog started at " &amp; Now()</paragraph>
+      <paragraph role="bascode" id="bas_id581598453210170">myControl.Value = "Dialog started at " &amp; Now()</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id11598453215943">myDialog.Execute()</paragraph>
-      <paragraph role="bascode" xml-lang="en-US" id="bas_id961598453222539">' ... process the controls actual values</paragraph>
+      <paragraph role="bascode" id="bas_id961598453222539">' ... process the controls actual values</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id981598453230245">myDialog.Terminate()</paragraph>
    </bascode>
    <pycode>
      <paragraph role="pycode" localize="false" id="pyc_id481026225234594">from time import localtime, strftime</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id481620225234594">dlg = CreateScriptService('SFDialogs.Dialog', 'GlobalScope', lib_name, dlg_name)</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id811620225234785">text = dlg.Controls('myTextBox')</paragraph>
-     <paragraph role="pycode" xml-lang="en-US" id="pyc_id861620225235002">text.Value = "Dialog started at " + strftime("%a, %d %b %Y %H:%M:%S", localtime())</paragraph>
+     <paragraph role="pycode" id="pyc_id861620225235002">text.Value = "Dialog started at " + strftime("%a, %d %b %Y %H:%M:%S", localtime())</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id361620225235185">dlg.Execute()</paragraph>
-     <paragraph role="pycode" xml-lang="en-US" id="pyc_id841620225235377"># ... process the controls actual values</paragraph>
+     <paragraph role="pycode" id="pyc_id841620225235377"># ... process the controls actual values</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id411620225235569">dlg.Terminate()</paragraph>
    </pycode>
   <h2 id="hd_id141670854511382">Retrieving the DialogControl instance that triggered a control event</h2>
-  <paragraph role="paragraph" id="par_id951598174966322" xml-lang="en-US">An instance of the <literal>DialogControl</literal> service can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, provided that the dialog was initiated with the <literal>Dialog</literal> service. In the example below, <literal>oControl</literal> contains the <literal>DialogControl</literal> instance that triggered the control event.</paragraph>
+  <paragraph role="paragraph" id="par_id951598174966322">An instance of the <literal>DialogControl</literal> service can be retrieved via the <literal>SFDialogs.DialogEvent</literal> service, provided that the dialog was initiated with the <literal>Dialog</literal> service. In the example below, <literal>oControl</literal> contains the <literal>DialogControl</literal> instance that triggered the control event.</paragraph>
   <bascode>
       <paragraph role="bascode" localize="false" id="bas_id311598175259794">Sub aControlEventHandler(ByRef poEvent As Object)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id781598175253859">    Dim oControl As Object</paragraph>
@@ -68,7 +69,7 @@
      <paragraph role="pycode" localize="false" id="pyc_id181620228763531">    oControl = CreateScriptService('SFDialogs.DialogEvent', event)</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id731620228763715">    # ...</paragraph>
   </pycode>
-  <paragraph role="paragraph" id="par_id251598176312571" xml-lang="en-US">Note that in the previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted when deemed appropriate.</paragraph>
+  <paragraph role="paragraph" id="par_id251598176312571">Note that in the previous examples, the prefix <literal>"SFDialogs."</literal> may be omitted when deemed appropriate.</paragraph>
   <h2 id="hd_id681670854491710">Handling exceptions in event handlers</h2>
   <paragraph role="paragraph" id="par_id971670855125683">When creating an event handler for control events it is good practice to handle errors inside the subroutine itself. For instance, suppose the event handler below is called when button is clicked.</paragraph>
   <bascode>
@@ -95,8 +96,8 @@
     <paragraph role="pycode" localize="false" id="pyc_id491670866556877">        bas.MsgBox(str(e))</paragraph>
   </pycode>
 
-  <h2 id="hd_id71598455687512" xml-lang="en-US">Control types</h2>
-  <paragraph role="paragraph" id="par_id851598455863395" xml-lang="en-US">The <literal>DialogControl</literal> service is available for these control types:</paragraph>
+  <h2 id="hd_id71598455687512">Control types</h2>
+  <paragraph role="paragraph" id="par_id851598455863395">The <literal>DialogControl</literal> service is available for these control types:</paragraph>
   <table id="tab_ControlTypes">
    <tablerow>
        <tablecell>
@@ -109,29 +110,30 @@
            <paragraph id="par_id641687788755743" role="tablecontent" localize="false">&#8226; ListBox<br/>&#8226; NumericField<br/>&#8226; PatternField<br/>&#8226; ProgressBar<br/>&#8226; RadioButton<br/>&#8226; ScrollBar</paragraph>
        </tablecell>
        <tablecell>
-           <paragraph id="par_id271687789435391" role="tablecontent" localize="false">&#8226; TableControl<br/>&#8226; TextField<br/>&#8226; TimeField<br/>&#8226; TreeControl<br/> <br/> </paragraph>
+           <paragraph id="par_id271687789435391" role="tablecontent" localize="false">&#8226; TableControl<br/>&#8226; TabPageContainer<br/>&#8226; TextField<br/>&#8226; TimeField<br/>&#8226; TreeControl<br/> <br/> </paragraph>
        </tablecell>
     </tablerow>
   </table>
+  <note id="par_id271741623728937"><literal>TabPageContainer</literal> control type is not defined in the Dialog Editor.</note>
 
-   <h2 id="hd_id651583668365757" xml-lang="en-US">Properties</h2>
+   <h2 id="hd_id651583668365757">Properties</h2>
    <section id="properties_toc">
      <table id="tab_id381583668386455">
       <tablerow>
          <tablecell>
-            <paragraph id="par_id871583668386455" role="tablehead" xml-lang="en-US">Name</paragraph>
+            <paragraph id="par_id871583668386455" role="tablehead">Name</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id491583668386455" role="tablehead" xml-lang="en-US">ReadOnly</paragraph>
+            <paragraph id="par_id491583668386455" role="tablehead">ReadOnly</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id271583668474014" role="tablehead" xml-lang="en-US">Type</paragraph>
+            <paragraph id="par_id271583668474014" role="tablehead">Type</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id291598538799794" role="tablehead" xml-lang="en-US">Applicable to</paragraph>
+            <paragraph id="par_id291598538799794" role="tablehead">Applicable to</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id401583668386455" role="tablehead" xml-lang="en-US">Description</paragraph>
+            <paragraph id="par_id401583668386455" role="tablehead">Description</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -139,16 +141,16 @@
             <paragraph id="par_id151594768386455" role="tablecontent" localize="false">Border</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id372693668519172" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id372693668519172" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id271583679486455" role="tablecontent" localize="false">String</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id231589538847029" role="tablecontent" localize="false" xml-lang="en-US">Button, …</paragraph>
+            <paragraph id="par_id231589538847029" role="tablecontent" localize="false">Button, …</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id771583778386455" role="tablecontent" xml-lang="en-US">The <literal>Border</literal> property refers to the surrounding of the control: "3D", "FLAT" or "NONE".</paragraph>
+            <paragraph id="par_id771583778386455" role="tablecontent">The <literal>Border</literal> property refers to the surrounding of the control: "3D", "FLAT" or "NONE".</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -156,16 +158,16 @@
             <paragraph id="par_id151583668386455" role="tablecontent" localize="false">Cancel</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id371583668519172" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id371583668519172" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id271583668386455" role="tablecontent" localize="false">Boolean</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id231598538847029" role="tablecontent" localize="false" xml-lang="en-US">Button</paragraph>
+            <paragraph id="par_id231598538847029" role="tablecontent" localize="false">Button</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id771583668386455" role="tablecontent" xml-lang="en-US">Specifies if a command button has or not the behaviour of a Cancel button.</paragraph>
+            <paragraph id="par_id771583668386455" role="tablecontent">Specifies if a command button has or not the behaviour of a Cancel button.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -173,7 +175,7 @@
             <paragraph id="par_id951583839708571" role="tablecontent" localize="false">Caption</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id541583839708548" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id541583839708548" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id751583839708362" role="tablecontent" localize="false">String</paragraph>
@@ -182,7 +184,7 @@
             <paragraph id="par_id351598538934413" role="tablecontent" localize="false">Button, CheckBox, FixedLine, FixedText, GroupBox, Hyperlink, RadioButton</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id731583839708412" role="tablecontent" xml-lang="en-US">Specifies the text associated with the control.</paragraph>
+            <paragraph id="par_id731583839708412" role="tablecontent">Specifies the text associated with the control.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -190,16 +192,16 @@
             <paragraph id="par_id511584027709311" role="tablecontent" localize="false">ControlType</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id761584027709516" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id761584027709516" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id491584027709825" role="tablecontent" localize="false">String</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id261598539120502" role="tablecontent" xml-lang="en-US">All</paragraph>
+            <paragraph id="par_id261598539120502" role="tablecontent">All</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id971584027709752" role="tablecontent" xml-lang="en-US">One of the types listed above.</paragraph>
+            <paragraph id="par_id971584027709752" role="tablecontent">One of the types listed above.</paragraph>
          </tablecell>
       </tablerow>
             <tablerow>
@@ -207,16 +209,16 @@
             <paragraph id="par_id141612705482724" role="tablecontent" localize="false">CurrentNode</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id67161270548283" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id67161270548283" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id341612705482566" role="tablecontent" xml-lang="en-US">UNO<br/>object</paragraph>
+            <paragraph id="par_id341612705482566" role="tablecontent">UNO<br/>object</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id51612705482172" role="tablecontent" localize="false">TreeControl</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id1001612705482919" role="tablecontent" xml-lang="en-US">The currently upmost node selected in the tree control. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1tree_1_1XMutableTreeNode.html">XmutableTreeNode</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
+            <paragraph id="par_id1001612705482919" role="tablecontent">The currently upmost node selected in the tree control. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1tree_1_1XMutableTreeNode.html">XmutableTreeNode</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -224,7 +226,7 @@
             <paragraph id="par_id491583839767611" role="tablecontent" localize="false">Default</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id31583839767743" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id31583839767743" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id741583839767926" role="tablecontent" localize="false">Boolean</paragraph>
@@ -233,7 +235,7 @@
             <paragraph id="par_id71598539168348" role="tablecontent" localize="false">Button</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id111583839767195" role="tablecontent" xml-lang="en-US">Specifies whether a command button is the default (OK) button.</paragraph>
+            <paragraph id="par_id111583839767195" role="tablecontent">Specifies whether a command button is the default (OK) button.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -241,16 +243,16 @@
             <paragraph id="par_id83158383992056" role="tablecontent" localize="false">Enabled</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id771583839920487" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id771583839920487" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id971583839920282" role="tablecontent" localize="false">Boolean</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id891598539196786" role="tablecontent" xml-lang="en-US">All</paragraph>
+            <paragraph id="par_id891598539196786" role="tablecontent">All</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id451583839920858" role="tablecontent" xml-lang="en-US">Specifies if the control is accessible with the cursor.</paragraph>
+            <paragraph id="par_id451583839920858" role="tablecontent">Specifies if the control is accessible with the cursor.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -258,19 +260,19 @@
             <paragraph id="par_id751588333908795" role="tablecontent" localize="false">Format</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id571588333908716" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id571588333908716" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id781588333908500" role="tablecontent" localize="false">String</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id491598539231618" role="tablecontent" localize="false">DateField, TimeField, FormattedField</paragraph>
-            <paragraph id="par_id491598529331618" role="tablecontent" xml-lang="en-US">(read-only)</paragraph>
+            <paragraph id="par_id491598529331618" role="tablecontent">(read-only)</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id721588333908708" role="tablecontent" xml-lang="en-US">Specifies the format used to display dates and times. It must be one these strings:</paragraph>
-            <paragraph role="paragraph" id="par_id891598456980194" xml-lang="en-US">For dates: "Standard (short)", "Standard (short YY)", "Standard (short YYYY)", "Standard (long)", "DD/MM/YY", "MM/DD/YY", "YY/MM/DD", "DD/MM/YYYY", "MM/DD/YYYY" , "YYYY/MM/DD", "YY-MM-DD", "YYYY-MM-DD".</paragraph>
-            <paragraph role="paragraph" id="par_id221598456991070" xml-lang="en-US">For times: "24h short", "24h long", "12h short", "12h long".</paragraph>
+            <paragraph id="par_id721588333908708" role="tablecontent">Specifies the format used to display dates and times. It must be one these strings:</paragraph>
+            <paragraph role="paragraph" id="par_id891598456980194">For dates: "Standard (short)", "Standard (short YY)", "Standard (short YYYY)", "Standard (long)", "DD/MM/YY", "MM/DD/YY", "YY/MM/DD", "DD/MM/YYYY", "MM/DD/YYYY" , "YYYY/MM/DD", "YY-MM-DD", "YYYY-MM-DD".</paragraph>
+            <paragraph role="paragraph" id="par_id221598456991070">For times: "24h short", "24h long", "12h short", "12h long".</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -278,7 +280,7 @@
             <paragraph id="par_id251583774433989" role="tablecontent" localize="false">ListCount</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id501583774433513" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id501583774433513" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id411583774433779" role="tablecontent" localize="false">Long</paragraph>
@@ -287,7 +289,7 @@
             <paragraph id="par_id531598539561342" role="tablecontent" localize="false">ComboBox, ListBox, TableControl</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph role="paragraph" id="par_id151598177605296" xml-lang="en-US">Specifies the number of rows in a ListBox, a ComboBox or a TableControl.</paragraph>
+            <paragraph role="paragraph" id="par_id151598177605296">Specifies the number of rows in a ListBox, a ComboBox or a TableControl.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -295,7 +297,7 @@
             <paragraph id="par_id731588334016220" role="tablecontent" localize="false">ListIndex</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id271588334016191" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id271588334016191" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id991588334016273" role="tablecontent" localize="false">Long</paragraph>
@@ -304,7 +306,7 @@
             <paragraph id="par_id451598539598242" role="tablecontent" localize="false">ComboBox, ListBox, TableControl</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id251588334016874" role="tablecontent" xml-lang="en-US">Specifies which item is selected in a ListBox, a ComboBox or a TableControl.</paragraph>
+            <paragraph id="par_id251588334016874" role="tablecontent">Specifies which item is selected in a ListBox, a ComboBox or a TableControl.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -312,7 +314,7 @@
             <paragraph id="par_id451598457655392" role="tablecontent" localize="false">Locked</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id961598457655506" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id961598457655506" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id571598457655365" role="tablecontent" localize="false">Boolean</paragraph>
@@ -321,7 +323,7 @@
             <paragraph id="par_id111598539631340" role="tablecontent" localize="false">ComboBox, CurrencyField, DateField, FileControl, FormattedField, ListBox, NumericField, PatternField, TextField, TimeField</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id2159845765568" role="tablecontent" xml-lang="en-US">Specifies if the control is read-only.</paragraph>
+            <paragraph id="par_id2159845765568" role="tablecontent">Specifies if the control is read-only.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -329,7 +331,7 @@
             <paragraph id="par_id21159845795140" role="tablecontent" localize="false">MultiSelect</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id621598457951781" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id621598457951781" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id311598457951281" role="tablecontent" localize="false">Boolean</paragraph>
@@ -338,7 +340,7 @@
             <paragraph id="par_id361598539747680" role="tablecontent" localize="false">ListBox</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id821598457951782" role="tablecontent" xml-lang="en-US">Specifies whether a user can make multiple selections in a listbox.</paragraph>
+            <paragraph id="par_id821598457951782" role="tablecontent">Specifies whether a user can make multiple selections in a listbox.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -346,16 +348,16 @@
             <paragraph id="par_id421598458170141" role="tablecontent" localize="false">Name</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id351598458170114" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id351598458170114" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id391598458170757" role="tablecontent" localize="false">String</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id151598539764402" role="tablecontent" xml-lang="en-US">All</paragraph>
+            <paragraph id="par_id151598539764402" role="tablecontent">All</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id621598458170392" role="tablecontent" xml-lang="en-US">The name of the control.</paragraph>
+            <paragraph id="par_id621598458170392" role="tablecontent">The name of the control.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -363,17 +365,17 @@
             <paragraph id="par_id281598458357593" role="tablecontent" localize="false">Page</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id80159845835726" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id80159845835726" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id191598458357402" role="tablecontent" localize="false">Integer</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id841598539781888" role="tablecontent" xml-lang="en-US">All</paragraph>
+            <paragraph id="par_id841598539781888" role="tablecontent">All</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id791598458357756" role="tablecontent" xml-lang="en-US">A dialog may have several pages that can be traversed by the user step by step. The Page property of the Dialog object defines which page of the dialog is active.</paragraph>
-            <paragraph role="paragraph" id="par_id441598458459145" xml-lang="en-US">The Page property of a control defines the page of the dialog on which the control is visible.</paragraph>
+            <paragraph id="par_id791598458357756" role="tablecontent">A dialog may have several pages that can be traversed by the user step by step. The Page property of the Dialog object defines which page of the dialog is active.</paragraph>
+            <paragraph role="paragraph" id="par_id441598458459145">The Page property of a control defines the page of the dialog on which the control is visible.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -381,16 +383,16 @@
             <paragraph id="par_id2915984585802" role="tablecontent" localize="false">Parent</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id161598458580581" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id161598458580581" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id921598458580608" role="tablecontent" xml-lang="en-US"><literal>Dialog</literal><br/>service</paragraph>
+            <paragraph id="par_id921598458580608" role="tablecontent"><literal>Dialog</literal><br/>service</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id181598539807426" role="tablecontent" xml-lang="en-US">All</paragraph>
+            <paragraph id="par_id181598539807426" role="tablecontent">All</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id801598458580456" role="tablecontent" xml-lang="en-US">The parent <literal>SFDialogs.Dialog</literal> class object instance.</paragraph>
+            <paragraph id="par_id801598458580456" role="tablecontent">The parent <literal>SFDialogs.Dialog</literal> class object instance.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -398,7 +400,7 @@
             <paragraph id="par_id181598458773220" role="tablecontent" localize="false">Picture</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id971598458773352" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id971598458773352" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id471598458773993" role="tablecontent" localize="false">String</paragraph>
@@ -407,7 +409,7 @@
             <paragraph id="par_id831598539848472" role="tablecontent" localize="false">Button, ImageControl</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id451598458773588" role="tablecontent" xml-lang="en-US">Specifies the file name containing a bitmap or other type of graphic to be displayed on the specified control. The filename must comply with the <literal>FileNaming</literal> attribute of the <literal>ScriptForge.FileSystem</literal> service.</paragraph>
+            <paragraph id="par_id451598458773588" role="tablecontent">Specifies the file name containing a bitmap or other type of graphic to be displayed on the specified control. The filename must comply with the <literal>FileNaming</literal> attribute of the <literal>ScriptForge.FileSystem</literal> service.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -415,16 +417,16 @@
             <paragraph id="par_id791612700624395" role="tablecontent" localize="false">RootNode</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id831612700624650" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id831612700624650" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id711612700624483" role="tablecontent" xml-lang="en-US">UNO<br/>object</paragraph>
+            <paragraph id="par_id711612700624483" role="tablecontent">UNO<br/>object</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id581612700624717" role="tablecontent" localize="false">TreeControl</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id11612700624514" role="tablecontent" xml-lang="en-US">An object representing the lowest root node (usually there is only one such root node). Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1tree_1_1XMutableTreeNode.html">XmutableTreeNode</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
+            <paragraph id="par_id11612700624514" role="tablecontent">An object representing the lowest root node (usually there is only one such root node). Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1tree_1_1XMutableTreeNode.html">XmutableTreeNode</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -432,7 +434,7 @@
             <paragraph id="par_id681598516577774" role="tablecontent" localize="false">RowSource</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id401598516577225" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id401598516577225" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id59159851657754" role="tablecontent" localize="false">Array of strings</paragraph>
@@ -441,7 +443,7 @@
             <paragraph id="par_id131598539880024" role="tablecontent" localize="false">ComboBox, ListBox</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id311598516577712" role="tablecontent" xml-lang="en-US">Specifies the data contained in a combobox or a listbox.</paragraph>
+            <paragraph id="par_id311598516577712" role="tablecontent">Specifies the data contained in a combobox or a listbox.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -449,7 +451,7 @@
             <paragraph id="par_id491598516746653" role="tablecontent" localize="false">TabIndex</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id781598516674550" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id781598516674550" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id741598561764696" role="tablecontent" localize="false">Numeric</paragraph>
@@ -458,7 +460,7 @@
             <paragraph id="par_id761598359912452" role="tablecontent" localize="false">All</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id11159815676440" role="tablecontent" xml-lang="en-US">The <literal>TabIndex</literal> property specifies a control&apos;s place in the tab order in the dialog.</paragraph>
+            <paragraph id="par_id11159815676440" role="tablecontent">The <literal>TabIndex</literal> property specifies a control&apos;s place in the tab order in the dialog.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -466,7 +468,7 @@
             <paragraph id="par_id491598516764653" role="tablecontent" localize="false">Text</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id781598516764550" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id781598516764550" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id741598516764696" role="tablecontent" localize="false">String</paragraph>
@@ -475,7 +477,7 @@
             <paragraph id="par_id761598539912452" role="tablecontent" localize="false">ComboBox, FileControl, FormattedField, PatternField, TextField</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id11159851676440" role="tablecontent" xml-lang="en-US">Gives access to the text being displayed by the control.</paragraph>
+            <paragraph id="par_id11159851676440" role="tablecontent">Gives access to the text being displayed by the control.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -483,16 +485,16 @@
             <paragraph id="par_id311598517275908" role="tablecontent" localize="false">TipText</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id411598517275112" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id411598517275112" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id971598517275920" role="tablecontent" localize="false">String</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id171598539985022" role="tablecontent" xml-lang="en-US">All</paragraph>
+            <paragraph id="par_id171598539985022" role="tablecontent">All</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id651598517275384" role="tablecontent" xml-lang="en-US">Specifies the text that appears as a tooltip when you hold the mouse pointer over the control.</paragraph>
+            <paragraph id="par_id651598517275384" role="tablecontent">Specifies the text that appears as a tooltip when you hold the mouse pointer over the control.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -500,7 +502,7 @@
             <paragraph id="par_id951598517418614" role="tablecontent" localize="false">TripleState</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id821598517418463" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id821598517418463" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id231598517418608" role="tablecontent" localize="false">Boolean</paragraph>
@@ -509,7 +511,7 @@
             <paragraph id="par_id81598540007035" role="tablecontent" localize="false">CheckBox</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id141598517418822" role="tablecontent" xml-lang="en-US">Specifies if the checkbox control may appear dimmed (grayed) or not.</paragraph>
+            <paragraph id="par_id141598517418822" role="tablecontent">Specifies if the checkbox control may appear dimmed (grayed) or not.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -517,7 +519,7 @@
             <paragraph id="par_id31598517671451" role="tablecontent" localize="false">URL</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id701598517671337" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id701598517671337" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id2159851767131" role="tablecontent" localize="false">String</paragraph>
@@ -526,7 +528,7 @@
             <paragraph role="paragraph" id="par_id481687785271551" localize="false">Hyperlink</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id1001598540024252" role="tablecontent" xml-lang="en-US">The URL to open when the control is clicked.</paragraph>
+            <paragraph id="par_id1001598540024252" role="tablecontent">The URL to open when the control is clicked.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -534,14 +536,14 @@
             <paragraph id="par_id31598517671415" role="tablecontent" localize="false">Value</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id701598517671373" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id701598517671373" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id2159851767113" role="tablecontent" localize="false">Variant</paragraph>
          </tablecell>
         <tablecell></tablecell>
          <tablecell>
-            <paragraph id="par_id1001598540024225" role="tablecontent" xml-lang="en-US">Refer to <link href="text/sbasic/shared/03/sf_dialogcontrol.xhp#hd_ValueProperty">Value property</link></paragraph>
+            <paragraph id="par_id1001598540024225" role="tablecontent">Refer to <link href="text/sbasic/shared/03/sf_dialogcontrol.xhp#hd_ValueProperty">Value property</link></paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -549,16 +551,16 @@
             <paragraph id="par_id571598517730264" role="tablecontent" localize="false">Visible</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id661598517730941" role="tablecontent" xml-lang="en-US">No</paragraph>
+            <paragraph id="par_id661598517730941" role="tablecontent">No</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id981598517730694" role="tablecontent" localize="false">Boolean</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id761598540042290" role="tablecontent" xml-lang="en-US">All</paragraph>
+            <paragraph id="par_id761598540042290" role="tablecontent">All</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id881598517730836" role="tablecontent" xml-lang="en-US">Specifies if the control is hidden or visible.</paragraph>
+            <paragraph id="par_id881598517730836" role="tablecontent">Specifies if the control is hidden or visible.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -566,16 +568,16 @@
             <paragraph id="par_id741598177924441" role="tablecontent" localize="false">XControlModel</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id451598177924437" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id451598177924437" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id94159817792441" role="tablecontent" xml-lang="en-US">UNO<br/>object</paragraph>
+            <paragraph id="par_id94159817792441" role="tablecontent">UNO<br/>object</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id311598540066789" role="tablecontent" xml-lang="en-US">All</paragraph>
+            <paragraph id="par_id311598540066789" role="tablecontent">All</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id191598177924897" role="tablecontent" xml-lang="en-US">The UNO object representing the control model. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControlModel.html">XControlModel</link> and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialogModel.html)">UnoControlDialogModel</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
+            <paragraph id="par_id191598177924897" role="tablecontent">The UNO object representing the control model. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControlModel.html">XControlModel</link> and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialogModel.html)">UnoControlDialogModel</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -583,49 +585,83 @@
             <paragraph id="par_id801598178083859" role="tablecontent" localize="false">XControlView</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id811598178083501" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id811598178083501" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id981598178083938" role="tablecontent" xml-lang="en-US">UNO<br/>object</paragraph>
+            <paragraph id="par_id981598178083938" role="tablecontent">UNO<br/>object</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id551598540079329" role="tablecontent" xml-lang="en-US">All</paragraph>
+            <paragraph id="par_id551598540079329" role="tablecontent">All</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id731598178083442" role="tablecontent" xml-lang="en-US">The UNO object representing the control view. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControl.html">XControl</link> and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialog.html)">UnoControlDialog</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
+            <paragraph id="par_id731598178083442" role="tablecontent">The UNO object representing the control view. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1XControl.html">XControl</link> and <link href="https://api.libreoffice.org/docs/idl/ref/servicecom_1_1sun_1_1star_1_1awt_1_1UnoControlDialog.html)">UnoControlDialog</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
          </tablecell>
       </tablerow>
-            <tablerow>
+      <tablerow>
          <tablecell>
             <paragraph id="par_id55161269944658" role="tablecontent" localize="false">XTreeDataModel</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id741612699446459" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id741612699446459" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id311612699446893" role="tablecontent" xml-lang="en-US">UNO<br/>object</paragraph>
+            <paragraph id="par_id311612699446893" role="tablecontent">UNO<br/>object</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id25161269944611" role="tablecontent" localize="false">TreeControl</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id691612699446892" role="tablecontent" xml-lang="en-US">The UNO object representing the tree control data model. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1tree_1_1XMutableTreeDataModel.html">XMutableTreeDataModel</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
+            <paragraph id="par_id691612699446892" role="tablecontent">The UNO object representing the tree control data model. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1tree_1_1XMutableTreeDataModel.html">XMutableTreeDataModel</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id55161270044658" role="tablecontent" localize="false">XGridColumnModel</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id741612700446459" role="tablecontent">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id311612700446893" role="tablecontent">UNO<br/>object</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id25161270044611" role="tablecontent" localize="false">TableControl</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id691612700446892" role="tablecontent">The UNO object representing the table control data model. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1grid_1_1XGridColumnModel.html">XGridColumnModel</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id55161281144658" role="tablecontent" localize="false">XGridDataModel</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id741612811446459" role="tablecontent">Yes</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id311612811446893" role="tablecontent">UNO<br/>object</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id25161281144611" role="tablecontent" localize="false">TableControl</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id691612811446892" role="tablecontent">The UNO object representing the tree control data model. Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1grid_1_1XGridDataModel.html">XGridDataModel</link> in Application Programming Interface (API) documentation for detailed information.</paragraph>
          </tablecell>
       </tablerow>
      </table>
   </section>
 
-   <h2 id="hd_ValueProperty" xml-lang="en-US">The <variable id="ValueProperty">Value property</variable></h2>
+   <h2 id="hd_ValueProperty">The <variable id="ValueProperty">Value property</variable></h2>
    <table id="tab_id48159854325479">
       <tablerow>
          <tablecell>
-            <paragraph id="par_id10159854325492" role="tablehead" xml-lang="en-US">Control type</paragraph>
+            <paragraph id="par_id10159854325492" role="tablehead">Control type</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id741598543254158" role="tablehead" xml-lang="en-US">Type</paragraph>
+            <paragraph id="par_id741598543254158" role="tablehead">Type</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id961598543254444" role="tablehead" xml-lang="en-US">Description</paragraph>
+            <paragraph id="par_id961598543254444" role="tablehead">Description</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -636,7 +672,7 @@
             <paragraph id="par_id271598543254590" role="tablecontent" localize="false">Boolean</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id741598543254108" role="tablecontent" xml-lang="en-US">For toggle buttons only</paragraph>
+            <paragraph id="par_id741598543254108" role="tablecontent">For toggle buttons only</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -644,10 +680,10 @@
             <paragraph id="par_id131598543254931" role="tablecontent" localize="false">CheckBox</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id741598543254376" role="tablecontent" xml-lang="en-US">Boolean or Integer</paragraph>
+            <paragraph id="par_id741598543254376" role="tablecontent">Boolean or Integer</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id521598543254630" role="tablecontent" xml-lang="en-US">0, False: not checked<br />1, True: checked<br />2: grayed, don't know</paragraph>
+            <paragraph id="par_id521598543254630" role="tablecontent">0, False: not checked<br />1, True: checked<br />2: grayed, don't know</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -658,7 +694,7 @@
             <paragraph id="par_id781598543254887" role="tablecontent" localize="false">String</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id331598543254947" role="tablecontent" xml-lang="en-US">The selected value. The <literal>ListIndex</literal> property is an alternate option.</paragraph>
+            <paragraph id="par_id331598543254947" role="tablecontent">The selected value. The <literal>ListIndex</literal> property is an alternate option.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -666,7 +702,7 @@
             <paragraph id="par_id58159854325446" role="tablecontent" localize="false">CurrencyField</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id5159854325443" role="tablecontent" xml-lang="en-US">Numeric</paragraph>
+            <paragraph id="par_id5159854325443" role="tablecontent">Numeric</paragraph>
          </tablecell>
          <tablecell>
          </tablecell>
@@ -689,7 +725,7 @@
             <paragraph id="par_id731598543254544" role="tablecontent" localize="false">String</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id971598543254757" role="tablecontent" xml-lang="en-US">A file name formatted in accordance with the <literal>FileNaming</literal> property of the <literal>ScriptForge.FileSystem</literal> service</paragraph>
+            <paragraph id="par_id971598543254757" role="tablecontent">A file name formatted in accordance with the <literal>FileNaming</literal> property of the <literal>ScriptForge.FileSystem</literal> service</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -697,7 +733,7 @@
             <paragraph id="par_id921598543254323" role="tablecontent" localize="false">FormattedField</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id221598543254760" role="tablecontent" xml-lang="en-US">String or Numeric</paragraph>
+            <paragraph id="par_id221598543254760" role="tablecontent">String or Numeric</paragraph>
          </tablecell>
          <tablecell>
          </tablecell>
@@ -707,10 +743,10 @@
             <paragraph id="par_id151598543254318" role="tablecontent" localize="false">ListBox</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id42159854325422" role="tablecontent" xml-lang="en-US">String or array of strings</paragraph>
+            <paragraph id="par_id42159854325422" role="tablecontent">String or array of strings</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id601598543254780" role="tablecontent" xml-lang="en-US">The selected row(s) as a scalar or as an array depending on the <literal>MultiSelect</literal> attribute</paragraph>
+            <paragraph id="par_id601598543254780" role="tablecontent">The selected row(s) as a scalar or as an array depending on the <literal>MultiSelect</literal> attribute</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -718,7 +754,7 @@
             <paragraph id="par_id771598543254973" role="tablecontent" localize="false">NumericField</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id461598543254909" role="tablecontent" xml-lang="en-US">Numeric</paragraph>
+            <paragraph id="par_id461598543254909" role="tablecontent">Numeric</paragraph>
          </tablecell>
          <tablecell>
          </tablecell>
@@ -738,10 +774,10 @@
             <paragraph id="par_id951598543254998" role="tablecontent" localize="false">ProgressBar</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id631598543254771" role="tablecontent" xml-lang="en-US">Numeric</paragraph>
+            <paragraph id="par_id631598543254771" role="tablecontent">Numeric</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id91598543254766" role="tablecontent" xml-lang="en-US">Must be within the predefined bounds</paragraph>
+            <paragraph id="par_id91598543254766" role="tablecontent">Must be within the predefined bounds</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -752,7 +788,7 @@
             <paragraph id="par_id561598543254115" role="tablecontent" localize="false">Boolean</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id851598543254624" role="tablecontent" xml-lang="en-US">Each button has its own name. They are linked together if their TAB positions are contiguous. If a radiobutton is set to <literal>True</literal>, the other related buttons are automatically set to <literal>False</literal></paragraph>
+            <paragraph id="par_id851598543254624" role="tablecontent">Each button has its own name. They are linked together if their TAB positions are contiguous. If a radiobutton is set to <literal>True</literal>, the other related buttons are automatically set to <literal>False</literal></paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -760,10 +796,21 @@
             <paragraph id="par_id141598543254361" role="tablecontent" localize="false">ScrollBar</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id531598543254869" role="tablecontent" xml-lang="en-US">Numeric</paragraph>
+            <paragraph id="par_id531598543254869" role="tablecontent">Numeric</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id21598543254994" role="tablecontent" xml-lang="en-US">Must be within the predefined bounds</paragraph>
+            <paragraph id="par_id21598543254994" role="tablecontent">Must be within the predefined bounds</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id822608543254007" role="tablecontent" localize="false">TabPageContainer</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id751599653254805" role="tablecontent" localize="false">Numeric</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id552598543254951" role="tablecontent">A dialog may have several numbered tabs identifiable or modifiable by their <literal>Value</literal> property.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -774,7 +821,7 @@
             <paragraph id="par_id751598543254805" role="tablecontent" localize="false">Array</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id441598543254951" role="tablecontent" xml-lang="en-US">One-dimensional array with the data of the currently selected row.</paragraph>
+            <paragraph id="par_id441598543254951" role="tablecontent">One-dimensional array with the data of the currently selected row.</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -785,7 +832,7 @@
             <paragraph id="par_id751598543254299" role="tablecontent" localize="false">String</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id441598543254738" role="tablecontent" xml-lang="en-US">The text appearing in the field</paragraph>
+            <paragraph id="par_id441598543254738" role="tablecontent">The text appearing in the field</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
@@ -801,205 +848,159 @@
    </table>
    <note id="par_id61687963745108">There is no <literal>Value</literal> property for <literal>GroupBox</literal>, <literal>Hyperlink</literal>, <literal>ImageControl</literal> and <literal>TreeControl</literal> dialog controls.</note>
 
-   <h2 id="hd_id421612628828054" xml-lang="en-US">Event properties</h2>
+   <h2 id="hd_id421612628828054">Event properties</h2>
    <embed href="text/sbasic/shared/03/sf_dialog.xhp#OnEventsDefinition"/>
    <table id="tab_id951612628879819">
       <tablerow>
          <tablecell>
-            <paragraph id="par_id961612628879819" role="tablehead" xml-lang="en-US">Name</paragraph>
+            <paragraph id="par_id961612628879819" role="tablehead">Name (event API link)</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id401612628879819" role="tablehead" xml-lang="en-US">ReadOnly</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id281612628879819" role="tablehead" xml-lang="en-US">Description as labeled in the Basic IDE</paragraph>
+            <paragraph id="par_id281612628879819" role="tablehead">Description as labeled in the Basic IDE</paragraph>
          </tablecell>
       </tablerow>
             <tablerow>
          <tablecell>
-            <paragraph id="par_id801612707166342" localize="false" role="tablecontent" xml-lang="en-US">OnActionPerformed</paragraph>
+            <paragraph id="par_id801612707166342" localize="false" role="tablecontent">OnActionPerformed</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id91612707166532" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id291612707166258" role="tablecontent" xml-lang="en-US">Execute action</paragraph>
+            <paragraph id="par_id291612707166258" role="tablecontent">Execute action</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
          <tablecell>
-            <paragraph id="par_id261612707166662" localize="false" role="tablecontent" xml-lang="en-US">OnAdjustmentValueChanged</paragraph>
+            <paragraph id="par_id261612707166662" localize="false" role="tablecontent">OnAdjustmentValueChanged</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id79161270716675" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id831612707166731" role="tablecontent" xml-lang="en-US">While adjusting</paragraph>
+            <paragraph id="par_id831612707166731" role="tablecontent">While adjusting</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
          <tablecell>
-            <paragraph id="par_id431612629836735" localize="false" role="tablecontent" xml-lang="en-US">OnFocusGained</paragraph>
+            <paragraph id="par_id431612629836735" localize="false" role="tablecontent">OnFocusGained</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id111612629836630" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id1001612629836902" role="tablecontent" xml-lang="en-US">When receiving focus</paragraph>
+            <paragraph id="par_id1001612629836902" role="tablecontent">When receiving focus</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
          <tablecell>
-            <paragraph id="par_id701612629836389" localize="false" role="tablecontent" xml-lang="en-US">OnFocusLost</paragraph>
+            <paragraph id="par_id701612629836389" localize="false" role="tablecontent">OnFocusLost</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id291612629836294" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id62161262983683" role="tablecontent">When losing focus</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id10161270735471" localize="false" role="tablecontent">OnItemStateChanged</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id62161262983683" role="tablecontent" xml-lang="en-US">When losing focus</paragraph>
+            <paragraph id="par_id211612707354899" role="tablecontent">Item status changed</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id241612629836863" localize="false" role="tablecontent">OnKeyPressed</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id881612629836744" role="tablecontent">Key pressed</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id201612629836996" localize="false" role="tablecontent">OnKeyReleased</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id161612629836775" role="tablecontent">Key released</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id111612629836950" localize="false" role="tablecontent">OnMouseDragged</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id461612629836679" role="tablecontent">Mouse moved while key presses</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id711612629836495" localize="false" role="tablecontent">OnMouseEntered</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id151612629836151" role="tablecontent">Mouse inside</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id971612629836286" localize="false" role="tablecontent">OnMouseExited</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id361612629836624" role="tablecontent">Mouse outside</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id721612629836537" localize="false" role="tablecontent">OnMouseMoved</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id55161262983695" localize="false" role="tablecontent">OnMousePressed</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id381612629836635" role="tablecontent">Mouse button pressed</paragraph>
+         </tablecell>
+      </tablerow>
+      <tablerow>
+         <tablecell>
+            <paragraph id="par_id621612629836155" localize="false" role="tablecontent">OnMouseReleased</paragraph>
+         </tablecell>
+         <tablecell>
+            <paragraph id="par_id35161262983642" role="tablecontent">Mouse button released</paragraph>
          </tablecell>
       </tablerow>
             <tablerow>
          <tablecell>
-            <paragraph id="par_id10161270735471" localize="false" role="tablecontent" xml-lang="en-US">OnItemStateChanged</paragraph>
+            <paragraph id="par_id671612707606983" localize="false" role="tablecontent"><link href="https://api.libreoffice.org/docs/idl/ref/structcom_1_1sun_1_1star_1_1awt_1_1tree_1_1TreeExpansionEvent.html">OnNodeExpanded</link></paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id51612707354544" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id211612707354899" role="tablecontent" xml-lang="en-US">Item status changed</paragraph>
+            <paragraph id="par_id351612707606197" role="tablecontent">(Not in Basic IDE) when the expansion button is pressed on a node in a tree control</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
          <tablecell>
-            <paragraph id="par_id241612629836863" localize="false" role="tablecontent" xml-lang="en-US">OnKeyPressed</paragraph>
+            <paragraph id="par_id331612707606104" localize="false" role="tablecontent"><link href="https://api.libreoffice.org/docs/idl/ref/structcom_1_1sun_1_1star_1_1lang_1_1EventObject.html">OnNodeSelected</link></paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id81612629836634" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id881612629836744" role="tablecontent" xml-lang="en-US">Key pressed</paragraph>
+            <paragraph id="par_id881612707606121" role="tablecontent">(Not in Basic IDE) when a node in a tree control is selected</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
          <tablecell>
-            <paragraph id="par_id201612629836996" localize="false" role="tablecontent" xml-lang="en-US">OnKeyReleased</paragraph>
+            <paragraph id="par_id331723707606104" localize="false" role="tablecontent"><link href="https://api.libreoffice.org/docs/idl/ref/structcom_1_1sun_1_1star_1_1awt_1_1tab_1_1TabPageActivatedEvent.html">OnTabSelected</link></paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id591612629836830" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id161612629836775" role="tablecontent" xml-lang="en-US">Key released</paragraph>
+            <paragraph id="par_id882722707606121" role="tablecontent">(Not in Basic IDE) when a tab in a TabPage control is selected</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
          <tablecell>
-            <paragraph id="par_id111612629836950" localize="false" role="tablecontent" xml-lang="en-US">OnMouseDragged</paragraph>
+            <paragraph id="par_id84161270760678" localize="false" role="tablecontent">OnTextChanged</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id891612629836630" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id461612629836679" role="tablecontent" xml-lang="en-US">Mouse moved while key presses</paragraph>
-         </tablecell>
-      </tablerow>
-      <tablerow>
-         <tablecell>
-            <paragraph id="par_id711612629836495" localize="false" role="tablecontent" xml-lang="en-US">OnMouseEntered</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id131612629836291" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id151612629836151" role="tablecontent" xml-lang="en-US">Mouse inside</paragraph>
-         </tablecell>
-      </tablerow>
-      <tablerow>
-         <tablecell>
-            <paragraph id="par_id971612629836286" localize="false" role="tablecontent" xml-lang="en-US">OnMouseExited</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id211612629836725" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id361612629836624" role="tablecontent" xml-lang="en-US">Mouse outside</paragraph>
-         </tablecell>
-      </tablerow>
-      <tablerow>
-         <tablecell>
-            <paragraph id="par_id721612629836537" localize="false" role="tablecontent" xml-lang="en-US">OnMouseMoved</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id311612629836481" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id721612629836752" role="tablecontent" xml-lang="en-US">Mouse moved</paragraph>
-         </tablecell>
-      </tablerow>
-      <tablerow>
-         <tablecell>
-            <paragraph id="par_id55161262983695" localize="false" role="tablecontent" xml-lang="en-US">OnMousePressed</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id981612629836116" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id381612629836635" role="tablecontent" xml-lang="en-US">Mouse button pressed</paragraph>
-         </tablecell>
-      </tablerow>
-      <tablerow>
-         <tablecell>
-            <paragraph id="par_id621612629836155" localize="false" role="tablecontent" xml-lang="en-US">OnMouseReleased</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id711612629836704" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id35161262983642" role="tablecontent" xml-lang="en-US">Mouse button released</paragraph>
-         </tablecell>
-      </tablerow>
-            <tablerow>
-         <tablecell>
-            <paragraph id="par_id671612707606983" localize="false" role="tablecontent" xml-lang="en-US">OnNodeExpanded</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id851612707606863" role="tablecontent" xml-lang="en-US">No</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id351612707606197" role="tablecontent" xml-lang="en-US">(Not in Basic IDE) when the expansion button is pressed on a node in a tree control</paragraph>
-         </tablecell>
-      </tablerow>
-      <tablerow>
-         <tablecell>
-            <paragraph id="par_id331612707606104" localize="false" role="tablecontent" xml-lang="en-US">OnNodeSelected</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id121612707606251" role="tablecontent" xml-lang="en-US">No</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id881612707606121" role="tablecontent" xml-lang="en-US">(Not in Basic IDE) when a node in a tree control is selected</paragraph>
-         </tablecell>
-      </tablerow>
-      <tablerow>
-         <tablecell>
-            <paragraph id="par_id84161270760678" localize="false" role="tablecontent" xml-lang="en-US">OnTextChanged</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id811612707606330" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id621612707606219" role="tablecontent" xml-lang="en-US">Text modified</paragraph>
+            <paragraph id="par_id621612707606219" role="tablecontent">Text modified</paragraph>
          </tablecell>
       </tablerow>
    </table>
    <embed href="text/sbasic/shared/03/sf_dialog.xhp#OnEventsWarning"/>
 
-  <h2 id="hd_id421583670049913" xml-lang="en-US">Methods</h2>
+  <h2 id="hd_id421583670049913">Methods</h2>
   <section id="methods_toc">
    <table id="tab_id891606472825856">
     <tablerow>
        <tablecell colspan="3">
-          <paragraph id="par_id891611613601554" role="tablehead" xml-lang="en-US">List of Methods in the DialogControl Service</paragraph>
+          <paragraph id="par_id891611613601554" role="tablehead">List of Methods in the DialogControl Service</paragraph>
        </tablecell>
     </tablerow>
     <tablerow>
@@ -1035,7 +1036,7 @@
    <h2 id="hd_id791612711823914" localize="false">AddSubNode</h2>
    <paragraph role="paragraph" id="par_id831612711823126">Create and return a new node of the tree control as a UNO object subordinate to a parent node. <variable id="XMutableTreeNode">Refer to <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1awt_1_1tree_1_1XMutableTreeNode.html">XMutableTreeNode</link> in Application Programming Interface (API) documentation for detailed information.</variable></paragraph>
    <section id="OnNodeExpanded">
-      <paragraph role="paragraph" id="par_id741612711823706" xml-lang="en-US">This method may be called before displaying the dialog box to build the initial tree. It may also be called from a dialog or control event - using the <literal>OnNodeExpanded</literal> event - to complete the tree dynamically.</paragraph>
+      <paragraph role="paragraph" id="par_id741612711823706">This method may be called before displaying the dialog box to build the initial tree. It may also be called from a dialog or control event - using the <literal>OnNodeExpanded</literal> event - to complete the tree dynamically.</paragraph>
    </section>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id781620224364283">
@@ -1130,7 +1131,7 @@
    </bookmark>
    <h2 id="hd_id291612780723671" localize="false">CreateRoot</h2>
      <paragraph role="paragraph" id="par_id151612780723320">Returns a new root node of the tree control, as a node UNO object of type <literal>com.sun.star.awt.tree.XMutableTreeNode</literal>. The new tree root is inserted below pre-existing root nodes. <embedvar href="text/sbasic/shared/03/sf_dialogcontrol.xhp#XMutableTreeNode"/></paragraph>
-   <paragraph role="paragraph" id="par_id821612780723965" xml-lang="en-US">This method may be called before displaying the dialog box to build the initial tree. It may also be called from a dialog or control event to complete the tree dynamically.</paragraph>
+   <paragraph role="paragraph" id="par_id821612780723965">This method may be called before displaying the dialog box to build the initial tree. It may also be called from a dialog or control event to complete the tree dynamically.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id991620309297239">
      <input>svc.CreateRoot(displayvalue: str, opt datavalue: any): uno</input>
@@ -1159,8 +1160,8 @@
    </bookmark>
    <h2 id="hd_id801612781589891" localize="false">FindNode</h2>
    <paragraph role="paragraph" id="par_id171612781589503">Traverses the tree and finds recursively, starting from the root, a node meeting some criteria. Either - 1 match is enough - having its display value matching <literal>displayvalue</literal> pattern or having its data value equal to <literal>datavalue</literal>. The comparisons may be or not case-sensitive. The first matching occurrence is returned as a node UNO object of type <literal>com.sun.star.awt.tree.XMutableTreeNode</literal>. <embedvar href="text/sbasic/shared/03/sf_dialogcontrol.xhp#XMutableTreeNode"/></paragraph>
-   <paragraph role="paragraph" id="par_id741612782475457" xml-lang="en-US">When not found, the method returns <literal>Nothing</literal>, to be tested with the <literal>IsNull()</literal> builtin function.</paragraph>
-   <paragraph role="paragraph" id="par_id41612781589363" xml-lang="en-US">This method may be called before displaying the dialog box to build the initial tree. It may also be called from a dialog or control event.</paragraph>
+   <paragraph role="paragraph" id="par_id741612782475457">When not found, the method returns <literal>Nothing</literal>, to be tested with the <literal>IsNull()</literal> builtin function.</paragraph>
+   <paragraph role="paragraph" id="par_id41612781589363">This method may be called before displaying the dialog box to build the initial tree. It may also be called from a dialog or control event.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id61620309668544">
      <input>svc.FindNode(displayvalue: str = '', opt datavalue: any, casesensitive = False): uno</input>
@@ -1209,13 +1210,13 @@
       <paragraph role="bascode" localize="false" id="bas_id221598179015596">Dim oControl As Object</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id171598171911121">Set oDlg = CreateScriptService("SFDialogs.Dialog",,, "myDialog")</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id681598179132436">Set oControl = oDlg.Controls("thisControl")</paragraph>
-      <paragraph role="bascode" xml-lang="en-US" id="bas_id361598179153096">oControl.Resize(100, 200, Height:=6000) ' Width is unchanged</paragraph>
+      <paragraph role="bascode" id="bas_id361598179153096">oControl.Resize(100, 200, Height:=6000) ' Width is unchanged</paragraph>
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id591620319189602">dlg = CreateScriptService('Dialog', None, None, 'myDialog')</paragraph>
       <paragraph role="pycode" localize="false" id="pyc_id201620319172098">ctrl = dlg.Controls('thisControl')</paragraph>
-      <paragraph role="pycode" xml-lang="en-US" id="pyc_id821620319176082">ctrl.Resize(300, 200, 1500)  # Height is unchanged</paragraph>
+      <paragraph role="pycode" id="pyc_id821620319176082">ctrl.Resize(300, 200, 1500)  # Height is unchanged</paragraph>
     </pycode>
 </section>
 
@@ -1226,7 +1227,7 @@
    </bookmark>
    <h2 id="hd_id681583933076692" localize="false">SetFocus</h2>
    <paragraph role="paragraph" id="par_id871583933076448">Set the focus on the control. Return <literal>True</literal> if focusing was successful.</paragraph>
-   <paragraph role="paragraph" id="par_id151598178880227" xml-lang="en-US">This method is often called from a dialog or control event.</paragraph>
+   <paragraph role="paragraph" id="par_id151598178880227">This method is often called from a dialog or control event.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id11620310325234">
      <input>svc.SetFocus(): bool</input>
@@ -1320,7 +1321,7 @@
    </bookmark>
    <h2 id="hd_id961598619892816" localize="false">WriteLine</h2>
    <paragraph role="paragraph" id="par_id671598619892378">Add a new line at the end of a multiline text field. A newline character will be inserted when appropriate. The method returns <literal>True</literal> when successful.</paragraph>
-   <paragraph role="paragraph" id="par_id941598619892915" xml-lang="en-US">An error is raised if the actual control is not of the type <literal>TextField</literal> or is not multiline.</paragraph>
+   <paragraph role="paragraph" id="par_id941598619892915">An error is raised if the actual control is not of the type <literal>TextField</literal> or is not multiline.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id841620310387185">
      <input>svc.WriteLine(opt line: str): bool</input>

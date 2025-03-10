@@ -18,6 +18,7 @@
 <section id="SFDocuments-sf_Dialog">
    <bookmark localize="false" branch="index" id="bm_id41582391760252">
       <bookmark_value>Dialog service</bookmark_value>
+      <bookmark_value>DialogEvent service</bookmark_value>
    </bookmark>
 </section>
 <section id="abstract">
@@ -310,15 +311,12 @@
    </table>
    <h2 id="hd_id421612628828054">Event properties</h2>
    <section id="OnEventsDefinition">
-   <paragraph role="paragraph" id="par_id41612629140856"><literal>On…</literal> properties return a URI string with the reference to the script triggered by the event. <literal>On…</literal> properties can be set programmatically.<br/>Read its specification in the <link href="https://wiki.documentfoundation.org/Documentation/DevGuide/Scripting_Framework#Scripting_Framework_URI_Specification">scripting framework URI specification</link>.</paragraph>
+   <paragraph role="paragraph" id="par_id41612629140856"><literal>On…</literal> event properties are URI strings that reference a script triggered for an event. Read its specification in the <link href="https://wiki.documentfoundation.org/Documentation/DevGuide/Scripting_Framework#Scripting_Framework_URI_Specification">scripting framework URI specification</link>.</paragraph>
    </section>
    <table id="tab_id951612628879819">
       <tablerow>
          <tablecell>
             <paragraph id="par_id961612628879819" role="tablehead">Name</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id401612628879819" role="tablehead">Read/Write</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id281612628879819" role="tablehead">Basic IDE Description</paragraph>
@@ -329,18 +327,12 @@
             <paragraph id="par_id431612629836735" localize="false" role="tablecontent">OnFocusGained</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id111612629836630" role="tablecontent">Yes</paragraph>
-         </tablecell>
-         <tablecell>
             <paragraph id="par_id1001612629836902" role="tablecontent">When receiving focus</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
          <tablecell>
             <paragraph id="par_id701612629836389" localize="false" role="tablecontent">OnFocusLost</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id291612629836294" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id62161262983683" role="tablecontent">When losing focus</paragraph>
@@ -351,18 +343,12 @@
             <paragraph id="par_id241612629836863" localize="false" role="tablecontent">OnKeyPressed</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id81612629836634" role="tablecontent">Yes</paragraph>
-         </tablecell>
-         <tablecell>
             <paragraph id="par_id881612629836744" role="tablecontent">Key pressed</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
          <tablecell>
             <paragraph id="par_id201612629836996" localize="false" role="tablecontent">OnKeyReleased</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id591612629836830" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id161612629836775" role="tablecontent">Key released</paragraph>
@@ -373,18 +359,12 @@
             <paragraph id="par_id111612629836950" localize="false" role="tablecontent">OnMouseDragged</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id891612629836630" role="tablecontent">Yes</paragraph>
-         </tablecell>
-         <tablecell>
             <paragraph id="par_id461612629836679" role="tablecontent">Mouse moved while key presses</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
          <tablecell>
             <paragraph id="par_id711612629836495" localize="false" role="tablecontent">OnMouseEntered</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id131612629836291" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id151612629836151" role="tablecontent">Mouse inside</paragraph>
@@ -395,18 +375,12 @@
             <paragraph id="par_id971612629836286" localize="false" role="tablecontent">OnMouseExited</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id211612629836725" role="tablecontent">Yes</paragraph>
-         </tablecell>
-         <tablecell>
             <paragraph id="par_id361612629836624" role="tablecontent">Mouse outside</paragraph>
          </tablecell>
       </tablerow>
       <tablerow>
          <tablecell>
             <paragraph id="par_id721612629836537" localize="false" role="tablecontent">OnMouseMoved</paragraph>
-         </tablecell>
-         <tablecell>
-            <paragraph id="par_id311612629836481" role="tablecontent">Yes</paragraph>
          </tablecell>
          <tablecell>
             <paragraph id="par_id721612629836752" role="tablecontent">Mouse moved</paragraph>
@@ -417,9 +391,6 @@
             <paragraph id="par_id55161262983695" localize="false" role="tablecontent">OnMousePressed</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id981612629836116" role="tablecontent">Yes</paragraph>
-         </tablecell>
-         <tablecell>
             <paragraph id="par_id381612629836635" role="tablecontent">Mouse button pressed</paragraph>
          </tablecell>
       </tablerow>
@@ -428,14 +399,12 @@
             <paragraph id="par_id621612629836155" localize="false" role="tablecontent">OnMouseReleased</paragraph>
          </tablecell>
          <tablecell>
-            <paragraph id="par_id711612629836704" role="tablecontent">Yes</paragraph>
-         </tablecell>
-         <tablecell>
             <paragraph id="par_id35161262983642" role="tablecontent">Mouse button released</paragraph>
          </tablecell>
       </tablerow>
     </table>
     <section id="OnEventsWarning">
+     <tip id="par_id661742233979615"><emph>Tip: </emph><literal>All On…</literal> properties can be set programmatically.<br/> <link href="https://wiki.documentfoundation.org/Macros/ScriptForge/TreeControlExample">How to display data in a tree control</link> example in %PRODUCTNAME Wiki demonstrates such.</tip>
       <warning id="par_id401687779361420">Assigning events via the Basic IDE and assigning events via macros are mutually exclusive.</warning>
     </section>
   </section>
@@ -460,11 +429,11 @@
            <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateDateField">CreateDateField</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateFileControl">CreateFileControl</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateFixedLine">CreateFixedLine</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateFixedText">CreateFixedText</link><br/>
          </paragraph>
        </tablecell>
        <tablecell>
          <paragraph id="par_id451606472825856" role="tablecontent" localize="false">
-           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateFixedText">CreateFixedText</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateFormattedField">CreateFormattedField</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateGroupBox">CreateGroupBox</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateHyperlink">CreateHyperlink</link><br/>
@@ -475,26 +444,29 @@
            <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateProgressBar">CreateProgressBar</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateRadioButton">CreateRadioButton</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateScrollBar">CreateScrollBar</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateTableControl">CreateTableControl</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateTabPageContainer">CreateTabPageContainer</link><br/>
          </paragraph>
        </tablecell>
        <tablecell>
          <paragraph id="par_id161606472825856" role="tablecontent" localize="false">
-           <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateTableControl">CreateTableControl</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateTextField">CreateTextField</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateTimeField">CreateTimeField</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#CreateTreeControl">CreateTreeControl</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#EndExecute">EndExecute</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#Execute">Execute</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#GetTextsFromL10N">GetTextsFromL10N</link><br/>
-           <link href="text/sbasic/shared/03/sf_dialog.xhp#Resize">Resize</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#ImportControl">ImportControl</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#OrderTabs">OrderTabs</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#Resize">Resize</link><br/>
            <link href="text/sbasic/shared/03/sf_dialog.xhp#SetPageManager">SetPageManager</link><br/>
-           <link href="text/sbasic/shared/03/sf_dialog.xhp#Terminate">Terminate</link><br/>
+           <link href="text/sbasic/shared/03/sf_dialog.xhp#Terminate">Terminate</link><br/><br/>
          </paragraph>
        </tablecell>
     </tablerow>
   </table>
   </section>
+  <tip id="par_id361742221167679"><literal>TabPageContainer</literal> controls are not available in Dialog Editor.</tip>
 
 <section id="DialogUnits">
 <note id="par_id161660427825856">Dimensioning a dialog is done by using <link href="text/sbasic/shared/00000002.xhp#AppFontUnits">Map AppFont units</link>. A dialog or control model also uses AppFont units. While their views use pixels.</note>
@@ -1094,7 +1066,7 @@
 </section>
 
 <section id="CreateTableControl">
-  <comment> CreateTableControl ------------------------------------------------------------------------------------------------------------------------ </comment>
+  <comment> CreateTableControl ---------------------------------------------------------------------------------------- </comment>
    <bookmark localize="false" branch="index" id="bm_id171598185776261">
       <bookmark_value>Dialog service;CreateTableControl</bookmark_value>
    </bookmark>
@@ -1120,8 +1092,33 @@
    </pycode>
 </section>
 
+<section id="CreateTabPageContainer">
+  <comment> CreateTabPageContainer ---------------------------------------------------------------------------------------- </comment>
+   <bookmark localize="false" branch="index" id="bm_id172608185776261">
+      <bookmark_value>Dialog service;CreateTabPageContainer</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id4918951858TabPageCtrl" localize="false">CreateTabPageContainer</h2>
+   <paragraph role="paragraph" id="par_id311502985787722">Creates a new control of type <literal>TabPageContainer</literal> in the current dialog. Tabs are spread over separate lines inside the dialog when necessary. Multiple <literal>TabPageContainer</literal> are not supported.</paragraph>
+   <warning id="par_id371742219905086"><literal>TagePageContainer</literal> control creation comes always last in a dialog creation.</warning>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_CreateTabPageContainer"><input>svc.CreateTabPageContainer(ControlName: str, Place: any, TabHeaders: str[1..*], Border: str = "3D"): svc</input></paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateSharedParms"/>
+   <paragraph role="paragraph" id="par_id351688394093486"><emph>TabHeaders</emph>: An array of strings defining each individual label for tabs</paragraph>
+   <paragraph role="paragraph" id="par_id541689403982300"><emph>Border</emph>: "3D" (default), "FLAT" or "NONE"</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id901688394013227" localize="false">Set myTabPageContainer = oDlg.CreateTabPageContainer("someContainer", Array(20, 20, 60, 15), TabHeaders := Array("Modules", "Dialogs", "Libraries"))</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id201688393023277" localize="false">myTabPageContainer = dlg.CreateTabPageContainer('theTabs', TabHeaders=('Modules', 'Dialogs', 'Libraries'), place=(20, 20, 60, 15))</paragraph>
+   </pycode>
+</section>
+
 <section id="CreateTextField">
-  <comment> CreateTextField ------------------------------------------------------------------------------------------------------------------------- </comment>
+  <comment> CreateTextField ----------------------------------------------------------------------------------------------- </comment>
    <bookmark localize="false" branch="index" id="bm_id171598196876261">
       <bookmark_value>Dialog service;CreateTextField</bookmark_value>
    </bookmark>
@@ -1298,6 +1295,34 @@
      <paragraph role="pycode" localize="false" id="pyc_id251620302328896">dlg.Execute()</paragraph>
    </pycode>
    <tip id="par_id901637872163895">Read the <link href="text/sbasic/shared/03/sf_l10n.xhp">L10N service</link> help page to learn more about how PO and POT files are handled.</tip>
+</section>
+
+<section id="ImportControl">
+  <comment> ImportControl ----------------------------------------------------------------------------------------- </comment>
+   <bookmark localize="false" branch="index" id="bm_id142619297953729">
+      <bookmark_value>Dialog service;ImportControl</bookmark_value>
+   </bookmark>
+   <h2 id="hd_id101598298953321" localize="false">ImportControl</h2>
+   <paragraph role="paragraph" id="par_id21598299063697">Import and duplicate an existing control of any type from one dialog to the actual dialog. The duplicated control is left unchanged. The new control can be renamed and relocated. Events handlers, when present, may be imported too.</paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+   <paragraph role="paragraph" localize="false" id="par_id711721738389339"><input>svc.ImportControl(SourceDialog: svc, SourceName: str, opt ControlName: str, Page: num = 0, OffsetX: num = 0, OffsetY:num = 0, IncludeOnProperties: bool = False): svc</input></paragraph>
+   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+   <paragraph role="paragraph" id="par_id111688543709861"><emph>SourceDialog</emph>: an <literal>SFDialogs.Dialog</literal> class instance.</paragraph>
+   <paragraph role="paragraph" id="par_id381688543709284"><emph>SourceName</emph>: the name of the control to import.</paragraph>
+   <paragraph role="paragraph" id="par_id381689653709284"><emph>ControlName</emph>: the name of the new control. It must not exist yet. Default is <emph>SourceName</emph></paragraph>
+   <paragraph role="paragraph" id="par_id321688543709637"><emph>Page</emph>: the page number of the new control. Default = 0</paragraph>
+   <paragraph role="paragraph" id="par_id222688543709861"><emph>OffsetX, OffsetY</emph>: the number of pixels to add to the source control coordinates in &quot;Map AppFont&quot; units. Default = 0, may be negative.</paragraph>
+   <paragraph role="paragraph" id="par_id321799543709637"><emph>IncludeOnProperties</emph>: include the OnXXX event properties. Default = False.</paragraph>
+   <embed href="text/sbasic/shared/03/sf_dialog.xhp#CreateReturn"/>
+   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+   <bascode>
+     <paragraph role="bascode" id="bas_id791620301085142" localize="false">Set mCtrl = oDlg.ImportControl(srceDlg, "someCtrlName")</paragraph>
+   </bascode>
+   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+   <pycode>
+     <paragraph role="pycode" id="pyc_id941631403073866" localize="false">dlg.ImportControl(srceDlg, 'aCtrlName', includeOnProperties=true)</paragraph>
+   </pycode>
 </section>
 
 <section id="OrderTabs">
