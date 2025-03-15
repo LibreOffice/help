@@ -21,16 +21,11 @@ xsltproc xap_template_query.xsl <file.xhp>
     <xsl:variable name="target" select="concat('/',$productversion,'/')"/>
     <!-- Strings for the help UI page -->
     <xsl:variable name ="ui_contents"><xsl:apply-templates select="//variable[@id='contents']"/></xsl:variable>
-    <xsl:variable name ="ui_index"><xsl:apply-templates select="//variable[@id='index']"/></xsl:variable>
-    <xsl:variable name ="ui_pholderbmarksall"><xsl:apply-templates select="//variable[@id='pholderbmarksall']"/></xsl:variable>
-    <xsl:variable name ="ui_pholderbmarkschosen"><xsl:apply-templates select="//variable[@id='pholderbmarkschosen']"/></xsl:variable>
     <xsl:variable name ="ui_pholderfullsearch"><xsl:apply-templates select="//variable[@id='pholderfullsearch']"/></xsl:variable>
     <xsl:variable name ="ui_module"><xsl:apply-templates select="//variable[@id='module']"/></xsl:variable>
-    <xsl:variable name ="ui_language"><xsl:apply-templates select="//variable[@id='language']"/></xsl:variable>
     <xsl:variable name ="ui_donate"><xsl:apply-templates select="//variable[@id='donate']"/></xsl:variable>
     <xsl:variable name ="ui_logo"><xsl:apply-templates select="//variable[@id='LibreOfficeHelp']"/></xsl:variable>
     <xsl:variable name ="ui_selectmodule"><xsl:apply-templates select="//variable[@id='selectmodule']"/></xsl:variable>
-    <xsl:variable name ="ui_selectlang"><xsl:apply-templates select="//variable[@id='selectlanguage']"/></xsl:variable>
     <xsl:variable name ="ui_search"><xsl:apply-templates select="//variable[@id='searchhelpcontents']"/></xsl:variable>
 
     <xsl:variable name="brand3" select="'%PRODUCTNAME'"/>
@@ -79,16 +74,9 @@ $def{SPAGE,<input type=submit name="[" value="$1" disabled=disabled>}
 <link rel="shortcut icon" href="media/navigation/favicon.ico"/>
 <link  type="text/css" href="normalize.css" rel="Stylesheet"/>
 <link  type="text/css" href="default.css" rel="Stylesheet"/>
-<link  type="text/css" href="prism.css" rel="Stylesheet"/>
 <script type="text/javascript" src="polyfills.js"></script>
-<script type="text/javascript" src="languages.js"></script>
-<script type="text/javascript" src="]]><xsl:value-of select="$lang"/><![CDATA[/langnames.js"></script>
-<script type="text/javascript" src="flexsearch.debug.js"></script>
-<script type="text/javascript" src="prism.js"></script>
 <script type="text/javascript" src="help2.js" defer=""></script>
 <script type="text/javascript" src="a11y-toggle.js" defer=""></script>
-<script type="text/javascript" src="paginathing.js" defer=""></script>
-<script type="text/javascript" src="]]><xsl:value-of select="$lang"/><![CDATA[/bookmarks.js" defer=""></script>
 <script type="text/javascript" src="]]><xsl:value-of select="$lang"/><![CDATA[/contents.js" defer=""></script>
 <script type="text/javascript" src="help.js" defer=""></script>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -108,38 +96,29 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
 </script>
 </head>
 <body>
-<div id="TopLeftHeader">
-    <header>
-        <div class="logo-container">
+    <header id="TopLeftHeader">
+         <a class="symbol" href="]]><xsl:value-of select="$lang"/><![CDATA[/text/shared/05/new_help.html"><div></div></a>
             <a class="logo" href="]]><xsl:value-of select="$lang"/><![CDATA[/text/shared/05/new_help.html">
-                <div class="symbol"></div>
-                <p>]]><xsl:value-of select="$ui_logo"/><![CDATA[</p>
+                <p dir="auto">]]><xsl:value-of select="$ui_logo"/><![CDATA[</p>
             </a>
-        </div>
-    </header>
-</div>
+        <div class="dropdowns">
 <div class="modules">
-    <button type="button" data-a11y-toggle="modules-nav" id="modules" onclick="setupModules(']]><xsl:value-of select="$lang"/><![CDATA[');" aria-haspopup="true" aria-expanded="false" aria-controls="modules-nav">]]><xsl:value-of select="$ui_module"/><![CDATA[
+                <button type="button" data-a11y-toggle="modules-nav" id="modules" aria-haspopup="true" aria-expanded="false" aria-controls="modules-nav">]]>
+                    <xsl:value-of select="$ui_module"/><![CDATA[
     </button>
     <nav id="modules-nav" hidden=""/><!-- is filled in via setupModules() on demand -->
 </div>
-<aside class="rightside">
+        </div>
+    </header>
+    <aside class="leftside">
     <input id="accordion-1" name="accordion-menu" type="checkbox"/>
     <label for="accordion-1">]]><xsl:value-of select="$ui_contents"/><![CDATA[</label>
     <div id="Contents" class="contents-treeview"></div>
 </aside>
-<aside class="leftside">
-    <div id="Index">
-        <div class="index-label">]]><xsl:value-of select="$ui_index"/><![CDATA[ &#32;&#x1f50e;&#xfe0e;&#32;</div>
-        <div id="Bookmarks">
-            <input id="search-bar" type="search" class="search" placeholder="]]><xsl:value-of select="$ui_pholderbmarkschosen"/><![CDATA["/>
-            <nav class="index"></nav>
-        </div>
-    </div>
-</aside>
+
 <div id="DonationFrame">
     <div class="donation">
-        <p><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">]]><xsl:value-of select="$ui_donate"/><![CDATA[</a></p>
+        <p dir="auto"><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">]]><xsl:value-of select="$ui_donate"/><![CDATA[</a></p>
     </div>
 </div>
 <div id="SearchFrame">
@@ -147,7 +126,9 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
     </div>
 </div>
 <div id="DisplayArea">
-    <form name="P" method="get" action="]]><xsl:value-of select="$lang"/><![CDATA[/search" target="_top">
+    <form name="P" method="get" action="/cgi-bin/omega/omega" target="_top">
+        <input type="hidden" name="DB" value="]]><xsl:value-of select="$lang"/><![CDATA[2404"/>
+        <input type="hidden" name="FMT" value="24.04/]]><xsl:value-of select="$lang"/><![CDATA[/xap_tpl"/>
 <center>
 <input id="omega-autofocus" type=search name=P placeholder="]]><xsl:value-of select="$ui_pholderfullsearch"/>"<![CDATA[ value="$html{$query}" size=40 autofocus>
 <script>
@@ -245,9 +226,8 @@ ${Preserve any B filters used - this needs modifying if you modify this template
   to have B on radio buttons, SELECT, etc}
 $map{$cgilist{B},<input type=hidden name=B value="$html{$_}">}
 </form>
-<hr><div align=right><i><small><a href="https://xapian.org/">$html{$version}</a></small></i></div>
     <footer>
-        <p><a href="https://www.collaboraoffice.com/about-us/" target="_blank">About Us</a> | <a href="https://www.collaboraoffice.com/privacy-policy/" target="_blank">Privacy Policy</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in TDF's <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. Collabora Office is derived from LibreOffice which was based on OpenOffice.org.</p>
+        <p><a href="https://www.collaboraonline.com/about-us/" target="_blank">About Us</a> | <a href="https://www.collaboraonline.com/privacy-policy/" target="_blank">Privacy Policy</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in TDF's <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. Collabora Office is derived from LibreOffice which was based on OpenOffice.org.</p>
     </footer>
 </body>
 </html>

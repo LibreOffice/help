@@ -227,7 +227,7 @@
                 <div class="xapian-omega-search">
                     <form name="P" method="get" action="/cgi-bin/omega/omega" target="_top">
                         <input type="hidden" name="DB" value="{$lang}2404"/>
-                        <input type="hidden" name="FMT" value="cp-query"/>
+                        <input type="hidden" name="FMT" value="24.04/{$lang}/xap_tpl"/>
                         <input type="hidden" name="DEFAULTOP" value="and"/>
                         <input id="omega-autofocus" type="search" name="P" placeholder="{$ui_pholderfullsearch}" dir="auto"/>
                         <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
