@@ -188,7 +188,7 @@ $if{$field{size},<span title="$html{$field{size}} bytes">]]><xsl:apply-templates
 <a href="$html{$field{url}}">$html{$prettyurl{$field{url}}}</a><br>
 <small>
 ]]><xsl:apply-templates select="//variable[@id='xap_matching']"/><![CDATA[
-<i>$list{$map{$terms,$html{$prettyterm{$_}}},</i>$. <i>,</i> and <i>}</i></small>${for lynx:}<p></td></tr>}
+<i>$list{$map{$terms,$html{$prettyterm{$_}}},</i>$. <i>,</i> ]]><xsl:apply-templates select="//variable[@id='xap_and']"/><![CDATA[ <i>}</i></small>${for lynx:}<p></td></tr>}
 </table>
 
 <br><center>
