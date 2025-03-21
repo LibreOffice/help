@@ -57,19 +57,24 @@
 <paragraph id="par_idN10625" role="paragraph" xml-lang="en-US">The following code uses the service <literal>com.sun.star.ui.dialogs.FilePicker</literal> to show an open file dialog:</paragraph>
 <bascode>
 <paragraph id="par_idm1206777616" role="bascode" localize="false">Sub Main</paragraph>
-<paragraph id="par_idN1062B" role="bascode" xml-lang="en-US">    fName = FileOpenDialog ("Please select a file")</paragraph>
-<paragraph id="par_idN10630" role="bascode" xml-lang="en-US">    Print "file chosen: "+fName</paragraph>
+<paragraph id="par_idN1062B" role="bascode" xml-lang="en-US">   fName = FileOpenDialog ("Please select a file")</paragraph>
+<paragraph id="par_idN10630" role="bascode" xml-lang="en-US">   Print "file chosen: "+fName</paragraph>
 <paragraph id="par_idm1206774256" role="bascode" localize="false">End Sub</paragraph>
 <paragraph id="par_idm1206773152" role="bascode" localize="false"> </paragraph>
 <paragraph id="par_idm1206772000" role="bascode" localize="false">Function FileOpenDialog(title As String) As String</paragraph>
-<paragraph id="bas_id11593417954966" role="bascode" localize="false">    res = com.sun.star.ui.dialogs.ExecutableDialogResults</paragraph>
-<paragraph id="par_idm1206770832" role="bascode" localize="false">    filepicker = CreateUnoService("com.sun.star.ui.dialogs.FilePicker")</paragraph>
-<paragraph id="par_idm1206769648" role="bascode" localize="false">    filepicker.Title = title</paragraph>
-<paragraph id="par_idm1217869648" role="bascode" localize="false">    filepicker.MultiSelectionMode = True</paragraph>
-<paragraph id="par_idm1206768496" role="bascode" localize="false">    If res.OK = filepicker.execute() Then </paragraph>
-<paragraph id="par_idm1206767344" role="bascode" localize="false">        files = filepicker.getSelectedFiles()</paragraph>
-<paragraph id="par_idm1206766192" role="bascode" localize="false">        FileOpenDialog=files(0)</paragraph>
-<paragraph id="bas_id11593417954" role="bascode" localize="false">    EndIf</paragraph>
+<paragraph id="bas_id11593417954966" role="bascode" localize="false">   res = com.sun.star.ui.dialogs.ExecutableDialogResults</paragraph>
+<paragraph id="par_idm1206770832" role="bascode" localize="false">   filepicker = CreateUnoService("com.sun.star.ui.dialogs.FilePicker")</paragraph>
+<paragraph role="bascode" id="bas_id401742572452517" localize="false">   With filepicker</paragraph>
+<paragraph id="par_idm1206769648" role="bascode" localize="false">      .Title = title</paragraph>
+<paragraph id="par_idm1217869648" role="bascode" localize="false">      .MultiSelectionMode = True</paragraph>
+<paragraph role="bascode" id="bas_id41742572670238" localize="false">      .appendFilter("Calc docs","*.ods;*.csv;*.123")</paragraph>
+<paragraph role="bascode" id="bas_id531742572671843" localize="false">      .appendFilter("Writer or Base docs","*.odt;*.odb")</paragraph>
+<paragraph role="bascode" id="bas_id981742572673486" localize="false">      .appendFilter("All files","*.*")</paragraph>
+<paragraph id="par_idm1206768496" role="bascode" localize="false">       If res.OK = .execute() Then </paragraph>
+<paragraph id="par_idm1206767344" role="bascode" localize="false">          files = .getSelectedFiles()</paragraph>
+<paragraph id="par_idm1206766192" role="bascode" localize="false">          FileOpenDialog=files(0)</paragraph>
+<paragraph id="bas_id11593417954" role="bascode" localize="false">       EndIf</paragraph>
+<paragraph role="bascode" id="bas_id401742583552517" localize="false">   End With</paragraph>
 <paragraph id="par_idm1206765040" role="bascode" localize="false">End Function ' FileOpenDialog</paragraph>
 </bascode>
 <section id="relatedtopics">
