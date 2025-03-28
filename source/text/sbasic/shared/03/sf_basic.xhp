@@ -9,7 +9,7 @@
  *
 -->
 <meta>
-  <topic id="SF_Document" indexer="include" status="PUBLISH">
+  <topic id="SF_Basic" indexer="include" status="PUBLISH">
     <title id="tit" xml-lang="en-US">ScriptForge.Basic service</title>
     <filename>/text/sbasic/shared/03/sf_basic.xhp</filename>
   </topic>
@@ -158,10 +158,10 @@
              <link href="text/sbasic/shared/03/sf_basic.xhp#CDate">CDate</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#CDateFromUnoDateTime">CDateFromUnoDateTime</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#CDateToUnoDateTime">CDateToUnoDateTime</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#ConvertFromUrl">ConvertFromUrl</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#ConvertToUrl">ConvertToUrl</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#ConvertFromUrl">ConvertFromUrl</link> (*)<br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#ConvertToUrl">ConvertToUrl</link> (*)<br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#CreateUnoService">CreateUnoService</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#CreateUnoStruct">CreateUnoStruct</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#CreateUnoStruct">CreateUnoStruct</link> (*)<br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#DateAdd">DateAdd</link><br/>
            </paragraph>
        </tablecell>
@@ -172,8 +172,8 @@
              <link href="text/sbasic/shared/03/sf_basic.xhp#DateValue">DateValue</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#Format">Format</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#GetDefaultContext">GetDefaultContext</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#GetGuiType">GetGuiType</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#GetPathSeparator">GetPathSeparator</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#GetGuiType">GetGuiType</link> (*)<br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#GetPathSeparator">GetPathSeparator</link> (*)<br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#GetSystemTicks">GetSystemTicks</link><br/>
            </paragraph>
        </tablecell>
@@ -181,8 +181,8 @@
            <paragraph id="par_id761611086279903" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_basic.xhp#BasicLibraries">GlobalScope.BasicLibraries</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#DialogLibraries">GlobalScope.DialogLibraries</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#InputBox">InputBox</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#MsgBox">MsgBox</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#InputBox">InputBox</link> (*)<br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#MsgBox">MsgBox</link> (*)<br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#Now">Now</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#RGB">RGB</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#Xray">Xray</link><br/><br/>
@@ -191,6 +191,7 @@
    </tablerow>
   </table>
   </section>
+  <note id="par_id891743424581473">Python alternatives exist for methods marked with <emph>(*)</emph>.</note>
 
 <section id="CDate">
   <comment> CDate ------------------------------------------------------------------------- </comment>
@@ -261,7 +262,6 @@
     <paragraph role="pycode" localize="false" id="pyc_id191621952701458">bas.MsgBox(str(uno_date.Year) + "-" + str(uno_date.Month) + "-" + str(uno_date.Day))</paragraph>
   </pycode>
 </section>
-
 <section id="ConvertFromUrl">
   <comment> ConvertFromUrl ------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
@@ -277,8 +277,14 @@
   <paragraph role="paragraph" id="par_id81618502493505">A system path file name.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id41158919969836">filename = bas.ConvertFromUrl( "file:///C:/Program%20Files%20(x86)/LibreOffice/News.txt")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id41158919969836">filename = bas.ConvertFromUrl( "file:///C:/Program%20Files%20(x86)/LibreOffice/News.txt" )</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id881611147617212">bas.MsgBox(filename)</paragraph>
+  </pycode>
+  <tip id="par_id51743414232819"><link href="text/sbasic/python/python_programming.xhp">uno module</link> fileUrlToSystemPath() method returns a system path using an identical syntax.</tip>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id731743414363054">import uno</paragraph>
+    <paragraph role="pycode" id="pyc_id541743414376664">filename = uno.fileUrlToSystemPath( "file:///C:/Program%20Files%20(x86)/LibreOffice/News.txt" )</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id882721147617212">bas.MsgBox(filename)</paragraph>
   </pycode>
 </section>
 
@@ -297,8 +303,14 @@
   <paragraph role="paragraph" id="par_id61658101307414">A <literal>file:</literal> URL as a string.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
-    <paragraph role="pycode" localize="false" id="pyc_id891985200121516">url = bas.ConvertToUrl( 'C:\Program Files(x86)\LibreOffice\News.txt')</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id891985200121516">url = bas.ConvertToUrl( 'C:\Program Files(x86)\LibreOffice\News.txt' )</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id51589200605125">bas.MsgBox(url)</paragraph>
+  </pycode>
+  <tip id="par_id51744524232819"><link href="text/sbasic/python/python_programming.xhp">uno module</link> systemPathToFileUrl() method returns a file URL for the given system path.</tip>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id742843414363054">from uno import systemPathToFileUrl as ConvertToUrl</paragraph>
+    <paragraph role="pycode" id="pyc_id552843414376664">filename = ConvertToUrl( 'C:\Program Files(x86)\LibreOffice\News.txt' )</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id992611147617212">bas.MsgBox(filename)</paragraph>
   </pycode>
 </section>
 
@@ -333,6 +345,12 @@
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id891589200121516">date_struct = CreateUnoStruct('com.sun.star.util.DateTime')</paragraph>
+  </pycode>
+  <tip id="par_id51743424332819"><link href="text/sbasic/python/python_programming.xhp">uno module</link> createUnoStruct() method creates an instance of a Uno structure type.</tip>
+  <pycode>
+    <paragraph role="pycode" id="pyc_id731754514363054">import uno</paragraph>
+    <paragraph role="pycode" id="pyc_id541754514376664">p = uno.createUnoStruct( 'com.sun.star.beans.Property' )</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id882722257617212">bas.MsgBox(p)</paragraph>
   </pycode>
 </section>
 
@@ -480,6 +498,7 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id154389205147164">n = bas.GetGuiType()</paragraph>
   </pycode>
+  <embed href="text/sbasic/shared/GetPathSeparator.xhp#PlatformID"/>
 </section>
 
 <section id="GetPathSeparator">
