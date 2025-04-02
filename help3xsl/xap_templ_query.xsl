@@ -148,7 +148,7 @@ $if{$suggestion,]]><xsl:apply-templates select="//variable[@id='xap_didyoumean']
 
 $or{$html{$error},
 $if{$eq{$msize,0},
-$if{$query,]]><xsl:apply-templates select="//variable[@id='xap_no_match']"/><![CDATA[,
+$if{$query$.]]><xsl:apply-templates select="//variable[@id='xap_no_match']"/><![CDATA[,
 <hr>]]><xsl:apply-templates select="//variable[@id='xap_searching_doc']"/><![CDATA[
 },
 $if{$not{$msizeexact},
