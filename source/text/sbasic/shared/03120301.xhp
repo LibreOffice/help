@@ -20,7 +20,7 @@
 
 <meta>
   <topic id="textsbasicshared03120301xml" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">Format Function</title>
+    <title id="tit">Format Function</title>
     <filename>/text/sbasic/shared/03120301.xhp</filename>
   </topic>
 </meta>
@@ -29,78 +29,328 @@
 
 
 <section id="format">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3153539">
+<bookmark branch="index" id="bm_id3153539">
   <bookmark_value>Format function</bookmark_value>
 </bookmark>
 
 
 <h1 id="hd_id3153539"><link href="text/sbasic/shared/03120301.xhp">Format Function</link></h1>
-<paragraph id="par_id3156042" role="paragraph" xml-lang="en-US">Converts a numeric expression to a string, and then formats it according to the format that you specify.</paragraph>
+<paragraph id="par_id3156042" role="paragraph">Converts a numeric expression to a string, and then formats it according to the format that you specify.</paragraph>
 </section>
 
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
-<paragraph id="par_id3153527" role="bascode" xml-lang="en-US">Format(expression [, format As String]) As String</paragraph>
+<paragraph id="par_id3153527" role="bascode">Format(expression [, format As String]) As String</paragraph>
 </bascode>
 
 <section id="ValueParms">
 <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-<paragraph id="par_id3149415" role="paragraph" xml-lang="en-US"> <emph>expression</emph>: Numeric expression that you want to convert to a formatted string.</paragraph>
-<paragraph id="par_id3147531" role="paragraph" xml-lang="en-US"> <emph>format</emph>: String that specifies the format code for the number. If <literal>format</literal> is omitted, the Format function works like the %PRODUCTNAME Basic <literal>Str()</literal> function.</paragraph>
+<paragraph id="par_id3149415" role="paragraph"> <emph>expression</emph>: Numeric expression that you want to convert to a formatted string.</paragraph>
+<paragraph id="par_id3147531" role="paragraph"> <emph>format</emph>: String that specifies the format code for the number. If <literal>format</literal> is omitted, the Format function works like the %PRODUCTNAME Basic <link href="text/sbasic/shared/03120103.xhp"><literal>Str()</literal> function</link>.</paragraph>
 
 <embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
-<paragraph id="par_id3148474" role="paragraph" xml-lang="en-US">Text string.</paragraph>
+<paragraph id="par_id3148474" role="paragraph">Text string.</paragraph>
 </section>
-
-<h2 id="hd_id3147561">Formatting Codes</h2>
-<section id="codes">
-<paragraph id="par_id3147265" role="paragraph" xml-lang="en-US">The following list describes the codes that you can use for formatting a numeric expression:</paragraph>
-<paragraph id="par_id3153380" role="paragraph" xml-lang="en-US"> <emph>0:</emph> If <literal>expression</literal> has a digit at the position of the 0 in the <literal>format</literal> code, the digit is displayed, otherwise a zero is displayed.</paragraph>
-<paragraph id="par_id3151210" role="paragraph" xml-lang="en-US">If <literal>expression</literal> has fewer digits than the number of zeros in the <literal>format</literal> code, (on either side of the decimal), leading or trailing zeros are displayed. If the <literal>expression</literal> has more digits to the left of the decimal separator than the amount of zeros in the <literal>format</literal> code, the additional digits are displayed without formatting.</paragraph>
-<paragraph id="par_id3151176" role="paragraph" xml-lang="en-US">Decimal places in the <literal>expression</literal> are rounded according to the number of zeros that appear after the decimal separator in the <literal>format</literal> code.</paragraph>
-<paragraph id="par_id3154123" role="paragraph" xml-lang="en-US"> <emph>#:</emph> If <literal>expression</literal> contains a digit at the position of the # placeholder in the <literal>format</literal> code, the digit is displayed, otherwise nothing is displayed at this position.</paragraph>
-<paragraph id="par_id3148452" role="paragraph" xml-lang="en-US">This symbol works like the 0, except that leading or trailing zeroes are not displayed if there are more # characters in the <literal>format</literal> code than digits in the <literal>expression</literal>. Only the relevant digits of the <literal>expression</literal> are displayed.</paragraph>
-<paragraph id="par_id3159150" role="paragraph" xml-lang="en-US"> <emph>.:</emph> The decimal placeholder determines the number of decimal places to the left and right of the decimal separator.</paragraph>
-<paragraph id="par_id3159252" role="paragraph" xml-lang="en-US">If the <literal>format</literal> code contains only # placeholders to the left of this symbol, numbers less than 1 begin with a decimal separator. To always display a leading zero with fractional numbers, use 0 as a placeholder for the first digit to the left of the decimal separator.</paragraph>
-<paragraph id="par_id3153368" role="paragraph" xml-lang="en-US"> <emph>%:</emph> Multiplies the <literal>expression</literal>by 100 and inserts the percent sign (%) where the <literal>expression</literal> appears in the <literal>format</literal> code.</paragraph>
-<paragraph id="par_id3149481" role="paragraph" xml-lang="en-US"> <emph>E- E+ e- e+ :</emph> If the <literal>format</literal> code contains at least one digit placeholder (0 or #) to the right of the symbol E-, E+, e-, or e+, the <literal>expression</literal> is formatted in the scientific or exponential format. The letter E or e is inserted between the number and the exponent. The number of placeholders for digits to the right of the symbol determines the number of digits in the exponent.</paragraph>
-<paragraph id="par_id3149262" role="paragraph" xml-lang="en-US">If the exponent is negative, a minus sign is displayed directly before an exponent with E-, E+, e-, e+. If the exponent is positive, a plus sign is only displayed before exponents with E+ or e+.</paragraph>
-<paragraph id="par_id3148617" role="paragraph" xml-lang="en-US">The thousands delimiter is displayed if the <literal>format</literal> code contains the delimiter enclosed by digit placeholders (0 or #).</paragraph>
-<paragraph id="par_id3163713" role="paragraph" xml-lang="en-US">The use of a period as a thousands and decimal separator is dependent on the regional setting. When you enter a number directly in Basic source code, always use a period as decimal delimiter. The actual character displayed as a decimal separator depends on the number format in your system settings.</paragraph>
-<paragraph id="par_id3152887" role="paragraph" xml-lang="en-US"> <emph>- + $ ( ) space:</emph> A plus (+), minus (-), dollar ($), space, or brackets entered directly in the <literal>format</literal> code is displayed as a literal character.</paragraph>
-<paragraph id="par_id3148576" role="paragraph" xml-lang="en-US">To display characters other than the ones listed here, you must precede it by a backslash (\), or enclose it in quotation marks (" ").</paragraph>
-<paragraph id="par_id3153139" role="paragraph" xml-lang="en-US"> <emph>\ :</emph> The backslash displays the next character in the <literal>format</literal> code.</paragraph>
-<paragraph id="par_id3153366" role="paragraph" xml-lang="en-US">Characters in the <literal>format</literal> code that have a special meaning can only be displayed as literal characters if they are preceded by a backslash. The backslash itself is not displayed, unless you enter a double backslash (\\) in the format code.</paragraph>
-<paragraph id="par_id3155411" role="paragraph" xml-lang="en-US">Characters that must be preceded by a backslash in the format code in order to be displayed as literal characters are date- and time-formatting characters (a, c, d, h, m, n, p, q, s, t, w, y, /, :), numeric-formatting characters (#, 0, %, E, e, comma, period), and string-formatting characters (@, &amp;, &lt;, &gt;, !).</paragraph>
-<paragraph id="par_id3145749" role="paragraph" xml-lang="en-US">You can also use the following predefined number formats. Except for <literal>"General Number"</literal>, all of the predefined format codes return the number as a decimal number with two decimal places.</paragraph>
-<paragraph id="par_id3150113" role="paragraph" xml-lang="en-US">If you use predefined formats, the name of the format must be enclosed in quotation marks.</paragraph>
-</section>
-
-<h2 id="hd_id3149377">Predefined format</h2>
 <section id="formats">
-<paragraph id="par_id3154730" role="paragraph" xml-lang="en-US"> <emph>General Number:</emph> Numbers are displayed as entered.</paragraph>
-<paragraph id="par_id3153158" role="paragraph" xml-lang="en-US"> <emph>Currency:</emph> Inserts a dollar sign in front of the number and encloses negative numbers in brackets.</paragraph>
-<paragraph id="par_id3154490" role="paragraph" xml-lang="en-US"> <emph>Fixed:</emph> Displays at least one digit in front of the decimal separator.</paragraph>
-<paragraph id="par_id3153415" role="paragraph" xml-lang="en-US"> <emph>Standard:</emph> Displays numbers with a thousands separator.</paragraph>
-<paragraph id="par_id3150715" role="paragraph" xml-lang="en-US"> <emph>Percent:</emph> Multiplies the number by 100 and appends a percent sign to the number.</paragraph>
-<paragraph id="par_id3153836" role="paragraph" xml-lang="en-US"> <emph>Scientific:</emph> Displays numbers in scientific format (for example, 1.00E+03 for 1000).</paragraph>
-<paragraph id="par_id3153707" role="paragraph" xml-lang="en-US">A <literal>format</literal> code can be divided into three sections that are separated by semicolons. The first part defines the format for positive values, the second part for negative values, and the third part for zero. If you only specify one <literal>format</literal> code, it applies to all numbers.</paragraph>
+<h2 id="hd_id3147561">Formatting Codes</h2>
+  <paragraph id="par_id3153707" role="paragraph"> In BASIC, a <literal>format</literal> code can be divided into three sections that are separated by semicolons. The first part defines the format for positive values, the second part for negative values, and the third part for zero. If you only specify one <literal>format</literal> code, it applies to all numbers.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#languageformat"/>
+
+<paragraph id="par_id3147265" role="paragraph">The following list describes the codes that you can use for formatting a numeric expression:</paragraph>
+
+<table id="tab_id41744242307526">
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id291744242307526" role="tablehead">Code</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id301744242307527" role="tablehead">Description</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id211744242307527" role="tablecontent"><literal>0</literal></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id251744242307527" role="tablecontent"> If <literal>expression</literal> has a digit at the position of the 0 in the <literal>format</literal> code, the digit is displayed, otherwise a zero is displayed.</paragraph>
+      <paragraph id="par_id3151210" role="paragraph">If <literal>expression</literal> has fewer digits than the number of zeros in the <literal>format</literal> code, (on either side of the decimal), leading or trailing zeros are displayed. If the <literal>expression</literal> has more digits to the left of the decimal separator than the amount of zeros in the <literal>format</literal> code, the additional digits are displayed without formatting.</paragraph>
+      <paragraph id="par_id3151176" role="paragraph">Decimal places in the <literal>expression</literal> are rounded according to the number of zeros that appear after the decimal separator in the <literal>format</literal> code.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id341744242425024" localize="false" role="tablecontent"><literal>#</literal></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id681744242425025" role="tablecontent">If <literal>expression</literal> contains a digit at the position of the # placeholder in the <literal>format</literal> code, the digit is displayed, otherwise nothing is displayed at this position.</paragraph>
+      <paragraph id="par_id3148452" role="paragraph">This symbol works like the 0, except that leading or trailing zeroes are not displayed if there are more # characters in the <literal>format</literal> code than digits in the <literal>expression</literal>. Only the relevant digits of the <literal>expression</literal> are displayed.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id281744242495479" localize="false" role="tablecontent"><literal>.</literal> (period)</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id621744242495479" role="tablecontent"> The decimal placeholder determines the number of decimal places to the left and right of the decimal separator.</paragraph>
+      <paragraph id="par_id3159252" role="paragraph">If the <literal>format</literal> code contains only # placeholders to the left of this symbol, numbers less than 1 begin with a decimal separator. To always display a leading zero with fractional numbers, use 0 as a placeholder for the first digit to the left of the decimal separator.</paragraph>
+      <paragraph id="par_id3163713" role="paragraph">The use of a period as a thousands and decimal separator is dependent on the regional setting. When you enter a number directly in Basic source code, always use a period as decimal delimiter. The actual character displayed as a decimal separator depends on the number format in your system settings.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id151744242578718" localize="false" role="tablecontent"><literal>%</literal></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3153368" role="tablecontent">Multiplies the <literal>expression</literal>by 100 and inserts the percent sign (%) where the <literal>expression</literal> appears in the <literal>format</literal> code.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id821744242638381" localize="false" role="tablecontent"><literal>E- E+ e- e+</literal></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3149481" role="tablecontent"> If the <literal>format</literal> code contains at least one digit placeholder (0 or #) to the right of the symbol E-, E+, e-, or e+, the <literal>expression</literal> is formatted in the scientific or exponential format. The letter E or e is inserted between the number and the exponent. The number of placeholders for digits to the right of the symbol determines the number of digits in the exponent.</paragraph>
+      <paragraph id="par_id3149262" role="paragraph">If the exponent is negative, a minus sign is displayed directly before an exponent with E-, E+, e-, e+. If the exponent is positive, a plus sign is only displayed before exponents with E+ or e+.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id21744242840823" localize="false" role="tablecontent"><literal>- + $ ( ) space</literal></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3152887" role="tablecontent"> <emph>:</emph> A plus (+), minus (-), dollar ($), space, or brackets entered directly in the <literal>format</literal> code is displayed as a literal character.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id941744242961238" localize="false" role="tablecontent"><literal>\ </literal></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id3148576" role="tablecontent">To display characters other than the ones listed here, you must precede it by a backslash (\), or enclose it in quotation marks (" ").</paragraph>
+      <paragraph id="par_id3153139" role="tablecontent">The backslash displays the next character in the <literal>format</literal> code.</paragraph>
+      <paragraph id="par_id3153366" role="tablecontent">Characters in the <literal>format</literal> code that have a special meaning can only be displayed as literal characters if they are preceded by a backslash. The backslash itself is not displayed, unless you enter a double backslash (\\) in the format code.</paragraph>
+      <paragraph id="par_id3155411" role="tablecontent">Characters that must be preceded by a backslash in the format code in order to be displayed as literal characters are date- and time-formatting characters (a, c, d, h, m, n, p, q, s, t, w, y, /, :), numeric-formatting characters (#, 0, %, E, e, comma, period), and string-formatting characters (@, &amp;, &lt;, &gt;, !).</paragraph>
+    </tablecell>
+  </tablerow>
+</table>
+
+<h2 id="hd_id3149377">Predefined formats</h2>
+<paragraph id="par_id3145749" role="paragraph">You can also use the following predefined number formats. Except for <literal>"General Number"</literal>, all of the predefined format codes return the number as a decimal number with two decimal places.</paragraph>
+<paragraph id="par_id3150113" role="paragraph">If you use predefined formats, the name of the format must be enclosed in quotation marks.</paragraph>
+
+
+  <table id="tab_id241744159489354">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id611744159489354" role="tablehead">Code</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id171744159489354" role="tablehead">Description</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id541744159489354" role="tablecontent"><literal>"&lt;"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id881744159489354" role="tablecontent">Convert <emph>expression</emph> to lower case</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id791744199159594" localize="false" role="tablecontent"><literal>"&gt;"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id291744199159594" role="tablecontent">Convert <emph>expression</emph> to upper case.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id681744199464819" localize="false" role="tablecontent"><literal>"c"</literal> or <literal>"General Date"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id361744199464819" role="tablecontent">Returns the numeric <emph>expression</emph> in short date format, optionally with "H:MM:SS AM/PM". If <emph>expression</emph> is a string, returns the string.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id611744201847866" localize="false" role="tablecontent"><literal>"n"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id901744201847866" role="tablecontent">Returns the minute of the numeric expression, with 1 or 2 digits.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id11744202245007" localize="false" role="tablecontent"><literal>"nn"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id811744202245007" role="tablecontent">Returns the minute of the numeric expression with two digits.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id451744202324652" localize="false" role="tablecontent"><literal>"w"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id271744202324652" role="tablecontent">Returns the week day of the numeric expression. 1 is Sunday and 7 is Saturday.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id301744202752746" localize="false" role="tablecontent"><literal>"General Number"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id951744202752746" role="tablecontent">Returns the numeric <emph>expression</emph> with 12 digits (0.############).</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id451744203556195" localize="false" role="tablecontent"><literal>"Currency"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id161744203556195" role="tablecontent">Returns the numeric <emph>expression</emph> in the currency of the locale.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id431744211292003" localize="false" role="tablecontent"><literal>"Fixed"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id791744211292003" role="tablecontent">Returns the numeric <emph>expression</emph> with 2 decimal places (0.00).</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id461744226480138" localize="false" role="tablecontent"><literal>"Standard"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id441744226480138" role="tablecontent">Returns the numeric <emph>expression</emph> with thousands separators and 2 decimals (@0.00).</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id361744226816859" localize="false" role="tablecontent"><literal>"Percent"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id591744226816859" role="tablecontent">Returns the numeric <emph>expression</emph> as percent value (0.00%).</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id361744227159266" localize="false" role="tablecontent"><literal>"Scientific"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id981744227159266" role="tablecontent">Returns the numeric <emph>expression</emph> in scientific notation (#.00E+00);</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id981744227329357" localize="false" role="tablecontent"><literal>"Yes/No"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id681744227329358" role="tablecontent">Returns "Yes" if the numeric <emph>expression</emph> is not equal to zero, "No" otherwise. "Yes" and "No" are localized.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id331744227745806" localize="false" role="tablecontent"><literal>"True/False"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id51744227745806" role="tablecontent">Returns "True" if the numeric <emph>expression</emph> is not equal to zero, "False" otherwise. "True" and "False" are localized.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id671744228504380" localize="false" role="tablecontent"><literal>"On/Off"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id131744228504380" role="tablecontent">Returns "On" if the numeric <emph>expression</emph> is not equal to zero, "Off" otherwise. "On" and "Off" are localized.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id41744230079254" localize="false" role="tablecontent"><literal>"Long Date"</literal> or <literal>"dddddd"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id801744230079254" role="tablecontent">Returns the numeric <emph>expression</emph> in system long date format, and depends on the locale.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id181744232083960" localize="false" role="tablecontent"><literal>"Medium Date"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id941744232083960" role="tablecontent">Returns the numeric <emph>expression</emph> in date format DD-MMM-YY, and depends on the locale.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id131744232325194" localize="false" role="tablecontent"><literal>"Short Date"</literal> or <literal>"ddddd"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id531744232325194" role="tablecontent">Returns the numeric <emph>expression</emph> in system short date format, and depends on the locale.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id951744232466191" localize="false" role="tablecontent"><literal>"Long Time"</literal> or <literal>"ttttt"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id401744232466191" role="tablecontent">Returns the numeric <emph>expression</emph> in system long time format, and depends on the locale("H:MM:SS AM/PM").</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id921744232590148" localize="false" role="tablecontent"><literal>"Medium Time"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id471744232590148" role="tablecontent">Returns the numeric <emph>expression</emph> in system medium time format, and depends on the locale (HH:MM AM/PM)</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id851744232653235" localize="false" role="tablecontent"><literal>"Short Time"</literal></paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id261744232653235" role="tablecontent">Returns the numeric <emph>expression</emph> in system short time format, and depends on the locale (HH:MM).</paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
 </section>
   
-<embed href="text/sbasic/shared/00000003.xhp#languageformat"/>
 <embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
 <embed href="text/sbasic/shared/00000003.xhp#err5"/>
 
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
-<paragraph id="par_idm1341556320" role="bascode" localize="false" xml-lang="en-US">Sub ExampleFormat</paragraph>
-<paragraph id="par_idm1341555088" role="bascode" localize="false" xml-lang="en-US">    MsgBox Format(6328.2, "##,##0.00")</paragraph>
-<paragraph id="par_idN107A2" role="bascode" xml-lang="en-US">    ' always use a period as decimal delimiter when you enter numbers in Basic source code.</paragraph>
-<paragraph id="par_id3147339" role="bascode" xml-lang="en-US">    ' displays for example 6,328.20 in English locale, 6.328,20 in German locale.</paragraph>
-<paragraph id="par_idm1341550752" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1341556320" role="bascode" localize="false">Sub ExampleFormat</paragraph>
+<paragraph id="par_idm1341555088" role="bascode" localize="false">    MsgBox Format(6328.2, "##,##0.00")</paragraph>
+<paragraph id="par_idN107A2" role="bascode">    ' always use a period as decimal delimiter when you enter numbers in Basic source code.</paragraph>
+<paragraph id="par_id3147339" role="bascode">    ' displays for example 6,328.20 in English locale, 6.328,20 in German locale.</paragraph>
+<paragraph role="bascode" id="par_id741744199105812">msgbox Format("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890", "&lt;") ' returns abcdefghijklmnopqrstuvwxyz1234567890, digits not affected.</paragraph>
+<paragraph role="bascode" id="par_id831744199265417">msgbox Format("abcdefghijklmnopqrstuvwxyz1234567890", "&gt;") ' returns ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890, digits not affected.</paragraph>
+<paragraph role="bascode" id="par_id961744201527914">msgBox Format(12345.6,"c") ' returns the number in date format as 18/10/33 2:24:00 PM in German locale.</paragraph>
+<paragraph role="bascode" id="par_id311744203313784">msgBox Format(12345.6,"General Date") ' Same as "c".</paragraph>
+<paragraph role="bascode" id="par_id551744202200209">msgbox format(12345.004,"n") ' returns 5</paragraph>
+<paragraph role="bascode" id="par_id531744202210360">msgbox format(12345.004,"nn") ' returns 05</paragraph>
+<paragraph role="bascode" id="par_id361744202845131">msgbox format(12345.6,"w") ' returns 4 (Wednesday).</paragraph>
+<paragraph role="bascode" id="par_id711744203259859">msgbox format(log(123),"General Number") ' returns 4,812184355372 in German locale</paragraph>
+<paragraph role="bascode" id="par_id81744228640143" localize="false">msgbox format(123456.7890,"Fixed") ' 123456.79</paragraph>
+<paragraph role="bascode" id="par_id11744228645174" localize="false">msgbox format(123456.1234,"Fixed") ' 123456.12</paragraph>
+<paragraph role="bascode" id="par_id941744228650042" localize="false">msgbox format(123456.7890,"Standard") '123,456.79</paragraph>
+<paragraph role="bascode" id="par_id901744228654674" localize="false">msgbox format(123456.1234,"Standard") '123,456.12</paragraph>
+<paragraph role="bascode" id="par_id431744228661202" localize="false">msgbox format(12.3456,"Percent") ' 1234.56%</paragraph>
+<paragraph role="bascode" id="par_id881744228665562" localize="false">msgbox format(0.123456,"Percent") '12.35%</paragraph>
+<paragraph role="bascode" id="par_id581744228670530">msgbox format(123,"Yes/No") ' returns localized "Yes"</paragraph>
+<paragraph role="bascode" id="par_id171744228675121">msgbox format(0,"Yes/No") ' returns localized "No"</paragraph>
+<paragraph role="bascode" id="par_id331744228679113">msgbox format(-1,"True/False") ' returns localized "True"</paragraph>
+<paragraph role="bascode" id="par_id911744228683137">msgbox format(123,"On/Off") ' returns localized "On"</paragraph>
+<paragraph role="bascode" id="par_id341744231157846">msgbox format(45756.73,"Long Date") ' returns Wednesday, April 9, 2025 in your locale</paragraph>
+<paragraph id="par_idm1341550752" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
 <section id="relatedtopics">
-    <paragraph role="paragraph" id="par_id381513082126889" xml-lang="en-US"><link href="text/shared/01/05020301.xhp">Number format codes</link></paragraph>
+    <paragraph role="paragraph" id="par_id381513082126889"><link href="text/shared/01/05020301.xhp">Number format codes</link></paragraph>
     <paragraph role="paragraph" id="par_id161599082457466" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#stringfunctions"/></paragraph>
 </section>
 
