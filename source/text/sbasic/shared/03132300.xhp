@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -17,11 +16,10 @@
  *   except in compliance with the License. You may obtain a copy of
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
  -->
-
 <helpdocument version="1.0">
 <meta>
 <topic id="textsbasicshared03132300xml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">CreateUnoValue Function</title>
+<title id="tit">CreateUnoValue Function</title>
 <filename>/text/sbasic/shared/03132300.xhp</filename>
 </topic>
 <history>
@@ -30,14 +28,14 @@
 </meta>
 <body>
 <section id="createunovalue">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3150682"><bookmark_value>CreateUnoValue function</bookmark_value>
+<bookmark branch="index" id="bm_id3150682"><bookmark_value>CreateUnoValue function</bookmark_value>
 </bookmark>
-<h1 id="hd_id3150682" xml-lang="en-US"><link href="text/sbasic/shared/03132300.xhp">CreateUnoValue Function</link></h1>
-<paragraph role="paragraph" id="par_id3147291" xml-lang="en-US">Returns an object that represents a strictly typed value referring to the Uno type system. </paragraph>
+<h1 id="hd_id3150682"><link href="text/sbasic/shared/03132300.xhp">CreateUnoValue Function</link></h1>
+<paragraph role="paragraph" id="par_id3147291">Returns an object that represents a strictly typed value referring to the Uno type system. </paragraph>
 </section>
 
-<paragraph role="paragraph" id="par_id3143267" xml-lang="en-US">This object is automatically converted to an <literal>Any</literal> of the corresponding type when passed to Uno. The type must be specified by its fully qualified Uno type name.</paragraph>
-<paragraph role="note" id="par_id3153626" xml-lang="en-US">The $[officename] API frequently uses the <literal>Any</literal> type. It is the counterpart of the <literal>Variant</literal> type known from other environments. The <literal>Any</literal> type holds one arbitrary Uno type and is used in generic Uno interfaces.</paragraph>
+<paragraph role="paragraph" id="par_id3143267">This object is automatically converted to an <literal>Any</literal> of the corresponding type when passed to Uno. The type must be specified by its fully qualified Uno type name.</paragraph>
+<note id="par_id3153626">The $[officename] API frequently uses the <literal>Any</literal> type. It is the counterpart of the <literal>Variant</literal> type known from other environments. The <literal>Any</literal> type holds one arbitrary Uno type and is used in generic Uno interfaces.</note>
 
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
@@ -48,17 +46,50 @@
 <paragraph role="paragraph" id="par_id851677925987795">Object</paragraph>
 
 <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-<paragraph role="paragraph" id="par_id561677933999834"> <emph>Type</emph>: The fully qualified Uno type name.  Supported data types are <literal>void</literal>, <literal>char</literal>, <literal>boolean</literal>, <literal>byte</literal>, <literal>short</literal>, <literal>unsigned short</literal>, <literal>long</literal>, <literal>unsigned long</literal>, <literal>hyper</literal>, <literal>unsigned hyper</literal>, <literal>float</literal>, <literal>double</literal>, <literal>string</literal>, <literal>type</literal>, and <literal>any</literal>. Names are case sensitive and may be preceded by square brackets to indicate an array.</paragraph>
-<paragraph role="paragraph" id="par_id521677934011767"> <emph>Value</emph>: A strictly typed value.</paragraph>
+<table id="tab_id951744656264278">
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id641744656264278" role="tablehead" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#param_name" markup="ignore"/></paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id511744656264278" role="tablehead" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#param_type" markup="ignore"/></paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id421744656264278" role="tablehead" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#param_desc" markup="ignore"/></paragraph>
+       </tablecell>
+   </tablerow>
+   <tablerow>
+       <tablecell>
+           <paragraph id="par_id471744656264278" role="tablecontent">Type</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id481744656264278" role="tablecontent" localize="false">String</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id801744656264278" role="tablecontent">The fully qualified Uno type name.  Supported data types are <literal>void</literal>, <literal>char</literal>, <literal>boolean</literal>, <literal>byte</literal>, <literal>short</literal>, <literal>unsigned short</literal>, <literal>long</literal>, <literal>unsigned long</literal>, <literal>hyper</literal>, <literal>unsigned hyper</literal>, <literal>float</literal>, <literal>double</literal>, <literal>string</literal>, <literal>type</literal>, and <literal>any</literal>. Names are case sensitive and may be preceded by square brackets to indicate an array.</paragraph>
+       </tablecell>
+   </tablerow>
+    <tablerow>
+       <tablecell>
+           <paragraph id="par_id311744656367084" role="tablecontent">Value</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id701744656380892" role="tablecontent" localize="false">Object</paragraph>
+       </tablecell>
+       <tablecell>
+           <paragraph id="par_id201744656388588" role="tablecontent">A strictly typed value.</paragraph>
+       </tablecell>
+   </tablerow>
+</table>
+<embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
+<paragraph role="paragraph" id="par_id3150541">If <literal>CreateUnoValue</literal> cannot convert the value to the specified Uno type, an error occurs. The <literal>com.sun.star.script.Converter</literal> service is responsible for the conversion.</paragraph>
+
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
    <paragraph role="bascode" id="bas_id111677934830145" localize="false">byte_sequence_object = CreateUnoValue("[]byte", Array(85, 3, 27))</paragraph>
 </bascode>
-
-<embed href="text/sbasic/shared/00000003.xhp#errorcode"/>
-<paragraph role="paragraph" id="par_id3150541" xml-lang="en-US">If <literal>CreateUnoValue</literal> cannot convert the value to the specified Uno type, an error occurs. The <literal>com.sun.star.script.Converter</literal> service is responsible for the conversion.</paragraph>
-
 <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-<paragraph role="paragraph" id="par_id3153524" xml-lang="en-US">This function is intended for use in situations where the default Basic to Uno type converting mechanism is insufficient. This happens calling generic <literal>Any</literal> based API methods, such as <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1beans_1_1XPropertySet.html">com.sun.star.beans.XPropertySet</link><literal>.setPropertyValue()</literal> or <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1container_1_1XNameContainer.html">com.sun.star.container.XNameContainer</link><literal>.insertByName()</literal>. <literal>CreateUnoValue()</literal> sets a value object for the unknown Uno type.</paragraph>
+<paragraph role="paragraph" id="par_id3153524">This function is intended for use in situations where the default Basic to Uno type converting mechanism is insufficient. This happens calling generic <literal>Any</literal> based API methods, such as <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1beans_1_1XPropertySet.html">com.sun.star.beans.XPropertySet</link><literal>.setPropertyValue()</literal> or <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1container_1_1XNameContainer.html">com.sun.star.container.XNameContainer</link><literal>.insertByName()</literal>. <literal>CreateUnoValue()</literal> sets a value object for the unknown Uno type.</paragraph>
   
 <paragraph role="paragraph" id="par_id511677928924995">This example uses <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1beans_1_1XPropertySet.html">com.sun.star.beans.XPropertySet</link><literal>.addProperty()</literal> method to create a document property whose default values requires <literal>CreateUnoValue()</literal> usage:</paragraph>
 <bascode>
@@ -66,6 +97,6 @@
   <paragraph role="bascode" id="bas_id981677936008973" localize="false">    .addProperty("FOO", com.sun.star.beans.PropertyAttribute.REMOVEABLE, CreateUnoValue("double", 23))</paragraph>
   <paragraph role="bascode" id="bas_id181677936010027" localize="false">End With	</paragraph>
 </bascode>
-<paragraph role="paragraph" id="par_id3150769" xml-lang="en-US">You can also use this function to pass non-Any values, but this is not recommended. If Basic already knows the target type, using the <literal>CreateUnoValue()</literal> function will only lead to additional converting operations that slow down the Basic execution.</paragraph>
+<paragraph role="paragraph" id="par_id3150769">You can also use this function to pass non-Any values, but this is not recommended. If Basic already knows the target type, using the <literal>CreateUnoValue()</literal> function will only lead to additional converting operations that slow down the Basic execution.</paragraph>
 </body>
 </helpdocument>
