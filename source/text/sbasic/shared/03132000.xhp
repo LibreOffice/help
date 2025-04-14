@@ -20,7 +20,7 @@
 
 <meta>
   <topic id="textsbasicshared03132000xml" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">CreateUnoListener Function</title>
+    <title id="tit">CreateUnoListener Function</title>
     <filename>/text/sbasic/shared/03132000.xhp</filename>
   </topic>
 </meta>
@@ -28,41 +28,75 @@
 <body>
 
 <section id="createunolistener">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3155150">
+<bookmark branch="index" id="bm_id3155150">
   <bookmark_value>CreateUnoListener function</bookmark_value>
 </bookmark>
 
-<h1 id="hd_id3155150" xml-lang="en-US"><variable id="CreateUnoListener"><link href="text/sbasic/shared/03132000.xhp">CreateUnoListener Function</link></variable></h1>
-<paragraph id="par_id3149346" role="paragraph" xml-lang="en-US">Creates a Listener instance.</paragraph>
+<h1 id="hd_id3155150"><variable id="CreateUnoListener"><link href="text/sbasic/shared/03132000.xhp">CreateUnoListener Function</link></variable></h1>
+<paragraph id="par_id3149346" role="paragraph">Creates a Listener instance.</paragraph>
 </section>
-<paragraph id="par_id3153681" role="paragraph" xml-lang="en-US">Many Uno objects let you register listeners with dedicated listener interfaces. This allows to listen for specific events and call up the appropriate listener method. The <literal>CreateUnoListener</literal> function sets a listener interface associated to an UNO object. The listener interface is then bound to its associated object.</paragraph>
+<paragraph id="par_id3153681" role="paragraph">Many Uno objects let you register listeners with dedicated listener interfaces. This allows to listen for specific events and call up the appropriate listener method. The <literal>CreateUnoListener</literal> function sets a listener interface associated to an UNO object. The listener interface is then bound to its associated object.</paragraph>
 
 <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
    <paragraph role="bascode" id="bas_id681666359376854" localize="false"> CreateUnoListener( Prefix As String, Typename As String) As Object</paragraph>
 </bascode>
 <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-<paragraph role="paragraph" id="par_id531666699350617"><emph>Prefix</emph>: A text prefix used in BASIC subroutines that handle events.</paragraph>
-<paragraph role="paragraph" id="par_id281666699351161"><emph>Typename</emph>: A fully qualified UNO listener interface name.</paragraph>
-<embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
-<paragraph role="paragraph" id="par_id241666699584417">The UNO service corresponding to the <literal>Typename</literal> listener interface name, <literal>Null</literal> value otherwise.</paragraph>
-<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-<paragraph id="par_id3154046" role="paragraph" xml-lang="en-US">The following example listens to events occurring for a BASIC library object.</paragraph>
-<bascode>
-<paragraph id="par_idm1340547456" role="bascode" localize="false" xml-lang="en-US">Dim oListener As Object</paragraph>
-<paragraph id="par_idm1340546224" role="bascode" localize="false" xml-lang="en-US">oListener = CreateUnoListener( "ContListener_","com.sun.star.container.XContainerListener" )</paragraph>
-</bascode>
-<paragraph id="par_id3149294" role="paragraph" xml-lang="en-US">The <literal>CreateUnoListener</literal> method requires two parameters. The first is <emph>Prefix</emph> and is explained in detail below. <emph>Typename</emph> second parameter is the fully qualified name of the listener interface.</paragraph>
-<paragraph id="par_id3149670" role="paragraph" xml-lang="en-US">Every listener must be registered to %PRODUCTNAME broadcaster feature. This is performed by binding each listener to its associated object. Bind methods always follow the pattern '<literal>add</literal>Foo<literal>Listener</literal>', where 'Foo' is the object type of the listener interface, without the 'X'. In this example, the <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1container_1_1XContainer.html#a69e03a743cfa3e99935cac90b5f4e291"><literal>addContainerListener</literal></link> method is called to register the <literal>XContainerListener</literal>:</paragraph>
-<bascode>
-<paragraph id="par_idm1340540544" role="bascode" localize="false" xml-lang="en-US">Dim oLib As Object</paragraph>
-<paragraph id="par_id3154940" role="bascode" xml-lang="en-US">oLib = BasicLibraries.Library1 ' Library1 must exist!</paragraph>
-<paragraph id="par_id3150359" role="bascode" xml-lang="en-US">oLib.addContainerListener( oListener ) ' Register the listener</paragraph>
-</bascode>
-<paragraph id="par_id3154138" role="paragraph" xml-lang="en-US">The listener is now registered. When an event occurs, the active listener calls the appropriate method defined in <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1container_1_1XContainerListener.html">com.sun.star.container.XContainerListener</link> interface.</paragraph>
+<table id="tab_id751744670502583">
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id981744670502583" role="tablehead" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#param_name" markup="ignore"/></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id281744670502583" role="tablehead" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#param_type" markup="ignore"/></paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id671744670502583" role="tablehead" localize="false"><embedvar href="text/sbasic/shared/00000003.xhp#param_desc" markup="ignore"/></paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id241744670502583" role="tablecontent">Prefix</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id461744670502583" role="tablecontent" localize="false">String</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id11744670502583" role="tablecontent">A text prefix used in BASIC subroutines that handle events.</paragraph>
+    </tablecell>
+  </tablerow>
+  <tablerow>
+    <tablecell>
+      <paragraph id="par_id241744670502584" role="tablecontent">Typename</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id951744670502584" role="tablecontent" localize="false">String</paragraph>
+    </tablecell>
+    <tablecell>
+      <paragraph id="par_id601744670502584" role="tablecontent">A fully qualified UNO listener interface name.</paragraph>
+    </tablecell>
+  </tablerow>
+</table>
 
-  <paragraph id="par_id3148922" role="paragraph" xml-lang="en-US">Event-driven registered BASIC subroutines require to use a defined <emph>Prefix</emph>. The BASIC run-time system searches for subroutines or functions that have the name 'Prefix+ListenerMethod' and calls them when found. Otherwise, a run-time error occurs.</paragraph>
-<paragraph id="par_id3150768" role="paragraph" xml-lang="en-US">In this example, <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1container_1_1XContainerListener-members.html">com.sun.star.container.XContainerListener</link> interface defines the following methods:</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
+<paragraph role="paragraph" id="par_id241666699584417">Object. The UNO service corresponding to the <literal>Typename</literal> listener interface name, <literal>Null</literal> value otherwise.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<paragraph id="par_id3154046" role="paragraph">The following example listens to events occurring for a BASIC library object.</paragraph>
+<bascode>
+<paragraph id="par_idm1340547456" role="bascode" localize="false">Dim oListener As Object</paragraph>
+<paragraph id="par_idm1340546224" role="bascode" localize="false">oListener = CreateUnoListener( "ContListener_","com.sun.star.container.XContainerListener" )</paragraph>
+</bascode>
+<paragraph id="par_id3149294" role="paragraph">The <literal>CreateUnoListener</literal> method requires two parameters. The first is <emph>Prefix</emph> and is explained in detail below. <emph>Typename</emph> second parameter is the fully qualified name of the listener interface.</paragraph>
+<paragraph id="par_id3149670" role="paragraph">Every listener must be registered to %PRODUCTNAME broadcaster feature. This is performed by binding each listener to its associated object. Bind methods always follow the pattern '<literal>add</literal>Foo<literal>Listener</literal>', where 'Foo' is the object type of the listener interface, without the 'X'. In this example, the <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1container_1_1XContainer.html#a69e03a743cfa3e99935cac90b5f4e291"><literal>addContainerListener</literal></link> method is called to register the <literal>XContainerListener</literal>:</paragraph>
+<bascode>
+<paragraph id="par_idm1340540544" role="bascode" localize="false">Dim oLib As Object</paragraph>
+<paragraph id="par_id3154940" role="bascode">oLib = BasicLibraries.Library1 ' Library1 must exist!</paragraph>
+<paragraph id="par_id3150359" role="bascode">oLib.addContainerListener( oListener ) ' Register the listener</paragraph>
+</bascode>
+<paragraph id="par_id3154138" role="paragraph">The listener is now registered. When an event occurs, the active listener calls the appropriate method defined in <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1container_1_1XContainerListener.html">com.sun.star.container.XContainerListener</link> interface.</paragraph>
+
+  <paragraph id="par_id3148922" role="paragraph">Event-driven registered BASIC subroutines require to use a defined <emph>Prefix</emph>. The BASIC run-time system searches for subroutines or functions that have the name 'Prefix+ListenerMethod' and calls them when found. Otherwise, a run-time error occurs.</paragraph>
+<paragraph id="par_id3150768" role="paragraph">In this example, <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1container_1_1XContainerListener-members.html">com.sun.star.container.XContainerListener</link> interface defines the following methods:</paragraph>
 <table id="tab_id591666342054257">
    <tablerow>
        <tablecell>
@@ -106,46 +140,46 @@
    </tablerow>
 </table>
 
-<paragraph id="par_id3147435" role="paragraph" xml-lang="en-US">'ContListener_' used in this example implies that the following subroutines must be implemented in BASIC:</paragraph>
+<paragraph id="par_id3147435" role="paragraph">'ContListener_' used in this example implies that the following subroutines must be implemented in BASIC:</paragraph>
 
 <list type="unordered">
   <listitem>
-    <paragraph id="par_id3155411" role="listitem" xml-lang="en-US" localize="false">ContListener_<literal>disposing</literal></paragraph>
+    <paragraph id="par_id3155411" role="listitem" localize="false">ContListener_<literal>disposing</literal></paragraph>
   </listitem>
   <listitem>
-    <paragraph id="par_id3146923" role="listitem" xml-lang="en-US" localize="false">ContListener_<literal>elementInserted</literal></paragraph>
+    <paragraph id="par_id3146923" role="listitem" localize="false">ContListener_<literal>elementInserted</literal></paragraph>
   </listitem>
   <listitem>
-    <paragraph id="par_id3147318" role="listitem" xml-lang="en-US" localize="false">ContListener_<literal>elementRemoved</literal></paragraph>
+    <paragraph id="par_id3147318" role="listitem" localize="false">ContListener_<literal>elementRemoved</literal></paragraph>
   </listitem>
   <listitem>
-    <paragraph id="par_id3152578" role="listitem" xml-lang="en-US" localize="false">ContListener_<literal>elementReplaced</literal></paragraph>
+    <paragraph id="par_id3152578" role="listitem" localize="false">ContListener_<literal>elementReplaced</literal></paragraph>
   </listitem></list>
-<paragraph id="par_id3150592" role="paragraph" xml-lang="en-US">Every listener interface defines a set of controlled event names associated to Uno objects. When an event occurs, it is sent to the method as a parameter. BASIC event methods can also call one another, as long as the appropriate parameter is passed in the <literal>Sub</literal> declaration. For example:</paragraph>
+<paragraph id="par_id3150592" role="paragraph">Every listener interface defines a set of controlled event names associated to Uno objects. When an event occurs, it is sent to the method as a parameter. BASIC event methods can also call one another, as long as the appropriate parameter is passed in the <literal>Sub</literal> declaration. For example:</paragraph>
 <bascode>
-<paragraph id="par_idm1340499136" role="bascode" localize="false" xml-lang="en-US">Sub ContListener_disposing( oEvent As com.sun.star.lang.EventObject )</paragraph>
-<paragraph id="par_id31538768025" role="bascode" localize="false" xml-lang="en-US">    MsgBox "disposing"</paragraph>
-<paragraph id="par_idm1340684736" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-<paragraph id="par_idm1340683504" role="bascode" localize="false" xml-lang="en-US"> </paragraph>
-<paragraph id="par_idm1340682256" role="bascode" localize="false" xml-lang="en-US">Sub ContListener_elementInserted( oEvent As com.sun.star.container.ContainerEvent )</paragraph>
-<paragraph id="par_id31540984458" role="bascode" localize="false" xml-lang="en-US">    MsgBox oEvent.Source.' "elementInserted"</paragraph>
-<paragraph id="par_idm1340678016" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-<paragraph id="par_idm1340676784" role="bascode" localize="false" xml-lang="en-US"> </paragraph>
-<paragraph id="par_idm1340675584" role="bascode" localize="false" xml-lang="en-US">Sub ContListener_elementRemoved( oEvent As com.sun.star.container.ContainerEvent )</paragraph>
-<paragraph id="par_id31539470236" role="bascode" localize="false" xml-lang="en-US">    MsgBox "elementRemoved"</paragraph>
-<paragraph id="par_idm1340671296" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
-<paragraph id="par_idm1340670064" role="bascode" localize="false" xml-lang="en-US"> </paragraph>
-<paragraph id="par_idm1340668864" role="bascode" localize="false" xml-lang="en-US">Sub ContListener_elementReplaced( oEvent As com.sun.star.container.ContainerEvent )</paragraph>
-<paragraph id="par_id31489150148" role="bascode" localize="false" xml-lang="en-US">    MsgBox "elementReplaced"</paragraph>
-<paragraph id="par_idm1340664576" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1340499136" role="bascode" localize="false">Sub ContListener_disposing( oEvent As com.sun.star.lang.EventObject )</paragraph>
+<paragraph id="par_id31538768025" role="bascode" localize="false">    MsgBox "disposing"</paragraph>
+<paragraph id="par_idm1340684736" role="bascode" localize="false">End Sub</paragraph>
+<paragraph id="par_idm1340683504" role="bascode" localize="false"> </paragraph>
+<paragraph id="par_idm1340682256" role="bascode" localize="false">Sub ContListener_elementInserted( oEvent As com.sun.star.container.ContainerEvent )</paragraph>
+<paragraph id="par_id31540984458" role="bascode" localize="false">    MsgBox oEvent.Source.' "elementInserted"</paragraph>
+<paragraph id="par_idm1340678016" role="bascode" localize="false">End Sub</paragraph>
+<paragraph id="par_idm1340676784" role="bascode" localize="false"> </paragraph>
+<paragraph id="par_idm1340675584" role="bascode" localize="false">Sub ContListener_elementRemoved( oEvent As com.sun.star.container.ContainerEvent )</paragraph>
+<paragraph id="par_id31539470236" role="bascode" localize="false">    MsgBox "elementRemoved"</paragraph>
+<paragraph id="par_idm1340671296" role="bascode" localize="false">End Sub</paragraph>
+<paragraph id="par_idm1340670064" role="bascode" localize="false"> </paragraph>
+<paragraph id="par_idm1340668864" role="bascode" localize="false">Sub ContListener_elementReplaced( oEvent As com.sun.star.container.ContainerEvent )</paragraph>
+<paragraph id="par_id31489150148" role="bascode" localize="false">    MsgBox "elementReplaced"</paragraph>
+<paragraph id="par_idm1340664576" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
-<paragraph id="par_id3156056" role="paragraph" xml-lang="en-US">Not need to include the event object parameter when not used:</paragraph>
+<paragraph id="par_id3156056" role="paragraph">Not need to include the event object parameter when not used:</paragraph>
 <bascode>
-<paragraph id="par_id3150042" role="bascode" xml-lang="en-US">' Minimal implementation of Sub disposing</paragraph>
+<paragraph id="par_id3150042" role="bascode">' Minimal implementation of Sub disposing</paragraph>
 <paragraph id="par_idm1340659344" role="bascode" localize="false">Sub ContListener_disposing</paragraph>
 <paragraph id="par_idm1340658096" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
-<warning id="par_id621666343214282" xml-lang="en-US">Listener methods must <emph>always</emph> be implemented to avoid BASIC run-time errors.</warning>
+<warning id="par_id621666343214282">Listener methods must <emph>always</emph> be implemented to avoid BASIC run-time errors.</warning>
 <tip id="par_id101666620765251">Use <link href="text/sbasic/shared/03/sf_exception.xhp"><literal>ScriptForge</literal></link> library console when the BASIC IDE is not easily accessible, that is during events processing. Use the <link href="text/sbasic/shared/03/sf_exception.xhp#DebugPrint"><literal>DebugPrint</literal></link> method to add any relevant information to the console. Console entries can be dumped to a text file or visualized in a dialog window. Use <literal>Trace</literal> module of <link href="text/sbasic/guide/access2base.xhp"><literal>Access2Base</literal></link> library as an alternative</tip>
 <bascode>
    <paragraph role="bascode" id="bas_id871666620966333" localize="false">Sub SF_Trace</paragraph>
@@ -154,7 +188,7 @@
    <paragraph role="bascode" id="bas_id821666620967245" localize="false">   svc.Console modal:=False</paragraph>
    <paragraph role="bascode" id="bas_id741666621069519" localize="false">   svc.DebugPrint("Lorem", "Ipsum", "...")</paragraph>
    <paragraph role="bascode" id="bas_id771666620967685" localize="false">End Sub ' SF_Trace</paragraph>
-   <paragraph role="bascode" id="bas_id451666683735574" localize="false"></paragraph>
+   <paragraph role="bascode" id="bas_id451666683735574" localize="false"/>
    <paragraph role="bascode" id="bas_id261666683736832" localize="false">Sub A2B_Trace</paragraph>
    <paragraph role="bascode" id="bas_id61666683737033" localize="false">   GlobalScope.BasicLibraries.LoadLibrary("Access2Base")</paragraph>
    <paragraph role="bascode" id="bas_id301666683737232" localize="false">   Access2Base.Trace.DebugPrint("Lorem", "Ipsum", "...")</paragraph>
@@ -162,12 +196,13 @@
    <paragraph role="bascode" id="bas_id251666683738645" localize="false">End Sub ' A2B_Trace</paragraph>
 </bascode>
 
-  <section id="relatedtopics" >
+  <section id="relatedtopics">
      <embed href="text/sbasic/python/python_listener.xhp#pythonlistener"/>
      <paragraph role="paragraph" id="N0506"><link href="text/swriter/01/05060700.xhp">Events mapping to objects</link></paragraph>
      <paragraph role="paragraph" id="N0509">See also <link href="text/sbasic/shared/01040000.xhp">Document events</link>, <link href="text/shared/02/01170202.xhp">Form events</link>.</paragraph>
      <embed href="text/sbasic/python/python_handler.xhp#pythonhandler_h1"/>
      <embed href="text/sbasic/python/python_document_events.xhp#pythonmonitor"/>
+     <embed href="text/sbasic/shared/uno_objects.xhp#UnoObjects_h1"/>
   </section>  
   
 </body>
