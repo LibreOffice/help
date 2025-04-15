@@ -90,12 +90,14 @@
         <paragraph role="pycode" localize="false" id="N0559">        return (module_name in sys.modules.keys())</paragraph>
         <paragraph role="pycode" localize="false" id="N0560">    def isLoadedLibrary(lib_name: str) -&gt; bool:</paragraph>
         <paragraph role="pycode" xml-lang="en-US" id="N0561">        &quot;&quot;&quot; Check PYTHON_PATH content &quot;&quot;&quot;</paragraph>
-        <paragraph role="pycode" localize="false" id="N0562">        return (lib_name in sys.path)</paragraph>
+        <paragraph role="pycode" localize="false" id="N0677">        url = uno.fileUrlToSystemPath(</paragraph>
+        <paragraph role="pycode" localize="false" id="N0678">            f&apos;{doc.URL}/Scripts/python/{lib_name}&apos; )</paragraph>
+        <paragraph role="pycode" localize="false" id="N0562">        return (url in sys.path)</paragraph>
         <paragraph role="pycode" localize="false" id="N0563">    def loadLibrary(lib_name: str, module_name=None):</paragraph>
         <paragraph role="pycode" xml-lang="en-US" id="N0564">        &quot;&quot;&quot; add directory to PYTHON_PATH, import named module &quot;&quot;&quot;</paragraph>
         <paragraph role="pycode" localize="false" id="N0565">        doc = XSCRIPTCONTEXT.getDocument()</paragraph>
         <paragraph role="pycode" localize="false" id="N0566">        url = uno.fileUrlToSystemPath(</paragraph>
-        <paragraph role="pycode" localize="false" id="N0567">            &apos;{}/{}&apos;.format(doc.URL,&apos;Scripts/python/&apos;+lib_name))</paragraph>
+        <paragraph role="pycode" localize="false" id="N0567">            f&apos;{doc.URL}/Scripts/python/{lib_name}&apos; )</paragraph>
         <paragraph role="pycode" localize="false" id="N0568">        if not url in sys.path:</paragraph>
         <paragraph role="pycode" localize="false" id="N0569">            sys.path.insert(0, url)</paragraph>
         <paragraph role="pycode" localize="false" id="N0570">        if module_name and not module_name in sys.modules.keys():</paragraph>
@@ -104,7 +106,7 @@
         <paragraph role="pycode" xml-lang="en-US" id="N0573">        &quot;&quot;&quot; remove directory from PYTHON_PATH &quot;&quot;&quot;</paragraph>
         <paragraph role="pycode" localize="false" id="N0665">        doc = XSCRIPTCONTEXT.getDocument()</paragraph>
         <paragraph role="pycode" localize="false" id="N0666">        url = uno.fileUrlToSystemPath(</paragraph>
-        <paragraph role="pycode" localize="false" id="N0667">            &apos;{}/{}&apos;.format(doc.URL,&apos;Scripts/python/ &apos;+lib_name))</paragraph>
+        <paragraph role="pycode" localize="false" id="N0667">            f&apos;{doc.URL}/Scripts/python/{lib_name}&apos; )</paragraph>
         <paragraph role="pycode" localize="false" id="N0574">        sys.path.remove(url)</paragraph>
         <paragraph role="pycode" localize="false" id="N0575">    </paragraph>
         <paragraph role="pycode" localize="false" id="N0576">g_exportedScripts = (OnDocPostOpenLoadPython, OnDocQueryCloseUnloadPython)</paragraph>
