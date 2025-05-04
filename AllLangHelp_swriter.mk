@@ -436,6 +436,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/menu/insert_frame \
     helpcontent2/source/text/swriter/menu/submenu_more_breaks \
     helpcontent2/source/text/swriter/menu/contentcontrol_submenu \
+    helpcontent2/source/text/swriter/menu/pageLayoutMenu \
     helpcontent2/source/text/swriter/mailmergetoolbar \
     helpcontent2/source/text/swriter/track_changes_toolbar \
     helpcontent2/source/text/swriter/navigate_toolbar \
