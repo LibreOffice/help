@@ -314,6 +314,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_sumifs \
     helpcontent2/source/text/scalc/01/func_switch \
     helpcontent2/source/text/scalc/01/func_textjoin \
+    helpcontent2/source/text/scalc/01/func_textsplit \
     helpcontent2/source/text/scalc/01/func_time \
     helpcontent2/source/text/scalc/01/func_timevalue \
     helpcontent2/source/text/scalc/01/func_today \
