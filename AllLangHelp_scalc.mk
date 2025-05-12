@@ -314,6 +314,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_sumif \
     helpcontent2/source/text/scalc/01/func_sumifs \
     helpcontent2/source/text/scalc/01/func_switch \
+    helpcontent2/source/text/scalc/01/func_textafter \
     helpcontent2/source/text/scalc/01/func_textbefore \
     helpcontent2/source/text/scalc/01/func_textjoin \
     helpcontent2/source/text/scalc/01/func_textsplit \
