@@ -126,6 +126,10 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+// This is used when arriving the first time via the application
+// or direct access to web root, e.g. a web search. It should not
+// be used outside of online context as then we can not guarantee
+// en-US as a fallback language.
 function existingLang(lang) {
     if (lang === undefined) {
         return 'en-US';
@@ -223,7 +227,7 @@ if (Math.max(document.documentElement.clientWidth, window.innerWidth || 0) < 960
 }
 
 const href = window.location.href;
-const lang = existingLang(getParameterByName("Language", href) || navigator.language);
+const lang = getParameterByName("Language", href) || document.querySelector("html").getAttribute("lang");
 setupModules(lang);
 setupLanguages(href);
 
