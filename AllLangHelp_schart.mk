@@ -57,6 +57,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,schart,\
     helpcontent2/source/text/schart/01/type_column_line \
     helpcontent2/source/text/schart/01/type_line \
     helpcontent2/source/text/schart/01/type_net \
+    helpcontent2/source/text/schart/01/type_ofpie \
     helpcontent2/source/text/schart/01/type_pie \
     helpcontent2/source/text/schart/01/type_stock \
     helpcontent2/source/text/schart/01/type_xy \
