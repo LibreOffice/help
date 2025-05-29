@@ -54,7 +54,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdraw,\
     helpcontent2/source/text/sdraw/main0000 \
     helpcontent2/source/text/sdraw/main0100 \
     helpcontent2/source/text/sdraw/main_insert \
-    helpcontent2/source/text/sdraw/main_format \
     helpcontent2/source/text/sdraw/main_page \
     helpcontent2/source/text/sdraw/main_shape \
     helpcontent2/source/text/sdraw/main0200 \
