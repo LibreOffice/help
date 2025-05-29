@@ -74,7 +74,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
     helpcontent2/source/text/sdatabase/dabawiz02text \
     helpcontent2/source/text/sdatabase/dabawiz03auth \
     helpcontent2/source/text/sdatabase/menubar \
-    helpcontent2/source/text/sdatabase/menuedit \
     helpcontent2/source/text/sdatabase/menufile \
     helpcontent2/source/text/sdatabase/menufilesave \
     helpcontent2/source/text/sdatabase/menuinsert \

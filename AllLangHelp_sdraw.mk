@@ -53,7 +53,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdraw,\
     helpcontent2/source/text/sdraw/guide/text_enter \
     helpcontent2/source/text/sdraw/main0000 \
     helpcontent2/source/text/sdraw/main0100 \
-    helpcontent2/source/text/sdraw/main_edit \
     helpcontent2/source/text/sdraw/main_insert \
     helpcontent2/source/text/sdraw/main_format \
     helpcontent2/source/text/sdraw/main_page \
