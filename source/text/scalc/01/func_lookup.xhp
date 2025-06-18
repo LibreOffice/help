@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+<meta>
+    <topic id="textscalc01func_lookupxhp" indexer="include" status="PUBLISH">
+        <title id="tit">Function LOOKUP</title>
+        <filename>/text/scalc/01/func_lookup.xhp</filename>
+    </topic>
+</meta>
+<body>
+<bookmark branch="hid/SC_HID_FUNC_VERWEIS" id="bm_id3152877" localize="false"/>
+<bookmark branch="index" id="bm_id3159273">
+<bookmark_value>LOOKUP function</bookmark_value>
+</bookmark>
+<section id="lookup">
+    <h1 id="hd_id521750255960624"><variable id="h1"><link href="text/scalc/01/func_lookup.xhp">LOOKUP</link></variable></h1>
+    <paragraph id="par_id3153389" role="paragraph"><ahelp hid="HID_FUNC_VERWEIS">Look for criterion in an already-sorted array, and return a corresponding result. Returns the contents of a cell either from a one-row or one-column range.</ahelp></paragraph>
+</section>
+<paragraph role="paragraph" id="par_id841750257069690">Optionally, the assigned value (of the same index) is returned in a different column and row. As opposed to <link href="text/scalc/01/04060109.xhp#Section9">VLOOKUP</link> and <link href="text/scalc/01/04060109.xhp#Section17">HLOOKUP</link>, search and result vector may be at different positions; they do not have to be adjacent.</paragraph>
+    <embed href="text/shared/00/00000001.xhp#regex"/>
+    <embed href="text/scalc/01/common_func.xhp#sectionsyntax"/>
+    <paragraph id="par_id3154104" role="code">LOOKUP(Lookup; SearchVector [; ResultVector])</paragraph>
+    <paragraph id="par_id3150646" role="paragraph"><emph>Lookup</emph> is the value of any type to be looked for; entered either directly or as a reference.</paragraph>
+    <paragraph id="par_id3154854" role="paragraph"><emph>SearchVector</emph> is an array fo data. The lookup is performed in the  first row or first column of the array.</paragraph>
+    <note id="par_id591750269646975">The search vector for the LOOKUP must be sorted ascending, otherwise the search will not return any usable results. Numerical values precede values of type Text if both types are included (for example, -2, 0, 2, “A”, “B”).</note>
+    <paragraph role="paragraph" id="par_id841750275617013">If <emph>SearchVector</emph> has same number of columns and rows or has more rows than columns, LOOKUP searches in the first column (similar to VLOOKUP), and returns the corresponding value in the last column.</paragraph>
+    <paragraph role="paragraph" id="par_id311750275609300">If <emph>SearchVector</emph> has more columns than rows, LOOKUP searches in the first row (similar to HLOOKUP), and returns the corresponding value in the last row. </paragraph>
+    <paragraph id="par_id3149925" role="paragraph"><emph>ResultVector</emph> is another single-row or single-column range from which the result of the function is taken. The result is the cell of the result vector with the same index as the instance found in the search vector.</paragraph>
+    <paragraph role="paragraph" id="par_id771750268996719">If <emph>ResultVector</emph> is omitted, the function returns the value found in the last row or last column of the <emph>SearchVector</emph> array.</paragraph>
+    <paragraph role="paragraph" id="par_id991750269088955">If <emph>SearchVector</emph> is a one-dimensional array and if <emph>ResultVector</emph> is omitted, the function returns the last occurrence of the lookup value if it exists in the <emph>SearchVector</emph>.</paragraph>
+    <embed href="text/scalc/05/empty_cells.xhp#empty_cells"/>
+    <embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+    <paragraph role="paragraph" id="par_id711750273031297">The table below list the country codes of some countries.</paragraph>
+    <paragraph role="paragraph" id="par_id201750276243814">Source: <link href="https://www.countrycode.org">https://www.countrycode.org</link></paragraph>
+    <paragraph role="paragraph" id="par_id901750271880106"><image src="media/helpimg/scalc/country_codes.png" id="img_id511750271880109" width="708px" height="598px"><alt id="alt_id941750271880111">Country Codes Samples</alt></image></paragraph>
+    <paragraph role="paragraph" id="par_id931750273347370"><input>=LOOKUP(46,A2:B34)</input> returns "Sweden", the country which code is 46. Since the result vector is not defined, the function returns the value in the last column of the search array.</paragraph>
+    <paragraph role="paragraph" id="par_id631750273351969"><input>=LOOKUP(55,A2:A34,D2:D34)</input> returns "BR/BRA", the ISO code for country code 55 (Brazil).</paragraph>
+    <paragraph role="paragraph" id="par_id1001750273540349"><input>=LOOKUP(7,A2:B34)</input> returns "Russia", the last occurrence of country code 7 in the search array.</paragraph>
+
+<embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
+<embed href="text/scalc/01/ODFF.xhp#odff13"/>
+<section id="relatedtopics">
+    <paragraph role="paragraph" id="par_id181750258319532"><link href="text/scalc/01/04060109.xhp#Section9">VLOOKUP</link></paragraph>
+    <paragraph role="paragraph" id="par_id461750258325119"><link href="text/scalc/01/04060109.xhp#Section17">HLOOKUP</link></paragraph>
+    <paragraph role="paragraph" id="par_id411750258160568" localize="false"><embedvar href="text/scalc/01/func_xlookup.xhp#h1" markup="ignore"/></paragraph>
+    <paragraph role="paragraph" id="par_id31708365865376" localize="false"><embedvar href="text/scalc/01/func_xmatch.xhp#h1" markup="ignore"/></paragraph>
+    <tip id="par_id701677016751508"><link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/LOOKUP">LOOKUP wiki page</link>.</tip>
+</section>
+</body>
+</helpdocument>

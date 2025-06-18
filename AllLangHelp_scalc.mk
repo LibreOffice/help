@@ -262,6 +262,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_jis \
     helpcontent2/source/text/scalc/01/func_leftb \
     helpcontent2/source/text/scalc/01/func_lenb \
+    helpcontent2/source/text/scalc/01/func_lookup \
     helpcontent2/source/text/scalc/01/func_mid \
     helpcontent2/source/text/scalc/01/func_midb \
     helpcontent2/source/text/scalc/01/func_rightb \
