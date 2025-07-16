@@ -222,6 +222,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_decimal \
     helpcontent2/source/text/scalc/01/func_dollar \
     helpcontent2/source/text/scalc/01/func_drop \
+    helpcontent2/source/text/scalc/01/func_encodeurl \
     helpcontent2/source/text/scalc/01/func_exact \
     helpcontent2/source/text/scalc/01/func_find \
     helpcontent2/source/text/scalc/01/func_fixed \
@@ -234,6 +235,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_error_type \
     helpcontent2/source/text/scalc/01/func_expand \
     helpcontent2/source/text/scalc/01/func_filter \
+    helpcontent2/source/text/scalc/01/func_filterxml \
     helpcontent2/source/text/scalc/01/func_findb \
     helpcontent2/source/text/scalc/01/func_floor \
     helpcontent2/source/text/scalc/01/func_forecastetsadd \
