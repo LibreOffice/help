@@ -362,6 +362,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/graphic_styles \
     helpcontent2/source/text/shared/01/grid_and_helplines \
     helpcontent2/source/text/shared/01/guides \
+    helpcontent2/source/text/shared/01/hyphenation \
     helpcontent2/source/text/shared/01/image_compression \
     helpcontent2/source/text/shared/01/image_external_tool \
     helpcontent2/source/text/shared/01/insert_chart \
