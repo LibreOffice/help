@@ -802,33 +802,16 @@
 </xsl:template>
 
 <!--NOTE TIP AND WARNING-->
+
 <xsl:template match="tip | note | warning">
-    <xsl:variable name="imgsrc">
-        <xsl:choose>
-            <xsl:when test="local-name()='note'"><xsl:value-of select="$note_img"/></xsl:when>
-            <xsl:when test="local-name()='tip'"><xsl:value-of select="$tip_img"/></xsl:when>
-            <xsl:when test="local-name()='warning'"><xsl:value-of select="$warning_img"/></xsl:when>
-        </xsl:choose>
-    </xsl:variable>
-    <div class="{local-name()}">
-        <div class="noteicon" dir="auto"><img src="{$imgsrc}" alt="{local-name()}" style="{$iconsizestyle}"/></div>
-        <div class="notetext"><p id="{@id}" dir="auto"><xsl:apply-templates /></p></div>
-    </div>
-    <br/>
+    <xsl:call-template name="insertnote">
+        <xsl:with-param name="type" select="local-name()" />
+    </xsl:call-template>
 </xsl:template>
 <xsl:template match="tip | note | warning" mode="embedded">
-    <xsl:variable name="imgsrc">
-        <xsl:choose>
-            <xsl:when test="local-name()='note'"><xsl:value-of select="$note_img"/></xsl:when>
-            <xsl:when test="local-name()='tip'"><xsl:value-of select="$tip_img"/></xsl:when>
-            <xsl:when test="local-name()='warning'"><xsl:value-of select="$warning_img"/></xsl:when>
-        </xsl:choose>
-    </xsl:variable>
-    <div class="{local-name()}">
-        <div class="noteicon" dir="auto"><img src="{$imgsrc}" alt="{local-name()}" style="{$iconsizestyle}"/></div>
-        <div class="notetext"><p id="{@id}" dir="auto"><xsl:apply-templates mode="embedded"/></p></div>
-    </div>
-    <br/>
+    <xsl:call-template name="insertnote">
+        <xsl:with-param name="type" select="local-name()" />
+    </xsl:call-template>
 </xsl:template>
 
 <!--SQLCODE, BASCODE, PYCODE-->
@@ -858,6 +841,7 @@
         <pre dir="auto"><code class="{$codelangclass}"><xsl:apply-templates /></code></pre>
     </div>
 </xsl:template>
+
 <!-- In case of missing help files -->
 <xsl:template match="help-id-missing">
 <span id="bm_HID2"></span>
