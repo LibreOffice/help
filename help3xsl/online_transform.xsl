@@ -122,7 +122,9 @@
 
 <!-- Create the document skeleton -->
 <xsl:template match="/">
-    <xsl:variable name="htmlpage"><xsl:value-of select="concat(substring-before($filename,'.xhp'),'.html')"/></xsl:variable>
+    <xsl:variable name="htmlpage">
+        <xsl:value-of select="concat(substring-before($filename,'.xhp'),'.html')"/>
+    </xsl:variable>
     <xsl:variable name="titleL10N">
         <xsl:call-template name="brand"><xsl:with-param name="string"><xsl:value-of select="$title"/></xsl:with-param></xsl:call-template>
     </xsl:variable>
@@ -147,14 +149,20 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:variable>
+    <xsl:variable name="meta_description">
+        <xsl:value-of select="substring(concat($productname,': ',//description),1,170)"/>
+    </xsl:variable>
 <html lang="{$lang}" dir="{$direction}">
     <head>
         <base href="{$install}"/>
+        <title><xsl:value-of disable-output-escaping="yes" select="$titleL10N"/></title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <xsl:if test="//description">
+            <meta name="description" contents="{$meta_description}"/>
+        </xsl:if>
         <xsl:if test="$online">
             <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' piwik.documentfoundation.org"/>
         </xsl:if>
-        <title><xsl:value-of disable-output-escaping="yes" select="$titleL10N"/></title>
         <link rel="shortcut icon" href="media/navigation/favicon.ico"/>
         <link  type="text/css" href="normalize.css" rel="Stylesheet"/>
         <link  type="text/css" href="prism.css" rel="Stylesheet"/>
@@ -178,6 +186,7 @@
         <xsl:if test="//topic[@indexer='exclude']">
             <meta name="robots" content="noindex"/>
         </xsl:if>
+
     </head>
     <body>
 
@@ -840,6 +849,14 @@
         <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
         <pre dir="auto"><code class="{$codelangclass}"><xsl:apply-templates /></code></pre>
     </div>
+</xsl:template>
+
+<!-- DESCRIPTION -->
+<xsl:template match="description">
+    <p id="{@id}" class="description" dir="auto"><xsl:apply-templates /></p>
+</xsl:template>
+<xsl:template match="description" mode="embedded">
+    <p id="{@id}" class="description" dir="auto"><xsl:apply-templates /></p>
 </xsl:template>
 
 <!-- In case of missing help files -->
