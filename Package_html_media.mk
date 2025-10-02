@@ -183,6 +183,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/scalc/calczoomslider.png \
     helpimg/sdraw/area-fill-none-same-vs-background.png \
     helpimg/sdraw/control_points.png \
+    helpimg/sdraw/dimension01.svg \
     helpimg/sdraw/distribute-orig.svg \
     helpimg/sdraw/distribute-HR.svg \
     helpimg/sdraw/distribute-HL.svg \
