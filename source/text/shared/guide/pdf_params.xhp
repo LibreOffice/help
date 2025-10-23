@@ -21,25 +21,40 @@
     <bookmark_value>convert to PDF;command line parameters</bookmark_value>
 </bookmark>
 <section id="pdfcliparams">
-    <h1 id="hd_id121682091245245"><variable id="h1"><link href="text/shared/guide/pdf_params.xhp">PDF Export Command Line Parameters</link></variable></h1>
-    <paragraph id="par_id671682091245248" role="paragraph">The PDF filter accepts a string of options containing PDF properties for export.</paragraph>
+<h1 id="hd_id121682091245245"><variable id="h1"><link href="text/shared/guide/pdf_params.xhp">PDF Export Command Line Parameters</link></variable></h1>
+<description id="par_id671682091245248">The PDF filter accepts a string of options containing PDF properties for export.</description>
 </section>
+<h2 id="hd_id971682091492801">Examples:</h2>
+<h4 id="hd_id551761222979028">Windows Command Prompt CMD</h4>
+<paragraph role="paragraph" id="par_id11761223631766">The double quotes in the parameter string must be escaped (\").</paragraph>
+<paragraph role="paragraph" id="par_id681761231624163"><variable id="pages">To export pages 2 to 5 of a Writer document:</variable></paragraph>
+<paragraph role="code" localize="false" id="par_id431682091883909"><input>"C:\Program Files\LibreOffice\program\soffice" --convert-to pdf:writer_pdf_Export:{\"PageRange\":{\"type\":\"string\",\"value\":\"2-5\"}} --outdir C:\Users\myuser\Documents C:\Users\myuser\Documents\myfile.odt</input></paragraph>
+<paragraph role="paragraph" id="par_id271761232432778"><variable id="watermark">To add a tiled watermark:</variable></paragraph>
+<paragraph role="code" id="par_id351761232400211" localize="false"><input>"C:\Program Files\LibreOffice\program\soffice" --convert-to pdf:draw_pdf_Export:{\"TiledWatermark\":{\"type\":\"string\",\"value\":\"draft\"}} C:\Users\myuser\Documents\test.odg</input> </paragraph>
+<paragraph role="paragraph" id="par_id611761251699726"><variable id="encrypt">To encrypt a file:</variable></paragraph>
+<paragraph role="code" id="par_id731761252498237"><input>"C:\Program Files\LibreOffice\program\soffice" --convert-to pdf:draw_pdf_Export:{\"EncryptFile\":{\"type\":\"boolean\",\"value\":\"true\"},\"DocumentOpenPassword\":{\"type\":\"string\",\"value\":\"secret\"}} test.odg</input></paragraph>
+<paragraph role="paragraph" id="par_id231761251733348"><variable id="version">To set version 1.5 (instead of the default 1.7):</variable></paragraph>
+<paragraph role="code" id="par_id141761252469484"><input>"C:\Program Files\LibreOffice\program\soffice" --convert-to pdf:draw_pdf_Export:{\"SelectPdfVersion\":{\"type\":\"long\",\"value\":\"15\"}} test.odg</input></paragraph>
+<h4 id="hd_id621761222972654">Windows PowerShell</h4>
+<paragraph role="paragraph" id="par_id911761223855152">The parameter string must be wrapped in single quotes to allow parsing of the double quotes.  The ampersand (&amp;) character is known as the call operator. It is used to execute a command, script block, or function stored in a variable or string.</paragraph>
+<paragraph role="paragraph" localize="false" id="par_id271761231629269"><embedvar href="text/shared/guide/pdf_params.xhp#pages" markup="ignore"/></paragraph>
+<paragraph role="code" id="par_id891761222948429" localize="false"><input>&amp; 'C:\Program Files\LibreOffice\program\soffice' --convert-to 'pdf:writer_pdf_Export:{"PageRange":{"type":"string","value":"2-5"}}' --outdir C:\Users\myuser\Documents C:\Users\myuser\Documents\myfile.odt</input></paragraph>
+<paragraph role="paragraph" localize="false" id="par_id391761231553885"><embedvar href="text/shared/guide/pdf_params.xhp#watermark" markup="ignore"/></paragraph>
+<paragraph role="code" id="par_id761761231534584" localize="false"><input>&amp; 'C:\Program Files\LibreOffice\program\soffice' --convert-to 'pdf:draw_pdf_Export:{"TiledWatermark":{"type":"string","value":"draft"}}' test.odg</input></paragraph>
+<paragraph role="paragraph" localize="false" id="par_id481761251029677"><embedvar href="text/shared/guide/pdf_params.xhp#encrypt" markup="ignore"/></paragraph>
+<paragraph role="code" localize="false" id="par_id111761251008883"><input>&amp; 'C:\Program Files\LibreOffice\program\soffice' --convert-to 'pdf:draw_pdf_Export:{"EncryptFile":{"type":"boolean","value":"true"},"DocumentOpenPassword":{"type":"string","value":"secret"}}' test.odg</input></paragraph>
+<paragraph role="paragraph" localize="false" id="par_id571761251024629"><embedvar href="text/shared/guide/pdf_params.xhp#version" markup="ignore"/></paragraph>
+<paragraph role="code" localize="false" id="par_id41761251006248"><input>&amp; 'C:\Program Files\LibreOffice\program\soffice' --convert-to 'pdf:draw_pdf_Export:{"SelectPdfVersion":{"type":"long","value":"15"}}' test.odg</input></paragraph>
+<h4 id="hd_id101761223249501">Linux (BASH) and MacOS (ZSH)</h4>
+<paragraph role="paragraph" localize="false" id="par_id951761233158520"><embedvar href="text/shared/guide/pdf_params.xhp#pages" markup="ignore"/></paragraph>
+<paragraph role="code" id="par_id871761226406796"><input>soffice  --convert-to 'pdf:writer_pdf_Export:{"PageRange":{"type":"string","value":"2-5"}}' --outdir /home/myuser myfile.odt</input></paragraph>
+<paragraph role="paragraph" localize="false" id="par_id351761233105889"><embedvar href="text/shared/guide/pdf_params.xhp#watermark" markup="ignore"/></paragraph>
+<paragraph role="code" localize="false" id="par_id271682091918895"><input>soffice --convert-to 'pdf:draw_pdf_Export:{"TiledWatermark":{"type":"string","value":"draft"}}' test.odg</input></paragraph>
+<paragraph role="paragraph" localize="false" id="par_id661682091944531"><embedvar href="text/shared/guide/pdf_params.xhp#encrypt" markup="ignore"/></paragraph>
+<paragraph role="code" localize="false" id="par_id671682092011327"><input>soffice --convert-to 'pdf:draw_pdf_Export:{"EncryptFile":{"type":"boolean","value":"true"},"DocumentOpenPassword":{"type":"string","value":"secret"}}' test.odg</input></paragraph>
+<paragraph role="paragraph" localize="false" id="par_id601682091972478"><embedvar href="text/shared/guide/pdf_params.xhp#version" markup="ignore"/></paragraph>
+<paragraph role="code" localize="false" id="par_id61682091986689"><input>soffice --convert-to 'pdf:draw_pdf_Export:{"SelectPdfVersion":{"type":"long","value":"15"}}' test.odg</input></paragraph>
 
-<h3 id="hd_id971682091492801">Examples:</h3>
-<paragraph role="paragraph" id="par_id841682091860427">To skip the first page of a Draw document:</paragraph>
-<paragraph role="paragraph" localize="false" id="par_id431682091883909"><input>soffice --convert-to 'pdf:draw_pdf_Export:{"PageRange":{"type":"string","value":"2-"}}' test.odg</input></paragraph>
-
-<paragraph role="paragraph" id="par_id681682091902912">To add a tiled watermark:</paragraph>
-
-<paragraph role="paragraph" localize="false" id="par_id271682091918895"><input>soffice --convert-to 'pdf:draw_pdf_Export:{"TiledWatermark":{"type":"string","value":"draft"}}' test.odg</input></paragraph>
-
-<paragraph role="paragraph" id="par_id661682091944531">To encrypt a file:</paragraph>
-
-<paragraph role="paragraph" localize="false" id="par_id671682092011327"><input>soffice --convert-to 'pdf:draw_pdf_Export:{"EncryptFile":{"type":"boolean","value":"true"},"DocumentOpenPassword":{"type":"string","value":"secret"}}' test.odg</input></paragraph>
-
-<paragraph role="paragraph" id="par_id601682091972478">To set version 1.5 (instead of the default 1.7):</paragraph>
-
-<paragraph role="paragraph" localize="false" id="par_id61682091986689"><input>soffice --convert-to 'pdf:draw_pdf_Export:{"SelectPdfVersion":{"type":"long","value":"15"}}' test.odg</input></paragraph>
 <h2 id="hd_id791693493415853">Index</h2>
 <paragraph role="paragraph" id="par_id881693493458276" localize="false"><embedvar href="text/shared/guide/pdf_params.xhp#general_properties" markup="ignore"/></paragraph>
 <paragraph role="paragraph" id="par_id331693493646090" localize="false"><embedvar href="text/shared/guide/pdf_params.xhp#initial_view" markup="ignore"/></paragraph>
@@ -48,7 +63,7 @@
 <paragraph role="paragraph" id="par_id801693493791591" localize="false"><embedvar href="text/shared/guide/pdf_params.xhp#security" markup="ignore"/></paragraph>
 <paragraph role="paragraph" id="par_id941693493872432" localize="false"><embedvar href="text/shared/guide/pdf_params.xhp#digital_signature" markup="ignore"/></paragraph>
 
-<h2 id="hd_id161682092535475"><variable id="general_properties"><link href="text/shared/guide/pdf_params.xhp#generaltext/shared/guide/pdf_params.xhp">General Properties</link></variable></h2>
+<h2 id="hd_id161682092535475"><variable id="general_properties"><link href="text/shared/guide/pdf_params.xhp#general_properties">General Properties</link></variable></h2>
 <paragraph role="paragraph" id="par_id431693518528694" localize="false"><embedvar href="text/shared/01/ref_pdf_export_general.xhp#pdfexportgeneralh1" markup="ignore"/></paragraph>
 <table id="tab_id871682092689083">
     <tablerow>
@@ -627,7 +642,7 @@
         </tablecell>
     </tablerow>
 </table>
-<h2 id="hd_id781682103094811"><variable id="user_interface"><link href="text/shared/guide/pdf_params.xhp#user interface">User Interface</link></variable></h2>
+<h2 id="hd_id781682103094811"><variable id="user_interface"><link href="text/shared/guide/pdf_params.xhp#user_interface">User Interface</link></variable></h2>
 <paragraph role="paragraph" id="par_id811693518223533" localize="false"><embedvar href="text/shared/01/ref_pdf_export_user_interface.xhp#pdfexportuserinterfaceh1" markup="ignore"/></paragraph>
 <table id="tab_id41682101522614">
     <tablerow>
