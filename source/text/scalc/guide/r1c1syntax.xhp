@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+    <meta>
+        <topic id="textscalcguider1c1syntaxxhp" indexer="include" status="PUBLISH">
+        <title id="tit">R1C1 Syntax</title>
+        <filename>/text/scalc/guide/r1c1syntax.xhp</filename>
+    </topic>
+</meta>
+<body>
+
+<bookmark branch="index" id="bm_id221761432823940">
+    <bookmark_value>references;R1C1 syntax</bookmark_value>
+    <bookmark_value>R1C1 syntax;references</bookmark_value>
+</bookmark>
+<section id="r1c1">
+    <h1 id="hd_id581761424980501"><variable id="h1"><link href="text/scalc/guide/r1c1syntax.xhp">R1C1 Reference Syntax for Calc Formulas</link></variable></h1>
+    <description id="par_id71761424980505">Calc supports both R1C1 and the more widely used A1 notation for cell references.</description>
+</section>
+<paragraph role="paragraph" id="par_id841761425689779">The R1C1 notation is enabled in %PRODUCTNAME Calc options.</paragraph>
+<section id="howtoget">
+    <embed href="text/shared/00/00000004.xhp#from_menu_bar"/>
+    <paragraph role="paragraph" id="par_id201761425493792">Choose <switchinline select="sys"><caseinline select="MAC"><menuitem>%PRODUCTNAME - Preferences</menuitem></caseinline><defaultinline><menuitem>Tools - Options</menuitem></defaultinline></switchinline><menuitem> - %PRODUCTNAME Calc - Formula - Syntax</menuitem>.</paragraph>
+    <embed href="text/shared/00/00000004.xhp#from_tabUI"/>
+    <paragraph role="paragraph" id="par_id681761425632852">On the <menuitem>Tools</menuitem> tab, Choose <menuitem>Options - %PRODUCTNAME Calc - Formula - Syntax</menuitem>.</paragraph>
+    <embed href="text/shared/00/00000004.xhp#from_keyboard"/>
+    <paragraph role="paragraph" id="par_id751761425479328"><keycode>Alt + F12</keycode>, then <menuitem>%PRODUCTNAME Calc - Formula - Syntax</menuitem>.</paragraph>
+</section>
+<h2 id="hd_id351761428592153">The R1C1 notation</h2>
+<paragraph role="paragraph" id="par_id921761428600825">In the A1 notation, columns are labeled with letters and rows with numbers, whereas the R1C1 notation uses numbers for both columns and rows.</paragraph>
+<note id="par_id241761428608425">In R1C1 notation, %PRODUCTNAME Calc displays columns headers as numbers.</note>
+<paragraph role="paragraph" id="par_id201761428614033">Therefore, the cell A1 correspond to R1C1, which means row 1 and column 1, and cell A2 correspond to R2C1, that is, row 2 column 1.</paragraph>
+<paragraph role="paragraph" id="par_id211761428618385">The real difference comes when writing formulas and use a reference to other cells.</paragraph>
+<paragraph role="paragraph" id="par_id131761428622872">In R1C1 notation, cell references are based on their position relative to the active cell.</paragraph>
+<paragraph role="paragraph" id="par_id131761428627632">For example, if you reference cell B5 from cell A1, the R1C1 notation displays it as R[4]C[1], indicating four rows down and one column to the right of the active cell.</paragraph>
+<paragraph role="paragraph" id="par_id731761428632803">However, if the active cell is C3, the same cell (B5) is referenced as R[2]C[-1], meaning two rows down and one column to the left.</paragraph>
+<h2 id="hd_id341761428636872">Use of brackets in R1C1 notation</h2>
+<paragraph role="paragraph" id="par_id771761428641224">Brackets indicate the relative offset from the active cell.</paragraph>
+<paragraph role="paragraph" id="par_id991761428645367">Positive numbers in brackets represent an offset to the right for columns and downward for rows.</paragraph>
+<paragraph role="paragraph" id="par_id681761428648568">Negative numbers in brackets represent an offset to the left for columns and upward for rows.</paragraph>
+<note id="par_id191761430190197">If there is no offset for a row or column (i.e., the offset is zero), the zero is omitted in R1C1 notation. For example, a reference to a cell in the same row but two columns to the left is written as RC[-2].</note>
+<h2 id="hd_id311761428653016">Absolute and relative references in R1C1 notation</h2>
+<paragraph role="paragraph" id="par_id371761428660951">Relative and absolute references are preserved in the R1C1 notation. The table below summarizes the equivalence. The current cell is R3C3 (C3)</paragraph>
+<table id="tab_id521761428215456">
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id981761428215458" role="tablehead">A1 notation</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id301761428215461" role="tablehead">R1C1 notation</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id261761428215463" role="tablehead">Type of reference</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id791761428215466" role="tablecontent" localize="false" >A1</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id81761428215468" role="tablecontent" localize="false" >R[-2]C[-2]</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id251761428215471" role="tablecontent">Relative reference</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id821761428317451" role="tablecontent"  localize="false" >$A1</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id191761428317453" localize="false" role="tablecontent">R[-2]C1</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id741761428317455" role="tablecontent">Relative row and absolute column</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id241761428396522" role="tablecontent">A$1</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id681761428396524" localize="false" role="tablecontent">R1C[-2]</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id341761428396527" localize="false" role="tablecontent">Absolute row and relative column</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id461761428504774" localize="false" role="tablecontent">$A$1</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id291761428504776" localize="false" role="tablecontent">R1C1</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id521761428504779" localize="false" role="tablecontent">Absolute reference</paragraph>
+        </tablecell>
+    </tablerow>
+</table>
+<h2 id="hd_id431761430561339">Range expressions in R1C1 notation</h2>
+<paragraph role="paragraph" id="par_id161761430576814">As in A1 notation, the range operators work the same way. For example, a formula in cell R1C1 that sums rows 1 to 10 in column 3 is written as =SUM(RC[2]:R[9]C[2]).</paragraph>
+<paragraph role="paragraph" id="par_id961761431599251">To calculate the sum of all values in columns 4 to 7, write =SUM(C[3]:C[6]) in R2C1.</paragraph>
+<section id="relatedtopics">
+    <paragraph role="paragraph" id="par_id331761431262572" localize="false"><embedvar href="text/scalc/guide/relativ_absolut_ref.xhp#relativ_absolut_ref" markup="ignore"/></paragraph>
+    <paragraph role="paragraph" id="par_id451761433151307" localize="false"><embedvar href="text/shared/optionen/01060900.xhp#h1" markup="ignore"/></paragraph>
+</section>
+</body>
+</helpdocument>

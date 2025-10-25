@@ -489,6 +489,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/guide/print_landscape \
     helpcontent2/source/text/scalc/guide/print_title_row \
     helpcontent2/source/text/scalc/guide/printranges \
+    helpcontent2/source/text/scalc/guide/r1c1syntax \
     helpcontent2/source/text/scalc/guide/relativ_absolut_ref \
     helpcontent2/source/text/scalc/guide/remove_duplicates \
     helpcontent2/source/text/scalc/guide/rename_table \
