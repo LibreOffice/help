@@ -150,7 +150,11 @@
         </xsl:choose>
     </xsl:variable>
     <xsl:variable name="meta_description">
-        <xsl:value-of select="substring(concat($productname,': ',//description),1,170)"/>
+        <xsl:call-template name="brand">
+            <xsl:with-param name="string">
+                 <xsl:value-of select="substring(concat($productname,': ',//description),1,170)"/>
+            </xsl:with-param>
+        </xsl:call-template>
     </xsl:variable>
 <html lang="{$lang}" dir="{$direction}">
     <head>
