@@ -87,7 +87,7 @@ endif
 
 # set of installed languages - has to be language independent
 $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/languages.js : $(SRCDIR)/helpcontent2/CustomTarget_html.mk
-	$(file >$@,'var languagesSet = new Set([$(subst $(WHITESPACE),$(COMMA) ,$(patsubst %,'%',$(gb_HELP_LANGS)))]);')
+	$(file >$@,var languagesSet = new Set([$(subst $(WHITESPACE),$(COMMA) ,$(patsubst %,'%',$(gb_HELP_LANGS)))]);)
 
 # names of the languages - has to be translated, ie. per language
 $(gb_CustomTarget_workdir)/helpcontent2/help3xsl/%/langnames.js : \
