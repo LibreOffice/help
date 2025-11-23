@@ -54,7 +54,7 @@
       <paragraph id="par_id328989" role="paragraph">Names must not be the same as cell references. For example, the name A1 is invalid because A1 is a cell reference to the top left cell.</paragraph>
       <paragraph id="par_id32898987" role="paragraph">Names must not start with the letters C or R followed by a number; also single characters C and R are not allowed as names. See the ADDRESS function for more information.</paragraph>
       <paragraph id="par_id4769737" role="paragraph">Names for cell ranges must not include blanks. Blanks are allowed within names for sheets and documents.</paragraph>
-      <h2 id="hd_id1226233">Naming cells and formulas</h2>
+      <h2 id="hd_id1226233"><variable id="naming_cells"><link href="text/scalc/guide/value_with_name.xhp#naming cells and ranges">Naming cells and ranges</link></variable></h2>
       <paragraph id="par_id5489364" role="paragraph">A good way of making the references to cells and cell ranges in formulas legible is to give the ranges names. For example, you can name the range A1:B2 <emph>Start</emph>. You can then write a formula such as "=SUM(Start)". Even after you insert or delete rows or columns, $[officename] still correctly assigns the ranges identified by name. Range names must not contain any spaces.</paragraph>
       <paragraph id="par_id953398" role="paragraph">For example, it is much easier to read a formula for sales tax if you can write "= Amount * Tax_rate" instead of "= A5 * B12". In this case, you would name cell A5 "Amount" and cell B12 "Tax_rate."</paragraph>
       <paragraph id="par_id4889675" role="paragraph">Use the <emph>Define Names</emph> dialog to define names for formulas or parts of formulas you need more often. In order to specify range names,</paragraph>
@@ -76,6 +76,27 @@
             <paragraph id="par_id3150749" role="listitem">If more than one name starts with the same characters, you can scroll forward through all the names using the <switchinline select="sys"><caseinline select="MAC"><keycode>Command</keycode></caseinline><defaultinline><keycode>Ctrl</keycode></defaultinline></switchinline> <keycode>+ Tab keys</keycode> and backward using the <keycode>Shift +</keycode> <switchinline select="sys"><caseinline select="MAC"><keycode>Command</keycode></caseinline><defaultinline><keycode>Ctrl</keycode></defaultinline></switchinline> <keycode>+ Tab</keycode> keys.<comment>mw copied contents from Calc guide address_byname.xhp</comment></paragraph>
          </listitem>
       </list>
+      <h2 id="hd_id881763912898660"><variable id="naming_formulas"><link href="text/scalc/guide/value_with_name.xhp#naming formulas">Naming Formulas</link></variable></h2>
+      <paragraph role="paragraph" id="par_id501763912916013">You can assign a simpler or more familiar name to a long or complex formula expression.</paragraph>
+      <list type="ordered">
+            <listitem>
+                  <paragraph id="par_id141763911755154"  role="listitem">Choose <emph>Sheet - Named Ranges and Expressions - Define</emph>. The <emph>Define Names</emph> dialog appears.</paragraph>
+            </listitem>
+            <listitem>
+                  <paragraph id="par_id201763911835200"  role="listitem">Enter the name for the formula expression in the <emph>Name</emph> field.</paragraph>
+            </listitem>
+            <listitem>
+                  <paragraph id="par_id271763912749700"  role="listitem">Enter the formula expression in the <emph>Range or formula expression</emph> box. For example, if you have named your formula <emph>HYP</emph>, you can enter the expression <input>SQRT(A1*A1 + B1*B1)</input>  to compute the distance between two points on a plane. Do not precede the expression with an equal sign (=).</paragraph>
+            </listitem>
+            <listitem>
+                  <paragraph id="par_id721763912801530"  role="listitem">Click <emph>Add</emph>. The newly defined name appears in the list below. Click OK to close the dialog.</paragraph>
+            </listitem>
+            <listitem>
+                  <paragraph id="par_id401763913780278"  role="listitem">Enter the name of the named formula in the desired cell. The cell value is the result of the formula expression. For example, enter <input>=HYP()</input>  to compute the formula above.  Note that you cannot directly pass parameters to named formulas.</paragraph>
+            </listitem>
+      </list>
+      <note id="par_id911763913184094">Naming conventions apply to named formulas. Absolute and relative references are respected. For example, when the named formula is copied and pasted.</note>
+
       <section id="relatedtopics">
          <paragraph id="par_id3153711" role="paragraph"><link href="text/scalc/01/04070100.xhp">Sheet - Named Ranges and Expressions - Define</link></paragraph>
          <embed href="text/scalc/guide/goalseek.xhp#goalseek"/>
