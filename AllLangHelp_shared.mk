@@ -767,7 +767,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/guide/fax \
     helpcontent2/source/text/shared/guide/filternavigator \
     helpcontent2/source/text/shared/guide/find_attributes \
-    helpcontent2/source/text/shared/guide/flat_icons \
     helpcontent2/source/text/shared/guide/floating_toolbar \
     helpcontent2/source/text/shared/guide/fontwork \
     helpcontent2/source/text/shared/guide/formfields \

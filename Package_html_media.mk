@@ -443,7 +443,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/cui/ui/hyperlinkinternetpage/HyperlinkInternetPage.png \
     screenshots/cui/ui/hyperlinkmailpage/HyperlinkMailPage.png \
     screenshots/cui/ui/hyperlinknewdocpage/HyperlinkNewDocPage.png \
-    screenshots/cui/ui/optviewpage/OptViewPage.png \
     screenshots/cui/ui/optfltrpage/OptFltrPage.png \
     screenshots/cui/ui/opthtmlpage/OptHtmlPage.png \
     screenshots/cui/ui/optaccessibilitypage/OptAccessibilityPage.png \
