@@ -68,7 +68,7 @@
       <paragraph id="par_id681623365274024" role="listitem"><emph>Run Scripts inside the current %PRODUCTNAME process:</emph> Python scripts are executed from within the %PRODUCTNAME process by using the <menuitem>Tools - Macros - Run Macro</menuitem> menu or the APSO extension to call user scripts stored in the Python scripts folder. You can also use the APSO Python shell to interactively run Python scripts.</paragraph>
     </listitem>
     <listitem>
-      <paragraph id="par_id761623365278133" role="listitem"><emph>Run Scripts separately from the %PRODUCTNAME process:</emph> Python scripts are executed from an external process that connects to an ongoing %PRODUCTNAME process using a socket.</paragraph>
+      <paragraph id="par_id761623365278133" role="listitem"><emph>Run Scripts separately from the %PRODUCTNAME process:</emph> Python scripts are executed from an external process that connects to an ongoing %PRODUCTNAME process using a <literal>pipe</literal> or a <literal>socket</literal>.</paragraph>
     </listitem>
   </list>
   <tip id="par_id631623365667011">If you plan to run scripts from inside the %PRODUCTNAME process, it is recommended to install the <link href="https://extensions.libreoffice.org/en/extensions/show/apso-alternative-script-organizer-for-python">APSO (Alternative Script Organizer for Python) extension</link>. However, to develop Python scripts from outside %PRODUCTNAME, you can choose your preferred Python IDE.</tip>
@@ -155,14 +155,15 @@
   <paragraph role="paragraph" id="par_id451623370201479">For example, suppose you get <emph>/usr/lib/libreoffice/</emph> as the result from running the Python code above. Then you need to consider <emph>/usr/lib/libreoffice/program</emph> as the path to run your Python scripts.</paragraph>
   </section>
 
-  <h3 id="hd_id231623370501084">Start %PRODUCTNAME with socket settings</h3>
+  <h3 id="hd_id231623370501084">Start %PRODUCTNAME with <literal>pipe</literal> or <literal>socket</literal> settings</h3>
   <paragraph role="paragraph" id="par_id721623369245475">To run Python scripts from a separate process, you need to start %PRODUCTNAME with a few additional options that specify the hostname and port through which the external process will communicate with the %PRODUCTNAME component process.</paragraph>
-  <paragraph role="paragraph" id="par_id221623369584132">Open the your operating system's command prompt, navigate to the program folder of your %PRODUCTNAME installation directory and type:</paragraph>
+  <paragraph role="paragraph" id="par_id221623369584132">Open the your operating system's command prompt, navigate to the program folder of your %PRODUCTNAME installation directory and type either:</paragraph>
+  <paragraph role="paragraph" localize="false" id="par_id441765124105309"><input>./soffice --accept='pipe,name=libreoffice;urp;'</input></paragraph>
   <paragraph role="paragraph" localize="false" id="par_id381623369456352"><input>./soffice --accept='socket,host=localhost,port=2021;urp;'</input></paragraph>
-  <paragraph role="paragraph" id="par_id981623370706743">The command above will start %PRODUCTNAME with a communication channel open so that other processes can exchange messages with it.</paragraph>
-  <paragraph role="paragraph" id="par_id621623370871360">Note that the previous example opens %PRODUCTNAME start center. If you want to open a specific component, for instance Writer, you can add the --writer flag to the command, as follows.</paragraph>
+  <paragraph role="paragraph" id="par_id981623370706743">Either command above will start %PRODUCTNAME with a communication channel open so that other processes can exchange messages with it.</paragraph>
+  <paragraph role="paragraph" id="par_id621623370871360">Note that the previous example opens %PRODUCTNAME start center. If you want to open a specific component, for instance <literal>Writer</literal>, you can add the --writer flag to the command, as follows.</paragraph>
   <paragraph role="paragraph" localize="false" id="par_id371623370974348"><input>./soffice --writer --accept='socket,host=localhost,port=2021;urp;'</input></paragraph>
-  <paragraph role="paragraph" id="par_id431623373618951">Take note of the <literal>host</literal> and <literal>port</literal> parameters, which in this example are <emph>localhost</emph> and <emph>2021</emph>, respectively.</paragraph>
+  <paragraph role="paragraph" id="par_id431623373618951">Take note of the <literal>name</literal>, or <literal>host</literal> and <literal>port</literal> parameters, which in this example are <emph>libreoffice</emph>, or <emph>localhost</emph> and <emph>2021</emph>, respectively.</paragraph>
 
   <h3 id="hd_id861623370468356">Running an External Python Shell</h3>
   <paragraph role="paragraph" id="par_id621623371253647">Start the Python shell from within the <emph>program</emph> folder inside your %PRODUCTNAME installation path. Follow the steps <link href="text/sbasic/shared/03/sf_intro.xhp#InstallPath">above</link> to learn how to find your installation path.</paragraph>
@@ -172,13 +173,18 @@
   <paragraph role="paragraph" id="par_id311623373151552"><emph>On Windows:</emph></paragraph>
   <paragraph role="paragraph" localize="false" id="par_id601623372243204"><input>$ cd C:\Program Files\LibreOffice\program\</input></paragraph>
   <paragraph role="paragraph" localize="false" id="par_id601623372243399"><input>$ python.exe</input></paragraph>
-  <paragraph role="paragraph" id="par_id791623373520018">This will open the Python shell and now you can start typing commands that will be executed by %PRODUCTNAME. But first you need to set up the socket connection.</paragraph>
+  <paragraph role="paragraph" id="par_id791623373520018">This will open the Python shell and now you can start typing commands that will be executed by %PRODUCTNAME. But first you need to set up the <literal>pipe</literal> or the <literal>socket</literal> connection. The <literal>ScriptForge()</literal> statement below must precede the very first call to <literal>CreateScriptService()</literal>.</paragraph>
+    <paragraph role="paragraph" id="par_id771765126113017">Run either:</paragraph>
+  <pycode>
+   <paragraph role="pycode" id="pyc_id631765125675526">from scriptforge import ScriptForge, CreateScriptService</paragraph>
+   <paragraph role="pycode" id="pyc_id791765125744865">ScriptForge(pipe='libreoffice')</paragraph>
+</pycode>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id281623373588570">from scriptforge import ScriptForge, CreateScriptService</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id121623373589306">ScriptForge(hostname='localhost', port=2021)</paragraph>
   </pycode>
   <note id="par_id761689720152565">Read the section <link href="text/sbasic/shared/03/sf_intro.xhp#pythonpath">Setting PYTHONPATH</link> below in case of errors importing <literal>scriptforge.py</literal> or <literal>uno.py</literal>.</note>
-  <paragraph role="paragraph" id="par_id351623373686414">The second line of code above defines the <literal>host</literal> and <literal>port</literal> settings so that the Python shell can communicate with an ongoing %PRODUCTNAME process opened with the same socket settings.</paragraph>
+  <paragraph role="paragraph" id="par_id351623373686414">The second line of code above defines the <literal>pipe</literal> or <literal>host</literal> and <literal>port</literal> settings so that the Python shell can communicate with an ongoing %PRODUCTNAME process opened with the same pipe or socket settings.</paragraph>
   <paragraph role="paragraph" id="par_id721623373769471">Now you can run other Python commands and they will be able to communicate with the %PRODUCTNAME process. For example:</paragraph>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id731623373850131">ui = CreateScriptService("UI")</paragraph>
