@@ -25,13 +25,13 @@
 
   <paragraph role="paragraph" id="par_id891582884466217" xml-lang="en-US">A dictionary is a collection of key-item pairs</paragraph>
   <list type="unordered">
-    <listitem><paragraph id="par_id861582884516571" role="listitem" xml-lang="en-US">The key is a string. In Basic scripts, the case sensitivity of the key is determined at Dictionary creation. In Python scripts, the key is always case-sensitive.</paragraph></listitem>
+    <listitem><paragraph id="par_id861582884516571" role="listitem" xml-lang="en-US">The key is a case-insensitive string</paragraph></listitem>
     <listitem><paragraph id="par_id531582884549542" role="listitem" xml-lang="en-US">Items may be of any type</paragraph></listitem>
   </list>
 </section>
 
   <paragraph role="paragraph" id="par_id891582884593057" xml-lang="en-US">Keys and items can be retrieved, counted, updated, and much more.</paragraph>
-  <paragraph role="tip" id="par_id971582884636922" xml-lang="en-US">The Dictionary service is similar to the built-in %PRODUCTNAME Basic <literal>Collection</literal> object, however with more features. For example, <literal>Collection</literal> objects do not support the retrieval of keys. Moreover, Dictionaries provide additional capabilities as replacing keys, testing if a specific key already exists and converting the Dictionary into an array of PropertyValues or a JSON string.</paragraph>
+  <paragraph role="tip" id="par_id971582884636922" xml-lang="en-US">The Dictionary service is similar to the built-in %PRODUCTNAME Basic <literal>Collection</literal> object, however with more features. For example, <literal>Collection</literal> objects do not support the retrieval of keys. Moreover, Dictionaries provide additional capabilities as replacing keys, testing if a specific key already exists and converting the Dictionary into an Array object or JSON string.</paragraph>
 
   <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
@@ -39,9 +39,8 @@
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id851582897798335">GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id371582885621964">Dim myDict As Variant</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id201582885621287">myDict = CreateScriptService("Dictionary", True)</paragraph>
-    <paragraph role="bascode" id="bas_id251765034282638">            ' The keys are case-sensitive, hence the second argument is <literal>True</literal></paragraph>
- </bascode>
+    <paragraph role="bascode" localize="false" id="bas_id201582885621287">myDict = CreateScriptService("Dictionary")</paragraph>
+  </bascode>
 
   <paragraph role="paragraph" id="par_id71158288562139" xml-lang="en-US">It is recommended to free resources after use:</paragraph>
   <bascode>
@@ -51,7 +50,7 @@
   <paragraph role="paragraph" id="par_id551626869252987">The example below creates an empty instance of the <literal>Dictionary</literal> service and uses the Python native <literal>update</literal> method to populate it with the contents of a Python <literal>dict</literal> object.</paragraph>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id61626869417885">dico = dict('A' = 1, 'B' = 2, 'C' = 3)</paragraph>
-    <paragraph role="pycode" id="pyc_id61626869417128"># Initialize myDict as an empty Dictionary object</paragraph>
+    <paragraph role="pycode" id="pyc_id61626869417128"># Initialize myDict as an empty dict object</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id501626869418687">myDict = CreateScriptService('Dictionary')</paragraph>
     <paragraph role="pycode" id="pyc_id921626869402748"># Load the values of dico into myDict</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id921626869418958">myDict.update(dico)</paragraph>
@@ -68,7 +67,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id351626869185567">print(myDict) # {'A': 1, 'B': 2, 'C': 3, 'D': 4}</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id721626869185728">propval = myDict.ConvertToPropertyValues()</paragraph>
   </pycode>
-  <note id="par_id211626699007613">Because Python has built-in dictionary support, most of the methods in the <literal>Dictionary</literal> service are available for Basic scripts only. Exceptions are the <literal>ConvertToPropertyValues</literal> and <literal>ImportFromPropertyValues</literal> methods that are supported in both Basic and Python.</note>
+  <note id="par_id211626699007613">Because Python has built-in dictionary support, most of the methods in the <literal>Dictionary</literal> service are available for Basic scripts only. Exceptions are <literal>ConvertToPropertyValues</literal> and <literal>ImportFromPropertyValues</literal> that are supported in both Basic and Python.</note>
 
   <h2 id="hd_id351582885195476" xml-lang="en-US">Properties</h2>
   <section id="properties_toc">
@@ -192,7 +191,7 @@
       <input>dict.Add(key: str, item: any): bool</input>
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-    <paragraph role="paragraph" id="par_id341582887670030"><emph>key</emph>: String value used to identify the Item. The case sensitivity of the key was determined at Dictionary creation..</paragraph>
+    <paragraph role="paragraph" id="par_id341582887670030"><emph>key</emph>: String value used to identify the Item. The key is not case-sensitive.</paragraph>
     <paragraph role="paragraph" id="par_id401582887670030"><emph>item</emph>: Any value, including an array, a Basic object, a UNO object, a dictionary, etc.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <bascode>
@@ -417,7 +416,7 @@
     <input>dict.Item(key: str): any</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id551582890399669"><emph>key</emph>: If it does not exist, the <literal>Empty</literal> value is returned.</paragraph>
+  <paragraph role="paragraph" id="par_id551582890399669"><emph>key</emph>: Not case-sensitive. If it does not exist, <literal>Empty</literal> value is returned.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id181610395933967">The following example iterates over all keys in the dictionary and uses the <literal>Item</literal> method to access their values.</paragraph>
   <bascode>
@@ -445,7 +444,7 @@
     <input>dict.Remove(key: str): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id551582890366999"><emph>key</emph>: Must exist in the dictionary, otherwise an <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
+  <paragraph role="paragraph" id="par_id551582890366999"><emph>key</emph>: Not case-sensitive. Must exist in the dictionary, otherwise an <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id56158289627581">myDict.Add("key1", 100)</paragraph>
@@ -491,7 +490,7 @@
     <input>dict.ReplaceItem(key: str, value: any): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id991582895615535"><emph>key</emph>: String value representing the key whose value will be replaced. If the key does not exist in the dictionary, an <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
+  <paragraph role="paragraph" id="par_id991582895615535"><emph>key</emph>: String value representing the key whose value will be replaced. Not case-sensitive. If the key does not exist in the dictionary, an <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
   <paragraph role="paragraph" id="par_id721582895615186"><emph>value</emph>: The new value of the item referred to with the <literal>key</literal> parameter.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <bascode>
@@ -514,8 +513,8 @@
     <input>dict.ReplaceKey(key: str, value: str): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id911582896597619"><emph>key</emph>: String value representing the key to be replaced. If the key does not exist in the dictionary, a <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
-  <paragraph role="paragraph" id="par_id531582896597989"><emph>value</emph>: String value for the new key. If the new key already exists in the dictionary, a <literal>DUPLICATEKEYERROR</literal> error is raised.</paragraph>
+  <paragraph role="paragraph" id="par_id911582896597619"><emph>key</emph>: String value representing the key to be replaced. Not case-sensitive. If the key does not exist in the dictionary, a <literal>UNKNOWNKEYERROR</literal> error is raised.</paragraph>
+  <paragraph role="paragraph" id="par_id531582896597989"><emph>value</emph>: String value for the new key. Not case-sensitive. If the new key already exists in the dictionary, an <literal>DUPLICATEKEYERROR</literal> error is raised.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id521582896597313">myDict.Add("oldKey", 100)</paragraph>
