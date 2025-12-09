@@ -27,6 +27,7 @@
 </section>
 
   <paragraph role="paragraph" id="par_id651582454426538">Array items may contain any type of value, including (sub)arrays.</paragraph>
+  <paragraph role="paragraph" id="par_id831765200111034">One-dimensional arrays containing only one-dimensional subarrays are called below <literal>data arrays</literal>. They are particularly suited for exchanges of tabular data with <literal>Python</literal> scripts and <literal>Calc</literal> sheets.</paragraph>
 
   <h2 id="hd_id981586595097630">Service invocation</h2>
   <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>Array</literal> service the <literal>ScriptForge</literal> library needs to be loaded using:</paragraph>
@@ -64,17 +65,20 @@
         <link href="text/sbasic/shared/03/sf_array.xhp#AppendColumn">AppendColumn</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#AppendRow">AppendRow</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#Contains">Contains</link><br/>
+        <link href="text/sbasic/shared/03/sf_array.xhp#ConvertFromDataArray">ConvertFromDataArray</link><br/>
+        <link href="text/sbasic/shared/03/sf_array.xhp#ConvertToDataArray">ConvertToDataArray</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#ConvertToDictionary">ConvertToDictionary</link><br/>
+        <link href="text/sbasic/shared/03/sf_array.xhp#ConvertToRange">ConvertToRange</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#Copy">Copy</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#CountDims">CountDims</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#Difference">Difference</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#ExportToTextFile">ExportToTextFile</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#ExtractColumn">ExtractColumn</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#ExtractRow">ExtractRow</link><br/>
       </paragraph>
     </tablecell>
     <tablecell>
       <paragraph id="par_id231606235233835" role="tablecontent" localize="false">
+        <link href="text/sbasic/shared/03/sf_array.xhp#ExtractColumn">ExtractColumn</link><br/>
+        <link href="text/sbasic/shared/03/sf_array.xhp#ExtractRow">ExtractRow</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#Flatten">Flatten</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#ImportFromCSVFile">ImportFromCSVFile</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#IndexOf">IndexOf</link><br/>
@@ -85,11 +89,11 @@
         <link href="text/sbasic/shared/03/sf_array.xhp#Prepend">Prepend</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#PrependColumn">PrependColumn</link><br/>
         <link href="text/sbasic/shared/03/sf_array.xhp#PrependRow">PrependRow</link><br/>
-        <link href="text/sbasic/shared/03/sf_array.xhp#RangeInit">RangeInit</link><br/>
       </paragraph>
     </tablecell>
     <tablecell>
       <paragraph id="par_id831606235233835" role="tablecontent" localize="false">
+        <link href="text/sbasic/shared/03/sf_array.xhp#RangeInit">RangeInit</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#Reverse">Reverse</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#Shuffle">Shuffle</link><br/>
        <link href="text/sbasic/shared/03/sf_array.xhp#Slice">Slice</link><br/>
@@ -206,7 +210,77 @@
   </bascode>
 </section>
 
-<section id="ConvertToDictionary">
+<section id="ConvertFromDataArray">
+  <comment> ConvertFromDataArray --------------------------------------------------------------------------------- </comment>
+  <bookmark branch="index" id="bm_id741765204030416">
+    <bookmark_value>Array service;ConvertFromDataArray</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id631765204134214" localize="false">ConvertFromDataArray</h2>
+  <paragraph role="paragraph" id="par_id41765204240195">Convert a data array to a <literal>Basic</literal> array.<br/>A data array is an array of subarrays. On request, the individual output items are reduced to strings or doubles only.</paragraph>
+  <paragraph role="paragraph" id="par_id411765207592513">The method returns a scalar, a zero-based 1D array or a zero-based 2D array.<br/>The number of columns in the resulting 2D array is equal to the number of items in the 1st subarray. If next subarrays have a different size, next rows will be complemented with the <literal>fillvalue</literal> argument or truncated.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id661765204758349">
+    <input>svc.ConvertFromDataArray(dataarray: any[any[0..*], ...], isrange: bool = False, fillvalue: str = ''): any[0..*, 0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id561581234214489"><emph>dataarray</emph>: An array of subarrays. Array and subarrays must be zero-based.<br/>Typically a data array is either output by</paragraph>
+    <list type="unordered">
+    <listitem>
+        <paragraph id="par_id151765206451449" role="listitem">the <link href="text/sbasic/shared/03/sf_session.xhp#ExecuteCalcFunction">session.ExecuteCalcFunction()</link> method</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id851765206498930" role="listitem">a Python script returning a tuple of tuples</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id51765206545727" role="listitem">the <literal>getDataArray()</literal> method from the <literal>com.sun.star.sheet.XCellRangeData</literal> interface</paragraph>
+    </listitem>
+    </list>
+  <paragraph role="paragraph" id="par_id361765207142576"><emph>isrange</emph>: When <literal>True</literal> (default = <literal>False</literal>), the items are converted to strings or doubles.</paragraph>
+  <paragraph role="paragraph" id="par_id861765207423152"><emph>fillvalue</emph>: How to replace missing items. Default = the empty string.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id921581234214490">Dim dataarray As Variant, array2D As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id261582556784490">dataarray = Array(Array("Col1", "Col2", "Col3"), Array(10, 20, 30))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id931741257802907">array2D = SF_Array.ConvertFromDataArray(dataarray)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id421582557295620">MsgBox array2D(1, 2) ' 30</paragraph>
+  </bascode>
+</section>
+
+<section id="ConvertToDataArray">
+  <comment> ConvertToDataArray --------------------------------------------------------------------------------- </comment>
+  <bookmark branch="index" id="bm_id741953578080416">
+    <bookmark_value>Array service;ConvertToDataArray</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id631123404134214" localize="false">ConvertToDataArray</h2>
+  <paragraph role="paragraph" id="par_id41796324240195">Create a data array from a scalar, a 1D array or a 2D array.<br/>A data array is a zero-based array of zero-based subarrays. On request, the individual output items are reduced to strings or doubles only.</paragraph>
+  <paragraph role="paragraph" id="par_id561781234214489">The returned data array is typically used as</paragraph>
+    <list type="unordered">
+    <listitem>
+        <paragraph id="par_id851769514498930" role="listitem">a tuple of (sub)tuples passed to a Python script</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id51769437545727" role="listitem">argument of the <literal>setDataArray()</literal> method from the <literal>com.sun.star.sheet.XCellRangeData</literal> interface</paragraph>
+    </listitem>
+    </list>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id661775324758349">
+    <input>svc.ConvertToDataArray(data: any[0..*, 0..*], isrange: bool = False, rows: int = 0, columns: int = 0): any[any[0..*], ...]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id281765284424698"><emph>data</emph>: The input scalar, 1D or 2D array.</paragraph>
+  <paragraph role="paragraph" id="par_id361765207357976"><emph>isrange</emph>: When <literal>True</literal> (default = <literal>False</literal>), the array items are stored as (possibly empty) strings or doubles only into the data array.</paragraph>
+  <paragraph role="paragraph" id="par_id286465207423152"><emph>rows, columns</emph>: The number of rows or columns of the returned data array. When they exceed the limits of <literal>data</literal>, fill with zero-length strings. If <literal>rows</literal> = 1 and the input array is a vector, the data array is aligned horizontally (by default, vectors are aligned vertically). When absent, the size of the output is determined by the input array.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id921532104214490">Dim data As Variant, dataarray As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id294372556784490">data = Array(1, 2, 3)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id421765285899075">data = SF_Array.AppendRow(data, Array(4, 5, 6))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id931678057802907">dataarray = SF_Array.ConvertToDataArray(data)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id421582557296798">MsgBox dataarray(1)(2) ' 6</paragraph>
+  </bascode>
+</section>
+
+  <section id="ConvertToDictionary">
   <comment> ConvertToDictionary ------------------------------------------------------------------------------------ </comment>
   <bookmark localize="false" branch="index" id="bm_id441582557214489">
     <bookmark_value>Array service;ConvertToDictionary</bookmark_value>
@@ -234,6 +308,34 @@
     <paragraph role="bascode" localize="false" id="bas_id261582557214490">a = SF_Array.AppendColumn(Array("a", "b", "c"), Array(1, 2, 3))</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id931582557802907">b = SF_Array.ConvertToDictionary(a)</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id421582557214490">MsgBox b.Item("c") ' 3</paragraph>
+  </bascode>
+</section>
+
+<section id="ConvertToRange">
+  <comment> ConvertToRange --------------------------------------------------------------------------------- </comment>
+  <bookmark branch="index" id="bm_id741953548620416">
+    <bookmark_value>Array service;ConvertToRange</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id631654204134214" localize="false">ConvertToRange</h2>
+  <paragraph role="paragraph" id="par_id41796364640195">Create a valid cells range content from a scalar, a 1D array, a 2D array or a data array (a data array is a zero-based array of zero-based subarrays). The lower bounds of arrays are preserved in the output.</paragraph>
+    <paragraph role="paragraph" id="par_id311765287171028">The individual items are always reduced to strings or doubles, including booleans or dates.</paragraph>
+  <paragraph role="paragraph" id="par_id561786541214489">The returned scalar or 2D array is a valid argument of the <link href="text/sbasic/shared/03/sf_session.xhp#ExecuteCalcFunction">session.ExecuteCalcFunction()</link> method. This is particularly useful in the context of [complex] array functions.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id661723574758349">
+    <input>svc.ConvertToRange(data: any[0..*, 0..*], direction: str = 'V' | 'H'): any[0..*, 0..*]</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id281257984424698"><emph>data</emph>: The input scalar, 1D array,2D array or data array.</paragraph>
+  <paragraph role="paragraph" id="par_id361765202557976"><emph>direction</emph>: The alignment of the range when it is a vector, either "V"[ertical, default] or "H"[orizontal].</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id151532104214490">Dim session As Variant  :  session = CreateScriptService"Session")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id237952556784490">Dim matrix As Variant, result As Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id71765288707261">matrix = Array(-1, 2, 3)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id421765825899075">matrix = SF_Array.AppendRow(matrix, Array(4, -5, 6))</paragraph>
+    <paragraph role="bascode" id="bas_id681765288940028">matrix = SF_Array.AppendRow(matrix, Array(7, 8, -9))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id931678052087907">result = session.ExecuteCalcFunction("ABS", SF_Array.ConvertToRange(matrix))</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id421599557296798">MsgBox result(2)(2) ' 9 - result is a data array</paragraph>
   </bascode>
 </section>
 
