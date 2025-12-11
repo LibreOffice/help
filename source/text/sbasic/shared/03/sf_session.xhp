@@ -278,26 +278,53 @@
   <h2 id="hd_id551582816585181" localize="false">ExecuteCalcFunction</h2>
   <paragraph role="paragraph" id="par_id111582816585181">Execute a Calc function using its English name and based on the given arguments.
       <br />If the arguments are arrays, the function is executed as an <link href="text/scalc/01/04060107.xhp">array formula</link>.</paragraph>
+  <paragraph role="paragraph" id="par_id301765386823466">The method returns a (string or numeric) scalar or the array of arrays returned by the call to the function.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id701626811351722">
     <input>session.ExecuteCalcFunction(calcfunction: str, args: any[0..*]): any</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id771582816585183"><emph>calcfunction</emph>: The name of the Calc function to be called, in English.</paragraph>
-  <paragraph role="paragraph" id="par_id371582816585183"><emph>args</emph>: The arguments to be passed to the called Calc function. Each argument must be either a string, a numeric value or an array of arrays combining those types.</paragraph>
+  <paragraph role="paragraph" id="par_id371582816585183"><emph>args</emph>: The arguments to be passed to the called Calc function.<br/>Each argument may be either</paragraph>
+  <list type="unordered">
+    <listitem>
+        <paragraph id="par_id831765386157812" role="listitem">a string, a numeric value, a date or a boolean</paragraph>
+    </listitem>
+        <listitem>
+        <paragraph id="par_id651765386268792" role="listitem">a 1D array, a 2D array or an array of arrays combining above datatypes</paragraph>
+    </listitem>
+        <listitem>
+        <paragraph id="par_id121765386355137" role="listitem">a <literal>com.sun.star.table.XCellRange</literal> UNO object</paragraph>
+    </listitem>
+  </list>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id461582816585184">session.ExecuteCalcFunction("AVERAGE", 1, 5, 3, 7) ' 4</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id641582816585185">session.ExecuteCalcFunction("ABS", Array(Array(-1, 2, 3), Array(4, -5, 6), Array(7, 8, -9)))(2)(2) ' 9</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id241582817051111">session.ExecuteCalcFunction("LN", -3)</paragraph>
-    <paragraph role="bascode" id="bas_id881582816585185" xml-lang="en-US">' Generates an error.</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id241582817051111">session.ExecuteCalcFunction("LN", -3)  ' Generates an error</paragraph>
+    <paragraph role="bascode" id="bas_id71765387395209">' --------</paragraph>
+    <paragraph role="bascode" id="bas_id81765387429208">table1 = Array("Symbol", "H", "He", "Li")</paragraph>
+    <paragraph role="bascode" id="bas_id521765387469537">table2 = Array("AtomicNumber", 1.0, 2.0, 3.0)</paragraph>
+    <paragraph role="bascode" id="bas_id251765387503314">table3 = Array("Mass", 1.008, 4.0026, 6.94)</paragraph>
+    <paragraph role="bascode" id="bas_id211765387545431">table = Array(table1, table2, table3)  ' array of arrays</paragraph>
+    <paragraph role="bascode" id="bas_id471765387597098">search = Array("Symbol", "AtomicNumber", "Mass")</paragraph>
+    <paragraph role="bascode" id="bas_id991765387635800">result = session.ExecuteCalcFunction("XLOOKUP", "Mass", search, table)</paragraph>
+    <paragraph role="bascode" id="bas_id721765387704768">MsgBox result(0)(3)  ' 6.94</paragraph>
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id781626816579430">session.ExecuteCalcFunction("AVERAGE", 1, 5, 3, 7) # 4</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id721626816579849">session.ExecuteCalcFunction("ABS", ((-1, 2, 3), (4, -5, 6), (7, 8, -9)))[2][2] # 9</paragraph>
-    <paragraph role="pycode" localize="false" id="pyc_id191626816580053">session.ExecuteCalcFunction("LN", -3)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id191626816580053">session.ExecuteCalcFunction("LN", -3) # Error</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id61765445404265"># --------</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id341765445453933">table = ( ("Symbol", "H", "He", "Li"),</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id191765445485111">          ("AtomicNumber", 1.0, 2.0, 3.0),</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id841765445520077">          ("Mass", 1.008, 4.0026, 6.94) )</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id751765445557340">search = ("Symbol", "AtomicNumber", "Mass")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id411765445586039">result = session.ExecuteCalcFunction("XLOOKUP", "Mass", search, table)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id951765445671227">basic = CreateScriptService('Basic')</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id81765445613246">basic.MsgBox(result[0][3]) # 6.94</paragraph>
   </pycode>
 </section>
 
