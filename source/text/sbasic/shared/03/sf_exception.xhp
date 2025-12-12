@@ -43,6 +43,20 @@
     <listitem><paragraph role="paragraph" id="par_id751587141235313">Inform the user about the error using either a standard message or a custom message</paragraph></listitem>
     <listitem><paragraph role="paragraph" id="par_id931587141260777">Optionally stop its execution</paragraph></listitem>
   </list>
+  <paragraph role="paragraph" id="par_id111515981158495">When an error is detected in a call to the <literal>ScriptForge API</literal>, the behaviour of the application is determined by specific properties:</paragraph>
+  <list type="ordered">
+    <listitem><paragraph role="paragraph" id="par_id458866141202844">	Log the error in the <literal>Exception</literal> console. This is always done.</paragraph></listitem>
+    <listitem><paragraph role="paragraph" id="par_id751581258235313">Inform the user about the error with either a standard or a localized message.</paragraph>
+      <paragraph role="paragraph" id="par_id441765553270628">To force a silent mode, set :</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id521765553326555">exception.ReportScriptErrors = False ' Default = True</paragraph>
+    </listitem>
+    <listitem><paragraph role="paragraph" id="par_id931587149514777"><br/>To not stop the execution of the current macro, set:</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id871765553541087">exception.StopWhenError = False ' Default = True</paragraph>
+    <paragraph role="paragraph" id="par_id631765553683083"><br/>It then makes sense before further processing to explore the values of:</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id111765553733894">exception.ReturnCode ' Short error description</paragraph>
+    <paragraph role="paragraph" localize="false" id="par_id151765553806210">exception.ReturnCodeDescription ' Long error description</paragraph>
+    </listitem>
+  </list>
   <paragraph role="paragraph" id="par_id771621035263403">In <emph>Python scripts</emph> the <literal>Exception</literal> service is mostly used for debugging purposes. Methods such as <literal>DebugPrint</literal>, <literal>Console</literal> and <literal>DebugDisplay</literal> are useful to quickly print messages, log data and open the console window from within a Python script.</paragraph>
   <note id="par_id211621035276160">Not all methods and properties are available for Python scripts since the Python language already has a comprehensive exception handling system.</note>
 
@@ -72,7 +86,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id411621036455976">exc.Console()</paragraph>
   </pycode>
   <h2 id="hd_id651584978211886">Properties</h2>
-  <paragraph role="paragraph" id="par_id911621036526404">The properties listed below are only available for <emph>Basic</emph> scripts.</paragraph>
+  <tip id="par_id911621036526404">The properties listed below are only available for <emph>Basic</emph> scripts. They are related to errors occurring in any macro statement.</tip>
   <section id="properties_toc">
    <table id="tab_id761584978211275">
     <tablerow>
@@ -126,6 +140,84 @@
   </section>
   <tip id="par_id461584978880380">Raising or clearing an <literal>Exception</literal> resets its properties.</tip>
   <embed href="text/sbasic/shared/ErrVBA.xhp#RestrictedErrorCodes"/>
+  
+  <tip id="par_id181765554961078">The properties listed below are available for <emph>Basic</emph> and <emph>Python</emph> scripts. They are related to errors detected by the <literal>ScriptForge API</literal> only.</tip>
+  <table id="tab_id764851978211275">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id271587849211792" role="tablehead">Name</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id241584978152150" role="tablehead">Readonly</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id771765555314886" role="tablehead">Return type</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id621948578211403" role="tablehead">Description</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id585566978715552" role="tablecontent" localize="false">ReportScriptErrors</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id71584948415562" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id811765555755965" role="tablecontent">Boolean</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id581581178715701" role="tablecontent">Indicates whether script errors are displayed in a message box when they occur.</paragraph>
+        <paragraph role="paragraph" id="par_id241610652699444">Default value is <literal>False</literal>.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id12344978211231" role="tablecontent" localize="false">ReturnCode</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id211584978214321" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id241765556008756" role="tablecontent">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id691584971598474" role="tablecontent">The code returned by  the last call to the <literal>ScriptForge API</literal> from a user script.</paragraph>
+        <paragraph role="paragraph" id="par_id151339952632828">It is the zero-length string if everything ran without error.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id123990078211231" role="tablecontent" localize="false">ReturnCodeDescription</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id211584971574321" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id241765555888756" role="tablecontent">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id691594301598474" role="tablecontent">The description of the code returned by  the last call to the <literal>ScriptForge API</literal> from a user script.</paragraph>
+        <paragraph role="paragraph" id="par_id151331144632828">It is the zero-length string if everything ran without error.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id1001584978665432" role="tablecontent" localize="false">StopWhenError</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id671584978788789" role="tablecontent">No</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id85577555755965" role="tablecontent">Boolean</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id951584454566296" role="tablecontent">Indicates whether the macro is stopped when <literal>ScriptForge</literal> detects a user script error.</paragraph>
+      </tablecell>
+    </tablerow>
+   </table>
+  
   <section id="methods_toc">
    <table id="tab_id441608131596153">
     <tablerow>
