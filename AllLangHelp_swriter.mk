@@ -343,6 +343,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/guide/keyboard \
     helpcontent2/source/text/swriter/guide/load_styles \
     helpcontent2/source/text/swriter/guide/main \
+    helpcontent2/source/text/swriter/guide/markdown \
     helpcontent2/source/text/swriter/guide/navigator \
     helpcontent2/source/text/swriter/guide/nonprintable_text \
     helpcontent2/source/text/swriter/guide/number_date_conv \
