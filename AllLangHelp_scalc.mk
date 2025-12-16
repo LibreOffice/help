@@ -467,6 +467,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/guide/goalseek \
     helpcontent2/source/text/scalc/guide/html_doc \
     helpcontent2/source/text/scalc/guide/integer_leading_zero \
+    helpcontent2/source/text/scalc/guide/json \
     helpcontent2/source/text/scalc/guide/keyboard \
     helpcontent2/source/text/scalc/guide/line_fix \
     helpcontent2/source/text/scalc/guide/main \
