@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
-
 <!--
  * This file is part of the LibreOffice project.
  *
@@ -22,297 +19,297 @@
 <helpdocument version="1.0">
 <meta>
 <topic id="textscalc05empty_cellsxml" indexer="include" status="PUBLISH">
-<title id="tit" xml-lang="en-US">Handling of Empty Cells</title>
+<title id="tit">Handling of Empty Cells</title>
 <filename>/text/scalc/05/empty_cells.xhp</filename>
 </topic>
 </meta>
 <body>
-<bookmark xml-lang="en-US" branch="index" id="bm_id3146799">
+<bookmark branch="index" id="bm_id3146799">
     <bookmark_value>empty cells;handling of</bookmark_value>
 </bookmark><comment>i86303</comment>
 <h1 id="hd_id1502121"><variable id="empty_cells"><link href="text/scalc/05/empty_cells.xhp">Handling of Empty Cells</link></variable></h1>
 
-<paragraph role="paragraph" id="par_id8266853" xml-lang="en-US">In older versions of the software, empty cells were forced to numeric 0 in some contexts and to empty string in others, except in direct comparison where =A1=0 and =A1="" both resulted in TRUE if A1 was empty. Emptiness now is inherited until used, so both =VLOOKUP(...)=0 and =VLOOKUP(...)="" give TRUE if the lookup resulted in an empty cell being returned. </paragraph>
-<paragraph role="paragraph" id="par_id2733542" xml-lang="en-US">A simple reference to an empty cell is still displayed as numeric 0 but is not necessarily of type numeric anymore, so also comparisons with the referencing cell work as expected. </paragraph>
-<paragraph role="paragraph" id="par_id4238715" xml-lang="en-US">For the following examples, A1 contains a number, B1 is empty, C1 contains the reference to B1:</paragraph>
+<paragraph role="paragraph" id="par_id8266853">In older versions of the software, empty cells were forced to numeric 0 in some contexts and to empty string in others, except in direct comparison where =A1=0 and =A1="" both resulted in TRUE if A1 was empty. Emptiness now is inherited until used, so both =VLOOKUP(...)=0 and =VLOOKUP(...)="" give TRUE if the lookup resulted in an empty cell being returned. </paragraph>
+<paragraph role="paragraph" id="par_id2733542">A simple reference to an empty cell is still displayed as numeric 0 but is not necessarily of type numeric anymore, so also comparisons with the referencing cell work as expected. </paragraph>
+<paragraph role="paragraph" id="par_id4238715">For the following examples, A1 contains a number, B1 is empty, C1 contains the reference to B1:</paragraph>
 <table id="tab_id771535142746120">
     <tablerow>
         <tablecell>
-            <paragraph id="par_id291535142746121" role="tablehead" xml-lang="en-US">Case</paragraph>
+            <paragraph id="par_id291535142746121" role="tablehead">Case</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id441535142746121" role="tablehead" xml-lang="en-US">Formula</paragraph>
+            <paragraph id="par_id441535142746121" role="tablehead">Formula</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id261535142746121" role="tablehead" xml-lang="en-US">Results and comments</paragraph>
+            <paragraph id="par_id261535142746121" role="tablehead">Results and comments</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell rowspan="17">
-            <paragraph id="par_id941535142746122" role="tablecontent" xml-lang="en-US">A1: 1<br/>B1: &lt;Empty&gt;</paragraph>
+            <paragraph id="par_id941535142746122" role="tablecontent">A1: 1<br/>B1: &lt;Empty&gt;</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id471535142746122" role="tablecontent" xml-lang="en-US" localize="false">C1: =B1</paragraph>
+            <paragraph id="par_id471535142746122" role="tablecontent">C1 has formula "=B1"</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id851535142746123" role="tablecontent" xml-lang="en-US">Displays 0</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id611535142948275" role="tablecontent" xml-lang="en-US" localize="false">=B1=0</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id981535142948275" role="tablecontent" xml-lang="en-US"><variable id="vtrue">TRUE</variable></paragraph>
+            <paragraph id="par_id851535142746123" role="tablecontent">Displays 0</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id311535142974515" role="tablecontent" xml-lang="en-US" localize="false">=B1=""</paragraph>
+            <paragraph id="par_id611535142948275" role="tablecontent" localize="false">=B1=0</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id851535142974516" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id161535143000810" role="tablecontent" xml-lang="en-US" localize="false">=C1=0</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id941535143000810" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
+            <paragraph id="par_id981535142948275" role="tablecontent"><variable id="vtrue">TRUE</variable></paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id251535143031604" role="tablecontent" xml-lang="en-US" localize="false">=C1=""</paragraph>
+            <paragraph id="par_id311535142974515" role="tablecontent" localize="false">=B1=""</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id1001535143031604" role="tablecontent" xml-lang="en-US" >TRUE (previously was FALSE)</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id201535143064244" role="tablecontent" xml-lang="en-US" >=ISNUMBER(B1)</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id421535143064245" role="tablecontent" xml-lang="en-US" ><variable id="vfalse">FALSE</variable></paragraph>
+            <paragraph id="par_id851535142974516" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id681535143124250" role="tablecontent" xml-lang="en-US" >=ISNUMBER(C1)</paragraph>
+            <paragraph id="par_id161535143000810" role="tablecontent" localize="false">=C1=0</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id211535143124250" role="tablecontent" xml-lang="en-US" >FALSE (previously was TRUE)</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id221535143151829" role="tablecontent" xml-lang="en-US" >=ISNUMBER(VLOOKUP(1;A1:C1;2))</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id271535143151830" role="tablecontent" xml-lang="en-US" >FALSE (B1)</paragraph>
+            <paragraph id="par_id941535143000810" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id861535143183196" role="tablecontent" xml-lang="en-US" >=ISNUMBER(VLOOKUP(1;A1:C1;3))</paragraph>
+            <paragraph id="par_id251535143031604" role="tablecontent" localize="false">=C1=""</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id371535143183197" role="tablecontent" xml-lang="en-US" >FALSE (C1, previously was TRUE)</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id191535143228538" role="tablecontent" xml-lang="en-US" >=ISTEXT(B1)</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id271535143228539" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
+            <paragraph id="par_id1001535143031604" role="tablecontent">TRUE (previously was FALSE)</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id251535143279847" role="tablecontent" xml-lang="en-US" >=ISTEXT(C1)</paragraph>
+            <paragraph id="par_id201535143064244" role="tablecontent">=ISNUMBER(B1)</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id691535143279847" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id641535143301636" role="tablecontent" xml-lang="en-US" >=ISTEXT(VLOOKUP(1;A1:C1;2))</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id391535143301637" role="tablecontent" xml-lang="en-US" >FALSE (B1, previously was TRUE)</paragraph>
+            <paragraph id="par_id421535143064245" role="tablecontent"><variable id="vfalse">FALSE</variable></paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id661535143336012" role="tablecontent" xml-lang="en-US" >=ISTEXT(VLOOKUP(1;A1:C1;3))</paragraph>
+            <paragraph id="par_id681535143124250" role="tablecontent">=ISNUMBER(C1)</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id11535143336012" role="tablecontent" xml-lang="en-US" >FALSE (C1)</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id661535143373396" role="tablecontent" xml-lang="en-US" >=ISBLANK(B1)</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id141535143373396" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
+            <paragraph id="par_id211535143124250" role="tablecontent">FALSE (previously was TRUE)</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id281535143396581" role="tablecontent" xml-lang="en-US" >=ISBLANK(C1)</paragraph>
+            <paragraph id="par_id221535143151829" role="tablecontent">=ISNUMBER(VLOOKUP(1;A1:C1;2))</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id81535143396581" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id31535143422248" role="tablecontent" xml-lang="en-US" >=ISBLANK(VLOOKUP(1;A1:C1;2))</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id871535143422248" role="tablecontent" xml-lang="en-US" >TRUE (B1, previously was FALSE)</paragraph>
+            <paragraph id="par_id271535143151830" role="tablecontent">FALSE (B1)</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id731535143454577" role="tablecontent" xml-lang="en-US" >=ISBLANK(VLOOKUP(1;A1:C1;3))</paragraph>
+            <paragraph id="par_id861535143183196" role="tablecontent">=ISNUMBER(VLOOKUP(1;A1:C1;3))</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id941535143454577" role="tablecontent" xml-lang="en-US" >FALSE (C1)</paragraph>
+            <paragraph id="par_id371535143183197" role="tablecontent">FALSE (C1, previously was TRUE)</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id191535143228538" role="tablecontent">=ISTEXT(B1)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id271535143228539" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id251535143279847" role="tablecontent">=ISTEXT(C1)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id691535143279847" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id641535143301636" role="tablecontent">=ISTEXT(VLOOKUP(1;A1:C1;2))</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id391535143301637" role="tablecontent">FALSE (B1, previously was TRUE)</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id661535143336012" role="tablecontent">=ISTEXT(VLOOKUP(1;A1:C1;3))</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id11535143336012" role="tablecontent">FALSE (C1)</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id661535143373396" role="tablecontent">=ISBLANK(B1)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id141535143373396" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id281535143396581" role="tablecontent">=ISBLANK(C1)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id81535143396581" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id31535143422248" role="tablecontent">=ISBLANK(VLOOKUP(1;A1:C1;2))</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id871535143422248" role="tablecontent">TRUE (B1, previously was FALSE)</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id731535143454577" role="tablecontent">=ISBLANK(VLOOKUP(1;A1:C1;3))</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id941535143454577" role="tablecontent">FALSE (C1)</paragraph>
         </tablecell>
     </tablerow>
 </table>
-<paragraph role="note" id="par_id4217047" xml-lang="en-US">Note that Microsoft Excel behaves different and always returns a number as the result of a reference to an empty cell or a formula cell with the result of an empty cell. For example:</paragraph>
+<note id="par_id4217047">Note that Microsoft Excel behaves different and always returns a number as the result of a reference to an empty cell or a formula cell with the result of an empty cell. For example:</note>
 <table id="tab_id691535143557532">
     <tablerow>
         <tablecell>
-            <paragraph id="par_id251535143557533" role="tablehead" xml-lang="en-US">Case</paragraph>
+            <paragraph id="par_id251535143557533" role="tablehead">Case</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id441535143557533" role="tablehead" xml-lang="en-US">Formula</paragraph>
+            <paragraph id="par_id441535143557533" role="tablehead">Formula</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id481535143557533" role="tablehead" xml-lang="en-US">Results and comments</paragraph>
+            <paragraph id="par_id481535143557533" role="tablehead">Results and comments</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell rowspan="14">
-            <paragraph id="par_id311535143557534" role="tablecontent" xml-lang="en-US">A1: &lt;Empty&gt;</paragraph>
+            <paragraph id="par_id311535143557534" role="tablecontent">A1: &lt;Empty&gt;</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id321535143557534" role="tablecontent" xml-lang="en-US" localize="false">B1: =A1</paragraph>
+            <paragraph id="par_id321535143557534" role="tablecontent">B1 has formula "=A1"</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id961535143557535" role="tablecontent" xml-lang="en-US">Displays 0, but is just a reference to an empty cell.</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id441535143762523" role="tablecontent" xml-lang="en-US" >=ISNUMBER(A1)</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id881535143762523" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
+            <paragraph id="par_id961535143557535" role="tablecontent">Displays 0, but is just a reference to an empty cell.</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id751535143810734" role="tablecontent" xml-lang="en-US" >=ISTEXT(A1)</paragraph>
+            <paragraph id="par_id441535143762523" role="tablecontent">=ISNUMBER(A1)</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id211535143810734" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id961535143845607" role="tablecontent" xml-lang="en-US" localize="false">=A1=0</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id411535143845608" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
+            <paragraph id="par_id881535143762523" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id781535143884547" role="tablecontent" xml-lang="en-US" localize="false">=A1=""</paragraph>
+            <paragraph id="par_id751535143810734" role="tablecontent">=ISTEXT(A1)</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id521535143884547" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id121535143920008" role="tablecontent" xml-lang="en-US" >=ISNUMBER(B1)</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id391535143920009" role="tablecontent" xml-lang="en-US" >FALSE (Microsoft Excel: TRUE)</paragraph>
+            <paragraph id="par_id211535143810734" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id371535143961386" role="tablecontent" xml-lang="en-US" >=ISTEXT(B1)</paragraph>
+            <paragraph id="par_id961535143845607" role="tablecontent" localize="false">=A1=0</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id451535143961387" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id601535143981973" role="tablecontent" xml-lang="en-US" localize="false">=B1=0</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id701535143981974" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
+            <paragraph id="par_id411535143845608" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id761535144016851" role="tablecontent" xml-lang="en-US" localize="false">=B1=""</paragraph>
+            <paragraph id="par_id781535143884547" role="tablecontent" localize="false">=A1=""</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id111535144016852" role="tablecontent" xml-lang="en-US" >TRUE (Microsoft Excel: FALSE)</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id771535144043975" role="tablecontent" xml-lang="en-US" >C1: =VLOOKUP(...) with empty cell result</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id311535144043975" role="tablecontent" xml-lang="en-US" >displays empty (Microsoft Excel: displays 0)</paragraph>
+            <paragraph id="par_id521535143884547" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id761535144080504" role="tablecontent" xml-lang="en-US" >=ISNUMBER(VLOOKUP(...))</paragraph>
+            <paragraph id="par_id121535143920008" role="tablecontent">=ISNUMBER(B1)</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id711535144080505" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id11535144101388" role="tablecontent" xml-lang="en-US" >=ISTEXT(VLOOKUP(...))</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id831535144101388" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
+            <paragraph id="par_id391535143920009" role="tablecontent">FALSE (Microsoft Excel: TRUE)</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id131535144123734" role="tablecontent" xml-lang="en-US" >=ISNUMBER(C1)</paragraph>
+            <paragraph id="par_id371535143961386" role="tablecontent">=ISTEXT(B1)</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id151535144123735" role="tablecontent" xml-lang="en-US" >FALSE (Microsoft Excel: TRUE)</paragraph>
+            <paragraph id="par_id451535143961387" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id981535144159183" role="tablecontent" xml-lang="en-US" >=ISTEXT(C1)</paragraph>
+            <paragraph id="par_id601535143981973" role="tablecontent" localize="false">=B1=0</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id101535144159184" role="tablecontent" xml-lang="en-US" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
+            <paragraph id="par_id701535143981974" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vtrue" markup="ignore"/></paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id761535144016851" role="tablecontent" localize="false">=B1=""</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id111535144016852" role="tablecontent">TRUE (Microsoft Excel: FALSE)</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id771535144043975" role="tablecontent">C1: =VLOOKUP(...) with empty cell result</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id311535144043975" role="tablecontent">displays empty (Microsoft Excel: displays 0)</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id761535144080504" role="tablecontent">=ISNUMBER(VLOOKUP(...))</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id711535144080505" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id11535144101388" role="tablecontent">=ISTEXT(VLOOKUP(...))</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id831535144101388" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id131535144123734" role="tablecontent">=ISNUMBER(C1)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id151535144123735" role="tablecontent">FALSE (Microsoft Excel: TRUE)</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id981535144159183" role="tablecontent">=ISTEXT(C1)</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id101535144159184" role="tablecontent" localize="false"><embedvar href="text/scalc/05/empty_cells.xhp#vfalse" markup="ignore"/></paragraph>
         </tablecell>
     </tablerow>
 </table>
