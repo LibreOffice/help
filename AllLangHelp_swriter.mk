@@ -163,6 +163,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/06210000 \
     helpcontent2/source/text/swriter/01/06220000 \
     helpcontent2/source/text/swriter/01/06990000 \
+    helpcontent2/source/text/swriter/01/baseline_grid \
     helpcontent2/source/text/swriter/01/paragraph_hyphenation \
     helpcontent2/source/text/swriter/01/contentcontrol00 \
     helpcontent2/source/text/swriter/01/copyfielddialog \

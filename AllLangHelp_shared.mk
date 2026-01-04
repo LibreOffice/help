@@ -593,7 +593,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/02/24080000 \
     helpcontent2/source/text/shared/02/24090000 \
     helpcontent2/source/text/shared/02/24100000 \
-    helpcontent2/source/text/shared/02/baseline_grid \
     helpcontent2/source/text/shared/02/basicshapes \
     helpcontent2/source/text/shared/02/blockarrows \
     helpcontent2/source/text/shared/02/callouts \
