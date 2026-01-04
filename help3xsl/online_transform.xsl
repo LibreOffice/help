@@ -92,6 +92,7 @@
 <xsl:variable name="note_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/note.svg')"/>
 <xsl:variable name="tip_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/tip.svg')"/>
 <xsl:variable name="warning_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/warning.svg')"/>
+<xsl:variable name="donate_img" select="concat($img_url_prefix,'helpimg/donate.png')"/>
 
 <!-- Strings for the help UI page -->
 <xsl:variable name="tmp_href_ui"><xsl:value-of select="concat($urlpre,'text/shared/help/browserhelp.xhp')"/></xsl:variable>
@@ -275,12 +276,18 @@
         <xsl:apply-templates select="/helpdocument/body"/>
     </div>
     <div id="DonationFrame">
-        <xsl:if test="$online">
-            <div class="donation">
-                <p dir="auto"><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank"><xsl:value-of select="$ui_donate"/></a></p>
+        <a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">
+        <div class="icontable donation">
+            <div class="iconcell">
+                <img class="iconimage" src="{$donate_img}" alt="{$ui_donate}" style="{$iconsizestyle}"/>
             </div>
-        </xsl:if>
+            <div class="iconcell">
+                <p dir="auto"><xsl:value-of select="$ui_donate"/></p>
+            </div>
+        </div>
+        </a>
     </div>
+
     <footer>
         <h2 style="text-align: center;"><a href="https://books.libreoffice.org" target="_blank"><xsl:value-of select="$ui_books"/></a></h2>
         <div class="noteicon" dir="auto" style="display:flex;justify-content:center;flex-wrap:wrap;row-gap:15px;">

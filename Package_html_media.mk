@@ -51,6 +51,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/dircurscent.png \
     helpimg/dircursleft.png \
     helpimg/dircursright.png \
+    helpimg/donate.png \
     helpimg/ein.png \
     helpimg/feldalle.png \
     helpimg/feldbrei.png \
