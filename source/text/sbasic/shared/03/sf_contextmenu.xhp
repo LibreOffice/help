@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+ * This file is part of the LibreOffice project.
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ *
+-->
+
+<meta>
+  <topic id="SF_ContextMenu" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">SFWidgets.ContextMenu service</title>
+    <filename>/text/sbasic/shared/03/sf_contextmenu.xhp</filename>
+  </topic>
+</meta>
+<body>
+  <section id="ScriptForge-sf_contextmenu">
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id501600788076877">
+      <bookmark_value>ContextMenu service</bookmark_value>
+    </bookmark>
+  </section>
+  <section id="abstract">
+    <h1 id="bm_id681600788076499"><variable id="ContextMenuService"><link href="text/sbasic/shared/03/sf_contextmenu.xhp"><literal>SFWidgets</literal>.<literal>ContextMenu</literal> service</link></variable></h1>
+	<paragraph role="paragraph" id="par_id41766933792189" xml-lang="en-US">Context menus are predefined at %PRODUCTNAME installation. They can be customized in the <literal>Tools + Customize</literal> dialog.</paragraph>
+    <paragraph role="paragraph" id="par_id181600788076612">The <literal>ContextMenu</literal> service provides the following capabilities:</paragraph>
+    <list type="unordered">
+      <listitem>
+        <paragraph id="par_id301600788076785" role="listitem">Replace temporarily all the menu items of a specific context menu.</paragraph>
+      </listitem>
+      <listitem>
+        <paragraph id="par_id1001600788076848" role="listitem">Temporarily add new menu items at the bottom of a predefined context menu.</paragraph>
+      </listitem>
+	  <listitem>
+	    <paragraph id="par_id771766934178093"  role="listitem" xml-lang="en-US">Make the context menu temporarily inactive.</paragraph>
+      </listitem>
+    </list>
+  </section>
+  <paragraph role="paragraph" id="par_id131767624894605" xml-lang="en-US">The new menu settings are not saved anywhere. Neither in the document nor in the %PRODUCTNAME settings.</paragraph>
+  <paragraph role="paragraph" id="par_id451766933271852" xml-lang="en-US">A context menu is usually triggered by a right-click on a specific area of a document. Consider clicking in a cell or on a sheet tab in a <literal>Calc</literal> document.</paragraph>
+
+  <h2 id="hd_id281600788076359">Service invocation</h2>
+  <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>ContextMenu</literal> service the <literal>ScriptForge</literal> library needs to be loaded or imported:</paragraph>
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#importLibs"/>
+
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <paragraph role="paragraph" id="par_id321614902851541">The <literal>ContextMenu</literal> service is instantiated from the <link href="text/sbasic/shared/03/sf_document.xhp#ContextMenus">SF_Document.ContextMenus()</link> and <link href="text/sbasic/shared/03/sf_datasheet.xhp#ContextMenus">SF_Datasheet.ContextMenus()</link> methods only.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id701636718117715">Sub DefineContextMenu()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id851600788076202">    GlobalScope.BasicLibraries.loadLibrary("ScriptForge")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id100160078076254">    Dim calc As Object, menu As Object</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id581767197478887">    Set calc = CreateScriptService("Document", ThisComponent)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id721600788076288">    Set menu = calc.ContextMenus("cell")  ' Right-click on a cell</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id791600788431935">    '  ... Define the context menu ...</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id801636717387904">    menu.Dispose()</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id721636718154385">End Sub</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id341636718182262">Running the <literal>Sub</literal> defined above redefines the context menu related to a specific area in the document, here a cell belonging to a <literal>Calc</literal> document.</paragraph>
+  <paragraph role="paragraph" id="par_id271767283860030" xml-lang="en-US">The new definition will remain active until the document is closed or until the context menu is redefined again.</paragraph>
+  <tip id="par_id991636718278125">Use the <literal>Dispose</literal> method to free resources after executing the context menu.</tip>
+
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <paragraph role="paragraph" id="par_id131635275172617">The example above can be written in Python as follows:</paragraph>
+  <pycode>
+    <paragraph role="pycode" localize="false" id="pyc_id631626695710139">from scriptforge import CreateScriptService</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441636718456158"></paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id441636718456844">def DefineContextMenu(args=None):</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981626695710122">    basic = CreateScriptService("Basic")</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id981626695710433">    calc = CreateScriptService("Document", basic.ThisComponent)</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id311626695710851">    menu = calc.ContextMenus("cell")  # Right-click on a cell</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id211636717609237">    #  ... Define the context menu ...</paragraph>
+    <paragraph role="pycode" localize="false" id="pyc_id416367185012216">    menu.Dispose()</paragraph>
+  </pycode>
+
+  <bookmark xml-lang="en-US" branch="index" localize="false" id="bm_id111614901520029">
+    <bookmark_value>ContextService service;ShortcutCharacter</bookmark_value>
+    <bookmark_value>ContextService service;SubmenuCharacter</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id711600788076834">Properties</h2>
+  <section id="properties_toc">
+   <table id="tab_id701600788076583">
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id461600788076917" role="tablehead">Name</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id221600788076591" role="tablehead">Readonly</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id761600788076328" role="tablehead">Type</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id67160078807636" role="tablehead">Description</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id241767285627770" role="tablecontent" localize="false">ParentDocument</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id801767285654313" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id741767285683682" role="tablecontent" localize="false">Object</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id201767285702754" role="tablecontent">The parent document class (or one of its subclasses) instance.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id941600788076595" role="tablecontent" localize="false">ShortcutCharacter</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id49160078807654" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id961600788076376" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id81600788076419" role="tablecontent">Character used to define the access key of a menu item. The default character is <literal>~</literal>.</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id491600788076621" role="tablecontent" localize="false">SubmenuCharacter</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id311600788076756" role="tablecontent">Yes</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id831600788076785" role="tablecontent" localize="false">String</paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id441600788076826" role="tablecontent">Character or string that defines how menu items are nested. The default character is <literal>&gt;</literal>.</paragraph>
+      </tablecell>
+    </tablerow>
+   </table>
+  </section>
+
+  <h2 id="hd_id181636719707892">Menu and Submenus</h2>
+  <paragraph role="paragraph" id="par_id741636719725402">To create a context menu with submenus, use the character defined in the <literal>SubmenuCharacter</literal> property while creating the menu entry to define where it will be placed. For instance, consider the following menu/submenu hierarchy.</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id991636719842353">' Item A</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id231636719842719">' Item B > Item B.1</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id421636719842904">'          Item B.2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id916367201523640">' ------ (line separator)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id541636719843240">' Item C > Item C.1 > Item C.1.1</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id701636719843447">'                     Item C.1.2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id601636719843672">' Item C > Item C.2 > Item C.2.1</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921636719843864">'                     Item C.2.2</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921636719843567">'                     ------ (line separator)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921636719843154">'                     Item C.2.3</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id921636719843965">'                     Item C.2.4</paragraph>
+  </bascode>
+  <paragraph role="paragraph" id="par_id211636720111489">The code below uses the default submenu character <literal>&gt;</literal> to create the menu/submenu hierarchy defined above:</paragraph>
+  <bascode>
+    <paragraph role="bascode" localize="false" id="bas_id961636720555061">menu.AddItem("Item A")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id371636720556397">menu.AddItem("Item B>Item B.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id941636720556623">menu.AddItem("Item B>Item B.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id261636720973178">menu.AddItem("---")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id431636720556822">menu.AddItem("Item C>Item C.1>Item C.1.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id651636720557021">menu.AddItem("Item C>Item C.1>Item C.1.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id861636720557222">menu.AddItem("Item C>Item C.2>Item C.2.1")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id21636720557437">menu.AddItem("Item C>Item C.2>Item C.2.2")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id21636720557103">menu.AddItem("Item C>Item C.2>---")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id21636720557256">menu.AddItem("Item C>Item C.2>Item C.2.3")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id21636720557941">menu.AddItem("Item C>Item C.2>Item C.2.4")</paragraph>
+  </bascode>
+  <note id="par_id121636721243578">The string <literal>---</literal> is used to define separator lines in menus or submenus.</note>
+
+  <section id="using_icons">
+    <h2 id="hd_id211636723438558">Using icons</h2>
+    <paragraph role="paragraph" id="par_id981636723485402">Unlike popup menus, context menu items must not contain any icons.</paragraph>
+  </section>
+
+  <h2 id="hd_id501582887473754">Methods</h2>
+  <section id="methods_toc">
+   <table id="tab_id501611613601554">
+    <tablerow>
+      <tablecell colspan="3">
+        <paragraph id="par_id891611613601554" role="tablehead" xml-lang="en-US">List of Methods in the ContextMenu Service</paragraph>
+      </tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id891611613601556" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_contextmenu.xhp#Activate">Activate</link>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_contextmenu.xhp#AddItem">AddItem</link>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541611613625804" role="tablecontent" localize="false">
+          <link href="text/sbasic/shared/03/sf_contextmenu.xhp#RemoveAllItems">RemoveAllItems</link>
+        </paragraph>
+      </tablecell>
+    </tablerow>
+   </table>
+  </section>
+
+  <section id="Activate">
+    <comment> Activate ---------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+      <bookmark_value>ContextMenu service;Activate</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698251" localize="false">Activate</h2>
+    <paragraph role="paragraph" id="par_id93158919969864">Make the <emph>added items</emph> of the <emph>context menu stored in the document</emph> available for execution, or, at the opposite, disable them, depending on the argument.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534014732">
+      <input>svc.Activate(opt enable: bool = True)</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631203996"><emph>enable:</emph> When <literal>True</literal> (default), the local menu stored in the document is made active. When <literal>False</literal>, the local menu is ignored and the global menu defined at %PRODUCTNAME level takes the precedence.</paragraph>
+  </section>
+
+  <section id="AddItem">
+    <comment> AddItem ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919960353">
+      <bookmark_value>ContextMenu service;AddItem</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698158" localize="false">AddItem</h2>
+    <paragraph role="paragraph" id="par_id93158919963364">Inserts a menu entry in the context menu.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534012185">
+      <input>svc.AddItem(menuitem: str, opt command: str, opt script: str)</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631203021"><emph>menuitem:</emph> Defines the text to be displayed in the menu. This argument also defines the hierarchy of the item inside the menu by using the submenu character. Set the last component to <literal>"---"</literal> to define a line separator.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203026"><emph>command:</emph> The name of the UNO command that will be run when the item is clicked, without the <literal>.uno:</literal> prefix. If the command name does not exist or is not applicable, nothing will happen.</paragraph>
+    <paragraph role="paragraph" id="par_id11636721652886"><emph>script:</emph> The URI for a Basic or Python script that will be executed when the item is clicked. Note that the given script will not get any argument.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" id="bas_id41158919969106">menu.AddItem("Menu top>Item 1", command := "About")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id761767619597469">menu.AddItem("Menu top>Item 2", script := "vnd.sun.star.script:myLib.Module1.ThisSub?language=Basic&amp;location=document")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+      <paragraph role="pycode" id="pyc_id321621534170554">menu.AddItem('Menu top>Item 1', command = 'About')</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id801767623098087">menu.AddItem('Menu top>Item 2', script = 'vnd.sun.star.script:Module1.py$thisdef?language=Python&amp;location=document')</paragraph>
+    </pycode>
+  </section>
+
+  <section id="RemoveAllItems">
+    <comment> RemoveAllItems --------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919962887">
+      <bookmark_value>ContextMenu service;RemoveAllItems</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199693201" localize="false">RemoveAllItems</h2>
+    <paragraph role="paragraph" id="par_id93158919963279">Remove all items, both</paragraph>
+    <list type="unordered">
+        <listitem>
+            <paragraph id="par_id221767624286826"  role="listitem" xml-lang="en-US">predefined with <literal>Tools + Customize</literal> and saved in the document</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id241767624361262"  role="listitem" xml-lang="en-US">added with <literal>contextmenu.AddItem()</literal></paragraph>
+        </listitem>
+    </list>
+    <paragraph role="paragraph" id="par_id131767624674146" xml-lang="en-US">This action cannot be reverted except by closing and reopening the document.</paragraph>
+    <paragraph role="paragraph" id="par_id351767624521068" xml-lang="en-US">Afterwards, when relevant, use AddItem() to insert new menu items.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534014414">
+      <input>svc.RemoveAllItems()</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id51636726671698">Associate next <literal>Sub/def</literal> with the on-right-click event of a sheet. The custom menu appears when right-clicking in column C of the Calc sheet, otherwise the normal behaviour is preserved.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+      <paragraph role="bascode" localize="false" id="bas_id41158919963328">Sub OnRightClick1(Optional XRange)  '  Xrange is a com.sun.star.table.XCellRange object</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id91636726598754">Dim calc As Object, menu As Object, in_column As Boolean</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id871636726599326">Set calc = CreateScriptService("Calc", ThisComponent)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id351636726599500">Set menu = calc.ContextMenus("cell")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id851767625541570">menu.RemoveAllItems()</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id901767625581789">in_column = ( Len(calc.Intersect("Sheet1.$C:$C", XRange.AbsoluteName)) > 0 )</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id801767625682657">If in_column Then</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id111767625731306">    menu.AddItem("A", script := "vnd.sun.star.script:Standard.Module1.EnterA?language=Basic&amp;location=document")</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id671767625774670">    ' ...</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id151767625811274">End If</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id331767625834364">menu.Activate(in_column)</paragraph>
+      <paragraph role="bascode" localize="false" id="bas_id911767625874580">End Sub</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+        <paragraph role="pycode" localize="false" id="pyc_id221767626327583">def OnRightClick1(XRange = None)  #  Xrange is a com.sun.star.table.XCellRange object</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id351767626359462">    basic = CreateScriptService('basic')</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id471767626375334">    calc = CreateScriptService('Calc', basic.ThisComponent)</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id381767626387342">    menu = calc.ContextMenus('cell')</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id901767626399960">    menu.RemoveAllItems()</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id901767625581789">    in_column = ( len(calc.Intersect("Sheet1.$C:$C", XRange.AbsoluteName)) > 0 )</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id361767626410887">    if in_column:</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id341767626432833">        menu.AddItem('A', script = 'vnd.sun.star.script:Module1.py$EnterA?language=Python&amp;location=document")</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id841767626442747">        # ...</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id871767626464684">    menu.Activate(in_column)</paragraph>
+    </pycode>
+  </section>
+
+  <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
+  <section id="relatedtopics">
+    <embed href="text/sbasic/shared/03/sf_popupmenu.xhp#PopupMenuService"/>
+    <embed href="text/sbasic/shared/03/sf_menu.xhp#MenuService"/>
+  </section>
+</body>
+</helpdocument>

@@ -408,19 +408,20 @@
            <paragraph id="par_id761611086279902" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_document.xhp#Activate">Activate</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#CloseDocument">CloseDocument</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#ContextMenus">ContextMenus</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#CreateMenu">CreateMenu</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#DeleteStyles">DeleteStyles</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#Echo">Echo</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#ExportAsPDF">ExportAsPDF</link><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#Echo">Echo</link>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id141611086279902" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_document.xhp#ExportAsPDF">ExportAsPDF</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#PrintOut">PrintOut</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#RemoveMenu">RemoveMenu</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#RunCommand">RunCommand</link><br/>
              <link href="text/sbasic/shared/03/sf_document.xhp#Save">Save</link><br/>
-             <link href="text/sbasic/shared/03/sf_document.xhp#SaveAs">SaveAs</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_document.xhp#SaveAs">SaveAs</link>
            </paragraph>
        </tablecell>
        <tablecell>
@@ -490,6 +491,33 @@
     <paragraph role="pycode" localize="false" id="pyc_id731622827946898">if doc.CloseDocument(True):</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id221622827947414">    # ...</paragraph>
   </pycode>
+</section>
+
+<section id="ContextMenus">
+    <comment> ContextMenus ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id901766938086493">
+        <bookmark_value>Document service;ContextMenus</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id701766938202801" localize="false">ContextMenus</h2>
+        <paragraph role="paragraph" id="par_id091159759727155">This method returns either a list of the available context menus in the actual document or a <link href="text/sbasic/shared/03/sf_contextmenu.xhp"><input>SFWidgets.ContextMenu</input></link> service instance.</paragraph>
+        <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+        <paragraph role="paragraph" localize="false" id="par_id281766938697415">
+            <input>svc.ContextMenus(opt contextmenuname: str, submenuchar: str = "&gt;"): svc</input><br/>
+            <input>svc.ContextMenus(): str[0..]</input>
+        </paragraph>
+        <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+        <paragraph role="paragraph" id="par_id471766938992932"><emph>contextmenuname</emph>: One of the available context menus. The name of a context menu is the last component of the resource URL: <literal>"private:resource/popupmenu/the-name-here"</literal>.</paragraph>
+        <paragraph role="paragraph" id="par_id361587733122507"><emph>submenuchar</emph>: The delimiter used to create menu trees when calling methods as <literal>AddItem</literal> from the <literal>ContextMenu</literal> service. The default value is "&gt;".</paragraph>
+        <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+        <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+        <bascode>
+            <paragraph role="bascode" localize="false" id="bas_id401766939621285">Dim oContextMenu As Object</paragraph>
+            <paragraph role="bascode" localize="false" id="bas_id371766939836370">Set oContextMenu = oDoc.ContextMenus("cell")</paragraph>
+        </bascode>
+        <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+        <pycode>
+            <paragraph role="pycode" localize="false" id="pyc_id851766939701414">a_list = doc.ContextMenus()</paragraph>
+        </pycode>
 </section>
 
 <section id="CreateMenu">
@@ -920,26 +948,26 @@
 </section>
 
 <section id="Toolbars">
-  <comment> XStyles --------------------------------------------------------------------------------------------- </comment>
+  <comment> Toolbars --------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721580310120958">
     <bookmark_value>Document service;Toolbars</bookmark_value>
   </bookmark>
   <section id="SF_Toolbars">
   <comment> Method definition is reused in various SF services -------------------------------------------------- </comment>
   <h2 id="hd_id261501400121339" localize="false">Toolbars</h2>
-  <paragraph role="paragraph" id="par_id091612259727155">This method returns either a list of the available toolbar names in the actual document or an instance <link href="text/sbasic/shared/03/sf_toolbar.xhp"><input>SFWidgets.Toolbar</input></link> service.</paragraph>
+  <paragraph role="paragraph" id="par_id091612259727155">This method returns either a list of the available toolbar names in the actual document or a <link href="text/sbasic/shared/03/sf_toolbar.xhp"><input>SFWidgets.Toolbar</input></link> service instance.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id2111634997222964">
-    <input>svc.Toolbars(opt ToolbarName: str): uno</input><br/>
+    <input>svc.Toolbars(opt toolbarname: str): svc</input><br/>
     <input>svc.Toolbars(): str[0..]</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id361580321120786"><emph>ToolbarName</emph>: The usual name of one of the available toolbars.</paragraph>
+  <paragraph role="paragraph" id="par_id361580321120786"><emph>toolbarname</emph>: The usual name of one of the available toolbars.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id422801270747157">Dim oToolbar As Object</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id531712370872084">Set oToolbar = oDoc.Toolbars("myToolbar")</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id531712370872084">Set oToolbar = oDoc.Toolbars("standard")</paragraph>
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
