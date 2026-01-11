@@ -35,6 +35,9 @@
         <listitem>
             <paragraph id="par_id141599569935662"  role="listitem" xml-lang="en-US">Copying and importing massive amounts of data</paragraph>
         </listitem>
+        <listitem>
+            <paragraph id="par_id721767801758480"  role="listitem" xml-lang="en-US">Simple cell ranges formatting</paragraph>
+        </listitem>
     </list>
 </section>
   <note id="par_id851638217526844">This help page describes methods and properties that are applicable only to Calc documents.</note>
@@ -552,10 +555,13 @@
            <paragraph id="par_id891611613601556" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_calc.xhp#A1Style">A1Style</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Activate">Activate</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#AlignRange">AlignRange</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#BorderRange">BorderRange</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Charts">Charts</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ClearAll">ClearAll</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ClearFormats">ClearFormats</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ClearValues">ClearValues</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#ColorizeRange">ColorizeRange</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CompactLeft">CompactLeft</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CompactUp">CompactUp</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CopySheet">CopySheet</link><br/>
@@ -564,16 +570,18 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#CopyToRange">CopyToRange</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CreateChart">CreateChart</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CreatePivotTable">CreatePivotTable</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg">DAvg</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg">DCount</link>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg">DAvg</link>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg">DCount</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#DecorateFont">DecorateFont</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg">DMax</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg">DMin</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg">DSum</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#ExportRangeToFile">ExportRangeToFile</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#FormatRangeToFile">FormatRange</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Forms">Forms</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#GetColumnName">GetColumnName</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#GetFormula">GetFormula</link><br/>
@@ -583,13 +591,13 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#ImportStylesFromFile">ImportStylesFromFile</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#InsertSheet">InsertSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Intersect">Intersect</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#MoveRange">MoveRange</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#MoveSheet">MoveSheet</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#Offset">Offset</link>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#MoveRange">MoveRange</link><br/><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id701611613601554" role="tablecontent" localize="false">
+             <link href="text/sbasic/shared/03/sf_calc.xhp#MoveSheet">MoveSheet</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#Offset">Offset</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#OpenRangeSelector">OpenRangeSelector</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#PrintOut">PrintOut</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Printf">Printf</link><br/>
@@ -610,6 +618,7 @@
    </tablerow>
   </table>
   </section>
+
 <section id="A1Style">
   <comment> A1Style ----------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969104">
@@ -648,6 +657,7 @@
   </pycode>
   <tip id="par_id501611617808112">The method <literal>A1Style</literal> can be combined with any of the many properties and methods of the Calc service that require a range as argument, such as <literal>GetValue</literal>, <literal>GetFormula</literal>, <literal>ClearAll</literal>, etc.</tip>
 </section>
+
 <section id="Activate">
   <comment> Activate -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
@@ -678,6 +688,86 @@
   </pycode>
   <tip id="par_id501611617808220">Activating a sheet makes sense only if it is performed on a Calc document. To make sure you have a Calc document at hand you can use the <literal>isCalc</literal> property of the document object, which returns <literal>True</literal> if it is a Calc document and <literal>False</literal> otherwise.</tip>
 </section>
+
+<section id="AlignRange">
+  <comment> AlignRange -------------------------------------------------------------------------------------------------------------------------- </comment>
+  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41176780478363">
+      <bookmark_value>Calc service;AlignRange</bookmark_value>
+  </bookmark>
+  <h2 id="hd_id131767804803740" localize="false">AlignRange</h2>
+  <paragraph role="paragraph" id="par_id241767804819943">Align horizontally or vertically a range of cells.</paragraph>
+  <paragraph role="paragraph" id="par_id361767804834191">A filter formula can be specified to determine which cells shall be affected.</paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+  <paragraph role="paragraph" localize="false" id="par_id11767804848867">
+    <input>svc.AlignRange(targetrange: str, alignment: str, opt filterformula: str, opt filterscope: str)</input>
+  </paragraph>
+  <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+  <paragraph role="paragraph" id="par_id691767804870278"><emph>targetrange:</emph> The cell or the range as a string in which cells should be re-aligned.</paragraph>
+  <paragraph role="paragraph" id="par_id191767876299030" xml-lang="en-US"><emph>alignment:</emph> a string combining 1 or 2 of next upper-case characters (other characters are ignored):</paragraph>
+  <list type="unordered">
+      <listitem>
+          <paragraph id="par_id861767876487227"  role="listitem" xml-lang="en-US">L, R or C: left, right or center horizontally.</paragraph>
+      </listitem>
+      <listitem>
+          <paragraph id="par_id1001767881841565"  role="listitem" xml-lang="en-US">B, T or M: bottom, top or center vertically (middle).</paragraph>
+      </listitem>
+  </list>
+  <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
+  <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+  <bascode>
+      <paragraph role="bascode" id="bas_id41176780499844">' Center all numeric cells, both horizontally and vertically.</paragraph>
+      <paragraph role="bascode" id="bas_id691767805014441">doc.AlignRange("SheetX.A1:J30", "Middle,Center", filterformula := "=IsNumeric(A1)", filterscope := "CELL")</paragraph>
+  </bascode>
+  <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+  <pycode>
+      <paragraph role="pycode" id="pyc_id251767805127221"># Center all numeric cells, both horizontally and vertically.</paragraph>
+      <paragraph role="pycode" id="pyc_id281767805141277">doc.AlignRange('SheetX.A1:J30', 'Middle,Center', filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
+  </pycode>
+</section>
+
+<section id="BorderRange">
+    <comment> BorderRange -------------------------------------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id61767883134593">
+        <bookmark_value>Calc service;BorderRange</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id99176788315854" localize="false">BorderRange</h2>
+    <paragraph role="paragraph" id="par_id961767883490277">Apply within and around a range of cells a set of line borders.</paragraph>
+    <paragraph role="paragraph" id="par_id881767883501990">The impacted cells may be determined with a filter formula and its scope.</paragraph>
+    <paragraph role="paragraph" id="par_id21767883519188" xml-lang="en-US">All the borders have the same standard width, style and color. Pre-existing border lines in the impacted cells, rows or columns are first cleared. Other cells in the range are left untouched.</paragraph>
+    <paragraph role="paragraph" id="par_id511767883610363" xml-lang="en-US">To clear the full range set <literal>border</literal> to "" and skip the <literal>filterformula</literal> argument.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id461767884268217">
+        <input>svc.BorderRange(targetrange: str, border: str, opt filterformula: str, opt filterscope: str)</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id811767884294334"><emph>targetrange:</emph> The cell or the range as a string on which borders should be applied.</paragraph>
+    <paragraph role="paragraph" id="par_id511767884331312" xml-lang="en-US"><emph>border:</emph> A string combining next upper-case characters (other characters are ignored):</paragraph>
+    <list type="unordered">
+        <listitem>
+            <paragraph id="par_id641767884455599"  role="listitem" xml-lang="en-US">B, L, T, R: bottom, left, top, right outer lines.</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id531767884469933"  role="listitem" xml-lang="en-US">H, V: horizontal, vertical inner lines.</paragraph>
+        </listitem>
+        <listitem>
+            <paragraph id="par_id91767884600419"  role="listitem" xml-lang="en-US">U, D: bottom-up, top-down diagonals.</paragraph>
+        </listitem>
+    </list>
+    <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+        <paragraph role="bascode" id="bas_id671767884770350">' Border all numeric cells with a bottom line, including the horizontal inner lines.</paragraph>
+        <paragraph role="bascode" id="bas_id741767884782255">doc.BorderRange("SheetX.A1:J30", "HB", filterformula := "=IsNumeric(A1)", filterscope := "CELL")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+        <paragraph role="pycode" id="pyc_id891767884794918"># Border all numeric cells with a bottom line, including the horizontal inner lines.</paragraph>
+        <paragraph role="pycode" id="pyc_id751767884803859">doc.BorderRange('SheetX.A1:J30', 'HB', filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
+    </pycode>
+</section>
+
 <section id="Charts">
   <comment> Charts ------------------------------------------------------------------------------------------------ </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158915960183">
@@ -726,6 +816,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id161635439765873">bas.MsgBox(chart.ChartType)</paragraph>
   </pycode>
 </section>
+
 <section id="ClearAll">
   <comment> ClearAll -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231592919577434">
@@ -775,13 +866,14 @@
     <paragraph role="pycode" id="pyc_id711670942025635">myDoc.ClearAll("SheetX.A1:J10", "=SUM(SheetX.A1:A10)>100", "COLUMN")</paragraph>
   </pycode>
 </section>
+
 <section id="ClearFormats">
   <comment> ClearFormats -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id591592919864362">
       <bookmark_value>Calc service;ClearFormats</bookmark_value>
   </bookmark>
   <h2 id="hd_id871592919864356" localize="false">ClearFormats</h2>
-  <paragraph role="paragraph" id="par_id211592919864118">Clears the formats and styles in the given range.</paragraph>
+  <paragraph role="paragraph" id="par_id211592919864118">Clears the formats and cell styles in the given range.</paragraph>
   <paragraph role="paragraph" id="par_id961670941800058">A filter formula can be specified to determine which cells shall be affected.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id381621536397094">
@@ -801,6 +893,7 @@
   </pycode>
   <tip id="par_id461670942481018">Refer to the <link href="text/sbasic/shared/03/sf_calc.xhp#ClearAll"><literal>ClearAll</literal></link> method documentation for examples on how to use the arguments <literal>filterformula</literal> and <literal>filterscope</literal>.</tip>
 </section>
+
 <section id="ClearValues">
   <comment> ClearValues -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781592919928644">
@@ -827,6 +920,38 @@
   </pycode>
   <tip id="par_id461670942483664">Refer to the <link href="text/sbasic/shared/03/sf_calc.xhp#ClearAll"><literal>ClearAll</literal></link> method documentation for examples on how to use the arguments <literal>filterformula</literal> and <literal>filterscope</literal>.</tip>
 </section>
+
+<section id="ColorizeRange">
+    <comment> ColorizeRange -------------------------------------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id661768046544826">
+        <bookmark_value>Calc service;ColorizeRange</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id111768046741740" localize="false">ColorizeRange</h2>
+    <paragraph role="paragraph" id="par_id491768047007245">Define fore- and background colors of a range of cells.</paragraph>
+    <paragraph role="paragraph" id="par_id281768047040820">The impacted cells may be determined with a filter formula and its scope.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id75176804711510">
+        <input>svc.ColorizeRange(targetrange: str, opt foreground: int, opt background: int, opt filterformula: str, opt filterscope: str)</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id751768053467898"><emph>targetrange:</emph> the cell or the range as a string in which cells should be (re-)colorizeed.</paragraph>
+    <paragraph role="paragraph" id="par_id491768053636577" xml-lang="en-US"><emph>foreground:</emph> the foreground color as the output of the RGB() function. A negative value erases the foreground color</paragraph>
+    <paragraph role="paragraph" id="par_id851768053644934" xml-lang="en-US"><emph>background:</emph> the background color as the output of the RGB() function. A negative value erases the background color</paragraph>
+    <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+        <paragraph role="bascode" id="bas_id801768053837818">' Paint the numeric cell(s) in red.</paragraph>
+        <paragraph role="bascode" id="bas_id117680538448860">doc.ColorizeRange("SheetX.A1:J30", background := RGB(255, 0, 0), filterformula := "=IsNumeric(A1), filterscope := "CELL")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+        <paragraph role="pycode" id="pyc_id231768053859976"># Paint the numeric cell(s) in red.</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id971768054043952">basic = CreateScriptService('basic')</paragraph>
+        <paragraph role="pycode" id="pyc_id671768053869964">doc.ColorizeRange('SheetX.A1:J30', background = basic.RGB(255, 0, 0), filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
+    </pycode>
+</section>
+
 <section id="CompactLeft">
   <comment> CompactLeft ------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781592919922589">
@@ -867,6 +992,7 @@
     <paragraph role="pycode" id="pyc_id731652272123209">newrange = myDoc.CompactLeft("Sheet1.G1:L10", filterformula = '=(MOD(SUM(G1:G10);2)=1)')</paragraph>
   </pycode>
 </section>
+
 <section id="CompactUp">
   <comment> CompactUp --------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781592919928589">
@@ -907,6 +1033,7 @@
     <paragraph role="pycode" id="pyc_id731652272123109">newrange = myDoc.CompactUp("Sheet1.G1:L10", filterformula = '=(MOD(SUM(G1:L1);2)=1)')</paragraph>
   </pycode>
 </section>
+
 <section id="CopySheet">
   <comment> CopySheet -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id901591631693213">
@@ -948,6 +1075,7 @@
   </pycode>
   <tip id="par_id801595695285478" xml-lang="en-US">To copy sheets between <emph>open</emph> documents, use <literal>CopySheet</literal>. To copy sheets from documents that are <emph>closed</emph>, use <literal>CopySheetFromFile</literal>.</tip>
 </section>
+
 <section id="CopySheetFromFile">
   <comment> CopySheetFromFile -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id101591714614827">
@@ -976,6 +1104,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id171621537641434">myDoc.CopySheetFromFile(r"C:\Documents\myFile.ods", "SheetX", "SheetY", 1)</paragraph>
   </pycode>
 </section>
+
 <section id="CopyToCell">
   <comment> CopyToCell -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id481592558768560">
@@ -1018,6 +1147,7 @@
   </pycode>
   <tip id="par_id61592905442071" xml-lang="en-US">To simulate a Copy/Paste from a range to a single cell, use <literal>CopyToCell</literal>. To simulate a Copy/Paste from a range to a larger range (with the same cells being replicated several times), use <literal>CopyToRange</literal>.</tip>
 </section>
+
 <section id="CopyToRange">
   <comment> CopyToRange -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171592903121677">
@@ -1065,6 +1195,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id691621538288954">docB.CopyToRange(docA.Range("SheetX.A1:F10"), "SheetY.C5:J5")</paragraph>
   </pycode>
 </section>
+
 <section id="CreateChart">
   <comment> CreateChart ------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171592903123257">
@@ -1096,6 +1227,7 @@
   </pycode>
   <tip id="par_id231635441342180">Refer to the help page about ScriptForge's <link href="text/sbasic/shared/03/sf_chart.xhp">Chart service</link> to learn more how to further manipulate chart objects. It is possible to change properties as the chart type, chart and axes titles and chart position.</tip>
 </section>
+
 <section id="CreatePivotTable">
   <comment> CreatePivotTable ---------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171592903120147">
@@ -1156,6 +1288,7 @@
   </pycode>
   <tip id="par_id231635441342284">To learn more about Pivot Tables in %PRODUCTNAME Calc, read the <link href="text/scalc/guide/datapilot.xhp">Pivot Table</link> help page.</tip>
 </section>
+
 <section id="DAvg">
   <comment> DAvg, DCount, DMax, DMin, DSum -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id791595777001863">
@@ -1197,6 +1330,44 @@
   </pycode>
   <note id="par_id31611752782288">Cells in the given range that contain text will be ignored by all of these functions. For example, the <literal>DCount</literal> method will not count cells with text, only numerical cells.</note>
 </section>
+
+<section id="DecorateFont">
+    <comment> DecorateFont -------------------------------------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id981768055302774">
+        <bookmark_value>Calc service;DecorateFont</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id941768055337246" localize="false">DecorateFont</h2>
+    <paragraph role="paragraph" id="par_id471768055753462">Specify simple and easy properties of the font to be used in a range of cells.</paragraph>
+    <paragraph role="paragraph" id="par_id991768055771625">The impacted cells may be determined with a filter formula and its scope.</paragraph>
+    <paragraph role="paragraph" id="par_id931768055801780" xml-lang="en-US">To apply more complex font decorations, apply the usual and numerous <literal>UNO</literal> properties available in the <literal>XCell</literal> or <literal>XCellRange</literal> interfaces.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id161768055981837">
+        <input>svc.DecorateFont(targetrange: str, opt fontname: str, opt fontsize: int, opt decoration: str, opt filterformula: str, opt filterscope: str)</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id871768056133127"><emph>targetrange:</emph> The cell or the range as a string in which cell fonts should be re-decorated.</paragraph>
+    <paragraph role="paragraph" id="par_id671768056195921" xml-lang="en-US"><emph>fontname:</emph> The name of the font to be used. The name is not checked. Default = no change.</paragraph>
+    <paragraph role="paragraph" id="par_id971768056327357" xml-lang="en-US"><emph>fontsize:</emph> The size of the font in pixels. Default = no change.</paragraph>
+    <paragraph role="paragraph" id="par_id711768056157938" xml-lang="en-US"><emph>decoration:</emph> A string combining 1 or more of next upper-case characters (other characters are ignored). Default = no change:</paragraph>
+    <list type="unordered">
+        <listitem>
+            <paragraph id="par_id281768056503337"  role="listitem" xml-lang="en-US">B, U, I, S: Bold, Underline, Italic, Strikethrough.</paragraph>
+        </listitem>
+    </list>
+    <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+        <paragraph role="bascode" id="bas_id161768056709597">' Modify the font size and apply bold and underline properties to the numeric cells.</paragraph>
+        <paragraph role="bascode" id="bas_id601768057322683">doc.DecorateFont("SheetX.A1:J30", fontsize := 15, decoration := "Bold,Underline", filterformula := "=IsNumeric(A1)", filterscope := "CELL")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+        <paragraph role="pycode" id="pyc_id661768057052508"># Modify the font size and apply bold and underline properties to the numeric cells.</paragraph>
+        <paragraph role="pycode" id="pyc_id721768057070406">doc.DecorateFont('SheetX.A1:J30', fontsize = 15, decoration = 'Bold,Underline', filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
+    </pycode>
+</section>
+
 <section id="ExportRangeToFile">
   <comment> ExportRangeToFile --------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id271591632729478">
@@ -1229,6 +1400,37 @@
     <paragraph role="pycode" localize="false" id="pyc_id961623063234881">doc.ExportRangeToFile("SheetX.A1:D10", r"C:\Temp\image.png", "png", overwrite = True)</paragraph>
   </pycode>
 </section>
+
+<section id="FormatRange">
+    <comment> FormatRange -------------------------------------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id271768059415854">
+        <bookmark_value>Calc service;FormatRange</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id671768059431729" localize="false">FormatRange</h2>
+    <paragraph role="paragraph" id="par_id551768059444915">Apply a given number format to a cell or a range of cells. </paragraph>
+    <paragraph role="paragraph" id="par_id411768059580525">The impacted cells may be determined with a filter formula and its scope.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id511768060231352">
+        <input>svc.FormatRange(targetrange: str, numberformat: str, opt locale: str, opt filterformula: str, opt filterscope: str)</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id841768060290225"><emph>targetrange:</emph> The cell or the range as a string that should receive the format.</paragraph>
+    <paragraph role="paragraph" id="par_id991768060908752" xml-lang="en-US"><emph>numberformat:</emph> Tthe format to apply, as a string.</paragraph>
+    <paragraph role="paragraph" id="par_id951768060527854" xml-lang="en-US"><emph>locale:</emph> A la-CO (language-COUNTRY) combination to indicate the used locale. The default locale is the output of the <literal>platform.FormatLocale</literal> property</paragraph>
+    <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+        <paragraph role="bascode" id="bas_id3176806070882">' Format only the cells containing a numeric value.</paragraph>
+        <paragraph role="bascode" id="bas_id741768060809331">doc.FormatRange("SheetX.A1:J30", "0,00E+00", filterformula := "=IsNumeric(A1)", filterscope := "CELL")</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+        <paragraph role="pycode" id="pyc_id281768060928971"># Format only the cells containing a numeric value.</paragraph>
+        <paragraph role="pycode" id="pyc_id641768060943953">doc.FormatRange('SheetX.A1:J30', '0,00E+00', filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
+    </pycode>
+</section>
+
 <section id="Forms">
   <comment> Forms ------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id271591632726788">
@@ -1270,6 +1472,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id961623063234990">form_A = doc.Forms("Sheet1", "Form_A")</paragraph>
   </pycode>
 </section>
+
 <section id="GetColumnName">
   <comment> GetColumnName -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id271591632726624">
@@ -1296,6 +1499,7 @@
   </pycode>
   <note id="par_id451611753568778">The maximum number of columns allowed on a Calc sheet is 16384.</note>
 </section>
+
 <section id="GetFormula">
   <comment> GetFormula -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141593880142749">
@@ -1321,6 +1525,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id191621540254086">arrFormula = myDoc.GetFormula("~.A1:B3")</paragraph>
   </pycode>
 </section>
+
 <section id="GetValue">
   <comment> GetValue -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id571592231156848">
@@ -1345,6 +1550,7 @@
   </pycode>
   <note id="par_id991611756492772">If a cell contains a date, the number corresponding to that date will be returned. To convert numeric values to dates in Basic scripts, use the Basic <link href="text/sbasic/shared/03100300.xhp"><literal>CDate</literal> builtin function</link>. In Python scripts, use the <link href="text/sbasic/shared/03/sf_basic.xhp#CDate"><literal>CDate</literal> function from the <literal>Basic</literal> service.</link></note>
 </section>
+
 <section id="ImportFromCSVFile">
   <comment> ImportFromCSVFile -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id381593685490638">
@@ -1399,6 +1605,7 @@
   </pycode>
   <tip id="par_id531611757154931">To learn more about the CSV Filter Options, refer to the <link href="text/shared/guide/csv_params.xhp">CSV Filter Options help page</link>.</tip>
 </section>
+
 <section id="ImportFromDatabase">
   <comment> ImportFromDatabase -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id281599568986735">
@@ -1428,7 +1635,9 @@
     <paragraph role="pycode" localize="false" id="pyc_id701621542319336">myDoc.ImportFromDatabase(r"C:\Temp\myDbFile.odb", , "SheetY.C5", "SELECT * FROM [Employees] ORDER BY [LastName]")</paragraph>
   </pycode>
 </section>
+
 <embed href="text/sbasic/shared/03/sf_writer.xhp#ImportStylesFromFile"/>
+
 <section id="InsertSheet">
   <comment> InsertSheet -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id511591698472720">
@@ -1508,6 +1717,7 @@
     <paragraph role="pycode" localize="false" id="par_id171621619974289">myDoc.MoveRange("SheetX.A1:F10", "SheetY.C5")</paragraph>
   </pycode>
 </section>
+
 <section id="MoveSheet">
   <comment> MoveSheet -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id561591698903617">
@@ -1533,6 +1743,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id561621620208625">myDoc.MoveSheet("SheetX", "SheetY")</paragraph>
   </pycode>
 </section>
+
 <section id="Offset">
   <comment> Offset ------------------------------------------------------------------------------------------------ </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id29159223350681">
@@ -1567,6 +1778,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id991621620345183">myDoc.Offset("A1", 2, 2, 5, 6)</paragraph>
   </pycode>
 </section>
+
 <section id="OpenRangeSelector">
   <comment> OpenRangeSelector ------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id29159223350681">
@@ -1596,6 +1808,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id181621620341364">sRange = myDoc.OpenRangeSelector(title = "Select a range")</paragraph>
   </pycode>
 </section>
+
 <section id="Printf">
   <comment> Printf ------------------------------------------------------------------------------------------------ </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id29159223356581">
@@ -1668,6 +1881,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id911637944944046">myDoc.SetFormula("F1:F10", myDoc.Printf(sFormula, sRange))</paragraph>
   </pycode>
 </section>
+
 <section id="PrintOut">
   <comment> PrintOut ---------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721985200121249">
@@ -1697,6 +1911,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id221628227947414">    # ...</paragraph>
   </pycode>
 </section>
+
 <section id="RemoveDuplicates">
   <comment> RemoveDuplicates ------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id821596699086119">
@@ -1733,6 +1948,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id891674511728519">myDoc.RemoveDuplicates("A1:D10", columns = (1, 2), header = True, mode = "CLEAR")</paragraph>
   </pycode>
 </section>
+
 <section id="RemoveSheet">
   <comment> RemoveSheet -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id821591699085559">
@@ -1756,6 +1972,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id891621620636884">myDoc.RemoveSheet("SheetY")</paragraph>
   </pycode>
 </section>
+
 <section id="RenameSheet">
   <comment> RenameSheet -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781591704316677">
@@ -1781,6 +1998,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id521621620764138">mydoc.RenameSheet("~", "SheetY")</paragraph>
   </pycode>
 </section>
+
 <section id="SetArray">
   <comment> SetArray -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id221592745582441">
@@ -1821,6 +2039,7 @@
   </pycode>
   <tip id="par_id291592905671530" xml-lang="en-US">To dump the full contents of an array in a sheet, use <emph>SetArray</emph>. To dump the contents of an array only within the boundaries of the targeted range of cells, use <emph>SetValue</emph>.</tip>
 </section>
+
 <section id="SetCellStyle">
   <comment> SetCellStyle -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id21595767687885">
@@ -1850,6 +2069,7 @@
   </pycode>
   <tip id="par_id461670942481294">Refer to the <link href="text/sbasic/shared/03/sf_calc.xhp#ClearAll"><literal>ClearAll</literal></link> method documentation for examples on how to use the arguments <literal>filterformula</literal> and <literal>filterscope</literal>.</tip>
 </section>
+
 <section id="SetFormula">
   <comment> SetFormula -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231593880376363">
@@ -1887,6 +2107,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id651621623174759">myDoc.SetFormula("A1:D2", "=E1")</paragraph>
   </pycode>
 </section>
+
 <section id="SetValue">
   <comment> SetValue -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id901592231799526">
@@ -1933,6 +2154,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id771621689923430">doc.SetValue(newRange, arrData)</paragraph>
   </pycode>
 </section>
+
 <section id="ShiftDown">
   <comment> ShiftDown --------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231593880376104">
@@ -1975,6 +2197,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id151638218996938">bas.MsgBox(sNewRange)</paragraph>
   </pycode>
 </section>
+
 <section id="ShiftLeft">
   <comment> ShiftLeft --------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231593880376547">
@@ -2009,6 +2232,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id651621623172116">myDoc.ShiftLeft("A3:D6", WholeColumn = True)</paragraph>
   </pycode>
 </section>
+
 <section id="ShiftUp">
   <comment> ShiftUp ----------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231593880376104">
@@ -2043,6 +2267,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id651621623174036">myDoc.ShiftUp("A3:D6", wholerow = True)</paragraph>
   </pycode>
 </section>
+
 <section id="ShiftRight">
   <comment> ShiftRight --------------------------------------------------------------------------------------------- </comment>
   <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231593880376025">
@@ -2078,6 +2303,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id651621623174751">myDoc.ShiftRight("A3:A6", wholecolumn = True)</paragraph>
   </pycode>
 </section>
+
 <section id="SortRange">
   <comment> SortRange -------------------------------------------------------------------------------------------------------------------------- </comment>
   <bookmark localize="false" branch="index" id="bm_id531595692394747">
@@ -2108,6 +2334,7 @@
     <paragraph role="pycode" localize="false" id="pyc_id581621623543873">myDoc.SortRange("A2:J200", (1, 3), ("ASC", "DESC"), casesensitive = True)</paragraph>
   </pycode>
 </section>
+
   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#SF_InternalUse"/>
   <section id="relatedtopics">
     <embed href="text/sbasic/shared/03/sf_chart.xhp#ChartService"/>
