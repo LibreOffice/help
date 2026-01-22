@@ -252,6 +252,23 @@
     </tablerow>
     <tablerow>
         <tablecell>
+            <paragraph id="par_id681592407275508" role="tablecontent" xml-lang="en-US" localize="false">DefinedNames</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id301592407166042" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id81592407275611" role="tablecontent" xml-lang="en-US">None</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id59159251716522" role="tablecontent" xml-lang="en-US">String or array of strings</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id85159350716560" role="tablecontent" xml-lang="en-US">Returns the full sorted list of all named ranges in the document. The names defined in a single sheet are qualified with the sheet name.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
             <paragraph id="par_id681592407165201" localize="false" role="tablecontent">FirstCell</paragraph>
         </tablecell>
         <tablecell>
@@ -570,13 +587,14 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#CopyToRange">CopyToRange</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CreateChart">CreateChart</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#CreatePivotTable">CreatePivotTable</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg">DAvg</link>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg">DAvg</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
            <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg">DCount</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DecorateFont">DecorateFont</link><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#DefineName">DefineName</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg">DMax</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg">DMin</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#DAvg">DSum</link><br/>
@@ -591,7 +609,7 @@
              <link href="text/sbasic/shared/03/sf_calc.xhp#ImportStylesFromFile">ImportStylesFromFile</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#InsertSheet">InsertSheet</link><br/>
              <link href="text/sbasic/shared/03/sf_calc.xhp#Intersect">Intersect</link><br/>
-             <link href="text/sbasic/shared/03/sf_calc.xhp#MoveRange">MoveRange</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_calc.xhp#MoveRange">MoveRange</link><br/>
            </paragraph>
        </tablecell>
        <tablecell>
@@ -702,8 +720,8 @@
     <input>svc.AlignRange(targetrange: str, alignment: str, opt filterformula: str, opt filterscope: str)</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id691767804870278"><emph>targetrange:</emph> The cell or the range as a string in which cells should be re-aligned.</paragraph>
-  <paragraph role="paragraph" id="par_id191767876299030" xml-lang="en-US"><emph>alignment:</emph> a string combining 1 or 2 of next upper-case characters (other characters are ignored):</paragraph>
+  <paragraph role="paragraph" id="par_id691767804870278"><emph>targetrange</emph>: The cell or the range as a string in which cells should be re-aligned.</paragraph>
+  <paragraph role="paragraph" id="par_id191767876299030" xml-lang="en-US"><emph>alignment</emph>: a string combining 1 or 2 of next upper-case characters (other characters are ignored):</paragraph>
   <list type="unordered">
       <listitem>
           <paragraph id="par_id861767876487227"  role="listitem" xml-lang="en-US">L, R or C: left, right or center horizontally.</paragraph>
@@ -734,15 +752,15 @@
     <h2 id="hd_id99176788315854" localize="false">BorderRange</h2>
     <paragraph role="paragraph" id="par_id961767883490277">Apply within and around a range of cells a set of line borders.</paragraph>
     <paragraph role="paragraph" id="par_id881767883501990">The impacted cells may be determined with a filter formula and its scope.</paragraph>
-    <paragraph role="paragraph" id="par_id21767883519188" xml-lang="en-US">All the borders have the same standard width, style and color. Pre-existing border lines in the impacted cells, rows or columns are first cleared. Other cells in the range are left untouched.</paragraph>
-    <paragraph role="paragraph" id="par_id511767883610363" xml-lang="en-US">To clear the full range set <literal>border</literal> to "" and skip the <literal>filterformula</literal> argument.</paragraph>
+    <paragraph role="paragraph" id="par_id21767883519188">All the borders have the same standard width, style and color. Pre-existing border lines in the impacted cells, rows or columns are first cleared. Other cells in the range are left untouched.</paragraph>
+    <paragraph role="paragraph" id="par_id511767883610363">To clear the full range set <literal>border</literal> to "" and skip the <literal>filterformula</literal> argument.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id461767884268217">
         <input>svc.BorderRange(targetrange: str, border: str, opt filterformula: str, opt filterscope: str)</input>
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-    <paragraph role="paragraph" id="par_id811767884294334"><emph>targetrange:</emph> The cell or the range as a string on which borders should be applied.</paragraph>
-    <paragraph role="paragraph" id="par_id511767884331312" xml-lang="en-US"><emph>border:</emph> A string combining next upper-case characters (other characters are ignored):</paragraph>
+    <paragraph role="paragraph" id="par_id811767884294334"><emph>targetrange</emph>: The cell or the range as a string on which borders should be applied.</paragraph>
+    <paragraph role="paragraph" id="par_id511767884331312" xml-lang="en-US"><emph>border</emph>: A string combining next upper-case characters (other characters are ignored):</paragraph>
     <list type="unordered">
         <listitem>
             <paragraph id="par_id641767884455599"  role="listitem" xml-lang="en-US">B, L, T, R: bottom, left, top, right outer lines.</paragraph>
@@ -830,19 +848,19 @@
     <input>svc.ClearAll(range: str, opt filterformula: str, opt filterscope: str)</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id441592919577809"><emph>range:</emph> The range to be cleared, as a string.</paragraph>
+  <paragraph role="paragraph" id="par_id441592919577809"><emph>range</emph>: The range to be cleared, as a string.</paragraph>
   <section id="filterformula_desc">
-    <paragraph role="paragraph" id="par_id351670939954166"><emph>filterformula:</emph> A Calc formula that shall be applied to the given range to determine which cells will be affected. The specified formula must return <literal>True</literal> or <literal>False</literal>. If this argument is not specified, then all cells in the range are affected.</paragraph>
-    <paragraph role="paragraph" id="par_id461670939954392"><emph>filterscope:</emph> Determines how <literal>filterformula</literal> is expanded to the given range. This argument is mandatory if a <literal>filterformula</literal> is specified. The following values are accepted:</paragraph>
+    <paragraph role="paragraph" id="par_id351670939954166"><emph>filterformula</emph>: A Calc formula that shall be applied to the given range to determine which cells will be affected. The specified formula must return <literal>True</literal> or <literal>False</literal>. If this argument is not specified, then all cells in the range are affected.</paragraph>
+    <paragraph role="paragraph" id="par_id461670939954392"><emph>filterscope</emph>: Determines how <literal>filterformula</literal> is expanded to the given range. This argument is mandatory if a <literal>filterformula</literal> is specified. The following values are accepted:</paragraph>
     <list type="unordered">
       <listitem>
-        <paragraph id="par_id991670941074213" role="listitem"><emph>"CELL":</emph> The formula specified in the <literal>filterformula</literal> argument is expanded once for each cell in <literal>range</literal>.</paragraph>
+        <paragraph id="par_id991670941074213" role="listitem"><emph>"CELL"</emph>: The formula specified in the <literal>filterformula</literal> argument is expanded once for each cell in <literal>range</literal>.</paragraph>
       </listitem>
       <listitem>
-        <paragraph id="par_id911670941074926" role="listitem"><emph>"ROW":</emph> The formula specified in the <literal>filterformula</literal> argument is expanded once for each row in <literal>range</literal>.</paragraph>
+        <paragraph id="par_id911670941074926" role="listitem"><emph>"ROW"</emph>: The formula specified in the <literal>filterformula</literal> argument is expanded once for each row in <literal>range</literal>.</paragraph>
       </listitem>
       <listitem>
-        <paragraph id="par_id581670941075101" role="listitem"><emph>"COLUMN":</emph> The formula specified in the <literal>filterformula</literal> argument is expanded once for each column in <literal>range</literal>.</paragraph>
+        <paragraph id="par_id581670941075101" role="listitem"><emph>"COLUMN"</emph>: The formula specified in the <literal>filterformula</literal> argument is expanded once for each column in <literal>range</literal>.</paragraph>
       </listitem>
     </list>
   </section>
@@ -934,9 +952,9 @@
         <input>svc.ColorizeRange(targetrange: str, opt foreground: int, opt background: int, opt filterformula: str, opt filterscope: str)</input>
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-    <paragraph role="paragraph" id="par_id751768053467898"><emph>targetrange:</emph> the cell or the range as a string in which cells should be (re-)colorizeed.</paragraph>
-    <paragraph role="paragraph" id="par_id491768053636577" xml-lang="en-US"><emph>foreground:</emph> the foreground color as the output of the RGB() function. A negative value erases the foreground color</paragraph>
-    <paragraph role="paragraph" id="par_id851768053644934" xml-lang="en-US"><emph>background:</emph> the background color as the output of the RGB() function. A negative value erases the background color</paragraph>
+    <paragraph role="paragraph" id="par_id751768053467898"><emph>targetrange</emph>: the cell or the range as a string in which cells should be (re-)colorizeed.</paragraph>
+    <paragraph role="paragraph" id="par_id491768053636577" xml-lang="en-US"><emph>foreground</emph>: the foreground color as the output of the RGB() function. A negative value erases the foreground color</paragraph>
+    <paragraph role="paragraph" id="par_id851768053644934" xml-lang="en-US"><emph>background</emph>: the background color as the output of the RGB() function. A negative value erases the background color</paragraph>
     <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
@@ -1051,14 +1069,14 @@
   <paragraph role="paragraph" id="par_id211591632192379" xml-lang="en-US"><emph>beforesheet</emph>: The name (string) or index (numeric, starting from 1) of the sheet before which to insert the copied sheet. This argument is optional and the default behavior is to add the copied sheet at the last position.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
-  <paragraph role="paragraph" id="par_id961591632309410" xml-lang="en-US">The following example makes a copy of the sheet "SheetX" and places it as the last sheet in the current document. The name of the copied sheet is "SheetY".</paragraph>
+  <paragraph role="paragraph" id="par_id961591632309410">The following example makes a copy of the sheet "SheetX" and places it as the last sheet in the current document. The name of the copied sheet is "SheetY".</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id731591631693493">Dim oDoc as Object</paragraph>
-    <paragraph role="bascode" id="bas_id231611706034607">'Gets the Document object of the active window</paragraph>
+    <paragraph role="bascode" id="bas_id231611706034607" xml-lang="en-US">'Gets the Document object of the active window</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id981611706030262">Set oDoc = CreateScriptService("Calc")</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id281611706033725">oDoc.CopySheet("SheetX", "SheetY")</paragraph>
   </bascode>
-  <paragraph role="paragraph" id="par_id461591632297415" xml-lang="en-US">The example below copies "SheetX" from "FileA.ods" and pastes it at the last position of "FileB.ods" with the name "SheetY":</paragraph>
+  <paragraph role="paragraph" id="par_id461591632297415">The example below copies "SheetX" from "FileA.ods" and pastes it at the last position of "FileB.ods" with the name "SheetY":</paragraph>
   <bascode>
       <paragraph role="bascode" localize="false" id="bas_id631591632407615">Dim oDocA As Object : Set oDocA = ui.OpenDocument("C:\Documents\FileA.ods", Hidden := True, ReadOnly := True)</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id731591632415653">Dim oDocB As Object : Set oDocB = ui.OpenDocument("C:\Documents\FileB.ods")</paragraph>
@@ -1089,10 +1107,10 @@
     <input>svc.CopySheetFromFile(filename: str, sheetname: str, newname: str, [beforesheet: any]): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id471591714947181" xml-lang="en-US"><emph>filename</emph>: Identifies the file to open. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation. The file must not be protected with a password.</paragraph>
+  <paragraph role="paragraph" id="par_id471591714947181"><emph>filename</emph>: Identifies the file to open. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation. The file must not be protected with a password.</paragraph>
   <paragraph role="paragraph" id="par_id9915917146142"><emph>sheetname</emph>: The name of the sheet to be copied as a string.</paragraph>
-  <paragraph role="paragraph" id="par_id71591714614904" xml-lang="en-US"><emph>newname</emph>: The name of the copied sheet to be inserted in the document. The name must not be in use in the document.</paragraph>
-  <paragraph role="paragraph" id="par_id601591714614407" xml-lang="en-US"><emph>beforesheet</emph>: The name (string) or index (numeric, starting from 1) of the sheet before which to insert the copied sheet. This argument is optional and the default behavior is to add the copied sheet at the last position.</paragraph>
+  <paragraph role="paragraph" id="par_id71591714614904"><emph>newname</emph>: The name of the copied sheet to be inserted in the document. The name must not be in use in the document.</paragraph>
+  <paragraph role="paragraph" id="par_id601591714614407"><emph>beforesheet</emph>: The name (string) or index (numeric, starting from 1) of the sheet before which to insert the copied sheet. This argument is optional and the default behavior is to add the copied sheet at the last position.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id981611707192039">The following example copies "SheetX" from "myFile.ods" and pastes it into the document referred to by "oDoc" as "SheetY" at the first position.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
@@ -1120,10 +1138,10 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id761592558768578"><emph>sourcerange</emph>: The source range as a string when it belongs to the same document or as a reference when it belongs to another open Calc document.</paragraph>
-  <paragraph role="paragraph" id="par_id711592558768466" xml-lang="en-US"><emph>destinationcell</emph>: The destination cell where the copied range of cells will be pasted, as a string. If a range is given, only its top-left cell is considered.</paragraph>
+  <paragraph role="paragraph" id="par_id711592558768466"><emph>destinationcell</emph>: The destination cell where the copied range of cells will be pasted, as a string. If a range is given, only its top-left cell is considered.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
-  <paragraph role="paragraph" id="par_id431592904964362" xml-lang="en-US">Next is an example where the source and destination are in the same file:</paragraph>
+  <paragraph role="paragraph" id="par_id431592904964362">Next is an example where the source and destination are in the same file:</paragraph>
   <bascode>
       <paragraph role="bascode" localize="false" id="bas_id531592559464178">oDoc.CopyToCell("SheetX.A1:F10", "SheetY.C5")</paragraph>
   </bascode>
@@ -1157,21 +1175,21 @@
   <paragraph role="paragraph" id="par_id1615929031212">Copies downwards and/or rightwards a specified source range (values, formulas and formats) to a destination range. The method imitates the behaviour of a Copy/Paste operation from a source range to a larger destination range.</paragraph>
   <list type="unordered">
       <listitem>
-          <paragraph role="paragraph" id="par_id271592904084534" xml-lang="en-US">If the height (or width) of the destination area is &gt; 1 row (or column) then the height (or width) of the source must be &lt;= the height (or width) of the destination. Otherwise nothing happens.</paragraph>
+          <paragraph role="paragraph" id="par_id271592904084534">If the height (or width) of the destination area is &gt; 1 row (or column) then the height (or width) of the source must be &lt;= the height (or width) of the destination. Otherwise nothing happens.</paragraph>
       </listitem>
       <listitem>
-          <paragraph role="paragraph" id="par_id131592904286834" xml-lang="en-US">If the height (or width) of the destination is = 1 then the destination is expanded downwards (or rightwards) up to the height (or width) of the source range.</paragraph>
+          <paragraph role="paragraph" id="par_id131592904286834">If the height (or width) of the destination is = 1 then the destination is expanded downwards (or rightwards) up to the height (or width) of the source range.</paragraph>
       </listitem>
   </list>
-  <paragraph role="paragraph" id="par_id661592904348877" xml-lang="en-US">The method returns a string representing the modified range of cells.</paragraph>
-  <paragraph role="paragraph" id="par_id41592903121807" xml-lang="en-US">The source range may belong to another <emph>open</emph> document.</paragraph>
+  <paragraph role="paragraph" id="par_id661592904348877">The method returns a string representing the modified range of cells.</paragraph>
+  <paragraph role="paragraph" id="par_id41592903121807">The source range may belong to another <emph>open</emph> document.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id981621538491567">
     <input>svc.CopyToRange(sourcerange: any, destinationrange: str): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id841592903121145"><emph>sourcerange</emph>: The source range as a string when it belongs to the same document or as a reference when it belongs to another open Calc document.</paragraph>
-  <paragraph role="paragraph" id="par_id5515929031211000" xml-lang="en-US"><emph>destinationrange</emph>: The destination of the copied range of cells, as a string.</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031211000"><emph>destinationrange</emph>: The destination of the copied range of cells, as a string.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <paragraph role="paragraph" id="par_id461592905128991" xml-lang="en-US">Copy within the same document:</paragraph>
@@ -1179,7 +1197,7 @@
     <paragraph role="bascode" localize="false" id="bas_id81592903121951">oDoc.CopyToRange("SheetX.A1:F10", "SheetY.C5:J5")</paragraph>
     <paragraph role="bascode" id="bas_id601592904507182">' Returns a range string: "$SheetY.$C$5:$J$14"</paragraph>
   </bascode>
-  <paragraph role="paragraph" id="par_id1001592905195364" xml-lang="en-US">Copy from one file to another:</paragraph>
+  <paragraph role="paragraph" id="par_id1001592905195364">Copy from one file to another:</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id121592903121767">Dim oDocA As Object : Set oDocA = ui.OpenDocument("C:\Documents\FileA.ods", Hidden := True, ReadOnly := True)</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id311592903121390">Dim oDocB As Object : Set oDocB = ui.OpenDocument("C:\Documents\FileB.ods")</paragraph>
@@ -1208,11 +1226,11 @@
     <input>svc.CreateChart(chartname: str, sheetname: str, range: str, columnheader: bool = False, rowheader: bool = False): obj</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-  <paragraph role="paragraph" id="par_id841592903121025"><emph>chartname:</emph> The user-defined name of the chart to be created. The name must be unique in the same sheet.</paragraph>
-  <paragraph role="paragraph" id="par_id5515929031213680"><emph>sheetname:</emph> The name of the sheet where the chart will be placed.</paragraph>
-  <paragraph role="paragraph" id="par_id5515929031211522"><emph>range:</emph> The range to be used as the data source for the chart. The range may refer to any sheet of the Calc document.</paragraph>
-  <paragraph role="paragraph" id="par_id5515929031216390"><emph>columnheader:</emph> When <literal>True</literal>, the topmost row of the range is used as labels for the category axis or the legend (Default = <literal>False</literal>).</paragraph>
-  <paragraph role="paragraph" id="par_id5515929031211633"><emph>rowheader:</emph> When <literal>True</literal>, the leftmost column of the range is used as labels for the category axis or the legend. (Default = <literal>False</literal>).</paragraph>
+  <paragraph role="paragraph" id="par_id841592903121025"><emph>chartname</emph>: The user-defined name of the chart to be created. The name must be unique in the same sheet.</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031213680"><emph>sheetname</emph>: The name of the sheet where the chart will be placed.</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031211522"><emph>range</emph>: The range to be used as the data source for the chart. The range may refer to any sheet of the Calc document.</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031216390"><emph>columnheader</emph>: When <literal>True</literal>, the topmost row of the range is used as labels for the category axis or the legend (Default = <literal>False</literal>).</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031211633"><emph>rowheader</emph>: When <literal>True</literal>, the leftmost column of the range is used as labels for the category axis or the legend. (Default = <literal>False</literal>).</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id61635441176547">The examples below in Basic and Python create a chart using the data contained in the range "A1:B5" of "Sheet1" and place the chart in "Sheet2".</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
@@ -1243,15 +1261,15 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id841592903128525"><emph>pivottablename:</emph> The user-defined name of the new pivot table.</paragraph>
-  <paragraph role="paragraph" id="par_id5515929031203640"><emph>sourcerange:</emph> The range containing the raw data, as a string. It is assumed that the first row contains the field names that are used by the pivot table.</paragraph>
-  <paragraph role="paragraph" id="par_id5515929031210400"><emph>targetcell:</emph> The top-left cell where the new pivot table will be placed. If a range is specified, only its top-left cell is considered.</paragraph>
-  <paragraph role="paragraph" id="par_id5515929031951290"><emph>datafields:</emph> It can be either a single string or an array containing strings that define field names and functions to be applied. When an array is specified, it must follow the syntax <input>Array("FieldName[;Function]", ...)</input>.</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031203640"><emph>sourcerange</emph>: The range containing the raw data, as a string. It is assumed that the first row contains the field names that are used by the pivot table.</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031210400"><emph>targetcell</emph>: The top-left cell where the new pivot table will be placed. If a range is specified, only its top-left cell is considered.</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031951290"><emph>datafields</emph>: It can be either a single string or an array containing strings that define field names and functions to be applied. When an array is specified, it must follow the syntax <input>Array("FieldName[;Function]", ...)</input>.</paragraph>
   <paragraph role="paragraph" id="par_id361652795942348">The allowed functions are: <literal>Sum</literal>, <literal>Count</literal>, <literal>Average</literal>, <literal>Max</literal>, <literal>Min</literal>, <literal>Product</literal>, <literal>CountNums</literal>, <literal>StDev</literal>, <literal>StDevP</literal>, <literal>Var</literal>, <literal>VarP</literal> and <literal>Median</literal>. Function names must be provided in English. When all values are numerical, <literal>Sum</literal> is the default function, otherwise the default function is <literal>Count</literal>.</paragraph>
-  <paragraph role="paragraph" id="par_id5515929031211003"><emph>rowfields:</emph> A single string or an array with the field names that will be used as the pivot table rows.</paragraph>
-  <paragraph role="paragraph" id="par_id5515929031211114"><emph>columnfields:</emph> A single string or an array with the field names that will be used as the pivot table columns.</paragraph>
-  <paragraph role="paragraph" id="par_id361652796141240"><emph>filterbutton:</emph> Determines whether a filter button will be displayed above the pivot table (Default = <literal>True</literal>).</paragraph>
-  <paragraph role="paragraph" id="par_id661652796200051"><emph>rowtotals:</emph> Specifies if a separate column for row totals will be added to the pivot table (Default = <literal>True</literal>).</paragraph>
-  <paragraph role="paragraph" id="par_id671652796274304"><emph>columntotals</emph> Specifies if a separate row for column totals will be added to the pivot table (Default = <literal>True</literal>)</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031211003"><emph>rowfields</emph> A single string or an array with the field names that will be used as the pivot table rows.</paragraph>
+  <paragraph role="paragraph" id="par_id5515929031211114"><emph>columnfields</emph>: A single string or an array with the field names that will be used as the pivot table columns.</paragraph>
+  <paragraph role="paragraph" id="par_id361652796141240"><emph>filterbutton</emph>: Determines whether a filter button will be displayed above the pivot table (Default = <literal>True</literal>).</paragraph>
+  <paragraph role="paragraph" id="par_id661652796200051"><emph>rowtotals</emph>: Specifies if a separate column for row totals will be added to the pivot table (Default = <literal>True</literal>).</paragraph>
+  <paragraph role="paragraph" id="par_id671652796274304"><emph>columntotals</emph>: Specifies if a separate row for column totals will be added to the pivot table (Default = <literal>True</literal>)</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -1345,13 +1363,13 @@
         <input>svc.DecorateFont(targetrange: str, opt fontname: str, opt fontsize: int, opt decoration: str, opt filterformula: str, opt filterscope: str)</input>
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-    <paragraph role="paragraph" id="par_id871768056133127"><emph>targetrange:</emph> The cell or the range as a string in which cell fonts should be re-decorated.</paragraph>
-    <paragraph role="paragraph" id="par_id671768056195921" xml-lang="en-US"><emph>fontname:</emph> The name of the font to be used. The name is not checked. Default = no change.</paragraph>
-    <paragraph role="paragraph" id="par_id971768056327357" xml-lang="en-US"><emph>fontsize:</emph> The size of the font in pixels. Default = no change.</paragraph>
-    <paragraph role="paragraph" id="par_id711768056157938" xml-lang="en-US"><emph>decoration:</emph> A string combining 1 or more of next upper-case characters (other characters are ignored). Default = no change:</paragraph>
+    <paragraph role="paragraph" id="par_id871768056133127"><emph>targetrange</emph>: The cell or the range as a string in which cell fonts should be re-decorated.</paragraph>
+    <paragraph role="paragraph" id="par_id671768056195921" xml-lang="en-US"><emph>fontname</emph>: The name of the font to be used. The name is not checked. Default = no change.</paragraph>
+    <paragraph role="paragraph" id="par_id971768056327357" xml-lang="en-US"><emph>fontsize</emph>: The size of the font in pixels. Default = no change.</paragraph>
+    <paragraph role="paragraph" id="par_id711768056157938" xml-lang="en-US"><emph>decoration</emph>: A string combining 1 or more of next upper-case characters (other characters are ignored). Default = no change:</paragraph>
     <list type="unordered">
         <listitem>
-            <paragraph id="par_id281768056503337"  role="listitem" xml-lang="en-US">B, U, I, S: Bold, Underline, Italic, Strikethrough.</paragraph>
+            <paragraph id="par_id281768056503337" role="listitem" xml-lang="en-US">B, U, I, S: Bold, Underline, Italic, Strikethrough.</paragraph>
         </listitem>
     </list>
     <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
@@ -1365,6 +1383,39 @@
     <pycode>
         <paragraph role="pycode" id="pyc_id661768057052508"># Modify the font size and apply bold and underline properties to the numeric cells.</paragraph>
         <paragraph role="pycode" id="pyc_id721768057070406">doc.DecorateFont('SheetX.A1:J30', fontsize = 15, decoration = 'Bold,Underline', filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
+    </pycode>
+</section>
+
+<section id="DefineName">
+    <comment> DefineName -------------------------------------------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id981768055302774">
+        <bookmark_value>Calc service;DefineName</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id941768056447246" localize="false">DefineName</h2>
+    <paragraph role="paragraph" id="par_id471779055753462">Define a new name in the worksheet, at global or sheet level. If the name exists already, it is overwritten without warning. After creation, the new name can be used in formulaes. Returns <literal>True</literal> when successful.</paragraph>
+    <paragraph role="paragraph" id="par_id991779055771625">Use <literal>DefinedNames</literal> property to examine existing named ranges.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id161769165981837">
+        <input>svc.DefineName(definedname: str, value: any, opt sheetname: str): boolean</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id871768164133127"><emph>definedname</emph>: The name to be created or modified without warning. Note that homonyms may exist, but not in the same sheet and not at global level.</paragraph>
+    <paragraph role="paragraph" id="par_id671768067295921"><emph>value</emph>: The new name as:</paragraph>
+    <list type="unordered">
+        <listitem><paragraph id="par_id281769156503337" role="listitem">a range reference as a string, often a single cell</paragraph></listitem>
+        <listitem><paragraph id="par_id281768067503337" role="listitem">a scalar value as a number or a string</paragraph></listitem>
+        <listitem><paragraph id="par_id281768056613337" role="listitem">a formula starting with the &quot;=&quot; sign</paragraph></listitem>
+    </list>
+    <paragraph role="paragraph" id="par_id501769173466354">When <literal>Value</literal> is a range, the top-left cell is set as reference cell.</paragraph>
+    <paragraph role="paragraph" id="par_id971768167327357" xml-lang="en-US"><emph>sheetname</emph>: The defined name scope is that of the specified sheet. The &quot;~&quot; shortcut is accepted.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
+    <bascode>
+        <paragraph role="bascode" id="bas_id601768068422683">doc.DefineName(&quot;NewName&quot;, Sheet := &quot;Sheet3&quot;, Value := &quot;H2&quot;)</paragraph>
+    </bascode>
+    <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
+    <pycode>
+        <paragraph role="pycode" id="pyc_id721768068170406">doc.DefineName('NewName', sheet = 'Sheet3', value = 'H2')</paragraph>
     </pycode>
 </section>
 
@@ -1414,9 +1465,9 @@
         <input>svc.FormatRange(targetrange: str, numberformat: str, opt locale: str, opt filterformula: str, opt filterscope: str)</input>
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
-    <paragraph role="paragraph" id="par_id841768060290225"><emph>targetrange:</emph> The cell or the range as a string that should receive the format.</paragraph>
-    <paragraph role="paragraph" id="par_id991768060908752" xml-lang="en-US"><emph>numberformat:</emph> The format to apply, as a string.</paragraph>
-    <paragraph role="paragraph" id="par_id951768060527854" xml-lang="en-US"><emph>locale:</emph> A la-CO (language-COUNTRY) combination to indicate the used locale. The default locale is the output of the <literal>platform.FormatLocale</literal> property</paragraph>
+    <paragraph role="paragraph" id="par_id841768060290225"><emph>targetrange</emph>: The cell or the range as a string that should receive the format.</paragraph>
+    <paragraph role="paragraph" id="par_id991768060908752"><emph>numberformat</emph>: The format to apply, as a string.</paragraph>
+    <paragraph role="paragraph" id="par_id951768060527854"><emph>locale</emph>: A la-CO (language-COUNTRY) combination to indicate the used locale. The default locale is the output of the <literal>platform.FormatLocale</literal> property</paragraph>
     <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
@@ -1975,7 +2026,7 @@
 
 <section id="RenameSheet">
   <comment> RenameSheet -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781591704316677">
+  <bookmark localize="false" branch="index" id="bm_id781591704316677">
       <bookmark_value>Calc service;RenameSheet</bookmark_value>
   </bookmark>
   <h2 id="hd_id171591704316197" localize="false">RenameSheet</h2>
@@ -1986,7 +2037,7 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id161591704316337"><emph>sheetname</emph>: The name of the sheet to rename.</paragraph>
-  <paragraph role="paragraph" id="par_id931591704316998" xml-lang="en-US"><emph>newname</emph>: the new name of the sheet. It must not exist yet.</paragraph>
+  <paragraph role="paragraph" id="par_id931591704316998"><emph>newname</emph>: the new name of the sheet. It must not exist yet.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id351611775260443">This example renames the active sheet to "SheetY":</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
@@ -2001,7 +2052,7 @@
 
 <section id="SetArray">
   <comment> SetArray -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id221592745582441">
+  <bookmark localize="false" branch="index" id="bm_id221592745582441">
       <bookmark_value>Calc service;SetArray</bookmark_value>
   </bookmark>
   <h2 id="hd_id831592745582224" localize="false">SetArray</h2>
@@ -2042,7 +2093,7 @@
 
 <section id="SetCellStyle">
   <comment> SetCellStyle -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id21595767687885">
+  <bookmark localize="false" branch="index" id="bm_id21595767687885">
       <bookmark_value>Calc service;SetCellStyle</bookmark_value>
   </bookmark>
   <h2 id="hd_id201595767687377" localize="false">SetCellStyle</h2>
@@ -2072,7 +2123,7 @@
 
 <section id="SetFormula">
   <comment> SetFormula -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231593880376363">
+  <bookmark localize="false" branch="index" id="bm_id231593880376363">
       <bookmark_value>Calc service;SetFormula</bookmark_value>
   </bookmark>
   <h2 id="hd_id191593880376344" localize="false">SetFormula</h2>
@@ -2110,7 +2161,7 @@
 
 <section id="SetValue">
   <comment> SetValue -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id901592231799526">
+  <bookmark localize="false" branch="index" id="bm_id901592231799526">
       <bookmark_value>Calc service;SetValue</bookmark_value>
   </bookmark>
   <h2 id="hd_id681592231799943" localize="false">SetValue</h2>
@@ -2157,7 +2208,7 @@
 
 <section id="ShiftDown">
   <comment> ShiftDown --------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231593880376104">
+  <bookmark localize="false" branch="index" id="bm_id231593880376104">
     <bookmark_value>Calc service;ShiftDown</bookmark_value>
   </bookmark>
   <h2 id="hd_id191593880376667" localize="false">ShiftDown</h2>
@@ -2200,7 +2251,7 @@
 
 <section id="ShiftLeft">
   <comment> ShiftLeft --------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231593880376547">
+  <bookmark localize="false" branch="index" id="bm_id231593880376547">
     <bookmark_value>Calc service;ShiftLeft</bookmark_value>
   </bookmark>
   <h2 id="hd_id191593880373026" localize="false">ShiftLeft</h2>
