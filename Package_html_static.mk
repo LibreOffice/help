@@ -18,7 +18,7 @@ $(eval $(call gb_Package_add_file,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOL
 
 $(eval $(call gb_Package_add_files,helpcontent2_html_static,$(LIBO_SHARE_HELP_FOLDER)$(if $(HELP_ONLINE),/$(PRODUCTVERSION)),\
 	a11y-toggle.js \
-	flexsearch.debug.js \
+	flexsearch.compact.debug.js \
 	help.js \
 	normalize.css \
 	paginathing.js \

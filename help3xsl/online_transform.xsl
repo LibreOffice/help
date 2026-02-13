@@ -175,7 +175,7 @@
         <script type="text/javascript" src="polyfills.js"></script>
         <script type="text/javascript" src="languages.js"></script>
         <script type="text/javascript" src="{$lang}/langnames.js"></script>
-        <script type="text/javascript" src="flexsearch.debug.js"></script>
+        <script type="text/javascript" src="flexsearch.compact.debug.js"></script>
         <script type="text/javascript" src="prism.js"></script>
         <script type="text/javascript" src="help2.js" defer=""></script>
         <xsl:if test="$online">
