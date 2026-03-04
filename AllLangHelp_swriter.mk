@@ -299,6 +299,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/guide/contentcontrols \
     helpcontent2/source/text/swriter/guide/delete_from_dict \
     helpcontent2/source/text/swriter/guide/dragdroptext \
+    helpcontent2/source/text/swriter/guide/dragdrop_navigator \
     helpcontent2/source/text/swriter/guide/even_odd_sdw \
     helpcontent2/source/text/swriter/guide/field_convert \
     helpcontent2/source/text/swriter/guide/fields \
