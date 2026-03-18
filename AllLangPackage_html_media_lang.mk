@@ -271,7 +271,6 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     screenshots/cui/ui/optctlpage/$(lang)/OptCTLPage.png \
     screenshots/cui/ui/optsecuritypage/$(lang)/OptSecurityPage.png \
     screenshots/cui/ui/optlanguagespage/$(lang)/OptLanguagesPage.png \
-    screenshots/cui/ui/optgeneralpage/$(lang)/OptGeneralPage.png \
     screenshots/cui/ui/pageformatpage/$(lang)/PageFormatPage.png \
     screenshots/cui/ui/slantcornertabpage/$(lang)/SlantAndCornerRadius.png \
     screenshots/filter/ui/pdfgeneralpage/$(lang)/PdfGeneralPage.png \
