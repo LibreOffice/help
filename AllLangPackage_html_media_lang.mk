@@ -273,7 +273,6 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     screenshots/cui/ui/optlanguagespage/$(lang)/OptLanguagesPage.png \
     screenshots/cui/ui/pageformatpage/$(lang)/PageFormatPage.png \
     screenshots/cui/ui/slantcornertabpage/$(lang)/SlantAndCornerRadius.png \
-    screenshots/filter/ui/pdfgeneralpage/$(lang)/PdfGeneralPage.png \
     screenshots/filter/ui/pdflinkspage/$(lang)/PdfLinksPage.png \
     screenshots/filter/ui/pdfviewpage/$(lang)/PdfViewPage.png \
     screenshots/filter/ui/pdfuserinterfacepage/$(lang)/PdfUserInterfacePage.png \

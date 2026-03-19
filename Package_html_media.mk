@@ -454,7 +454,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     screenshots/cui/ui/optlanguagespage/OptLanguagesPage.png \
     screenshots/cui/ui/pageformatpage/PageFormatPage.png \
     screenshots/cui/ui/slantcornertabpage/SlantAndCornerRadius.png \
-    screenshots/filter/ui/pdfgeneralpage/PdfGeneralPage.png \
     screenshots/filter/ui/pdflinkspage/PdfLinksPage.png \
     screenshots/filter/ui/pdfviewpage/PdfViewPage.png \
     screenshots/filter/ui/pdfuserinterfacepage/PdfUserInterfacePage.png \
