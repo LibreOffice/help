@@ -95,7 +95,7 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
 </head>
 <body>
     <header id="TopLeftHeader">
-         <a class="symbol" href="]]><xsl:value-of select="$lang"/><![CDATA[/text/shared/05/new_help.html"><div></div></a>
+         <a class="symbol" href="]]><xsl:value-of select="$lang"/><![CDATA[/text/shared/05/new_help.html" aria-hidden="true" tabindex="-1"><div></div></a>
          <a class="logo" href="]]><xsl:value-of select="$lang"/><![CDATA[/text/shared/05/new_help.html">
                 <p dir="auto">]]><xsl:value-of select="$ui_logo"/><![CDATA[</p>
          </a>

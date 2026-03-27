@@ -192,7 +192,7 @@
     <body>
 
     <header id="TopLeftHeader">
-        <a class="symbol" href="{$lang}/text/shared/05/new_help.html">
+        <a class="symbol" href="{$lang}/text/shared/05/new_help.html" aria-hidden="true" tabindex="-1">
             <div></div>
         </a>
         <a class="logo" href="{$lang}/text/shared/05/new_help.html">
