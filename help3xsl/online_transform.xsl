@@ -109,6 +109,7 @@
 <xsl:variable name="ui_selectlang"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='selectlanguage']"/></xsl:variable>
 <xsl:variable name="ui_search"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='searchhelpcontents']"/></xsl:variable>
 <xsl:variable name="ui_copyclip"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='copyclip']"/></xsl:variable>
+<xsl:variable name="ui_pagination"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='pagination']"/></xsl:variable>
 <xsl:variable name="ytvideobutton"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytbutton']"/></xsl:variable>
 <xsl:variable name="ytaccept"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytaccept']"/></xsl:variable>
 <xsl:variable name="ytpromovideoH2"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='externalvideo']"/></xsl:variable>
@@ -206,7 +207,7 @@
         <div id="Contents" class="contents-treeview"></div>
     </aside>
     <div id="SearchFrame">
-        <div id="Bookmarks">
+        <div id="Bookmarks" data-pagination-label="{$ui_pagination}">
             <xsl:variable name="pholder">
                 <xsl:choose>
                     <xsl:when test="contains($htmlpage, '/text/shared/')">

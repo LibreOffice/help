@@ -70,9 +70,11 @@ var Paginator = function(element) {
         parent.removeChild(existingContainer);
     }
     const searchInput = document.getElementById("search-bar");
+    var bookmarksEl = document.getElementById("Bookmarks");
+    var paginationLabel = (bookmarksEl && bookmarksEl.getAttribute('data-pagination-label')) || 'Pagination';
     var container = document.createElement('nav');
     container.setAttribute('class', options.containerClass);
-    container.setAttribute('aria-label', 'Pagination');
+    container.setAttribute('aria-label', paginationLabel);
     var ul = document.createElement('ul');
     ul.setAttribute('class', options.ulClass);
 
