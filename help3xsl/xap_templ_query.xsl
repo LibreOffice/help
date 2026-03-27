@@ -115,7 +115,7 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
 
 <div id="DonationFrame">
     <div class="donation">
-        <p dir="auto"><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">]]><xsl:value-of select="$ui_donate"/><![CDATA[</a></p>
+        <p dir="auto"><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target="_blank" rel="noopener">]]><xsl:value-of select="$ui_donate"/><![CDATA[</a></p>
     </div>
 </div>
 <div id="SearchFrame">
@@ -225,7 +225,7 @@ $map{$cgilist{B},<input type=hidden name=B value="$html{$_}">}
 </form>
 </main>
     <footer>
-        <p><a href="https://www.collaboraonline.com/about-us/" target="_blank">About Us</a> | <a href="https://www.collaboraonline.com/privacy-policy/" target="_blank">Privacy Policy</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in TDF's <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. Collabora Office is derived from LibreOffice which was based on OpenOffice.org.</p>
+        <p><a href="https://www.collaboraonline.com/about-us/" target="_blank" rel="noopener">About Us</a> | <a href="https://www.collaboraonline.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank" rel="noopener">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in TDF's <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank" rel="noopener">trademark policy</a>. Collabora Office is derived from LibreOffice which was based on OpenOffice.org.</p>
     </footer>
 </body>
 </html>
