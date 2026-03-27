@@ -435,6 +435,9 @@
             <xsl:attribute name="data-tooltip">
                 <xsl:value-of select="$ui_copyclip"/>
             </xsl:attribute>
+            <xsl:attribute name="title">
+                <xsl:value-of select="$ui_copyclip"/>
+            </xsl:attribute>
         </xsl:if>
         <xsl:apply-templates />
     </span>
@@ -443,6 +446,9 @@
     <span class="{@type}">
         <xsl:if test="@type='input' and string-length(.)>3">
             <xsl:attribute name="data-tooltip">
+                <xsl:value-of select="$ui_copyclip"/>
+            </xsl:attribute>
+            <xsl:attribute name="title">
                 <xsl:value-of select="$ui_copyclip"/>
             </xsl:attribute>
         </xsl:if>
@@ -520,7 +526,7 @@
         </xsl:when>
 
         <xsl:when test="@role='smathcode'">
-            <p id="{@id}" class="smathcode" dir="auto"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
+            <p id="{@id}" class="smathcode" dir="auto"><span class="input" data-tooltip="{$ui_copyclip}" title="{$ui_copyclip}"><xsl:apply-templates /></span></p>
         </xsl:when>
 
         <xsl:when test="@role='logocode'">
@@ -563,7 +569,7 @@
         </xsl:when>
 
         <xsl:when test="@role='smathcode'">
-            <p id="{@id}" class="smathcode" dir="auto"><span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span></p>
+            <p id="{@id}" class="smathcode" dir="auto"><span class="input" data-tooltip="{$ui_copyclip}" title="{$ui_copyclip}"><xsl:apply-templates /></span></p>
         </xsl:when>
 
         <xsl:when test="@role='logocode'">
@@ -790,10 +796,10 @@
 
 <!-- INPUT -->
 <xsl:template match="input">
-    <span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates /></span>
+    <span class="input" data-tooltip="{$ui_copyclip}" title="{$ui_copyclip}"><xsl:apply-templates /></span>
 </xsl:template>
 <xsl:template match="input" mode="embedded">
-    <span class="input" data-tooltip="{$ui_copyclip}"><xsl:apply-templates mode="embedded"/></span>
+    <span class="input" data-tooltip="{$ui_copyclip}" title="{$ui_copyclip}"><xsl:apply-templates mode="embedded"/></span>
 </xsl:template>
 
 <!--MENUITEM, KEYCODE, LITERAL, WIDGET-->
@@ -828,6 +834,7 @@
     </xsl:variable>
     <div class="{local-name()}" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
         <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
+        <xsl:attribute name="title"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
         <pre dir="auto"><code class="{$codelangclass}"><xsl:apply-templates /></code></pre>
     </div>
 </xsl:template>
@@ -841,6 +848,7 @@
     </xsl:variable>
     <div class="{local-name()}" itemscope="true" itemtype="http://schema.org/SoftwareSourceCode" itemprop="codeSampleType" content="snippet">
         <xsl:attribute name="data-tooltip"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
+        <xsl:attribute name="title"><xsl:value-of select="$ui_copyclip"/></xsl:attribute>
         <pre dir="auto"><code class="{$codelangclass}"><xsl:apply-templates /></code></pre>
     </div>
 </xsl:template>
