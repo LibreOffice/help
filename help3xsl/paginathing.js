@@ -32,7 +32,7 @@
 
 var options = {
     perPage: 20,
-    limitPagination: 6,
+    limitPagination: 4,
     prevNext: true,
     firstLast: true,
     prevText: '←',
