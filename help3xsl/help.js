@@ -254,14 +254,148 @@ if (accordionBtn) {
         this.setAttribute('aria-expanded', String(!expanded));
     });
 }
-// Tree view: toggle expand/collapse on tree label click
-document.querySelectorAll('.contents-treeview .tree-label').forEach(function(label) {
-    label.addEventListener('click', function() {
-        let item = this.parentElement;
-        let expanded = item.getAttribute('aria-expanded') === 'true';
-        item.setAttribute('aria-expanded', String(!expanded));
+// Tree view: keyboard navigation and expand/collapse
+(function() {
+    let tree = document.querySelector('.contents-treeview [role="tree"]');
+    if (!tree) return;
+
+    // Get the focusable element inside a treeitem: .tree-label for branches, <a> for leaves
+    function getFocusable(treeitem) {
+        return treeitem.querySelector(':scope > .tree-label') || treeitem.querySelector(':scope > a');
+    }
+
+    // Get all currently visible treeitems
+    function getVisibleItems() {
+        let items = [];
+        tree.querySelectorAll('[role="treeitem"]').forEach(function(item) {
+            // An item is visible if none of its ancestor groups are collapsed
+            let parent = item.parentElement;
+            let visible = true;
+            while (parent && parent !== tree) {
+                if (parent.getAttribute('role') === 'group') {
+                    let parentItem = parent.parentElement;
+                    if (parentItem && parentItem.getAttribute('aria-expanded') === 'false') {
+                        visible = false;
+                        break;
+                    }
+                }
+                parent = parent.parentElement;
+            }
+            if (visible) items.push(item);
+        });
+        return items;
+    }
+
+    // Set roving tabindex: make one element tabbable, all others -1
+    function setRovingTabindex(focusEl) {
+        tree.querySelectorAll('.tree-label, [role="treeitem"] > a').forEach(function(el) {
+            el.setAttribute('tabindex', '-1');
+        });
+        if (focusEl) focusEl.setAttribute('tabindex', '0');
+    }
+
+    // Initialize: set tabindex="0" on the first item
+    let firstFocusable = getFocusable(tree.querySelector('[role="treeitem"]'));
+    if (firstFocusable) setRovingTabindex(firstFocusable);
+
+    // Toggle expand/collapse on click
+    tree.querySelectorAll('.tree-label').forEach(function(label) {
+        label.addEventListener('click', function() {
+            let item = this.parentElement;
+            let expanded = item.getAttribute('aria-expanded') === 'true';
+            item.setAttribute('aria-expanded', String(!expanded));
+            setRovingTabindex(this);
+        });
     });
-});
+
+    // Keyboard navigation
+    tree.addEventListener('keydown', function(event) {
+        let target = event.target;
+        let treeitem = target.closest('[role="treeitem"]');
+        if (!treeitem) return;
+
+        let visibleItems = getVisibleItems();
+        let currentIndex = visibleItems.indexOf(treeitem);
+        let handled = false;
+
+        switch (event.key) {
+        case 'ArrowDown':
+            if (currentIndex < visibleItems.length - 1) {
+                let next = getFocusable(visibleItems[currentIndex + 1]);
+                if (next) { setRovingTabindex(next); next.focus(); }
+            }
+            handled = true;
+            break;
+        case 'ArrowUp':
+            if (currentIndex > 0) {
+                let prev = getFocusable(visibleItems[currentIndex - 1]);
+                if (prev) { setRovingTabindex(prev); prev.focus(); }
+            }
+            handled = true;
+            break;
+        case 'ArrowRight':
+            if (treeitem.hasAttribute('aria-expanded')) {
+                if (treeitem.getAttribute('aria-expanded') === 'false') {
+                    // Expand closed branch
+                    treeitem.setAttribute('aria-expanded', 'true');
+                } else {
+                    // Move to first child
+                    let firstChild = treeitem.querySelector(':scope > [role="group"] > [role="treeitem"]');
+                    if (firstChild) {
+                        let fc = getFocusable(firstChild);
+                        if (fc) { setRovingTabindex(fc); fc.focus(); }
+                    }
+                }
+            }
+            handled = true;
+            break;
+        case 'ArrowLeft':
+            if (treeitem.hasAttribute('aria-expanded') && treeitem.getAttribute('aria-expanded') === 'true') {
+                // Collapse open branch
+                treeitem.setAttribute('aria-expanded', 'false');
+            } else {
+                // Move to parent treeitem
+                let parentGroup = treeitem.parentElement;
+                if (parentGroup && parentGroup.getAttribute('role') === 'group') {
+                    let parentItem = parentGroup.parentElement;
+                    if (parentItem && parentItem.getAttribute('role') === 'treeitem') {
+                        let pf = getFocusable(parentItem);
+                        if (pf) { setRovingTabindex(pf); pf.focus(); }
+                    }
+                }
+            }
+            handled = true;
+            break;
+        case 'Home':
+            if (visibleItems.length > 0) {
+                let first = getFocusable(visibleItems[0]);
+                if (first) { setRovingTabindex(first); first.focus(); }
+            }
+            handled = true;
+            break;
+        case 'End':
+            if (visibleItems.length > 0) {
+                let last = getFocusable(visibleItems[visibleItems.length - 1]);
+                if (last) { setRovingTabindex(last); last.focus(); }
+            }
+            handled = true;
+            break;
+        case 'Enter':
+        case ' ':
+            if (treeitem.hasAttribute('aria-expanded')) {
+                let expanded = treeitem.getAttribute('aria-expanded') === 'true';
+                treeitem.setAttribute('aria-expanded', String(!expanded));
+                handled = true;
+            }
+            // For leaf items with <a>, let the default action (navigation) happen
+            break;
+        }
+        if (handled) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+    });
+})();
 // YouTube consent click. This only works for a single video.
 let youtubePlaceholder = document.querySelector(".youtube_placeholder");
 if (youtubePlaceholder) {

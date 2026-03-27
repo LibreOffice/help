@@ -31,11 +31,11 @@ xsltproc get_tree.xsl <file.tree>
     <xsl:apply-templates/>
 </xsl:template>
 <xsl:template match="help_section">
-    <![CDATA[<ul role="tree"><li role="treeitem" aria-expanded="false" id="]]><xsl:value-of select="@id"/><![CDATA["><span class="tree-label">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="@title"/></xsl:with-param></xsl:call-template><![CDATA[</span><ul role="group">\]]><xsl:apply-templates/><![CDATA[</ul></li></ul>\]]>
+    <![CDATA[<ul role="tree"><li role="treeitem" aria-expanded="false" id="]]><xsl:value-of select="@id"/><![CDATA["><span class="tree-label" tabindex="-1">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="@title"/></xsl:with-param></xsl:call-template><![CDATA[</span><ul role="group">\]]><xsl:apply-templates/><![CDATA[</ul></li></ul>\]]>
 </xsl:template>
 
 <xsl:template match="node">
-    <![CDATA[<li role="treeitem" aria-expanded="false" id="]]><xsl:value-of select="@id"/><![CDATA["><span class="tree-label">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="@title"/></xsl:with-param></xsl:call-template><![CDATA[</span><ul role="group">\]]><xsl:apply-templates/><![CDATA[</ul></li>\]]>
+    <![CDATA[<li role="treeitem" aria-expanded="false" id="]]><xsl:value-of select="@id"/><![CDATA["><span class="tree-label" tabindex="-1">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="@title"/></xsl:with-param></xsl:call-template><![CDATA[</span><ul role="group">\]]><xsl:apply-templates/><![CDATA[</ul></li>\]]>
 </xsl:template>
 
 <xsl:template match="topic">
@@ -45,7 +45,7 @@ xsltproc get_tree.xsl <file.tree>
     <xsl:variable name="htmlpage">
         <xsl:value-of select="concat($lang,'/',substring-before(substring-after(@id,'/'),'.xhp'),'.html','?DbPAR=',$module,$pagetarget)" />
     </xsl:variable>
-    <![CDATA[<li role="treeitem"><a target="_top" href="]]><xsl:value-of select="$htmlpage"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="."/></xsl:with-param></xsl:call-template><![CDATA[</a></li>\]]>
+    <![CDATA[<li role="treeitem"><a target="_top" tabindex="-1" href="]]><xsl:value-of select="$htmlpage"/><![CDATA[">]]><xsl:call-template name="replace"><xsl:with-param name="text"><xsl:value-of select="."/></xsl:with-param></xsl:call-template><![CDATA[</a></li>\]]>
 </xsl:template>
 
 <xsl:template name="replace">
