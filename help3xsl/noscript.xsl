@@ -16,19 +16,24 @@ xsltproc noscript.xsl <browserhelp.xhp>
 <xsl:output indent="yes" method="html"/>
     <xsl:param name="productname"/>
     <xsl:param name="productversion"/>
+    <xsl:param name="lang" select="'en-US'"/>
 
 <xsl:template match="/">
-<html>
+<html lang="{$lang}">
 <head>
+<meta charset="utf-8"/>
+<title><xsl:call-template name="brand">
+<xsl:with-param name="string"><xsl:value-of select="//variable[@id='noscriptmsg']"/></xsl:with-param>
+</xsl:call-template></title>
 </head>
 <body>
-<div style="margin: 20px">
+<main style="margin: 20px">
 <h1 style="color: red;">
 <xsl:call-template name="brand">
 <xsl:with-param name="string"><xsl:value-of select="//variable[@id='noscriptmsg']"/></xsl:with-param>
 </xsl:call-template>
 </h1>
-</div>
+</main>
 </body>
 </html>
 </xsl:template>
