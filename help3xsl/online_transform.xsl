@@ -217,7 +217,7 @@
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:variable>
-            <input id="search-bar" type="search" class="search" placeholder="{$pholder}" dir="auto"/>
+            <input id="search-bar" type="search" class="search" placeholder="{$pholder}" aria-label="{$pholder}" dir="auto"/>
             <div class="nav-container" tabindex="0">
                 <nav class="index" dir="auto"></nav>
             </div>
@@ -238,8 +238,8 @@
                         <input type="hidden" name="DB" value="{$lang}2504"/>
                         <input type="hidden" name="FMT" value="25.04/{$lang}/xap_tpl"/>
                         <input type="hidden" name="DEFAULTOP" value="and"/>
-                        <input id="omega-autofocus" type="search" name="P" placeholder="{$ui_pholderfullsearch}" dir="auto"/>
-                        <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;"/>
+                        <input id="omega-autofocus" type="search" name="P" placeholder="{$ui_pholderfullsearch}" aria-label="{$ui_pholderfullsearch}" dir="auto"/>
+                        <input type="submit" class="xapian-omega-search-button" value="&#x1f50d;" aria-label="{$ui_search}"/>
                     </form>
                 </div>
             </xsl:if>
