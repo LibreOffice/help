@@ -1275,7 +1275,7 @@
             </xsl:variable>
             <div class="samplefilesection" id="obj{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-calc.svg" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-calc.svg" alt="Calc" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.text'">
@@ -1286,7 +1286,7 @@
             </xsl:variable>
             <div class="samplefilesection" id="obj{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-writer.svg" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-writer.svg" alt="Writer" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.presentation'">
@@ -1297,7 +1297,7 @@
             </xsl:variable>
             <div class="samplefilesection" id="obj{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-impress.svg" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-impress.svg" alt="Impress" width="25px" height="30px"></img></a>
             </div>
             </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.drawing'">
@@ -1308,7 +1308,7 @@
             </xsl:variable>
             <div class="samplefilesection" id="obj{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-draw.svg" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-draw.svg" alt="Draw" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.formula'">
@@ -1319,7 +1319,7 @@
             </xsl:variable>
             <div class="samplefilesection" id="obj{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-math.svg" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-math.svg" alt="Math" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:when test="@type='application/vnd.oasis.opendocument.database'">
@@ -1330,7 +1330,7 @@
             </xsl:variable>
             <div class="samplefilesection" id="obj{$auxID}">
             <h3><xsl:apply-templates select="$tmp_doc//variable[@id='samplefile']"/></h3>
-            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-base.svg" width="25px" height="30px"></img></a>
+            <a class="objectfiles" href="{$src}"><img src="media/navigation/libo-base.svg" alt="Base" width="25px" height="30px"></img></a>
             </div>
         </xsl:when>
         <xsl:otherwise>
