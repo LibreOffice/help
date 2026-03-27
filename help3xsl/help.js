@@ -16,7 +16,7 @@ var modules = ['CALC', 'WRITER', 'IMPRESS', 'DRAW', 'BASE', 'MATH', 'CHART', 'BA
 var indexEl = document.getElementsByClassName("index")[0];
 var fullLinks = fullLinkify(indexEl, bookmarks, modules, userModule);
 var search = document.getElementById('search-bar');
-search.addEventListener('keyup', debounce(filter, 100, indexEl));
+search.addEventListener('input', debounce(filter, 100, indexEl));
 var flexIndex =  new FlexSearch.Document({ document: {
         // Only the text content gets indexed, the others get stored as-is
         index: [{
