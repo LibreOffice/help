@@ -218,7 +218,7 @@
                 </xsl:choose>
             </xsl:variable>
             <input id="search-bar" type="search" class="search" placeholder="{$pholder}" aria-label="{$pholder}" dir="auto"/>
-            <div class="nav-container" tabindex="0">
+            <div class="nav-container">
                 <nav class="index" dir="auto"></nav>
             </div>
         </div>
