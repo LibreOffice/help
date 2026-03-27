@@ -243,7 +243,7 @@ var Paginator = function(element) {
                         limitPagination = pagLimit();
                     }
                     show(page);
-                    searchInput.focus();
+                    setTimeout(function() { searchInput.focus(); }, 0);
                 });
             }());
         }
