@@ -274,25 +274,20 @@
         <xsl:apply-templates select="/helpdocument/body"/>
     </main>
     <div id="DonationFrame">
-        <a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">
-        <div class="icontable donation">
-            <div class="iconcell">
-                <img class="iconimage" src="{$donate_img}" alt="{$ui_donate}" style="{$iconsizestyle}"/>
+        <xsl:if test="$online">
+            <div class="donation">
+                <p dir="auto"><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target="_blank" rel="noopener"><xsl:value-of select="$ui_donate"/></a></p>
             </div>
-            <div class="iconcell">
-                <p dir="auto"><xsl:value-of select="$ui_donate"/></p>
-            </div>
-        </div>
-        </a>
+        </xsl:if>
     </div>
 
     <footer>
         <xsl:if test="$online">
-            <p><a href="https://www.collaboraoffice.com/about-us/" target="_blank">About Us</a> | <a href="https://www.collaboraoffice.com/privacy-policy/" target="_blank">Privacy Policy</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in TDF's <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. Collabora Office is derived from LibreOffice which was based on OpenOffice.org.</p>
+            <p><a href="https://www.collaboraoffice.com/about-us/" target="_blank" rel="noopener">About Us</a> | <a href="https://www.collaboraoffice.com/privacy-policy/" target="_blank" rel="noopener">Privacy Policy</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank" rel="noopener">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in TDF's <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank" rel="noopener">trademark policy</a>. Collabora Office is derived from LibreOffice which was based on OpenOffice.org.</p>
         </xsl:if>
         <div id="DEBUG" class="debug">
             <h3 class="bug">Help content debug info:</h3>
-            <p dir="auto">This page is: <a href="https://opengrok.libreoffice.org/xref/help/source{$filename}" target="_blank"><xsl:value-of select="$filename"/></a></p>
+            <p dir="auto">This page is: <a href="https://opengrok.libreoffice.org/xref/help/source{$filename}" target="_blank" rel="noopener"><xsl:value-of select="$filename"/></a></p>
             <p dir="auto">Title is: <xsl:value-of disable-output-escaping="yes" select="$title"/></p>
             <p id="bm_module" dir="auto"></p>
             <p id="bm_system" dir="auto"></p>
@@ -1018,7 +1013,7 @@
 <xsl:template name="createlink">
     <xsl:choose>
         <xsl:when test="starts-with(@href,'http://') or starts-with(@href,'https://')">  <!-- web links -->
-            <a target ="_blank" href="{@href}"><xsl:apply-templates /></a>
+            <a target="_blank" rel="noopener" href="{@href}"><xsl:apply-templates /></a>
         </xsl:when>
         <xsl:when test="contains(@href,'#')"> <!-- internal links with bookmark -->
             <xsl:variable name="anchor"><xsl:value-of select="concat('#',substring-after(@href,'#'))"/></xsl:variable>
@@ -1271,7 +1266,7 @@
             <div id="{@id}" class="youtube_placeholder">
                 <h2 id="promovideoH2"><xsl:value-of select="$ytpromovideoH2"/></h2>
                 <p><xsl:value-of select="$ytaccept"/></p>
-                <p><a href="https://policies.google.com/privacy" target="_blank"><xsl:value-of select="$ytprivacy"/></a></p>
+                <p><a href="https://policies.google.com/privacy" target="_blank" rel="noopener"><xsl:value-of select="$ytprivacy"/></a></p>
                 <button class="youtube_button" onClick="youtubeLoader('{@id}', 700, 394)" >
                     <xsl:value-of select="$ytvideobutton"/>
                 </button>
