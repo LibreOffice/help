@@ -228,11 +228,10 @@ if (typeof linkIndex !== "undefined") {
         parents.push(cItem = cItem.parentElement);
     }
     var liParents = [].filter.call(parents, function(item) {
-        return item.matches("li");
+        return item.matches("li[aria-expanded]");
     });
     for (var i = 0, len = liParents.length; i < len; i++) {
-        var input = liParents[i].querySelectorAll(':scope > input');
-        document.getElementById(input[0].id).checked = true;
+        liParents[i].setAttribute('aria-expanded', 'true');
     }
     current.classList.add('contents-current');
 }
@@ -246,6 +245,22 @@ document.addEventListener('click', function(event) {
             el.setAttribute("aria-hidden", true);
         });
     }
+});
+// Accordion toggle for the "Contents" sidebar
+let accordionBtn = document.getElementById('accordion-1');
+if (accordionBtn) {
+    accordionBtn.addEventListener('click', function() {
+        let expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!expanded));
+    });
+}
+// Tree view: toggle expand/collapse on tree label click
+document.querySelectorAll('.contents-treeview .tree-label').forEach(function(label) {
+    label.addEventListener('click', function() {
+        let item = this.parentElement;
+        let expanded = item.getAttribute('aria-expanded') === 'true';
+        item.setAttribute('aria-expanded', String(!expanded));
+    });
 });
 // YouTube consent click. This only works for a single video.
 let youtubePlaceholder = document.querySelector(".youtube_placeholder");

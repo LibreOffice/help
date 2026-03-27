@@ -101,7 +101,7 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
          </a>
         <div class="dropdowns">
             <div class="modules">
-                <button type="button" data-a11y-toggle="modules-nav" id="modules" aria-haspopup="true" aria-expanded="false" aria-controls="modules-nav">]]>
+                <button type="button" data-a11y-toggle="modules-nav" id="modules" aria-expanded="false" aria-controls="modules-nav">]]>
                     <xsl:value-of select="$ui_module"/><![CDATA[
                 </button>
                 <nav id="modules-nav" hidden=""/><!-- is filled in via setupModules() -->
@@ -109,8 +109,7 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
         </div>
     </header>
     <aside class="leftside">
-        <input id="accordion-1" name="accordion-menu" type="checkbox"/>
-        <label for="accordion-1">]]><xsl:value-of select="$ui_contents"/><![CDATA[</label>
+        <button id="accordion-1" type="button" aria-expanded="false" aria-controls="Contents">]]><xsl:value-of select="$ui_contents"/><![CDATA[</button>
         <div id="Contents" class="contents-treeview"></div>
     </aside>
 
@@ -123,7 +122,7 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
     <div class="xapian-omega-search">
     </div>
 </div>
-<div id="DisplayArea">
+<main id="DisplayArea">
     <form name="P" method="get" action="/cgi-bin/omega/omega" target="_top">
         <input type="hidden" name="DB" value="]]><xsl:value-of select="$lang"/><![CDATA[2504"/>
         <input type="hidden" name="FMT" value="25.04/]]><xsl:value-of select="$lang"/><![CDATA[/xap_tpl"/>
@@ -224,13 +223,13 @@ ${Preserve any B filters used - this needs modifying if you modify this template
   to have B on radio buttons, SELECT, etc}
 $map{$cgilist{B},<input type=hidden name=B value="$html{$_}">}
 </form>
+</main>
     <footer>
         <p><a href="https://www.collaboraonline.com/about-us/" target="_blank">About Us</a> | <a href="https://www.collaboraonline.com/privacy-policy/" target="_blank">Privacy Policy</a> | Copyright information: Unless otherwise specified, all text and images on this website are licensed under the <a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">Mozilla Public License v2.0</a>. “LibreOffice” and “The Document Foundation” are registered trademarks of their corresponding registered owners or are in actual use as trademarks in one or more countries. Their respective logos and icons are also subject to international copyright laws. Use thereof is explained in TDF's <a href="https://wiki.documentfoundation.org/TradeMark_Policy" target="_blank">trademark policy</a>. Collabora Office is derived from LibreOffice which was based on OpenOffice.org.</p>
     </footer>
 </body>
 </html>
 $log{query.log}
-</div>
 ]]>
 </xsl:template>
 

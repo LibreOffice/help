@@ -200,14 +200,14 @@
         </a>
         <div class="dropdowns">
             <div class="modules">
-                <button type="button" data-a11y-toggle="modules-nav" id="modules" aria-haspopup="true" aria-expanded="false" aria-controls="modules-nav">
+                <button type="button" data-a11y-toggle="modules-nav" id="modules" aria-expanded="false" aria-controls="modules-nav">
                     <xsl:value-of select="$ui_module"/>
                 </button>
                 <nav id="modules-nav" hidden=""/><!-- is filled in via setupModules() -->
             </div>
             <xsl:if test="$online">
                 <div class="lang">
-                    <button type="button" data-a11y-toggle="langs-nav" id="langs" aria-haspopup="true" aria-expanded="false" aria-controls="modules-nav">
+                    <button type="button" data-a11y-toggle="langs-nav" id="langs" aria-expanded="false" aria-controls="langs-nav">
                         <xsl:value-of select="$ui_language"/>
                     </button>
                     <nav id="langs-nav" hidden=""/><!-- is filled in via setupLanguages() -->
@@ -216,8 +216,7 @@
         </div>
     </header>
     <aside class="leftside">
-        <input id="accordion-1" name="accordion-menu" type="checkbox"/>
-        <label for="accordion-1" dir="auto"><xsl:value-of select="$ui_contents"/></label>
+        <button id="accordion-1" type="button" aria-expanded="false" aria-controls="Contents" dir="auto"><xsl:value-of select="$ui_contents"/></button>
         <div id="Contents" class="contents-treeview"></div>
     </aside>
     <div id="SearchFrame">
@@ -238,7 +237,7 @@
             </div>
         </div>
     </div>
-    <div id="DisplayArea" itemprop="softwareHelp" itemscope="true" itemtype="http://schema.org/SoftwareApplication">
+    <main id="DisplayArea" itemprop="softwareHelp" itemscope="true" itemtype="http://schema.org/SoftwareApplication">
         <noscript>
             <div id="WarnJS">
                 <h1 dir="auto">
@@ -273,7 +272,7 @@
             <meta itemprop="image" content="media/navigation/collabora-online-logo.svg"/>
         </xsl:if>
         <xsl:apply-templates select="/helpdocument/body"/>
-    </div>
+    </main>
     <div id="DonationFrame">
         <a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">
         <div class="icontable donation">

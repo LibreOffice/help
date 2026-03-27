@@ -531,32 +531,25 @@ footer {
 footer p {
     font-size: 0.98rem;
 }
-.contents-treeview input[type="checkbox"], aside input[type="checkbox"] {
-    /* from .visuallyhidden class of html5-boilerplate */
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-    white-space: nowrap;
-}
-label[for="accordion-1"] {
+#accordion-1 {
     color: #233336;
     display: block;
     margin: 0 0 10px 10px;
     font-size: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-align: left;
 }
-label[for="accordion-1"]::after {
+#accordion-1::after {
     font-size: 44px;
     content: "⌄";
 }
-aside input[type="checkbox"] ~ .contents-treeview {
+#accordion-1[aria-expanded="false"] ~ .contents-treeview {
     display: none;
 }
-aside input[type="checkbox"]:checked ~ .contents-treeview {
+#accordion-1[aria-expanded="true"] ~ .contents-treeview {
     color: #333;
     z-index: 6;
     display: block;
@@ -813,38 +806,34 @@ li.disabled a {
     margin-left: -12px;
     padding-left: 10px;
 }
-.contents-treeview input + label + ul {
+.contents-treeview [role="group"] {
     margin: 0 0 0 22px;
 }
-.contents-treeview input ~ ul {
+.contents-treeview [role="treeitem"][aria-expanded] > [role="group"] {
     display: none;
 }
-.contents-treeview label,
-.contents-treeview label::before {
+.contents-treeview .tree-label,
+.contents-treeview .tree-label::before {
     cursor: pointer;
     color: #111;
 }
-.contents-treeview input:disabled + label {
-    cursor: default;
-    opacity: .6;
-}
-.contents-treeview input:checked:not(:disabled) ~ ul {
+.contents-treeview [role="treeitem"][aria-expanded="true"] > [role="group"] {
     display: block;
 }
-.contents-treeview label,
+.contents-treeview .tree-label,
 .contents-treeview a,
-.contents-treeview label::before {
+.contents-treeview .tree-label::before {
     display: block;
     vertical-align: middle;
 }
-.contents-treeview label::before {
+.contents-treeview .tree-label::before {
     content: "⊞";
     color: #0461e0;
     width: 16px;
     margin: 0 5px 0 0;
     display: inline-block;
 }
-.contents-treeview input:checked + label::before {
+.contents-treeview [role="treeitem"][aria-expanded="true"] > .tree-label::before {
     content: "⊟";
 }
 .contents-current {
@@ -912,10 +901,10 @@ li.disabled a {
         display: block;
         margin: 0 20px;
     }
-    label[for="accordion-1"] {
+    #accordion-1 {
         margin: 0;
     }
-    label[for="accordion-1"]::after {
+    #accordion-1::after {
         content: "";
         font-size: unset;
     }
