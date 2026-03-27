@@ -80,16 +80,16 @@ var Paginator = function(element) {
 
     function paginationFunc(type, page) {
         var li = document.createElement('li');
-        var a = document.createElement('a');
-        a.setAttribute('href', '#');
+        var btn = document.createElement('button');
+        btn.setAttribute('type', 'button');
         var cssClass = type === 'number' ? options.liClass : type;
         var text = document.createTextNode(type === 'number' ? page : paginationText(type));
 
         li.classList.add(cssClass);
         li.setAttribute('data-pagination-type', type);
         li.setAttribute('data-page', page);
-        a.appendChild(text);
-        li.appendChild(a);
+        btn.appendChild(text);
+        li.appendChild(btn);
 
         return li;
     }
@@ -209,15 +209,14 @@ var Paginator = function(element) {
             }
         }
 
-        // Make disabled links unfocusable, mark active page
+        // Make disabled buttons unfocusable, mark active page
         for (var i = 0, len = ulKids.length; i < len; i++) {
-            var _a = ulKids[i].querySelector('a');
+            var _btn = ulKids[i].querySelector('button');
             if (ulKids[i].classList.contains(options.disabledClass)) {
-                _a.setAttribute('tabindex', '-1');
-                _a.setAttribute('aria-disabled', 'true');
+                _btn.setAttribute('disabled', 'disabled');
             }
             if (ulKids[i].classList.contains(options.activeClass)) {
-                _a.setAttribute('aria-current', 'page');
+                _btn.setAttribute('aria-current', 'page');
             }
         }
 
@@ -232,8 +231,7 @@ var Paginator = function(element) {
             (function() {
                 var item = pagLi[i];
 
-                item.addEventListener('click', function(e) {
-                    e.preventDefault();
+                item.addEventListener('click', function() {
                     var page = parseInt(item.getAttribute('data-page'), 10);
                     currentPage = page;
                     // let's prevent the pagination from flowing to two rows
