@@ -72,7 +72,7 @@ var Paginator = function(element) {
     const searchInput = document.getElementById("search-bar");
     var container = document.createElement('nav');
     container.setAttribute('class', options.containerClass);
-    container.setAttribute('tabindex', '0');
+    container.setAttribute('aria-label', 'Pagination');
     var ul = document.createElement('ul');
     ul.setAttribute('class', options.ulClass);
 
@@ -207,7 +207,19 @@ var Paginator = function(element) {
             }
         }
 
-        el.before(container);
+        // Make disabled links unfocusable, mark active page
+        for (var i = 0, len = ulKids.length; i < len; i++) {
+            var _a = ulKids[i].querySelector('a');
+            if (ulKids[i].classList.contains(options.disabledClass)) {
+                _a.setAttribute('tabindex', '-1');
+                _a.setAttribute('aria-disabled', 'true');
+            }
+            if (ulKids[i].classList.contains(options.activeClass)) {
+                _a.setAttribute('aria-current', 'page');
+            }
+        }
+
+        el.after(container);
         container.appendChild(ul);
     }
 
