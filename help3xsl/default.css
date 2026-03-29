@@ -703,36 +703,6 @@ li.active button {
 #SearchFrame:focus-within .nav-container {
     display: block;
 }
-.xapian-donation {
-    border-top: 2px solid #148603;
-    background-color: #FCFCFC;
-    box-shadow: 0 2px 8px 0 rgb(0 0 0 / 5%);
-}
-#DonationFrame {
-    background: var(--background-color);
-    position: sticky;
-    top: 0;
-}
-.donation {
-    border: 1px solid #f1c62a;
-    border-radius: 2px;
-    padding: 5px 10px;
-    margin: 5px 10px;
-    max-width: 200px;
-    color: white;
-    display: none; /* Collabora */
-}
-.donation:hover {
-    background: linear-gradient(90deg, #1c71d8 0%, #30c877 100%);
-}
-.donation a {
-    color: white;
-    text-decoration: none;
-}
-.donation p {
-    font-size: 1rem;
-    text-align: center;
-}
 #SearchFrame {
     top: 0;
     position: sticky;
@@ -883,7 +853,7 @@ li.active button {
         display: grid;
         grid-template-columns: 320px 100px 300px 1fr;
         grid-template-rows: minmax(1em, auto) minmax(1em, auto) 1fr minmax(1em, auto);
-        grid-template-areas: "header header search donation"
+        grid-template-areas: "header header search search"
                              "leftside main main main"
                              "leftside main main main"
                              ". footer footer footer";
@@ -905,13 +875,6 @@ li.active button {
     }
     .index-label {
         color: #fff;
-    }
-    #DonationFrame {
-        grid-area: donation;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: var(--heading-color);
     }
     #Contents {
         color: #333;
@@ -1016,7 +979,7 @@ li.active button {
         display: grid;
         grid-template-columns: 1fr 360px 100px 400px 400px 1fr;
         grid-template-rows: 1fr minmax(1em, auto) minmax(1em, auto);
-        grid-template-areas: "header header search search donation donation"
+        grid-template-areas: "header header search search search search"
                              ". leftside main main main ."
                              ". footer footer footer footer .";
     }
@@ -1027,13 +990,6 @@ li.active button {
     }
     #SearchFrame {
         justify-content: center;
-    }
-    #DonationFrame {
-        display: grid;
-        grid-template-columns: subgrid;
-    }
-    .donation {
-        max-width: 300px;
     }
     label[for="accordion-1"] {
         background-color: transparent;
@@ -1148,11 +1104,9 @@ li.active button {
 
     footer,
     #TopLeftHeader,
-    #DonationFrame,
     .dropdowns,
     #langs-nav a, #modules-nav a,
-    #SearchFrame,
-    .donation {
+    #SearchFrame {
         background-color: var(--background-color);
     }
 
@@ -1174,12 +1128,8 @@ li.active button {
         background-color: var(--background-color);
         color: #efefef;
     }
-    .xapian-donation,
     .sf_table {
         background-color: #1e1e1e;
-    }
-    .donation:hover {
-        background: linear-gradient(90deg, #3700B3 0%, #03DAC6 100%);
     }
     .sf_table td {
         border-color: #333;

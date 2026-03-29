@@ -23,7 +23,6 @@ xsltproc xap_template_query.xsl <file.xhp>
     <xsl:variable name ="ui_contents"><xsl:apply-templates select="//variable[@id='contents']"/></xsl:variable>
     <xsl:variable name ="ui_pholderfullsearch"><xsl:apply-templates select="//variable[@id='pholderfullsearch']"/></xsl:variable>
     <xsl:variable name ="ui_module"><xsl:apply-templates select="//variable[@id='module']"/></xsl:variable>
-    <xsl:variable name ="ui_donate"><xsl:apply-templates select="//variable[@id='donate']"/></xsl:variable>
     <xsl:variable name ="ui_logo"><xsl:apply-templates select="//variable[@id='LibreOfficeHelp']"/></xsl:variable>
     <xsl:variable name ="ui_selectmodule"><xsl:apply-templates select="//variable[@id='selectmodule']"/></xsl:variable>
     <xsl:variable name ="ui_search"><xsl:apply-templates select="//variable[@id='searchhelpcontents']"/></xsl:variable>
@@ -113,11 +112,6 @@ document.write("<span title=\""+D+" "+T+"\">]]><xsl:apply-templates select="//va
         <div id="Contents" class="contents-treeview"></div>
     </aside>
 
-<div id="DonationFrame">
-    <div class="donation">
-        <p dir="auto"><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target="_blank" rel="noopener">]]><xsl:value-of select="$ui_donate"/><![CDATA[</a></p>
-    </div>
-</div>
 <div id="SearchFrame">
     <div class="xapian-omega-search">
     </div>

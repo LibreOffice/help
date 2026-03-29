@@ -92,7 +92,6 @@
 <xsl:variable name="note_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/note.svg')"/>
 <xsl:variable name="tip_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/tip.svg')"/>
 <xsl:variable name="warning_img" select="concat($img_url_prefix,'icon-themes/res/helpimg/warning.svg')"/>
-<xsl:variable name="donate_img" select="concat($img_url_prefix,'helpimg/donate.png')"/>
 
 <!-- Strings for the help UI page -->
 <xsl:variable name="tmp_href_ui"><xsl:value-of select="concat($urlpre,'text/shared/help/browserhelp.xhp')"/></xsl:variable>
@@ -104,7 +103,6 @@
 <xsl:variable name="ui_pholderfullsearch"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='pholderfullsearch']"/></xsl:variable>
 <xsl:variable name="ui_module"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='module']"/></xsl:variable>
 <xsl:variable name="ui_language"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='language']"/></xsl:variable>
-<xsl:variable name="ui_donate"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='donate']"/></xsl:variable>
 <xsl:variable name="ui_logo"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='LibreOfficeHelp']"/></xsl:variable>
 <xsl:variable name="ui_selectmodule"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='selectmodule']"/></xsl:variable>
 <xsl:variable name="ui_selectlang"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='selectlanguage']"/></xsl:variable>
@@ -274,13 +272,6 @@
         </xsl:if>
         <xsl:apply-templates select="/helpdocument/body"/>
     </main>
-    <div id="DonationFrame">
-        <xsl:if test="$online">
-            <div class="donation">
-                <p dir="auto"><a href="https://www.libreoffice.org/donate/?pk_campaign=help" target="_blank" rel="noopener"><xsl:value-of select="$ui_donate"/></a></p>
-            </div>
-        </xsl:if>
-    </div>
 
     <footer>
         <xsl:if test="$online">
