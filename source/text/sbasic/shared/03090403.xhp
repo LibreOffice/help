@@ -20,7 +20,7 @@
 
 <meta>
   <topic id="textsbasicshared03090403xml" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">Declare Statement</title>
+    <title id="tit">Declare Statement</title>
     <filename>/text/sbasic/shared/03090403.xhp</filename>
   </topic>
 </meta>
@@ -28,44 +28,59 @@
 <body>
 
 
-<section id="declare">
-<bookmark xml-lang="en-US" branch="index" id="bm_id3148473">
+<bookmark branch="index" id="bm_id3148473">
   <bookmark_value>Declare statement</bookmark_value>
-</bookmark>
-
-
-<h1 id="hd_id3148473"><link href="text/sbasic/shared/03090403.xhp">Declare Statement</link></h1>
-<bookmark xml-lang="en-US" branch="index" id="bm_id3145316">
   <bookmark_value>DLL (Dynamic Link Library)</bookmark_value>
 </bookmark>
 
-<paragraph id="par_id3145316" role="paragraph" xml-lang="en-US">Declares and defines a subroutine in a DLL file that you want to execute from $[officename] Basic.</paragraph>
+<section id="declare">
+<h1 id="hd_id3148473"><link href="text/sbasic/shared/03090403.xhp">Declare Statement</link></h1>
+<description id="par_id3145316">Declares and defines a subroutine in a DLL file that you want to execute from $[officename] Basic.</description>
 </section>
-<paragraph id="par_id3146795" role="paragraph" xml-lang="en-US">See also: <link href="text/sbasic/shared/03090405.xhp">FreeLibrary</link></paragraph>
+<paragraph id="par_id3146795" role="paragraph">See also: <link href="text/sbasic/shared/03090405.xhp">FreeLibrary</link></paragraph>
 
-<h2 id="hd_id3156344">Syntax:</h2>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
 <bascode>
-<paragraph id="par_id3148664" role="bascode" xml-lang="en-US">Declare {Sub | Function} Name Lib "Libname" [Alias "Aliasname"] [Parameter] [As Type]</paragraph>
+<paragraph id="par_id3148664" role="bascode">Declare {Sub | Function} Name Lib "Libname" [Alias "Aliasname"] [Argumentlist] [As Type]</paragraph>
 </bascode>
 
-<h2 id="hd_id3153360">Parameters:</h2>
-<paragraph id="par_id3154140" role="paragraph" xml-lang="en-US"> <emph>Name:</emph> A different name than defined in the DLL, to call the subroutine from $[officename] Basic.</paragraph>
-<paragraph id="par_id3150870" role="paragraph" xml-lang="en-US"> <emph>Aliasname</emph>: Name of the subroutine as defined in the DLL.</paragraph>
-<paragraph id="par_id3154684" role="paragraph" xml-lang="en-US"> <emph>Libname:</emph> File or system name of the DLL. This library is automatically loaded the first time the function is used.</paragraph>
-<paragraph id="par_id3148452" role="paragraph" xml-lang="en-US"> <emph>Argumentlist:</emph> List of parameters representing arguments that are passed to the procedure when it is called. The type and number of parameters is dependent on the executed procedure.</paragraph>
-<paragraph id="par_id3147289" role="paragraph" xml-lang="en-US"> <emph>Type:</emph> Defines the data type of the value that is returned by a function procedure. You can exclude this parameter if a type-declaration character is entered after the name.</paragraph>
-<paragraph id="par_id3146922" role="warning" xml-lang="en-US">To pass a parameter to a subroutine as a value instead of as a reference, the parameter must be indicated by the keyword <emph>ByVal</emph>.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+<paragraph id="par_id3154140" role="paragraph"> <emph>Name:</emph> A different name than defined in the DLL, to call the subroutine from $[officename] Basic.</paragraph>
+<paragraph id="par_id3150870" role="paragraph"> <emph>Aliasname</emph>: Name of the subroutine as defined in the DLL.</paragraph>
+<paragraph id="par_id3154684" role="paragraph"> <emph>Libname:</emph> File or system name of the DLL. This library is automatically loaded the first time the function is used.</paragraph>
+<paragraph id="par_id3148452" role="paragraph"> <emph>Argumentlist:</emph> List of parameters representing arguments that are passed to the procedure when it is called. The type and number of parameters is dependent on the executed procedure.</paragraph>
+<paragraph id="par_id3147289" role="paragraph"> <emph>Type:</emph> Defines the data type of the value that is returned by a function procedure. You can exclude this parameter if a type-declaration character is entered after the name.</paragraph>
+<warning id="par_id3146922">To pass a parameter to a subroutine as a value instead of as a reference, the parameter must be indicated by the keyword <emph>ByVal</emph>.</warning>
 
-<h2 id="hd_id3153951">Example:</h2>
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
 <bascode>
-<paragraph id="par_idm1340861616" role="bascode" localize="false" xml-lang="en-US">Declare Sub MyMessageBeep Lib "user32.dll" Alias "MessageBeep" ( Long )</paragraph>
-<paragraph id="par_idm1340860336" role="bascode" localize="false" xml-lang="en-US">Sub ExampleDeclare</paragraph>
-<paragraph id="par_idm1340859104" role="bascode" localize="false" xml-lang="en-US">Dim lValue As Long</paragraph>
-<paragraph id="par_idm1340857872" role="bascode" localize="false" xml-lang="en-US">    lValue = 5000</paragraph>
-<paragraph id="par_idm1340856640" role="bascode" localize="false" xml-lang="en-US">    MyMessageBeep( lValue )</paragraph>
-<paragraph id="par_idm1340855392" role="bascode" localize="false" xml-lang="en-US">    FreeLibrary("user32.dll" )</paragraph>
-<paragraph id="par_idm1340854144" role="bascode" localize="false" xml-lang="en-US">End Sub</paragraph>
+<paragraph id="par_idm1340861616" role="bascode" localize="false">Declare Sub MyMessageBeep Lib "user32.dll" Alias "MessageBeep" ( Long )</paragraph>
+<paragraph id="par_idm1340860336" role="bascode" localize="false">Sub ExampleDeclare</paragraph>
+<paragraph id="par_idm1340859104" role="bascode" localize="false">Dim lValue As Long</paragraph>
+<paragraph id="par_idm1340857872" role="bascode" localize="false">    lValue = 5000</paragraph>
+<paragraph id="par_idm1340856640" role="bascode" localize="false">    MyMessageBeep( lValue )</paragraph>
+<paragraph id="par_idm1340855392" role="bascode" localize="false">    FreeLibrary("user32.dll" )</paragraph>
+<paragraph id="par_idm1340854144" role="bascode" localize="false">End Sub</paragraph>
 </bascode>
+
+<h2 id="hd_id41776287067742">Example 2</h2>
+<bascode>
+  <paragraph role="bascode" id="par_id281776288010926">REM When passing arrays by reference, do not specify the type of its elements.</paragraph>
+  <paragraph role="bascode" id="par_id201776287179202" localize="false">Declare Function GetDiag Lib "C:\Math.dll" _</paragraph>
+  <paragraph role="bascode" id="par_id121776287186491" localize="false">   Alias "GetDiag" ( _</paragraph>
+  <paragraph role="bascode" id="par_id981776287376048" localize="false">   ByVal varName As String, _</paragraph>
+  <paragraph role="bascode" id="par_id881776287197635" localize="false">   A, _</paragraph>
+  <paragraph role="bascode" id="par_id61776287205327" localize="false">   ByVal len As Long, _</paragraph>
+  <paragraph role="bascode" id="par_id961776287211234" localize="false">   ByVal FunctionName As String, _</paragraph>
+  <paragraph role="bascode" id="par_id251776287219537" localize="false">   B, _</paragraph>
+  <paragraph role="bascode" id="par_id591776287225275" localize="false">   C) As Long</paragraph>
+<paragraph role="bascode" id="par_id611776288120143" localize="false">Sub MyCode</paragraph>
+<paragraph role="bascode" id="par_id851776288126522" localize="false">  Dim A(100), B(100, C(100) as Long</paragraph>
+<paragraph role="bascode" id="par_id381776288131847" localize="false">  R = GetDiag("f", A, 100, B, C)</paragraph>
+<paragraph role="bascode" id="par_id401776288136562" localize="false">  Print R</paragraph>
+<paragraph role="bascode" id="par_id441776288144630" localize="false">End Sub</paragraph>
+</bascode>
+
 </body>
 
 </helpdocument>
