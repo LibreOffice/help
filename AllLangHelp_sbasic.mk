@@ -438,6 +438,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/python/python_dialogs \
     helpcontent2/source/text/sbasic/python/python_document_events \
     helpcontent2/source/text/sbasic/python/python_examples \
+    helpcontent2/source/text/sbasic/python/running_scripts \
     helpcontent2/source/text/sbasic/python/python_handler \
     helpcontent2/source/text/sbasic/python/python_ide \
     helpcontent2/source/text/sbasic/python/python_import \
