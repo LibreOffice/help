@@ -317,16 +317,17 @@
       <bookmark_value>UI service;CreateBaseDocument</bookmark_value>
    </bookmark>
    <h2 id="hd_id281596554849363" localize="false">CreateBaseDocument</h2>
-   <paragraph role="paragraph" id="par_id13159655484952">Creates and stores a new %PRODUCTNAME Base document embedding an empty database of the given type. The method returns a <literal>Document</literal> service instance.</paragraph>
+   <paragraph role="paragraph" id="par_id13159655484952">Creates and stores a new %PRODUCTNAME Base document embedding an empty database of the given type, or connected to an existing database file. The method returns a <literal>Base</literal> service instance.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
    <paragraph role="paragraph" localize="false" id="par_id461620320014911">
-     <input>svc.CreateBaseDocument(filename: str, embeddeddatabase: str = 'HSQLDB', registrationname: str = '', opt calcfilename: str): svc</input>
+     <input>svc.CreateBaseDocument(filename: str, embeddeddatabase: str = 'HSQLDB', registrationname: str = '', opt datafilename: str, opt calcfilename: str): svc</input>
    </paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
    <paragraph role="paragraph" id="par_id441596554849949"><emph>filename</emph> : Identifies the file to create. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation. If the file already exists, it is overwritten without warning.</paragraph>
-   <paragraph role="paragraph" id="par_id381596554849698" xml-lang="en-US"><emph>embeddeddatabase</emph> : Either "HSQLDB" (default), "FIREBIRD" or "CALC".</paragraph>
+   <paragraph role="paragraph" id="par_id381596554849698" xml-lang="en-US"><emph>embeddeddatabase</emph> : Either "HSQLDB" (default), "FIREBIRD", "FIREBIRD_EXTERNAL" or "CALC".</paragraph>
    <paragraph role="paragraph" id="par_id521596554849185" xml-lang="en-US"><emph>registrationname</emph> : The name used to store the new database in the databases register. When = "" (default), no registration takes place. If the name already exists it is overwritten without warning.</paragraph>
-   <paragraph role="paragraph" id="par_id181629364905056" xml-lang="en-US"><emph>calcfilename</emph> : Only when <literal>embeddeddatabase</literal> = "CALC", <literal>calcfilename</literal> represents the file containing the tables as Calc sheets. The file must exist or an error is raised.</paragraph>
+   <paragraph role="paragraph" id="par_id31776429301152" xml-lang="en-US"><emph>datafilename</emph> : Only when <literal>embeddeddatabase</literal> = "CALC" or "FIREBIRD_EXTERNAL", <literal>datafilename</literal> represents the file containing the tables as Calc sheets or as database tables. The file must exist or an error is raised.</paragraph>
+   <paragraph role="paragraph" id="par_id181629364905056" xml-lang="en-US"><emph>calcfilename</emph> : Only when <literal>embeddeddatabase</literal> = "CALC", <literal>calcfilename</literal> represents the file containing the tables as Calc sheets. The file must exist or an error is raised. The parameter is deprecated.</paragraph>
    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
    <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
    <bascode>
@@ -339,7 +340,7 @@
    <pycode>
      <paragraph role="pycode" localize="false" id="pyc_id361620323808010">myBase = ui.CreateBaseDocument(r"C:\Databases\MyBaseFile.odb", "FIREBIRD")</paragraph>
      <paragraph role="pycode" localize="false" id="pyc_id251629365641121">myCalcBase = ui.CreateBaseDocument(r"C:\Databases\MyCalcBaseFile.odb", \</paragraph>
-     <paragraph role="pycode" localize="false" id="pyc_id431629366045258">    "CALC", calcfilename = r"C:\Databases\MyCalcFile.ods")</paragraph>
+     <paragraph role="pycode" localize="false" id="pyc_id431629366045258">    "CALC", datafilename = r"C:\Databases\MyCalcFile.ods")</paragraph>
    </pycode>
 </section>
 
