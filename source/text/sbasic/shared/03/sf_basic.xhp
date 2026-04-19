@@ -185,7 +185,8 @@
              <link href="text/sbasic/shared/03/sf_basic.xhp#MsgBox">MsgBox</link> (*)<br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#Now">Now</link><br/>
              <link href="text/sbasic/shared/03/sf_basic.xhp#RGB">RGB</link><br/>
-             <link href="text/sbasic/shared/03/sf_basic.xhp#Xray">Xray</link><br/><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#Wait">Wait</link><br/>
+             <link href="text/sbasic/shared/03/sf_basic.xhp#Xray">Xray</link><br/>
            </paragraph>
        </tablecell>
    </tablerow>
@@ -652,6 +653,29 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id321619096903721">YELLOW = bas.RGB(255,255,0)</paragraph>
   </pycode>
+</section>
+
+<section id="Wait">
+    <comment> Wait ------------------------------------------------------------ </comment>
+    <bookmark xml-lang="en-US" branch="index" id="bm_id631776436784840">
+        <bookmark_value>Basic service;Wait</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id301776436840213" localize="false">Wait</h2>
+    <paragraph role="paragraph" id="par_id281776436891998">Convenient function to replicate the Basic Wait() function in Python scripts</paragraph>
+    <paragraph role="paragraph" id="par_id191776437132275" xml-lang="en-US">This method is normally not necessary. But constructions like:</paragraph>
+    <pycode>
+        <paragraph role="pycode" localize="false" id="pyc_id491776437525945">import time</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id511776437594189">while True:</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id651776437608256">    time.sleep(1)</paragraph>
+    </pycode>
+    <paragraph role="paragraph" id="par_id801776437659657">have the drawback to often freeze the LibreOffice user interface. While next code might be a good alternative.</paragraph>
+    <pycode>
+        <paragraph role="pycode" localize="false" id="pyc_id651776437762654">basic = CreateScriptService('Basic')</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id91776437817224">while True:</paragraph>
+        <paragraph role="pycode" localize="false" id="pyc_id341776437835749">    basic.Wait(1000)</paragraph>
+    </pycode>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id11776438005743"><emph>millisec</emph>: the amount of time (in milliseconds) to wait before the program is continued.</paragraph>
 </section>
 
 <section id="Xray">
