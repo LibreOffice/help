@@ -1,0 +1,118 @@
+<helpdocument version="1.0">
+<!--
+* This file is part of the LibreOffice project.
+*
+* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*
+-->
+<meta>
+  <topic id="scriptforgemodule" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">scriptforge module</title>
+    <filename>/text/sbasic/python/scriptforge_module.xhp</filename>
+  </topic>
+</meta>
+<body>
+  <h1 id="hd_id31529004750471"><variable id="scriptforge_module"><link href="text/sbasic/python/scriptforge_module.xhp"><literal>scriptforge</literal> module</link></variable></h1>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id491529070339774">
+    <bookmark_value>Python;scriptforge module</bookmark_value>
+  </bookmark>
+  <section id="howtoget">
+    <embed href="text/sbasic/shared/00000003.xhp#basiclibhowtoget"/>
+  </section>
+    <paragraph role="paragraph" id="par_id801776866004718"><literal>scriptforge</literal> module holds an extensible collection or scripting resources for %PRODUCTNAME to be invoked from Python scripts. A complete description of these resources is available from <link href="text/sbasic/shared/03/lib_ScriptForge.xhp">ScriptForge libraries</link> help page.</paragraph>
+  <h2 id="hd_id441776867310830">Methods</h2>
+   <table id="tab_id501611613601554">
+    <tablerow>
+      <tablecell colspan="3"><paragraph id="par_id891611613601554" role="tablehead">List of Methods in <literal>scriptforge</literal> module</paragraph></tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id891611613601556" role="tablecontent" localize="false">
+          <link href="text/sbasic/python/scriptforge_module.xhp#CreateScriptService">CreateScriptService</link><br/>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
+          <link href="text/sbasic/python/scriptforge_module.xhp#ScriptForge">ScriptForge</link><br/>
+        </paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+  <section id="CreateScriptService">
+    <comment> CreateScriptService ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+      <bookmark_value>scriptforge module;CreateScripService</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698251" localize="false">CreateScriptService</h2>
+    <paragraph role="paragraph" id="par_id93158919969864">Instantiates <literal>ScriptForge</literal> resources as "Services". It serves as a generic constructor to all properties methods or classes of <link href="text/sbasic/shared/03/lib_ScriptForge.xhp">ScriptForge</link> services.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534014732">
+      <input>CreateScriptService(servicename: str [, arg0, arg1, ...]): svc</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631203996"><emph>servicename</emph>: A ScriptForge service name such as 'ScriptForge.FileSystem', 'SFDialogs.Dialog' or else.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203116"><emph>arg0, arg1, ...</emph>: Optional parameters with regards to the instantiated service.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534175122">from scriptforge import CreateScriptService as getSvc</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534175344">svc = getSvc('ScriptForge.Basic')</paragraph>
+	  <paragraph role="pycode" localize="false" id="pyc_id517764872507555">svc.MsgBox('Hello')</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id591643307035249">svc.Dispose()</paragraph>
+    </pycode>
+  </section>
+    <paragraph role="paragraph" id="par_id871637256506167">The <literal>Dispose</literal> method is available in all services and should be called to free up resources after usage.</paragraph>
+  <note id="par_id211776873005571">'ScripForge.Basic' service contains dedicated properties and methods that access UNO objects and services, as well as other facilities.</note>
+  <section id="ScriptForge">
+    <comment> ScriptForge ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id03258919969994">
+      <bookmark_value>scriptforge module;ScriptForge</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id312589199698251" localize="false">ScriptForge class</h2>
+    <paragraph role="paragraph" id="par_id04258919969864">Connects to a running %PRODUCTNAME service <link href="text/shared/guide/start_parameters.xhp">started with the command line</link>. <literal>ScriptForge</literal> class can bind IDE-based Python scripts to a remote %PRODUCTNAME process for debugging purpose. </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id932621534014732">
+      <input>opt ScriptForge(pipe = 'PIPE2LIBREOFFICE'): obj</input><br/>
+      <input>opt ScriptForge(hostname = '', port = 0): obj</input>
+    </paragraph>
+    <paragraph role="paragraph" id="par_id1001785249777215">Pipe and socket connections exclude one another.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id043591631203227"><emph>pipe</emph>: Named pipe used to start the %PRODUCTNAME remote service. Default name is 'PIPE2LIBREOFFICE'.</paragraph>
+    <paragraph role="paragraph" id="par_id832591631203996"><emph>hostname</emph>: '', 'localhost' or the IP address of the machine hosting the remote %PRODUCTNAME service.</paragraph>
+    <paragraph role="paragraph" id="par_id932591631203116"><emph>port</emph>: The port number used to start %PRODUCTNAME as a service.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id141785486983998">Providing %PRODUCTNAME was started from the command line as:</paragraph>
+    <switch select="sys">
+      <case select="WIN"><paragraph role="paragraph" id="par_win">
+        <input>"C:\\Program Files\\LibreOffice\\program\\soffice.exe" --accept="pipe,name=PIPE2LIBREOFFICE;urp;"</input>
+      </paragraph></case>
+      <default><paragraph role="paragraph" id="par_else">
+        <input>LibreOffice --accept="pipe,name=PIPE2LIBREOFFICE;urp;"</input>
+      </paragraph></default>
+    </switch>
+    
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id561785489217996">from scriptforge import CreateScriptService as getSvc</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id481785489825382">ui = getSvc('ScriptForge.Basic')</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id651785489218596"></paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id628764872507555">def my_script():  # user code goes here</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id602643307035249">    response = ui.MsgBox('Do you want to continue?',ui.MB_YESNOCANCEL,'A message from Python')</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id517785249947845">    ui.MsgBox('scriptforge module',ui.MB_OK,response)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id532785249948963"></paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id161785249948421">g_exportedScripts = (my_script,)  # LibreOffice entry points</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id421785249948852"></paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id231785249949125">if __name__ == "__main__":  # entry point for IDEs</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id501785249949365">    # from scriptforge import ScriptForge # as session manager</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id521785249949604">    # ScriptForge(pipe='PIPE2LIBREOFFICE')  # performed in the background</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id101785249949853">    my_script()</paragraph>
+    </pycode>
+  </section>
+  <tip id="par_id1001623412767893">To learn more about how to create and execute Python scripts using <literal>scriptforge</literal> module, read the help page <link href="text/sbasic/shared/03/sf_intro.xhp">Creating Python Scripts with ScriptForge</link>.</tip>
+  <comment>Restricted use for SF_Root, SF_Utils modules as well as internal methods</comment>
+    <comment>Note: Other ScriptForge undescribed modules are reserved for internal use. Their content is subject to change without notice.</comment>
+    <section id="SF_InternalUse">
+      <warning id="par_id851506659675843">All <literal>scriptforge</literal> methods or identifiers that are prefixed with an underscore character "_" are reserved for internal use. They are not meant be used in Python scripts.</warning>
+    </section>
+</body>
+</helpdocument>

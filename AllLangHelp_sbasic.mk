@@ -449,6 +449,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/python/python_screen \
     helpcontent2/source/text/sbasic/python/python_session \
     helpcontent2/source/text/sbasic/python/python_shell \
+    helpcontent2/source/text/sbasic/python/scriptforge_module \
 ))
 
 # vim: set noet sw=4 ts=4:
