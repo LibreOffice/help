@@ -413,6 +413,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/04/01020000 \
     helpcontent2/source/text/scalc/05/02140000 \
     helpcontent2/source/text/scalc/06/calcsamplefiles \
+    helpcontent2/source/text/scalc/06/mathmlfunc \
     helpcontent2/source/text/scalc/05/empty_cells \
     helpcontent2/source/text/scalc/guide/address_auto \
     helpcontent2/source/text/scalc/guide/auto_off \

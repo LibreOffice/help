@@ -17,8 +17,10 @@
  *   the License at http://www.apache.org/licenses/LICENSE-2.0 .
 -->
 
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
+<xsl:stylesheet version="1.0"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:m="http://www.w3.org/1998/Math/MathML"
+    exclude-result-prefixes="m">
 <xsl:output indent="yes" method="html" doctype-system= "about:legacy-compat"/>
 
 <xsl:include href="links.txt.xsl"/>
@@ -191,10 +193,8 @@
         <xsl:if test="//topic[@indexer='exclude']">
             <meta name="robots" content="noindex"/>
         </xsl:if>
-
     </head>
     <body>
-
     <header id="TopLeftHeader">
         <a class="symbol" href="{$lang}/text/shared/05/new_help.html">
             <div></div>
@@ -327,11 +327,6 @@
 
 <!-- ALT -->
 <xsl:template match="alt"/>
-
-<!-- MATHML -->
-<xsl:template match="math">
-<div class="mathml"><xsl:apply-templates /></div>
-</xsl:template>
 
 <!-- BOOKMARK -->
 <xsl:template match="bookmark">
@@ -498,6 +493,35 @@
 <xsl:template match="listitem" mode="embedded">
     <xsl:call-template name="insertlistitem"/>
 </xsl:template>
+
+<!--MATH-->
+<xsl:template match="m:math">
+   <div class="mathml">
+    <xsl:element name="math" namespace="http://www.w3.org/1998/Math/MathML">
+        <xsl:attribute name="display"><xsl:value-of select="@display" /></xsl:attribute>
+        <xsl:apply-templates select="node()" mode="strip-prefix"/>
+    </xsl:element>
+   </div>
+</xsl:template>
+<xsl:template match="m:math" mode="embedded">
+   <div class="mathml">
+    <xsl:element name="math" namespace="http://www.w3.org/1998/Math/MathML">
+        <xsl:attribute name="display"><xsl:value-of select="@display" /></xsl:attribute>
+        <xsl:apply-templates select="node()" mode="strip-prefix"/>
+    </xsl:element>
+   </div>
+</xsl:template>
+
+<xsl:template match="*" mode="strip-prefix">
+    <xsl:element name="{local-name()}" namespace="http://www.w3.org/1998/Math/MathML">
+        <xsl:apply-templates select="@* | node()" mode="strip-prefix"/>
+    </xsl:element>
+</xsl:template>
+
+<xsl:template match="@* | text() | comment() | processing-instruction()" mode="strip-prefix">
+    <xsl:copy/>
+</xsl:template>
+
 
 <!-- META, SEE HEADER -->
 <xsl:template match="meta" />

@@ -93,7 +93,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sc_cell_with_comment_displayed.png \
     helpimg/sc_func_imcos.svg \
     helpimg/sc_func_imcosh.svg \
-    helpimg/scalc/IMCOT_equation.svg \
     helpimg/sc_func_imsin.svg \
     helpimg/sc_func_imsinh.svg \
     helpimg/scalc/country_codes.png \

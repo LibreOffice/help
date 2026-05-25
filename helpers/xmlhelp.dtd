@@ -26,6 +26,7 @@ Version Nov 2018
   Added extensions: H1, .. H6, menuitem, keycode, literal input, widget, note, tip, warning
   Added extensions: pycode, sqlcode, bascode
 -->
+
 <!ENTITY % commonAttrs "id CDATA #REQUIRED xml-lang CDATA #IMPLIED localize CDATA #IMPLIED">
 
 <!ENTITY % hn "h1 | h2 | h3 | h4 | h5 | h6">
@@ -55,8 +56,7 @@ Version Nov 2018
 
 <!ELEMENT sqlcode (paragraph+)>
 
-
-<!ELEMENT body ( %hn; | section | paragraph | description | table | comment | bookmark | switch | embed | list | sort | %codeContent; | %noteContent;)*>
+<!ELEMENT body ( %hn; | section | paragraph | description | table | comment | bookmark | switch | embed | list | sort | m:math | %codeContent; | %noteContent;)*>
 
 <!ELEMENT bookmark (bookmark_value)*>
 <!ATTLIST bookmark
@@ -210,7 +210,7 @@ Version Nov 2018
   %commonAttrs;
 >
 
-<!ELEMENT section (section | %hn; | paragraph | description | table | list | comment | bookmark | embed | switch | sort | %codeContent; | %noteContent;)*>
+<!ELEMENT section (section | %hn; | m:math | paragraph | description | table | list | comment | bookmark | embed | switch | sort | %codeContent; | %noteContent;)*>
 <!ATTLIST section
   id CDATA #REQUIRED
 >
@@ -304,3 +304,16 @@ Version Nov 2018
   %commonAttrs;
 >
 <!ELEMENT help-id-missing EMPTY>
+
+<!-- include mathml3 – since it also defines image and list, use prefixing -->
+<!ENTITY % MATHML.prefixed "INCLUDE">
+<!-- Define the prefix name (we will use 'm') -->
+<!ENTITY % MATHML.prefix "m">
+<!ENTITY % mathml3 SYSTEM  "mathml3/mathml3.dtd">
+%mathml3;
+<!ELEMENT math ANY>
+<!ATTLIST math
+   display (block | inline) #IMPLIED
+   xmlns CDATA #IMPLIED
+>
+
