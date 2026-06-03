@@ -177,6 +177,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,simpress,\
     helpcontent2/source/text/simpress/guide/printing \
     helpcontent2/source/text/simpress/guide/rehearse_timings \
     helpcontent2/source/text/simpress/guide/select_object \
+    helpcontent2/source/text/simpress/guide/sections \
     helpcontent2/source/text/simpress/guide/show \
     helpcontent2/source/text/simpress/guide/table_insert \
     helpcontent2/source/text/simpress/guide/text2curve \
