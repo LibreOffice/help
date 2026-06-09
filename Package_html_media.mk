@@ -96,11 +96,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sc_func_imsin.svg \
     helpimg/sc_func_imsinh.svg \
     helpimg/scalc/country_codes.png \
-    helpimg/scalc/IMCSC_equation.svg \
-    helpimg/scalc/IMCSCH_equation.svg \
-    helpimg/scalc/IMSEC_equation.svg \
-    helpimg/scalc/IMSECH_equation.svg \
-    helpimg/scalc/IMTAN_equation.svg \
     helpimg/scalc/comment_indicator.png \
     helpimg/scalc/formula_indicator.png \
     helpimg/scalc/edit_highlight.png \
