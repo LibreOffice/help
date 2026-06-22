@@ -36,6 +36,7 @@ do not break anything related to layout by scaling.
   --hover-color: green;
   --link-color: #023a86;
   --visited-color: purple;
+  --selection: #FFEB9F;
 }
 /* Enable disable Javascript */
 #WarnJS {
@@ -111,7 +112,7 @@ body {
     line-height: normal;
 }
 ::selection {
-    background: #FFEB9F;
+    background: var(--selection);
 }
 a {
     text-decoration-color: rgb(0 0 0 / 15%);
@@ -208,6 +209,9 @@ img[src$=".svg"] {
 }
 .noteicon, .notetext {
     padding: 0.3em;
+}
+.notetext p{
+    margin-left:0px;
 }
 .noteicon {
     flex-shrink: 0;
@@ -308,9 +312,18 @@ h6 {
 }
 p,
 ol,
+ul,
 td {
     font-size: 1.15rem;
-    margin: 2px 0 10px;
+    margin-left:30px;
+    margin-top:2px;
+    margin-bottom:10px;
+}
+li p {
+    font-size: 1.15rem;
+    margin-left:0px;
+    margin-top:2px;
+    margin-bottom:10px;
 }
 h1 {
     font-size: 1.83rem;
@@ -333,8 +346,12 @@ h5,
 h6 {
     font-size: 1.17rem;
 }
+
 .relatedtopics {
     font-weight: normal;
+}
+.relatedtopics p{
+    margin-left: 0px;
 }
 .howtoget {
     background: #EBE7E9;
@@ -381,7 +398,7 @@ h6 {
     margin-bottom: 15px;
 }
 #DisplayArea {
-    background-color: #FCFCFC;
+    background-color: var(--background-color);
     overflow: auto;
     padding: 10px 10px 40px;
     grid-area: main;
@@ -981,7 +998,7 @@ li.disabled a {
     }
     #DisplayArea {
         box-shadow: 0 2px 8px 0 rgb(0 0 0 / 5%);
-        padding: 40px 50px;
+        padding: 40px 20px;
     }
     .xapian-omega-search {
         width: 100%;
