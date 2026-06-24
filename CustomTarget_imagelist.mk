@@ -27,7 +27,8 @@ $(gb_CustomTarget_workdir)/helpcontent2/source/auxiliary/images_helpimg.zip : \
 			-l $${ILSTFILE} \
 			-s $< -o $@ \
 			$(if $(findstring s,$(MAKEFLAGS)),> /dev/null) && \
-		rm -rf $${ILSTFILE})
+		rm -rf $${ILSTFILE}) \
+		$(call gb_Helper_make_zip_deterministic,$@)
 
 # include everything including directories to also rebuild on file deletion
 helpmedia_allMedia:=$(shell $(FIND) $(helpmedia_DIR)/media/helpimg)
