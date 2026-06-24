@@ -342,6 +342,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/ChangeCaseToUpper \
     helpcontent2/source/text/shared/01/classificationbar \
     helpcontent2/source/text/shared/01/classificationdialog \
+    helpcontent2/source/text/shared/01/ClearRecentFileList \
     helpcontent2/source/text/shared/01/DeleteColumns \
     helpcontent2/source/text/shared/01/DeleteRows \
     helpcontent2/source/text/shared/01/DeleteTable \
