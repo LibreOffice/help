@@ -97,7 +97,7 @@
 <xsl:variable name="donate_img" select="concat($img_url_prefix,'helpimg/donate.png')"/>
 
 <!-- Strings for the help UI page -->
-<xsl:variable name="url_cannonical" select="'https://help.libreoffice.org/'"/>
+<xsl:variable name="url_canonical" select="'https://help.libreoffice.org/'"/>
 <xsl:variable name="tmp_href_ui"><xsl:value-of select="concat($urlpre,'text/shared/help/browserhelp.xhp')"/></xsl:variable>
 <xsl:variable name="tmp_doc_ui" select="document($tmp_href_ui)"/>
 <xsl:variable name="ui_contents"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='contents']"/></xsl:variable>
@@ -194,7 +194,7 @@
         <xsl:if test="//topic[@indexer='exclude']">
             <meta name="robots" content="noindex"/>
         </xsl:if>
-        <link rel="cannonical" href="{$url_cannonical}{$productversion}/{$lang}{$htmlpage}"/>
+        <link rel="canonical" href="{$url_canonical}{$productversion}/{$lang}{$htmlpage}"/>
     </head>
     <body>
     <header id="TopLeftHeader">
