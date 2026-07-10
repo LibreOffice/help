@@ -262,6 +262,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_isomitted \
     helpcontent2/source/text/scalc/01/func_isoweeknum \
     helpcontent2/source/text/scalc/01/func_jis \
+    helpcontent2/source/text/scalc/01/func_lambda \
     helpcontent2/source/text/scalc/01/func_leftb \
     helpcontent2/source/text/scalc/01/func_lenb \
     helpcontent2/source/text/scalc/01/func_lookup \
