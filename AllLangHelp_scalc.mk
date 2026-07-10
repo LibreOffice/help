@@ -259,6 +259,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_imsin \
     helpcontent2/source/text/scalc/01/func_imsinh \
     helpcontent2/source/text/scalc/01/func_imtan \
+    helpcontent2/source/text/scalc/01/func_isomitted \
     helpcontent2/source/text/scalc/01/func_isoweeknum \
     helpcontent2/source/text/scalc/01/func_jis \
     helpcontent2/source/text/scalc/01/func_leftb \
