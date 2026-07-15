@@ -291,6 +291,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_opt_touch \
     helpcontent2/source/text/scalc/01/func_proper \
     helpcontent2/source/text/scalc/01/func_replace \
+    helpcontent2/source/text/scalc/01/func_reduce \
     helpcontent2/source/text/scalc/01/func_rept \
     helpcontent2/source/text/scalc/01/func_right \
     helpcontent2/source/text/scalc/01/func_search \

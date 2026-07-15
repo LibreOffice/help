@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+<meta>
+    <topic id="text/scalc/01/func_reduce.xhp" indexer="include" status="PUBLISH">
+        <title id="tit">REDUCE</title>
+        <filename>/text/scalc/01/func_reduce.xhp</filename>
+    </topic>
+</meta>
+<body>
+<bookmark id="bm_id441784136790618" branch="hid/SC_HID_FUNC_REDUCE_MS" localize="false"/>
+<bookmark branch="index" id="bm_id941784139252621">
+<bookmark_value>REDUCE function</bookmark_value>
+</bookmark>
+<section id="reduce">
+    <h1 id="hd_id591784136790618"><variable id="h1"><link href="text/scalc/01/func_reduce.xhp">REDUCE</link></variable></h1>
+    <description id="par_id991784136790618">Applies a custom LAMBDA function to each element in a given array and accumulates results to a single value.</description>
+</section>
+<embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
+<paragraph role="code" id="par_id401784055268151">=REDUCE([Initial value]; Array; Formula)</paragraph>
+<paragraph role="paragraph" id="par_id861784139222494"><emph>Initial value</emph>: Optional initial value of the accumulator.</paragraph>
+<paragraph role="paragraph" id="par_id81784139227998"><emph>Array</emph>: The array to be reduced.</paragraph>
+<paragraph role="paragraph" id="par_id901784139234888"><emph>Formula</emph>: a <link href="text/scalc/01/func_lambda.xhp">LAMBDA</link> function that will be called on each cell of the array.</paragraph>
+<paragraph role="paragraph" id="par_id981784147526989">The <link href="text/scalc/01/func_lambda.xhp">LAMBDA</link> function requires two variables: an accumulator (e.g., <emph>a</emph>) and the array element value (<emph>v</emph>), and must be structured as follows:</paragraph>
+<embed href="text/scalc/06/mathmlfunc.xhp#lambda_a_v"/>
+<paragraph role="paragraph" id="par_id931784147601800">where <literal>f(v)</literal> is a function of the individual cells of the array.</paragraph>
+<embed href="text/scalc/01/ful_func.xhp#func_head_example"/>
+<embed href="text/scalc/01/stat_data.xhp#sampledata01"/>
+<paragraph role="paragraph" id="par_id821784149440908">The formula <input>=REDUCE(100000;A2:A13;LAMBDA(a;v; a + v*v))</input>  returns 120715, which is 100000 added to the sum of the squares of the <emph>Math</emph> column.</paragraph>
+
+<embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
+<embed href="text/scalc/00/avail_release.xhp#27.2"/>
+<embed href="text/scalc/01/common_func.xhp#notODFF"/>
+<paragraph role="paragraph" id="par_id341640870986703" localize="false"><literal>COM.MICROSOFT.REDUCE</literal></paragraph>
+<section id="relatedtopics">
+    <paragraph role="paragraph" id="par_id231784061670388" localize="false"><embedvar href="text/scalc/01/func_bycol.xhp#h1" markup="ignore"/></paragraph>
+    <paragraph role="paragraph" id="par_id11784119954361" localize="false"><embedvar href="text/scalc/01/func_map.xhp#h1" markup="ignore"/></paragraph>
+    <tip id="par_id701677016751508"><link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/REDUCE">REDUCE wiki page</link>.</tip>
+</section>
+</body>
+</helpdocument>
