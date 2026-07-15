@@ -273,6 +273,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/func_rightb \
     helpcontent2/source/text/scalc/01/func_let \
     helpcontent2/source/text/scalc/01/func_maxifs \
+    helpcontent2/source/text/scalc/01/func_makearray \
     helpcontent2/source/text/scalc/01/func_map \
     helpcontent2/source/text/scalc/01/func_minifs \
     helpcontent2/source/text/scalc/01/func_minute \
