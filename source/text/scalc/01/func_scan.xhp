@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+<meta>
+    <topic id="text/scalc/01/func_scan.xhp" indexer="include" status="PUBLISH">
+        <title id="tit">SCAN</title>
+        <filename>/text/scalc/01/func_scan.xhp</filename>
+    </topic>
+</meta>
+<body>
+<bookmark id="bm_id491784151732919" branch="hid/SC_HID_FUNC_SCAN_MS" localize="false"/>
+<bookmark branch="index" id="bm_id841784152506185">
+<bookmark_value>SCAN function</bookmark_value>
+</bookmark>
+<section id="section identification">
+    <h1 id="hd_id631784151732919"><variable id="h1"><link href="text/scalc/01/func_scan.xhp">SCAN</link></variable></h1>
+    <description id="par_id771784151732919">Progressively applies a LAMBDA function to each element in an array and returns an array of all intermediate values.</description>
+    </section>
+<embed href="text/scalc/01/common_func.xhp#array"/>
+<embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
+<paragraph role="code" id="par_id401784055268151">=SCAN([Initial value]; Array; Formula)</paragraph>
+<paragraph role="paragraph" id="par_id861784139222494"><emph>Initial value</emph>: Optional initial value of the accumulator.</paragraph>
+<paragraph role="paragraph" id="par_id81784139227998"><emph>Array</emph>: The array to be scanned.</paragraph>
+<paragraph role="paragraph" id="par_id901784139234888"><emph>Formula</emph>: a <link href="text/scalc/01/func_lambda.xhp">LAMBDA</link> function that will be called on each cell of the array.</paragraph>
+<paragraph role="paragraph" id="par_id981784147526989">The <link href="text/scalc/01/func_lambda.xhp">LAMBDA</link> function requires two variables: an accumulator (e.g., <emph>a</emph>) and the array element value (<emph>v</emph>), and must be structured as follows:</paragraph>
+<embed href="text/scalc/06/mathmlfunc.xhp#lambda_a_v"/>
+<paragraph role="paragraph" id="par_id931784147601800">where <literal>f(v)</literal> is a function of the individual cells of the array.</paragraph>
+<embed href="text/scalc/01/ful_func.xhp#func_head_example"/>
+<embed href="text/scalc/01/stat_data.xhp#sampledata01"/>
+<paragraph role="paragraph" id="par_id141784159459399">The formula <input>=SCAN(0;A2:C2;LAMBDA(a;v;a+v))</input> returns the array</paragraph>
+<table id="tab_id331784153430960">
+<tablerow>
+    <tablecell>
+        <paragraph id="par_id991784153359335" localize="false" role="tablecontent">47</paragraph>
+    </tablecell>
+    <tablecell>
+        <paragraph id="par_id531784153359335" localize="false" role="tablecontent">114</paragraph>
+    </tablecell>
+    <tablecell>
+        <paragraph id="par_id491784153359335" localize="false" role="tablecontent">147</paragraph>
+    </tablecell>
+</tablerow>
+</table>
+<paragraph role="paragraph" id="par_id131784153551225">which correspond to A2, A2+B2 and A2+B2+C2, respectively.</paragraph>
+<embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
+<embed href="text/scalc/00/avail_release.xhp#27.2"/>
+<embed href="text/scalc/01/common_func.xhp#notODFF"/>
+<paragraph role="paragraph" id="par_id341640870986703" localize="false"><literal>COM.MICROSOFT.SCAN</literal></paragraph>
+<section id="relatedtopics">
+    <paragraph role="paragraph" id="par_id231784061670388" localize="false"><embedvar href="text/scalc/01/func_bycol.xhp#h1" markup="ignore"/></paragraph>
+    <paragraph role="paragraph" id="par_id11784119954361" localize="false"><embedvar href="text/scalc/01/func_map.xhp#h1" markup="ignore"/></paragraph>
+    <paragraph role="paragraph" id="par_id281784153600192" localize="false"><embedvar href="text/scalc/01/func_reduce.xhp#h1" markup="ignore"/></paragraph>
+    <tip id="par_id701677016751508"><link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/SCAN">SCAN wiki page</link>.</tip>
+</section>
+</body>
+</helpdocument>
