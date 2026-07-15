@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+<meta>
+    <topic id="text/scalc/01/func_map.xhp" indexer="include" status="PUBLISH">
+        <title id="tit">MAP</title>
+        <filename>/text/scalc/01/func_map.xhp</filename>
+    </topic>
+</meta>
+<body>
+<bookmark id="bm_id621784114853270" branch="hid/SC_HID_FUNC_MAP_MS" localize="false"/>
+<bookmark branch="index" id="bm_id181784115033083">
+<bookmark_value>MAP function</bookmark_value>
+</bookmark>
+<section id="map">
+    <h1 id="hd_id651784114853270"><variable id="h1"><link href="text/scalc/01/func_map.xhp">MAP</link></variable></h1>
+    <description id="par_id561784114853270">Results in an array where each cell is computed by applying a formula to the corresponding cells of one or more input arrays.</description>
+</section>
+<embed href="text/scalc/01/common_func.xhp#array"/>
+<embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
+<paragraph role="code" id="par_id961784115611918">=MAP(Array1 [; Array2 [;...]; Formula)</paragraph>
+<paragraph role="paragraph" id="par_id461784115525523"><emph>Array1 [; Array2 [;...]</emph>: The arrays that provides the arguments to the formula.</paragraph>
+<paragraph role="paragraph" id="par_id621784115535355"><emph>Formula</emph>: An expression defined by a <link href="text/scalc/01/func_lambda.xhp">LAMBDA</link> function or similar, which processes the data from the provided array(s). If multiple arrays are supplied, their corresponding cells are passed as arguments to the formula or function. The formula or function must accept as many parameters as there are arrays. It must be the final argument of the MAP function.</paragraph>
+<note id="par_id731784121982859">If the arrays have different dimensions, the MAP function returns an array of size <emph>M × N</emph>, where <emph>M</emph> is the maximum number of rows across all arrays, and <emph>N</emph> is the maximum number of columns. Any extra cells in the resulting array that are not processed by the formula are filled with <emph>#N/A</emph>.</note>
+<embed href="text/scalc/01/ful_func.xhp#func_head_example"/>
+<embed href="text/scalc/01/stat_data.xhp#sampledata01"/>
+<paragraph role="paragraph" id="par_id641784116556595">The formula <input>=MAP(A2:C13;LAMBDA(var;var*3))</input> returns an array of same dimensions where each element of the source array is multiplied by 3.</paragraph>
+<embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
+<embed href="text/scalc/00/avail_release.xhp#27.2"/>
+<embed href="text/scalc/01/common_func.xhp#notODFF"/>
+<paragraph role="paragraph" id="par_id341640870986703" localize="false"><literal>COM.MICROSOFT.MAP</literal></paragraph>
+<section id="relatedtopics">
+    <paragraph role="paragraph" id="par_id231784061670388" localize="false"><embedvar href="text/scalc/01/func_byrow.xhp#h1" markup="ignore"/></paragraph>
+    <paragraph role="paragraph" id="par_id791784116673140" localize="false"><embedvar href="text/scalc/01/func_bycol.xhp#h1" markup="ignore"/></paragraph>
+    <tip id="par_id701677016751508"><link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/MAP">MAP wiki page</link>.</tip>
+</section>
+</body>
+</helpdocument>
