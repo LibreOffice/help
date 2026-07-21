@@ -27,7 +27,7 @@
 <embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
 <paragraph role="code" id="par_id111783708469030">=LAMBDA(Parameter 1 [; Parameter 2 [; ... [; Parameter n]...]]; Formula)</paragraph>
 <paragraph role="paragraph" id="par_id111783708627795"><emph>Parameter 1</emph>: (required) The name of the first parameter to the function. The name must follow the <link href="text/scalc/guide/value_with_name.xhp">range naming rules</link> and cannot be the output of a reference or text formula. The scope of the parameter name is restricted to the LAMBDA function.</paragraph>
-<paragraph role="paragraph" id="par_id751783708895171"><emph>Parameter 2, ..., n </emph>: (optional). Additional parameters for the function. The same naming rules for <emph>Parameter 1</emph> applies.</paragraph>
+<paragraph role="paragraph" id="par_id751783708895171"><emph>Parameter 2; ...; n </emph>: (optional). Additional parameters for the function. The same naming rules for <emph>Parameter 1</emph> applies.</paragraph>
 <paragraph role="paragraph" id="par_id701783709031402"><emph>Formula</emph>: a formula expression. It must be the last argument of the function.</paragraph>
 <note id="par_id331783710050170">By default, the LAMBDA function displays the Greek character lambda (λ) in the cell.</note>
 <h2 id="hd_id831783710257485">Usage</h2>
@@ -65,7 +65,7 @@
         <paragraph id="par_id951783714102933"  role="listitem">Assign name MY_FACTORIAL to cell A1</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id261783714109684"  role="listitem">Enter <input>=LAMBDA(n,IF(n>1,n*MY_FACTORIAL(n-1),1))</input>  in cell A1</paragraph>
+        <paragraph id="par_id261783714109684"  role="listitem">Enter <input>=LAMBDA(n;IF(n>1;n*MY_FACTORIAL(n-1);1))</input>  in cell A1</paragraph>
     </listitem>
     <listitem>
         <paragraph id="par_id921783714125947"  role="listitem">Enter <input>=MY_FACTORIAL(5)</input> in cell B1</paragraph>
@@ -77,7 +77,7 @@
 <h4 id="hd_id331783717131876">Using ISOMITTED in function LAMBDA</h4>
 <paragraph role="paragraph" id="par_id911783717111321">The ISOMITTED function allows you to handle missing parameters in a LAMBDA function. For example, the LAMBDA function in cell A1:</paragraph>
 
-<paragraph role="paragraph" id="par_id501783717973525"><input>=LAMBDA(_n1, _n2, IF(ISOMITTED(_n2), "Missing second parameter", _n1/_n2))</input></paragraph>
+<paragraph role="paragraph" id="par_id501783717973525"><input>=LAMBDA(_n1; _n2; IF(ISOMITTED(_n2), "Missing second parameter"; _n1/_n2))</input></paragraph>
 
 <paragraph role="paragraph" id="par_id91783717979957">returns "Missing second parameter" if the LAMBDA function is called as <input>=A1(3;)</input>. <emph>Note</emph>: The trailing argument separator (;) must be included in the function call.</paragraph>
 <embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
