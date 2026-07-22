@@ -10,38 +10,38 @@
 -->
 <meta>
   <topic id="sf_calc" indexer="include" status="PUBLISH">
-    <title id="tit" xml-lang="en-US">SFDocuments.Calc service</title>
+    <title id="tit">SFDocuments.Calc service</title>
     <filename>/text/sbasic/shared/03/sf_calc.xhp</filename>
   </topic>
 </meta>
 <body>
 <section id="SFDocuments-sf_calc">
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id261582733781987">
+    <bookmark localize="false" branch="index" id="bm_id261582733781987">
       <bookmark_value>Calc service</bookmark_value>
    </bookmark>
 </section>
 <section id="abstract">
-    <h1 id="hd_id731582733781114" xml-lang="en-US"><variable id="CalcService"><link href="text/sbasic/shared/03/sf_calc.xhp"><literal>SFDocuments</literal>.<literal>Calc</literal> service</link></variable></h1>
-    <paragraph role="paragraph" id="par_id381589189355849" xml-lang="en-US">The <literal>SFDocuments</literal> shared library provides a number of methods and properties to facilitate the management and handling of %PRODUCTNAME documents.</paragraph>
-    <paragraph role="paragraph" id="par_id351591014177269" xml-lang="en-US">The <literal>SFDocuments.Calc</literal> service is a subclass of the <link href="text/sbasic/shared/03/sf_document.xhp"><literal>SFDocuments.Document</literal></link> service. All methods and properties defined for the <literal>Document</literal> service can also be accessed using a <literal>Calc</literal> service instance.</paragraph>
-    <paragraph role="paragraph" id="par_id591589189364267" xml-lang="en-US">The <literal>Calc</literal> service is focused on:</paragraph>
+    <h1 id="hd_id731582733781114"><variable id="CalcService"><link href="text/sbasic/shared/03/sf_calc.xhp"><literal>SFDocuments</literal>.<literal>Calc</literal> service</link></variable></h1>
+    <paragraph role="paragraph" id="par_id381589189355849">The <literal>SFDocuments</literal> shared library provides a number of methods and properties to facilitate the management and handling of %PRODUCTNAME documents.</paragraph>
+    <paragraph role="paragraph" id="par_id351591014177269">The <literal>SFDocuments.Calc</literal> service is a subclass of the <link href="text/sbasic/shared/03/sf_document.xhp"><literal>SFDocuments.Document</literal></link> service. All methods and properties defined for the <literal>Document</literal> service can also be accessed using a <literal>Calc</literal> service instance.</paragraph>
+    <paragraph role="paragraph" id="par_id591589189364267">The <literal>Calc</literal> service is focused on:</paragraph>
     <list type="unordered">
         <listitem>
-            <paragraph id="par_id891589189452545"  role="listitem" xml-lang="en-US">Handling sheets within a Calc document (copy, insert, move, etc)</paragraph>
+            <paragraph id="par_id891589189452545" role="listitem">Handling sheets within a Calc document (copy, insert, move, etc)</paragraph>
         </listitem>
         <listitem>
-            <paragraph id="par_id811589189463041"  role="listitem" xml-lang="en-US">Exchanging data between Basic data structures and Calc ranges</paragraph>
+            <paragraph id="par_id811589189463041" role="listitem">Exchanging data between Basic data structures and Calc ranges</paragraph>
         </listitem>
         <listitem>
-            <paragraph id="par_id141599569935662"  role="listitem" xml-lang="en-US">Copying and importing massive amounts of data</paragraph>
+            <paragraph id="par_id141599569935662" role="listitem">Copying and importing massive amounts of data</paragraph>
         </listitem>
         <listitem>
-            <paragraph id="par_id721767801758480"  role="listitem" xml-lang="en-US">Simple cell ranges formatting</paragraph>
+            <paragraph id="par_id721767801758480" role="listitem">Simple cell ranges formatting</paragraph>
         </listitem>
     </list>
 </section>
   <note id="par_id851638217526844">This help page describes methods and properties that are applicable only to Calc documents.</note>
-  <h2 id="hd_id581582885621841" xml-lang="en-US">Service invocation</h2>
+  <h2 id="hd_id581582885621841">Service invocation</h2>
   <paragraph role="paragraph" id="par_id141609955500101">Before using the <literal>Calc</literal> service the <literal>ScriptForge</literal> library needs to be loaded or imported:</paragraph>
   <embed href="text/sbasic/shared/03/lib_ScriptForge.xhp#importLibs"/>
   <paragraph role="paragraph" id="par_id591589191059889">The <literal>Calc</literal> service is closely related to the <literal>UI</literal> service of the <literal>ScriptForge</literal> library. Below are a few examples of how the <literal>Calc</literal> service can be invoked.</paragraph>
@@ -71,7 +71,7 @@
     <paragraph role="bascode" localize="false" id="bas_id861658777838994">Dim oDoc As Object</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id541658777839238">Set oDoc = CreateScriptService("Calc", ThisComponent)</paragraph>
   </bascode>
-  <paragraph role="paragraph" id="par_id71158288562139" xml-lang="en-US">It is recommended to free resources after use:</paragraph>
+  <paragraph role="paragraph" id="par_id71158288562139">It is recommended to free resources after use:</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id61582733781413">Set oDoc = oDoc.Dispose()</paragraph>
   </bascode>
@@ -96,19 +96,19 @@
     <paragraph role="pycode" localize="false" id="pyc_id811658778703326">myDoc = CreateScriptService("Calc", bas.ThisComponent)</paragraph>
   </pycode>
   <tip id="par_id71611090922315">The use of the prefix "<literal>SFDocuments.</literal>" while calling the service is optional.</tip>
-  <h2 id="hd_id991591016893982" xml-lang="en-US">Definitions</h2>
-    <paragraph role="paragraph" id="par_id511591016999246" xml-lang="en-US">Many methods require a "<emph>Sheet</emph>" or a "<emph>Range</emph>" as argument. Single cells are considered a special case of a <literal>Range</literal>.</paragraph>
-    <paragraph role="paragraph" id="par_id511591019278671" xml-lang="en-US">Both may be expressed either as a string or as a reference (= object) depending on the situation:</paragraph>
+  <h2 id="hd_id991591016893982">Definitions</h2>
+    <paragraph role="paragraph" id="par_id511591016999246">Many methods require a "<emph>Sheet</emph>" or a "<emph>Range</emph>" as argument. Single cells are considered a special case of a <literal>Range</literal>.</paragraph>
+    <paragraph role="paragraph" id="par_id511591019278671">Both may be expressed either as a string or as a reference (= object) depending on the situation:</paragraph>
     <list type="unordered">
         <listitem>
-            <paragraph id="par_id571591019367284"  role="listitem" xml-lang="en-US">Within a <emph>specific</emph> <literal>Calc</literal> <emph>instance</emph>, sheets and ranges are given as strings such as "Sheet1" and "D2:F6".</paragraph>
+            <paragraph id="par_id571591019367284" role="listitem">Within a <emph>specific</emph> <literal>Calc</literal> <emph>instance</emph>, sheets and ranges are given as strings such as "Sheet1" and "D2:F6".</paragraph>
         </listitem>
         <listitem>
-            <paragraph id="par_id121591019432157"  role="listitem" xml-lang="en-US">Additionally, the <literal>.Sheet</literal> and <literal>.Range</literal> properties return a reference that may be used as argument of a method called from <emph>another instance</emph> of the <literal>Calc</literal> service.</paragraph>
+            <paragraph id="par_id121591019432157" role="listitem">Additionally, the <literal>.Sheet</literal> and <literal>.Range</literal> properties return a reference that may be used as argument of a method called from <emph>another instance</emph> of the <literal>Calc</literal> service.</paragraph>
         </listitem>
     </list>
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
-    <paragraph role="paragraph" id="par_id421591017227464" xml-lang="en-US">The example below copies data from document A (opened as read-only and hidden) to document B.</paragraph>
+    <paragraph role="paragraph" id="par_id421591017227464">The example below copies data from document A (opened as read-only and hidden) to document B.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id581591017295549">Dim oDocA As Object, oDocB As Object</paragraph>
@@ -122,14 +122,14 @@
     <paragraph role="pycode" localize="false" id="pyc_id61621533637980">docB = ui.OpenDocument(r"C:\Documents\FileB.ods")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id941621533638353">docB.CopyToRange(docA.Range("SheetX.D4:F8"), "D2:F6")</paragraph>
   </pycode>
-    <h3 id="hd_id941591020321580" localize="false" xml-lang="en-US">SheetName</h3>
-    <paragraph role="paragraph" id="par_id341591020333849" xml-lang="en-US">Either the sheet name as a <literal>string</literal> or an <literal>object</literal> produced by the <literal>.Sheet</literal> property.</paragraph>
-    <paragraph role="paragraph" id="par_id651591020343023" xml-lang="en-US">The shortcut "~" (tilde) represents the current sheet.</paragraph>
-    <h3 id="hd_id101591020737697" localize="false" xml-lang="en-US">RangeName</h3>
-    <paragraph role="paragraph" id="par_id291591020728110" xml-lang="en-US">Either a string designating a set of contiguous cells located in a sheet of the current instance or an <literal>object</literal> produced by the <literal>.Range</literal> property.</paragraph>
-    <paragraph role="paragraph" id="par_id691591020711395" xml-lang="en-US">The shortcut "~" (tilde) represents the current selection or the first selected range if multiple ranges are selected.</paragraph>
-    <paragraph role="paragraph" id="par_id701592230700986" xml-lang="en-US">The shortcut "*" represents all used cells.</paragraph>
-    <paragraph role="paragraph" id="par_id641591021597701" xml-lang="en-US">The sheet name is optional when defining a range. If no sheet name is provided, then the active sheet is used. Surrounding single quotes and $ signs are allowed but ignored.</paragraph>
+    <h3 id="hd_id941591020321580" localize="false">SheetName</h3>
+    <paragraph role="paragraph" id="par_id341591020333849">Either the sheet name as a <literal>string</literal> or an <literal>object</literal> produced by the <literal>.Sheet</literal> property.</paragraph>
+    <paragraph role="paragraph" id="par_id651591020343023">The shortcut "~" (tilde) represents the current sheet.</paragraph>
+    <h3 id="hd_id101591020737697" localize="false">RangeName</h3>
+    <paragraph role="paragraph" id="par_id291591020728110">Either a string designating a set of contiguous cells located in a sheet of the current instance or an <literal>object</literal> produced by the <literal>.Range</literal> property.</paragraph>
+    <paragraph role="paragraph" id="par_id691591020711395">The shortcut "~" (tilde) represents the current selection or the first selected range if multiple ranges are selected.</paragraph>
+    <paragraph role="paragraph" id="par_id701592230700986">The shortcut "*" represents all used cells.</paragraph>
+    <paragraph role="paragraph" id="par_id641591021597701">The sheet name is optional when defining a range. If no sheet name is provided, then the active sheet is used. Surrounding single quotes and $ signs are allowed but ignored.</paragraph>
     <paragraph role="paragraph" id="par_id231655754032310">When specifying a <literal>SheetName</literal> as a string, the use of single quotes to enclose the sheet name are required if the name contains blank spaces " " or periods ".".  </paragraph>
     <paragraph role="paragraph" id="par_id931655906591984">The examples below illustrate in which cases the use of single quotes is mandatory:</paragraph>
     <bascode>
@@ -139,132 +139,132 @@
       <paragraph role="bascode" id="bas_id711655754337420">' The use of single quotes is required</paragraph>
       <paragraph role="bascode" localize="false" id="bas_id311655754674294">oDoc.clearAll("'Sheet.A'.A1:B10")</paragraph>
     </bascode>
-    <tip id="par_id371592406978640" xml-lang="en-US">Except for the <literal>CurrentSelection</literal> property, the <literal>Calc</literal> service considers only single ranges of cells.</tip>
+    <tip id="par_id371592406978640">Except for the <literal>CurrentSelection</literal> property, the <literal>Calc</literal> service considers only single ranges of cells.</tip>
     <table id="tab_id101591024652566">
         <tablerow>
             <tablecell colspan="2">
-                <paragraph id="par_id91591025127496" role="tablehead" xml-lang="en-US">Examples of valid ranges</paragraph>
+                <paragraph id="par_id91591025127496" role="tablehead">Examples of valid ranges</paragraph>
             </tablecell>
         </tablerow>
         <tablerow>
             <tablecell>
-                <paragraph id="par_id481591024294524" role="tablecontent" xml-lang="en-US">1) $'SheetX'.D2<br/>2) $D$2</paragraph>
+                <paragraph id="par_id481591024294524" role="tablecontent">1) $'SheetX'.D2<br/>2) $D$2</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph id="par_id721591024294894" role="tablecontent" xml-lang="en-US">A single cell</paragraph>
-            </tablecell>
-        </tablerow>
-        <tablerow>
-            <tablecell>
-                <paragraph id="par_id21591024294492" role="tablecontent" xml-lang="en-US">1) $'SheetX'.D2:F6<br/>2) D2:D10</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id9159102429464" role="tablecontent" xml-lang="en-US">Single range with multiple cells</paragraph>
+                <paragraph id="par_id721591024294894" role="tablecontent">A single cell</paragraph>
             </tablecell>
         </tablerow>
         <tablerow>
             <tablecell>
-                <paragraph id="par_id161592230749179" role="tablecontent" xml-lang="en-US">$'SheetX'.*</paragraph>
+                <paragraph id="par_id21591024294492" role="tablecontent">1) $'SheetX'.D2:F6<br/>2) D2:D10</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph id="par_id581592230749243" role="tablecontent" xml-lang="en-US">All used cells in the given sheet</paragraph>
-            </tablecell>
-        </tablerow>
-        <tablerow>
-            <tablecell>
-                <paragraph id="par_id641591024294318" role="tablecontent" xml-lang="en-US">1) $'SheetX'.A:A (column A)<br/>2) 3:5 (rows 3 to 5)</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id431591024294723" role="tablecontent" xml-lang="en-US">All cells in contiguous columns or rows up to the last used cell</paragraph>
+                <paragraph id="par_id9159102429464" role="tablecontent">Single range with multiple cells</paragraph>
             </tablecell>
         </tablerow>
         <tablerow>
             <tablecell>
-                <paragraph id="par_id871591024294202" role="tablecontent" xml-lang="en-US">myRange</paragraph>
+                <paragraph id="par_id161592230749179" role="tablecontent">$'SheetX'.*</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph id="par_id721591024294721" role="tablecontent" xml-lang="en-US">A range named "myRange" at spreadsheet level</paragraph>
-            </tablecell>
-        </tablerow>
-        <tablerow>
-            <tablecell>
-                <paragraph id="par_id181591024294534" role="tablecontent" xml-lang="en-US">1) ~.someRange<br/>2) SheetX.someRange</paragraph>
-            </tablecell>
-            <tablecell>
-                <paragraph id="par_id911591024294816" role="tablecontent" xml-lang="en-US">A range name at sheet level</paragraph>
+                <paragraph id="par_id581592230749243" role="tablecontent">All used cells in the given sheet</paragraph>
             </tablecell>
         </tablerow>
         <tablerow>
             <tablecell>
-                <paragraph id="par_id781591024294621" role="tablecontent" xml-lang="en-US">myDoc.Range("SheetX.D2:F6") </paragraph>
+                <paragraph id="par_id641591024294318" role="tablecontent">1) $'SheetX'.A:A (column A)<br/>2) 3:5 (rows 3 to 5)</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph id="par_id681591024294568" role="tablecontent" xml-lang="en-US">A range within the sheet SheetX in file associated with the myDoc Calc instance</paragraph>
+                <paragraph id="par_id431591024294723" role="tablecontent">All cells in contiguous columns or rows up to the last used cell</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id871591024294202" role="tablecontent">myRange</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id721591024294721" role="tablecontent">A range named "myRange" at spreadsheet level</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id181591024294534" role="tablecontent">1) ~.someRange<br/>2) SheetX.someRange</paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id911591024294816" role="tablecontent">A range name at sheet level</paragraph>
+            </tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell>
+                <paragraph id="par_id781591024294621" role="tablecontent">myDoc.Range("SheetX.D2:F6") </paragraph>
+            </tablecell>
+            <tablecell>
+                <paragraph id="par_id681591024294568" role="tablecontent">A range within the sheet SheetX in file associated with the myDoc Calc instance</paragraph>
             </tablecell>
         </tablerow>
       <tablerow>
             <tablecell>
-                <paragraph id="par_id101591024294151" role="tablecontent" xml-lang="en-US">~.~ or ~</paragraph>
+                <paragraph id="par_id101591024294151" role="tablecontent">~.~ or ~</paragraph>
             </tablecell>
             <tablecell>
-                <paragraph id="par_id22159102429479" role="tablecontent" xml-lang="en-US">The current selection in the active sheet</paragraph>
+                <paragraph id="par_id22159102429479" role="tablecontent">The current selection in the active sheet</paragraph>
             </tablecell>
         </tablerow>
     </table>
-  <h2 id="hd_id351582885195476" xml-lang="en-US">Properties</h2>
-  <paragraph role="paragraph" id="par_id151591018231905" xml-lang="en-US">All the properties generic to any document are implicitly applicable also to Calc documents. For more information, read the <link href="text/sbasic/shared/03/sf_document.xhp">Document service Help page</link>.</paragraph>
-  <paragraph role="paragraph" id="par_id911591018242565" xml-lang="en-US">The properties specifically available for Calc documents are:</paragraph>
+  <h2 id="hd_id351582885195476">Properties</h2>
+  <paragraph role="paragraph" id="par_id151591018231905">All the properties generic to any document are implicitly applicable also to Calc documents. For more information, read the <link href="text/sbasic/shared/03/sf_document.xhp">Document service Help page</link>.</paragraph>
+  <paragraph role="paragraph" id="par_id911591018242565">The properties specifically available for Calc documents are:</paragraph>
   <section id="properties_toc">
   <table id="tab_id971582885195582">
     <tablerow>
         <tablecell>
-            <paragraph id="par_id41582885195836" role="tablehead" xml-lang="en-US">Name</paragraph>
+            <paragraph id="par_id41582885195836" role="tablehead">Name</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id31582885195372" role="tablehead" xml-lang="en-US">Readonly</paragraph>
+            <paragraph id="par_id31582885195372" role="tablehead">Readonly</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id221591018408168" role="tablehead" xml-lang="en-US">Argument</paragraph>
+            <paragraph id="par_id221591018408168" role="tablehead">Argument</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id31582885195238" role="tablehead" xml-lang="en-US">Return type</paragraph>
+            <paragraph id="par_id31582885195238" role="tablehead">Return type</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id931582885195131" role="tablehead" xml-lang="en-US">Description</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id681592407165508" role="tablecontent" xml-lang="en-US" localize="false">CurrentSelection</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id301592407165942" role="tablecontent" xml-lang="en-US">No</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id81592407165611" role="tablecontent" xml-lang="en-US">None</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id59159240716522" role="tablecontent" xml-lang="en-US">String or array of strings</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id85159240716560" role="tablecontent" xml-lang="en-US">The single selected range as a string or the list of selected ranges as an array.</paragraph>
+            <paragraph id="par_id931582885195131" role="tablehead">Description</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id681592407275508" role="tablecontent" xml-lang="en-US" localize="false">DefinedNames</paragraph>
+            <paragraph id="par_id681592407165508" role="tablecontent" localize="false">CurrentSelection</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id301592407166042" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id301592407165942" role="tablecontent">No</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id81592407275611" role="tablecontent" xml-lang="en-US">None</paragraph>
+            <paragraph id="par_id81592407165611" role="tablecontent">None</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id59159251716522" role="tablecontent" xml-lang="en-US">String or array of strings</paragraph>
+            <paragraph id="par_id59159240716522" role="tablecontent">String or array of strings</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id85159350716560" role="tablecontent" xml-lang="en-US">Returns the full sorted list of all named ranges in the document. The names defined in a single sheet are qualified with the sheet name.</paragraph>
+            <paragraph id="par_id85159240716560" role="tablecontent">The single selected range as a string or the list of selected ranges as an array.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id681592407275508" role="tablecontent" localize="false">DefinedNames</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id301592407166042" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id81592407275611" role="tablecontent">None</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id59159251716522" role="tablecontent">String or array of strings</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id85159350716560" role="tablecontent">Returns the full sorted list of all named ranges in the document. The names defined in a single sheet are qualified with the sheet name.</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
@@ -320,19 +320,19 @@
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id521593094953943" role="tablecontent" xml-lang="en-US" localize="false">Height</paragraph>
+            <paragraph id="par_id521593094953943" role="tablecontent" localize="false">Height</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id101593094953259" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id101593094953259" role="tablecontent">Yes</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id741593094953790" role="tablecontent" xml-lang="en-US">RangeName As String</paragraph>
+            <paragraph id="par_id741593094953790" role="tablecontent">RangeName As String</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id581593094953195" role="tablecontent" xml-lang="en-US" localize="false">Long</paragraph>
+            <paragraph id="par_id581593094953195" role="tablecontent" localize="false">Long</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id311593094953330" role="tablecontent" xml-lang="en-US">The number of rows (>= 1) in the given range.</paragraph>
+            <paragraph id="par_id311593094953330" role="tablecontent">The number of rows (&gt;= 1) in the given range.</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
@@ -388,138 +388,138 @@
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id52159102559144" role="tablecontent" xml-lang="en-US" localize="false">Range</paragraph>
+            <paragraph id="par_id52159102559144" role="tablecontent" localize="false">Range</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id81591025591672" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id81591025591672" role="tablecontent">Yes</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id561591025591239" role="tablecontent" xml-lang="en-US">RangeName As String</paragraph>
+            <paragraph id="par_id561591025591239" role="tablecontent">RangeName As String</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id311591025591598" role="tablecontent" xml-lang="en-US" localize="false">Object</paragraph>
+            <paragraph id="par_id311591025591598" role="tablecontent" localize="false">Object</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id571591025591367" role="tablecontent" xml-lang="en-US">A range reference that can be used as argument of methods like <literal>CopyToRange</literal>.</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id52159102559323" role="tablecontent" xml-lang="en-US" localize="false">Region</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id81591025591007" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id561591025592149" role="tablecontent" xml-lang="en-US">RangeName As String</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id311591025591078" role="tablecontent" xml-lang="en-US" localize="false">String</paragraph>
-        </tablecell>
-        <tablecell>
-          <paragraph id="par_id571591025599937" role="tablecontent" xml-lang="en-US">Returns the address of the smallest area that contains the specified range so that the area is surrounded by empty cells or sheet edges. This is equivalent to applying the <switchinline select="sys"><caseinline select="MAC"><keycode>Command + *</keycode></caseinline><defaultinline><keycode>Ctrl + *</keycode></defaultinline></switchinline> shortcut to the given range.</paragraph>
+            <paragraph id="par_id571591025591367" role="tablecontent">A range reference that can be used as argument of methods like <literal>CopyToRange</literal>.</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id17159102559142" role="tablecontent" xml-lang="en-US" localize="false">Sheet</paragraph>
+            <paragraph id="par_id52159102559323" role="tablecontent" localize="false">Region</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id541591025591511" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id81591025591007" role="tablecontent">Yes</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id661591025591903" role="tablecontent" xml-lang="en-US">SheetName As String</paragraph>
+            <paragraph id="par_id561591025592149" role="tablecontent">RangeName As String</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id101591025591982" role="tablecontent" xml-lang="en-US" localize="false">Object</paragraph>
+            <paragraph id="par_id311591025591078" role="tablecontent" localize="false">String</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id731591025591753" role="tablecontent" xml-lang="en-US">A sheet reference that can be used as argument of methods like <literal>CopySheet</literal>.</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id171591025595653" role="tablecontent" xml-lang="en-US" localize="false">SheetName</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id541591025591322" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id661591025591188" role="tablecontent" xml-lang="en-US">RangeName As String</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id101591025591289" role="tablecontent" xml-lang="en-US" localize="false">String</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id731591025591006" role="tablecontent" xml-lang="en-US">Returns the sheet name of a given range address.</paragraph>
+          <paragraph id="par_id571591025599937" role="tablecontent">Returns the address of the smallest area that contains the specified range so that the area is surrounded by empty cells or sheet edges. This is equivalent to applying the <switchinline select="sys"><caseinline select="MAC"><keycode>Command + *</keycode></caseinline><defaultinline><keycode>Ctrl + *</keycode></defaultinline></switchinline> shortcut to the given range.</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id591591025591635" role="tablecontent" xml-lang="en-US" localize="false">Sheets</paragraph>
+            <paragraph id="par_id17159102559142" role="tablecontent" localize="false">Sheet</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id581591025591579" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id541591025591511" role="tablecontent">Yes</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id751591025591667" role="tablecontent" xml-lang="en-US">None</paragraph>
+            <paragraph id="par_id661591025591903" role="tablecontent">SheetName As String</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id861591025591250" role="tablecontent" xml-lang="en-US">Array of strings</paragraph>
+            <paragraph id="par_id101591025591982" role="tablecontent" localize="false">Object</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id491591025591370" role="tablecontent" xml-lang="en-US">The list with the names of all existing sheets.</paragraph>
-        </tablecell>
-    </tablerow>
-    <tablerow>
-        <tablecell>
-            <paragraph id="par_id731593095062923" role="tablecontent" xml-lang="en-US" localize="false">Width</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id711593095062771" role="tablecontent" xml-lang="en-US">Yes</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id311593095062171" role="tablecontent" xml-lang="en-US">RangeName As String</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id761593095062827" role="tablecontent" xml-lang="en-US" localize="false">Long</paragraph>
-        </tablecell>
-        <tablecell>
-            <paragraph id="par_id681593095062358" role="tablecontent" xml-lang="en-US">The number of columns (>= 1) in the given range.</paragraph>
+            <paragraph id="par_id731591025591753" role="tablecontent">A sheet reference that can be used as argument of methods like <literal>CopySheet</literal>.</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id691592315404547" role="tablecontent" xml-lang="en-US" localize="false">XCellRange</paragraph>
+            <paragraph id="par_id171591025595653" role="tablecontent" localize="false">SheetName</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id391592315404944" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id541591025591322" role="tablecontent">Yes</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id1001592315404525" role="tablecontent" xml-lang="en-US">RangeName As String</paragraph>
+            <paragraph id="par_id661591025591188" role="tablecontent">RangeName As String</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id7715923154041" role="tablecontent" xml-lang="en-US" localize="false">Object</paragraph>
+            <paragraph id="par_id101591025591289" role="tablecontent" localize="false">String</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id321592315404430" role="tablecontent" xml-lang="en-US">A <literal>com.sun.star.Table.XCellRange</literal> UNO object.</paragraph>
+            <paragraph id="par_id731591025591006" role="tablecontent">Returns the sheet name of a given range address.</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id691591234404547" role="tablecontent" xml-lang="en-US" localize="false">XRectangle</paragraph>
+            <paragraph id="par_id591591025591635" role="tablecontent" localize="false">Sheets</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id393214315404944" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id581591025591579" role="tablecontent">Yes</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id1001592316547525" role="tablecontent" xml-lang="en-US">RangeName As String</paragraph>
+            <paragraph id="par_id751591025591667" role="tablecontent">None</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id7715923984241" role="tablecontent" xml-lang="en-US" localize="false">Object</paragraph>
+            <paragraph id="par_id861591025591250" role="tablecontent">Array of strings</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id321592315406565" role="tablecontent" xml-lang="en-US">A <literal>com.sun.star.awt.Rectangle</literal> UNO structure, describing, in pixels, the area on the screen where the range is located.</paragraph>
+            <paragraph id="par_id491591025591370" role="tablecontent">The list with the names of all existing sheets.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id731593095062923" role="tablecontent" localize="false">Width</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id711593095062771" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id311593095062171" role="tablecontent">RangeName As String</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id761593095062827" role="tablecontent" localize="false">Long</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id681593095062358" role="tablecontent">The number of columns (&gt;= 1) in the given range.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id691592315404547" role="tablecontent" localize="false">XCellRange</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id391592315404944" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id1001592315404525" role="tablecontent">RangeName As String</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id7715923154041" role="tablecontent" localize="false">Object</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id321592315404430" role="tablecontent">A <literal>com.sun.star.Table.XCellRange</literal> UNO object.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id691591234404547" role="tablecontent" localize="false">XRectangle</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id393214315404944" role="tablecontent">Yes</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id1001592316547525" role="tablecontent">RangeName As String</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id7715923984241" role="tablecontent" localize="false">Object</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id321592315406565" role="tablecontent">A <literal>com.sun.star.awt.Rectangle</literal> UNO structure, describing, in pixels, the area on the screen where the range is located.</paragraph>
         </tablecell>
     </tablerow>
     <tablerow>
@@ -541,30 +541,30 @@
     </tablerow>
     <tablerow>
         <tablecell>
-            <paragraph id="par_id961592315565156" role="tablecontent" xml-lang="en-US" localize="false">XSpreadsheet</paragraph>
+            <paragraph id="par_id961592315565156" role="tablecontent" localize="false">XSpreadsheet</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id501592315565569" role="tablecontent" xml-lang="en-US">Yes</paragraph>
+            <paragraph id="par_id501592315565569" role="tablecontent">Yes</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id411592315565235" role="tablecontent" xml-lang="en-US">SheetName As String</paragraph>
+            <paragraph id="par_id411592315565235" role="tablecontent">SheetName As String</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id521592315565269" role="tablecontent" xml-lang="en-US" localize="false">Object</paragraph>
+            <paragraph id="par_id521592315565269" role="tablecontent" localize="false">Object</paragraph>
         </tablecell>
         <tablecell>
-            <paragraph id="par_id41592315560095" role="tablecontent" xml-lang="en-US">A <literal>com.sun.star.sheet.XSpreadsheet</literal> UNO object.</paragraph>
+            <paragraph id="par_id41592315560095" role="tablecontent">A <literal>com.sun.star.sheet.XSpreadsheet</literal> UNO object.</paragraph>
         </tablecell>
     </tablerow>
   </table>
   </section>
   <tip id="par_id321611613059105">Visit %PRODUCTNAME API Documentation's website to learn more about <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1table_1_1XCellRange.html">XCellRange</link>, <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1sheet_1_1XSheetCellCursor.html">XSheetCellCursor</link> and <link href="https://api.libreoffice.org/docs/idl/ref/interfacecom_1_1sun_1_1star_1_1sheet_1_1XSpreadsheet.html">XSpreadsheet</link> UNO objects.</tip>
-  <h2 id="hd_id501582887473754" xml-lang="en-US">Methods</h2>
+  <h2 id="hd_id501582887473754">Methods</h2>
   <section id="methods_toc">
   <table id="tab_id501611613601554">
    <tablerow>
      <tablecell colspan="3">
-       <paragraph id="par_id891611613601554" role="tablehead" xml-lang="en-US">List of Methods in the Calc Service</paragraph>
+       <paragraph id="par_id891611613601554" role="tablehead">List of Methods in the Calc Service</paragraph>
      </tablecell>
    </tablerow>
    <tablerow>
@@ -639,7 +639,7 @@
 
 <section id="A1Style">
   <comment> A1Style ----------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969104">
+  <bookmark localize="false" branch="index" id="bm_id92158919969104">
     <bookmark_value>Calc service;A1Style</bookmark_value>
   </bookmark>
   <h2 id="hd_id201589199698251" localize="false">A1Style</h2>
@@ -678,7 +678,7 @@
 
 <section id="Activate">
   <comment> Activate -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+  <bookmark localize="false" branch="index" id="bm_id92158919969883">
       <bookmark_value>Calc service;Activate</bookmark_value>
   </bookmark>
   <h2 id="hd_id201589199698099" localize="false">Activate</h2>
@@ -709,7 +709,7 @@
 
 <section id="AlignRange">
   <comment> AlignRange -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id41176780478363">
+  <bookmark localize="false" branch="index" id="bm_id41176780478363">
       <bookmark_value>Calc service;AlignRange</bookmark_value>
   </bookmark>
   <h2 id="hd_id131767804803740" localize="false">AlignRange</h2>
@@ -721,13 +721,13 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id691767804870278"><emph>targetrange</emph>: The cell or the range as a string in which cells should be re-aligned.</paragraph>
-  <paragraph role="paragraph" id="par_id191767876299030" xml-lang="en-US"><emph>alignment</emph>: a string combining 1 or 2 of next upper-case characters (other characters are ignored):</paragraph>
+  <paragraph role="paragraph" id="par_id191767876299030"><emph>alignment</emph>: a string combining 1 or 2 of next upper-case characters (other characters are ignored):</paragraph>
   <list type="unordered">
       <listitem>
-          <paragraph id="par_id861767876487227"  role="listitem" xml-lang="en-US">L, R or C: left, right or center horizontally.</paragraph>
+          <paragraph id="par_id861767876487227" role="listitem">L, R or C: left, right or center horizontally.</paragraph>
       </listitem>
       <listitem>
-          <paragraph id="par_id1001767881841565"  role="listitem" xml-lang="en-US">B, T or M: bottom, top or center vertically (middle).</paragraph>
+          <paragraph id="par_id1001767881841565" role="listitem">B, T or M: bottom, top or center vertically (middle).</paragraph>
       </listitem>
   </list>
   <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
@@ -735,18 +735,18 @@
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
       <paragraph role="bascode" id="bas_id41176780499844">' Center all numeric cells, both horizontally and vertically.</paragraph>
-      <paragraph role="bascode" id="bas_id691767805014441">doc.AlignRange("SheetX.A1:J30", "Middle,Center", filterformula := "=IsNumeric(A1)", filterscope := "CELL")</paragraph>
+      <paragraph role="bascode"  localize="false" id="bas_id691767805014441">doc.AlignRange("SheetX.A1:J30", "Middle,Center", filterformula := "=IsNumeric(A1)", filterscope := "CELL")</paragraph>
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
       <paragraph role="pycode" id="pyc_id251767805127221"># Center all numeric cells, both horizontally and vertically.</paragraph>
-      <paragraph role="pycode" id="pyc_id281767805141277">doc.AlignRange('SheetX.A1:J30', 'Middle,Center', filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
+      <paragraph role="pycode"  localize="false" id="pyc_id281767805141277">doc.AlignRange('SheetX.A1:J30', 'Middle,Center', filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
   </pycode>
 </section>
 
 <section id="BorderRange">
     <comment> BorderRange -------------------------------------------------------------------------------------------------------------------------- </comment>
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id61767883134593">
+    <bookmark localize="false" branch="index" id="bm_id61767883134593">
         <bookmark_value>Calc service;BorderRange</bookmark_value>
     </bookmark>
     <h2 id="hd_id99176788315854" localize="false">BorderRange</h2>
@@ -760,16 +760,16 @@
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
     <paragraph role="paragraph" id="par_id811767884294334"><emph>targetrange</emph>: The cell or the range as a string on which borders should be applied.</paragraph>
-    <paragraph role="paragraph" id="par_id511767884331312" xml-lang="en-US"><emph>border</emph>: A string combining next upper-case characters (other characters are ignored):</paragraph>
+    <paragraph role="paragraph" id="par_id511767884331312"><emph>border</emph>: A string combining next upper-case characters (other characters are ignored):</paragraph>
     <list type="unordered">
         <listitem>
-            <paragraph id="par_id641767884455599"  role="listitem" xml-lang="en-US">B, L, T, R: bottom, left, top, right outer lines.</paragraph>
+            <paragraph id="par_id641767884455599" role="listitem">B, L, T, R: bottom, left, top, right outer lines.</paragraph>
         </listitem>
         <listitem>
-            <paragraph id="par_id531767884469933"  role="listitem" xml-lang="en-US">H, V: horizontal, vertical inner lines.</paragraph>
+            <paragraph id="par_id531767884469933" role="listitem">H, V: horizontal, vertical inner lines.</paragraph>
         </listitem>
         <listitem>
-            <paragraph id="par_id91767884600419"  role="listitem" xml-lang="en-US">U, D: bottom-up, top-down diagonals.</paragraph>
+            <paragraph id="par_id91767884600419" role="listitem">U, D: bottom-up, top-down diagonals.</paragraph>
         </listitem>
     </list>
     <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
@@ -777,18 +777,18 @@
     <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
         <paragraph role="bascode" id="bas_id671767884770350">' Border all numeric cells with a bottom line, including the horizontal inner lines.</paragraph>
-        <paragraph role="bascode" id="bas_id741767884782255">doc.BorderRange("SheetX.A1:J30", "HB", filterformula := "=IsNumeric(A1)", filterscope := "CELL")</paragraph>
+        <paragraph role="bascode"  localize="false" id="bas_id741767884782255">doc.BorderRange("SheetX.A1:J30", "HB", filterformula := "=IsNumeric(A1)", filterscope := "CELL")</paragraph>
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
         <paragraph role="pycode" id="pyc_id891767884794918"># Border all numeric cells with a bottom line, including the horizontal inner lines.</paragraph>
-        <paragraph role="pycode" id="pyc_id751767884803859">doc.BorderRange('SheetX.A1:J30', 'HB', filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
+        <paragraph role="pycode"  localize="false" id="pyc_id751767884803859">doc.BorderRange('SheetX.A1:J30', 'HB', filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
     </pycode>
 </section>
 
 <section id="Charts">
   <comment> Charts ------------------------------------------------------------------------------------------------ </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158915960183">
+  <bookmark localize="false" branch="index" id="bm_id92158915960183">
       <bookmark_value>Calc service;Charts</bookmark_value>
   </bookmark>
   <h2 id="hd_id201589199698104" localize="false">Charts</h2>
@@ -837,7 +837,7 @@
 
 <section id="ClearAll">
   <comment> ClearAll -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231592919577434">
+  <bookmark localize="false" branch="index" id="bm_id231592919577434">
       <bookmark_value>Calc service;ClearAll</bookmark_value>
   </bookmark>
   <h2 id="hd_id921592919577158" localize="false">ClearAll</h2>
@@ -868,26 +868,26 @@
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
     <paragraph role="bascode" id="bas_id681670941294573">' Clears all cells in the range SheetX.A1:J10</paragraph>
-    <paragraph role="bascode" id="bas_id521592919577626">oDoc.ClearAll("SheetX.A1:J10")</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id521592919577626">oDoc.ClearAll("SheetX.A1:J10")</paragraph>
     <paragraph role="bascode" id="bas_id681670941294511">' Clears all cells in the range SheetX.A1:J10 that have a value greater than 100</paragraph>
-    <paragraph role="bascode" id="bas_id521592919575446">oDoc.ClearAll("SheetX.A1:J10", "=SheetX.A1>100", "CELL")</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id521592919575446">oDoc.ClearAll("SheetX.A1:J10", "=SheetX.A1&gt;100", "CELL")</paragraph>
     <paragraph role="bascode" id="bas_id681670941233673">' Clears all rows in the range SheetX.A1:J10 whose sum is greater than 500</paragraph>
-    <paragraph role="bascode" id="bas_id521592919518126">oDoc.ClearAll("SheetX.A1:J10", "=SUM(SheetX.A1:J1)>500", "ROW")</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id521592919518126">oDoc.ClearAll("SheetX.A1:J10", "=SUM(SheetX.A1:J1)&gt;500", "ROW")</paragraph>
     <paragraph role="bascode" id="bas_id681670941293083">' Clears all columns in the range SheetX.A1:J10 whose sum is greater than 500</paragraph>
-    <paragraph role="bascode" id="bas_id521592919577149">oDoc.ClearAll("SheetX.A1:J10", "=SUM(SheetX.A1:A10)>500", "COLUMN")</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id521592919577149">oDoc.ClearAll("SheetX.A1:J10", "=SUM(SheetX.A1:A10)&gt;500", "COLUMN")</paragraph>
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
-    <paragraph role="pycode" id="pyc_id211621536212144">myDoc.ClearAll("SheetX.A1:F10")</paragraph>
-    <paragraph role="pycode" id="pyc_id701670942024915">myDoc.ClearAll("SheetX.A1:J10", "=SheetX.A1>100", "CELL")</paragraph>
-    <paragraph role="pycode" id="pyc_id261670942025274">myDoc.ClearAll("SheetX.A1:J10", "=SUM(SheetX.A1:J1)>500", "ROW")</paragraph>
-    <paragraph role="pycode" id="pyc_id711670942025635">myDoc.ClearAll("SheetX.A1:J10", "=SUM(SheetX.A1:A10)>500", "COLUMN")</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id211621536212144">myDoc.ClearAll("SheetX.A1:F10")</paragraph>
+    <paragraph role="pycode" id="pyc_id701670942024915">myDoc.ClearAll("SheetX.A1:J10", "=SheetX.A1&gt;100", "CELL")</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id261670942025274">myDoc.ClearAll("SheetX.A1:J10", "=SUM(SheetX.A1:J1)&gt;500", "ROW")</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id711670942025635">myDoc.ClearAll("SheetX.A1:J10", "=SUM(SheetX.A1:A10)&gt;500", "COLUMN")</paragraph>
   </pycode>
 </section>
 
 <section id="ClearFormats">
   <comment> ClearFormats -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id591592919864362">
+  <bookmark localize="false" branch="index" id="bm_id591592919864362">
       <bookmark_value>Calc service;ClearFormats</bookmark_value>
   </bookmark>
   <h2 id="hd_id871592919864356" localize="false">ClearFormats</h2>
@@ -914,7 +914,7 @@
 
 <section id="ClearValues">
   <comment> ClearValues -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781592919928644">
+  <bookmark localize="false" branch="index" id="bm_id781592919928644">
       <bookmark_value>Calc service;ClearValues</bookmark_value>
   </bookmark>
   <h2 id="hd_id111592919928265" localize="false">ClearValues</h2>
@@ -941,7 +941,7 @@
 
 <section id="ColorizeRange">
     <comment> ColorizeRange -------------------------------------------------------------------------------------------------------------------------- </comment>
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id661768046544826">
+    <bookmark localize="false" branch="index" id="bm_id661768046544826">
         <bookmark_value>Calc service;ColorizeRange</bookmark_value>
     </bookmark>
     <h2 id="hd_id111768046741740" localize="false">ColorizeRange</h2>
@@ -953,26 +953,26 @@
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
     <paragraph role="paragraph" id="par_id751768053467898"><emph>targetrange</emph>: the cell or the range as a string in which cells should be (re-)colorizeed.</paragraph>
-    <paragraph role="paragraph" id="par_id491768053636577" xml-lang="en-US"><emph>foreground</emph>: the foreground color as the output of the RGB() function. A negative value erases the foreground color</paragraph>
-    <paragraph role="paragraph" id="par_id851768053644934" xml-lang="en-US"><emph>background</emph>: the background color as the output of the RGB() function. A negative value erases the background color</paragraph>
+    <paragraph role="paragraph" id="par_id491768053636577"><emph>foreground</emph>: the foreground color as the output of the RGB() function. A negative value erases the foreground color</paragraph>
+    <paragraph role="paragraph" id="par_id851768053644934"><emph>background</emph>: the background color as the output of the RGB() function. A negative value erases the background color</paragraph>
     <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
         <paragraph role="bascode" id="bas_id801768053837818">' Paint the numeric cell(s) in red.</paragraph>
-        <paragraph role="bascode" id="bas_id117680538448860">doc.ColorizeRange("SheetX.A1:J30", background := RGB(255, 0, 0), filterformula := "=IsNumeric(A1), filterscope := "CELL")</paragraph>
+        <paragraph role="bascode"  localize="false" id="bas_id117680538448860">doc.ColorizeRange("SheetX.A1:J30", background := RGB(255, 0, 0), filterformula := "=IsNumeric(A1), filterscope := "CELL")</paragraph>
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
         <paragraph role="pycode" id="pyc_id231768053859976"># Paint the numeric cell(s) in red.</paragraph>
         <paragraph role="pycode" localize="false" id="pyc_id971768054043952">basic = CreateScriptService('basic')</paragraph>
-        <paragraph role="pycode" id="pyc_id671768053869964">doc.ColorizeRange('SheetX.A1:J30', background = basic.RGB(255, 0, 0), filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
+        <paragraph role="pycode" localize="false"  id="pyc_id671768053869964">doc.ColorizeRange('SheetX.A1:J30', background = basic.RGB(255, 0, 0), filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
     </pycode>
 </section>
 
 <section id="CompactLeft">
   <comment> CompactLeft ------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781592919922589">
+  <bookmark localize="false" branch="index" id="bm_id781592919922589">
     <bookmark_value>Calc service;CompactLeft</bookmark_value>
   </bookmark>
   <h2 id="hd_id111592919923294" localize="false">CompactLeft</h2>
@@ -994,26 +994,26 @@
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
     <paragraph role="bascode" id="bas_id941652271391005">' Delete all empty columns in the range G1:L10 from Sheet1</paragraph>
-    <paragraph role="bascode" id="bas_id691652271390762">newrange = oDoc.CompactLeft("Sheet1.G1:L10")</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id691652271390762">newrange = oDoc.CompactLeft("Sheet1.G1:L10")</paragraph>
     <paragraph role="bascode" id="bas_id921652271392627">' The example below is similar, but the entire column is deleted from the sheet</paragraph>
-    <paragraph role="bascode" id="bas_id941652271392873">newrange = oDoc.CompactLeft("Sheet1.G1:L10", WholeColumn := True)</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id941652271392873">newrange = oDoc.CompactLeft("Sheet1.G1:L10", WholeColumn := True)</paragraph>
     <paragraph role="bascode" id="bas_id751652271393226">' Deletes all columns where the first row is marked with an "X"</paragraph>
-    <paragraph role="bascode" id="bas_id761652271393514">newrange = oDoc.CompactLeft("Sheet1.G1:L10", FilterFormula := "=(G1=""X"")")</paragraph>
+    <paragraph role="bascode" localize="false"  id="bas_id761652271393514">newrange = oDoc.CompactLeft("Sheet1.G1:L10", FilterFormula := "=(G1=""X"")")</paragraph>
     <paragraph role="bascode" id="bas_id241652271725676">' Deletes all columns where the sum of values in the column is odd</paragraph>
-    <paragraph role="bascode" id="bas_id531652271726131">newrange = oDoc.CompactLeft("Sheet1.G1:L10", FilterFormula := "=(MOD(SUM(G1:G10);2)=1)")</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id531652271726131">newrange = oDoc.CompactLeft("Sheet1.G1:L10", FilterFormula := "=(MOD(SUM(G1:G10);2)=1)")</paragraph>
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
-    <paragraph role="pycode" id="pyc_id451621536612334">newrange = myDoc.CompactLeft("Sheet1.G1:L10")</paragraph>
-    <paragraph role="pycode" id="pyc_id201652272121176">newrange = myDoc.CompactLeft("Sheet1.G1:L10", wholecolumn = True)</paragraph>
-    <paragraph role="pycode" id="pyc_id781652272122794">newrange = myDoc.CompactLeft("Sheet1.G1:L10", filterformula = '=(G1="X")')</paragraph>
-    <paragraph role="pycode" id="pyc_id731652272123209">newrange = myDoc.CompactLeft("Sheet1.G1:L10", filterformula = '=(MOD(SUM(G1:G10);2)=1)')</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id451621536612334">newrange = myDoc.CompactLeft("Sheet1.G1:L10")</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id201652272121176">newrange = myDoc.CompactLeft("Sheet1.G1:L10", wholecolumn = True)</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id781652272122794">newrange = myDoc.CompactLeft("Sheet1.G1:L10", filterformula = '=(G1="X")')</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id731652272123209">newrange = myDoc.CompactLeft("Sheet1.G1:L10", filterformula = '=(MOD(SUM(G1:G10);2)=1)')</paragraph>
   </pycode>
 </section>
 
 <section id="CompactUp">
   <comment> CompactUp --------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id781592919928589">
+  <bookmark localize="false" branch="index" id="bm_id781592919928589">
     <bookmark_value>Calc service;CompactUp</bookmark_value>
   </bookmark>
   <h2 id="hd_id111592919923065" localize="false">CompactUp</h2>
@@ -1035,26 +1035,26 @@
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
     <paragraph role="bascode" id="bas_id941652271391554">' Delete all empty rows in the range G1:L10 from Sheet1</paragraph>
-    <paragraph role="bascode" id="bas_id691652271390789">newrange = oDoc.CompactUp("Sheet1.G1:L10")</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id691652271390789">newrange = oDoc.CompactUp("Sheet1.G1:L10")</paragraph>
     <paragraph role="bascode" id="bas_id921652271392567">' The example below is similar, but the entire row is deleted from the sheet</paragraph>
-    <paragraph role="bascode" id="bas_id941652271392553">newrange = oDoc.CompactUp("Sheet1.G1:L10", WholeRow := True)</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id941652271392553">newrange = oDoc.CompactUp("Sheet1.G1:L10", WholeRow := True)</paragraph>
     <paragraph role="bascode" id="bas_id751652271393117">' Deletes all rows where the first column is marked with an "X"</paragraph>
-    <paragraph role="bascode" id="bas_id761652271393034">newrange = oDoc.CompactUp("Sheet1.G1:L10", FilterFormula := "=(G1=""X"")")</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id761652271393034">newrange = oDoc.CompactUp("Sheet1.G1:L10", FilterFormula := "=(G1=""X"")")</paragraph>
     <paragraph role="bascode" id="bas_id241652271725065">' Deletes all rows where the sum of values in the row is odd</paragraph>
-    <paragraph role="bascode" id="bas_id531652271726010">newrange = oDoc.CompactUp("Sheet1.G1:L10", FilterFormula := "=(MOD(SUM(G1:L1);2)=1)")</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id531652271726010">newrange = oDoc.CompactUp("Sheet1.G1:L10", FilterFormula := "=(MOD(SUM(G1:L1);2)=1)")</paragraph>
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
-    <paragraph role="pycode" id="pyc_id451621536612227">newrange = myDoc.CompactUp("Sheet1.G1:L10")</paragraph>
-    <paragraph role="pycode" id="pyc_id201652272121288">newrange = myDoc.CompactUp("Sheet1.G1:L10", wholerow = True)</paragraph>
-    <paragraph role="pycode" id="pyc_id781652272122931">newrange = myDoc.CompactUp("Sheet1.G1:L10", filterformula = '=(G1="X")')</paragraph>
-    <paragraph role="pycode" id="pyc_id731652272123109">newrange = myDoc.CompactUp("Sheet1.G1:L10", filterformula = '=(MOD(SUM(G1:L1);2)=1)')</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id451621536612227">newrange = myDoc.CompactUp("Sheet1.G1:L10")</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id201652272121288">newrange = myDoc.CompactUp("Sheet1.G1:L10", wholerow = True)</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id781652272122931">newrange = myDoc.CompactUp("Sheet1.G1:L10", filterformula = '=(G1="X")')</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id731652272123109">newrange = myDoc.CompactUp("Sheet1.G1:L10", filterformula = '=(MOD(SUM(G1:L1);2)=1)')</paragraph>
   </pycode>
 </section>
 
 <section id="CopySheet">
   <comment> CopySheet -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id901591631693213">
+  <bookmark localize="false" branch="index" id="bm_id901591631693213">
       <bookmark_value>Calc service;CopySheet</bookmark_value>
   </bookmark>
   <h2 id="hd_id51591631693461" localize="false">CopySheet</h2>
@@ -1065,14 +1065,14 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id871591631693741"><emph>sheetname</emph>: The name of the sheet to be copied as a string or its reference as an object.</paragraph>
-  <paragraph role="paragraph" id="par_id351591632126180" xml-lang="en-US"><emph>newname</emph>: The name of the sheet to insert. The name must not be in use in the document.</paragraph>
-  <paragraph role="paragraph" id="par_id211591632192379" xml-lang="en-US"><emph>beforesheet</emph>: The name (string) or index (numeric, starting from 1) of the sheet before which to insert the copied sheet. This argument is optional and the default behavior is to add the copied sheet at the last position.</paragraph>
+  <paragraph role="paragraph" id="par_id351591632126180"><emph>newname</emph>: The name of the sheet to insert. The name must not be in use in the document.</paragraph>
+  <paragraph role="paragraph" id="par_id211591632192379"><emph>beforesheet</emph>: The name (string) or index (numeric, starting from 1) of the sheet before which to insert the copied sheet. This argument is optional and the default behavior is to add the copied sheet at the last position.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <paragraph role="paragraph" id="par_id961591632309410">The following example makes a copy of the sheet "SheetX" and places it as the last sheet in the current document. The name of the copied sheet is "SheetY".</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id731591631693493">Dim oDoc as Object</paragraph>
-    <paragraph role="bascode" id="bas_id231611706034607" xml-lang="en-US">'Gets the Document object of the active window</paragraph>
+    <paragraph role="bascode" id="bas_id231611706034607">'Gets the Document object of the active window</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id981611706030262">Set oDoc = CreateScriptService("Calc")</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id281611706033725">oDoc.CopySheet("SheetX", "SheetY")</paragraph>
   </bascode>
@@ -1091,12 +1091,12 @@
     <paragraph role="pycode" localize="false" id="pyc_id801621537405452">docB = ui.OpenDocument(r"C:\Documents\FileB.ods")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id361621537425882">docB.CopySheet(docA.Sheet("SheetX"), "SheetY")</paragraph>
   </pycode>
-  <tip id="par_id801595695285478" xml-lang="en-US">To copy sheets between <emph>open</emph> documents, use <literal>CopySheet</literal>. To copy sheets from documents that are <emph>closed</emph>, use <literal>CopySheetFromFile</literal>.</tip>
+  <tip id="par_id801595695285478">To copy sheets between <emph>open</emph> documents, use <literal>CopySheet</literal>. To copy sheets from documents that are <emph>closed</emph>, use <literal>CopySheetFromFile</literal>.</tip>
 </section>
 
 <section id="CopySheetFromFile">
   <comment> CopySheetFromFile -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id101591714614827">
+  <bookmark localize="false" branch="index" id="bm_id101591714614827">
       <bookmark_value>Calc service;CopySheetFromFile</bookmark_value>
   </bookmark>
   <h2 id="hd_id301591714614286" localize="false">CopySheetFromFile</h2>
@@ -1125,13 +1125,13 @@
 
 <section id="CopyToCell">
   <comment> CopyToCell -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id481592558768560">
+  <bookmark localize="false" branch="index" id="bm_id481592558768560">
       <bookmark_value>Calc service;CopyToCell</bookmark_value>
   </bookmark>
   <h2 id="hd_id261592558768660" localize="false">CopyToCell</h2>
   <paragraph role="paragraph" id="par_id91592558768804">Copies a specified source range (values, formulas and formats) to a destination range or cell. The method reproduces the behaviour of a Copy/Paste operation from a range to a single cell.</paragraph>
   <paragraph role="paragraph" id="par_id831611707431984">It returns a string representing the modified range of cells. The size of the modified area is fully determined by the size of the source area.</paragraph>
-  <paragraph role="paragraph" id="par_id681592558768463" xml-lang="en-US">The source range may belong to another <emph>open</emph> document.</paragraph>
+  <paragraph role="paragraph" id="par_id681592558768463">The source range may belong to another <emph>open</emph> document.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id431621537972303">
     <input>svc.CopyToCell(sourcerange: any, destinationcell: str): str</input>
@@ -1145,7 +1145,7 @@
   <bascode>
       <paragraph role="bascode" localize="false" id="bas_id531592559464178">oDoc.CopyToCell("SheetX.A1:F10", "SheetY.C5")</paragraph>
   </bascode>
-  <paragraph role="paragraph" id="par_id751592905035452" xml-lang="en-US">The example below illustrates how to copy a range from another open Calc document:</paragraph>
+  <paragraph role="paragraph" id="par_id751592905035452">The example below illustrates how to copy a range from another open Calc document:</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id971592558768687">Dim ui as Variant : ui = CreateScriptService("UI")</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id401592558768991">Dim oDocSource As Object, oDocDestination As Object</paragraph>
@@ -1163,12 +1163,12 @@
     <paragraph role="pycode" localize="false" id="pyc_id691621538280854">docDestination.CopyToCell(docSource.Range("Sheet1.C2:C4"), "SheetT.A5")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id361621538357798">docSource.CloseDocument()</paragraph>
   </pycode>
-  <tip id="par_id61592905442071" xml-lang="en-US">To simulate a Copy/Paste from a range to a single cell, use <literal>CopyToCell</literal>. To simulate a Copy/Paste from a range to a larger range (with the same cells being replicated several times), use <literal>CopyToRange</literal>.</tip>
+  <tip id="par_id61592905442071">To simulate a Copy/Paste from a range to a single cell, use <literal>CopyToCell</literal>. To simulate a Copy/Paste from a range to a larger range (with the same cells being replicated several times), use <literal>CopyToRange</literal>.</tip>
 </section>
 
 <section id="CopyToRange">
   <comment> CopyToRange -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171592903121677">
+  <bookmark localize="false" branch="index" id="bm_id171592903121677">
       <bookmark_value>Calc service;CopyToRange</bookmark_value>
   </bookmark>
   <h2 id="hd_id67159290312183" localize="false">CopyToRange</h2>
@@ -1192,7 +1192,7 @@
   <paragraph role="paragraph" id="par_id5515929031211000"><emph>destinationrange</emph>: The destination of the copied range of cells, as a string.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
-  <paragraph role="paragraph" id="par_id461592905128991" xml-lang="en-US">Copy within the same document:</paragraph>
+  <paragraph role="paragraph" id="par_id461592905128991">Copy within the same document:</paragraph>
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id81592903121951">oDoc.CopyToRange("SheetX.A1:F10", "SheetY.C5:J5")</paragraph>
     <paragraph role="bascode" id="bas_id601592904507182">' Returns a range string: "$SheetY.$C$5:$J$14"</paragraph>
@@ -1216,7 +1216,7 @@
 
 <section id="CreateChart">
   <comment> CreateChart ------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171592903123257">
+  <bookmark localize="false" branch="index" id="bm_id171592903123257">
       <bookmark_value>Calc service;CreateChart</bookmark_value>
   </bookmark>
   <h2 id="hd_id67159290312287" localize="false">CreateChart</h2>
@@ -1248,7 +1248,7 @@
 
 <section id="CreatePivotTable">
   <comment> CreatePivotTable ---------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id171592903120147">
+  <bookmark localize="false" branch="index" id="bm_id171592903120147">
       <bookmark_value>Calc service;CreatePivotTable</bookmark_value>
   </bookmark>
   <h2 id="hd_id67159290319647" localize="false">CreatePivotTable</h2>
@@ -1276,12 +1276,12 @@
     <paragraph role="bascode" localize="false" id="bas_id211652797038002">Dim vData As Variant, oDoc As Object, ui As Object, sTable As String, sPivot As String</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id401652797037306">Set ui = CreateScriptService("UI")</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id781652797037626">Set oDoc = ui.CreateDocument("Calc")</paragraph>
-    <paragraph role="bascode" id="bas_id201652797038370">vData = Array(Array("Item", "State", "Team", "2002", "2003", "2004"), _</paragraph>
-    <paragraph role="bascode" id="bas_id171652797038762">    Array("Books", "Michigan", "Jean", 14788, 30222, 23490), _</paragraph>
-    <paragraph role="bascode" id="bas_id331652797039146">    Array("Candy", "Michigan", "Jean", 26388, 15641, 32849), _</paragraph>
-    <paragraph role="bascode" id="bas_id911652797039570">    Array("Pens", "Michigan", "Jean", 16569, 32675, 25396), _</paragraph>
-    <paragraph role="bascode" id="bas_id471652797039963">    Array("Books", "Michigan", "Volker", 21961, 21242, 29009), _</paragraph>
-    <paragraph role="bascode" id="bas_id681652797040338">    Array("Candy", "Michigan", "Volker", 26142, 22407, 32841))</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id201652797038370">vData = Array(Array("Item", "State", "Team", "2002", "2003", "2004"), _</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id171652797038762">    Array("Books", "Michigan", "Jean", 14788, 30222, 23490), _</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id331652797039146">    Array("Candy", "Michigan", "Jean", 26388, 15641, 32849), _</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id911652797039570">    Array("Pens", "Michigan", "Jean", 16569, 32675, 25396), _</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id471652797039963">    Array("Books", "Michigan", "Volker", 21961, 21242, 29009), _</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id681652797040338">    Array("Candy", "Michigan", "Volker", 26142, 22407, 32841))</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id581652797040723">sTable = oDoc.SetArray("A1", vData)</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id321652797041090">sPivot = oDoc.CreatePivotTable("PT1", sTable, "H1", _</paragraph>
     <paragraph role="bascode" id="bas_id851652797041450">    Array("2002", "2003;count", "2004;average"), _ ' Three data fields</paragraph>
@@ -1292,24 +1292,24 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id761652797473541">ui = CreateScriptService("UI")</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id716527974738130">doc = ui.CreateDocument("Calc")</paragraph>
-    <paragraph role="pycode" id="pyc_id971652797474132">vData = [["Item", "State", "Team", "2002", "2003", "2004"],</paragraph>
-    <paragraph role="pycode" id="pyc_id921652797555153">         ["Books", "Michigan", "Jean", 14788, 30222, 23490],</paragraph>
-    <paragraph role="pycode" id="pyc_id891652797555537">         ["Candy", "Michigan", "Jean", 26388, 15641, 32849],</paragraph>
-    <paragraph role="pycode" id="pyc_id321652797555864">         ["Pens", "Michigan", "Jean", 16569, 32675, 25396)],</paragraph>
-    <paragraph role="pycode" id="pyc_id121652797556264">         ["Books", "Michigan", "Volker", 21961, 21242, 29009],</paragraph>
-    <paragraph role="pycode" id="pyc_id881652797556680">         ["Candy", "Michigan", "Volker", 26142, 22407, 32841]]</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id971652797474132">vData = [["Item", "State", "Team", "2002", "2003", "2004"],</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id921652797555153">         ["Books", "Michigan", "Jean", 14788, 30222, 23490],</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id891652797555537">         ["Candy", "Michigan", "Jean", 26388, 15641, 32849],</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id321652797555864">         ["Pens", "Michigan", "Jean", 16569, 32675, 25396)],</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id121652797556264">         ["Books", "Michigan", "Volker", 21961, 21242, 29009],</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id881652797556680">         ["Candy", "Michigan", "Volker", 26142, 22407, 32841]]</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id441652797991546">sTable = doc.SetArray("A1", vData)</paragraph>
     <paragraph role="pycode" localize="false" id="pyc_id791652797991834">sPivot = doc.CreatePivotTable("PT1", sTable, "H1",</paragraph>
-    <paragraph role="pycode" id="pyc_id941652797992017">                              ["2002", "2003;count", "2004;average"],</paragraph>
-    <paragraph role="pycode" id="pyc_id471652797992561">                              "Item",</paragraph>
-    <paragraph role="pycode" id="pyc_id561652797992185">                              ["State", "Team"], False)</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id941652797992017">                              ["2002", "2003;count", "2004;average"],</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id471652797992561">                              "Item",</paragraph>
+    <paragraph role="pycode"  localize="false" id="pyc_id561652797992185">                              ["State", "Team"], False)</paragraph>
   </pycode>
   <tip id="par_id231635441342284">To learn more about Pivot Tables in %PRODUCTNAME Calc, read the <link href="text/scalc/guide/datapilot.xhp">Pivot Table</link> help page.</tip>
 </section>
 
 <section id="DAvg">
   <comment> DAvg, DCount, DMax, DMin, DSum -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id791595777001863">
+  <bookmark localize="false" branch="index" id="bm_id791595777001863">
       <bookmark_value>Calc service;DAvg</bookmark_value>
       <bookmark_value>Calc service;DCount</bookmark_value>
       <bookmark_value>Calc service;DMax</bookmark_value>
@@ -1351,25 +1351,25 @@
 
 <section id="DecorateFont">
     <comment> DecorateFont -------------------------------------------------------------------------------------------------------------------------- </comment>
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id981768055302774">
+    <bookmark localize="false" branch="index" id="bm_id981768055302774">
         <bookmark_value>Calc service;DecorateFont</bookmark_value>
     </bookmark>
     <h2 id="hd_id941768055337246" localize="false">DecorateFont</h2>
     <paragraph role="paragraph" id="par_id471768055753462">Specify simple and easy properties of the font to be used in a range of cells.</paragraph>
     <paragraph role="paragraph" id="par_id991768055771625">The impacted cells may be determined with a filter formula and its scope.</paragraph>
-    <paragraph role="paragraph" id="par_id931768055801780" xml-lang="en-US">To apply more complex font decorations, apply the usual and numerous <literal>UNO</literal> properties available in the <literal>XCell</literal> or <literal>XCellRange</literal> interfaces.</paragraph>
+    <paragraph role="paragraph" id="par_id931768055801780">To apply more complex font decorations, apply the usual and numerous <literal>UNO</literal> properties available in the <literal>XCell</literal> or <literal>XCellRange</literal> interfaces.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id161768055981837">
         <input>svc.DecorateFont(targetrange: str, opt fontname: str, opt fontsize: int, opt decoration: str, opt filterformula: str, opt filterscope: str)</input>
     </paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
     <paragraph role="paragraph" id="par_id871768056133127"><emph>targetrange</emph>: The cell or the range as a string in which cell fonts should be re-decorated.</paragraph>
-    <paragraph role="paragraph" id="par_id671768056195921" xml-lang="en-US"><emph>fontname</emph>: The name of the font to be used. The name is not checked. Default = no change.</paragraph>
-    <paragraph role="paragraph" id="par_id971768056327357" xml-lang="en-US"><emph>fontsize</emph>: The size of the font in pixels. Default = no change.</paragraph>
-    <paragraph role="paragraph" id="par_id711768056157938" xml-lang="en-US"><emph>decoration</emph>: A string combining 1 or more of next upper-case characters (other characters are ignored). Default = no change:</paragraph>
+    <paragraph role="paragraph" id="par_id671768056195921"><emph>fontname</emph>: The name of the font to be used. The name is not checked. Default = no change.</paragraph>
+    <paragraph role="paragraph" id="par_id971768056327357"><emph>fontsize</emph>: The size of the font in pixels. Default = no change.</paragraph>
+    <paragraph role="paragraph" id="par_id711768056157938"><emph>decoration</emph>: A string combining 1 or more of next upper-case characters (other characters are ignored). Default = no change:</paragraph>
     <list type="unordered">
         <listitem>
-            <paragraph id="par_id281768056503337" role="listitem" xml-lang="en-US">B, U, I, S: Bold, Underline, Italic, Strikethrough.</paragraph>
+            <paragraph id="par_id281768056503337" role="listitem">B, U, I, S: Bold, Underline, Italic, Strikethrough.</paragraph>
         </listitem>
     </list>
     <embed href="text/sbasic/shared/03/sf_calc.xhp#filterformula_desc"/>
@@ -1377,18 +1377,18 @@
     <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
         <paragraph role="bascode" id="bas_id161768056709597">' Modify the font size and apply bold and underline properties to the numeric cells.</paragraph>
-        <paragraph role="bascode" id="bas_id601768057322683">doc.DecorateFont("SheetX.A1:J30", fontsize := 15, decoration := "Bold,Underline", filterformula := "=IsNumeric(A1)", filterscope := "CELL")</paragraph>
+        <paragraph role="bascode"  localize="false" id="bas_id601768057322683">doc.DecorateFont("SheetX.A1:J30", fontsize := 15, decoration := "Bold,Underline", filterformula := "=IsNumeric(A1)", filterscope := "CELL")</paragraph>
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
         <paragraph role="pycode" id="pyc_id661768057052508"># Modify the font size and apply bold and underline properties to the numeric cells.</paragraph>
-        <paragraph role="pycode" id="pyc_id721768057070406">doc.DecorateFont('SheetX.A1:J30', fontsize = 15, decoration = 'Bold,Underline', filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
+        <paragraph role="pycode"  localize="false" id="pyc_id721768057070406">doc.DecorateFont('SheetX.A1:J30', fontsize = 15, decoration = 'Bold,Underline', filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
     </pycode>
 </section>
 
 <section id="DefineName">
     <comment> DefineName -------------------------------------------------------------------------------------------------------------------------- </comment>
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id981768055302774">
+    <bookmark localize="false" branch="index" id="bm_id981768055302774">
         <bookmark_value>Calc service;DefineName</bookmark_value>
     </bookmark>
     <h2 id="hd_id941768056447246" localize="false">DefineName</h2>
@@ -1404,24 +1404,24 @@
     <list type="unordered">
         <listitem><paragraph id="par_id281769156503337" role="listitem">a range reference as a string, often a single cell</paragraph></listitem>
         <listitem><paragraph id="par_id281768067503337" role="listitem">a scalar value as a number or a string</paragraph></listitem>
-        <listitem><paragraph id="par_id281768056613337" role="listitem">a formula starting with the &quot;=&quot; sign</paragraph></listitem>
+        <listitem><paragraph id="par_id281768056613337" role="listitem">a formula starting with the "=" sign</paragraph></listitem>
     </list>
     <paragraph role="paragraph" id="par_id501769173466354">When <literal>Value</literal> is a range, the top-left cell is set as reference cell.</paragraph>
-    <paragraph role="paragraph" id="par_id971768167327357" xml-lang="en-US"><emph>sheetname</emph>: The defined name scope is that of the specified sheet. The &quot;~&quot; shortcut is accepted.</paragraph>
+    <paragraph role="paragraph" id="par_id971768167327357"><emph>sheetname</emph>: The defined name scope is that of the specified sheet. The "~" shortcut is accepted.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
     <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
-        <paragraph role="bascode" id="bas_id601768068422683">doc.DefineName(&quot;NewName&quot;, Sheet := &quot;Sheet3&quot;, Value := &quot;H2&quot;)</paragraph>
+      <paragraph role="bascode"  localize="false" id="bas_id601768068422683">doc.DefineName("NewName", Sheet := "Sheet3", Value := "H2")</paragraph>
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
-        <paragraph role="pycode" id="pyc_id721768068170406">doc.DefineName('NewName', sheet = 'Sheet3', value = 'H2')</paragraph>
+      <paragraph role="pycode"  localize="false" id="pyc_id721768068170406">doc.DefineName('NewName', sheet = 'Sheet3', value = 'H2')</paragraph>
     </pycode>
 </section>
 
 <section id="ExportRangeToFile">
   <comment> ExportRangeToFile --------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id271591632729478">
+  <bookmark localize="false" branch="index" id="bm_id271591632729478">
       <bookmark_value>Calc service;ExportRangeToFile</bookmark_value>
   </bookmark>
   <h2 id="hd_id331591632723258" localize="false">ExportRangeToFile</h2>
@@ -1441,9 +1441,9 @@
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
     <paragraph role="bascode" id="bas_id561655655121456">' Exports the entire sheet as a PDF file</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id691623063398621">oDoc.ExportRangeToFile("SheetX", "C:\Temp\image.pdf")</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id691623063398621">oDoc.ExportRangeToFile("SheetX", "C:\Temp\image.pdf")</paragraph>
     <paragraph role="bascode" id="bas_id991655655060661">' Exports the range as a PNG file and overwrites the destination file if it exists</paragraph>
-    <paragraph role="bascode" localize="false" id="bas_id191623063399539">oDoc.ExportRangeToFile("SheetX.A1:D10", "C:\Temp\image.png", "png", Overwrite := True)</paragraph>
+    <paragraph role="bascode"  localize="false" id="bas_id191623063399539">oDoc.ExportRangeToFile("SheetX.A1:D10", "C:\Temp\image.png", "png", Overwrite := True)</paragraph>
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
@@ -1454,7 +1454,7 @@
 
 <section id="FormatRange">
     <comment> FormatRange -------------------------------------------------------------------------------------------------------------------------- </comment>
-    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id271768059415854">
+    <bookmark localize="false" branch="index" id="bm_id271768059415854">
         <bookmark_value>Calc service;FormatRange</bookmark_value>
     </bookmark>
     <h2 id="hd_id671768059431729" localize="false">FormatRange</h2>
@@ -1473,18 +1473,18 @@
     <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
     <bascode>
         <paragraph role="bascode" id="bas_id3176806070882">' Format only the cells containing a numeric value.</paragraph>
-        <paragraph role="bascode" id="bas_id741768060809331">doc.FormatRange("SheetX.A1:J30", "0,00E+00", filterformula := "=IsNumeric(A1)", filterscope := "CELL")</paragraph>
+        <paragraph role="bascode"  localize="false" id="bas_id741768060809331">doc.FormatRange("SheetX.A1:J30", "0,00E+00", filterformula := "=IsNumeric(A1)", filterscope := "CELL")</paragraph>
     </bascode>
     <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
     <pycode>
         <paragraph role="pycode" id="pyc_id281768060928971"># Format only the cells containing a numeric value.</paragraph>
-        <paragraph role="pycode" id="pyc_id641768060943953">doc.FormatRange('SheetX.A1:J30', '0,00E+00', filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
+        <paragraph role="pycode"  localize="false" id="pyc_id641768060943953">doc.FormatRange('SheetX.A1:J30', '0,00E+00', filterformula = '=IsNumeric(A1)', filterscope = 'CELL')</paragraph>
     </pycode>
 </section>
 
 <section id="Forms">
   <comment> Forms ------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id271591632726788">
+  <bookmark localize="false" branch="index" id="bm_id271591632726788">
       <bookmark_value>Calc service;Forms</bookmark_value>
   </bookmark>
   <h2 id="hd_id331591632724120" localize="false">Forms</h2>
@@ -1526,7 +1526,7 @@
 
 <section id="GetColumnName">
   <comment> GetColumnName -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id271591632726624">
+  <bookmark localize="false" branch="index" id="bm_id271591632726624">
       <bookmark_value>Calc service;GetColumnName</bookmark_value>
   </bookmark>
   <h2 id="hd_id331591632726750" localize="false">GetColumnName</h2>
@@ -1553,7 +1553,7 @@
 
 <section id="GetFormula">
   <comment> GetFormula -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id141593880142749">
+  <bookmark localize="false" branch="index" id="bm_id141593880142749">
       <bookmark_value>Calc service;GetFormula</bookmark_value>
   </bookmark>
   <h2 id="hd_id88159388014220" localize="false">GetFormula</h2>
@@ -1579,7 +1579,7 @@
 
 <section id="GetValue">
   <comment> GetValue -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id571592231156848">
+  <bookmark localize="false" branch="index" id="bm_id571592231156848">
       <bookmark_value>Calc service;GetValue</bookmark_value>
   </bookmark>
   <h2 id="hd_id471592231156242" localize="false">GetValue</h2>
@@ -1604,45 +1604,45 @@
 
 <section id="ImportFromCSVFile">
   <comment> ImportFromCSVFile -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id381593685490638">
+  <bookmark localize="false" branch="index" id="bm_id381593685490638">
       <bookmark_value>Calc service;ImportFromCSVFile</bookmark_value>
   </bookmark>
   <h2 id="hd_id151593685490480" localize="false">ImportFromCSVFile</h2>
   <paragraph role="paragraph" id="par_id771593685490395">Imports the contents of a CSV-formatted text file and places it on a given destination cell.</paragraph>
   <paragraph role="paragraph" id="par_id751611756909199">The destination area is cleared of all contents and formats before inserting the contents of the CSV file. The size of the modified area is fully determined by the contents of the input file.</paragraph>
-  <paragraph role="paragraph" id="par_id911593685490873" xml-lang="en-US">The method returns a string representing the modified range of cells.</paragraph>
+  <paragraph role="paragraph" id="par_id911593685490873">The method returns a string representing the modified range of cells.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id661621540542882">
     <input>svc.ImportFromCSVFile(filename: str, destinationcell: str, [filteroptions: str]): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id851593685490824"><emph>filename</emph>: Identifies the file to open. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
-  <paragraph role="paragraph" id="par_id641593685490936" xml-lang="en-US"><emph>destinationcell</emph>: The destination cell to insert the imported data, as a string. If instead a range is given, only its top-left cell is considered.</paragraph>
-  <paragraph role="paragraph" id="par_id641593685863838" xml-lang="en-US"><emph>filteroptions</emph>: The arguments for the CSV input filter. The default filter makes following assumptions:</paragraph>
+  <paragraph role="paragraph" id="par_id641593685490936"><emph>destinationcell</emph>: The destination cell to insert the imported data, as a string. If instead a range is given, only its top-left cell is considered.</paragraph>
+  <paragraph role="paragraph" id="par_id641593685863838"><emph>filteroptions</emph>: The arguments for the CSV input filter. The default filter makes following assumptions:</paragraph>
   <list type="unordered">
         <listitem>
-            <paragraph id="par_id661593686250471"  role="listitem" xml-lang="en-US">The input file encoding is UTF8.</paragraph>
+            <paragraph id="par_id661593686250471" role="listitem">The input file encoding is UTF8.</paragraph>
         </listitem>
         <listitem>
-            <paragraph id="par_id161593686260876"  role="listitem" xml-lang="en-US">The field separator is a comma, a semi-colon or a Tab character.</paragraph>
+            <paragraph id="par_id161593686260876" role="listitem">The field separator is a comma, a semi-colon or a Tab character.</paragraph>
         </listitem>
         <listitem>
-            <paragraph id="par_id711593686274293"  role="listitem" xml-lang="en-US">The string delimiter is the double quote (").</paragraph>
+            <paragraph id="par_id711593686274293" role="listitem">The string delimiter is the double quote (").</paragraph>
         </listitem>
         <listitem>
-            <paragraph id="par_id171593686280838"  role="listitem" xml-lang="en-US">All lines are included.</paragraph>
+            <paragraph id="par_id171593686280838" role="listitem">All lines are included.</paragraph>
         </listitem>
         <listitem>
-            <paragraph id="par_id881593686287161"  role="listitem" xml-lang="en-US">Quoted strings are formatted as text.</paragraph>
+            <paragraph id="par_id881593686287161" role="listitem">Quoted strings are formatted as text.</paragraph>
         </listitem>
         <listitem>
-            <paragraph id="par_id161593686293473"  role="listitem" xml-lang="en-US">Special numbers are detected.</paragraph>
+            <paragraph id="par_id161593686293473" role="listitem">Special numbers are detected.</paragraph>
         </listitem>
         <listitem>
-            <paragraph id="par_id791593686300499"  role="listitem" xml-lang="en-US">All columns are presumed to be texts, except if recognized as valid numbers.</paragraph>
+            <paragraph id="par_id791593686300499" role="listitem">All columns are presumed to be texts, except if recognized as valid numbers.</paragraph>
         </listitem>
         <listitem>
-            <paragraph id="par_id381593686307406"  role="listitem" xml-lang="en-US">The language is English/US, which implies that the decimal separator is "." and the thousands separator is ",".</paragraph>
+            <paragraph id="par_id381593686307406" role="listitem">The language is English/US, which implies that the decimal separator is "." and the thousands separator is ",".</paragraph>
         </listitem>
   </list>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
@@ -1659,23 +1659,23 @@
 
 <section id="ImportFromDatabase">
   <comment> ImportFromDatabase -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id281599568986735">
+  <bookmark localize="false" branch="index" id="bm_id281599568986735">
       <bookmark_value>Calc service;ImportFromDatabase</bookmark_value>
   </bookmark>
   <h2 id="hd_id1001599568986535" localize="false">ImportFromDatabase</h2>
   <paragraph role="paragraph" id="par_id881599568986824">Imports the contents of a database table, query or resultset, i.e. the result of a SELECT SQL command, inserting it on a destination cell.</paragraph>
   <paragraph role="paragraph" id="par_id81611763957509">The destination area is cleared of all contents and formats before inserting the imported contents. The size of the modified area is fully determined by the contents in the table or query.</paragraph>
-  <paragraph role="paragraph" id="par_id51599568986387" xml-lang="en-US">The method returns <literal>True</literal> when the import was successful.</paragraph>
+  <paragraph role="paragraph" id="par_id51599568986387">The method returns <literal>True</literal> when the import was successful.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id451621542093265">
     <input>svc.ImportFromDatabase(filename: str = "", registrationname: str = "", destinationcell: str = "", sqlcommand: str = "", directsql: bool): bool</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id311599568986784"><emph>filename</emph>: Identifies the file to open. It must follow the <literal>SF_FileSystem.FileNaming</literal> notation.</paragraph>
-  <paragraph role="paragraph" id="par_id711596555746281" xml-lang="en-US"><emph>registrationname</emph>: The name to use to find the database in the databases register. This argument is ignored if a <literal>filename</literal> is provided.</paragraph>
-  <paragraph role="paragraph" id="par_id211599568986329" xml-lang="en-US"><emph>destinationcell</emph>: The destination of the imported data, as a string. If a range is given, only its top-left cell is considered.</paragraph>
+  <paragraph role="paragraph" id="par_id711596555746281"><emph>registrationname</emph>: The name to use to find the database in the databases register. This argument is ignored if a <literal>filename</literal> is provided.</paragraph>
+  <paragraph role="paragraph" id="par_id211599568986329"><emph>destinationcell</emph>: The destination of the imported data, as a string. If a range is given, only its top-left cell is considered.</paragraph>
   <paragraph role="paragraph" id="par_id451599489278429"><emph>sqlcommand</emph>: A table or query name (without surrounding quotes or square brackets) or a SELECT SQL statement in which table and field names may be surrounded by square brackets or quotes to improve its readability.</paragraph>
-  <paragraph role="paragraph" id="par_id271599489278141" xml-lang="en-US"><emph>directsql</emph>: When <literal>True</literal>, the SQL command is sent to the database engine without pre-analysis. Default is <literal>False</literal>. The argument is ignored for tables. For queries, the applied option is the one set when the query was defined.</paragraph>
+  <paragraph role="paragraph" id="par_id271599489278141"><emph>directsql</emph>: When <literal>True</literal>, the SQL command is sent to the database engine without pre-analysis. Default is <literal>False</literal>. The argument is ignored for tables. For queries, the applied option is the one set when the query was defined.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -1691,7 +1691,7 @@
 
 <section id="InsertSheet">
   <comment> InsertSheet -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id511591698472720">
+  <bookmark localize="false" branch="index" id="bm_id511591698472720">
       <bookmark_value>Calc service;InsertSheet</bookmark_value>
   </bookmark>
   <h2 id="hd_id661591698472897" localize="false">InsertSheet</h2>
@@ -1702,7 +1702,7 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id941591698472748"><emph>sheetname</emph>: The name of the new sheet.</paragraph>
-  <paragraph role="paragraph" id="par_id84159169847269" xml-lang="en-US"><emph>beforesheet</emph>: The name (string) or index (numeric, starting from 1) of the sheet before which to insert the new sheet. This argument is optional and the default behavior is to insert the sheet at the last position.</paragraph>
+  <paragraph role="paragraph" id="par_id84159169847269"><emph>beforesheet</emph>: The name (string) or index (numeric, starting from 1) of the sheet before which to insert the new sheet. This argument is optional and the default behavior is to insert the sheet at the last position.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id241611764359510">The following example inserts a new empty sheet named "SheetX" and places it before "SheetY":</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
@@ -1717,7 +1717,7 @@
 
 <section id="Intersect">
   <comment> Intersect -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id511591698472722">
+  <bookmark localize="false" branch="index" id="bm_id511591698472722">
       <bookmark_value>Calc service;Intersect</bookmark_value>
   </bookmark>
   <h2 id="hd_id661591698472898" localize="false">Intersect</h2>
@@ -1735,18 +1735,18 @@
   <bascode>
     <paragraph role="bascode" localize="false" id="bas_id551755867359014">Dim commonrange As String</paragraph>
     <paragraph role="bascode" localize="false" id="bas_id851221698472747">commonrange = oDoc.Intersect("A1:D8", "C3:F4")</paragraph>
-    <paragraph role="bascode" xml-lang="en-US" id="bas_id531755867365961">Print commonrange ' displays "$Sheet1.$C$3:$D$4"</paragraph>
+    <paragraph role="bascode" id="bas_id531755867365961">Print commonrange ' displays "$Sheet1.$C$3:$D$4"</paragraph>
   </bascode>
   <embed href="text/sbasic/shared/00000003.xhp#In_Python"/>
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id21621615530373">common_range = myDoc.Intersect("A1:D8", "C3:F4")</paragraph>
-    <paragraph role="pycode" xml-lang="en-US" id="pyc_id631755867515226">print(common_range)  # outputs '$Sheet1.$C$3:$D$4' to the Python shell</paragraph>
+    <paragraph role="pycode" id="pyc_id631755867515226">print(common_range)  # outputs '$Sheet1.$C$3:$D$4' to the Python shell</paragraph>
   </pycode>
 </section>
 
 <section id="MoveRange">
   <comment> MoveRange -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id381592569476239">
+  <bookmark localize="false" branch="index" id="bm_id381592569476239">
       <bookmark_value>Calc service;MoveRange</bookmark_value>
   </bookmark>
   <h2 id="hd_id721592569476510" localize="false">MoveRange</h2>
@@ -1757,7 +1757,7 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id571592569476332"><emph>source</emph>: The source range of cells, as a string.</paragraph>
-  <paragraph role="paragraph" id="par_id891592569476362" xml-lang="en-US"><emph>destination</emph>: The destination cell, as a string. If a range is given, its top-left cell is considered as the destination.</paragraph>
+  <paragraph role="paragraph" id="par_id891592569476362"><emph>destination</emph>: The destination cell, as a string. If a range is given, its top-left cell is considered as the destination.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -1771,7 +1771,7 @@
 
 <section id="MoveSheet">
   <comment> MoveSheet -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id561591698903617">
+  <bookmark localize="false" branch="index" id="bm_id561591698903617">
       <bookmark_value>Calc service;MoveSheet</bookmark_value>
   </bookmark>
   <h2 id="hd_id761591698903271" localize="false">MoveSheet</h2>
@@ -1782,7 +1782,7 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id351591698903911"><emph>sheetname</emph>: The name of the sheet to move. The sheet must exist or an exception is raised.</paragraph>
-  <paragraph role="paragraph" id="par_id9159169890334" xml-lang="en-US"><emph>beforesheet</emph>: The name (string) or index (numeric, starting from 1) of the sheet before which the original sheet will be placed. This argument is optional and the default behavior is to move the sheet to the last position.</paragraph>
+  <paragraph role="paragraph" id="par_id9159169890334"><emph>beforesheet</emph>: The name (string) or index (numeric, starting from 1) of the sheet before which the original sheet will be placed. This argument is optional and the default behavior is to move the sheet to the last position.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <paragraph role="paragraph" id="par_id951611766058734">The example below moves the existing sheet "SheetX" and places it before "SheetY":</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
@@ -1797,7 +1797,7 @@
 
 <section id="Offset">
   <comment> Offset ------------------------------------------------------------------------------------------------ </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id29159223350681">
+  <bookmark localize="false" branch="index" id="bm_id29159223350681">
       <bookmark_value>Calc service;Offset</bookmark_value>
   </bookmark>
   <h2 id="hd_id61592233506228" localize="false">Offset</h2>
@@ -1809,12 +1809,12 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id901592233506293"><emph>reference</emph>: The range, as a string, that the method will use as reference to perform the offset operation.</paragraph>
-  <paragraph role="paragraph" id="par_id781592234124856" xml-lang="en-US"><emph>rows</emph>: The number of rows by which the initial range is offset upwards (negative value) or downwards (positive value). Use 0 (default) to stay in the same row.</paragraph>
-  <paragraph role="paragraph" id="par_id971592234138769" xml-lang="en-US"><emph>columns</emph>: The number of columns by which the initial range is offset to the left (negative value) or to the right (positive value). Use 0 (default) to stay in the same column.</paragraph>
-  <paragraph role="paragraph" id="par_id321592234150061" xml-lang="en-US"><emph>height</emph>: The vertical height for an area that starts at the new range position. Omit this argument when no vertical resizing is needed.</paragraph>
-  <paragraph role="paragraph" id="par_id271592234165247" xml-lang="en-US"><emph>width</emph>: The horizontal width for an area that starts at the new range position. Omit this argument when no horizontal resizing is needed.</paragraph>
-  <paragraph role="paragraph" id="par_id871592234172652" xml-lang="en-US">Arguments <literal>rows</literal> and <literal>columns</literal> must not lead to zero or negative start row or column.</paragraph>
-  <paragraph role="paragraph" id="par_id211592234180073" xml-lang="en-US">Arguments <literal>height</literal> and <literal>width</literal> must not lead to zero or negative count of rows or columns.</paragraph>
+  <paragraph role="paragraph" id="par_id781592234124856"><emph>rows</emph>: The number of rows by which the initial range is offset upwards (negative value) or downwards (positive value). Use 0 (default) to stay in the same row.</paragraph>
+  <paragraph role="paragraph" id="par_id971592234138769"><emph>columns</emph>: The number of columns by which the initial range is offset to the left (negative value) or to the right (positive value). Use 0 (default) to stay in the same column.</paragraph>
+  <paragraph role="paragraph" id="par_id321592234150061"><emph>height</emph>: The vertical height for an area that starts at the new range position. Omit this argument when no vertical resizing is needed.</paragraph>
+  <paragraph role="paragraph" id="par_id271592234165247"><emph>width</emph>: The horizontal width for an area that starts at the new range position. Omit this argument when no horizontal resizing is needed.</paragraph>
+  <paragraph role="paragraph" id="par_id871592234172652">Arguments <literal>rows</literal> and <literal>columns</literal> must not lead to zero or negative start row or column.</paragraph>
+  <paragraph role="paragraph" id="par_id211592234180073">Arguments <literal>height</literal> and <literal>width</literal> must not lead to zero or negative count of rows or columns.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <bascode>
@@ -1832,7 +1832,7 @@
 
 <section id="OpenRangeSelector">
   <comment> OpenRangeSelector ------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id29159223350681">
+  <bookmark localize="false" branch="index" id="bm_id29159223350681">
       <bookmark_value>Calc service;OpenRangeSelector</bookmark_value>
   </bookmark>
   <h2 id="hd_id61592233506804" localize="false">OpenRangeSelector</h2>
@@ -1862,7 +1862,7 @@
 
 <section id="Printf">
   <comment> Printf ------------------------------------------------------------------------------------------------ </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id29159223356581">
+  <bookmark localize="false" branch="index" id="bm_id29159223356581">
       <bookmark_value>Calc service;Printf</bookmark_value>
   </bookmark>
   <h2 id="hd_id61592233503364" localize="false">Printf</h2>
@@ -1935,7 +1935,7 @@
 
 <section id="PrintOut">
   <comment> PrintOut ---------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id721985200121249">
+  <bookmark localize="false" branch="index" id="bm_id721985200121249">
     <bookmark_value>Calc service;PrintOut</bookmark_value>
   </bookmark>
   <h2 id="hd_id261589202101415" localize="false">PrintOut</h2>
@@ -1947,7 +1947,7 @@
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id368519200121646"><emph>sheetname</emph>: The sheet to print, default is the active sheet.</paragraph>
-  <paragraph role="paragraph" id="par_id211635436910093"><emph>pages</emph>: The pages to print as a string, like in the user interface. Example: &quot;1-4;10;15-18&quot;. Default is all pages.</paragraph>
+  <paragraph role="paragraph" id="par_id211635436910093"><emph>pages</emph>: The pages to print as a string, like in the user interface. Example: "1-4;10;15-18". Default is all pages.</paragraph>
   <paragraph role="paragraph" id="par_id141635436912146"><emph>copies</emph>: The number of copies. Default is 1.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
@@ -1965,7 +1965,7 @@
 
 <section id="RemoveDuplicates">
   <comment> RemoveDuplicates ------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id821596699086119">
+  <bookmark localize="false" branch="index" id="bm_id821596699086119">
       <bookmark_value>Calc service;RemoveDuplicates</bookmark_value>
   </bookmark>
   <h2 id="hd_id311591699085124" localize="false">RemoveDuplicates</h2>
@@ -2002,7 +2002,7 @@
 
 <section id="RemoveSheet">
   <comment> RemoveSheet -------------------------------------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id821591699085559">
+  <bookmark localize="false" branch="index" id="bm_id821591699085559">
       <bookmark_value>Calc service;RemoveSheet</bookmark_value>
   </bookmark>
   <h2 id="hd_id311591699085933" localize="false">RemoveSheet</h2>
@@ -2057,23 +2057,23 @@
   </bookmark>
   <h2 id="hd_id831592745582224" localize="false">SetArray</h2>
   <paragraph role="paragraph" id="par_id191592745582983">Stores the given value starting from a specified target cell. The updated area expands itself from the target cell or from the top-left corner of the given range to accommodate the size of the input <literal>value</literal> argument. Vectors are always expanded vertically.</paragraph>
-  <paragraph role="paragraph" id="par_id671592745582573" xml-lang="en-US">The method returns a string representing the modified area as a range of cells.</paragraph>
+  <paragraph role="paragraph" id="par_id671592745582573">The method returns a string representing the modified area as a range of cells.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id401621620954121">
     <input>svc.SetArray(targetcell: str, value: any): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id801592745582116"><emph>targetcell</emph>: The cell or a range as a string from where to start to store the given value.</paragraph>
-  <paragraph role="paragraph" id="par_id321592745582192" xml-lang="en-US"><emph>value</emph>: A scalar, a vector or an array (in Python, one or two-dimensional lists and tuples) with the new values to be stored from the target cell or from the top-left corner of the range if <literal>targetcell</literal> is a range. The new values must be strings, numeric values or dates. Other types will cause the corresponding cells to be emptied.</paragraph>
+  <paragraph role="paragraph" id="par_id321592745582192"><emph>value</emph>: A scalar, a vector or an array (in Python, one or two-dimensional lists and tuples) with the new values to be stored from the target cell or from the top-left corner of the range if <literal>targetcell</literal> is a range. The new values must be strings, numeric values or dates. Other types will cause the corresponding cells to be emptied.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
   <embed href="text/sbasic/shared/00000003.xhp#In_Basic"/>
   <paragraph role="paragraph" id="par_id331611776151376">The following example uses the builtin <link href="text/sbasic/shared/03104300.xhp">DimArray function</link> to create an array and then store it in cell "A1":</paragraph>
   <bascode>
-    <paragraph role="bascode" localize="false"  id="bas_id691611776204011">Dim arrData as Variant</paragraph>
-    <paragraph role="bascode" localize="false"  id="bas_id641611776236071">arrData = DimArray(2, 1)</paragraph>
-    <paragraph role="bascode" localize="false"  id="bas_id701611776237365">arrData(0, 0) = 1 : arrData(1, 0) = 2 : arrData(2, 0) = 3</paragraph>
-    <paragraph role="bascode" localize="false"  id="bas_id901611776237759">arrData(0, 1) = "One" : arrData(1, 1) = "Two" : arrData(2, 1) = "Three"</paragraph>
-    <paragraph role="bascode" localize="false"  id="bas_id711611776238030">oDoc.SetArray("Sheet1.A1", arrData)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id691611776204011">Dim arrData as Variant</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id641611776236071">arrData = DimArray(2, 1)</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id701611776237365">arrData(0, 0) = 1 : arrData(1, 0) = 2 : arrData(2, 0) = 3</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id901611776237759">arrData(0, 1) = "One" : arrData(1, 1) = "Two" : arrData(2, 1) = "Three"</paragraph>
+    <paragraph role="bascode" localize="false" id="bas_id711611776238030">oDoc.SetArray("Sheet1.A1", arrData)</paragraph>
   </bascode>
   <paragraph role="paragraph" id="par_id601611775600983">This example uses the <literal>RangeInit</literal> method of the <link href="text/sbasic/shared/03/sf_array.xhp#RangeInit">ScriptForge Array service</link> to create an array with values that are then stored from cell "A1" and downwards.</paragraph>
   <bascode>
@@ -2088,7 +2088,7 @@
   <pycode>
     <paragraph role="pycode" localize="false" id="pyc_id861621621596623">myDoc.SetArray("Sheet1.A1", tuple(i + 1 for i in range(1000)))</paragraph>
   </pycode>
-  <tip id="par_id291592905671530" xml-lang="en-US">To dump the full contents of an array in a sheet, use <emph>SetArray</emph>. To dump the contents of an array only within the boundaries of the targeted range of cells, use <emph>SetValue</emph>.</tip>
+  <tip id="par_id291592905671530">To dump the full contents of an array in a sheet, use <emph>SetArray</emph>. To dump the contents of an array only within the boundaries of the targeted range of cells, use <emph>SetValue</emph>.</tip>
 </section>
 
 <section id="SetCellStyle">
@@ -2128,7 +2128,7 @@
   </bookmark>
   <h2 id="hd_id191593880376344" localize="false">SetFormula</h2>
   <paragraph role="paragraph" id="par_id481593880376480">Inserts the given (array of) formula(s) in the specified range. The size of the modified area is equal to the size of the range.</paragraph>
-  <paragraph role="paragraph" id="par_id711593880376106" xml-lang="en-US">The method returns a string representing the modified area as a range of cells.</paragraph>
+  <paragraph role="paragraph" id="par_id711593880376106">The method returns a string representing the modified area as a range of cells.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id701621623027410">
     <input>svc.SetFormula(targetrange: str, formula: any): str</input>
@@ -2166,15 +2166,15 @@
   </bookmark>
   <h2 id="hd_id681592231799943" localize="false">SetValue</h2>
   <paragraph role="paragraph" id="par_id601592231799489">Stores the given value in the specified range. The size of the modified area is equal to the size of the target range.</paragraph>
-  <paragraph role="paragraph" id="par_id1001592233389953" xml-lang="en-US">The method returns a string representing the modified area as a range of cells.</paragraph>
+  <paragraph role="paragraph" id="par_id1001592233389953">The method returns a string representing the modified area as a range of cells.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id961621622582995">
     <input>svc.SetValue(targetrange: str, value: any): str</input>
   </paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
   <paragraph role="paragraph" id="par_id361592231799255"><emph>targetrange</emph>: The range where to store the given value, as a string.</paragraph>
-  <paragraph role="paragraph" id="par_id461592232081985" xml-lang="en-US"><emph>value</emph>: A scalar, a vector or an array with the new values for each cell of the range. The new values must be strings, numeric values or dates. Other types will cause the corresponding cells to be emptied.</paragraph>
-  <paragraph role="paragraph" id="par_id841592745785192" xml-lang="en-US">The full range is updated and the remainder of the sheet is left unchanged. If the size of <literal>value</literal> is smaller than the size of <literal>targetrange</literal>, then the remaining cells will be emptied.</paragraph>
+  <paragraph role="paragraph" id="par_id461592232081985"><emph>value</emph>: A scalar, a vector or an array with the new values for each cell of the range. The new values must be strings, numeric values or dates. Other types will cause the corresponding cells to be emptied.</paragraph>
+  <paragraph role="paragraph" id="par_id841592745785192">The full range is updated and the remainder of the sheet is left unchanged. If the size of <literal>value</literal> is smaller than the size of <literal>targetrange</literal>, then the remaining cells will be emptied.</paragraph>
   <paragraph role="paragraph" id="par_id191611776838396">If the size of <literal>value</literal> is larger than the size of <literal>targetrange</literal>, then <literal>value</literal> is only partially copied until it fills the size of <literal>targetrange</literal>.</paragraph>
   <paragraph role="paragraph" id="par_id71611776941663">Vectors are expanded vertically, except if <literal>targetrange</literal> has a height of exactly 1 row.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
@@ -2214,7 +2214,7 @@
   <h2 id="hd_id191593880376667" localize="false">ShiftDown</h2>
   <paragraph role="paragraph" id="par_id481593880373070">Moves a given range of cells downwards by inserting empty rows. The current selection is not affected.</paragraph>
   <paragraph role="paragraph" id="par_id801637929435655">Depending on the value of the <literal>wholerow</literal> argument the inserted rows can either span the width of the specified range or span all columns in the row.</paragraph>
-  <paragraph role="paragraph" id="par_id711593880370247" xml-lang="en-US">This method returns a string representing the new location of the initial range.</paragraph>
+  <paragraph role="paragraph" id="par_id711593880370247">This method returns a string representing the new location of the initial range.</paragraph>
   <note id="par_id811637929284110">If the shifted range exceeds the sheet edges, then nothing happens.</note>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id701621623022250">
@@ -2257,7 +2257,7 @@
   <h2 id="hd_id191593880373026" localize="false">ShiftLeft</h2>
   <paragraph role="paragraph" id="par_id481593880376255">Deletes the leftmost columns of a given range and moves to the left all cells to the right of the affected range. The current selection is not affected.</paragraph>
   <paragraph role="paragraph" id="par_id801637929460261">Depending on the value of the <literal>wholecolumn</literal> argument the deleted columns can either span the height of the specified range or span all rows in the column.</paragraph>
-  <paragraph role="paragraph" id="par_id711593880371259" xml-lang="en-US">This method returns a string representing the location of the remaining portion of the initial range. If all cells in the original range have been deleted, then an empty string is returned.</paragraph>
+  <paragraph role="paragraph" id="par_id711593880371259">This method returns a string representing the location of the remaining portion of the initial range. If all cells in the original range have been deleted, then an empty string is returned.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id701621623026330">
     <input>svc.ShiftLeft(range: str, wholecolumn: bool = False, opt columns: int): str</input>
@@ -2286,13 +2286,13 @@
 
 <section id="ShiftUp">
   <comment> ShiftUp ----------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231593880376104">
+  <bookmark localize="false" branch="index" id="bm_id231593880376104">
     <bookmark_value>Calc service;ShiftUp</bookmark_value>
   </bookmark>
   <h2 id="hd_id191593880370547" localize="false">ShiftUp</h2>
   <paragraph role="paragraph" id="par_id481593880373529">Deletes the topmost rows of a given range and moves upwards all cells below the affected range. The current selection is not affected.</paragraph>
   <paragraph role="paragraph" id="par_id801637929435361">Depending on the value of the <literal>wholerow</literal> argument the deleted rows can either span the width of the specified range or span all columns in the row.</paragraph>
-  <paragraph role="paragraph" id="par_id711593880370299" xml-lang="en-US">This method returns a string representing the location of the remaining portion of the initial range. If all cells in the original range have been deleted, then an empty string is returned.</paragraph>
+  <paragraph role="paragraph" id="par_id711593880370299">This method returns a string representing the location of the remaining portion of the initial range. If all cells in the original range have been deleted, then an empty string is returned.</paragraph>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id701621623026380">
     <input>svc.ShiftUp(range: str, wholerow: bool = False, opt rows: int): str</input>
@@ -2321,13 +2321,13 @@
 
 <section id="ShiftRight">
   <comment> ShiftRight --------------------------------------------------------------------------------------------- </comment>
-  <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id231593880376025">
+  <bookmark localize="false" branch="index" id="bm_id231593880376025">
     <bookmark_value>Calc service;ShiftRight</bookmark_value>
   </bookmark>
   <h2 id="hd_id191593880376547" localize="false">ShiftRight</h2>
   <paragraph role="paragraph" id="par_id481593880372568">Moves a given range of cells to the right by inserting empty columns. The current selection is not affected.</paragraph>
   <paragraph role="paragraph" id="par_id801637929335255">Depending on the value of the <literal>wholecolumn</literal> argument the inserted columns can either span the height of the specified range or span all rows in the column.</paragraph>
-  <paragraph role="paragraph" id="par_id711593880372560" xml-lang="en-US">This method returns a string representing the new location of the initial range.</paragraph>
+  <paragraph role="paragraph" id="par_id711593880372560">This method returns a string representing the new location of the initial range.</paragraph>
   <note id="par_id811637929283210">If the shifted range exceeds the sheet edges, then nothing happens.</note>
   <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
   <paragraph role="paragraph" localize="false" id="par_id701621623022269">
