@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+* This file is part of the LibreOffice project.
+*
+* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*
+-->
+<meta>
+  <topic id="officehelpermodule" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">officehelper module</title>
+    <filename>/text/sbasic/python/officehelper_module.xhp</filename>
+  </topic>
+</meta>
+<body>
+  <h1 id="hd_id31529004750471"><variable id="officehelper_module"><link href="text/sbasic/python/officehelper_module.xhp"><literal>officehelper</literal> module</link></variable></h1>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id491529070339774">
+    <bookmark_value>Python;officehelper module</bookmark_value>
+  </bookmark>
+  <section id="howtoget">
+    <embed href="text/sbasic/shared/00000003.xhp#basiclibhowtoget"/>
+  </section>
+    <paragraph role="paragraph" id="par_id801776866004718"><literal>officehelper</literal> module starts a %PRODUCTNAME process opening a named pipe of random name. <literal>officehelper</literal> binds <link href="text/sbasic/python/python_ide.xhp">IDE-based Python scripts</link> to a running %PRODUCTNAME instance for debugging purpose.</paragraph>
+  <h2 id="hd_id441776867310830">Methods</h2>
+   <table id="tab_id501611613601554">
+    <tablerow>
+      <tablecell colspan="3"><paragraph id="par_id891611613601554" role="tablehead">List of Methods in <literal>officehelper</literal> module</paragraph></tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id891611613601556" role="tablecontent" localize="false">
+          <link href="text/sbasic/python/officehelper_module.xhp#bootstrap">bootstrap</link><br/>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
+          <link href="text/sbasic/python/officehelper_module.xhp#SessionManager">SessionManager</link><br/>
+        </paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <section id="bootstrap">
+    <comment> bootstrap ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+      <bookmark_value>officehelper module;bootstrap</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698251" localize="false">bootstrap</h2>
+    <paragraph role="paragraph" id="par_id93158919969864">Opens a named pipe of random name, uses the local context to access the pipe. Returns the remote component context, from whereon you can get the <literal>ServiceManager</literal> by calling <literal>getServiceManager()</literal> on the returned object.</paragraph>
+    <tip id="par_id281785332143827"><literal>SessionManager</literal> is a preferred alternative to <literal>bootstrap</literal> method.</tip>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534014732">
+      <input>bootstrap(soffice: str, delays=(1,3,5,7), report: str): uno</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <section id="commonKwArgs">
+    <paragraph role="paragraph" id="par_id821591631203996"><emph>soffice</emph>: A specific binary copy of %PRODUCTNAME, such as a portable or a development version.</paragraph>
+    <paragraph role="paragraph" id="par_id821591631203116"><emph>delays</emph>: Specifies multiple connection attempts. Default is to sleep 1, 3, 5 and 7 seconds between retries.</paragraph>
+    </section>
+    <paragraph role="paragraph" id="par_id931591631203127"><emph>report</emph>: Optional method name used to report or log connection failures.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <pycode>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id981785333863599"># Start LO as a service, get its remote component context</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534175122">import officehelper</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id321621534175344">ctx = officehelper.bootstrap()</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id591643307035249"># your code goes here</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id311785333952767"></paragraph>
+      <paragraph role="pycode" localize="false" xml-lang="en-US" id="pyc_id091785333863599"># request context multiples times and report processing in console</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id431621534175122">import officehelper as oh</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id431621534175344">ctx = oh.bootstrap(delays=(5,10,15,20),report=print)</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id601643307035249"># your code goes here</paragraph>
+      <paragraph role="pycode" id="pyc_id421785333952767"></paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id101785333863599"># Use a specific binary version</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id541621534175122">from officehelper import bootstrap</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id541621534175344">ctx = bootstrap(soffice=r"USB:\\PortableApps\\libO-7.6\\App\libreoffice\\program\\soffice.exe")</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id711643307035249"># your code goes here</paragraph>
+    </pycode>
+    <paragraph role="paragraph" id="par_id11785498043250">Such ramdomized named pipes require to be released from memory as shown:</paragraph>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id090785249949742"># named pipe memory cleanup</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id112885249949964">smgr = ctx.getServiceManager()</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id223785249949075">desktop = smgr.createInstanceWithContext("com.sun.star.frame.Desktop", ctx)</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id334785249949186">desktop.terminate()</paragraph>
+    </pycode>
+  </section>
+
+  <section id="SessionManager">
+    <comment> SessionManager ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id03258919969994">
+      <bookmark_value>officehelper module;SessionManager</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id312589199698251" localize="false">SessionManager class</h2>
+    <paragraph role="paragraph" id="par_id04258919969864">Opens a named pipe of random name, uses the local context to access the pipe. Returns the remote component context, from whereon you can get the <literal>ServiceManager</literal> by calling <literal>getServiceManager()</literal> on the returned object. In addition <literal>SessionManager</literal> releases memory from the randomly named %PRODUCTNAME process and reports connection attempts to the console.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id932621534014732">
+      <input>SessionManager(soffice: str, delays=(1,3,5,7)): uno</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <embed href="text/sbasic/python/officehelper_module.xhp#commonKwArgs"/>
+    <pycode>
+      <paragraph role="pycode" localize="false" id="pyc_id628764872507555">def my_script():</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id602643307035249">    # user code goes here</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id51785249947845"></paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id161785249948421">g_exportedScripts = (my_script,)  # LibreOffice entry points</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id421785249948852"></paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id231785249949125">if __name__ == "__main__":  # entry point for IDEs</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id501785249949365">    from officehelper import SessionManager</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id521785249949604">    with SessionManager() as ctx:  # remote Python context</paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id101785249949853">        my_script()</paragraph>
+    </pycode>
+  </section>
+  <tip id="par_id1001623412767893">Use <link href="/text/sbasic/python/scriptforge_module.xhp"><literal>scriptforge.ScriptForge()</literal></link> method to bind IDE-based Python scripts to a %PRODUCTNAME permanent <link href="text/shared/guide/start_parameters.xhp">service started with the command line</link>.</tip>
+</body>
+</helpdocument>
