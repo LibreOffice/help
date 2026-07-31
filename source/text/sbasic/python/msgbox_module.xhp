@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+<!--
+* This file is part of the LibreOffice project.
+*
+* This Source Code Form is subject to the terms of the Mozilla Public
+* License, v. 2.0. If a copy of the MPL was not distributed with this
+* file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*
+-->
+<meta>
+  <topic id="msgboxmodule" indexer="include" status="PUBLISH">
+    <title id="tit" xml-lang="en-US">msgbox module</title>
+    <filename>/text/sbasic/python/msgbox_module.xhp</filename>
+  </topic>
+</meta>
+<body>
+  <h1 id="hd_id31529004750471"><variable id="msgbox_module"><link href="text/sbasic/python/msgbox_module.xhp"><literal>msgbox</literal> module</link></variable></h1>
+  <bookmark xml-lang="en-US" branch="index" id="bm_id491529070339774">
+    <bookmark_value>Python;msgbox module</bookmark_value>
+  </bookmark>
+  <section id="howtoget">
+    <embed href="text/sbasic/shared/00000003.xhp#pythonlibhowtoget"/>
+  </section>
+  <h2 id="hd_id431785586553382">Description</h2>
+    <paragraph role="paragraph" id="par_id801776866004718"><literal>MsgBox</literal> class methods in <literal>msgbox</literal> Python module simplify the creation of message boxes using Abstract Windowing Toolkit API facilities. <literal>MsgBox</literal> constructor creates an empty dialog to be completed with buttons and texts.</paragraph>
+    <warning id="par_id831785586913811">This module is not part of supported UNO API. Output to screen with <literal>msgbox</literal> module is to be limited to development or test situations.</warning>
+    <tip id="par_id631785587287712"><link href="https://wiki.documentfoundation.org/Macros/General/IO_to_Screen#">Performing input/output to screen</link> with Python can the achieved using %PRODUCTNAME UNO API, resorting to <link href="text/sbasic/shared/03/sf_basic.xhp">ScriptForge.Basic</link> service routines or using Python to Basic inter-language calls as described on wiki.</tip>
+  <h2 id="hd_id441776867310830">Methods</h2>
+   <table id="tab_id501611613601554">
+    <tablerow>
+      <tablecell colspan="3"><paragraph id="par_id891611613601554" role="tablehead">List of Methods in <literal>MsgBox</literal> class</paragraph></tablecell>
+    </tablerow>
+    <tablerow>
+      <tablecell>
+        <paragraph id="par_id902611613601667" role="tablecontent" localize="false">
+          <link href="text/sbasic/python/msgbox_module.xhp#bootstrap">addButton</link><br/>
+        </paragraph>
+        <paragraph id="par_id891611613601556" role="tablecontent" localize="false">
+          <link href="text/sbasic/python/msgbox_module.xhp#bootstrap">renderFromBoxSize</link><br/>
+        </paragraph>
+      </tablecell>
+      <tablecell>
+        <paragraph id="par_id652611613601665" role="tablecontent" localize="false">
+          <link href="text/sbasic/python/msgbox_module.xhp#show">renderFromButtonSize</link><br/>
+        </paragraph>
+        <paragraph id="par_id541611613601554" role="tablecontent" localize="false">
+          <link href="text/sbasic/python/msgbox_module.xhp#show">show</link><br/>
+        </paragraph>
+      </tablecell>
+    </tablerow>
+  </table>
+
+  <section id="addButton">
+    <comment> addButton ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+      <bookmark_value>msgbox module;addButton</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id312589199698312" localize="false">addButton</h2>
+    <paragraph role="paragraph" id="par_id94268919969864">Add a button to a MsgBox() object.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id932621534014732">
+      <input>addButton(caption: str)</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id932591631203996"><emph>caption</emph>: Button caption.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id02885504062061">See below detailed example.</paragraph>
+  </section>
+
+  <section id="renderFromBoxSize">
+    <comment> renderFromBoxSize ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id03258919969994">
+      <bookmark_value>msgbox module;renderFromBoxSize</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id312589199698251" localize="false">renderFromBoxSize</h2>
+    <paragraph role="paragraph" id="par_id15358919969864">Defines <literal>MsgBox</literal> dialog dimensions as well as size of buttons according to a specified size.<br/><emph>Width</emph>: ( 2 * size ) / ( 3 * numberOfbuttons + 1 )<br/><emph>Height</emph> is set according the number of <literal>Newline</literal> separators in dialog text.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id043621534014732">
+      <input>renderFromBoxSize(size=150)</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id043591631203007"><emph>size</emph>: Dialog size.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id13985504062061">See below detailed example.</paragraph>
+  </section>
+
+  <section id="renderFromButtonSize">
+    <comment> renderFromButtonSize ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id03258919969994">
+      <bookmark_value>msgbox module;renderFromButtonSize</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id423589199698251" localize="false">renderFromButtonSize</h2>
+    <paragraph role="paragraph" id="par_id04258919969975">Accommodates <literal>MsgBox</literal> dialog dimensions according to a specified size for buttons.<br/><emph>Width</emph>: ( numberOfButtons * 1.5  + 0.5) * size<br/><emph>Height</emph> is set according the number of <literal>Newline</literal> separators in dialog text.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id932621645014732">
+      <input>renderFromButtonSize(size=50)</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631203885"><emph>size</emph>: Size for buttons.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id24085504062061">See below detailed example.</paragraph>
+  </section>
+
+  <section id="show">
+    <comment> show ----------------------------------------------------------------------------------------- </comment>
+    <bookmark xml-lang="en-US" localize="false" branch="index" id="bm_id92158919969883">
+      <bookmark_value>msgbox module;show</bookmark_value>
+    </bookmark>
+    <h2 id="hd_id201589199698251" localize="false">show</h2>
+    <paragraph role="paragraph" id="par_id93158919969864">Displays <literal>MsgBox</literal> variations, such as information box, warning box and so on.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+    <paragraph role="paragraph" localize="false" id="par_id821621534014732">
+      <input>show(message: str, decoration, title: str): str</input>
+    </paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functparameters"/>
+    <paragraph role="paragraph" id="par_id821591631203996"><emph>message</emph>: Dialog prompted text that may contain <literal>Newline</literal> separators.</paragraph>
+    <paragraph role="paragraph" id="par_id932591631203007"><emph>decoration</emph>: n/a.</paragraph>
+    <paragraph role="paragraph" id="par_id043591631203118"><emph>title</emph>: Dialog caption.</paragraph>
+    <embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+    <paragraph role="paragraph" id="par_id91785504062061">See below detailed example.</paragraph>
+  </section>
+
+  <h2 id="hd_id341785506324074">Detailed example</h2>
+<pycode>
+<paragraph role="pycode" localize="false" id="pyc_id321621534175122">import uno</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id981785333863599">from msgbox import MsgBox
+</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id321621534175344">if uno: _CTX = uno.getComponentContext()
+</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id621785510491686">def my_script():</paragraph>
+<paragraph role="pycode" xml-lang="en-US" id="pyc_id591643307035249">    response = msgBox('Do you want to continue?',('Yes', 'No', 'Cancel'),'A message from Python')</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id61785510741708">    infoBox(button=response)
+</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id431621534175122">def msgBox(prompt='', buttons=('Ok',), title='') -> str:</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id431621534175344">    dlg = MsgBox(_CTX)  # uno.getComponentContext()</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id601643307035249">    for btn in buttons:</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id421785333952767">        dlg.addButton(btn)</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id101785333863599">    dlg.renderFromButtonSize()</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id541621534175344">    return dlg.show(prompt,0,title)</paragraph>
+  <paragraph role="pycode" localize="false" id="pyc_id711643307035249"></paragraph>
+<paragraph role="pycode" xml-lang="en-US" id="pyc_id921785511594444">def infoBox(prompt='adapted from msgbox.MsgBox', button='Howdy', title='msgbox module'):</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id471785511594926">    dlg = MsgBox(_CTX)  # uno.getComponentContext()</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id231785511595284">    dlg.addButton(button)</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id301785511595661">    dlg.renderFromBoxSize(345)</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id381785511596021">    dlg.show(prompt,0,title)</paragraph>
+  <paragraph role="pycode" localize="false" id="pyc_id271785511596398"></paragraph>
+<paragraph role="pycode" xml-lang="en-US" id="pyc_id961785511596758">g_exportedScripts = (my_script,)  # LibreOffice entry points</paragraph>
+  <paragraph role="pycode" localize="false" id="pyc_id21785511597125"></paragraph>
+<paragraph role="pycode" xml-lang="en-US" id="pyc_id11785511597477">if __name__ == "__main__":  # entry point for IDEs</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id090785249949742">    from officehelper import SessionManager</paragraph>
+<paragraph role="pycode" xml-lang="en-US" id="pyc_id112885249949964">    with SessionManager() as ctx:  # Python remote context</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id223785249949075">      _CTX = ctx</paragraph>
+<paragraph role="pycode" localize="false" id="pyc_id334785249949186">      my_script()</paragraph>
+</pycode>
+
+  <tip id="par_id1001623412767893"><link href="text/sbasic/shared/03/sf_basic.xhp"><literal>ScriptForge.Basic</literal></link> service provides MsgBox and InputBox alternatives whose signatures closely match that of Basic functions.</tip>
+</body>
+</helpdocument>

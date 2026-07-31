@@ -449,6 +449,8 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/python/python_screen \
     helpcontent2/source/text/sbasic/python/python_session \
     helpcontent2/source/text/sbasic/python/python_shell \
+    helpcontent2/source/text/sbasic/python/msgbox_module \
+    helpcontent2/source/text/sbasic/python/officehelper_module \
     helpcontent2/source/text/sbasic/python/scriptforge_module \
 ))
 
