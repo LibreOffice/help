@@ -196,6 +196,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/ful_func \
     helpcontent2/source/text/scalc/01/func_aggregate \
     helpcontent2/source/text/scalc/01/func_arabic \
+    helpcontent2/source/text/scalc/01/func_array2text \
     helpcontent2/source/text/scalc/01/func_asc \
     helpcontent2/source/text/scalc/01/func_averageif \
     helpcontent2/source/text/scalc/01/func_averageifs \

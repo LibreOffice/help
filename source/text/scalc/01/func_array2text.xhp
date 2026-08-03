@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+    <meta>
+        <topic id="text/scalc/01/func_array2text.xhp" indexer="include" status="PUBLISH">
+            <title id="tit">ARRAYTOTEXT function</title>
+        <filename>/text/scalc/01/func_array2text.xhp</filename>
+    </topic>
+</meta>
+<body>
+<bookmark id="bm_id201785788540639" branch="hid/SC_HID_FUNC_ARRAYTOTEXT_MS" localize="false"/>
+<bookmark branch="index" id="bm_id491785788814113">
+    <bookmark_value>ARRAYTOTEXT function</bookmark_value>
+</bookmark>
+<section id="array2text">
+    <h1 id="hd_id321785788540640"><variable id="h1"><link href="text/scalc/01/func_array2text.xhp">ARRAYTOTEXT</link></variable></h1>
+    <description id="par_id491785788540640">Returns a cell range or array as one text string, taking the range and an optional format number.</description>
+</section>
+<embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
+<paragraph role="paragraph" id="par_id471785789032157"><emph>Array</emph>: The range or array to return as text.</paragraph>
+<paragraph role="paragraph" id="par_id181785789027523"><emph>Format</emph>: The format of the returned text, as follows:</paragraph>
+<list type="unordered">
+    <listitem>
+        <paragraph id="par_id241785789326070"  role="listitem">0 or omitted - concise format, returns the values in row order separated by commas (default).</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id641785789333764"  role="listitem">1 - strict format, returns an array constant in braces with text in quotes, comma as column separators and semicolon as row separators.</paragraph>
+    </listitem>
+</list>
+<paragraph role="paragraph" id="par_id141785790196691">A number retains its input text while ignoring cell formatting. A boolean displays as TRUE or FALSE in the current locale. An empty cell contributes nothing. In a range, an error is listed as its error text, whereas a reference to a single error cell returns that error. Date values return the internal date number.</paragraph>
+
+<embed href="text/scalc/01/ful_func.xhp#func_head_example"/>
+<paragraph role="paragraph" id="par_id541785791897869">The following table is used as example:</paragraph>
+<table id="tab_id521785790249495">
+    <tablerow>
+        <tablecell>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id831785790249495" localize="false" role="tablehead">A</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id241785790249495" localize="false" role="tablehead">B</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id521785790249495" localize="false" role="tablehead">1</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id861785790249496" role="tablecontent">TRUE</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id251785790249495" role="tablecontent">Rio de Janeiro</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id581785790401879" localize="false" role="tablehead">2</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id91785790401879" role="tablecontent">123.45600</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id351785790401879" localize="false" role="tablecontent">$1,234.68</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id391785790569406" localize="false" role="tablehead">3</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id731785790569406" role="tablecontent">Hello World!</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph role="tablecontent" id="par_id441785792515386">#DIV/0!</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id231785792543788" localize="false" role="tablehead">4</paragraph>
+        </tablecell>
+        <tablecell>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id941785792543788" role="tablecontent">Monday, August 3, 2026</paragraph>
+        </tablecell>
+    </tablerow>
+</table>
+<paragraph role="paragraph" id="par_id551785794004109"><input>=ARRAYTOTEXT(A1:B4;0)</input> returns the string <literal>TRUE, Rio de Janeiro, 123.456, 1234.678, Hello World!, #DIV/0!, , 46237</literal>.</paragraph>
+
+<paragraph role="paragraph" id="par_id121785794010544"><input>=ARRAYTOTEXT(A1:B4;1)</input> returns the string array <literal>{TRUE,"Rio de Janeiro";123.456,1234.678;"Hello World!",#DIV/0!;,46237}</literal>.</paragraph>
+
+<embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
+<embed href="text/scalc/00/avail_release.xhp#27.2"/>
+<embed href="text/scalc/01/common_func.xhp#notODFF"/>
+<paragraph role="paragraph" id="par_id341640870986703" localize="false"><literal>COM.MICROSOFT.ARRAYTOTEXT</literal></paragraph>
+<section id="relatedtopics">
+    <tip id="par_id701677016751508"><link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/ARRAYTOTEXT">ARRAYTOTEXT wiki page</link>.</tip>
+</section>
+</body>
+<!--Format 0 (or omitted) joins the values in row order with ", ".
+Format 1 gives an array constant: braces around the array, ","
+between columns, ";" between rows, and text quoted with any
+inner double quote doubled. Any other format returns #VALUE!.-->
+</helpdocument>
+
+
+
+
+
+
+
