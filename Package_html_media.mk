@@ -91,10 +91,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sc_PivotChartButtons.png \
     helpimg/sc_data_form01.png \
     helpimg/sc_cell_with_comment_displayed.png \
-    helpimg/sc_func_imcos.svg \
-    helpimg/sc_func_imcosh.svg \
-    helpimg/sc_func_imsin.svg \
-    helpimg/sc_func_imsinh.svg \
     helpimg/scalc/country_codes.png \
     helpimg/scalc/comment_indicator.png \
     helpimg/scalc/formula_indicator.png \
