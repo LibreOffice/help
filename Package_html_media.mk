@@ -389,6 +389,10 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/impress_remote01.png \
     helpimg/impress_remote02.png \
     helpimg/legacy_rect.png \
+    helpimg/moon-line.svg \
+    helpimg/sun-line.svg \
+    helpimg/search-line.svg \
+    helpimg/service-line.svg \
     navigation/favicon.ico \
     navigation/libo-base.svg \
     navigation/libo-basic.svg \
@@ -398,6 +402,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     navigation/libo-impress.svg \
     navigation/libo-math.svg \
     navigation/libo-symbol-black.svg \
+    navigation/libo-symbol-black-alt.svg \
     navigation/libo-symbol-white.svg \
     navigation/libo-writer.svg \
     screenshots/modules/sdraw/ui/copydlg/DuplicateDialog.png \

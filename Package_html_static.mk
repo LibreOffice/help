@@ -20,11 +20,12 @@ $(eval $(call gb_Package_add_files,helpcontent2_html_static,$(LIBO_SHARE_HELP_FO
 	a11y-toggle.js \
 	flexsearch.compact.debug.js \
 	help.js \
+	help2.js \
 	normalize.css \
 	paginathing.js \
 	polyfills.js \
 	prism.js \
-        prism.css \
+	prism.css \
 ))
 
 # vim: set noet sw=4 ts=4:
