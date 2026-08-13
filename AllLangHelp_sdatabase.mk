@@ -90,6 +90,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sdatabase,\
     helpcontent2/source/text/sdatabase/querywizard06 \
     helpcontent2/source/text/sdatabase/querywizard07 \
     helpcontent2/source/text/sdatabase/querywizard08 \
+    helpcontent2/source/text/sdatabase/savedialog \
     helpcontent2/source/text/sdatabase/tablewizard00 \
     helpcontent2/source/text/sdatabase/tablewizard01 \
     helpcontent2/source/text/sdatabase/tablewizard02 \
