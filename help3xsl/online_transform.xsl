@@ -243,7 +243,8 @@
                     </div>
                     <div id="DonationFrame">
                         <a href="https://www.libreoffice.org/donate/?pk_campaign=help" target ="_blank">
-                            <span class="service" aria-hidden="true"></span>
+                            <span class="service-light" aria-hidden="true"></span>
+                            <span class="service-dark" aria-hidden="true"></span>
                             <p dir="auto"><xsl:value-of select="$ui_donate"/></p>
                         </a>
                     </div>
@@ -272,7 +273,8 @@
                                 <form name="P" method="get" action="/{$productversion}/{$lang}/search" target="_top">
                                     <input id="omega-autofocus" type="search" name="P" placeholder="{$ui_pholderfullsearch}" dir="auto"/>
                                     <button type="submit" class="xapian-omega-search-button">
-                                        <span class="search" aria-hidden="true"></span>
+                                        <span class="search-light" aria-hidden="true"></span>
+                                        <span class="search-dark" aria-hidden="true"></span>
                                     </button>
                                 </form>
                             </div>
