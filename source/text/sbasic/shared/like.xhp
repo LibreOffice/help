@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+<meta>
+    <topic id="text/sbasic/shared/like.xhp" indexer="include" status="PUBLISH">
+        <title id="tit">Like operator</title>
+        <filename>/text/sbasic/shared/like.xhp</filename>
+    </topic>
+</meta>
+<body>
+<bookmark branch="index" id="bm_id611787249534765">
+<bookmark_value>Like operator</bookmark_value>
+</bookmark>
+<section id="like">
+    <h1 id="hd_id171787249470257"><variable id="h1"><link href="text/sbasic/shared/like.xhp">Like operator</link></variable></h1>
+    <description id="par_id171787249470257">Use the Like operator to compare a string with string pattern.</description>
+</section>
+<embed href="text/sbasic/shared/00000003.xhp#vbasupport"/>
+<embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
+<bascode>
+<paragraph role="bascode" id="par_id561787250571572" localize="false">Result = String1 Like String_pattern</paragraph>
+</bascode>
+<paragraph id="par_id3154365" role="paragraph"> <emph>Result:</emph> any logical value that records the comparison of the two strings.</paragraph>
+<paragraph role="paragraph" id="par_id341787250641885"><emph>String1</emph>: (required) the string you want to compare with <emph>String_pattern</emph>.</paragraph>
+<paragraph role="paragraph" id="par_id241787251568989"><emph>String_pattern</emph>: (required) any string expression conforming to the pattern-matching conventions.</paragraph>
+<embed href="text/sbasic/shared/00000003.xhp#functvalue"/>
+<paragraph role="paragraph" id="par_id271787250683461">Boolean</paragraph>
+
+<h3 id="hd_id821787254512893">Pattern matching conventions</h3>
+
+<paragraph role="paragraph" id="par_id111787254520846">The <emph>Like</emph> operator includes built-in pattern matching, making it a powerful tool for string comparisons. Its pattern-matching features allow the use of wildcard characters, character lists, or character ranges—individually or in combination—to match strings. The table below lists the characters allowed in patterns and what they match:</paragraph>
+
+<note id="par_id481787255004957">The built-in pattern matching is <emph>not</emph> the same as the <link href="text/shared/01/02100001.xhp">regular expressions</link> used in other %PRODUCTNAME modules.</note>
+<table id="like_characters">
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id361787254185974" role="tablehead">Characters in pattern</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id341787254195610" role="tablehead">Matches in string</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id251787254240343"  localize="false" role="tablecontent">?</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id541787254251830" role="tablecontent">Any single character.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id61787254259919"  localize="false" role="tablecontent">*</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id561787254267672" role="tablecontent">Zero or more characters.</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id321787254276122"  localize="false" role="tablecontent">#</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id631787254283230" role="tablecontent">Any single digit (0-9).</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id911787254292299"  localize="false" role="tablecontent">[ character_list ]</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id211787254297389" role="tablecontent">Any single character in character_list. For example, any character in [zTrwqJkl] or in [A-P]</paragraph>
+        </tablecell>
+    </tablerow>
+    <tablerow>
+        <tablecell>
+            <paragraph id="par_id911787254306625"  localize="false" role="tablecontent">[ !character_list ]</paragraph>
+        </tablecell>
+        <tablecell>
+            <paragraph id="par_id581787254311441" role="tablecontent">Any single character not in character_list.</paragraph>
+        </tablecell>
+    </tablerow>
+</table>
+
+<paragraph role="paragraph" id="par_id461787254618799">A group of one or more characters must be enclosed in square brackets ([]) and can match any single character in a string. It can include almost any character, including digits. Use a hyphen (-) to define a range of characters (for example [a-z]), where the hyphen separates the lower and upper bounds of the range.</paragraph>
+
+<embed href="text/sbasic/shared/00000003.xhp#functexample"/>
+<bascode>
+<paragraph role="bascode" id="par_id461787257167140" localize="false">Sub ExampleLike</paragraph>
+<paragraph role="bascode" id="par_id201787257178287" localize="false">    Print "abc" Like "a*c"    ' Returns True.</paragraph>
+<paragraph role="bascode" id="par_id541787257189467" localize="false">    Print "badmington" Like "bad*"    ' Returns True.</paragraph>
+<paragraph role="bascode" id="par_id281787257193805" localize="false">    Print "M" Like "[A-E]"    ' Returns False.</paragraph>
+<paragraph role="bascode" id="par_id931787257198515" localize="false">    Print "M" Like "[!A-Z]"    ' Returns False.</paragraph>
+<paragraph role="bascode" id="par_id551787257203353" localize="false">    Print "Phone:12345678" Like "Phone:1234####"    ' Returns True.</paragraph>
+<paragraph role="bascode" id="par_id291787257208396" localize="false">End Sub</paragraph>
+</bascode>
+</body>
+</helpdocument>

@@ -419,6 +419,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,sbasic,\
     helpcontent2/source/text/sbasic/shared/GetPathSeparator \
     helpcontent2/source/text/sbasic/shared/is_keyword \
     helpcontent2/source/text/sbasic/shared/keys \
+    helpcontent2/source/text/sbasic/shared/like \
     helpcontent2/source/text/sbasic/shared/main0211 \
     helpcontent2/source/text/sbasic/shared/main0601 \
     helpcontent2/source/text/sbasic/shared/new_keyword \
