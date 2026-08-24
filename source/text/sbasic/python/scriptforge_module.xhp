@@ -70,7 +70,7 @@
       <bookmark_value>scriptforge module;ScriptForge</bookmark_value>
     </bookmark>
     <h2 id="hd_id312589199698251" localize="false">ScriptForge class</h2>
-    <paragraph role="paragraph" id="par_id04258919969864">Connects to a running %PRODUCTNAME service <link href="text/shared/guide/start_parameters.xhp">started with the command line</link>. <literal>ScriptForge</literal> class can bind IDE-based Python scripts to a remote %PRODUCTNAME process for debugging purpose. </paragraph>
+    <paragraph role="paragraph" id="par_id04258919969864">Connects to a running %PRODUCTNAME service <link href="text/shared/guide/start_parameters.xhp">started with the command line</link>. <literal>ScriptForge</literal> class can bind IDE-based Python scripts to a remote %PRODUCTNAME process for debugging purpose.</paragraph>
     <embed href="text/sbasic/shared/00000003.xhp#functsyntax"/>
     <paragraph role="paragraph" localize="false" id="par_id932621534014732">
       <input>opt ScriptForge(pipe = 'PIPE2LIBREOFFICE'): obj</input><br/>
@@ -87,6 +87,12 @@
       <case select="WIN"><paragraph role="paragraph" id="par_win">
         <input>"C:\\Program Files\\LibreOffice\\program\\soffice.exe" --accept="pipe,name=PIPE2LIBREOFFICE;urp;"</input>
       </paragraph></case>
+      <case select="MAC"><paragraph role="paragraph" id="par_mac">
+        <input>/Applications/LibreOffice.App/Contents/MacOS/soffice --accept="pipe,name=PIPE2LIBREOFFICE;urp;"</input>
+      </paragraph></case>
+      <case select="UNIX"><paragraph role="paragraph" id="par_unix">
+        <input>/usr/lib/libreoffice/program/soffice --accept="pipe,name=PIPE2LIBREOFFICE;urp;"</input>
+      </paragraph></case>
       <default><paragraph role="paragraph" id="par_else">
         <input>soffice --accept="pipe,name=PIPE2LIBREOFFICE;urp;"</input>
       </paragraph></default>
@@ -94,14 +100,14 @@
     
     <pycode>
       <paragraph role="pycode" localize="false" id="pyc_id561785489217996">from scriptforge import CreateScriptService as getSvc</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id481785489825382">ui = getSvc('ScriptForge.Basic')</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id651785489218596"></paragraph>
+      <paragraph role="pycode" localize="false" id="pyc_id481785489825382">ui = getSvc('ScriptForge.Basic')
+</paragraph>
       <paragraph role="pycode" xml-lang="en-US" id="pyc_id628764872507555">def my_script():  # user code goes here</paragraph>
       <paragraph role="pycode" xml-lang="en-US" id="pyc_id602643307035249">    response = ui.MsgBox('Do you want to continue?',ui.MB_YESNOCANCEL,'A message from Python')</paragraph>
-      <paragraph role="pycode" xml-lang="en-US" id="pyc_id517785249947845">    ui.MsgBox('scriptforge module',ui.MB_OK,response)</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id532785249948963"></paragraph>
-      <paragraph role="pycode" xml-lang="en-US" id="pyc_id161785249948421">g_exportedScripts = (my_script,)  # LibreOffice entry points</paragraph>
-      <paragraph role="pycode" localize="false" id="pyc_id421785249948852"></paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id517785249947845">    ui.MsgBox('scriptforge module',ui.MB_OK,response)
+</paragraph>
+      <paragraph role="pycode" xml-lang="en-US" id="pyc_id161785249948421">g_exportedScripts = (my_script,)  # LibreOffice entry points
+</paragraph>
       <paragraph role="pycode" xml-lang="en-US" id="pyc_id231785249949125">if __name__ == "__main__":  # entry point for IDEs</paragraph>
       <paragraph role="pycode" xml-lang="en-US" id="pyc_id501785249949365">    # from scriptforge import ScriptForge # as session manager</paragraph>
       <paragraph role="pycode" xml-lang="en-US" id="pyc_id521785249949604">    # ScriptForge(pipe='PIPE2LIBREOFFICE')  # performed in the background</paragraph>
