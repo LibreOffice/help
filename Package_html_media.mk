@@ -184,6 +184,8 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sdraw/distribute-VB.svg \
     helpimg/sdraw/distribute-VC.svg \
     helpimg/sdraw/distribute-VS.svg \
+    helpimg/sdraw/ColorWheel.svg \
+    helpimg/sdraw/RGBCube.svg \
     helpimg/starmath/harpoon.svg \
     helpimg/starmath/wideharpoon.svg \
     helpimg/starmath/al21801.svg \
@@ -401,7 +403,6 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     navigation/libo-symbol-black-alt.svg \
     navigation/libo-symbol-white.svg \
     navigation/libo-writer.svg \
-    screenshots/modules/sdraw/ui/copydlg/DuplicateDialog.png \
     screenshots/modules/sdraw/ui/dlgsnap/SnapObjectDialog.png \
     screenshots/modules/sdraw/ui/insertlayer/InsertLayerDialog.png \
     screenshots/modules/sdraw/ui/insertslidesdialog/InsertSlidesDialog.png \
