@@ -200,8 +200,8 @@
                 <header class="header">
                     <div id="TopLeftHeader">
                         <a class="symbol" href="{$lang}/text/shared/05/new_help.html">
-                            <img class="moon" src="media/navigation/libo-symbol-white.svg" alt="LibreOffice Symbol" />
-                            <img class="sun" src="media/navigation/libo-symbol-black-alt.svg" alt="LibreOffice Symbol" />
+                            <span class="symbol-white" aria-hidden="true"></span>
+                            <span class="symbol-black" aria-hidden="true"></span>
                         </a>
                         <a class="logo" href="{$lang}/text/shared/05/new_help.html">
                             <p dir="auto"><xsl:value-of disable-output-escaping="yes" select="$ui_logo"/></p>

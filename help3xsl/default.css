@@ -179,7 +179,6 @@
  *  ============================================================ */
 
 #theme-toggle {
-    position: relative;
     display: grid;
     place-items: center;
     width: 2.5rem;
@@ -201,24 +200,26 @@
 }
 
 #theme-toggle .sun {
+    display: inline-block;
+    transform: rotate(-90deg) scale(1);
     background-image: url('media/helpimg/sun-line.svg');
 }
 
 #theme-toggle .moon {
+    display: none;
+    transform: rotate(0deg) scale(0);
     background-image: url('media/helpimg/moon-line.svg');
 }
 
 
-#theme-toggle .sun,
-#TopLeftHeader .sun {
-    opacity: 0;
-    transform: rotate(0deg) scale(1);
+#TopLeftHeader .symbol-white {
+    display: none;
+    background-image: url('media/navigation/libo-symbol-white.svg');
 }
 
-#theme-toggle .moon,
-#TopLeftHeader .moon {
-    opacity: 1;
-    transform: rotate(90deg) scale(0);
+#TopLeftHeader .symbol-black {
+    display: inline-block;
+    background-image: url('media/navigation/libo-symbol-black.svg');
 }
 
 #DonationFrame span {
@@ -227,20 +228,17 @@
     padding: 0.5rem 0.5rem 0.5rem 0.5rem;
     border-radius: 0.25rem;
     transition: opacity 0.8s ease-in-out, color 0.8s ease-in-out;
+    background-repeat: no-repeat;
 }
 
 #DonationFrame .service-light {
-    position: absolute;
-    left: 0.5rem;
     background-image: url('media/helpimg/service-line-light.svg');
-    opacity: 1;
+    display: inline-block;
 }
 
 #DonationFrame .service-dark {
-    position: absolute;
-    left: 0.5rem;
     background-image: url('media/helpimg/service-line-dark.svg');
-    opacity: 0;
+    display: none;
 }
 
 .xapian-omega-search-button span {
@@ -253,17 +251,13 @@
 }
 
 .xapian-omega-search-button .search-light {
-    position: absolute;
-    left: 0.3rem;
     background-image: url('media/helpimg/search-line-light.svg');
-    opacity: 1;
+    display: inline-block;
 }
 
 .xapian-omega-search-button .search-dark {
-    position: absolute;
-    left: 0.3rem;
     background-image: url('media/helpimg/search-line-dark.svg');
-    opacity: 0;
+    display: none;
 }
 
 /* ============================================================
@@ -318,32 +312,40 @@
         --table-head-border-width: thin;
     }
 
-    #theme-toggle .sun,
-    #TopLeftHeader .sun {
-        opacity: 1;
+    #theme-toggle .sun {
+        display: none;
         transform: rotate(-90deg) scale(0);
     }
 
-    #theme-toggle .moon,
-    #TopLeftHeader .moon {
-        opacity: 0;
+    #theme-toggle .moon {
+        display: inline-block;
+        transform: rotate(0deg) scale(1);
+    }
+
+    #TopLeftHeader .symbol-white {
+        display: inline-block;
+        transform: rotate(0deg) scale(0);
+    }
+
+    #TopLeftHeader .symbol-black {
+        display: none;
         transform: rotate(0deg) scale(1);
     }
 
     #DonationFrame .service-light {
-        opacity: 0;
+        display: none;
     }
 
     #DonationFrame .service-dark {
-        opacity: 1;
+        display: inline-block;
     }
 
     .xapian-omega-search-button .search-light {
-        opacity: 0;
+        display: none;
     }
 
     .xapian-omega-search-button .search-dark {
-        opacity: 1;
+        display: inline-block;
     }
 
     ::selection {
@@ -407,37 +409,41 @@ html.dark-mode {
     --table-head-border-color: var(--color-neutral-500);
     --table-head-border-width: thin;
 
-    #theme-toggle {
-        position: relative;
-    }
-
     /* --- Theme icons (sun/moon) --- */
-    #theme-toggle .sun,
-    #TopLeftHeader .sun {
-        opacity: 0;
+    #theme-toggle .sun {
+        display: none;
         transform: rotate(-90deg) scale(0);
     }
 
-    #theme-toggle .moon,
-    #TopLeftHeader .moon {
-        opacity: 1;
+    #theme-toggle .moon {
+        display: inline-block;
         transform: rotate(0deg) scale(1);
     }
 
+    #TopLeftHeader .symbol-white {
+        display: inline-block;
+        transform: rotate(0deg) scale(1);
+    }
+
+    #TopLeftHeader .symbol-black {
+        display: none;
+        transform: rotate(0deg) scale(0);
+    }
+
     #DonationFrame .service-light {
-        opacity: 0;
+        display: none;
     }
 
     #DonationFrame .service-dark {
-        opacity: 1;
+        display: inline-block;
     }
 
     .xapian-omega-search-button .search-light {
-        opacity: 0;
+        display: none;
     }
 
     .xapian-omega-search-button .search-dark {
-        opacity: 1;
+        display: inline-block;
     }
 
     ::selection {
@@ -497,21 +503,42 @@ html.light-mode {
     --table-head-border-color: transparent;
     --table-head-border-width: 0;
 
-    #theme-toggle {
-        position: relative;
+    #theme-toggle .sun {
+        display: inline-block;
+        transform: rotate(-90deg) scale(1);
+        background-image: url('media/helpimg/sun-line.svg');
     }
 
-    /* Theme icons: show sun, hide moon */
-    #theme-toggle .sun,
-    #TopLeftHeader .sun {
-        opacity: 1;
-        transform: rotate(0deg) scale(1);
+    #theme-toggle .moon {
+        display: none;
+        transform: rotate(0deg) scale(0);
+        background-image: url('media/helpimg/moon-line.svg');
     }
 
-    #theme-toggle .moon,
-    #TopLeftHeader .moon {
-        opacity: 0;
-        transform: rotate(90deg) scale(0);
+    #TopLeftHeader .symbol-white {
+        display: none;
+        background-image: url('media/navigation/libo-symbol-white.svg');
+    }
+
+    #TopLeftHeader .symbol-black {
+        display: inline-block;
+        background-image: url('media/navigation/libo-symbol-black-alt.svg');
+    }
+
+    #DonationFrame .service-light {
+        display: inline-block;
+    }
+
+    #DonationFrame .service-dark {
+        display: none;
+    }
+
+    .xapian-omega-search-button .search-light {
+        display: inline-block;
+    }
+
+    .xapian-omega-search-button .search-dark {
+        display: none;
     }
 
     #DonationFrame .service-light {
@@ -607,9 +634,6 @@ h6 {
 
 #theme-toggle {
     grid-area: theme-toggle;
-    align-self: start;
-    margin-top: .5rem;
-    position: relative;
     width: 40px;
     height: 40px;
     border: none;
@@ -618,14 +642,6 @@ h6 {
     overflow: hidden;
 }
 
-#theme-toggle i {
-    color: var(--text-color);
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    font-size: 1.8rem;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
-}
 
 .symbol,
 .logo {
@@ -638,24 +654,23 @@ h6 {
 
 .logo {
     grid-area: logo;
+    align-self: baseline;
+    -webkit-text-aligh: match-parent;
+    text-align: match-parent;
 }
 
 #TopLeftHeader {
-    position: relative;
     display: grid;
     grid-area: TopLeftHeader;
     grid-template-columns: auto 1fr;
     grid-template-areas:
         "symbol logo"
         "dropdowns dropdowns";
-    gap: .5rem;
+    gap: .8rem;
     align-items: center;
 }
 
-#TopLeftHeader img {
-    position: absolute;
-    top: 4px;
-    left: 4px;
+#TopLeftHeader a span {
     width: 52px;
     height: 60px;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
@@ -663,14 +678,17 @@ h6 {
 
 .symbol {
     grid-area: symbol;
-    padding: 8px 8px 8px 20px;
     width: 52px;
     height: 60px;
+    margin-top: .5rem;
 }
 
-.symbol img {
+.symbol span {
     width: 100%;
     height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 .dropdowns {
@@ -688,17 +706,14 @@ h6 {
 
 
 #DonationFrame {
-    grid-area: donationFrame;
     width: 100%;
-    display: flex;
-    justify-content: center;
 }
 
 #DonationFrame a {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
     gap: .5rem;
     padding: .5rem 1rem;
     font-weight: bold;
@@ -715,7 +730,6 @@ h6 {
         background: var(--donation-hover-bg);
         background-clip: padding-box;
         border: 2px solid var(--text-accent-color);
-        /* color: var(--color-neutral-50); */
         box-shadow: 0 4px 12px rgb(0 0 0 / 12%);
         animation: mover-e-voltar 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -819,7 +833,7 @@ details.products li {
 }
 
 /* ============================================================
- *  CÓDIGO & PRISM
+ *  CODE & PRISM
  *  ============================================================ */
 code[class*="language-"],
 pre[class*="language-"] {
@@ -865,7 +879,7 @@ pre,
 }
 
 /* ============================================================
- *  TIPOGRAFIA & ÊNFASE
+ *  TYPOGRAPHY & EMPHASIS
  *  ============================================================ */
 .acronym,
 .emph,
@@ -900,7 +914,7 @@ pre,
 }
 
 /* ============================================================
- *  IMAGENS
+ *  IMAGES
  *  ============================================================ */
 .iconimage {
     background: oklch(from var(--text-color) l c h / 45%);
@@ -924,7 +938,7 @@ img[src$=".svg"] {
 }
 
 /* ============================================================
- *  TABELAS
+ *  TABLES
  *  ============================================================ */
 
 table {
@@ -1010,7 +1024,7 @@ html[dir="ltr"] th {
 }
 
 /* ============================================================
- *  TÍTULOS E PARÁGRAFOS
+ *  HEADINGS AND PARAGRAPHS
  *  ============================================================ */
 p,
 ol,
@@ -1076,7 +1090,7 @@ h6 {
 }
 
 /* ============================================================
- *  MISCELÂNEA
+ *  MISCELLANEOUS
  *  ============================================================ */
 .wide,
 #search-bar {
@@ -1193,7 +1207,7 @@ h6 {
 }
 
 /* ============================================================
- *  NAVEGAÇÃO (langs / modules)
+ *  NAVIGATION (langs / modules)
  *  ============================================================ */
 #langs-nav,
 #modules-nav {
@@ -1241,7 +1255,7 @@ h6 {
 }
 
 /* ============================================================
- *  ÍCONES DOS PRODUTOS
+ *  PRODUCT ICONS
  *  ============================================================ */
 .office-icon,
 .calc-icon,
@@ -1295,7 +1309,7 @@ h6 {
 }
 
 /* ============================================================
- *  PAGINAÇÃO
+ *  PAGINATION
  *  ============================================================ */
 .pagination-container {
     text-align: center;
@@ -1453,7 +1467,7 @@ input:not([type="submit"]):not([type="search"]):not([type="text"]):not([type="ch
 }
 
 /* ============================================================
- *  DOAÇÃO / XAPIAN
+ *  DONATION / XAPIAN
  *  ============================================================ */
 .xapian-donation {
     border-top: 2px solid var(--color-brand-700);
@@ -1820,18 +1834,10 @@ aside input[type="checkbox"]:checked~.contents-treeview {
             "dropdowns dropdowns";
     }
 
-    .logo {
+    /* .logo {
         align-self: baseline;
-    }
+    } */
 
-    #DonationFrame {
-        justify-content: flex-start;
-    }
-
-    #theme-toggle {
-        margin-top: 0;
-        align-self: center;
-    }
 }
 
 /* --- ≥960px (Small monitor Desktops) --- */
@@ -1859,7 +1865,7 @@ aside input[type="checkbox"]:checked~.contents-treeview {
 
     #TopLeftHeader {
         display: grid;
-        align-items: end;
+        align-items: start;
         grid-template-columns: auto 1fr;
         grid-template-areas:
             "symbol logo"
