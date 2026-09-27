@@ -119,6 +119,7 @@
     <xsl:variable name="ytprivacy"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='ytprivacy']"/></xsl:variable>
     <xsl:variable name="ui_books"><xsl:apply-templates select="$tmp_doc_ui//variable[@id='books']"/></xsl:variable>
     <!--
+
     #############
     # Templates #
     #############
@@ -194,7 +195,14 @@
                 <xsl:if test="//topic[@indexer='exclude']">
                     <meta name="robots" content="noindex"/>
                 </xsl:if>
-                <link rel="canonical" href="{$url_canonical}{$productversion}/{$lang}{$htmlpage}"/>
+                <xsl:if test="$online">
+                     <xsl:for-each select="$tmp_doc_ui//paragraph[starts-with(@id, 'lang_')]">
+                         <xsl:variable name="_lang" select="./variable/@id"/>
+                         <link rel="alternate" hreflang="{$_lang}" href="{$url_canonical}/{$_lang}/"></link>
+                     </xsl:for-each>
+                     <link rel="alternate" hreflang="x-default" href="{$url_canonical}/en-US/"></link>
+                     <link rel="canonical" href="{$url_canonical}{$productversion}/{$lang}{$htmlpage}"/>
+                </xsl:if>
             </head>
             <body>
                 <header class="header">
@@ -295,7 +303,6 @@
                     </xsl:if>
                     <xsl:apply-templates select="/helpdocument/body"/>
                 </div>
-
 
                 <footer>
                     <h2 style="text-align: center;"><a href="https://books.libreoffice.org" target="_blank"><xsl:value-of select="$ui_books"/></a></h2>
