@@ -264,7 +264,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,shared,\
     helpcontent2/source/text/shared/01/05320002 \
     helpcontent2/source/text/shared/01/05340100 \
     helpcontent2/source/text/shared/01/05340200 \
-    helpcontent2/source/text/shared/01/05340300 \
     helpcontent2/source/text/shared/01/05340400 \
     helpcontent2/source/text/shared/01/05340402 \
     helpcontent2/source/text/shared/01/05340404 \
