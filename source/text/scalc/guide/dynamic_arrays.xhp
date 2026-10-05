@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpdocument version="1.0">
+    <!--
+    * This file is part of the LibreOffice project.
+    *
+    * This Source Code Form is subject to the terms of the Mozilla Public
+    * License, v. 2.0. If a copy of the MPL was not distributed with this
+    * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+    *
+    -->
+
+    <meta>
+        <topic id="text/scalc/guide/dynamic_arrays.xhp" indexer="include" status="PUBLISH">
+            <title id="tit">Dynamic arrays</title>
+        <filename>/text/scalc/guide/dynamic_arrays.xhp</filename>
+    </topic>
+</meta>
+<body>
+<bookmark branch="index" id="bm_id701791226990601">
+<bookmark_value>array;dynamic</bookmark_value>
+<bookmark_value>dynamic array</bookmark_value>
+</bookmark>
+<section id="dynamic_array">
+    <h1 id="hd_id911791226498805"><variable id="h1"><link href="text/scalc/guide/dynamic_arrays.xhp">Dynamic arrays</link></variable></h1>
+    <description id="par_id751791225350192">Dynamic arrays make it easy to work with multiple values in a single formula. This dynamic behavior means that, unlike classic array formulas, the result automatically adapts: if the size of the input array or a function's arguments changes, the size of the resulting array changes as well. There's no need to re-enter the array formula when the input and output data grows or shrinks.</description>
+</section>
+  <paragraph role="paragraph" id="par_id571791225425262">Dynamic arrays are produced by the results of the functions <link href="text/scalc/01/func_filter.xhp">FILTER</link>, <link href="text/scalc/01/func_randarray.xhp">RANDARRAY</link>, <link href="text/scalc/01/func_sequence.xhp">SEQUENCE</link>, <link href="text/scalc/01/func_sort.xhp">SORT</link>, <link href="text/scalc/01/func_sortby.xhp">SORTBY</link>, <link href="text/scalc/01/func_unique.xhp">UNIQUE</link>, <link href="text/scalc/01/func_xlookup.xhp">XLOOKUP</link>, <link href="text/scalc/01/func_xmatch.xhp">XMATCH</link>.</paragraph>
+  <paragraph role="paragraph" id="par_id651791225368343">These functions return an array of data automatically, so there is no need to enter them using the <keycode>Ctrl+Shift+Enter</keycode> keyboard shortcut.</paragraph>
+
+  <h2 id="hd_id521791227947543">Dynamic array spilling</h2>
+<paragraph role="paragraph" id="par_id481791227962242">The dynamic array is said to spill in the spreadsheet when data is inserted as the result of the above functions. You can reference the resulting array data by writing the reference of the first element of the resulting array suffixed by the spill range symbol <emph>#</emph>.</paragraph>
+<embed href="text/scalc/01/common_func.xhp#sectionexample"/>
+<paragraph role="paragraph" id="par_id221791228267369">
+    <image src="media/helpimg/scalc/dynarrayspill.png" id="img_id251791228267369" width="600px" height="270px"><alt id="alt_id181791228267369">Dynamic array spilling</alt></image>
+</paragraph>
+
+<list type="unordered">
+    <listitem>
+        <paragraph id="par_id601791228377792"  role="listitem">Range A2:A11 is the source data.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id31791228388824"  role="listitem">Range B2:B11 is a dynamic array spilled as result of the SORT function. Every cell in B2:B11 has formula =SORT(A2:A11).</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id141791228395901"  role="listitem">Range C2:C11 is a dynamic array referenced the # spill suffix to the range B2:B11. Every cell in the range C2:C11 has formula =B2#</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id271791228401286"  role="listitem">Cell D2 shows reference error #REF! since range A2:A11 is not a dynamic array.</paragraph>
+    </listitem>
+    <listitem>
+        <paragraph id="par_id621791228407460"  role="listitem">Range E2:E11 is also a dynamic array referencing another dynamic array.</paragraph>
+    </listitem>
+</list>
+
+<note id="par_id971791228327171">If the spill range is blocked by other data, Calc returns the <literal>#SPILL</literal> error. After clearing the space for spilling, the formula will automatically spill.</note>
+<section id="relatedtopics">
+    <paragraph role="paragraph" id="par_id491791229895291" localize="false"><embedvar href="text/scalc/01/04060107.xhp#arrayfunctit" markup="ignore"/></paragraph>
+    <paragraph role="paragraph" id="par_id351791229782624"><link href="text/scalc/01/func_filter.xhp">FILTER</link>, <link href="text/scalc/01/func_randarray.xhp">RANDARRAY</link>, <link href="text/scalc/01/func_sequence.xhp">SEQUENCE</link>, <link href="text/scalc/01/func_sort.xhp">SORT</link>, <link href="text/scalc/01/func_sortby.xhp">SORTBY</link>, <link href="text/scalc/01/func_unique.xhp">UNIQUE</link>, <link href="text/scalc/01/func_xlookup.xhp">XLOOKUP</link>, <link href="text/scalc/01/func_xmatch.xhp">XMATCH</link>.</paragraph>
+</section>
+
+</body>
+</helpdocument>

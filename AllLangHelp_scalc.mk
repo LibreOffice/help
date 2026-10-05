@@ -466,6 +466,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/guide/datapilot_updatetable \
     helpcontent2/source/text/scalc/guide/dbase_files \
     helpcontent2/source/text/scalc/guide/design \
+    helpcontent2/source/text/scalc/guide/dynamic_arrays \
     helpcontent2/source/text/scalc/guide/edit_multitables \
     helpcontent2/source/text/scalc/guide/filters \
     helpcontent2/source/text/scalc/guide/finding \
