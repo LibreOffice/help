@@ -171,6 +171,8 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/sbasic/With_statement.svg \
     helpimg/sbasic/Write_statement.svg \
     helpimg/schart/CategoryProperties.png \
+    helpimg/schart/correlation_circle_table.avif \
+    helpimg/schart/correlation_circle_chart.webp \
     helpimg/scalc/coordinates-to-polar-01.svg \
     helpimg/scalc/calczoomslider.png \
     helpimg/sdraw/area-fill-none-same-vs-background.png \
