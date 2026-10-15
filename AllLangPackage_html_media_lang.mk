@@ -257,7 +257,6 @@ $(foreach lang,$(filter-out en-US,$(gb_HELP_LANGS)),$(eval $(call gb_AllLangPack
     screenshots/writerperfect/ui/exportepub/$(lang)/EpubDialog.png \
     screenshots/cui/ui/colorpickerdialog/$(lang)/ColorPicker.png \
     screenshots/cui/ui/colorpage/$(lang)/ColorPage.png \
-    screenshots/cui/ui/effectspage/$(lang)/EffectsPage.png \
     screenshots/cui/ui/hyperlinkdocpage/$(lang)/HyperlinkDocPage.png \
     screenshots/cui/ui/hyperlinkinternetpage/$(lang)/HyperlinkInternetPage.png \
     screenshots/cui/ui/hyperlinkmailpage/$(lang)/HyperlinkMailPage.png \
