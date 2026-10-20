@@ -24,18 +24,20 @@
     <h1 id="hd_id321785788540640"><variable id="h1"><link href="text/scalc/01/func_array2text.xhp">ARRAYTOTEXT</link></variable></h1>
     <description id="par_id491785788540640">Returns a cell range or array as one text string, taking the range and an optional format number.</description>
 </section>
+<paragraph role="paragraph" id="par_id841792521147277">The array or cell range is parsed row by row.</paragraph>
 <embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
 <paragraph role="paragraph" id="par_id471785789032157"><emph>Array</emph>: The range or array to return as text.</paragraph>
 <paragraph role="paragraph" id="par_id181785789027523"><emph>Format</emph>: The format of the returned text, as follows:</paragraph>
 <list type="unordered">
     <listitem>
-        <paragraph id="par_id241785789326070"  role="listitem">0 or omitted - concise format (default), returns the values in row order separated by the function separator sign (standard is comma in US locale) followed by a space.</paragraph>
+        <paragraph id="par_id241785789326070"  role="listitem">0 or omitted - concise format (default), returns the values in row order separated by the function separator character (default is comma in US locale) followed by a space.</paragraph>
     </listitem>
     <listitem>
-        <paragraph id="par_id641785789333764"  role="listitem">1 - strict format, returns an array constant in braces with text in quotes, column and row separators (standard is comma and semicolon in US locale).</paragraph>
+        <paragraph id="par_id641785789333764"  role="listitem">1 - strict format, returns an array constant in braces with text in quotes, column and row separators (default is comma and semicolon in US locale).</paragraph>
     </listitem>
 </list>
-<note id="par_id701792435200715">In Calc, separators are locale-dependent and can be configured under <menuitem>Tools > Options > %PRODUCTNAME Calc > Formula > Separators</menuitem>.</note>
+<note id="par_id701792435200715">In %PRODUCTNAME Calc, separators are locale-dependent and can be configured under <menuitem>Tools > Options > %PRODUCTNAME Calc > Formula > Separators</menuitem>.</note>
+<paragraph role="paragraph" id="par_id471792520600050">Conversion rules:</paragraph>
         <list type="unordered">
             <listitem>
                 <paragraph id="par_id871792437907570"  role="listitem">A number retains its input text while ignoring cell formatting.</paragraph>
@@ -111,15 +113,15 @@
             </tablerow>
         </table>
         <h4 id="hd_id571792438812072">For en-US locale </h4>
+        <paragraph role="paragraph" id="par_id981792521269993">When Format = 0, the en-US locale uses commas as function separator.</paragraph>
         <paragraph role="paragraph" id="par_id551785794004109"><input>=ARRAYTOTEXT(A1:B4;0)</input> returns the string <literal>TRUE, Rio de Janeiro, 123.456, 123.45, Hello World!, #DIV/0!, , 46237</literal>.</paragraph>
-
-        <paragraph role="paragraph" id="par_id201792438836384">The en-US locale uses commas as column separators, and semicolons as row separators.</paragraph>
+        <paragraph role="paragraph" id="par_id201792438836384">When Format = 1, the en-US locale uses commas as column separators, and semicolons as row separators.</paragraph>
         <paragraph role="paragraph" id="par_id121785794010544"><input>=ARRAYTOTEXT(A1:B4;1)</input> returns the string array <literal>{TRUE,"Rio de Janeiro";123.456,123.45;"Hello World!",#DIV/0!;,46237}</literal>.</paragraph>
 
         <h4 id="hd_id481792438820543">Other locales</h4>
+        <paragraph role="paragraph" id="par_id131792521288726">For example, when Format = 0, the pt-BR locale uses semicolons as function  separator.</paragraph>
         <paragraph role="paragraph" id="par_id281792439393541"><input>=ARRAYTOTEXT(A1:B4;0)</input> returns <literal>VERDADEIRO; Rio de Janeiro; 123,456; 123,45; Hello World!; #DIV/0!; ; 46237</literal></paragraph>
-
-        <paragraph role="paragraph" id="par_id811792438841682">For example, the pt-BR locale uses dots as column separators, and semicolons as row separators.</paragraph>
+        <paragraph role="paragraph" id="par_id811792438841682">When Format = 1, the pt-BR locale uses dots as column separators, and semicolons as row separators.</paragraph>
         <paragraph role="paragraph" id="par_id561792439504971"><input>=ARRAYTOTEXT(A1:B4;1)</input> returns <literal>{VERDADEIRO."Rio de Janeiro";123,456.123,45;"Hello World!".#DIV/0!;.46237}</literal>.</paragraph>
 
         <embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
