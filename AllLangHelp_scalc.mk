@@ -193,6 +193,7 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,scalc,\
     helpcontent2/source/text/scalc/01/events_sheet \
     helpcontent2/source/text/scalc/01/ex_data_stat_func \
     helpcontent2/source/text/scalc/01/FieldMenu \
+    helpcontent2/source/text/scalc/01/fit_to_cell_size \
     helpcontent2/source/text/scalc/01/formula2value \
     helpcontent2/source/text/scalc/01/FormatSparklineMenu \
     helpcontent2/source/text/scalc/01/ful_func \
