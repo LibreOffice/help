@@ -220,7 +220,6 @@ $(eval $(call gb_AllLangHelp_add_helpfiles,swriter,\
     helpcontent2/source/text/swriter/01/TableNumberRecognition \
     helpcontent2/source/text/swriter/01/TableSelectMenu \
     helpcontent2/source/text/swriter/01/title_page \
-    helpcontent2/source/text/swriter/01/translate \
     helpcontent2/source/text/swriter/01/view_resolved_comments \
     helpcontent2/source/text/swriter/01/view_table_bounds \
     helpcontent2/source/text/swriter/01/view_images_charts \
