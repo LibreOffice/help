@@ -60,6 +60,7 @@ $(eval $(call gb_Package_add_files_with_dir,helpcontent2_html_media,$(LIBO_SHARE
     helpimg/formschn.png \
     helpimg/formsubt.png \
     helpimg/formvers.png \
+    helpimg/hamburger.png \
     helpimg/hand01.png \
     helpimg/hsizebar.png \
     helpimg/impress_remote_icon.png \
