@@ -9,43 +9,105 @@
     *
     -->
 
-<meta>
-    <topic id="text/scalc/01/func_textafter.xhp" indexer="include" status="PUBLISH">
-        <title id="tit">TEXTAFTER function</title>
-        <filename>/text/scalc/01/func_textafter.xhp</filename>
-    </topic>
-</meta>
-<body>
-<bookmark id="bm_id921747059635186" branch="hid/SC_HID_FUNC_TEXTAFTER_MS" localize="false"/>
-<bookmark branch="index" id="bm_id581556228060864">
-<bookmark_value>TEXTAFTER function</bookmark_value>
-</bookmark>
-<section id="section identification">
-    <h1 id="hd_id451747059635188"><variable id="h1"><link href="text/scalc/01/func_textafter.xhp">TEXTAFTER</link></variable></h1>
-    <description id="par_id381747059635191">Returns the text that occurs after the end of a given instance of a delimiter substring.</description>
-</section>
-<embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
-<paragraph role="code" id="par_id541556228253979">TEXTAFTER( Text [; Delimiter [; Instance Number [; Match Mode [; Match End [; If Not Found ]]]]])</paragraph>
-<paragraph role="paragraph" id="par_id91747066169381"><emph>Text</emph>: the original text.</paragraph>
-<paragraph role="paragraph" id="par_id221747066174430"><emph>Delimiter</emph>: (optional) the delimiter. Multiple delimiters can be supplied. If omitted or supplied as an empty string, then returns the error <emph>#N/A</emph> or the value expressed by <emph>If Not Found</emph>.</paragraph>
-<paragraph role="paragraph" id="par_id821747066179393"><emph>Instance Number</emph>: (optional) the instance of the delimiter after which to extract text. The default is 1. A negative number starts searching from the end. Value 0 returns the error <emph>#N/A</emph>.</paragraph>
-<paragraph role="paragraph" id="par_id121747066183422"><emph>Match Mode</emph>: (optional) set to 1 to perform a case-insensitive match. The default is 0.</paragraph>
-<paragraph role="paragraph" id="par_id201747066188182"><emph>Match End</emph>: (optional) set to 1 to treat the end of text as a delimiter. The default is 0.</paragraph>
-<paragraph role="paragraph" id="par_id701747066192253"><emph>If Not Found</emph>: (optional) the value returned if no match is found. The default is <emph>#N/A</emph>.</paragraph>
-<embed href="text/scalc/01/common_func.xhp#optional_args"/>
-<embed href="text/scalc/01/ful_func.xhp#func_head_example"/>
-<paragraph role="paragraph" id="par_id21747067698384"><input>=TEXTAFTER("To be or not to be";"or ";1;0;0;"@@@")</input> returns the string "not to be", taking after the delimiter "or ".</paragraph>
-<paragraph role="paragraph" id="par_id971747068062071"><input>=TEXTAFTER("To be or not to be";"question";1;0;0;"@@@")</input> returns the text "@@@" because the delimiter "question" is not in the source text.</paragraph>
-<paragraph role="paragraph" id="par_id821783899126651"><input>=TEXTAFTER("To be or not to be";"question";1;0;1;"@@@")</input> returns the empty string "" because the delimiter "question" is not in the source text and <emph>Match End</emph> is 1, which prevents the function to return the error <emph>#N/A</emph> or the value defined in <emph>If Not Found</emph>.</paragraph>
-<embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
-<embed href="text/scalc/00/avail_release.xhp#25.8"/>
-<embed href="text/scalc/01/common_func.xhp#notODFF"/>
-<paragraph role="paragraph" id="par_id341640873986703" localize="false"><literal>COM.MICROSOFT.TEXTAFTER</literal></paragraph>
-<section id="relatedtopics">
-    <tip id="par_id761677014445916"><link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/TEXTAFTER">TEXTAFTER wiki page</link>.</tip>
-    <paragraph role="paragraph" id="par_id1001746970893891" localize="false"><embedvar href="text/scalc/01/func_textjoin.xhp#textjoinfunct" markup="ignore"/></paragraph>
-    <paragraph role="paragraph" id="par_id851747068377843" localize="false"><embedvar href="text/scalc/01/func_textsplit.xhp#textsplitfunct" markup="ignore"/></paragraph>
-    <paragraph role="paragraph" id="par_id81747069728010" localize="false"><embedvar href="text/scalc/01/func_textbefore.xhp#h1" markup="ignore"/></paragraph>
-</section>
+    <meta>
+        <topic id="text/scalc/01/func_textafter.xhp" indexer="include" status="PUBLISH">
+            <title id="tit">TEXTAFTER function</title>
+            <filename>/text/scalc/01/func_textafter.xhp</filename>
+        </topic>
+    </meta>
+    <body>
+    <bookmark id="bm_id921747059635186" branch="hid/SC_HID_FUNC_TEXTAFTER_MS" localize="false"/>
+    <bookmark branch="index" id="bm_id581556228060864">
+        <bookmark_value>TEXTAFTER function</bookmark_value>
+    </bookmark>
+    <section id="section identification">
+        <h1 id="hd_id451747059635188"><variable id="h1"><link href="text/scalc/01/func_textafter.xhp">TEXTAFTER</link></variable></h1>
+        <description id="par_id381747059635191">Returns the text that occurs after the end of a given instance of a delimiter substring.</description>
+    </section>
+    <embed href="text/scalc/01/ful_func.xhp#func_head_syntax"/>
+    <paragraph role="code" id="par_id541556228253979">TEXTAFTER( Text [; Delimiter [; Instance Number [; Match Mode [; Match End [; If Not Found ]]]]])</paragraph>
+    <paragraph role="paragraph" id="par_id91747066169381"><emph>Text</emph>: the original text.</paragraph>
+    <paragraph role="paragraph" id="par_id221747066174430"><emph>Delimiter</emph>: (optional) the delimiter. Multiple delimiters can be supplied. If omitted or supplied as an empty string, then returns the error <emph>#N/A</emph> or the value expressed by <emph>If Not Found</emph>.</paragraph>
+    <paragraph role="paragraph" id="par_id821747066179393"><emph>Instance Number</emph>: (optional) the instance of the delimiter after which to extract text. The default is 1. A negative number starts searching from the end. Value 0 returns the error <emph>#N/A</emph>.</paragraph>
+    <paragraph role="paragraph" id="par_id121747066183422"><emph>Match Mode</emph>: (optional) set to 1 to perform a case-insensitive match. The default is 0.</paragraph>
+    <paragraph role="paragraph" id="par_id201747066188182"><emph>Match End</emph>: (optional) set to 1 to treat the end of text as an additional delimiter. The default is 0.</paragraph>
+    <paragraph role="paragraph" id="par_id701747066192253"><emph>If Not Found</emph>: (optional) the value returned if no match is found. The default is <emph>#N/A</emph>.</paragraph>
+    <embed href="text/scalc/01/common_func.xhp#optional_args"/>
+    <embed href="text/scalc/01/ful_func.xhp#func_head_example"/>
+    <paragraph role="paragraph" id="par_id21747067698384"><input>=TEXTAFTER("To be or not to be";"or ";1;0;0;@@@)</input> returns the string "not to be", taking after the delimiter "or ".</paragraph>
+    <paragraph role="paragraph" id="par_id971747068062071"><input>=TEXTAFTER("To be or not to be";"question";1;0;0;@@@)</input> returns the text @@@ because the delimiter "question" is not in the source text.</paragraph>
+    <paragraph role="paragraph" id="par_id521794143951457">Interactions between <emph>Delimiter</emph>, <emph>Instance number</emph> and <emph>MatchEnd</emph>:</paragraph>
+    <table id="tab_id41794138033266">
+        <tablerow>
+            <tablecell><paragraph id="par_id50704633446334" role="tablehead">Text</paragraph></tablecell>	<tablecell><paragraph id="par_id17244633446334" role="tablehead">Delimiter</paragraph></tablecell>	<tablecell><paragraph id="par_id8514633446334" role="tablehead">Instance</paragraph></tablecell>	<tablecell><paragraph id="par_id20624633446334" role="tablehead">MatchMode</paragraph></tablecell>	<tablecell><paragraph id="par_id47274633446334" role="tablehead">MatchEnd</paragraph></tablecell>	<tablecell><paragraph id="par_id64694633446334" role="tablehead">IfNotFound</paragraph></tablecell>	<tablecell><paragraph id="par_id68774633446334" role="tablehead">TEXTAFTER</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id91454633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell><tablecell><paragraph id="par_id40544633446334" localize="false" role="tablecontent">to</paragraph></tablecell><tablecell><paragraph id="par_id84534633446334" localize="false" role="tablecontent">-4</paragraph></tablecell><tablecell><paragraph id="par_id41554633446334" localize="false" role="tablecontent">0</paragraph></tablecell>           <tablecell><paragraph id="par_id37884633446334" localize="false" role="tablecontent">0</paragraph></tablecell><tablecell><paragraph id="par_id38734633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell><tablecell><paragraph id="par_id52694633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id55104633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id99414633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id66074633446334" localize="false" role="tablecontent">-3</paragraph></tablecell>	<tablecell><paragraph id="par_id52414633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id64274633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id18744633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id24274633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id45924633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id2004633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id78054633446334" localize="false" role="tablecontent">-2</paragraph></tablecell>	<tablecell><paragraph id="par_id22594633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id10094633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id43104633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id31674633446334" localize="false" role="tablecontent">_be_or_not_to_be</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id90474633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id55454633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id31284633446334" localize="false" role="tablecontent">-1</paragraph></tablecell>	<tablecell><paragraph id="par_id73954633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id99034633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id45894633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id62394633446334" localize="false" role="tablecontent">_be</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id56824633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id84584633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id74984633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id12924633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id75884633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell><tablecell><paragraph id="par_id241794141062838" role="tablecontent">#N/A</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id38214633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id98954633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id59244633446334" localize="false" role="tablecontent">1</paragraph></tablecell>	<tablecell><paragraph id="par_id6524633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id64374633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id31934633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id67834633446334" localize="false" role="tablecontent">_be_or_not_to_be</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id52934633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id92554633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id22604633446334" localize="false" role="tablecontent">2</paragraph></tablecell>	<tablecell><paragraph id="par_id18084633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id33204633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id19404633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id6214633446334" localize="false" role="tablecontent">_be</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id84534633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id14064633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id44274633446334" localize="false" role="tablecontent">3</paragraph></tablecell>	<tablecell><paragraph id="par_id85274633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id99484633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id60414633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id22104633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id32814633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id76844633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id57084633446334" localize="false" role="tablecontent">4</paragraph></tablecell>	<tablecell><paragraph id="par_id8354633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id35234633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id34354633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id38724633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id13324633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id17474633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id35844633446334" localize="false" role="tablecontent">-4</paragraph></tablecell>	<tablecell><paragraph id="par_id86814633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id31824633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id22054633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id6944633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id33544633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id49744633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id75254633446334" localize="false" role="tablecontent">-3</paragraph></tablecell>	<tablecell><paragraph id="par_id44554633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id13944633446334" localize="false" role="tablecontent">1</paragraph></tablecell>	<tablecell><paragraph id="par_id57614633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id29804633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id16474633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id39614633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id18414633446334" localize="false" role="tablecontent">-2</paragraph></tablecell>	<tablecell><paragraph id="par_id31374633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id61424633446334" localize="false" role="tablecontent">1</paragraph></tablecell>	<tablecell><paragraph id="par_id80774633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id33004633446334" localize="false" role="tablecontent">_be_or_not_to_be</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id6764633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id50584633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id58194633446334" localize="false" role="tablecontent">-1</paragraph></tablecell>	<tablecell><paragraph id="par_id60754633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id89254633446334" localize="false" role="tablecontent">1</paragraph></tablecell>	<tablecell><paragraph id="par_id81474633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id4214633446334" localize="false" role="tablecontent">_be</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id85224633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id7864633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id24594633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id41444633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id8004633446334" localize="false" role="tablecontent">1</paragraph></tablecell>
+            <tablecell><paragraph id="par_id53904633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>
+            <tablecell><paragraph id="par_id53904633446334" role="tablecontent">#N/A</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id56184633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id22114633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id95634633446334" localize="false" role="tablecontent">1</paragraph></tablecell>	<tablecell><paragraph id="par_id74124633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id39034633446334" localize="false" role="tablecontent">1</paragraph></tablecell>	<tablecell><paragraph id="par_id65784633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id21464633446334" localize="false" role="tablecontent">_be_or_not_to_be</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id61604633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id34934633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id15164633446334" localize="false" role="tablecontent">2</paragraph></tablecell>	<tablecell><paragraph id="par_id46214633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id34134633446334" localize="false" role="tablecontent">1</paragraph></tablecell>	<tablecell><paragraph id="par_id35024633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id71944633446334" localize="false" role="tablecontent">_be</paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id90154633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id78924633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id73574633446334" localize="false" role="tablecontent">3</paragraph></tablecell>	<tablecell><paragraph id="par_id14754633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id61834633446334" localize="false" role="tablecontent">1</paragraph></tablecell>	<tablecell><paragraph id="par_id12064633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id17294633446334" localize="false" role="tablecontent"></paragraph></tablecell>
+        </tablerow>
+        <tablerow>
+            <tablecell><paragraph id="par_id47304633446334" localize="false" role="tablecontent">to_be_or_not_to_be</paragraph></tablecell>	<tablecell><paragraph id="par_id24254633446334" localize="false" role="tablecontent">to</paragraph></tablecell>	<tablecell><paragraph id="par_id53694633446334" localize="false" role="tablecontent">4</paragraph></tablecell>	<tablecell><paragraph id="par_id25784633446334" localize="false" role="tablecontent">0</paragraph></tablecell>	<tablecell><paragraph id="par_id34774633446334" localize="false" role="tablecontent">1</paragraph></tablecell>	<tablecell><paragraph id="par_id40834633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>	<tablecell><paragraph id="par_id90484633446334" localize="false" role="tablecontent">@@@</paragraph></tablecell>
+        </tablerow>
+    </table>
+
+    <embed href="text/scalc/01/common_func.xhp#sectiontechinfo"/>
+    <embed href="text/scalc/00/avail_release.xhp#25.8"/>
+    <embed href="text/scalc/01/common_func.xhp#notODFF"/>
+    <paragraph role="paragraph" id="par_id341640873986703" localize="false"><literal>COM.MICROSOFT.TEXTAFTER</literal></paragraph>
+    <section id="relatedtopics">
+        <tip id="par_id761677014445916"><link href="https://wiki.documentfoundation.org/Documentation/Calc_Functions/TEXTAFTER">TEXTAFTER wiki page</link>.</tip>
+        <paragraph role="paragraph" id="par_id1001746970893891" localize="false"><embedvar href="text/scalc/01/func_textjoin.xhp#textjoinfunct" markup="ignore"/></paragraph>
+        <paragraph role="paragraph" id="par_id851747068377843" localize="false"><embedvar href="text/scalc/01/func_textsplit.xhp#textsplitfunct" markup="ignore"/></paragraph>
+        <paragraph role="paragraph" id="par_id81747069728010" localize="false"><embedvar href="text/scalc/01/func_textbefore.xhp#h1" markup="ignore"/></paragraph>
+    </section>
 </body>
 </helpdocument>
